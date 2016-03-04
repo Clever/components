@@ -18,7 +18,7 @@ var Modal = React.createClass({
           }}>
           <div className="Modal--window--container">
             <h2>{this.props.title}</h2>
-            {this.props.content}
+            {this.props.children}
           </div>
         </div>
       </div>

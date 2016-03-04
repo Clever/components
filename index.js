@@ -1,1 +1,3 @@
-module.exports = require('./src');
+module.exports = {
+  Modal: require("./src/Modal/Modal")
+}
