@@ -8,4 +8,4 @@ publish:
      when:
        branch: master
 script:
-- npm install npm@2.7.0 -g
+- nvm install v5.7.1 &> /dev/null
