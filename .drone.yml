@@ -9,3 +9,4 @@ publish:
        branch: master
 script:
 - nvm install v5.7.1 &> /dev/null
+- ./test_drone.sh
