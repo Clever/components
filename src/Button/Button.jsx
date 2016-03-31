@@ -22,8 +22,9 @@ class Button extends React.Component {
       );
     } else {
       const target = this.props.target != null ? this.props.target : "_blank";
+      const onClick = this.props.disabled ? function(e){ e.preventDefault(); } : null;
       return (
-        <a className={classes} target={target} href={this.props.href} disabled={this.props.disabled || false}>
+        <a className={classes} target={target} href={this.props.href} disabled={this.props.disabled || false} onClick={onClick}>
           {this.props.value}
         </a>
       );
