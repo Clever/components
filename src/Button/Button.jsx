@@ -31,7 +31,7 @@ export class Button extends React.Component {
         </button>
       );
     } else {
-      const target = this.props.target != null ? this.props.target : "_blank";
+      const target = this.props.target != null ? this.props.target : "_self";
       const onClick = this.props.disabled ? function(e){ e.preventDefault(); } : null;
       return (
         <a className={classes} target={target} href={this.props.href} disabled={this.props.disabled || false} onClick={onClick}>
