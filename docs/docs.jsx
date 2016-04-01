@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Button from '../src/Button/Button';
+import {Button} from '../src/Button/Button';
 
 class Demo extends React.Component {
   render() {

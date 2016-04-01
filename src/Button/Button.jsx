@@ -5,7 +5,7 @@ require('./Button.less');
 const VALID_TYPES = ["primary", "secondary", "destructive"];
 const VALID_SIZES = ["large", "regular", "small", "regular"];
 
-class Button extends React.Component {
+export class Button extends React.Component {
   constructor(props) {
     super()
     if (props.type && VALID_TYPES.indexOf(props.type) === -1) {
@@ -41,5 +41,3 @@ class Button extends React.Component {
     }
   }
 }
-
-export default Button;
