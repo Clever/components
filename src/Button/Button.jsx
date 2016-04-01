@@ -7,7 +7,7 @@ const VALID_SIZES = ["large", "regular", "small", "regular"];
 
 export class Button extends React.Component {
   constructor(props) {
-    super()
+    super();
     if (props.type && VALID_TYPES.indexOf(props.type) === -1) {
       throw new Error(`Invalid type property. Got ${props.type}, expected one of ${VALID_TYPES}`);
     }
@@ -21,7 +21,7 @@ export class Button extends React.Component {
   render() {
     let classes = "Button ";
     classes += `Button--${this.props.type} `;
-    let size = ["large", "regular", "small"].indexOf(this.props.size) > -1 ? this.props.size : "regular"
+    let size = ["large", "regular", "small"].indexOf(this.props.size) > -1 ? this.props.size : "regular";
     classes += `Button--${size} `;
     if (this.props.href == null && !this.props.disabled) {
       // use <button>s for all disabled buttons and things with no href prop
