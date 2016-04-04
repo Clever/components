@@ -10,10 +10,14 @@ a, button {
 
     transition: background-color 0.25s ease-out, border-color 0.25s ease-out, color 0.25s ease-out;
 
-    &[disabled]{
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus
+    &[disabled]:active {
       cursor: not-allowed;
       color: #4B4B59;
       background-color: #D7D9D9;
+      border: none;
       border-bottom: 3px solid #A4A6A6;
     }
 
@@ -71,19 +75,19 @@ a, button {
   &.Button--small {
     padding: 10px 15px 5px 15px;
     font-size: 10px;
-    font-weight: semibold;
+    /* TODO - font-weight */
   }
 
   &.Button--regular {
     padding: 15px 20px 10px 20px;
     font-size: 15px;
-    font-weight: semibold;
+    /* TODO - font-weight */
   }
 
   &.Button--large {
     padding: 20px 25px 15px 25px;
     font-size: 20px;
-    font-weight: semibold;
+    /* TODO - font-weight */
   }
 
 }
