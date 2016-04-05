@@ -1,4 +1,4 @@
-# Clever Components
+# Clever Front End Components
 
 ## Install
 
