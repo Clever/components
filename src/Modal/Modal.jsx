@@ -1,6 +1,6 @@
 var React = require('react');
 
-require("./Modal.less");
+require("!style!css!less!./Modal.less");
 
 var DEFAULT_WIDTH = 400;
 
