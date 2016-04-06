@@ -1,4 +1,3 @@
-JSX_TESTS := $(shell find ./test \! -name "._*.js" -name "*_test.js")
 JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -name "bundle.js")
 JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*")
 
