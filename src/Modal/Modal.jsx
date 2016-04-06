@@ -1,10 +1,10 @@
 var React = require('react');
 
-require("./Modal.less");
+require("!style!css!less!./Modal.less");
 
 var DEFAULT_WIDTH = 400;
 
-var Modal = React.createClass({
+export var Modal = React.createClass({
   render: function() {
     var width = this.props.width || DEFAULT_WIDTH;
     return (
@@ -25,5 +25,3 @@ var Modal = React.createClass({
     );
   }
 });
-
-module.exports = Modal;

@@ -1,6 +1,6 @@
 import React from "react";
 
-require('./Button.less');
+require('!style!css!less!./Button.less');
 
 export class Button extends React.Component {
   constructor(props) {
