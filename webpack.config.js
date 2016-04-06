@@ -10,7 +10,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(eot|woff|svg|ttf)$/,
+        test: /\.(eot|woff|svg|ttf|png)$/,
         loader: "url",
       },
       {
