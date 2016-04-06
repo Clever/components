@@ -1,3 +1,5 @@
+/*eslint func-names: "off"*/
+
 var assert = require("assert");
 var React = require("react");
 var sinon = require("sinon");
@@ -5,7 +7,7 @@ var TestUtils = require("react-addons-test-utils");
 
 import {Modal} from "../";
 
-describe("Modal", () => {
+describe("Modal", function() {
   var exampleModal = (
     <Modal title="My Title">
       <div>Example Content</div>
