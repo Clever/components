@@ -1,11 +1,11 @@
 import React from "react";
 
-require('!style!css!less!./Button.less');
+require("!style!css!less!./Button.less");
 
 export class Button extends React.Component {
   constructor(props) {
-    super()
-    if (props.type === "destructive" && props.size === "small"){
+    super(props);
+    if (props.type === "destructive" && props.size === "small") {
       throw new Error("Small destructive buttons are not supported");
     }
   }
@@ -20,13 +20,12 @@ export class Button extends React.Component {
           {this.props.value}
         </button>
       );
-    } else {
-      return (
-        <a className={classes} target={this.props.target} href={this.props.href}>
-          {this.props.value}
-        </a>
-      );
     }
+    return (
+      <a className={classes} target={this.props.target} href={this.props.href}>
+        {this.props.value}
+      </a>
+    );
   }
 }
 
@@ -37,10 +36,11 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  type: React.PropTypes.oneOf(['primary', 'secondary', 'destructive']),
-  size: React.PropTypes.oneOf(['large', 'regular', 'small']),
+  type: React.PropTypes.oneOf(["primary", "secondary", "destructive"]),
+  size: React.PropTypes.oneOf(["large", "regular", "small"]),
   value: React.PropTypes.string.isRequired,
   href: React.PropTypes.string,
-  target: React.PropTypes.oneOf(['_self', '_blank']),
-  disabled: React.PropTypes.bool
+  target: React.PropTypes.oneOf(["_self", "_blank"]),
+  disabled: React.PropTypes.bool,
+  onClick: React.PropTypes.function,
 };
