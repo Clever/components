@@ -1,0 +1,47 @@
+extends: "airbnb"
+env:
+    mocha: true
+parser: "babel-eslint"
+parserOptions:
+  ecmaVersion: 6
+plugins:
+  - "react"
+rules:
+  # no hard limit on line length
+  max-len: 0
+
+  # we allow use of console...for now
+  no-console: 0
+
+  # we currently use snake case in most places, however, we'd like to switch to camelCase eventually since it's more common in the JS community
+  camelcase: 0
+
+  # vars are necessary for server-side requires right now
+  no-var: 0
+  vars-on-top: 0
+
+  # multi spaces only allowed for aligning variable/import declarations
+  no-multi-spaces:
+    - 2
+    - exceptions:
+        VariableDeclarator: true
+        ImportDeclaration: true
+
+  # we currently use null in many places, so allow == for null checks
+  eqeqeq:
+    - 2
+    - "smart"
+
+  quotes: [2, "double", "avoid-escape"]
+  object-curly-spacing:
+    - 2
+    - "never"
+  new-cap:
+    - 2
+    - newIsCapExceptions: ["kayvee.logger"]
+  no-param-reassign:
+    - 2
+    - props: false
+  key-spacing:
+    - 2
+    - mode: "minimum"

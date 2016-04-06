@@ -1,34 +1,34 @@
 module.exports = {
-  entry: './docs/docs.jsx',
+  entry: "./docs/docs.jsx",
   output: {
-    path:     'docs',
-    filename: 'bundle.js'
+    path:     "docs",
+    filename: "bundle.js",
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ["", ".js", ".jsx"],
   },
   module: {
-    loaders:[
+    loaders: [
       {
         test: /\.(eot|woff|svg|ttf)$/,
-        loader: 'url'
+        loader: "url",
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css']
+        loaders: ["style", "css"],
       },
       {
         test: /\.less$/,
-        loader: "style!css!less"
+        loader: "style!css!less",
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: "babel",
         query: {
-          presets: ['react', 'es2015']
-        }
-      }
-    ]
-  }
+          presets: ["react", "es2015"],
+        },
+      },
+    ],
+  },
 };
