@@ -42,5 +42,5 @@ Button.propTypes = {
   href: React.PropTypes.string,
   target: React.PropTypes.oneOf(["_self", "_blank"]),
   disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.function,
+  onClick: React.PropTypes.func,
 };
