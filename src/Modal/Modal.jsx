@@ -4,7 +4,7 @@ require("./Modal.less");
 
 const DEFAULT_WIDTH = 400;
 
-export class Modal {
+export class Modal extends React.Component {
   render() {
     const width = this.props.width || DEFAULT_WIDTH;
     return (
