@@ -5,7 +5,7 @@ var React = require("react");
 var sinon = require("sinon");
 var TestUtils = require("react-addons-test-utils");
 
-import {Modal} from "../";
+import {Modal} from "../src";
 
 describe("Modal", function () {
   var exampleModal = (
