@@ -73,9 +73,9 @@ var myCloseHandler = function() {
 
 ### How to add a component
 * Add a new folder to `/src` with your component
-* Add a test in `/test` named `[component]_test.js`
+* Add a test in `/test` named `[component]_test.jsx`
 * Create an example of how to use your component in code
 * Add a working/live example of your component to the docs
-* Export your component in `index.js`
+* Export your component in `src/index.js`
 * Open a PR and assign it to someone in [@frontend](https://github.com/orgs/Clever/teams/front-end)
 

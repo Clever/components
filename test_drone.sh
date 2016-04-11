@@ -6,3 +6,4 @@ npm cache clean
 npm install
 
 make test
+make build
