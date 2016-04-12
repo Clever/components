@@ -20,5 +20,5 @@ build:
 	@echo '✓ Copy /src to /dist'
 	@$(BABEL) dist -d dist > ._babel_tmp && rm ._babel_tmp
 	@echo '✓ Convert ES6 to ES5'
-	@find ./dist -name "*.jsx" | xargs -d"\n" rm
+	@find ./dist -name "*.jsx" | xargs -n1 rm
 	@echo '✓ Remove JSX files'
