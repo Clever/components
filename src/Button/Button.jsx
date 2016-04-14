@@ -13,7 +13,7 @@ export function Button(props) {
   if (props.href == null || props.disabled) {
     // use <button>s for all disabled links and things with no href prop (buttons)
     return (
-      <button className={classes} onClick={props.onClick} disabled={props.disabled}>
+      <button type="button" className={classes} onClick={props.onClick} disabled={props.disabled}>
         {props.value}
       </button>
     );
@@ -32,7 +32,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  type: React.PropTypes.oneOf(["primary", "secondary", "destructive"]),
+  type: React.PropTypes.oneOf(["primary", "secondary", "destructive", "link"]),
   size: React.PropTypes.oneOf(["large", "regular", "small"]),
   value: React.PropTypes.string.isRequired,
   href: React.PropTypes.string,
