@@ -24,11 +24,11 @@ This component wraps your content and displays it in a modal with a shadow box.
 
 **Options**
 
-| Prop | Type | Description | Default |
-|----|----|----|----|
-| title | String | Header text for the modal | None |
-| closeModal | Function | Called when user clicks outside modal |None
-| width (optional) | Number | Width of the modal | 400px |
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| title            | String   | Header text for the modal             | None
+| closeModal       | Function | Called when user clicks outside modal | None
+| width (optional) | Number   | Width of the modal                    | 400px
 
 
 **Usage Example**
@@ -53,17 +53,17 @@ This is a set of button components with various sizes and types.
 
 **Options**
 
-| Prop | Type | Description | Default |
-|----|----|----|----|
-| value | String | The text that appears on the button | None
-| type | String | One of `primary`, `secondary`, `destructive`, `link` | `secondary`
-| size | String | One of "large", "regular", "small" | `regular`
-| onClick (optional) | Function | Called when the user clicks on the button | None
-| href (optional) | String | If provided, causes the button to behave as a link | None
-| target (optional) | String | For links, either "_self" or "_blank" | "_blank"
-| disabled | Bool | User interaction is disabled when true | false
-| submit | Bool | Behaves as a submit button when true | false
-| style | Object | Add custom styles (e.g. margin) if you must | None
+| Prop                | Type     | Description                                          | Default
+|---------------------|----------|------------------------------------------------------|---------
+| value               | String   | The text that appears on the button                  | None
+| type                | String   | One of `primary`, `secondary`, `destructive`, `link` | `secondary`
+| size                | String   | One of "large", "regular", "small"                   | `regular`
+| onClick (optional)  | Function | Called when the user clicks on the button            | None
+| href (optional)     | String   | If provided, causes the button to behave as a link   | None
+| target (optional)   | String   | For links, either "_self" or "_blank"                | "_blank"
+| disabled (optional) | Bool     | User interaction is disabled when true               | false
+| submit (optional)   | Bool     | Behaves as a submit button when true                 | false
+| style (optional)    | Object   | Add custom styles (e.g. margin) if you must          | None
 
 **Usage Example**
 
