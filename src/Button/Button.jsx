@@ -15,10 +15,7 @@ export function Button(props) {
     throw new Error("Buttons with href do not support the submit option");
   }
 
-  let classes = "Button ";
-  classes += `Button--${props.type} `;
-  classes += `Button--${props.size} `;
-
+  let classes = `Button Button--${props.type} Button--${props.size}`;
   let type = props.submit ? "submit" : "button";
 
   if (props.href == null || props.disabled) {
