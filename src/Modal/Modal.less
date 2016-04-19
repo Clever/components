@@ -1,3 +1,5 @@
+@import "../fonts.less";
+
 .Modal {
   position: fixed;
   z-index: 200;
@@ -15,18 +17,48 @@
 }
 
 .Modal--window {
+  position: relative;
+  top: 50%;
   left: 50%;
-  margin-top: 60px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   position: fixed;
   background: #fff;
   border: 6px solid #3b4349;
   border-radius: 4px;
+  font-family: "Proxima Nova";
+  max-height: 80%;
+  box-sizing: border-box;
+  padding-top: 35px;
 }
 
-.Modal--window--container {
+.Modal--header{
+  padding: 0 45px;
+
+  h2{
+    margin:0;
+  }
+}
+
+.Modal--close{
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  background: url(./close.png);
+  right: 10px;
+  top: 10px;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Modal--window--content {
   position: relative;
-  width: 100%;
-  height: 100%;
   padding: 35px 45px;
+  padding-top: 15px;
+  overflow-y: scroll;
   box-sizing: border-box;
 }
