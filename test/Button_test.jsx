@@ -35,7 +35,7 @@ describe("Button", () => {
     assert.equal(button.text(), "A button");
   });
 
-  it("renders a <button> element with [type=submit] if props.submit is true", () => {
+  it("renders a <button> element with [type=submit] if submit is true", () => {
     const button = shallow(<Button value="A submit button" submit />);
     assert.equal(button.find("button[type='submit']").length, 1);
     assert.equal(button.text(), "A submit button");
@@ -47,10 +47,22 @@ describe("Button", () => {
     assert.equal(button.text(), "A link");
   });
 
+  it("throws an error if href and submit are both set", () => {
+    assert.throws(() => {
+      shallow(<Button value="A bad button" href="http://clever.com" submit />);
+    }, "Buttons with href do not support the submit option");
+  });
+
   it("calls the onClick handler when clicked", () => {
     const onClickSpy = sinon.spy();
     const button = shallow(<Button value="A clickable button" onClick={onClickSpy} />);
     button.simulate("click");
     assert(onClickSpy.calledOnce);
+  });
+
+  it("throws an error if onClick and href are both set", () => {
+    assert.throws(() => {
+      shallow(<Button value="A bad button" href="http://clever.com" onClick={() => {}} />);
+    }, "Buttons with href do not support the submit option");
   });
 });
