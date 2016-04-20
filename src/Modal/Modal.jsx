@@ -37,9 +37,9 @@ export class Modal extends React.Component {
       width: `${this.props.width}px`,
       marginLeft: `-${this.props.width / 2}px`,
     };
-    // The content is 80% of the window height (same as the max height of the modal) less 75px (the height of the header and padding)
+    // The content is max 90% of the window height less 70px (height of the header)
     let contentStyle = {
-      maxHeight: (this.state.windowHeight * 0.8) - 75,
+      maxHeight: (this.state.windowHeight * 0.9) - 70,
     };
     return (
       <div className="Modal">
