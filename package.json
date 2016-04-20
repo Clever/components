@@ -29,6 +29,8 @@
     "eslint-plugin-react": "^4.2.3",
     "file-loader": "^0.8.5",
     "ignore-styles": "^1.2.0",
+    "jsdom": "^8.4.0",
+    "jsdom-global": "^1.7.0",
     "jsx-loader": "^0.13.2",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
