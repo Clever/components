@@ -6,7 +6,7 @@ JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*")
 lint:
 	./node_modules/.bin/eslint $(JS_FILES) $(JSX_FILES)
 
-MOCHA_JSX := node_modules/mocha/bin/mocha --compilers jsx:babel-register --recursive --require ignore-styles
+MOCHA_JSX := node_modules/mocha/bin/mocha --compilers jsx:babel-register --recursive --require ignore-styles --require jsdom-global/register
 
 test: lint
 	NODE_ENV=test $(MOCHA_JSX) $@
