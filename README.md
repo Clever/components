@@ -1,5 +1,7 @@
 # Clever Front End Components
 
+**Jump to** [Modal](#modal), [Button](#button)
+
 ## Install
 
 Install the NPM package and save it to your project using
@@ -16,7 +18,27 @@ var Modal = require('clever-components').Modal; // ES5
 import {Modal} from 'clever-components'; // ES6
 ```
 
-## Components
+## Contributing
+
+### How to add a component
+* Run `./bin/new_component <your component>` to autogenerate source and test stubs
+* Document your component in the readme with PropTypes and a usage example
+* Add a working example of your component in /docs
+* Open a PR and assign it to someone in [@frontend](https://github.com/orgs/Clever/teams/front-end)
+
+#### When to add a component
+
+* Rule of 3: Copy and pasting it more than once? Is it being used in a few places? Yes, componentize it!
+* It's in our desired components list
+  * **Definitely Want**: ~~Buttons~~, ~~Modals~~, form elements, flash messages, alerts, tables
+  * **Eventually**: Header, Navbar, Breadcrumbs, Pagination
+
+## Testing
+Run the entire test suite with `make test` or a single component with `make test/<component>_test.jsx`
+
+## Component Reference
+
+Check out our [live examples](http://clever.github.io/components)!
 
 ### Modal
 
@@ -71,36 +93,3 @@ This is a set of button components with various sizes and types.
 <Button value="Go Back" type="secondary" href="/previousPage" />
 <Button value="Save Changes" type="primary" size="regular" onClick={saveChanges} />
 ```
-
-## Contributing
-
-### When to add a component
-
-* Rule of 3ish - Copy and pasting it more than once? Is it being used in a few places? Yes, componentize it!
-* It's in our desired components list
-
-#### Desired components
-
-**Definitely Want**
-* ~~Buttons~~ (done)
-* ~~Modals~~ (done)
-* Form elements - input, select, radio, checkbox, textarea
-* Flash messages
-* Alerts - sub type of Modal
-* Tables
-
-**Someday Want**
-
-* Header
-* Navbar
-* Breadcrumbs
-* Pagination
-
-### How to add a component
-* Add a new folder to `/src` with your component
-* Add a test in `/test` named `[component]_test.jsx`
-* Create an example of how to use your component in code
-* Add a working/live example of your component to the docs
-* Export your component in `src/index.js`
-* Open a PR and assign it to someone in [@frontend](https://github.com/orgs/Clever/teams/front-end)
-
