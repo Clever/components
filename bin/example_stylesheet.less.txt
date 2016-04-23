@@ -1,0 +1,11 @@
+.COMPONENT_NAME {
+ /*
+    Use namespaced classes that begin with "COMPONENT_NAME"
+    to avoid clashing with global styles. If possible, avoid
+    over-nesting selectors and instead use clear class names
+    that convey the purpose and/or state of the element:
+
+    .COMPONENT_NAME--container
+    .COMPONENT_NAME--input-disabled
+ */
+}
