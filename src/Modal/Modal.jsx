@@ -66,5 +66,5 @@ Modal.propTypes = {
   width: React.PropTypes.number,
   title: React.PropTypes.string.isRequired,
   closeModal: React.PropTypes.func.isRequired,
-  children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+  children: React.PropTypes.node.isRequired,
 };
