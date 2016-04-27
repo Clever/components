@@ -7,3 +7,4 @@ npm install
 
 make test
 make build
+rm -rf bin
