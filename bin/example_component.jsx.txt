@@ -2,6 +2,12 @@ import React from "react";
 
 import "./COMPONENT_NAME.less";
 
+/*
+  Add a description of your component here.
+
+  If your component can be expressed without state,
+  use the stateless function syntax instead!
+*/
 export default class COMPONENT_NAME extends React.Component {
   constructor(props) {
     super(props);
