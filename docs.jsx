@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -28,16 +29,17 @@ class Demo extends React.Component {
 
     return (
       <div>
-        <h1>Button Sizing</h1>
+        <h1>Button</h1>
+        <h2>Button Sizing</h2>
         <Button type="primary" size="large" value="Large" />
         <Button type="primary" size="regular" value="Regular" />
         <Button type="primary" size="small" value="Small" />
-        <h1>Button Styles</h1>
+        <h2>Button Styles</h2>
         <Button type="primary" size="regular" value="Primary" />
         <Button type="secondary" size="regular" value="Secondary" />
         <Button type="destructive" size="regular" value="Destructive" />
         <Button disabled size="regular" value="Disabled" />
-        <h1>Button-as-Link</h1>
+        <h2>Button-as-Link</h2>
         <Button type="primary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button type="secondary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button type="destructive" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
