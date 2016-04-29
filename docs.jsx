@@ -2,8 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {Button} from "../src/Button/Button";
-import {Modal} from "../src/Modal/Modal";
+import {Button, ConfirmationButton, Modal, ModalButton} from "../src/";
 
 class Demo extends React.Component {
   constructor(props) {
@@ -47,6 +46,24 @@ class Demo extends React.Component {
         <h1>Modal</h1>
         <Button size="large" type="primary" onClick={this.openModal} value="Open Modal" />
         {modalElement}
+        <h1>ModalButton</h1>
+        <ModalButton
+          type="primary" size="regular" value="More info" modalTitle="Helpful info"
+          onClick={() => console.log("ModalButton: modal opened!")}
+          onClose={() => console.log("ModalButton: modal closed!")}
+        >
+          <p>This is so interesting!</p>
+        </ModalButton>
+        <h1>ConfirmationButton</h1>
+        <ConfirmationButton
+          type="destructive" size="regular" value="Submit for confirmation" modalTitle="Please confirm"
+          confirmButtonType="destructive"
+          onClick={() => console.log("ConfirmationButton: modal opened!")}
+          onClose={() => console.log("ConfirmationButton: modal closed!")}
+          onConfirm={() => console.log("ConfirmationButton: confirmed!")}
+        >
+          <p>This action requires confirmation. Please confirm!</p>
+        </ConfirmationButton>
       </div>
     );
   }
