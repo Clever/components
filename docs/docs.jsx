@@ -1,8 +1,8 @@
+/* eslint-disable no-console */
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {Button} from "../src/Button/Button";
-import {Modal} from "../src/Modal/Modal";
+import {Button, ConfirmationButton, Modal, ModalButton} from "../src/";
 
 class Demo extends React.Component {
   constructor(props) {
@@ -28,16 +28,17 @@ class Demo extends React.Component {
 
     return (
       <div>
-        <h1>Button Sizing</h1>
+        <h1>Button</h1>
+        <h2>Button Sizing</h2>
         <Button type="primary" size="large" value="Large" />
         <Button type="primary" size="regular" value="Regular" />
         <Button type="primary" size="small" value="Small" />
-        <h1>Button Styles</h1>
+        <h2>Button Styles</h2>
         <Button type="primary" size="regular" value="Primary" />
         <Button type="secondary" size="regular" value="Secondary" />
         <Button type="destructive" size="regular" value="Destructive" />
         <Button disabled size="regular" value="Disabled" />
-        <h1>Button-as-Link</h1>
+        <h2>Button-as-Link</h2>
         <Button type="primary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button type="secondary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button type="destructive" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
@@ -45,6 +46,24 @@ class Demo extends React.Component {
         <h1>Modal</h1>
         <Button size="large" type="primary" onClick={this.openModal} value="Open Modal" />
         {modalElement}
+        <h1>ModalButton</h1>
+        <ModalButton
+          type="primary" size="regular" value="More info" modalTitle="Helpful info"
+          onClick={() => console.log("ModalButton: modal opened!")}
+          onClose={() => console.log("ModalButton: modal closed!")}
+        >
+          <p>This is so interesting!</p>
+        </ModalButton>
+        <h1>ConfirmationButton</h1>
+        <ConfirmationButton
+          type="destructive" size="regular" value="Submit for confirmation" modalTitle="Please confirm"
+          confirmButtonType="destructive"
+          onClick={() => console.log("ConfirmationButton: modal opened!")}
+          onClose={() => console.log("ConfirmationButton: modal closed!")}
+          onConfirm={() => console.log("ConfirmationButton: confirmed!")}
+        >
+          <p>This action requires confirmation. Please confirm!</p>
+        </ConfirmationButton>
       </div>
     );
   }

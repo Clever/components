@@ -7,7 +7,7 @@ import {Modal} from "../src";
 describe("Modal", () => {
   it("renders the background, modal window, title, and contents", () => {
     const modal = shallow(
-      <Modal title="My Title">
+      <Modal title="My Title" closeModal={() => {}} >
         <div>Example Content</div>
       </Modal>
     );
@@ -27,7 +27,9 @@ describe("Modal", () => {
 
   it("calls closeModal when the background is clicked", () => {
     const stub = sinon.stub();
-    const modal = shallow(<Modal title="Title" content={<p>Content</p>} closeModal={stub} />);
+    const modal = shallow(<Modal title="Title" content={<p>Content</p>} closeModal={stub}>
+      <p>Hi</p>
+    </Modal>);
     const background = modal.find(".Modal--background");
     background.simulate("click");
     assert(stub.calledOnce);
