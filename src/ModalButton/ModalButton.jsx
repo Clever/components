@@ -1,4 +1,3 @@
-import objectAssign from "object-assign";
 import React from "react";
 
 import {Button, Modal} from "..";
@@ -45,11 +44,11 @@ export class ModalButton extends React.Component {
 // inherit properties from Button and Modal except closeModal; don't prefix children,
 // but prefix the rest of Modal's keys.
 const modalPropTypes = prefixKeys(omitKeys(Modal.propTypes, "closeModal", "children"), "modal");
-ModalButton.propTypes = objectAssign({}, Button.propTypes, modalPropTypes, {
+ModalButton.propTypes = Object.assign({}, Button.propTypes, modalPropTypes, {
   children: Modal.propTypes.children,
   onClose: React.PropTypes.func, // not required; just closes modal otherwise
 });
 
 // closeModal has no default, so no need to filter out of defaultProps
-ModalButton.defaultProps = objectAssign({}, Button.defaultProps,
-                                        prefixKeys(Modal.defaultProps, "modal"));
+ModalButton.defaultProps = Object.assign({}, Button.defaultProps,
+                                         prefixKeys(Modal.defaultProps, "modal"));
