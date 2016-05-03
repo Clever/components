@@ -45,10 +45,10 @@ export class Modal extends React.Component {
       <div className="Modal">
         <div className="Modal--background" onClick={this.props.closeModal} />
         <div className="Modal--window" style={windowStyle} >
-          <div className="Modal--header">
+          <header className="Modal--header">
             <button className="Modal--close" onClick={this.props.closeModal} />
             <h2>{this.props.title}</h2>
-          </div>
+          </header>
           <div style={contentStyle} className="Modal--window--content">
             {this.props.children}
           </div>
