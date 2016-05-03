@@ -1,4 +1,3 @@
-import objectAssign from "object-assign";
 import React, {PropTypes} from "react";
 
 import {Button, ModalButton} from "..";
@@ -36,7 +35,7 @@ export class ConfirmationButton extends React.Component {
   }
 }
 
-ConfirmationButton.propTypes = objectAssign(
+ConfirmationButton.propTypes = Object.assign(
   {}, prefixKeys(Button.propTypes, "confirmButton"), ModalButton.propTypes, {
     confirmButtonType: Button.propTypes.type,
     confirmButtonText: PropTypes.string,
@@ -44,7 +43,7 @@ ConfirmationButton.propTypes = objectAssign(
   }
 );
 
-ConfirmationButton.defaultProps = objectAssign(
+ConfirmationButton.defaultProps = Object.assign(
   {}, prefixKeys(Button.defaultProps, "confirmButton"), ModalButton.defaultProps, {
     confirmButtonType: "primary",
     confirmButtonValue: "Confirm",
