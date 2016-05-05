@@ -41,7 +41,7 @@ export function prefixKeys(obj, prefix, capitalizeFirst = true) {
  */
 export function unprefixKeys(obj, prefixToRemove, lowercaseFirst = true) {
   return Object.keys(obj).reduce((prev, key) => {
-    if (key.startsWith(prefixToRemove)) {
+    if (key.indexOf(prefixToRemove) === 0) {
       const sansPrefix = key.slice(prefixToRemove.length);
       const newKey = lowercaseFirst ? sansPrefix.charAt(0).toLowerCase() +
         sansPrefix.slice(1) : sansPrefix;
