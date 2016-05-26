@@ -18,6 +18,8 @@ var Modal = require('clever-components').Modal; // ES5
 import {Modal} from 'clever-components'; // ES6
 ```
 
+This library uses ES6 features not supported in Internet Explorer such as [`String.startsWith`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith). To support use of this library in IE, include `babel-polyfill` in the entrypoint to your application. See the [docs](https://babeljs.io/docs/usage/polyfill/).
+
 ## Contributing
 
 ### How to add a component
