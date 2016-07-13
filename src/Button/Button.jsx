@@ -16,7 +16,10 @@ export function Button(props) {
   }
 
   let classes = `Button Button--${props.type} Button--${props.size}`;
-  let type = props.submit ? "submit" : "button";
+  if (props.className) {
+    classes += ` ${props.className}`;
+  }
+  const type = props.submit ? "submit" : "button";
 
   if (props.href == null || props.disabled) {
     // use <button>s for all disabled links and things with no href prop (buttons)
@@ -40,6 +43,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  className: React.PropTypes.string,
   type: React.PropTypes.oneOf(["primary", "secondary", "destructive", "link"]),
   size: React.PropTypes.oneOf(["large", "regular", "small"]),
   value: React.PropTypes.string.isRequired,
