@@ -10,6 +10,8 @@ Install the NPM package and save it to your project using
 npm install --save-dev clever-components
 ```
 
+Open:  http://localhost:8080/
+
 To use a component, you'll need to be working with React and Webpack. Components that include their own styles may require you to install Webpack's style loaders. If this is configured correctly, you can simply `require` these components like any other package:
 
 ```javascript
@@ -26,6 +28,7 @@ This library uses ES6 features not supported in Internet Explorer such as [`Stri
 * Run `./bin/new_component <your component>` to autogenerate source and test stubs
 * Document your component in the readme with PropTypes and a usage example
 * Add a working example of your component in /docs
+* To run locally, `npm run-script dev-server`
 * Open a PR and assign it to someone in [@frontend](https://github.com/orgs/Clever/teams/front-end)
 
 #### When to add a component
@@ -171,3 +174,52 @@ Inherits all options from `ModalButton` and `Button`. `Button`'s properties have
   <p>This action requires confirmation. Please confirm!</p>
 </ConfirmationButton>
 ```
+
+
+### TextInput
+
+This component is a `text input`.
+
+**Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| name (required) | String | Name for input element | None
+| label (optional) | String | Label for modal | None
+| value (optional) | Node | Value of input | None
+| placeholder (optional) | Node | Placeholder node for input | None
+| type (optional) | String   | The type of control to display, tested 'number' and 'text' | 'text'
+| error (optional) | String | Adds indicator and error text to element. | None
+| onChange (optional) | Function | Called when value of input changes. | None
+| required (optional) | Bool   | Marks input as required and adds indicator. | false
+| disabled (optional) | Bool   | Sets element as disabled. | false
+| readOnly (optional) | Bool   | Sets element as read only. | false
+
+**Usage Example**
+
+```jsx
+  <TextInput
+    label="Form Input"
+    name="TextInputName"
+    placeholder="placeholder"
+    onChange={this.onChangeText}
+    value={this.state.inputValue}
+    isRequired=true
+    error={this.state.error}
+  />
+```
+
+In this example, the function `onChangeText` is called on component value change and updates the state of your component:
+
+```javascript
+var onChangeText = function(event) {
+  // do some validation
+  var errorMessage = "";
+  if (notValid) errorMessage = "Please enter a valid value";
+  this.setState({
+    inputValid: event.target.value,
+    error: errorMessage,
+  });
+}
+```
+
