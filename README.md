@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button)
+**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput)
 
 ## Install
 
@@ -9,8 +9,6 @@ Install the NPM package and save it to your project using
 ```
 npm install --save-dev clever-components
 ```
-
-Open:  http://localhost:8080/
 
 To use a component, you'll need to be working with React and Webpack. Components that include their own styles may require you to install Webpack's style loaders. If this is configured correctly, you can simply `require` these components like any other package:
 
@@ -28,7 +26,7 @@ This library uses ES6 features not supported in Internet Explorer such as [`Stri
 * Run `./bin/new_component <your component>` to autogenerate source and test stubs
 * Document your component in the readme with PropTypes and a usage example
 * Add a working example of your component in /docs
-* To run locally, `npm run-script dev-server`
+* To run locally, `npm run-script dev-server` and open http://localhost:8080/
 * Open a PR and assign it to someone in [@frontend](https://github.com/orgs/Clever/teams/front-end)
 
 #### When to add a component
