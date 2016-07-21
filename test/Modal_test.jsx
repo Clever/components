@@ -13,7 +13,7 @@ describe("Modal", () => {
     );
     const background = modal.find("div.Modal--background");
     const windoe = modal.find("div.Modal--window");
-    const header = modal.find("div.Modal--header");
+    const header = modal.find("header.Modal--header");
     const content = modal.find("div.Modal--window--content");
     assert.equal(background.length, 1);
     assert.equal(windoe.length, 1);

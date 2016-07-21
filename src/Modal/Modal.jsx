@@ -15,11 +15,12 @@ export class Modal extends React.Component {
   componentDidMount() {
     window.addEventListener("keyup", this.handleKeyUp);
     window.addEventListener("resize", this.handleResize);
+    this.handleResize();
   }
 
   componentWillUnmount() {
     window.removeEventListener("keyup", this.handleKeyUp);
-    window.addEventListener("resize", this.handleResize);
+    window.removeEventListener("resize", this.handleResize);
   }
 
   handleKeyUp(e) {
@@ -37,18 +38,16 @@ export class Modal extends React.Component {
       width: `${this.props.width}px`,
       marginLeft: `-${this.props.width / 2}px`,
     };
-    // The content is max 90% of the window height less 70px (height of the header)
-    let contentStyle = {
-      maxHeight: (this.state.windowHeight * 0.9) - 70,
-    };
+    // The content is max 90% of the window height less 60px (height of the header)
+    let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};
     return (
       <div className="Modal">
         <div className="Modal--background" onClick={this.props.closeModal} />
-        <div className="Modal--window" style={windowStyle} >
-          <div className="Modal--header">
+        <div className="Modal--window" style={windowStyle}>
+          <header className="Modal--header">
             <button className="Modal--close" onClick={this.props.closeModal} />
             <h2>{this.props.title}</h2>
-          </div>
+          </header>
           <div style={contentStyle} className="Modal--window--content">
             {this.props.children}
           </div>

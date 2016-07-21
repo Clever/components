@@ -11,9 +11,8 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: #000;
+  background: #191926;
   opacity: 0.6;
-  filter: alpha(opacity=60);
 }
 
 .Modal--window {
@@ -23,20 +22,27 @@
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   position: fixed;
-  background: #fff;
-  border: 6px solid #3b4349;
-  border-radius: 4px;
+  border-radius: 3px;
   font-family: "Proxima Nova";
+  box-shadow: 0 10px 10px rgba(0,0,0,.2);
+  border: 1px solid #FAFCFC;
+  background: #FAFCFC;
 }
 
 .Modal--header{
-  height: 70px;
-  padding: 35px 45px 10px;
+  background: #E3E6EB;
+  height: 60px;
+  padding: 15px 30px;
   box-sizing: border-box;
 
   h2{
     padding: 0;
     margin: 0;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #121212;
+    font-family: "Proxima Nova", Arial, sans-serif;
   }
 }
 
@@ -44,21 +50,42 @@
   display: block;
   position: absolute;
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  height: 12px;
+  width: 12px;
   background: url(./close.png);
-  right: 10px;
-  top: 10px;
+  background-size: 12px 12px;
+  right: 32px;
+  top: 24px;
   outline: none;
   border: none;
   padding: 0;
   margin: 0;
+  opacity: 0.4;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .Modal--window--content {
   position: relative;
-  padding: 35px 45px;
-  padding-top: 15px;
-  overflow-y: scroll;
+  padding: 30px 30px 25px;
+  background-color: #FAFCFC;
   box-sizing: border-box;
+  overflow-y: auto;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.Modal footer {
+  margin-top: 40px;
+  text-align: right;
+  .Button {
+    margin-right: 20px;
+  }
+  .Button:last-child {
+    margin-right: 0;
+  }
 }
