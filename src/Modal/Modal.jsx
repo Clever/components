@@ -30,12 +30,7 @@ export class Modal extends React.Component {
   }
 
   handleResize() {
-    // The ensures the modal can scroll when it exceeds 90% of the window height
-    const scrollable = this.modal && this.modal.scrollHeight >= (0.9 * window.innerHeight) - 60;
-    this.setState({
-      windowHeight: window.innerHeight,
-      scrollable,
-    });
+    this.setState({windowHeight: window.innerHeight});
   }
 
   render() {
@@ -44,10 +39,7 @@ export class Modal extends React.Component {
       marginLeft: `-${this.props.width / 2}px`,
     };
     // The content is max 90% of the window height less 60px (height of the header)
-    let contentStyle = {
-      maxHeight: (this.state.windowHeight * 0.9) - 60,
-      overflowY: this.state.scrollable ? "scroll" : "hidden",
-    };
+    let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};
     return (
       <div className="Modal">
         <div className="Modal--background" onClick={this.props.closeModal} />
@@ -56,7 +48,7 @@ export class Modal extends React.Component {
             <button className="Modal--close" onClick={this.props.closeModal} />
             <h2>{this.props.title}</h2>
           </header>
-          <div style={contentStyle} className="Modal--window--content" ref={(ref) => {this.modal = ref;}}>
+          <div style={contentStyle} className="Modal--window--content">
             {this.props.children}
           </div>
         </div>
