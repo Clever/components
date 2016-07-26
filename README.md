@@ -221,3 +221,13 @@ var onChangeText = function(event) {
 }
 ```
 
+### CopyableInput
+
+This is a special [TextInput](#textinput) that allows the user to show/hide the value of the input and copy to clipboard. Ideal for passwords.
+
+**Options (in addition to TextInput props)**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| enableShow | Bool | Display a Show/Hide toggle link | False
+| enableCopy | Bool | Display a Copy link | False
