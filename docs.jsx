@@ -6,6 +6,7 @@ import {
   Button,
   ConfirmationButton,
   TextInput,
+  CopyableInput,
   Modal,
   ModalButton,
 } from "../src/";
@@ -19,7 +20,8 @@ class Demo extends React.Component {
         placeholderInput: "",
         requiredInput: "testing",
         errorInput: "hello@gmail",
-        passwordInput: "",
+        passwordInput: "surprise!",
+        copyableInput: "1234-1234-1234-1234",
       },
     };
     this.openModal = this.openModal.bind(this);
@@ -45,11 +47,15 @@ class Demo extends React.Component {
       modalElement = (<Modal title="Hello Modal" closeModal={this.closeModal}>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu felis non risus accumsan euismod sit amet in dolor. Proin nec massa enim. Vestibulum posuere nulla non leo aliquet pulvinar. Pellentesque id augue a nunc mollis pharetra eu quis enim. Aenean rhoncus fermentum mauris, id euismod tortor semper at. Morbi viverra lectus non risus facilisis, a blandit urna gravida. Suspendisse mollis convallis sapien, et fermentum justo tristique sed. In sit amet lacus dui. </p>
         <p>Curabitur tincidunt congue mi vel pretium. Etiam semper ut tortor ac feugiat. Fusce maximus id lacus gravida aliquet. Suspendisse potenti. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse eros ante, vehicula in dictum eu, luctus sit amet dui. Ut quam libero, cursus sit amet tortor eget, feugiat laoreet turpis. Praesent nec nulla ut urna feugiat pulvinar eget eu enim.</p>
+        <footer>
+          <Button value="Never mind" type="link" onClick={this.closeModal} />
+          <Button value="Sounds good" type="primary" onClick={this.closeModal} />
+        </footer>
       </Modal>);
     }
 
     return (
-      <div>
+      <div style={{fontFamily: "Proxima Nova"}}>
         <h1>TextInputs</h1>
         <div style={{width: "300px"}}>
           <TextInput
@@ -59,7 +65,7 @@ class Demo extends React.Component {
             onChange={(event) => this.onChangeText(event, "placeholderInput")}
             value={this.state.inputValues.placeholderInput}
           />
-          <br></br>
+          <br />
           <TextInput
             label="Required Form Input"
             name="TextInputName"
@@ -68,7 +74,7 @@ class Demo extends React.Component {
             value={this.state.inputValues.requiredInput}
             required
           />
-          <br></br>
+          <br />
           <TextInput
             label="Required Form Error"
             name="TextInputName"
@@ -77,30 +83,38 @@ class Demo extends React.Component {
             error="Enter a valid email address"
             required
           />
-          <br></br>
+          <br />
           <TextInput
             label="Form Readonly"
             name="TextInputName"
             value="Readonly value"
             readOnly
           />
-          <br></br>
+          <br />
           <TextInput
             label="Form Disabled"
             name="TextInputName"
             value="Disabled value"
             disabled
           />
-          <br></br>
+          <br />
           <TextInput
             label="Password Form Input"
             name="TextInputName"
             type="password"
             onChange={(event) => this.onChangeText(event, "passwordInput")}
             value={this.state.inputValues.passwordInput}
-            required
+            enableShow
           />
-          <br></br>
+          <br />
+          <CopyableInput
+            label="Copyable Text Input"
+            name="CopyableInput"
+            onChange={(event) => this.onChangeText(event, "copyableInput")}
+            value={this.state.inputValues.copyableInput}
+            enableCopy
+          />
+          <br />
         </div>
         <h1>Button</h1>
         <h2>Button Sizing</h2>
