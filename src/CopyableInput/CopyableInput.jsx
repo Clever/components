@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import {TextInput} from "..";
 
-import * as CopyToClipboard from "react-copy-to-clipboard";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 import "./CopyableInput.less";
 
@@ -15,16 +15,15 @@ export class CopyableInput extends React.Component {
     super(props);
     this.state = {hidden: true};
 
-    this.toggle = this.toggle.bind(this);
+    this.toggleHidden = this.toggleHidden.bind(this);
     this.copyPassword = this.copyPassword.bind(this);
   }
 
-  toggle() {
+  toggleHidden() {
     this.setState({hidden: !this.state.hidden});
   }
 
-  copyPassword(e) {
-    e.preventDefault();
+  copyPassword() {
     this.setState({copied: true});
   }
 
@@ -48,7 +47,7 @@ export class CopyableInput extends React.Component {
             </button>
           }
           {this.props.enableCopy &&
-             <CopyToClipboard text={this.props.value || ""} onCopy={this.copyPassword} >
+             <CopyToClipboard text={this.props.value || ""} onCopy={this.copyPassword}>
                <button type="button" className="CopyableInput--link">
                  {this.state.copied ? "Copied!" : "Copy"}
                </button>

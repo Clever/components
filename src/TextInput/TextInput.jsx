@@ -5,9 +5,10 @@ require("./TextInput.less");
 export class TextInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {inFocus: false};
+    this.state = {inFocus: false, hidden: true};
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.toggleHidden = this.toggleHidden.bind(this);
   }
 
   onFocus() {
@@ -18,8 +19,12 @@ export class TextInput extends React.Component {
     this.setState({inFocus: false});
   }
 
+  toggleHidden() {
+    this.setState({hidden: !this.state.hidden});
+  }
+
   render() {
-    var wrapperClass = "TextInput";
+    let wrapperClass = "TextInput";
 
     // add additional wrapper classes
     if (this.props.error) wrapperClass += " TextInput--hasError";
@@ -39,7 +44,7 @@ export class TextInput extends React.Component {
     }
 
     // note on the upper right corner
-    var inputNote;
+    let inputNote;
     if (this.props.required) {
       inputNote = <span className="TextInput--required">required</span>;
     }
@@ -47,13 +52,7 @@ export class TextInput extends React.Component {
       inputNote = <span className="TextInput--error">{this.props.error}</span>;
     }
 
-    var type = "text";
-    if (this.props.type) {
-      type = this.props.type;
-      if (this.props.type === "password") {
-        wrapperClass += " TextInput--password";
-      }
-    }
+    let type = (this.props.type === "password" && this.state.hidden) ? "password" : "text";
 
     return (
       <div className={wrapperClass}>
@@ -74,6 +73,11 @@ export class TextInput extends React.Component {
           disabled={this.props.disabled}
           required={this.props.required}
         />
+        {this.props.enableShow &&
+          <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
+            {this.state.hidden ? "Show" : "Hide"}
+          </button>
+        }
       </div>
     );
   }
@@ -90,4 +94,5 @@ TextInput.propTypes = {
   required: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   readOnly: React.PropTypes.bool,
+  enableShow: React.PropTypes.bool,
 };

@@ -88,4 +88,30 @@
   textarea:focus, input:focus{
     outline: none;
   }
+
+  .TextInput--link {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin: -8px 7px;
+    border: 0;
+    background: none;
+    color: #4274F6;
+    font-size: 12px;
+    border-right: 1px solid #dddddd;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  .TextInput--link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .TextInput--link:focus {
+    outline: none;
+    text-decoration: underline;
+  }
 }
