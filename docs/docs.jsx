@@ -51,56 +51,57 @@ class Demo extends React.Component {
     return (
       <div>
         <h1>TextInputs</h1>
-        <TextInput
-          label="Form Input Placeholder"
-          name="TextInputName"
-          placeholder="placeholder goes here"
-          onChange={(event) => this.onChangeText(event, "placeholderInput")}
-          value={this.state.inputValues.placeholderInput}
-        />
-        <br></br>
-        <TextInput
-          label="Required Form Input"
-          name="TextInputName"
-          placeholder="placeholder"
-          onChange={(event) => this.onChangeText(event, "requiredInput")}
-          value={this.state.inputValues.requiredInput}
-          required
-        />
-        <br></br>
-        <TextInput
-          label="Required Form Error"
-          name="TextInputName"
-          onChange={(event) => this.onChangeText(event, "errorInput")}
-          value={this.state.inputValues.errorInput}
-          error="Enter a valid email address"
-          required
-        />
-        <br></br>
-        <TextInput
-          label="Form Readonly"
-          name="TextInputName"
-          value="Readonly value"
-          readOnly
-        />
-        <br></br>
-        <TextInput
-          label="Form Disabled"
-          name="TextInputName"
-          value="Disabled value"
-          disabled
-        />
-        <br></br>
-        <TextInput
-          label="Password Form Input"
-          name="TextInputName"
-          type="password"
-          onChange={(event) => this.onChangeText(event, "passwordInput")}
-          value={this.state.inputValues.passwordInput}
-          required
-        />
-        <br></br>
-
+        <div style={{width: "300px"}}>
+          <TextInput
+            label="Form Input Placeholder"
+            name="TextInputName"
+            placeholder="placeholder goes here"
+            onChange={(event) => this.onChangeText(event, "placeholderInput")}
+            value={this.state.inputValues.placeholderInput}
+          />
+          <br></br>
+          <TextInput
+            label="Required Form Input"
+            name="TextInputName"
+            placeholder="placeholder"
+            onChange={(event) => this.onChangeText(event, "requiredInput")}
+            value={this.state.inputValues.requiredInput}
+            required
+          />
+          <br></br>
+          <TextInput
+            label="Required Form Error"
+            name="TextInputName"
+            onChange={(event) => this.onChangeText(event, "errorInput")}
+            value={this.state.inputValues.errorInput}
+            error="Enter a valid email address"
+            required
+          />
+          <br></br>
+          <TextInput
+            label="Form Readonly"
+            name="TextInputName"
+            value="Readonly value"
+            readOnly
+          />
+          <br></br>
+          <TextInput
+            label="Form Disabled"
+            name="TextInputName"
+            value="Disabled value"
+            disabled
+          />
+          <br></br>
+          <TextInput
+            label="Password Form Input"
+            name="TextInputName"
+            type="password"
+            onChange={(event) => this.onChangeText(event, "passwordInput")}
+            value={this.state.inputValues.passwordInput}
+            required
+          />
+          <br></br>
+        </div>
         <h1>Button</h1>
         <h2>Button Sizing</h2>
         <Button type="primary" size="large" value="Large" />
