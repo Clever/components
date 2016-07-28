@@ -60,6 +60,9 @@ export class CopyableInput extends React.Component {
 }
 
 CopyableInput.propTypes = Object.assign({}, TextInput.propTypes, {
-  enableShow: React.PropTypes.bool,
   enableCopy: React.PropTypes.bool,
 });
+
+CopyableInput.defaultPropTypes = {
+  enableCopy: true,
+};
