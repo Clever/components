@@ -192,6 +192,7 @@ This component is a `text input`.
 | required (optional) | Bool   | Marks input as required and adds indicator. | false
 | disabled (optional) | Bool   | Sets element as disabled. | false
 | readOnly (optional) | Bool   | Sets element as read only. | false
+| enableShow (optional) | Bool  | Displays a show/hide link that reveals passwords | false
 
 **Usage Example**
 
@@ -221,3 +222,12 @@ var onChangeText = function(event) {
 }
 ```
 
+### CopyableInput
+
+This is a special [TextInput](#textinput) that allows the user to show/hide the value of the input and copy to clipboard. Ideal for passwords.
+
+**Options (in addition to TextInput props)**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| enableCopy (optional) | Bool | Display a Copy link | True
