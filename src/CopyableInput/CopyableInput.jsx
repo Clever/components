@@ -42,7 +42,7 @@ export class CopyableInput extends React.Component {
         />
         <div className="CopyableInput--links">
           {this.props.enableShow &&
-            <button type="button" className="CopyableInput--link" onClick={this.toggle}>
+            <button type="button" className="CopyableInput--link" onClick={this.toggleHidden}>
               {this.state.hidden ? "Show" : "Hide"}
             </button>
           }

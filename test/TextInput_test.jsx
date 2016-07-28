@@ -152,4 +152,19 @@ describe("TextInput", () => {
     textInput.find("input").simulate("focus");
     assert(textInput.hasClass("TextInput--inFocus"));
   });
+
+  it("toggles between type 'password' and 'text' when Show is clicked", () => {
+    const textInput = shallow(
+      <TextInput
+        name="TextInputPlaceholder"
+        type="password"
+        enableShow
+      />
+    );
+    assert.equal(textInput.find("input[type='password']").length, 1);
+    assert.equal(textInput.find("input[type='text']").length, 0);
+    textInput.find("button.TextInput--link").simulate("click");
+    assert.equal(textInput.find("input[type='password']").length, 0);
+    assert.equal(textInput.find("input[type='text']").length, 1);
+  });
 });

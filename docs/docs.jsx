@@ -22,6 +22,7 @@ class Demo extends React.Component {
         errorInput: "hello@gmail",
         passwordInput: "surprise!",
         copyableInput: "1234-1234-1234-1234",
+        copyablePwd: "🙈 🙉 🙊",
       },
     };
     this.openModal = this.openModal.bind(this);
@@ -113,6 +114,16 @@ class Demo extends React.Component {
             onChange={(event) => this.onChangeText(event, "copyableInput")}
             value={this.state.inputValues.copyableInput}
             enableCopy
+          />
+          <br />
+          <CopyableInput
+            label="Copyable Password"
+            name="CopyablePassword"
+            onChange={(event) => this.onChangeText(event, "copyablePwd")}
+            value={this.state.inputValues.copyablePwd}
+            type="password"
+            enableCopy
+            enableShow
           />
           <br />
         </div>
