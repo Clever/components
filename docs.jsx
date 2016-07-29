@@ -7,6 +7,7 @@ import {
   ConfirmationButton,
   TextInput,
   CopyableInput,
+  SegmentedControl,
   Modal,
   ModalButton,
 } from "../src/";
@@ -163,6 +164,16 @@ class Demo extends React.Component {
         >
           <p>This action requires confirmation. Please confirm!</p>
         </ConfirmationButton>
+        <h1>SegmentedControl</h1>
+        <SegmentedControl
+          selectableItems={{one: "Primary", two: "Secondary"}}
+          onSelect={(option) => console.log(`Option ${option} selected`)}
+        />
+        <SegmentedControl
+          selectableItems={{one: "Primary", two: "Secondary", third: "Tertiary"}}
+          defaultValue="two"
+          onSelect={(option) => console.log(`Option ${option} selected`)}
+        />
       </div>
     );
   }
