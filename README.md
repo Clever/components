@@ -231,3 +231,39 @@ This is a special [TextInput](#textinput) that allows the user to show/hide the 
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
 | enableCopy (optional) | Bool | Display a Copy link | True
+
+### SegmentedControl
+
+This component is a `segmented control`.
+
+**Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| selectableItems (required) | Object   | Map from keys => Display strings for each item in control. | None
+| defaultValue (optional)    | String   | Key of the selectableItem to initalize as selected, defaults to null | None
+| onSelect (optional)        | Function | Called with key of selected item on select | None
+
+**Usage Example**
+
+```jsx
+  <SegmentedControl
+    selectableItems={{one: "Option 1", two: "Option 2"}}
+    defaultValue="two"
+    onSelect={this.onSelect}
+  />
+```
+
+In this example, the function `onSelect` is called on component value change and updates the state of your component:
+
+```javascript
+var onSelect = function(selected) {
+  // do some validation
+  var errorMessage = "";
+  if (notValid) errorMessage = "Please enter a valid value";
+  this.setState({
+    selected: selected,
+    error: errorMessage,
+  });
+}
+```
