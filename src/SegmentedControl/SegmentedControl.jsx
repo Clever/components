@@ -25,7 +25,7 @@ export class SegmentedControl extends React.Component {
   render() {
     const cssClass = SegmentedControl.cssClass;
     let idx = -1;
-    const selectedElement = this.state.selected !== null ? this.state.selected : this.props.selected;
+    const selectedElement = this.state.selected !== null ? this.state.selected : this.props.defaultValue;
     const selectableItems = lodash.map(this.props.selectableItems, (name, value) => {
       const isSelected = value === selectedElement;
       const selectedClass = isSelected ? "selected" : "";
@@ -51,7 +51,7 @@ export class SegmentedControl extends React.Component {
 }
 
 SegmentedControl.propTypes = {
-  selected: React.PropTypes.string,
+  defaultValue: React.PropTypes.string,
   selectableItems: React.PropTypes.object.isRequired,
   onSelect: React.PropTypes.func,
 };

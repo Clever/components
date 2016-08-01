@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput)
+**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [SegmentedControl](#segmentedcontrol)
 
 ## Install
 
