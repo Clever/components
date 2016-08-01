@@ -18,8 +18,8 @@ describe("SegmentedControl", () => {
     assert.equal(selectableItems.at(2).text(), "Option 3");
   });
 
-  it("initalizes defaultValue when set", () => {
-    const control = shallow(<SegmentedControl selectableItems={testOptions} defaultValue="three" />);
+  it("initalizes selected when set", () => {
+    const control = shallow(<SegmentedControl selectableItems={testOptions} selected="three" />);
     const selectableItems = control.find(".segmented_control--selectable-item");
     assert.equal(selectableItems.length, 3, "there should be three selectable items");
     const selected = control.find(".selected");

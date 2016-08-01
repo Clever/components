@@ -11,28 +11,30 @@ import "./SegmentedControl.less";
 export class SegmentedControl extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {selected: props.defaultValue};
-    this.onSelect = this.onSelect.bind(this);
+    this.state = {selected: null};
   }
 
   onSelect(e) {
     const value = e.target.getAttribute("value");
     this.setState({selected: value});
-    if (this.props.onSelect !== undefined) {
+    if (this.props.onSelect) {
       this.props.onSelect(value);
     }
   }
 
   render() {
     const cssClass = SegmentedControl.cssClass;
+    let idx = -1;
+    const selectedElement = this.state.selected !== null ? this.state.selected : this.props.selected;
     const selectableItems = lodash.map(this.props.selectableItems, (name, value) => {
-      const isSelected = value === this.state.selected;
+      const isSelected = value === selectedElement;
       const selectedClass = isSelected ? "selected" : "";
+      idx = idx + 1;
       return (
         <span
           className={`${cssClass.SELECTABLE_ITEM} ${selectedClass}`}
-          onClick={this.onSelect}
-          key={value}
+          onClick={(e) => this.onSelect(e)}
+          key={idx}
           value={value}
         >
           {name}
@@ -49,7 +51,7 @@ export class SegmentedControl extends React.Component {
 }
 
 SegmentedControl.propTypes = {
-  defaultValue: React.PropTypes.string,
+  selected: React.PropTypes.string,
   selectableItems: React.PropTypes.object.isRequired,
   onSelect: React.PropTypes.func,
 };

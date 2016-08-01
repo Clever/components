@@ -241,7 +241,7 @@ This component is a `segmented control`.
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
 | selectableItems (required) | Object   | Map from keys => Display strings for each item in control. | None
-| defaultValue (optional)    | String   | Key of the selectableItem to initalize as selected, defaults to null | None
+| selected (optional)    | String   | Key of the selectableItem to initalize as selected, defaults to null | None
 | onSelect (optional)        | Function | Called with key of selected item on select | None
 
 **Usage Example**
@@ -249,7 +249,7 @@ This component is a `segmented control`.
 ```jsx
   <SegmentedControl
     selectableItems={{one: "Option 1", two: "Option 2"}}
-    defaultValue="two"
+    selected="two"
     onSelect={this.onSelect}
   />
 ```
