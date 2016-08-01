@@ -171,7 +171,7 @@ class Demo extends React.Component {
         />
         <SegmentedControl
           selectableItems={{one: "Primary", two: "Secondary", third: "Tertiary"}}
-          defaultValue="two"
+          selected="two"
           onSelect={(option) => console.log(`Option ${option} selected`)}
         />
       </div>
