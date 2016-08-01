@@ -49,5 +49,7 @@
   "scripts": {
     "dev-server": "node_modules/.bin/webpack-dev-server --content-base docs/ --inline --watch"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.14.1"
+  }
 }

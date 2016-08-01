@@ -1,0 +1,29 @@
+@import "../fonts.less";
+
+.SegmentedControl {
+  border: 1px solid #E3E6EB;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 10px;
+
+  .segmented_control--selectable-item {
+    background-color: #FFFFFF;
+    border-left: 1px solid #E3E5EB;
+    color: #566279;
+    display: inline-block;
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+
+    &.selected {
+      background-color: #4274F6;
+      color: #FAFAFC;
+    }
+    &:first-child {
+      border-left: none;
+    }
+  }
+}
+
