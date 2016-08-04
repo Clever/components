@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A library of helpful React components",
   "repository": {
     "type": "git",
@@ -38,7 +38,6 @@
     "mocha": "^2.4.5",
     "react": "^0.14.8",
     "react-addons-test-utils": "^0.14.8",
-    "react-copy-to-clipboard": "^4.2.1",
     "react-dom": "^0.14.7",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.0",
@@ -50,6 +49,7 @@
     "dev-server": "node_modules/.bin/webpack-dev-server --content-base docs/ --inline --watch"
   },
   "dependencies": {
-    "lodash": "^4.14.1"
+    "lodash": "^4.14.1",
+    "react-copy-to-clipboard": "^4.2.1"
   }
 }
