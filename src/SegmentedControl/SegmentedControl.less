@@ -1,29 +1,63 @@
+@import "../colors.less";
 @import "../fonts.less";
 
-.SegmentedControl {
-  border: 1px solid #E3E6EB;
-  border-radius: 3px;
-  display: inline-block;
-  margin-right: 10px;
-
+.segmented_control {
   .segmented_control--selectable-item {
-    background-color: #FFFFFF;
-    border-left: 1px solid #E3E5EB;
-    color: #566279;
+    background-color: @neutral_white;
+    border: 1px solid @neutral_silver;
+    color: @neutral_dark_gray;
+    cursor: pointer;
     display: inline-block;
     font-family: "Proxima Nova";
-    font-size: 16px;
-    font-weight: 600;
-    padding: 10px 20px;
+    font-size: 12px;
+    padding: 10px;
     text-align: center;
+    transition: background-color 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out;
 
-    &.selected {
-      background-color: #4274F6;
-      color: #FAFAFC;
-    }
     &:first-child {
-      border-left: none;
+      border-radius: 3px 0 0 3px;
+    }
+
+    &:last-child {
+      border-radius: 0 3px 3px 0;
+    }
+
+    &:not(:first-child) {
+      // Overlap borders instead of removing one so we aren't missing one side in the hover state.
+      margin-left: -1px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @neutral_off_white;
+      border-color: @primary_blue;
+      position: relative;
+      // Pop up on top of peers to expose overlapped borders.
+      z-index: 1;
+    }
+
+    &.segmented_control--selectable-item--selected {
+      background-color: @primary_blue;
+      border-color: @primary_blue;
+      color: @neutral_off_white;
+      position: relative;
+      // Pop up on top of peers to expose overlapped borders.
+      z-index: 1;
+    }
+
+    &.segmented_control--selectable-item--disabled {
+      background-color: @neutral_off_white;
+      border-color: #d7d9d9;
+      border-color: @neutral_silver;
+      color: #d7d9d9;
+      color: @neutral_gray;
+      cursor: not-allowed;
+
+      &.segmented_control--selectable-item--selected {
+        background-color: @neutral_silver;
+        color: @neutral_dark_gray;
+      }
     }
   }
 }
-

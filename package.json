@@ -49,6 +49,7 @@
     "dev-server": "node_modules/.bin/webpack-dev-server --content-base docs/ --inline --watch"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "lodash": "^4.14.1",
     "react-copy-to-clipboard": "^4.2.1"
   }
