@@ -138,6 +138,8 @@ class Demo extends React.Component {
         <Button type="secondary" size="regular" value="Secondary" />
         <Button type="destructive" size="regular" value="Destructive" />
         <Button disabled size="regular" value="Disabled" />
+        <Button type="link" href="http://clever.com" value="Link" />
+        <Button disabled type="link" href="http://clever.com" value="Disabled Link" />
         <h2>Button-as-Link</h2>
         <Button type="primary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button type="secondary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
