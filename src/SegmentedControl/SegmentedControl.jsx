@@ -1,4 +1,3 @@
-import cls from "classnames";
 import React, {PropTypes} from "react";
 import lodash from "lodash";
 
@@ -41,13 +40,18 @@ export class SegmentedControl extends React.Component {
     let idx = -1;
     const selectableItems = lodash.map(options, option => {
       const isSelected = option.value === selected;
+      const classes = [cssClass.OPTION];
+      if (isSelected) {
+        classes.push(cssClass.SELECTED);
+      }
+      if (disabled || option.disabled) {
+        classes.push(cssClass.DISABLED);
+      }
+
       idx = idx + 1;
       return (
         <span
-          className={cls(cssClass.OPTION, {
-            [cssClass.SELECTED]: isSelected,
-            [cssClass.DISABLED]: disabled || option.disabled,
-          })}
+          className={classes.join(" ")}
           onClick={() => this.onSelect(option)}
           key={idx}
         >
@@ -57,7 +61,7 @@ export class SegmentedControl extends React.Component {
     });
 
     return (
-      <div className={cls(cssClass.CONTAINER, className)}>
+      <div className={[cssClass.CONTAINER, className].join(" ")}>
         {selectableItems}
       </div>
     );
