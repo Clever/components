@@ -4,62 +4,133 @@ import sinon from "sinon";
 import {shallow} from "enzyme";
 import {SegmentedControl} from "../src";
 
-const testOptions = {one: "Option 1", two: "Option 2", three: "Option 3"};
+const testOptions = [
+  {
+    value: "one",
+    content: "Option 1",
+  }, {
+    value: "two",
+    content: "Option 2",
+  }, {
+    value: "three",
+    content: "Option 3",
+  }, {
+    value: "html",
+    content: <span>HTML Option</span>,
+  },
+];
+const {cssClass} = SegmentedControl;
+
 
 describe("SegmentedControl", () => {
   it("renders all selectable items", () => {
-    const control = shallow(<SegmentedControl selectableItems={testOptions} />);
-    const selectableItems = control.find(".segmented_control--selectable-item");
-    assert.equal(selectableItems.length, 3, "there should be three selectable items");
-    const selected = control.find(".selected");
-    assert.equal(selected.length, 0, "there should not be any initially selected items");
-    assert.equal(selectableItems.at(0).text(), "Option 1");
-    assert.equal(selectableItems.at(1).text(), "Option 2");
-    assert.equal(selectableItems.at(2).text(), "Option 3");
+    const control = shallow(<SegmentedControl options={testOptions} />);
+
+    const options = control.find(`.${cssClass.OPTION}`);
+    assert.equal(
+      options.length,
+      testOptions.length,
+      `Expected ${testOptions.length} options. Found ${options.length}`
+    );
+
+    const selected = control.find(`.${cssClass.SELECTED}`);
+    assert(selected.isEmpty(), "There should not be any initially selected items.");
+
+    testOptions.forEach(({content}, i) => {
+      assert(
+        options.at(i).contains(content),
+        `Expected option ${i} to contain ${content}; found ${options.at(i).text()}`
+      );
+    });
   });
 
   it("initalizes selected when set", () => {
-    const control = shallow(<SegmentedControl selectableItems={testOptions} defaultValue="three" />);
-    const selectableItems = control.find(".segmented_control--selectable-item");
-    assert.equal(selectableItems.length, 3, "there should be three selectable items");
-    const selected = control.find(".selected");
-    assert.equal(selected.length, 1, "there should not be any initially selected items");
-    assert.equal(selected.first().text(), "Option 3", "the right element should be selected");
+    const expected = testOptions[2];
+    const control = shallow(
+      <SegmentedControl options={testOptions} defaultValue={expected.value} />
+    );
+
+    const selected = control.find(`.${cssClass.SELECTED}`);
+    assert.equal(selected.length, 1, `Expected 1 selected item. Found ${selected.length}.`);
+    assert(
+      selected.contains(expected.content),
+      `Expected selected to contain "${expected.content}"; found "${selected.first().text()}"`
+    );
   });
 
   it("sets selected class on click", () => {
-    const control = shallow(<SegmentedControl selectableItems={testOptions} />);
-    let selectableItems = control.find(".segmented_control--selectable-item");
-    assert.ifError(selectableItems.at(0).hasClass("selected"));
-    assert.ifError(selectableItems.at(1).hasClass("selected"));
-    assert.ifError(selectableItems.at(2).hasClass("selected"));
+    const control = shallow(<SegmentedControl options={testOptions} />);
 
-    selectableItems.at(0).simulate("click", {target: {getAttribute: () => "one"}});
-    selectableItems = control.find(".segmented_control--selectable-item");
-    assert(selectableItems.at(0).hasClass("selected"));
-    assert.ifError(selectableItems.at(1).hasClass("selected"));
-    assert.ifError(selectableItems.at(2).hasClass("selected"));
+    const options = control.find(`.${cssClass.OPTION}`);
+    options.forEach(option => {
+      option.simulate("click");
 
-    selectableItems.at(2).simulate("click", {target: {getAttribute: () => "three"}});
-    selectableItems = control.find(".segmented_control--selectable-item");
-    assert.ifError(selectableItems.at(0).hasClass("selected"));
-    assert.ifError(selectableItems.at(1).hasClass("selected"));
-    assert(selectableItems.at(2).hasClass("selected"));
+      const selected = control.find(`.${cssClass.SELECTED}`);
+      assert.equal(selected.length, 1, `Expected 1 selected item. Found ${selected.length}.`);
+
+      assert(
+        selected.contains(option.text()),
+        `Expected "${option.text()}" to be selected. Found "${selected.first().text()}"`
+      );
+    });
   });
 
   it("calls onSelect function when items are selected", () => {
     const stub = sinon.stub();
-    const control = shallow(<SegmentedControl selectableItems={testOptions} onSelect={stub} />);
-    const selectableItems = control.find(".segmented_control--selectable-item");
+    const control = shallow(<SegmentedControl options={testOptions} onSelect={stub} />);
 
-    selectableItems.at(0).simulate("click", {target: {getAttribute: () => "one"}});
-    assert(stub.calledOnce);
-    assert.equal(stub.getCall(0).args.length, 1);
-    assert.equal(stub.getCall(0).args[0], "one");
+    const options = control.find(`.${cssClass.OPTION}`);
+    options.forEach((option, i) => {
+      option.simulate("click");
+      sinon.assert.calledWith(stub, testOptions[i].value);
+    });
+  });
 
-    selectableItems.at(2).simulate("click", {target: {getAttribute: () => "three"}});
-    assert(stub.calledTwice);
-    assert.equal(stub.getCall(1).args.length, 1);
-    assert.equal(stub.getCall(1).args[0], "three");
+  it("disables selection on all options if control is disabled", () => {
+    const stub = sinon.stub();
+    const control = shallow(<SegmentedControl disabled options={testOptions} onSelect={stub} />);
+
+    const options = control.find(`.${cssClass.OPTION}`);
+    options.forEach(option => {
+      option.simulate("click");
+
+      const selected = control.find(`.${cssClass.SELECTED}`);
+      assert(selected.isEmpty(), "Expected no selected items after click.");
+      sinon.assert.notCalled(stub);
+    });
+  });
+
+  it("disables selection on individually disabled options", () => {
+    const controlOptions = [
+      {
+        value: "enabled",
+        content: "Enabled Option",
+      }, {
+        value: "disabled",
+        content: "Disabled Option",
+        disabled: true,
+      },
+    ];
+    const stub = sinon.stub();
+    const control = shallow(<SegmentedControl options={controlOptions} onSelect={stub} />);
+    const options = control.find(`.${cssClass.OPTION}`);
+
+    options.at(0).simulate("click");
+    let selected = control.find(`.${cssClass.SELECTED}`);
+    assert(
+      selected.contains(options.at(0).text()),
+      `Expected "${options.at(0).text()}" to be selected. Found "${selected.first().text()}"`
+    );
+    sinon.assert.calledWith(stub, controlOptions[0].value);
+
+    stub.reset();
+
+    options.at(1).simulate("click");
+    selected = control.find(`.${cssClass.SELECTED}`);
+    assert(
+      selected.contains(options.at(0).text()),
+      `Expected "${options.at(0).text()}" to be selected. Found "${selected.first().text()}"`
+    );
+    sinon.assert.notCalled(stub);
   });
 });

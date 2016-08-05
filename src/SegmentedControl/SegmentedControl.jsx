@@ -1,49 +1,67 @@
-import React from "react";
+import React, {PropTypes} from "react";
 import lodash from "lodash";
 
 import "./SegmentedControl.less";
 
-/*
-  SegmentedControl selection. Shows several options
-  as defined in the props and allows the user to select
-  one of those options.
-*/
+/**
+ * SegmentedControl selection. Shows several options as defined in the props and
+ * allows the user to select one of those options.
+ */
 export class SegmentedControl extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {selected: null};
+    this.state = {selected: props.defaultValue || null};
   }
 
-  onSelect(e) {
-    const value = e.target.getAttribute("value");
+  onSelect({disabled, value}) {
+    if (
+      disabled
+      || this.props.disabled
+      || value === this.state.selected
+    ) {
+      return;
+    }
+
     this.setState({selected: value});
     if (this.props.onSelect) {
       this.props.onSelect(value);
     }
   }
 
+  getValue() {
+    return this.state.selected;
+  }
+
   render() {
+    const {className, disabled, options} = this.props;
+    const {selected} = this.state;
     const cssClass = SegmentedControl.cssClass;
+
     let idx = -1;
-    const selectedElement = this.state.selected !== null ? this.state.selected : this.props.defaultValue;
-    const selectableItems = lodash.map(this.props.selectableItems, (name, value) => {
-      const isSelected = value === selectedElement;
-      const selectedClass = isSelected ? "selected" : "";
+    const selectableItems = lodash.map(options, option => {
+      const isSelected = option.value === selected;
+      const classes = [cssClass.OPTION];
+      if (isSelected) {
+        classes.push(cssClass.SELECTED);
+      }
+      if (disabled || option.disabled) {
+        classes.push(cssClass.DISABLED);
+      }
+
       idx = idx + 1;
       return (
         <span
-          className={`${cssClass.SELECTABLE_ITEM} ${selectedClass}`}
-          onClick={(e) => this.onSelect(e)}
+          className={classes.join(" ")}
+          onClick={() => this.onSelect(option)}
           key={idx}
-          value={value}
         >
-          {name}
+          {option.content}
         </span>
       );
     });
 
     return (
-      <div className="SegmentedControl">
+      <div className={[cssClass.CONTAINER, className].join(" ")}>
         {selectableItems}
       </div>
     );
@@ -51,11 +69,20 @@ export class SegmentedControl extends React.Component {
 }
 
 SegmentedControl.propTypes = {
-  defaultValue: React.PropTypes.string,
-  selectableItems: React.PropTypes.object.isRequired,
-  onSelect: React.PropTypes.func,
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    content: PropTypes.node.isRequired,
+    disabled: PropTypes.bool,
+    value: PropTypes.string.isRequired,
+  })).isRequired,
+  onSelect: PropTypes.func,
 };
 
 SegmentedControl.cssClass = {
-  SELECTABLE_ITEM: "segmented_control--selectable-item",
+  CONTAINER: "segmented_control",
+  DISABLED: "segmented_control--selectable-item--disabled",
+  OPTION: "segmented_control--selectable-item",
+  SELECTED: "segmented_control--selectable-item--selected",
 };
