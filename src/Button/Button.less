@@ -1,3 +1,4 @@
+@import "../colors.less";
 @import "../fonts.less";
 
 a, button {
@@ -23,6 +24,12 @@ a, button {
       border: none;
       border: 1px solid #D7D9D9;
       border-bottom: 3px solid #A4A6A6;
+
+      &.Button--link {
+        background: none;
+        border: none;
+        color: @neutral_gray;
+      }
     }
 
     &:hover,
