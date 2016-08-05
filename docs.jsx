@@ -57,7 +57,7 @@ class Demo extends React.Component {
     }
 
     return (
-      <div style={{fontFamily: "Proxima Nova"}}>
+      <div style={{fontFamily: "Proxima Nova", marginBottom: "50px"}}>
         <h1>TextInputs</h1>
         <div style={{width: "300px"}}>
           <TextInput
@@ -166,13 +166,68 @@ class Demo extends React.Component {
         </ConfirmationButton>
         <h1>SegmentedControl</h1>
         <SegmentedControl
-          selectableItems={{one: "Primary", two: "Secondary"}}
           onSelect={(option) => console.log(`Option ${option} selected`)}
+          options={[{
+            content: "Option 1",
+            value: "one",
+          }, {
+            content: "Option 2",
+            value: "two",
+          }]}
         />
+        <br />
         <SegmentedControl
-          selectableItems={{one: "Primary", two: "Secondary", third: "Tertiary"}}
           defaultValue="two"
           onSelect={(option) => console.log(`Option ${option} selected`)}
+          options={[{
+            content: "Option 1",
+            value: "one",
+          }, {
+            content: "2 - Default",
+            value: "two",
+          }, {
+            content: "3 - Option Disabled",
+            disabled: true,
+            value: "three",
+          }]}
+        />
+        <br />
+        <SegmentedControl
+          defaultValue="two"
+          disabled
+          onSelect={(option) => console.log(`Option ${option} selected`)}
+          options={[{
+            content: "1 - Control Disabled",
+            value: "one",
+          }, {
+            content: "2 - Selected and Control Disabled",
+            value: "two",
+          }, {
+            content: "3 - Control Disabled",
+            value: "three",
+          }]}
+        />
+        <br />
+        <SegmentedControl
+          onSelect={(option) => console.log(`Option ${option} selected`)}
+          options={[{
+            content: (
+              <span>
+                1 - HTML Content <span className="fa fa-question-circle" />
+              </span>
+            ),
+            value: "one",
+          }, {
+            content: "2 - Plain Text",
+            value: "two",
+          }, {
+            content: (
+              <span>
+                3 - HTML Content <span className="fa fa-spinner fa-spin" />
+              </span>
+            ),
+            value: "three",
+          }]}
         />
       </div>
     );
