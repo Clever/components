@@ -5,8 +5,9 @@ LINT := ./node_modules/.bin/eslint
 MOCHA := node_modules/mocha/bin/mocha
 MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-styles --require jsdom-global/register
 BABEL := node_modules/babel-cli/bin/babel.js
+LESS := node_modules/less/bin/lessc
 
-.PHONY: dev-server test lint clean es5 build new $(TESTS)
+.PHONY: dev-server test lint clean es5 build new $(TESTS) styles
 
 clean:
 	@echo '✓ Clean out dist directory'
@@ -22,6 +23,10 @@ es5:
 	@mkdir dist/css
 
 build: clean es5
+
+styles:
+	@echo "Building stylesheet"
+	@$(LESS) less/index.less
 
 lint:
 	@echo "Linting files..."
