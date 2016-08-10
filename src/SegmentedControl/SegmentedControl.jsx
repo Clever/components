@@ -8,8 +8,32 @@ import "./SegmentedControl.less";
  * allows the user to select one of those options.
  */
 export class SegmentedControl extends React.Component {
+  static validateProps(props) {
+    const {defaultValue, onSelect, value} = props;
+
+    if (value && defaultValue) {
+      throw new Error(
+        "SegmentedControl must either be controlled or uncontrolled "
+        + "(specify either the `value` prop, or the `defaultValue` prop, but not both).\n"
+        + "More info: https://fb.me/react-controlled-components"
+      );
+    }
+
+    if (value && !onSelect) {
+      throw new Error(
+        "`onSelect` prop required when using SegmentedControl as a controlled component. "
+        + "Either provide the `onChange` prop, or replace `value` with `defaultValue` for an "
+        + "uncontrolled SegmentedControl.\n"
+        + "More info: https://fb.me/react-controlled-components"
+      );
+    }
+
+    return props;
+  }
+
   constructor(props) {
-    super(props);
+    super(SegmentedControl.validateProps(props));
+
     this.state = {selected: props.defaultValue || null};
   }
 
@@ -22,19 +46,23 @@ export class SegmentedControl extends React.Component {
       return;
     }
 
-    this.setState({selected: value});
+    // Update internal state only if being used as an uncontrolled component.
+    if (!this.props.value) {
+      this.setState({selected: value});
+    }
+
     if (this.props.onSelect) {
       this.props.onSelect(value);
     }
   }
 
   getValue() {
-    return this.state.selected;
+    return this.props.value || this.state.selected;
   }
 
   render() {
-    const {className, disabled, options} = this.props;
-    const {selected} = this.state;
+    const {className, disabled, options, value} = this.props;
+    const selected = value || this.state.selected;
     const cssClass = SegmentedControl.cssClass;
 
     let idx = -1;
@@ -50,13 +78,13 @@ export class SegmentedControl extends React.Component {
 
       idx = idx + 1;
       return (
-        <span
+        <button
           className={classes.join(" ")}
           onClick={() => this.onSelect(option)}
           key={idx}
         >
           {option.content}
-        </span>
+        </button>
       );
     });
 
@@ -78,6 +106,7 @@ SegmentedControl.propTypes = {
     value: PropTypes.string.isRequired,
   })).isRequired,
   onSelect: PropTypes.func,
+  value: PropTypes.string,
 };
 
 SegmentedControl.cssClass = {
