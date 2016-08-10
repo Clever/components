@@ -22,7 +22,7 @@ export class SegmentedControl extends React.Component {
     if (value && !onSelect) {
       throw new Error(
         "`onSelect` prop required when using SegmentedControl as a controlled component. "
-        + "Either provide the `onChange` prop, or replace `value` with `defaultValue` for an "
+        + "Either provide the `onSelect` prop, or replace `value` with `defaultValue` for an "
         + "uncontrolled SegmentedControl.\n"
         + "More info: https://fb.me/react-controlled-components"
       );
@@ -46,11 +46,7 @@ export class SegmentedControl extends React.Component {
       return;
     }
 
-    // Update internal state only if being used as an uncontrolled component.
-    if (!this.props.value) {
-      this.setState({selected: value});
-    }
-
+    this.setState({selected: value});
     if (this.props.onSelect) {
       this.props.onSelect(value);
     }
