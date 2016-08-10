@@ -78,6 +78,7 @@ export class SegmentedControl extends React.Component {
           className={classes.join(" ")}
           onClick={() => this.onSelect(option)}
           key={idx}
+          type="button"
         >
           {option.content}
         </button>
