@@ -44,7 +44,7 @@ describe("SegmentedControl", () => {
     });
   });
 
-  it("initalizes selected when set", () => {
+  it("initalizes selected when defaultValue is set", () => {
     const expected = testOptions[2];
     const control = shallow(
       <SegmentedControl options={testOptions} defaultValue={expected.value} />
@@ -84,6 +84,42 @@ describe("SegmentedControl", () => {
       option.simulate("click");
       sinon.assert.calledWith(stub, testOptions[i].value);
     });
+  });
+
+  it("prioritizes the `value` prop when determining the selected option", () => {
+    const onSelect = sinon.stub();
+    const controlledValue = testOptions[1];
+
+    const control = shallow(
+      <SegmentedControl
+        options={testOptions}
+        onSelect={onSelect}
+        value={controlledValue.value}
+      />
+    );
+
+    assert.equal(control.instance().getValue(), controlledValue.value);
+
+    const options = control.find(`.${cssClass.OPTION}`);
+    options.forEach((option, i) => {
+      option.simulate("click");
+      sinon.assert.calledWith(onSelect, testOptions[i].value);
+      assert(options.at(1).hasClass(cssClass.SELECTED), "Option at index 1 should remain selected");
+    });
+  });
+
+  it("throws error on conflicting controlled/uncontrolled mode", () => {
+    assert.throws(
+      () => shallow(<SegmentedControl defaultValue="one" options={testOptions} value="two" />),
+      /controlled or uncontrolled/
+    );
+  });
+
+  it("throws error on missing `onSelect` prop in controlled mode", () => {
+    assert.throws(
+      () => shallow(<SegmentedControl options={testOptions} value="two" />),
+      /`onSelect` prop required/
+    );
   });
 
   it("disables selection on all options if control is disabled", () => {
