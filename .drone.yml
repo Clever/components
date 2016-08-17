@@ -1,12 +1,22 @@
 image: node0.10
 publish:
-   npm:
-     email: $$npm_drone_email
-     password: $$npm_drone_password
-     registry: https://registry.npmjs.org
-     username: $$npm_drone_username
-     when:
-       branch: master
+  npm:
+    email: $$npm_drone_email
+    password: $$npm_drone_password
+    registry: https://registry.npmjs.org
+    username: $$npm_drone_username
+    when:
+      branch: master
+  s3:
+    access_key: $$aws_access_key_id
+    bucket: "assets.clever.com"
+    recursive: true
+    region: us-east-1
+    secret_key: $$aws_secret_access_key_id
+    source: dist/css/
+    target: /design/
+    when:
+      branch: master
 script:
 - nvm install v5.7.1 &> /dev/null
 - ./test_drone.sh
