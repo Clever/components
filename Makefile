@@ -19,6 +19,7 @@ es5:
 	@echo '✓ Convert ES6 to ES5'
 	@find ./dist -name "*.jsx" | xargs -n1 rm
 	@echo '✓ Remove JSX files'
+	@mkdir dist/css
 
 build: clean es5
 
