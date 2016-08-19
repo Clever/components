@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "A library of helpful React components",
   "repository": {
     "type": "git",
@@ -35,7 +35,6 @@
     "react-addons-test-utils": "^0.14.8",
     "react-dom": "^0.14.7",
     "sinon": "^1.17.3",
-    "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
@@ -50,6 +49,7 @@
     "less-loader": "^2.2.3",
     "lodash": "^4.14.1",
     "react-copy-to-clipboard": "^4.2.1",
+    "style-loader": "^0.13.0",
     "url-loader": "^0.5.7"
   }
 }
