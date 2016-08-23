@@ -4,6 +4,8 @@
     "react"
   ],
   "plugins": [
-    "transform-object-assign"
+    "transform-es2015-destructuring",
+    "transform-object-assign",
+    "transform-object-rest-spread"
   ]
 }
