@@ -7,7 +7,7 @@
 Install the NPM package and save it to your project using
 
 ```
-npm install --save-dev clever-components
+npm install --save clever-components
 ```
 
 To use a component, you'll need to be working with React and Webpack. Components that include their own styles may require you to install Webpack's style loaders. If this is configured correctly, you can simply `require` these components like any other package:
