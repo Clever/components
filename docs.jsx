@@ -2,15 +2,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import TableExample from "./TableExample";
 import {
   Button,
   ConfirmationButton,
-  TextInput,
   CopyableInput,
-  SegmentedControl,
   Modal,
   ModalButton,
+  SegmentedControl,
+  TextInput,
 } from "../src/";
+
+require("./docs.less");
 
 class Demo extends React.Component {
   constructor(props) {
@@ -224,13 +227,14 @@ class Demo extends React.Component {
             value: "two",
           }, {
             content: (
-              <span>
-                3 - HTML Content <span className="fa fa-spinner fa-spin" />
-              </span>
+            <span>
+              3 - HTML Content <span className="fa fa-spinner fa-spin" />
+            </span>
             ),
             value: "three",
           }]}
         />
+        <TableExample />
       </div>
     );
   }
