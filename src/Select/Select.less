@@ -29,6 +29,28 @@
       transition: box-shadow .25s ease-out;
     }
 
+    &.Select--multi {
+      .Select-control {
+        .Select-multi-value-wrapper {
+          padding-top: 15px;
+          padding-left: 5px;
+          .Select-value {
+            border-color: @neutral_silver;
+            color: @neutral_black;
+            line-height: 1rem;
+            .Select-value-icon {
+              background-color: @neutral_silver;
+              float: right;
+              border-color: @neutral_silver;
+            }
+            .Select-value-label {
+              background-color: @neutral_off_white;
+            }
+          }
+        }
+      }
+    }
+
     .Select-control {
       border-radius: 0px;
       border-color: @neutral_silver;
@@ -42,8 +64,7 @@
       .Select-value {
         font-size: 1rem;
         line-height: 40px;
-        min-height: 40px;
-        padding-top: 10px;
+        top: 10px;
       }
     }
 

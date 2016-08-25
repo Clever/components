@@ -244,6 +244,7 @@ a fixed list of options.
 | id (required) | String | ID for the select element to be used by the label. Must be unique | None
 | name (required) | String | Name for select element | None
 | label (optional) | String | Label for select element | None
+| multi (optional) | Bool | Whether a multiple options may be selected | False
 | onChange (optional) | Function | Called with new value when it changes | None
 | options (optional) | Array | Possible options. Must contain objects with label and value attributes | None
 | placeholder (optional) | String | Placeholder text | ""
