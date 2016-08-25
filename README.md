@@ -267,3 +267,37 @@ var onSelect = function(selected) {
   });
 }
 ```
+
+### Table
+
+Table component supporting sorting and filtering.
+
+**Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| className (optional) | String | Additional classname to apply to the table. | None
+| data (required) | Array | The array of data items, each corresponding to a single potential table row | None
+| filter (optional) | Function | Called with data for a single row. Should return `false` if the row should be filtered out, or `true` otherwise. | None
+| fixed (optional) | Boolean | Whether or not table column widths should be fixed (vs fluid). | False
+| initialSortState (optional) | `{columnID: String, direction: Table.sortDirection}` | The initial sort state of the table. | None
+| onSortChange (optional) | Function | Callback function for the sort state change event. | None
+| rowIDFn (required) | Function | Called with data for a single row. Should return the unique ID for that row. | None
+
+#### Table.Column
+The `Table` component requires child components of type `Table.Column`, which provide configuration for the table header and row cells.
+
+**Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| header (optional) | `{className: String (optional), content: Any (optional)}` | Configuration for the header cell of this column. | None
+| cell (required) | `{className: String (optional), renderer: Function}` | Configuration for the table body cell for this column. `renderer` will be called with data for a single row and should return content that can be rendered by the React DOM renderer. | None
+| id (optional) | String | Unique identifier for the column. Can be used in referencing columns for sorting. | None
+| noWrap (optional) | Boolean | Prevents the column content from wrapping. In the non-fixed mode, the table column will automatically expand to fit all content in the column on a single line. | False
+| sortable (optional) | Boolean | Enables sorting for the column. | False
+| sortValueFn (optional) | Function | Called with data for a single row. Should return a sortable value for row. | None
+
+**Usage Example**
+
+[Source Code](https://github.com/Clever/components/tree/master/docs/TableExample.jsx) ([Live Demo](http://clever.github.io/components/#table))

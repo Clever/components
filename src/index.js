@@ -5,3 +5,4 @@ export {ConfirmationButton} from "./ConfirmationButton/ConfirmationButton";
 export {TextInput} from "./TextInput/TextInput";
 export {CopyableInput} from "./CopyableInput/CopyableInput";
 export {SegmentedControl} from "./SegmentedControl/SegmentedControl";
+export {Table} from "./Table/Table";
