@@ -1,6 +1,5 @@
+import classnames from "classnames";
 import React, {PropTypes} from "react";
-
-import {joinClasses} from "../utils";
 
 require("./Cell.less");
 
@@ -10,7 +9,7 @@ export default function Cell({children, className, noWrap, width, ...additionalP
 
   return (
     <td
-      className={joinClasses(
+      className={classnames(
         cssClass.CELL,
         noWrap && cssClass.NO_WRAP,
         className

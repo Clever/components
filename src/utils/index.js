@@ -52,10 +52,3 @@ export function unprefixKeys(obj, prefixToRemove, lowercaseFirst = true) {
     return prev;
   }, {});
 }
-
-/**
- * Returns a className string containing all non-empty classes from the given list of candidates.
- */
-export function joinClasses(...candidates) {
-  return candidates.filter(candidate => !!candidate).join(" ");
-}

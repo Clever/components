@@ -1,8 +1,8 @@
+import classnames from "classnames";
 import React, {PropTypes} from "react";
 
 import * as tablePropTypes from "./tablePropTypes";
 import sortDirection from "./sortDirection";
-import {joinClasses} from "../utils";
 
 const WIDTH = 7;
 const HEIGHT = 12;
@@ -13,13 +13,13 @@ export default function SortIcons({direction, className, scale}) {
 
   return (
     <svg
-      className={joinClasses(cssClass.CONTAINER, className)}
+      className={classnames(cssClass.CONTAINER, className)}
       width={WIDTH * scale}
       height={HEIGHT * scale}
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
     >
       <polygon
-        className={joinClasses(
+        className={classnames(
           cssClass.DIRECTION,
           cssClass.ASCENDING,
           direction === sortDirection.ASCENDING && cssClass.ACTIVE
@@ -27,7 +27,7 @@ export default function SortIcons({direction, className, scale}) {
         points="3.5 0 7 5 0 5"
       />
       <polygon
-        className={joinClasses(
+        className={classnames(
           cssClass.DIRECTION,
           cssClass.DESCENDING,
           direction === sortDirection.DESCENDING && cssClass.ACTIVE

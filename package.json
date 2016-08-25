@@ -44,6 +44,7 @@
     "dev-server": "node_modules/.bin/webpack-dev-server --content-base docs/ --inline --watch"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
     "jsx-loader": "^0.13.2",

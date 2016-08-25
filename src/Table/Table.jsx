@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import lodash from "lodash";
 import React, {Component, PropTypes} from "react";
 
@@ -6,7 +7,6 @@ import Cell from "./Cell";
 import Column from "./Column";
 import Header from "./Header";
 import sortDirection from "./sortDirection";
-import {joinClasses} from "../utils";
 
 require("./Table.less");
 
@@ -81,7 +81,7 @@ export class Table extends Component {
     const {cssClass} = Table;
 
     return (
-      <table className={joinClasses(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
+      <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <Header onSortChange={columnIndex => this._toggleSort(columnIndex)} sortState={sortState}>
           {children}
         </Header>

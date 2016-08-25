@@ -1,9 +1,9 @@
+import classnames from "classnames";
 import React, {PropTypes} from "react";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
 import SortIcons from "./SortIcons";
-import {joinClasses} from "../utils";
 
 require("./HeaderCell.less");
 
@@ -20,7 +20,7 @@ export default function HeaderCell({
 
   return (
     <Cell
-      className={joinClasses(
+      className={classnames(
         cssClass.HEADER_CELL,
         sortable && cssClass.SORTABLE,
         className
