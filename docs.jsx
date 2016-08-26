@@ -31,12 +31,15 @@ class Demo extends React.Component {
       },
       selectValues: {
         basicSelect: null,
+        disabledBasicSelect: {label: "Selected Option", value: "selected_opt"},
+        disabledMultiSelect: [{label: "1", value: "1"}, {label: "9", value: "9"}],
+        multiSelect: [{label: "3", value: "3"}],
       },
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.onChangeText = this.onChangeText.bind(this);
-    this.onBasicSelectChange = this.onBasicSelectChange.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
   }
   onChangeText(event, inputElem) {
     var newInputValues = Object.assign({}, this.state.inputValues);
@@ -45,9 +48,9 @@ class Demo extends React.Component {
       {inputValues: newInputValues, selectValues: this.state.selectValues}
     );
   }
-  onBasicSelectChange(value) {
+  onSelectChange(attribute, value) {
     const newSelectValues = Object.assign({}, this.state.selectValues);
-    newSelectValues.basicSelect = value;
+    newSelectValues[attribute] = value;
     this.setState(
       {inputValues: this.state.inputValues, selectValues: newSelectValues}
     );
@@ -149,14 +152,48 @@ class Demo extends React.Component {
             id="BasicSelect"
             label="Basic Select"
             name="BasicSelect"
-            onChange={this.onBasicSelectChange}
+            onChange={(val) => this.onSelectChange("basicSelect", val)}
             options={[
               {label: "Option 1", value: "opt1"},
               {label: "Option 2", value: "opt2"},
               {label: "Option 3", value: "opt3"},
             ]}
-            placeholder="placeholder for select"
+            placeholder="Select one option"
             value={this.state.selectValues.basicSelect}
+          />
+          <br />
+          <Select
+            id="MultiSelect"
+            label="Multi Select"
+            multi
+            name="MultiSelect"
+            onChange={(val) => this.onSelectChange("multiSelect", val)}
+            options={[
+              {label: "1", value: "1"},
+              {label: "2", value: "2"},
+              {label: "3", value: "3"},
+              {label: "4", value: "4"},
+              {label: "5", value: "5"},
+            ]}
+            placeholder="Select at least one option"
+            value={this.state.selectValues.multiSelect}
+          />
+          <br />
+          <Select
+            id="DisabledBasicSelect"
+            name="DisabledBasicSelect"
+            label="Disabled Basic Select"
+            disabled
+            value={this.state.selectValues.disabledBasicSelect}
+          />
+          <br />
+          <Select
+            id="DisabledMultiSelect"
+            name="DisabledMultiSelect"
+            label="Disabled Multi Select"
+            disabled
+            multi
+            value={this.state.selectValues.disabledMultiSelect}
           />
         </div>
         <h1>Button</h1>
