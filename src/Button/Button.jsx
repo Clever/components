@@ -26,7 +26,7 @@ export function Button(props) {
     );
   }
   return (
-    <a className={classes} target={props.target} href={props.href} style={props.style}>
+    <a className={classes} target={props.target} href={props.href} onClick={props.onClick} style={props.style}>
       {props.value}
     </a>
   );
