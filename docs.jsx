@@ -31,6 +31,8 @@ class Demo extends React.Component {
       },
       selectValues: {
         basicSelect: null,
+        disabledBasicSelect: {label: "Selected Option", value: "selected_opt"},
+        disabledMultiSelect: [{label: "1", value: "1"}, {label: "9", value: "9"}],
         multiSelect: [{label: "3", value: "3"}],
       },
     };
@@ -175,6 +177,23 @@ class Demo extends React.Component {
             ]}
             placeholder="Select at least one option"
             value={this.state.selectValues.multiSelect}
+          />
+          <br />
+          <Select
+            id="DisabledBasicSelect"
+            name="DisabledBasicSelect"
+            label="Disabled Basic Select"
+            disabled
+            value={this.state.selectValues.disabledBasicSelect}
+          />
+          <br />
+          <Select
+            id="DisabledMultiSelect"
+            name="DisabledMultiSelect"
+            label="Disabled Multi Select"
+            disabled
+            multi
+            value={this.state.selectValues.disabledMultiSelect}
           />
         </div>
         <h1>Button</h1>
