@@ -6,7 +6,7 @@ MOCHA := node_modules/mocha/bin/mocha
 MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-styles --require jsdom-global/register
 BABEL := node_modules/babel-cli/bin/babel.js
 
-.PHONY: test lint clean es5 build new $(TESTS)
+.PHONY: dev-server test lint clean es5 build new $(TESTS)
 
 clean:
 	@echo '✓ Clean out dist directory'
@@ -35,3 +35,6 @@ $(TESTS):
 	@echo "Running tests for $@"
 	@$(LINT) $@
 	@NODE_ENV=test $(MOCHA) $(MOCHA_OPTIONS) $@
+
+dev-server:
+	npm run-script dev-server
