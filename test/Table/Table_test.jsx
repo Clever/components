@@ -158,5 +158,29 @@ describe("Table", () => {
       assert.equal(rows.length, 1, "Incorrect number of filtered rows.");
       assert(rows.first().contains(item.name), `Expected\n${rows.debug()}\nto contain "${item.name}"`);
     });
+
+    it("updates rows on prop change", () => {
+      const table = newTable({initialSortState: {columnID: "name", direction: sortDirection.ASCENDING}});
+      const header = table.find(Header);
+
+      const updatedData = DATA.slice();
+      updatedData.splice(0, 1);
+      header.simulate("sortChange", 0);
+      table.setProps({data: updatedData});
+
+      const rows = table.find(`.${cssClass.ROW}`);
+      assert.equal(rows.length, updatedData.length, "Incorrect number of rows after prop change.");
+
+      const expectedOrder = updatedData.slice().reverse();
+      expectedOrder.forEach((item, i) => {
+        assert(rows.at(i).contains(item.name), `Expected\n${rows.debug()}\nto contain "${item.name}" in row ${i}`);
+      });
+
+      assert.deepEqual(table.find(Header).props().sortState, {
+        columnID: "name",
+        columnIndex: 0,
+        direction: sortDirection.DESCENDING,
+      }, "Sort state not preserved after prop change.");
+    });
   });
 });

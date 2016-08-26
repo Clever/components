@@ -15,15 +15,24 @@ export class Table extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      sortedData: props.data,
-    };
+    this.state = {};
   }
 
   componentWillMount() {
-    if (this.props.initialSortState) {
-      this._sort(this.props.initialSortState);
+    this._setInitialData(this.props.data, this.props.initialSortState);
+  }
+
+  componentWillReceiveProps({data}) {
+    this._setInitialData(data, this.state.sortState);
+  }
+
+  _setInitialData(data, sortState) {
+    if (sortState) {
+      this._sort(data, sortState);
+      return;
     }
+
+    this.setState({sortedData: data});
   }
 
   _toggleSort(columnIndex) {
@@ -37,13 +46,13 @@ export class Table extends Component {
       return;
     }
 
-    this._sort({
+    this._sort(this.props.data, {
       columnIndex,
       direction: sortDirection.ASCENDING,
     });
   }
 
-  _sort(sortState) {
+  _sort(data, sortState) {
     const columns = this.props.children;
 
     if (typeof sortState.columnIndex !== "number" && sortState.columnID) {
@@ -55,7 +64,7 @@ export class Table extends Component {
       return;
     }
 
-    let sortedData = lodash(this.props.data)
+    let sortedData = lodash(data)
       .sortBy(row => {
         let value = sortedColumn.props.sortValueFn(row);
 
