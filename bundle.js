@@ -94,13 +94,16 @@
 	        copyablePwd: "🙈 🙉 🙊"
 	      },
 	      selectValues: {
-	        basicSelect: null
+	        basicSelect: null,
+	        disabledBasicSelect: { label: "Selected Option", value: "selected_opt" },
+	        disabledMultiSelect: [{ label: "1", value: "1" }, { label: "9", value: "9" }],
+	        multiSelect: [{ label: "3", value: "3" }]
 	      }
 	    };
 	    _this.openModal = _this.openModal.bind(_this);
 	    _this.closeModal = _this.closeModal.bind(_this);
 	    _this.onChangeText = _this.onChangeText.bind(_this);
-	    _this.onBasicSelectChange = _this.onBasicSelectChange.bind(_this);
+	    _this.onSelectChange = _this.onSelectChange.bind(_this);
 	    return _this;
 	  }
 
@@ -112,10 +115,10 @@
 	      this.setState({ inputValues: newInputValues, selectValues: this.state.selectValues });
 	    }
 	  }, {
-	    key: "onBasicSelectChange",
-	    value: function onBasicSelectChange(value) {
+	    key: "onSelectChange",
+	    value: function onSelectChange(attribute, value) {
 	      var newSelectValues = _extends({}, this.state.selectValues);
-	      newSelectValues.basicSelect = value;
+	      newSelectValues[attribute] = value;
 	      this.setState({ inputValues: this.state.inputValues, selectValues: newSelectValues });
 	    }
 	  }, {
@@ -260,10 +263,42 @@
 	            id: "BasicSelect",
 	            label: "Basic Select",
 	            name: "BasicSelect",
-	            onChange: this.onBasicSelectChange,
+	            onChange: function onChange(val) {
+	              return _this2.onSelectChange("basicSelect", val);
+	            },
 	            options: [{ label: "Option 1", value: "opt1" }, { label: "Option 2", value: "opt2" }, { label: "Option 3", value: "opt3" }],
-	            placeholder: "placeholder for select",
+	            placeholder: "Select one option",
 	            value: this.state.selectValues.basicSelect
+	          }),
+	          _react2.default.createElement("br", null),
+	          _react2.default.createElement(_src.Select, {
+	            id: "MultiSelect",
+	            label: "Multi Select",
+	            multi: true,
+	            name: "MultiSelect",
+	            onChange: function onChange(val) {
+	              return _this2.onSelectChange("multiSelect", val);
+	            },
+	            options: [{ label: "1", value: "1" }, { label: "2", value: "2" }, { label: "3", value: "3" }, { label: "4", value: "4" }, { label: "5", value: "5" }],
+	            placeholder: "Select at least one option",
+	            value: this.state.selectValues.multiSelect
+	          }),
+	          _react2.default.createElement("br", null),
+	          _react2.default.createElement(_src.Select, {
+	            id: "DisabledBasicSelect",
+	            name: "DisabledBasicSelect",
+	            label: "Disabled Basic Select",
+	            disabled: true,
+	            value: this.state.selectValues.disabledBasicSelect
+	          }),
+	          _react2.default.createElement("br", null),
+	          _react2.default.createElement(_src.Select, {
+	            id: "DisabledMultiSelect",
+	            name: "DisabledMultiSelect",
+	            label: "Disabled Multi Select",
+	            disabled: true,
+	            multi: true,
+	            value: this.state.selectValues.disabledMultiSelect
 	          })
 	        ),
 	        _react2.default.createElement(
@@ -21860,20 +21895,6 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable no-console */
 
 
-	var tableData = [];
-	for (var i = 0; i < 10; i++) {
-	  tableData.push({
-	    id: i,
-	    name: {
-	      first: (0, _loremIpsum2.default)({ count: 1, units: "words" }),
-	      last: (0, _loremIpsum2.default)({ count: 2, units: "words" })
-	    },
-	    age: Math.round(Math.random() * 100),
-	    status: (0, _loremIpsum2.default)({ count: 1, units: "words" }),
-	    notes: (0, _loremIpsum2.default)({ count: 2, units: "sentences" })
-	  });
-	}
-
 	var TableExample = function (_Component) {
 	  _inherits(TableExample, _Component);
 
@@ -21889,9 +21910,35 @@
 	  }
 
 	  _createClass(TableExample, [{
+	    key: "componentWillMount",
+	    value: function componentWillMount() {
+	      this._reload();
+	    }
+	  }, {
+	    key: "_reload",
+	    value: function _reload() {
+	      var tableData = [];
+	      for (var i = 0; i < 10; i++) {
+	        tableData.push({
+	          id: i,
+	          name: {
+	            first: (0, _loremIpsum2.default)({ count: 1, units: "words" }),
+	            last: (0, _loremIpsum2.default)({ count: 2, units: "words" })
+	          },
+	          age: Math.round(Math.random() * 100),
+	          status: (0, _loremIpsum2.default)({ count: 1, units: "words" }),
+	          notes: (0, _loremIpsum2.default)({ count: 2, units: "sentences" })
+	        });
+	      }
+	      this.setState({ tableData: tableData });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      var _this2 = this;
+
+	      var tableData = this.state.tableData;
+
 
 	      return _react2.default.createElement(
 	        "div",
@@ -21907,7 +21954,18 @@
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { style: { width: "300px" } },
+	          { style: { marginTop: "20px" } },
+	          _react2.default.createElement(_src.Button, {
+	            onClick: function onClick() {
+	              return _this2._reload();
+	            },
+	            type: "secondary",
+	            value: "Reload"
+	          })
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { style: { width: "300px", marginTop: "20px" } },
 	          _react2.default.createElement(_src.TextInput, {
 	            label: "Filter by name",
 	            name: "tableFilter",
@@ -40677,6 +40735,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function isLabelHidden(placeholder, value) {
+	  if (!placeholder) {
+	    return false;
+	  }
+	  if (!value) {
+	    return true;
+	  }
+	  if (Array.isArray(value) && value.length === 0) {
+	    return true;
+	  }
+	  return false;
+	}
+
 	/*
 	  Component to allow selecting options from a list. Right now this only supports a basic dropdown
 	  with a fixed list of options. This component will be updated to allow searching for options that
@@ -40686,7 +40757,9 @@
 	function Select(_ref) {
 	  var id = _ref.id;
 	  var name = _ref.name;
+	  var disabled = _ref.disabled;
 	  var label = _ref.label;
+	  var multi = _ref.multi;
 	  var onChange = _ref.onChange;
 	  var options = _ref.options;
 	  var _ref$placeholder = _ref.placeholder;
@@ -40696,7 +40769,7 @@
 
 
 	  var labelContainerClasses = cssClass.LABEL_CONTAINER;
-	  if (placeholder && !value) {
+	  if (isLabelHidden(placeholder, value)) {
 	    labelContainerClasses += " " + cssClass.LABEL_HIDDEN;
 	  }
 
@@ -40711,6 +40784,8 @@
 	      _react2.default.createElement(_reactSelect2.default, {
 	        className: cssClass.REACT_SELECT,
 	        clearable: false,
+	        disabled: disabled,
+	        multi: multi,
 	        name: name,
 	        onChange: onChange,
 	        options: options,
@@ -40747,11 +40822,13 @@
 	Select.propTypes = {
 	  id: _react2.default.PropTypes.string.isRequired,
 	  name: _react2.default.PropTypes.string.isRequired,
+	  disabled: _react2.default.PropTypes.bool,
 	  label: _react2.default.PropTypes.string,
+	  multi: _react2.default.PropTypes.bool,
 	  onChange: _react2.default.PropTypes.func,
 	  options: _react2.default.PropTypes.arrayOf(selectValue),
 	  placeholder: _react2.default.PropTypes.string,
-	  value: selectValue
+	  value: _react2.default.PropTypes.oneOfType([selectValue, _react2.default.PropTypes.arrayOf(selectValue)])
 	};
 
 /***/ },
@@ -42601,7 +42678,7 @@
 
 
 	// module
-	exports.push([module.id, ".Select--container {\n  position: relative;\n}\n.Select--container .Select--labelContainer {\n  color: #566279;\n  font-size: 0.625rem;\n  position: absolute;\n  text-transform: uppercase;\n  top: 5px;\n  width: 100%;\n}\n.Select--container .Select--labelContainer.Select--labelHidden {\n  opacity: 0 !important;\n}\n.Select--container .Select--labelContainer .Select--label {\n  left: 10px;\n  position: absolute;\n}\n.Select--container .Select--ReactSelect.is-focused:not(.is-open) > .Select-control {\n  border-color: #e3e6eb;\n  box-shadow: inset 5px 0 #4274f6;\n  transition: box-shadow 0.25s ease-out;\n}\n.Select--container .Select--ReactSelect .Select-control {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n  height: 50px;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-placeholder {\n  font-size: .75rem;\n  line-height: 40px;\n  padding-top: 5px;\n  text-transform: uppercase;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-value {\n  font-size: 1rem;\n  line-height: 40px;\n  min-height: 40px;\n  padding-top: 10px;\n}\n.Select--container .Select--ReactSelect .has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.Select--container .Select--ReactSelect .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option.is-focused {\n  box-shadow: inset 5px 0 #4274f6;\n  background-color: #fafafc;\n}\n", ""]);
+	exports.push([module.id, ".Select--container {\n  position: relative;\n}\n.Select--container .Select--labelContainer {\n  color: #566279;\n  font-size: 0.625rem;\n  position: absolute;\n  text-transform: uppercase;\n  top: 5px;\n  width: 100%;\n}\n.Select--container .Select--labelContainer.Select--labelHidden {\n  opacity: 0 !important;\n}\n.Select--container .Select--labelContainer .Select--label {\n  left: 10px;\n  position: absolute;\n}\n.Select--container .Select--ReactSelect.is-focused:not(.is-open) > .Select-control {\n  border-color: #e3e6eb;\n  box-shadow: inset 5px 0 #4274f6;\n  transition: box-shadow 0.25s ease-out;\n}\n.Select--container .Select--ReactSelect.is-disabled .Select-control {\n  background-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper {\n  padding-top: 15px;\n  padding-left: 5px;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value {\n  border-color: #e3e6eb;\n  color: #191926;\n  line-height: 1rem;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-icon {\n  background-color: #e3e6eb;\n  float: right;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-label {\n  background-color: #fafafc;\n}\n.Select--container .Select--ReactSelect .Select-control {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n  height: 50px;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-placeholder {\n  font-size: .75rem;\n  line-height: 40px;\n  padding-top: 5px;\n  text-transform: uppercase;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-value {\n  font-size: 1rem;\n  line-height: 40px;\n  top: 10px;\n}\n.Select--container .Select--ReactSelect .has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.Select--container .Select--ReactSelect .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option.is-focused {\n  box-shadow: inset 5px 0 #4274f6;\n  background-color: #fafafc;\n}\n", ""]);
 
 	// exports
 
@@ -42671,18 +42748,31 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Table).call(this, props));
 
-	    _this.state = {
-	      sortedData: props.data
-	    };
+	    _this.state = {};
 	    return _this;
 	  }
 
 	  _createClass(Table, [{
 	    key: "componentWillMount",
 	    value: function componentWillMount() {
-	      if (this.props.initialSortState) {
-	        this._sort(this.props.initialSortState);
+	      this._setInitialData(this.props.data, this.props.initialSortState);
+	    }
+	  }, {
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps(_ref) {
+	      var data = _ref.data;
+
+	      this._setInitialData(data, this.state.sortState);
+	    }
+	  }, {
+	    key: "_setInitialData",
+	    value: function _setInitialData(data, sortState) {
+	      if (sortState) {
+	        this._sort(data, sortState);
+	        return;
 	      }
+
+	      this.setState({ sortedData: data });
 	    }
 	  }, {
 	    key: "_toggleSort",
@@ -42699,14 +42789,14 @@
 	        return;
 	      }
 
-	      this._sort({
+	      this._sort(this.props.data, {
 	        columnIndex: columnIndex,
 	        direction: _sortDirection2.default.ASCENDING
 	      });
 	    }
 	  }, {
 	    key: "_sort",
-	    value: function _sort(sortState) {
+	    value: function _sort(data, sortState) {
 	      var columns = this.props.children;
 
 	      if (typeof sortState.columnIndex !== "number" && sortState.columnID) {
@@ -42720,7 +42810,7 @@
 	        return;
 	      }
 
-	      var sortedData = (0, _lodash2.default)(this.props.data).sortBy(function (row) {
+	      var sortedData = (0, _lodash2.default)(data).sortBy(function (row) {
 	        var value = sortedColumn.props.sortValueFn(row);
 
 	        if (typeof value === "string") {
@@ -42768,20 +42858,20 @@
 	        _react2.default.createElement(
 	          "tbody",
 	          { className: cssClass.BODY },
-	          sortedData.map(function (rowData) {
-	            return filter(rowData) ? _react2.default.createElement(
+	          (0, _lodash2.default)(sortedData).filter(filter).map(function (rowData) {
+	            return _react2.default.createElement(
 	              "tr",
 	              { className: cssClass.ROW, key: rowIDFn(rowData) },
-	              children.map(function (_ref, colIndex) {
-	                var col = _ref.props;
+	              children.map(function (_ref2, colIndex) {
+	                var col = _ref2.props;
 	                return _react2.default.createElement(
 	                  _Cell2.default,
 	                  { className: col.cell.className, key: col.id || colIndex, noWrap: col.noWrap },
 	                  col.cell.renderer(rowData)
 	                );
 	              })
-	            ) : null;
-	          })
+	            );
+	          }).value()
 	        )
 	      )
 	      // TODO(kofi): Add pagination footer or maybe a PagingTable wrapper.
@@ -42962,7 +43052,7 @@
 
 
 	// module
-	exports.push([module.id, ".Table--cell {\n  padding: 20px 20px;\n}\n.Table--cell--no_wrap {\n  white-space: nowrap;\n}\n", ""]);
+	exports.push([module.id, ".Table--cell {\n  padding: 20px 10px;\n}\n.Table--cell:first-child {\n  padding-left: 20px;\n}\n.Table--cell:last-child {\n  padding-right: 20px;\n}\n.Table--cell--no_wrap {\n  white-space: nowrap;\n}\n", ""]);
 
 	// exports
 
