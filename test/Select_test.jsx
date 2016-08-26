@@ -52,7 +52,7 @@ describe("Select", () => {
     assert.equal(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN), false);
   });
 
-  it("renders the label when no placeholder is provided and a value is selected", () => {
+  it("renders the label when a value is selected", () => {
     const select = shallow(
       <Select
         id="testid"
@@ -80,6 +80,35 @@ describe("Select", () => {
     assert(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN));
   });
 
+  it("renders the label when multiple values are selected", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        label="test label"
+        placeholder="test placeholder"
+        options={testOptions}
+        value={[testOptions[2], testOptions[0]]}
+      />
+    );
+    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
+    assert.equal(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+  });
+
+  it("hides the label when a placeholder is provided and value is an empty array", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        label="test label"
+        placeholder="test placeholder"
+        value={[]}
+      />
+    );
+    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
+    assert(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN));
+  });
+
   it("correctly sets the appropriate props on ReactSelect", () => {
     const onChange = sinon.spy();
     const select = shallow(
@@ -96,6 +125,8 @@ describe("Select", () => {
     const expectedPropValues = {
       className: Select.cssClass.REACT_SELECT,
       clearable: false,
+      disabled: false,
+      multi: false,
       name: "testname",
       onChange,
       options: testOptions,
@@ -107,6 +138,38 @@ describe("Select", () => {
     for (const prop of Object.keys(expectedPropValues)) {
       assert.equal(reactSelectProps[prop], expectedPropValues[prop]);
     }
+  });
+
+  it("allows selecting multiple options if specified", () => {
+    const multiSelect = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        multi
+        options={testOptions}
+        value={[testOptions[2], testOptions[0]]}
+      />
+    );
+    const expectedPropValues = {
+      multi: true,
+      value: [testOptions[2], testOptions[0]],
+    };
+    const reactSelectProps = multiSelect.find(ReactSelect).props();
+    for (const prop of Object.keys(expectedPropValues)) {
+      assert.deepEqual(reactSelectProps[prop], expectedPropValues[prop]);
+    }
+  });
+
+  it("sets disabled on the react select element if specified", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        disabled
+      />
+    );
+    const reactSelect = select.find(ReactSelect);
+    assert(reactSelect.prop("disabled"));
   });
 
   it("defaults to an empty string placeholder ReactSelect", () => {

@@ -4,17 +4,30 @@ import ReactSelect from "react-select";
 import "react-select/dist/react-select.css";
 import "./Select.less";
 
+function isLabelHidden(placeholder, value) {
+  if (!placeholder) {
+    return false;
+  }
+  if (!value) {
+    return true;
+  }
+  if (Array.isArray(value) && (value.length === 0)) {
+    return true;
+  }
+  return false;
+}
+
 /*
   Component to allow selecting options from a list. Right now this only supports a basic dropdown
   with a fixed list of options. This component will be updated to allow searching for options that
   may be fetched asynchronously.
 */
 
-export function Select({id, name, label, onChange, options, placeholder = "", value}) {
+export function Select({id, name, disabled, label, multi, onChange, options, placeholder = "", value}) {
   const {cssClass} = Select;
 
   let labelContainerClasses = cssClass.LABEL_CONTAINER;
-  if (placeholder && !value) {
+  if (isLabelHidden(placeholder, value)) {
     labelContainerClasses += ` ${cssClass.LABEL_HIDDEN}`;
   }
 
@@ -26,6 +39,8 @@ export function Select({id, name, label, onChange, options, placeholder = "", va
         <ReactSelect
           className={cssClass.REACT_SELECT}
           clearable={false}
+          disabled={disabled}
+          multi={multi}
           name={name}
           onChange={onChange}
           options={options}
@@ -57,9 +72,14 @@ const selectValue = React.PropTypes.shape({
 Select.propTypes = {
   id: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
+  disabled: React.PropTypes.bool,
   label: React.PropTypes.string,
+  multi: React.PropTypes.bool,
   onChange: React.PropTypes.func,
   options: React.PropTypes.arrayOf(selectValue),
   placeholder: React.PropTypes.string,
-  value: selectValue,
+  value: React.PropTypes.oneOfType([
+    selectValue,
+    React.PropTypes.arrayOf(selectValue),
+  ]),
 };
