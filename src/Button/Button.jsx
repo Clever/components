@@ -7,10 +7,6 @@ export function Button(props) {
     throw new Error("Small destructive buttons are not supported");
   }
 
-  if (props.href && props.onClick) {
-    throw new Error("Buttons cannot have both href and onClick options");
-  }
-
   if (props.href && props.submit) {
     throw new Error("Buttons with href do not support the submit option");
   }

@@ -62,10 +62,4 @@ describe("Button", () => {
     button.simulate("click");
     assert(onClickSpy.calledOnce);
   });
-
-  it("throws an error if onClick and href are both set", () => {
-    assert.throws(() => {
-      shallow(<Button value="A bad button" href="http://clever.com" onClick={() => {}} />);
-    }, "Buttons with href do not support the submit option");
-  });
 });
