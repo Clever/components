@@ -80,7 +80,7 @@ describe("Select", () => {
     assert(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN));
   });
 
-  it("renders the label when a multiple values are selected", () => {
+  it("renders the label when multiple values are selected", () => {
     const select = shallow(
       <Select
         id="testid"
