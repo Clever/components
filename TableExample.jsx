@@ -3,21 +3,7 @@ import lodash from "lodash";
 import loremIpsum from "lorem-ipsum";
 import React, {Component} from "react";
 
-import {Table, TextInput, ModalButton} from "../src/";
-
-const tableData = [];
-for (var i = 0; i < 10; i++) {
-  tableData.push({
-    id: i,
-    name: {
-      first: loremIpsum({count: 1, units: "words"}),
-      last: loremIpsum({count: 2, units: "words"}),
-    },
-    age: Math.round(Math.random() * 100),
-    status: loremIpsum({count: 1, units: "words"}),
-    notes: loremIpsum({count: 2, units: "sentences"}),
-  });
-}
+import {Button, Table, TextInput, ModalButton} from "../src/";
 
 
 export default class TableExample extends Component {
@@ -28,13 +14,43 @@ export default class TableExample extends Component {
     };
   }
 
+  componentWillMount() {
+    this._reload();
+  }
+
+  _reload() {
+    const tableData = [];
+    for (var i = 0; i < 10; i++) {
+      tableData.push({
+        id: i,
+        name: {
+          first: loremIpsum({count: 1, units: "words"}),
+          last: loremIpsum({count: 2, units: "words"}),
+        },
+        age: Math.round(Math.random() * 100),
+        status: loremIpsum({count: 1, units: "words"}),
+        notes: loremIpsum({count: 2, units: "sentences"}),
+      });
+    }
+    this.setState({tableData});
+  }
+
   render() {
+    const {tableData} = this.state;
+
     return (
       <div style={{width: "900px", margin: "30px 0"}}>
         <a name="table">
           <h1>Table</h1>
         </a>
-        <div style={{width: "300px"}}>
+        <div style={{marginTop: "20px"}}>
+          <Button
+            onClick={() => this._reload()}
+            type="secondary"
+            value="Reload"
+          />
+        </div>
+        <div style={{width: "300px", marginTop: "20px"}}>
           <TextInput
             label="Filter by name"
             name="tableFilter"
