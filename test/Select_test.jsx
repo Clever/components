@@ -125,6 +125,7 @@ describe("Select", () => {
     const expectedPropValues = {
       className: Select.cssClass.REACT_SELECT,
       clearable: false,
+      disabled: false,
       multi: false,
       name: "testname",
       onChange,
@@ -157,6 +158,18 @@ describe("Select", () => {
     for (const prop of Object.keys(expectedPropValues)) {
       assert.deepEqual(reactSelectProps[prop], expectedPropValues[prop]);
     }
+  });
+
+  it("sets disabled on the react select element if specified", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        disabled
+      />
+    );
+    const reactSelect = select.find(ReactSelect);
+    assert(reactSelect.prop("disabled"));
   });
 
   it("defaults to an empty string placeholder ReactSelect", () => {
