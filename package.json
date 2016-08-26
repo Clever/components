@@ -32,6 +32,7 @@
     "ignore-styles": "^1.2.0",
     "jsdom": "^8.4.0",
     "jsdom-global": "^1.7.0",
+    "lorem-ipsum": "^1.0.3",
     "mocha": "^2.4.5",
     "react": "~15.3.0",
     "react-addons-test-utils": "~15.3.0",
