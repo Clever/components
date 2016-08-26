@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol)
+**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table)
 
 ## Install
 
@@ -26,7 +26,7 @@ This library uses ES6 features not supported in Internet Explorer such as [`Stri
 * Run `./bin/new_component <your component>` to autogenerate source and test stubs
 * Document your component in the readme with PropTypes and a usage example
 * Add a working example of your component in /docs
-* To run locally, `npm run-script dev-server` and open http://localhost:8080/
+* To run locally, run `make dev-server` and open http://localhost:8080/
 * Open a PR and assign it to someone in [@frontend](https://github.com/orgs/Clever/teams/front-end)
 
 #### When to add a component
