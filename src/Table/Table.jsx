@@ -95,7 +95,7 @@ export class Table extends Component {
           {children}
         </Header>
         <tbody className={cssClass.BODY}>
-          {sortedData.map(rowData => (filter(rowData) ? (
+          {lodash(sortedData).filter(filter).map(rowData => (
             <tr className={cssClass.ROW} key={rowIDFn(rowData)}>
               {children.map(({props: col}, colIndex) => (
                 <Cell className={col.cell.className} key={col.id || colIndex} noWrap={col.noWrap}>
@@ -103,7 +103,7 @@ export class Table extends Component {
                 </Cell>
               ))}
             </tr>
-          ) : null))}
+          )).value()}
         </tbody>
       </table>
       // TODO(kofi): Add pagination footer or maybe a PagingTable wrapper.
