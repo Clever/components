@@ -32,6 +32,7 @@
     "ignore-styles": "^1.2.0",
     "jsdom": "^8.4.0",
     "jsdom-global": "^1.7.0",
+    "lorem-ipsum": "^1.0.3",
     "mocha": "^2.4.5",
     "react": "~15.3.0",
     "react-addons-test-utils": "~15.3.0",
@@ -52,6 +53,7 @@
     "less-loader": "^2.2.3",
     "lodash": "^4.14.1",
     "react-copy-to-clipboard": "^4.2.1",
+    "react-select": "^1.0.0-beta14",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7"
   }

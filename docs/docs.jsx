@@ -10,6 +10,7 @@ import {
   Modal,
   ModalButton,
   SegmentedControl,
+  Select,
   TextInput,
 } from "../src/";
 
@@ -28,16 +29,27 @@ class Demo extends React.Component {
         copyableInput: "1234-1234-1234-1234",
         copyablePwd: "🙈 🙉 🙊",
       },
+      selectValues: {
+        basicSelect: null,
+      },
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.onChangeText = this.onChangeText.bind(this);
+    this.onBasicSelectChange = this.onBasicSelectChange.bind(this);
   }
   onChangeText(event, inputElem) {
     var newInputValues = Object.assign({}, this.state.inputValues);
     newInputValues[inputElem] = event.target.value;
     this.setState(
-      {inputValues: newInputValues}
+      {inputValues: newInputValues, selectValues: this.state.selectValues}
+    );
+  }
+  onBasicSelectChange(value) {
+    const newSelectValues = Object.assign({}, this.state.selectValues);
+    newSelectValues.basicSelect = value;
+    this.setState(
+      {inputValues: this.state.inputValues, selectValues: newSelectValues}
     );
   }
   openModal() {
@@ -130,6 +142,22 @@ class Demo extends React.Component {
             enableShow
           />
           <br />
+        </div>
+        <h1>Selects</h1>
+        <div style={{width: "300px"}}>
+          <Select
+            id="BasicSelect"
+            label="Basic Select"
+            name="BasicSelect"
+            onChange={this.onBasicSelectChange}
+            options={[
+              {label: "Option 1", value: "opt1"},
+              {label: "Option 2", value: "opt2"},
+              {label: "Option 3", value: "opt3"},
+            ]}
+            placeholder="placeholder for select"
+            value={this.state.selectValues.basicSelect}
+          />
         </div>
         <h1>Button</h1>
         <h2>Button Sizing</h2>

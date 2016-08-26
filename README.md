@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [SegmentedControl](#segmentedcontrol)
+**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol)
 
 ## Install
 
@@ -231,6 +231,47 @@ This is a special [TextInput](#textinput) that allows the user to show/hide the 
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
 | enableCopy (optional) | Bool | Display a Copy link | True
+
+### Select
+
+Component to allow selecting options from a list. Right now this only supports a basic dropdown with
+a fixed list of options.
+
+**Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| id (required) | String | ID for the select element to be used by the label. Must be unique | None
+| name (required) | String | Name for select element | None
+| label (optional) | String | Label for select element | None
+| onChange (optional) | Function | Called with new value when it changes | None
+| options (optional) | Array | Possible options. Must contain objects with label and value attributes | None
+| placeholder (optional) | String | Placeholder text | ""
+| value (optional) | Object | Selected value. Must be updated by caller in the onChange | None
+
+**Usage Example**
+
+```jsx
+<Select
+  id="BasicSelect"
+  label="Basic Select"
+  name="BasicSelect"
+  onChange={onBasicSelectChange}
+  options={[
+    {label: "Option 1", value: "opt1"},
+    {label: "Option 2", value: "opt2"},
+    {label: "Option 3", value: "opt3"},
+  ]}
+  placeholder="placeholder for select"
+  value={this.state.basicSelectValue}
+/>
+```
+
+```js
+function onBasicSelectChange(value) {
+  this.setState({basicSelectValue: value});
+}
+```
 
 ### SegmentedControl
 
