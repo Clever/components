@@ -172,6 +172,18 @@ describe("Select", () => {
     assert(reactSelect.prop("disabled"));
   });
 
+  it("sets clearable on the react select element if specified", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        clearable
+      />
+    );
+    const reactSelect = select.find(ReactSelect);
+    assert(reactSelect.prop("clearable"));
+  });
+
   it("defaults to an empty string placeholder ReactSelect", () => {
     const select = shallow(
       <Select
