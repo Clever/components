@@ -23,7 +23,7 @@ function isLabelHidden(placeholder, value) {
   may be fetched asynchronously.
 */
 
-export function Select({id, name, disabled, label, multi, onChange, options, placeholder = "", value}) {
+export function Select({id, name, clearable = false, disabled, label, multi, onChange, options, placeholder = "", value}) {
   const {cssClass} = Select;
 
   let labelContainerClasses = cssClass.LABEL_CONTAINER;
@@ -38,7 +38,7 @@ export function Select({id, name, disabled, label, multi, onChange, options, pla
       <div id={id}>
         <ReactSelect
           className={cssClass.REACT_SELECT}
-          clearable={false}
+          clearable={clearable}
           disabled={disabled}
           multi={multi}
           name={name}
@@ -72,6 +72,7 @@ const selectValue = React.PropTypes.shape({
 Select.propTypes = {
   id: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
+  clearable: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   label: React.PropTypes.string,
   multi: React.PropTypes.bool,

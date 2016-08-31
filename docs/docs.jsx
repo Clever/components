@@ -151,6 +151,7 @@ class Demo extends React.Component {
           <Select
             id="BasicSelect"
             label="Basic Select"
+            clearable
             name="BasicSelect"
             onChange={(val) => this.onSelectChange("basicSelect", val)}
             options={[
