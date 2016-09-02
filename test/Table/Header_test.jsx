@@ -75,8 +75,7 @@ describe("Table -- Header", () => {
 
   it("disables sorting is `disableSort` prop is specified", () => {
     const nameCell = newHeader({disableSort: true}).find(HeaderCell).at(0);
-
-    assert(!nameCell.props().sortable, `${nameCell.debug()} should not be sortable when 'dissableSort' is true.`);
+    assert(!nameCell.props().sortable, `${nameCell.debug()} should not be sortable when 'disableSort' is true.`);
   });
 
   it("sets custom column width", () => {
