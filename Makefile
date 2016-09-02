@@ -26,7 +26,8 @@ build: clean es5
 
 styles:
 	@echo "Building stylesheet"
-	@$(LESS) less/index.less
+	@[ -d dist ] || mkdir dist
+	@$(LESS) src/less/index.less > dist/style.css
 
 lint:
 	@echo "Linting files..."
