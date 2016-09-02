@@ -67,26 +67,11 @@ describe("Table", () => {
   describe("header", () => {
     it("is rendered", () => assert(!newTable().find(Header).isEmpty(), "Header not found."));
 
-    it("sets initial sort state by column index", () => {
-      const table = newTable({initialSortState: {columnIndex: 0, direction: sortDirection.DESCENDING}});
-
-      assert.deepEqual(table.find(Header).props().sortState, {
-        columnIndex: 0,
-        columnID: "name",
-        direction: sortDirection.DESCENDING,
-      }, "Initial sort state not set");
-
-      const rowIDs = table.find("tr").map(r => r.key());
-      const expectedOrder = DATA.slice().reverse().map(item => item.id);
-      assert.deepEqual(rowIDs, expectedOrder);
-    });
-
     it("sets initial sort state by column ID", () => {
       const table = newTable({initialSortState: {columnID: "name", direction: sortDirection.DESCENDING}});
 
       assert.deepEqual(table.find(Header).props().sortState, {
         columnID: "name",
-        columnIndex: 0,
         direction: sortDirection.DESCENDING,
       }, "Initial sort state not set");
 
@@ -132,14 +117,13 @@ describe("Table", () => {
       const header = table.find(Header);
 
       const columnID = "name";
-      const columnIndex = 0;
-      header.simulate("sortChange", columnIndex);
+      header.simulate("sortChange", columnID);
 
-      sinon.assert.calledWith(onSortChange, {columnID, columnIndex, direction: sortDirection.ASCENDING});
+      sinon.assert.calledWith(onSortChange, {columnID, direction: sortDirection.ASCENDING});
       onSortChange.reset();
 
-      header.simulate("sortChange", columnIndex);
-      sinon.assert.calledWith(onSortChange, {columnID, columnIndex, direction: sortDirection.DESCENDING});
+      header.simulate("sortChange", columnID);
+      sinon.assert.calledWith(onSortChange, {columnID, direction: sortDirection.DESCENDING});
 
       table.update();
 
@@ -159,13 +143,24 @@ describe("Table", () => {
       assert(rows.first().contains(item.name), `Expected\n${rows.debug()}\nto contain "${item.name}"`);
     });
 
+    it("disables sorting if fewer than 2 rows are visible", () => {
+      const table = newTable();
+      assert(!table.find(Header).props().disableSort, "Sort should NOT be disabled if table contains > 1 row.");
+
+      table.setProps({filter: r => r.name === DATA[0].name});
+      assert(table.find(Header).props().disableSort, "Sort should be disabled if table contains 1 row.");
+
+      table.setProps({filter: () => false});
+      assert(table.find(Header).props().disableSort, "Sort should be disabled if table contains 0 rows.");
+    });
+
     it("updates rows on prop change", () => {
       const table = newTable({initialSortState: {columnID: "name", direction: sortDirection.ASCENDING}});
       const header = table.find(Header);
 
       const updatedData = DATA.slice();
       updatedData.splice(0, 1);
-      header.simulate("sortChange", 0);
+      header.simulate("sortChange", "name");
       table.setProps({data: updatedData});
 
       const rows = table.find(`.${cssClass.ROW}`);
@@ -178,7 +173,6 @@ describe("Table", () => {
 
       assert.deepEqual(table.find(Header).props().sortState, {
         columnID: "name",
-        columnIndex: 0,
         direction: sortDirection.DESCENDING,
       }, "Sort state not preserved after prop change.");
     });

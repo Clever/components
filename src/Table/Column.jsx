@@ -10,7 +10,7 @@ Column.propTypes = {
     className: PropTypes.string,
     renderer: PropTypes.func.isRequired,
   }),
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   header: PropTypes.shape({
     className: PropTypes.string,
     content: PropTypes.node,

@@ -5,19 +5,19 @@ import Column from "./Column";
 import HeaderCell from "./HeaderCell";
 
 
-export default function Header({children, onSortChange, sortState}) {
+export default function Header({children, disableSort, onSortChange, sortState}) {
   const {cssClass} = Header;
 
   return (
     <thead className={cssClass.CONTAINER}>
       <tr className={cssClass.ROW}>
-        {children.map(({props: column}, columnIndex) => (
+        {children.map(({props: column}) => (
           <HeaderCell
-            activeSortDirection={sortState.columnIndex === columnIndex ? sortState.direction : null}
+            activeSortDirection={sortState.columnID === column.id ? sortState.direction : null}
             className={column.header && column.header.className}
-            key={column.id || columnIndex}
-            onSortChange={() => onSortChange(columnIndex)}
-            sortable={column.sortable}
+            key={column.id}
+            onSortChange={() => onSortChange(column.id)}
+            sortable={column.sortable && !disableSort}
             width={column.width}
           >
             {column.header && column.header.content}
@@ -32,6 +32,7 @@ Header.propTypes = {
   children: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.oneOf([Column]),
   })),
+  disableSort: PropTypes.bool,
   onSortChange: PropTypes.func,
   sortState: tablePropTypes.sortState,
 };

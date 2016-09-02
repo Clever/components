@@ -65,12 +65,18 @@ describe("Table -- Header", () => {
   });
 
   it("sets active sort state", () => {
-    const sortState = {columnIndex: 0, direction: sortDirection.DESCENDING};
+    const sortState = {columnID: "name_column", direction: sortDirection.DESCENDING};
 
     const nameCell = newHeader({sortState}).find(HeaderCell).at(0);
 
     assert(nameCell.props().sortable, `Expected ${nameCell.debug()} to be sortable.`);
     assert.equal(nameCell.props().activeSortDirection, sortDirection.DESCENDING, "Incorrect sort direction");
+  });
+
+  it("disables sorting is `disableSort` prop is specified", () => {
+    const nameCell = newHeader({disableSort: true}).find(HeaderCell).at(0);
+
+    assert(!nameCell.props().sortable, `${nameCell.debug()} should not be sortable when 'dissableSort' is true.`);
   });
 
   it("sets custom column width", () => {
@@ -80,11 +86,11 @@ describe("Table -- Header", () => {
 
   it("propagates sort change events", () => {
     const onSortChange = sinon.stub();
-    const columnIndex = 1;
+    const descriptionColumnIndex = 1;
 
-    const cell = newHeader({onSortChange}).find(HeaderCell).at(columnIndex);
+    const cell = newHeader({onSortChange}).find(HeaderCell).at(descriptionColumnIndex);
     cell.simulate("sortChange");
 
-    sinon.assert.calledWith(onSortChange, columnIndex);
+    sinon.assert.calledWith(onSortChange, descriptionColumn.props.id);
   });
 });
