@@ -5,17 +5,37 @@ import React, {Component, PropTypes} from "react";
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
 import Column from "./Column";
+import Footer from "./Footer";
 import Header from "./Header";
 import sortDirection from "./sortDirection";
 
 require("./Table.less");
+
+const DEFAULT_PAGE_SIZE = 10;
 
 
 export class Table extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      currentPage: props.initialPage || 1,
+    };
+  }
+
+  /**
+   * @param {number} page - 1-based index of the page to select.
+   */
+  setCurrentPage(page) {
+    if (page === this.state.currentPage) {
+      return;
+    }
+
+    this.setState({currentPage: page}, () => this.props.onPageChange(page));
+  }
+
+  resetPage() {
+    this.setCurrentPage(1);
   }
 
   _getColumn(columnID) {
@@ -37,11 +57,22 @@ export class Table extends Component {
     }
 
     this.setState({sortState: newSortState}, () => this.props.onSortChange(this.state.sortState));
+    // Reset to 1st page since table sort has changed.
+    this.setCurrentPage(1);
   }
 
   render() {
-    const {children: columns, className, data, filter, fixed, initialSortState, rowIDFn} = this.props;
-    const {sortState = initialSortState} = this.state;
+    const {
+      children: columns,
+      className,
+      data,
+      filter,
+      fixed,
+      initialSortState,
+      pageSize,
+      rowIDFn,
+    } = this.props;
+    const {currentPage, sortState = initialSortState} = this.state;
     const {cssClass} = Table;
 
     let displayedData = lodash(data);
@@ -68,13 +99,24 @@ export class Table extends Component {
     displayedData = displayedData.value();
     const disableSort = displayedData.length <= 1;
 
+    const pages = lodash.chunk(displayedData, pageSize);
+    const numPages = pages.length;
+    const displayedPage = Math.min(currentPage, numPages);
+    const displayedPageIndex = displayedPage - 1;
+
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <Header disableSort={disableSort} onSortChange={columnID => this._toggleSort(columnID)} sortState={sortState}>
           {columns}
         </Header>
         <tbody className={cssClass.BODY}>
-          {displayedData.map(rowData => (
+          {displayedData.length === 0 ? (
+            <tr className={cssClass.ROW}>
+              <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
+                NO DATA
+              </Cell>
+            </tr>
+          ) : pages[displayedPageIndex].map(rowData => (
             <tr className={cssClass.ROW} key={rowIDFn(rowData)}>
               {columns.map(({props: col}) => (
                 <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
@@ -84,8 +126,13 @@ export class Table extends Component {
             </tr>
           ))}
         </tbody>
+        <Footer
+          currentPage={displayedPage}
+          onPageChange={newPage => this.setCurrentPage(newPage)}
+          numColumns={columns.length}
+          numPages={numPages}
+        />
       </table>
-      // TODO(kofi): Add pagination footer or maybe a PagingTable wrapper.
     );
   }
 }
@@ -98,19 +145,25 @@ Table.propTypes = {
   data: PropTypes.array.isRequired,
   filter: PropTypes.func,
   fixed: PropTypes.bool,
+  initialPage: PropTypes.number,
   initialSortState: tablePropTypes.sortState,
+  onPageChange: PropTypes.func,
   onSortChange: PropTypes.func,
+  pageSize: PropTypes.number,
   rowIDFn: PropTypes.func.isRequired,
 };
 
 Table.defaultProps = {
   filter: () => true,
+  onPageChange: () => {},
   onSortChange: () => {},
+  pageSize: DEFAULT_PAGE_SIZE,
 };
 
 Table.cssClass = {
   BODY: "Table--body",
   FIXED: "Table--fixed",
+  NO_DATA: "Table--no_data_cell",
   ROW: "Table--row",
   TABLE: "Table",
 };

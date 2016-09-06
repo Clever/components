@@ -6,6 +6,7 @@ import {shallow} from "enzyme";
 
 import Cell from "../../src/Table/Cell";
 import Column from "../../src/Table/Column";
+import Footer from "../../src/Table/Footer";
 import Header from "../../src/Table/Header";
 import sortDirection from "../../src/Table/sortDirection";
 import {Table} from "../../src/Table/Table";
@@ -143,6 +144,14 @@ describe("Table", () => {
       assert(rows.first().contains(item.name), `Expected\n${rows.debug()}\nto contain "${item.name}"`);
     });
 
+    it("shows 'NO DATA' notice if filtered data is empty", () => {
+      const table = newTable({filter: () => false});
+
+      const rows = table.find(`.${cssClass.ROW}`);
+      assert.equal(rows.length, 1);
+      assert(rows.first().contains("NO DATA"), `Expected\n${rows.debug()}\nto contain "NO DATA"`);
+    });
+
     it("disables sorting if fewer than 2 rows are visible", () => {
       const table = newTable();
       assert(!table.find(Header).props().disableSort, "Sort should NOT be disabled if table contains > 1 row.");
@@ -176,5 +185,26 @@ describe("Table", () => {
         direction: sortDirection.DESCENDING,
       }, "Sort state not preserved after prop change.");
     });
+
+    it("shows only data from the selected page", () => {
+      const table = newTable({pageSize: 1, initialPage: 2});
+
+      const expectedItem = DATA[1];
+      const rows = table.find(`.${cssClass.ROW}`);
+      assert.equal(rows.length, 1, "Incorrect number of rows on page.");
+      assert(
+        rows.first().contains(expectedItem.name),
+        `Expected\n${rows.debug()}\nto contain "${expectedItem.name}"`
+      );
+    });
+  });
+
+  it("renders footer", () => {
+    const table = newTable({pageSize: 1, initialPage: 2});
+    const footer = table.find(Footer);
+
+    // assert.equal(footer.props().currentPage, 2, "Incorrect currrentPage prop value.");
+    assert.equal(footer.props().numColumns, 2, "Incorrect numColumns prop value.");
+    assert.equal(footer.props().numPages, DATA.length, "Incorrect numPages prop value.");
   });
 });
