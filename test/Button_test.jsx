@@ -8,7 +8,7 @@ import {Button} from "../src";
 
 describe("Button", () => {
   const sizes = ["small", "regular", "large"];
-  const types = ["primary", "secondary", "destructive", "link"];
+  const types = ["primary", "secondary", "destructive", "link", "linkPlain"];
 
   sizes.forEach((size) => {
     types.forEach((type) => {
