@@ -81,7 +81,7 @@ This is a set of button components with various sizes and types.
 | Prop                | Type     | Description                                          | Default
 |---------------------|----------|------------------------------------------------------|---------
 | value               | String   | The text that appears on the button                  | None
-| type                | String   | One of `primary`, `secondary`, `destructive`, `link` | `secondary`
+| type                | String   | One of `primary`, `secondary`, `destructive`, `link`, `linkPlain` | `secondary`
 | size                | String   | One of "large", "regular", "small"                   | `regular`
 | onClick (optional)  | Function | Called when the user clicks on the button            | None
 | href (optional)     | String   | If provided, causes the button to behave as a link   | None
@@ -111,7 +111,7 @@ the string `"modal"` prepended to them (i.e. `modalWidth`, `modalTitle`).
 | onClick (optional)               | Function | Called when the user clicks the button               | None
 | onClose (optional)               | Function | Called when the user closes the modal                | None
 | value                            | String   | The text that appears on the button                  | None
-| type                             | String   | One of `primary`, `secondary`, `destructive`, `link` | `secondary`
+| type                             | String   | One of `primary`, `secondary`, `destructive`, `link`, `linkPlain` | `secondary`
 | size                             | String   | One of "large", "regular", "small"                   | `regular`
 | href (optional)                  | String   | If provided, causes the button to behave as a link   | None
 | target (optional)                | String   | For links, either "_self" or "_blank"                | "_blank"
@@ -151,7 +151,7 @@ Inherits all options from `ModalButton` and `Button`. `Button`'s properties have
 | modalTitle                       | String   | Header text for the modal                                   | None
 | modalWidth (optional)            | Number   | Width of the modal                                          | 400px
 | confirmButtonValue               | String   | The text that appears on the Confirm button                 | None
-| confirmButtonType                | String   | One of `primary`, `secondary`, `destructive`, `link`        | `secondary`
+| confirmButtonType                | String   | One of `primary`, `secondary`, `destructive`, `link`, `linkPlain`        | `secondary`
 | confirmButtonSize                | String   | One of "large", "regular", "small"                          | `regular`
 | confirmButtonHref (optional)     | String   | If provided, causes the Confirm button to behave as a link  | None
 | confirmButtonTarget (optional)   | String   | For links, either "_self" or "_blank"                       | "_blank"
@@ -314,7 +314,7 @@ var onSelect = function(selected) {
 
 ### Table
 
-Table component supporting sorting and filtering.
+Table component supporting sorting, filtering and pagination.
 
 **Options**
 
@@ -324,9 +324,17 @@ Table component supporting sorting and filtering.
 | data (required) | Array | The array of data items, each corresponding to a single potential table row | None
 | filter (optional) | Function | Called with data for a single row. Should return `false` if the row should be filtered out, or `true` otherwise. | None
 | fixed (optional) | Boolean | Whether or not table column widths should be fixed (vs fluid). | False
+| initialPage (optional) | Number | The initial page to be displayed initially. | None
 | initialSortState (optional) | `{columnID: String, direction: Table.sortDirection}` | The initial sort state of the table. | None
+| onPageChange (optional) | Function | Callback function for the displayed page change event. | None
 | onSortChange (optional) | Function | Callback function for the sort state change event. | None
+| pageSize (optional) | Number | The number of data rows to display on each page. Set to the length of the data set to effectively disable pagination. | 10
 | rowIDFn (required) | Function | Called with data for a single row. Should return the unique ID for that row. | None
+
+**API**
+
+- `setCurrentPage(page: Number)` - Explicitly sets the displayed page on the Table. Useful for reacting to data or filter changes that warrant resetting the current page.
+  - **NOTE:** The current page is automatically reset to the first page on every sort state change.
 
 #### Table.Column
 The `Table` component requires child components of type `Table.Column`, which provide configuration for the table header and row cells.
@@ -344,4 +352,4 @@ The `Table` component requires child components of type `Table.Column`, which pr
 
 **Usage Example**
 
-[Source Code](https://github.com/Clever/components/tree/master/docs/TableExample.jsx) ([Live Demo](http://clever.github.io/components/#table))
+[Sample Code](https://github.com/Clever/components/tree/master/docs/TableExample.jsx) ([Live Demo](http://clever.github.io/components/#table))
