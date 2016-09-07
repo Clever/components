@@ -262,6 +262,7 @@
 	          _react2.default.createElement(_src.Select, {
 	            id: "BasicSelect",
 	            label: "Basic Select",
+	            clearable: true,
 	            name: "BasicSelect",
 	            onChange: function onChange(val) {
 	              return _this2.onSelectChange("basicSelect", val);
@@ -39563,10 +39564,6 @@
 	    throw new Error("Small destructive buttons are not supported");
 	  }
 
-	  if (props.href && props.onClick) {
-	    throw new Error("Buttons cannot have both href and onClick options");
-	  }
-
 	  if (props.href && props.submit) {
 	    throw new Error("Buttons with href do not support the submit option");
 	  }
@@ -39587,7 +39584,7 @@
 	  }
 	  return _react2.default.createElement(
 	    "a",
-	    { className: classes, target: props.target, href: props.href, style: props.style },
+	    { className: classes, target: props.target, href: props.href, onClick: props.onClick, style: props.style },
 	    props.value
 	  );
 	}
@@ -40757,6 +40754,8 @@
 	function Select(_ref) {
 	  var id = _ref.id;
 	  var name = _ref.name;
+	  var _ref$clearable = _ref.clearable;
+	  var clearable = _ref$clearable === undefined ? false : _ref$clearable;
 	  var disabled = _ref.disabled;
 	  var label = _ref.label;
 	  var multi = _ref.multi;
@@ -40783,7 +40782,7 @@
 	      { id: id },
 	      _react2.default.createElement(_reactSelect2.default, {
 	        className: cssClass.REACT_SELECT,
-	        clearable: false,
+	        clearable: clearable,
 	        disabled: disabled,
 	        multi: multi,
 	        name: name,
@@ -40822,6 +40821,7 @@
 	Select.propTypes = {
 	  id: _react2.default.PropTypes.string.isRequired,
 	  name: _react2.default.PropTypes.string.isRequired,
+	  clearable: _react2.default.PropTypes.bool,
 	  disabled: _react2.default.PropTypes.bool,
 	  label: _react2.default.PropTypes.string,
 	  multi: _react2.default.PropTypes.bool,
@@ -42753,125 +42753,103 @@
 	  }
 
 	  _createClass(Table, [{
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      this._setInitialData(this.props.data, this.props.initialSortState);
-	    }
-	  }, {
-	    key: "componentWillReceiveProps",
-	    value: function componentWillReceiveProps(_ref) {
-	      var data = _ref.data;
-
-	      this._setInitialData(data, this.state.sortState);
-	    }
-	  }, {
-	    key: "_setInitialData",
-	    value: function _setInitialData(data, sortState) {
-	      if (sortState) {
-	        this._sort(data, sortState);
-	        return;
-	      }
-
-	      this.setState({ sortedData: data });
+	    key: "_getColumn",
+	    value: function _getColumn(columnID) {
+	      return _lodash2.default.find(this.props.children, function (column) {
+	        return column.props.id === columnID;
+	      });
 	    }
 	  }, {
 	    key: "_toggleSort",
-	    value: function _toggleSort(columnIndex) {
-	      var _state = this.state;
-	      var sortedData = _state.sortedData;
-	      var sortState = _state.sortState;
+	    value: function _toggleSort(columnID) {
+	      var _this2 = this;
 
+	      var oldSortState = this.state.sortState || this.props.initialSortState;
 
-	      if (sortState && sortState.columnIndex === columnIndex) {
-	        sortState.direction = sortState.direction === _sortDirection2.default.ASCENDING ? _sortDirection2.default.DESCENDING : _sortDirection2.default.ASCENDING;
-	        this.setState({ sortState: sortState, sortedData: sortedData.reverse() });
-	        this.props.onSortChange(sortState);
-	        return;
-	      }
-
-	      this._sort(this.props.data, {
-	        columnIndex: columnIndex,
+	      var newSortState = {
+	        columnID: columnID,
 	        direction: _sortDirection2.default.ASCENDING
+	      };
+
+	      if (oldSortState && oldSortState.columnID === columnID) {
+	        newSortState.direction = oldSortState.direction === _sortDirection2.default.ASCENDING ? _sortDirection2.default.DESCENDING : _sortDirection2.default.ASCENDING;
+	      }
+
+	      this.setState({ sortState: newSortState }, function () {
+	        return _this2.props.onSortChange(_this2.state.sortState);
 	      });
-	    }
-	  }, {
-	    key: "_sort",
-	    value: function _sort(data, sortState) {
-	      var columns = this.props.children;
-
-	      if (typeof sortState.columnIndex !== "number" && sortState.columnID) {
-	        sortState.columnIndex = _lodash2.default.findIndex(columns, function (column) {
-	          return column.props.id === sortState.columnID;
-	        });
-	      }
-
-	      var sortedColumn = this.props.children[sortState.columnIndex];
-	      if (!sortedColumn || !sortedColumn.props.sortable) {
-	        return;
-	      }
-
-	      var sortedData = (0, _lodash2.default)(data).sortBy(function (row) {
-	        var value = sortedColumn.props.sortValueFn(row);
-
-	        if (typeof value === "string") {
-	          value = value.trim().toLowerCase();
-	        }
-
-	        return value;
-	      });
-
-	      if (sortState.direction === _sortDirection2.default.DESCENDING) {
-	        sortedData = sortedData.reverse();
-	      }
-
-	      sortState.columnID = sortedColumn.props.id;
-	      this.setState({ sortState: sortState, sortedData: sortedData.value() });
-	      this.props.onSortChange(sortState);
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      var _props = this.props;
-	      var children = _props.children;
+	      var columns = _props.children;
 	      var className = _props.className;
+	      var data = _props.data;
 	      var filter = _props.filter;
 	      var fixed = _props.fixed;
+	      var initialSortState = _props.initialSortState;
 	      var rowIDFn = _props.rowIDFn;
-	      var _state2 = this.state;
-	      var sortedData = _state2.sortedData;
-	      var sortState = _state2.sortState;
+	      var _state$sortState = this.state.sortState;
+	      var sortState = _state$sortState === undefined ? initialSortState : _state$sortState;
 	      var cssClass = Table.cssClass;
 
+
+	      var displayedData = (0, _lodash2.default)(data);
+	      if (filter) {
+	        displayedData = displayedData.filter(filter);
+	      }
+	      if (sortState) {
+	        (function () {
+	          var sortedColumn = _this3._getColumn(sortState.columnID);
+	          displayedData = displayedData.sortBy(function (row) {
+	            var value = sortedColumn.props.sortValueFn(row);
+
+	            if (typeof value === "string") {
+	              value = value.trim().toLowerCase();
+	            }
+
+	            return value;
+	          });
+
+	          if (sortState.direction === _sortDirection2.default.DESCENDING) {
+	            displayedData = displayedData.reverse();
+	          }
+	        })();
+	      }
+
+	      displayedData = displayedData.value();
+	      var disableSort = displayedData.length <= 1;
 
 	      return _react2.default.createElement(
 	        "table",
 	        { className: (0, _classnames2.default)(cssClass.TABLE, fixed && cssClass.FIXED, className) },
 	        _react2.default.createElement(
 	          _Header2.default,
-	          { onSortChange: function onSortChange(columnIndex) {
-	              return _this2._toggleSort(columnIndex);
+	          { disableSort: disableSort, onSortChange: function onSortChange(columnID) {
+	              return _this3._toggleSort(columnID);
 	            }, sortState: sortState },
-	          children
+	          columns
 	        ),
 	        _react2.default.createElement(
 	          "tbody",
 	          { className: cssClass.BODY },
-	          (0, _lodash2.default)(sortedData).filter(filter).map(function (rowData) {
+	          displayedData.map(function (rowData) {
 	            return _react2.default.createElement(
 	              "tr",
 	              { className: cssClass.ROW, key: rowIDFn(rowData) },
-	              children.map(function (_ref2, colIndex) {
-	                var col = _ref2.props;
+	              columns.map(function (_ref) {
+	                var col = _ref.props;
 	                return _react2.default.createElement(
 	                  _Cell2.default,
-	                  { className: col.cell.className, key: col.id || colIndex, noWrap: col.noWrap },
+	                  { className: col.cell.className, key: col.id, noWrap: col.noWrap },
 	                  col.cell.renderer(rowData)
 	                );
 	              })
 	            );
-	          }).value()
+	          })
 	        )
 	      )
 	      // TODO(kofi): Add pagination footer or maybe a PagingTable wrapper.
@@ -42936,7 +42914,6 @@
 
 	var sortState = exports.sortState = _react.PropTypes.shape({
 	  columnID: _react.PropTypes.string,
-	  columnIndex: _react.PropTypes.number,
 	  direction: sortDirection
 	});
 
@@ -43079,7 +43056,7 @@
 	    className: _react.PropTypes.string,
 	    renderer: _react.PropTypes.func.isRequired
 	  }),
-	  id: _react.PropTypes.string,
+	  id: _react.PropTypes.string.isRequired,
 	  header: _react.PropTypes.shape({
 	    className: _react.PropTypes.string,
 	    content: _react.PropTypes.node
@@ -43122,6 +43099,7 @@
 
 	function Header(_ref) {
 	  var children = _ref.children;
+	  var disableSort = _ref.disableSort;
 	  var _onSortChange = _ref.onSortChange;
 	  var sortState = _ref.sortState;
 	  var cssClass = Header.cssClass;
@@ -43133,18 +43111,18 @@
 	    _react2.default.createElement(
 	      "tr",
 	      { className: cssClass.ROW },
-	      children.map(function (_ref2, columnIndex) {
+	      children.map(function (_ref2) {
 	        var column = _ref2.props;
 	        return _react2.default.createElement(
 	          _HeaderCell2.default,
 	          {
-	            activeSortDirection: sortState.columnIndex === columnIndex ? sortState.direction : null,
+	            activeSortDirection: sortState.columnID === column.id ? sortState.direction : null,
 	            className: column.header && column.header.className,
-	            key: column.id || columnIndex,
+	            key: column.id,
 	            onSortChange: function onSortChange() {
-	              return _onSortChange(columnIndex);
+	              return _onSortChange(column.id);
 	            },
-	            sortable: column.sortable,
+	            sortable: column.sortable && !disableSort,
 	            width: column.width
 	          },
 	          column.header && column.header.content
@@ -43159,6 +43137,7 @@
 	  children: _react.PropTypes.arrayOf(_react.PropTypes.shape({
 	    type: _react.PropTypes.oneOf([_Column2.default])
 	  })),
+	  disableSort: _react.PropTypes.bool,
 	  onSortChange: _react.PropTypes.func,
 	  sortState: tablePropTypes.sortState
 	};
