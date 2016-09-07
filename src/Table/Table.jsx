@@ -18,54 +18,39 @@ export class Table extends Component {
     this.state = {};
   }
 
-  componentWillMount() {
-    this._setInitialData(this.props.data, this.props.initialSortState);
+  _getColumn(columnID) {
+    return lodash.find(this.props.children, column => column.props.id === columnID);
   }
 
-  componentWillReceiveProps({data}) {
-    this._setInitialData(data, this.state.sortState);
-  }
+  _toggleSort(columnID) {
+    const oldSortState = this.state.sortState || this.props.initialSortState;
 
-  _setInitialData(data, sortState) {
-    if (sortState) {
-      this._sort(data, sortState);
-      return;
-    }
-
-    this.setState({sortedData: data});
-  }
-
-  _toggleSort(columnIndex) {
-    const {sortedData, sortState} = this.state;
-
-    if (sortState && sortState.columnIndex === columnIndex) {
-      sortState.direction =
-        sortState.direction === sortDirection.ASCENDING ? sortDirection.DESCENDING : sortDirection.ASCENDING;
-      this.setState({sortState, sortedData: sortedData.reverse()});
-      this.props.onSortChange(sortState);
-      return;
-    }
-
-    this._sort(this.props.data, {
-      columnIndex,
+    const newSortState = {
+      columnID,
       direction: sortDirection.ASCENDING,
-    });
+    };
+
+    if (oldSortState && oldSortState.columnID === columnID) {
+      newSortState.direction = oldSortState.direction === sortDirection.ASCENDING
+        ? sortDirection.DESCENDING
+        : sortDirection.ASCENDING;
+    }
+
+    this.setState({sortState: newSortState}, () => this.props.onSortChange(this.state.sortState));
   }
 
-  _sort(data, sortState) {
-    const columns = this.props.children;
+  render() {
+    const {children: columns, className, data, filter, fixed, initialSortState, rowIDFn} = this.props;
+    const {sortState = initialSortState} = this.state;
+    const {cssClass} = Table;
 
-    if (typeof sortState.columnIndex !== "number" && sortState.columnID) {
-      sortState.columnIndex = lodash.findIndex(columns, column => column.props.id === sortState.columnID);
+    let displayedData = lodash(data);
+    if (filter) {
+      displayedData = displayedData.filter(filter);
     }
-
-    const sortedColumn = this.props.children[sortState.columnIndex];
-    if (!sortedColumn || !sortedColumn.props.sortable) {
-      return;
-    }
-
-    let sortedData = lodash(data)
-      .sortBy(row => {
+    if (sortState) {
+      const sortedColumn = this._getColumn(sortState.columnID);
+      displayedData = displayedData.sortBy(row => {
         let value = sortedColumn.props.sortValueFn(row);
 
         if (typeof value === "string") {
@@ -75,35 +60,29 @@ export class Table extends Component {
         return value;
       });
 
-    if (sortState.direction === sortDirection.DESCENDING) {
-      sortedData = sortedData.reverse();
+      if (sortState.direction === sortDirection.DESCENDING) {
+        displayedData = displayedData.reverse();
+      }
     }
 
-    sortState.columnID = sortedColumn.props.id;
-    this.setState({sortState, sortedData: sortedData.value()});
-    this.props.onSortChange(sortState);
-  }
-
-  render() {
-    const {children, className, filter, fixed, rowIDFn} = this.props;
-    const {sortedData, sortState} = this.state;
-    const {cssClass} = Table;
+    displayedData = displayedData.value();
+    const disableSort = displayedData.length <= 1;
 
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-        <Header onSortChange={columnIndex => this._toggleSort(columnIndex)} sortState={sortState}>
-          {children}
+        <Header disableSort={disableSort} onSortChange={columnID => this._toggleSort(columnID)} sortState={sortState}>
+          {columns}
         </Header>
         <tbody className={cssClass.BODY}>
-          {lodash(sortedData).filter(filter).map(rowData => (
+          {displayedData.map(rowData => (
             <tr className={cssClass.ROW} key={rowIDFn(rowData)}>
-              {children.map(({props: col}, colIndex) => (
-                <Cell className={col.cell.className} key={col.id || colIndex} noWrap={col.noWrap}>
+              {columns.map(({props: col}) => (
+                <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
                   {col.cell.renderer(rowData)}
                 </Cell>
               ))}
             </tr>
-          )).value()}
+          ))}
         </tbody>
       </table>
       // TODO(kofi): Add pagination footer or maybe a PagingTable wrapper.

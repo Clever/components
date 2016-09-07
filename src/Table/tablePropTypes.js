@@ -9,6 +9,5 @@ export const sortDirection = PropTypes.oneOf([
 
 export const sortState = PropTypes.shape({
   columnID: PropTypes.string,
-  columnIndex: PropTypes.number,
   direction: sortDirection,
 });
