@@ -656,6 +656,7 @@ button.Button--large {
 .segmented_control .segmented_control--selectable-item:active {
   background-color: #fafafc;
   border-color: #4274f6;
+  outline: none;
   position: relative;
   z-index: 1;
 }
