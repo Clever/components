@@ -20,14 +20,15 @@ es5:
 	@echo '✓ Convert ES6 to ES5'
 	@find ./dist -name "*.jsx" | xargs -n1 rm
 	@echo '✓ Remove JSX files'
-	@mkdir dist/css
 
-build: clean es5
+build: clean es5 styles
 
 styles:
 	@echo "Building stylesheet"
 	@[ -d dist ] || mkdir dist
-	@$(LESS) src/less/index.less > dist/style.css docs/css/style.css
+	@[ -d dist/css ] || mkdir dist/css
+	@$(LESS) src/less/index.less > dist/css/style.css
+	@cp dist/css/style.css docs/css/style.css
 
 lint:
 	@echo "Linting files..."
