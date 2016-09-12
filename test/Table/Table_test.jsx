@@ -199,11 +199,16 @@ describe("Table", () => {
     });
   });
 
-  it("renders footer", () => {
+  it("doesn't render footer by default", () => {
     const table = newTable({pageSize: 1, initialPage: 2});
+    assert(table.find(Footer).isEmpty(), "Footer should not be rendererd.");
+  });
+
+  it("renders footer if paginated", () => {
+    const table = newTable({pageSize: 1, initialPage: 2, paginated: true});
     const footer = table.find(Footer);
 
-    // assert.equal(footer.props().currentPage, 2, "Incorrect currrentPage prop value.");
+    assert.equal(footer.props().currentPage, 2, "Incorrect currrentPage prop value.");
     assert.equal(footer.props().numColumns, 2, "Incorrect numColumns prop value.");
     assert.equal(footer.props().numPages, DATA.length, "Incorrect numPages prop value.");
   });
