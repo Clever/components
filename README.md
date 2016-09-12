@@ -328,7 +328,8 @@ Table component supporting sorting, filtering and pagination.
 | initialSortState (optional) | `{columnID: String, direction: Table.sortDirection}` | The initial sort state of the table. | None
 | onPageChange (optional) | Function | Callback function for the displayed page change event. | None
 | onSortChange (optional) | Function | Callback function for the sort state change event. | None
-| pageSize (optional) | Number | The number of data rows to display on each page. Set to the length of the data set to effectively disable pagination. | 10
+| pageSize (optional) | Number | The number of data rows to display on each page. | 10
+| paginated (optional) | Boolean | Whether or not to enable pagination. See `pageSize` | false
 | rowIDFn (required) | Function | Called with data for a single row. Should return the unique ID for that row. | None
 
 **API**

@@ -77,6 +77,7 @@ export default class TableExample extends Component {
             ref="table"
             onPageChange={page => console.log("Table page changed:", page)}
             onSortChange={sortState => console.log("Table sort changed:", sortState)}
+            paginated
             pageSize={9}
             rowIDFn={r => r.id}
           >

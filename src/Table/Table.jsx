@@ -70,6 +70,7 @@ export class Table extends Component {
       fixed,
       initialSortState,
       pageSize,
+      paginated,
       rowIDFn,
     } = this.props;
     const {currentPage, sortState = initialSortState} = this.state;
@@ -116,7 +117,7 @@ export class Table extends Component {
                 NO DATA
               </Cell>
             </tr>
-          ) : pages[displayedPageIndex].map(rowData => (
+            ) : pages[displayedPageIndex].map(rowData => (
             <tr className={cssClass.ROW} key={rowIDFn(rowData)}>
               {columns.map(({props: col}) => (
                 <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
@@ -126,12 +127,14 @@ export class Table extends Component {
             </tr>
           ))}
         </tbody>
-        <Footer
-          currentPage={displayedPage}
-          onPageChange={newPage => this.setCurrentPage(newPage)}
-          numColumns={columns.length}
-          numPages={numPages}
-        />
+        {paginated && (
+          <Footer
+            currentPage={displayedPage}
+            onPageChange={newPage => this.setCurrentPage(newPage)}
+            numColumns={columns.length}
+            numPages={numPages}
+          />
+        )}
       </table>
     );
   }
@@ -150,6 +153,7 @@ Table.propTypes = {
   onPageChange: PropTypes.func,
   onSortChange: PropTypes.func,
   pageSize: PropTypes.number,
+  paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
 };
 

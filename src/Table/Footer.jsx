@@ -12,13 +12,6 @@ require("./Footer.less");
  * Only rendered if there are more than 1 page of data available.
  */
 export default class Footer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-    };
-  }
-
   _selectPage(page) {
     if (page === this.props.currentPage) {
       return;
