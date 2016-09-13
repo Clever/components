@@ -1,8 +1,9 @@
 import classnames from "classnames";
 import React, {PropTypes} from "react";
 
-import {Button} from "../Button/Button";
+import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
+import {Button} from "../Button/Button";
 
 require("./Footer.less");
 
@@ -115,7 +116,7 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange}
 }
 
 Footer.propTypes = {
-  currentPage: PropTypes.number.isRequired,
+  currentPage: tablePropTypes.pageNumber.isRequired,
   onPageChange: PropTypes.func,
   numColumns: PropTypes.number.isRequired,
   numPages: PropTypes.number.isRequired,

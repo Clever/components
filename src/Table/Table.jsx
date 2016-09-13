@@ -144,7 +144,7 @@ Table.propTypes = {
   data: PropTypes.array.isRequired,
   filter: PropTypes.func,
   fixed: PropTypes.bool,
-  initialPage: PropTypes.number,
+  initialPage: tablePropTypes.pageNumber,
   initialSortState: tablePropTypes.sortState,
   onPageChange: PropTypes.func,
   onSortChange: PropTypes.func,

@@ -334,7 +334,7 @@ Table component supporting sorting, filtering and pagination.
 
 **API**
 
-- `setCurrentPage(page: Number)` - Explicitly sets the displayed page on the Table. Useful for reacting to data or filter changes that warrant resetting the current page.
+- `setCurrentPage(page: Number)` - Explicitly sets the displayed page on the Table with the specified 1-based page. Useful for reacting to data or filter changes that warrant resetting the current page.
   - **NOTE:** The current page is automatically reset to the first page on every sort state change.
 
 #### Table.Column
