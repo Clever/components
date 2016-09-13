@@ -209,6 +209,14 @@ class Demo extends React.Component {
         <Button disabled size="regular" value="Disabled" />
         <Button type="link" href="http://clever.com" value="Link" />
         <Button disabled type="link" href="http://clever.com" value="Disabled Link" />
+        <br />
+        <p>
+          Here is a <Button type="linkPlain" href="//google.com" value="plain link" /> with no margin/padding.
+          <br />
+          Better suited for inline links than the
+          regular <Button type="link" href="//google.com" value="link button" />, which doesn't automatically
+          match the text around it.
+        </p>
         <h2>Button-as-Link</h2>
         <Button type="primary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button type="secondary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
