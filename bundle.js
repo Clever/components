@@ -73,7 +73,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable no-console */
 
 
-	__webpack_require__(242);
+	__webpack_require__(245);
 
 	var Demo = function (_React$Component) {
 	  _inherits(Demo, _React$Component);
@@ -326,6 +326,18 @@
 	        _react2.default.createElement(_src.Button, { disabled: true, size: "regular", value: "Disabled" }),
 	        _react2.default.createElement(_src.Button, { type: "link", href: "http://clever.com", value: "Link" }),
 	        _react2.default.createElement(_src.Button, { disabled: true, type: "link", href: "http://clever.com", value: "Disabled Link" }),
+	        _react2.default.createElement("br", null),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Here is a ",
+	          _react2.default.createElement(_src.Button, { type: "linkPlain", href: "//google.com", value: "plain link" }),
+	          " with no margin/padding.",
+	          _react2.default.createElement("br", null),
+	          "Better suited for inline links than the regular ",
+	          _react2.default.createElement(_src.Button, { type: "link", href: "//google.com", value: "link button" }),
+	          ", which doesn't automatically match the text around it."
+	        ),
 	        _react2.default.createElement(
 	          "h2",
 	          null,
@@ -21913,13 +21925,13 @@
 	  _createClass(TableExample, [{
 	    key: "componentWillMount",
 	    value: function componentWillMount() {
-	      this._reload();
+	      this._reload(5000);
 	    }
 	  }, {
 	    key: "_reload",
-	    value: function _reload() {
+	    value: function _reload(numItems) {
 	      var tableData = [];
-	      for (var i = 0; i < 10; i++) {
+	      for (var i = 0; i < numItems; i++) {
 	        tableData.push({
 	          id: i,
 	          name: {
@@ -21958,10 +21970,11 @@
 	          { style: { marginTop: "20px" } },
 	          _react2.default.createElement(_src.Button, {
 	            onClick: function onClick() {
-	              return _this2._reload();
+	              _this2._reload(Math.random() * 5000);
+	              _this2.refs.table.setCurrentPage(1);
 	            },
 	            type: "secondary",
-	            value: "Reload"
+	            value: "Reload random data"
 	          })
 	        ),
 	        _react2.default.createElement(
@@ -21972,7 +21985,8 @@
 	            name: "tableFilter",
 	            placeholder: "Filter by name",
 	            onChange: function onChange(e) {
-	              return _this2.setState({ tableFilter: e.target.value });
+	              _this2.setState({ tableFilter: e.target.value });
+	              _this2.refs.table.setCurrentPage(1);
 	            },
 	            value: this.state.tableFilter
 	          })
@@ -21987,10 +22001,17 @@
 	              filter: function filter(rowData) {
 	                return !_this2.state.tableFilter || _lodash2.default.includes([rowData.name.first, rowData.name.last].join(" "), _this2.state.tableFilter.trim().toLowerCase());
 	              },
+	              initialPage: 24,
 	              initialSortState: { columnID: "name", direction: _src.Table.sortDirection.ASCENDING },
+	              ref: "table",
+	              onPageChange: function onPageChange(page) {
+	                return console.log("Table page changed:", page);
+	              },
 	              onSortChange: function onSortChange(sortState) {
 	                return console.log("Table sort changed:", sortState);
 	              },
+	              paginated: true,
+	              pageSize: 9,
 	              rowIDFn: function rowIDFn(r) {
 	                return r.id;
 	              }
@@ -39597,7 +39618,7 @@
 
 	Button.propTypes = {
 	  className: _react2.default.PropTypes.string,
-	  type: _react2.default.PropTypes.oneOf(["primary", "secondary", "destructive", "link"]),
+	  type: _react2.default.PropTypes.oneOf(["primary", "secondary", "destructive", "link", "linkPlain"]),
 	  size: _react2.default.PropTypes.oneOf(["large", "regular", "small"]),
 	  value: _react2.default.PropTypes.string.isRequired,
 	  href: _react2.default.PropTypes.string,
@@ -39643,7 +39664,7 @@
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(188) + ");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(189) + ");\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(190) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(191) + ");\n  font-weight: 600;\n  font-style: normal;\n}\na.Button,\nbutton.Button {\n  background: #ffffff;\n  border: 0;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n  cursor: pointer;\n  text-decoration: none;\n  font-family: \"Proxima Nova\";\n  font-weight: 600;\n  transition: background-color 0.25s ease-out, border-color 0.25s ease-out, color 0.25s ease-out;\n}\na.Button[disabled],\nbutton.Button[disabled],\na.Button[disabled]:hover,\nbutton.Button[disabled]:hover,\na.Button[disabled]:focus a.Button[disabled]:active,\na.Button[disabled]:focus button.Button[disabled]:active,\nbutton.Button[disabled]:focus a.Button[disabled]:active,\nbutton.Button[disabled]:focus button.Button[disabled]:active {\n  cursor: not-allowed;\n  color: #4B4B59;\n  background-color: #D7D9D9;\n  border: none;\n  border: 1px solid #D7D9D9;\n  border-bottom: 3px solid #A4A6A6;\n}\na.Button[disabled].Button--link,\nbutton.Button[disabled].Button--link,\na.Button[disabled]:hover.Button--link,\nbutton.Button[disabled]:hover.Button--link,\na.Button[disabled]:focus a.Button[disabled]:active.Button--link,\na.Button[disabled]:focus button.Button[disabled]:active.Button--link,\nbutton.Button[disabled]:focus a.Button[disabled]:active.Button--link,\nbutton.Button[disabled]:focus button.Button[disabled]:active.Button--link {\n  background: none;\n  border: none;\n  color: #b5bcca;\n}\na.Button:hover,\nbutton.Button:hover,\na.Button:focus,\nbutton.Button:focus,\na.Button:active,\nbutton.Button:active {\n  outline: 0;\n}\na.Button--primary,\nbutton.Button--primary {\n  background-color: #4274F6;\n  color: #FAFCFC;\n  border: 1px solid #4274F6;\n  border-bottom: 3px solid #345CC4;\n}\na.Button--primary:hover,\nbutton.Button--primary:hover,\na.Button--primary:focus,\nbutton.Button--primary:focus,\na.Button--primary:active,\nbutton.Button--primary:active {\n  background-color: #3B68DD;\n  color: #FAFCFC;\n  border: 1px solid #3B68DD;\n  border-bottom: 3px solid #2E51AC;\n}\na.Button--secondary,\nbutton.Button--secondary {\n  background-color: #FAFCFC;\n  color: #4274F6;\n  border: 1px solid #5481F6;\n  border-bottom: 3px solid #677FF7;\n}\na.Button--secondary:hover,\nbutton.Button--secondary:hover,\na.Button--secondary:focus,\nbutton.Button--secondary:focus,\na.Button--secondary:active,\nbutton.Button--secondary:active {\n  background-color: #FAFCFC;\n  color: #345CC4;\n  border: 1px solid #345CC4;\n  border-bottom: 3px solid #345CC4;\n}\na.Button--destructive,\nbutton.Button--destructive {\n  background-color: #EB3B49;\n  color: #FAFCFC;\n  border: 1px solid #EB3B49;\n  border-bottom: 3px solid #BC2F3A;\n}\na.Button--destructive:hover,\nbutton.Button--destructive:hover,\na.Button--destructive:focus,\nbutton.Button--destructive:focus,\na.Button--destructive:active,\nbutton.Button--destructive:active {\n  background-color: #D33541;\n  color: #FAFCFC;\n  border: 1px solid #D33541;\n  border-bottom: 3px solid #A42933;\n}\na.Button--link,\nbutton.Button--link {\n  background-color: transparent;\n  color: #4274F6;\n}\na.Button--link:hover,\nbutton.Button--link:hover,\na.Button--link:focus,\nbutton.Button--link:focus,\na.Button--link:active,\nbutton.Button--link:active {\n  background-color: transparent;\n  color: #345CC4;\n}\na.Button--small,\nbutton.Button--small {\n  padding: 10px 15px 5px 15px;\n  font-size: 10px;\n}\na.Button--regular,\nbutton.Button--regular {\n  padding: 15px 20px 10px 20px;\n  font-size: 15px;\n}\na.Button--large,\nbutton.Button--large {\n  padding: 20px 25px 15px 25px;\n  font-size: 20px;\n}\n", ""]);
+	exports.push([module.id, "@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(188) + ");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(189) + ");\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(190) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(191) + ");\n  font-weight: 600;\n  font-style: normal;\n}\na.Button,\nbutton.Button {\n  background: #ffffff;\n  border: 0;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n  cursor: pointer;\n  text-decoration: none;\n  font-family: \"Proxima Nova\";\n  font-weight: 600;\n  transition: background-color 0.25s ease-out, border-color 0.25s ease-out, color 0.25s ease-out;\n}\na.Button[disabled],\nbutton.Button[disabled],\na.Button[disabled]:hover,\nbutton.Button[disabled]:hover,\na.Button[disabled]:focus a.Button[disabled]:active,\na.Button[disabled]:focus button.Button[disabled]:active,\nbutton.Button[disabled]:focus a.Button[disabled]:active,\nbutton.Button[disabled]:focus button.Button[disabled]:active {\n  cursor: not-allowed;\n  color: #4B4B59;\n  background-color: #D7D9D9;\n  border: none;\n  border: 1px solid #D7D9D9;\n  border-bottom: 3px solid #A4A6A6;\n}\na.Button[disabled].Button--linkPlain,\nbutton.Button[disabled].Button--linkPlain,\na.Button[disabled]:hover.Button--linkPlain,\nbutton.Button[disabled]:hover.Button--linkPlain,\na.Button[disabled]:focus a.Button[disabled]:active.Button--linkPlain,\na.Button[disabled]:focus button.Button[disabled]:active.Button--linkPlain,\nbutton.Button[disabled]:focus a.Button[disabled]:active.Button--linkPlain,\nbutton.Button[disabled]:focus button.Button[disabled]:active.Button--linkPlain,\na.Button[disabled].Button--link,\nbutton.Button[disabled].Button--link,\na.Button[disabled]:hover.Button--link,\nbutton.Button[disabled]:hover.Button--link,\na.Button[disabled]:focus a.Button[disabled]:active.Button--link,\na.Button[disabled]:focus button.Button[disabled]:active.Button--link,\nbutton.Button[disabled]:focus a.Button[disabled]:active.Button--link,\nbutton.Button[disabled]:focus button.Button[disabled]:active.Button--link {\n  background: none;\n  border: none;\n  color: #b5bcca;\n}\na.Button:hover,\nbutton.Button:hover,\na.Button:focus,\nbutton.Button:focus,\na.Button:active,\nbutton.Button:active {\n  outline: 0;\n}\na.Button--primary,\nbutton.Button--primary {\n  background-color: #4274F6;\n  color: #FAFCFC;\n  border: 1px solid #4274F6;\n  border-bottom: 3px solid #345CC4;\n}\na.Button--primary:hover,\nbutton.Button--primary:hover,\na.Button--primary:focus,\nbutton.Button--primary:focus,\na.Button--primary:active,\nbutton.Button--primary:active {\n  background-color: #3B68DD;\n  color: #FAFCFC;\n  border: 1px solid #3B68DD;\n  border-bottom: 3px solid #2E51AC;\n}\na.Button--secondary,\nbutton.Button--secondary {\n  background-color: #FAFCFC;\n  color: #4274F6;\n  border: 1px solid #5481F6;\n  border-bottom: 3px solid #677FF7;\n}\na.Button--secondary:hover,\nbutton.Button--secondary:hover,\na.Button--secondary:focus,\nbutton.Button--secondary:focus,\na.Button--secondary:active,\nbutton.Button--secondary:active {\n  background-color: #FAFCFC;\n  color: #345CC4;\n  border: 1px solid #345CC4;\n  border-bottom: 3px solid #345CC4;\n}\na.Button--destructive,\nbutton.Button--destructive {\n  background-color: #EB3B49;\n  color: #FAFCFC;\n  border: 1px solid #EB3B49;\n  border-bottom: 3px solid #BC2F3A;\n}\na.Button--destructive:hover,\nbutton.Button--destructive:hover,\na.Button--destructive:focus,\nbutton.Button--destructive:focus,\na.Button--destructive:active,\nbutton.Button--destructive:active {\n  background-color: #D33541;\n  color: #FAFCFC;\n  border: 1px solid #D33541;\n  border-bottom: 3px solid #A42933;\n}\na.Button--linkPlain,\nbutton.Button--linkPlain,\na.Button--link,\nbutton.Button--link {\n  background-color: transparent;\n  color: #4274F6;\n}\na.Button--linkPlain:hover,\nbutton.Button--linkPlain:hover,\na.Button--link:hover,\nbutton.Button--link:hover,\na.Button--linkPlain:focus,\nbutton.Button--linkPlain:focus,\na.Button--link:focus,\nbutton.Button--link:focus,\na.Button--linkPlain:active,\nbutton.Button--linkPlain:active,\na.Button--link:active,\nbutton.Button--link:active {\n  background-color: transparent;\n  color: #345CC4;\n}\na.Button--small,\nbutton.Button--small {\n  padding: 10px 15px 5px 15px;\n  font-size: 10px;\n}\na.Button--regular,\nbutton.Button--regular {\n  padding: 15px 20px 10px 20px;\n  font-size: 15px;\n}\na.Button--large,\nbutton.Button--large {\n  padding: 20px 25px 15px 25px;\n  font-size: 20px;\n}\na.Button--linkPlain,\nbutton.Button--linkPlain {\n  font-size: 1em;\n  margin: 0;\n  padding: 0;\n}\n", ""]);
 
 	// exports
 
@@ -42720,7 +42741,11 @@
 
 	var _Column2 = _interopRequireDefault(_Column);
 
-	var _Header = __webpack_require__(235);
+	var _Footer = __webpack_require__(235);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	var _Header = __webpack_require__(238);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
@@ -42738,7 +42763,9 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(240);
+	__webpack_require__(243);
+
+	var DEFAULT_PAGE_SIZE = 10;
 
 	var Table = exports.Table = function (_Component) {
 	  _inherits(Table, _Component);
@@ -42748,11 +42775,31 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Table).call(this, props));
 
-	    _this.state = {};
+	    _this.state = {
+	      currentPage: props.initialPage || 1
+	    };
 	    return _this;
 	  }
 
+	  /**
+	   * @param {number} page - 1-based index of the page to select.
+	   */
+
+
 	  _createClass(Table, [{
+	    key: "setCurrentPage",
+	    value: function setCurrentPage(page) {
+	      var _this2 = this;
+
+	      if (page === this.state.currentPage) {
+	        return;
+	      }
+
+	      this.setState({ currentPage: page }, function () {
+	        return _this2.props.onPageChange(page);
+	      });
+	    }
+	  }, {
 	    key: "_getColumn",
 	    value: function _getColumn(columnID) {
 	      return _lodash2.default.find(this.props.children, function (column) {
@@ -42762,7 +42809,7 @@
 	  }, {
 	    key: "_toggleSort",
 	    value: function _toggleSort(columnID) {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      var oldSortState = this.state.sortState || this.props.initialSortState;
 
@@ -42776,13 +42823,15 @@
 	      }
 
 	      this.setState({ sortState: newSortState }, function () {
-	        return _this2.props.onSortChange(_this2.state.sortState);
+	        return _this3.props.onSortChange(_this3.state.sortState);
 	      });
+	      // Reset to 1st page since table sort has changed.
+	      this.setCurrentPage(1);
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var _props = this.props;
 	      var columns = _props.children;
@@ -42791,8 +42840,12 @@
 	      var filter = _props.filter;
 	      var fixed = _props.fixed;
 	      var initialSortState = _props.initialSortState;
+	      var pageSize = _props.pageSize;
+	      var paginated = _props.paginated;
 	      var rowIDFn = _props.rowIDFn;
-	      var _state$sortState = this.state.sortState;
+	      var _state = this.state;
+	      var currentPage = _state.currentPage;
+	      var _state$sortState = _state.sortState;
 	      var sortState = _state$sortState === undefined ? initialSortState : _state$sortState;
 	      var cssClass = Table.cssClass;
 
@@ -42803,7 +42856,7 @@
 	      }
 	      if (sortState) {
 	        (function () {
-	          var sortedColumn = _this3._getColumn(sortState.columnID);
+	          var sortedColumn = _this4._getColumn(sortState.columnID);
 	          displayedData = displayedData.sortBy(function (row) {
 	            var value = sortedColumn.props.sortValueFn(row);
 
@@ -42823,20 +42876,33 @@
 	      displayedData = displayedData.value();
 	      var disableSort = displayedData.length <= 1;
 
+	      var pages = _lodash2.default.chunk(displayedData, pageSize);
+	      var numPages = pages.length;
+	      var displayedPage = Math.min(currentPage, numPages);
+	      var displayedPageIndex = displayedPage - 1;
+
 	      return _react2.default.createElement(
 	        "table",
 	        { className: (0, _classnames2.default)(cssClass.TABLE, fixed && cssClass.FIXED, className) },
 	        _react2.default.createElement(
 	          _Header2.default,
 	          { disableSort: disableSort, onSortChange: function onSortChange(columnID) {
-	              return _this3._toggleSort(columnID);
+	              return _this4._toggleSort(columnID);
 	            }, sortState: sortState },
 	          columns
 	        ),
 	        _react2.default.createElement(
 	          "tbody",
 	          { className: cssClass.BODY },
-	          displayedData.map(function (rowData) {
+	          displayedData.length === 0 ? _react2.default.createElement(
+	            "tr",
+	            { className: cssClass.ROW },
+	            _react2.default.createElement(
+	              _Cell2.default,
+	              { className: cssClass.NO_DATA, colSpan: columns.length, noWrap: true },
+	              "NO DATA"
+	            )
+	          ) : pages[displayedPageIndex].map(function (rowData) {
 	            return _react2.default.createElement(
 	              "tr",
 	              { className: cssClass.ROW, key: rowIDFn(rowData) },
@@ -42850,10 +42916,16 @@
 	              })
 	            );
 	          })
-	        )
-	      )
-	      // TODO(kofi): Add pagination footer or maybe a PagingTable wrapper.
-	      ;
+	        ),
+	        paginated && _react2.default.createElement(_Footer2.default, {
+	          currentPage: displayedPage,
+	          onPageChange: function onPageChange(newPage) {
+	            return _this4.setCurrentPage(newPage);
+	          },
+	          numColumns: columns.length,
+	          numPages: numPages
+	        })
+	      );
 	    }
 	  }]);
 
@@ -42868,8 +42940,12 @@
 	  data: _react.PropTypes.array.isRequired,
 	  filter: _react.PropTypes.func,
 	  fixed: _react.PropTypes.bool,
+	  initialPage: tablePropTypes.pageNumber,
 	  initialSortState: tablePropTypes.sortState,
+	  onPageChange: _react.PropTypes.func,
 	  onSortChange: _react.PropTypes.func,
+	  pageSize: _react.PropTypes.number,
+	  paginated: _react.PropTypes.bool,
 	  rowIDFn: _react.PropTypes.func.isRequired
 	};
 
@@ -42877,12 +42953,15 @@
 	  filter: function filter() {
 	    return true;
 	  },
-	  onSortChange: function onSortChange() {}
+	  onPageChange: function onPageChange() {},
+	  onSortChange: function onSortChange() {},
+	  pageSize: DEFAULT_PAGE_SIZE
 	};
 
 	Table.cssClass = {
 	  BODY: "Table--body",
 	  FIXED: "Table--fixed",
+	  NO_DATA: "Table--no_data_cell",
 	  ROW: "Table--row",
 	  TABLE: "Table"
 	};
@@ -42900,7 +42979,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.sortState = exports.sortDirection = undefined;
+	exports.pageNumber = exports.sortState = exports.sortDirection = undefined;
 
 	var _react = __webpack_require__(3);
 
@@ -42916,6 +42995,29 @@
 	  columnID: _react.PropTypes.string,
 	  direction: sortDirection
 	});
+
+	var pageNumber = exports.pageNumber = function pageNumber(props, propName, componentName) {
+	  var value = props[propName];
+
+	  if (value === null || value === undefined) {
+	    return null;
+	  }
+
+	  if (typeof value !== "number" || value < 1) {
+	    return new Error("Invalid prop `" + propName + "` supplied to " + componentName + ". Must be a 1-based page index.");
+	  }
+
+	  return null;
+	};
+
+	pageNumber.isRequired = function (props, propName, componentName) {
+	  var value = props[propName];
+	  if (value === null || value === undefined) {
+	    return new Error("Missing required prop `" + propName + "` in " + componentName + ".");
+	  }
+
+	  return pageNumber(props, propName, componentName);
+	};
 
 /***/ },
 /* 230 */
@@ -43075,6 +43177,223 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default =
+
+	/**
+	 * Pagination footer for the Table component.
+	 * Only rendered if there are at least 2 pages of data available.
+	 */
+	Footer;
+
+	var _classnames = __webpack_require__(218);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _tablePropTypes = __webpack_require__(229);
+
+	var tablePropTypes = _interopRequireWildcard(_tablePropTypes);
+
+	var _Cell = __webpack_require__(231);
+
+	var _Cell2 = _interopRequireDefault(_Cell);
+
+	var _Button = __webpack_require__(194);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	__webpack_require__(236);function Footer(_ref) {
+	  var currentPage = _ref.currentPage;
+	  var numColumns = _ref.numColumns;
+	  var numPages = _ref.numPages;
+	  var onPageChange = _ref.onPageChange;
+	  var cssClass = Footer.cssClass;
+	  var VISIBLE_PAGE_RANGE_SIZE = Footer.VISIBLE_PAGE_RANGE_SIZE;
+
+
+	  var renderEllipsis = function renderEllipsis() {
+	    return _react2.default.createElement(
+	      "span",
+	      { className: cssClass.ELLIPSIS },
+	      "…"
+	    );
+	  };
+
+	  var selectPage = function selectPage(page) {
+	    if (page === currentPage) {
+	      return;
+	    }
+
+	    onPageChange(page);
+	  };
+
+	  if (numPages < 2) {
+	    return null;
+	  }
+
+	  // Find the widest possible number range <= `VISIBLE_PAGE_RANGE_SIZE`.
+	  var pageNumberPadding = (VISIBLE_PAGE_RANGE_SIZE - 1) / 2;
+	  var pageNumStart = void 0;
+	  if (currentPage + pageNumberPadding >= numPages) {
+	    pageNumStart = Math.max(numPages - (VISIBLE_PAGE_RANGE_SIZE - 1), 1);
+	  } else {
+	    pageNumStart = Math.max(currentPage - pageNumberPadding, 1);
+	  }
+	  var pageNumEnd = Math.min(pageNumStart + (VISIBLE_PAGE_RANGE_SIZE - 1), numPages);
+
+	  var visibleRange = [];
+	  for (var i = pageNumStart; i <= pageNumEnd; i++) {
+	    visibleRange.push(i);
+	  }
+
+	  return _react2.default.createElement(
+	    "tfoot",
+	    { className: cssClass.CONTAINER },
+	    _react2.default.createElement(
+	      "tr",
+	      { className: cssClass.ROW },
+	      _react2.default.createElement(
+	        _Cell2.default,
+	        {
+	          className: cssClass.CELL,
+	          colSpan: numColumns
+	        },
+	        _react2.default.createElement(_Button.Button, {
+	          className: cssClass.BUTTON_SCROLL,
+	          disabled: currentPage === 1,
+	          onClick: function onClick() {
+	            return selectPage(currentPage - 1);
+	          },
+	          type: "linkPlain",
+	          value: "Prev"
+	        }),
+	        _react2.default.createElement(
+	          "div",
+	          { className: cssClass.PAGE_NUMBERS },
+	          visibleRange[0] > 1 && _react2.default.createElement(_Button.Button, {
+	            className: cssClass.BUTTON_PAGE,
+	            key: 1,
+	            onClick: function onClick() {
+	              return selectPage(1);
+	            },
+	            type: "linkPlain",
+	            value: "1"
+	          }),
+	          visibleRange[0] > 2 && renderEllipsis(),
+	          visibleRange.map(function (pageNumber) {
+	            return _react2.default.createElement(_Button.Button, {
+	              className: (0, _classnames2.default)(cssClass.BUTTON_PAGE, pageNumber === currentPage && cssClass.BUTTON_PAGE_SELECTED),
+	              key: pageNumber,
+	              onClick: function onClick() {
+	                return selectPage(pageNumber);
+	              },
+	              type: "linkPlain",
+	              value: "" + pageNumber
+	            });
+	          }),
+	          visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 && renderEllipsis(),
+	          visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages && _react2.default.createElement(_Button.Button, {
+	            className: cssClass.BUTTON_PAGE,
+	            key: numPages,
+	            onClick: function onClick() {
+	              return selectPage(numPages);
+	            },
+	            type: "linkPlain",
+	            value: "" + numPages
+	          })
+	        ),
+	        _react2.default.createElement(_Button.Button, {
+	          className: cssClass.BUTTON_SCROLL,
+	          disabled: currentPage === numPages,
+	          onClick: function onClick() {
+	            return selectPage(currentPage + 1, numPages);
+	          },
+	          type: "linkPlain",
+	          value: "Next"
+	        })
+	      )
+	    )
+	  );
+	}
+
+	Footer.propTypes = {
+	  currentPage: tablePropTypes.pageNumber.isRequired,
+	  onPageChange: _react.PropTypes.func,
+	  numColumns: _react.PropTypes.number.isRequired,
+	  numPages: _react.PropTypes.number.isRequired
+	};
+
+	Footer.defaultProps = {
+	  onPageChange: function onPageChange() {}
+	};
+
+	Footer.cssClass = {
+	  BUTTON_PAGE: "Table--footer--button--page",
+	  BUTTON_PAGE_SELECTED: "Table--footer--button--page--selected",
+	  BUTTON_SCROLL: "Table--footer--button--scroll",
+	  CELL: "Table--footer--cell",
+	  CONTAINER: "Table--footer",
+	  ELLIPSIS: "Table--footer--ellipsis",
+	  PAGE_NUMBERS: "Table--footer--page_numbers",
+	  ROW: "Table--footer--row"
+	};
+
+	Footer.VISIBLE_PAGE_RANGE_SIZE = 5;
+
+/***/ },
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(237);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(193)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./Footer.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./Footer.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(187)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".Table--footer {\n  background-color: #e3e6eb;\n}\n.Table--footer--cell {\n  font-size: 0.75rem;\n  padding: 0.75rem;\n  text-align: center;\n}\n.Button.Table--footer--button--scroll {\n  margin: 0;\n}\n.Button.Table--footer--button--scroll:not(:last-child) {\n  margin-right: 40px;\n}\n.Button.Table--footer--button--scroll:not(:first-child) {\n  margin-left: 40px;\n}\n.Button.Table--footer--button--page {\n  margin: 0 5px;\n}\n.Button.Table--footer--button--page.Button.Table--footer--button--page--selected {\n  color: #191926;\n}\n.Table--footer--page_numbers {\n  display: inline-block;\n}\n.Table--footer--ellipsis {\n  color: #4274f6;\n  cursor: default;\n  font-size: 1rem;\n  margin: 0 5px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.default = undefined;
 
 	var _react = __webpack_require__(3);
@@ -43089,7 +43408,7 @@
 
 	var _Column2 = _interopRequireDefault(_Column);
 
-	var _HeaderCell = __webpack_require__(236);
+	var _HeaderCell = __webpack_require__(239);
 
 	var _HeaderCell2 = _interopRequireDefault(_HeaderCell);
 
@@ -43153,7 +43472,7 @@
 	};
 
 /***/ },
-/* 236 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43179,7 +43498,7 @@
 
 	var _Cell2 = _interopRequireDefault(_Cell);
 
-	var _SortIcons = __webpack_require__(237);
+	var _SortIcons = __webpack_require__(240);
 
 	var _SortIcons2 = _interopRequireDefault(_SortIcons);
 
@@ -43187,7 +43506,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(238);
+	__webpack_require__(241);
 
 	function HeaderCell(_ref) {
 	  var children = _ref.children;
@@ -43236,7 +43555,7 @@
 	};
 
 /***/ },
-/* 237 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43314,13 +43633,13 @@
 	};
 
 /***/ },
-/* 238 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(239);
+	var content = __webpack_require__(242);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(193)(content, {});
@@ -43340,7 +43659,7 @@
 	}
 
 /***/ },
-/* 239 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(187)();
@@ -43354,13 +43673,13 @@
 
 
 /***/ },
-/* 240 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(241);
+	var content = __webpack_require__(244);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(193)(content, {});
@@ -43380,7 +43699,7 @@
 	}
 
 /***/ },
-/* 241 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(187)();
@@ -43388,19 +43707,19 @@
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(188) + ");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(189) + ");\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(190) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(191) + ");\n  font-weight: 600;\n  font-style: normal;\n}\n.Table {\n  border: 1px solid #e3e6eb;\n  border-collapse: collapse;\n  color: #191926;\n  font-family: \"Proxima Nova\";\n  font-size: 0.875rem;\n  height: 100%;\n  width: 100%;\n}\n.Table.Table--fixed {\n  table-layout: fixed;\n}\n.Table--body .Table--row:nth-child(even) {\n  background-color: #fafafc;\n}\n", ""]);
+	exports.push([module.id, "@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(188) + ");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(189) + ");\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(190) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(191) + ");\n  font-weight: 600;\n  font-style: normal;\n}\n.Table {\n  border: 1px solid #e3e6eb;\n  border-collapse: collapse;\n  color: #191926;\n  font-family: \"Proxima Nova\";\n  font-size: 0.875rem;\n  height: 100%;\n  width: 100%;\n}\n.Table.Table--fixed {\n  table-layout: fixed;\n}\n.Table--no_data_cell {\n  color: #b5bcca;\n  font-size: 1rem;\n  text-align: center;\n}\n.Table--body .Table--row:nth-child(even) {\n  background-color: #fafafc;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 242 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(243);
+	var content = __webpack_require__(246);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(193)(content, {});
@@ -43420,7 +43739,7 @@
 	}
 
 /***/ },
-/* 243 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(187)();
