@@ -9,3 +9,5 @@ git add docs/
 git commit
 
 git subtree push --prefix docs origin gh-pages
+
+git push origin master
