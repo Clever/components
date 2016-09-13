@@ -34,10 +34,6 @@ export class Table extends Component {
     this.setState({currentPage: page}, () => this.props.onPageChange(page));
   }
 
-  resetPage() {
-    this.setCurrentPage(1);
-  }
-
   _getColumn(columnID) {
     return lodash.find(this.props.children, column => column.props.id === columnID);
   }

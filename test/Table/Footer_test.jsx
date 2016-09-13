@@ -37,14 +37,14 @@ describe("Footer", () => {
       const scrollButtons = newFooter({currentPage: 1, numPages: 2}).find(`.${cssClass.BUTTON_SCROLL}`);
 
       assert(scrollButtons.at(0).props().disabled, "Left scroll button should be disabled.");
-      assert(!scrollButtons.at(1).props().disabled, "Left scroll button should not be disabled.");
+      assert(!scrollButtons.at(1).props().disabled, "Right scroll button should not be disabled.");
     });
 
-    it("disables 'Next' button when on first page", () => {
+    it("disables 'Next' button when on last page", () => {
       const scrollButtons = newFooter({currentPage: 2, numPages: 2}).find(`.${cssClass.BUTTON_SCROLL}`);
 
       assert(!scrollButtons.at(0).props().disabled, "Left scroll button should not be disabled.");
-      assert(scrollButtons.at(1).props().disabled, "Left scroll button should be disabled.");
+      assert(scrollButtons.at(1).props().disabled, "Right scroll button should be disabled.");
     });
 
     it("increments current page on 'Next' button click", () => {

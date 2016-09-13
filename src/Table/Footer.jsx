@@ -9,7 +9,7 @@ require("./Footer.less");
 
 /**
  * Pagination footer for the Table component.
- * Only rendered if there are more than 1 page of data available.
+ * Only rendered if there are at least 2 pages of data available.
  */
 export default function Footer({currentPage, numColumns, numPages, onPageChange}) {
   const {cssClass, VISIBLE_PAGE_RANGE_SIZE} = Footer;
@@ -58,6 +58,7 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange}
             value="Prev"
           />
           <div className={cssClass.PAGE_NUMBERS}>
+            {/* Make sure the first page is always visible. */}
             {visibleRange[0] > 1 && (
               <Button
                 className={cssClass.BUTTON_PAGE}
@@ -67,6 +68,10 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange}
                 value="1"
               />
             )}
+            {/*
+              * Show ellipsis if there's at least one omitted page number between 1 and the start of
+              * the visible rnage.
+              */}
             {visibleRange[0] > 2 && renderEllipsis()}
             {visibleRange.map(pageNumber => (
               <Button
@@ -80,7 +85,12 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange}
                 value={`${pageNumber}`}
               />
             ))}
+            {/*
+              * Show ellipsis if there's at least one omitted page number between the end of the
+              * visible range and the last page number.
+              */}
             {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 && renderEllipsis()}
+            {/* Make sure the last page is always visible. */}
             {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages && (
               <Button
                 className={cssClass.BUTTON_PAGE}

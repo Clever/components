@@ -324,9 +324,9 @@ Table component supporting sorting, filtering and pagination.
 | data (required) | Array | The array of data items, each corresponding to a single potential table row | None
 | filter (optional) | Function | Called with data for a single row. Should return `false` if the row should be filtered out, or `true` otherwise. | None
 | fixed (optional) | Boolean | Whether or not table column widths should be fixed (vs fluid). | False
-| initialPage (optional) | Number | The initial page to be displayed initially. | None
+| initialPage (optional) | Number | The 1-based index of the initial page to be displayed initially. | None
 | initialSortState (optional) | `{columnID: String, direction: Table.sortDirection}` | The initial sort state of the table. | None
-| onPageChange (optional) | Function | Callback function for the displayed page change event. | None
+| onPageChange (optional) | Function | Callback function for the 1-based index displayed page change event. | None
 | onSortChange (optional) | Function | Callback function for the sort state change event. | None
 | pageSize (optional) | Number | The number of data rows to display on each page. | 10
 | paginated (optional) | Boolean | Whether or not to enable pagination. See `pageSize` | false
