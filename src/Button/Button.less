@@ -25,6 +25,7 @@ a, button {
       border: 1px solid #D7D9D9;
       border-bottom: 3px solid #A4A6A6;
 
+      &.Button--linkPlain,
       &.Button--link {
         background: none;
         border: none;
@@ -87,6 +88,7 @@ a, button {
     }
   }
 
+  &.Button--linkPlain,
   &.Button--link {
     background-color: transparent;
     color: #4274F6;
@@ -114,4 +116,9 @@ a, button {
     font-size: 20px;
   }
 
+  &.Button--linkPlain {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+  }
 }

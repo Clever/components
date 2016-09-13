@@ -15,12 +15,12 @@ export default class TableExample extends Component {
   }
 
   componentWillMount() {
-    this._reload();
+    this._reload(5000);
   }
 
-  _reload() {
+  _reload(numItems) {
     const tableData = [];
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < numItems; i++) {
       tableData.push({
         id: i,
         name: {
@@ -45,9 +45,12 @@ export default class TableExample extends Component {
         </a>
         <div style={{marginTop: "20px"}}>
           <Button
-            onClick={() => this._reload()}
+            onClick={() => {
+              this._reload(Math.random() * 5000);
+              this.refs.table.setCurrentPage(1);
+            }}
             type="secondary"
-            value="Reload"
+            value="Reload random data"
           />
         </div>
         <div style={{width: "300px", marginTop: "20px"}}>
@@ -55,7 +58,10 @@ export default class TableExample extends Component {
             label="Filter by name"
             name="tableFilter"
             placeholder="Filter by name"
-            onChange={e => this.setState({tableFilter: e.target.value})}
+            onChange={e => {
+              this.setState({tableFilter: e.target.value});
+              this.refs.table.setCurrentPage(1);
+            }}
             value={this.state.tableFilter}
           />
         </div>
@@ -66,8 +72,13 @@ export default class TableExample extends Component {
               [rowData.name.first, rowData.name.last].join(" "),
               this.state.tableFilter.trim().toLowerCase()
             )}
+            initialPage={24}
             initialSortState={{columnID: "name", direction: Table.sortDirection.ASCENDING}}
+            ref="table"
+            onPageChange={page => console.log("Table page changed:", page)}
             onSortChange={sortState => console.log("Table sort changed:", sortState)}
+            paginated
+            pageSize={9}
             rowIDFn={r => r.id}
           >
             <Table.Column
