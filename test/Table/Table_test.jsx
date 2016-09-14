@@ -186,8 +186,8 @@ describe("Table", () => {
       }, "Sort state not preserved after prop change.");
     });
 
-    it("shows only data from the selected page", () => {
-      const table = newTable({pageSize: 1, initialPage: 2});
+    it("shows only data from the selected page if paginated", () => {
+      const table = newTable({pageSize: 1, initialPage: 2, paginated: true});
 
       const expectedItem = DATA[1];
       const rows = table.find(`.${cssClass.ROW}`);
@@ -199,8 +199,17 @@ describe("Table", () => {
     });
   });
 
-  it("doesn't render footer by default", () => {
+  it("doesn't paginate by default", () => {
     const table = newTable({pageSize: 1, initialPage: 2});
+
+    const rows = table.find(`.${cssClass.ROW}`);
+    assert.equal(rows.length, DATA.length, "Incorrect number of rows on page.");
+    DATA.forEach((item, i) => {
+      assert(
+        rows.at(i).contains(item.name),
+        `Expected\n${rows.debug()}\nto contain "${item.name}"`
+      );
+    });
     assert(table.find(Footer).isEmpty(), "Footer should not be rendererd.");
   });
 
