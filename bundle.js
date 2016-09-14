@@ -42876,7 +42876,10 @@
 	      displayedData = displayedData.value();
 	      var disableSort = displayedData.length <= 1;
 
-	      var pages = _lodash2.default.chunk(displayedData, pageSize);
+	      var pages = [displayedData];
+	      if (paginated) {
+	        pages = _lodash2.default.chunk(displayedData, pageSize);
+	      }
 	      var numPages = pages.length;
 	      var displayedPage = Math.min(currentPage, numPages);
 	      var displayedPageIndex = displayedPage - 1;
