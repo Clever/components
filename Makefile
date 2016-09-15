@@ -6,6 +6,7 @@ MOCHA := node_modules/mocha/bin/mocha
 MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-styles --require jsdom-global/register
 BABEL := node_modules/babel-cli/bin/babel.js
 LESS := node_modules/less/bin/lessc
+VERSION := $(shell node -e "console.log(require('./package.json').version);")
 
 .PHONY: dev-server test lint clean es5 build new $(TESTS) styles
 
@@ -27,8 +28,7 @@ styles:
 	@echo "Building stylesheet"
 	@mkdir -p dist
 	@mkdir -p dist/css
-	@$(LESS) src/less/index.less > dist/css/style.css
-	@cp dist/css/style.css docs/css/style.css
+	@$(LESS) src/less/index.less > "dist/css/style_$(VERSION).css"
 
 lint:
 	@echo "Linting files..."
