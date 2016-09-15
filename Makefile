@@ -25,8 +25,8 @@ build: clean es5 styles
 
 styles:
 	@echo "Building stylesheet"
-	@[ -d dist ] || mkdir dist
-	@[ -d dist/css ] || mkdir dist/css
+	@mkdir -p dist
+	@mkdir -p dist/css
 	@$(LESS) src/less/index.less > dist/css/style.css
 	@cp dist/css/style.css docs/css/style.css
 
