@@ -26,6 +26,7 @@ build: clean es5 styles
 styles:
 	@echo "Building stylesheet"
 	@$(WEBPACK) --config webpack_styles.config.js
+	@cp dist/css/style* dist/css/style.css
 
 lint:
 	@echo "Linting files..."
