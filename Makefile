@@ -5,8 +5,9 @@ LINT := ./node_modules/.bin/eslint
 MOCHA := node_modules/mocha/bin/mocha
 MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-styles --require jsdom-global/register
 BABEL := node_modules/babel-cli/bin/babel.js
+WEBPACK := node_modules/webpack/bin/webpack.js
 
-.PHONY: dev-server test lint clean es5 build new $(TESTS)
+.PHONY: dev-server test lint clean es5 build new $(TESTS) styles
 
 clean:
 	@echo '✓ Clean out dist directory'
@@ -19,9 +20,13 @@ es5:
 	@echo '✓ Convert ES6 to ES5'
 	@find ./dist -name "*.jsx" | xargs -n1 rm
 	@echo '✓ Remove JSX files'
-	@mkdir dist/css
 
-build: clean es5
+build: clean es5 styles
+
+styles:
+	@echo "Building stylesheet"
+	@$(WEBPACK) --config webpack_styles.config.js
+	@cp dist/css/style* dist/css/style.css
 
 lint:
 	@echo "Linting files..."
