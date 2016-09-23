@@ -1,8 +1,3 @@
-// Colors from clever/design-system.
-// TODO(kofi): Been replicating these in the dashboards. Would be nice to expose them in a common
-// place once they're a little more fleshed out.
-
-
 // Primary colors:
 @primary_blue: #4274f6;
 
@@ -15,11 +10,17 @@
 @neutral_white: #fff;
 
 // Alert colors:
-@green: #01D59A;
-@orange: #FCA53A;
-@red: #EB3B49;
+@alert_green: #01D59A;
+@alert_orange: #FCA53A;
+@alert_red: #EB3B49;
 
 // Secondary colors:
-@aqua: #33F7F1;
-@pink: #E838BF;
-@purple: #7E1DFF;
+@accent_aqua: #33F7F1;
+@accent_pink: #E838BF;
+@accent_purple: #7E1DFF;
+
+
+@shadeStepAmount: 15%;
+.shade(@property, @color, @steps: 1) {
+  @{property}: shade(@color, @shadeStepAmount * @steps);
+}
