@@ -354,3 +354,37 @@ The `Table` component requires child components of type `Table.Column`, which pr
 **Usage Example**
 
 [Sample Code](https://github.com/Clever/components/tree/master/docs/TableExample.jsx) ([Live Demo](http://clever.github.io/components/#table))
+
+### Grid
+
+12-column grid component for consistent, simple and flexible layouts.
+
+**`<Grid />` Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| children (optional) | Array<Grid.Row> | The rows to render in the grid. | None
+| className (optional) | String | Additional classname to apply to the grid. | None
+| wrapperComponent (optional) | Any | The tagname or component class for the wrapper component to render for the grid | "div"
+
+**`<Grid.Row />` Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| children (optional) | Array<Grid.Col> | The columns to render in the row. | None
+| className (optional) | String | Additional classname to apply to the row. | None
+| grow (optional) | Boolean | Fluidly grows the row to fill any available vertical space. The parent Grid should have an explicit height set for this to work. | False
+| wrapperComponent (optional) | Any | The tagname or component class for the wrapper component to render for the row | "div"
+
+**`<Grid.Col />` Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| children (optional) | React Node | The content to render in the column. | None
+| className (optional) | String | Additional classname to apply to the column. | None
+| span (optional) | Number or Map<Grid.Size, Number> | The number of columns (1-12) that this column spans. Can optionally as a map of viewport size to column span in order to dynamically update the grid based on the user's viewport width. | 1
+| wrapperComponent (optional) | Any | The tagname or component class for the wrapper component to render for the column | "div"
+
+**Usage Examples**
+
+[Sample Code](https://github.com/Clever/components/tree/master/docs/GridExample.jsx) ([Live Demo](http://clever.github.io/components/#grid))
