@@ -1,13 +1,15 @@
 // Type Sizes from clever/design-system.
+@import (reference) "./sizing.less";
+
 
 // Type Size Variables
 @type_tiny: .625rem;
-@type_small: .75rem;
-@type_medium: 1rem;
-@type_large: 1.5rem;
-@type_huge: 2rem;
-@type_gargantuan: 2.5rem;
-@type_colossal: 4rem;
+@type_small: @size_s;
+@type_medium: @size_m;
+@type_large: @size_l;
+@type_huge: @size_xl;
+@type_gargantuan: @size_2xl;
+@type_colossal: @size_5xl;
 
 .type_tiny {
 	font-size: @type_tiny;
