@@ -1,0 +1,57 @@
+@import (reference) "../src/less/colors";
+@import (reference) "../src/less/flex";
+@import (reference) "../src/less/grid";
+@import (reference) "../src/less/spacing";
+@import (reference) "../src/less/type-size";
+
+
+.GridExample {
+  .margin--top--2xl;
+
+  div {
+    box-sizing: border-box;
+  }
+
+  h2 {
+    .margin--none;
+    .margin--bottom--xs
+  }
+
+  .shaded {
+    background-color: fadeout(@neutral_gray, 90%);
+  }
+
+  .outlined {
+    border: 1px solid shade(@neutral_silver, 10%);
+  }
+
+  .Grid {
+    .shaded;
+    padding: 1rem;
+
+    &:not(:last-child) {
+      .margin--bottom--l;
+    }
+
+    &.resizable {
+      resize: vertical;
+      overflow: hidden;
+    }
+  }
+
+  code.gridContent {
+    .alignItems(center);
+    .flex--grow;
+    .flexbox;
+    .justifyContent(center);
+    .outlined;
+    .tint(color, @accent_purple, 2);
+    .type_medium;
+    background-color: @neutral_silver;
+    font-size: 0.875rem;
+    font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: center;
+  }
+}

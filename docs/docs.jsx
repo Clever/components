@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import GridExample from "./GridExample";
 import TableExample from "./TableExample";
 import {
   Button,
@@ -309,6 +310,9 @@ class Demo extends React.Component {
           }]}
         />
         <TableExample />
+        <GridExample />
+        {/* Enable scrolling past the bottom for convenience. */}
+        <div style={{margin: "0 0 600px"}} />
       </div>
     );
   }
