@@ -29,6 +29,7 @@ export default function Col({
   );
 }
 
+// Define the shape of the `span` prop as a map from viewport `Size` to the associated span length.
 Col.colSpanPropShape = {};
 _.forEach(Size, size => {
   Col.colSpanPropShape[size] = PropTypes.number;
