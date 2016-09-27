@@ -359,6 +359,14 @@ The `Table` component requires child components of type `Table.Column`, which pr
 
 12-column grid component for consistent, simple and flexible layouts.
 
+The `Grid` is a single column of any number of `Grid.Row`s, which contain any number of `Grid.Col`s.
+
+`Grid.Col`s can have varying sizes, determined by the values of their `span` prop.
+A single `Grid.Col` can have different span lengths for different viewport sizes to enable layouts that update dynamically based on available space in the viewport.
+
+**NOTE:** A row of `Grid.Col`s is guaranteed to fit on a single line only if the sum of the `span`s add up to 12 in the current
+viewport. Any additional `Grid.Col`s will wrap onto the following line.
+
 **`<Grid />` Options**
 
 | Prop             | Type     | Description                           | Default
