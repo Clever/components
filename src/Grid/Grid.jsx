@@ -34,7 +34,7 @@ Grid.rowPropType = (props, propName) => {
     return null;
   }
 
-  if (!value.type || value.type !== Row) {
+  if (value.type !== Row) {
     return new Error("All children of the Grid should be `Row` components.");
   }
 

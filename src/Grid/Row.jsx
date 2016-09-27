@@ -33,7 +33,7 @@ Row.colPropType = (props, propName) => {
     return null;
   }
 
-  if (!value.type || value.type !== Col) {
+  if (value.type !== Col) {
     return new Error("All children of the Row should be `Col` components.");
   }
 
