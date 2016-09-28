@@ -23,7 +23,19 @@ function isLabelHidden(placeholder, value) {
   may be fetched asynchronously.
 */
 
-export function Select({id, name, clearable = false, disabled, label, multi, onChange, options, placeholder = "", value}) {
+export function Select({
+  id,
+  name,
+  clearable,
+  disabled,
+  label,
+  multi,
+  onChange,
+  options,
+  placeholder = "",
+  searchable,
+  value,
+}) {
   const {cssClass} = Select;
 
   let labelContainerClasses = cssClass.LABEL_CONTAINER;
@@ -45,7 +57,7 @@ export function Select({id, name, clearable = false, disabled, label, multi, onC
           onChange={onChange}
           options={options}
           placeholder={placeholder}
-          searchable={false}
+          searchable={searchable}
           value={value}
         />
       </div>
@@ -64,7 +76,7 @@ Select.cssClass = {
   REACT_SELECT: "Select--ReactSelect",
 };
 
-const selectValue = React.PropTypes.shape({
+const selectValuePropType = React.PropTypes.shape({
   label: React.PropTypes.string.isRequired,
   value: React.PropTypes.string.isRequired,
 });
@@ -77,10 +89,19 @@ Select.propTypes = {
   label: React.PropTypes.string,
   multi: React.PropTypes.bool,
   onChange: React.PropTypes.func,
-  options: React.PropTypes.arrayOf(selectValue),
+  options: React.PropTypes.arrayOf(selectValuePropType),
   placeholder: React.PropTypes.string,
+  searchable: React.PropTypes.bool,
   value: React.PropTypes.oneOfType([
-    selectValue,
-    React.PropTypes.arrayOf(selectValue),
+    React.PropTypes.string,
+    selectValuePropType,
+    React.PropTypes.arrayOf(React.PropTypes.string),
+    React.PropTypes.arrayOf(selectValuePropType),
   ]),
+};
+
+Select.defaultProps = {
+  clearable: false,
+  placeholder: "",
+  searchable: false,
 };
