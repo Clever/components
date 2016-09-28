@@ -32,6 +32,7 @@ class Demo extends React.Component {
       },
       selectValues: {
         basicSelect: null,
+        searchableSelect: "opt2",
         disabledBasicSelect: {label: "Selected Option", value: "selected_opt"},
         disabledMultiSelect: [{label: "1", value: "1"}, {label: "9", value: "9"}],
         multiSelect: [{label: "3", value: "3"}],
@@ -162,6 +163,22 @@ class Demo extends React.Component {
             ]}
             placeholder="Select one option"
             value={this.state.selectValues.basicSelect}
+          />
+          <br />
+          <Select
+            id="SearchableSelect"
+            label="Searchable Select"
+            clearable
+            name="SearchableSelect"
+            onChange={(val) => this.onSelectChange("searchableSelect", val)}
+            options={[
+              {label: "Option 1", value: "opt1"},
+              {label: "Option 2", value: "opt2"},
+              {label: "Option 3", value: "opt3"},
+            ]}
+            placeholder="Select or search"
+            searchable
+            value={this.state.selectValues.searchableSelect}
           />
           <br />
           <Select

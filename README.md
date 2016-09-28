@@ -250,6 +250,7 @@ a fixed list of options.
 | onChange (optional) | Function | Called with new value when it changes | None
 | options (optional) | Array | Possible options. Must contain objects with label and value attributes | None
 | placeholder (optional) | String | Placeholder text | ""
+| searchable (optional) | Bool | Whether or not the values in the dropdown are searchable. | False
 | value (optional) | Object | Selected value. Must be updated by caller in the onChange | None
 
 **Usage Example**
