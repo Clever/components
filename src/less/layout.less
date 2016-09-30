@@ -1,0 +1,44 @@
+/**
+ * Layout size and breakpoint definitions.
+ */
+
+
+@breakpointS: 40em;
+/**
+ * Only applies to small screens (e.g. phones, small tablets) and larger.
+ */
+.breakpointS(@rules) {
+  @media only screen and (min-width: @breakpointS) {
+    @rules();
+  }
+}
+
+@breakpointM: 52em;
+/**
+ * Only applies to medium-sized screens (e.g. tablets) and larger.
+ */
+.breakpointM(@rules) {
+  @media only screen and (min-width: @breakpointM) {
+    @rules();
+  }
+}
+
+@breakpointL: 64em;
+/**
+ * Only applies to larger screens (e.g. large tablets, laptops) and larger.
+ */
+.breakpointL(@rules) {
+  @media only screen and (min-width: @breakpointL) {
+    @rules();
+  }
+}
+
+@breakpointXL: 75em;
+/**
+ * Only applies to extra-large screens (e.g. high-resolution laptops, large monitors).
+ */
+.breakpointXL(@rules) {
+  @media only screen and (min-width: @breakpointXL) {
+    @rules();
+  }
+}

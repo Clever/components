@@ -1,3 +1,4 @@
+import _ from "lodash";
 import assert from "assert";
 import {shallow} from "enzyme";
 import React from "react";
@@ -134,10 +135,11 @@ describe("Select", () => {
       searchable: false,
       value: testOptions[2],
     };
-    const reactSelectProps = select.find(ReactSelect).props();
-    for (const prop of Object.keys(expectedPropValues)) {
-      assert.equal(reactSelectProps[prop], expectedPropValues[prop]);
-    }
+    const reactSelectProps = _.pick(
+      select.find(ReactSelect).props(),
+      Object.keys(expectedPropValues)
+    );
+    assert.deepEqual(reactSelectProps, expectedPropValues);
   });
 
   it("allows selecting multiple options if specified", () => {
@@ -182,6 +184,18 @@ describe("Select", () => {
     );
     const reactSelect = select.find(ReactSelect);
     assert(reactSelect.prop("clearable"));
+  });
+
+  it("sets searchable on the react select element if specified", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        searchable
+      />
+    );
+    const reactSelect = select.find(ReactSelect);
+    assert(reactSelect.prop("searchable"));
   });
 
   it("defaults to an empty string placeholder ReactSelect", () => {

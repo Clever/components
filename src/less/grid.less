@@ -1,127 +1,56 @@
-.flex { display: flex }
+@import (reference) "./flex";
+@import (reference) "./layout";
 
-@media @--breakpoint-sm {
-  .sm-flex { display: flex }
-}
-
-@media @--breakpoint-md {
-  .md-flex { display: flex }
-}
-
-@media @--breakpoint-lg {
-  .lg-flex { display: flex }
-}
-
-.flex-column  { flex-direction: column }
-.flex-wrap    { flex-wrap: wrap }
-
-.items-start    { align-items: flex-start }
-.items-end      { align-items: flex-end }
-.items-center   { align-items: center }
-.items-baseline { align-items: baseline }
-.items-stretch  { align-items: stretch }
-
-.self-start    { align-self: flex-start }
-.self-end      { align-self: flex-end }
-.self-center   { align-self: center }
-.self-baseline { align-self: baseline }
-.self-stretch  { align-self: stretch }
-
-.justify-start   { justify-content: flex-start }
-.justify-end     { justify-content: flex-end }
-.justify-center  { justify-content: center }
-.justify-between { justify-content: space-between }
-.justify-around  { justify-content: space-around }
-
-.content-start   { align-content: flex-start }
-.content-end     { align-content: flex-end }
-.content-center  { align-content: center }
-.content-between { align-content: space-between }
-.content-around  { align-content: space-around }
-.content-stretch { align-content: stretch }
-
-/* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
-.flex-auto {
-  flex: 1 1 auto;
-  min-width: 0; /* 1 */
-  min-height: 0; /* 1 */
-}
-.flex-none { flex: none }
-
-.order-0 { order: 0 }
-.order-1 { order: 1 }
-.order-2 { order: 2 }
-.order-3 { order: 3 }
-.order-last { order: 99999 }
-
-@--breakpoint-sm: -"(min-width: 40em)";
-@--breakpoint-md: -"(min-width: 52em)";
-@--breakpoint-lg: -"(min-width: 64em)";
-
-
-
-
-.Grid--container {
-  width: 100%;
-  .flex;
-  .flex-wrap;
-  box-sizing: border-box;
-}
-
-.Row--container {
-  .flex;
-  .flex-wrap;
+.Grid {
+  .flex--direction--column;
+  .flexbox;
   box-sizing: border-box;
   width: 100%;
-  flex-direction: row;
 }
 
-.Column {
+.Grid--Row {
+  .flex--wrap;
+  .flexbox;
   box-sizing: border-box;
-  flex-shrink: 0;
+  width: 100%;
 }
 
-/*******************************************************
 
-  Generated columns
+/*
+ * Generated Columns
+ *
+ * Generate 12-column grid classes for increasing viewport sizes (S, M, L) of the form:
+ * `Grid--Col-ls--1`, `Grid--Col--l--2`, ... `Grid--Col--l--12`.
+ *
+ * Each viewport-specific class applies to viewports of that size or larger.
+ * Different viewport-specific classes can be assigned to a column to enable responsive layout
+ * changes at different viewport sizes.
+ *
+ * Use default (`--dflt`) classes for layouts that should apply to all viewport sizes (or sizes not
+ * covered by other assigned classes in dynamic layouts).
+ *
+ * See http://clever.github.io/components/#grid for examples.
+ *
+ * Grid your loins!
+ */
 
-  Creates classes for a 12-column layout with classes of the form:
-  `Column--lg-1`, `Column--lg-2`, ... `Column--lg-12`.
-
-  There are three sizes (large, medium, and small) so an
-  element can have different properties on different screens.
-
-  Grid your loins!
-
- *******************************************************/
-
-.gen-columns(@numCol, @size, @i: 1) when (@i =< @numCol) {
-  .Column--@{size}-@{i} {
-    .Column;
+.genColumns(@numCol, @size, @i: 1) when (@i =< @numCol) {
+  .Grid--Col--@{size}--@{i} {
+    .flexbox;
+    box-sizing: border-box;
     width: (@i * 100% / @numCol);
   }
-  .gen-columns(@numCol, @size, (@i + 1));
+  .genColumns(@numCol, @size, (@i + 1));
 }
 
-// Default - large grid
-.gen-columns(12, lg);
+/** Default - applies to all viewport sizes. */
+.genColumns(12, dflt);
 
-// Desktop - large grid
-@media only screen and (max-width: 1040px){
-  .gen-columns(12, lg);
-}
+/** Small viewports and larger only (e.g. phones, small tablets). */
+.breakpointS({ .genColumns(12, s) });
 
-// Tablet - medium grid
-@media only screen and (max-width: 840px){
-  .gen-columns(12, md);
-}
+/** Medium viewports and larger only (e.g. tablets). */
+.breakpointM({ .genColumns(12, m) });
 
-// Mobile - small grid
-@media only screen and (max-width: 640px){
-  .gen-columns(12, sm);
-}
-
-// Mobile - small grid
-@media only screen and (max-width: 440px){
-  .gen-columns(12, sm);
-}
+/** Large viewports only (e.g. large tablets, laptops). */
+.breakpointL({ .genColumns(12, l) });
