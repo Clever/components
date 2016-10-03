@@ -182,17 +182,18 @@ This component is a `text input`.
 
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
-| name (required) | String | Name for input element | None
-| label (optional) | String | Label for modal | None
-| value (optional) | Node | Value of input | None
-| placeholder (optional) | Node | Placeholder node for input | None
-| type (optional) | String   | The type of control to display, tested 'number' and 'text' | 'text'
-| error (optional) | String | Adds indicator and error text to element. | None
-| onChange (optional) | Function | Called when value of input changes. | None
-| required (optional) | Bool   | Marks input as required and adds indicator. | false
 | disabled (optional) | Bool   | Sets element as disabled. | false
-| readOnly (optional) | Bool   | Sets element as read only. | false
+| disableAutocomplete (optional) | Bool   | Sets `autocomplete="off"` on the input element to disable the default browser autocomplete functionality. | false
 | enableShow (optional) | Bool  | Displays a show/hide link that reveals passwords | false
+| error (optional) | String | Adds indicator and error text to element. | None
+| label (optional) | String | Label for modal | None
+| name (required) | String | Name for input element | None
+| onChange (optional) | Function | Called when value of input changes. | None
+| placeholder (optional) | Node | Placeholder node for input | None
+| readOnly (optional) | Bool   | Sets element as read only. | false
+| required (optional) | Bool   | Marks input as required and adds indicator. | false
+| type (optional) | String   | The type of control to display, tested 'number' and 'text' | 'text'
+| value (optional) | Node | Value of input | None
 
 **Usage Example**
 

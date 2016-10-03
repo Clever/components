@@ -19,6 +19,10 @@ export class TextInput extends React.Component {
     this.setState({inFocus: false});
   }
 
+  focus() {
+    this.refs.input.focus();
+  }
+
   toggleHidden() {
     this.setState({hidden: !this.state.hidden});
   }
@@ -61,17 +65,19 @@ export class TextInput extends React.Component {
           {inputNote}
         </div>
         <input
+          autoComplete={this.props.disableAutocomplete && "off"}
           className="TextInput--input"
-          type={type}
+          disabled={this.props.disabled}
           name={this.props.name}
-          placeholder={this.props.placeholder}
-          value={this.props.value}
-          onFocus={this.onFocus}
           onBlur={this.onBlur}
           onChange={this.props.onChange}
+          onFocus={this.onFocus}
+          placeholder={this.props.placeholder}
           readOnly={this.props.readOnly}
-          disabled={this.props.disabled}
+          ref="input"
           required={this.props.required}
+          type={type}
+          value={this.props.value}
         />
         {this.props.enableShow &&
           <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
@@ -84,15 +90,16 @@ export class TextInput extends React.Component {
 }
 
 TextInput.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string,
-  value: React.PropTypes.node,
-  placeholder: React.PropTypes.node,
-  type: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  error: React.PropTypes.string,
-  required: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
-  readOnly: React.PropTypes.bool,
+  disableAutocomplete: React.PropTypes.bool,
   enableShow: React.PropTypes.bool,
+  error: React.PropTypes.string,
+  label: React.PropTypes.string,
+  name: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func,
+  placeholder: React.PropTypes.node,
+  readOnly: React.PropTypes.bool,
+  required: React.PropTypes.bool,
+  type: React.PropTypes.string,
+  value: React.PropTypes.node,
 };
