@@ -348,7 +348,7 @@ The `Table` component requires child components of type `Table.Column`, which pr
 |------------------|----------|---------------------------------------|---------
 | header (optional) | `{className: String (optional), content: Any (optional)}` | Configuration for the header cell of this column. | None
 | cell (required) | `{className: String (optional), renderer: Function}` | Configuration for the table body cell for this column. `renderer` will be called with data for a single row and should return content that can be rendered by the React DOM renderer. | None
-| id (optional) | String | Unique identifier for the column. Can be used in referencing columns for sorting. | None
+| id (required) | String | Unique identifier for the column. Can be used in referencing columns for sorting. | None
 | noWrap (optional) | Boolean | Prevents the column content from wrapping. In the non-fixed mode, the table column will automatically expand to fit all content in the column on a single line. | False
 | sortable (optional) | Boolean | Enables sorting for the column. | False
 | sortValueFn (optional) | Function | Called with data for a single row. Should return a sortable value for row. | None
