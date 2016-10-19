@@ -10,6 +10,14 @@ Install the NPM package and save it to your project using
 npm install --save clever-components
 ```
 
+Note: This library uses ES6 features not supported in Internet Explorer such as [`String.startsWith`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith). To support use of this library in IE, include `babel-polyfill` in the entrypoint to your application. See the [docs](https://babeljs.io/docs/usage/polyfill/).
+
+## Usage
+
+In order to maintain visual consistency across our product, we use the components and styles from this library whenever possible.
+
+### Components
+
 To use a component, you'll need to be working with React and Webpack. Components that include their own styles may require you to install Webpack's style loaders. If this is configured correctly, you can simply `require` these components like any other package:
 
 ```javascript
@@ -18,7 +26,15 @@ var Modal = require('clever-components').Modal; // ES5
 import {Modal} from 'clever-components'; // ES6
 ```
 
-This library uses ES6 features not supported in Internet Explorer such as [`String.startsWith`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith). To support use of this library in IE, include `babel-polyfill` in the entrypoint to your application. See the [docs](https://babeljs.io/docs/usage/polyfill/).
+## Styles
+
+The components library exports a `less` file containing variables and classes for all of the styles outlined in the [Clever design system](http://clever.github.io/design-system/). To import these styles, just include the following line at the top of your `less` file:
+
+    @import (reference) "~clever-components/dist/less/index";
+
+Note that by using `(reference)`, you'll only import styles that you actually use, so it shouldn't bloat the resulting stylesheet.
+
+To learn which styles are available, read through the [less code](https://github.com/Clever/components/tree/master/src/less).
 
 ## Contributing
 
@@ -35,6 +51,12 @@ This library uses ES6 features not supported in Internet Explorer such as [`Stri
 * It's in our desired components list
   * **Definitely Want**: ~~Buttons~~, ~~Modals~~, form elements, flash messages, alerts, tables
   * **Eventually**: Header, Navbar, Breadcrumbs, Pagination
+
+### Publishing
+
+First, increment the version in `package.json` according to [semver](http://semver.org/).
+
+Then, when you merge your branch into `master`, Drone will automatically build and publish a new version to npm.
 
 ## Testing
 Run the entire test suite with `make test` or a single component with `make test/<component>_test.jsx`
