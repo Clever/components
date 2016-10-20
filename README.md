@@ -111,6 +111,7 @@ This is a set of button components with various sizes and types.
 | disabled (optional) | Bool     | User interaction is disabled when true               | false
 | submit (optional)   | Bool     | Behaves as a submit button when true                 | false
 | style (optional)    | Object   | Add custom styles (e.g. margin) if you must          | None
+| className (optional)| String   | Additional classname to apply to the button          | None
 
 **Usage Example**
 
