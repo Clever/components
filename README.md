@@ -26,7 +26,7 @@ var Modal = require('clever-components').Modal; // ES5
 import {Modal} from 'clever-components'; // ES6
 ```
 
-## Styles
+### Styles
 
 The components library exports a `less` file containing variables and classes for all of the styles outlined in the [Clever design system](http://clever.github.io/design-system/). To import these styles, just include the following line at the top of your `less` file:
 
