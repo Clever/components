@@ -41,6 +41,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new ExtractTextPlugin(filename)],
+  plugins: [new ExtractTextPlugin(filename)],
 };
