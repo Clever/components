@@ -1,7 +1,9 @@
 JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js")
 JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*")
+LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*")
 TESTS := $(shell find test -name "*_test*")
 LINT := ./node_modules/.bin/eslint
+STYLELINT := ./node_modules/.bin/stylelint --config ./.stylelintrc
 MOCHA := node_modules/mocha/bin/mocha
 MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-styles --require jsdom-global/register
 BABEL := node_modules/babel-cli/bin/babel.js
@@ -34,6 +36,7 @@ sizing-styles:
 
 lint:
 	@echo "Linting files..."
+	@$(STYLELINT) $(LESS_FILES)
 	@$(LINT) $(JS_FILES) $(JSX_FILES)
 
 test: lint

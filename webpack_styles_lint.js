@@ -1,10 +1,10 @@
 var StyleLintPlugin = require("stylelint-webpack-plugin");
 
 module.exports = {
-  entry: "./docs/docs.jsx",
+  entry: "./src/index.js",
   output: {
-    path:     "docs",
-    filename: "bundle.js",
+    path:     "lintout",
+    filename: "lint-results.js",
   },
   resolve: {
     extensions: ["", ".js", ".jsx"],
@@ -38,7 +38,7 @@ module.exports = {
       configFile: ".stylelintrc",
       context: "inherits from webpack",
       syntax: "less",
-      files: "**/*.(le|c)ss",
+      files: "src/*.less",
       failOnError: false,
     }),
   ],
