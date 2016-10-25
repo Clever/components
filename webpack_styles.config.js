@@ -9,7 +9,6 @@
  */
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var StyleLintPlugin = require("stylelint-webpack-plugin");
 
 var version = require("./package.json").version;
 var filename = `style_${version}.css`;
@@ -43,13 +42,5 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin(filename),
-    new StyleLintPlugin({
-      configFile: ".stylelintrc",
-      context: "inherits from webpack",
-      syntax: "less",
-      files: "**/*.less",
-      failOnError: false,
-    }),
-  ],
+    new ExtractTextPlugin(filename)],
 };

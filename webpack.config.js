@@ -1,5 +1,3 @@
-var StyleLintPlugin = require("stylelint-webpack-plugin");
-
 module.exports = {
   entry: "./docs/docs.jsx",
   output: {
@@ -33,13 +31,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new StyleLintPlugin({
-      configFile: ".stylelintrc",
-      context: "inherits from webpack",
-      syntax: "less",
-      files: "**/*.(le|c)ss",
-      failOnError: false,
-    }),
-  ],
 };
