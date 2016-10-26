@@ -1,6 +1,7 @@
 {
   "rules": {
     "block-no-empty": null,
+    "block-opening-brace-space-before": "always",
     "color-no-invalid-hex": true,
     "declaration-colon-space-after": "always",
     "declaration-property-value-whitelist": [{

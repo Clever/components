@@ -10,6 +10,7 @@ src/Button/Button.less
  27:13  ✖  Unexpected unit "px"                                                  unit-whitelist                      
  28:26  ✖  Unexpected unit "px"                                                  unit-whitelist                      
  44:7   ✖  Expected nesting depth to be no more than 2                           max-nesting-depth                   
+ 54:12  ✖  Expected single space before "{"                                      block-opening-brace-space-before    
 
 src/ConfirmationButton/ConfirmationButton.less
  5:19  ✖  Unexpected unit "px"   unit-whitelist
@@ -21,17 +22,26 @@ src/CopyableInput/CopyableInput.less
  15:16  ✖  Unexpected unit "px"                              unit-whitelist                      
  16:19  ✖  Unexpected unit "px"                              unit-whitelist                      
 
+src/less/type-utilities.less
+  9:20  ✖  Expected single space before "{"   block-opening-brace-space-before
+ 14:15  ✖  Expected single space before "{"   block-opening-brace-space-before
+ 24:15  ✖  Expected single space before "{"   block-opening-brace-space-before
+ 34:15  ✖  Expected single space before "{"   block-opening-brace-space-before
+
 src/Modal/Modal.less
  25:18  ✖  Unexpected unit "px"                                         unit-whitelist                      
  27:17  ✖  Unexpected unit "px"                                         unit-whitelist                      
  27:22  ✖  Unexpected unit "px"                                         unit-whitelist                      
  28:11  ✖  Unexpected unit "px"                                         unit-whitelist                      
+ 32:14  ✖  Expected single space before "{"                             block-opening-brace-space-before    
  34:11  ✖  Unexpected unit "px"                                         unit-whitelist                      
  35:12  ✖  Unexpected unit "px"                                         unit-whitelist                      
  35:17  ✖  Unexpected unit "px"                                         unit-whitelist                      
+ 38:4   ✖  Expected single space before "{"                             block-opening-brace-space-before    
  41:16  ✖  Unexpected unit "px"                                         unit-whitelist                      
  42:18  ✖  Unexpected unit "px"                                         unit-whitelist                      
  44:5   ✖  Unexpected value "#121212" for property "color"              declaration-property-value-whitelist
+ 49:13  ✖  Expected single space before "{"                             block-opening-brace-space-before    
  53:11  ✖  Unexpected unit "px"                                         unit-whitelist                      
  54:10  ✖  Unexpected unit "px"                                         unit-whitelist                      
  56:20  ✖  Unexpected unit "px"                                         unit-whitelist                      
@@ -60,30 +70,31 @@ src/SegmentedControl/SegmentedControl.less
  58:7   ✖  Expected nesting depth to be no more than 2              max-nesting-depth                   
 
 src/Select/Select.less
- 11:10  ✖  Unexpected unit "px"                          unit-whitelist   
- 19:13  ✖  Unexpected unit "px"                          unit-whitelist   
- 28:25  ✖  Unexpected unit "px"                          unit-whitelist   
- 33:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 39:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 40:9   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 41:24  ✖  Unexpected unit "px"                          unit-whitelist   
- 42:25  ✖  Unexpected unit "px"                          unit-whitelist   
- 43:11  ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 47:13  ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 52:13  ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 61:22  ✖  Unexpected unit "px"                          unit-whitelist   
- 63:15  ✖  Unexpected unit "px"                          unit-whitelist   
- 65:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 67:22  ✖  Unexpected unit "px"                          unit-whitelist   
- 68:22  ✖  Unexpected unit "px"                          unit-whitelist   
- 72:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 76:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 79:22  ✖  Unexpected unit "px"                          unit-whitelist   
- 80:14  ✖  Unexpected unit "px"                          unit-whitelist   
- 91:22  ✖  Unexpected unit "px"                          unit-whitelist   
- 93:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 95:9   ✖  Expected nesting depth to be no more than 2   max-nesting-depth
- 96:29  ✖  Unexpected unit "px"                          unit-whitelist   
+ 11:10  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 19:13  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 28:25  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 33:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 39:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 40:9   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 41:24  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 42:25  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 43:11  ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 47:13  ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 52:13  ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 61:22  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 63:15  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 65:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 67:22  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 68:22  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 72:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 76:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 79:22  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 80:14  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 86:99  ✖  Expected single space before "{"              block-opening-brace-space-before
+ 91:22  ✖  Unexpected unit "px"                          unit-whitelist                  
+ 93:7   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 95:9   ✖  Expected nesting depth to be no more than 2   max-nesting-depth               
+ 96:29  ✖  Unexpected unit "px"                          unit-whitelist                  
 
 src/Table/Cell.less
  2:12  ✖  Unexpected unit "px"   unit-whitelist
@@ -134,6 +145,7 @@ src/TextInput/TextInput.less
   76:13  ✖  Unexpected unit "px"                              unit-whitelist                      
   83:5   ✖  Unexpected value "#191926" for property "color"   declaration-property-value-whitelist
   85:13  ✖  Unexpected unit "px"                              unit-whitelist                      
+  88:29  ✖  Expected single space before "{"                  block-opening-brace-space-before    
   96:13  ✖  Unexpected unit "px"                              unit-whitelist                      
   96:18  ✖  Unexpected unit "px"                              unit-whitelist                      
   99:5   ✖  Unexpected value "#4274F6" for property "color"   declaration-property-value-whitelist
