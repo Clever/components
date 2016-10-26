@@ -441,7 +441,7 @@ However `FlexBox` can be used without `FlexItem` in many cases.
 | alignSelf (optional) | ItemAlign | Sets the cross-axis alignment of this flex item only. | ItemAlign.STRETCH
 | children (optional) | React Node | The child items to render in the flex box. | None
 | className (optional) | String | Additional classname to apply to the flex box. | None
-| component (optional) | Any | The tagname or component class for the wrapper component to render for the flex item | "div"
+| component (optional) | Any | Tagname of class for the wrapper component. `FlexItem` renders as a `<div>` by default. It can be made to render as a different component by specifying the component tagname or class. e.g. `<FlexItem component="li" />` or `<FlexItem component={Button} />` | "div"
 | grow (optional) | Boolean | Fluidly grows the item to fill any available space along the main axis. | False
 
 #### `<FlexBox />` Options
