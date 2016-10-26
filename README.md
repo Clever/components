@@ -421,3 +421,46 @@ viewport. Any additional `Grid.Col`s will wrap onto the following line.
 **Usage Examples**
 
 [Sample Code](https://github.com/Clever/components/tree/master/docs/GridExample.jsx) ([Live Demo](http://clever.github.io/components/#grid))
+
+### FlexBox and FlexItem
+
+`FlexBox` provides a flex-enabled container as a convenience wrapper around the clever-components flex CSS classes.
+A `FlexBox` may contain any other renderable elements, including other `FlexBox` components or `FlexItem`s.
+
+`FlexItem` similarly provides a convenience wrapper around flex item-specific CSS classes and may in turn contain any combination of React-supported elements.
+
+**NOTE:** Using a `FlexItem` properties have no effect on an element unless it is rendered within a `FlexBox` or other `display: flex` container.
+However `FlexBox` can be used without `FlexItem` in many cases.
+
+#### `<FlexItem />` Options
+
+([Source code](https://github.com/Clever/components/tree/master/src/flex/FlexItem.jsx))
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| alignSelf (optional) | ItemAlign | Sets the cross-axis alignment of this flex item only. | ItemAlign.STRETCH
+| children (optional) | React Node | The child items to render in the flex box. | None
+| className (optional) | String | Additional classname to apply to the flex box. | None
+| component (optional) | Any | The tagname or component class for the wrapper component to render for the flex item | "div"
+| grow (optional) | Boolean | Fluidly grows the item to fill any available space along the main axis. | False
+
+#### `<FlexBox />` Options
+
+([Source code](https://github.com/Clever/components/tree/master/src/flex/FlexBox.jsx))
+
+`FlexBox`es can be nested within one another, hence `FlexBox` supports all the above `FlexItem` props in addition to the following `FlexBox`-specific props:
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| alignContent (optional) | ContentAlign | Sets the cross-axis alignment of multi-line content. | ContentAlign.STRETCH
+| alignItems (optional) | ItemAlign | Sets the cross-axis alignment of single-line content. | ItemAlign.STRETCH
+| children (optional) | React Node | The child items to render in the flex box. | None
+| className (optional) | String | Additional classname to apply to the flex box. | None
+| column (optional) | Boolean | Switches the flex box to a column-direction main axis. Child items will flow vertically. | False
+| inline (optional) | Boolean | Enables the inline-flex display mode for the flex box. The flex box container will fit the width of its content and share the line with any other inline elements. Similar to display: inline-block. | False
+| justify (optional) | Justify | Sets the main-axis alignment of the flex box content. | ContentAlign.START
+| wrap (optional) | Boolean | Causes child items to wrap if they are unable to fit on a single line. By default, flex items will shrink up to their minimum widths without wrapping, eventually causing them to overflow their container. `wrap` allows items to wrap to the multiple lines if necessary. | False
+
+#### Usage Examples
+
+[Sample Code](https://github.com/Clever/components/tree/master/docs/FlexExample.jsx) ([Live Demo](http://clever.github.io/components/#flex))
