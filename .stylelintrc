@@ -5,7 +5,7 @@
     "color-no-invalid-hex": true,
     "declaration-colon-space-after": "always",
     "declaration-property-value-whitelist": [{
-      "/color/": ["/@neutral_white/", "/@neutral_off_white/", "/@neutral_silver/", "/@neutral_gray/", "/@neutral_dark_gray/", "/@neutral_black/", "/@primary_blue/", "/@alert_red/", "/@,alert_orange/", "/@alert_orange/", "/@accent_aqua/", "/@accent_purple/", "/@accent_aqua/", "/@accent_pink/", "transparent" ]
+      "/color/": ["/@neutral_white/", "/@neutral_off_white/", "/@neutral_silver/", "/@neutral_gray/", "/@neutral_dark_gray/", "/@neutral_black/", "/@primary_blue/", "/@alert_red/", "/@alert_orange/", "/@accent_aqua/", "/@accent_purple/", "/@accent_aqua/", "/@accent_pink/", "transparent" ]
     }],
     "max-empty-lines": 2,
     "max-nesting-depth": [ 2, {
