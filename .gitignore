@@ -3,4 +3,3 @@ node_modules
 .DS_Store
 npm-debug.log
 dist
-tmp/less-lint-output.txt
