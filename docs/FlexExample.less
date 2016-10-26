@@ -1,0 +1,46 @@
+@import (reference) "../src/less/index";
+
+
+.FlexExample {
+  .margin--top--2xl;
+
+  h2 {
+    .margin--top--l;
+  }
+
+  .FlexExample--box {
+    .margin--x--3xl;
+  }
+
+  .FlexExample--box,
+  .FlexExample--item {
+    .padding--m;
+    background-color: fadeout(@neutral_gray, 90%);
+    border: 1px solid shade(@neutral_silver, 10%);
+    border-radius: 0;
+    box-sizing: border-box;
+    font-size: 0.875rem;
+  }
+}
+
+.FlexExample--box--minWidth {
+  min-width: 400px;
+}
+
+.FlexExample--box--tiny {
+  width: 90px;
+}
+
+.FlexExample--box--resizable--x {
+  resize: horizontal;;
+  overflow: hidden;
+}
+
+.FlexExample--box--resizable--y {
+  resize: vertical;
+  overflow: hidden;
+}
+
+.color--alert--orange {
+  color: @alert_orange;
+}

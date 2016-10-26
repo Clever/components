@@ -1,3 +1,4 @@
+export * from "./flex";
 export {Modal} from "./Modal/Modal";
 export {Button} from "./Button/Button";
 export {ModalButton} from "./ModalButton/ModalButton";
