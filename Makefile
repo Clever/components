@@ -34,10 +34,21 @@ sizing-styles:
 	@echo "Generating sizing style definitions..."
 	@node genSizing.js
 
+LINT_MAX_LESS_PROBLEMS := 117
 lint:
 	@echo "Linting files..."
-	@$(STYLELINT) $(LESS_FILES)
 	@$(LINT) $(JS_FILES) $(JSX_FILES)
+	@$(STYLELINT) $(LESS_FILES) | tee ./tmp/less-lint-output.txt || true
+	@cat ./tmp/less-lint-output.txt | sed -e 's/\(.\)/\1\n/g' | grep '✖' | wc -l > ./tmp/less-lint-problem-count
+	@if [[ "`cat ./tmp/less-lint-problem-count`" -gt "$(LINT_MAX_LESS_PROBLEMS)" ]]; then \
+		echo "\033[0;31m✖ More than $(LINT_MAX_LESS_PROBLEMS) problems reported by stylelint. Please check for stylelint errors in the changes you've made.\033[0m\n"; \
+		exit 1; \
+	elif [[ "`cat ./tmp/less-lint-problem-count`" -lt "$(LINT_MAX_LESS_PROBLEMS)" ]]; then \
+		echo "\033[0;31m✖ Congrats! You have `cat ./tmp/less-lint-problem-count` errors, which is fewer than $(LINT_MAX_LESS_PROBLEMS) stylelint problems. Please make a change to lower the LINT_MAX_LESS_PROBLEMS in the Makefile.\033[0m\n"; \
+		exit 1; \
+	else \
+		echo "\033[0;32m✓ No new lint errors found.\033[0m\n"; \
+	fi
 
 test: lint
 	@echo "Running unit tests..."
