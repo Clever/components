@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import FlexExample from "./FlexExample";
 import GridExample from "./GridExample";
 import TableExample from "./TableExample";
 import {
@@ -327,6 +328,7 @@ class Demo extends React.Component {
           }]}
         />
         <TableExample />
+        <FlexExample />
         <GridExample />
         {/* Enable scrolling past the bottom for convenience. */}
         <div style={{margin: "0 0 600px"}} />
