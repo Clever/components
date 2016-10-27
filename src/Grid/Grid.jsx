@@ -2,6 +2,7 @@ import classnames from "classnames";
 import React, {PropTypes} from "react";
 
 import Col from "./Col";
+import MorePropTypes from "../utils/MorePropTypes";
 import Row from "./Row";
 import Size from "./Size";
 
@@ -27,25 +28,8 @@ Grid.Row = Row;
 Grid.Col = Col;
 Grid.Size = Size;
 
-Grid.rowPropType = (props, propName) => {
-  const value = props[propName];
-
-  if (value === null || value === undefined) {
-    return null;
-  }
-
-  if (value.type !== Row) {
-    return new Error("All children of the Grid should be `Row` components.");
-  }
-
-  return null;
-};
-
 Grid.propTypes = {
-  children: PropTypes.oneOfType([
-    Grid.rowPropType,
-    PropTypes.arrayOf(Grid.rowPropType),
-  ]),
+  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Row)),
   className: PropTypes.string,
   wrapperComponent: PropTypes.any,
 };

@@ -2,6 +2,7 @@ import classnames from "classnames";
 import React, {PropTypes} from "react";
 
 import Col from "./Col";
+import MorePropTypes from "../utils/MorePropTypes";
 
 require("../less/flex.less");
 require("../less/grid.less");
@@ -26,25 +27,8 @@ export default function Row({
   );
 }
 
-Row.colPropType = (props, propName) => {
-  const value = props[propName];
-
-  if (value === null || value === undefined) {
-    return null;
-  }
-
-  if (value.type !== Col) {
-    return new Error("All children of the Row should be `Col` components.");
-  }
-
-  return null;
-};
-
 Row.propTypes = {
-  children: PropTypes.oneOfType([
-    Row.colPropType,
-    PropTypes.arrayOf(Row.colPropType),
-  ]),
+  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Col)),
   className: PropTypes.string,
   grow: PropTypes.bool,
   wrapperComponent: PropTypes.any,

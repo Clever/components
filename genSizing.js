@@ -73,7 +73,7 @@ spacingContents = [
   " * Common spacing definitions.",
   " *",
   " * Auto-generated file.",
-  " * To re-generate, run `sizing-styles`",
+  " * To re-generate, run `make sizing-styles`",
   " */",
   `@import (reference) "./${SIZING_FILENAME}";`,
   "",

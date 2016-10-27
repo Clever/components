@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table)
+**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table), [Grid](#grid), [FlexBox](#flexbox-and-flexitem), [TabBar](#tabbar-and-tab)
 
 ## Install
 
@@ -458,9 +458,50 @@ However `FlexBox` can be used without `FlexItem` in many cases.
 | className (optional) | String | Additional classname to apply to the flex box. | None
 | column (optional) | Boolean | Switches the flex box to a column-direction main axis. Child items will flow vertically. | False
 | inline (optional) | Boolean | Enables the inline-flex display mode for the flex box. The flex box container will fit the width of its content and share the line with any other inline elements. Similar to display: inline-block. | False
-| justify (optional) | Justify | Sets the main-axis alignment of the flex box content. | ContentAlign.START
+| justify (optional) | Justify | Sets the main-axis alignment of the flex box content. | Justify.START
 | wrap (optional) | Boolean | Causes child items to wrap if they are unable to fit on a single line. By default, flex items will shrink up to their minimum widths without wrapping, eventually causing them to overflow their container. `wrap` allows items to wrap to the multiple lines if necessary. | False
 
 #### Usage Examples
 
-[Sample Code](https://github.com/Clever/components/tree/master/docs/FlexExample.jsx) ([Live Demo](http://clever.github.io/components/#flex))
+[Sample Code](https://github.com/Clever/components/tree/master/docs/FlexExample.jsx) ([Live Demo](http://clever.github.io/components/#flexbox))
+
+### TabBar and Tab
+
+`TabBar` provides a simple horizontal flex-enabled tab bar supporting various alignment and sizing options.
+It requires `Tab` components as children.
+
+`Tab` provides a self-contained tab button supporting selected and disabled states as well as HREFs.
+`Tab` inherits its sizing from its parent, so although it can be used independently of `TabBar`, the alignment and sizing features provided via `TabBar` are only available when rendering `Tab`s within a `TabBar`.
+
+#### `<TabBar>` Options
+
+([Source code](https://github.com/Clever/components/tree/master/src/TabBar/TabBar.jsx))
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| alignSelf (optional) | ItemAlign | Sets the cross-axis alignment of this flex item only. | ItemAlign.STRETCH
+| children (optional) | Tab or Array<Tab> | The tabs to render in the tab bar. | None
+| className (optional) | String | Additional classname to apply to the tab bar. | None
+| justify (optional) | Justify | Sets the horizontal alignment of the tab bar tabs. See documentation on  [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for a description of the available options. | Justify.START
+| size (optional) | TabBar.Size | Controls the size of the tabs in the tab bar. | TabBar.Size.MEDIUM
+
+#### `<Tab>` Options
+
+([Source code](https://github.com/Clever/components/tree/master/src/TabBar/Tab.jsx))
+
+`FlexBox`es can be nested within one another, hence `FlexBox` supports all the above `FlexItem` props in addition to the following `FlexBox`-specific props:
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| children (optional) | React Node | The child items to render as the tab button label. | None
+| className (optional) | String | Additional classname to apply to the tab bar. | None
+| component (optional) | Any | Tagname of class for the wrapper component. `Tab` renders as a `<button>` by default (or a `<a>` if the `href` prop is specified). It can be made to render as a different component by specifying the component tagname or class. e.g. `<Tab component={ReactRouter.Link} />` | "button" (or "a" `if href` available)
+| disabled (optional) | Boolean | Whether or not the tab is disabled. **NOTE:** Disabled tabs will NOT emit `onSelect` events. | False
+| href (optional) | string | Causes the Tab to be rendered as an anchor element with the given href. Any additional anchor props, such as `target` will be passed through to the anchor if specified. | None
+| id (required) | Any | The id of the tab. This must be unique in comparison to any sibling tabs. | False
+| onSelect (optional) | Function | The `select` event handler for the tab, invoked with the `id` of the tab when it is clicked (unless disabled). | False
+| selected (optional) | Boolean | Whether or not the tab is currently selected. **NOTE:** Selected tabs WILL emit `onSelect` events. | False
+
+#### Usage Examples
+
+[Sample Code](https://github.com/Clever/components/tree/master/docs/TabBarExample.jsx) ([Live Demo](http://clever.github.io/components/#tabbar))
