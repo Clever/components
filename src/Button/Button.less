@@ -1,7 +1,5 @@
 @import "../less/fonts.less";
-@import (reference) "../less/colors.less";
-@import (reference) "../less/sizing.less";
-@import (reference) "../less/type-size.less";
+@import (reference) "../less/index";
 
 
 .buttonColor(@backgroundColor: @primary_blue) {
@@ -22,10 +20,10 @@
 
 a, button {
   &.Button {
+    .border--s(transparent);
+    .borderRadius--top--m;
     .text--medium;
-    border-radius: 3px 3px 0 0;
-    border: 1px solid transparent;
-    border-bottom-width: 3px;
+    border-bottom-width: @borderWidthL;
     box-sizing: border-box;
     cursor: pointer;
     font-family: "Proxima Nova";

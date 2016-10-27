@@ -7,6 +7,7 @@ import Cell from "./Cell";
 import Column from "./Column";
 import Footer from "./Footer";
 import Header from "./Header";
+import MorePropTypes from "../utils/MorePropTypes";
 import sortDirection from "./sortDirection";
 
 require("./Table.less");
@@ -140,9 +141,7 @@ export class Table extends Component {
 }
 
 Table.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.oneOf([Column]),
-  })),
+  children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
   className: PropTypes.string,
   data: PropTypes.array.isRequired,
   filter: PropTypes.func,

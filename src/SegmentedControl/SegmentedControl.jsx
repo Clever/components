@@ -100,10 +100,10 @@ SegmentedControl.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     content: PropTypes.node.isRequired,
     disabled: PropTypes.bool,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.any.isRequired,
   })).isRequired,
   onSelect: PropTypes.func,
-  value: PropTypes.string,
+  value: PropTypes.any,
 };
 
 SegmentedControl.cssClass = {

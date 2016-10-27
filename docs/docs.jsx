@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 
 import FlexExample from "./FlexExample";
 import GridExample from "./GridExample";
+import TabBarExample from "./TabBarExample";
 import TableExample from "./TableExample";
 import {
   Button,
@@ -330,6 +331,7 @@ class Demo extends React.Component {
         <TableExample />
         <FlexExample />
         <GridExample />
+        <TabBarExample />
         {/* Enable scrolling past the bottom for convenience. */}
         <div style={{margin: "0 0 600px"}} />
       </div>

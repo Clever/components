@@ -9,7 +9,8 @@ MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-sty
 BABEL := node_modules/babel-cli/bin/babel.js
 WEBPACK := node_modules/webpack/bin/webpack.js
 
-.PHONY: dev-server test lint clean es5 build new $(TESTS) styles sizing-styles
+.PHONY: dev-server test lint clean es5 build new $(TESTS) styles sizing-styles border-styles
+.PHONY: border-radius-styles
 
 clean:
 	@echo '✓ Clean out dist directory'
@@ -34,7 +35,15 @@ sizing-styles:
 	@echo "Generating sizing style definitions..."
 	@node genSizing.js
 
-LINT_MAX_LESS_PROBLEMS := 127
+border-styles:
+	@echo "Generating border style definitions..."
+	@node genBorder.js
+
+border-radius-styles:
+	@echo "Generating border-radius style definitions..."
+	@node genBorderRadius.js
+
+LINT_MAX_LESS_PROBLEMS := 123
 lint:
 	@echo "Linting files..."
 	@$(LINT) $(JS_FILES) $(JSX_FILES)

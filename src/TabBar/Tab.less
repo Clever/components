@@ -1,0 +1,81 @@
+@import (reference) "./defs";
+@import (reference) "../less/index";
+
+
+.TabBar--Tab {
+  background: none;
+  border: 0;
+  .border--bottom--m(transparent);
+  border-bottom: @tabBorderWidthMedium solid transparent;
+  box-sizing: border-box;
+  color: @neutral_dark_gray;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: none;
+  transition: background-color 0.25s ease-out, border-color 0.25s ease-out, color 0.25s ease-out;
+
+  &:active,
+  &:focus,
+  &:hover {
+    outline: 0;
+  }
+
+  &:focus,
+  &:hover {
+    &:not(.TabBar--Tab--selected):not(.TabBar--Tab--disabled) {
+      border-color: @neutral_gray;
+      color: @neutral_black;
+    }
+  }
+}
+
+.TabBar--Tab--selected {
+  border-color: @primary_blue;
+  color: @primary_blue;
+
+  &.TabBar--Tab--disabled {
+    border-color: @neutral_gray;
+  }
+}
+
+.TabBar--Tab--disabled {
+  color: @neutral_gray;
+  cursor: not-allowed;
+}
+
+.TabBar--small {
+  .TabBar--Tab {
+    .padding--x--s;
+    .padding--y--2xs;
+    border-bottom-width: @tabBorderWidthSmall;
+
+    &:not(:last-child) {
+      .margin--right--4xl;
+    }
+  }
+}
+
+.TabBar--medium {
+  .TabBar--Tab {
+    .padding--x--m;
+    .padding--y--xs;
+    border-bottom-width: @tabBorderWidthMedium;
+
+    &:not(:last-child) {
+      .margin--right--5xl;
+    }
+  }
+}
+
+.TabBar--large {
+  .TabBar--Tab {
+    .padding--x--m;
+    .padding--y--xs;
+    border-bottom-width: @tabBorderWidthLarge;
+
+    &:not(:last-child) {
+      .margin--right--5xl;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import React, {PropTypes} from "react";
 import * as tablePropTypes from "./tablePropTypes";
 import Column from "./Column";
 import HeaderCell from "./HeaderCell";
+import MorePropTypes from "../utils/MorePropTypes";
 
 
 export default function Header({children, disableSort, onSortChange, sortState}) {
@@ -29,9 +30,7 @@ export default function Header({children, disableSort, onSortChange, sortState})
 }
 
 Header.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.oneOf([Column]),
-  })),
+  children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
   disableSort: PropTypes.bool,
   onSortChange: PropTypes.func,
   sortState: tablePropTypes.sortState,
