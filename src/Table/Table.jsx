@@ -101,6 +101,13 @@ export class Table extends Component {
     if (paginated) {
       pages = lodash.chunk(displayedData, pageSize);
     }
+
+    if (pages.length === 0) {
+      // Chunking will return 0 pages if the data array is empty. Since we always show at least one
+      // page of (potentially empty) data, add an empty page by default.
+      pages = [[]];
+    }
+
     const numPages = pages.length;
     const displayedPage = Math.min(currentPage, numPages);
     const displayedPageIndex = displayedPage - 1;

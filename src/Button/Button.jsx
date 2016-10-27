@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import React from "react";
 
 require("./Button.less");
@@ -11,10 +12,11 @@ export function Button(props) {
     throw new Error("Buttons with href do not support the submit option");
   }
 
-  let classes = `Button Button--${props.type} Button--${props.size}`;
-  if (props.className) {
-    classes += ` ${props.className}`;
-  }
+  const classes = classnames(
+    `Button Button--${props.type}`,
+    `Button--${props.size}`,
+    props.className
+  );
   const type = props.submit ? "submit" : "button";
 
   if (props.href == null || props.disabled) {
@@ -42,7 +44,7 @@ Button.propTypes = {
   className: React.PropTypes.string,
   type: React.PropTypes.oneOf(["primary", "secondary", "destructive", "link", "linkPlain"]),
   size: React.PropTypes.oneOf(["large", "regular", "small"]),
-  value: React.PropTypes.string.isRequired,
+  value: React.PropTypes.node.isRequired,
   href: React.PropTypes.string,
   target: React.PropTypes.oneOf(["_self", "_blank"]),
   disabled: React.PropTypes.bool,
