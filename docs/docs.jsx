@@ -242,6 +242,18 @@ class Demo extends React.Component {
         <Button type="secondary" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button type="destructive" size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
         <Button disabled size="regular" href="http://lmgtfy.com/?q=button-as-link" value="LMGTFY" />
+        <h2>Button with HTML content</h2>
+        <Button type="primary" value={<span className="fa fa-search" />} />
+        <Button type="destructive" value={<div><span className="fa fa-trash" /> Remove</div>} />
+        <Button
+          disabled
+          value={<div><span className="fa fa-spin fa-spinner" /> Saving...</div>}
+        />
+        <Button
+          href="//wikipedia.org"
+          type="link"
+          value={<span><span className="fa fa-external-link" /> Learn more</span>}
+        />
         <h1>Modal</h1>
         <Button size="large" type="primary" onClick={this.openModal} value="Open Modal" />
         {modalElement}
