@@ -375,6 +375,37 @@
 	        _react2.default.createElement(_src.Button, { type: "destructive", size: "regular", href: "http://lmgtfy.com/?q=button-as-link", value: "LMGTFY" }),
 	        _react2.default.createElement(_src.Button, { disabled: true, size: "regular", href: "http://lmgtfy.com/?q=button-as-link", value: "LMGTFY" }),
 	        _react2.default.createElement(
+	          "h2",
+	          null,
+	          "Button with HTML content"
+	        ),
+	        _react2.default.createElement(_src.Button, { type: "primary", value: _react2.default.createElement("span", { className: "fa fa-search" }) }),
+	        _react2.default.createElement(_src.Button, { type: "destructive", value: _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement("span", { className: "fa fa-trash" }),
+	            " Remove"
+	          ) }),
+	        _react2.default.createElement(_src.Button, {
+	          disabled: true,
+	          value: _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement("span", { className: "fa fa-spin fa-spinner" }),
+	            " Saving..."
+	          )
+	        }),
+	        _react2.default.createElement(_src.Button, {
+	          href: "//wikipedia.org",
+	          type: "link",
+	          value: _react2.default.createElement(
+	            "span",
+	            null,
+	            _react2.default.createElement("span", { className: "fa fa-external-link" }),
+	            " Learn more"
+	          )
+	        }),
+	        _react2.default.createElement(
 	          "h1",
 	          null,
 	          "Modal"
@@ -22332,6 +22363,10 @@
 	});
 	exports.Button = Button;
 
+	var _classnames = __webpack_require__(201);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
 	var _react = __webpack_require__(26);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -22349,10 +22384,7 @@
 	    throw new Error("Buttons with href do not support the submit option");
 	  }
 
-	  var classes = "Button Button--" + props.type + " Button--" + props.size;
-	  if (props.className) {
-	    classes += " " + props.className;
-	  }
+	  var classes = (0, _classnames2.default)("Button Button--" + props.type, "Button--" + props.size, props.className);
 	  var type = props.submit ? "submit" : "button";
 
 	  if (props.href == null || props.disabled) {
@@ -22380,7 +22412,7 @@
 	  className: _react2.default.PropTypes.string,
 	  type: _react2.default.PropTypes.oneOf(["primary", "secondary", "destructive", "link", "linkPlain"]),
 	  size: _react2.default.PropTypes.oneOf(["large", "regular", "small"]),
-	  value: _react2.default.PropTypes.string.isRequired,
+	  value: _react2.default.PropTypes.node.isRequired,
 	  href: _react2.default.PropTypes.string,
 	  target: _react2.default.PropTypes.oneOf(["_self", "_blank"]),
 	  disabled: _react2.default.PropTypes.bool,
@@ -44441,6 +44473,13 @@
 	      if (paginated) {
 	        pages = _lodash2.default.chunk(displayedData, pageSize);
 	      }
+
+	      if (pages.length === 0) {
+	        // Chunking will return 0 pages if the data array is empty. Since we always show at least one
+	        // page of (potentially empty) data, add an empty page by default.
+	        pages = [[]];
+	      }
+
 	      var numPages = pages.length;
 	      var displayedPage = Math.min(currentPage, numPages);
 	      var displayedPageIndex = displayedPage - 1;
