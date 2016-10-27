@@ -98,7 +98,7 @@ export class Table extends Component {
     const disableSort = displayedData.length <= 1;
 
     let pages = [displayedData];
-    if (paginated) {
+    if (paginated && displayedData.length > 0) {
       pages = lodash.chunk(displayedData, pageSize);
     }
     const numPages = pages.length;
