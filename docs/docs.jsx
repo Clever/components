@@ -7,6 +7,7 @@ import GridExample from "./GridExample";
 import TabBarExample from "./TabBarExample";
 import TableExample from "./TableExample";
 import IconExample from "./IconExample";
+import LeftNavExample from "./LeftNavExample";
 import {
   Button,
   ConfirmationButton,
