@@ -1,12 +1,21 @@
 import React from "react";
+import classnames from "classnames";
 
 import {Button} from "../Button/Button";
 
+import "./NavLink.less";
+
 export function NavLink(props) {
-  const label = <span className={props.icon}>{props.label}</span>;
+  const {cssClass} = NavLink;
   return (
-    <li>
-      <Button type="link" href={props.href} value={label} />
-    </li>
+    <a className={cssClass.CONTAINER} href={props.href}>
+      <span className={classnames(cssClass.ICON, props.icon)} />
+      {props.label}
+    </a>
   );
 }
+
+NavLink.cssClass = {
+  CONTAINER: "NavLink",
+  ICON: "NavLink--icon",
+};

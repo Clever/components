@@ -4,15 +4,14 @@ import {FlexBox} from "../flex/";
 import {NavLink} from "./NavLink";
 import {NavGroup} from "./NavGroup";
 
-require("./LeftNav.less");
+import "./LeftNav.less";
 
 export function LeftNav(props) {
+  const {cssClass} = LeftNav;
   return (
-    <FlexBox>
+    <FlexBox className={cssClass.CONTAINER}>
       <nav>
-        <ul>
-          {props.children}
-        </ul>
+        {props.children}
       </nav>
     </FlexBox>
   );
@@ -26,4 +25,5 @@ LeftNav.propTypes = {
 };
 
 LeftNav.cssClass = {
+  CONTAINER: "LeftNav",
 };
