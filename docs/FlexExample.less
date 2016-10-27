@@ -16,7 +16,7 @@
   .FlexExample--item {
     .padding--m;
     background-color: fadeout(@neutral_gray, 90%);
-    border: 1px solid shade(@neutral_silver, 10%);
+    border: @borderWidthSmall solid shade(@neutral_silver, 10%);
     border-radius: 0;
     box-sizing: border-box;
     font-size: 0.875rem;
@@ -24,11 +24,11 @@
 }
 
 .FlexExample--box--minWidth {
-  min-width: 400px;
+  min-width: 25rem;
 }
 
 .FlexExample--box--tiny {
-  width: 90px;
+  width: 5.625rem;
 }
 
 .FlexExample--box--resizable--x {
