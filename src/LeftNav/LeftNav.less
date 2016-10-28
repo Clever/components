@@ -4,6 +4,22 @@
   color: @neutral_black;
   background: @neutral_silver;
   user-select: none;
-  // To support absolute positioning of the door in DrawerNavGroup
-  position: relative;
+}
+
+.LeftNav--subnav {
+  background: @neutral_dark_gray;
+  color: @neutral_white;
+  .NavLink {
+    .padding--x--l;
+  }
+  .NavLink:hover {
+    background: shade(@neutral_dark_gray, 30%);
+    color: @neutral_white;
+  }
+}
+
+.LeftNav--collapsed {
+  .NavLink--label {
+    display: none;
+  }
 }
