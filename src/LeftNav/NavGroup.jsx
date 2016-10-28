@@ -1,23 +1,23 @@
 import React from "react";
 import classnames from "classnames";
 
+import {NavLink} from "./NavLink";
+
 import "./NavGroup.less";
 
 export function NavGroup(props) {
   const {cssClass} = NavGroup;
   return (
-    <div className={cssClass.CONTAINER}>
-      <div className={cssClass.LABEL}>
-        <span className={classnames(cssClass.ICON, props.icon)} />
-        {props.label}
+    <div className={classnames(cssClass.CONTAINER, props.className)}>
+      <NavLink label={props.label} icon={props.icon} onClick={props.onClick} />
+      <div className={cssClass.SUBNAV}>
+        {props.children}
       </div>
-      {props.children}
     </div>
   );
 }
 
 NavGroup.cssClass = {
   CONTAINER: "NavGroup",
-  LABEL: "NavGroup--label",
-  ICON: "NavGroup--icon",
+  SUBNAV: "NavGroup--subnav",
 };

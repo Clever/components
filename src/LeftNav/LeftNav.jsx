@@ -3,6 +3,7 @@ import React from "react";
 import {FlexBox} from "../flex/";
 import {NavLink} from "./NavLink";
 import {NavGroup} from "./NavGroup";
+import {CollapsibleNavGroup} from "./CollapsibleNavGroup";
 
 import "./LeftNav.less";
 
@@ -19,6 +20,7 @@ export function LeftNav(props) {
 
 LeftNav.NavLink = NavLink;
 LeftNav.NavGroup = NavGroup;
+LeftNav.CollapsibleNavGroup = CollapsibleNavGroup;
 
 LeftNav.propTypes = {
   // List required and optional proptypes
