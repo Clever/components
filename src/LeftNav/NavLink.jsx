@@ -7,8 +7,9 @@ import "./NavLink.less";
 
 export function NavLink(props) {
   const {cssClass} = NavLink;
+  const selected = props.selected ? cssClass.SELECTED : null;
   return (
-    <a className={cssClass.CONTAINER} href={props.href}>
+    <a className={classnames(cssClass.CONTAINER, selected)} href={props.href} onClick={props.onClick}>
       <span className={classnames(cssClass.ICON, props.icon)} />
       {props.label}
     </a>
@@ -17,5 +18,6 @@ export function NavLink(props) {
 
 NavLink.cssClass = {
   CONTAINER: "NavLink",
+  SELECTED: "NavLink--selected",
   ICON: "NavLink--icon",
 };

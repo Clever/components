@@ -5,31 +5,49 @@ import {LeftNav} from "../src/LeftNav/LeftNav";
 
 import "./LeftNavExample.less";
 
-export default function LeftNavExample() {
-  const {cssClass} = LeftNavExample;
-  const {NavLink, NavGroup} = LeftNav;
+export default class LeftNavExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {selected: "Home"};
+  }
 
-  return (
-    <div>
-      <a name="leftnav">
-        <h1>Left Nav</h1>
-      </a>
-      <FlexBox className={cssClass.CONTAINER}>
-        <LeftNav>
-          <NavLink label="Home" href="#" icon={cssClass.fa("home")} />
-          <NavGroup label="Tools" icon={cssClass.fa("cog")}>
-            <NavLink label="Hammer" href="" />
-            <NavLink label="Screwdriver" href="" />
-            <NavLink label="Measuring Tape" href="" />
-          </NavGroup>
-          <NavLink label="Profile" href="#" icon={cssClass.fa("user")} />
-        </LeftNav>
-        <FlexItem grow className={cssClass.RIGHT_PANE}>
-          Look at that pretty left nav!
-        </FlexItem>
-      </FlexBox>
-    </div>
-  );
+  render() {
+    const {cssClass} = LeftNavExample;
+    const {NavLink, NavGroup} = LeftNav;
+
+    const renderLink = (label, icon) => {
+      return <NavLink
+        label={label}
+        icon={icon}
+        selected={this.state.selected === label}
+        onClick={() => {console.log("select " + label);
+          this.setState({selected: label})}}
+      />
+    };
+
+    return (
+      <div>
+        <a name="leftnav">
+          <h1>Left Nav</h1>
+        </a>
+        <FlexBox className={cssClass.CONTAINER}>
+          <LeftNav>
+            {renderLink("Home", cssClass.fa("home"))}
+            <NavGroup label="Tools" icon={cssClass.fa("cog")}>
+              {renderLink("Hammer")}
+              {renderLink("Screwdriver")}
+              {renderLink("Measuring Tape")}
+            </NavGroup>
+            {renderLink("Profile", cssClass.fa("user"))}
+          </LeftNav>
+          <FlexItem grow className={cssClass.RIGHT_PANE}>
+            <h2>{this.state.selected}</h2>
+            <p>Look at that pretty left nav!</p>
+          </FlexItem>
+        </FlexBox>
+      </div>
+    );
+  }
 }
 
 LeftNavExample.cssClass = {

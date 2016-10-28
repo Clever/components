@@ -6,17 +6,20 @@
   text-decoration: none;
   display: block;
   cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
+  .text--semi-bold;
   color: inherit;
 
   &:hover {
-    color: @neutral_black;
-    background: @neutral_gray;
+    .NavLink--selected;
   }
+}
 
-  .NavLink--icon {
-    width: @size_m;
-    .padding--right--xs;
-  }
+.NavLink--selected {
+  color: @neutral_black;
+  background: @neutral_gray;
+}
+
+.NavLink--icon {
+  width: @size_m;
+  .padding--right--xs;
 }
