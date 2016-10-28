@@ -16,8 +16,8 @@ export class CollapsibleNavGroup extends React.Component {
     const collapsed = this.state.collapsed ? cssClass.COLLAPSED : null;
     return (
       <NavGroup
-        className={classnames(cssClass.CONTAINER, collapsed)}
         {...this.props}
+        className={classnames(cssClass.CONTAINER, collapsed)}
         onClick={() => this.setState({collapsed: !this.state.collapsed})}
       />
     );

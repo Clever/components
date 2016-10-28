@@ -13,7 +13,7 @@ export default class LeftNavExample extends React.Component {
 
   render() {
     const {cssClass} = LeftNavExample;
-    const {NavLink, NavGroup, CollapsibleNavGroup} = LeftNav;
+    const {NavLink, NavGroup, CollapsibleNavGroup, DrawerNavGroup} = LeftNav;
 
     const renderLink = (label, icon) => {
       return <NavLink
@@ -43,6 +43,11 @@ export default class LeftNavExample extends React.Component {
               {renderLink("Piano")}
               {renderLink("Hurdy-gurdy")}
             </CollapsibleNavGroup>
+            <DrawerNavGroup label="Drawer" icon={cssClass.fa("inbox")}>
+              {renderLink("Shirts")}
+              {renderLink("Socks")}
+              {renderLink("Underwear")}
+            </DrawerNavGroup>
             {renderLink("Profile", cssClass.fa("user"))}
           </LeftNav>
           <FlexItem grow className={cssClass.RIGHT_PANE}>
