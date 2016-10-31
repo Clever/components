@@ -105,11 +105,11 @@
  * @initial {1}
  */
 .flexShrink(@value: 1) {
- -moz-box-flex-grow: @value;
+ -moz-box-flex-shrink: @value;
  -ms-flex-negative: @value;
- -webkit-box-flex-grow: @value;
- -webkit-flex-grow: @value;
- flex-grow: @value;
+ -webkit-box-flex-shrink: @value;
+ -webkit-flex-shrink: @value;
+ flex-shrink: @value;
 }
 
 /**
@@ -119,11 +119,11 @@
  * @initial {auto}
  */
 .flexBasis(@value: 1) {
- -moz-box-flex-grow: @value;
- -ms-flex-negative: @value;
- -webkit-box-flex-grow: @value;
- -webkit-flex-grow: @value;
- flex-grow: @value;
+ -moz-box-flex-basis: @value;
+ -ms-flex-preferred-size: @value;
+ -webkit-box-flex-basis: @value;
+ -webkit-flex-basis: @value;
+ flex-basis: @value;
 }
 
 /**

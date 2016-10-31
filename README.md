@@ -54,7 +54,7 @@ To learn which styles are available, read through the [less code](https://github
 
 ### Publishing
 
-First, increment the version in `package.json` according to [semver](http://semver.org/).
+First, increment the version in `package.json` according to [semver](http://semver.org/). You can use the `npm version` command (e.g. `npm version major`).
 
 Then, when you merge your branch into `master`, Drone will automatically build and publish a new version to npm.
 

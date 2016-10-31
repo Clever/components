@@ -36,7 +36,6 @@
 
 .genColumns(@numCol, @size, @i: 1) when (@i =< @numCol) {
   .Grid--Col--@{size}--@{i} {
-    .flexbox;
     box-sizing: border-box;
     width: (@i * 100% / @numCol);
   }
