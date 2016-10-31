@@ -93,17 +93,17 @@ export default function GridExample() {
       <h2>Nested Grids</h2>
       <Grid className="items--center outlined resizable" style={{height: "400px", minWidth: "550px"}}>
         <Row className="shaded outlined" style={{marginBottom: "1rem"}}>
-          <Col span={12} className="justify--center">
+          <Col span={12} className="flexbox justify--center">
             <Grid style={{padding: 0, maxWidth: "700px"}}>
               <Row>{renderCol(2)}{renderCol(7)}{renderCol(3)}</Row>
             </Grid>
           </Col>
         </Row>
         <Row className="shaded outlined" grow>
-          <Col span={12} className="justify--center self--stretch">
+          <Col span={12} className="flexbox justify--center self--stretch">
             <Grid style={{padding: 0, maxWidth: "700px"}} className="self--stretch">
               <Row>{renderCol(3)}{renderCol(9)}</Row>
-              <Row grow>{renderCol(3)}{renderCol(9)}</Row>
+              <Row grow>{renderCol(3, "flexbox")}{renderCol(9, "flexbox")}</Row>
               <Row>{renderCol(12)}</Row>
             </Grid>
           </Col>
