@@ -9,7 +9,7 @@ class AddressStep extends React.Component {
   }
 
   render() {
-    const {setWizardState, onNext, wizardState} = this.props;
+    const {setWizardState, wizardState} = this.props;
     return (
       <form ref={(f) => { this.form = f; }} onSubmit={(e) => e.preventDefault()}>
         <TextInput
@@ -18,9 +18,6 @@ class AddressStep extends React.Component {
           type="text" name="address"
           onChange={() => setWizardState({address: this.form.elements.address.value})}
           value={wizardState.address || ""}
-        />
-        <Button
-          type="primary" onClick={onNext} value="Save address" disabled={!AddressStep.validate(wizardState)}
         />
       </form>
     );
@@ -38,7 +35,7 @@ class ContactStep extends React.Component {
   }
 
   render() {
-    const {wizardState, setWizardState, onPrev, onNext} = this.props;
+    const {wizardState, setWizardState} = this.props;
     return (
       <form ref={(f) => { this.form = f; }} onSubmit={(e) => e.preventDefault()}>
         <TextInput
@@ -60,11 +57,6 @@ class ContactStep extends React.Component {
           })}
           value={wizardState.phoneNumber || ""}
         />
-        <Button type="secondary" onClick={onPrev} value="Back" />
-        <Button
-          type="primary" onClick={onNext} value="Save contact"
-          disabled={!ContactStep.validate(wizardState)}
-        />
       </form>
     );
   }
@@ -81,7 +73,7 @@ class ReviewStep extends React.Component {
   }
 
   render() {
-    const {setWizardState, wizardState, onPrev, onNext} = this.props;
+    const {setWizardState, wizardState} = this.props;
     return (
       <form ref={(f) => { this.form = f; }} onSubmit={(e) => e.preventDefault()}>
         <div>
@@ -109,12 +101,6 @@ class ReviewStep extends React.Component {
           />
           I have reviewed the information above and it is correct.
         </label>
-
-        <Button type="secondary" onClick={onPrev} value="Back" />
-        <Button
-          type="primary" onClick={onNext} value="Set delivery"
-          disabled={!ReviewStep.validate(wizardState)}
-        />
       </form>
     );
   }
@@ -123,22 +109,16 @@ class ReviewStep extends React.Component {
 AddressStep.propTypes = {
   wizardState: PropTypes.object.isRequired,
   setWizardState: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired,
-  onPrev: PropTypes.func.isRequired,
 };
 
 ContactStep.propTypes = {
   wizardState: PropTypes.object.isRequired,
   setWizardState: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired,
-  onPrev: PropTypes.func.isRequired,
 };
 
 ReviewStep.propTypes = {
   wizardState: PropTypes.object.isRequired,
   setWizardState: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired,
-  onPrev: PropTypes.func.isRequired,
 };
 
 export default function WizardExample() {
@@ -149,12 +129,14 @@ export default function WizardExample() {
         "your contact address saved.",
       component: AddressStep,
       validate: AddressStep.validate,
+      nextButtonValue: "Save address",
     },
     {
       title: "Delivery Contact",
       description: "Who should we contact when we have arrived to your delivery address?",
       component: ContactStep,
       validate: ContactStep.validate,
+      nextButtonValue: "Save contact",
     },
     {
       title: "Review",
@@ -162,6 +144,7 @@ export default function WizardExample() {
         "delivery process.",
       component: ReviewStep,
       validate: ReviewStep.validate,
+      nextButtonValue: "Set delivery",
     },
   ];
 
