@@ -1,8 +1,6 @@
 import React, {PropTypes} from "react";
 import _ from "lodash";
 
-require("./Wizard.less");
-
 export default function WizardStep({
   title, description, Component, onNext, onPrev, setWizardState, currentStep, wizardState,
 }) {
