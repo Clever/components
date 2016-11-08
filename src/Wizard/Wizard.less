@@ -8,11 +8,31 @@
 .Wizard--sidebar {
   flex: 0 0 200px;
   padding: 0 10px;
+  background-color: @neutral_off_white;
+  .border--right--m(@neutral_silver);
+
+  h2 {
+    font-weight: 300;
+  }
 }
 
-.Wizard--wizardStep {
+.Wizard--contentGroup {
+  background: @neutral_off_white;
+  .padding--s;
+  .margin--m;
+}
+
+.Wizard--step {
   flex: 1;
-  padding: 0 10px;
+  padding: 0 20px;
+}
+
+.Wizard--WizardStep {
+  h1 {
+    width: 100%;
+    .border--bottom--m(@neutral_silver);
+    .padding--bottom--m;
+  }
 }
 
 .Wizard--stepContainer {

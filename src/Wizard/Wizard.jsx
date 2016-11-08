@@ -18,15 +18,38 @@ export class Wizard extends React.Component {
       data: props.initialWizardData || {},
     });
     this.reset = this.reset.bind(this);
+    this.prevStepHandler = this.prevStepHandler.bind(this);
+    this.nextStepHandler = this.nextStepHandler.bind(this);
   }
 
   reset() {
-    this.setState(_.assign({}, INITIAL_STATE, {data: {}}))
+    this.setState(_.assign({}, INITIAL_STATE, {data: {}}));
+  }
+
+  prevStepHandler() {
+    const prevStep = Math.max(0, this.state.currentStep - 1);
+    this.setState({
+      currentStep: prevStep,
+      stepsVisited: _.union(this.state.stepsVisited, [prevStep]),
+    });
+  }
+
+  nextStepHandler() {
+    if (this.state.currentStep === this.props.steps.length - 1) {
+      this.props.onComplete(this.state.data);
+      return;
+    }
+    const nextStep = Math.min(this.state.currentStep + 1);
+    this.setState({
+      currentStep: nextStep,
+      stepsVisited: _.union(this.state.stepsVisited, [nextStep]),
+    });
   }
 
   render() {
     const {
-      className, style, title, description, helpText, wizardButtons, onComplete, steps,
+      className, style, title, description, help, wizardButtons, steps, nextButtonValue,
+      prevButtonValue,
     } = this.props;
 
     const classes = classnames("Wizard", className);
@@ -34,10 +57,14 @@ export class Wizard extends React.Component {
     const validSteps = steps.map(step => step.validate(this.state.data));
     const percentComplete = _.compact(validSteps).length / steps.length;
 
+    const nextDisabled = this.state.currentStep === steps.length - 1 ?
+      _.compact(steps.map(step => step.validate(this.state.data))).length !== steps.length
+    : !curStep.validate(this.state.data);
+
     return (
       <div className={classes} style={style}>
         <div className="Wizard--sidebar">
-          <h1>{title}</h1>
+          <h2>{title}</h2>
           {_.isString(description) ?
             <p>{description}</p>
           :
@@ -82,38 +109,41 @@ export class Wizard extends React.Component {
             </div>
           }
         </div>
-        <WizardStep
-          Component={steps[this.state.currentStep].component}
-          onNext={() => {
-            if (this.state.currentStep === steps.length - 1) {
-              onComplete(this.state.data);
-              return;
+
+        <div className="Wizard--step">
+          <WizardStep
+            Component={steps[this.state.currentStep].component}
+            stepNumber={this.state.currentStep}
+            setWizardState={(changes) => {
+              this.setState({
+                data: _.merge(this.state.data, changes),
+              });
+            }}
+            wizardState={this.state.data}
+            title={curStep.title}
+            description={curStep.description}
+            currentStep={this.state.currentStep}
+            help={curStep.help ? curStep.help : help}
+            validate={curStep.validate}
+            prevButtonValue={curStep.prevButtonValue}
+            nextButtonValue={curStep.nextButtonValue}
+          />
+
+          <div className="Wizard--contentGroup Wizard--WizardStep--navButtons">
+            { this.state.currentStep !== 0 &&
+              <Button
+                onClick={this.prevStepHandler}
+                value={curStep.prevButtonValue || prevButtonValue || "Back"}
+              />
             }
-            const nextStep = Math.min(this.state.currentStep + 1);
-            this.setState({
-              currentStep: nextStep,
-              stepsVisited: _.union(this.state.stepsVisited, [nextStep]),
-            });
-          }}
-          onPrev={() => {
-            const prevStep = Math.max(0, this.state.currentStep - 1);
-            this.setState({
-              currentStep: prevStep,
-              stepsVisited: _.union(this.state.stepsVisited, [prevStep]),
-            });
-          }}
-          stepNumber={this.state.currentStep}
-          setWizardState={(changes) => {
-            this.setState({
-              data: _.merge(this.state.data, changes),
-            });
-          }}
-          wizardState={this.state.data}
-          title={curStep.title}
-          description={curStep.description}
-          currentStep={this.state.currentStep}
-        />
-        <p>{helpText}</p>
+
+            <Button
+              onClick={this.nextStepHandler}
+              disabled={nextDisabled} type="primary"
+              value={curStep.nextButtonValue || nextButtonValue || "Next"}
+            />
+          </div>
+        </div>
       </div>
     );
   }
@@ -124,7 +154,7 @@ Wizard.propTypes = {
   style: PropTypes.object,
   title: PropTypes.string.isRequired,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  helpText: PropTypes.string,
+  help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   wizardButtons: PropTypes.arrayOf(PropTypes.shape({
     handler: PropTypes.func.isRequired,
     buttonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -137,5 +167,8 @@ Wizard.propTypes = {
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)]).isRequired,
     validate: PropTypes.func.isRequired,
+    help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   })),
+  nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
