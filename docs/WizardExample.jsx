@@ -175,7 +175,7 @@ export default function WizardExample() {
               `Please call ${state.phoneNumber} upon delivery`)
       }
       wizardButtons={[{
-        handler: (wizardState, resetWizard) => resetWizard(),
+        handler: (wizardState, {resetWizard}) => resetWizard(),
         buttonValue: "Clear and start over",
       }]}
     />

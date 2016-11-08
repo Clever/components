@@ -9,14 +9,19 @@ import "./Wizard.less";
 
 const INITIAL_STATE = {
   currentStep: 0,
+  stepsVisited: [0],
 };
 export class Wizard extends React.Component {
   constructor(props) {
     super(props);
     this.state = _.assign(INITIAL_STATE, {
       data: props.initialWizardData || {},
-      stepsVisited: [0],
     });
+    this.reset = this.reset.bind(this);
+  }
+
+  reset() {
+    this.setState(_.assign({}, INITIAL_STATE, {data: {}}))
   }
 
   render() {
@@ -69,7 +74,7 @@ export class Wizard extends React.Component {
                 <Button
                   key={idx}
                   onClick={() => btnSpec.handler(
-                    this.state.data, () => this.setState(_.assign({}, INITIAL_STATE, {data: {}})))}
+                    this.state.data, {resetWizard: this.reset})}
                   value={btnSpec.buttonValue}
                   className={classnames("Wizard--controls--control", btnSpec.buttonClassName)}
                 />
