@@ -12,3 +12,4 @@ export {Table} from "./Table/Table";
 export {Grid} from "./Grid/Grid";
 export {Icon} from "./Icon/Icon";
 export {LeftNav} from "./LeftNav/LeftNav";
+export {Wizard} from "./Wizard/Wizard";

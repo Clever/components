@@ -1,0 +1,113 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+
+.buttonColor(@backgroundColor: @primary_blue) {
+  background-color: @backgroundColor;
+  border-color: @backgroundColor;
+  .shade(border-bottom-color, @backgroundColor, 2);
+
+  &:not([disabled]) {
+    &:hover,
+    &:focus,
+    &:active {
+      .shade(background-color, @backgroundColor, 2);
+      .shade(border-color, @backgroundColor, 2);
+      .shade(border-bottom-color, @backgroundColor, 4);
+    }
+  }
+}
+
+a, button {
+  &.Wizard {
+    .border--s(transparent);
+    .borderRadius--top--m;
+    .text--medium;
+    border-bottom-width: @borderWidthL;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: "Proxima Nova";
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.25s ease-out, border-color 0.25s ease-out, color 0.25s ease-out;
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus
+    &[disabled]:active {
+      .buttonColor(@neutral_silver);
+      cursor: not-allowed;
+      color: @neutral_dark_gray;
+
+      &.Wizard--linkPlain,
+      &.Wizard--link {
+        background: none;
+        border: transparent;
+        color: @neutral_gray;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active{
+      outline: 0;
+    }
+  }
+
+  &.Wizard--primary {
+    .buttonColor(@primary_blue);
+    color: @neutral_off_white;
+  }
+
+  &.Wizard--secondary {
+    background-color: @neutral_off_white;
+    border-color: @primary_blue;
+    color: @primary_blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      .shade(border-color, @primary_blue, 2);
+      .shade(color, @primary_blue, 2);
+    }
+  }
+
+  &.Wizard--destructive {
+    .buttonColor(@alert_red);
+    color: @neutral_off_white;
+  }
+
+  &.Wizard--linkPlain,
+  &.Wizard--link {
+    background: none;
+    border: transparent;
+    color: @primary_blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      .shade(color, @primary_blue, 2);
+    }
+  }
+
+  &.Wizard--small {
+    .text--small;
+    padding: @size_xs @size_s @size_2xs;
+  }
+
+  &.Wizard--regular {
+    padding: @size_s @size_m @size_xs;
+  }
+
+  &.Wizard--large {
+    .text--large;
+    padding: @size_m @size_l @size_s;
+  }
+
+  &.Wizard--linkPlain {
+    border: none;
+    font-size: 1em;  /* Match surrounding text. */
+    margin: 0;
+    padding: 0;
+  }
+}
