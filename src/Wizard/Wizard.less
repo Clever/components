@@ -6,6 +6,8 @@
 }
 
 .Wizard--sidebar {
+  display: flex;
+  flex-direction: column;
   flex: 0 0 200px;
   padding: 0 10px;
   background-color: @neutral_off_white;
@@ -54,10 +56,15 @@
 }
 
 .Wizard--stepsDisplay {
+  flex: 1;
   & > ul {
     list-style-type: none;
     padding: 0;
   }
+}
+
+.Wizard--controls {
+  flex: 0 1;
 }
 
 .Wizard--stepsDisplay--stepLink {
