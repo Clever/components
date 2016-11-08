@@ -6,6 +6,7 @@ import FlexExample from "./FlexExample";
 import GridExample from "./GridExample";
 import TabBarExample from "./TabBarExample";
 import TableExample from "./TableExample";
+import IconExample from "./IconExample";
 import {
   Button,
   ConfirmationButton,
@@ -80,6 +81,7 @@ class Demo extends React.Component {
 
     return (
       <div style={{fontFamily: "Proxima Nova", marginBottom: "50px"}}>
+        <IconExample />
         <h1>TextInputs</h1>
         <div style={{width: "300px"}}>
           <TextInput
