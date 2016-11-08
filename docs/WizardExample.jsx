@@ -121,53 +121,77 @@ ReviewStep.propTypes = {
   setWizardState: PropTypes.func.isRequired,
 };
 
-export default function WizardExample() {
-  const steps = [
-    {
-      title: "Delivery Address",
-      description: "To ensure that your item will arrive on time, let's make sure that we have " +
-        "your contact address saved.",
-      component: AddressStep,
-      validate: AddressStep.validate,
-      nextButtonValue: "Save address",
-    },
-    {
-      title: "Delivery Contact",
-      description: "Who should we contact when we have arrived to your delivery address?",
-      component: ContactStep,
-      validate: ContactStep.validate,
-      nextButtonValue: "Save contact",
-    },
-    {
-      title: "Review",
-      description: "Please review and double check the information below before finalizing the " +
-        "delivery process.",
-      component: ReviewStep,
-      validate: ReviewStep.validate,
-      nextButtonValue: "Set delivery",
-    },
-  ];
+export default class WizardExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      seekable: false,
+    };
+  }
+  render() {
+    const steps = [
+      {
+        title: "Delivery Address",
+        description: "To ensure that your item will arrive on time, let's make sure that we have " +
+          "your contact address saved.",
+        component: AddressStep,
+        validate: AddressStep.validate,
+        nextButtonValue: "Save address",
+      },
+      {
+        title: "Delivery Contact",
+        description: "Who should we contact when we have arrived to your delivery address?",
+        component: ContactStep,
+        validate: ContactStep.validate,
+        nextButtonValue: "Save contact",
+      },
+      {
+        title: "Review",
+        description: "Please review and double check the information below before finalizing the " +
+          "delivery process.",
+        component: ReviewStep,
+        validate: ReviewStep.validate,
+        nextButtonValue: "Set delivery",
+      },
+    ];
 
-  return (
-    <Wizard
-      title="Delivery setup"
-      description="Ensure that your delivery will come on time"
-      steps={steps}
-      onComplete={(state) =>
-        alert(`Delivering to ${state.fullName} at ${state.address}. ` +
-              `Please call ${state.phoneNumber} upon delivery`)
-      }
-      wizardButtons={[{
-        handler: (wizardState, {resetWizard}) => resetWizard(),
-        buttonValue: "Clear and start over",
-      }]}
-      help={<p>
-        Need any help? Check out our&nbsp;
-        <Button
-          onClick={() => alert("LOL, no help for you!")} type="link"
-          value="Support Center." style={{padding: 0}}
-        />
-      </p>}
-    />
-  );
+    return (<div className="WizardExample">
+      <fieldset>
+        <legend>Wizard controls</legend>
+        <ul style={{listStyleType: "none"}}>
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                onChange={(e) => this.setState({seekable: e.target.checked})}
+              />
+              Seekable?
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+
+      <Wizard
+        title="Delivery setup"
+        description="Ensure that your delivery will come on time"
+        steps={steps}
+        onComplete={(state) =>
+          alert(`Delivering to ${state.fullName} at ${state.address}. ` +
+                `Please call ${state.phoneNumber} upon delivery`)
+        }
+        wizardButtons={[{
+          handler: (wizardState, {resetWizard}) => resetWizard(),
+          buttonValue: "Clear and start over",
+        }]}
+        help={<p>
+          Need any help? Check out our&nbsp;
+          <Button
+            onClick={() => alert("LOL, no help for you!")} type="link"
+            value="Support Center." style={{padding: 0}}
+          />
+        </p>}
+        seekable={this.state.seekable}
+      />
+    </div>);
+  }
 }
