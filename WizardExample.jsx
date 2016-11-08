@@ -4,7 +4,7 @@ import React, {PropTypes} from "react";
 import {Button, Wizard, TextInput} from "../src/";
 
 class AddressStep extends React.Component {
-  validate(wizardState) {
+  static validate(wizardState) {
     return wizardState.address && wizardState.address.length !== 0;
   }
 
@@ -20,7 +20,7 @@ class AddressStep extends React.Component {
           value={wizardState.address || ""}
         />
         <Button
-          type="primary" onClick={onNext} value="Save address" disabled={!this.validate(wizardState)}
+          type="primary" onClick={onNext} value="Save address" disabled={!AddressStep.validate(wizardState)}
         />
       </form>
     );
@@ -28,7 +28,7 @@ class AddressStep extends React.Component {
 }
 
 class ContactStep extends React.Component {
-  validate(wizardState) {
+  static validate(wizardState) {
     for (const field of ["fullName", "phoneNumber"]) {
       if (!wizardState[field] || wizardState[field].length === 0) {
         return false;
@@ -62,7 +62,8 @@ class ContactStep extends React.Component {
         />
         <Button type="secondary" onClick={onPrev} value="Back" />
         <Button
-          type="primary" onClick={onNext} value="Save contact" disabled={!this.validate(wizardState)}
+          type="primary" onClick={onNext} value="Save contact"
+          disabled={!ContactStep.validate(wizardState)}
         />
       </form>
     );
@@ -70,7 +71,7 @@ class ContactStep extends React.Component {
 }
 
 class ReviewStep extends React.Component {
-  validate(wizardState) {
+  static validate(wizardState) {
     for (const field of ["fullName", "phoneNumber", "address"]) {
       if (!wizardState[field] || wizardState[field].length === 0) {
         return false;
@@ -112,7 +113,7 @@ class ReviewStep extends React.Component {
         <Button type="secondary" onClick={onPrev} value="Back" />
         <Button
           type="primary" onClick={onNext} value="Set delivery"
-          disabled={!this.validate(wizardState)}
+          disabled={!ReviewStep.validate(wizardState)}
         />
       </form>
     );
