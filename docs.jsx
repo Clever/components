@@ -8,6 +8,7 @@ import TabBarExample from "./TabBarExample";
 import TableExample from "./TableExample";
 import IconExample from "./IconExample";
 import LeftNavExample from "./LeftNavExample";
+import WizardExample from "./WizardExample";
 import {
   Button,
   ConfirmationButton,
@@ -343,6 +344,8 @@ class Demo extends React.Component {
             value: "three",
           }]}
         />
+        <h1>Wizard</h1>
+        <WizardExample />
         <TableExample />
         <FlexExample />
         <GridExample />
