@@ -17,9 +17,19 @@
 }
 
 .Wizard--contentGroup {
+  min-width: 600px;
+  max-width: 600px;
   background: @neutral_off_white;
   .padding--s;
   .margin--m;
+
+  &.Wizard--WizardStep--help {
+    min-width: 300px;
+  }
+}
+
+.Wizard--navButtons {
+  text-align: right;
 }
 
 .Wizard--step {
@@ -94,4 +104,19 @@
 
 .Wizard--stepsDisplay--valid {
   background: green;
+}
+
+
+.Wizard--WizardStep--componentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.Wizard--WizardStep--component {
+  flex: 1 0 600px;
+}
+
+.Wizard--WizardStep--help {
+  flex: 1 0 300px;
 }

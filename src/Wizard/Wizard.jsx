@@ -144,7 +144,7 @@ export class Wizard extends React.Component {
             nextButtonValue={curStep.nextButtonValue}
           />
 
-          <div className="Wizard--contentGroup Wizard--WizardStep--navButtons">
+          <div className="Wizard--contentGroup Wizard--navButtons">
             { this.state.currentStep !== 0 &&
               <Button
                 onClick={this.prevStepHandler}

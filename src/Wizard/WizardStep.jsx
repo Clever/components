@@ -10,19 +10,21 @@ export default function WizardStep({
 
       { description && (
         <div className="Wizard--contentGroup">
-          { _.isString(description) ? <p>{description}</p> : {description} }
+          { _.isString(description) ? <p>{description}</p> : description }
         </div>
       )}
 
-      <div className="Wizard--contentGroup">
-        <Component setWizardState={setWizardState} wizardState={wizardState} />
+      <div className="Wizard--WizardStep--componentWrapper">
+        <div className="Wizard--contentGroup Wizard--WizardStep--component">
+          <Component setWizardState={setWizardState} wizardState={wizardState} />
+        </div>
+
+        { help && (
+          <div className="Wizard--contentGroup Wizard--WizardStep--help">
+            {_.isString(help) ? <p>{help}</p> : help}
+          </div>
+        )}
       </div>
-
-      { help && (
-        <div className="Wizard--contentGroup Wizard--WizardStep--help">
-          {_.isString(help) ? <p>{help}</p> : {help}}
-        </div>
-      )}
     </div>
   );
 }
