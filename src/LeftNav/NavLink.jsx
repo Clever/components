@@ -9,7 +9,7 @@ export function NavLink(props) {
   const {cssClass} = NavLink;
   return (
     <a className={cssClass.CONTAINER} onClick={props.onClick}>
-      <span className={classnames(cssClass.ICON, props.icon)} />
+      <span className={cssClass.ICON}>{props.icon}</span>
       <span className={cssClass.LABEL}>{props.label}</span>
     </a>
   );
