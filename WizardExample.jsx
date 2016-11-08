@@ -1,4 +1,4 @@
-/* eslint-disable react/no-multi-comp */
+/* eslint-disable react/no-multi-comp, no-alert */
 import React, {PropTypes} from "react";
 
 import {Button, Wizard, TextInput} from "../src/";
@@ -154,13 +154,20 @@ export default function WizardExample() {
       description="Ensure that your delivery will come on time"
       steps={steps}
       onComplete={(state) =>
-        alert(`Delivering to ${state.fullName} at ${state.address}. ` + // eslint-disable-line no-alert
+        alert(`Delivering to ${state.fullName} at ${state.address}. ` +
               `Please call ${state.phoneNumber} upon delivery`)
       }
       wizardButtons={[{
         handler: (wizardState, {resetWizard}) => resetWizard(),
         buttonValue: "Clear and start over",
       }]}
+      help={<p>
+        Need any help? Check out our&nbsp;
+        <Button
+          onClick={() => alert("LOL, no help for you!")} type="link"
+          value="Support Center." style={{padding: 0}}
+        />
+      </p>}
     />
   );
 }
