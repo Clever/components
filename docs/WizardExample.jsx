@@ -126,6 +126,8 @@ export default class WizardExample extends React.Component {
     super(props);
     this.state = {
       seekable: false,
+      showHelp: false,
+      prevButtonValue: "Back",
     };
   }
   render() {
@@ -168,6 +170,22 @@ export default class WizardExample extends React.Component {
               Seekable?
             </label>
           </li>
+          <li>
+            <input
+              type="checkbox"
+              onChange={(e) => this.setState({showHelp: e.target.checked})}
+            />
+            Show help?
+          </li>
+          <li>
+            <label>
+              <TextInput
+                value={this.state.prevButtonValue}
+                onChange={(e) => this.setState({prevButtonValue: e.target.value})}
+                label="Prev button text"
+              />
+            </label>
+          </li>
         </ul>
       </fieldset>
 
@@ -175,6 +193,7 @@ export default class WizardExample extends React.Component {
         title="Delivery setup"
         description="Ensure that your delivery will come on time"
         steps={steps}
+        prevButtonValue={this.state.prevButtonValue}
         onComplete={(state) =>
           alert(`Delivering to ${state.fullName} at ${state.address}. ` +
                 `Please call ${state.phoneNumber} upon delivery`)
@@ -183,7 +202,7 @@ export default class WizardExample extends React.Component {
           handler: (wizardState, {resetWizard}) => resetWizard(),
           buttonValue: "Clear and start over",
         }]}
-        help={<p>
+        help={this.state.showHelp && <p>
           Need any help? Check out our&nbsp;
           <Button
             onClick={() => alert("LOL, no help for you!")} type="link"
