@@ -14,15 +14,15 @@ export default function WizardStep({
         </div>
       )}
 
+      <div className="Wizard--contentGroup">
+        <Component setWizardState={setWizardState} wizardState={wizardState} />
+      </div>
+
       { help && (
         <div className="Wizard--contentGroup Wizard--WizardStep--help">
           {_.isString(help) ? <p>{help}</p> : {help}}
         </div>
       )}
-
-      <div className="Wizard--contentGroup">
-        <Component setWizardState={setWizardState} wizardState={wizardState} />
-      </div>
     </div>
   );
 }

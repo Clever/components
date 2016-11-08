@@ -49,7 +49,7 @@ export class Wizard extends React.Component {
   render() {
     const {
       className, style, title, description, help, wizardButtons, steps, nextButtonValue,
-      prevButtonValue,
+      prevButtonValue, seekable,
     } = this.props;
 
     const classes = classnames("Wizard", className);
@@ -81,15 +81,30 @@ export class Wizard extends React.Component {
                   stepValid && "Wizard--stepsDisplay--valid",
                   stepVisited && "Wizard--stepsDisplay--visited",
                 );
+
+                const listValue = (<span className="Wizard--stepsDisplay--step">
+                  { idx === this.state.currentStep ?
+                    <span className="Wizard--stepsDisplay--currentStep" />
+                  :
+                    <span className="Wizard--stepsDisplay--otherStep" />
+                  }
+                  <span className={iconClassName} />
+                  <span className="Wizard--stepsDisplay--stepTitle">{step.title}</span>
+                </span>);
                 return (
                   <li key={idx}>
-                    { idx === this.state.currentStep ?
-                      <span className="Wizard--stepsDisplay--currentStep" />
+                    { seekable ?
+                      <Button
+                        className="Wizard--stepsDisplay--stepLink"
+                        type="link" onClick={() => this.setState({
+                          currentStep: idx,
+                          stepsVisited: _.union(this.state.stepsVisited, [idx]),
+                        })}
+                        value={listValue}
+                      />
                     :
-                      <span className="Wizard--stepsDisplay--otherStep" />
+                      listValue
                     }
-                    <span className={iconClassName} />
-                    <span>{step.title}</span>
                   </li>
                 );
               })}
@@ -171,4 +186,5 @@ Wizard.propTypes = {
   })),
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  seekable: PropTypes.bool,
 };

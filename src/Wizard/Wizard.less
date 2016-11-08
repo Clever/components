@@ -47,19 +47,33 @@
   & > ul {
     list-style-type: none;
     padding: 0;
-
-    & > li {
-      display: flex;
-      align-items: center;
-    }
   }
+}
+
+.Wizard--stepsDisplay--stepLink {
+  width: 100%;
+  padding: 0 !important;
+}
+
+.Wizard--stepsDisplay--step {
+  // ensure each item in list is vertically centered
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.Wizard--stepsDisplay--stepTitle {
+  display: block;
+  // don't allow wrapping of text
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .Wizard--stepsDisplay--currentStep, .Wizard--stepsDisplay--otherStep {
   display: inline-block;
   width: 20px;
   height: 20px;
-  flex: 0 0 20px;
 }
 
 .Wizard--stepsDisplay--currentStep {
@@ -72,7 +86,6 @@
   height: 20px;
   background: gray;
   margin: 5px;
-  flex: 0 0 20px;
 }
 
 .Wizard--stepsDisplay--visited {
