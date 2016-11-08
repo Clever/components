@@ -1,0 +1,21 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+.ProgressBar {
+  position: relative;
+  height: 30px;
+  font-family: "Proxima Nova";
+  .border--m(@neutral_dark_gray);
+  .borderRadius--m;
+  .text--medium;
+  background: @neutral_off_white;
+}
+
+.ProgressBar--filledIn {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: @primary_blue;
+  transition: width 0.25s ease-out;
+}
