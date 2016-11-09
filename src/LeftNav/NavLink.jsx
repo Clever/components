@@ -1,17 +1,20 @@
 import React from "react";
 import classnames from "classnames";
 
-import {Button} from "../Button/Button";
-
-import "./NavLink.less";
+import {Button, FlexBox, FlexItem, ItemAlign} from "../";
 
 export function NavLink(props) {
   const {cssClass} = NavLink;
   return (
-    <a className={cssClass.CONTAINER} onClick={props.onClick}>
-      <span className={cssClass.ICON}>{props.icon}</span>
-      <span className={cssClass.LABEL}>{props.label}</span>
-    </a>
+    <FlexBox
+      component="li"
+      className={classnames(cssClass.CONTAINER, props.className)}
+      onClick={props.onClick}
+      alignItems={ItemAlign.CENTER}
+    >
+      <FlexItem className={cssClass.ICON}>{props.icon}</FlexItem>
+      <FlexItem className={cssClass.LABEL} data-text={props.label}>{props.label}</FlexItem>
+    </FlexBox>
   );
 }
 

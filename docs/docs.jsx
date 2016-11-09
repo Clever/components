@@ -347,6 +347,7 @@ class Demo extends React.Component {
         <FlexExample />
         <GridExample />
         <TabBarExample />
+        <LeftNavExample />
         {/* Enable scrolling past the bottom for convenience. */}
         <div style={{margin: "0 0 600px"}} />
       </div>

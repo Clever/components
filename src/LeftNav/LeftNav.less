@@ -1,24 +1,87 @@
 @import (reference) "../less/index.less";
 
 .LeftNav {
-  color: @neutral_black;
-  background: @neutral_silver;
+  .shade(color, @primary_blue, 2);
+  background: @neutral_off_white;
   user-select: none;
+  .text--light;
+  // Maintain computed width based on content
+  // (i.e. don't let the NavLink labels wrap)
+  .flexShrink(0);
+}
+
+.LeftNav--topnav {
+  .list-reset;
+  min-width: 9rem;
+  /*.border--right--s(@neutral_silver);*/
+  box-shadow: @borderWidthM 0 @borderWidthM @neutral_silver;
+  .zIndex--1; // Ensure the shadow goes over the subnav
 }
 
 .LeftNav--subnav {
-  background: @neutral_dark_gray;
-  color: @neutral_white;
-  .NavLink {
-    .padding--x--l;
-  }
-  .NavLink:hover {
-    background: shade(@neutral_dark_gray, 30%);
-    color: @neutral_white;
+  .list-reset;
+  .tint(background, @primary_blue, 6);
+  color: @neutral_black;
+  min-width: 9rem;
+  box-shadow: @borderWidthM 0 @borderWidthM @neutral_silver;
+}
+
+.NavLink {
+  .padding--left--m;
+  .padding--right--xl;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+
+  height: @size_3xl + @borderWidthS;
+  .border--bottom--s(@neutral_silver);
+
+  &:hover {
+    .shade(color, @primary_blue, 3);
+    .tint(background, @primary_blue, 6);
   }
 }
 
+.LeftNav--subnav .NavLink {
+  .padding--left--s;
+  .padding--right--l;
+  .NavLink--icon {
+    .padding--none;
+  }
+}
+
+.NavGroup--open {
+  .tint(background, @primary_blue, 6);
+  .shade(color, @primary_blue, 3);
+
+  padding-top: 0;
+  height: @size_3xl - @borderWidthS;
+  .border--top--s(@neutral_silver);
+  .border--bottom--m(@neutral_silver);
+  /*.text--regular;*/
+
+  position: relative;
+  &:before {
+    content: " ";
+    display: block;
+    width: @borderWidthM;;
+    height: 3rem + @borderWidthS + @borderWidthM + @borderWidthS;
+    background: @primary_blue;;
+    position: absolute;
+    left: 0;
+    top: -@borderWidthM;
+  }
+}
+
+.NavLink--icon {
+  .padding--right--s;
+}
+
 .LeftNav--collapsed {
+  min-width: 0;
+  .NavLink {
+    .padding--right--s;
+  }
   .NavLink--label {
     display: none;
   }

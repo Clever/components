@@ -1,6 +1,7 @@
 import React from "react";
+import classnames from "classnames";
 
-import {FlexBox, FlexItem} from "../flex/";
+import {FlexBox, FlexItem} from "../";
 import {NavLink} from "./NavLink";
 import {NavGroup} from "./NavGroup";
 
@@ -42,8 +43,8 @@ export class LeftNav extends React.Component {
 
     return (
       <FlexBox component="nav" className={cssClass.CONTAINER}>
-        <FlexItem className={collapsed}>{children}</FlexItem>
-        {openChild && <FlexItem className={cssClass.SUBNAV}>{openChild.props.children}</FlexItem>}
+        <FlexItem component="ul" className={classnames(cssClass.TOPNAV, collapsed)}>{children}</FlexItem>
+        {openChild && <FlexItem component="ul" className={cssClass.SUBNAV}>{openChild.props.children}</FlexItem>}
       </FlexBox>
     );
   }
@@ -59,5 +60,6 @@ LeftNav.propTypes = {
 LeftNav.cssClass = {
   CONTAINER: "LeftNav",
   COLLAPSED: "LeftNav--collapsed",
+  TOPNAV: "LeftNav--topnav",
   SUBNAV: "LeftNav--subnav",
 };
