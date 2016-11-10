@@ -9,6 +9,7 @@ import "./Wizard.less";
 
 const INITIAL_STATE = {
   currentStep: 0,
+  percentComplete: 0,
   stepsVisited: [0],
 };
 export class Wizard extends React.Component {
@@ -20,18 +21,24 @@ export class Wizard extends React.Component {
     this.reset = this.reset.bind(this);
     this.prevStepHandler = this.prevStepHandler.bind(this);
     this.nextStepHandler = this.nextStepHandler.bind(this);
+    this.calculatePercentComplete = this.calculatePercentComplete.bind(this);
   }
 
   reset() {
     this.setState(_.assign({}, INITIAL_STATE, {data: {}}));
   }
 
+  jumpToStep(idx) {
+    this.setState({
+      currentStep: idx,
+      stepsVisited: _.union(this.state.stepsVisited, [idx]),
+      percentComplete: this.calculatePercentComplete(),
+    });
+  }
+
   prevStepHandler() {
     const prevStep = Math.max(0, this.state.currentStep - 1);
-    this.setState({
-      currentStep: prevStep,
-      stepsVisited: _.union(this.state.stepsVisited, [prevStep]),
-    });
+    this.jumpToStep(prevStep);
   }
 
   nextStepHandler() {
@@ -40,10 +47,12 @@ export class Wizard extends React.Component {
       return;
     }
     const nextStep = Math.min(this.state.currentStep + 1);
-    this.setState({
-      currentStep: nextStep,
-      stepsVisited: _.union(this.state.stepsVisited, [nextStep]),
-    });
+    this.jumpToStep(nextStep);
+  }
+
+  calculatePercentComplete(data = this.state.data) {
+    const validSteps = this.props.steps.filter(step => step.validate(data));
+    return validSteps.length / this.props.steps.length;
   }
 
   render() {
@@ -54,12 +63,12 @@ export class Wizard extends React.Component {
 
     const classes = classnames("Wizard", className);
     const curStep = steps[this.state.currentStep];
-    const validSteps = steps.map(step => step.validate(this.state.data));
-    const percentComplete = _.compact(validSteps).length / steps.length;
+    const validSteps = steps.filter(step => step.validate(this.state.data));
 
+    // If on the last step, cannot click next (i.e. complete) unless the whole form is valid; for
+    // all other steps, only the current step needs to be valid.
     const nextDisabled = this.state.currentStep === steps.length - 1 ?
-      _.compact(steps.map(step => step.validate(this.state.data))).length !== steps.length
-    : !curStep.validate(this.state.data);
+      validSteps.length !== steps.length : !curStep.validate(this.state.data);
 
     return (
       <div className={classes} style={style}>
@@ -70,7 +79,7 @@ export class Wizard extends React.Component {
           :
             <div>{description}</div>
           }
-          <ProgressBar percentage={percentComplete} />
+          <ProgressBar percentage={this.state.percentComplete} />
           <div className="Wizard--stepsDisplay">
             <ul>
               {steps.map((step, idx) => {
@@ -96,10 +105,7 @@ export class Wizard extends React.Component {
                     { seekable ?
                       <Button
                         className="Wizard--stepsDisplay--stepLink"
-                        type="link" onClick={() => this.setState({
-                          currentStep: idx,
-                          stepsVisited: _.union(this.state.stepsVisited, [idx]),
-                        })}
+                        type="link" onClick={() => this.jumpToStep(idx)}
                         value={listValue}
                       />
                     :
@@ -130,11 +136,17 @@ export class Wizard extends React.Component {
             Component={steps[this.state.currentStep].component}
             stepNumber={this.state.currentStep}
             setWizardState={(changes) => {
-              this.setState({
-                data: _.merge(this.state.data, changes),
-              });
+              const newState = _.merge(this.state.data, changes);
+              this.setState({data: newState});
+              return newState;
             }}
             wizardState={this.state.data}
+            updatePercentComplete={(wizardState) => this.setState({
+              percentComplete: this.calculatePercentComplete(wizardState)})
+            }
+            calculatePercentComplete={this.calculatePercentComplete}
+            percentComplete={this.state.percentComplete}
+            totalSteps={steps.length}
             title={curStep.title}
             description={curStep.description}
             currentStep={this.state.currentStep}
