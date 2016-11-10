@@ -172,7 +172,7 @@ Wizard.propTypes = {
   help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   wizardButtons: PropTypes.arrayOf(PropTypes.shape({
     handler: PropTypes.func.isRequired,
-    buttonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    buttonValue: PropTypes.node.isRequired,
     buttonClassName: PropTypes.string,
   })),
   initialWizardData: PropTypes.object,

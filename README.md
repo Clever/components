@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table), [Grid](#grid), [FlexBox](#flexbox-and-flexitem), [TabBar](#tabbar-and-tab)
+**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table), [Grid](#grid), [FlexBox](#flexbox-and-flexitem), [TabBar](#tabbar-and-tab), [ProgressBar](#progressbar), [Wizard](#wizard)
 
 ## Install
 
@@ -522,3 +522,67 @@ It requires `Tab` components as children.
 #### Usage Examples
 
 [Sample Code](https://github.com/Clever/components/tree/master/docs/TabBarExample.jsx) ([Live Demo](http://clever.github.io/components/#tabbar))
+
+### ProgressBar
+`ProgressBar` provides a progress bar that displays a percentage from 0 to 1.
+
+#### `<ProgressBar>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| percentage (required) | number | How much of the progress bar should be filled in. | None
+| direction (optional) | String | What direction the progress bar should fill up in. Valid values: `['up', 'down', 'left', 'right' | 'right'
+| length (optional) | String | CSS size string for how long the progress bar should be. NOTE: if direction is vertical (`'up'` or `'down'`), this must be set to a non-percentage measurement; if a percentage, parent must have an non-percentage height. If parent has position: relative, you can make the height a percentage by using `style` to set absolute positioning on this element. | 100%
+| className (optional) | String | Additional classname to apply to the progress bar. | None
+| style (optional)    | Object   | Add custom styles (e.g. margin) if you must          | None
+
+#### Usage Examples
+
+[Sample Code](https://github.com/Clever/components/tree/master/docs/docs.jsx) ([Live Demo](http://clever.github.io/components/#progressBarExample))
+
+### Wizard
+
+`Wizard` provides an interface for making guided wizards. A `Wizard` is provided several `steps`
+that consist of a `Component` to render, a `validate` function, and a few other fields. The
+`Component` gets two props: `setWizardState` and `wizardState`. `wizardState` contains any data that
+has been set by any step before; and `setWizardState` allows each step to add data to the
+`wizardState`. The `validate` function receives this shared state as an argument, allowing each step
+to define the conditions under which their inputs are considered valid.
+
+#### `<Wizard>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| title (required)    | String   | Title of the wizard          | None
+| description (required)    | String  | Description of the wizard          | None
+| onComplete (required)    | Funntion   | Defines what happens when all `steps` are valid, and the user clicks the next button past the final step.          | None
+| steps (required)    | `Array<step>`   | Steps in the wizard.          | None
+| help (optional)    | String or React Node   | Global help text to display next to form. Can be overridden by a step that has its own `help` property.         | None
+| wizardButtons (optional)    | `Array<wizardButton>`   | Buttons to show in sidebar.          | `[]`
+| initialWizardData (optional)    | Object   | Initial data to seed `wizardState`. Useful for saving the state of a form for later.          | `{}`
+| nextButtonValue (optional)    | String or React Node   | Global text to display on next buttons in form. Can be overriden by a step that has its own `nextButtonValue` property. | `'Next'`
+| prevButtonValue (optional)    | String or React Node   | Global text to display on prev buttons in form. Can be overriden by a step that has its own `prevButtonValue` property. | `'Back'`
+| seekable (optional)    | Boolean   | Whether or not you can skip to other steps before completing the current one, by clicking on steps on the sidebar. | `false`
+| className (optional) | String | Additional classname to apply to the progress bar. | None
+| style (optional)    | Object   | Add custom styles (e.g. margin) if you must.          | None
+
+##### `step` shape:
+| Key             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| title (required)    | String   | Title of the step          | None
+| description (required)    | String  | Description of the step         | None
+| component (required)    | React Node | Component to display for this step. Provided with `wizardState` and `setWizardState` props, allowing it to get and set the data inputted into the `Wizard`.         | None
+| validate (required)    | Function  | Validates if the current step is complete. Provided `wizardState` as an argument, which this function is expected to examine for validity.         | None
+| help (optional)    | String or React Node | Help text to display for this step         | None
+
+##### `wizardButton` shape:
+| Key             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| handler (required)    | Function   | Action to occur when button is clicked. Passed the `wizardState` and an object of utility methods that affect the wizard's state | None
+| buttonValue (required)    | String or React Node   | Value to display on the button          | None
+| buttonClassName (optional)    | String   | Additional classname to apply to the button          | None
+
+###### `wizardButton` handler utility methods
+* `resetWizard`: Clears and re-initializes the state of the wizard.
+
+#### Usage Examples
+
+[Sample Code](https://github.com/Clever/components/tree/master/docs/WizardExample.jsx) ([Live Demo](http://clever.github.io/components/#wizardExample))

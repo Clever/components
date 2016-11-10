@@ -346,7 +346,7 @@ class Demo extends React.Component {
             value: "three",
           }]}
         />
-        <h1>Progress Bar</h1>
+        <h1 id="progressBarExample">Progress Bar</h1>
         <label>Percentage
           <input
             type="number" ref={(i) => { this.progressSlider = i; }}
@@ -365,7 +365,7 @@ class Demo extends React.Component {
           percentage={this.state.progressBarPercentage}
           style={{display: "inline-block"}} direction="down" length="200px"
         />
-        <h1>Wizard</h1>
+        <h1 id="wizardExample">Wizard</h1>
         <WizardExample />
         <TableExample />
         <FlexExample />
