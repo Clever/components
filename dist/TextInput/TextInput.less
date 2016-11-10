@@ -1,0 +1,122 @@
+@import "../less/colors.less";
+
+.TextInput {
+  position: relative;
+  color: #191926;
+  background: #FFFFFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  border: 1px solid #E3E6EB;
+  height: 50px;
+  width: 100%;
+  font-family: "Proxima Nova";
+
+  .TextInput--infoRow {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #566279;
+
+    .TextInput--label {
+      left: 10px;
+      opacity: 1;
+    }
+
+    .TextInput--required {
+      position: absolute;
+      right: 20px;
+    }
+
+    .TextInput--error {
+      color: #EB3B49;
+      position: absolute;
+      right: 20px;
+    }
+  }
+
+  .TextInput--input {
+    display: block;
+    font-size: 15px;
+    border: 0px solid;
+    width: 100%;
+    line-height: 40px;
+    min-height:40px;
+    padding-top: 10px;
+    background-color: transparent;
+  }
+
+  &.TextInput--placeholder-shown {
+    label { opacity: 0 !important; }
+    .TextInput--input {
+      line-height: 40px;
+      min-height:40px;
+      color: #566279;
+      font-size: 12px;
+      padding-top: 5px;
+      text-transform: uppercase;
+    }
+  }
+
+  &.TextInput--hasError {
+    box-shadow: inset 5px 0 #EB3B49;
+    transition: box-shadow .25s ease-out;
+  }
+
+  &.TextInput--inFocus {
+    box-shadow: inset 5px 0 #4274f6;
+    transition: box-shadow .25s ease-out;
+  }
+
+  &.TextInput--disabled {
+    color: #566279;
+    background: #F0F1F2;
+    border: 1px solid #D7D9D9;
+    .TextInput--input {
+      background: transparent;
+    }
+  }
+
+  &.TextInput--readonly {
+    color: #191926;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(226,230,235,0.5);
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  .TextInput--link {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin: -8px 7px;
+    border: 0;
+    background: none;
+    color: #4274F6;
+    font-size: 12px;
+    border-right: 1px solid #dddddd;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  .TextInput--link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .TextInput--link:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+
+  // Hides the IE copy and clear buttons
+  input::-ms-reveal, input::-ms-clear {
+    display: none;
+  }
+}

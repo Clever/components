@@ -1,0 +1,102 @@
+@import "../less/colors.less";
+
+.Select--container {
+  position: relative;
+
+  .Select--labelContainer {
+    color: @neutral_dark_gray;
+    font-size: 0.625rem;
+    position: absolute;
+    text-transform: uppercase;
+    top: 5px;
+    width: 100%;
+
+    &.Select--labelHidden {
+      opacity: 0 !important;
+    }
+
+    .Select--label {
+      left: 10px;
+      position: absolute;
+    }
+  }
+
+  .Select--ReactSelect {
+    // overrides styles from the exact same selector in react-select's CSS
+    &.is-focused:not(.is-open) > .Select-control {
+      border-color: @neutral_silver;
+      box-shadow: inset 5px 0 @primary_blue;
+      transition: box-shadow .25s ease-out;
+    }
+
+    &.is-disabled {
+      .Select-control {
+        background-color: @neutral_silver;
+      }
+    }
+
+    &.Select--multi {
+      .Select-control {
+        .Select-multi-value-wrapper {
+          padding-top: 15px;
+          padding-left: 5px;
+          .Select-value {
+            border-color: @neutral_silver;
+            color: @neutral_black;
+            line-height: 1rem;
+            .Select-value-icon {
+              background-color: @neutral_silver;
+              float: right;
+              border-color: @neutral_silver;
+            }
+            .Select-value-label {
+              background-color: @neutral_off_white;
+            }
+          }
+        }
+      }
+    }
+
+    .Select-control {
+      border-radius: 0px;
+      border-color: @neutral_silver;
+      height: 50px;
+
+      .Select-placeholder {
+        font-size: .75rem;
+        line-height: 40px;
+        padding-top: 5px;
+        text-transform: uppercase;
+      }
+
+      .Select-input {
+        position: absolute;
+      }
+
+      .Select-input,
+      .Select-value {
+        font-size: 1rem;
+        line-height: 40px;
+        top: 10px;
+      }
+    }
+
+    // overrides styles from the exact same selector in react-select's CSS
+    .has-value.Select--single > .Select-control .Select-value .Select-value-label,
+    .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label{
+      color: @neutral_black
+    }
+
+    .Select-menu-outer {
+      border-radius: 0px;
+      border-color: @neutral_silver;
+      .Select-option {
+        color: @neutral_black;
+        &.is-focused {
+          box-shadow: inset 5px 0 @primary_blue;
+          background-color: @neutral_off_white;
+        }
+      }
+    }
+  }
+}

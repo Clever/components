@@ -1,0 +1,30 @@
+@import "../less/colors.less";
+@import "../less/fonts.less";
+
+.Table {
+  border: 1px solid @neutral_silver;
+  border-collapse: collapse;
+  color: @neutral_black;
+  font-family: "Proxima Nova";
+  font-size: 0.875rem;
+  height: 100%;
+  width: 100%;
+
+  &.Table--fixed {
+    table-layout: fixed;
+  }
+}
+
+.Table--no_data_cell {
+  color: @neutral_gray;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.Table--body {
+  .Table--row {
+    &:nth-child(even) {
+      background-color: @neutral_off_white;
+    }
+  }
+}

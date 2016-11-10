@@ -1,0 +1,55 @@
+@import (reference) "./flex";
+@import (reference) "./layout";
+
+.Grid {
+  .flex--direction--column;
+  .flexbox;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.Grid--Row {
+  .flex--wrap;
+  .flexbox;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+/*
+ * Generated Columns
+ *
+ * Generate 12-column grid classes for increasing viewport sizes (S, M, L) of the form:
+ * `Grid--Col-ls--1`, `Grid--Col--l--2`, ... `Grid--Col--l--12`.
+ *
+ * Each viewport-specific class applies to viewports of that size or larger.
+ * Different viewport-specific classes can be assigned to a column to enable responsive layout
+ * changes at different viewport sizes.
+ *
+ * Use default (`--dflt`) classes for layouts that should apply to all viewport sizes (or sizes not
+ * covered by other assigned classes in dynamic layouts).
+ *
+ * See http://clever.github.io/components/#grid for examples.
+ *
+ * Grid your loins!
+ */
+
+.genColumns(@numCol, @size, @i: 1) when (@i =< @numCol) {
+  .Grid--Col--@{size}--@{i} {
+    box-sizing: border-box;
+    width: (@i * 100% / @numCol);
+  }
+  .genColumns(@numCol, @size, (@i + 1));
+}
+
+/** Default - applies to all viewport sizes. */
+.genColumns(12, dflt);
+
+/** Small viewports and larger only (e.g. phones, small tablets). */
+.breakpointS({ .genColumns(12, s) });
+
+/** Medium viewports and larger only (e.g. tablets). */
+.breakpointM({ .genColumns(12, m) });
+
+/** Large viewports only (e.g. large tablets, laptops). */
+.breakpointL({ .genColumns(12, l) });

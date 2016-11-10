@@ -1,0 +1,32 @@
+.CopyableInput {
+  position: relative;
+}
+
+.CopyableInput--links {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin: -8px 7px;
+
+  .CopyableInput--link {
+    border: 0;
+    background: none;
+    color: #4274F6;
+    font-size: 12px;
+    border-right: 1px solid #dddddd;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  .CopyableInput--link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .CopyableInput--link:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+}
