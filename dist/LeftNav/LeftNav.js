@@ -33,6 +33,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// no group open, nothing selected      -> drawer closed, no visual selected
+// no group open, top link selected     -> drawer closed, link visually selected
+// no group open, sub link selected     -> drawer open to group, group visually open, link visually selected
+// group open, sub link selected        -> drawer open to group, group visually open, link visually selected
+// group open, top link selected        -> drawer open to group, group visually open, link visually selected
+// group open, nothing selected         -> drawer open to group, group visually selected
+// group open, hidden sub link selected -> drawer open to group, group visually selected
+
 var LeftNav = exports.LeftNav = function (_React$Component) {
   _inherits(LeftNav, _React$Component);
 
@@ -41,7 +49,12 @@ var LeftNav = exports.LeftNav = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (LeftNav.__proto__ || Object.getPrototypeOf(LeftNav)).call(this, props));
 
-    _this.state = { openNavGroup: null };
+    var selectedNavGroup = props.children.find(function (child) {
+      return child.type === _NavGroup.NavGroup && _react2.default.Children.toArray(child.props.children).some(function (navLink) {
+        return navLink.props.selected;
+      });
+    });
+    _this.state = { openNavGroup: selectedNavGroup };
     return _this;
   }
 
@@ -52,20 +65,21 @@ var LeftNav = exports.LeftNav = function (_React$Component) {
 
       var cssClass = LeftNav.cssClass;
 
-      // Configure the props for NavGroup children to track which one is open
 
       var children = _react2.default.Children.map(this.props.children, function (child) {
+        // Configure the props for NavGroups to track which one is open
         if (child.type === _NavGroup.NavGroup) {
           var _ret = function () {
             var that = _this2;
-            var open = child === _this2.state.openNavGroup;
+            // TODO figure out why object equality doesn't work here. we don't want
+            // to rely on label being unique
+            var open = _this2.state.openNavGroup && child.props.label === _this2.state.openNavGroup.props.label;
             return {
               v: _react2.default.cloneElement(child, {
                 open: open,
                 onClick: function onClick() {
-                  console.log("click", child.label);
+                  console.log("click", child.props.label);
                   that.setState({ openNavGroup: open ? null : child });
-                  //child.props.onClick(); // TODO maybe let NavGroup have onClick prop passed in?
                 }
               })
             };
@@ -73,18 +87,20 @@ var LeftNav = exports.LeftNav = function (_React$Component) {
 
           if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
         }
-        return child;
+        // Configure the props for top level NavLinks to close other open drawers on click
+        return _react2.default.cloneElement(child, { onClick: function onClick() {
+            console.log("click", child.props.label);
+            _this2.setState({ openNavGroup: null });
+            child.props.onClick();
+          } });
       });
-      console.log(children);
 
       // Find the open NavGroup so that we can render its subnav drawer
       var openChild = _react2.default.Children.toArray(children).find(function (child) {
         return child.props.open;
       });
-      console.log(openChild);
 
       var collapsed = this.props.collapsed ? cssClass.COLLAPSED : null;
-      console.log(collapsed);
 
       return _react2.default.createElement(
         _.FlexBox,

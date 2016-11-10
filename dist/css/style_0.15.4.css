@@ -2112,12 +2112,9 @@ button.Button--linkPlain {
   text-decoration: none;
   cursor: pointer;
   color: inherit;
+  position: relative;
   height: 3.0625rem;
   border-bottom: 0.0625rem solid #e3e6eb;
-}
-.NavLink:hover {
-  color: #244087;
-  background: #ecf1fe;
 }
 .LeftNav--subnav .NavLink {
   padding-left: 0.75rem;
@@ -2136,15 +2133,21 @@ button.Button--linkPlain {
   /*.text--regular;*/
   position: relative;
 }
-.NavGroup--open:before {
+.NavLink--selected {
+  background: #ecf1fe;
+  color: #244087;
+}
+.NavLink--selected:before,
+.NavLink:hover:before {
   content: " ";
   display: block;
-  width: 0.125rem;
-  height: 3.25rem;
+  width: 0.1875rem;
+  height: 3.1875rem;
   background: #4274f6;
   position: absolute;
   left: 0;
   top: -0.125rem;
+  z-index: 200;
 }
 .NavLink--icon {
   padding-right: 0.75rem;

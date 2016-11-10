@@ -20,11 +20,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function NavLink(props) {
   var cssClass = NavLink.cssClass;
 
+  var selected = props.selected ? cssClass.SELECTED : null;
   return _react2.default.createElement(
     _.FlexBox,
     {
       component: "li",
-      className: (0, _classnames2.default)(cssClass.CONTAINER, props.className),
+      className: (0, _classnames2.default)(cssClass.CONTAINER, props.className, selected),
       onClick: props.onClick,
       alignItems: _.ItemAlign.CENTER
     },
@@ -44,5 +45,6 @@ function NavLink(props) {
 NavLink.cssClass = {
   CONTAINER: "NavLink",
   LABEL: "NavLink--label",
-  ICON: "NavLink--icon"
+  ICON: "NavLink--icon",
+  SELECTED: "NavLink--selected"
 };

@@ -22,6 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function NavGroup(props) {
   var cssClass = NavGroup.cssClass;
 
+
   var open = props.open ? cssClass.OPEN : null;
   return _react2.default.createElement(_NavLink.NavLink, {
     className: (0, _classnames2.default)(cssClass.CONTAINER, open),
