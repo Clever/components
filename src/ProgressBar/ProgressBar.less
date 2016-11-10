@@ -3,7 +3,6 @@
 
 .ProgressBar {
   position: relative;
-  height: 30px;
   font-family: "Proxima Nova";
   .border--m(@neutral_dark_gray);
   .borderRadius--m;
@@ -11,11 +10,50 @@
   background: @neutral_off_white;
 }
 
-.ProgressBar--filledIn {
+.ProgressBar--up, .ProgressBar--down {
+  width: 30px;
   height: 100%;
+  .ProgressBar--filledIn {
+    transition: height 0.25s ease-out;
+    width: 100%;
+    left: 0;
+  }
+}
+
+.ProgressBar--up {
+  .ProgressBar--filledIn {
+    bottom: 0;
+  }
+}
+
+.ProgressBar--down  {
+  .ProgressBar--filledIn {
+    top: 0;
+  }
+}
+
+.ProgressBar--right, .ProgressBar--left {
+  height: 30px;
+  .ProgressBar--filledIn {
+    transition: width 0.25s ease-out;
+    height: 100%;
+    top: 0;
+  }
+}
+
+.ProgressBar--right {
+  .ProgressBar--filledIn {
+    left: 0;
+  }
+}
+
+.ProgressBar--left {
+  .ProgressBar--filledIn {
+    right: 0;
+  }
+}
+
+.ProgressBar--filledIn {
   position: absolute;
-  left: 0;
-  top: 0;
   background: @primary_blue;
-  transition: width 0.25s ease-out;
 }

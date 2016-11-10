@@ -183,6 +183,7 @@ export default class WizardExample extends React.Component {
                 value={this.state.prevButtonValue}
                 onChange={(e) => this.setState({prevButtonValue: e.target.value})}
                 label="Prev button text"
+                name="prevButtonValue"
               />
             </label>
           </li>
