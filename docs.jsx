@@ -355,7 +355,16 @@ class Demo extends React.Component {
               this.setState({progressBarPercentage: parseFloat(this.progressSlider.value)})}
           />-
         </label>
-        <ProgressBar percentage={this.state.progressBarPercentage} />
+        <ProgressBar percentage={this.state.progressBarPercentage} length="200px" />
+        <ProgressBar percentage={this.state.progressBarPercentage} direction="left" length="200px" />
+        <ProgressBar
+          percentage={this.state.progressBarPercentage}
+          style={{display: "inline-block"}} direction="up" length="200px"
+        />
+        <ProgressBar
+          percentage={this.state.progressBarPercentage}
+          style={{display: "inline-block"}} direction="down" length="200px"
+        />
         <h1>Wizard</h1>
         <WizardExample />
         <TableExample />
