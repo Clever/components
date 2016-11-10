@@ -7,6 +7,7 @@ import {NavLink} from "./NavLink";
 // a drawer if the NavGroup is open.
 export function NavGroup(props) {
   const {cssClass} = NavGroup;
+
   const open = props.open ? cssClass.OPEN : null;
   return (
     <NavLink

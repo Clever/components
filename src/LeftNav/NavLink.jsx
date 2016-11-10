@@ -5,10 +5,11 @@ import {Button, FlexBox, FlexItem, ItemAlign} from "../";
 
 export function NavLink(props) {
   const {cssClass} = NavLink;
+  const selected = props.selected ? cssClass.SELECTED : null;
   return (
     <FlexBox
       component="li"
-      className={classnames(cssClass.CONTAINER, props.className)}
+      className={classnames(cssClass.CONTAINER, props.className, selected)}
       onClick={props.onClick}
       alignItems={ItemAlign.CENTER}
     >
@@ -22,4 +23,5 @@ NavLink.cssClass = {
   CONTAINER: "NavLink",
   LABEL: "NavLink--label",
   ICON: "NavLink--icon",
+  SELECTED: "NavLink--selected",
 };
