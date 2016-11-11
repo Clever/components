@@ -83,7 +83,7 @@ export class Wizard extends React.Component {
           <ul className="Wizard--stepsDisplay">
             {steps.map((step, idx) => {
               const stepValid = step.validate(this.state.data);
-              const stepVisited = this.state.stepsVisited.includes(idx);
+              const stepVisited = _.includes(this.state.stepsVisited, idx);
               const iconClassName = classnames(
                 "Wizard--stepsDisplay--icon",
                 stepValid && "Wizard--stepsDisplay--valid",

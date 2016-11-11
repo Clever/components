@@ -561,7 +561,7 @@ describe("Wizard", () => {
         assert(spy.calledOnce);
         const args = spy.args[0];
         assert.deepEqual(args[0], {});
-        assert(_.keys(args[1]).includes("resetWizard"));
+        assert(_.includes(_.keys(args[1]), "resetWizard"));
       }
     });
   });
