@@ -65,6 +65,23 @@ Run the entire test suite with `make test` or a single component with `make test
 
 Check out our [live examples](http://clever.github.io/components)!
 
+### Icon
+
+This component gives you access to a library of over 60 bespoke icons designed specifically for Clever products. Each icon comes in three sizes. You can check out all of the icons in the [live examples](http://clever.github.io/components#icons)!
+
+**Options**
+
+| Prop                | Type     | Description                                          | Default
+|---------------------|----------|------------------------------------------------------|---------
+| name                | String   | The name of the icon to use. See the [live examples](http://clever.github.io/components#icon) for options. | None
+| type                | String   | One of `small`, `medium`, `large`                    | `medium`
+
+**Usage Example**
+
+```jsx
+<Icon name="circle-c" size="small" />
+```
+
 ### Modal
 
 This component wraps your content and displays it in a modal with a shadow box.
