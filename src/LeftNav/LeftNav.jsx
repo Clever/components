@@ -1,4 +1,5 @@
-import React from "react";
+import React, {PropTypes} from "react";
+import MorePropTypes from "../utils/MorePropTypes";
 import classnames from "classnames";
 
 import {FlexBox, FlexItem} from "../";
@@ -7,52 +8,47 @@ import {NavGroup} from "./NavGroup";
 
 import "./LeftNav.less";
 
-// no group open, nothing selected      -> drawer closed, no visual selected
-// no group open, top link selected     -> drawer closed, link visually selected
-// no group open, sub link selected     -> drawer open to group, group visually open, link visually selected
-// group open, sub link selected        -> drawer open to group, group visually open, link visually selected
-// group open, top link selected        -> drawer open to group, group visually open, link visually selected
-// group open, nothing selected         -> drawer open to group, group visually selected
-// group open, hidden sub link selected -> drawer open to group, group visually selected
-
 export class LeftNav extends React.Component {
   constructor(props) {
     super(props);
 
-    const selectedNavGroup = props.children.find(child => {
-      return child.type === NavGroup &&
-        React.Children.toArray(child.props.children).some(navLink => navLink.props.selected);
-    });
-    this.state = {openNavGroup: selectedNavGroup};
+    // If a NavLink in a NavGroup is marked as selected on initialization, we
+    // should open the drawer to show it. Otherwise, don't start with the drawer open.
+    const selectedNavGroup = props.children.find(child =>
+      child.type === NavGroup &&
+        React.Children.toArray(child.props.children).some(navLink => navLink.props.selected)
+    );
+    this.state = {openNavGroup: selectedNavGroup ? selectedNavGroup.props.id : null};
   }
 
   render() {
     const {cssClass} = LeftNav;
 
+    // Clone all of the children so that we can attach our own click handlers
     const children = React.Children.map(this.props.children, child => {
-      // Configure the props for NavGroups to track which one is open
-      if (child.type === NavGroup) {
-        const that = this;
-        // TODO figure out why object equality doesn't work here. we don't want
-        // to rely on label being unique
-        const open = this.state.openNavGroup && child.props.label === this.state.openNavGroup.props.label;
+      // Configure top level NavLinks to close any open NavGroup on click
+      if (child.type === NavLink) {
         return React.cloneElement(child, {
-          open,
           onClick: () => {
-            console.log("click", child.props.label);
-            that.setState({openNavGroup: open ? null : child});
+            this.setState({openNavGroup: null});
+            child.props.onClick();
           },
         });
       }
-      // Configure the props for top level NavLinks to close other open drawers on click
-      return React.cloneElement(child, {onClick: () => {
-        console.log("click", child.props.label);
-        this.setState({openNavGroup: null});
-        child.props.onClick();
-      }});
+
+      // Configure NavGroups to open/close themselves on click
+      if (child.type === NavGroup) {
+        const open = child.props.id === this.state.openNavGroup;
+        return React.cloneElement(child, {
+          open,
+          _onClick: () => this.setState({openNavGroup: open ? null : child.props.id}),
+        });
+      }
+
+      return null; // Should never get here thanks to PropType validation
     });
 
-    // Find the open NavGroup so that we can render its subnav drawer
+    // Find the open NavGroup so that we can render its children NavLinks in the drawer
     const openChild  = React.Children.toArray(children).find(child => child.props.open);
 
     const collapsed = this.props.collapsed ? cssClass.COLLAPSED : null;
@@ -70,7 +66,11 @@ LeftNav.NavLink = NavLink;
 LeftNav.NavGroup = NavGroup;
 
 LeftNav.propTypes = {
-  // List required and optional proptypes
+  children: MorePropTypes.oneOrManyOf(PropTypes.oneOfType([
+    MorePropTypes.instanceOfComponent(NavLink),
+    MorePropTypes.instanceOfComponent(NavGroup),
+  ])),
+  collapsed: PropTypes.bool,
 };
 
 LeftNav.cssClass = {

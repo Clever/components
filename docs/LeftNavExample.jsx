@@ -15,19 +15,13 @@ export default class LeftNavExample extends React.Component {
     const {NavLink, NavGroup} = LeftNav;
 
     const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
-    const link = (label, icon) => {
-      return (
-        <NavLink
-          label={label}
-          icon={icon}
-          selected={this.state.selected === label}
-          onClick={() => {
-            console.log("select " + label);
-            this.setState({selected: label});
-          }}
-        />
-      );
-    }
+    const link = (label, iconNode) =>
+      <NavLink
+        label={label}
+        icon={iconNode}
+        selected={this.state.selected === label}
+        onClick={() => this.setState({selected: label})}
+      />;
 
     return (
       <div>
@@ -37,21 +31,18 @@ export default class LeftNavExample extends React.Component {
         <Button
           className={cssClass.COLLAPSE}
           type="primary"
-          value={"TODO"}
-          onClick={() => {
-            console.log("collapse", !this.state.collapsed);
-            this.setState({collapsed: !this.state.collapsed})
-					}}
+          value={<span className="fa fa-bars" />}
+          onClick={() => this.setState({collapsed: !this.state.collapsed})}
         />
         <FlexBox className={cssClass.CONTAINER}>
           <LeftNav collapsed={this.state.collapsed}>
             {link("Home", icon(Icon.names.SCHOOL))}
-            <NavGroup label="Tools" icon={icon(Icon.names.GEAR)}>
+            <NavGroup label="Tools" id="Tools" icon={icon(Icon.names.GEAR)}>
               {link("Hammer")}
               {link("Screwdriver")}
               {link("Measuring Tape")}
             </NavGroup>
-            <NavGroup label="Juggling Props" icon={icon(Icon.names.JUGGLER)}>
+            <NavGroup label="Juggling Props" id="Juggling Props" icon={icon(Icon.names.JUGGLER)}>
               {link("Balls")}
               {link("Clubs")}
               {link("Rings")}

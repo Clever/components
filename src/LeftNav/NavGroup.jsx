@@ -1,9 +1,9 @@
-import React from "react";
+import React, {PropTypes} from "react";
 import classnames from "classnames";
 
 import {NavLink} from "./NavLink";
 
-// NavGroup doesn't render its children because the LeftNav will render them in
+// NavGroup doesn't render its children because LeftNav will render them in
 // a drawer if the NavGroup is open.
 export function NavGroup(props) {
   const {cssClass} = NavGroup;
@@ -14,10 +14,18 @@ export function NavGroup(props) {
       className={classnames(cssClass.CONTAINER, open)}
       label={props.label}
       icon={props.icon}
-      onClick={props.onClick}
+      onClick={props._onClick}
     />
   );
 }
+
+NavGroup.propTypes = {
+  id: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+  open: PropTypes.bool,
+  _onClick: PropTypes.func, // private - used by LeftNav only
+};
 
 NavGroup.cssClass = {
   CONTAINER: "NavGroup",

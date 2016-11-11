@@ -1,11 +1,13 @@
-import React from "react";
+import React, {PropTypes} from "react";
 import classnames from "classnames";
 
-import {Button, FlexBox, FlexItem, ItemAlign} from "../";
+import {FlexBox, FlexItem, ItemAlign} from "../";
 
 export function NavLink(props) {
   const {cssClass} = NavLink;
+
   const selected = props.selected ? cssClass.SELECTED : null;
+
   return (
     <FlexBox
       component="li"
@@ -18,6 +20,14 @@ export function NavLink(props) {
     </FlexBox>
   );
 }
+
+NavLink.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.node,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  selected: PropTypes.bool,
+};
 
 NavLink.cssClass = {
   CONTAINER: "NavLink",
