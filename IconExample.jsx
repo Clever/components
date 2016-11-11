@@ -16,7 +16,9 @@ export default class IconExample extends React.Component {
 
     return (
       <div className={cssClass.CONTAINER}>
-        <h1>Icon</h1>
+        <a name="icon">
+          <h1>Icon</h1>
+        </a>
         <SegmentedControl
           onSelect={s => this.setState({size: s})}
           options={[
