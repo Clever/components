@@ -10,7 +10,7 @@ export default function WizardStep({
       <h1>Step {currentStep + 1}: {title}</h1>
 
       { description && (
-        <div className="Wizard--contentGroup">
+        <div className="Wizard--contentGroup Wizard--WizardStep--description">
           { _.isString(description) ? <p>{description}</p> : description }
         </div>
       )}

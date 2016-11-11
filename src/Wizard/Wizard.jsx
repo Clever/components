@@ -75,54 +75,51 @@ export class Wizard extends React.Component {
         <div className="Wizard--sidebar">
           <h2>{title}</h2>
           {_.isString(description) ?
-            <p>{description}</p>
+            <p className="Wizard--description">{description}</p>
           :
-            <div>{description}</div>
+            <div className="Wizard--description">{description}</div>
           }
           <ProgressBar percentage={this.state.percentComplete} />
-          <div className="Wizard--stepsDisplay">
-            <ul>
-              {steps.map((step, idx) => {
-                const stepValid = step.validate(this.state.data);
-                const stepVisited = this.state.stepsVisited.includes(idx);
-                const iconClassName = classnames(
-                  "Wizard--stepsDisplay--icon",
-                  stepValid && "Wizard--stepsDisplay--valid",
-                  stepVisited && "Wizard--stepsDisplay--visited",
-                );
+          <ul className="Wizard--stepsDisplay">
+            {steps.map((step, idx) => {
+              const stepValid = step.validate(this.state.data);
+              const stepVisited = this.state.stepsVisited.includes(idx);
+              const iconClassName = classnames(
+                "Wizard--stepsDisplay--icon",
+                stepValid && "Wizard--stepsDisplay--valid",
+                stepVisited && "Wizard--stepsDisplay--visited",
+              );
 
-                const listValue = (<span className="Wizard--stepsDisplay--step">
-                  { idx === this.state.currentStep ?
-                    <span className="Wizard--stepsDisplay--currentStep" />
+              const listValue = (<span className="Wizard--stepsDisplay--step">
+                { idx === this.state.currentStep ?
+                  <span className="Wizard--stepsDisplay--currentStep" />
+                :
+                  <span className="Wizard--stepsDisplay--otherStep" />
+                }
+                <span className={iconClassName} />
+                <span className="Wizard--stepsDisplay--stepTitle">{step.title}</span>
+              </span>);
+              return (
+                <li key={idx}>
+                  { seekable ?
+                    <Button
+                      className="Wizard--stepsDisplay--stepLink"
+                      type="link" onClick={() => this.jumpToStep(idx)}
+                      value={listValue}
+                    />
                   :
-                    <span className="Wizard--stepsDisplay--otherStep" />
+                    listValue
                   }
-                  <span className={iconClassName} />
-                  <span className="Wizard--stepsDisplay--stepTitle">{step.title}</span>
-                </span>);
-                return (
-                  <li key={idx}>
-                    { seekable ?
-                      <Button
-                        className="Wizard--stepsDisplay--stepLink"
-                        type="link" onClick={() => this.jumpToStep(idx)}
-                        value={listValue}
-                      />
-                    :
-                      listValue
-                    }
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+                </li>
+              );
+            })}
+          </ul>
           {wizardButtons &&
             <div className="Wizard--controls">
               {wizardButtons.map((btnSpec, idx) => (
                 <Button
                   key={idx}
-                  onClick={() => btnSpec.handler(
-                    this.state.data, {resetWizard: this.reset})}
+                  onClick={() => btnSpec.handler(this.state.data, {resetWizard: this.reset})}
                   value={btnSpec.buttonValue}
                   className={classnames("Wizard--controls--control", btnSpec.buttonClassName)}
                 />
@@ -159,12 +156,14 @@ export class Wizard extends React.Component {
           <div className="Wizard--contentGroup Wizard--navButtons">
             { this.state.currentStep !== 0 &&
               <Button
+                className="Wizard--prevButton"
                 onClick={this.prevStepHandler}
                 value={curStep.prevButtonValue || prevButtonValue || "Back"}
               />
             }
 
             <Button
+              className="Wizard--nextButton"
               onClick={this.nextStepHandler}
               disabled={nextDisabled} type="primary"
               value={curStep.nextButtonValue || nextButtonValue || "Next"}
@@ -191,11 +190,11 @@ Wizard.propTypes = {
   onComplete: PropTypes.func.isRequired,
   steps: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)]).isRequired,
     validate: PropTypes.func.isRequired,
     help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  })),
+  })).isRequired,
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   seekable: PropTypes.bool,
