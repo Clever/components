@@ -1,0 +1,29 @@
+// Primary colors:
+@primary_blue: #4274f6;
+
+// Neutral colors:
+@neutral_black: #191926;
+@neutral_dark_gray: #566279;
+@neutral_gray: #b5bcca;
+@neutral_silver: #e3e6eb;
+@neutral_off_white: #fafafc;
+@neutral_white: #fff;
+
+// Alert colors:
+@alert_green: #01D59A;
+@alert_orange: #FCA53A;
+@alert_red: #EB3B49;
+
+// Secondary colors:
+@accent_aqua: #33F7F1;
+@accent_pink: #E838BF;
+@accent_purple: #7E1DFF;
+
+
+@shadeStepAmount: 15%;
+.shade(@property, @color, @steps: 1) {
+  @{property}: shade(@color, @shadeStepAmount * @steps);
+}
+.tint(@property, @color, @steps: 1) {
+  @{property}: tint(@color, @shadeStepAmount * @steps);
+}

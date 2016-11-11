@@ -1,0 +1,45 @@
+@import "../less/colors.less";
+
+@pageNumberMargin: 0 5px;
+
+.Table--footer {
+  background-color: @neutral_silver;
+}
+
+.Table--footer--cell {
+  font-size: 0.75rem;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.Button.Table--footer--button--scroll {
+  @spacing: 40px;
+  margin: 0;
+
+  &:not(:last-child) {
+    margin-right: @spacing;
+  }
+
+  &:not(:first-child) {
+    margin-left: @spacing;
+  }
+}
+
+.Button.Table--footer--button--page {
+  margin: @pageNumberMargin;
+
+  &.Button.Table--footer--button--page--selected {
+    color: @neutral_black;
+  }
+}
+
+.Table--footer--page_numbers {
+  display: inline-block;
+}
+
+.Table--footer--ellipsis {
+  color: @primary_blue;
+  cursor: default;
+  font-size: 1rem;
+  margin: @pageNumberMargin;
+}

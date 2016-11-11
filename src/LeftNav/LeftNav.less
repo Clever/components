@@ -1,0 +1,95 @@
+@import (reference) "../less/index.less";
+
+.LeftNav {
+  .shade(color, @primary_blue, 2);
+  background: @neutral_off_white;
+  user-select: none;
+  .text--light;
+  // Maintain computed width based on content
+  // (i.e. don't let the NavLink labels wrap)
+  .flexShrink(0);
+}
+
+.LeftNav--topnav {
+  .list-reset;
+  min-width: 9rem;
+  /*.border--right--s(@neutral_silver);*/
+  box-shadow: @borderWidthM 0 @borderWidthM @neutral_silver;
+  .zIndex--1; // Ensure the shadow goes over the subnav
+}
+
+.LeftNav--subnav {
+  .list-reset;
+  .tint(background, @primary_blue, 6);
+  color: @neutral_black;
+  min-width: 9rem;
+  box-shadow: @borderWidthM 0 @borderWidthM @neutral_silver;
+}
+
+.NavLink {
+  .padding--left--m;
+  .padding--right--xl;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  position: relative;
+
+  height: @size_3xl + @borderWidthS;
+  .border--bottom--s(@neutral_silver);
+
+}
+
+.LeftNav--subnav .NavLink {
+  .padding--left--s;
+  .padding--right--l;
+  .NavLink--icon {
+    .padding--none;
+  }
+}
+
+.NavGroup--open {
+  .tint(background, @primary_blue, 6);
+  .shade(color, @primary_blue, 3);
+
+  padding-top: 0;
+  height: @size_3xl - @borderWidthS;
+  .border--top--s(@neutral_silver);
+  .border--bottom--m(@neutral_silver);
+  /*.text--regular;*/
+
+  position: relative;
+}
+
+.NavLink--selected {
+  .tint(background, @primary_blue, 6);
+  .shade(color, @primary_blue, 3);
+}
+
+.NavLink--selected,
+.NavLink:hover {
+  &:before {
+    content: " ";
+    display: block;
+    width: @borderWidthL;
+    height: @size_3xl + @borderWidthS + @borderWidthM;
+    background: @primary_blue;
+    position: absolute;
+    left: 0;
+    top: -@borderWidthM;
+    .zIndex--2;
+  }
+}
+
+.NavLink--icon {
+  .padding--right--s;
+}
+
+.LeftNav--collapsed {
+  min-width: 0;
+  .NavLink {
+    .padding--right--s;
+  }
+  .NavLink--label {
+    display: none;
+  }
+}
