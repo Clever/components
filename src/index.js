@@ -11,3 +11,4 @@ export {Select} from "./Select/Select";
 export {Table} from "./Table/Table";
 export {Grid} from "./Grid/Grid";
 export {Icon} from "./Icon/Icon";
+export {LeftNav} from "./LeftNav/LeftNav";
