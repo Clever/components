@@ -6,27 +6,27 @@
 }
 
 .Wizard--sidebar {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 200px;
-  padding: 0 10px;
+  .flexbox();
+  .flexDirection(column);
+  .flex(0, 0, 200px);
+  .padding--x--s;
   background-color: @neutral_off_white;
   .border--right--m(@neutral_silver);
 
   h2 {
-    font-weight: 300;
+    .text--regular;
   }
 }
 
 .Wizard--contentGroup {
-  min-width: 600px;
-  max-width: 600px;
+  min-width: 37.5rem;
+  max-width: 37.5rem;
   background: @neutral_off_white;
   .padding--s;
   .margin--m;
 
   &.Wizard--WizardStep--help {
-    min-width: 300px;
+    min-width: 18.75rem;
   }
 }
 
@@ -39,12 +39,10 @@
   padding: 0 20px;
 }
 
-.Wizard--WizardStep {
-  h1 {
-    width: 100%;
-    .border--bottom--m(@neutral_silver);
-    .padding--bottom--m;
-  }
+.Wizard--WizardStep--title {
+  width: 100%;
+  .border--bottom--m(@neutral_silver);
+  .padding--bottom--m;
 }
 
 .Wizard--stepContainer {
@@ -56,24 +54,24 @@
 }
 
 .Wizard--stepsDisplay {
-  flex: 1;
+  .flex(1);
   list-style-type: none;
-  padding: 0;
+  .padding--none;
 }
 
 .Wizard--controls {
-  flex: 0 1;
+  .flex(0, 1);
 }
 
 .Wizard--stepsDisplay--stepLink.Button {
   width: 100%;
-  padding: 0;
+  .padding--none;
 }
 
 .Wizard--stepsDisplay--step {
   // ensure each item in list is vertically centered
-  display: flex;
-  align-items: center;
+  .flexbox();
+  .alignItems(center);
   width: 100%;
 }
 
@@ -87,8 +85,8 @@
 
 .Wizard--stepsDisplay--currentStep, .Wizard--stepsDisplay--otherStep {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .Wizard--stepsDisplay--currentStep {
@@ -97,10 +95,10 @@
 
 .Wizard--stepsDisplay--icon {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
   background: gray;
-  margin: 5px;
+  .margin--2xs;
 }
 
 .Wizard--stepsDisplay--visited {
@@ -113,15 +111,15 @@
 
 
 .Wizard--WizardStep--componentWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  .flexbox();
+  .flexWrap(wrap);
+  .alignItems(flex-start);
 }
 
 .Wizard--WizardStep--component {
-  flex: 1 0 600px;
+  .flex(1, 0, 37.5rem);
 }
 
 .Wizard--WizardStep--help {
-  flex: 1 0 300px;
+  .flex(1, 0, 18.75rem);
 }

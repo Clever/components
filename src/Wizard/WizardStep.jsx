@@ -7,7 +7,9 @@ export default function WizardStep({
 }) {
   return (
     <div className="Wizard--WizardStep">
-      <h1>Step {currentStep + 1}: {title}</h1>
+      <div className="Wizard--WizardStep--title">
+        <h1>Step {currentStep + 1}: {title}</h1>
+      </div>
 
       { description && (
         <div className="Wizard--contentGroup Wizard--WizardStep--description">
