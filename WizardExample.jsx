@@ -128,6 +128,7 @@ export default class WizardExample extends React.Component {
       seekable: false,
       showHelp: false,
       prevButtonValue: "Back",
+      hideProgressBar: false,
     };
   }
   render() {
@@ -178,6 +179,13 @@ export default class WizardExample extends React.Component {
             Show help?
           </li>
           <li>
+            <input
+              type="checkbox"
+              onChange={(e) => this.setState({hideProgressBar: e.target.checked})}
+            />
+            Hide progress bar?
+          </li>
+          <li>
             <label>
               <TextInput
                 value={this.state.prevButtonValue}
@@ -211,6 +219,7 @@ export default class WizardExample extends React.Component {
           />
         </p>}
         seekable={this.state.seekable}
+        hideProgressBar={this.state.hideProgressBar}
       />
     </div>);
   }
