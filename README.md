@@ -561,6 +561,7 @@ to define the conditions under which their inputs are considered valid.
 | nextButtonValue (optional)    | String or React Node   | Global text to display on next buttons in form. Can be overriden by a step that has its own `nextButtonValue` property. | `'Next'`
 | prevButtonValue (optional)    | String or React Node   | Global text to display on prev buttons in form. Can be overriden by a step that has its own `prevButtonValue` property. | `'Back'`
 | seekable (optional)    | Boolean   | Whether or not you can skip to other steps before completing the current one, by clicking on steps on the sidebar. | `false`
+| hideProgressBar (optional)    | Boolean   | Whether or not to hide the progress bar from the sidebar. | `false`
 | className (optional) | String | Additional classname to apply to the progress bar. | None
 | style (optional)    | Object   | Add custom styles (e.g. margin) if you must.          | None
 
