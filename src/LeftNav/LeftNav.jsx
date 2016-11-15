@@ -1,6 +1,7 @@
 import React, {PropTypes} from "react";
 import MorePropTypes from "../utils/MorePropTypes";
 import classnames from "classnames";
+import _ from "lodash";
 
 import {NavLink} from "./NavLink";
 import {NavGroup} from "./NavGroup";
@@ -13,7 +14,7 @@ export class LeftNav extends React.Component {
 
     // If a NavLink in a NavGroup is marked as selected on initialization, we
     // should open the drawer to show it. Otherwise, don't start with the drawer open.
-    const selectedNavGroup = props.children.find(child =>
+    const selectedNavGroup = _.find(props.children, child =>
       child.type === NavGroup &&
         React.Children.toArray(child.props.children).some(navLink => navLink.props.selected)
     );
@@ -48,7 +49,7 @@ export class LeftNav extends React.Component {
     });
 
     // Find the open NavGroup so that we can render its children NavLinks in the drawer
-    const openChild  = React.Children.toArray(children).find(child => child.props.open);
+    const openChild = _.find(React.Children.toArray(children), child => child.props.open);
 
     const collapsed = this.props.collapsed ? cssClass.COLLAPSED : null;
 
