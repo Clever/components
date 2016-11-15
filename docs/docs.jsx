@@ -8,6 +8,7 @@ import TabBarExample from "./TabBarExample";
 import TableExample from "./TableExample";
 import IconExample from "./IconExample";
 import LeftNavExample from "./LeftNavExample";
+import WizardExample from "./WizardExample";
 import {
   Button,
   ConfirmationButton,
@@ -17,6 +18,7 @@ import {
   SegmentedControl,
   Select,
   TextInput,
+  ProgressBar,
 } from "../src/";
 
 require("./docs.less");
@@ -41,6 +43,7 @@ class Demo extends React.Component {
         disabledMultiSelect: [{label: "1", value: "1"}, {label: "9", value: "9"}],
         multiSelect: [{label: "3", value: "3"}],
       },
+      progressBarPercentage: 0.5,
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -343,6 +346,27 @@ class Demo extends React.Component {
             value: "three",
           }]}
         />
+        <h1 id="progressBarExample">Progress Bar</h1>
+        <label>Percentage
+          <input
+            type="number" ref={(i) => { this.progressSlider = i; }}
+            max={1} min={0} step={0.1} value={this.state.progressBarPercentage}
+            onChange={() =>
+              this.setState({progressBarPercentage: parseFloat(this.progressSlider.value)})}
+          />-
+        </label>
+        <ProgressBar percentage={this.state.progressBarPercentage} length="200px" />
+        <ProgressBar percentage={this.state.progressBarPercentage} direction="left" length="200px" />
+        <ProgressBar
+          percentage={this.state.progressBarPercentage}
+          style={{display: "inline-block"}} direction="up" length="200px"
+        />
+        <ProgressBar
+          percentage={this.state.progressBarPercentage}
+          style={{display: "inline-block"}} direction="down" length="200px"
+        />
+        <h1 id="wizardExample">Wizard</h1>
+        <WizardExample />
         <TableExample />
         <FlexExample />
         <GridExample />

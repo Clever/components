@@ -1,0 +1,141 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+.Wizard {
+  display: flex;
+}
+
+.Wizard--sidebar {
+  .flexbox();
+  .flexDirection(column);
+  .flex(0, 0, 200px);
+  .padding--m;
+  background-color: @neutral_off_white;
+  .border--right--m(@neutral_silver);
+
+  h2 {
+    .text--regular;
+  }
+}
+
+.Wizard--contentGroup {
+  min-width: 37.5rem;
+  max-width: 37.5rem;
+  .tint(background, @neutral_silver, 3);
+  .padding--s;
+  .margin--m;
+  .margin--left--none;
+
+  &.Wizard--WizardStep--help {
+    min-width: 18.75rem;
+  }
+}
+
+.Wizard--navButtons {
+  text-align: right;
+}
+
+.Wizard--step {
+  .flex(1);
+  .padding--l;
+}
+
+.Wizard--WizardStep--title {
+  width: 100%;
+  .border--bottom--m(@neutral_silver);
+  .padding--bottom--m;
+}
+
+.Wizard--stepContainer {
+  display: none;
+
+  &.Wizard--stepContainer--current {
+    display: block;
+  }
+}
+
+.Wizard--stepsDisplay {
+  .flex(1);
+  list-style-type: none;
+  .padding--none;
+
+  li {
+    &:not(:last-child)::after {
+      display: block;
+      content: "";
+      .border--left--s(@neutral_gray);
+      .margin--left--s;
+      height: @size_l;
+    }
+  }
+}
+
+.Wizard--controls {
+  .flex(0, 1);
+}
+
+.Wizard--stepsDisplay--stepButton.Button {
+  .padding--none;
+}
+
+.Wizard--stepsDisplay--step {
+  // ensure each item in list is vertically centered
+  .flexbox();
+  .alignItems(center);
+  width: 100%;
+  .padding--y--2xs;
+
+  &:not(.Wizard--stepsDisplay--visited):not(.Wizard--stepsDisplay--stepLink) {
+    .shade(color, @neutral_gray, 1);
+  }
+
+  &.Wizard--stepsDisplay--visited {
+    .Wizard--stepsDisplay--icon {
+      background-image: url("../../assets/images/progress_notFinished.svg");
+    }
+  }
+
+  &.Wizard--stepsDisplay--valid {
+    .Wizard--stepsDisplay--icon {
+      background-image: url("../../assets/images/progress_done.svg");
+    }
+  }
+
+  &.Wizard--stepsDisplay--currentStep {
+    .Wizard--stepsDisplay--icon {
+      background-image: url("../../assets/images/progress_here.svg");
+    }
+  }
+}
+
+.Wizard--stepsDisplay--stepTitle {
+  display: block;
+  // don't allow wrapping of text
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Wizard--stepsDisplay--icon {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("../../assets/images/progress_notStarted.svg");
+  background-repeat: no-repeat;
+  background-size: 1.5rem 1.5rem;
+  .margin--right--2xs;
+}
+
+.Wizard--WizardStep--componentWrapper {
+  .flexbox();
+  .flexWrap(wrap);
+  .alignItems(flex-start);
+}
+
+.Wizard--WizardStep--component {
+  .flex(1, 0, 37.5rem);
+}
+
+.Wizard--WizardStep--help {
+  .flex(1, 0, 18.75rem);
+}
