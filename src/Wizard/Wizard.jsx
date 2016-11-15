@@ -84,19 +84,14 @@ export class Wizard extends React.Component {
             {steps.map((step, idx) => {
               const stepValid = step.validate(this.state.data);
               const stepVisited = _.includes(this.state.stepsVisited, idx);
-              const iconClassName = classnames(
-                "Wizard--stepsDisplay--icon",
+              const stepClassName = classnames(
+                "Wizard--stepsDisplay--step",
+                idx === this.state.currentStep && "Wizard--stepsDisplay--currentStep",
                 stepValid && "Wizard--stepsDisplay--valid",
                 stepVisited && "Wizard--stepsDisplay--visited",
               );
-
-              const listValue = (<span className="Wizard--stepsDisplay--step">
-                { idx === this.state.currentStep ?
-                  <span className="Wizard--stepsDisplay--currentStep" />
-                :
-                  <span className="Wizard--stepsDisplay--otherStep" />
-                }
-                <span className={iconClassName} />
+              const listValue = (<span className={stepClassName}>
+                <span className="Wizard--stepsDisplay--icon" />
                 <span className="Wizard--stepsDisplay--stepTitle">{step.title}</span>
               </span>);
               return (
