@@ -9,7 +9,7 @@
   .flexbox();
   .flexDirection(column);
   .flex(0, 0, 200px);
-  .padding--x--s;
+  .padding--m;
   background-color: @neutral_off_white;
   .border--right--m(@neutral_silver);
 
@@ -21,9 +21,10 @@
 .Wizard--contentGroup {
   min-width: 37.5rem;
   max-width: 37.5rem;
-  background: @neutral_off_white;
+  .tint(background, @neutral_silver, 3);
   .padding--s;
   .margin--m;
+  .margin--left--none;
 
   &.Wizard--WizardStep--help {
     min-width: 18.75rem;
@@ -36,6 +37,7 @@
 
 .Wizard--step {
   .flex(1);
+  .padding--l;
 }
 
 .Wizard--WizardStep--title {

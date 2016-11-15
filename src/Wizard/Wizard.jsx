@@ -58,7 +58,7 @@ export class Wizard extends React.Component {
   render() {
     const {
       className, style, title, description, help, wizardButtons, steps, nextButtonValue,
-      prevButtonValue, seekable,
+      prevButtonValue, seekable, hideProgressBar,
     } = this.props;
 
     const classes = classnames("Wizard", className);
@@ -79,7 +79,9 @@ export class Wizard extends React.Component {
           :
             <div className="Wizard--description">{description}</div>
           }
-          <ProgressBar percentage={this.state.percentComplete} />
+          { !hideProgressBar &&
+            <ProgressBar percentage={this.state.percentComplete} />
+          }
           <ul className="Wizard--stepsDisplay">
             {steps.map((step, idx) => {
               const stepValid = step.validate(this.state.data);
@@ -193,4 +195,5 @@ Wizard.propTypes = {
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   seekable: PropTypes.bool,
+  hideProgressBar: PropTypes.bool,
 };
