@@ -91,6 +91,7 @@ export class Wizard extends React.Component {
                 idx === this.state.currentStep && "Wizard--stepsDisplay--currentStep",
                 stepValid && "Wizard--stepsDisplay--valid",
                 stepVisited && "Wizard--stepsDisplay--visited",
+                seekable && "Wizard--stepsDisplay--stepLink",
               );
               const listValue = (<span className={stepClassName}>
                 <span className="Wizard--stepsDisplay--icon" />
@@ -100,7 +101,7 @@ export class Wizard extends React.Component {
                 <li key={idx}>
                   { seekable ?
                     <Button
-                      className="Wizard--stepsDisplay--stepLink"
+                      className="Wizard--stepsDisplay--stepButton"
                       type="link" onClick={() => this.jumpToStep(idx)}
                       value={listValue}
                     />
@@ -153,7 +154,7 @@ export class Wizard extends React.Component {
           <div className="Wizard--contentGroup Wizard--navButtons">
             { this.state.currentStep !== 0 &&
               <Button
-                className="Wizard--prevButton"
+                className="Wizard--prevButton" type="link"
                 onClick={this.prevStepHandler}
                 value={curStep.prevButtonValue || prevButtonValue || "Back"}
               />

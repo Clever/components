@@ -481,7 +481,7 @@ describe("Wizard", () => {
       />);
 
       const stepMatches = renderedWizard.find(
-        ".Wizard--stepsDisplay li Button.Wizard--stepsDisplay--stepLink"
+        ".Wizard--stepsDisplay li Button.Wizard--stepsDisplay--stepButton"
       );
       assert.equal(stepMatches.length, steps.length);
       for (let i = 0; i < steps.length; ++i) {

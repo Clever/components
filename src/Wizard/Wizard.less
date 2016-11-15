@@ -74,8 +74,7 @@
   .flex(0, 1);
 }
 
-.Wizard--stepsDisplay--stepLink.Button {
-  width: 100%;
+.Wizard--stepsDisplay--stepButton.Button {
   .padding--none;
 }
 
@@ -84,11 +83,10 @@
   .flexbox();
   .alignItems(center);
   width: 100%;
-  .shade(color, @neutral_gray, 1);
   .padding--y--2xs;
 
-  &.Wizard--stepsDisplay--visited {
-    color: inherit;
+  &:not(.Wizard--stepsDisplay--visited):not(.Wizard--stepsDisplay--stepLink) {
+    .shade(color, @neutral_gray, 1);
   }
 
   &.Wizard--stepsDisplay--visited {
