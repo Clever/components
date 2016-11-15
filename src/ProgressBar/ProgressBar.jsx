@@ -31,7 +31,7 @@ export function ProgressBar({
       lengthStyle = {width: length};
   }
 
-  const trueDirection = VALID_DIRECTIONS.includes(direction) ? direction : DEFAULT_DIRECTION;
+  const trueDirection = _.includes(VALID_DIRECTIONS, direction) ? direction : DEFAULT_DIRECTION;
 
   return (
     <div
