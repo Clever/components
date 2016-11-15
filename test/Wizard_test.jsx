@@ -438,9 +438,10 @@ describe("Wizard", () => {
         const stepMatches = renderedWizard.find(".Wizard--stepsDisplay li");
         assert.strictEqual(stepMatches.length, steps.length);
         assert.strictEqual(renderedWizard.find(".Wizard--stepsDisplay--currentStep").length, 1);
-        assert.strictEqual(renderedWizard.find(".Wizard--stepsDisplay--otherStep").length, 3);
+        assert.strictEqual(
+          renderedWizard.find(".Wizard--stepsDisplay--step")
+          .not(".Wizard--stepsDisplay--currentStep").length, 3);
         assert.strictEqual(stepMatches.at(curStep).find(".Wizard--stepsDisplay--currentStep").length, 1);
-        assert.strictEqual(stepMatches.at(curStep).find(".Wizard--stepsDisplay--otherStep").length, 0);
 
         const nextButton = renderedWizard.find(".Wizard--nextButton");
         assert.strictEqual(nextButton.length, 1);
@@ -451,9 +452,10 @@ describe("Wizard", () => {
         const stepMatches = renderedWizard.find(".Wizard--stepsDisplay li");
         assert.strictEqual(stepMatches.length, steps.length);
         assert.strictEqual(renderedWizard.find(".Wizard--stepsDisplay--currentStep").length, 1);
-        assert.strictEqual(renderedWizard.find(".Wizard--stepsDisplay--otherStep").length, 3);
+        assert.strictEqual(
+          renderedWizard.find(".Wizard--stepsDisplay--step")
+          .not(".Wizard--stepsDisplay--currentStep").length, 3);
         assert.strictEqual(stepMatches.at(curStep).find(".Wizard--stepsDisplay--currentStep").length, 1);
-        assert.strictEqual(stepMatches.at(curStep).find(".Wizard--stepsDisplay--otherStep").length, 0);
 
         if (curStep !== 0) {
           const prevButton = renderedWizard.find(".Wizard--prevButton");
