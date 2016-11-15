@@ -70,15 +70,15 @@
 
 	var _TabBarExample2 = _interopRequireDefault(_TabBarExample);
 
-	var _TableExample = __webpack_require__(499);
+	var _TableExample = __webpack_require__(500);
 
 	var _TableExample2 = _interopRequireDefault(_TableExample);
 
-	var _IconExample = __webpack_require__(503);
+	var _IconExample = __webpack_require__(504);
 
 	var _IconExample2 = _interopRequireDefault(_IconExample);
 
-	var _LeftNavExample = __webpack_require__(506);
+	var _LeftNavExample = __webpack_require__(507);
 
 	var _LeftNavExample2 = _interopRequireDefault(_LeftNavExample);
 
@@ -93,7 +93,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable no-console */
 
 
-	__webpack_require__(509);
+	__webpack_require__(510);
 
 	var Demo = function (_React$Component) {
 	  _inherits(Demo, _React$Component);
@@ -40866,9 +40866,9 @@
 
 	__webpack_require__(224);
 
-	__webpack_require__(495);
+	__webpack_require__(496);
 
-	__webpack_require__(497);
+	__webpack_require__(498);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46407,7 +46407,7 @@
 
 
 	// module
-	exports.push([module.id, ".Icon {\n  display: inline-block;\n  vertical-align: middle;\n}\n.Icon--small {\n  height: 24px;\n  width: 24px;\n}\n.Icon--medium {\n  height: 46px;\n  width: 46px;\n}\n.Icon--large {\n  height: 92px;\n  width: 92px;\n}\n", ""]);
+	exports.push([module.id, "/* stylelint-disable unit-whitelist */\n.Icon {\n  display: inline-block;\n  vertical-align: middle;\n}\n.Icon--small {\n  height: 24px;\n  width: 24px;\n}\n.Icon--medium {\n  height: 46px;\n  width: 46px;\n}\n.Icon--large {\n  height: 92px;\n  width: 92px;\n}\n", ""]);
 
 	// exports
 
@@ -47747,11 +47747,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _MorePropTypes = __webpack_require__(232);
+
+	var _MorePropTypes2 = _interopRequireDefault(_MorePropTypes);
+
 	var _classnames = __webpack_require__(200);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _ = __webpack_require__(237);
 
 	var _NavLink = __webpack_require__(491);
 
@@ -47767,20 +47769,14 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// no group open, nothing selected      -> drawer closed, no visual selected
-	// no group open, top link selected     -> drawer closed, link visually selected
-	// no group open, sub link selected     -> drawer open to group, group visually open, link visually selected
-	// group open, sub link selected        -> drawer open to group, group visually open, link visually selected
-	// group open, top link selected        -> drawer open to group, group visually open, link visually selected
-	// group open, nothing selected         -> drawer open to group, group visually selected
-	// group open, hidden sub link selected -> drawer open to group, group visually selected
-
 	var LeftNav = exports.LeftNav = function (_React$Component) {
 	  _inherits(LeftNav, _React$Component);
 
 	  function LeftNav(props) {
 	    _classCallCheck(this, LeftNav);
 
+	    // If a NavLink in a NavGroup is marked as selected on initialization, we
+	    // should open the drawer to show it. Otherwise, don't start with the drawer open.
 	    var _this = _possibleConstructorReturn(this, (LeftNav.__proto__ || Object.getPrototypeOf(LeftNav)).call(this, props));
 
 	    var selectedNavGroup = props.children.find(function (child) {
@@ -47788,7 +47784,7 @@
 	        return navLink.props.selected;
 	      });
 	    });
-	    _this.state = { openNavGroup: selectedNavGroup };
+	    _this.state = { openNavGroup: selectedNavGroup ? selectedNavGroup.props.id : null };
 	    return _this;
 	  }
 
@@ -47799,21 +47795,28 @@
 
 	      var cssClass = LeftNav.cssClass;
 
+	      // Clone all of the children so that we can attach our own click handlers
 
 	      var children = _react2.default.Children.map(this.props.children, function (child) {
-	        // Configure the props for NavGroups to track which one is open
+	        // Configure top level NavLinks to close any open NavGroup on click
+	        if (child.type === _NavLink.NavLink) {
+	          return _react2.default.cloneElement(child, {
+	            onClick: function onClick() {
+	              _this2.setState({ openNavGroup: null });
+	              child.props.onClick();
+	            }
+	          });
+	        }
+
+	        // Configure NavGroups to open/close themselves on click
 	        if (child.type === _NavGroup.NavGroup) {
 	          var _ret = function () {
-	            var that = _this2;
-	            // TODO figure out why object equality doesn't work here. we don't want
-	            // to rely on label being unique
-	            var open = _this2.state.openNavGroup && child.props.label === _this2.state.openNavGroup.props.label;
+	            var open = child.props.id === _this2.state.openNavGroup;
 	            return {
 	              v: _react2.default.cloneElement(child, {
 	                open: open,
-	                onClick: function onClick() {
-	                  console.log("click", child.props.label);
-	                  that.setState({ openNavGroup: open ? null : child });
+	                _onClick: function _onClick() {
+	                  return _this2.setState({ openNavGroup: open ? null : child.props.id });
 	                }
 	              })
 	            };
@@ -47821,15 +47824,11 @@
 
 	          if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
 	        }
-	        // Configure the props for top level NavLinks to close other open drawers on click
-	        return _react2.default.cloneElement(child, { onClick: function onClick() {
-	            console.log("click", child.props.label);
-	            _this2.setState({ openNavGroup: null });
-	            child.props.onClick();
-	          } });
+
+	        return null; // Should never get here thanks to PropType validation
 	      });
 
-	      // Find the open NavGroup so that we can render its subnav drawer
+	      // Find the open NavGroup so that we can render its children NavLinks in the drawer
 	      var openChild = _react2.default.Children.toArray(children).find(function (child) {
 	        return child.props.open;
 	      });
@@ -47837,16 +47836,16 @@
 	      var collapsed = this.props.collapsed ? cssClass.COLLAPSED : null;
 
 	      return _react2.default.createElement(
-	        _.FlexBox,
-	        { component: "nav", className: cssClass.CONTAINER },
+	        "nav",
+	        { className: cssClass.CONTAINER },
 	        _react2.default.createElement(
-	          _.FlexItem,
-	          { component: "ul", className: (0, _classnames2.default)(cssClass.TOPNAV, collapsed) },
+	          "ul",
+	          { className: (0, _classnames2.default)(cssClass.TOPNAV, collapsed) },
 	          children
 	        ),
 	        openChild && _react2.default.createElement(
-	          _.FlexItem,
-	          { component: "ul", className: cssClass.SUBNAV },
+	          "ul",
+	          { className: cssClass.SUBNAV },
 	          openChild.props.children
 	        )
 	      );
@@ -47860,7 +47859,8 @@
 	LeftNav.NavGroup = _NavGroup.NavGroup;
 
 	LeftNav.propTypes = {
-	  // List required and optional proptypes
+	  children: _MorePropTypes2.default.oneOrManyOf(_react.PropTypes.oneOfType([_MorePropTypes2.default.instanceOfComponent(_NavLink.NavLink), _MorePropTypes2.default.instanceOfComponent(_NavGroup.NavGroup)])),
+	  collapsed: _react.PropTypes.bool
 	};
 
 	LeftNav.cssClass = {
@@ -47889,34 +47889,40 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _ = __webpack_require__(237);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function NavLink(props) {
 	  var cssClass = NavLink.cssClass;
 
+
 	  var selected = props.selected ? cssClass.SELECTED : null;
+
 	  return _react2.default.createElement(
-	    _.FlexBox,
+	    "li",
 	    {
-	      component: "li",
 	      className: (0, _classnames2.default)(cssClass.CONTAINER, props.className, selected),
-	      onClick: props.onClick,
-	      alignItems: _.ItemAlign.CENTER
+	      onClick: props.onClick
 	    },
 	    _react2.default.createElement(
-	      _.FlexItem,
+	      "div",
 	      { className: cssClass.ICON },
 	      props.icon
 	    ),
 	    _react2.default.createElement(
-	      _.FlexItem,
-	      { className: cssClass.LABEL, "data-text": props.label },
+	      "div",
+	      { className: cssClass.LABEL },
 	      props.label
 	    )
 	  );
 	}
+
+	NavLink.propTypes = {
+	  className: _react.PropTypes.string,
+	  icon: _react.PropTypes.node,
+	  label: _react.PropTypes.string.isRequired,
+	  onClick: _react.PropTypes.func,
+	  selected: _react.PropTypes.bool
+	};
 
 	NavLink.cssClass = {
 	  CONTAINER: "NavLink",
@@ -47948,7 +47954,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// NavGroup doesn't render its children because the LeftNav will render them in
+	// NavGroup doesn't render its children because LeftNav will render them in
 	// a drawer if the NavGroup is open.
 	function NavGroup(props) {
 	  var cssClass = NavGroup.cssClass;
@@ -47959,9 +47965,16 @@
 	    className: (0, _classnames2.default)(cssClass.CONTAINER, open),
 	    label: props.label,
 	    icon: props.icon,
-	    onClick: props.onClick
+	    onClick: props._onClick
 	  });
 	}
+
+	NavGroup.propTypes = {
+	  id: _react.PropTypes.string.isRequired,
+	  icon: _react.PropTypes.node.isRequired,
+	  label: _react.PropTypes.string.isRequired,
+	  open: _react.PropTypes.bool,
+	  _onClick: _react.PropTypes.func };
 
 	NavGroup.cssClass = {
 	  CONTAINER: "NavGroup",
@@ -48003,19 +48016,25 @@
 
 
 	// module
-	exports.push([module.id, ".LeftNav {\n  color: #2e51ac;\n  background: #fafafc;\n  user-select: none;\n  font-weight: 200;\n  font-style: normal;\n  -moz-box-flex-shrink: 0;\n  -ms-flex-negative: 0;\n  -webkit-box-flex-shrink: 0;\n  -webkit-flex-shrink: 0;\n  flex-shrink: 0;\n}\n.LeftNav--topnav {\n  list-style: none;\n  padding-left: 0;\n  margin: 0;\n  min-width: 9rem;\n  /*.border--right--s(@neutral_silver);*/\n  box-shadow: 0.125rem 0 0.125rem #e3e6eb;\n  z-index: 100;\n}\n.LeftNav--subnav {\n  list-style: none;\n  padding-left: 0;\n  margin: 0;\n  background: #ecf1fe;\n  color: #191926;\n  min-width: 9rem;\n  box-shadow: 0.125rem 0 0.125rem #e3e6eb;\n}\n.NavLink {\n  padding-left: 1rem;\n  padding-right: 2rem;\n  text-decoration: none;\n  cursor: pointer;\n  color: inherit;\n  position: relative;\n  height: 3.0625rem;\n  border-bottom: 0.0625rem solid #e3e6eb;\n}\n.LeftNav--subnav .NavLink {\n  padding-left: 0.75rem;\n  padding-right: 1.5rem;\n}\n.LeftNav--subnav .NavLink .NavLink--icon {\n  padding: 0rem;\n}\n.NavGroup--open {\n  background: #ecf1fe;\n  color: #244087;\n  padding-top: 0;\n  height: 2.9375rem;\n  border-top: 0.0625rem solid #e3e6eb;\n  border-bottom: 0.125rem solid #e3e6eb;\n  /*.text--regular;*/\n  position: relative;\n}\n.NavLink--selected {\n  background: #ecf1fe;\n  color: #244087;\n}\n.NavLink--selected:before,\n.NavLink:hover:before {\n  content: \" \";\n  display: block;\n  width: 0.1875rem;\n  height: 3.1875rem;\n  background: #4274f6;\n  position: absolute;\n  left: 0;\n  top: -0.125rem;\n  z-index: 200;\n}\n.NavLink--icon {\n  padding-right: 0.75rem;\n}\n.LeftNav--collapsed {\n  min-width: 0;\n}\n.LeftNav--collapsed .NavLink {\n  padding-right: 0.75rem;\n}\n.LeftNav--collapsed .NavLink--label {\n  display: none;\n}\n", ""]);
+	exports.push([module.id, ".LeftNav {\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  color: #2e51ac;\n  background: #fafafc;\n  user-select: none;\n  font-weight: 200;\n  font-style: normal;\n}\n.LeftNav--topnav,\n.LeftNav--subnav {\n  list-style: none;\n  padding-left: 0;\n  margin: 0;\n  min-width: 9rem;\n  box-shadow: 0.1875rem 0 0.125rem -0.0625rem #e3e6eb;\n}\n.LeftNav--topnav {\n  z-index: 100;\n}\n.LeftNav--subnav {\n  background: #ecf1fe;\n  color: #191926;\n}\n.NavLink {\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  -ms-flex-align: center;\n  -webkit-align-items: center;\n  align-items: center;\n  padding-left: 1rem;\n  padding-right: 2rem;\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n  cursor: pointer;\n  border-bottom: 0.0625rem solid #e3e6eb;\n  position: relative;\n}\n.NavLink--icon {\n  padding-right: 0.75rem;\n  height: 1.5rem;\n}\n.NavLink--label {\n  white-space: nowrap;\n}\n.LeftNav--subnav .NavLink {\n  padding-left: 0.75rem;\n  padding-right: 1.5rem;\n}\n.NavLink--selected {\n  background: #ecf1fe;\n  color: #244087;\n}\n.right-arrow {\n  background-image: url(" + __webpack_require__(495) + ");\n  background-repeat: no-repeat;\n  background-position: right 0.5rem center;\n}\n.NavGroup {\n  background-image: url(" + __webpack_require__(495) + ");\n  background-repeat: no-repeat;\n  background-position: right 0.5rem center;\n}\n.NavGroup--open {\n  background: #ecf1fe;\n  color: #244087;\n  background-image: url(" + __webpack_require__(495) + ");\n  background-repeat: no-repeat;\n  background-position: right 0.5rem center;\n}\n.NavLink:hover {\n  box-shadow: inset 0.1875rem 0 #4274f6;\n  z-index: 200;\n}\n.NavGroup--open,\n.NavLink--selected,\n.NavGroup--open:hover,\n.NavLink--selected:hover {\n  box-shadow: inset 0.1875rem 0 #4274f6, inset 0 0.0625rem #e3e6eb, inset 0 -0.0625rem #e3e6eb;\n  z-index: 200;\n}\n.LeftNav--collapsed {\n  min-width: 0;\n}\n.LeftNav--collapsed .NavLink {\n  padding-right: 0.75rem;\n}\n.LeftNav--collapsed .NavLink--label {\n  display: none;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 495 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMTMgMTgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQxICgzNTMyNikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+bmV4dDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzPgogICAgICAgIDxmaWx0ZXIgeD0iLTUwJSIgeT0iLTUwJSIgd2lkdGg9IjIwMCUiIGhlaWdodD0iMjAwJSIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiBpZD0iZmlsdGVyLTEiPgogICAgICAgICAgICA8ZmVPZmZzZXQgZHg9IjAiIGR5PSIwIiBpbj0iU291cmNlQWxwaGEiIHJlc3VsdD0ic2hhZG93T2Zmc2V0T3V0ZXIxIj48L2ZlT2Zmc2V0PgogICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxLjUiIGluPSJzaGFkb3dPZmZzZXRPdXRlcjEiIHJlc3VsdD0ic2hhZG93Qmx1ck91dGVyMSI+PC9mZUdhdXNzaWFuQmx1cj4KICAgICAgICAgICAgPGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDAuNzA5ODAzOTIyICAgMCAwIDAgMCAwLjczNzI1NDkwMiAgIDAgMCAwIDAgMC43OTIxNTY4NjMgIDAgMCAwIDAuNSAwIiB0eXBlPSJtYXRyaXgiIGluPSJzaGFkb3dCbHVyT3V0ZXIxIiByZXN1bHQ9InNoYWRvd01hdHJpeE91dGVyMSI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgICAgICA8ZmVNZXJnZT4KICAgICAgICAgICAgICAgIDxmZU1lcmdlTm9kZSBpbj0ic2hhZG93TWF0cml4T3V0ZXIxIj48L2ZlTWVyZ2VOb2RlPgogICAgICAgICAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIj48L2ZlTWVyZ2VOb2RlPgogICAgICAgICAgICA8L2ZlTWVyZ2U+CiAgICAgICAgPC9maWx0ZXI+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iQXJjaGl2ZSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IjAwMS0tLWxlZnQtbmF2LW9wZW4tLS1pdGVtLWFjdGl2ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE2Ni4wMDAwMDAsIC0yMjkuMDAwMDAwKSIgZmlsbD0iIzI4NDY5NCI+CiAgICAgICAgICAgIDxnIGlkPSJuYXYtb3B0aW9uLTEtY29weS0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS4wMDAwMDAsIDAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8ZyBpZD0ibGVmdC1uYXYiIGZpbHRlcj0idXJsKCNmaWx0ZXItMSkiPgogICAgICAgICAgICAgICAgICAgIDxnIGlkPSJuYXYtaXRlbSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMS4wMDAwMDAsIDIxMi4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9Im5leHQiIHBvaW50cz0iMTcwLjQ0NTMxMiAzMS41MzEyNSAxNzYuMDU0Njg4IDI1LjkyMTg3NSAxNzAuNDQ1MzEyIDIwLjMxMjUgMTY5LjU1NDY4OCAyMS4xOTUzMTI1IDE3NC4yODEyNSAyNS45MjE4NzUgMTY5LjU1NDY4OCAzMC42NDg0Mzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="
+
+/***/ },
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(496);
+	var content = __webpack_require__(497);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(211)(content, {});
@@ -48035,7 +48054,7 @@
 	}
 
 /***/ },
-/* 496 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(204)();
@@ -48049,13 +48068,13 @@
 
 
 /***/ },
-/* 497 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(498);
+	var content = __webpack_require__(499);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(211)(content, {});
@@ -48075,7 +48094,7 @@
 	}
 
 /***/ },
-/* 498 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(204)();
@@ -48089,7 +48108,7 @@
 
 
 /***/ },
-/* 499 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48104,7 +48123,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loremIpsum = __webpack_require__(500);
+	var _loremIpsum = __webpack_require__(501);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -48308,7 +48327,7 @@
 	exports.default = TableExample;
 
 /***/ },
-/* 500 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var generator = function() {
@@ -48320,9 +48339,9 @@
 		  , paragraphLowerBound = options.paragraphLowerBound || 3
 		  , paragraphUpperBound = options.paragraphUpperBound || 7
 		  , format = options.format || 'plain'
-	    , words = options.words || __webpack_require__(501).words
+	    , words = options.words || __webpack_require__(502).words
 	    , random = options.random || Math.random
-	    , suffix = options.suffix || __webpack_require__(502).EOL;
+	    , suffix = options.suffix || __webpack_require__(503).EOL;
 
 	  units = simplePluralize(units.toLowerCase());
 
@@ -48436,7 +48455,7 @@
 
 
 /***/ },
-/* 501 */
+/* 502 */
 /***/ function(module, exports) {
 
 	var dictionary = {
@@ -48509,7 +48528,7 @@
 	module.exports = dictionary;
 
 /***/ },
-/* 502 */
+/* 503 */
 /***/ function(module, exports) {
 
 	exports.endianness = function () { return 'LE' };
@@ -48560,7 +48579,7 @@
 
 
 /***/ },
-/* 503 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48581,7 +48600,7 @@
 
 	var _src = __webpack_require__(237);
 
-	__webpack_require__(504);
+	__webpack_require__(505);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48615,9 +48634,13 @@
 	        "div",
 	        { className: cssClass.CONTAINER },
 	        _react2.default.createElement(
-	          "h1",
-	          null,
-	          "Icon"
+	          "a",
+	          { name: "icon" },
+	          _react2.default.createElement(
+	            "h1",
+	            null,
+	            "Icon"
+	          )
 	        ),
 	        _react2.default.createElement(_src.SegmentedControl, {
 	          onSelect: function onSelect(s) {
@@ -48657,13 +48680,13 @@
 	};
 
 /***/ },
-/* 504 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(505);
+	var content = __webpack_require__(506);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(211)(content, {});
@@ -48683,7 +48706,7 @@
 	}
 
 /***/ },
-/* 505 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(204)();
@@ -48691,13 +48714,13 @@
 
 
 	// module
-	exports.push([module.id, ".IconExample ul {\n  column-count: 5;\n  list-style: none;\n  padding-left: 0;\n  margin: 0;\n}\n.IconExample li {\n  margin-bottom: 1rem;\n}\n.IconExample label {\n  padding-left: 1rem;\n}\n", ""]);
+	exports.push([module.id, ".IconExample ul {\n  column-count: 5;\n  list-style: none;\n  padding-left: 0;\n  margin: 0;\n  margin: 1rem;\n}\n.IconExample li {\n  margin-bottom: 1rem;\n}\n.IconExample label {\n  padding-left: 1rem;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 506 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48714,7 +48737,7 @@
 
 	var _src = __webpack_require__(237);
 
-	__webpack_require__(507);
+	__webpack_require__(508);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48749,14 +48772,13 @@
 	      var icon = function icon(name) {
 	        return _react2.default.createElement(_src.Icon, { name: name, size: _src.Icon.sizes.SMALL });
 	      };
-	      var link = function link(label, icon) {
+	      var link = function link(label, iconNode) {
 	        return _react2.default.createElement(NavLink, {
 	          label: label,
-	          icon: icon,
+	          icon: iconNode,
 	          selected: _this2.state.selected === label,
 	          onClick: function onClick() {
-	            console.log("select " + label);
-	            _this2.setState({ selected: label });
+	            return _this2.setState({ selected: label });
 	          }
 	        });
 	      };
@@ -48776,10 +48798,9 @@
 	        _react2.default.createElement(_src.Button, {
 	          className: cssClass.COLLAPSE,
 	          type: "primary",
-	          value: "TODO",
+	          value: _react2.default.createElement("span", { className: "fa fa-bars" }),
 	          onClick: function onClick() {
-	            console.log("collapse", !_this2.state.collapsed);
-	            _this2.setState({ collapsed: !_this2.state.collapsed });
+	            return _this2.setState({ collapsed: !_this2.state.collapsed });
 	          }
 	        }),
 	        _react2.default.createElement(
@@ -48791,14 +48812,14 @@
 	            link("Home", icon(_src.Icon.names.SCHOOL)),
 	            _react2.default.createElement(
 	              NavGroup,
-	              { label: "Tools", icon: icon(_src.Icon.names.GEAR) },
+	              { label: "Tools", id: "Tools", icon: icon(_src.Icon.names.GEAR) },
 	              link("Hammer"),
 	              link("Screwdriver"),
 	              link("Measuring Tape")
 	            ),
 	            _react2.default.createElement(
 	              NavGroup,
-	              { label: "Juggling Props", icon: icon(_src.Icon.names.JUGGLER) },
+	              { label: "Juggling Props", id: "Juggling Props", icon: icon(_src.Icon.names.JUGGLER) },
 	              link("Balls"),
 	              link("Clubs"),
 	              link("Rings")
@@ -48837,13 +48858,13 @@
 	};
 
 /***/ },
-/* 507 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(508);
+	var content = __webpack_require__(509);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(211)(content, {});
@@ -48863,7 +48884,7 @@
 	}
 
 /***/ },
-/* 508 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(204)();
@@ -48871,19 +48892,19 @@
 
 
 	// module
-	exports.push([module.id, ".LeftNavExample {\n  border: 1px solid #b5bcca;\n  height: 40rem;\n}\n.LeftNavExample--rightPane {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.LeftNavExample--collapse {\n  margin-bottom: 1.5rem;\n}\n", ""]);
+	exports.push([module.id, ".LeftNavExample {\n  border: 0.0625rem solid #b5bcca;\n  height: 40rem;\n}\n.LeftNavExample--rightPane {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.LeftNavExample--collapse {\n  margin-bottom: 1.5rem;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 509 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(510);
+	var content = __webpack_require__(511);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(211)(content, {});
@@ -48903,7 +48924,7 @@
 	}
 
 /***/ },
-/* 510 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(204)();
