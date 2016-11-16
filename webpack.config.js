@@ -1,3 +1,5 @@
+const autoprefixer = require("autoprefixer");
+
 module.exports = {
   entry: "./docs/docs.jsx",
   output: {
@@ -19,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: "style!css!less",
+        loader: "style!css!postcss!less",
       },
       {
         test: /\.jsx?$/,
@@ -31,4 +33,5 @@ module.exports = {
       },
     ],
   },
+  postcss: [autoprefixer({browsers: "> 1% in US, last 3 versions, ie > 9"})],
 };
