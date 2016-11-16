@@ -9,9 +9,6 @@
  * @target Flex container.
  */
 .flexbox() {
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
 }
 
@@ -20,9 +17,6 @@
  * @target Flex container.
  */
 .inlineFlexbox() {
-  display: -moz-box;
-  display: -ms-inline-flexbox;
-  display: -webkit-inline-flex;
   display: inline-flex;
 }
 
@@ -33,8 +27,6 @@
  * @initial {nowrap}
  */
 .flexWrap(@wrap: wrap) {
-  -ms-flex-wrap: @wrap;
-  -webkit-flex-wrap: @wrap;
   flex-wrap: @wrap;
 }
 
@@ -45,8 +37,6 @@
  * @initial {row}
  */
 .flexDirection(@direction) {
-  -ms-flex-direction: @direction;
-  -webkit-flex-direction: @direction;
   flex-direction: @direction;
 }
 
@@ -61,10 +51,6 @@
  * @initial {0 1 auto}
  */
 .flex(@grow, @shrink: 1, @basis: auto) {
-  -moz-box-flex: @grow @shrink @basis;
-  -ms-flex: @grow @shrink @basis;
-  -webkit-box-flex: @grow @shrink @basis;
-  -webkit-flex: @grow @shrink @basis;
   flex: @grow @shrink @basis;
 }
 
@@ -74,10 +60,6 @@
  * @initial {0 1 auto}
  */
 .flexNone() {
-  -moz-box-flex: none;
-  -ms-flex: none;
-  -webkit-box-flex: none;
-  -webkit-flex: none;
   flex: none;
 }
 
@@ -89,10 +71,6 @@
  * @initial {0}
  */
 .flexGrow(@value: 1) {
- -moz-box-flex-grow: @value;
- -ms-flex-positive: @value;
- -webkit-box-flex-grow: @value;
- -webkit-flex-grow: @value;
  flex-grow: @value;
 }
 
@@ -105,10 +83,6 @@
  * @initial {1}
  */
 .flexShrink(@value: 1) {
- -moz-box-flex-shrink: @value;
- -ms-flex-negative: @value;
- -webkit-box-flex-shrink: @value;
- -webkit-flex-shrink: @value;
  flex-shrink: @value;
 }
 
@@ -119,10 +93,6 @@
  * @initial {auto}
  */
 .flexBasis(@value: 1) {
- -moz-box-flex-basis: @value;
- -ms-flex-preferred-size: @value;
- -webkit-box-flex-basis: @value;
- -webkit-flex-basis: @value;
  flex-basis: @value;
 }
 
@@ -133,8 +103,6 @@
  * @initial {flex-start}
  */
 .justifyContent(@justify) {
-  -ms-flex-pack: @justify;
-  -webkit-justify-content: @justify;
   justify-content: @justify;
 }
 
@@ -145,8 +113,6 @@
  * @initial {stretch}
  */
 .alignItems(@align) {
-  -ms-flex-align: @align;
-  -webkit-align-items: @align;
   align-items: @align;
 }
 
@@ -157,8 +123,6 @@
  * @initial {stretch}
  */
 .alignContent(@align) {
-  -webkit-align-content: @align;
-  -ms-flex-line-pack: @align;
   align-content: @align;
 }
 
@@ -169,8 +133,6 @@
  * @param {flex-start|flex-end|center|baseline|stretch} [align] - Defaults to `stretch`.
  */
 .alignSelf(@align) {
-  -webkit-align-self: @align;
-  -ms-flex-item-align: @align;
   align-self: @align;
 }
 
@@ -180,10 +142,6 @@
  * @param {int} value
  */
 .order(@value) {
-  -moz-box-ordinal-group: @value;
-  -ms-flex-order: @value;
-  -webkit-box-ordinal-group: @value;
-  -webkit-order: @value;
   order: @value;
 }
 
