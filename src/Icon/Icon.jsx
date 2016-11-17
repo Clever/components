@@ -6,12 +6,6 @@ import "./Icon.less";
 
 import imgUrls from "./load-icons";
 
-const sizeToPx = {
-  small: 24,
-  medium: 46,
-  large: 92,
-};
-
 export function Icon(props) {
   const {cssClass} = Icon;
 
