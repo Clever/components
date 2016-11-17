@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>copy-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="copy-small" stroke-width="2">
+            <g id="files-24px-outline_single-copy-04" transform="translate(2.000000, 1.000000)">
+                <g id="Group">
+                    <rect id="Rectangle-path" stroke="#62748C" fill="#FFFFFF" x="0" y="4" width="16" height="18"></rect>
+                    <polyline id="Shape" stroke="#62748C" points="3 0 20 0 20 20"></polyline>
+                    <path d="M4,9 L12,9" id="Shape" stroke="#4274F6"></path>
+                    <path d="M4,13 L12,13" id="Shape" stroke="#4274F6"></path>
+                    <path d="M4,17 L8,17" id="Shape" stroke="#4274F6"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

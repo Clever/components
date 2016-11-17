@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>user-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="user-small" stroke-width="2" stroke="#62748C">
+            <g id="users-24px-outline_single-01" transform="translate(2.000000, 1.000000)">
+                <g id="Group">
+                    <path d="M10,11 L10,11 C7.239,11 5,8.761 5,6 L5,5 C5,2.239 7.239,0 10,0 L10,0 C12.761,0 15,2.239 15,5 L15,6 C15,8.761 12.761,11 10,11 L10,11 Z" id="Shape" fill="#FFFFFF"></path>
+                    <path d="M20,19.908 C20,18.108 18.803,16.525 17.066,16.052 C15.172,15.535 12.586,15 10,15 C7.414,15 4.828,15.535 2.934,16.052 C1.197,16.525 0,18.108 0,19.908 L0,22 L20,22 L20,19.908 L20,19.908 Z" id="Shape" fill="#B6C8F9"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

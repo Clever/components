@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>book-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="book-small" stroke-width="2" stroke="#62748C">
+            <g id="design-24px-outline_book-bookmark" transform="translate(3.000000, 1.000000)">
+                <g id="Group">
+                    <path d="M2,0 C0.895,0 0,0.895 0,2 L0,20 C0,18.895 0.895,18 2,18 L16,18 C17.105,18 18,17.105 18,16 L18,2 C18,0.895 17.105,0 16,0 L2,0 L2,0 Z" id="Shape" fill="#BCCEFF"></path>
+                    <path d="M16,22 C17.105,22 18,21.105 18,20 L18,18 L18,16 C18,17.105 17.105,18 16,18 L2,18 C0.895,18 0,18.895 0,20 C0,21.105 0.895,22 2,22 L16,22 L16,22 Z" id="Shape" fill="#FFFFFF"></path>
+                    <polyline id="Shape" fill="#FFFFFF" points="10 1 10 8 7 6 4 8 4 1"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

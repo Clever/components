@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>clock</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="clock" stroke-width="2" stroke="#62748C">
+            <g id="ui-48px-outline-2_time" transform="translate(1.000000, 1.000000)">
+                <g id="Group">
+                    <circle id="Oval" fill="#BCCEFF" cx="22" cy="22" r="22"></circle>
+                    <polyline id="Shape" points="22 10 22 22 34 22"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

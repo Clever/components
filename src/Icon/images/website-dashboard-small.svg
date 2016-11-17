@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>window-web-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="window-web-small">
+            <g id="design-24px-outline_window-paragraph" transform="translate(1.000000, 2.000000)">
+                <g id="Group">
+                    <rect id="Rectangle-12-Copy" fill="#FFFFFF" x="1" y="5" width="20" height="14"></rect>
+                    <rect id="Rectangle-path" stroke="#62748C" stroke-width="2" x="0" y="0" width="22" height="20" rx="1"></rect>
+                    <path d="M0,4 L22,4" id="Shape" stroke="#62748C" stroke-width="2"></path>
+                    <rect id="Rectangle-path" stroke="#62748C" stroke-width="2" stroke-linejoin="round" fill="#B6C8F9" x="4" y="9" width="6" height="6"></rect>
+                    <path d="M14,9 L18,9" id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M14,13 L16,13" id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <rect id="Rectangle-12" fill="#D8D8D8" x="1" y="1" width="20" height="2"></rect>
+                    <path d="M5,0 L5,4" id="Shape" stroke="#62748C" stroke-width="2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

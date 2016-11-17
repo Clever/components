@@ -15,7 +15,7 @@ const sizeToPx = {
 export function Icon(props) {
   const {cssClass} = Icon;
 
-  const filename = `${props.name}_${sizeToPx[props.size]}px.png`;
+  const filename = `${props.name}.svg`;
   return (
     <span className={classnames(cssClass.CONTAINER, cssClass.size(props.size))}>
       <img src={imgUrls[filename]} />
@@ -50,6 +50,7 @@ Icon.names = {
   MAGNIFY_C:          "magnify-c",
   MAGNIFY_USER:       "magnify-user",
   MAN:                "man",
+  MENU:               "menu",
   MICROPHONE:         "microphone",
   MICROSCOPE:         "microscope",
   MOBILE_APPS:        "mobile-apps",
@@ -61,7 +62,7 @@ Icon.names = {
   PHONE:              "phone",
   PHONE_SYNC:         "phone-sync",
   PICKAX:             "pickax",
-  PLAY_BUTTON:        "play-button",
+  PLAY_BUTTON:        "play",
   PORTAL_OPEN:        "portal-open",
   PRESENT_GIFT:       "present-gift",
   PRESENTATION:       "presentation",

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>lightning-jar-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="lightning-jar-small" stroke-width="2">
+            <g id="sport-24px-outline_energy-supplement" transform="translate(2.000000, 1.000000)">
+                <g id="Group">
+                    <path d="M16,4 L10,4 L4,4 C4,6.25 0,6.5 0,9.8707886 L0,20 C0,21.1045704 0.8954306,22 2,22 L10,22 L18,22 C19.1045704,22 20,21.1045704 20,20 L20,9.8707886 C20,6.5 16,6.25 16,4 L16,4 Z" id="Shape" stroke="#C9081A" fill="#FD8874"></path>
+                    <polyline id="Shape" stroke="#FFFFFF" points="11 10 8 13 12 13 9 16"></polyline>
+                    <rect id="Rectangle-path" stroke="#62748C" stroke-linejoin="round" fill="#FFFFFF" x="2" y="0" width="16" height="4"></rect>
+                    <path d="M10,0 L10,4" id="Shape" stroke="#62748C"></path>
+                    <path d="M6,0 L6,4" id="Shape" stroke="#62748C"></path>
+                    <path d="M14,0 L14,4" id="Shape" stroke="#62748C"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

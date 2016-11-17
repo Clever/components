@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>hand-click-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="hand-click-small" stroke-width="2" stroke="#62748C">
+            <g id="design-24px-outline-2_cursor-pointer" transform="translate(3.000000, 1.000000)">
+                <g id="Group">
+                    <path d="M4,10 L4,13" id="Shape"></path>
+                    <path d="M16.128,8.478 L8,7 L8,2.107 C8,1.111 7.319,0.187 6.336,0.027 C5.083,-0.176 4,0.785 4,2 L4,10 L2,10 C0.895,10 0,10.895 0,12 L0,14.895 C0,16.257 0.464,17.579 1.315,18.643 L4,22 L17,22 L18.556,11.886 C18.803,10.279 17.726,8.768 16.128,8.478 L16.128,8.478 Z" id="Shape" fill="#FFFFFF"></path>
+                    <path d="M9,13 L9,18" id="Shape"></path>
+                    <path d="M13,13 L13,18" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

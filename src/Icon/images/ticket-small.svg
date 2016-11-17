@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>ticket-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="ticket-small" stroke-width="2" stroke="#C9081A">
+            <g id="media-24px-outline-1_ticket-75" transform="translate(1.000000, 4.000000)">
+                <g id="Group">
+                    <path d="M19,8 C19,6.3 20.3,5 22,5 L22,0 L0,0 L0,5 C1.7,5 3,6.3 3,8 C3,9.7 1.7,11 0,11 L0,16 L22,16 L22,11 C20.3,11 19,9.7 19,8 L19,8 Z" id="Shape" fill="#FD8874"></path>
+                    <rect id="Rectangle-path" fill="#FFFFFF" x="7" y="5" width="8" height="6"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

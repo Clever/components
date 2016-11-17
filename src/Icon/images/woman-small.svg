@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>business-woman-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="business-woman-small" stroke-width="2">
+            <g id="business-24px-outline_business-contact-87" transform="translate(1.000000, 9.000000)">
+                <g id="Group">
+                    <path d="M5,0 C5,2.2 2.2,4 0,4 C0,7 1.5,7.2 2.2,7.9 L11,6" id="Shape" stroke="#B3873B" fill="#FEBD54"></path>
+                    <path d="M17,0 C17,2.2 19.8,4 22,4 C22,7 20.5,7.2 19.8,7.9 L11,6" id="Shape" stroke="#B3873B" fill="#FEBD54"></path>
+                    <path d="M7.7,6 L7,6 C3.1,6 0,9.1 0,13 L0,14 L22,14 L22,13 C22,9.1 18.9,6 15,6 L14.3,6" id="Shape" stroke="#62748C" fill="#FFFFFF"></path>
+                    <path d="M17,10 L15,10" id="Shape" stroke="#62748C"></path>
+                </g>
+            </g>
+            <path d="M14.5,5.8 C13.6,7.7 11.7,9 9.5,9 C8.2,9 7,8.5 6,7.8 L6,10 C6,13.3 8.7,16 12,16 C15.3,16 18,13.3 18,10 L18,8.8 C16.4,8.4 15.2,7.3 14.5,5.8 L14.5,5.8 Z" id="Stroke-1" stroke="#B8865D" fill="#F8DFB2"></path>
+            <path d="M12,1 C8.7,1 6,3.7 6,7 L6,7.8 C7,8.5 8.2,9 9.5,9 C11.7,9 13.6,7.7 14.5,5.8 C15.2,7.3 16.4,8.4 18,8.8 L18,7 C18,3.7 15.3,1 12,1 L12,1 Z" id="Stroke-3" stroke="#B3873B" fill="#FEBD54"></path>
+        </g>
+    </g>
+</svg>

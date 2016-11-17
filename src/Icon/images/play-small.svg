@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>play-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24" rx="4"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="24" height="24" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="play-small">
+            <use id="Rectangle-path" stroke="#62748C" mask="url(#mask-2)" stroke-width="4" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <path d="M9.02828114,9.32241982 C9.02828114,8.21265097 9.7945422,7.7812762 10.7300088,8.35295024 L15.1691547,11.0657616 C16.108993,11.6401072 16.1046213,12.573977 15.1691547,13.145651 L10.7300088,15.8584624 C9.79017057,16.432808 9.02828114,15.9966358 9.02828114,14.8889928 L9.02828114,9.32241982 Z" id="Shape" stroke="#4FA97B" stroke-width="2" fill="#85EBB6"></path>
+        </g>
+    </g>
+</svg>

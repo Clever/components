@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>user-search-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="user-search-small" stroke-width="2" stroke="#62748C">
+            <g id="users-24px-outline-2_search-copy" transform="translate(1.000000, 1.000000)">
+                <g id="Group">
+                    <path d="M17.071,17.071 L22,22" id="Shape"></path>
+                    <circle id="Oval" fill="#FFFFFF" cx="10" cy="10" r="10"></circle>
+                    <path d="M10.992,9.737 L13.2,11.4 C13.704,11.778 14,12.37 14,13 L14,14 L6,14 L6,13 C6,12.37 6.296,11.778 6.8,11.4 L9.008,9.737" id="Shape" fill="#BCCEFF"></path>
+                    <path d="M10,10 L10,10 C8.895,10 8,9.105 8,8 L8,7 C8,5.895 8.895,5 10,5 L10,5 C11.105,5 12,5.895 12,7 L12,8 C12,9.105 11.105,10 10,10 L10,10 Z" id="Shape" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

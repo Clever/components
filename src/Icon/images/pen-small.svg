@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>signature-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="signature-small" stroke="#62748C">
+            <g id="business-24px-outline_signature" transform="translate(4.000000, 2.000000)">
+                <g id="Group">
+                    <polyline id="Shape" stroke-width="2" fill="#FFFFFF" points="8 3 2 6 0 17 11 15 14 9"></polyline>
+                    <path d="M0,17 L5.6,11.4" id="Shape" stroke-width="2"></path>
+                    <rect id="Rectangle-path" stroke-width="1.99998082" fill="#BCCEFF" transform="translate(12.035455, 5.035555) rotate(225.000000) translate(-12.035455, -5.035555) " x="6.38550918" y="3.63556843" width="11.2998916" height="2.79997315"></rect>
+                    <circle id="Oval" stroke-width="2" cx="7" cy="10" r="2"></circle>
+                    <path d="M0,20 L16,20" id="Shape" stroke-width="2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

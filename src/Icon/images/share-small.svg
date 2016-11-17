@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>share-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="share-small" stroke-width="2" stroke="#62748C">
+            <g id="arrows-24px-outline-1_share-91" transform="translate(2.000000, 2.000000)">
+                <g id="Group">
+                    <polyline id="Shape" points="19 14 19 20 0 20 0 4 3 4"></polyline>
+                    <path d="M21,7 L13,0 L13,4 C7.8,4 4,5.9 4,14 C5.9,11.5 7.7,10 13,10 L13,14 L21,7 L21,7 Z" id="Shape" fill="#BCCEFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

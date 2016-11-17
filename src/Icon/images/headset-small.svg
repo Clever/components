@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>headset-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="headset-small" stroke-width="2" stroke="#62748C">
+            <g id="tech-24px-outline-2_headset" transform="translate(2.000000, 1.000000)">
+                <g id="Group">
+                    <path d="M12,22 L17,22 C18.657,22 20,20.657 20,19 L20,16" id="Shape"></path>
+                    <path d="M5,11 L0,11 L0,16 C0,17.105 0.895,18 2,18 L5,18 L5,11 L5,11 Z" id="Shape" fill="#BCCEFF"></path>
+                    <path d="M20,11 L15,11 L15,18 L18,18 C19.105,18 20,17.105 20,16 L20,11 L20,11 Z" id="Shape" fill="#BCCEFF"></path>
+                    <path d="M20,11 L20,10 C20,4.477 15.523,0 10,0 L10,0 C4.477,0 0,4.477 0,10 L0,11" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

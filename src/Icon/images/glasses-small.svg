@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>glasses-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="glasses-small" stroke="#62748C" stroke-width="2">
+            <g id="Page-1" transform="translate(1.000000, 2.000000)">
+                <path d="M9.5,14.750125 C9.5,17.3733125 7.3731875,19.500125 4.75,19.500125 C2.125625,19.500125 0,17.3733125 0,14.750125 C0,12.12575 2.125625,9.9989375 4.75,9.9989375 C7.3731875,9.9989375 9.5,12.12575 9.5,14.750125 L9.5,14.750125 Z" id="Stroke-1" fill="#B6C8F9"></path>
+                <path d="M12.5,14.7511875 C12.5,17.374375 14.625625,19.5011875 17.25,19.5011875 C19.8731875,19.5011875 22,17.374375 22,14.7511875 C22,12.1268125 19.8731875,10 17.25,10 C14.625625,10 12.5,12.1268125 12.5,14.7511875 L12.5,14.7511875 Z" id="Stroke-3" fill="#B6C8F9"></path>
+                <path d="M9.5,14.5 C9.5,13.672 10.171,13 11,13 C11.827,13 12.5,13.672 12.5,14.5" id="Stroke-5"></path>
+                <path d="M0,14 L0,1.5 C0,0.672 0.671,0 1.5,0" id="Stroke-7" stroke-linecap="round"></path>
+                <path d="M22,14 L22,1.5 C22,0.672 21.5513333,0 21,0" id="Stroke-9" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

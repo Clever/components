@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>tie-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="tie-small" stroke="#B4883D" stroke-width="2" fill="#FEBD54">
+            <g id="business-24px-outline_tie-01" transform="translate(7.000000, 2.000000)">
+                <g id="Group">
+                    <polyline id="Shape" points="3 4 0 15 5 20 10 15 7 4"></polyline>
+                    <polygon id="Shape" points="7 4 3 4 1 0 9 0"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

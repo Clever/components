@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>clever-circle-small</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24" rx="12"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="24" height="24" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="clever-circle-small">
+            <g id="clever-brand">
+                <use id="Rectangle-3" stroke="#62748C" mask="url(#mask-2)" stroke-width="4" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <path d="M12.1129313,18 C8.60533034,18 6,15.3646718 6,12.0331332 L6,12 C6,8.70159453 8.55405771,6 12.2152638,6 C14.4627495,6 15.8079646,6.72934355 16.9149002,7.79001864 L15.2460931,9.66307724 C14.3265898,8.85090081 13.3900665,8.35369642 12.1980311,8.35369642 C10.1888248,8.35369642 8.74149002,9.9778422 8.74149002,11.9668668 L8.74149002,12 C8.74149002,13.9888176 10.1547849,15.6463036 12.1980311,15.6463036 C13.5602661,15.6463036 14.3946697,15.115966 15.3311929,14.287223 L17,15.9281425 C15.7739246,17.2043901 14.4116896,18 12.1129313,18 L12.1129313,18 Z" id="Path" fill="#4274F6"></path>
+            </g>
+        </g>
+    </g>
+</svg>
