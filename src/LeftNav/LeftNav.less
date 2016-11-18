@@ -5,14 +5,20 @@
   .shade(color, @primary_blue, 2);
   background: @neutral_off_white;
   user-select: none;
-  .text--light;
+}
+
+.LeftNav--topnav,
+.LeftNav--subnav,
+.LeftNav--collapsed {
+  .expand;
+  overflow: hidden;
 }
 
 .LeftNav--topnav,
 .LeftNav--subnav {
   .list-reset;
   min-width: 9rem;
-  box-shadow: @borderWidthM+@borderWidthS 0 @borderWidthM -@borderWidthS @neutral_silver;
+  .border--right--s(@neutral_silver)
 }
 
 .LeftNav--topnav {
@@ -20,7 +26,7 @@
 }
 
 .LeftNav--subnav {
-  .tint(background, @primary_blue, 6);
+  .shade(background, @neutral_off_white, .15);
   color: @neutral_black;
 }
 
@@ -50,7 +56,7 @@
 }
 
 .NavLink--selected {
-  .tint(background, @primary_blue, 6);
+  .tint(background, @primary_blue, 6.15);
   .shade(color, @primary_blue, 3);
 }
 
@@ -68,7 +74,7 @@
   // In order to have a background image (right arrow) and a background color
   // simultaneously, they both must be written in the same CSS rule and the
   // image must come second.
-  .tint(background, @primary_blue, 6);
+  .shade(background, @neutral_off_white, .15);
   .shade(color, @primary_blue, 3);
   .right-arrow;
 }
@@ -82,9 +88,7 @@
 .NavLink--selected,
 .NavGroup--open:hover,
 .NavLink--selected:hover {
-  box-shadow: inset @borderWidthL 0 @primary_blue, // blue bar on left
-    inset 0 @borderWidthS @neutral_silver, // top drop shadow
-    inset 0 -@borderWidthS @neutral_silver; // bottom drop shadow
+  box-shadow: inset @borderWidthL 0 @primary_blue; // blue bar on left
   .zIndex--2; // For subnav links, ensure this goes over the shadow from the topnav
 }
 

@@ -32,6 +32,7 @@ export class LeftNav extends React.Component {
           onClick: () => {
             this.setState({openNavGroup: null});
             child.props.onClick();
+            return false;
           },
         });
       }
@@ -43,6 +44,7 @@ export class LeftNav extends React.Component {
           open,
           _onClick: () => this.setState({openNavGroup: open ? null : child.props.id}),
         });
+        return false;
       }
 
       return null; // Should never get here thanks to PropType validation

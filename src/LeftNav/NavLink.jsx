@@ -7,13 +7,14 @@ export function NavLink(props) {
   const selected = props.selected ? cssClass.SELECTED : null;
 
   return (
-    <li
+    <a
       className={classnames(cssClass.CONTAINER, props.className, selected)}
       onClick={props.onClick}
+      href="#"
     >
       <div className={cssClass.ICON}>{props.icon}</div>
       <div className={cssClass.LABEL}>{props.label}</div>
-    </li>
+    </a>
   );
 }
 
