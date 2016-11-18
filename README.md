@@ -120,7 +120,7 @@ This is a set of button components with various sizes and types.
 | Prop                | Type     | Description                                          | Default
 |---------------------|----------|------------------------------------------------------|---------
 | value               | String   | The text that appears on the button                  | None
-| type                | String   | One of `primary`, `secondary`, `destructive`, `link`, `linkPlain` | `secondary`
+| type                | String   | One of `primary`, `secondary`, `destructive`, `link`, `linkPlain`, `plain` | `secondary`
 | size                | String   | One of "large", "regular", "small"                   | `regular`
 | onClick (optional)  | Function | Called when the user clicks on the button            | None
 | href (optional)     | String   | If provided, causes the button to behave as a link   | None
