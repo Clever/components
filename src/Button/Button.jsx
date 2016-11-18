@@ -42,7 +42,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   className: React.PropTypes.string,
-  type: React.PropTypes.oneOf(["primary", "secondary", "destructive", "link", "linkPlain"]),
+  type: React.PropTypes.oneOf(["primary", "secondary", "destructive", "link", "linkPlain", "plain"]),
   size: React.PropTypes.oneOf(["large", "regular", "small"]),
   value: React.PropTypes.node.isRequired,
   href: React.PropTypes.string,
