@@ -9,7 +9,7 @@ MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-sty
 BABEL := node_modules/babel-cli/bin/babel.js
 WEBPACK := node_modules/webpack/bin/webpack.js
 
-.PHONY: dev-server test lint clean es5 build new $(TESTS) styles sizing-styles border-styles
+.PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles sizing-styles border-styles
 .PHONY: border-radius-styles
 
 clean:
@@ -24,7 +24,11 @@ es5:
 	@find ./dist -name "*.jsx" | xargs -n1 rm
 	@echo '✓ Remove JSX files'
 
-build: clean es5 styles
+docs:
+	@echo '✓ Rebuild docs'
+	@$(WEBPACK)
+
+build: clean es5 styles docs
 
 styles:
 	@echo "Building stylesheet"
