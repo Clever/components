@@ -1,88 +1,93 @@
-@import "../less/colors.less";
+@import (reference) "../less/colors";
+@import (reference) "../less/border";
+@import (reference) "../less/sizing";
+@import (reference) "../less/type-size";
+@import (reference) "../less/type-utilities";
+@import (reference) "../less/spacing";
 
 .TextInput {
+  .padding--x--s;
+  .padding--top--3xs;
+  .text--regular;
+  .border--s(@neutral_silver);
   position: relative;
-  color: #191926;
-  background: #FFFFFF;
-  padding-left: 10px;
-  padding-right: 10px;
+  color: @neutral_black;
+  background: @neutral_white;
   box-sizing: border-box;
-  border: 1px solid #E3E6EB;
-  height: 50px;
+  height: @size_4xl;
   width: 100%;
-  font-family: "Proxima Nova";
 
   .TextInput--infoRow {
+    .text--tiny;
+    .text--caps;
     position: absolute;
-    top: 5px;
+    top: @size_xs;
     width: 100%;
-    text-transform: uppercase;
-    font-size: 10px;
-    color: #566279;
+    color: @neutral_dark_gray;
 
     .TextInput--label {
-      left: 10px;
+      left: @size_s;
       opacity: 1;
     }
 
     .TextInput--required {
       position: absolute;
-      right: 20px;
+      right: @size_l;
     }
 
     .TextInput--error {
-      color: #EB3B49;
+      color: @alert_red;
       position: absolute;
-      right: 20px;
+      right: @size_l;
     }
   }
 
   .TextInput--input {
+    .text--medium;
     display: block;
-    font-size: 15px;
     border: 0px solid;
     width: 100%;
-    line-height: 40px;
-    min-height:40px;
-    padding-top: 10px;
+    line-height: @size_2xl;
+    min-height: @size_2xl;
+    padding-top: @size_s;
     background-color: transparent;
   }
 
   &.TextInput--placeholder-shown {
     label { opacity: 0 !important; }
     .TextInput--input {
-      line-height: 40px;
-      min-height:40px;
-      color: #566279;
-      font-size: 12px;
-      padding-top: 5px;
-      text-transform: uppercase;
+      .text--small;
+      .text--caps;
+      .padding--top--xs;
+      line-height: @size_2xl;
+      min-height: @size_2xl;
+      color: @neutral_dark_gray;
     }
   }
 
   &.TextInput--hasError {
-    box-shadow: inset 5px 0 #EB3B49;
+    box-shadow: inset @size_2xs 0 @alert_red;
     transition: box-shadow .25s ease-out;
   }
 
   &.TextInput--inFocus {
-    box-shadow: inset 5px 0 #4274f6;
+    box-shadow: inset @size_2xs 0 @primary_blue;
     transition: box-shadow .25s ease-out;
   }
 
   &.TextInput--disabled {
-    color: #566279;
-    background: #F0F1F2;
-    border: 1px solid #D7D9D9;
+    .border--s(@neutral_silver);
+    color: @neutral_dark_gray;
+    background: @neutral_silver;
     .TextInput--input {
       background: transparent;
     }
   }
 
   &.TextInput--readonly {
-    color: #191926;
-    background: rgba(255,255,255,0.5);
-    border: 1px solid rgba(226,230,235,0.5);
+    .border--s(transparent);
+    color: @neutral_black;
+    background: transparent;
   }
 
   textarea:focus, input:focus{
@@ -90,15 +95,15 @@
   }
 
   .TextInput--link {
+    .text--small;
+    .border--s(@neutral_silver);
     position: absolute;
     top: 50%;
     right: 0;
-    margin: -8px 7px;
+    margin: -@size_xs @size_xs;
     border: 0;
     background: none;
-    color: #4274F6;
-    font-size: 12px;
-    border-right: 1px solid #dddddd;
+    color: @primary_blue;
 
     &:last-child {
       border: 0;
