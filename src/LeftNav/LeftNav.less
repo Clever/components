@@ -17,7 +17,7 @@
 .LeftNav--topnav,
 .LeftNav--subnav {
   .list-reset;
-  min-width: 9rem;
+  width: 12rem;
   .border--right--s(@neutral_silver)
 }
 
@@ -93,7 +93,7 @@
 }
 
 .LeftNav--collapsed {
-  min-width: 0;
+  width: 4rem;
 
   .NavLink {
     .padding--right--s;
@@ -102,4 +102,11 @@
   .NavLink--label {
     display: none;
   }
+}
+
+
+.expand {
+  .timingSlowly;
+  .transition-timing-function(@motionSmooth);
+  transition-propery: width;
 }
