@@ -573,6 +573,8 @@ to define the conditions under which their inputs are considered valid.
 | component (required)    | React Node | Component to display for this step. Provided with `wizardState` and `setWizardState` props, allowing it to get and set the data inputted into the `Wizard`.         | None
 | validate (required)    | Function  | Validates if the current step is complete. Provided `wizardState` as an argument, which this function is expected to examine for validity.         | None
 | help (optional)    | String or React Node | Help text to display for this step         | None
+| props (optional)    | Object | Props to provide to the component. If present, `wizardState` and `setWizardState` props are filtered out.         | {}
+
 
 ##### `wizardButton` shape:
 | Key             | Type     | Description                           | Default

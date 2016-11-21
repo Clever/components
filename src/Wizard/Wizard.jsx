@@ -129,6 +129,7 @@ export class Wizard extends React.Component {
         <div className="Wizard--step">
           <WizardStep
             Component={steps[this.state.currentStep].component}
+            componentProps={steps[this.state.currentStep].props}
             stepNumber={this.state.currentStep}
             setWizardState={(changes) => {
               const newState = _.merge(this.state.data, changes);
@@ -192,6 +193,7 @@ Wizard.propTypes = {
     component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)]).isRequired,
     validate: PropTypes.func.isRequired,
     help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    props: PropTypes.object,
   })).isRequired,
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
