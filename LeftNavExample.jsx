@@ -42,7 +42,7 @@ export default class LeftNavExample extends React.Component {
         />
         <FlexBox className={cssClass.CONTAINER}>
           <LeftNav collapsed={this.state.collapsed}>
-            {menulink("Menu", icon(Icon.names.BOOK))}
+            {menulink("Menu", icon(Icon.names.MENU))}
             {link("Home", icon(Icon.names.SCHOOL))}
             <NavGroup label="Tools" id="Tools" icon={icon(Icon.names.GEAR)}>
               {link("Hammer")}
