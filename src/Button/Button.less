@@ -40,9 +40,14 @@ a, button {
       color: @neutral_dark_gray;
 
       &.Button--linkPlain,
-      &.Button--link {
+      &.Button--link,
+      &.Button--plain {
         background: none;
         border: transparent;
+      }
+
+      &.Button--linkPlain,
+      &.Button--link {
         color: @neutral_gray;
       }
     }
@@ -78,9 +83,14 @@ a, button {
   }
 
   &.Button--linkPlain,
-  &.Button--link {
+  &.Button--link,
+  &.Button--plain {
     background: none;
     border: transparent;
+  }
+
+  &.Button--linkPlain,
+  &.Button--link {
     color: @primary_blue;
 
     &:hover,
@@ -104,10 +114,18 @@ a, button {
     padding: @size_m @size_l @size_s;
   }
 
-  &.Button--linkPlain {
+  &.Button--linkPlain,
+  &.Button--plain {
     border: none;
     font-size: 1em;  /* Match surrounding text. */
     margin: 0;
     padding: 0;
+  }
+
+  /* Match surroundings even more. */
+  &.Button--plain {
+    color: inherit;  
+    font-weight: inherit;
+    text-align: inherit;
   }
 }

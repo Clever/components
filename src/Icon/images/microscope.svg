@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>microscope</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboards" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="microscope">
+            <g id="education-48px-outline_microscope" transform="translate(7.000000, 1.000000)">
+                <g id="Group">
+                    <path d="M8.6,9.8 C3.5,12.5 0,17.8 0,24 L0,26" id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <rect id="Rectangle-path" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#B6C8F9" x="0" y="38" width="34" height="6"></rect>
+                    <polygon id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF" points="22 21.3 14.6 24.3 6.3 4 13.7 0.9 13.7 0.9"></polygon>
+                    <polygon id="Path-7" fill="#B6C8F9" points="6 5 9 10 16 6 13 1"></polygon>
+                    <polygon id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="22 21.3 14.6 24.3 6.3 4 13.7 0.9 13.7 0.9"></polygon>
+                    <path d="M16,32 L30,32" id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8.6,9.8 L16.1,6.8" id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8,38 L0,38 L0,26 L0,26 C4.4,26 8,29.6 8,34 L8,38 L8,38 Z" id="Shape" stroke="#62748C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
