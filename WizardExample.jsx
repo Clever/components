@@ -9,9 +9,10 @@ class AddressStep extends React.Component {
   }
 
   render() {
-    const {setWizardState, wizardState} = this.props;
+    const {setWizardState, wizardState, recipient} = this.props;
     return (
       <form ref={(f) => { this.form = f; }} onSubmit={(e) => e.preventDefault()}>
+        <p>Delivery for {recipient}</p>
         <TextInput
           label="Address"
           required
@@ -23,6 +24,10 @@ class AddressStep extends React.Component {
     );
   }
 }
+
+AddressStep.propTypes = {
+  recipient: PropTypes.string.isRequired,
+};
 
 class ContactStep extends React.Component {
   static validate(wizardState) {
@@ -109,6 +114,7 @@ class ReviewStep extends React.Component {
 AddressStep.propTypes = {
   wizardState: PropTypes.object.isRequired,
   setWizardState: PropTypes.func.isRequired,
+  recipient: PropTypes.string.isRequired,
 };
 
 ContactStep.propTypes = {
@@ -129,6 +135,7 @@ export default class WizardExample extends React.Component {
       showHelp: false,
       prevButtonValue: "Back",
       hideProgressBar: false,
+      recipient: "Kristen Stark",
     };
   }
   render() {
@@ -139,6 +146,9 @@ export default class WizardExample extends React.Component {
           "your contact address saved.",
         component: AddressStep,
         validate: AddressStep.validate,
+        props: {
+          recipient: this.state.recipient,
+        },
         nextButtonValue: "Save address",
       },
       {
@@ -172,28 +182,38 @@ export default class WizardExample extends React.Component {
             </label>
           </li>
           <li>
-            <input
-              type="checkbox"
-              onChange={(e) => this.setState({showHelp: e.target.checked})}
-            />
-            Show help?
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              onChange={(e) => this.setState({hideProgressBar: e.target.checked})}
-            />
-            Hide progress bar?
+            <label>
+              <input
+                type="checkbox"
+                onChange={(e) => this.setState({showHelp: e.target.checked})}
+              />
+              Show help?
+            </label>
           </li>
           <li>
             <label>
-              <TextInput
-                value={this.state.prevButtonValue}
-                onChange={(e) => this.setState({prevButtonValue: e.target.value})}
-                label="Prev button text"
-                name="prevButtonValue"
+              <input
+                type="checkbox"
+                onChange={(e) => this.setState({hideProgressBar: e.target.checked})}
               />
+              Hide progress bar?
             </label>
+          </li>
+          <li>
+            <TextInput
+              value={this.state.recipient}
+              onChange={(e) => this.setState({recipient: e.target.value})}
+              label="Recipient"
+              name="recipient"
+            />
+          </li>
+          <li>
+            <TextInput
+              value={this.state.prevButtonValue}
+              onChange={(e) => this.setState({prevButtonValue: e.target.value})}
+              label="Prev button text"
+              name="prevButtonValue"
+            />
           </li>
         </ul>
       </fieldset>
