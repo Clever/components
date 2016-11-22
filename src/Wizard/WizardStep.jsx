@@ -4,7 +4,9 @@ import _ from "lodash";
 export default function WizardStep({
   title, description, Component, setWizardState, currentStep, wizardState, help,
   percentComplete, calculatePercentComplete, updatePercentComplete, totalSteps,
+  componentProps,
 }) {
+  const props = _.omit(componentProps || {}, ["wizardState", "setWizardState"]);
   return (
     <div className="Wizard--WizardStep">
       <div className="Wizard--WizardStep--title">
@@ -20,6 +22,7 @@ export default function WizardStep({
       <div className="Wizard--WizardStep--componentWrapper">
         <div className="Wizard--contentGroup Wizard--WizardStep--component">
           <Component
+            {...props}
             setWizardState={(modifications) => {
               const newState = setWizardState(modifications);
 
@@ -55,6 +58,7 @@ WizardStep.propTypes = {
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)]).isRequired,
+  componentProps: PropTypes.object,
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 
