@@ -31,6 +31,7 @@ export function Select({
   label,
   multi,
   onChange,
+  optionRenderer,
   options,
   placeholder = "",
   searchable,
@@ -55,6 +56,7 @@ export function Select({
           multi={multi}
           name={name}
           onChange={onChange}
+          optionRenderer={optionRenderer}
           options={options}
           placeholder={placeholder}
           searchable={searchable}
@@ -89,6 +91,7 @@ Select.propTypes = {
   label: React.PropTypes.string,
   multi: React.PropTypes.bool,
   onChange: React.PropTypes.func,
+  optionRenderer: React.PropTypes.func,
   options: React.PropTypes.arrayOf(selectValuePropType),
   placeholder: React.PropTypes.string,
   searchable: React.PropTypes.bool,
