@@ -8,7 +8,7 @@ import {NavLink} from "./NavLink";
 export function NavGroup(props) {
   const {cssClass} = NavGroup;
 
-  const open = props.open ? cssClass.OPEN : null;
+  const open = props._open ? cssClass.OPEN : null;
   return (
     <NavLink
       className={classnames(cssClass.CONTAINER, open)}
@@ -23,7 +23,7 @@ NavGroup.propTypes = {
   id: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
   label: PropTypes.string.isRequired,
-  open: PropTypes.bool,
+  _open: PropTypes.bool, // private - used by LeftNav only
   _onClick: PropTypes.func, // private - used by LeftNav only
 };
 

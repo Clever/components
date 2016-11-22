@@ -40,7 +40,7 @@ export class LeftNav extends React.Component {
       if (child.type === NavGroup) {
         const open = child.props.id === this.state.openNavGroup;
         return React.cloneElement(child, {
-          open,
+          _open: open,
           _onClick: () => this.setState({openNavGroup: open ? null : child.props.id}),
         });
       }
@@ -49,7 +49,7 @@ export class LeftNav extends React.Component {
     });
 
     // Find the open NavGroup so that we can render its children NavLinks in the drawer
-    const openChild = _.find(React.Children.toArray(children), child => child.props.open);
+    const openChild = _.find(React.Children.toArray(children), child => child.props._open);
 
     const collapsed = this.props.collapsed ? cssClass.COLLAPSED : null;
 
