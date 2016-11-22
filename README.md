@@ -289,6 +289,7 @@ a fixed list of options.
 | label (optional) | String | Label for select element | None
 | multi (optional) | Bool | Whether a multiple options may be selected | False
 | onChange (optional) | Function | Called with new value when it changes | None
+| optionRenderer (optional) | Function | A function that returns a custom display node for a specific Select option. Invoked with a single option as specified in `options` as the first argument and the index of the option as the second. | None
 | options (optional) | Array | Possible options. Must contain objects with label and value attributes | None
 | placeholder (optional) | String | Placeholder text | ""
 | searchable (optional) | Bool | Whether or not the values in the dropdown are searchable. | False
