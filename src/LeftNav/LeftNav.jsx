@@ -14,7 +14,7 @@ export class LeftNav extends React.Component {
 
     // If a NavLink in a NavGroup is marked as selected on initialization, we
     // should open the drawer to show it. Otherwise, don't start with the drawer open.
-    const selectedNavGroup = _.find(props.children, child =>
+    const selectedNavGroup = _.find(React.Children.toArray(props.children), child =>
       child.type === NavGroup &&
         React.Children.toArray(child.props.children).some(navLink => navLink.props.selected)
     );
