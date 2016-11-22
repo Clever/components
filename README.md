@@ -414,7 +414,7 @@ viewport. Any additional `Grid.Col`s will wrap onto the following line.
 
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
-| children (optional) | Array<Grid.Row> | The rows to render in the grid. | None
+| children (optional) | Array\<Grid.Row\> | The rows to render in the grid. | None
 | className (optional) | String | Additional classname to apply to the grid. | None
 | wrapperComponent (optional) | Any | The tagname or component class for the wrapper component to render for the grid | "div"
 
@@ -422,7 +422,7 @@ viewport. Any additional `Grid.Col`s will wrap onto the following line.
 
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
-| children (optional) | Array<Grid.Col> | The columns to render in the row. | None
+| children (optional) | Array\<Grid.Col\> | The columns to render in the row. | None
 | className (optional) | String | Additional classname to apply to the row. | None
 | grow (optional) | Boolean | Fluidly grows the row to fill any available vertical space. The parent Grid should have an explicit height set for this to work. | False
 | wrapperComponent (optional) | Any | The tagname or component class for the wrapper component to render for the row | "div"
@@ -433,7 +433,7 @@ viewport. Any additional `Grid.Col`s will wrap onto the following line.
 |------------------|----------|---------------------------------------|---------
 | children (optional) | React Node | The content to render in the column. | None
 | className (optional) | String | Additional classname to apply to the column. | None
-| span (optional) | Number or Map<Grid.Size, Number> | The number of columns (1-12) that this column spans. Can optionally as a map of viewport size to column span in order to dynamically update the grid based on the user's viewport width. | 1
+| span (optional) | Number or Map\<Grid.Size, Number\> | The number of columns (1-12) that this column spans. Can optionally as a map of viewport size to column span in order to dynamically update the grid based on the user's viewport width. | 1
 | wrapperComponent (optional) | Any | The tagname or component class for the wrapper component to render for the column | "div"
 
 **Usage Examples**
@@ -498,7 +498,7 @@ It requires `Tab` components as children.
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
 | alignSelf (optional) | ItemAlign | Sets the cross-axis alignment of this flex item only. | ItemAlign.STRETCH
-| children (optional) | Tab or Array<Tab> | The tabs to render in the tab bar. | None
+| children (optional) | Tab or Array\<Tab\> | The tabs to render in the tab bar. | None
 | className (optional) | String | Additional classname to apply to the tab bar. | None
 | justify (optional) | Justify | Sets the horizontal alignment of the tab bar tabs. See documentation on  [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for a description of the available options. | Justify.START
 | size (optional) | TabBar.Size | Controls the size of the tabs in the tab bar. | TabBar.Size.MEDIUM
@@ -555,9 +555,9 @@ to define the conditions under which their inputs are considered valid.
 | title (required)    | String   | Title of the wizard          | None
 | description (required)    | String  | Description of the wizard          | None
 | onComplete (required)    | Funntion   | Defines what happens when all `steps` are valid, and the user clicks the next button past the final step.          | None
-| steps (required)    | `Array<step>`   | Steps in the wizard.          | None
+| steps (required)    | Array\<step\>   | Steps in the wizard.          | None
 | help (optional)    | String or React Node   | Global help text to display next to form. Can be overridden by a step that has its own `help` property.         | None
-| wizardButtons (optional)    | `Array<wizardButton>`   | Buttons to show in sidebar.          | `[]`
+| wizardButtons (optional)    | Array\<wizardButton\>   | Buttons to show in sidebar.          | `[]`
 | initialWizardData (optional)    | Object   | Initial data to seed `wizardState`. Useful for saving the state of a form for later.          | `{}`
 | nextButtonValue (optional)    | String or React Node   | Global text to display on next buttons in form. Can be overriden by a step that has its own `nextButtonValue` property. | `'Next'`
 | prevButtonValue (optional)    | String or React Node   | Global text to display on prev buttons in form. Can be overriden by a step that has its own `prevButtonValue` property. | `'Back'`
@@ -590,3 +590,31 @@ to define the conditions under which their inputs are considered valid.
 #### Usage Examples
 
 [Sample Code](https://github.com/Clever/components/tree/master/docs/WizardExample.jsx) ([Live Demo](http://clever.github.io/components/#wizardExample))
+
+### LeftNav
+`LeftNav` is a navigation sidebar component designed to be anchored to the left side of the page. It takes as its children a list consisting of top-level links (`LeftNav.NavLink`) as well as groups of nested links (`LeftNav.NavGroup`). Nested links are rendered in a slide-out drawer.
+
+#### `<LeftNav>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| collapsed (optional) | Boolean | If true, shrinks the sidebar, rendering just the top-level link icons and omitting the labels. The drawer is unaffected. | false
+| children (required) | Array\<Union\<LeftNav.NavLink, LeftNav.NavGroup\>\> | The links and link groups to render in the nav. | None
+
+#### `<NavLink>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| label (required) | String   | The label to render as the link text.  | None
+| icon (optional)  | Node     | The node to render as the link icon. While this is optional for nested links, top-level links should have an icon so they can be clicked in the collapsed state. | None
+| onClick (optional) | Function | Handler to call when the link is clicked. | None
+| selected (optional) | Boolean | Whether or not to render the link as selected. LeftNav does not track the currently selected link - you have to manage that yourself. Only one link should be selected at a time. Note that if a nested link is marked as selected, the drawer for its parent NavGroup will be open. | false
+
+#### `<NavGroup>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| id (required)    | String   | Unique identifier for this group.     | None
+| label (required) | String   | The label to render as the link text. | None
+| icon (optional)  | Node     | The node to render as the link icon.  | None
+
+#### Usage Examples
+
+[Sample Code](https://github.com/Clever/components/tree/master/docs/LeftNavExample.jsx) ([Live Demo](http://clever.github.io/components/#leftNav))
