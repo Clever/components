@@ -588,3 +588,31 @@ to define the conditions under which their inputs are considered valid.
 #### Usage Examples
 
 [Sample Code](https://github.com/Clever/components/tree/master/docs/WizardExample.jsx) ([Live Demo](http://clever.github.io/components/#wizardExample))
+
+### LeftNav
+`LeftNav` is a navigation sidebar component designed to be anchored to the left side of the page. It takes as its children a list consisting of top-level links (`LeftNav.NavLink`) as well as groups of nested links (`LeftNav.NavGroup`). Nested links are rendered in a slide-out drawer.
+
+#### `<LeftNav>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| collapsed (optional) | Boolean | If true, shrinks the sidebar, rendering just the top-level link icons and omitting the labels. The drawer is unaffected. | false
+| children (required) | Array<Union<LeftNav.NavLink, LeftNav.NavGroup>> | The links and link groups to render in the nav. | None
+
+#### `<NavLink>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| label (required) | String   | The label to render as the link text.  | None
+| icon (optional)  | Node     | The node to render as the link icon. While this is optional for nested links, top-level links should have an icon so they can be clicked in the collapsed state. | None
+| onClick (optional) | Function | Handler to call when the link is clicked. | None
+| selected (optional) | Boolean | Whether or not to render the link as selected. LeftNav does not track the currently selected link - you have to manage that yourself. Only one link should be selected at a time. Note that if a nested link is marked as selected, the drawer for its parent NavGroup will be open. | false
+
+#### `<NavGroup>` Options
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| id (required)    | String   | Unique identifier for this group.     | None
+| label (required) | String   | The label to render as the link text. | None
+| icon (optional)  | Node     | The node to render as the link icon.  | None
+
+#### Usage Examples
+
+[Sample Code](https://github.com/Clever/components/tree/master/docs/LeftNavExample.jsx) ([Live Demo](http://clever.github.io/components/#leftNav))
