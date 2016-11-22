@@ -31,8 +31,8 @@ export default class LeftNavExample extends React.Component {
 
     return (
       <div>
-        <a name="leftnav">
-          <h1>Left Nav</h1>
+        <a name="leftNav">
+          <h1>LeftNav</h1>
         </a>
         <Button
           className={cssClass.COLLAPSE}
