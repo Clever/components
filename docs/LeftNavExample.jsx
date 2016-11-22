@@ -22,6 +22,12 @@ export default class LeftNavExample extends React.Component {
         selected={this.state.selected === label}
         onClick={() => this.setState({selected: label})}
       />;
+    const menulink = (label, iconNode) =>
+      <NavLink
+        label={label}
+        icon={iconNode}
+        onClick={() => this.setState({collapsed: !this.state.collapsed})}
+      />;
 
     return (
       <div>
@@ -36,6 +42,7 @@ export default class LeftNavExample extends React.Component {
         />
         <FlexBox className={cssClass.CONTAINER}>
           <LeftNav collapsed={this.state.collapsed}>
+            {menulink("Menu", icon(Icon.names.MENU))}
             {link("Home", icon(Icon.names.SCHOOL))}
             <NavGroup label="Tools" id="Tools" icon={icon(Icon.names.GEAR)}>
               {link("Hammer")}
