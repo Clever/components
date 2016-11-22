@@ -91,7 +91,7 @@ export class Wizard extends React.Component {
                 idx === this.state.currentStep && "Wizard--stepsDisplay--currentStep",
                 stepValid && "Wizard--stepsDisplay--valid",
                 stepVisited && "Wizard--stepsDisplay--visited",
-                seekable && "Wizard--stepsDisplay--stepLink",
+                seekable && "Wizard--stepsDisplay--stepLink"
               );
               const listValue = (<span className={stepClassName}>
                 <span className="Wizard--stepsDisplay--icon" />
