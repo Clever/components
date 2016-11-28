@@ -13,10 +13,6 @@ export default function FlexExample() {
 
   return (
     <div className={cssClass.CONTAINER}>
-      <a name="flexbox">
-        <h1>FlexBox</h1>
-      </a>
-
       <h2>Simple</h2>
       <p>A FlexBox may contain regular HTML elements.</p>
       <FlexBox className={classnames(cssClass.BOX, cssClass.BOX_MIN_WIDTH)}>

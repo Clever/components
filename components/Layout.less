@@ -1,0 +1,68 @@
+@import "~less/fonts";
+@import (reference) "~less/index";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  .flexbox;
+  .flex--direction--column;
+  font-family: "Proxima Nova";
+  height: auto;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  width: 100%;
+}
+
+/* stylelint-disable-next-line selector-no-id */
+#__MAIN__ {
+  .flexbox;
+  .flex--direction--column;
+  .flex--grow;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.Layout--mainContainer {
+  width: 100%;
+}
+
+h1 { &:extend(.text--gargantuan); }
+
+h2 { &:extend(.text--huge); }
+
+h3 { &:extend(.text--large); }
+
+h4 { &:extend(.text--medium); }
+
+h5 { &:extend(.text--small); }
+
+h6 { &:extend(.text--tiny); }
+
+p {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  .text--regular;
+  color: @primary_blue;
+  text-decoration: none;
+  transition: color 0.25s ease-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus {
+    .shade(color, @primary_blue, 2);
+  }
+}
