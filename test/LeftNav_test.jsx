@@ -13,6 +13,7 @@ describe("LeftNav", function LeftNavTest() {
 
   const topNavLinkSpy = sinon.spy();
   const subNavLinkSpy = sinon.spy();
+  const mockEvent = {preventDefault: sinon.spy()};
 
   const renderLeftNav = (props) => shallow(
     <LeftNav {...props}>
@@ -40,7 +41,7 @@ describe("LeftNav", function LeftNavTest() {
     it("renders top nav with NavLinks and NavGroups", () => {
       const topnav = nav.find(`.${navCss.TOPNAV}`);
       assert(!topnav.isEmpty());
-      assert.equal(topnav.type(), "ul");
+      assert.equal(topnav.type(), "div");
       assert.equal(topnav.children().length, 4);
     });
 
@@ -52,7 +53,7 @@ describe("LeftNav", function LeftNavTest() {
       const link = nav.find(NavLink).first().dive();
       const label = link.find(`.${linkCss.LABEL}`);
       const icon = link.find(`.${linkCss.ICON}`);
-      assert.equal(link.type(), "li");
+      assert.equal(link.type(), "a");
       assert(!label.isEmpty());
       assert.equal(label.text(), "topLink1");
       assert(!icon.isEmpty());
@@ -70,13 +71,14 @@ describe("LeftNav", function LeftNavTest() {
 
     it("calls the onClick handler when a topnav NavLink is clicked", () => {
       const link = nav.find(NavLink).first().dive();
-      link.simulate("click");
+      link.simulate("click", mockEvent);
       assert(topNavLinkSpy.calledOnce);
+      assert(mockEvent.preventDefault.calledOnce);
     });
 
     it("opens the subnav drawer and renders the children NavLinks when a NavGroup is clicked", () => {
       const group = nav.find(NavGroup).first().dive();
-      group.simulate("click");
+      group.simulate("click", mockEvent);
       // Manually trigger update since enzyme doesn't detect LeftNav state change for some reason
       nav.update();
       const subnav = nav.find(`.${navCss.SUBNAV}`);
@@ -91,14 +93,14 @@ describe("LeftNav", function LeftNavTest() {
     beforeEach(() => {
       this.nav = renderLeftNav();
       const group = this.nav.find(NavGroup).first().dive();
-      group.simulate("click");
+      group.simulate("click", mockEvent);
       // Manually trigger update since enzyme doesn't detect LeftNav state change for some reason
       this.nav.update();
     });
 
     it("calls the onClick handler when a subnav NavLink is clicked", () => {
       const link = this.nav.find(NavGroup).find(NavLink).first().dive();
-      link.simulate("click");
+      link.simulate("click", mockEvent);
       assert(subNavLinkSpy.calledOnce);
       // And the drawer stays open
       this.nav.update();
@@ -108,7 +110,7 @@ describe("LeftNav", function LeftNavTest() {
 
     it("closes the subnav drawer when the open NavGroup is clicked", () => {
       const group = this.nav.find(NavGroup).first().dive();
-      group.simulate("click");
+      group.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV}`);
       assert(subnav.isEmpty());
@@ -116,7 +118,7 @@ describe("LeftNav", function LeftNavTest() {
 
     it("closes the subnav drawer when a topnav NavLink is clicked", () => {
       const link = this.nav.find(NavLink).first().dive();
-      link.simulate("click");
+      link.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV}`);
       assert(subnav.isEmpty());
@@ -124,7 +126,7 @@ describe("LeftNav", function LeftNavTest() {
 
     it("rerenders the subnav drawer when a different NavGroup is clicked", () => {
       const otherGroup = this.nav.find(NavGroup).last().dive();
-      otherGroup.simulate("click");
+      otherGroup.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV}`);
       assert(!subnav.isEmpty());
@@ -177,7 +179,7 @@ describe("LeftNav", function LeftNavTest() {
 
     it("rerenders the subnav drawer when a different NavGroup is clicked", () => {
       const otherGroup = this.nav.find(NavGroup).last().dive();
-      otherGroup.simulate("click");
+      otherGroup.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV}`);
       assert(!subnav.isEmpty());
