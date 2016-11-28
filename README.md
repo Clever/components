@@ -66,8 +66,9 @@ Run the entire test suite with `make test` or a single component with `make test
 Check out our [live examples](http://clever.github.io/components)!
 
 ### Icon
+[View Demo](http://clever.github.io/components/#/components/icon)
 
-This component gives you access to a library of over 60 bespoke icons designed specifically for Clever products. Each icon comes in three sizes. You can check out all of the icons in the [live examples](http://clever.github.io/components#icons)!
+This component gives you access to a library of over 60 bespoke icons designed specifically for Clever products. Each icon comes in three sizes.
 
 **Options**
 
@@ -83,6 +84,7 @@ This component gives you access to a library of over 60 bespoke icons designed s
 ```
 
 ### Modal
+[View Demo](http://clever.github.io/components/#/components/modal)
 
 This component wraps your content and displays it in a modal with a shadow box.
 
@@ -112,6 +114,7 @@ var myCloseHandler = function() {
 ```
 
 ### Button
+[View Demo](http://clever.github.io/components/#/components/button)
 
 This is a set of button components with various sizes and types.
 
@@ -138,6 +141,7 @@ This is a set of button components with various sizes and types.
 ```
 
 ### ModalButton
+[View Demo](http://clever.github.io/components/#/components/modal-button)
 
 This component is a `Button` that triggers the appearance of a `Modal` when clicked.
 
@@ -174,6 +178,7 @@ the string `"modal"` prepended to them (i.e. `modalWidth`, `modalTitle`).
 ```
 
 ### ConfirmationButton
+[View Demo](http://clever.github.io/components/#/components/confirmation-button)
 
 This component is a `Button` that triggers the appearance of a `Modal` with "Confirm" and "Cancel"
 buttons when clicked.
@@ -215,6 +220,7 @@ Inherits all options from `ModalButton` and `Button`. `Button`'s properties have
 
 
 ### TextInput
+[View Demo](http://clever.github.io/components/#/components/text-input)
 
 This component is a `text input`.
 
@@ -264,6 +270,7 @@ var onChangeText = function(event) {
 ```
 
 ### CopyableInput
+[View Demo](http://clever.github.io/components/#/components/copyable-input)
 
 This is a special [TextInput](#textinput) that allows the user to show/hide the value of the input and copy to clipboard. Ideal for passwords.
 
@@ -274,6 +281,7 @@ This is a special [TextInput](#textinput) that allows the user to show/hide the 
 | enableCopy (optional) | Bool | Display a Copy link | True
 
 ### Select
+[View Demo](http://clever.github.io/components/#/components/select)
 
 Component to allow selecting options from a list. Right now this only supports a basic dropdown with
 a fixed list of options.
@@ -320,6 +328,7 @@ function onBasicSelectChange(value) {
 ```
 
 ### SegmentedControl
+[View Demo](http://clever.github.io/components/#/components/segmented-control)
 
 This component is a `segmented control`.
 
@@ -356,6 +365,7 @@ var onSelect = function(selected) {
 ```
 
 ### Table
+[View Demo](http://clever.github.io/components/#/components/table)
 
 Table component supporting sorting, filtering and pagination.
 
@@ -394,11 +404,9 @@ The `Table` component requires child components of type `Table.Column`, which pr
 | sortable (optional) | Boolean | Enables sorting for the column. | False
 | sortValueFn (optional) | Function | Called with data for a single row. Should return a sortable value for row. | None
 
-**Usage Example**
-
-[Sample Code](https://github.com/Clever/components/tree/master/docs/TableExample.jsx) ([Live Demo](http://clever.github.io/components/#table))
 
 ### Grid
+[View Demo](http://clever.github.io/components/#/components/grid)
 
 12-column grid component for consistent, simple and flexible layouts.
 
@@ -436,11 +444,9 @@ viewport. Any additional `Grid.Col`s will wrap onto the following line.
 | span (optional) | Number or Map\<Grid.Size, Number\> | The number of columns (1-12) that this column spans. Can optionally as a map of viewport size to column span in order to dynamically update the grid based on the user's viewport width. | 1
 | wrapperComponent (optional) | Any | The tagname or component class for the wrapper component to render for the column | "div"
 
-**Usage Examples**
-
-[Sample Code](https://github.com/Clever/components/tree/master/docs/GridExample.jsx) ([Live Demo](http://clever.github.io/components/#grid))
 
 ### FlexBox and FlexItem
+[View Demo](http://clever.github.io/components/#/components/flex-box)
 
 `FlexBox` provides a flex-enabled container as a convenience wrapper around the clever-components flex CSS classes.
 A `FlexBox` may contain any other renderable elements, including other `FlexBox` components or `FlexItem`s.
@@ -479,11 +485,9 @@ However `FlexBox` can be used without `FlexItem` in many cases.
 | justify (optional) | Justify | Sets the main-axis alignment of the flex box content. | Justify.START
 | wrap (optional) | Boolean | Causes child items to wrap if they are unable to fit on a single line. By default, flex items will shrink up to their minimum widths without wrapping, eventually causing them to overflow their container. `wrap` allows items to wrap to the multiple lines if necessary. | False
 
-#### Usage Examples
-
-[Sample Code](https://github.com/Clever/components/tree/master/docs/FlexExample.jsx) ([Live Demo](http://clever.github.io/components/#flexbox))
 
 ### TabBar and Tab
+[View Demo](http://clever.github.io/components/#/components/tab-bar)
 
 `TabBar` provides a simple horizontal flex-enabled tab bar supporting various alignment and sizing options.
 It requires `Tab` components as children.
@@ -520,11 +524,10 @@ It requires `Tab` components as children.
 | onSelect (optional) | Function | The `select` event handler for the tab, invoked with the `id` of the tab when it is clicked (unless disabled). | False
 | selected (optional) | Boolean | Whether or not the tab is currently selected. **NOTE:** Selected tabs WILL emit `onSelect` events. | False
 
-#### Usage Examples
-
-[Sample Code](https://github.com/Clever/components/tree/master/docs/TabBarExample.jsx) ([Live Demo](http://clever.github.io/components/#tabbar))
 
 ### ProgressBar
+[View Demo](http://clever.github.io/components/#/components/progress-bar)
+
 `ProgressBar` provides a progress bar that displays a percentage from 0 to 1.
 
 #### `<ProgressBar>` Options
@@ -536,11 +539,9 @@ It requires `Tab` components as children.
 | className (optional) | String | Additional classname to apply to the progress bar. | None
 | style (optional)    | Object   | Add custom styles (e.g. margin) if you must          | None
 
-#### Usage Examples
-
-[Sample Code](https://github.com/Clever/components/tree/master/docs/docs.jsx) ([Live Demo](http://clever.github.io/components/#progressBarExample))
 
 ### Wizard
+[View Demo](http://clever.github.io/components/#/components/wizard)
 
 `Wizard` provides an interface for making guided wizards. A `Wizard` is provided several `steps`
 that consist of a `Component` to render, a `validate` function, and a few other fields. The
@@ -587,11 +588,10 @@ to define the conditions under which their inputs are considered valid.
 ###### `wizardButton` handler utility methods
 * `resetWizard`: Clears and re-initializes the state of the wizard.
 
-#### Usage Examples
-
-[Sample Code](https://github.com/Clever/components/tree/master/docs/WizardExample.jsx) ([Live Demo](http://clever.github.io/components/#wizardExample))
 
 ### LeftNav
+[View Demo](http://clever.github.io/components/#/components/left-nav)
+
 `LeftNav` is a navigation sidebar component designed to be anchored to the left side of the page. It takes as its children a list consisting of top-level links (`LeftNav.NavLink`) as well as groups of nested links (`LeftNav.NavGroup`). Nested links are rendered in a slide-out drawer.
 
 #### `<LeftNav>` Options
@@ -614,7 +614,3 @@ to define the conditions under which their inputs are considered valid.
 | id (required)    | String   | Unique identifier for this group.     | None
 | label (required) | String   | The label to render as the link text. | None
 | icon (optional)  | Node     | The node to render as the link icon.  | None
-
-#### Usage Examples
-
-[Sample Code](https://github.com/Clever/components/tree/master/docs/LeftNavExample.jsx) ([Live Demo](http://clever.github.io/components/#leftNav))
