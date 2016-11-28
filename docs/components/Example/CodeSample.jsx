@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import Prism from "prismjs";
 import React, {Component, PropTypes} from "react";
-import stripIndentation from "strip-indent";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-less";
 
@@ -11,18 +10,34 @@ import "./CodeSample.less";
 
 
 export default class CodeSample extends Component {
+  static stripIndentation(code) {
+    const indents = code.match(/^[ \t]*(?=\S)/gm);
+    if (!indents) {
+      return code;
+    }
+
+    // Strip indentation up to the shortest indentation in the given code sample.
+    const shortestIndentLength = Math.min(...indents.map(indent => indent.length));
+    const shortestIndentRegex = new RegExp(`^[ \\t]{${shortestIndentLength}}`, "gm");
+
+    return code.replace(shortestIndentRegex, "");
+  }
+
+  getCodeSample() {
+    const rawCode = this.props.children || "";
+    return CodeSample.stripIndentation(rawCode.replace(/(^\n+|\n\s*$)/g, ""));
+  }
+
   render() {
     const {cssClass} = CodeSample;
-    const {children, className, type} = this.props;
-
-    const codeSample = stripIndentation(children.replace(/(^\n+|\n\s*$)/g, ""));
+    const {className, type} = this.props;
 
     return (
       <code className={cssClass.CONTAINER}>
         <pre
           className={classnames(cssClass.CONTENT, "javascript", className)}
           dangerouslySetInnerHTML={{
-            __html: Prism.highlight(codeSample, Prism.languages[type]),
+            __html: Prism.highlight(this.getCodeSample(), Prism.languages[type]),
           }}
           ref="code"
         />
