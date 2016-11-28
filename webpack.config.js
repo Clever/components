@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: "docs",
     filename: "bundle.js",
+    publicPath: "/",
   },
   resolve: {
     extensions: ["", ".js", ".jsx", ".less"],
