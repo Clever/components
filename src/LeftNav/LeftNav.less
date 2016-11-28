@@ -13,6 +13,7 @@
   .list-reset;
   overflow: hidden;
   width: 12rem;
+  box-sizing: border-box;
   .border--right--s(@neutral_silver)
 }
 
@@ -28,8 +29,12 @@
   .padding--right--xl;
   .padding--y--m;
   cursor: pointer;
+  .text--decoration-none;
   .border--bottom--s(@neutral_silver);
   position: relative; // Enables z-index to work
+  &:visited, &:active {
+    .shade(color, @primary_blue, 2);
+  }
 }
 
 .NavLink--icon {

@@ -55,8 +55,8 @@ export class LeftNav extends React.Component {
 
     return (
       <nav className={cssClass.CONTAINER}>
-        <ul className={classnames(cssClass.TOPNAV, collapsed)}>{children}</ul>
-        {openChild && <ul className={cssClass.SUBNAV}>{openChild.props.children}</ul>}
+        <div className={classnames(cssClass.TOPNAV, collapsed)}>{children}</div>
+        {openChild && <div className={cssClass.SUBNAV}>{openChild.props.children}</div>}
       </nav>
     );
   }
