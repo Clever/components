@@ -1,0 +1,33 @@
+@import (reference) "~less/index";
+
+
+.SideBar--NavLink {
+  .text--medium;
+  box-shadow: inset 0 0 @neutral_gray;
+  color: @neutral_dark_gray;
+  display: block;
+  padding: @size_s @size_l;
+  transition: box-shadow 0.15s ease-out;
+
+  &:active,
+  &:focus,
+  &:hover {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:hover {
+    box-shadow: inset @borderWidthL 0 @neutral_gray;
+    color: @neutral_black;
+  }
+}
+
+.SideBar--NavLink--active,
+.SideBar--NavLink--active:active,
+.SideBar--NavLink--active:focus,
+.SideBar--NavLink--active:hover {
+  .text--semi-bold;
+  color: @primary_blue;
+  box-shadow: inset @borderWidthL 0 @primary_blue;
+}

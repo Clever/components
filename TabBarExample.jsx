@@ -70,10 +70,6 @@ export default class TabBarExample extends Component {
 
     return (
       <div className={cssClass.CONTAINER}>
-        <a name="tabbar">
-          <h1>TabBar</h1>
-        </a>
-
         <div className={cssClass.CONFIG}>
           <FlexBox className={cssClass.CONFIG_LINE} alignItems={ItemAlign.CENTER}>
             <h4 className={cssClass.CONFIG_LABEL}>Size:</h4>
