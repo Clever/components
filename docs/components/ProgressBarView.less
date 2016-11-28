@@ -1,0 +1,33 @@
+@import (reference) "~less/index";
+
+
+.ProgressBarView {
+  .ProgressBar--left,
+  .ProgressBar--right {
+    &:not(:last-child) {
+      margin-bottom: @size_m;
+    }
+  }
+
+  .ProgressBar--up,
+  .ProgressBar--down {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: @size_m;
+    }
+  }
+}
+
+.ProgressBarView--progressControl {
+  .text--large;
+  .text--regular;
+  color: @neutral_dark_gray;
+  margin: 0 0 @size_l;
+}
+
+.ProgressBarView--progressInput {
+  .text--medium;
+  padding: @size_xs;
+  padding-right: 0;
+}
