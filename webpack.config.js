@@ -3,11 +3,17 @@ const autoprefixer = require("autoprefixer");
 module.exports = {
   entry: "./docs/docs.jsx",
   output: {
-    path:     "docs",
+    path: "docs",
     filename: "bundle.js",
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"],
+    extensions: ["", ".js", ".jsx", ".less"],
+    alias: {
+      src: "src",
+      utils: "src/utils",
+      less: "src/less",
+    },
+    root: [__dirname],
   },
   module: {
     loaders: [
