@@ -1,20 +1,9 @@
-@import (reference) "../src/less/colors";
-@import (reference) "../src/less/flex";
-@import (reference) "../src/less/grid";
-@import (reference) "../src/less/spacing";
-@import (reference) "../src/less/type-size";
+@import (reference) "~less/index";
 
 
-.GridExample {
-  .margin--top--2xl;
-
+.GridView {
   div {
     box-sizing: border-box;
-  }
-
-  h2 {
-    .margin--none;
-    .margin--bottom--xs
   }
 
   .shaded {
@@ -22,7 +11,8 @@
   }
 
   .outlined {
-    border: 1px solid shade(@neutral_silver, 10%);
+    .border--s(@neutral_silver);
+    .shade(border-color, @neutral_silver, 0.3);
   }
 
   .Grid {

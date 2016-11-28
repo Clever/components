@@ -6,6 +6,8 @@ parserOptions:
   ecmaVersion: 6
 plugins:
   - "react"
+settings:
+  import/resolver: webpack
 rules:
   # no hard limit on line length
   max-len: 0

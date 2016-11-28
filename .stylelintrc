@@ -14,7 +14,6 @@
     "no-duplicate-selectors": true,
     "selector-no-id": true,
     "value-list-comma-newline-after": "never-multi-line",
-    "unit-whitelist": ["em", "rem", "%", "s"],
+    "unit-whitelist": ["em", "rem", "%", "s", "vh"],
   }
 }
-
