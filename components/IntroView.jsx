@@ -12,14 +12,14 @@ export default function IntroView() {
   const {Col, Row, Size} = Grid;
 
   return (
-    <View className={cssClass.CONTAINER} title="Introduction">
+    <View className={cssClass.CONTAINER} title="Say &ldquo;Hi!&rdquo; to Dewey">
       <Grid>
         <Row grow className="items--start margin--bottom--xl">
           <Col span={6} className="flexbox justify--left items--center padding--right--l">
             <div className="display--block">
-              <h2>Say to "Hi!" to Dewey</h2>
+              <h2>A design system for the ed-tech ecosytem</h2>
               <p>As <a className="Button Button--linkPlain Button--regular" href="https://clever.com">Clever</a> grows into a mature product and company, a big challenge we have as a product organization is to create cohesive product experiences at scale that are accessible, usable, and effective for their intent.</p>
-              <p>Dewey is our single source of truth for all UI and product design questions at Clever. Everyone working at Clever is encouraged to stay familiar with this design system and help ensure that it is kept up-to-date.</p>
+              <p>Dewey is our source of truth for UI and product design at Clever. Everyone working at Clever is encouraged to stay familiar with this design system and help ensure that it is kept up-to-date.</p>
             </div>
           </Col>
           <Col span={4} className="flexbox justify--left items--center">
