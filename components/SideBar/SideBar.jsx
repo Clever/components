@@ -15,6 +15,12 @@ export default function SideBar({className}) {
     <FlexBox className={classnames(cssClass.CONTAINER, className)} column>
       <NavLink href="/intro">Introduction</NavLink>
       <NavLink href="/getting-started">Getting Started</NavLink>
+      <NavGroup title="Design">
+        <NavLink href="/design/colors">Colors</NavLink>
+        <NavLink href="/design/typography">Typography</NavLink>
+        <NavLink href="/design/page-layout">Page Layout</NavLink>
+        <NavLink href="/design/ui-text">UI Text</NavLink>
+      </NavGroup>
       <NavGroup title="Components">
         <NavLink href="/components/button">Button</NavLink>
         <NavLink href="/components/confirmation-button">ConfirmationButton</NavLink>
@@ -33,10 +39,8 @@ export default function SideBar({className}) {
         <NavLink href="/components/text-input">TextInput</NavLink>
         <NavLink href="/components/wizard">Wizard</NavLink>
       </NavGroup>
-      <NavGroup title="CSS">
-        <NavLink href="/css/colors">Colors</NavLink>
-        <NavLink href="/css/font">Font</NavLink>
-        <NavLink href="/css/spacing">Spacing</NavLink>
+      <NavGroup title="Utility">
+        <NavLink href="/utility/spacing">Spacing</NavLink>
       </NavGroup>
     </FlexBox>
   );
