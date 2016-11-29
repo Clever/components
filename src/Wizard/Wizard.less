@@ -2,11 +2,12 @@
 @import (reference) "../less/index";
 
 .Wizard {
-  display: flex;
+  .flexbox();
 }
 
 .Wizard--sidebar {
-  .flex(0, 0, 200px);
+  .flex(0, 0, 15rem);
+  width: 15rem;
   .padding--m;
   background-color: @neutral_off_white;
   .border--right--m(@neutral_silver);
@@ -19,9 +20,7 @@
 .Wizard--contentGroup {
   min-width: 37.5rem;
   max-width: 37.5rem;
-  .tint(background, @neutral_silver, 3);
   .padding--s;
-  .margin--m;
   .margin--left--none;
 
   &.Wizard--WizardStep--help {
@@ -41,7 +40,6 @@
 .Wizard--WizardStep--title {
   width: 100%;
   .border--bottom--m(@neutral_silver);
-  .padding--bottom--m;
 }
 
 .Wizard--stepContainer {
@@ -107,19 +105,17 @@
 
 .Wizard--stepsDisplay--stepTitle {
   display: block;
-  // don't allow wrapping of text
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .Wizard--stepsDisplay--icon {
   display: inline-block;
+  .flexShrink(0);
   width: 1.5rem;
   height: 1.5rem;
   background-image: url("../../assets/images/progress_notStarted.svg");
   background-repeat: no-repeat;
-  background-size: 1.5rem 1.5rem;
+  background-size: contain;
   .margin--right--2xs;
 }
 
