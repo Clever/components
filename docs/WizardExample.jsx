@@ -152,7 +152,7 @@ export default class WizardExample extends React.Component {
         nextButtonValue: "Save address",
       },
       {
-        title: "Delivery Contact",
+        title: "Preferred Primary Delivery Contact",
         description: "Who should we contact when we have arrived to your delivery address?",
         component: ContactStep,
         validate: ContactStep.validate,
