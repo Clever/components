@@ -9,6 +9,9 @@
 body {
   .flexbox;
   .flex--direction--column;
+  .text--medium;
+  .text--line-height-3;
+  color: @neutral_black;
   font-family: "Proxima Nova";
   height: auto;
   margin: 0;
@@ -32,9 +35,18 @@ body {
 
 h1 { &:extend(.text--gargantuan); }
 
-h2 { &:extend(.text--huge); }
+h2 {
+  .display--block;
+  .margin--y--s;
+  .text--semi-bold;
+  &:extend(.text--huge);
+}
 
-h3 { &:extend(.text--large); }
+h3 {
+  .text--light;
+  color: @neutral_dark_gray;
+  &:extend(.text--large);
+}
 
 h4 { &:extend(.text--medium); }
 
@@ -43,6 +55,9 @@ h5 { &:extend(.text--small); }
 h6 { &:extend(.text--tiny); }
 
 p {
+  .text--line-height-4;
+  min-width: 25em;
+  max-width: 35em;
   &:last-child {
     margin-bottom: 0;
   }
@@ -57,8 +72,8 @@ a {
   &:hover,
   &:focus,
   &:active {
+    .text--decoration-none;
     outline: 0;
-    text-decoration: none;
   }
 
   &:hover,
