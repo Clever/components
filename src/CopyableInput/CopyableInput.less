@@ -1,12 +1,22 @@
+@import (reference) "../less/colors";
+@import (reference) "../less/border";
+
 .CopyableInput {
-  position: relative;
+  .border--s(@neutral_silver);
+  display: flex;
+  background: @neutral_white;
+  width: 100%;
+
+  .TextInput {
+    border: none;
+    flex: 1 0;
+  }
 }
 
 .CopyableInput--links {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  margin: -8px 7px;
+  margin: auto 7px;
+  white-space: nowrap;
+  background: white;
 
   .CopyableInput--link {
     border: 0;
