@@ -13,6 +13,7 @@ export default class CopyableInputView extends Component {
 
     this.state = {
       disabled: false,
+      readOnly: false,
       hasError: false,
       inputValue: "🙈 🙉 🙊",
       obscured: true,
@@ -39,6 +40,7 @@ export default class CopyableInputView extends Component {
               placeholder="CopyableInput Placeholder"
               onChange={e => this.setState({inputValue: e.target.value})}
               value={this.state.inputValue}
+              readOnly={this.state.readOnly}
             />
           `}
         >
@@ -46,6 +48,7 @@ export default class CopyableInputView extends Component {
             <CopyableInput
               enableCopy
               disabled={this.state.disabled}
+              readOnly={this.state.readOnly}
               required={this.state.required}
               enableShow={this.state.obscured}
               error={this.state.hasError ? "Enter a valid email address" : null}
@@ -65,6 +68,15 @@ export default class CopyableInputView extends Component {
             />
             {" "}
             Disabled
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.readOnly}
+              onChange={({target}) => this.setState({readOnly: target.checked})}
+            />
+            {" "}
+            Read Only
           </label>
           <label className={cssClass.CONFIG}>
             <input
