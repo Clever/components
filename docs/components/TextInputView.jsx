@@ -13,6 +13,7 @@ export default class TextInputView extends Component {
 
     this.state = {
       disabled: false,
+      readOnly: false,
       hasError: false,
       inputValue: "",
       obscured: false,
@@ -29,6 +30,7 @@ export default class TextInputView extends Component {
           code={`
             <TextInput
               disabled={this.state.disabled}
+              readOnly={this.state.readOnly}
               required={this.state.required}
               enableShow={this.state.obscured}
               error={this.state.hasError ? "Enter a valid email address" : null}
@@ -44,6 +46,7 @@ export default class TextInputView extends Component {
           <div className={cssClass.INPUT_CONTAINER}>
             <TextInput
               disabled={this.state.disabled}
+              readOnly={this.state.readOnly}
               required={this.state.required}
               enableShow={this.state.obscured}
               error={this.state.hasError ? "Invalid password" : null}
@@ -63,6 +66,15 @@ export default class TextInputView extends Component {
             />
             {" "}
             Disabled
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.readOnly}
+              onChange={({target}) => this.setState({readOnly: target.checked})}
+            />
+            {" "}
+            Read Only
           </label>
           <label className={cssClass.CONFIG}>
             <input
