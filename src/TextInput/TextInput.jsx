@@ -71,6 +71,7 @@ export class TextInput extends React.Component {
           name={this.props.name}
           onBlur={this.onBlur}
           onChange={this.props.onChange}
+          onKeyPress={this.props.onKeyPress}
           onFocus={this.onFocus}
           placeholder={this.props.placeholder}
           readOnly={this.props.readOnly}
@@ -97,6 +98,7 @@ TextInput.propTypes = {
   label: React.PropTypes.string,
   name: React.PropTypes.string.isRequired,
   onChange: React.PropTypes.func,
+  onKeyPress: React.PropTypes.func,
   placeholder: React.PropTypes.node,
   readOnly: React.PropTypes.bool,
   required: React.PropTypes.bool,
