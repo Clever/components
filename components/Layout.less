@@ -1,6 +1,6 @@
 @import "~less/fonts";
 @import (reference) "~less/index";
-
+@import "~less/type-size";
 
 * {
   box-sizing: border-box;
@@ -80,4 +80,8 @@ a {
   &:focus {
     .shade(color, @primary_blue, 2);
   }
+}
+
+code {
+  .text--monospace;
 }
