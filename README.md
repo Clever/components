@@ -235,6 +235,7 @@ This component is a `text input`.
 | label (optional) | String | Label for modal | None
 | name (required) | String | Name for input element | None
 | onChange (optional) | Function | Called when value of input changes. | None
+| onKeyPress (optional) | Function | Called when a key is pressed. | None
 | placeholder (optional) | Node | Placeholder node for input | None
 | readOnly (optional) | Bool   | Sets element as read only. | false
 | required (optional) | Bool   | Marks input as required and adds indicator. | false
