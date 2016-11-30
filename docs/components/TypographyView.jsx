@@ -12,16 +12,16 @@ export default class TypographyView extends PureComponent {
     return (
       <View className={cssClass.CONTAINER} title="Typography">
         <Grid>
-          <Row grow className="items--start margin--bottom--xl">
-            <Col span={5} className="flexbox justify--left items--center padding--right--l">
+          <Row grow className="items--stretch margin--bottom--xl">
+            <Col span={6} className="flexbox self--start">
               <div className="display--block">
                 <h2>Typeface</h2>
                 <p>We use Proxima Nova as our primary typeface. It is an intelligent and friendly typeface that is used for its clarity and ease-of-legibility.</p>
               </div>
             </Col>
-            <Col span={7} className="flexbox justify--left items--center">
+            <Col span={4} className="flexbox">
               <Row grow>
-                <Col span={12} className="flexbox justify--left margin--bottom--l">
+                <Col span={12} className="flexbox margin--bottom--l">
                   <div className="display--block">
                     <h3 className="">Proxima Nova</h3>
                     <quote>Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br></br>
@@ -31,16 +31,16 @@ export default class TypographyView extends PureComponent {
               </Row>
             </Col>
           </Row>
-          <Row grow className="items--start margin--bottom--xl">
-            <Col span={5} className="flexbox justify--left items--center padding--right--l">
+          <Row grow className="items--stretch margin--bottom--xl">
+            <Col span={6} className="flexbox self--start">
               <div className="display--block">
                 <h2>Type Scale</h2>
                 <p>We use a rem based type scale set at its base to 16px. There are seven different font sizes.</p>
               </div>
             </Col>
-            <Col span={7} className="flexbox justify--left items--center">
-              <Row grow>
-                <Col span={12} className="flexbox justify--left margin--bottom--l">
+            <Col span={4} className="flexbox">
+              <Row grow className="items--stretch">
+                <Col span={12} className="flexbox margin--bottom--l">
                   <ul className="list-reset">
                     <li className="margin--y--m">
                       <p className="text--colossal margin--none">Colossal</p>
@@ -75,16 +75,16 @@ export default class TypographyView extends PureComponent {
               </Row>
             </Col>
           </Row>
-          <Row grow className="items--start margin--bottom--xl">
-            <Col span={5} className="flexbox justify--left items--center padding--right--l">
+          <Row grow className="items--stretch margin--bottom--xl">
+            <Col span={6} className="flexbox self--start">
               <div className="display--block">
                 <h2>Type Weight</h2>
                 <p>There are five different type weights. The most commonly used should be text--regular, while semi-bold and light are secondary weights. Bold and heavy are for special cases.</p>
               </div>
             </Col>
-            <Col span={7} className="flexbox justify--left items--center">
+            <Col span={4} className="flexbox">
               <Row grow>
-                <Col span={12} className="flexbox justify--left margin--bottom--l">
+                <Col span={12} className="flexbox margin--bottom--l">
                   <ul className="list-reset">
                     <li className="margin--y--m">
                       <p className="text--large text--light margin--none">Proxima Nova Light</p>
