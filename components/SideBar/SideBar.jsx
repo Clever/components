@@ -39,8 +39,9 @@ export default function SideBar({className}) {
         <NavLink href="/components/text-input">TextInput</NavLink>
         <NavLink href="/components/wizard">Wizard</NavLink>
       </NavGroup>
-      <NavGroup title="Utility">
-        <NavLink href="/utility/spacing">Spacing</NavLink>
+      <NavGroup title="LESS">
+        <NavLink href="/less/less-style-guide">Style Guide</NavLink>
+        <NavLink href="/less/spacing">Spacing</NavLink>
       </NavGroup>
     </FlexBox>
   );

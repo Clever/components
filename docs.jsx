@@ -13,6 +13,7 @@ import IconView from "./components/IconView";
 import IntroView from "./components/IntroView";
 import Layout from "./components/Layout";
 import LeftNavView from "./components/LeftNavView";
+import LessStyleGuideView from "./components/LessStyleGuideView";
 import ModalButtonView from "./components/ModalButtonView";
 import ModalView from "./components/ModalView";
 import PageLayoutView from "./components/PageLayoutView";
@@ -58,7 +59,8 @@ render((
         <Route path="text-input(/*)" component={TextInputView} />
         <Route path="wizard(/*)" component={WizardView} />
       </Route>
-      <Route path="Utility">
+      <Route path="LESS">
+        <Route path="less-style-guide(/*)" component={LessStyleGuideView} />
         <Route path="spacing(/*)" component={SpacingView} />
       </Route>
     </Route>
