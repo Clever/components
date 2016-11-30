@@ -1,19 +1,34 @@
+@import (reference) "../less/colors";
+@import (reference) "../less/border";
+@import (reference) "../less/sizing";
+@import (reference) "../less/flex";
+@import (reference) "../less/type-size";
+
 .CopyableInput {
-  position: relative;
+  .border--s(@neutral_silver);
+  .flexbox();
+  background: @neutral_white;
+  width: 100%;
+
+  .TextInput {
+    border: none;
+    .flexShrink(1);
+  }
 }
 
 .CopyableInput--links {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  margin: -8px 7px;
+  margin: auto @size_s;
+  white-space: nowrap;
+  background: white;
+  .flexShrink(0);
 
   .CopyableInput--link {
     border: 0;
     background: none;
-    color: #4274F6;
-    font-size: 12px;
-    border-right: 1px solid #dddddd;
+    color: @primary_blue;
+    font-size: @type_small;
+    .border--right--s(@neutral_silver);
+    .shade(border-right-color, @neutral_silver, 1);
 
     &:last-child {
       border: 0;
