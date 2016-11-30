@@ -171,16 +171,3 @@
   background-color: @accent_purple;
   color: @neutral_white;
 }
-
-.bg--primary_blue--tint-2 {
-  .tint(background-color,@primary_blue,2);
-  color: @neutral_black;
-}
-
-@shadeStepAmount: 15%;
-.shade(@property, @color, @steps: 1) {
-  @{property}: shade(@color, @shadeStepAmount * @steps);
-}
-.tint(@property, @color, @steps: 1) {
-  @{property}: tint(@color, @shadeStepAmount * @steps);
-}

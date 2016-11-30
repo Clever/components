@@ -6,7 +6,7 @@ import {Grid} from "src";
 export default class TypographyView extends PureComponent {
   render() {
     const {cssClass} = TypographyView;
-    const {Col, Row, Size} = Grid;
+    const {Col, Row} = Grid;
 
 
     return (
