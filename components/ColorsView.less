@@ -1,0 +1,186 @@
+@import (reference) "~less/utilities";
+
+.color--block {
+  .display--block;
+  .margin--right--m;
+  .padding--top--5xl;
+  .padding--bottom--s;
+  .padding--x--m;
+  .borderRadius--topRight--xl;
+  width: 100%;
+  h4 {
+    .margin--none;
+  }
+}
+
+.large--color--block {
+  .margin--right--none;
+}
+
+.step--color--block {
+  .padding--top--2xl;
+  .margin--right--none;
+  .borderRadius--topRight--0;
+}
+
+// Primary colors:
+.bg--primary_blue {
+  background-color: @primary_blue;
+  color: @neutral_white;
+}
+
+.bg--primary_blue--tint-2 {
+  .tint(background-color,@primary_blue,2);
+  color: @neutral_black;
+}
+
+.bg--primary_blue--tint-4 {
+  .tint(background-color,@primary_blue,4);
+  color: @neutral_black;
+}
+
+.bg--primary_blue--shade-2 {
+  .shade(background-color,@primary_blue,2);
+  color: @neutral_white;
+}
+
+.bg--primary_blue--shade-4 {
+  .shade(background-color,@primary_blue,4);
+  color: @neutral_white;
+}
+
+// Neutral colors:
+.bg--neutral_black {
+  background-color: @neutral_black;
+  color: @neutral_white;
+}
+
+.bg--neutral_dark_gray {
+  background-color: @neutral_dark_gray;
+  color: @neutral_white;
+}
+
+.bg--neutral_gray {
+  background-color: @neutral_gray;
+  color: @neutral_white;
+}
+
+.bg--neutral_silver {
+  background-color: @neutral_silver;
+  color: @neutral_black;
+}
+
+.bg--neutral_off_white {
+  background-color: @neutral_off_white;
+  color: @neutral_black;
+}
+
+.bg--neutral_white {
+  background-color: @neutral_white;
+  color: @neutral_black;
+}
+
+// Alert colors:
+.bg--alert_green {
+  background-color: @alert_green;
+  color: @neutral_white;
+}
+
+.bg--alert_green--tint-1 {
+  .tint(background-color,@alert_green,1);
+  color: @neutral_black;
+}
+
+.bg--alert_green--tint-2 {
+  .tint(background-color,@alert_green,2);
+  color: @neutral_black;
+}
+
+.bg--alert_green--tint-3 {
+  .tint(background-color,@alert_green,3);
+  color: @neutral_black;
+}
+
+.bg--alert_green--tint-4 {
+  .tint(background-color,@alert_green,4);
+  color: @neutral_black;
+}
+
+.bg--alert_green--tint-5 {
+  .tint(background-color,@alert_green,5);
+  color: @neutral_black;
+}
+
+.bg--alert_green--tint-6 {
+  .tint(background-color,@alert_green,6);
+  color: @neutral_black;
+}
+
+.bg--alert_green--shade-1 {
+  .shade(background-color,@alert_green,1);
+  color: @neutral_white;
+}
+
+.bg--alert_green--shade-2 {
+  .shade(background-color,@alert_green,2);
+  color: @neutral_white;
+}
+
+.bg--alert_green--shade-3 {
+  .shade(background-color,@alert_green,3);
+  color: @neutral_white;
+}
+
+.bg--alert_green--shade-4 {
+  .shade(background-color,@alert_green,4);
+  color: @neutral_white;
+}
+
+.bg--alert_green--shade-5 {
+  .shade(background-color,@alert_green,5);
+  color: @neutral_white;
+}
+
+.bg--alert_green--shade-6 {
+  .shade(background-color,@alert_green,6);
+  color: @neutral_white;
+}
+
+.bg--alert_orange {
+  background-color: @alert_orange;
+  color: @neutral_white;
+}
+
+.bg--alert_red {
+  background-color: @alert_red;
+  color: @neutral_white;
+}
+
+// Secondary colors:
+.bg--accent_aqua {
+  background-color: @accent_aqua;
+  color: @neutral_white;
+}
+
+.bg--accent_pink {
+  background-color: @accent_pink;
+  color: @neutral_white;
+}
+
+.bg--accent_purple {
+  background-color: @accent_purple;
+  color: @neutral_white;
+}
+
+.bg--primary_blue--tint-2 {
+  .tint(background-color,@primary_blue,2);
+  color: @neutral_black;
+}
+
+@shadeStepAmount: 15%;
+.shade(@property, @color, @steps: 1) {
+  @{property}: shade(@color, @shadeStepAmount * @steps);
+}
+.tint(@property, @color, @steps: 1) {
+  @{property}: tint(@color, @shadeStepAmount * @steps);
+}
