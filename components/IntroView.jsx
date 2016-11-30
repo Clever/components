@@ -27,21 +27,21 @@ export default function IntroView() {
               <Col span={12} className="flexbox justify--left margin--bottom--l">
                 <div className="display--block">
                   <Icon size={Icon.sizes.LARGE} name={Icon.names.TYPEWRITER} />
-                  <h3 className="text--light display--inline-block padding--left--m">Cohesive Experiences</h3>
+                  <h3 className="text--light display--inline-block padding--left--m">Cohesive experiences</h3>
                   <p>Create a system of coherent UI and interaction patterns to improve usability, visual consistency, and clarity instead of reinventing the radio button.</p>
                 </div>
               </Col>
               <Col span={12} className="flexbox justify--left margin--bottom--l">
                 <div className="display--block">
                   <Icon size={Icon.sizes.LARGE} name={Icon.names.WEBSITE_HTML} />
-                  <h3 className="display--inline-block padding--left--m ">Faster Development</h3>
+                  <h3 className="display--inline-block padding--left--m ">Faster development</h3>
                   <p>Provide reusable utilities and components that accelerate the development of interfaces allowing us to focus on workflows and logic.</p>
                 </div>
               </Col>
               <Col span={12} className="flexbox justify--left margin--bottom--l">
                 <div className="display--block">
                   <Icon size={Icon.sizes.LARGE} name={Icon.names.PEN} />
-                  <h3 className="text--light display--inline-block padding--left--m">Clear Documentation</h3>
+                  <h3 className="text--light display--inline-block padding--left--m">Clear documentation</h3>
                   <p>Showcase good examples for when to use which component or layout, and how to implement them.</p>
                 </div>
               </Col>
