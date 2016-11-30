@@ -9,7 +9,7 @@ import "./UITextView.less";
 export default class UITextView extends PureComponent {
   render() {
     const {cssClass} = UITextView;
-    const {Col, Row, Size} = Grid;
+    const {Col, Row} = Grid;
 
     return (
       <View className={cssClass.CONTAINER} title="UI Text">

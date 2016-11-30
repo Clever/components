@@ -1,15 +1,12 @@
-import _ from "lodash";
-import classnames from "classnames";
 import React from "react";
 
 import View from "./View";
-import {Button} from "src";
 import {Icon} from "src";
 import {Grid} from "src";
 
 export default function IntroView() {
   const {cssClass} = IntroView;
-  const {Col, Row, Size} = Grid;
+  const {Col, Row} = Grid;
 
   return (
     <View className={cssClass.CONTAINER} title="Say &ldquo;Hi!&rdquo; to Dewey">

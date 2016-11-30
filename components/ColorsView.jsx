@@ -8,7 +8,7 @@ import "./ColorsView.less";
 export default class ColorsView extends PureComponent {
   render() {
     const {cssClass} = ColorsView;
-    const {Col, Row, Size} = Grid;
+    const {Col, Row} = Grid;
     return (
       <View className={cssClass.CONTAINER} title="Colors">
         <Grid>
