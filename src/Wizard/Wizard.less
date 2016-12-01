@@ -138,4 +138,8 @@
 .Wizard--WizardStep--help {
   min-width: @help_min_width;
   .flex(1, 0, @help_min_width);
+  &:not(.Wizard--WizardStep--helpCollapsed) {
+    height: 0;
+    overflow: visible;
+  }
 }

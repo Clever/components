@@ -231,13 +231,19 @@ export default class WizardExample extends React.Component {
           handler: (wizardState, {resetWizard}) => resetWizard(),
           buttonValue: "Clear and start over",
         }]}
-        help={this.state.showHelp && <p>
-          Need any help? Check out our&nbsp;
-          <Button
-            onClick={() => alert("LOL, no help for you!")} type="link"
-            value="Support Center." style={{padding: 0}}
-          />
-        </p>}
+        help={this.state.showHelp && (
+          <div>
+            <h4 style={{marginTop: 0}}>Need any help?</h4>
+            <p>Don't fret! We got you!</p>
+            <p>
+              Check out our&nbsp;
+              <Button
+                onClick={() => alert("LOL, no help for you!")} type="link"
+                value="Support Center." style={{padding: 0}}
+              />
+            </p>
+          </div>
+        )}
         seekable={this.state.seekable}
         hideProgressBar={this.state.hideProgressBar}
       />
