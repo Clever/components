@@ -1,5 +1,15 @@
 @import (reference) "~less/utilities";
 
+.callout--box {
+  .padding--l;
+  border: @size_3xs solid @primary_blue;
+  background-color: @neutral_off_white;
+  height: 3rem;
+  &:hover {
+    .shade(border-color, @primary_blue, 2);
+  }
+}
+
 .color--block {
   .display--block;
   .margin--right--m;

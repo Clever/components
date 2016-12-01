@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 
+import Example from "./Example";
 import View from "./View";
 import {Grid} from "src";
 
@@ -19,13 +20,13 @@ export default class TypographyView extends PureComponent {
                 <p>We use Proxima Nova as our primary typeface. It is an intelligent and friendly typeface that is used for its clarity and ease-of-legibility.</p>
               </div>
             </Col>
-            <Col span={4} className="flexbox">
+            <Col span={5} className="flexbox">
               <Row grow>
                 <Col span={12} className="flexbox margin--bottom--l">
                   <div className="display--block">
-                    <h3 className="">Proxima Nova</h3>
-                    <quote>Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br></br>
-                    0 1 2 3 4 5 6 7 8 9</quote>
+                    <h3 className="text--line-height-4 text--regular">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br></br>
+                    a b c d e f g h i j k l m n o p q r s t u v w x y z<br></br>
+                    0 1 2 3 4 5 6 7 8 9</h3>
                   </div>
                 </Col>
               </Row>
@@ -39,40 +40,26 @@ export default class TypographyView extends PureComponent {
               </div>
             </Col>
             <Col span={4} className="flexbox">
-              <Row grow className="items--stretch">
-                <Col span={12} className="flexbox margin--bottom--l">
-                  <ul className="list-reset">
-                    <li className="margin--y--m">
-                      <p className="text--colossal margin--none">Colossal</p>
-                      <code className="text--medium">.text--colossal 4rem</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--gargantuan margin--none">Gargantuan</p>
-                      <code className="text--medium">.text--gargantuan 2.5rem</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--huge margin--none">Huge</p>
-                      <code className="text--medium">.text--huge 2rem</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--large margin--none">Large</p>
-                      <code className="text--medium">.text--large 1.5rem</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--medium margin--none">Medium</p>
-                      <code className="text--medium">.text--medium 1rem</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--small margin--none">Small</p>
-                      <code className="text--medium">.text--small .75rem</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--tiny margin--none">Tiny</p>
-                      <code className="text--medium">.text--tiny .625rem</code>
-                    </li>
-                  </ul>
-                </Col>
-              </Row>
+              <Example
+                title=""
+                code={`
+                  <p className="text--colossal">Colossal</p>
+                  <p className="text--gargantuan">Gargantuan</p>
+                  <p className="text--huge">Huge</p>
+                  <p className="text--large">Large</p>
+                  <p className="text--medium">Medium</p>
+                  <p className="text--small">Small</p>
+                  <p className="text--tiny">Tiny</p>
+                `}
+              >
+                <p className="text--colossal margin--none">Colossal</p>
+                <p className="text--gargantuan margin--none">Gargantuan</p>
+                <p className="text--huge margin--none">Huge</p>
+                <p className="text--large margin--none">Large</p>
+                <p className="text--medium margin--none">Medium</p>
+                <p className="text--small margin--none">Small</p>
+                <p className="text--tiny margin--none">Tiny</p>
+              </Example>
             </Col>
           </Row>
           <Row grow className="items--stretch margin--bottom--xl">
@@ -83,32 +70,22 @@ export default class TypographyView extends PureComponent {
               </div>
             </Col>
             <Col span={4} className="flexbox">
-              <Row grow>
-                <Col span={12} className="flexbox margin--bottom--l">
-                  <ul className="list-reset">
-                    <li className="margin--y--m">
-                      <p className="text--large text--light margin--none">Proxima Nova Light</p>
-                      <code className="text--medium">.text--light</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--large text--regular margin--none">Proxima Nova Regular</p>
-                      <code className="text--medium">.text--regular</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--large text--semi-bold margin--none">Provima Nova Semibold</p>
-                      <code className="text--medium">.text--semi-bold</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--large text--bold margin--none">Proxima Nova Bold</p>
-                      <code className="text--medium">.text--bold</code>
-                    </li>
-                    <li className="margin--y--m">
-                      <p className="text--large text--heavy margin--none">Proxima Nova Heavy</p>
-                      <code className="text--medium">.text--heavy</code>
-                    </li>
-                  </ul>
-                </Col>
-              </Row>
+              <Example
+                title=""
+                code={`
+                  <p className="text--light">Proxima Nova Light</p>
+                  <p className="text--regular">Proxima Nova Regular</p>
+                  <p className="text--semi-bold">Proxima Nova Semibold</p>
+                  <p className="text--bold">Proxima Nova Bold</p>
+                  <p className="text--heavy">Proxima Nova Heavy</p>
+                `}
+              >
+                <p className="text--large text--light">Proxima Nova Light</p>
+                <p className="text--large text--regular">Proxima Nova Regular</p>
+                <p className="text--large text--semi-bold">Proxima Nova Semibold</p>
+                <p className="text--large text--bold">Proxima Nova Bold</p>
+                <p className="text--large text--heavy">Proxima Nova Heavy</p>
+              </Example>
             </Col>
           </Row>
 
