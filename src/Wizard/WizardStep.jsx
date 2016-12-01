@@ -3,7 +3,7 @@ import _ from "lodash";
 import classnames from "classnames";
 
 // 58.25 rem = width of sidebar + width of left column
-const COLLAPSE_BREAKPOINT_WIDTH_REM = 58.25;
+const COLLAPSE_BREAKPOINT_WIDTH_REM = 63.25;
 
 export default class WizardStep extends React.Component {
   constructor(props) {
