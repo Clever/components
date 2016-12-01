@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 
+import Example from "./Example";
 import View from "./View";
 import {Grid} from "src";
 
@@ -222,6 +223,38 @@ export default class ColorsView extends PureComponent {
                   </div>
                 </Col>
               </Row>
+            </Col>
+          </Row>
+          <Row grow className="items--stretch margin--bottom--5xl padding--right--m">
+            <Col span={6} className="flexbox self--start padding--right--l">
+              <div className="display--block">
+                <h2>Color usage</h2>
+                <p>Whenever you declare a color in LESS, you should reference the color variable instead of declaring a fixed value. If you need to use a tinted or shaded variation of a color, use the appropriate LESS mixin function.</p>
+                <strong>Tint and shade mixin functions</strong>
+                <p>You pass the mixin functions an attribute, the color variable, and a number of steps usually between 1 and 6.</p>
+                <code>.shade(background-color, @alert_red, 2);</code>
+              </div>
+            </Col>
+            <Col span={4} className="flexbox">
+              <Example
+                title="Example"
+                code={`
+                  <span className="callout--box">This is a blue callout box.</span>
+                  
+                  <style>
+                    .callout--box {
+                      border: @size_3xs solid @primary_blue;
+                      background-color: @neutral_off_white;
+                      height: 3rem;
+                      &:hover {
+                        .shade(border-color, @primary_blue, 2);
+                      }
+                    }
+                  </style>
+                `}
+              >
+                <span className="callout--box">This is a callout box.</span>
+              </Example>
             </Col>
           </Row>
         </Grid>
