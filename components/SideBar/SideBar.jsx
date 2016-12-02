@@ -18,6 +18,7 @@ export default function SideBar({className}) {
       <NavGroup title="Design">
         <NavLink href="/design/colors">Colors</NavLink>
         <NavLink href="/design/typography">Typography</NavLink>
+        <NavLink href="/design/sizing">Sizing</NavLink>
         <NavLink href="/design/page-layout">Page Layout</NavLink>
         <NavLink href="/design/ui-text">UI Text</NavLink>
       </NavGroup>
