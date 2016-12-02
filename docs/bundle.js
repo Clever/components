@@ -52674,9 +52674,10 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(31);
 
@@ -52686,86 +52687,154 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
+	var _classnames = __webpack_require__(260);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function WizardStep(_ref) {
-	  var title = _ref.title;
-	  var description = _ref.description;
-	  var Component = _ref.Component;
-	  var _setWizardState = _ref.setWizardState;
-	  var currentStep = _ref.currentStep;
-	  var wizardState = _ref.wizardState;
-	  var help = _ref.help;
-	  var percentComplete = _ref.percentComplete;
-	  var calculatePercentComplete = _ref.calculatePercentComplete;
-	  var updatePercentComplete = _ref.updatePercentComplete;
-	  var totalSteps = _ref.totalSteps;
-	  var componentProps = _ref.componentProps;
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	  var props = _lodash2.default.omit(componentProps || {}, ["wizardState", "setWizardState"]);
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "Wizard--WizardStep" },
-	    _react2.default.createElement(
-	      "div",
-	      { className: "Wizard--WizardStep--title" },
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "Step ",
-	        currentStep + 1,
-	        ": ",
-	        title
-	      )
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "Wizard--WizardStep--topInfo" },
-	      description && _react2.default.createElement(
-	        "div",
-	        { className: "Wizard--contentGroup Wizard--WizardStep--description" },
-	        _lodash2.default.isString(description) ? _react2.default.createElement(
-	          "p",
-	          null,
-	          description
-	        ) : description
-	      ),
-	      help && _react2.default.createElement(
-	        "div",
-	        { className: "Wizard--contentGroup Wizard--WizardStep--help" },
-	        _lodash2.default.isString(help) ? _react2.default.createElement(
-	          "p",
-	          null,
-	          help
-	        ) : help
-	      )
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "Wizard--contentGroup Wizard--WizardStep--component" },
-	      _react2.default.createElement(Component, _extends({}, props, {
-	        setWizardState: function setWizardState(modifications) {
-	          var newState = _setWizardState(modifications);
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	          // this conditional updates the progress bar in 2 scenarios:
-	          // a) oridnarily, steps update the progress bar once they are navigated away from so
-	          // that progress only increases when the user actually moves to the next step (see
-	          // Wizard.jumpToPage()). However, the final page must react to validity immediately to
-	          // signal completion, so this causes the final page to update the percent complete
-	          // upon input rather than solely upon navigation.
-	          // b) pages immediately update the progress bar if they become invalid, so that the
-	          // incompleteness of the form is reflected in the UI immediately.
-	          if (currentStep === totalSteps - 1 || calculatePercentComplete(newState) < percentComplete) {
-	            updatePercentComplete(newState);
-	          }
-	        },
-	        wizardState: wizardState
-	      }))
-	    )
-	  );
-	}
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// 58.25 rem = width of sidebar + width of left column
+	var COLLAPSE_BREAKPOINT_WIDTH_REM = 63.25;
+
+	var WizardStep = function (_React$Component) {
+	  _inherits(WizardStep, _React$Component);
+
+	  function WizardStep(props) {
+	    _classCallCheck(this, WizardStep);
+
+	    // NOTE: if a webpage explicitly changes the font size on the html element, this may be
+	    // incorrect, as rem is calculated against the browser-set font-size, not that of the html
+	    // element.
+	    // NOTE: this assumes the font size is expressed in px.
+	    var _this = _possibleConstructorReturn(this, (WizardStep.__proto__ || Object.getPrototypeOf(WizardStep)).call(this, props));
+
+	    var fontSize = window.getComputedStyle(document.getElementsByTagName("html")[0])["font-size"];
+	    _this.state = {
+	      renderedStepWidth: null,
+	      collapseBreakpointWidth: COLLAPSE_BREAKPOINT_WIDTH_REM * parseFloat(fontSize)
+	    };
+	    _this.updateDimensions = _this.updateDimensions.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(WizardStep, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.updateDimensions();
+	      window.addEventListener("resize", this.updateDimensions);
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      window.removeEventListener("resize", this.updateDimensions);
+	    }
+	  }, {
+	    key: "updateDimensions",
+	    value: function updateDimensions() {
+	      var renderedStepWidth = this.component.offsetWidth;
+	      this.setState({
+	        helpTextCollapsed: this.state.collapseBreakpointWidth > renderedStepWidth
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+
+	      var _props = this.props;
+	      var title = _props.title;
+	      var description = _props.description;
+	      var Component = _props.Component;
+	      var _setWizardState = _props.setWizardState;
+	      var currentStep = _props.currentStep;
+	      var wizardState = _props.wizardState;
+	      var help = _props.help;
+	      var percentComplete = _props.percentComplete;
+	      var calculatePercentComplete = _props.calculatePercentComplete;
+	      var updatePercentComplete = _props.updatePercentComplete;
+	      var totalSteps = _props.totalSteps;
+	      var componentProps = _props.componentProps;
+
+	      var props = _lodash2.default.omit(componentProps || {}, ["wizardState", "setWizardState"]);
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "Wizard--WizardStep", ref: function ref(e) {
+	            _this2.component = e;
+	          } },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "Wizard--WizardStep--title" },
+	          _react2.default.createElement(
+	            "h1",
+	            null,
+	            "Step ",
+	            currentStep + 1,
+	            ": ",
+	            title
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "Wizard--WizardStep--topInfo" },
+	          description && _react2.default.createElement(
+	            "div",
+	            { className: "Wizard--contentGroup Wizard--WizardStep--description" },
+	            _lodash2.default.isString(description) ? _react2.default.createElement(
+	              "p",
+	              null,
+	              description
+	            ) : description
+	          ),
+	          help && _react2.default.createElement(
+	            "div",
+	            {
+	              className: (0, _classnames2.default)("Wizard--contentGroup", "Wizard--WizardStep--help", this.state.helpTextCollapsed && "Wizard--WizardStep--helpCollapsed")
+	            },
+	            _lodash2.default.isString(help) ? _react2.default.createElement(
+	              "p",
+	              null,
+	              help
+	            ) : help
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "Wizard--contentGroup Wizard--WizardStep--component" },
+	          _react2.default.createElement(Component, _extends({}, props, {
+	            setWizardState: function setWizardState(modifications) {
+	              var newState = _setWizardState(modifications);
+
+	              // this conditional updates the progress bar in 2 scenarios:
+	              // a) oridnarily, steps update the progress bar once they are navigated away from so
+	              // that progress only increases when the user actually moves to the next step (see
+	              // Wizard.jumpToPage()). However, the final page must react to validity immediately to
+	              // signal completion, so this causes the final page to update the percent complete
+	              // upon input rather than solely upon navigation.
+	              // b) pages immediately update the progress bar if they become invalid, so that the
+	              // incompleteness of the form is reflected in the UI immediately.
+	              if (currentStep === totalSteps - 1 || calculatePercentComplete(newState) < percentComplete) {
+	                updatePercentComplete(newState);
+	              }
+	            },
+	            wizardState: wizardState
+	          }))
+	        )
+	      );
+	    }
+	  }]);
+
+	  return WizardStep;
+	}(_react2.default.Component);
 
 	exports.default = WizardStep;
+
+
 	WizardStep.propTypes = {
 	  // external facing
 	  title: _react.PropTypes.string.isRequired,
@@ -52821,7 +52890,7 @@
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(301) + ");\n  font-weight: 200;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(302) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(303) + ");\n  font-weight: 600;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(304) + ");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(305) + ");\n  font-weight: 900;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(306) + ");\n  font-weight: normal;\n  font-style: italic;\n}\n.Wizard {\n  display: -ms-flexbox;\n  display: flex;\n}\n.Wizard--sidebar {\n  -ms-flex: 0 0 15rem;\n  flex: 0 0 15rem;\n  width: 15rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 1.5rem;\n  padding-bottom: 1.5rem;\n  background-color: #fafafc;\n  border-right: 0.125rem solid #e3e6eb;\n}\n.Wizard--sidebar h2 {\n  font-weight: normal;\n  font-style: normal;\n  padding: 0rem;\n  margin-bottom: 1rem;\n}\n.Wizard--contentGroup {\n  min-width: 37.5rem;\n  max-width: 37.5rem;\n  margin-bottom: 0.75rem;\n  margin-left: 0rem;\n}\n.Wizard--navButtons {\n  text-align: right;\n}\n.Wizard--step {\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n  padding: 1.5rem;\n}\n.Wizard--WizardStep--title {\n  width: 100%;\n  border-bottom: 0.125rem solid #e3e6eb;\n}\n.Wizard--stepContainer {\n  display: none;\n}\n.Wizard--stepContainer.Wizard--stepContainer--current {\n  display: block;\n}\n.Wizard--stepsDisplay {\n  list-style-type: none;\n  padding: 0rem;\n  margin-top: 1rem;\n}\n.Wizard--stepsDisplay li:not(:last-child)::after {\n  display: block;\n  content: \"\";\n  border-left: 0.0625rem solid #b5bcca;\n  margin-left: 0.75rem;\n  height: 1.5rem;\n}\n.Wizard--controls {\n  margin-top: 3rem;\n}\n.Wizard--stepsDisplay--stepButton.Button {\n  padding: 0rem;\n}\n.Wizard--stepsDisplay--step {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  width: 100%;\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}\n.Wizard--stepsDisplay--step:not(.Wizard--stepsDisplay--visited):not(.Wizard--stepsDisplay--stepLink) {\n  color: #9aa0ac;\n}\n.Wizard--stepsDisplay--step.Wizard--stepsDisplay--visited .Wizard--stepsDisplay--icon {\n  background-image: url(" + __webpack_require__(446) + ");\n}\n.Wizard--stepsDisplay--step.Wizard--stepsDisplay--valid .Wizard--stepsDisplay--icon {\n  background-image: url(" + __webpack_require__(447) + ");\n}\n.Wizard--stepsDisplay--step.Wizard--stepsDisplay--currentStep .Wizard--stepsDisplay--icon {\n  background-image: url(" + __webpack_require__(448) + ");\n}\n.Wizard--stepsDisplay--stepTitle {\n  display: block;\n  overflow: hidden;\n}\n.Wizard--stepsDisplay--icon {\n  display: inline-block;\n  -moz-box-flex-shrink: 0;\n  -ms-flex-negative: 0;\n  -webkit-box-flex-shrink: 0;\n  flex-shrink: 0;\n  width: 1.5rem;\n  height: 1.5rem;\n  background-image: url(" + __webpack_require__(449) + ");\n  background-repeat: no-repeat;\n  background-size: contain;\n  margin-right: 0.25rem;\n}\n.Wizard--WizardStep--component {\n  -ms-flex: 1 0 37.5rem;\n  flex: 1 0 37.5rem;\n  margin-bottom: 2.5rem;\n}\n.Wizard--WizardStep--topInfo {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  -ms-flex-align: flex-start;\n  -ms-flex-align: start;\n  align-items: flex-start;\n  margin-top: 1.5rem;\n  margin-bottom: 1rem;\n}\n.Wizard--WizardStep--help {\n  min-width: 18.75rem;\n  -ms-flex: 1 0 18.75rem;\n  flex: 1 0 18.75rem;\n}\n", ""]);
+	exports.push([module.id, "@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(301) + ");\n  font-weight: 200;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(302) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(303) + ");\n  font-weight: 600;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(304) + ");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(305) + ");\n  font-weight: 900;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Proxima Nova';\n  src: url(" + __webpack_require__(306) + ");\n  font-weight: normal;\n  font-style: italic;\n}\n.Wizard {\n  display: -ms-flexbox;\n  display: flex;\n}\n.Wizard--sidebar {\n  -ms-flex: 0 0 15rem;\n  flex: 0 0 15rem;\n  width: 15rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 1.5rem;\n  padding-bottom: 1.5rem;\n  background-color: #fafafc;\n  border-right: 0.125rem solid #e3e6eb;\n}\n.Wizard--sidebar h2 {\n  font-weight: normal;\n  font-style: normal;\n  padding: 0rem;\n  margin-bottom: 1rem;\n}\n.Wizard--contentGroup {\n  margin-right: 3.5rem;\n  min-width: 37.5rem;\n  max-width: 37.5rem;\n  margin-bottom: 0.75rem;\n  margin-left: 0rem;\n}\n.Wizard--navButtons {\n  text-align: right;\n}\n.Wizard--step {\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n  padding: 1.5rem;\n}\n.Wizard--WizardStep--title {\n  width: 100%;\n  border-bottom: 0.125rem solid #e3e6eb;\n}\n.Wizard--stepContainer {\n  display: none;\n}\n.Wizard--stepContainer.Wizard--stepContainer--current {\n  display: block;\n}\n.Wizard--stepsDisplay {\n  list-style-type: none;\n  padding: 0rem;\n  margin-top: 1rem;\n}\n.Wizard--stepsDisplay li:not(:last-child)::after {\n  display: block;\n  content: \"\";\n  border-left: 0.0625rem solid #b5bcca;\n  margin-left: 0.75rem;\n  height: 1.5rem;\n}\n.Wizard--controls {\n  margin-top: 3rem;\n}\n.Wizard--stepsDisplay--stepButton.Button {\n  padding: 0rem;\n}\n.Wizard--stepsDisplay--step {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n  align-items: center;\n  width: 100%;\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}\n.Wizard--stepsDisplay--step:not(.Wizard--stepsDisplay--visited):not(.Wizard--stepsDisplay--stepLink) {\n  color: #9aa0ac;\n}\n.Wizard--stepsDisplay--step.Wizard--stepsDisplay--visited .Wizard--stepsDisplay--icon {\n  background-image: url(" + __webpack_require__(446) + ");\n}\n.Wizard--stepsDisplay--step.Wizard--stepsDisplay--valid .Wizard--stepsDisplay--icon {\n  background-image: url(" + __webpack_require__(447) + ");\n}\n.Wizard--stepsDisplay--step.Wizard--stepsDisplay--currentStep .Wizard--stepsDisplay--icon {\n  background-image: url(" + __webpack_require__(448) + ");\n}\n.Wizard--stepsDisplay--stepTitle {\n  display: block;\n  overflow: hidden;\n}\n.Wizard--stepsDisplay--icon {\n  display: inline-block;\n  -moz-box-flex-shrink: 0;\n  -ms-flex-negative: 0;\n  -webkit-box-flex-shrink: 0;\n  flex-shrink: 0;\n  width: 1.5rem;\n  height: 1.5rem;\n  background-image: url(" + __webpack_require__(449) + ");\n  background-repeat: no-repeat;\n  background-size: contain;\n  margin-right: 0.25rem;\n}\n.Wizard--WizardStep--component {\n  -ms-flex: 1 0 37.5rem;\n  flex: 1 0 37.5rem;\n  margin-bottom: 2.5rem;\n}\n.Wizard--WizardStep--topInfo {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap;\n  -ms-flex-align: flex-start;\n  -ms-flex-align: start;\n  align-items: flex-start;\n  margin-top: 1.5rem;\n  margin-bottom: 1rem;\n}\n.Wizard--WizardStep--help {\n  min-width: 18.75rem;\n  -ms-flex: 1 0 18.75rem;\n  flex: 1 0 18.75rem;\n}\n.Wizard--WizardStep--help:not(.Wizard--WizardStep--helpCollapsed) {\n  height: 0;\n  overflow: visible;\n}\n", ""]);
 
 	// exports
 
@@ -57783,15 +57852,29 @@
 	            buttonValue: "Clear and start over"
 	          }],
 	          help: this.state.showHelp && _react2.default.createElement(
-	            "p",
+	            "div",
 	            null,
-	            "Need any help? Check out our\xA0",
-	            _react2.default.createElement(_src.Button, {
-	              onClick: function onClick() {
-	                return alert("LOL, no help for you!");
-	              }, type: "link",
-	              value: "Support Center.", style: { padding: 0 }
-	            })
+	            _react2.default.createElement(
+	              "h4",
+	              { style: { marginTop: 0 } },
+	              "Need any help?"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "Don't fret! We got you!"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "Check out our\xA0",
+	              _react2.default.createElement(_src.Button, {
+	                onClick: function onClick() {
+	                  return alert("LOL, no help for you!");
+	                }, type: "link",
+	                value: "Support Center.", style: { padding: 0 }
+	              })
+	            )
 	          ),
 	          seekable: this.state.seekable,
 	          hideProgressBar: this.state.hideProgressBar
