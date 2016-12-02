@@ -20,6 +20,7 @@ import PageLayoutView from "./components/PageLayoutView";
 import ProgressBarView from "./components/ProgressBarView";
 import SegmentedControlView from "./components/SegmentedControlView";
 import SelectView from "./components/SelectView";
+import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
 import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
@@ -38,6 +39,7 @@ render((
       <Route path="design">
         <Route path="colors(/*)" component={ColorsView} />
         <Route path="typography(/*)" component={TypographyView} />
+        <Route path="sizing(/*)" component={SizingView} />
         <Route path="page-layout(/*)" component={PageLayoutView} />
         <Route path="ui-text(/*)" component={UITextView} />
       </Route>
