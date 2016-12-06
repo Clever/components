@@ -29,6 +29,9 @@ export default class PageLayoutView extends PureComponent {
                    multiple tabs of content.</p>
               </div>
             </Col>
+            <Col span={4} className="flexbox margin--top--m">
+              <img src="./assets/img/layout_profile.svg" alt="Profile layout example" />
+            </Col>
           </Row>
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox padding--right--l">
@@ -38,6 +41,9 @@ export default class PageLayoutView extends PureComponent {
                    sidebar which shows the progress and steps in the workfow, a main content area that
                    changes based on the step, and sometimes a right sidebar showing help content for each step.</p>
               </div>
+            </Col>
+            <Col span={4} className="flexbox margin--top--m">
+              <img src="./assets/img/layout_wizard.svg" alt="Wizard layout example" />
             </Col>
           </Row>
         </Grid>

@@ -12,7 +12,7 @@ export default function IntroView() {
     <View className={cssClass.CONTAINER} title="Say &ldquo;Hi!&rdquo; to Dewey">
       <Grid>
         <Row grow className="margin--bottom--xl">
-          <Col span={6} className="flexbox self--start padding--right--l">
+          <Col span={6} className="flexbox self--center padding--right--xl">
             <div>
               <h2>A design system for the ed-tech ecosytem</h2>
               <p>As&nbsp;
@@ -27,33 +27,34 @@ export default function IntroView() {
                  is encouraged to stay familiar with this design system and help ensure that it is kept up-to-date.</p>
             </div>
           </Col>
-          <Col span={4} className="flexbox">
-            <Row grow>
-              <Col span={12} className="flexbox margin--bottom--l">
-                <div>
-                  <Icon size={Icon.sizes.LARGE} name={Icon.names.TYPEWRITER} />
-                  <h3 className="text--light display--inlineBlock padding--left--m">Cohesive experiences</h3>
-                  <p>Create a system of coherent UI and interaction patterns to improve usability, visual
-                     consistency, and clarity instead of reinventing the radio button.</p>
-                </div>
-              </Col>
-              <Col span={12} className="flexbox margin--bottom--l">
-                <div>
-                  <Icon size={Icon.sizes.LARGE} name={Icon.names.WEBSITE_HTML} />
-                  <h3 className="display--inlineBlock padding--left--m ">Faster development</h3>
-                  <p>Provide reusable utilities and components that accelerate the development of interfaces
-                     allowing us to focus on workflows and logic.</p>
-                </div>
-              </Col>
-              <Col span={12} className="flexbox margin--bottom--l">
-                <div>
-                  <Icon size={Icon.sizes.LARGE} name={Icon.names.PEN} />
-                  <h3 className="text--light display--inlineBlock padding--left--m">Clear documentation</h3>
-                  <p>Showcase good examples for when to use which component or layout, and how to implement them.</p>
-                </div>
-              </Col>
-            </Row>
+          <Col span={3} className="flexbox">
+            <img src="./assets/img/deweyFox.svg" alt="Dewey the mascot for the design system" />
           </Col>
+          <Row grow className="margin--top--xl">
+            <Col span={4} className="flexbox padding--right--xl">
+              <div>
+                <Icon size={Icon.sizes.LARGE} name={Icon.names.TYPEWRITER} />
+                <h3 className="text--light display--inlineBlock padding--left--m">Cohesive experiences</h3>
+                <p>Create a system of coherent UI and interaction patterns to improve usability, visual
+                   consistency, and clarity instead of reinventing the radio button.</p>
+              </div>
+            </Col>
+            <Col span={4} className="flexbox padding--right--xl">
+              <div>
+                <Icon size={Icon.sizes.LARGE} name={Icon.names.WEBSITE_HTML} />
+                <h3 className="display--inlineBlock padding--left--m ">Faster development</h3>
+                <p>Provide reusable utilities and components that accelerate the development of interfaces
+                   allowing us to focus on workflows and logic.</p>
+              </div>
+            </Col>
+            <Col span={4} className="flexbox padding--right--xl">
+              <div>
+                <Icon size={Icon.sizes.LARGE} name={Icon.names.PEN} />
+                <h3 className="text--light display--inlineBlock padding--left--m">Clear documentation</h3>
+                <p>Showcase good examples for when to use which component or layout, and how to implement them.</p>
+              </div>
+            </Col>
+          </Row>
         </Row>
         <Row grow>
           <Col span={12}>
