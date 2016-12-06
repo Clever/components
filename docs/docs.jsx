@@ -7,22 +7,26 @@ import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
 import CopyableInputView from "./components/CopyableInputView";
 import FlexBoxView from "./components/FlexBoxView";
-import FontView from "./components/FontView";
 import GettingStartedView from "./components/GettingStartedView";
 import GridView from "./components/GridView";
 import IconView from "./components/IconView";
 import IntroView from "./components/IntroView";
 import Layout from "./components/Layout";
 import LeftNavView from "./components/LeftNavView";
+import LessStyleGuideView from "./components/LessStyleGuideView";
 import ModalButtonView from "./components/ModalButtonView";
 import ModalView from "./components/ModalView";
+import PageLayoutView from "./components/PageLayoutView";
 import ProgressBarView from "./components/ProgressBarView";
 import SegmentedControlView from "./components/SegmentedControlView";
 import SelectView from "./components/SelectView";
+import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
 import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextInputView from "./components/TextInputView";
+import TypographyView from "./components/TypographyView";
+import UITextView from "./components/UITextView";
 import WizardView from "./components/WizardView";
 
 
@@ -32,6 +36,13 @@ render((
       <IndexRedirect to="/intro" />
       <Route path="intro(/*)" component={IntroView} />
       <Route path="getting-started(/*)" component={GettingStartedView} />
+      <Route path="design">
+        <Route path="colors(/*)" component={ColorsView} />
+        <Route path="typography(/*)" component={TypographyView} />
+        <Route path="sizing(/*)" component={SizingView} />
+        <Route path="page-layout(/*)" component={PageLayoutView} />
+        <Route path="ui-text(/*)" component={UITextView} />
+      </Route>
       <Route path="components">
         <Route path="button(/*)" component={ButtonView} />
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
@@ -50,9 +61,8 @@ render((
         <Route path="text-input(/*)" component={TextInputView} />
         <Route path="wizard(/*)" component={WizardView} />
       </Route>
-      <Route path="css">
-        <Route path="colors(/*)" component={ColorsView} />
-        <Route path="font(/*)" component={FontView} />
+      <Route path="LESS">
+        <Route path="less-style-guide(/*)" component={LessStyleGuideView} />
         <Route path="spacing(/*)" component={SpacingView} />
       </Route>
     </Route>

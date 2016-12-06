@@ -11,6 +11,8 @@
 @borderRadius0: 0rem;  /* 0px */
 @borderRadiusS: .125rem;  /* 2px */
 @borderRadiusM: .1875rem;  /* 3px */
+@borderRadiusL: .25rem;  /* 4px */
+@borderRadiusXL: .5rem;  /* 8px */
 
 
 /**
@@ -43,3 +45,21 @@
 .borderRadius--bottomRight--m { border-bottom-right-radius: @borderRadiusM; }
 .borderRadius--top--m { .borderRadius--topLeft--m; .borderRadius--topRight--m; }
 .borderRadius--bottom--m { .borderRadius--bottomLeft--m; .borderRadius--bottomRight--m; }
+
+/** @borderRadiusL */
+.borderRadius--l { border-radius: @borderRadiusL; }
+.borderRadius--topLeft--l { border-top-left-radius: @borderRadiusL; }
+.borderRadius--topRight--l { border-top-right-radius: @borderRadiusL; }
+.borderRadius--bottomLeft--l { border-bottom-left-radius: @borderRadiusL; }
+.borderRadius--bottomRight--l { border-bottom-right-radius: @borderRadiusL; }
+.borderRadius--top--l { .borderRadius--topLeft--l; .borderRadius--topRight--l; }
+.borderRadius--bottom--l { .borderRadius--bottomLeft--l; .borderRadius--bottomRight--l; }
+
+/** @borderRadiusXL */
+.borderRadius--xl { border-radius: @borderRadiusXL; }
+.borderRadius--topLeft--xl { border-top-left-radius: @borderRadiusXL; }
+.borderRadius--topRight--xl { border-top-right-radius: @borderRadiusXL; }
+.borderRadius--bottomLeft--xl { border-bottom-left-radius: @borderRadiusXL; }
+.borderRadius--bottomRight--xl { border-bottom-right-radius: @borderRadiusXL; }
+.borderRadius--top--xl { .borderRadius--topLeft--xl; .borderRadius--topRight--xl; }
+.borderRadius--bottom--xl { .borderRadius--bottomLeft--xl; .borderRadius--bottomRight--xl; }

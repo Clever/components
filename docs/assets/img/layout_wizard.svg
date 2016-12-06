@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520px" height="351px" viewBox="0 0 520 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>layout_wizard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="layout_wizard" transform="translate(1.000000, 1.000000)">
+            <rect id="Rectangle" stroke="#B5BCCA" fill="#FFFFFF" opacity="0.5" x="0" y="0" width="518" height="349"></rect>
+            <rect id="Rectangle-Copy-2" stroke="#B5BCCA" fill="#FAFCFC" opacity="0.5" x="0" y="20.5884892" width="73.0133333" height="328.411511"></rect>
+            <rect id="Rectangle-Copy-3" stroke="#B5BCCA" fill="#FFFFFF" opacity="0.5" x="73.0133333" y="20.5884892" width="325.6" height="328.411511"></rect>
+            <rect id="Rectangle-Copy-4" stroke="#B5BCCA" fill="#FAFCFC" opacity="0.5" x="398.613333" y="20.5884892" width="119.386667" height="328.411511"></rect>
+            <rect id="Rectangle-Copy-5" stroke="#B5BCCA" fill="#FFFFFF" opacity="0.5" x="93" y="72" width="282" height="51" rx="3"></rect>
+            <rect id="Rectangle-Copy-8" stroke="#B5BCCA" fill="#FFFFFF" opacity="0.5" x="409" y="72" width="98" height="51" rx="3"></rect>
+            <rect id="Rectangle-Copy-6" stroke="#B5BCCA" fill="#FFFFFF" opacity="0.5" x="93" y="133" width="282" height="128" rx="3"></rect>
+            <rect id="Rectangle-Copy-7" stroke="#B5BCCA" fill="#FFFFFF" opacity="0.5" x="313" y="310" width="62" height="20.5884892" rx="3"></rect>
+            <rect id="Rectangle-Copy" stroke="#B5BCCA" fill="#4274F6" x="0" y="0" width="518" height="20.5884892"></rect>
+            <g id="Group" transform="translate(7.000000, 72.000000)">
+                <circle id="Oval-3" fill="#B5BCCA" cx="5.5" cy="5.5" r="5.5"></circle>
+                <path d="M14.7940734,2.25 L57.2574142,2.25" id="Path-2" stroke="#B5BCCA" stroke-width="0.5"></path>
+                <path d="M14.7940734,8.25 L50,8.25" id="Path-2-Copy" stroke="#B5BCCA" stroke-width="0.5"></path>
+            </g>
+            <g id="Group-Copy" transform="translate(7.000000, 92.000000)">
+                <circle id="Oval-3" fill="#B5BCCA" cx="5.5" cy="5.5" r="5.5"></circle>
+                <path d="M14.7940734,2.25 L57.2574142,2.25" id="Path-2" stroke="#B5BCCA" stroke-width="0.5"></path>
+                <path d="M14.7940734,8.25 L25,8.25" id="Path-2-Copy" stroke="#B5BCCA" stroke-width="0.5"></path>
+            </g>
+            <g id="Group-Copy-2" transform="translate(7.000000, 112.000000)">
+                <circle id="Oval-3" fill="#B5BCCA" cx="5.5" cy="5.5" r="5.5"></circle>
+                <path d="M14.7940734,2.25 L57.2574142,2.25" id="Path-2" stroke="#B5BCCA" stroke-width="0.5"></path>
+                <path d="M14.7940734,8.25 L45,8.25" id="Path-2-Copy" stroke="#B5BCCA" stroke-width="0.5"></path>
+            </g>
+            <g id="Group-Copy-3" transform="translate(7.000000, 132.000000)">
+                <circle id="Oval-3" fill="#B5BCCA" cx="5.5" cy="5.5" r="5.5"></circle>
+                <path d="M14.7940734,2.25 L57.2574142,2.25" id="Path-2" stroke="#B5BCCA" stroke-width="0.5"></path>
+                <path d="M14.7940734,8.25 L38,8.25" id="Path-2-Copy" stroke="#B5BCCA" stroke-width="0.5"></path>
+            </g>
+            <path d="M93,38.5 L217.364078,38.5" id="Path-3" stroke="#B5BCCA" stroke-width="3"></path>
+            <path d="M8,39.75 L62,39.75" id="Path-3-Copy-2" stroke="#B5BCCA" stroke-width="1.5"></path>
+            <path d="M8,49.75 L34,49.75" id="Path-3-Copy-3" stroke="#B5BCCA" stroke-width="1.5"></path>
+            <path d="M93,56.5 L374.5,56.5" id="Path-3-Copy" stroke="#E3E6EB"></path>
+        </g>
+    </g>
+</svg>

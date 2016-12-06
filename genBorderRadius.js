@@ -8,6 +8,8 @@ const borderRadii = {
   0: 0,
   s: 0.125, // 2px
   m: 0.1875, // 3px
+  l: 0.25, // 4px
+  xl: 0.5, // 8px
 };
 
 const constants = [];
