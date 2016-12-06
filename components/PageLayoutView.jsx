@@ -11,27 +11,32 @@ export default class PageLayoutView extends PureComponent {
     return (
       <View className={cssClass.CONTAINER} title="Page Layouts">
         <Grid>
-          <Row grow className="items--stretch margin--bottom--xl">
+          <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox padding--right--l">
-              <div className="display--block">
+              <div>
                 <h2>Consistent structures</h2>
-                <p>Layouts are templates that provide consistency through an application and across products by setting up pre-defined spacing, sections, and columns.</p>
+                <p>Layouts are templates that provide consistency through an application and across products
+                   by setting up pre-defined spacing, sections, and columns.</p>
               </div>
             </Col>
           </Row>
-          <Row grow className="items--stretch margin--bottom--xl">
+          <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox padding--right--l">
-              <div className="display--block">
+              <div>
                 <h3>Profile</h3>
-                <p>A profile layout is a singular view on an object. It consists of a highlights panel which sticks to the top of the page when scrolled down, and a main content area which may include multiple tabs of content.</p>
+                <p>A profile layout is a singular view on an object. It consists of a highlights panel which
+                   sticks to the top of the page when scrolled down, and a main content area which may include
+                   multiple tabs of content.</p>
               </div>
             </Col>
           </Row>
-          <Row grow className="items--stretch margin--bottom--xl">
+          <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox padding--right--l">
-              <div className="display--block">
+              <div>
                 <h3>Wizard</h3>
-                <p>A wizard layout is a focused view enabling progressive workflows. It consists of a left sidebar which shows the progress and steps in the workfow, a main content area that changes based on the step, and sometimes a right sidebar showing help content for each step.</p>
+                <p>A wizard layout is a focused view enabling progressive workflows. It consists of a left
+                   sidebar which shows the progress and steps in the workfow, a main content area that
+                   changes based on the step, and sometimes a right sidebar showing help content for each step.</p>
               </div>
             </Col>
           </Row>

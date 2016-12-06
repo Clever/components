@@ -13,25 +13,27 @@ export default class SizingView extends PureComponent {
     return (
       <View className={cssClass.CONTAINER} title="Sizing">
         <Grid>
-          <Row grow className="items--stretch margin--bottom--5xl padding--right--m">
+          <Row grow className="margin--bottom--5xl padding--right--m">
             <Col span={6} className="flexbox self--start padding--right--l">
-              <div className="display--block">
+              <div>
                 <h2>Base Unit</h2>
-                <p>The Clever design system is based off of the rem unit, which most browsers default to 16px. All other sizes are scaled off of the base rem unit to create visual rhythm and coherence.</p>
+                <p>The Clever design system is based off of the rem unit, which most browsers default to 16px.
+                   All other sizes are scaled off of the base rem unit to create visual rhythm and coherence.</p>
               </div>
             </Col>
             <Col span={4} className="flexbox self--start padding--right--l">
-              <div className="display--block">
+              <div>
                 <h3>1 rem</h3>
                 <div className="Size--m"></div>
               </div>
             </Col>
           </Row>
-          <Row grow className="items--stretch margin--bottom--5xl">
+          <Row grow className="margin--bottom--5xl">
             <Col span={6} className="flexbox self--start padding--right--l">
-              <div className="display--block">
+              <div>
                 <h2>Sizing Scale</h2>
-                <p>The sizing scale increases in half steps from the base unit. It decreases in quarter steps with extra fine steps for the smallest of sizes.</p>
+                <p>The sizing scale increases in half steps from the base unit. It decreases in quarter steps
+                   with extra fine steps for the smallest of sizes.</p>
                 <p>You should reference sizing variables when setting explicit sizes on non-text elements.</p>
                 <p>For padding or margin usage, refer to the spacing documentation.</p>
               </div>
