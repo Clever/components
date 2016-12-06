@@ -18,8 +18,10 @@ export default class UITextView extends PureComponent {
             <Col span={6} className="flexbox padding--right--l">
               <div>
                 <h2>Interfaces are mostly text</h2>
-                <p>From buttons denoting actions to instructions for complex interfaces, the majority of an
-                   interface is communicated through text. Writing clear and actionable text takes practice.</p>
+                <p>
+                  From buttons denoting actions to instructions for complex interfaces, the majority of an
+                  interface is communicated through text. Writing clear and actionable text takes practice.
+                </p>
               </div>
             </Col>
           </Row>
@@ -33,15 +35,19 @@ export default class UITextView extends PureComponent {
                   <div>
                     <Icon size={Icon.sizes.MEDIUM} name={Icon.names.GLASSES} />
                     <h3 className="display--inlineBlock padding--left--m">Write for all users</h3>
-                    <p>Some people will read every word you write. Others will just skim. Help everyone read
-                       better by grouping related ideas together and using descriptive headers and subheaders.</p>
+                    <p>
+                      Some people will read every word you write. Others will just skim. Help everyone read
+                      better by grouping related ideas together and using descriptive headers and subheaders.
+                    </p>
                   </div>
                 </Col>
                 <Col span={12} className="flexbox uiText--block">
                   <div>
                     <Icon size={Icon.sizes.MEDIUM} name={Icon.names.CHAT_HEART} />
                     <h3 className="display--inlineBlock padding--left--m">Be friendly</h3>
-                    <p>Write like a human. Don’t be afraid to break a few rules if it makes your writing more relatable.</p>
+                    <p>
+                      Write like a human. Don’t be afraid to break a few rules if it makes your writing more relatable.
+                    </p>
                   </div>
                 </Col>
               </Row>
