@@ -17,8 +17,10 @@ export default class ColorsView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Primary Color</h2>
-                <p>This tone and shade of blue reflects the bold and inspirational nature of the Clever vision. It
-                   was also inspired by the bright colors used in many of today’s classrooms.</p>
+                <p>
+                  This tone and shade of blue reflects the bold and inspirational nature of the Clever vision. It
+                  was also inspired by the bright colors used in many of today’s classrooms.
+                </p>
               </div>
             </Col>
             <Col span={5} className="flexbox">
@@ -56,8 +58,10 @@ export default class ColorsView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Neutral Colors</h2>
-                <p>To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
-                   for borders, backgrounds, and text styles.</p>
+                <p>
+                  To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
+                  for borders, backgrounds, and text styles.
+                </p>
               </div>
             </Col>
             <Col span={5} className="flexbox">
@@ -99,8 +103,10 @@ export default class ColorsView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Alert Colors</h2>
-                <p>To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
-                   for borders, backgrounds, and text styles.</p>
+                <p>
+                  To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
+                  for borders, backgrounds, and text styles.
+                </p>
               </div>
             </Col>
             <Col span={5} className="flexbox">
@@ -127,8 +133,10 @@ export default class ColorsView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Accent Colors</h2>
-                <p>To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
-                   for borders, backgrounds, and text styles.</p>
+                <p>
+                  To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
+                  for borders, backgrounds, and text styles.
+                </p>
               </div>
             </Col>
             <Col span={5} className="flexbox">
@@ -155,9 +163,11 @@ export default class ColorsView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Shades and Tints</h2>
-                <p>To provide the subtly and range necessary for interaction patterns on a modern web interface,
-                   we use a scale of shades and tints for our existing color palettes. We use a tint and shade
-                   scale which add white or black respectively to the base color in 15% increments.</p>
+                <p>
+                  To provide the subtly and range necessary for interaction patterns on a modern web interface,
+                  we use a scale of shades and tints for our existing color palettes. We use a tint and shade
+                  scale which add white or black respectively to the base color in 15% increments.
+                </p>
               </div>
             </Col>
             <Col span={5} className="flexbox">
@@ -235,12 +245,16 @@ export default class ColorsView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Color usage</h2>
-                <p>Whenever you declare a color in LESS, you should reference the color variable instead of
-                   declaring a fixed value. If you need to use a tinted or shaded variation of a color, use
-                   the appropriate LESS mixin function.</p>
+                <p>
+                  Whenever you declare a color in LESS, you should reference the color variable instead of
+                  declaring a fixed value. If you need to use a tinted or shaded variation of a color, use
+                  the appropriate LESS mixin function.
+                </p>
                 <strong>Tint and shade mixin functions</strong>
-                <p>You pass the mixin functions an attribute, the color variable, and a number of steps usually
-                   between 1 and 6.</p>
+                <p>
+                  You pass the mixin functions an attribute, the color variable, and a number of steps usually
+                  between 1 and 6.
+                </p>
                 <code>.shade(background-color, @alert_red, 2);</code>
               </div>
             </Col>
