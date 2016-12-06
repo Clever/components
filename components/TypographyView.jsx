@@ -17,8 +17,10 @@ export default class TypographyView extends PureComponent {
             <Col span={6} className="flexbox self--start">
               <div>
                 <h2>Typeface</h2>
-                <p>We use Proxima Nova as our primary typeface. It is an intelligent and friendly typeface that
-                   is used for its clarity and ease-of-legibility.</p>
+                <p>
+                  We use Proxima Nova as our primary typeface. It is an intelligent and friendly typeface that
+                  is used for its clarity and ease-of-legibility.
+                </p>
               </div>
             </Col>
             <Col span={5} className="flexbox">
@@ -70,8 +72,10 @@ export default class TypographyView extends PureComponent {
             <Col span={6} className="flexbox self--start">
               <div>
                 <h2>Type Weight</h2>
-                <p>There are five different type weights. The most commonly used should be text--regular,
-                   while semi-bold and light are secondary weights. Bold and heavy are for special cases.</p>
+                <p>
+                  There are five different type weights. The most commonly used should be text--regular,
+                  while semi-bold and light are secondary weights. Bold and heavy are for special cases.
+                </p>
               </div>
             </Col>
             <Col span={4} className="flexbox">

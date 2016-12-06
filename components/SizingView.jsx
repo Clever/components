@@ -17,8 +17,10 @@ export default class SizingView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Base Unit</h2>
-                <p>The Clever design system is based off of the rem unit, which most browsers default to 16px.
-                   All other sizes are scaled off of the base rem unit to create visual rhythm and coherence.</p>
+                <p>
+                  The Clever design system is based off of the rem unit, which most browsers default to 16px.
+                  All other sizes are scaled off of the base rem unit to create visual rhythm and coherence.
+                </p>
               </div>
             </Col>
             <Col span={4} className="flexbox self--start padding--right--l">
@@ -32,8 +34,10 @@ export default class SizingView extends PureComponent {
             <Col span={6} className="flexbox self--start padding--right--l">
               <div>
                 <h2>Sizing Scale</h2>
-                <p>The sizing scale increases in half steps from the base unit. It decreases in quarter steps
-                   with extra fine steps for the smallest of sizes.</p>
+                <p>
+                  The sizing scale increases in half steps from the base unit. It decreases in quarter steps
+                  with extra fine steps for the smallest of sizes.
+                </p>
                 <p>You should reference sizing variables when setting explicit sizes on non-text elements.</p>
                 <p>For padding or margin usage, refer to the spacing documentation.</p>
               </div>
