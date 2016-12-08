@@ -1,4 +1,5 @@
-import React, {PropTypes} from "react";
+import * as React from "react";
+const {PropTypes} = React;
 import classnames from "classnames";
 
 export function NavLink(props) {
@@ -27,6 +28,7 @@ NavLink.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
+  visible: PropTypes.bool,
 };
 
 NavLink.cssClass = {
@@ -34,4 +36,8 @@ NavLink.cssClass = {
   LABEL: "NavLink--label",
   ICON: "NavLink--icon",
   SELECTED: "NavLink--selected",
+};
+
+NavLink.defaultProps = {
+  visible: true,
 };

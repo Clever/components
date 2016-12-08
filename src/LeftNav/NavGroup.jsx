@@ -1,4 +1,5 @@
-import React, {PropTypes} from "react";
+import * as React from "react";
+const {PropTypes} = React;
 import classnames from "classnames";
 
 import {NavLink} from "./NavLink";
@@ -25,9 +26,14 @@ NavGroup.propTypes = {
   label: PropTypes.string.isRequired,
   _open: PropTypes.bool, // private - used by LeftNav only
   _onClick: PropTypes.func, // private - used by LeftNav only
+  visible: PropTypes.bool,
 };
 
 NavGroup.cssClass = {
   CONTAINER: "NavGroup",
   OPEN: "NavGroup--open",
+};
+
+NavGroup.defaultProps = {
+  visible: true,
 };

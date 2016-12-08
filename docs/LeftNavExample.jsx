@@ -15,12 +15,13 @@ export default class LeftNavExample extends React.Component {
     const {NavLink, NavGroup} = LeftNav;
 
     const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
-    const link = (label, iconNode) =>
+    const link = (label, iconNode, visible = true) =>
       <NavLink
         label={label}
         icon={iconNode}
         selected={this.state.selected === label}
         onClick={() => this.setState({selected: label})}
+        visible={visible}
       />;
     const menulink = (label, iconNode) =>
       <NavLink
@@ -45,6 +46,9 @@ export default class LeftNavExample extends React.Component {
               {link("Hammer")}
               {link("Screwdriver")}
               {link("Measuring Tape")}
+            </NavGroup>
+            <NavGroup label="Invisible Group" id="invisible" icon={icon(Icon.names.GEAR)}>
+              {link("Invisible Link", null, false)}
             </NavGroup>
             <NavGroup label="Juggling Props" id="Juggling Props" icon={icon(Icon.names.JUGGLER)}>
               {link("Balls")}
