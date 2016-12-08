@@ -1,7 +1,8 @@
-import React, {PropTypes} from "react";
+import * as React from "react";
+const {PropTypes} = React;
 import MorePropTypes from "../utils/MorePropTypes";
 import classnames from "classnames";
-import _ from "lodash";
+import * as _ from "lodash";
 
 import {NavLink} from "./NavLink";
 import {NavGroup} from "./NavGroup";
@@ -27,7 +28,7 @@ export class LeftNav extends React.Component {
     // Clone all of the children so that we can attach our own click handlers
     const children = React.Children.map(this.props.children, child => {
       // Configure top level NavLinks to close any open NavGroup on click
-      if (child.type === NavLink) {
+      if (child.type === NavLink && child.props.visible) {
         return React.cloneElement(child, {
           onClick: () => {
             this.setState({openNavGroup: null});
@@ -37,7 +38,11 @@ export class LeftNav extends React.Component {
       }
 
       // Configure NavGroups to open/close themselves on click
-      if (child.type === NavGroup) {
+      if (child.type === NavGroup && child.props.visible) {
+        const anyVisible = _.some(child.props.children, (c) => c && c.props && c.props.visible);
+        if (!anyVisible) {
+          return null;
+        }
         const open = child.props.id === this.state.openNavGroup;
         return React.cloneElement(child, {
           _open: open,
@@ -45,7 +50,7 @@ export class LeftNav extends React.Component {
         });
       }
 
-      return null; // Should never get here thanks to PropType validation
+      return null;
     });
 
     // Find the open NavGroup so that we can render its children NavLinks in the drawer
