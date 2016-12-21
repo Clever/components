@@ -3,7 +3,7 @@
     "block-no-empty": null,
     "block-opening-brace-space-before": "always",
     "color-no-invalid-hex": true,
-    "declaration-colon-space-after": "always",
+    "declaration-colon-space-after": "always-single-line",
     "declaration-property-value-whitelist": [{
       "/color/": ["/@neutral_white/", "/@neutral_off_white/", "/@neutral_silver/", "/@neutral_gray/", "/@neutral_dark_gray/", "/@neutral_black/", "/@primary_blue/", "/@alert_green/", "/@alert_red/", "/@alert_orange/", "/@accent_aqua/", "/@accent_purple/", "/@accent_aqua/", "/@accent_pink/", "transparent" ]
     }],
@@ -13,7 +13,7 @@
     }],
     "no-duplicate-selectors": true,
     "selector-no-id": true,
-    "value-list-comma-newline-after": "never-multi-line",
+    "value-list-comma-newline-after": "always-multi-line",
     "unit-whitelist": ["em", "rem", "%", "s", "vh", "ms"],
   }
 }
