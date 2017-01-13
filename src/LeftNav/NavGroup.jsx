@@ -11,7 +11,7 @@ export function NavGroup(props) {
   const open = props._open ? cssClass.OPEN : null;
   return (
     <NavLink
-      className={classnames(cssClass.CONTAINER, open)}
+      className={classnames(cssClass.CONTAINER, props.className, open)}
       label={props.label}
       icon={props.icon}
       onClick={props._onClick}
@@ -20,6 +20,7 @@ export function NavGroup(props) {
 }
 
 NavGroup.propTypes = {
+  className: PropTypes.string,
   id: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
   label: PropTypes.string.isRequired,
