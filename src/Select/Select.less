@@ -1,14 +1,16 @@
-@import "../less/colors.less";
+@import (reference) "../less/colors";
+@import (reference) "../less/spacing";
+@import (reference) "../less/type-size";
 
 .Select--container {
   position: relative;
 
   .Select--labelContainer {
+    .text--tiny;
     color: @neutral_dark_gray;
-    font-size: 0.625rem;
     position: absolute;
     text-transform: uppercase;
-    top: 5px;
+    top: @size_xs;
     width: 100%;
 
     &.Select--labelHidden {
@@ -16,7 +18,7 @@
     }
 
     .Select--label {
-      left: 10px;
+      left: @size_s;
       position: absolute;
     }
   }
@@ -25,7 +27,7 @@
     // overrides styles from the exact same selector in react-select's CSS
     &.is-focused:not(.is-open) > .Select-control {
       border-color: @neutral_silver;
-      box-shadow: inset 5px 0 @primary_blue;
+      box-shadow: inset @size_2xs 0 @primary_blue;
       transition: box-shadow .25s ease-out;
     }
 
@@ -38,12 +40,12 @@
     &.Select--multi {
       .Select-control {
         .Select-multi-value-wrapper {
-          padding-top: 15px;
-          padding-left: 5px;
+          .padding--top--m;
+          .padding--left--2xs;
           .Select-value {
             border-color: @neutral_silver;
             color: @neutral_black;
-            line-height: 1rem;
+            line-height: @size_m;
             .Select-value-icon {
               background-color: @neutral_silver;
               float: right;
@@ -60,12 +62,14 @@
     .Select-control {
       border-radius: 0px;
       border-color: @neutral_silver;
-      height: 50px;
+      height: @size_4xl;
 
       .Select-placeholder {
-        font-size: .75rem;
-        line-height: 40px;
-        padding-top: 5px;
+        .padding--left--s;
+        .padding--right--s;
+        .padding--top--xs;
+        .text--small;
+        line-height: @size_2xl;
         text-transform: uppercase;
       }
 
@@ -75,9 +79,10 @@
 
       .Select-input,
       .Select-value {
-        font-size: 1rem;
-        line-height: 40px;
-        top: 10px;
+        .padding--left--s;
+        .text--medium;
+        line-height: @size_2xl;
+        top: @size_s;
       }
     }
 
@@ -88,12 +93,12 @@
     }
 
     .Select-menu-outer {
-      border-radius: 0px;
+      border-radius: @size_none;
       border-color: @neutral_silver;
       .Select-option {
         color: @neutral_black;
         &.is-focused {
-          box-shadow: inset 5px 0 @primary_blue;
+          box-shadow: inset @size_2xs 0 @primary_blue;
           background-color: @neutral_off_white;
         }
       }
