@@ -12,11 +12,21 @@ export class TextInput extends React.Component {
   }
 
   onFocus() {
+    const {onFocus} = this.props;
+
     this.setState({inFocus: true});
+    if (onFocus) {
+      onFocus();
+    }
   }
 
   onBlur() {
+    const {onBlur} = this.props;
+
     this.setState({inFocus: false});
+    if (onBlur) {
+      onBlur();
+    }
   }
 
   focus() {
@@ -99,6 +109,8 @@ TextInput.propTypes = {
   name: React.PropTypes.string.isRequired,
   onChange: React.PropTypes.func,
   onKeyPress: React.PropTypes.func,
+  onFocus: React.PropTypes.func,
+  onBlur: React.PropTypes.func,
   placeholder: React.PropTypes.node,
   readOnly: React.PropTypes.bool,
   required: React.PropTypes.bool,
