@@ -21896,7 +21896,7 @@
 
 	  var match = void 0,
 	      lastIndex = 0,
-	      matcher = /:([a-zA-Z_$][a-zA-Z0-9_$]*)|\*\*|\*|\(|\)/g;
+	      matcher = /:([a-zA-Z_$][a-zA-Z0-9_$]*)|\*\*|\*|\(|\)|\\\(|\\\)/g;
 	  while (match = matcher.exec(pattern)) {
 	    if (match.index !== lastIndex) {
 	      tokens.push(pattern.slice(lastIndex, match.index));
@@ -21916,6 +21916,10 @@
 	      regexpSource += '(?:';
 	    } else if (match[0] === ')') {
 	      regexpSource += ')?';
+	    } else if (match[0] === '\\(') {
+	      regexpSource += '\\(';
+	    } else if (match[0] === '\\)') {
+	      regexpSource += '\\)';
 	    }
 
 	    tokens.push(match[0]);
@@ -22070,6 +22074,10 @@
 	      parenCount -= 1;
 
 	      if (parenCount) parenHistory[parenCount - 1] += parenText;else pathname += parenText;
+	    } else if (token === '\\(') {
+	      pathname += '(';
+	    } else if (token === '\\)') {
+	      pathname += ')';
 	    } else if (token.charAt(0) === ':') {
 	      paramName = token.substring(1);
 	      paramValue = params[paramName];
@@ -22280,7 +22288,7 @@
 	        children = _props.children;
 
 
-	    !history.getCurrentLocation ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'You have provided a history object created with history v2.x or ' + 'earlier. This version of React Router is only compatible with v3 ' + 'history objects. Please upgrade to history v3.x.') : (0, _invariant2.default)(false) : void 0;
+	    !history.getCurrentLocation ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'You have provided a history object created with history v4.x or v2.x ' + 'and earlier. This version of React Router is only compatible with v3 ' + 'history objects. Please change to history v3.x.') : (0, _invariant2.default)(false) : void 0;
 
 	    return (0, _createTransitionManager3.default)(history, (0, _RouteUtils.createRoutes)(routes || children));
 	  },
@@ -22937,7 +22945,7 @@
 	  return runTransitionHooks(hooks.length, function (index, replace, next) {
 	    var wrappedNext = function wrappedNext() {
 	      if (enterHooks.has(hooks[index])) {
-	        next();
+	        next.apply(undefined, arguments);
 	        enterHooks.remove(hooks[index]);
 	      }
 	    };
@@ -22961,7 +22969,7 @@
 	  return runTransitionHooks(hooks.length, function (index, replace, next) {
 	    var wrappedNext = function wrappedNext() {
 	      if (changeHooks.has(hooks[index])) {
-	        next();
+	        next.apply(undefined, arguments);
 	        changeHooks.remove(hooks[index]);
 	      }
 	    };
@@ -23363,9 +23371,14 @@
 	    if ((0, _PromiseUtils.isPromise)(indexRoutesReturn)) indexRoutesReturn.then(function (indexRoute) {
 	      return callback(null, (0, _RouteUtils.createRoutes)(indexRoute)[0]);
 	    }, callback);
-	  } else if (route.childRoutes) {
-	    (function () {
-	      var pathless = route.childRoutes.filter(function (childRoute) {
+	  } else if (route.childRoutes || route.getChildRoutes) {
+	    var onChildRoutes = function onChildRoutes(error, childRoutes) {
+	      if (error) {
+	        callback(error);
+	        return;
+	      }
+
+	      var pathless = childRoutes.filter(function (childRoute) {
 	        return !childRoute.path;
 	      });
 
@@ -23381,7 +23394,12 @@
 	      }, function (err, routes) {
 	        callback(null, routes);
 	      });
-	    })();
+	    };
+
+	    var result = getChildRoutes(route, location, paramNames, paramValues, onChildRoutes);
+	    if (result) {
+	      onChildRoutes.apply(undefined, result);
+	    }
 	  } else {
 	    callback();
 	  }
@@ -23435,7 +23453,7 @@
 	    // By assumption, pattern is non-empty here, which is the prerequisite for
 	    // actually terminating a match.
 	    if (remainingPathname === '') {
-	      var _ret2 = function () {
+	      var _ret = function () {
 	        var match = {
 	          routes: [route],
 	          params: createParams(paramNames, paramValues)
@@ -23466,7 +23484,7 @@
 	        };
 	      }();
 
-	      if ((typeof _ret2 === 'undefined' ? 'undefined' : _typeof(_ret2)) === "object") return _ret2.v;
+	      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
 	    }
 	  }
 
@@ -24044,7 +24062,7 @@
 
 	    if (router) {
 	      // If user does not specify a `to` prop, return an empty anchor tag.
-	      if (to == null) {
+	      if (!to) {
 	        return _react2.default.createElement('a', props);
 	      }
 
@@ -24161,6 +24179,10 @@
 	      var _this = this;
 
 	      var router = this.props.router || this.context.router;
+	      if (!router) {
+	        return _react2.default.createElement(WrappedComponent, this.props);
+	      }
+
 	      var params = router.params,
 	          location = router.location,
 	          routes = router.routes;
@@ -27113,6 +27135,9 @@
 			_.hooks.run('before-sanity-check', env);
 
 			if (!env.code || !env.grammar) {
+				if (env.code) {
+					env.element.textContent = env.code;
+				}
 				_.hooks.run('complete', env);
 				return;
 			}
@@ -27190,9 +27215,16 @@
 						lookbehindLength = 0,
 						alias = pattern.alias;
 
+					if (greedy && !pattern.pattern.global) {
+						// Without the global flag, lastIndex won't work
+						var flags = pattern.pattern.toString().match(/[imuy]*$/)[0];
+						pattern.pattern = RegExp(pattern.pattern.source, flags + "g");
+					}
+
 					pattern = pattern.pattern || pattern;
 
-					for (var i=0; i<strarr.length; i++) { // Don’t cache length as it changes during the loop
+					// Don’t cache length as it changes during the loop
+					for (var i=0, pos = 0; i<strarr.length; pos += strarr[i].length, ++i) {
 
 						var str = strarr[i];
 
@@ -27212,40 +27244,38 @@
 
 						// Greedy patterns can override/remove up to two previously matched tokens
 						if (!match && greedy && i != strarr.length - 1) {
-							// Reconstruct the original text using the next two tokens
-							var nextToken = strarr[i + 1].matchedStr || strarr[i + 1],
-							    combStr = str + nextToken;
-
-							if (i < strarr.length - 2) {
-								combStr += strarr[i + 2].matchedStr || strarr[i + 2];
-							}
-
-							// Try the pattern again on the reconstructed text
-							pattern.lastIndex = 0;
-							match = pattern.exec(combStr);
+							pattern.lastIndex = pos;
+							match = pattern.exec(text);
 							if (!match) {
-								continue;
+								break;
 							}
 
-							var from = match.index + (lookbehind ? match[1].length : 0);
-							// To be a valid candidate, the new match has to start inside of str
-							if (from >= str.length) {
+							var from = match.index + (lookbehind ? match[1].length : 0),
+							    to = match.index + match[0].length,
+							    k = i,
+							    p = pos;
+
+							for (var len = strarr.length; k < len && p < to; ++k) {
+								p += strarr[k].length;
+								// Move the index i to the element in strarr that is closest to from
+								if (from >= p) {
+									++i;
+									pos = p;
+								}
+							}
+
+							/*
+							 * If strarr[i] is a Token, then the match starts inside another Token, which is invalid
+							 * If strarr[k - 1] is greedy we are in conflict with another greedy pattern
+							 */
+							if (strarr[i] instanceof Token || strarr[k - 1].greedy) {
 								continue;
 							}
-							var to = match.index + match[0].length,
-							    len = str.length + nextToken.length;
 
 							// Number of tokens to delete and replace with the new match
-							delNum = 3;
-
-							if (to <= len) {
-								if (strarr[i + 1].greedy) {
-									continue;
-								}
-								delNum = 2;
-								combStr = combStr.slice(0, len);
-							}
-							str = combStr;
+							delNum = k - i;
+							str = text.slice(pos, p);
+							match.index -= pos;
 						}
 
 						if (!match) {
@@ -27314,7 +27344,7 @@
 		this.content = content;
 		this.alias = alias;
 		// Copy of the full string this token was created from
-		this.matchedStr = matchedStr || null;
+		this.length = (matchedStr || "").length|0;
 		this.greedy = !!greedy;
 	};
 
@@ -27350,13 +27380,11 @@
 
 		_.hooks.run('wrap', env);
 
-		var attributes = '';
+		var attributes = Object.keys(env.attributes).map(function(name) {
+			return name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+		}).join(' ');
 
-		for (var name in env.attributes) {
-			attributes += (attributes ? ' ' : '') + name + '="' + (env.attributes[name] || '') + '"';
-		}
-
-		return '<' + env.tag + ' class="' + env.classes.join(' ') + '" ' + attributes + '>' + env.content + '</' + env.tag + '>';
+		return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + (attributes ? ' ' + attributes : '') + '>' + env.content + '</' + env.tag + '>';
 
 	};
 
@@ -27389,7 +27417,11 @@
 
 		if (document.addEventListener && !script.hasAttribute('data-manual')) {
 			if(document.readyState !== "loading") {
-				requestAnimationFrame(_.highlightAll, 0);
+				if (window.requestAnimationFrame) {
+					window.requestAnimationFrame(_.highlightAll);
+				} else {
+					window.setTimeout(_.highlightAll, 16);
+				}
 			}
 			else {
 				document.addEventListener('DOMContentLoaded', _.highlightAll);
@@ -27418,10 +27450,10 @@
 	Prism.languages.markup = {
 		'comment': /<!--[\w\W]*?-->/,
 		'prolog': /<\?[\w\W]+?\?>/,
-		'doctype': /<!DOCTYPE[\w\W]+?>/,
+		'doctype': /<!DOCTYPE[\w\W]+?>/i,
 		'cdata': /<!\[CDATA\[[\w\W]*?]]>/i,
 		'tag': {
-			pattern: /<\/?(?!\d)[^\s>\/=.$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+			pattern: /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,
 			inside: {
 				'tag': {
 					pattern: /^<\/?[^\s>\/]+/i,
@@ -27478,7 +27510,10 @@
 		},
 		'url': /url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
 		'selector': /[^\{\}\s][^\{\};]*?(?=\s*\{)/,
-		'string': /("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,
+		'string': {
+			pattern: /("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,
+			greedy: true
+		},
 		'property': /(\b|\B)[\w-]+(?=\s*:)/i,
 		'important': /\B!important\b/i,
 		'function': /[-a-z0-9]+(?=\()/i,
@@ -27559,7 +27594,8 @@
 		'keyword': /\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
 		'number': /\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,
 		// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
-		'function': /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i
+		'function': /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i,
+		'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*\*?|\/|~|\^|%|\.{3}/
 	});
 
 	Prism.languages.insertBefore('javascript', 'keyword', {
@@ -46961,12 +46997,24 @@
 	  _createClass(TextInput, [{
 	    key: "onFocus",
 	    value: function onFocus() {
+	      var onFocus = this.props.onFocus;
+
+
 	      this.setState({ inFocus: true });
+	      if (onFocus) {
+	        onFocus();
+	      }
 	    }
 	  }, {
 	    key: "onBlur",
 	    value: function onBlur() {
+	      var onBlur = this.props.onBlur;
+
+
 	      this.setState({ inFocus: false });
+	      if (onBlur) {
+	        onBlur();
+	      }
 	    }
 	  }, {
 	    key: "focus",
@@ -47069,6 +47117,8 @@
 	  name: _react2.default.PropTypes.string.isRequired,
 	  onChange: _react2.default.PropTypes.func,
 	  onKeyPress: _react2.default.PropTypes.func,
+	  onFocus: _react2.default.PropTypes.func,
+	  onBlur: _react2.default.PropTypes.func,
 	  placeholder: _react2.default.PropTypes.node,
 	  readOnly: _react2.default.PropTypes.bool,
 	  required: _react2.default.PropTypes.bool,
@@ -50149,7 +50199,7 @@
 
 
 	// module
-	exports.push([module.id, ".Select--container {\n  position: relative;\n}\n.Select--container .Select--labelContainer {\n  color: #566279;\n  font-size: 0.625rem;\n  position: absolute;\n  text-transform: uppercase;\n  top: 5px;\n  width: 100%;\n}\n.Select--container .Select--labelContainer.Select--labelHidden {\n  opacity: 0 !important;\n}\n.Select--container .Select--labelContainer .Select--label {\n  left: 10px;\n  position: absolute;\n}\n.Select--container .Select--ReactSelect.is-focused:not(.is-open) > .Select-control {\n  border-color: #e3e6eb;\n  box-shadow: inset 5px 0 #4274f6;\n  transition: box-shadow 0.25s ease-out;\n}\n.Select--container .Select--ReactSelect.is-disabled .Select-control {\n  background-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper {\n  padding-top: 15px;\n  padding-left: 5px;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value {\n  border-color: #e3e6eb;\n  color: #191926;\n  line-height: 1rem;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-icon {\n  background-color: #e3e6eb;\n  float: right;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-label {\n  background-color: #fafafc;\n}\n.Select--container .Select--ReactSelect .Select-control {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n  height: 50px;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-placeholder {\n  font-size: .75rem;\n  line-height: 40px;\n  padding-top: 5px;\n  text-transform: uppercase;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-input {\n  position: absolute;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-input,\n.Select--container .Select--ReactSelect .Select-control .Select-value {\n  font-size: 1rem;\n  line-height: 40px;\n  top: 10px;\n}\n.Select--container .Select--ReactSelect .has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.Select--container .Select--ReactSelect .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option.is-focused {\n  box-shadow: inset 5px 0 #4274f6;\n  background-color: #fafafc;\n}\n", ""]);
+	exports.push([module.id, ".Select--container {\n  position: relative;\n}\n.Select--container .Select--labelContainer {\n  font-size: 0.625rem;\n  color: #566279;\n  position: absolute;\n  text-transform: uppercase;\n  top: 0.5rem;\n  width: 100%;\n}\n.Select--container .Select--labelContainer.Select--labelHidden {\n  opacity: 0 !important;\n}\n.Select--container .Select--labelContainer .Select--label {\n  left: 0.75rem;\n  position: absolute;\n}\n.Select--container .Select--ReactSelect.is-focused:not(.is-open) > .Select-control {\n  border-color: #e3e6eb;\n  box-shadow: inset 0.25rem 0 #4274f6;\n  transition: box-shadow 0.25s ease-out;\n}\n.Select--container .Select--ReactSelect.is-disabled .Select-control {\n  background-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper {\n  padding-top: 1rem;\n  padding-left: 0.25rem;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value {\n  border-color: #e3e6eb;\n  color: #191926;\n  line-height: 1rem;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-icon {\n  background-color: #e3e6eb;\n  float: right;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-label {\n  background-color: #fafafc;\n}\n.Select--container .Select--ReactSelect .Select-control {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n  height: 3.5rem;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-placeholder {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n  padding-top: 0.5rem;\n  font-size: 0.75rem;\n  line-height: 2.5rem;\n  text-transform: uppercase;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-input {\n  position: absolute;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-input,\n.Select--container .Select--ReactSelect .Select-control .Select-value {\n  padding-left: 0.75rem;\n  font-size: 1rem;\n  line-height: 2.5rem;\n  top: 0.75rem;\n}\n.Select--container .Select--ReactSelect .has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.Select--container .Select--ReactSelect .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer {\n  border-radius: 0rem;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option.is-focused {\n  box-shadow: inset 0.25rem 0 #4274f6;\n  background-color: #fafafc;\n}\n", ""]);
 
 	// exports
 
@@ -52347,7 +52397,7 @@
 
 	  var open = props._open ? cssClass.OPEN : null;
 	  return _react2.default.createElement(_NavLink.NavLink, {
-	    className: (0, _classnames2.default)(cssClass.CONTAINER, open),
+	    className: (0, _classnames2.default)(cssClass.CONTAINER, props.className, open),
 	    label: props.label,
 	    icon: props.icon,
 	    onClick: props._onClick
@@ -52355,6 +52405,7 @@
 	}
 
 	NavGroup.propTypes = {
+	  className: _react.PropTypes.string,
 	  id: _react.PropTypes.string.isRequired,
 	  icon: _react.PropTypes.node.isRequired,
 	  label: _react.PropTypes.string.isRequired,
