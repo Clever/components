@@ -1,0 +1,221 @@
+@import (reference) "../less/border";
+@import (reference) "../less/colors";
+@import (reference) "../less/spacing";
+@import (reference) "../Button/Button";
+
+@dropdown_arrow_small: @size_2xs;
+@dropdown_arrow_regular: @size_2xs + ((@size_xs - @size_2xs) / 2);
+@dropdown_arrow_large: @size_xs;
+
+.DropdownButton {
+  display: inline-block;
+  position: relative;
+}
+
+.DropdownButton--Button:extend(button.Button) {
+  .Button {
+    border: none;
+    border-radius: 0;
+  }
+}
+
+.DropdownButton--primary:extend(button.Button--primary all) {}
+.DropdownButton--secondary:extend(button.Button--secondary all) {}
+.DropdownButton--destructive:extend(button.Button--destructive all) {}
+.DropdownButton--small:extend(button.Button--small) {}
+.DropdownButton--regular:extend(button.Button--regular) {}
+.DropdownButton--large:extend(button.Button--large) {}
+.DropdownButton--Button.DropdownButton--disabled:extend(button.Button[disabled]) {
+  .DropdownButton--mainButton.Button {
+    &::after {
+      .border--right--s(@neutral_dark_gray);
+    }
+  }
+  &:hover {
+    .DropdownButton--mainButton.Button {
+      .border--right--s(@neutral_dark_gray);
+    }
+  }
+
+  .DropdownButton--dropdownArrow--arrow {
+    border-color: @neutral_dark_gray transparent transparent;
+    &:hover, &:focus, &:active {
+      border-color: @neutral_dark_gray transparent transparent;
+    }
+  }
+}
+
+
+.DropdownButton--primary, .DropdownButton--destructive {
+  .DropdownButton--mainButton {
+    position: relative;
+
+    &::after {
+      .border--right--s(@neutral_white);
+    }
+  }
+
+  .DropdownButton--dropdownArrow--arrow {
+    border-color: @neutral_white transparent transparent;
+    &:hover, &:focus, &:active {
+      border-color: @neutral_white transparent transparent;
+    }
+  }
+}
+
+.DropdownButton--small {
+  .DropdownButton--mainButton {
+    .padding--right--xs;
+    .padding--left--s;
+    .padding--top--xs;
+    .padding--bottom--2xs;
+  }
+
+  .DropdownButton--dropdownArrow {
+    .padding--left--xs;
+    .padding--right--s;
+    .padding--top--xs;
+    .padding--bottom--2xs;
+  }
+
+  .DropdownButton--dropdownArrow--arrow {
+    border-width: @dropdown_arrow_small @dropdown_arrow_small (@dropdown_arrow_small / 2);
+  }
+}
+
+.DropdownButton--regular {
+  .DropdownButton--mainButton {
+    .padding--right--xs;
+    .padding--left--s;
+    .padding--top--s;
+    .padding--bottom--xs;
+  }
+
+  .DropdownButton--dropdownArrow {
+    .padding--left--xs;
+    .padding--right--s;
+    .padding--top--s;
+    .padding--bottom--xs;
+  }
+
+  .DropdownButton--dropdownArrow--arrow {
+    border-width: @dropdown_arrow_regular @dropdown_arrow_regular (@dropdown_arrow_regular / 2);
+  }
+}
+
+.DropdownButton--large {
+  .DropdownButton--mainButton {
+    .padding--right--s;
+    .padding--left--m;
+    .padding--top--m;
+    .padding--bottom--s;
+  }
+
+  .DropdownButton--dropdownArrow {
+    .padding--left--s;
+    .padding--right--m;
+    .padding--top--m;
+    .padding--bottom--s;
+  }
+
+  .DropdownButton--dropdownArrow--arrow {
+    border-width: @dropdown_arrow_large @dropdown_arrow_large (@dropdown_arrow_large / 2);
+  }
+}
+
+.DropdownButton--secondary {
+  .DropdownButton--mainButton {
+    position: relative;
+
+    &::after {
+      .border--right--s(@primary_blue);
+    }
+  }
+
+  .DropdownButton--dropdownArrow--arrow {
+    border-color: @primary_blue transparent transparent;
+    &:hover, &:focus, &:active {
+      border-color: @primary_blue transparent transparent;
+    }
+  }
+}
+
+.DropdownButton--mainButton {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 50%;
+    right: 0;
+    top: 25%;
+  }
+}
+
+// nest this so that it wins out in specificity
+.DropdownButton--Button {
+  .padding--none;
+
+  .DropdownButton--dropdownArrow {
+    background: none;
+  }
+
+  .DropdownButton--dropdownArrow--arrow {
+    border-style: solid;
+    padding: 0;
+    vertical-align: middle;
+  }
+}
+
+.DropdownButton--options--hidden {
+  display: none;
+}
+
+.DropdownButton--options {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: @size_5xl * 4;
+  background: @neutral_white;
+  .borderRadius--bottom--m;
+  &:hover, &:focus, &:active {
+    outline: 0;
+  }
+}
+
+.DropdownButton--primary, .DropdownButton--secondary {
+  & ~ .DropdownButton--options {
+    .border--s(@primary_blue);
+
+    .DropdownButton--options--option {
+      &:hover, &:active, &:focus {
+        color: @neutral_white;
+        background: @primary_blue;
+      }
+      &:not(:last-of-type) {
+        .border--bottom--s(@primary_blue);
+      }
+    }
+  }
+}
+
+.DropdownButton--destructive ~ .DropdownButton--options {
+  .border--s(@alert_red);
+
+  .DropdownButton--options--option {
+    &:hover, &:active, &:focus {
+      color: @neutral_white;
+      background: @alert_red;
+    }
+    &:not(:last-of-type) {
+      .border--bottom--s(@alert_red);
+    }
+  }
+}
+
+.DropdownButton--options--option.Button {
+  display: block;
+  border-radius: 0;
+  width: 100%;
+  text-align: left;
+}
