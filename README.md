@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table), [Grid](#grid), [FlexBox](#flexbox-and-flexitem), [TabBar](#tabbar-and-tab), [ProgressBar](#progressbar), [Wizard](#wizard)
+**Jump to** [Modal](#modal), [Button](#button), [DropdownButton](#dropdownbutton), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table), [Grid](#grid), [FlexBox](#flexbox-and-flexitem), [TabBar](#tabbar-and-tab), [ProgressBar](#progressbar), [Wizard](#wizard)
 
 ## Install
 
@@ -138,6 +138,67 @@ This is a set of button components with various sizes and types.
 ```jsx
 <Button value="Go Back" type="secondary" href="/previousPage" />
 <Button value="Save Changes" type="primary" size="regular" onClick={saveChanges} />
+```
+
+### DropdownButton
+[View Demo](http://clever.github.io/components/#/components/dropdown-button)
+
+This is a button that also functions as a dropdown. The left portion executes the button action,
+while the right reveals a dropdown with further options.
+
+Most of the arguments for `Button` can be applied to a `DropdownButton` with a couple
+exceptions—namely:
+
+* `type` can only be one of `primary`, `secondary`, and `destructive`
+* Each button listed in the `options` array have only a subset of `Button`'s props, and require a
+    `key` that uniquely identifies each option
+
+**Options**
+
+| Prop                | Type     | Description                                          | Default
+|---------------------|----------|------------------------------------------------------|---------
+| value               | String   | The text that appears on the button                  | None
+| type                | String   | One of `primary`, `secondary`, `destructive`         | `secondary`
+| size                | String   | One of "large", "regular", "small"                   | `regular`
+| options             | Object (shape below) | Options to display when dropdown is expanded | None
+| onClick (optional)  | Function | Called when the user clicks on the button            | None
+| href (optional)     | String   | If provided, causes the button to behave as a link   | None
+| target (optional)   | String   | For links, either "_self" or "_blank"                | "_blank"
+| disabled (optional) | Bool     | User interaction is disabled when true               | false
+| submit (optional)   | Bool     | Behaves as a submit button when true                 | false
+| style (optional)    | Object   | Add custom styles (e.g. margin) if you must          | None
+| className (optional)| String   | Additional classname to apply to the button          | None
+| width (optional)    | String   | CSS-style fixed width for the entire dropdown button to span | None
+| dropdownWidth (optional)    | String   | CSS-style fixed width for the options  to span | "100%"
+
+**`options` shape**
+
+| Prop                | Type     | Description                                          | Default
+|---------------------|----------|------------------------------------------------------|---------
+| value               | String   | The text that appears on the button                  | None
+| key                 | String   | Unique key that identifies the option                | None
+| href (optional)     | String   | If provided, causes the button to behave as a link   | None
+| target (optional)   | String   | For links, either "_self" or "_blank"                | "_blank"
+| disabled (optional) | Bool     | User interaction is disabled when true               | false
+| onClick (optional)  | Function | Called when the user clicks on the button            | None
+
+**Usage Example**
+
+```jsx
+const options = [
+  {
+    value: "Preview changes",
+    key: "preview",
+    onClick: {previewChanges},
+  },
+  {
+    value: "Apply changes to staging",
+    key: "staging",
+    onClick: {stageChanges},
+  },
+];
+<DropdownButton value="Go Back" type="secondary" href="/previousPage" />
+<DropdownButton value="Save Changes" type="primary" size="regular" onClick={saveChanges} options={options}/>
 ```
 
 ### ModalButton
