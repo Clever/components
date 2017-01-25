@@ -20,6 +20,7 @@ export default function DropdownButtonView() {
       value: "Option 2",
       key: "2",
       onClick: () => alert("Option 2"),
+      disabled: true,
     },
     {
       value: "Long option to see with text wrapping",
