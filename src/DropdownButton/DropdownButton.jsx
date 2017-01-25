@@ -51,7 +51,7 @@ export class DropdownButton extends React.Component {
           <Button
             className={cssClass.DROPDOWN_ARROW_WRAPPER}
             onClick={() => {
-              this.handleDropdown("toggle", () => this.optionsElem.focus());
+              this.handleDropdown("toggle", () => this.state.expanded && this.optionsElem.focus());
             }}
             aria-label="More options"
             value={<div className={cssClass.DROPDOWN_ARROW} />}
@@ -68,7 +68,10 @@ export class DropdownButton extends React.Component {
             }
           }}
           ref={(elem) => (this.optionsElem = elem)}
-          {...(expanded && {tabIndex: 1})}
+          {
+            // need to add tab index so that this is focusable, so that blur event can fire
+            ...(expanded && {tabIndex: 0})
+          }
           style={dropdownWidth ? {width: dropdownWidth} : {}}
         >
           {options.map((option) => (
