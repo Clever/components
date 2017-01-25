@@ -33,7 +33,7 @@ export class DropdownButton extends React.Component {
     const {expanded} = this.state;
 
     return (
-      <div className={cssClass.CONTAINER}>
+      <div ref={(elem) => (this.wrapperElem = elem)} className={cssClass.CONTAINER}>
         <div
           className={classnames(
             cssClass.PARENT, cssClass.type(type), cssClass.size(size),
@@ -60,7 +60,7 @@ export class DropdownButton extends React.Component {
         <div
           className={classnames(cssClass.OPTIONS, !expanded && cssClass.OPTIONS_HIDDEN)}
           onBlur={(e) => {
-            if (!e.relatedTarget || !(
+            if (!e.relatedTarget || !this.wrapperElem.contains(e.relatedTarget) || !(
               e.relatedTarget.matches(`.${cssClass.OPTION}`) ||
               e.relatedTarget.matches(`.${cssClass.DROPDOWN_ARROW_WRAPPER}`)
             )) {
