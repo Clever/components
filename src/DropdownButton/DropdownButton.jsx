@@ -14,16 +14,17 @@ export class DropdownButton extends React.Component {
     };
   }
 
-  handleDropdown(cb) {
+  handleDropdown(expand, cb) {
     this.setState((prevState) => ({
-      expanded: !prevState.expanded,
+      expanded: expand === "toggle" ? !prevState.expanded : expand,
     }), cb);
   }
 
   render() {
     const {cssClass} = DropdownButton;
     const {
-      className, type, size, value, href, target, disabled, onClick, submit, style, options,
+      className, type, size, value, href, target, disabled, onClick, submit, style,
+      options, width, dropdownWidth,
     } = this.props;
     const directlyInheritedProps = {
       value, href, target, disabled, submit, onClick,
@@ -44,12 +45,13 @@ export class DropdownButton extends React.Component {
             className={cssClass.MAIN_BUTTON}
             {...directlyInheritedProps}
             type="plain"
+            style={width ? {width} : {}}
           />
 
           <Button
             className={cssClass.DROPDOWN_ARROW_WRAPPER}
             onClick={() => {
-              this.handleDropdown(() => this.optionsElem.focus());
+              this.handleDropdown("toggle", () => this.optionsElem.focus());
             }}
             aria-label="More options"
             value={<div className={cssClass.DROPDOWN_ARROW} />}
@@ -57,18 +59,26 @@ export class DropdownButton extends React.Component {
         </div>
         <div
           className={classnames(cssClass.OPTIONS, !expanded && cssClass.OPTIONS_HIDDEN)}
-          onBlur={() => this.handleDropdown()}
+          onBlur={(e) => {
+            if (!e.relatedTarget || !(
+              e.relatedTarget.matches(`.${cssClass.OPTION}`) ||
+              e.relatedTarget.matches(`.${cssClass.DROPDOWN_ARROW_WRAPPER}`)
+            )) {
+              this.handleDropdown(false);
+            }
+          }}
           ref={(elem) => (this.optionsElem = elem)}
           {...(expanded && {tabIndex: 1})}
+          style={dropdownWidth ? {width: dropdownWidth} : {}}
         >
           {options.map((option) => (
             <Button
               className={cssClass.OPTION}
               type="link"
               {..._.omit(option, ["onClick"])}
-              onMouseDown={() => {
+              onClick={() => {
                 option.onClick();
-                this.handleDropdown();
+                this.handleDropdown(false);
               }}
             />
           ))}
@@ -89,6 +99,8 @@ const optionShape = React.PropTypes.shape(Object.assign(
 DropdownButton.propTypes = Object.assign({}, _.omit(Button.propTypes, ["type"]), {
   type: React.PropTypes.oneOf(["primary", "secondary", "destructive"]),
   options: React.PropTypes.arrayOf(optionShape).isRequired,
+  width: React.PropTypes.string,
+  dropdownWidth: React.PropTypes.string,
 });
 
 

@@ -182,7 +182,7 @@
   position: absolute;
   left: 0;
   top: 100%;
-  width: @size_5xl * 4;
+  width: 100%;
   background: @neutral_white;
   .borderRadius--bottom--m;
   &:hover, &:focus, &:active {
@@ -210,6 +210,8 @@
   .border--s(@alert_red);
 
   .DropdownButton--options--option {
+    color: @alert_red;
+
     &:hover, &:active, &:focus {
       color: @neutral_white;
       background: @alert_red;
