@@ -28,13 +28,13 @@
 .DropdownButton--regular:extend(button.Button--regular) {}
 .DropdownButton--large:extend(button.Button--large) {}
 .DropdownButton--Button.DropdownButton--disabled:extend(button.Button[disabled]) {
-  .DropdownButton--mainButton.Button {
-    &::after {
-      .border--right--s(@neutral_dark_gray);
-    }
+  .DropdownButton--mainButton.Button::after {
+    .border--right--s(@neutral_dark_gray);
   }
+
   &:hover, &:focus, &:active {
-    .DropdownButton--mainButton.Button {
+    .buttonColor(@neutral_silver, true);
+    .DropdownButton--mainButton.Button::after {
       .border--right--s(@neutral_dark_gray);
     }
   }
