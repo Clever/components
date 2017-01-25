@@ -1,6 +1,7 @@
 @import (reference) "../less/border";
 @import (reference) "../less/colors";
 @import (reference) "../less/spacing";
+@import (reference) "../less/flex";
 @import (reference) "../Button/Button";
 
 @dropdown_arrow_small: @size_2xs;
@@ -13,6 +14,7 @@
 }
 
 .DropdownButton--Button:extend(button.Button) {
+  .flexbox();
   .Button {
     border: none;
     border-radius: 0;
@@ -141,6 +143,8 @@
 }
 
 .DropdownButton--mainButton {
+  display: block;
+  .flexGrow(1);
   position: relative;
 
   &::after {
@@ -157,6 +161,9 @@
   .padding--none;
 
   .DropdownButton--dropdownArrow {
+    display: block;
+    .flexShrink(0);
+    .flexGrow(0);
     background: none;
   }
 
