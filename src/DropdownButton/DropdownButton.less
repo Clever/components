@@ -33,7 +33,7 @@
       .border--right--s(@neutral_dark_gray);
     }
   }
-  &:hover {
+  &:hover, &:focus, &:active {
     .DropdownButton--mainButton.Button {
       .border--right--s(@neutral_dark_gray);
     }
@@ -201,6 +201,10 @@
       }
       &:not(:last-of-type) {
         .border--bottom--s(@primary_blue);
+
+        &:hover, &:active, &:focus {
+          .border--bottom--s(@primary_blue);
+        }
       }
     }
   }
@@ -218,6 +222,10 @@
     }
     &:not(:last-of-type) {
       .border--bottom--s(@alert_red);
+
+      &:hover, &:active, &:focus {
+        .border--bottom--s(@alert_red);
+      }
     }
   }
 }
