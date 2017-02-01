@@ -15,6 +15,7 @@
 
 .DropdownButton--Button:extend(button.Button) {
   .flexbox();
+
   .Button {
     border: none;
     border-radius: 0;
@@ -28,12 +29,14 @@
 .DropdownButton--regular:extend(button.Button--regular) {}
 .DropdownButton--large:extend(button.Button--large) {}
 .DropdownButton--Button.DropdownButton--disabled:extend(button.Button[disabled]) {
+
   .DropdownButton--mainButton.Button::after {
     .border--right--s(@neutral_dark_gray);
   }
 
   &:hover, &:focus, &:active {
     .buttonColor(@neutral_silver, true);
+
     .DropdownButton--mainButton.Button::after {
       .border--right--s(@neutral_dark_gray);
     }
@@ -41,6 +44,7 @@
 
   .DropdownButton--dropdownArrow--arrow {
     border-color: @neutral_dark_gray transparent transparent;
+
     &:hover, &:focus, &:active {
       border-color: @neutral_dark_gray transparent transparent;
     }
@@ -49,6 +53,7 @@
 
 
 .DropdownButton--primary, .DropdownButton--destructive {
+
   .DropdownButton--mainButton {
     position: relative;
 
@@ -59,6 +64,7 @@
 
   .DropdownButton--dropdownArrow--arrow {
     border-color: @neutral_white transparent transparent;
+
     &:hover, &:focus, &:active {
       border-color: @neutral_white transparent transparent;
     }
@@ -66,6 +72,7 @@
 }
 
 .DropdownButton--small {
+
   .DropdownButton--mainButton {
     .padding--right--xs;
     .padding--left--s;
@@ -86,6 +93,7 @@
 }
 
 .DropdownButton--regular {
+
   .DropdownButton--mainButton {
     .padding--right--xs;
     .padding--left--s;
@@ -106,6 +114,7 @@
 }
 
 .DropdownButton--large {
+
   .DropdownButton--mainButton {
     .padding--right--s;
     .padding--left--m;
@@ -126,6 +135,7 @@
 }
 
 .DropdownButton--secondary {
+
   .DropdownButton--mainButton {
     position: relative;
 
@@ -136,6 +146,7 @@
 
   .DropdownButton--dropdownArrow--arrow {
     border-color: @primary_blue transparent transparent;
+
     &:hover, &:focus, &:active {
       border-color: @primary_blue transparent transparent;
     }
@@ -185,20 +196,24 @@
   width: 100%;
   background: @neutral_white;
   .borderRadius--bottom--m;
+
   &:hover, &:focus, &:active {
     outline: 0;
   }
 }
 
 .DropdownButton--primary, .DropdownButton--secondary {
+
   & ~ .DropdownButton--options {
     .border--s(@primary_blue);
 
     .DropdownButton--options--option {
+
       &:hover, &:active, &:focus {
         color: @neutral_white;
         background: @primary_blue;
       }
+
       &:not(:last-of-type) {
         .border--bottom--s(@primary_blue);
 
@@ -220,6 +235,7 @@
       color: @neutral_white;
       background: @alert_red;
     }
+
     &:not(:last-of-type) {
       .border--bottom--s(@alert_red);
 
