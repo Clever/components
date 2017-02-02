@@ -39,7 +39,7 @@ export default function FlexExample() {
 
       <h2>FlexBox as FlexItem</h2>
       <p>
-        FlexBoxes can be nested as any other eleemnts.
+        FlexBoxes can be nested as any other elements.
         FlexItem properties, such as <code>grow</code> can also be applied for FlexItem behavior.
       </p>
       <FlexBox className={classnames(cssClass.BOX, cssClass.BOX_MIN_WIDTH)}>
