@@ -54356,7 +54356,7 @@
 	    _react2.default.createElement(
 	      "p",
 	      null,
-	      "FlexBoxes can be nested as any other eleemnts. FlexItem properties, such as ",
+	      "FlexBoxes can be nested as any other elements. FlexItem properties, such as ",
 	      _react2.default.createElement(
 	        "code",
 	        null,
