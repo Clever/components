@@ -2,12 +2,12 @@
 @import (reference) "../less/index";
 
 
-.buttonColor(@backgroundColor: @primary_blue) {
+.buttonColor(@backgroundColor: @primary_blue, @disabled: false) {
   background-color: @backgroundColor;
   border-color: @backgroundColor;
   .shade(border-bottom-color, @backgroundColor, 2);
 
-  &:not([disabled]) {
+  & when (@disabled = false) {
     &:hover,
     &:focus,
     &:active {
@@ -36,7 +36,7 @@ a, button {
     &[disabled]:hover,
     &[disabled]:focus
     &[disabled]:active {
-      .buttonColor(@neutral_silver);
+      .buttonColor(@neutral_silver, true);
       cursor: not-allowed;
       color: @neutral_dark_gray;
 
