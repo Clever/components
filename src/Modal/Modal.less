@@ -28,15 +28,15 @@
   background: #FAFCFC;
 }
 
-.Modal--header{
+.Modal--header {
   background: #E3E6EB;
   height: 60px;
   padding: 15px 30px;
   box-sizing: border-box;
 
-  h2{
+  h2 {
     padding: 0;
-    margin: 0 15px 0 0; /* 15px for close button on right */
+    margin: 0 20px 0 0; /* 15px for close button on right */
     font-size: 22px;
     line-height: 30px;
     font-weight: 500;
@@ -48,7 +48,7 @@
   }
 }
 
-.Modal--close{
+.Modal--close {
   display: block;
   position: absolute;
   cursor: pointer;
@@ -63,6 +63,7 @@
   padding: 0;
   margin: 0;
   opacity: 0.4;
+
   &:hover {
     opacity: 0.8;
   }
@@ -84,9 +85,11 @@
 .Modal footer {
   margin-top: 40px;
   text-align: right;
+
   .Button {
     margin-right: 20px;
   }
+
   .Button:last-child {
     margin-right: 0;
   }
