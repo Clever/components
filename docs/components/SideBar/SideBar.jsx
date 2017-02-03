@@ -24,6 +24,7 @@ export default function SideBar({className}) {
       </NavGroup>
       <NavGroup title="Components">
         <NavLink href="/components/button">Button</NavLink>
+        <NavLink href="/components/dropdown-button">DropdownButton</NavLink>
         <NavLink href="/components/confirmation-button">ConfirmationButton</NavLink>
         <NavLink href="/components/copyable-input">CopyableInput</NavLink>
         <NavLink href="/components/flex-box">FlexBox</NavLink>

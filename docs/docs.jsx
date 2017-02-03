@@ -3,6 +3,7 @@ import {render} from "react-dom";
 import {IndexRedirect, Route, Router, hashHistory} from "react-router";
 
 import ButtonView from "./components/ButtonView";
+import DropdownButtonView from "./components/DropdownButtonView";
 import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
 import CopyableInputView from "./components/CopyableInputView";
@@ -45,6 +46,7 @@ render((
       </Route>
       <Route path="components">
         <Route path="button(/*)" component={ButtonView} />
+        <Route path="dropdown-button(/*)" component={DropdownButtonView} />
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
