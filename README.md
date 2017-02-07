@@ -1,6 +1,6 @@
 # Clever Front End Components
 
-**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table), [Grid](#grid), [FlexBox](#flexbox-and-flexitem), [TabBar](#tabbar-and-tab), [ProgressBar](#progressbar), [Wizard](#wizard)
+**Jump to** [Modal](#modal), [Button](#button), [ModalButton](#modalbutton), [ConfirmationButton](#confirmationbutton), [TextInput](#textinput), [TextArea](#textarea), [Select](#select), [SegmentedControl](#segmentedcontrol), [Table](#table), [Grid](#grid), [FlexBox](#flexbox-and-flexitem), [TabBar](#tabbar-and-tab), [ProgressBar](#progressbar), [Wizard](#wizard)
 
 ## Install
 
@@ -280,6 +280,42 @@ This is a special [TextInput](#textinput) that allows the user to show/hide the 
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
 | enableCopy (optional) | Bool | Display a Copy link | True
+
+
+### TextArea
+[View Demo](http://clever.github.io/components/#/components/text-area)
+
+This component is a `text area` that lets the user input multiple lines of text.
+
+**Options**
+
+| Prop             | Type     | Description                           | Default
+|------------------|----------|---------------------------------------|---------
+| disabled (optional) | Bool | Sets element as disabled. | false
+| error (optional) | String | Adds indicator and error text to element | None
+| label (optional) | String | Label for element | None
+| maxLength (optional) | Number | Maximum number of characters allowed | None
+| minLength (optional) | Number | Minimum number of characters required | None
+| name (required) | String | Name for input element | None
+| onChange (optional) | Function | Called when value of input changes | None
+| placeholder (optional) | Node | Placeholder node for input | None
+| readOnly (optional) | Bool | Sets element as read-only | false
+| required (optional) | Bool | Marks input as required and adds indicator | false
+| spellCheck (optional) | Bool | Turns on spelling/grammar check for input | false
+| value (optional) | Node | Value of input | None
+
+**Usage Example**
+
+```jsx
+  <TextArea
+    label="Long Text"
+    name="BasicTextArea"
+    placeholder="Lorem ipsum"
+    onChange={this.onChangeText}
+    isRequired=true
+    error={this.state.error}
+  />
+```
 
 ### Select
 [View Demo](http://clever.github.io/components/#/components/select)
