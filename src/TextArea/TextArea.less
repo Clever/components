@@ -1,0 +1,96 @@
+@import (reference) "../less/utilities";
+
+.TextArea {
+  .padding--left--s;
+  .padding--top--3xs;
+  .text--regular;
+  .border--s(@neutral_silver);
+  position: relative;
+  color: @neutral_black;
+  background: @neutral_white;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.TextArea--infoRow {
+  .text--tiny;
+  .text--caps;
+  position: absolute;
+  top: @size_xs;
+  width: 100%;
+  color: @neutral_dark_gray;
+
+  .TextArea--label {
+    left: @size_s;
+    opacity: 1;
+  }
+
+  .TextArea--required {
+    position: absolute;
+    right: @size_l;
+  }
+
+  .TextArea--error {
+    color: @alert_red;
+    position: absolute;
+    right: @size_l;
+  }
+}
+
+.TextArea--input {
+  .text--medium;
+  display: block;
+  width: 100%;
+  .border--s(transparent);
+  .text--line-height-3;
+  .padding--top--l;
+  background-color: transparent;
+  outline: none;
+  resize: vertical;
+}
+
+&.TextArea--placeholder-shown {
+
+  .TextArea--label {
+    opacity: 0 !important;
+  }
+
+  .TextArea--input {
+    .text--small;
+    .text--caps;
+    .padding--top--xs;
+    .text--line-height-3;
+    color: @neutral_dark_gray;
+  }
+}
+
+&.TextArea--hasError {
+  box-shadow: inset @size_2xs 0 @alert_red;
+  transition: box-shadow .25s ease-out;
+}
+
+&.TextArea--inFocus {
+  box-shadow: inset @size_2xs 0 @primary_blue;
+  transition: box-shadow .25s ease-out;
+}
+
+&.TextArea--disabled {
+  .border--s(@neutral_silver);
+  color: @neutral_dark_gray;
+  background: @neutral_silver;
+
+  .TextArea--input {
+    background: transparent;
+  }
+}
+
+&.TextArea--readonly {
+  .border--s(transparent);
+  color: @neutral_black;
+  background: transparent;
+}
+
+// Hides the IE copy and clear buttons
+input::-ms-reveal, input::-ms-clear {
+  display: none;
+}
