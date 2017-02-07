@@ -37,6 +37,7 @@ export default function SideBar({className}) {
         <NavLink href="/components/select">Select</NavLink>
         <NavLink href="/components/tab-bar">TabBar</NavLink>
         <NavLink href="/components/table">Table</NavLink>
+        <NavLink href="/components/text-area">TextArea</NavLink>
         <NavLink href="/components/text-input">TextInput</NavLink>
         <NavLink href="/components/wizard">Wizard</NavLink>
       </NavGroup>
