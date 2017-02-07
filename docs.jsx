@@ -24,6 +24,7 @@ import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
 import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
+import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
@@ -57,6 +58,7 @@ render((
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
+        <Route path="text-area(/*)" component={TextAreaView} />
         <Route path="table(/*)" component={TableView} />
         <Route path="text-input(/*)" component={TextInputView} />
         <Route path="wizard(/*)" component={WizardView} />
