@@ -221,6 +221,10 @@ export default function LessStyleGuideView() {
               to have an Alert state and apply it where needed.</p>
             </Example>
 
+            <h2>Formatting</h2>
+            <p>Following the rest of our guidelines for code, please use spaces for indention. An indent
+            should be 2 spaces.</p>
+
           </Col>
         </Row>
       </Grid>
