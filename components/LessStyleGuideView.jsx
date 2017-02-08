@@ -14,9 +14,9 @@ export default function LessStyleGuideView() {
       <Grid>
         <Row grow className="margin--bottom--xl">
           <Col span={6} className="self--start padding--right--l">
-            <h2>Naming and Structuring</h2>
-            <p>Dewey uses a mix of BEM and Atomic CSS for naming conventions and structuring. It is influenced by&nbsp;
-            <a href="http://basscss.com/">Basscss</a> for utility classes, while components are 
+            <h2>Naming Conventions</h2>
+            <p>Dewey uses a mix of BEM and Atomic CSS for naming conventions. It is influenced by&nbsp;
+            <a href="http://basscss.com/">Basscss</a> for utility classes, while components are
             written with a BEM notation.</p>
 
             <Example
@@ -25,7 +25,7 @@ export default function LessStyleGuideView() {
                     @zIndex--1: 100;
                 `}
               >
-              	Variables are the most atomic building blocks of Dewey. Each variable defines a single value for a 
+              	Variables are the most atomic building blocks of Dewey. Each variable defines a single value for a
             	specific attribute. Variables are lower-cased camelCase with a double dash <code>--</code> for modifiers.
               </Example>
 
@@ -39,7 +39,7 @@ export default function LessStyleGuideView() {
                 `}
               >
               	Mixins are the next layer of Dewey, they assemble attributes into meaningfully grouped elements
-            	that are readable and composable. Mixins are lower-cased camelCase with a double dash <code>--</code> 
+            	that are readable and composable. Mixins are lower-cased camelCase with a double dash <code>--</code>
             	between modifiers.
               </Example>
 
@@ -53,7 +53,7 @@ export default function LessStyleGuideView() {
                 `}
               >
               	We use mixin functions for more complex attribute collections that should be similarly reusable and
-              	composable. Mixin functions are lower-cased camelCase with a double dash <code>--</code> 
+              	composable. Mixin functions are lower-cased camelCase with a double dash <code>--</code>
             	between modifiers.
               </Example>
 
@@ -69,14 +69,61 @@ export default function LessStyleGuideView() {
 					}
                 `}
               >
-              	Components are composed of variables and mixins to define interactions for specific elements and UI 
+              	Components are composed of variables and mixins to define interactions for specific elements and UI
               	patterns. Components use a title-cased CamelCase with a double dash <code>--</code> between
               	modifiers and descendants.
               </Example>
 
             <h3>IDs vs. Classes</h3>
-			<p>You should almost never need to use IDs. Broken behavior due to ID collisions are hard to track 
+			<p>You should almost never need to use IDs. Broken behavior due to ID collisions are hard to track
 			down and annoying.</p>
+
+			<h2>Attributes and Units</h2>
+			<p>Dewey is designed to be a scalable and maintainable LESS system. We do this by using relying
+			heavily on mixins and variables to declare attributes and their values so that if something
+			changes at the base level with a variable or mixin, that change cascades correctly throughout
+			the system.</p>
+
+			<p>For sizing we have sizing variables that are set in REM units. Where a sizing variable doesn't
+			exist to fit your needs use REM units, or in rare cases EM units.</p> 
+
+			<p>All of the colors are encoded into a set of variables which should be referenced as variables.
+			There are also a set of shade and tint mixin functions for variations on the core colors.</p>
+
+            <Example
+                title=""
+                code={`
+					.Header--StatusBox {
+					  font-size: 16px;
+					  font-weight: bold;
+					  padding: 16px 24px;
+					  border: 1px solid #01D59A;
+					  color: #191926;
+					}
+                `}
+              >
+              	<strong>Incorrect usage</strong>
+              	<p>The hardcoded values on attributes in this example make the styling for this element
+              	difficult to maintain as the overall design system changes and evolves.</p>
+              </Example>
+
+            <Example
+                title=""
+                code={`
+					.Header--StatusBox {
+					  .padding--x--m;
+					  .padding--y--l;
+					  .text--bold;
+					  .text--medium;
+					  .border--s(@alertGreen);
+					  color: @neutralBlack;
+					}
+                `}
+              >
+              	<strong>Correct usage</strong>
+              	<p>Mixins are primarily used, while variables are used in cases that don't have a mixin.
+              	This styling will automatically adjust based on updates to the core variables and styles.</p>
+              </Example>
 
 			<h2>Nesting</h2>
 			<p>Nesting should be avoided except in the specific case where you are using state selectors,
@@ -103,6 +150,13 @@ export default function LessStyleGuideView() {
                 `}
               >
               	<strong>Incorrect nesting</strong>
+              	<p>When selectors become this long, you're likely writing CSS that is:
+					<ul>
+						<li>Strongly coupled to the HTML (fragile) —OR—</li>
+						<li>Overly specific (powerful) —OR—</li>
+						<li>Not reusable</li>
+					</ul>
+				</p>
               </Example>
 
             <Example
@@ -130,8 +184,8 @@ export default function LessStyleGuideView() {
               </Example>
 
 			<h2>Specificity</h2>
-			<p>To encourage a maintainable and scalable LESS architecture, avoid specificity beyond one 
-			selector in 99% of cases. Over specificity reduces performance, makes debugging more difficult, 
+			<p>To encourage a maintainable and scalable LESS architecture, avoid specificity beyond one
+			selector in 99% of cases. Over specificity reduces performance, makes debugging more difficult,
 			and diverges from the goals of the design system.</p>
 
             <Example
@@ -144,6 +198,13 @@ export default function LessStyleGuideView() {
                 `}
             >
               	<strong>Incorrect specificity</strong>
+              	<p>When selectors become this long, you're likely writing CSS that is:
+					<ul>
+						<li>Strongly coupled to the HTML (fragile) —OR—</li>
+						<li>Overly specific (powerful) —OR—</li>
+						<li>Not reusable</li>
+					</ul>
+				</p>
             </Example>
 
             <Example
@@ -156,7 +217,7 @@ export default function LessStyleGuideView() {
                 `}
             >
               	<p><strong>Correct specificity</strong></p>
-              	<p>Create a specific class to override the colors of a Tab that you want 
+              	<p>Create a specific class to override the colors of a Tab that you want
               	to have an Alert state and apply it where needed.</p>
             </Example>
 
