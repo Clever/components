@@ -53,15 +53,14 @@ export default function LessStyleGuideView() {
               `}
             >
               We use mixin functions for more complex attribute collections that should be similarly reusable and
-              composable. Mixin functions are lower-cased camelCase with a double dash <code>--</code>
-              between modifiers.
+              composable. Mixin functions are camelCase with a double dash <code>--</code> between modifiers.
             </Example>
 
             <Example
               title="Components"
               code={`
                 .TabBar--Tab--selected {
-                  .text--medium;
+                  .text--bold;
                   .border--bottom--m(@primaryBlue);
                   box-sizing: border-box;
                   color: @primaryBlue;
@@ -83,8 +82,10 @@ export default function LessStyleGuideView() {
             changes at the base level with a variable or mixin, that change cascades correctly throughout
             the system.</p>
 
-            <p>For sizing we have sizing variables that are set in REM units. Where a sizing variable doesn't
-            exist to fit your needs use REM units, or in rare cases EM units.</p>
+            <p>Size variables are set in REM units to ensure that all scale respectively across media queries
+            and text-resizing for accessibility. Where a sizing variable doesn't exist to fit your needs use
+            REM units, or in rare cases EM units. REM units are relative to the size of the HTML (root)
+            element, while EM units are relative sized to their parent elements font-size.</p>
 
             <p>All of the colors are encoded into a set of variables which should be referenced as variables.
             There are also a set of shade and tint mixin functions for variations on the core colors.</p>
@@ -135,7 +136,7 @@ export default function LessStyleGuideView() {
                   transition: font-size .25s ease-out, box-shadow .25s ease-out;
 
                   .Tab {
-                    .text--medium;
+                    .text--bold;
                     .border--bottom--m(transparent);
                     box-sizing: border-box;
                     color: @neutral-dark-gray;
