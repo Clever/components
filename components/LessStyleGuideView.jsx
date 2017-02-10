@@ -26,7 +26,7 @@ export default function LessStyleGuideView() {
               `}
             >
               Variables are the most atomic building blocks of Dewey. Each variable defines a single value for a
-              specific attribute. Variables are lower-cased camelCase with a double dash <code>--</code> for modifiers.
+              specific attribute. Variables are camelCase with a double dash <code>--</code> for modifiers.
             </Example>
 
             <Example
@@ -39,8 +39,8 @@ export default function LessStyleGuideView() {
               `}
             >
               Mixins are the next layer of Dewey, they assemble attributes into meaningfully grouped elements
-              that are readable and composable. Mixins are lower-cased camelCase with a double dash <code>--</code>
-              between modifiers.
+              that are readable and composable. Mixins are camelCase with a double dash <code>--</code> between
+              modifiers.
             </Example>
 
             <Example
@@ -70,8 +70,7 @@ export default function LessStyleGuideView() {
               `}
             >
               Components are composed of variables and mixins to define interactions for specific elements and UI
-              patterns. Components use a title-cased CamelCase with a double dash <code>--</code> between
-              modifiers and descendants.
+              patterns. Components use PascalCase with a double dash <code>--</code> between modifiers and descendants.
             </Example>
 
             <h3>IDs vs. Classes</h3>
