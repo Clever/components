@@ -69,6 +69,7 @@ export class Table extends Component {
       pageSize,
       paginated,
       rowIDFn,
+      onRowClick,
     } = this.props;
     const {currentPage, sortState = initialSortState} = this.state;
     const {cssClass} = Table;
@@ -125,7 +126,7 @@ export class Table extends Component {
               </Cell>
             </tr>
             ) : pages[displayedPageIndex].map(rowData => (
-            <tr className={cssClass.ROW} key={rowIDFn(rowData)}>
+            <tr className={cssClass.ROW} key={rowIDFn(rowData)} onClick={onRowClick}>
               {columns.map(({props: col}) => (
                 <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
                   {col.cell.renderer(rowData)}
@@ -160,6 +161,7 @@ Table.propTypes = {
   pageSize: PropTypes.number,
   paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
+  onRowClick: PropTypes.func,
 };
 
 Table.defaultProps = {
