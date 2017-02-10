@@ -57330,20 +57330,321 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Example = __webpack_require__(259);
+
+	var _Example2 = _interopRequireDefault(_Example);
+
 	var _View = __webpack_require__(277);
 
 	var _View2 = _interopRequireDefault(_View);
+
+	var _src = __webpack_require__(280);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function LessStyleGuideView() {
 	  var cssClass = LessStyleGuideView.cssClass;
+	  var Col = _src.Grid.Col;
+	  var Row = _src.Grid.Row;
 
 
 	  return _react2.default.createElement(
 	    _View2.default,
 	    { className: cssClass.CONTAINER, title: "Less Style Guide" },
-	    "TODO"
+	    _react2.default.createElement(
+	      _src.Grid,
+	      null,
+	      _react2.default.createElement(
+	        Row,
+	        { grow: true, className: "margin--bottom--xl" },
+	        _react2.default.createElement(
+	          Col,
+	          { span: 6, className: "self--start padding--right--l" },
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            "Naming Conventions"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Dewey uses a mix of BEM and Atomic CSS for naming conventions. It is influenced by\xA0",
+	            _react2.default.createElement(
+	              "a",
+	              { href: "http://basscss.com/" },
+	              "Basscss"
+	            ),
+	            " for utility classes, while components are written with a BEM notation."
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "Variables",
+	              code: "\n                  @zIndex--1: 100;\n              "
+	            },
+	            "Variables are the most atomic building blocks of Dewey. Each variable defines a single value for a specific attribute. Variables are camelCase with a double dash ",
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "--"
+	            ),
+	            " for modifiers."
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "Mixins",
+	              code: "\n                .text--bold {\n                   font-weight: bold;\n                   font-style: normal;\n                }\n              "
+	            },
+	            "Mixins are the next layer of Dewey, they assemble attributes into meaningfully grouped elements that are readable and composable. Mixins are camelCase with a double dash ",
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "--"
+	            ),
+	            " between modifiers."
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "Mixin functions",
+	              code: "\n                .border--x--s(@color) {\n                  .border--left--s(@color);\n                  .border--right--s(@color);\n                }\n              "
+	            },
+	            "We use mixin functions for more complex attribute collections that should be similarly reusable and composable. Mixin functions are camelCase with a double dash ",
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "--"
+	            ),
+	            " between modifiers."
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "Components",
+	              code: "\n                .TabBar--Tab--selected {\n                  .text--bold;\n                  .border--bottom--m(@primaryBlue);\n                  box-sizing: border-box;\n                  color: @primaryBlue;\n                  cursor: pointer;\n                }\n              "
+	            },
+	            "Components are composed of variables and mixins to define interactions for specific elements and UI patterns. Components use PascalCase with a double dash ",
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "--"
+	            ),
+	            " between modifiers and descendants."
+	          ),
+	          _react2.default.createElement(
+	            "h3",
+	            null,
+	            "IDs vs. Classes"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "You should almost never need to use IDs. Broken behavior due to ID collisions are hard to track down and annoying."
+	          ),
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            "Attributes and Units"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Dewey is designed to be a scalable and maintainable LESS system. We do this by using relying heavily on mixins and variables to declare attributes and their values so that if something changes at the base level with a variable or mixin, that change cascades correctly throughout the system."
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Size variables are set in REM units to ensure that all scale respectively across media queries and text-resizing for accessibility. Where a sizing variable doesn't exist to fit your needs use REM units, or in rare cases EM units. REM units are relative to the size of the HTML (root) element, while EM units are relative sized to their parent elements font-size."
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "All of the colors are encoded into a set of variables which should be referenced as variables. There are also a set of shade and tint mixin functions for variations on the core colors."
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "",
+	              code: "\n                .Header--StatusBox {\n                  font-size: 16px;\n                  font-weight: bold;\n                  padding: 16px 24px;\n                  border: 1px solid #01D59A;\n                  color: #191926;\n                }\n              "
+	            },
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Incorrect usage"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "The hardcoded values on attributes in this example make the styling for this element difficult to maintain as the overall design system changes and evolves."
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "",
+	              code: "\n                .Header--StatusBox {\n                  .padding--x--m;\n                  .padding--y--l;\n                  .text--bold;\n                  .text--medium;\n                  .border--s(@alertGreen);\n                  color: @neutralBlack;\n                }\n              "
+	            },
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Correct usage"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "Mixins are primarily used, while variables are used in cases that don't have a mixin. This styling will automatically adjust based on updates to the core variables and styles."
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            "Nesting"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Nesting should be avoided except in the specific case where you are using state selectors, e.g. ",
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              ":focus"
+	            ),
+	            ", or pseudo-selectors, e.g. ",
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "::first-leter"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "",
+	              code: "\n                .TabBar {\n                  transition: font-size .25s ease-out, box-shadow .25s ease-out;\n\n                  .Tab {\n                    .text--bold;\n                    .border--bottom--m(transparent);\n                    box-sizing: border-box;\n                    color: @neutral-dark-gray;\n                    cursor: pointer;\n                  }\n                  .Tab:hover {\n                    color: @primaryBlue;\n                    .border--bottom--m(@primaryBlue);\n                  }\n                }\n              "
+	            },
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Incorrect nesting"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "When selectors become this long, you're likely writing CSS that is:",
+	              _react2.default.createElement(
+	                "ul",
+	                null,
+	                _react2.default.createElement(
+	                  "li",
+	                  null,
+	                  "Strongly coupled to the HTML (fragile) \u2014OR\u2014"
+	                ),
+	                _react2.default.createElement(
+	                  "li",
+	                  null,
+	                  "Overly specific (powerful) \u2014OR\u2014"
+	                ),
+	                _react2.default.createElement(
+	                  "li",
+	                  null,
+	                  "Not reusable"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "",
+	              code: "\n                .TabBar {\n                  transition: font-size .25s ease-out, box-shadow .25s ease-out;\n                }\n\n                .TabBar--Tab {\n                  .text--medium;\n                  .border--bottom--m(transparent);\n                  box-sizing: border-box;\n                  color: @neutral-dark-gray;\n                  cursor: pointer;\n\n                  &:hover {\n                    color: @primaryBlue;\n                    .border--bottom--m(@primaryBlue);\n                  }\n                }\n              "
+	            },
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Correct nesting"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            "Specificity"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "To encourage a maintainable and scalable LESS architecture, avoid specificity beyond one selector in 99% of cases. Over specificity reduces performance, makes debugging more difficult, and diverges from the goals of the design system."
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "",
+	              code: "\n                .Alert .TabBar .TabBar--Tab {\n                  .border--bottom--m(@alertRed);\n                  color: @alertRed;\n                }\n              "
+	            },
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Incorrect specificity"
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "When selectors become this long, you're likely writing CSS that is:",
+	              _react2.default.createElement(
+	                "ul",
+	                null,
+	                _react2.default.createElement(
+	                  "li",
+	                  null,
+	                  "Strongly coupled to the HTML (fragile) \u2014OR\u2014"
+	                ),
+	                _react2.default.createElement(
+	                  "li",
+	                  null,
+	                  "Overly specific (powerful) \u2014OR\u2014"
+	                ),
+	                _react2.default.createElement(
+	                  "li",
+	                  null,
+	                  "Not reusable"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _Example2.default,
+	            {
+	              title: "",
+	              code: "\n                .TabBar--Tab--alert {\n                  .border--bottom--m(@alertRed);\n                  color: @alertRed;\n                }\n              "
+	            },
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              _react2.default.createElement(
+	                "strong",
+	                null,
+	                "Correct specificity"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "p",
+	              null,
+	              "Create a specific class to override the colors of a Tab that you want to have an Alert state and apply it where needed."
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            "Formatting"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Following the rest of our guidelines for code, please use spaces for indention. An indent should be 2 spaces."
+	          )
+	        )
+	      )
+	    )
 	  );
 	}
 
