@@ -373,16 +373,20 @@ This component is a `segmented control`.
 
 | Prop             | Type     | Description                           | Default
 |------------------|----------|---------------------------------------|---------
-| selectableItems (required) | Object   | Map from keys => Display strings for each item in control. | None
-| selected (optional)    | String   | Key of the selectableItem to initalize as selected, defaults to null | None
+| options (required) | Object   | Array of objects with a value (unique identifier), content (what to render), and disabled (optional) | None
+| defaultValue (optional)    | String   | Key of the option to initalize as selected, defaults to null | None
 | onSelect (optional)        | Function | Called with key of selected item on select | None
+| disabled (optional) | Bool | Whether the segmented control is disabled | False
 
 **Usage Example**
 
 ```jsx
   <SegmentedControl
-    selectableItems={{one: "Option 1", two: "Option 2"}}
-    selected="two"
+    options={{
+      {content: "Option 1", value: "one"},
+      {content: "Option 2", value: "two"},
+    }}
+    defaultValue="two"
     onSelect={this.onSelect}
   />
 ```
