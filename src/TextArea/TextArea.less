@@ -23,6 +23,7 @@
   .TextArea--label {
     left: @size_s;
     opacity: 1;
+    background-color: @neutral_white;
   }
 
   .TextArea--required {
@@ -44,9 +45,11 @@
   .border--s(transparent);
   .text--line-height-3;
   .padding--top--l;
+  padding-left: @size_4xs;
   background-color: transparent;
   outline: none;
   resize: vertical;
+  box-sizing: border-box;
 }
 
 &.TextArea--placeholder-shown {
@@ -78,6 +81,10 @@
   .border--s(@neutral_silver);
   color: @neutral_dark_gray;
   background: @neutral_silver;
+
+  .TextArea--label {
+    background-color: @neutral_silver;
+  }
 
   .TextArea--input {
     background: transparent;
