@@ -2,7 +2,6 @@
 
 .TextArea {
   .padding--left--s;
-  .padding--top--3xs;
   .text--regular;
   .border--s(@neutral_silver);
   position: relative;
@@ -24,8 +23,6 @@
 .TextArea--label {
   left: @size_s;
   opacity: 1;
-  background-color: @neutral_white;
-  padding-right: @size_3xs;
 }
 
 .TextArea--required {
@@ -44,10 +41,9 @@
   display: block;
   width: 100%;
   .border--s(transparent);
-  border-left: @size_none;
+  border-top-width: @size_l;
   .text--line-height-3;
-  .padding--top--l;
-  padding-left: @size_4xs;
+  padding: @size_none;
   background-color: transparent;
   outline: none;
   resize: vertical;
@@ -63,9 +59,8 @@
   .TextArea--input {
     .text--small;
     .text--caps;
-    .padding--top--xs;
-    .text--line-height-3;
     color: @neutral_dark_gray;
+    border-top-width: @size_m;
   }
 }
 
@@ -83,14 +78,6 @@
   .border--s(@neutral_silver);
   color: @neutral_dark_gray;
   background: @neutral_silver;
-
-  .TextArea--label {
-    background-color: @neutral_silver;
-  }
-
-  .TextArea--input {
-    background: transparent;
-  }
 }
 
 &.TextArea--readonly {
