@@ -11,7 +11,7 @@ BABEL := node_modules/babel-cli/bin/babel.js
 WEBPACK := node_modules/webpack/bin/webpack.js
 
 .PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles sizing-styles border-styles
-.PHONY: border-radius-styles
+.PHONY: border-radius-styles deploy-docs
 
 clean:
 	@echo '✓ Clean out dist directory'
@@ -75,3 +75,6 @@ $(TESTS):
 
 dev-server:
 	npm run-script dev-server
+
+deploy-docs:
+	./deploy.sh
