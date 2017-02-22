@@ -37,12 +37,25 @@
       }
     }
 
+    &.Select--readOnly {
+      .Select-control {
+        background-color: transparent;
+        border-color: transparent;
+      }
+      .Select-arrow {
+        display: none;
+      }
+    }
+
     &.Select--multi {
       .Select-control {
         .Select-multi-value-wrapper {
-          .padding--top--m;
+          .padding--y--xs;
           .padding--left--2xs;
+          .margin--top--s;
           .Select-value {
+            .margin--top--2xs;
+            .margin--left--2xs;
             border-color: @neutral_silver;
             color: @neutral_black;
             line-height: @size_m;
