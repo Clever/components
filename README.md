@@ -58,6 +58,14 @@ First, increment the version in `package.json` according to [semver](http://semv
 
 Then, when you merge your branch into `master`, Drone will automatically build and publish a new version to npm.
 
+### Updating the live examples
+After merging to master, you can update the live examples by running `make deploy-docs`:
+```sh
+git checkout master
+git pull
+make deploy-docs
+```
+
 ## Testing
 Run the entire test suite with `make test` or a single component with `make test/<component>_test.jsx`
 
