@@ -2,7 +2,6 @@
 
 .TextArea {
   .padding--left--s;
-  .padding--top--3xs;
   .text--regular;
   .border--s(@neutral_silver);
   position: relative;
@@ -19,22 +18,22 @@
   top: @size_xs;
   width: 100%;
   color: @neutral_dark_gray;
+}
 
-  .TextArea--label {
-    left: @size_s;
-    opacity: 1;
-  }
+.TextArea--label {
+  left: @size_s;
+  opacity: 1;
+}
 
-  .TextArea--required {
-    position: absolute;
-    right: @size_l;
-  }
+.TextArea--required {
+  position: absolute;
+  right: @size_l;
+}
 
-  .TextArea--error {
-    color: @alert_red;
-    position: absolute;
-    right: @size_l;
-  }
+.TextArea--error {
+  color: @alert_red;
+  position: absolute;
+  right: @size_l;
 }
 
 .TextArea--input {
@@ -42,11 +41,21 @@
   display: block;
   width: 100%;
   .border--s(transparent);
+
+  /**
+   * Use a transparent border to position the TextArea input instead of padding or a margin because
+   *  1. Text is still visible in the padding region.
+   *  2. The underlying textarea element overwrites margin values when the user adjusts the
+   *     element's height.
+   */
+  border-top-width: @size_l;
+
   .text--line-height-3;
-  .padding--top--l;
+  padding: @size_none;
   background-color: transparent;
   outline: none;
   resize: vertical;
+  box-sizing: border-box;
 }
 
 &.TextArea--placeholder-shown {
@@ -58,9 +67,8 @@
   .TextArea--input {
     .text--small;
     .text--caps;
-    .padding--top--xs;
-    .text--line-height-3;
     color: @neutral_dark_gray;
+    border-top-width: @size_m;
   }
 }
 
@@ -78,10 +86,6 @@
   .border--s(@neutral_silver);
   color: @neutral_dark_gray;
   background: @neutral_silver;
-
-  .TextArea--input {
-    background: transparent;
-  }
 }
 
 &.TextArea--readonly {
