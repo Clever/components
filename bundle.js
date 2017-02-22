@@ -47990,6 +47990,7 @@
 	  var options = _ref.options;
 	  var _ref$placeholder = _ref.placeholder;
 	  var placeholder = _ref$placeholder === undefined ? "" : _ref$placeholder;
+	  var readOnly = _ref.readOnly;
 	  var searchable = _ref.searchable;
 	  var value = _ref.value;
 	  var cssClass = Select.cssClass;
@@ -47998,6 +47999,11 @@
 	  var labelContainerClasses = cssClass.LABEL_CONTAINER;
 	  if (isLabelHidden(placeholder, value)) {
 	    labelContainerClasses += " " + cssClass.LABEL_HIDDEN;
+	  }
+
+	  var reactSelectClasses = cssClass.REACT_SELECT;
+	  if (readOnly) {
+	    reactSelectClasses += " " + cssClass.READ_ONLY;
 	  }
 
 	  // The label container must be returned after the ReactSelect otherwise it does not get displayed
@@ -48009,9 +48015,9 @@
 	      "div",
 	      { id: id },
 	      _react2.default.createElement(_reactSelect2.default, {
-	        className: cssClass.REACT_SELECT,
+	        className: reactSelectClasses,
 	        clearable: clearable,
-	        disabled: disabled,
+	        disabled: disabled || readOnly,
 	        multi: multi,
 	        name: name,
 	        onChange: onChange,
@@ -48039,7 +48045,8 @@
 	  LABEL: "Select--label",
 	  LABEL_CONTAINER: "Select--labelContainer",
 	  LABEL_HIDDEN: "Select--labelHidden",
-	  REACT_SELECT: "Select--ReactSelect"
+	  REACT_SELECT: "Select--ReactSelect",
+	  READ_ONLY: "Select--readOnly"
 	};
 
 	var selectValuePropType = _react2.default.PropTypes.shape({
@@ -48058,6 +48065,7 @@
 	  optionRenderer: _react2.default.PropTypes.func,
 	  options: _react2.default.PropTypes.arrayOf(selectValuePropType),
 	  placeholder: _react2.default.PropTypes.string,
+	  readOnly: _react2.default.PropTypes.bool,
 	  searchable: _react2.default.PropTypes.bool,
 	  value: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, selectValuePropType, _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.string), _react2.default.PropTypes.arrayOf(selectValuePropType)])
 	};
@@ -50572,7 +50580,7 @@
 
 
 	// module
-	exports.push([module.id, ".Select--container {\n  position: relative;\n}\n.Select--container .Select--labelContainer {\n  font-size: 0.625rem;\n  color: #566279;\n  position: absolute;\n  text-transform: uppercase;\n  top: 0.5rem;\n  width: 100%;\n}\n.Select--container .Select--labelContainer.Select--labelHidden {\n  opacity: 0 !important;\n}\n.Select--container .Select--labelContainer .Select--label {\n  left: 0.75rem;\n  position: absolute;\n}\n.Select--container .Select--ReactSelect.is-focused:not(.is-open) > .Select-control {\n  border-color: #e3e6eb;\n  box-shadow: inset 0.25rem 0 #4274f6;\n  transition: box-shadow 0.25s ease-out;\n}\n.Select--container .Select--ReactSelect.is-disabled .Select-control {\n  background-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper {\n  padding-top: 1rem;\n  padding-left: 0.25rem;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value {\n  border-color: #e3e6eb;\n  color: #191926;\n  line-height: 1rem;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-icon {\n  background-color: #e3e6eb;\n  float: right;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect.Select--multi .Select-control .Select-multi-value-wrapper .Select-value .Select-value-label {\n  background-color: #fafafc;\n}\n.Select--container .Select--ReactSelect .Select-control {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n  height: 3.5rem;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-placeholder {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n  padding-top: 0.5rem;\n  font-size: 0.75rem;\n  line-height: 2.5rem;\n  text-transform: uppercase;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-input {\n  position: absolute;\n}\n.Select--container .Select--ReactSelect .Select-control .Select-input,\n.Select--container .Select--ReactSelect .Select-control .Select-value {\n  padding-left: 0.75rem;\n  font-size: 1rem;\n  line-height: 2.5rem;\n  top: 0.75rem;\n}\n.Select--container .Select--ReactSelect .has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.Select--container .Select--ReactSelect .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer {\n  border-radius: 0rem;\n  border-color: #e3e6eb;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option {\n  color: #191926;\n}\n.Select--container .Select--ReactSelect .Select-menu-outer .Select-option.is-focused {\n  box-shadow: inset 0.25rem 0 #4274f6;\n  background-color: #fafafc;\n}\n", ""]);
+	exports.push([module.id, ".Select--container {\n  position: relative;\n}\n.Select--labelContainer {\n  font-size: 0.625rem;\n  color: #566279;\n  position: absolute;\n  text-transform: uppercase;\n  top: 0.5rem;\n  width: 100%;\n}\n.Select--labelContainer.Select--labelHidden {\n  opacity: 0 !important;\n}\n.Select--label {\n  left: 0.75rem;\n  position: absolute;\n}\n.Select--ReactSelect.is-focused:not(.is-open) > .Select-control {\n  border-color: #e3e6eb;\n  box-shadow: inset 0.25rem 0 #4274f6;\n  transition: box-shadow 0.25s ease-out;\n}\n.Select--ReactSelect.is-disabled .Select-control {\n  background-color: #e3e6eb;\n}\n.Select--ReactSelect.Select--readOnly .Select-control {\n  background-color: transparent;\n  border-color: transparent;\n}\n.Select--ReactSelect.Select--readOnly .Select-arrow {\n  display: none;\n}\n.Select--ReactSelect.Select--multi .Select-multi-value-wrapper {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  padding-left: 0.25rem;\n  margin-top: 0.75rem;\n}\n.Select--ReactSelect.Select--multi .Select-multi-value-wrapper .Select-value {\n  margin-top: 0.25rem;\n  margin-left: 0.25rem;\n  padding: 0rem;\n  border-color: #e3e6eb;\n  color: #191926;\n  line-height: 1rem;\n}\n.Select--ReactSelect.Select--multi .Select-multi-value-wrapper .Select-value .Select-value-icon {\n  background-color: #e3e6eb;\n  float: right;\n  border-color: #e3e6eb;\n}\n.Select--ReactSelect.Select--multi .Select-multi-value-wrapper .Select-value .Select-value-label {\n  background-color: #fafafc;\n}\n.Select--ReactSelect .Select-control {\n  border-radius: 0px;\n  border-color: #e3e6eb;\n  height: 3.5rem;\n}\n.Select--ReactSelect .Select-control .Select-placeholder {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n  padding-top: 0.5rem;\n  font-size: 0.75rem;\n  line-height: 2.5rem;\n  text-transform: uppercase;\n}\n.Select--ReactSelect .Select-control .Select-input {\n  position: absolute;\n}\n.Select--ReactSelect .Select-control .Select-input,\n.Select--ReactSelect .Select-control .Select-value {\n  padding-left: 0.75rem;\n  font-size: 1rem;\n  line-height: 2.5rem;\n  top: 0.75rem;\n}\n.Select--ReactSelect .has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.Select--ReactSelect .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #191926;\n}\n.Select--ReactSelect .Select-menu-outer {\n  border-radius: 0rem;\n  border-color: #e3e6eb;\n}\n.Select--ReactSelect .Select-menu-outer .Select-option {\n  color: #191926;\n}\n.Select--ReactSelect .Select-menu-outer .Select-option.is-focused {\n  box-shadow: inset 0.25rem 0 #4274f6;\n  background-color: #fafafc;\n}\n", ""]);
 
 	// exports
 
@@ -58626,6 +58634,7 @@
 	      clearable: false,
 	      disabled: false,
 	      multi: false,
+	      readOnly: false,
 	      searchable: false,
 	      selectValue: null
 	    };
@@ -58651,7 +58660,7 @@
 	        _react2.default.createElement(
 	          _Example2.default,
 	          {
-	            code: "\n            <Select\n              id=\"select\"\n              label=\"Select Label\"\n              disabled={this.state.disabled}\n              clearable={this.state.clearable}\n              searchable={this.state.searchable}\n              multi={this.state.multi}\n              name=\"select\"\n              onChange={value => this.setState({selectValue: value})}\n              options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}\n              placeholder=\"Select Placeholder\"\n              value={this.state.selectValue}\n            />\n          "
+	            code: "\n            <Select\n              id=\"select\"\n              label=\"Select Label\"\n              disabled={this.state.disabled}\n              clearable={this.state.clearable}\n              searchable={this.state.searchable}\n              multi={this.state.multi}\n              readOnly={this.state.readOnly}\n              name=\"select\"\n              onChange={value => this.setState({selectValue: value})}\n              options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}\n              placeholder=\"Select Placeholder\"\n              value={this.state.selectValue}\n            />\n          "
 	          },
 	          _react2.default.createElement(
 	            "div",
@@ -58663,6 +58672,7 @@
 	              clearable: this.state.clearable,
 	              searchable: this.state.searchable,
 	              multi: this.state.multi,
+	              readOnly: this.state.readOnly,
 	              name: "select",
 	              onChange: function onChange(value) {
 	                return _this2.setState({ selectValue: value });
@@ -58737,6 +58747,20 @@
 	            }),
 	            " ",
 	            "Multi"
+	          ),
+	          _react2.default.createElement(
+	            "label",
+	            { className: cssClass.CONFIG },
+	            _react2.default.createElement("input", {
+	              type: "checkbox",
+	              checked: this.state.readOnly,
+	              onChange: function onChange(_ref5) {
+	                var target = _ref5.target;
+	                return _this2.setState({ readOnly: target.checked });
+	              }
+	            }),
+	            " ",
+	            "Read Only"
 	          )
 	        )
 	      );
