@@ -16,6 +16,7 @@ export default class SelectView extends Component {
       clearable: false,
       disabled: false,
       multi: false,
+      readOnly: false,
       searchable: false,
       selectValue: null,
     };
@@ -39,6 +40,7 @@ export default class SelectView extends Component {
               clearable={this.state.clearable}
               searchable={this.state.searchable}
               multi={this.state.multi}
+              readOnly={this.state.readOnly}
               name="select"
               onChange={value => this.setState({selectValue: value})}
               options={_.range(100).map(i => ({label: \`Option \${i + 1}\`, value: \`\${i + 1}\`}))}
@@ -55,6 +57,7 @@ export default class SelectView extends Component {
               clearable={this.state.clearable}
               searchable={this.state.searchable}
               multi={this.state.multi}
+              readOnly={this.state.readOnly}
               name="select"
               onChange={value => this.setState({selectValue: value})}
               options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
@@ -106,6 +109,15 @@ export default class SelectView extends Component {
             />
             {" "}
             Multi
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.readOnly}
+              onChange={({target}) => this.setState({readOnly: target.checked})}
+            />
+            {" "}
+            Read Only
           </label>
         </Example>
       </View>
