@@ -34,6 +34,7 @@ export function Select({
   optionRenderer,
   options,
   placeholder = "",
+  readOnly,
   searchable,
   value,
 }) {
@@ -44,15 +45,20 @@ export function Select({
     labelContainerClasses += ` ${cssClass.LABEL_HIDDEN}`;
   }
 
+  let reactSelectClasses = cssClass.REACT_SELECT;
+  if (readOnly) {
+    reactSelectClasses += ` ${cssClass.READ_ONLY}`;
+  }
+
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
   return (
     <div className={cssClass.CONTAINER}>
       <div id={id}>
         <ReactSelect
-          className={cssClass.REACT_SELECT}
+          className={reactSelectClasses}
           clearable={clearable}
-          disabled={disabled}
+          disabled={disabled || readOnly}
           multi={multi}
           name={name}
           onChange={onChange}
@@ -76,6 +82,7 @@ Select.cssClass = {
   LABEL_CONTAINER: "Select--labelContainer",
   LABEL_HIDDEN: "Select--labelHidden",
   REACT_SELECT: "Select--ReactSelect",
+  READ_ONLY: "Select--readOnly",
 };
 
 const selectValuePropType = React.PropTypes.shape({
@@ -94,6 +101,7 @@ Select.propTypes = {
   optionRenderer: React.PropTypes.func,
   options: React.PropTypes.arrayOf(selectValuePropType),
   placeholder: React.PropTypes.string,
+  readOnly: React.PropTypes.bool,
   searchable: React.PropTypes.bool,
   value: React.PropTypes.oneOfType([
     React.PropTypes.string,
