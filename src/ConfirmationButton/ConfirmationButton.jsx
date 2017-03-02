@@ -28,7 +28,7 @@ export class ConfirmationButton extends React.Component {
     return (<ModalButton {...modalButtonProps} ref="modalButton">
       {this.props.children}
       <div className="ConfirmationButton--dialog-buttons">
-        <Button type="secondary" value="Cancel" onClick={this.handleCancel} />
+        <Button type="link" value="Cancel" onClick={this.handleCancel} />
         <Button {...confirmButtonProps} onClick={this.handleConfirm} />
       </div>
     </ModalButton>);
