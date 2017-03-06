@@ -28,15 +28,22 @@ export default class LabelView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="Label">
+        <p>
+          Labels can be used as easily recognizable indicators of a type, state or status.
+        </p>
+        <p>
+          They can be particularly useful when displaying a list or table of information as a visual
+          aid for a user scanning through the information.
+        </p>
         <Example
           code={`
-            <h3 className={cssClass.EXAMPLE}>
+            <h4 className={cssClass.EXAMPLE}>
               Labels are inline by default
               <Label className={cssClass.LABEL} color={color} size={size}>
                 Simple Label
               </Label>
-            </h3>
-            <h3 className={cssClass.EXAMPLE}>
+            </h4>
+            <h4 className={cssClass.EXAMPLE}>
               And can vary in size and color
               <Label className={cssClass.LABEL} color={color} size={size}>
                 With HTML Content <span className={"fa fa-check-circle"} />
@@ -59,21 +66,24 @@ export default class LabelView extends Component {
               >
                 With Tooltip
               </Label>
-            </h3>
+            </h4>
           `}
         >
           <div className={cssClass.DEMO_CONTAINER}>
-            <h3 className={cssClass.EXAMPLE}>
+            <h4 className={cssClass.EXAMPLE}>
               Labels are inline by default
               <Label className={cssClass.LABEL} color={color} size={size}>
                 Simple Label
               </Label>
-            </h3>
-            <h3 className={cssClass.EXAMPLE}>
+            </h4>
+            <h4 className={cssClass.EXAMPLE}>
               And can vary in size and color
               <Label className={cssClass.LABEL} color={color} size={size}>
                 With HTML Content <span className={"fa fa-check-circle"} />
               </Label>
+            </h4>
+            <h4 className={cssClass.EXAMPLE}>
+              They can include an optional tooltip with hover state shading
               <Label
                 className={cssClass.LABEL}
                 color={color}
@@ -92,7 +102,7 @@ export default class LabelView extends Component {
               >
                 With Tooltip
               </Label>
-            </h3>
+            </h4>
           </div>
           <div className={cssClass.CONFIG_CONTAINER}>
             <div className={cssClass.CONFIG}>
@@ -156,6 +166,12 @@ export default class LabelView extends Component {
               defaultValue: "Label.Color.GRAY",
             },
             {
+              name: "size",
+              type: "Label.Size",
+              description: "The label size.",
+              defaultValue: "Label.Size.M",
+            },
+            {
               name: "tooltip",
               type: "Node",
               description: "The text or HTML tooltip content, if applicable.",
@@ -171,12 +187,6 @@ export default class LabelView extends Component {
               type: "Tooltip.Align",
               description: "Alignment of the tooltip text content.",
               defaultValue: "Tooltip.Align.LEFT",
-            },
-            {
-              name: "size",
-              type: "Label.Size",
-              description: "The label size.",
-              defaultValue: "Label.Size.M",
             },
           ]}
           className={cssClass.PROPS}
