@@ -24,7 +24,6 @@ export default class Label extends PureComponent {
       tooltip,
       tooltipPlacement,
       tooltipTextAlign,
-      ...passthroughProps,
     } = this.props;
 
     const label = (
@@ -38,7 +37,6 @@ export default class Label extends PureComponent {
         )}
         ref="label"
         tabIndex={tooltip ? 0 : undefined}
-        {...passthroughProps}
       >
         {children}
       </span>
