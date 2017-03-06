@@ -1,0 +1,41 @@
+@import (reference) "~less/index";
+
+
+.TooltipView--example {
+  .margin--right--l;
+  display: inline-block;
+}
+
+.TooltipView--tooltipTrigger {
+  color: @neutral_gray;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+
+  &:focus,
+  &:hover {
+    color: @neutral_dark_gray;
+    outline: 0;
+  }
+}
+
+.TooltipView--props {
+  .margin--top--l;
+}
+
+.TooltipView--config {
+  .text--caps;
+  .text--small;
+  .margin--right--l;
+  .margin--top--m;
+  display: inline-block;
+}
+
+.TooltipView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.TooltipView--focusControl {
+  .margin--top--s;
+  .text--small;
+}

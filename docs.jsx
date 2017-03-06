@@ -26,6 +26,7 @@ import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
+import TooltipView from "./components/TooltipView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WizardView from "./components/WizardView";
@@ -59,6 +60,7 @@ render((
         <Route path="select(/*)" component={SelectView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
         <Route path="text-area(/*)" component={TextAreaView} />
+        <Route path="tooltip" component={TooltipView} />
         <Route path="table(/*)" component={TableView} />
         <Route path="text-input(/*)" component={TextInputView} />
         <Route path="wizard(/*)" component={WizardView} />
