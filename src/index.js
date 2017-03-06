@@ -17,3 +17,4 @@ export {ProgressBar} from "./ProgressBar/ProgressBar";
 export {TextArea} from "./TextArea/TextArea";
 export {Tooltip} from "./Tooltip";
 export {Label} from "./Label";
+export {FileInput} from "./FileInput/FileInput";
