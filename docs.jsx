@@ -7,6 +7,7 @@ import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
 import CopyableInputView from "./components/CopyableInputView";
 import FlexBoxView from "./components/FlexBoxView";
+import FileInputView from "./components/FileInputView";
 import GettingStartedView from "./components/GettingStartedView";
 import GridView from "./components/GridView";
 import IconView from "./components/IconView";
@@ -51,6 +52,7 @@ render((
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
+        <Route path="file-input(/*)" component={FileInputView} />
         <Route path="grid(/*)" component={GridView} />
         <Route path="icon(/*)" component={IconView} />
         <Route path="label(/*)" component={LabelView} />
