@@ -15,7 +15,7 @@
     }],
     "no-descending-specificity": true,
     "no-duplicate-selectors": true,
-    "rule-nested-empty-line-before": "always",
+    "rule-nested-empty-line-before": ["always", {except: ["first-nested"]}],
     "selector-no-id": true,
     "value-list-comma-space-after": true,
     "value-list-comma-newline-after": "always-multi-line",

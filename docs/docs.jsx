@@ -11,6 +11,7 @@ import GettingStartedView from "./components/GettingStartedView";
 import GridView from "./components/GridView";
 import IconView from "./components/IconView";
 import IntroView from "./components/IntroView";
+import LabelView from "./components/LabelView";
 import Layout from "./components/Layout";
 import LeftNavView from "./components/LeftNavView";
 import LessStyleGuideView from "./components/LessStyleGuideView";
@@ -52,6 +53,7 @@ render((
         <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="grid(/*)" component={GridView} />
         <Route path="icon(/*)" component={IconView} />
+        <Route path="label(/*)" component={LabelView} />
         <Route path="left-nav(/*)" component={LeftNavView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
