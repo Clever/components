@@ -58,115 +58,119 @@
 
 	var _ButtonView2 = _interopRequireDefault(_ButtonView);
 
-	var _ColorsView = __webpack_require__(599);
+	var _ColorsView = __webpack_require__(601);
 
 	var _ColorsView2 = _interopRequireDefault(_ColorsView);
 
-	var _ConfirmationButtonView = __webpack_require__(602);
+	var _ConfirmationButtonView = __webpack_require__(604);
 
 	var _ConfirmationButtonView2 = _interopRequireDefault(_ConfirmationButtonView);
 
-	var _CopyableInputView = __webpack_require__(603);
+	var _CopyableInputView = __webpack_require__(605);
 
 	var _CopyableInputView2 = _interopRequireDefault(_CopyableInputView);
 
-	var _FlexBoxView = __webpack_require__(606);
+	var _FlexBoxView = __webpack_require__(608);
 
 	var _FlexBoxView2 = _interopRequireDefault(_FlexBoxView);
 
-	var _GettingStartedView = __webpack_require__(612);
+	var _FileInputView = __webpack_require__(614);
+
+	var _FileInputView2 = _interopRequireDefault(_FileInputView);
+
+	var _GettingStartedView = __webpack_require__(615);
 
 	var _GettingStartedView2 = _interopRequireDefault(_GettingStartedView);
 
-	var _GridView = __webpack_require__(613);
+	var _GridView = __webpack_require__(616);
 
 	var _GridView2 = _interopRequireDefault(_GridView);
 
-	var _IconView = __webpack_require__(616);
+	var _IconView = __webpack_require__(619);
 
 	var _IconView2 = _interopRequireDefault(_IconView);
 
-	var _IntroView = __webpack_require__(619);
+	var _IntroView = __webpack_require__(622);
 
 	var _IntroView2 = _interopRequireDefault(_IntroView);
 
-	var _LabelView = __webpack_require__(620);
+	var _LabelView = __webpack_require__(623);
 
 	var _LabelView2 = _interopRequireDefault(_LabelView);
 
-	var _Layout = __webpack_require__(629);
+	var _Layout = __webpack_require__(632);
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _LeftNavView = __webpack_require__(647);
+	var _LeftNavView = __webpack_require__(650);
 
 	var _LeftNavView2 = _interopRequireDefault(_LeftNavView);
 
-	var _LessStyleGuideView = __webpack_require__(651);
+	var _LessStyleGuideView = __webpack_require__(654);
 
 	var _LessStyleGuideView2 = _interopRequireDefault(_LessStyleGuideView);
 
-	var _ModalButtonView = __webpack_require__(652);
+	var _ModalButtonView = __webpack_require__(655);
 
 	var _ModalButtonView2 = _interopRequireDefault(_ModalButtonView);
 
-	var _ModalView = __webpack_require__(653);
+	var _ModalView = __webpack_require__(656);
 
 	var _ModalView2 = _interopRequireDefault(_ModalView);
 
-	var _PageLayoutView = __webpack_require__(654);
+	var _PageLayoutView = __webpack_require__(657);
 
 	var _PageLayoutView2 = _interopRequireDefault(_PageLayoutView);
 
-	var _ProgressBarView = __webpack_require__(655);
+	var _ProgressBarView = __webpack_require__(658);
 
 	var _ProgressBarView2 = _interopRequireDefault(_ProgressBarView);
 
-	var _SegmentedControlView = __webpack_require__(658);
+	var _SegmentedControlView = __webpack_require__(661);
 
 	var _SegmentedControlView2 = _interopRequireDefault(_SegmentedControlView);
 
-	var _SelectView = __webpack_require__(659);
+	var _SelectView = __webpack_require__(662);
 
 	var _SelectView2 = _interopRequireDefault(_SelectView);
 
-	var _SizingView = __webpack_require__(662);
+	var _SizingView = __webpack_require__(665);
 
 	var _SizingView2 = _interopRequireDefault(_SizingView);
 
-	var _SpacingView = __webpack_require__(665);
+	var _SpacingView = __webpack_require__(668);
 
 	var _SpacingView2 = _interopRequireDefault(_SpacingView);
 
-	var _TabBarView = __webpack_require__(666);
+	var _TabBarView = __webpack_require__(669);
 
 	var _TabBarView2 = _interopRequireDefault(_TabBarView);
 
-	var _TableView = __webpack_require__(672);
+	var _TableView = __webpack_require__(675);
 
 	var _TableView2 = _interopRequireDefault(_TableView);
 
-	var _TextAreaView = __webpack_require__(673);
+	var _TextAreaView = __webpack_require__(676);
 
 	var _TextAreaView2 = _interopRequireDefault(_TextAreaView);
 
-	var _TextInputView = __webpack_require__(676);
+	var _TextInputView = __webpack_require__(679);
 
 	var _TextInputView2 = _interopRequireDefault(_TextInputView);
 
-	var _TooltipView = __webpack_require__(679);
+	var _TooltipView = __webpack_require__(682);
 
 	var _TooltipView2 = _interopRequireDefault(_TooltipView);
 
-	var _TypographyView = __webpack_require__(682);
+	var _TypographyView = __webpack_require__(685);
 
 	var _TypographyView2 = _interopRequireDefault(_TypographyView);
 
-	var _UITextView = __webpack_require__(683);
+	var _UITextView = __webpack_require__(686);
 
 	var _UITextView2 = _interopRequireDefault(_UITextView);
 
-	var _WizardView = __webpack_require__(686);
+	var _WizardView = __webpack_require__(689);
 
 	var _WizardView2 = _interopRequireDefault(_WizardView);
 
@@ -197,6 +201,7 @@
 	      _react2.default.createElement(_reactRouter.Route, { path: "confirmation-button(/*)", component: _ConfirmationButtonView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "copyable-input(/*)", component: _CopyableInputView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "flex-box(/*)", component: _FlexBoxView2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: "file-input(/*)", component: _FileInputView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "grid(/*)", component: _GridView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "icon(/*)", component: _IconView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "label(/*)", component: _LabelView2.default }),
@@ -24777,11 +24782,11 @@
 	 */
 	var useQueries = function useQueries(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    var history = createHistory(options);
-	    var stringifyQuery = options.stringifyQuery;
-	    var parseQueryString = options.parseQueryString;
+	    var stringifyQuery = options.stringifyQuery,
+	        parseQueryString = options.parseQueryString;
 
 
 	    if (typeof stringifyQuery !== 'function') stringifyQuery = defaultStringifyQuery;
@@ -24921,9 +24926,9 @@
 		switch (opts.arrayFormat) {
 			case 'index':
 				return function (key, value, accumulator) {
-					result = /\[(\d*)]$/.exec(key);
+					result = /\[(\d*)\]$/.exec(key);
 
-					key = key.replace(/\[\d*]$/, '');
+					key = key.replace(/\[\d*\]$/, '');
 
 					if (!result) {
 						accumulator[key] = value;
@@ -24939,9 +24944,9 @@
 
 			case 'bracket':
 				return function (key, value, accumulator) {
-					result = /(\[])$/.exec(key);
+					result = /(\[\])$/.exec(key);
 
-					key = key.replace(/\[]$/, '');
+					key = key.replace(/\[\]$/, '');
 
 					if (!result || accumulator[key] === undefined) {
 						accumulator[key] = value;
@@ -25128,7 +25133,7 @@
 	exports.__esModule = true;
 	exports.locationsAreEqual = exports.statesAreEqual = exports.createLocation = exports.createQuery = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -25151,9 +25156,9 @@
 	};
 
 	var createLocation = exports.createLocation = function createLocation() {
-	  var input = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? _Actions.POP : arguments[1];
-	  var key = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+	  var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
+	  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Actions.POP;
+	  var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
 	  var object = typeof input === 'string' ? (0, _PathUtils.parsePath)(input) : input;
 
@@ -25233,12 +25238,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var addQueryStringValueToPath = exports.addQueryStringValueToPath = function addQueryStringValueToPath(path, key, value) {
-	  var _parsePath = parsePath(path);
-
-	  var pathname = _parsePath.pathname;
-	  var search = _parsePath.search;
-	  var hash = _parsePath.hash;
-
+	  var _parsePath = parsePath(path),
+	      pathname = _parsePath.pathname,
+	      search = _parsePath.search,
+	      hash = _parsePath.hash;
 
 	  return createPath({
 	    pathname: pathname,
@@ -25248,12 +25251,10 @@
 	};
 
 	var stripQueryStringValueFromPath = exports.stripQueryStringValueFromPath = function stripQueryStringValueFromPath(path, key) {
-	  var _parsePath2 = parsePath(path);
-
-	  var pathname = _parsePath2.pathname;
-	  var search = _parsePath2.search;
-	  var hash = _parsePath2.hash;
-
+	  var _parsePath2 = parsePath(path),
+	      pathname = _parsePath2.pathname,
+	      search = _parsePath2.search,
+	      hash = _parsePath2.hash;
 
 	  return createPath({
 	    pathname: pathname,
@@ -25265,9 +25266,8 @@
 	};
 
 	var getQueryStringValueFromPath = exports.getQueryStringValueFromPath = function getQueryStringValueFromPath(path, key) {
-	  var _parsePath3 = parsePath(path);
-
-	  var search = _parsePath3.search;
+	  var _parsePath3 = parsePath(path),
+	      search = _parsePath3.search;
 
 	  var match = search.match(new RegExp('[?&]' + key + '=([a-zA-Z0-9]+)'));
 	  return match && match[1];
@@ -25309,10 +25309,10 @@
 	var createPath = exports.createPath = function createPath(location) {
 	  if (location == null || typeof location === 'string') return location;
 
-	  var basename = location.basename;
-	  var pathname = location.pathname;
-	  var search = location.search;
-	  var hash = location.hash;
+	  var basename = location.basename,
+	      pathname = location.pathname,
+	      search = location.search,
+	      hash = location.hash;
 
 	  var path = (basename || '') + pathname;
 
@@ -25344,7 +25344,7 @@
 
 	var useBasename = function useBasename(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    var history = createHistory(options);
 	    var basename = options.basename;
@@ -25354,7 +25354,7 @@
 	      if (!location) return location;
 
 	      if (basename && location.basename == null) {
-	        if (location.pathname.indexOf(basename) === 0) {
+	        if (location.pathname.toLowerCase().indexOf(basename.toLowerCase()) === 0) {
 	          location.pathname = location.pathname.substring(basename.length);
 	          location.basename = basename;
 
@@ -25478,7 +25478,7 @@
 	};
 
 	var createMemoryHistory = function createMemoryHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  if (Array.isArray(options)) {
 	    options = { entries: options };
@@ -25545,9 +25545,9 @@
 	    go: go
 	  }));
 
-	  var _options = options;
-	  var entries = _options.entries;
-	  var current = _options.current;
+	  var _options = options,
+	      entries = _options.entries,
+	      current = _options.current;
 
 
 	  if (typeof entries === 'string') {
@@ -25607,13 +25607,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var createHistory = function createHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var getCurrentLocation = options.getCurrentLocation;
-	  var getUserConfirmation = options.getUserConfirmation;
-	  var pushLocation = options.pushLocation;
-	  var replaceLocation = options.replaceLocation;
-	  var go = options.go;
-	  var keyLength = options.keyLength;
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var getCurrentLocation = options.getCurrentLocation,
+	      getUserConfirmation = options.getUserConfirmation,
+	      pushLocation = options.pushLocation,
+	      replaceLocation = options.replaceLocation,
+	      go = options.go,
+	      keyLength = options.keyLength;
 
 
 	  var currentLocation = void 0;
@@ -25742,7 +25742,7 @@
 	  };
 
 	  var createLocation = function createLocation(location, action) {
-	    var key = arguments.length <= 2 || arguments[2] === undefined ? createKey() : arguments[2];
+	    var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : createKey();
 	    return (0, _LocationUtils.createLocation)(location, action, key);
 	  };
 
@@ -25982,18 +25982,18 @@
 	 * behavior using { forceRefresh: true } in options.
 	 */
 	var createBrowserHistory = function createBrowserHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Browser history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
 	  var useRefresh = options.forceRefresh || !(0, _DOMUtils.supportsHistory)();
 	  var Protocol = useRefresh ? RefreshProtocol : BrowserProtocol;
 
-	  var getUserConfirmation = Protocol.getUserConfirmation;
-	  var getCurrentLocation = Protocol.getCurrentLocation;
-	  var pushLocation = Protocol.pushLocation;
-	  var replaceLocation = Protocol.replaceLocation;
-	  var go = Protocol.go;
+	  var getUserConfirmation = Protocol.getUserConfirmation,
+	      getCurrentLocation = Protocol.getCurrentLocation,
+	      pushLocation = Protocol.pushLocation,
+	      replaceLocation = Protocol.replaceLocation,
+	      go = Protocol.go;
 
 
 	  var history = (0, _createHistory2.default)(_extends({
@@ -26099,8 +26099,9 @@
 
 	var startListener = exports.startListener = function startListener(listener) {
 	  var handlePopState = function handlePopState(event) {
-	    if (event.state !== undefined) // Ignore extraneous popstate events in WebKit
-	      listener(_createLocation(event.state));
+	    if ((0, _DOMUtils.isExtraneousPopstateEvent)(event)) // Ignore extraneous popstate events in WebKit
+	      return;
+	    listener(_createLocation(event.state));
 	  };
 
 	  (0, _DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
@@ -26123,8 +26124,8 @@
 	};
 
 	var updateLocation = function updateLocation(location, updateState) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 
 
 	  if (state !== undefined) (0, _DOMStateStorage.saveState)(key, state);
@@ -26191,6 +26192,15 @@
 	 */
 	var supportsPopstateOnHashchange = exports.supportsPopstateOnHashchange = function supportsPopstateOnHashchange() {
 	  return window.navigator.userAgent.indexOf('Trident') === -1;
+	};
+
+	/**
+	 * Returns true if a given popstate event is an extraneous WebKit event.
+	 * Accounts for the fact that Chrome on iOS fires real popstate events
+	 * containing undefined state when pressing the back button.
+	 */
+	var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+	  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 	};
 
 /***/ },
@@ -26433,12 +26443,12 @@
 	};
 
 	var createHashHistory = function createHashHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Hash history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
-	  var queryKey = options.queryKey;
-	  var hashType = options.hashType;
+	  var queryKey = options.queryKey,
+	      hashType = options.hashType;
 
 
 	  process.env.NODE_ENV !== 'production' ? (0, _warning2.default)(queryKey !== false, 'Using { queryKey: false } no longer works. Instead, just don\'t ' + 'use location state if you don\'t want a key in your URL query string') : void 0;
@@ -26633,8 +26643,8 @@
 	};
 
 	var updateLocation = function updateLocation(location, pathCoder, queryKey, updateHash) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 
 
 	  var path = pathCoder.encodePath((0, _PathUtils.createPath)(location));
@@ -26691,7 +26701,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(597);
+	__webpack_require__(599);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27972,8 +27982,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../css-loader/index.js!./prism-solarizedlight.css", function() {
-				var newContent = require("!!./../../css-loader/index.js!./prism-solarizedlight.css");
+			module.hot.accept("!!../../css-loader/index.js!./prism-solarizedlight.css", function() {
+				var newContent = require("!!../../css-loader/index.js!./prism-solarizedlight.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28069,7 +28079,7 @@
 			};
 		},
 		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
 		}),
 		getHeadElement = memoize(function () {
 			return document.head || document.getElementsByTagName("head")[0];
@@ -28320,8 +28330,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./CodeSample.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./CodeSample.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./CodeSample.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./CodeSample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28405,8 +28415,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Demo.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Demo.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Demo.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Demo.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28445,8 +28455,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Example.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Example.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Example.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Example.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28595,8 +28605,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./View.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./View.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./View.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./View.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28797,12 +28807,21 @@
 	  }
 	});
 
-	var _Label = __webpack_require__(593);
+	var _Label = __webpack_require__(591);
 
 	Object.defineProperty(exports, "Label", {
 	  enumerable: true,
 	  get: function get() {
 	    return _Label.Label;
+	  }
+	});
+
+	var _FileInput = __webpack_require__(595);
+
+	Object.defineProperty(exports, "FileInput", {
+	  enumerable: true,
+	  get: function get() {
+	    return _FileInput.FileInput;
 	  }
 	});
 
@@ -46188,8 +46207,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./flex.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./flex.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./flex.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./flex.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46358,8 +46377,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tab.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tab.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tab.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tab.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46545,8 +46564,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TabBar.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TabBar.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TabBar.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TabBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46703,8 +46722,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Modal.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Modal.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Modal.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Modal.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46854,8 +46873,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Button.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Button.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Button.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Button.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47155,8 +47174,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ConfirmationButton.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ConfirmationButton.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ConfirmationButton.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ConfirmationButton.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47369,8 +47388,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInput.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInput.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInput.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInput.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47741,8 +47760,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInput.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInput.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInput.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInput.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47939,8 +47958,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SegmentedControl.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SegmentedControl.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SegmentedControl.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SegmentedControl.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -50550,8 +50569,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../css-loader/index.js!./react-select.css", function() {
-				var newContent = require("!!./../../css-loader/index.js!./react-select.css");
+			module.hot.accept("!!../../css-loader/index.js!./react-select.css", function() {
+				var newContent = require("!!../../css-loader/index.js!./react-select.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -50590,8 +50609,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Select.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Select.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Select.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Select.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -50769,22 +50788,20 @@
 	        displayedData = displayedData.filter(filter);
 	      }
 	      if (sortState) {
-	        (function () {
-	          var sortedColumn = _this4._getColumn(sortState.columnID);
-	          displayedData = displayedData.sortBy(function (row) {
-	            var value = sortedColumn.props.sortValueFn(row);
+	        var sortedColumn = this._getColumn(sortState.columnID);
+	        displayedData = displayedData.sortBy(function (row) {
+	          var value = sortedColumn.props.sortValueFn(row);
 
-	            if (typeof value === "string") {
-	              value = value.trim().toLowerCase();
-	            }
-
-	            return value;
-	          });
-
-	          if (sortState.direction === _sortDirection2.default.DESCENDING) {
-	            displayedData = displayedData.reverse();
+	          if (typeof value === "string") {
+	            value = value.trim().toLowerCase();
 	          }
-	        })();
+
+	          return value;
+	        });
+
+	        if (sortState.direction === _sortDirection2.default.DESCENDING) {
+	          displayedData = displayedData.reverse();
+	        }
 	      }
 
 	      displayedData = displayedData.value();
@@ -51034,8 +51051,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Cell.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Cell.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Cell.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Cell.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51283,8 +51300,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Footer.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Footer.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Footer.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Footer.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51572,8 +51589,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./HeaderCell.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./HeaderCell.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./HeaderCell.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./HeaderCell.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51612,8 +51629,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Table.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Table.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Table.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Table.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51834,8 +51851,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./grid.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./grid.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./grid.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./grid.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -52079,8 +52096,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Icon.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Icon.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Icon.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Icon.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -52576,8 +52593,6 @@
 	});
 	exports.LeftNav = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(33);
@@ -52651,19 +52666,13 @@
 
 	        // Configure NavGroups to open/close themselves on click
 	        if (child.type === _NavGroup.NavGroup) {
-	          var _ret = function () {
-	            var open = child.props.id === _this2.state.openNavGroup;
-	            return {
-	              v: _react2.default.cloneElement(child, {
-	                _open: open,
-	                _onClick: function _onClick() {
-	                  return _this2.setState({ openNavGroup: open ? null : child.props.id });
-	                }
-	              })
-	            };
-	          }();
-
-	          if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+	          var open = child.props.id === _this2.state.openNavGroup;
+	          return _react2.default.cloneElement(child, {
+	            _open: open,
+	            _onClick: function _onClick() {
+	              return _this2.setState({ openNavGroup: open ? null : child.props.id });
+	            }
+	          });
 	        }
 
 	        return null; // Should never get here thanks to PropType validation
@@ -52843,8 +52852,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LeftNav.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LeftNav.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LeftNav.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LeftNav.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -53357,8 +53366,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Wizard.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Wizard.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Wizard.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Wizard.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -53504,8 +53513,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBar.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBar.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBar.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -53712,8 +53721,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextArea.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextArea.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextArea.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextArea.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -53795,7 +53804,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(591);
+	__webpack_require__(589);
 
 	/**
 	 * Standardized tooltip component with fade-in/out transition and customizable positioning.
@@ -55944,7 +55953,7 @@
 
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 
-	var _createChainedFunction = __webpack_require__(590);
+	var _createChainedFunction = __webpack_require__(588);
 
 	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
 
@@ -56207,10 +56216,11 @@
 
 	    var child = _react2['default'].Children.only(children);
 	    var childProps = child.props;
+	    var triggerProps = {};
 
-	    var triggerProps = {
-	      'aria-describedby': overlay.props.id
-	    };
+	    if (this.state.show) {
+	      triggerProps['aria-describedby'] = overlay.props.id;
+	    }
 
 	    // FIXME: The logic here for passing through handlers on this component is
 	    // inconsistent. We shouldn't be passing any of these props through.
@@ -56253,32 +56263,51 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var canUseDOM = __webpack_require__(555);
 
-	var contains = (function () {
-	  var root = canUseDOM && document.documentElement;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
-	  return root && root.contains ? function (context, node) {
-	    return context.contains(node);
-	  } : root && root.compareDocumentPosition ? function (context, node) {
-	    return context === node || !!(context.compareDocumentPosition(node) & 16);
-	  } : function (context, node) {
-	    if (node) do {
-	      if (node === context) return true;
-	    } while (node = node.parentNode);
+	var _inDOM = __webpack_require__(555);
 
-	    return false;
-	  };
-	})();
+	var _inDOM2 = _interopRequireDefault(_inDOM);
 
-	module.exports = contains;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  // HTML DOM and SVG DOM may have different support levels,
+	  // so we need to check on context instead of a document root element.
+	  return _inDOM2.default ? function (context, node) {
+	    if (context.contains) {
+	      return context.contains(node);
+	    } else if (context.compareDocumentPosition) {
+	      return context === node || !!(context.compareDocumentPosition(node) & 16);
+	    } else {
+	      return fallback(context, node);
+	    }
+	  } : fallback;
+	}();
+
+	function fallback(context, node) {
+	  if (node) do {
+	    if (node === context) return true;
+	  } while (node = node.parentNode);
+
+	  return false;
+	}
+	module.exports = exports['default'];
 
 /***/ },
 /* 555 */
 /***/ function(module, exports) {
 
 	'use strict';
-	module.exports = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+	module.exports = exports['default'];
 
 /***/ },
 /* 556 */
@@ -56320,11 +56349,11 @@
 
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 
-	var _elementType = __webpack_require__(587);
+	var _elementType = __webpack_require__(585);
 
 	var _elementType2 = _interopRequireDefault(_elementType);
 
-	var _Fade = __webpack_require__(588);
+	var _Fade = __webpack_require__(586);
 
 	var _Fade2 = _interopRequireDefault(_Fade);
 
@@ -56465,11 +56494,11 @@
 
 	var _Position2 = _interopRequireDefault(_Position);
 
-	var _RootCloseWrapper = __webpack_require__(583);
+	var _RootCloseWrapper = __webpack_require__(581);
 
 	var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 
-	var _elementType = __webpack_require__(587);
+	var _elementType = __webpack_require__(585);
 
 	var _elementType2 = _interopRequireDefault(_elementType);
 
@@ -57168,11 +57197,11 @@
 
 	var _offset2 = _interopRequireDefault(_offset);
 
-	var _position = __webpack_require__(570);
+	var _position = __webpack_require__(568);
 
 	var _position2 = _interopRequireDefault(_position);
 
-	var _scrollTop = __webpack_require__(581);
+	var _scrollTop = __webpack_require__(579);
 
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 
@@ -57296,11 +57325,11 @@
 	});
 	exports.default = offset;
 
-	var _contains = __webpack_require__(567);
+	var _contains = __webpack_require__(554);
 
 	var _contains2 = _interopRequireDefault(_contains);
 
-	var _isWindow = __webpack_require__(569);
+	var _isWindow = __webpack_require__(567);
 
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 
@@ -57337,57 +57366,6 @@
 
 /***/ },
 /* 567 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _inDOM = __webpack_require__(568);
-
-	var _inDOM2 = _interopRequireDefault(_inDOM);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function () {
-	  // HTML DOM and SVG DOM may have different support levels,
-	  // so we need to check on context instead of a document root element.
-	  return _inDOM2.default ? function (context, node) {
-	    if (context.contains) {
-	      return context.contains(node);
-	    } else if (context.compareDocumentPosition) {
-	      return context === node || !!(context.compareDocumentPosition(node) & 16);
-	    } else {
-	      return fallback(context, node);
-	    }
-	  } : fallback;
-	}();
-
-	function fallback(context, node) {
-	  if (node) do {
-	    if (node === context) return true;
-	  } while (node = node.parentNode);
-
-	  return false;
-	}
-	module.exports = exports['default'];
-
-/***/ },
-/* 568 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-	module.exports = exports['default'];
-
-/***/ },
-/* 569 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -57402,7 +57380,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 570 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57419,19 +57397,19 @@
 
 	var _offset2 = _interopRequireDefault(_offset);
 
-	var _offsetParent = __webpack_require__(571);
+	var _offsetParent = __webpack_require__(569);
 
 	var _offsetParent2 = _interopRequireDefault(_offsetParent);
 
-	var _scrollTop = __webpack_require__(581);
+	var _scrollTop = __webpack_require__(579);
 
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 
-	var _scrollLeft = __webpack_require__(582);
+	var _scrollLeft = __webpack_require__(580);
 
 	var _scrollLeft2 = _interopRequireDefault(_scrollLeft);
 
-	var _style = __webpack_require__(572);
+	var _style = __webpack_require__(570);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -57468,7 +57446,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 571 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57482,7 +57460,7 @@
 
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-	var _style = __webpack_require__(572);
+	var _style = __webpack_require__(570);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -57505,7 +57483,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 572 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57515,25 +57493,25 @@
 	});
 	exports.default = style;
 
-	var _camelizeStyle = __webpack_require__(573);
+	var _camelizeStyle = __webpack_require__(571);
 
 	var _camelizeStyle2 = _interopRequireDefault(_camelizeStyle);
 
-	var _hyphenateStyle = __webpack_require__(575);
+	var _hyphenateStyle = __webpack_require__(573);
 
 	var _hyphenateStyle2 = _interopRequireDefault(_hyphenateStyle);
 
-	var _getComputedStyle2 = __webpack_require__(577);
+	var _getComputedStyle2 = __webpack_require__(575);
 
 	var _getComputedStyle3 = _interopRequireDefault(_getComputedStyle2);
 
-	var _removeStyle = __webpack_require__(578);
+	var _removeStyle = __webpack_require__(576);
 
 	var _removeStyle2 = _interopRequireDefault(_removeStyle);
 
-	var _properties = __webpack_require__(579);
+	var _properties = __webpack_require__(577);
 
-	var _isTransform = __webpack_require__(580);
+	var _isTransform = __webpack_require__(578);
 
 	var _isTransform2 = _interopRequireDefault(_isTransform);
 
@@ -57572,7 +57550,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 573 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57582,7 +57560,7 @@
 	});
 	exports.default = camelizeStyleName;
 
-	var _camelize = __webpack_require__(574);
+	var _camelize = __webpack_require__(572);
 
 	var _camelize2 = _interopRequireDefault(_camelize);
 
@@ -57599,7 +57577,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 574 */
+/* 572 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -57618,7 +57596,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 575 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57628,7 +57606,7 @@
 	});
 	exports.default = hyphenateStyleName;
 
-	var _hyphenate = __webpack_require__(576);
+	var _hyphenate = __webpack_require__(574);
 
 	var _hyphenate2 = _interopRequireDefault(_hyphenate);
 
@@ -57646,7 +57624,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 576 */
+/* 574 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57664,7 +57642,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 577 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57674,7 +57652,7 @@
 	});
 	exports.default = _getComputedStyle;
 
-	var _camelizeStyle = __webpack_require__(573);
+	var _camelizeStyle = __webpack_require__(571);
 
 	var _camelizeStyle2 = _interopRequireDefault(_camelizeStyle);
 
@@ -57724,7 +57702,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 578 */
+/* 576 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57739,7 +57717,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 579 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57749,7 +57727,7 @@
 	});
 	exports.animationEnd = exports.animationDelay = exports.animationTiming = exports.animationDuration = exports.animationName = exports.transitionEnd = exports.transitionDuration = exports.transitionDelay = exports.transitionTiming = exports.transitionProperty = exports.transform = undefined;
 
-	var _inDOM = __webpack_require__(568);
+	var _inDOM = __webpack_require__(555);
 
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 
@@ -57854,7 +57832,7 @@
 	}
 
 /***/ },
-/* 580 */
+/* 578 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -57871,7 +57849,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 581 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57881,7 +57859,7 @@
 	});
 	exports.default = scrollTop;
 
-	var _isWindow = __webpack_require__(569);
+	var _isWindow = __webpack_require__(567);
 
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 
@@ -57897,7 +57875,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 582 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57907,7 +57885,7 @@
 	});
 	exports.default = scrollTop;
 
-	var _isWindow = __webpack_require__(569);
+	var _isWindow = __webpack_require__(567);
 
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 
@@ -57923,7 +57901,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 583 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57934,7 +57912,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _contains = __webpack_require__(567);
+	var _contains = __webpack_require__(554);
 
 	var _contains2 = _interopRequireDefault(_contains);
 
@@ -57946,7 +57924,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _addEventListener = __webpack_require__(584);
+	var _addEventListener = __webpack_require__(582);
 
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 
@@ -57971,6 +57949,13 @@
 	function isModifiedEvent(event) {
 	  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 	}
+
+	/**
+	 * The `<RootCloseWrapper/>` component registers your callback on the document
+	 * when rendered. Powers the `<Overlay/>` component. This is used achieve modal
+	 * style behavior where your callback is triggered when the user tries to
+	 * interact with the rest of the document or hits the `esc` key.
+	 */
 
 	var RootCloseWrapper = function (_React$Component) {
 	  _inherits(RootCloseWrapper, _React$Component);
@@ -58064,22 +58049,23 @@
 	  return RootCloseWrapper;
 	}(_react2.default.Component);
 
-	exports.default = RootCloseWrapper;
-
-
 	RootCloseWrapper.displayName = 'RootCloseWrapper';
 
 	RootCloseWrapper.propTypes = {
-	  onRootClose: _react2.default.PropTypes.func,
-	  children: _react2.default.PropTypes.element,
-
 	  /**
-	   * Disable the the RootCloseWrapper, preventing it from triggering
-	   * `onRootClose`.
+	   * Callback fired after click or mousedown. Also triggers when user hits `esc`.
+	   */
+	  onRootClose: _react2.default.PropTypes.func,
+	  /**
+	   * Children to render.
+	   */
+	  children: _react2.default.PropTypes.element,
+	  /**
+	   * Disable the the RootCloseWrapper, preventing it from triggering `onRootClose`.
 	   */
 	  disabled: _react2.default.PropTypes.bool,
 	  /**
-	   * Choose which document mouse event to bind to
+	   * Choose which document mouse event to bind to.
 	   */
 	  event: _react2.default.PropTypes.oneOf(['click', 'mousedown'])
 	};
@@ -58087,10 +58073,12 @@
 	RootCloseWrapper.defaultProps = {
 	  event: 'click'
 	};
+
+	exports.default = RootCloseWrapper;
 	module.exports = exports['default'];
 
 /***/ },
-/* 584 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58109,11 +58097,11 @@
 	  };
 	};
 
-	var _on = __webpack_require__(585);
+	var _on = __webpack_require__(583);
 
 	var _on2 = _interopRequireDefault(_on);
 
-	var _off = __webpack_require__(586);
+	var _off = __webpack_require__(584);
 
 	var _off2 = _interopRequireDefault(_off);
 
@@ -58122,7 +58110,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 585 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58131,7 +58119,7 @@
 	  value: true
 	});
 
-	var _inDOM = __webpack_require__(568);
+	var _inDOM = __webpack_require__(555);
 
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 
@@ -58158,7 +58146,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 586 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58167,7 +58155,7 @@
 	  value: true
 	});
 
-	var _inDOM = __webpack_require__(568);
+	var _inDOM = __webpack_require__(555);
 
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 
@@ -58188,7 +58176,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 587 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58225,7 +58213,7 @@
 	exports.default = (0, _createChainableTypeChecker2.default)(elementType);
 
 /***/ },
-/* 588 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58256,7 +58244,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Transition = __webpack_require__(589);
+	var _Transition = __webpack_require__(587);
 
 	var _Transition2 = _interopRequireDefault(_Transition);
 
@@ -58267,6 +58255,11 @@
 	   * Show the component; triggers the fade in or fade out animation
 	   */
 	  'in': _react2['default'].PropTypes.bool,
+
+	  /**
+	   * Wait until the first "enter" transition to mount the component (add it to the DOM)
+	   */
+	  mountOnEnter: _react2['default'].PropTypes.bool,
 
 	  /**
 	   * Unmount the component (remove it from the DOM) when it is faded out
@@ -58315,6 +58308,7 @@
 	var defaultProps = {
 	  'in': false,
 	  timeout: 300,
+	  mountOnEnter: false,
 	  unmountOnExit: false,
 	  transitionAppear: false
 	};
@@ -58345,7 +58339,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 589 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58359,6 +58353,18 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _classnames = __webpack_require__(262);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _on = __webpack_require__(583);
+
+	var _on2 = _interopRequireDefault(_on);
+
+	var _properties = __webpack_require__(577);
+
+	var _properties2 = _interopRequireDefault(_properties);
+
 	var _react = __webpack_require__(33);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -58366,18 +58372,6 @@
 	var _reactDom = __webpack_require__(66);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _properties = __webpack_require__(579);
-
-	var _properties2 = _interopRequireDefault(_properties);
-
-	var _on = __webpack_require__(585);
-
-	var _on2 = _interopRequireDefault(_on);
-
-	var _classnames = __webpack_require__(262);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58403,7 +58397,7 @@
 	 * but is specifically optimized for transitioning a single child "in" or "out".
 	 *
 	 * You don't even need to use class based css transitions if you don't want to (but it is easiest).
-	 * The extensive set of lifecyle callbacks means you have control over
+	 * The extensive set of lifecycle callbacks means you have control over
 	 * the transitioning now at each step of the way.
 	 */
 
@@ -58416,12 +58410,23 @@
 	    var _this = _possibleConstructorReturn(this, (Transition.__proto__ || Object.getPrototypeOf(Transition)).call(this, props, context));
 
 	    var initialStatus = void 0;
+	    _this.nextStatus = null;
+
 	    if (props.in) {
-	      // Start enter transition in componentDidMount.
-	      initialStatus = props.transitionAppear ? EXITED : ENTERED;
+	      if (props.transitionAppear) {
+	        initialStatus = EXITED;
+	        _this.nextStatus = ENTERING;
+	      } else {
+	        initialStatus = ENTERED;
+	      }
 	    } else {
-	      initialStatus = props.unmountOnExit ? UNMOUNTED : EXITED;
+	      if (props.unmountOnExit || props.mountOnEnter) {
+	        initialStatus = UNMOUNTED;
+	      } else {
+	        initialStatus = EXITED;
+	      }
 	    }
+
 	    _this.state = { status: initialStatus };
 
 	    _this.nextCallback = null;
@@ -58431,57 +58436,31 @@
 	  _createClass(Transition, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      if (this.props.transitionAppear && this.props.in) {
-	        this.performEnter(this.props);
-	      }
+	      this.updateStatus();
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.in && this.props.unmountOnExit) {
-	        if (this.state.status === UNMOUNTED) {
-	          // Start enter transition in componentDidUpdate.
+	      var status = this.state.status;
+
+
+	      if (nextProps.in) {
+	        if (status === UNMOUNTED) {
 	          this.setState({ status: EXITED });
 	        }
+	        if (status !== ENTERING && status !== ENTERED) {
+	          this.nextStatus = ENTERING;
+	        }
 	      } else {
-	        this._needsUpdate = true;
+	        if (status === ENTERING || status === ENTERED) {
+	          this.nextStatus = EXITING;
+	        }
 	      }
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      var status = this.state.status;
-
-	      if (this.props.unmountOnExit && status === EXITED) {
-	        // EXITED is always a transitional state to either ENTERING or UNMOUNTED
-	        // when using unmountOnExit.
-	        if (this.props.in) {
-	          this.performEnter(this.props);
-	        } else {
-	          this.setState({ status: UNMOUNTED });
-	        }
-
-	        return;
-	      }
-
-	      // guard ensures we are only responding to prop changes
-	      if (this._needsUpdate) {
-	        this._needsUpdate = false;
-
-	        if (this.props.in) {
-	          if (status === EXITING) {
-	            this.performEnter(this.props);
-	          } else if (status === EXITED) {
-	            this.performEnter(this.props);
-	          }
-	          // Otherwise we're already entering or entered.
-	        } else {
-	          if (status === ENTERING || status === ENTERED) {
-	            this.performExit(this.props);
-	          }
-	          // Otherwise we're already exited or exiting.
-	        }
-	      }
+	      this.updateStatus();
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -58489,46 +58468,45 @@
 	      this.cancelNextCallback();
 	    }
 	  }, {
-	    key: 'performEnter',
-	    value: function performEnter(props) {
+	    key: 'updateStatus',
+	    value: function updateStatus() {
 	      var _this2 = this;
 
-	      this.cancelNextCallback();
-	      var node = _reactDom2.default.findDOMNode(this);
+	      if (this.nextStatus !== null) {
+	        // nextStatus will always be ENTERING or EXITING.
+	        this.cancelNextCallback();
+	        var node = _reactDom2.default.findDOMNode(this);
 
-	      // Not this.props, because we might be about to receive new props.
-	      props.onEnter(node);
+	        if (this.nextStatus === ENTERING) {
+	          this.props.onEnter(node);
 
-	      this.safeSetState({ status: ENTERING }, function () {
-	        _this2.props.onEntering(node);
+	          this.safeSetState({ status: ENTERING }, function () {
+	            _this2.props.onEntering(node);
 
-	        _this2.onTransitionEnd(node, function () {
-	          _this2.safeSetState({ status: ENTERED }, function () {
-	            _this2.props.onEntered(node);
+	            _this2.onTransitionEnd(node, function () {
+	              _this2.safeSetState({ status: ENTERED }, function () {
+	                _this2.props.onEntered(node);
+	              });
+	            });
 	          });
-	        });
-	      });
-	    }
-	  }, {
-	    key: 'performExit',
-	    value: function performExit(props) {
-	      var _this3 = this;
+	        } else {
+	          this.props.onExit(node);
 
-	      this.cancelNextCallback();
-	      var node = _reactDom2.default.findDOMNode(this);
+	          this.safeSetState({ status: EXITING }, function () {
+	            _this2.props.onExiting(node);
 
-	      // Not this.props, because we might be about to receive new props.
-	      props.onExit(node);
-
-	      this.safeSetState({ status: EXITING }, function () {
-	        _this3.props.onExiting(node);
-
-	        _this3.onTransitionEnd(node, function () {
-	          _this3.safeSetState({ status: EXITED }, function () {
-	            _this3.props.onExited(node);
+	            _this2.onTransitionEnd(node, function () {
+	              _this2.safeSetState({ status: EXITED }, function () {
+	                _this2.props.onExited(node);
+	              });
+	            });
 	          });
-	        });
-	      });
+	        }
+
+	        this.nextStatus = null;
+	      } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+	        this.setState({ status: UNMOUNTED });
+	      }
 	    }
 	  }, {
 	    key: 'cancelNextCallback',
@@ -58549,14 +58527,14 @@
 	  }, {
 	    key: 'setNextCallback',
 	    value: function setNextCallback(callback) {
-	      var _this4 = this;
+	      var _this3 = this;
 
 	      var active = true;
 
 	      this.nextCallback = function (event) {
 	        if (active) {
 	          active = false;
-	          _this4.nextCallback = null;
+	          _this3.nextCallback = null;
 
 	          callback(event);
 	        }
@@ -58623,6 +58601,11 @@
 	   * Show the component; triggers the enter or exit animation
 	   */
 	  in: _react2.default.PropTypes.bool,
+
+	  /**
+	   * Wait until the first "enter" transition to mount the component (add it to the DOM)
+	   */
+	  mountOnEnter: _react2.default.PropTypes.bool,
 
 	  /**
 	   * Unmount the component (remove it from the DOM) when it is not shown
@@ -58712,7 +58695,7 @@
 	exports.default = Transition;
 
 /***/ },
-/* 590 */
+/* 588 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58758,13 +58741,13 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 591 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(592);
+	var content = __webpack_require__(590);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -58773,8 +58756,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tooltip.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tooltip.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tooltip.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tooltip.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -58784,7 +58767,7 @@
 	}
 
 /***/ },
-/* 592 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -58798,7 +58781,7 @@
 
 
 /***/ },
-/* 593 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58808,7 +58791,7 @@
 	});
 	exports.Label = undefined;
 
-	var _Label = __webpack_require__(594);
+	var _Label = __webpack_require__(592);
 
 	var _Label2 = _interopRequireDefault(_Label);
 
@@ -58817,7 +58800,7 @@
 	exports.Label = _Label2.default;
 
 /***/ },
-/* 594 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58842,7 +58825,7 @@
 
 	var _Tooltip = __webpack_require__(459);
 
-	__webpack_require__(595);
+	__webpack_require__(593);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58962,13 +58945,13 @@
 	};
 
 /***/ },
-/* 595 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(596);
+	var content = __webpack_require__(594);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -58977,8 +58960,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Label.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Label.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Label.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Label.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -58988,7 +58971,7 @@
 	}
 
 /***/ },
-/* 596 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -59000,6 +58983,819 @@
 
 	// exports
 
+
+/***/ },
+/* 595 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.FileInput = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(33);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDropzone = __webpack_require__(596);
+
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
+	var _flex = __webpack_require__(282);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(597);
+
+	function DefaultIcon() {
+	  return _react2.default.createElement(
+	    "svg",
+	    { className: "FileInput--Icon", width: "42px", height: "24px", viewBox: "0 0 42 24" },
+	    _react2.default.createElement(
+	      "g",
+	      null,
+	      _react2.default.createElement(
+	        "g",
+	        { transform: "translate(-242.000000, -13.000000)", fill: "#566279" },
+	        _react2.default.createElement("path", { d: "M248.461538,23.1333333 C248.461538,23.1333333 249,16.7333333 255.461538,16.7333333 C258.692308,16.7333333 260.307692,18.3333333 260.307692,18.3333333 C260.307692,18.3333333 263,13 267.846154,13 C272.28333,13 275.884815,15.8553426 275.922774,20.7203129 C280.230769,19.9912817 284,24.1407304 284,28.5959361 C284,33.0511418 280.689148,37 277.269231,37 C273,37 255,37 248.461538,37 C244.153846,36.4622091 242,33.2356824 242,29.6715179 C242,26.8666667 243.615385,23.1333333 248.461538,23.1333333 Z M268.593411,29.0413873 L271.257909,29.0413873 C271.632318,29.0413873 271.728491,28.8236393 271.470635,28.5550334 L267.161561,24.0663241 C266.65173,23.5352402 265.816118,23.5316579 265.302848,24.0663241 L260.993774,28.5550334 C260.729939,28.8298671 260.831158,29.0413873 261.2065,29.0413873 L263.894912,29.0413873 L263.894912,37 L268.593411,37 L268.593411,29.0413873 Z" })
+	      )
+	    )
+	  );
+	}
+
+	function ErrorIcon() {
+	  return _react2.default.createElement(
+	    "svg",
+	    { className: "FileInput--Icon", width: "42px", height: "24px", viewBox: "0 0 42 24" },
+	    _react2.default.createElement(
+	      "g",
+	      { fill: "#FCA53A" },
+	      _react2.default.createElement("path", { d: "M33.9,7.7c0-4.9-3.6-7.7-8.1-7.7c-4.8,0-7.5,5.3-7.5,5.3s-1.6-1.6-4.8-1.6c-6.5,0-7,6.4-7,6.4c-4.8,0-6.5,3.7-6.5,6.5c0,3.6,2.2,6.8,6.5,7.3c6.5,0,24.5,0,28.8,0c3.4,0,6.7-3.9,6.7-8.4S38.2,7,33.9,7.7z M26.9,19.7h-9.3c-0.6,0-1-0.5-1-1c0-0.1,0-0.3,0.1-0.4h0l4.6-9.3h0c0.2-0.3,0.5-0.6,0.9-0.6c0.4,0,0.8,0.2,0.9,0.6h0l4.7,9.3c0.1,0.1,0.1,0.3,0.1,0.4C27.9,19.2,27.5,19.7,26.9,19.7z" }),
+	      _react2.default.createElement("circle", { cx: "22.2", cy: "17.6", r: "1" }),
+	      _react2.default.createElement("rect", { x: "21.4", y: "11.2", width: "1.7", height: "4.4" })
+	    )
+	  );
+	}
+
+	function SuccessIcon() {
+	  return _react2.default.createElement(
+	    "svg",
+	    { className: "FileInput--Icon", width: "42px", height: "24px", viewBox: "0 0 42 24" },
+	    _react2.default.createElement(
+	      "g",
+	      { fill: "#01D59A", transform: "translate(-242.000000, -13.000000)" },
+	      _react2.default.createElement("path", { d: "M248.461538,23.1333333 C248.461538,23.1333333 249,16.7333333 255.461538,16.7333333 C258.692308,16.7333333 260.307692,18.3333333 260.307692,18.3333333 C260.307692,18.3333333 263,13 267.846154,13 C272.28333,13 275.884815,15.8553426 275.922774,20.7203129 C280.230769,19.9912817 284,24.1407304 284,28.5959361 C284,33.0511418 280.689148,37 277.269231,37 C273,37 255,37 248.461538,37 C244.153846,36.4622091 242,33.2356824 242,29.6715179 C242,26.8666667 243.615385,23.1333333 248.461538,23.1333333 Z M271.907449,23.5740441 C272.037079,23.4444141 272.037079,23.2221913 271.907449,23.0925614 L269.57411,20.7592219 C269.44448,20.6295919 269.222257,20.6295919 269.092627,20.7592219 L262.000016,27.8703517 L258.907415,24.7592324 C258.777785,24.6296024 258.555562,24.6296024 258.425932,24.7592324 L256.092593,27.0925719 C255.962963,27.2222018 255.962963,27.4444246 256.092593,27.5740546 L261.759274,33.2407361 C261.833349,33.2962918 261.907423,33.333329 262.000016,33.333329 C262.092609,33.333329 262.166683,33.2962918 262.240757,33.2407361 L271.907449,23.5740441 Z" })
+	    )
+	  );
+	}
+
+	function UploadingIcon(props) {
+	  return _react2.default.createElement(
+	    "svg",
+	    { className: "FileInput--Icon", width: "42px", height: "24px", viewBox: "0 0 42 24" },
+	    _react2.default.createElement(
+	      "linearGradient",
+	      { id: "bg", x1: "0.5", y1: "1", x2: "0.5", y2: "0" },
+	      _react2.default.createElement("stop", { offset: "0%", stopOpacity: "1", stopColor: "#4274f6" }),
+	      _react2.default.createElement("stop", { offset: props.percent + "%", stopOpacity: "1", stopColor: "#4274f6" }),
+	      _react2.default.createElement("stop", { offset: props.percent + "%", stopOpacity: "1", stopColor: "#E3E6EB" }),
+	      _react2.default.createElement("stop", { offset: "100%", stopOpacity: "1", stopColor: "#E3E6EB" })
+	    ),
+	    _react2.default.createElement(
+	      "g",
+	      null,
+	      _react2.default.createElement(
+	        "g",
+	        { transform: "translate(-242.000000, -13.000000)", fill: "url(#bg)" },
+	        _react2.default.createElement("path", { d: "M248.461538,23.1333333 C243.615385,23.1333333 242,26.8666667 242,29.6715179 C242,33.2356824 244.153846,36.4622091 248.461538,37 C255,37 273,37 277.269231,37 C280.689148,37 284,33.0511418 284,28.5959361 C284,24.1407304 280.230769,19.9912817 275.922774,20.7203129 C275.884815,15.8553426 272.28333,13 267.846154,13 C263,13 260.307692,18.3333333 260.307692,18.3333333 C260.307692,18.3333333 258.692308,16.7333333 255.461538,16.7333333 C249,16.7333333 248.461538,23.1333333 248.461538,23.1333333 Z" })
+	      )
+	    )
+	  );
+	}
+
+	UploadingIcon.propTypes = {
+	  percent: _react2.default.PropTypes.number.isRequired
+	};
+
+	var FileInput = exports.FileInput = function (_React$Component) {
+	  _inherits(FileInput, _React$Component);
+
+	  function FileInput(props) {
+	    _classCallCheck(this, FileInput);
+
+	    var _this = _possibleConstructorReturn(this, (FileInput.__proto__ || Object.getPrototypeOf(FileInput)).call(this, props));
+
+	    _this.state = {
+	      filename: null,
+	      error: null,
+	      progress: null,
+	      success: null
+	    };
+	    _this.onDropRejected = _this.onDropRejected.bind(_this);
+	    _this.onDropAccepted = _this.onDropAccepted.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(FileInput, [{
+	    key: "onDropAccepted",
+	    value: function onDropAccepted(files) {
+	      var _this2 = this;
+
+	      var fileKey = Math.random();
+	      this.setState({ fileKey: fileKey });
+	      this.setState({ filename: files[0].name, error: null, progress: 0, success: null });
+	      this.props.store(files[0], {
+	        success: function success() {
+	          if (_this2.state.fileKey !== fileKey) {
+	            return; // If the user drops multiple files we want to only treat the last one as "success"
+	          }
+	          _this2.setState({ success: true });
+	        },
+	        error: function error() {
+	          _this2.setState({ error: "Unknown error" });
+	        },
+	        progress: function progress(_progress) {
+	          if (_this2.state.fileKey !== fileKey) {
+	            return; // If the user drops multiple files we want to only take progress from the active upload
+	          }
+	          _this2.setState({ progress: _progress });
+	        }
+	      });
+	    }
+	  }, {
+	    key: "onDropRejected",
+	    value: function onDropRejected() {
+	      this.setState({ filename: null, error: "Invalid " + this.props.label, success: null });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this3 = this;
+
+	      return _react2.default.createElement(
+	        _reactDropzone2.default,
+	        {
+	          accept: this.props.accept,
+	          style: {},
+	          multiple: false,
+	          onDropAccepted: this.onDropAccepted,
+	          onDropRejected: this.onDropRejected
+	        },
+	        function (_ref) {
+	          var isDragActive = _ref.isDragActive;
+	          var isDragReject = _ref.isDragReject;
+
+	          var message = "Upload " + _this3.props.label;
+	          var icon = _react2.default.createElement(DefaultIcon, null);
+	          var selected = false;
+	          if (isDragActive) {
+	            selected = true;
+	            message = "";
+	          } else if (isDragReject || _this3.state.error) {
+	            selected = true;
+	            message = _this3.state.error || "Invalid " + _this3.props.label;
+	            icon = _react2.default.createElement(ErrorIcon, null);
+	          } else if (_this3.state.success) {
+	            selected = true;
+	            message = _this3.state.filename;
+	            icon = _react2.default.createElement(SuccessIcon, null);
+	          } else if (_this3.state.filename) {
+	            icon = _react2.default.createElement(UploadingIcon, { percent: _this3.state.progress });
+	            message = _this3.state.filename;
+	            selected = true;
+	          }
+	          return _react2.default.createElement(
+	            _flex.FlexBox,
+	            { className: "FileInput", grow: true },
+	            selected && _react2.default.createElement(
+	              "label",
+	              { className: "FileInput--Label" },
+	              _this3.props.label
+	            ),
+	            _react2.default.createElement(
+	              _flex.FlexItem,
+	              { className: "FileInput--Text " + (selected ? "FileInput--Text--selected" : ""), grow: true },
+	              message
+	            ),
+	            icon
+	          );
+	        }
+	      );
+	    }
+	  }]);
+
+	  return FileInput;
+	}(_react2.default.Component);
+
+	FileInput.propTypes = {
+	  label: _react2.default.PropTypes.string.isRequired,
+	  store: _react2.default.PropTypes.func.isRequired,
+	  accept: _react2.default.PropTypes.string
+	};
+
+/***/ },
+/* 596 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function webpackUniversalModuleDefinition(root, factory) {
+		if(true)
+			module.exports = factory(__webpack_require__(33));
+		else if(typeof define === 'function' && define.amd)
+			define(["react"], factory);
+		else if(typeof exports === 'object')
+			exports["Dropzone"] = factory(require("react"));
+		else
+			root["Dropzone"] = factory(root["react"]);
+	})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+	return /******/ (function(modules) { // webpackBootstrap
+	/******/ 	// The module cache
+	/******/ 	var installedModules = {};
+	/******/
+	/******/ 	// The require function
+	/******/ 	function __webpack_require__(moduleId) {
+	/******/
+	/******/ 		// Check if module is in cache
+	/******/ 		if(installedModules[moduleId])
+	/******/ 			return installedModules[moduleId].exports;
+	/******/
+	/******/ 		// Create a new module (and put it into the cache)
+	/******/ 		var module = installedModules[moduleId] = {
+	/******/ 			exports: {},
+	/******/ 			id: moduleId,
+	/******/ 			loaded: false
+	/******/ 		};
+	/******/
+	/******/ 		// Execute the module function
+	/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+	/******/
+	/******/ 		// Flag the module as loaded
+	/******/ 		module.loaded = true;
+	/******/
+	/******/ 		// Return the exports of the module
+	/******/ 		return module.exports;
+	/******/ 	}
+	/******/
+	/******/
+	/******/ 	// expose the modules object (__webpack_modules__)
+	/******/ 	__webpack_require__.m = modules;
+	/******/
+	/******/ 	// expose the module cache
+	/******/ 	__webpack_require__.c = installedModules;
+	/******/
+	/******/ 	// __webpack_public_path__
+	/******/ 	__webpack_require__.p = "";
+	/******/
+	/******/ 	// Load entry module and return exports
+	/******/ 	return __webpack_require__(0);
+	/******/ })
+	/************************************************************************/
+	/******/ ([
+	/* 0 */
+	/***/ function(module, exports, __webpack_require__) {
+
+		'use strict';
+		
+		Object.defineProperty(exports, "__esModule", {
+		  value: true
+		});
+		
+		var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+		
+		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+		
+		var _react = __webpack_require__(1);
+		
+		var _react2 = _interopRequireDefault(_react);
+		
+		var _attrAccept = __webpack_require__(2);
+		
+		var _attrAccept2 = _interopRequireDefault(_attrAccept);
+		
+		var _reactIsDeprecated = __webpack_require__(3);
+		
+		var _getDataTransferItems = __webpack_require__(4);
+		
+		var _getDataTransferItems2 = _interopRequireDefault(_getDataTransferItems);
+		
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+		
+		function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+		
+		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+		
+		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+		
+		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint prefer-template: 0 */
+		
+		
+		var supportMultiple = typeof document !== 'undefined' && document && document.createElement ? 'multiple' in document.createElement('input') : true;
+		
+		var Dropzone = function (_React$Component) {
+		  _inherits(Dropzone, _React$Component);
+		
+		  _createClass(Dropzone, null, [{
+		    key: 'renderChildren',
+		    value: function renderChildren(children, isDragActive, isDragReject) {
+		      if (typeof children === 'function') {
+		        return children({ isDragActive: isDragActive, isDragReject: isDragReject });
+		      }
+		      return children;
+		    }
+		  }]);
+		
+		  function Dropzone(props, context) {
+		    _classCallCheck(this, Dropzone);
+		
+		    var _this = _possibleConstructorReturn(this, (Dropzone.__proto__ || Object.getPrototypeOf(Dropzone)).call(this, props, context));
+		
+		    _this.onClick = _this.onClick.bind(_this);
+		    _this.onDragStart = _this.onDragStart.bind(_this);
+		    _this.onDragEnter = _this.onDragEnter.bind(_this);
+		    _this.onDragLeave = _this.onDragLeave.bind(_this);
+		    _this.onDragOver = _this.onDragOver.bind(_this);
+		    _this.onDrop = _this.onDrop.bind(_this);
+		    _this.onFileDialogCancel = _this.onFileDialogCancel.bind(_this);
+		    _this.fileAccepted = _this.fileAccepted.bind(_this);
+		    _this.isFileDialogActive = false;
+		    _this.state = {
+		      isDragActive: false
+		    };
+		    return _this;
+		  }
+		
+		  _createClass(Dropzone, [{
+		    key: 'componentDidMount',
+		    value: function componentDidMount() {
+		      this.enterCounter = 0;
+		      // Tried implementing addEventListener, but didn't work out
+		      document.body.onfocus = this.onFileDialogCancel;
+		    }
+		  }, {
+		    key: 'componentWillUnmount',
+		    value: function componentWillUnmount() {
+		      // Can be replaced with removeEventListener, if addEventListener works
+		      document.body.onfocus = null;
+		    }
+		  }, {
+		    key: 'onDragStart',
+		    value: function onDragStart(e) {
+		      if (this.props.onDragStart) {
+		        this.props.onDragStart.call(this, e);
+		      }
+		    }
+		  }, {
+		    key: 'onDragEnter',
+		    value: function onDragEnter(e) {
+		      e.preventDefault();
+		
+		      // Count the dropzone and any children that are entered.
+		      ++this.enterCounter;
+		
+		      var allFilesAccepted = this.allFilesAccepted((0, _getDataTransferItems2.default)(e, this.props.multiple));
+		
+		      this.setState({
+		        isDragActive: allFilesAccepted,
+		        isDragReject: !allFilesAccepted
+		      });
+		
+		      if (this.props.onDragEnter) {
+		        this.props.onDragEnter.call(this, e);
+		      }
+		    }
+		  }, {
+		    key: 'onDragOver',
+		    value: function onDragOver(e) {
+		      // eslint-disable-line class-methods-use-this
+		      e.preventDefault();
+		      e.stopPropagation();
+		      try {
+		        e.dataTransfer.dropEffect = 'copy'; // eslint-disable-line no-param-reassign
+		      } catch (err) {
+		        // continue regardless of error
+		      }
+		
+		      if (this.props.onDragOver) {
+		        this.props.onDragOver.call(this, e);
+		      }
+		      return false;
+		    }
+		  }, {
+		    key: 'onDragLeave',
+		    value: function onDragLeave(e) {
+		      e.preventDefault();
+		
+		      // Only deactivate once the dropzone and all children was left.
+		      if (--this.enterCounter > 0) {
+		        return;
+		      }
+		
+		      this.setState({
+		        isDragActive: false,
+		        isDragReject: false
+		      });
+		
+		      if (this.props.onDragLeave) {
+		        this.props.onDragLeave.call(this, e);
+		      }
+		    }
+		  }, {
+		    key: 'onDrop',
+		    value: function onDrop(e) {
+		      var _this2 = this;
+		
+		      var _props = this.props,
+		          onDrop = _props.onDrop,
+		          onDropAccepted = _props.onDropAccepted,
+		          onDropRejected = _props.onDropRejected,
+		          multiple = _props.multiple,
+		          disablePreview = _props.disablePreview;
+		
+		      var fileList = (0, _getDataTransferItems2.default)(e, multiple);
+		      var acceptedFiles = [];
+		      var rejectedFiles = [];
+		
+		      // Stop default browser behavior
+		      e.preventDefault();
+		
+		      // Reset the counter along with the drag on a drop.
+		      this.enterCounter = 0;
+		      this.isFileDialogActive = false;
+		
+		      fileList.forEach(function (file) {
+		        if (!disablePreview) {
+		          file.preview = window.URL.createObjectURL(file); // eslint-disable-line no-param-reassign
+		        }
+		
+		        if (_this2.fileAccepted(file) && _this2.fileMatchSize(file)) {
+		          acceptedFiles.push(file);
+		        } else {
+		          rejectedFiles.push(file);
+		        }
+		      });
+		
+		      if (onDrop) {
+		        onDrop.call(this, acceptedFiles, rejectedFiles, e);
+		      }
+		
+		      if (rejectedFiles.length > 0 && onDropRejected) {
+		        onDropRejected.call(this, rejectedFiles, e);
+		      }
+		
+		      if (acceptedFiles.length > 0 && onDropAccepted) {
+		        onDropAccepted.call(this, acceptedFiles, e);
+		      }
+		
+		      // Reset drag state
+		      this.setState({
+		        isDragActive: false,
+		        isDragReject: false
+		      });
+		    }
+		  }, {
+		    key: 'onClick',
+		    value: function onClick(e) {
+		      var _props2 = this.props,
+		          onClick = _props2.onClick,
+		          disableClick = _props2.disableClick;
+		
+		      if (!disableClick) {
+		        e.stopPropagation();
+		        this.open();
+		        if (onClick) {
+		          onClick.call(this, e);
+		        }
+		      }
+		    }
+		  }, {
+		    key: 'onFileDialogCancel',
+		    value: function onFileDialogCancel() {
+		      // timeout will not recognize context of this method
+		      var onFileDialogCancel = this.props.onFileDialogCancel;
+		      var fileInputEl = this.fileInputEl;
+		      var isFileDialogActive = this.isFileDialogActive;
+		      // execute the timeout only if the onFileDialogCancel is defined and FileDialog
+		      // is opened in the browser
+		
+		      if (onFileDialogCancel && isFileDialogActive) {
+		        setTimeout(function () {
+		          // Returns an object as FileList
+		          var FileList = fileInputEl.files;
+		          if (!FileList.length) {
+		            isFileDialogActive = false;
+		            onFileDialogCancel();
+		          }
+		        }, 300);
+		      }
+		    }
+		  }, {
+		    key: 'fileAccepted',
+		    value: function fileAccepted(file) {
+		      return (0, _attrAccept2.default)(file, this.props.accept);
+		    }
+		  }, {
+		    key: 'fileMatchSize',
+		    value: function fileMatchSize(file) {
+		      return file.size <= this.props.maxSize && file.size >= this.props.minSize;
+		    }
+		  }, {
+		    key: 'allFilesAccepted',
+		    value: function allFilesAccepted(files) {
+		      return files.every(this.fileAccepted);
+		    }
+		  }, {
+		    key: 'open',
+		    value: function open() {
+		      this.isFileDialogActive = true;
+		      this.fileInputEl.value = null;
+		      this.fileInputEl.click();
+		    }
+		  }, {
+		    key: 'render',
+		    value: function render() {
+		      var _this3 = this;
+		
+		      var _props3 = this.props,
+		          accept = _props3.accept,
+		          activeClassName = _props3.activeClassName,
+		          inputProps = _props3.inputProps,
+		          multiple = _props3.multiple,
+		          name = _props3.name,
+		          rejectClassName = _props3.rejectClassName,
+		          children = _props3.children,
+		          rest = _objectWithoutProperties(_props3, ['accept', 'activeClassName', 'inputProps', 'multiple', 'name', 'rejectClassName', 'children']);
+		
+		      var activeStyle = rest.activeStyle,
+		          className = rest.className,
+		          rejectStyle = rest.rejectStyle,
+		          style = rest.style,
+		          props = _objectWithoutProperties(rest, ['activeStyle', 'className', 'rejectStyle', 'style']);
+		
+		      var _state = this.state,
+		          isDragActive = _state.isDragActive,
+		          isDragReject = _state.isDragReject;
+		
+		
+		      className = className || '';
+		
+		      if (isDragActive && activeClassName) {
+		        className += ' ' + activeClassName;
+		      }
+		      if (isDragReject && rejectClassName) {
+		        className += ' ' + rejectClassName;
+		      }
+		
+		      if (!className && !style && !activeStyle && !rejectStyle) {
+		        style = {
+		          width: 200,
+		          height: 200,
+		          borderWidth: 2,
+		          borderColor: '#666',
+		          borderStyle: 'dashed',
+		          borderRadius: 5
+		        };
+		        activeStyle = {
+		          borderStyle: 'solid',
+		          backgroundColor: '#eee'
+		        };
+		        rejectStyle = {
+		          borderStyle: 'solid',
+		          backgroundColor: '#ffdddd'
+		        };
+		      }
+		
+		      var appliedStyle = void 0;
+		      if (activeStyle && isDragActive) {
+		        appliedStyle = _extends({}, style, activeStyle);
+		      } else if (rejectStyle && isDragReject) {
+		        appliedStyle = _extends({}, style, rejectStyle);
+		      } else {
+		        appliedStyle = _extends({}, style);
+		      }
+		
+		      var inputAttributes = {
+		        accept: accept,
+		        type: 'file',
+		        style: { display: 'none' },
+		        multiple: supportMultiple && multiple,
+		        ref: function ref(el) {
+		          return _this3.fileInputEl = el;
+		        }, // eslint-disable-line
+		        onChange: this.onDrop
+		      };
+		
+		      if (name && name.length) {
+		        inputAttributes.name = name;
+		      }
+		
+		      // Remove custom properties before passing them to the wrapper div element
+		      var customProps = ['acceptedFiles', 'disablePreview', 'disableClick', 'onDropAccepted', 'onDropRejected', 'onFileDialogCancel', 'maxSize', 'minSize'];
+		      var divProps = _extends({}, props);
+		      customProps.forEach(function (prop) {
+		        return delete divProps[prop];
+		      });
+		
+		      return _react2.default.createElement(
+		        'div',
+		        _extends({
+		          className: className,
+		          style: appliedStyle
+		        }, divProps /* expand user provided props first so event handlers are never overridden */, {
+		          onClick: this.onClick,
+		          onDragStart: this.onDragStart,
+		          onDragEnter: this.onDragEnter,
+		          onDragOver: this.onDragOver,
+		          onDragLeave: this.onDragLeave,
+		          onDrop: this.onDrop
+		        }),
+		        Dropzone.renderChildren(children, isDragActive, isDragReject),
+		        _react2.default.createElement('input', _extends({}, inputProps /* expand user provided inputProps first so inputAttributes override them */, inputAttributes))
+		      );
+		    }
+		  }]);
+		
+		  return Dropzone;
+		}(_react2.default.Component);
+		
+		Dropzone.defaultProps = {
+		  disablePreview: false,
+		  disableClick: false,
+		  multiple: true,
+		  maxSize: Infinity,
+		  minSize: 0
+		};
+		
+		Dropzone.propTypes = {
+		  onClick: _react2.default.PropTypes.func,
+		  onDrop: _react2.default.PropTypes.func,
+		  onDropAccepted: _react2.default.PropTypes.func,
+		  onDropRejected: _react2.default.PropTypes.func,
+		  onDragStart: _react2.default.PropTypes.func,
+		  onDragEnter: _react2.default.PropTypes.func,
+		  onDragOver: _react2.default.PropTypes.func,
+		  onDragLeave: _react2.default.PropTypes.func,
+		
+		  // Contents of the dropzone
+		  children: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.node, _react2.default.PropTypes.func]),
+		
+		  // CSS styles to apply
+		  style: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.object, 'Prop style is deprecated. Use function as children to style dropzone and its contents.'),
+		
+		  // CSS styles to apply when drop will be accepted
+		  activeStyle: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.object, 'Prop activeStyle is deprecated. Use function as children to style dropzone and its contents.'),
+		
+		  // CSS styles to apply when drop will be rejected
+		  rejectStyle: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.object, 'Prop rejectStyle is deprecated. Use function as children to style dropzone and its contents.'),
+		
+		  // Optional className
+		  className: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.string, 'Prop className is deprecated. Use function as children to style dropzone and its contents.'),
+		
+		  // className for accepted state
+		  activeClassName: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.string, 'Prop activeClassName is deprecated. Use function as children to style dropzone and its contents.'),
+		
+		  // className for rejected state
+		  rejectClassName: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.string, 'Prop rejectClassName is deprecated. Use function as children to style dropzone and its contents.'),
+		
+		  disablePreview: _react2.default.PropTypes.bool, // Enable/disable preview generation
+		  disableClick: _react2.default.PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
+		  onFileDialogCancel: _react2.default.PropTypes.func, // Provide a callback on clicking the cancel button of the file dialog
+		
+		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
+		  multiple: _react2.default.PropTypes.bool, // Allow dropping multiple files
+		  accept: _react2.default.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
+		  name: _react2.default.PropTypes.string, // name attribute for the input tag
+		  maxSize: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.number, 'Prop maxSize is deprecated and will be removed in the next major release'),
+		  minSize: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.number, 'Prop minSize is deprecated and will be removed in the next major release')
+		};
+		
+		exports.default = Dropzone;
+		module.exports = exports['default'];
+
+	/***/ },
+	/* 1 */
+	/***/ function(module, exports) {
+
+		module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+	/***/ },
+	/* 2 */
+	/***/ function(module, exports) {
+
+		module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]={exports:{},id:e,loaded:!1};return t[e].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var r={};return n.m=t,n.c=r,n.p="",n(0)}([function(t,n,r){"use strict";n.__esModule=!0,r(8),r(9),n["default"]=function(t,n){if(t&&n){var r=function(){var r=Array.isArray(n)?n:n.split(","),e=t.name||"",o=t.type||"",i=o.replace(/\/.*$/,"");return{v:r.some(function(t){var n=t.trim();return"."===n.charAt(0)?e.toLowerCase().endsWith(n.toLowerCase()):/\/\*$/.test(n)?i===n.replace(/\/.*$/,""):o===n})}}();if("object"==typeof r)return r.v}return!0},t.exports=n["default"]},function(t,n){var r=t.exports={version:"1.2.2"};"number"==typeof __e&&(__e=r)},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n,r){var e=r(2),o=r(1),i=r(4),u=r(19),c="prototype",f=function(t,n){return function(){return t.apply(n,arguments)}},s=function(t,n,r){var a,p,l,y,d=t&s.G,h=t&s.P,v=d?e:t&s.S?e[n]||(e[n]={}):(e[n]||{})[c],x=d?o:o[n]||(o[n]={});d&&(r=n);for(a in r)p=!(t&s.F)&&v&&a in v,l=(p?v:r)[a],y=t&s.B&&p?f(l,e):h&&"function"==typeof l?f(Function.call,l):l,v&&!p&&u(v,a,l),x[a]!=l&&i(x,a,y),h&&((x[c]||(x[c]={}))[a]=l)};e.core=o,s.F=1,s.G=2,s.S=4,s.P=8,s.B=16,s.W=32,t.exports=s},function(t,n,r){var e=r(5),o=r(18);t.exports=r(22)?function(t,n,r){return e.setDesc(t,n,o(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n){var r=Object;t.exports={create:r.create,getProto:r.getPrototypeOf,isEnum:{}.propertyIsEnumerable,getDesc:r.getOwnPropertyDescriptor,setDesc:r.defineProperty,setDescs:r.defineProperties,getKeys:r.keys,getNames:r.getOwnPropertyNames,getSymbols:r.getOwnPropertySymbols,each:[].forEach}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(20)("wks"),o=r(2).Symbol;t.exports=function(t){return e[t]||(e[t]=o&&o[t]||(o||r(6))("Symbol."+t))}},function(t,n,r){r(26),t.exports=r(1).Array.some},function(t,n,r){r(25),t.exports=r(1).String.endsWith},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(10);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,o){return t.call(n,r,e,o)}}return function(){return t.apply(n,arguments)}}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){t.exports=function(t){var n=/./;try{"/./"[t](n)}catch(e){try{return n[r(7)("match")]=!1,!"/./"[t](n)}catch(o){}}return!0}},function(t,n){t.exports=function(t){try{return!!t()}catch(n){return!0}}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n,r){var e=r(16),o=r(11),i=r(7)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[i])?!!n:"RegExp"==o(t))}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var e=r(2),o=r(4),i=r(6)("src"),u="toString",c=Function[u],f=(""+c).split(u);r(1).inspectSource=function(t){return c.call(t)},(t.exports=function(t,n,r,u){"function"==typeof r&&(o(r,i,t[n]?""+t[n]:f.join(String(n))),"name"in r||(r.name=n)),t===e?t[n]=r:(u||delete t[n],o(t,n,r))})(Function.prototype,u,function(){return"function"==typeof this&&this[i]||c.call(this)})},function(t,n,r){var e=r(2),o="__core-js_shared__",i=e[o]||(e[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n,r){var e=r(17),o=r(13);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(o(t))}},function(t,n,r){t.exports=!r(15)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n,r){var e=r(23),o=Math.min;t.exports=function(t){return t>0?o(e(t),9007199254740991):0}},function(t,n,r){"use strict";var e=r(3),o=r(24),i=r(21),u="endsWith",c=""[u];e(e.P+e.F*r(14)(u),"String",{endsWith:function(t){var n=i(this,t,u),r=arguments,e=r.length>1?r[1]:void 0,f=o(n.length),s=void 0===e?f:Math.min(o(e),f),a=String(t);return c?c.call(n,a,s):n.slice(s-a.length,s)===a}})},function(t,n,r){var e=r(5),o=r(3),i=r(1).Array||Array,u={},c=function(t,n){e.each.call(t.split(","),function(t){void 0==n&&t in i?u[t]=i[t]:t in[]&&(u[t]=r(12)(Function.call,[][t],n))})};c("pop,reverse,shift,keys,values,entries",1),c("indexOf,every,some,forEach,map,filter,find,findIndex,includes",3),c("join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill"),o(o.S,"Array",u)}]);
+
+	/***/ },
+	/* 3 */
+	/***/ function(module, exports) {
+
+		"use strict";
+		
+		Object.defineProperty(exports, "__esModule", {
+		  value: true
+		});
+		
+		var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+		
+		exports.deprecate = deprecate;
+		exports.addIsDeprecated = addIsDeprecated;
+		
+		/**
+		 * Wraps a singular React.PropTypes.[type] with
+		 * a console.warn call that is only called if the
+		 * prop is not undefined/null and is only called
+		 * once.
+		 * @param  {Object} propType React.PropType type
+		 * @param  {String} message  Deprecation message
+		 * @return {Function}        ReactPropTypes checkType
+		 */
+		function deprecate(propType, message) {
+		  var warned = false;
+		  return function () {
+		    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+		      args[_key] = arguments[_key];
+		    }
+		
+		    var props = args[0];
+		    var propName = args[1];
+		
+		    var prop = props[propName];
+		    if (prop !== undefined && prop !== null && !warned) {
+		      warned = true;
+		      console.warn(message);
+		    }
+		    return propType.call.apply(propType, [this].concat(args));
+		  };
+		}
+		
+		/**
+		 * Returns a copy of `PropTypes` with an `isDeprecated`
+		 * method available on all top-level propType options.
+		 * @param {React.PropTypes}  PropTypes
+		 * @return {React.PropTypes} newPropTypes
+		 */
+		function addIsDeprecated(PropTypes) {
+		  var newPropTypes = _extends({}, PropTypes);
+		  for (var type in newPropTypes) {
+		    if (newPropTypes.hasOwnProperty(type)) {
+		      var propType = newPropTypes[type];
+		      propType = propType.bind(newPropTypes);
+		      propType.isDeprecated = deprecate.bind(newPropTypes, propType);
+		      newPropTypes[type] = propType;
+		    }
+		  }
+		  return newPropTypes;
+		}
+
+
+	/***/ },
+	/* 4 */
+	/***/ function(module, exports) {
+
+		"use strict";
+		
+		Object.defineProperty(exports, "__esModule", {
+		  value: true
+		});
+		exports.default = getDataTransferFiles;
+		function getDataTransferFiles(event) {
+		  var isMultipleAllowed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+		
+		  var dataTransferItemsList = [];
+		  if (event.dataTransfer) {
+		    var dt = event.dataTransfer;
+		    if (dt.files && dt.files.length) {
+		      dataTransferItemsList = dt.files;
+		    } else if (dt.items && dt.items.length) {
+		      // During the drag even the dataTransfer.files is null
+		      // but Chrome implements some drag store, which is accesible via dataTransfer.items
+		      dataTransferItemsList = dt.items;
+		    }
+		  } else if (event.target && event.target.files) {
+		    dataTransferItemsList = event.target.files;
+		  }
+		
+		  if (dataTransferItemsList.length > 0) {
+		    dataTransferItemsList = isMultipleAllowed ? dataTransferItemsList : [dataTransferItemsList[0]];
+		  }
+		
+		  // Convert from DataTransferItemsList to the native Array
+		  return Array.prototype.slice.call(dataTransferItemsList);
+		}
+		module.exports = exports["default"];
+
+	/***/ }
+	/******/ ])
+	});
+	;
+	//# sourceMappingURL=index.js.map
 
 /***/ },
 /* 597 */
@@ -59017,8 +59813,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ButtonView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ButtonView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./FileInput.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./FileInput.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -59036,13 +59832,53 @@
 
 
 	// module
-	exports.push([module.id, ".ButtonView .Button:not(:last-child):not(.Button--linkPlain) {\n  margin-right: 1rem;\n}\n", ""]);
+	exports.push([module.id, ".FileInput {\n  font-size: 1rem;\n  text-transform: uppercase;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n  border: 0.0625rem solid #e3e6eb;\n  background: #fff;\n  box-sizing: border-box;\n  color: #566279;\n  cursor: pointer;\n  height: 3.5rem;\n  position: relative;\n  width: 100%;\n}\n.FileInput--Label {\n  text-transform: uppercase;\n  font-size: 0.625rem;\n  color: #566279;\n  position: absolute;\n  top: 0.5rem;\n  width: 100%;\n}\n.FileInput--Text,\n.FileInput--Icon {\n  -ms-flex-item-align: center;\n  -ms-grid-row-align: center;\n      align-self: center;\n}\n.FileInput--Text--selected {\n  color: #191926;\n  margin-top: 0.75rem;\n}\n.FileInput + input[type=file] {\n  display: inline !important;\n  margin-left: -10000rem;\n  position: fixed;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 599 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(600);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(270)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ButtonView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ButtonView.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(269)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".ButtonView .Button:not(:last-child):not(.Button--linkPlain) {\n  margin-right: 1rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59067,7 +59903,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(600);
+	__webpack_require__(602);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59718,13 +60554,13 @@
 	};
 
 /***/ },
-/* 600 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(601);
+	var content = __webpack_require__(603);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -59733,8 +60569,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ColorsView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ColorsView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ColorsView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ColorsView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -59744,7 +60580,7 @@
 	}
 
 /***/ },
-/* 601 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -59758,7 +60594,7 @@
 
 
 /***/ },
-/* 602 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59856,7 +60692,7 @@
 	};
 
 /***/ },
-/* 603 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59881,7 +60717,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(604);
+	__webpack_require__(606);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60034,13 +60870,13 @@
 	};
 
 /***/ },
-/* 604 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(605);
+	var content = __webpack_require__(607);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -60049,8 +60885,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInputView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInputView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInputView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInputView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -60060,7 +60896,7 @@
 	}
 
 /***/ },
-/* 605 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -60074,7 +60910,7 @@
 
 
 /***/ },
-/* 606 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60089,7 +60925,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _FlexExample = __webpack_require__(607);
+	var _FlexExample = __webpack_require__(609);
 
 	var _FlexExample2 = _interopRequireDefault(_FlexExample);
 
@@ -60139,7 +60975,7 @@
 	};
 
 /***/ },
-/* 607 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60161,9 +60997,9 @@
 
 	var _flex = __webpack_require__(282);
 
-	__webpack_require__(608);
-
 	__webpack_require__(610);
+
+	__webpack_require__(612);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60422,46 +61258,6 @@
 	};
 
 /***/ },
-/* 608 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(609);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(270)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./FlexExample.less", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./FlexExample.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 609 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(269)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".FlexExample h2 {\n  margin-top: 1.5rem;\n}\n.FlexExample .FlexExample--box {\n  margin-left: 3rem;\n  margin-right: 3rem;\n}\n.FlexExample .FlexExample--box,\n.FlexExample .FlexExample--item {\n  border: 0.0625rem solid #cccfd4;\n  padding: 1rem;\n  background-color: rgba(181, 188, 202, 0.1);\n  border-radius: 0;\n  box-sizing: border-box;\n  font-size: 0.875rem;\n}\n.FlexExample--box--tiny {\n  width: 5.625rem;\n}\n.FlexExample--box--resizable--x {\n  resize: horizontal;\n  overflow: hidden;\n}\n.FlexExample--box--resizable--y {\n  resize: vertical;\n  overflow: hidden;\n}\n.color--alert--orange {\n  color: #FCA53A;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
 /* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -60477,8 +61273,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./spacing.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./spacing.less");
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./FlexExample.less", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./FlexExample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -60496,13 +61292,176 @@
 
 
 	// module
-	exports.push([module.id, "/**\n * Common spacing definitions.\n *\n * Auto-generated file.\n * To re-generate, run `make sizing-styles`\n */\n/**\n * @size_none\n */\n.margin--none {\n  margin: 0rem;\n}\n.margin--top--none {\n  margin-top: 0rem;\n}\n.margin--right--none {\n  margin-right: 0rem;\n}\n.margin--bottom--none {\n  margin-bottom: 0rem;\n}\n.margin--left--none {\n  margin-left: 0rem;\n}\n.margin--x--none {\n  margin-left: 0rem;\n  margin-right: 0rem;\n}\n.margin--y--none {\n  margin-top: 0rem;\n  margin-bottom: 0rem;\n}\n.padding--none {\n  padding: 0rem;\n}\n.padding--top--none {\n  padding-top: 0rem;\n}\n.padding--right--none {\n  padding-right: 0rem;\n}\n.padding--bottom--none {\n  padding-bottom: 0rem;\n}\n.padding--left--none {\n  padding-left: 0rem;\n}\n.padding--x--none {\n  padding-left: 0rem;\n  padding-right: 0rem;\n}\n.padding--y--none {\n  padding-top: 0rem;\n  padding-bottom: 0rem;\n}\n/**\n * @size_3xs\n */\n.margin--3xs {\n  margin: 0.125rem;\n}\n.margin--top--3xs {\n  margin-top: 0.125rem;\n}\n.margin--right--3xs {\n  margin-right: 0.125rem;\n}\n.margin--bottom--3xs {\n  margin-bottom: 0.125rem;\n}\n.margin--left--3xs {\n  margin-left: 0.125rem;\n}\n.margin--x--3xs {\n  margin-left: 0.125rem;\n  margin-right: 0.125rem;\n}\n.margin--y--3xs {\n  margin-top: 0.125rem;\n  margin-bottom: 0.125rem;\n}\n.padding--3xs {\n  padding: 0.125rem;\n}\n.padding--top--3xs {\n  padding-top: 0.125rem;\n}\n.padding--right--3xs {\n  padding-right: 0.125rem;\n}\n.padding--bottom--3xs {\n  padding-bottom: 0.125rem;\n}\n.padding--left--3xs {\n  padding-left: 0.125rem;\n}\n.padding--x--3xs {\n  padding-left: 0.125rem;\n  padding-right: 0.125rem;\n}\n.padding--y--3xs {\n  padding-top: 0.125rem;\n  padding-bottom: 0.125rem;\n}\n/**\n * @size_2xs\n */\n.margin--2xs {\n  margin: 0.25rem;\n}\n.margin--top--2xs {\n  margin-top: 0.25rem;\n}\n.margin--right--2xs {\n  margin-right: 0.25rem;\n}\n.margin--bottom--2xs {\n  margin-bottom: 0.25rem;\n}\n.margin--left--2xs {\n  margin-left: 0.25rem;\n}\n.margin--x--2xs {\n  margin-left: 0.25rem;\n  margin-right: 0.25rem;\n}\n.margin--y--2xs {\n  margin-top: 0.25rem;\n  margin-bottom: 0.25rem;\n}\n.padding--2xs {\n  padding: 0.25rem;\n}\n.padding--top--2xs {\n  padding-top: 0.25rem;\n}\n.padding--right--2xs {\n  padding-right: 0.25rem;\n}\n.padding--bottom--2xs {\n  padding-bottom: 0.25rem;\n}\n.padding--left--2xs {\n  padding-left: 0.25rem;\n}\n.padding--x--2xs {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.padding--y--2xs {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}\n/**\n * @size_xs\n */\n.margin--xs {\n  margin: 0.5rem;\n}\n.margin--top--xs {\n  margin-top: 0.5rem;\n}\n.margin--right--xs {\n  margin-right: 0.5rem;\n}\n.margin--bottom--xs {\n  margin-bottom: 0.5rem;\n}\n.margin--left--xs {\n  margin-left: 0.5rem;\n}\n.margin--x--xs {\n  margin-left: 0.5rem;\n  margin-right: 0.5rem;\n}\n.margin--y--xs {\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n}\n.padding--xs {\n  padding: 0.5rem;\n}\n.padding--top--xs {\n  padding-top: 0.5rem;\n}\n.padding--right--xs {\n  padding-right: 0.5rem;\n}\n.padding--bottom--xs {\n  padding-bottom: 0.5rem;\n}\n.padding--left--xs {\n  padding-left: 0.5rem;\n}\n.padding--x--xs {\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n}\n.padding--y--xs {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n/**\n * @size_s\n */\n.margin--s {\n  margin: 0.75rem;\n}\n.margin--top--s {\n  margin-top: 0.75rem;\n}\n.margin--right--s {\n  margin-right: 0.75rem;\n}\n.margin--bottom--s {\n  margin-bottom: 0.75rem;\n}\n.margin--left--s {\n  margin-left: 0.75rem;\n}\n.margin--x--s {\n  margin-left: 0.75rem;\n  margin-right: 0.75rem;\n}\n.margin--y--s {\n  margin-top: 0.75rem;\n  margin-bottom: 0.75rem;\n}\n.padding--s {\n  padding: 0.75rem;\n}\n.padding--top--s {\n  padding-top: 0.75rem;\n}\n.padding--right--s {\n  padding-right: 0.75rem;\n}\n.padding--bottom--s {\n  padding-bottom: 0.75rem;\n}\n.padding--left--s {\n  padding-left: 0.75rem;\n}\n.padding--x--s {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.padding--y--s {\n  padding-top: 0.75rem;\n  padding-bottom: 0.75rem;\n}\n/**\n * @size_m\n */\n.margin--m {\n  margin: 1rem;\n}\n.margin--top--m {\n  margin-top: 1rem;\n}\n.margin--right--m {\n  margin-right: 1rem;\n}\n.margin--bottom--m {\n  margin-bottom: 1rem;\n}\n.margin--left--m {\n  margin-left: 1rem;\n}\n.margin--x--m {\n  margin-left: 1rem;\n  margin-right: 1rem;\n}\n.margin--y--m {\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n}\n.padding--m {\n  padding: 1rem;\n}\n.padding--top--m {\n  padding-top: 1rem;\n}\n.padding--right--m {\n  padding-right: 1rem;\n}\n.padding--bottom--m {\n  padding-bottom: 1rem;\n}\n.padding--left--m {\n  padding-left: 1rem;\n}\n.padding--x--m {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.padding--y--m {\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n/**\n * @size_l\n */\n.margin--l {\n  margin: 1.5rem;\n}\n.margin--top--l {\n  margin-top: 1.5rem;\n}\n.margin--right--l {\n  margin-right: 1.5rem;\n}\n.margin--bottom--l {\n  margin-bottom: 1.5rem;\n}\n.margin--left--l {\n  margin-left: 1.5rem;\n}\n.margin--x--l {\n  margin-left: 1.5rem;\n  margin-right: 1.5rem;\n}\n.margin--y--l {\n  margin-top: 1.5rem;\n  margin-bottom: 1.5rem;\n}\n.padding--l {\n  padding: 1.5rem;\n}\n.padding--top--l {\n  padding-top: 1.5rem;\n}\n.padding--right--l {\n  padding-right: 1.5rem;\n}\n.padding--bottom--l {\n  padding-bottom: 1.5rem;\n}\n.padding--left--l {\n  padding-left: 1.5rem;\n}\n.padding--x--l {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.padding--y--l {\n  padding-top: 1.5rem;\n  padding-bottom: 1.5rem;\n}\n/**\n * @size_xl\n */\n.margin--xl {\n  margin: 2rem;\n}\n.margin--top--xl {\n  margin-top: 2rem;\n}\n.margin--right--xl {\n  margin-right: 2rem;\n}\n.margin--bottom--xl {\n  margin-bottom: 2rem;\n}\n.margin--left--xl {\n  margin-left: 2rem;\n}\n.margin--x--xl {\n  margin-left: 2rem;\n  margin-right: 2rem;\n}\n.margin--y--xl {\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n.padding--xl {\n  padding: 2rem;\n}\n.padding--top--xl {\n  padding-top: 2rem;\n}\n.padding--right--xl {\n  padding-right: 2rem;\n}\n.padding--bottom--xl {\n  padding-bottom: 2rem;\n}\n.padding--left--xl {\n  padding-left: 2rem;\n}\n.padding--x--xl {\n  padding-left: 2rem;\n  padding-right: 2rem;\n}\n.padding--y--xl {\n  padding-top: 2rem;\n  padding-bottom: 2rem;\n}\n/**\n * @size_2xl\n */\n.margin--2xl {\n  margin: 2.5rem;\n}\n.margin--top--2xl {\n  margin-top: 2.5rem;\n}\n.margin--right--2xl {\n  margin-right: 2.5rem;\n}\n.margin--bottom--2xl {\n  margin-bottom: 2.5rem;\n}\n.margin--left--2xl {\n  margin-left: 2.5rem;\n}\n.margin--x--2xl {\n  margin-left: 2.5rem;\n  margin-right: 2.5rem;\n}\n.margin--y--2xl {\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n.padding--2xl {\n  padding: 2.5rem;\n}\n.padding--top--2xl {\n  padding-top: 2.5rem;\n}\n.padding--right--2xl {\n  padding-right: 2.5rem;\n}\n.padding--bottom--2xl {\n  padding-bottom: 2.5rem;\n}\n.padding--left--2xl {\n  padding-left: 2.5rem;\n}\n.padding--x--2xl {\n  padding-left: 2.5rem;\n  padding-right: 2.5rem;\n}\n.padding--y--2xl {\n  padding-top: 2.5rem;\n  padding-bottom: 2.5rem;\n}\n/**\n * @size_3xl\n */\n.margin--3xl {\n  margin: 3rem;\n}\n.margin--top--3xl {\n  margin-top: 3rem;\n}\n.margin--right--3xl {\n  margin-right: 3rem;\n}\n.margin--bottom--3xl {\n  margin-bottom: 3rem;\n}\n.margin--left--3xl {\n  margin-left: 3rem;\n}\n.margin--x--3xl {\n  margin-left: 3rem;\n  margin-right: 3rem;\n}\n.margin--y--3xl {\n  margin-top: 3rem;\n  margin-bottom: 3rem;\n}\n.padding--3xl {\n  padding: 3rem;\n}\n.padding--top--3xl {\n  padding-top: 3rem;\n}\n.padding--right--3xl {\n  padding-right: 3rem;\n}\n.padding--bottom--3xl {\n  padding-bottom: 3rem;\n}\n.padding--left--3xl {\n  padding-left: 3rem;\n}\n.padding--x--3xl {\n  padding-left: 3rem;\n  padding-right: 3rem;\n}\n.padding--y--3xl {\n  padding-top: 3rem;\n  padding-bottom: 3rem;\n}\n/**\n * @size_4xl\n */\n.margin--4xl {\n  margin: 3.5rem;\n}\n.margin--top--4xl {\n  margin-top: 3.5rem;\n}\n.margin--right--4xl {\n  margin-right: 3.5rem;\n}\n.margin--bottom--4xl {\n  margin-bottom: 3.5rem;\n}\n.margin--left--4xl {\n  margin-left: 3.5rem;\n}\n.margin--x--4xl {\n  margin-left: 3.5rem;\n  margin-right: 3.5rem;\n}\n.margin--y--4xl {\n  margin-top: 3.5rem;\n  margin-bottom: 3.5rem;\n}\n.padding--4xl {\n  padding: 3.5rem;\n}\n.padding--top--4xl {\n  padding-top: 3.5rem;\n}\n.padding--right--4xl {\n  padding-right: 3.5rem;\n}\n.padding--bottom--4xl {\n  padding-bottom: 3.5rem;\n}\n.padding--left--4xl {\n  padding-left: 3.5rem;\n}\n.padding--x--4xl {\n  padding-left: 3.5rem;\n  padding-right: 3.5rem;\n}\n.padding--y--4xl {\n  padding-top: 3.5rem;\n  padding-bottom: 3.5rem;\n}\n/**\n * @size_5xl\n */\n.margin--5xl {\n  margin: 4rem;\n}\n.margin--top--5xl {\n  margin-top: 4rem;\n}\n.margin--right--5xl {\n  margin-right: 4rem;\n}\n.margin--bottom--5xl {\n  margin-bottom: 4rem;\n}\n.margin--left--5xl {\n  margin-left: 4rem;\n}\n.margin--x--5xl {\n  margin-left: 4rem;\n  margin-right: 4rem;\n}\n.margin--y--5xl {\n  margin-top: 4rem;\n  margin-bottom: 4rem;\n}\n.padding--5xl {\n  padding: 4rem;\n}\n.padding--top--5xl {\n  padding-top: 4rem;\n}\n.padding--right--5xl {\n  padding-right: 4rem;\n}\n.padding--bottom--5xl {\n  padding-bottom: 4rem;\n}\n.padding--left--5xl {\n  padding-left: 4rem;\n}\n.padding--x--5xl {\n  padding-left: 4rem;\n  padding-right: 4rem;\n}\n.padding--y--5xl {\n  padding-top: 4rem;\n  padding-bottom: 4rem;\n}\n", ""]);
+	exports.push([module.id, ".FlexExample h2 {\n  margin-top: 1.5rem;\n}\n.FlexExample .FlexExample--box {\n  margin-left: 3rem;\n  margin-right: 3rem;\n}\n.FlexExample .FlexExample--box,\n.FlexExample .FlexExample--item {\n  border: 0.0625rem solid #cccfd4;\n  padding: 1rem;\n  background-color: rgba(181, 188, 202, 0.1);\n  border-radius: 0;\n  box-sizing: border-box;\n  font-size: 0.875rem;\n}\n.FlexExample--box--tiny {\n  width: 5.625rem;\n}\n.FlexExample--box--resizable--x {\n  resize: horizontal;\n  overflow: hidden;\n}\n.FlexExample--box--resizable--y {\n  resize: vertical;\n  overflow: hidden;\n}\n.color--alert--orange {\n  color: #FCA53A;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 612 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(613);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(270)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./spacing.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./spacing.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 613 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(269)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * Common spacing definitions.\n *\n * Auto-generated file.\n * To re-generate, run `make sizing-styles`\n */\n/**\n * @size_none\n */\n.margin--none {\n  margin: 0rem;\n}\n.margin--top--none {\n  margin-top: 0rem;\n}\n.margin--right--none {\n  margin-right: 0rem;\n}\n.margin--bottom--none {\n  margin-bottom: 0rem;\n}\n.margin--left--none {\n  margin-left: 0rem;\n}\n.margin--x--none {\n  margin-left: 0rem;\n  margin-right: 0rem;\n}\n.margin--y--none {\n  margin-top: 0rem;\n  margin-bottom: 0rem;\n}\n.padding--none {\n  padding: 0rem;\n}\n.padding--top--none {\n  padding-top: 0rem;\n}\n.padding--right--none {\n  padding-right: 0rem;\n}\n.padding--bottom--none {\n  padding-bottom: 0rem;\n}\n.padding--left--none {\n  padding-left: 0rem;\n}\n.padding--x--none {\n  padding-left: 0rem;\n  padding-right: 0rem;\n}\n.padding--y--none {\n  padding-top: 0rem;\n  padding-bottom: 0rem;\n}\n/**\n * @size_3xs\n */\n.margin--3xs {\n  margin: 0.125rem;\n}\n.margin--top--3xs {\n  margin-top: 0.125rem;\n}\n.margin--right--3xs {\n  margin-right: 0.125rem;\n}\n.margin--bottom--3xs {\n  margin-bottom: 0.125rem;\n}\n.margin--left--3xs {\n  margin-left: 0.125rem;\n}\n.margin--x--3xs {\n  margin-left: 0.125rem;\n  margin-right: 0.125rem;\n}\n.margin--y--3xs {\n  margin-top: 0.125rem;\n  margin-bottom: 0.125rem;\n}\n.padding--3xs {\n  padding: 0.125rem;\n}\n.padding--top--3xs {\n  padding-top: 0.125rem;\n}\n.padding--right--3xs {\n  padding-right: 0.125rem;\n}\n.padding--bottom--3xs {\n  padding-bottom: 0.125rem;\n}\n.padding--left--3xs {\n  padding-left: 0.125rem;\n}\n.padding--x--3xs {\n  padding-left: 0.125rem;\n  padding-right: 0.125rem;\n}\n.padding--y--3xs {\n  padding-top: 0.125rem;\n  padding-bottom: 0.125rem;\n}\n/**\n * @size_2xs\n */\n.margin--2xs {\n  margin: 0.25rem;\n}\n.margin--top--2xs {\n  margin-top: 0.25rem;\n}\n.margin--right--2xs {\n  margin-right: 0.25rem;\n}\n.margin--bottom--2xs {\n  margin-bottom: 0.25rem;\n}\n.margin--left--2xs {\n  margin-left: 0.25rem;\n}\n.margin--x--2xs {\n  margin-left: 0.25rem;\n  margin-right: 0.25rem;\n}\n.margin--y--2xs {\n  margin-top: 0.25rem;\n  margin-bottom: 0.25rem;\n}\n.padding--2xs {\n  padding: 0.25rem;\n}\n.padding--top--2xs {\n  padding-top: 0.25rem;\n}\n.padding--right--2xs {\n  padding-right: 0.25rem;\n}\n.padding--bottom--2xs {\n  padding-bottom: 0.25rem;\n}\n.padding--left--2xs {\n  padding-left: 0.25rem;\n}\n.padding--x--2xs {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.padding--y--2xs {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}\n/**\n * @size_xs\n */\n.margin--xs {\n  margin: 0.5rem;\n}\n.margin--top--xs {\n  margin-top: 0.5rem;\n}\n.margin--right--xs {\n  margin-right: 0.5rem;\n}\n.margin--bottom--xs {\n  margin-bottom: 0.5rem;\n}\n.margin--left--xs {\n  margin-left: 0.5rem;\n}\n.margin--x--xs {\n  margin-left: 0.5rem;\n  margin-right: 0.5rem;\n}\n.margin--y--xs {\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n}\n.padding--xs {\n  padding: 0.5rem;\n}\n.padding--top--xs {\n  padding-top: 0.5rem;\n}\n.padding--right--xs {\n  padding-right: 0.5rem;\n}\n.padding--bottom--xs {\n  padding-bottom: 0.5rem;\n}\n.padding--left--xs {\n  padding-left: 0.5rem;\n}\n.padding--x--xs {\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n}\n.padding--y--xs {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n/**\n * @size_s\n */\n.margin--s {\n  margin: 0.75rem;\n}\n.margin--top--s {\n  margin-top: 0.75rem;\n}\n.margin--right--s {\n  margin-right: 0.75rem;\n}\n.margin--bottom--s {\n  margin-bottom: 0.75rem;\n}\n.margin--left--s {\n  margin-left: 0.75rem;\n}\n.margin--x--s {\n  margin-left: 0.75rem;\n  margin-right: 0.75rem;\n}\n.margin--y--s {\n  margin-top: 0.75rem;\n  margin-bottom: 0.75rem;\n}\n.padding--s {\n  padding: 0.75rem;\n}\n.padding--top--s {\n  padding-top: 0.75rem;\n}\n.padding--right--s {\n  padding-right: 0.75rem;\n}\n.padding--bottom--s {\n  padding-bottom: 0.75rem;\n}\n.padding--left--s {\n  padding-left: 0.75rem;\n}\n.padding--x--s {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.padding--y--s {\n  padding-top: 0.75rem;\n  padding-bottom: 0.75rem;\n}\n/**\n * @size_m\n */\n.margin--m {\n  margin: 1rem;\n}\n.margin--top--m {\n  margin-top: 1rem;\n}\n.margin--right--m {\n  margin-right: 1rem;\n}\n.margin--bottom--m {\n  margin-bottom: 1rem;\n}\n.margin--left--m {\n  margin-left: 1rem;\n}\n.margin--x--m {\n  margin-left: 1rem;\n  margin-right: 1rem;\n}\n.margin--y--m {\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n}\n.padding--m {\n  padding: 1rem;\n}\n.padding--top--m {\n  padding-top: 1rem;\n}\n.padding--right--m {\n  padding-right: 1rem;\n}\n.padding--bottom--m {\n  padding-bottom: 1rem;\n}\n.padding--left--m {\n  padding-left: 1rem;\n}\n.padding--x--m {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.padding--y--m {\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n/**\n * @size_l\n */\n.margin--l {\n  margin: 1.5rem;\n}\n.margin--top--l {\n  margin-top: 1.5rem;\n}\n.margin--right--l {\n  margin-right: 1.5rem;\n}\n.margin--bottom--l {\n  margin-bottom: 1.5rem;\n}\n.margin--left--l {\n  margin-left: 1.5rem;\n}\n.margin--x--l {\n  margin-left: 1.5rem;\n  margin-right: 1.5rem;\n}\n.margin--y--l {\n  margin-top: 1.5rem;\n  margin-bottom: 1.5rem;\n}\n.padding--l {\n  padding: 1.5rem;\n}\n.padding--top--l {\n  padding-top: 1.5rem;\n}\n.padding--right--l {\n  padding-right: 1.5rem;\n}\n.padding--bottom--l {\n  padding-bottom: 1.5rem;\n}\n.padding--left--l {\n  padding-left: 1.5rem;\n}\n.padding--x--l {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.padding--y--l {\n  padding-top: 1.5rem;\n  padding-bottom: 1.5rem;\n}\n/**\n * @size_xl\n */\n.margin--xl {\n  margin: 2rem;\n}\n.margin--top--xl {\n  margin-top: 2rem;\n}\n.margin--right--xl {\n  margin-right: 2rem;\n}\n.margin--bottom--xl {\n  margin-bottom: 2rem;\n}\n.margin--left--xl {\n  margin-left: 2rem;\n}\n.margin--x--xl {\n  margin-left: 2rem;\n  margin-right: 2rem;\n}\n.margin--y--xl {\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}\n.padding--xl {\n  padding: 2rem;\n}\n.padding--top--xl {\n  padding-top: 2rem;\n}\n.padding--right--xl {\n  padding-right: 2rem;\n}\n.padding--bottom--xl {\n  padding-bottom: 2rem;\n}\n.padding--left--xl {\n  padding-left: 2rem;\n}\n.padding--x--xl {\n  padding-left: 2rem;\n  padding-right: 2rem;\n}\n.padding--y--xl {\n  padding-top: 2rem;\n  padding-bottom: 2rem;\n}\n/**\n * @size_2xl\n */\n.margin--2xl {\n  margin: 2.5rem;\n}\n.margin--top--2xl {\n  margin-top: 2.5rem;\n}\n.margin--right--2xl {\n  margin-right: 2.5rem;\n}\n.margin--bottom--2xl {\n  margin-bottom: 2.5rem;\n}\n.margin--left--2xl {\n  margin-left: 2.5rem;\n}\n.margin--x--2xl {\n  margin-left: 2.5rem;\n  margin-right: 2.5rem;\n}\n.margin--y--2xl {\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n.padding--2xl {\n  padding: 2.5rem;\n}\n.padding--top--2xl {\n  padding-top: 2.5rem;\n}\n.padding--right--2xl {\n  padding-right: 2.5rem;\n}\n.padding--bottom--2xl {\n  padding-bottom: 2.5rem;\n}\n.padding--left--2xl {\n  padding-left: 2.5rem;\n}\n.padding--x--2xl {\n  padding-left: 2.5rem;\n  padding-right: 2.5rem;\n}\n.padding--y--2xl {\n  padding-top: 2.5rem;\n  padding-bottom: 2.5rem;\n}\n/**\n * @size_3xl\n */\n.margin--3xl {\n  margin: 3rem;\n}\n.margin--top--3xl {\n  margin-top: 3rem;\n}\n.margin--right--3xl {\n  margin-right: 3rem;\n}\n.margin--bottom--3xl {\n  margin-bottom: 3rem;\n}\n.margin--left--3xl {\n  margin-left: 3rem;\n}\n.margin--x--3xl {\n  margin-left: 3rem;\n  margin-right: 3rem;\n}\n.margin--y--3xl {\n  margin-top: 3rem;\n  margin-bottom: 3rem;\n}\n.padding--3xl {\n  padding: 3rem;\n}\n.padding--top--3xl {\n  padding-top: 3rem;\n}\n.padding--right--3xl {\n  padding-right: 3rem;\n}\n.padding--bottom--3xl {\n  padding-bottom: 3rem;\n}\n.padding--left--3xl {\n  padding-left: 3rem;\n}\n.padding--x--3xl {\n  padding-left: 3rem;\n  padding-right: 3rem;\n}\n.padding--y--3xl {\n  padding-top: 3rem;\n  padding-bottom: 3rem;\n}\n/**\n * @size_4xl\n */\n.margin--4xl {\n  margin: 3.5rem;\n}\n.margin--top--4xl {\n  margin-top: 3.5rem;\n}\n.margin--right--4xl {\n  margin-right: 3.5rem;\n}\n.margin--bottom--4xl {\n  margin-bottom: 3.5rem;\n}\n.margin--left--4xl {\n  margin-left: 3.5rem;\n}\n.margin--x--4xl {\n  margin-left: 3.5rem;\n  margin-right: 3.5rem;\n}\n.margin--y--4xl {\n  margin-top: 3.5rem;\n  margin-bottom: 3.5rem;\n}\n.padding--4xl {\n  padding: 3.5rem;\n}\n.padding--top--4xl {\n  padding-top: 3.5rem;\n}\n.padding--right--4xl {\n  padding-right: 3.5rem;\n}\n.padding--bottom--4xl {\n  padding-bottom: 3.5rem;\n}\n.padding--left--4xl {\n  padding-left: 3.5rem;\n}\n.padding--x--4xl {\n  padding-left: 3.5rem;\n  padding-right: 3.5rem;\n}\n.padding--y--4xl {\n  padding-top: 3.5rem;\n  padding-bottom: 3.5rem;\n}\n/**\n * @size_5xl\n */\n.margin--5xl {\n  margin: 4rem;\n}\n.margin--top--5xl {\n  margin-top: 4rem;\n}\n.margin--right--5xl {\n  margin-right: 4rem;\n}\n.margin--bottom--5xl {\n  margin-bottom: 4rem;\n}\n.margin--left--5xl {\n  margin-left: 4rem;\n}\n.margin--x--5xl {\n  margin-left: 4rem;\n  margin-right: 4rem;\n}\n.margin--y--5xl {\n  margin-top: 4rem;\n  margin-bottom: 4rem;\n}\n.padding--5xl {\n  padding: 4rem;\n}\n.padding--top--5xl {\n  padding-top: 4rem;\n}\n.padding--right--5xl {\n  padding-right: 4rem;\n}\n.padding--bottom--5xl {\n  padding-bottom: 4rem;\n}\n.padding--left--5xl {\n  padding-left: 4rem;\n}\n.padding--x--5xl {\n  padding-left: 4rem;\n  padding-right: 4rem;\n}\n.padding--y--5xl {\n  padding-top: 4rem;\n  padding-bottom: 4rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 614 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = FileInputView;
+
+	var _react = __webpack_require__(33);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Example = __webpack_require__(260);
+
+	var _Example2 = _interopRequireDefault(_Example);
+
+	var _View = __webpack_require__(278);
+
+	var _View2 = _interopRequireDefault(_View);
+
+	var _src = __webpack_require__(281);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function store(file, _ref) {
+	  var progress = _ref.progress;
+	  var success = _ref.success;
+
+	  var progressPercent = 0;
+	  progress(progressPercent);
+	  var intervalID = setInterval(function () {
+	    if (progressPercent !== 100) {
+	      progressPercent += 5;
+	      progress(progressPercent);
+	    } else {
+	      success();
+	      clearInterval(intervalID);
+	    }
+	  }, 100);
+	}
+
+	function FileInputView() {
+	  var cssClass = FileInputView.cssClass;
+
+
+	  return _react2.default.createElement(
+	    _View2.default,
+	    { className: cssClass.CONTAINER, title: "FileInput" },
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      "An input component that allows users to drag and drop (or click and select) files."
+	    ),
+	    _react2.default.createElement(
+	      _Example2.default,
+	      {
+	        code: "\n          // Example store function using filestack\n          async function store(file, {success, error, progress}) => {\n            try {\n              await filestack.upload(file, {\n                onProgress: (p) => { progress(p); }\n              });\n              success();\n            } catch (e) {\n              error(e);\n            }\n          }\n          \n          <FileInput\n            label=\"Icon\"\n            store={store}\n            accept=\"image/png\"\n          />\n        "
+	      },
+	      _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(_src.FileInput, {
+	          label: "Icon",
+	          store: store,
+	          accept: "image/png"
+	        }),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Takes a ",
+	          _react2.default.createElement(
+	            "code",
+	            null,
+	            "store"
+	          ),
+	          " function which is called when the user has selected a file that should be uploaded. The caller is responsible for calling 3 provided callbacks:"
+	        ),
+	        _react2.default.createElement(
+	          "ul",
+	          null,
+	          _react2.default.createElement(
+	            "li",
+	            null,
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "success"
+	            ),
+	            " - Called when the upload is complete"
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            null,
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "error"
+	            ),
+	            " - Called if the upload failed for unexpected reasons"
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            null,
+	            _react2.default.createElement(
+	              "code",
+	              null,
+	              "progress"
+	            ),
+	            " - Called during upload with a number between 0-100 representing the % completed"
+	          )
+	        )
+	      )
+	    )
+	  );
+	}
+
+	FileInputView.cssClass = {
+	  CONTAINER: "FileInputView"
+	};
+
+/***/ },
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60872,7 +61831,7 @@
 	};
 
 /***/ },
-/* 613 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60905,7 +61864,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(614);
+	__webpack_require__(617);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61150,13 +62109,13 @@
 	};
 
 /***/ },
-/* 614 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(615);
+	var content = __webpack_require__(618);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -61165,8 +62124,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./GridView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./GridView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./GridView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./GridView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -61176,7 +62135,7 @@
 	}
 
 /***/ },
-/* 615 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -61190,7 +62149,7 @@
 
 
 /***/ },
-/* 616 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61219,7 +62178,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(617);
+	__webpack_require__(620);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61296,13 +62255,13 @@
 	};
 
 /***/ },
-/* 617 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(618);
+	var content = __webpack_require__(621);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -61311,8 +62270,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./IconView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./IconView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./IconView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./IconView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -61322,7 +62281,7 @@
 	}
 
 /***/ },
-/* 618 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -61336,7 +62295,7 @@
 
 
 /***/ },
-/* 619 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61595,7 +62554,7 @@
 	};
 
 /***/ },
-/* 620 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61610,7 +62569,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loremIpsum = __webpack_require__(621);
+	var _loremIpsum = __webpack_require__(624);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -61622,7 +62581,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(624);
+	var _PropDocumentation = __webpack_require__(627);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -61632,7 +62591,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(627);
+	__webpack_require__(630);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61871,7 +62830,7 @@
 	};
 
 /***/ },
-/* 621 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var generator = function() {
@@ -61883,9 +62842,9 @@
 		  , paragraphLowerBound = options.paragraphLowerBound || 3
 		  , paragraphUpperBound = options.paragraphUpperBound || 7
 		  , format = options.format || 'plain'
-	    , words = options.words || __webpack_require__(622).words
+	    , words = options.words || __webpack_require__(625).words
 	    , random = options.random || Math.random
-	    , suffix = options.suffix || __webpack_require__(623).EOL;
+	    , suffix = options.suffix || __webpack_require__(626).EOL;
 
 	  units = simplePluralize(units.toLowerCase());
 
@@ -61999,7 +62958,7 @@
 
 
 /***/ },
-/* 622 */
+/* 625 */
 /***/ function(module, exports) {
 
 	var dictionary = {
@@ -62072,7 +63031,7 @@
 	module.exports = dictionary;
 
 /***/ },
-/* 623 */
+/* 626 */
 /***/ function(module, exports) {
 
 	exports.endianness = function () { return 'LE' };
@@ -62123,7 +63082,7 @@
 
 
 /***/ },
-/* 624 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62144,7 +63103,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(625);
+	__webpack_require__(628);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62258,13 +63217,13 @@
 	};
 
 /***/ },
-/* 625 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(626);
+	var content = __webpack_require__(629);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62273,8 +63232,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./PropDocumentation.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./PropDocumentation.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./PropDocumentation.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./PropDocumentation.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62284,7 +63243,7 @@
 	}
 
 /***/ },
-/* 626 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62298,13 +63257,13 @@
 
 
 /***/ },
-/* 627 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(628);
+	var content = __webpack_require__(631);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62313,8 +63272,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LabelView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LabelView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LabelView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LabelView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62324,7 +63283,7 @@
 	}
 
 /***/ },
-/* 628 */
+/* 631 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62338,7 +63297,7 @@
 
 
 /***/ },
-/* 629 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62352,17 +63311,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SideBar = __webpack_require__(630);
+	var _SideBar = __webpack_require__(633);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _TopBar = __webpack_require__(640);
+	var _TopBar = __webpack_require__(643);
 
 	var _TopBar2 = _interopRequireDefault(_TopBar);
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(645);
+	__webpack_require__(648);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62403,7 +63362,7 @@
 	};
 
 /***/ },
-/* 630 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62412,7 +63371,7 @@
 	  value: true
 	});
 
-	var _SideBar = __webpack_require__(631);
+	var _SideBar = __webpack_require__(634);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
@@ -62421,7 +63380,7 @@
 	exports.default = _SideBar2.default;
 
 /***/ },
-/* 631 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62439,17 +63398,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavGroup = __webpack_require__(632);
+	var _NavGroup = __webpack_require__(635);
 
 	var _NavGroup2 = _interopRequireDefault(_NavGroup);
 
-	var _NavLink = __webpack_require__(633);
+	var _NavLink = __webpack_require__(636);
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(638);
+	__webpack_require__(641);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62522,6 +63481,11 @@
 	        _NavLink2.default,
 	        { href: "/components/flex-box" },
 	        "FlexBox"
+	      ),
+	      _react2.default.createElement(
+	        _NavLink2.default,
+	        { href: "/components/file-input" },
+	        "FileInput"
 	      ),
 	      _react2.default.createElement(
 	        _NavLink2.default,
@@ -62625,7 +63589,7 @@
 	};
 
 /***/ },
-/* 632 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62647,13 +63611,13 @@
 
 	var _MorePropTypes2 = _interopRequireDefault(_MorePropTypes);
 
-	var _NavLink = __webpack_require__(633);
+	var _NavLink = __webpack_require__(636);
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(636);
+	__webpack_require__(639);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62693,7 +63657,7 @@
 	};
 
 /***/ },
-/* 633 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62716,7 +63680,7 @@
 
 	var _reactRouter = __webpack_require__(204);
 
-	__webpack_require__(634);
+	__webpack_require__(637);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62765,13 +63729,13 @@
 	};
 
 /***/ },
-/* 634 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(635);
+	var content = __webpack_require__(638);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62780,8 +63744,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavLink.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavLink.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavLink.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavLink.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62791,7 +63755,7 @@
 	}
 
 /***/ },
-/* 635 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62805,13 +63769,13 @@
 
 
 /***/ },
-/* 636 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(637);
+	var content = __webpack_require__(640);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62820,8 +63784,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavGroup.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavGroup.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62831,7 +63795,7 @@
 	}
 
 /***/ },
-/* 637 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62845,13 +63809,13 @@
 
 
 /***/ },
-/* 638 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(639);
+	var content = __webpack_require__(642);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62860,8 +63824,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./SideBar.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./SideBar.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62871,7 +63835,7 @@
 	}
 
 /***/ },
-/* 639 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62885,7 +63849,7 @@
 
 
 /***/ },
-/* 640 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62894,7 +63858,7 @@
 	  value: true
 	});
 
-	var _TopBar = __webpack_require__(641);
+	var _TopBar = __webpack_require__(644);
 
 	var _TopBar2 = _interopRequireDefault(_TopBar);
 
@@ -62903,7 +63867,7 @@
 	exports.default = _TopBar2.default;
 
 /***/ },
-/* 641 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62923,11 +63887,11 @@
 
 	var _src = __webpack_require__(281);
 
-	var _Logo = __webpack_require__(642);
+	var _Logo = __webpack_require__(645);
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
-	__webpack_require__(643);
+	__webpack_require__(646);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62982,7 +63946,7 @@
 	};
 
 /***/ },
-/* 642 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63047,13 +64011,13 @@
 	};
 
 /***/ },
-/* 643 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(644);
+	var content = __webpack_require__(647);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63062,8 +64026,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./TopBar.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./TopBar.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./TopBar.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./TopBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -63073,7 +64037,7 @@
 	}
 
 /***/ },
-/* 644 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63087,13 +64051,13 @@
 
 
 /***/ },
-/* 645 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(646);
+	var content = __webpack_require__(649);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63102,8 +64066,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Layout.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Layout.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Layout.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Layout.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -63113,7 +64077,7 @@
 	}
 
 /***/ },
-/* 646 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63127,7 +64091,7 @@
 
 
 /***/ },
-/* 647 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63146,7 +64110,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _LeftNavExample = __webpack_require__(648);
+	var _LeftNavExample = __webpack_require__(651);
 
 	var _LeftNavExample2 = _interopRequireDefault(_LeftNavExample);
 
@@ -63192,7 +64156,7 @@
 	};
 
 /***/ },
-/* 648 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63209,7 +64173,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(649);
+	__webpack_require__(652);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63331,13 +64295,13 @@
 	};
 
 /***/ },
-/* 649 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(650);
+	var content = __webpack_require__(653);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63346,8 +64310,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./LeftNavExample.less", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./LeftNavExample.less");
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./LeftNavExample.less", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./LeftNavExample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -63357,7 +64321,7 @@
 	}
 
 /***/ },
-/* 650 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63371,7 +64335,7 @@
 
 
 /***/ },
-/* 651 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63708,7 +64672,7 @@
 	};
 
 /***/ },
-/* 652 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63719,7 +64683,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _loremIpsum = __webpack_require__(621);
+	var _loremIpsum = __webpack_require__(624);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -63811,7 +64775,7 @@
 	};
 
 /***/ },
-/* 653 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63822,7 +64786,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _loremIpsum = __webpack_require__(621);
+	var _loremIpsum = __webpack_require__(624);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -63936,7 +64900,7 @@
 	};
 
 /***/ },
-/* 654 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64080,7 +65044,7 @@
 	};
 
 /***/ },
-/* 655 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64105,7 +65069,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(656);
+	__webpack_require__(659);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64197,13 +65161,13 @@
 	};
 
 /***/ },
-/* 656 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(657);
+	var content = __webpack_require__(660);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -64212,8 +65176,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBarView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBarView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBarView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBarView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -64223,7 +65187,7 @@
 	}
 
 /***/ },
-/* 657 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -64237,7 +65201,7 @@
 
 
 /***/ },
-/* 658 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64386,7 +65350,7 @@
 	};
 
 /***/ },
-/* 659 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64415,7 +65379,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(660);
+	__webpack_require__(663);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64585,13 +65549,13 @@
 	};
 
 /***/ },
-/* 660 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(661);
+	var content = __webpack_require__(664);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -64600,8 +65564,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SelectView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SelectView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SelectView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SelectView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -64611,7 +65575,7 @@
 	}
 
 /***/ },
-/* 661 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -64625,7 +65589,7 @@
 
 
 /***/ },
-/* 662 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64650,7 +65614,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(663);
+	__webpack_require__(666);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64789,13 +65753,13 @@
 	};
 
 /***/ },
-/* 663 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(664);
+	var content = __webpack_require__(667);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -64804,8 +65768,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SizingView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SizingView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SizingView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SizingView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -64815,7 +65779,7 @@
 	}
 
 /***/ },
-/* 664 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -64829,7 +65793,7 @@
 
 
 /***/ },
-/* 665 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64890,7 +65854,7 @@
 	};
 
 /***/ },
-/* 666 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64909,7 +65873,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _TabBarExample = __webpack_require__(667);
+	var _TabBarExample = __webpack_require__(670);
 
 	var _TabBarExample2 = _interopRequireDefault(_TabBarExample);
 
@@ -64955,7 +65919,7 @@
 	};
 
 /***/ },
-/* 667 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64982,11 +65946,11 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(610);
+	__webpack_require__(612);
 
-	__webpack_require__(668);
+	__webpack_require__(671);
 
-	__webpack_require__(670);
+	__webpack_require__(673);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65209,13 +66173,13 @@
 	};
 
 /***/ },
-/* 668 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(669);
+	var content = __webpack_require__(672);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65224,8 +66188,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./type-utilities.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./type-utilities.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./type-utilities.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./type-utilities.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65235,7 +66199,7 @@
 	}
 
 /***/ },
-/* 669 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65249,13 +66213,13 @@
 
 
 /***/ },
-/* 670 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(671);
+	var content = __webpack_require__(674);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65264,8 +66228,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./TabBarExample.less", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./TabBarExample.less");
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./TabBarExample.less", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./TabBarExample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65275,7 +66239,7 @@
 	}
 
 /***/ },
-/* 671 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65289,7 +66253,7 @@
 
 
 /***/ },
-/* 672 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65304,7 +66268,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loremIpsum = __webpack_require__(621);
+	var _loremIpsum = __webpack_require__(624);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -65515,7 +66479,7 @@
 	};
 
 /***/ },
-/* 673 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65540,7 +66504,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(674);
+	__webpack_require__(677);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65673,13 +66637,13 @@
 	};
 
 /***/ },
-/* 674 */
+/* 677 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(675);
+	var content = __webpack_require__(678);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65688,8 +66652,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextAreaView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextAreaView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextAreaView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextAreaView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65699,7 +66663,7 @@
 	}
 
 /***/ },
-/* 675 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65713,7 +66677,7 @@
 
 
 /***/ },
-/* 676 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65738,7 +66702,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(677);
+	__webpack_require__(680);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65890,13 +66854,13 @@
 	};
 
 /***/ },
-/* 677 */
+/* 680 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(678);
+	var content = __webpack_require__(681);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65905,8 +66869,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInputView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInputView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInputView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInputView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65916,7 +66880,7 @@
 	}
 
 /***/ },
-/* 678 */
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65930,7 +66894,7 @@
 
 
 /***/ },
-/* 679 */
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65949,7 +66913,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _loremIpsum = __webpack_require__(621);
+	var _loremIpsum = __webpack_require__(624);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -65961,7 +66925,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(624);
+	var _PropDocumentation = __webpack_require__(627);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -65971,7 +66935,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(680);
+	__webpack_require__(683);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66161,13 +67125,13 @@
 	};
 
 /***/ },
-/* 680 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(681);
+	var content = __webpack_require__(684);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -66176,8 +67140,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TooltipView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TooltipView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TooltipView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TooltipView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -66187,7 +67151,7 @@
 	}
 
 /***/ },
-/* 681 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -66201,7 +67165,7 @@
 
 
 /***/ },
-/* 682 */
+/* 685 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66446,7 +67410,7 @@
 	};
 
 /***/ },
-/* 683 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66467,7 +67431,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(684);
+	__webpack_require__(687);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66662,13 +67626,13 @@
 	};
 
 /***/ },
-/* 684 */
+/* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(685);
+	var content = __webpack_require__(688);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -66677,8 +67641,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./UITextView.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./UITextView.less");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./UITextView.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./UITextView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -66688,7 +67652,7 @@
 	}
 
 /***/ },
-/* 685 */
+/* 688 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -66702,7 +67666,7 @@
 
 
 /***/ },
-/* 686 */
+/* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66721,7 +67685,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _WizardExample = __webpack_require__(687);
+	var _WizardExample = __webpack_require__(690);
 
 	var _WizardExample2 = _interopRequireDefault(_WizardExample);
 
@@ -66767,7 +67731,7 @@
 	};
 
 /***/ },
-/* 687 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
