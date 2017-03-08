@@ -20,6 +20,7 @@
     "lodash": "^4.14.1",
     "react-bootstrap": "^0.30.0",
     "react-copy-to-clipboard": "^4.2.1",
+    "react-dropzone": "^3.11.0",
     "react-select": "^1.0.0-beta14"
   },
   "devDependencies": {
