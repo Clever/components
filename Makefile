@@ -34,7 +34,6 @@ build: clean es5 styles docs
 styles:
 	@echo "Building stylesheet"
 	@$(WEBPACK) --config webpack_styles.config.js
-	@cp dist/css/style* dist/css/style.css
 
 sizing-styles:
 	@echo "Generating sizing style definitions..."
