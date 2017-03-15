@@ -26,6 +26,7 @@
 .NavLink {
   font: inherit;
   background: inherit;
+  /* stylelint-disable-next-line */
   color: inherit;
   .flexbox;
   width: 100%;
@@ -33,13 +34,13 @@
   .padding--left--m;
   .padding--right--xl;
   .padding--y--m;
-  cursor: pointer;
   .text--decoration-none;
   border: none;
   outline: none;
   .border--bottom--s(@neutral_silver);
   position: relative; // Enables z-index to work
   cursor: pointer;
+
   &:visited, &:active {
     .shade(color, @primary_blue, 2);
   }
