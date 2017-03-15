@@ -13,7 +13,7 @@ describe("LeftNav", function LeftNavTest() {
 
   const topNavLinkSpy = sinon.spy();
   const subNavLinkSpy = sinon.spy();
-  const mockEvent = {preventDefault: sinon.spy()};
+  const mockEvent = {};
 
   const renderLeftNav = (props) => shallow(
     <LeftNav {...props}>
@@ -53,7 +53,7 @@ describe("LeftNav", function LeftNavTest() {
       const link = nav.find(NavLink).first().dive();
       const label = link.find(`.${linkCss.LABEL}`);
       const icon = link.find(`.${linkCss.ICON}`);
-      assert.equal(link.type(), "a");
+      assert.equal(link.type(), "button");
       assert(!label.isEmpty());
       assert.equal(label.text(), "topLink1");
       assert(!icon.isEmpty());
@@ -73,7 +73,6 @@ describe("LeftNav", function LeftNavTest() {
       const link = nav.find(NavLink).first().dive();
       link.simulate("click", mockEvent);
       assert(topNavLinkSpy.calledOnce);
-      assert(mockEvent.preventDefault.calledOnce);
     });
 
     it("opens the subnav drawer and renders the children NavLinks when a NavGroup is clicked", () => {

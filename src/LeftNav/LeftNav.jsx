@@ -1,4 +1,5 @@
 import React, {PropTypes} from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import MorePropTypes from "../utils/MorePropTypes";
 import classnames from "classnames";
 import _ from "lodash";
@@ -56,7 +57,14 @@ export class LeftNav extends React.Component {
     return (
       <nav className={cssClass.CONTAINER}>
         <div className={classnames(cssClass.TOPNAV, collapsed)}>{children}</div>
-        {openChild && <div className={cssClass.SUBNAV}>{openChild.props.children}</div>}
+        <ReactCSSTransitionGroup
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={300}
+          component="div"
+          transitionName="LeftNav--drawer-anim"
+        >
+          {openChild && <div className={cssClass.SUBNAV}>{openChild.props.children}</div>}
+        </ReactCSSTransitionGroup>
       </nav>
     );
   }

@@ -1,5 +1,18 @@
 @import (reference) "../less/utilities";
 
+.animateWidth {
+  .timingSlowly;
+  .transition-timing-function(@motionSmooth);
+  transition-propery: width;
+}
+
+.animateOpacity {
+  .delayMoment;
+  .timingPromptly;
+  .transition-timing-function(@motionSnappy);
+  transition-property: opacity;
+}
+
 .LeftNav {
   .flexbox;
   .shade(color, @primary_blue, 2);
@@ -20,18 +33,27 @@
 .LeftNav--subnav {
   .shade(background, @neutral_off_white, .15);
   color: @neutral_black;
+  height: 100%;
 }
 
 .NavLink {
+  font: inherit;
+  background: inherit;
+  /* stylelint-disable-next-line */
+  color: inherit;
   .flexbox;
+  width: 100%;
   .items--center;
   .padding--left--m;
   .padding--right--xl;
   .padding--y--m;
-  cursor: pointer;
   .text--decoration-none;
+  border: none;
+  outline: none;
   .border--bottom--s(@neutral_silver);
   position: relative; // Enables z-index to work
+  cursor: pointer;
+
   &:visited, &:active {
     .shade(color, @primary_blue, 2);
   }
@@ -79,7 +101,7 @@
   .right-arrow;
 }
 
-.NavLink:hover {
+.NavLink:hover, .NavLink:focus {
   box-shadow: inset @borderWidthL 0 @primary_blue; // blue bar on left
   .zIndex--2; // For subnav links, ensure this goes over the shadow from the topnav
   text-decoration: none;
@@ -105,15 +127,15 @@
   }
 }
 
-.animateWidth {
-  .timingSlowly;
-  .transition-timing-function(@motionSmooth);
-  transition-propery: width;
+.LeftNav--drawer-anim-enter {
+  width: 0;
+  .animateWidth
 }
 
-.animateOpacity {
-  .delayMoment;
-  .timingPromptly;
-  .transition-timing-function(@motionSnappy);
-  transition-property: opacity;
+.LeftNav--drawer-anim-enter.LeftNav--drawer-anim-enter-active {
+  width: 12rem;
+}
+
+.LeftNav--drawer-anim-leave.LeftNav--drawer-anim-leave-active {
+  width: 0;
 }

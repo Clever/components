@@ -1,23 +1,27 @@
 import React, {PropTypes} from "react";
 import classnames from "classnames";
+import * as _ from "lodash";
 
 export function NavLink(props) {
   const {cssClass} = NavLink;
 
   const selected = props.selected ? cssClass.SELECTED : null;
+  let Component = "button";
+  if (props.component) {
+    Component = props.component;
+  } else if (props.href) {
+    Component = "a";
+  }
+
+  const childProps = Object.assign({
+    className: classnames(cssClass.CONTAINER, props.className, selected),
+  }, _.pick(props, ["href", "to", "onClick"]));
 
   return (
-    <a
-      className={classnames(cssClass.CONTAINER, props.className, selected)}
-      onClick={(e) => {
-        e.preventDefault();
-        props.onClick();
-      }}
-      href="#" // Ensures links are tabbable for accessibility
-    >
+    <Component {...childProps}>
       <div className={cssClass.ICON}>{props.icon}</div>
       <div className={cssClass.LABEL}>{props.label}</div>
-    </a>
+    </Component>
   );
 }
 
@@ -26,7 +30,10 @@ NavLink.propTypes = {
   icon: PropTypes.node,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  to: PropTypes.string,
+  href: PropTypes.string,
   selected: PropTypes.bool,
+  component: PropTypes.any,
 };
 
 NavLink.cssClass = {
