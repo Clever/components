@@ -32,7 +32,9 @@ export class LeftNav extends React.Component {
         return React.cloneElement(child, {
           onClick: () => {
             this.setState({openNavGroup: null});
-            child.props.onClick();
+            if (child.props.onClick) {
+              child.props.onClick();
+            }
           },
         });
       }
