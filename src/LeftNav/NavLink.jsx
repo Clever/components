@@ -13,14 +13,12 @@ export function NavLink(props) {
     Component = "a";
   }
 
-  const childProps = Object.assign({
-    className: classnames(cssClass.CONTAINER, props.className, selected),
-  }, _.pick(props, ["href", "to", "onClick"]));
-
   return (
-    <Component {...childProps}>
-      <div className={cssClass.ICON}>{props.icon}</div>
-      <div className={cssClass.LABEL}>{props.label}</div>
+    <Component className={classnames(cssClass.CONTAINER, props.className, selected)} {..._.pick(props, ["href", "to", "onClick"])}>
+      <div className={cssClass.INNER_DIV}>
+        <div className={cssClass.ICON}>{props.icon}</div>
+        <div className={cssClass.LABEL}>{props.label}</div>
+      </div>
     </Component>
   );
 }
@@ -38,6 +36,7 @@ NavLink.propTypes = {
 
 NavLink.cssClass = {
   CONTAINER: "NavLink",
+  INNER_DIV: "NavLink--contents",
   LABEL: "NavLink--label",
   ICON: "NavLink--icon",
   SELECTED: "NavLink--selected",

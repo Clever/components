@@ -40,8 +40,7 @@
   font: inherit;
   background: inherit;
   /* stylelint-disable-next-line */
-  color: inherit;
-  .flexbox;
+  .shade(color, @primary_blue, 3);
   width: 100%;
   .items--center;
   .padding--left--m;
@@ -53,10 +52,15 @@
   .border--bottom--s(@neutral_silver);
   position: relative; // Enables z-index to work
   cursor: pointer;
+  .flexbox;
 
   &:visited, &:active {
     .shade(color, @primary_blue, 2);
   }
+}
+
+.NavLink--contents {
+  .flexbox;
 }
 
 .NavLink--icon {
