@@ -1,8 +1,8 @@
 @import "../less/colors.less";
 @import "../less/fonts.less";
+@import "../less/sizing.less";
 
 .Table {
-  border: 1px solid @neutral_silver;
   border-collapse: collapse;
   color: @neutral_black;
   font-family: "Proxima Nova";
@@ -22,8 +22,10 @@
 
 .Table--body {
   .Table--row {
-    &:nth-child(even) {
-      background-color: @neutral_off_white;
+    border-bottom: @size_4xs solid @neutral_silver;
+    &.rowClickEnabled:hover {
+      .tint(background-color, @neutral_silver, 5);
+      cursor: pointer;
     }
   }
 }

@@ -126,7 +126,11 @@ export class Table extends Component {
               </Cell>
             </tr>
             ) : pages[displayedPageIndex].map(rowData => (
-            <tr className={cssClass.ROW} key={rowIDFn(rowData)} onClick={onRowClick}>
+            <tr
+              className={classnames(cssClass.ROW, {rowClickEnabled: onRowClick})}
+              key={rowIDFn(rowData)}
+              onClick={onRowClick}
+            >
               {columns.map(({props: col}) => (
                 <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
                   {col.cell.renderer(rowData)}
@@ -157,11 +161,11 @@ Table.propTypes = {
   initialPage: tablePropTypes.pageNumber,
   initialSortState: tablePropTypes.sortState,
   onPageChange: PropTypes.func,
+  onRowClick: PropTypes.func,
   onSortChange: PropTypes.func,
   pageSize: PropTypes.number,
   paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
-  onRowClick: PropTypes.func,
 };
 
 Table.defaultProps = {
