@@ -127,7 +127,7 @@ export class Table extends Component {
             </tr>
             ) : pages[displayedPageIndex].map(rowData => (
             <tr
-              className={classnames(cssClass.ROW, {rowClickEnabled: onRowClick})}
+              className={classnames(cssClass.ROW, onRowClick && cssClass.CLICKABLE_ROW)}
               key={rowIDFn(rowData)}
               onClick={onRowClick}
             >
@@ -177,6 +177,7 @@ Table.defaultProps = {
 
 Table.cssClass = {
   BODY: "Table--body",
+  CLICKABLE_ROW: "Table--clickable_row",
   FIXED: "Table--fixed",
   NO_DATA: "Table--no_data_cell",
   ROW: "Table--row",
