@@ -1,0 +1,36 @@
+.InfoPanel {
+  border-radius: 0.1875rem;
+  border: 0.0625rem solid #e3e6eb;
+  background-color: #fff;
+}
+.InfoPanel .InfoPanelColumn {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+}
+.InfoPanel .InfoPanelColumn:nth-child(even) {
+  padding-left: 1rem;
+}
+.InfoPanel .InfoPanelColumn:not(:nth-last-child(-n+2)) {
+  margin-bottom: 1rem;
+}
+.InfoPanel--header {
+  border-bottom: 0.0625rem solid #e3e6eb;
+  background-color: #fafafc;
+  padding: 0.75rem 1rem;
+}
+.InfoPanel--title {
+  font-weight: normal;
+  font-style: normal;
+  color: #566279;
+  font-family: "Proxima Nova";
+  margin: 0;
+  padding: 0;
+}
+.InfoPanel--content {
+  padding: 1rem;
+}
+.InfoPanel--footer {
+  border-top: 0.0625rem solid #e3e6eb;
+  padding: 0.75rem 1rem;
+}
