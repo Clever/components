@@ -55,6 +55,7 @@ export default class TableView extends PureComponent {
               ref="table"
               onPageChange={page => console.log("Table page changed:", page)}
               onSortChange={sortState => console.log("Table sort changed:", sortState)}
+              onRowClick={(e, row) => console.log("Table row clicked", row)}
               paginated
               pageSize={9}
               rowIDFn={r => r.id}
@@ -143,6 +144,7 @@ export default class TableView extends PureComponent {
               ref="table"
               onPageChange={page => console.log("Table page changed:", page)}
               onSortChange={sortState => console.log("Table sort changed:", sortState)}
+              onRowClick={(e, row) => console.log("Table row clicked", row)}
               paginated
               pageSize={9}
               rowIDFn={r => r.id}

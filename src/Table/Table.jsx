@@ -69,6 +69,7 @@ export class Table extends Component {
       pageSize,
       paginated,
       rowIDFn,
+      onRowClick,
     } = this.props;
     const {currentPage, sortState = initialSortState} = this.state;
     const {cssClass} = Table;
@@ -125,7 +126,11 @@ export class Table extends Component {
               </Cell>
             </tr>
             ) : pages[displayedPageIndex].map(rowData => (
-            <tr className={cssClass.ROW} key={rowIDFn(rowData)}>
+            <tr
+              className={classnames(cssClass.ROW, onRowClick && cssClass.CLICKABLE_ROW)}
+              key={rowIDFn(rowData)}
+              onClick={(e) => onRowClick(e, rowIDFn(rowData))}
+            >
               {columns.map(({props: col}) => (
                 <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
                   {col.cell.renderer(rowData)}
@@ -156,6 +161,7 @@ Table.propTypes = {
   initialPage: tablePropTypes.pageNumber,
   initialSortState: tablePropTypes.sortState,
   onPageChange: PropTypes.func,
+  onRowClick: PropTypes.func,
   onSortChange: PropTypes.func,
   pageSize: PropTypes.number,
   paginated: PropTypes.bool,
@@ -171,6 +177,7 @@ Table.defaultProps = {
 
 Table.cssClass = {
   BODY: "Table--body",
+  CLICKABLE_ROW: "Table--clickable_row",
   FIXED: "Table--fixed",
   NO_DATA: "Table--no_data_cell",
   ROW: "Table--row",
