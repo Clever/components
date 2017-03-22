@@ -4,6 +4,8 @@ import classnames from "classnames";
 import {Button, Modal} from "..";
 import {omitKeys, prefixKeys, propsFor, unprefixKeys} from "../utils";
 
+const hoistedProps = ["closeModal", "children"];
+
 export class ModalButton extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,13 @@ export class ModalButton extends React.Component {
 
   render() {
     const buttonProps = propsFor(Button, this.props);
-    const modalProps = propsFor(Modal, unprefixKeys(this.props, "modal"));
+    const modalProps = Object.assign(
+      hoistedProps.reduce((props, key) => {
+        props[key] = this.props[key];
+        return props;
+      }, {}),
+      propsFor(Modal, unprefixKeys(this.props, "modal")),
+    );
 
     return (<div className={classnames("ModalButton", this.props.className)}>
       <Button
@@ -44,7 +52,7 @@ export class ModalButton extends React.Component {
 
 // inherit properties from Button and Modal except closeModal; don't prefix children,
 // but prefix the rest of Modal's keys.
-const modalPropTypes = prefixKeys(omitKeys(Modal.propTypes, "closeModal", "children"), "modal");
+const modalPropTypes = prefixKeys(omitKeys(Modal.propTypes, ...hoistedProps), "modal");
 ModalButton.propTypes = Object.assign({}, Button.propTypes, modalPropTypes, {
   children: Modal.propTypes.children,
   onClose: React.PropTypes.func, // not required; just closes modal otherwise
