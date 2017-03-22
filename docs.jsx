@@ -11,6 +11,7 @@ import FileInputView from "./components/FileInputView";
 import GettingStartedView from "./components/GettingStartedView";
 import GridView from "./components/GridView";
 import IconView from "./components/IconView";
+import InfoPanelView from "./components/InfoPanelView";
 import IntroView from "./components/IntroView";
 import LabelView from "./components/LabelView";
 import Layout from "./components/Layout";
@@ -55,6 +56,7 @@ render((
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="grid(/*)" component={GridView} />
         <Route path="icon(/*)" component={IconView} />
+        <Route path="info-panel" component={InfoPanelView} />
         <Route path="label(/*)" component={LabelView} />
         <Route path="left-nav(/*)" component={LeftNavView} />
         <Route path="modal(/*)" component={ModalView} />

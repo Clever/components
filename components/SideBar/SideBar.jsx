@@ -30,6 +30,7 @@ export default function SideBar({className}) {
         <NavLink href="/components/file-input">FileInput</NavLink>
         <NavLink href="/components/grid">Grid</NavLink>
         <NavLink href="/components/icon">Icon</NavLink>
+        <NavLink href="/components/info-panel">InfoPanel</NavLink>
         <NavLink href="/components/label">Label</NavLink>
         <NavLink href="/components/left-nav">LeftNav</NavLink>
         <NavLink href="/components/modal">Modal</NavLink>
