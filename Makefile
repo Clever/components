@@ -6,7 +6,7 @@ TESTS := $(shell find test -name "*_test*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./.stylelintrc
 MOCHA := node_modules/mocha/bin/mocha
-MOCHA_OPTIONS := --compilers jsx:babel-register --recursive --require ignore-styles --require jsdom-global/register
+MOCHA_OPTIONS := --compilers jsx:babel-register --require ignore-styles --require jsdom-global/register
 BABEL := node_modules/babel-cli/bin/babel.js
 WEBPACK := node_modules/webpack/bin/webpack.js
 
@@ -65,7 +65,7 @@ lint:
 
 test: lint
 	@echo "Running unit tests..."
-	@NODE_ENV=test $(MOCHA) $(MOCHA_OPTIONS) $@
+	NODE_ENV=test $(MOCHA) $(MOCHA_OPTIONS) --recursive
 
 $(TESTS):
 	@echo "Running tests for $@"

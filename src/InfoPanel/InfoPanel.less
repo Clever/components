@@ -1,0 +1,45 @@
+@import (reference) "../less/index";
+
+
+.InfoPanel {
+  .borderRadius--m;
+  .border--s(@neutral_silver);
+  background-color: @neutral_white;
+
+  .InfoPanelColumn {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+
+    &:nth-child(even) {
+      padding-left: @size_m;
+    }
+
+    &:not(:nth-last-child(-n+2)) {
+      margin-bottom: @size_m;
+    }
+  }
+}
+
+.InfoPanel--header {
+  .border--bottom--s(@neutral_silver);
+  background-color: @neutral_off_white;
+  padding: @size_s @size_m;
+}
+
+.InfoPanel--title {
+  .text--regular;
+  color: @neutral_dark_gray;
+  font-family: "Proxima Nova";
+  margin: 0;
+  padding: 0;
+}
+
+.InfoPanel--content {
+  padding: @size_m;
+}
+
+.InfoPanel--footer {
+  .border--top--s(@neutral_silver);
+  padding: @size_s @size_m;
+}

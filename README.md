@@ -663,3 +663,20 @@ to define the conditions under which their inputs are considered valid.
 | id (required)    | String   | Unique identifier for this group.     | None
 | label (required) | String   | The label to render as the link text. | None
 | icon (optional)  | Node     | The node to render as the link icon.  | None
+
+### InfoPanel
+[View Demo](http://clever.github.io/components/#/components/info-panel)
+
+#### `<InfoPanel>` Options
+| Prop             | Type       | Description                           | Default
+|------------------|------------|---------------------------------------|---------
+| children         | `InfoPanelColumn`'s | The child columns to render | None |
+| className        | string     |  | None |
+| title (required) | string     | | None |
+| footer           | React Node | | None |
+
+#### `<InfoPanelColumn>` Options
+| Prop             | Type       | Description                           | Default
+|------------------|------------|---------------------------------------|---------
+| children         | React nodes | The children elements to render in the column | None |
+| className        | string     |  | None |
