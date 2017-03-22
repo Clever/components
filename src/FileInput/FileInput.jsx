@@ -1,6 +1,7 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 import {FlexBox, FlexItem} from "../flex";
+import classnames from "classnames";
 
 require("./FileInput.less");
 
@@ -119,7 +120,7 @@ export class FileInput extends React.Component {
         message = this.state.filename;
         selected = true;
       }
-      return (<FlexBox className="FileInput" grow>
+      return (<FlexBox className={classnames("FileInput", this.props.className)} grow>
         {selected && <label className="FileInput--Label">{this.props.label}</label>}
         <FlexItem className={`FileInput--Text ${selected ? "FileInput--Text--selected" : ""}`} grow>
           {message}
@@ -132,6 +133,7 @@ export class FileInput extends React.Component {
 }
 
 FileInput.propTypes = {
+  className: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
   store: React.PropTypes.func.isRequired,
   accept: React.PropTypes.string,

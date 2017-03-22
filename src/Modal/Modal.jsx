@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 
 require("./Modal.less");
 
@@ -41,7 +42,7 @@ export class Modal extends React.Component {
     // The content is max 90% of the window height less 60px (height of the header)
     let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};
     return (
-      <div className="Modal">
+      <div className={classnames("Modal", this.props.className)}>
         <div className="Modal--background" onClick={this.props.closeModal} />
         <div className="Modal--window" style={windowStyle}>
           <header className="Modal--header">
@@ -57,13 +58,14 @@ export class Modal extends React.Component {
   }
 }
 
-Modal.defaultProps = {
-  width: DEFAULT_WIDTH,
-};
-
 Modal.propTypes = {
+  className: React.PropTypes.string,
   width: React.PropTypes.number,
   title: React.PropTypes.string.isRequired,
   closeModal: React.PropTypes.func.isRequired,
   children: React.PropTypes.node.isRequired,
+};
+
+Modal.defaultProps = {
+  width: DEFAULT_WIDTH,
 };

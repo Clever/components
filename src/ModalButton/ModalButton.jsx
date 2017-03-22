@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 
 import {Button, Modal} from "..";
 import {omitKeys, prefixKeys, propsFor, unprefixKeys} from "../utils";
@@ -23,7 +24,7 @@ export class ModalButton extends React.Component {
     const buttonProps = propsFor(Button, this.props);
     const modalProps = propsFor(Modal, unprefixKeys(this.props, "modal"));
 
-    return (<div className="ModalButton">
+    return (<div className={classnames("ModalButton", this.props.className)}>
       <Button
         {...buttonProps} onClick={() => {
           if (this.props.onClick) this.props.onClick();

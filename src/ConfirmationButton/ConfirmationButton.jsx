@@ -1,9 +1,12 @@
 import React, {PropTypes} from "react";
+import classnames from "classnames";
 
 import {Button, ModalButton} from "..";
 import {propsFor, prefixKeys, unprefixKeys} from "../utils";
 
 require("./ConfirmationButton.less");
+
+const propPrefix = "confirmButton";
 
 export class ConfirmationButton extends React.Component {
   constructor(props) {
@@ -24,10 +27,11 @@ export class ConfirmationButton extends React.Component {
 
   render() {
     const modalButtonProps = propsFor(ModalButton, this.props);
-    const confirmButtonProps = propsFor(Button, unprefixKeys(this.props, "confirmButton"));
+    const confirmButtonProps = propsFor(Button, unprefixKeys(this.props, propPrefix));
+    const wrapperClass = "ConfirmationButton--dialog-buttons";
     return (<ModalButton {...modalButtonProps} ref="modalButton">
       {this.props.children}
-      <div className="ConfirmationButton--dialog-buttons">
+      <div className={classnames(wrapperClass, this.props.className)}>
         <Button type="link" value="Cancel" onClick={this.handleCancel} />
         <Button {...confirmButtonProps} onClick={this.handleConfirm} />
       </div>
@@ -35,16 +39,21 @@ export class ConfirmationButton extends React.Component {
   }
 }
 
-ConfirmationButton.propTypes = Object.assign(
-  {}, prefixKeys(Button.propTypes, "confirmButton"), ModalButton.propTypes, {
+ConfirmationButton.propTypes = Object.assign({},
+  prefixKeys(Button.propTypes, propPrefix),
+  ModalButton.propTypes,
+  {
+    className: PropTypes.string,
     confirmButtonType: Button.propTypes.type,
     confirmButtonText: PropTypes.string,
     onConfirm: PropTypes.func,
   }
 );
 
-ConfirmationButton.defaultProps = Object.assign(
-  {}, prefixKeys(Button.defaultProps, "confirmButton"), ModalButton.defaultProps, {
+ConfirmationButton.defaultProps = Object.assign({},
+  prefixKeys(Button.defaultProps, propPrefix),
+  ModalButton.defaultProps,
+  {
     confirmButtonType: "primary",
     confirmButtonValue: "Confirm",
   }

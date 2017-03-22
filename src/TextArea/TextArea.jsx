@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 
 import "./TextArea.less";
 
@@ -71,7 +72,7 @@ export class TextArea extends React.Component {
     }
 
     return (
-      <div className={wrapperClass}>
+      <div className={classnames(wrapperClass, this.props.className)}>
         <div className="TextArea--infoRow">
           <label className="TextArea--label" htmlFor={this.props.name}>{this.props.label}</label>
           {inputNote}
@@ -112,4 +113,5 @@ TextArea.propTypes = {
   required: React.PropTypes.bool,
   spellCheck: React.PropTypes.bool,
   value: React.PropTypes.node,
+  className: React.PropTypes.string,
 };
