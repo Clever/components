@@ -46,7 +46,7 @@ export function unprefixKeys(obj, prefixToRemove, lowercaseFirst = true) {
       const newKey = lowercaseFirst ? sansPrefix.charAt(0).toLowerCase() +
         sansPrefix.slice(1) : sansPrefix;
       prev[newKey] = obj[key];
-    } else {
+    } else if (!prev[key]) { // prefixed prop values take precedence over un-prefixed
       prev[key] = obj[key];
     }
     return prev;
