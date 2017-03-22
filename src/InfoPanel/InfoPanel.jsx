@@ -5,7 +5,7 @@ import "./InfoPanel.less";
 
 
 /**
- * Base presentational component for the District Profile info panels.
+ * Base presentational component for the displaying information in  paneled format.
  */
 export default function InfoPanel({children, className, title, footer}) {
   const {cssClass} = InfoPanel;
