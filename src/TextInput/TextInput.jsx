@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 
 require("./TextInput.less");
 
@@ -69,7 +70,7 @@ export class TextInput extends React.Component {
     let type = (this.props.type === "password" && this.state.hidden) ? "password" : "text";
 
     return (
-      <div className={wrapperClass}>
+      <div className={classnames(wrapperClass, this.props.className)}>
         <div className="TextInput--infoRow">
           <label className="TextInput--label" htmlFor={this.props.name}>{this.props.label}</label>
           {inputNote}
@@ -116,4 +117,5 @@ TextInput.propTypes = {
   required: React.PropTypes.bool,
   type: React.PropTypes.string,
   value: React.PropTypes.node,
+  className: React.PropTypes.string,
 };

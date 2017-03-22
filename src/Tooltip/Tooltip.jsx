@@ -25,7 +25,7 @@ export default class Tooltip extends Component {
 
     const tooltip = (
       <BootstrapTooltip id={this.id}>
-        <div className={classnames(cssClass.CONTENT, `${cssClass.CONTENT}--${textAlign}`)}>
+        <div className={classnames(cssClass.CONTENT, `${cssClass.CONTENT}--${textAlign}`, this.props.className)}>
           {content}
         </div>
       </BootstrapTooltip>
@@ -60,6 +60,7 @@ Tooltip.propTypes = {
   content: PropTypes.node.isRequired,
   placement: PropTypes.oneOf(_.values(Tooltip.Placement)),
   textAlign: PropTypes.oneOf(_.values(Tooltip.Align)),
+  className: React.PropTypes.string,
 };
 
 Tooltip.defaultProps = {

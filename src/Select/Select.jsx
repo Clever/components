@@ -1,5 +1,6 @@
 import React from "react";
 import ReactSelect from "react-select";
+import classnames from "classnames";
 
 import "react-select/dist/react-select.css";
 import "./Select.less";
@@ -37,6 +38,7 @@ export function Select({
   readOnly,
   searchable,
   value,
+  className,
 }) {
   const {cssClass} = Select;
 
@@ -53,7 +55,7 @@ export function Select({
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
   return (
-    <div className={cssClass.CONTAINER}>
+    <div className={classnames(cssClass.CONTAINER, className)}>
       <div id={id}>
         <ReactSelect
           className={reactSelectClasses}
@@ -109,6 +111,7 @@ Select.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.string),
     React.PropTypes.arrayOf(selectValuePropType),
   ]),
+  className: React.PropTypes.string,
 };
 
 Select.defaultProps = {

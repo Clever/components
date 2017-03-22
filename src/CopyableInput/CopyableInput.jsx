@@ -1,7 +1,8 @@
 import React from "react";
-import {TextInput} from "..";
-
+import classnames from "classnames";
 import CopyToClipboard from "react-copy-to-clipboard";
+
+import {TextInput} from "..";
 
 import "./CopyableInput.less";
 
@@ -29,8 +30,9 @@ export class CopyableInput extends React.Component {
 
   render() {
     const type = this.props.type === "password" && this.state.hidden ? "password" : "text";
+    const wrapperClass = "CopyableInput";
     return (
-      <div className="CopyableInput">
+      <div className={classnames(wrapperClass, this.props.className)}>
         <TextInput
           type={type}
           value={this.props.value}
@@ -59,9 +61,13 @@ export class CopyableInput extends React.Component {
   }
 }
 
-CopyableInput.propTypes = Object.assign({}, TextInput.propTypes, {
-  enableCopy: React.PropTypes.bool,
-});
+CopyableInput.propTypes = Object.assign({},
+  TextInput.propTypes,
+  {
+    className: React.PropTypes.string,
+    enableCopy: React.PropTypes.bool,
+  }
+);
 
 CopyableInput.defaultPropTypes = {
   enableCopy: true,
