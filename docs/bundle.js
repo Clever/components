@@ -50400,7 +50400,8 @@
 	    var _this = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
 
 	    _this.state = {
-	      currentPage: props.initialPage || 1
+	      currentPage: props.initialPage || 1,
+	      sortState: props.initialSortState
 	    };
 	    return _this;
 	  }
@@ -50442,7 +50443,7 @@
 	    value: function _toggleSort(columnID) {
 	      var _this3 = this;
 
-	      var oldSortState = this.state.sortState || this.props.initialSortState;
+	      var oldSortState = this.state.sortState;
 
 	      var newSortState = {
 	        columnID: columnID,
@@ -50474,13 +50475,11 @@
 	      var _props = this.props;
 	      var data = _props.data;
 	      var filter = _props.filter;
-	      var initialSortState = _props.initialSortState;
 	      var pageSize = _props.pageSize;
 	      var paginated = _props.paginated;
 	      var _state = this.state;
 	      var currentPage = _state.currentPage;
-	      var _state$sortState = _state.sortState;
-	      var sortState = _state$sortState === undefined ? initialSortState : _state$sortState;
+	      var sortState = _state.sortState;
 
 
 	      var displayedData = (0, _lodash2.default)(data);
@@ -50507,7 +50506,6 @@
 	      }
 
 	      displayedData = displayedData.value();
-	      var disableSort = displayedData.length <= 1;
 
 	      var pages = [displayedData];
 	      if (paginated) {
@@ -50536,7 +50534,9 @@
 	      var paginated = _props2.paginated;
 	      var rowIDFn = _props2.rowIDFn;
 	      var onRowClick = _props2.onRowClick;
-	      var currentPage = this.state.currentPage;
+	      var _state2 = this.state;
+	      var currentPage = _state2.currentPage;
+	      var sortState = _state2.sortState;
 	      var cssClass = Table.cssClass;
 
 	      var _getDisplayedData4 = this._getDisplayedData();
@@ -50545,6 +50545,7 @@
 	      var numPages = _getDisplayedData4.numPages;
 
 	      var displayedPage = Math.min(currentPage, numPages);
+	      var disableSort = displayedData.length <= 1;
 
 	      return _react2.default.createElement(
 	        "table",
@@ -67274,7 +67275,7 @@
 	        _react2.default.createElement(
 	          _Example2.default,
 	          {
-	            code: "\n            <Table\n              data={tableData}\n              filter={rowData => !this.state.tableFilter || _.includes(\n                [rowData.name.first, rowData.name.last].join(\" \"),\n                this.state.tableFilter.trim().toLowerCase()\n              )}\n              initialPage={24}\n              initialSortState={{columnID: \"name\", direction: Table.sortDirection.ASCENDING}}\n              ref=\"table\"\n              onPageChange={page => console.log(\"Table page changed:\", page)}\n              onSortChange={sortState => console.log(\"Table sort changed:\", sortState)}\n              onRowClick={(e, row) => console.log(\"Table row clicked\", row)}\n              paginated\n              pageSize={9}\n              rowIDFn={r => r.id}\n            >\n              <Table.Column\n                id=\"details\"\n                cell={{renderer: r => (\n                  <ModalButton\n                    type=\"link\"\n                    size=\"small\"\n                    value={\"\u2630 Details\"}\n                    modalTitle=\"Details\"\n                  >\n                    <p style={{whiteSpace: \"normal\"}}>{r.notes}</p>\n                  </ModalButton>\n                )}}\n                noWrap\n              />\n\n              <Table.Column\n                id=\"name\"\n                header={{content: \"Name\"}}\n                cell={{\n                  className: \"capitalize\",\n                  renderer: r => [r.name.first, r.name.last].join(\" \"),\n                }}\n                sortable\n                sortValueFn={r => [r.name.first, r.name.last].join(\" \")}\n                width=\"25%\"\n              />\n\n              <Table.Column\n                id=\"age\"\n                header={{content: \"Age\"}}\n                cell={{renderer: r => r.age}}\n                sortable\n                sortValueFn={r => r.age}\n              />\n\n              <Table.Column\n                id=\"status\"\n                header={{content: \"Status\"}}\n                cell={{renderer: r => r.status}}\n                sortable\n                sortValueFn={r => r.status}\n              />\n\n              <Table.Column\n                id=\"notes\"\n                header={{content: \"Notes\"}}\n                cell={{renderer: r => r.notes}}\n                width=\"100%\"\n              />\n            </Table>\n          "
+	            code: "\n            <Table\n              data={tableData}\n              filter={rowData => !this.state.tableFilter || _.includes(\n                [rowData.name.first, rowData.name.last].join(\" \"),\n                this.state.tableFilter.trim().toLowerCase()\n              )}\n              initialPage={24}\n              initialSortState={{columnID: \"name\", direction: Table.sortDirection.ASCENDING}}\n              ref=\"table\"\n              onPageChange={page => console.log(\"Table page changed:\", page)}\n              onSortChange={sortState => console.log(\"Table sort changed:\", sortState)}\n              onRowClick={(e, row) => console.log(\"Table row clicked:\", row)}\n              onViewChange={data => console.log(\"New rows:\", data.map(d => d.id))}\n              paginated\n              pageSize={9}\n              rowIDFn={r => r.id}\n            >\n              <Table.Column\n                id=\"details\"\n                cell={{renderer: r => (\n                  <ModalButton\n                    type=\"link\"\n                    size=\"small\"\n                    value={\"\u2630 Details\"}\n                    modalTitle=\"Details\"\n                  >\n                    <p style={{whiteSpace: \"normal\"}}>{r.notes}</p>\n                  </ModalButton>\n                )}}\n                noWrap\n              />\n\n              <Table.Column\n                id=\"name\"\n                header={{content: \"Name\"}}\n                cell={{\n                  className: \"capitalize\",\n                  renderer: r => [r.name.first, r.name.last].join(\" \"),\n                }}\n                sortable\n                sortValueFn={r => [r.name.first, r.name.last].join(\" \")}\n                width=\"25%\"\n              />\n\n              <Table.Column\n                id=\"age\"\n                header={{content: \"Age\"}}\n                cell={{renderer: r => r.age}}\n                sortable\n                sortValueFn={r => r.age}\n              />\n\n              <Table.Column\n                id=\"status\"\n                header={{content: \"Status\"}}\n                cell={{renderer: r => r.status}}\n                sortable\n                sortValueFn={r => r.status}\n              />\n\n              <Table.Column\n                id=\"notes\"\n                header={{content: \"Notes\"}}\n                cell={{renderer: r => r.notes}}\n                width=\"100%\"\n              />\n            </Table>\n          "
 	          },
 	          _react2.default.createElement(_src.Button, {
 	            onClick: function onClick() {
@@ -67318,7 +67319,12 @@
 	                  return console.log("Table sort changed:", sortState);
 	                },
 	                onRowClick: function onRowClick(e, row) {
-	                  return console.log("Table row clicked", row);
+	                  return console.log("Table row clicked:", row);
+	                },
+	                onViewChange: function onViewChange(data) {
+	                  return console.log("Table view changed:", data.map(function (d) {
+	                    return d.id;
+	                  }));
 	                },
 	                paginated: true,
 	                pageSize: 9,
