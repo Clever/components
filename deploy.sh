@@ -20,7 +20,7 @@ fi
 
 git add docs/
 
-git commit
+git commit || true
 
 git subtree push --prefix docs origin gh-pages
 
