@@ -39,6 +39,14 @@ class ContactStep extends React.Component {
     return true;
   }
 
+  static onComplete(wizardState) {
+    alert(
+      "A custom action for the current step. We might, for example, want to save the phone " +
+      `number (${wizardState.phoneNumber}) entered on this page in a database right away.`
+    );
+    return true;
+  }
+
   render() {
     const {wizardState, setWizardState} = this.props;
     return (
@@ -157,6 +165,7 @@ export default class WizardExample extends React.Component {
         component: ContactStep,
         validate: ContactStep.validate,
         nextButtonValue: "Save contact",
+        onComplete: ContactStep.onComplete,
       },
       {
         title: "Review",
