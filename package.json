@@ -64,6 +64,6 @@
     "webpack-dev-server": "^1.16.1"
   },
   "scripts": {
-    "dev-server": "node_modules/.bin/webpack-dev-server --content-base docs/ --inline --watch"
+    "dev-server": "node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 5010 --content-base docs/ --inline --watch"
   }
 }
