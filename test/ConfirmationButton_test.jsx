@@ -21,6 +21,25 @@ describe("ConfirmationButton", () => {
     assert.equal(dialog_buttons.find("button").length, 2);
     assert.equal(dialog_buttons.find("button").first().text(), "Cancel");
     assert.equal(dialog_buttons.find("button").last().text(), "Confirm");
+    assert.equal(dialog_buttons.find("Button").last().props().type, ConfirmationButton.defaultProps.confirmButtonType);
+  });
+
+  it("passes button types to the confirm button", () => {
+    const confirmButtonType = "destructive";
+    const confirmationButton = mount(
+      <ConfirmationButton value="Confirm pl0x" modalTitle="A title" confirmButtonType={confirmButtonType}>
+        <p>Hello</p>
+      </ConfirmationButton>
+    );
+    assert.equal(confirmationButton.find(ModalButton).length, 1);
+
+    confirmationButton.find("button").simulate("click"); // render the modal
+    const dialog_buttons = confirmationButton.find(".ConfirmationButton--dialog-buttons");
+    assert.equal(dialog_buttons.length, 1);
+    assert.equal(dialog_buttons.find("button").length, 2);
+    assert.equal(dialog_buttons.find("button").first().text(), "Cancel");
+    assert.equal(dialog_buttons.find("button").last().text(), "Confirm");
+    assert.equal(dialog_buttons.find("Button").last().props().type, confirmButtonType);
   });
 
   it("calls onClose if present when cancel button clicked", () => {

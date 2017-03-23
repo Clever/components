@@ -29,6 +29,7 @@ export class ConfirmationButton extends React.Component {
     const modalButtonProps = propsFor(ModalButton, this.props);
     const confirmButtonProps = propsFor(Button, unprefixKeys(this.props, propPrefix));
     const wrapperClass = "ConfirmationButton--dialog-buttons";
+
     return (<ModalButton {...modalButtonProps} ref="modalButton">
       {this.props.children}
       <div className={classnames(wrapperClass, this.props.className)}>
@@ -44,10 +45,8 @@ ConfirmationButton.propTypes = Object.assign({},
   ModalButton.propTypes,
   {
     className: PropTypes.string,
-    confirmButtonType: Button.propTypes.type,
-    confirmButtonText: PropTypes.string,
     onConfirm: PropTypes.func,
-  }
+  },
 );
 
 ConfirmationButton.defaultProps = Object.assign({},

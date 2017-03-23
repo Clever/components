@@ -4,6 +4,8 @@ import classnames from "classnames";
 import {Button, Modal} from "..";
 import {omitKeys, prefixKeys, propsFor, unprefixKeys} from "../utils";
 
+const excludeModalProps = ["closeModal", "children"];
+
 export class ModalButton extends React.Component {
   constructor(props) {
     super(props);
@@ -37,19 +39,26 @@ export class ModalButton extends React.Component {
           if (this.props.onClose) this.props.onClose();
           this.hideModal();
         }}
-      /> : null}
+      >{this.props.children}</Modal> : null}
     </div>);
   }
 }
 
 // inherit properties from Button and Modal except closeModal; don't prefix children,
 // but prefix the rest of Modal's keys.
-const modalPropTypes = prefixKeys(omitKeys(Modal.propTypes, "closeModal", "children"), "modal");
-ModalButton.propTypes = Object.assign({}, Button.propTypes, modalPropTypes, {
-  children: Modal.propTypes.children,
-  onClose: React.PropTypes.func, // not required; just closes modal otherwise
-});
+const modalPropTypes = prefixKeys(omitKeys(Modal.propTypes, ...excludeModalProps), "modal");
+
+ModalButton.propTypes = Object.assign({},
+  Button.propTypes,
+  modalPropTypes,
+  {
+    children: Modal.propTypes.children,
+    onClose: React.PropTypes.func, // not required; just closes modal otherwise
+  }
+);
 
 // closeModal has no default, so no need to filter out of defaultProps
-ModalButton.defaultProps = Object.assign({}, Button.defaultProps,
-                                         prefixKeys(Modal.defaultProps, "modal"));
+ModalButton.defaultProps = Object.assign({},
+  Button.defaultProps,
+  prefixKeys(Modal.defaultProps, "modal")
+);

@@ -37,7 +37,7 @@ export function prefixKeys(obj, prefix, capitalizeFirst = true) {
 /**
  * Returns a copy of obj (Object) with prefix (String) removed from the start of each key, if it is
  * present. Lowercases the first letter of the old key if lowercaseFirst (bool) is true AND the
- * old key begins with the prefix; if the prefix is not present, the key is preserved.
+ * old key begins with the prefix.
  */
 export function unprefixKeys(obj, prefixToRemove, lowercaseFirst = true) {
   return Object.keys(obj).reduce((prev, key) => {
@@ -46,8 +46,6 @@ export function unprefixKeys(obj, prefixToRemove, lowercaseFirst = true) {
       const newKey = lowercaseFirst ? sansPrefix.charAt(0).toLowerCase() +
         sansPrefix.slice(1) : sansPrefix;
       prev[newKey] = obj[key];
-    } else {
-      prev[key] = obj[key];
     }
     return prev;
   }, {});
