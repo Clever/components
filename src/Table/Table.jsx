@@ -129,7 +129,7 @@ export class Table extends Component {
             <tr
               className={classnames(cssClass.ROW, onRowClick && cssClass.CLICKABLE_ROW)}
               key={rowIDFn(rowData)}
-              onClick={(e) => onRowClick(e, rowIDFn(rowData))}
+              onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData))}
             >
               {columns.map(({props: col}) => (
                 <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
