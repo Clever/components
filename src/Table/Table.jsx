@@ -21,6 +21,7 @@ export class Table extends Component {
 
     this.state = {
       currentPage: props.initialPage || 1,
+      sortState: props.initialSortState,
     };
   }
 
@@ -32,7 +33,13 @@ export class Table extends Component {
       return;
     }
 
-    this.setState({currentPage: page}, () => this.props.onPageChange(page));
+    this.setState({currentPage: page}, () => {
+      this.props.onPageChange(page);
+      if (this.props.onViewChange) {
+        const {displayedData} = this._getDisplayedData();
+        this.props.onViewChange(displayedData);
+      }
+    });
   }
 
   _getColumn(columnID) {
@@ -40,7 +47,7 @@ export class Table extends Component {
   }
 
   _toggleSort(columnID) {
-    const oldSortState = this.state.sortState || this.props.initialSortState;
+    const oldSortState = this.state.sortState;
 
     const newSortState = {
       columnID,
@@ -53,26 +60,25 @@ export class Table extends Component {
         : sortDirection.ASCENDING;
     }
 
-    this.setState({sortState: newSortState}, () => this.props.onSortChange(this.state.sortState));
     // Reset to 1st page since table sort has changed.
     this.setCurrentPage(1);
+    this.setState({sortState: newSortState}, () => {
+      this.props.onSortChange(this.state.sortState);
+      if (this.props.onViewChange) {
+        const {displayedData} = this._getDisplayedData();
+        this.props.onViewChange(displayedData);
+      }
+    });
   }
 
-  render() {
+  _getDisplayedData() {
     const {
-      children: columns,
-      className,
       data,
       filter,
-      fixed,
-      initialSortState,
       pageSize,
       paginated,
-      rowIDFn,
-      onRowClick,
     } = this.props;
-    const {currentPage, sortState = initialSortState} = this.state;
-    const {cssClass} = Table;
+    const {currentPage, sortState} = this.state;
 
     let displayedData = lodash(data);
     if (filter) {
@@ -96,7 +102,6 @@ export class Table extends Component {
     }
 
     displayedData = displayedData.value();
-    const disableSort = displayedData.length <= 1;
 
     let pages = [displayedData];
     if (paginated) {
@@ -110,8 +115,25 @@ export class Table extends Component {
     }
 
     const numPages = pages.length;
+    const idx = Math.min(currentPage, numPages) - 1;
+    return {displayedData: pages[idx], numPages};
+  }
+
+  render() {
+    const {
+      children: columns,
+      className,
+      fixed,
+      paginated,
+      rowIDFn,
+      onRowClick,
+    } = this.props;
+    const {currentPage, sortState} = this.state;
+    const {cssClass} = Table;
+
+    const {displayedData, numPages} = this._getDisplayedData();
     const displayedPage = Math.min(currentPage, numPages);
-    const displayedPageIndex = displayedPage - 1;
+    const disableSort = displayedData.length <= 1;
 
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
@@ -125,7 +147,7 @@ export class Table extends Component {
                 NO DATA
               </Cell>
             </tr>
-            ) : pages[displayedPageIndex].map(rowData => (
+            ) : displayedData.map(rowData => (
             <tr
               className={classnames(cssClass.ROW, onRowClick && cssClass.CLICKABLE_ROW)}
               key={rowIDFn(rowData)}
@@ -163,6 +185,7 @@ Table.propTypes = {
   onPageChange: PropTypes.func,
   onRowClick: PropTypes.func,
   onSortChange: PropTypes.func,
+  onViewChange: PropTypes.func,
   pageSize: PropTypes.number,
   paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
