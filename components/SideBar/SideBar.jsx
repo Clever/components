@@ -35,6 +35,7 @@ export default function SideBar({className}) {
         <NavLink href="/components/left-nav">LeftNav</NavLink>
         <NavLink href="/components/modal">Modal</NavLink>
         <NavLink href="/components/modal-button">ModalButton</NavLink>
+        <NavLink href="/components/number">Number</NavLink>
         <NavLink href="/components/progress-bar">ProgressBar</NavLink>
         <NavLink href="/components/segmented-control">SegmentedControl</NavLink>
         <NavLink href="/components/select">Select</NavLink>

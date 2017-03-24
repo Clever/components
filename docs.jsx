@@ -19,6 +19,7 @@ import LeftNavView from "./components/LeftNavView";
 import LessStyleGuideView from "./components/LessStyleGuideView";
 import ModalButtonView from "./components/ModalButtonView";
 import ModalView from "./components/ModalView";
+import NumberView from "./components/NumberView";
 import PageLayoutView from "./components/PageLayoutView";
 import ProgressBarView from "./components/ProgressBarView";
 import SegmentedControlView from "./components/SegmentedControlView";
@@ -61,6 +62,7 @@ render((
         <Route path="left-nav(/*)" component={LeftNavView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
+        <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
