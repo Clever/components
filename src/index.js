@@ -1,3 +1,8 @@
+// Number is a default export.
+// TODO(kofi): Convert all components to default exports to allow clients to import separate
+// components without pulling in the whole repo.
+import Number from "./Number";
+
 export * from "./flex";
 export * from "./TabBar";
 export {Modal} from "./Modal/Modal";
@@ -19,3 +24,4 @@ export {Tooltip} from "./Tooltip";
 export {Label} from "./Label";
 export {FileInput} from "./FileInput/FileInput";
 export * from "./InfoPanel";
+export {Number};

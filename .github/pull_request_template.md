@@ -14,5 +14,6 @@
 **Roll Out:**
 - Before merging:
   - [ ] Updated docs
+  - [ ] Bumped version in `package.json`
 - After merging:
   - [ ] Deployed updated docs (`make deploy-docs`)
