@@ -42,12 +42,12 @@ export class Wizard extends React.Component {
   }
 
   nextStepHandler() {
-    const {steps, onComplete} = this.props;
+    const {onComplete, steps} = this.props;
     const {currentStep, data} = this.state;
 
     // If an onComplete handler is provided for the current step, and it returns false, we won't
     // proceed to the next step.
-    if (steps[currentStep].onComplete && !steps[currentStep].onComplete(data)) {
+    if (steps[currentStep].onStepComplete && !steps[currentStep].onStepComplete(data)) {
       return;
     }
     if (currentStep === steps.length - 1) {
@@ -202,7 +202,7 @@ Wizard.propTypes = {
     validate: PropTypes.func.isRequired,
     help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     props: PropTypes.object,
-    onComplete: PropTypes.func,
+    onStepComplete: PropTypes.func,
   })).isRequired,
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
