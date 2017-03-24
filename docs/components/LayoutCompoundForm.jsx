@@ -18,7 +18,7 @@ export default class LayoutCompoundForm extends PureComponent {
               <div>
                 <h2>Layout Guidelines</h2>
                 <p>
-                  Now that we have broken down most variation of input fields (TextInput, TextArea, etc), let’s hash out how they should behave together. Below are the basic guidelines we have set up based on the different use-cases we’ve encountered in our product. 
+                  Now that we have broken down most variation of input fields (TextInput, TextArea, etc), let’s hash out how they should behave together. Below are the basic guidelines we have set up based on the different use-cases we’ve encountered in our product.
                 </p>
                 <p>
                   Please ping #design when you are unable to use the example below to design your own form! We will gladly take a look and add new use-cases to the working guidelines below!
@@ -31,7 +31,7 @@ export default class LayoutCompoundForm extends PureComponent {
               <div>
                 <h3>Do's and Don'ts</h3>
                 <p>
-                 Below is a working list of simple guidelines to help ensures that your form-design will turn out 🔥! 
+                 Below is a working list of simple guidelines to help ensures that your form-design will turn out 🔥!
                 </p>
               </div>
             </Col>
@@ -43,7 +43,7 @@ export default class LayoutCompoundForm extends PureComponent {
                   #1. Form inputs should be stacked according to the order of proper information architecture
                 </p>
                 <p>
-                  Moving forward with the new component, this should become the default norm. 
+                  Moving forward with the new component, this should become the default norm.
                 </p>
               </div>
             </Col>
@@ -60,7 +60,7 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
                 <p>
-                  <strong>Don’t:</strong> arbitrarily add space between TextInput forms. 
+                  <strong>Don’t:</strong> arbitrarily add space between TextInput forms.
                 </p>
               </div>
             </Col>
@@ -79,7 +79,7 @@ export default class LayoutCompoundForm extends PureComponent {
                   #2. Treat checkbox, radio, and type ahead search field layout similarly with TextInput component
                 </p>
                 <p>
-                  All method of inputs should be treated the same way--with white bounding box surround. 
+                  All method of inputs should be treated the same way--with white bounding box surround.
                 </p>
               </div>
             </Col>
@@ -114,11 +114,11 @@ export default class LayoutCompoundForm extends PureComponent {
               <div>
                 <p>
                   <p className="text--semi-bold">
-                    #3. Use concise and thoughtful input labels 
+                    #3. Use concise and thoughtful input labels
                   </p>
                 </p>
                 <p>
-                  This is one of the more difficult ones to achieve and often take several iterations to get right. However, the impact of having clear and concise instruction is definitely key to successful form design. 
+                  This is one of the more difficult ones to achieve and often take several iterations to get right. However, the impact of having clear and concise instruction is definitely key to successful form design.
                 </p>
               </div>
             </Col>
@@ -136,7 +136,7 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
                 <p>
-                  <strong>Don’t:</strong> be too wordy. Wordy ≠ Descriptive. 
+                  <strong>Don’t:</strong> be too wordy. Wordy ≠ Descriptive.
                 </p>
               </div>
             </Col>
@@ -157,7 +157,7 @@ export default class LayoutCompoundForm extends PureComponent {
                   </p>
                 </p>
                 <p>
-                  When relying on labels alone is not enough, we can utilize additional screen real-estate with a pop-over. 
+                  When relying on labels alone is not enough, we can utilize additional screen real-estate with a pop-over.
                 </p>
               </div>
             </Col>
@@ -174,14 +174,14 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl imgCentered">
               <div>
                 <p>
-                  <strong>Don’t:</strong> add info bubble outside of bounded input to display additional information. 
+                  <strong>Don’t:</strong> add info bubble outside of bounded input to display additional information.
                 </p>
               </div>
             </Col>
             <Col span={6} className="flexbox margin--top--s padding--right--5xl imgCentered">
               <div>
                 <p>
-                  <strong>Do:</strong> utilize the similar pattern with password hints on the login flow to pop-out important information just as the user need them.  
+                  <strong>Do:</strong> utilize the similar pattern with password hints on the login flow to pop-out important information just as the user need them.
                 </p>
               </div>
             </Col>
@@ -193,7 +193,7 @@ export default class LayoutCompoundForm extends PureComponent {
                   #5. Be explicit with the state of the form (view vs edit)
                 </p>
                 <p>
-                  This is something that we at Clever could collectively get better at. We currently have a habit of displaying most of our form fields as ‘active’ and always in a ready to update state. This can often cause confusion due to the inherent lack of clarity of what is the current state of the page.  
+                  This is something that we at Clever could collectively get better at. We currently have a habit of displaying most of our form fields as ‘active’ and always in a ready to update state. This can often cause confusion due to the inherent lack of clarity of what is the current state of the page.
                 </p>
               </div>
             </Col>
@@ -215,7 +215,7 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
                 <p>
-                  <strong>Don’t:</strong> leave a ‘free to edit’ form inputs without a clear ‘save’ button in sight.  
+                  <strong>Don’t:</strong> leave a ‘free to edit’ form inputs without a clear ‘save’ button in sight.
                 </p>
               </div>
             </Col>
@@ -259,7 +259,7 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
                 <p>
-                  <strong>Before:</strong> long in-page form without a clear state of whether or not any of the page content has been modified. ‘Update’ button is placed at the bottom of the page--past page fold and is easy to miss.   
+                  <strong>Before:</strong> long in-page form without a clear state of whether or not any of the page content has been modified. ‘Update’ button is placed at the bottom of the page--past page fold and is easy to miss.
                 </p>
               </div>
             </Col>
