@@ -1,3 +1,5 @@
+import Number from "./Number";
+
 export * from "./flex";
 export * from "./TabBar";
 export {Modal} from "./Modal/Modal";
@@ -19,3 +21,4 @@ export {Tooltip} from "./Tooltip";
 export {Label} from "./Label";
 export {FileInput} from "./FileInput/FileInput";
 export * from "./InfoPanel";
+export {Number};
