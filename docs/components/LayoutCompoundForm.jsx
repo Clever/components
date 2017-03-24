@@ -31,7 +31,7 @@ export default class LayoutCompoundForm extends PureComponent {
               <div>
                 <h3>Do's and Don'ts</h3>
                 <p>
-                 Below is a working list of simple guidelines to help ensure that your forms design will turn out 🔥! 
+                 Below is a working list of simple guidelines to help ensures that your form-design will turn out 🔥! 
                 </p>
               </div>
             </Col>
@@ -67,7 +67,7 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
                 <p>
-                  <strong>Do:</strong> vertically stack relevant information form. Horizontal split is also appropriate for expected shorter content.
+                  <strong>Do:</strong> vertically stack relevant information form. A horizontal split is also appropriate for expected shorter content.
                 </p>
               </div>
             </Col>
@@ -97,7 +97,7 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
                 <p>
-                  <strong>Don’t:</strong> remove bounded background on alternative input fields.
+                  <strong>Don’t:</strong> remove the bounded background on alternative input fields.
                 </p>
               </div>
             </Col>
@@ -259,7 +259,7 @@ export default class LayoutCompoundForm extends PureComponent {
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
                 <p>
-                  <strong>Before:</strong> long in-page form without clear state of whether or not any of the page content has been modified. ‘Update’ button is placed at the bottom of the page--past page fold and is easy to miss.   
+                  <strong>Before:</strong> long in-page form without a clear state of whether or not any of the page content has been modified. ‘Update’ button is placed at the bottom of the page--past page fold and is easy to miss.   
                 </p>
               </div>
             </Col>
