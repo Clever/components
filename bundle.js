@@ -58,123 +58,127 @@
 
 	var _ButtonView2 = _interopRequireDefault(_ButtonView);
 
-	var _ColorsView = __webpack_require__(613);
+	var _ColorsView = __webpack_require__(619);
 
 	var _ColorsView2 = _interopRequireDefault(_ColorsView);
 
-	var _ConfirmationButtonView = __webpack_require__(616);
+	var _ConfirmationButtonView = __webpack_require__(622);
 
 	var _ConfirmationButtonView2 = _interopRequireDefault(_ConfirmationButtonView);
 
-	var _CopyableInputView = __webpack_require__(617);
+	var _CopyableInputView = __webpack_require__(623);
 
 	var _CopyableInputView2 = _interopRequireDefault(_CopyableInputView);
 
-	var _FlexBoxView = __webpack_require__(620);
+	var _FlexBoxView = __webpack_require__(626);
 
 	var _FlexBoxView2 = _interopRequireDefault(_FlexBoxView);
 
-	var _FileInputView = __webpack_require__(626);
+	var _FileInputView = __webpack_require__(632);
 
 	var _FileInputView2 = _interopRequireDefault(_FileInputView);
 
-	var _GettingStartedView = __webpack_require__(627);
+	var _GettingStartedView = __webpack_require__(633);
 
 	var _GettingStartedView2 = _interopRequireDefault(_GettingStartedView);
 
-	var _GridView = __webpack_require__(628);
+	var _GridView = __webpack_require__(634);
 
 	var _GridView2 = _interopRequireDefault(_GridView);
 
-	var _IconView = __webpack_require__(631);
+	var _IconView = __webpack_require__(637);
 
 	var _IconView2 = _interopRequireDefault(_IconView);
 
-	var _InfoPanelView = __webpack_require__(634);
+	var _InfoPanelView = __webpack_require__(640);
 
 	var _InfoPanelView2 = _interopRequireDefault(_InfoPanelView);
 
-	var _IntroView = __webpack_require__(637);
+	var _IntroView = __webpack_require__(643);
 
 	var _IntroView2 = _interopRequireDefault(_IntroView);
 
-	var _LabelView = __webpack_require__(638);
+	var _LabelView = __webpack_require__(644);
 
 	var _LabelView2 = _interopRequireDefault(_LabelView);
 
-	var _Layout = __webpack_require__(647);
+	var _Layout = __webpack_require__(653);
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _LeftNavView = __webpack_require__(665);
+	var _LeftNavView = __webpack_require__(671);
 
 	var _LeftNavView2 = _interopRequireDefault(_LeftNavView);
 
-	var _LessStyleGuideView = __webpack_require__(669);
+	var _LessStyleGuideView = __webpack_require__(675);
 
 	var _LessStyleGuideView2 = _interopRequireDefault(_LessStyleGuideView);
 
-	var _ModalButtonView = __webpack_require__(670);
+	var _ModalButtonView = __webpack_require__(676);
 
 	var _ModalButtonView2 = _interopRequireDefault(_ModalButtonView);
 
-	var _ModalView = __webpack_require__(671);
+	var _ModalView = __webpack_require__(677);
 
 	var _ModalView2 = _interopRequireDefault(_ModalView);
 
-	var _PageLayoutView = __webpack_require__(672);
+	var _NumberView = __webpack_require__(678);
+
+	var _NumberView2 = _interopRequireDefault(_NumberView);
+
+	var _PageLayoutView = __webpack_require__(681);
 
 	var _PageLayoutView2 = _interopRequireDefault(_PageLayoutView);
 
-	var _ProgressBarView = __webpack_require__(673);
+	var _ProgressBarView = __webpack_require__(682);
 
 	var _ProgressBarView2 = _interopRequireDefault(_ProgressBarView);
 
-	var _SegmentedControlView = __webpack_require__(676);
+	var _SegmentedControlView = __webpack_require__(685);
 
 	var _SegmentedControlView2 = _interopRequireDefault(_SegmentedControlView);
 
-	var _SelectView = __webpack_require__(677);
+	var _SelectView = __webpack_require__(686);
 
 	var _SelectView2 = _interopRequireDefault(_SelectView);
 
-	var _SizingView = __webpack_require__(680);
+	var _SizingView = __webpack_require__(689);
 
 	var _SizingView2 = _interopRequireDefault(_SizingView);
 
-	var _SpacingView = __webpack_require__(683);
+	var _SpacingView = __webpack_require__(692);
 
 	var _SpacingView2 = _interopRequireDefault(_SpacingView);
 
-	var _TabBarView = __webpack_require__(684);
+	var _TabBarView = __webpack_require__(693);
 
 	var _TabBarView2 = _interopRequireDefault(_TabBarView);
 
-	var _TableView = __webpack_require__(690);
+	var _TableView = __webpack_require__(699);
 
 	var _TableView2 = _interopRequireDefault(_TableView);
 
-	var _TextAreaView = __webpack_require__(691);
+	var _TextAreaView = __webpack_require__(700);
 
 	var _TextAreaView2 = _interopRequireDefault(_TextAreaView);
 
-	var _TextInputView = __webpack_require__(692);
+	var _TextInputView = __webpack_require__(701);
 
 	var _TextInputView2 = _interopRequireDefault(_TextInputView);
 
-	var _TooltipView = __webpack_require__(695);
+	var _TooltipView = __webpack_require__(704);
 
 	var _TooltipView2 = _interopRequireDefault(_TooltipView);
 
-	var _TypographyView = __webpack_require__(698);
+	var _TypographyView = __webpack_require__(707);
 
 	var _TypographyView2 = _interopRequireDefault(_TypographyView);
 
-	var _UITextView = __webpack_require__(699);
+	var _UITextView = __webpack_require__(708);
 
 	var _UITextView2 = _interopRequireDefault(_UITextView);
 
-	var _WizardView = __webpack_require__(702);
+	var _WizardView = __webpack_require__(711);
 
 	var _WizardView2 = _interopRequireDefault(_WizardView);
 
@@ -213,6 +217,7 @@
 	      _react2.default.createElement(_reactRouter.Route, { path: "left-nav(/*)", component: _LeftNavView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "modal(/*)", component: _ModalView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "modal-button(/*)", component: _ModalButtonView2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: "number(/*)", component: _NumberView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "progress-bar(/*)", component: _ProgressBarView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "segmented-control(/*)", component: _SegmentedControlView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "select(/*)", component: _SelectView2.default }),
@@ -24931,9 +24936,9 @@
 		switch (opts.arrayFormat) {
 			case 'index':
 				return function (key, value, accumulator) {
-					result = /\[(\d*)\]$/.exec(key);
+					result = /\[(\d*)]$/.exec(key);
 
-					key = key.replace(/\[\d*\]$/, '');
+					key = key.replace(/\[\d*]$/, '');
 
 					if (!result) {
 						accumulator[key] = value;
@@ -24949,9 +24954,9 @@
 
 			case 'bracket':
 				return function (key, value, accumulator) {
-					result = /(\[\])$/.exec(key);
+					result = /(\[])$/.exec(key);
 
-					key = key.replace(/\[\]$/, '');
+					key = key.replace(/\[]$/, '');
 
 					if (!result || accumulator[key] === undefined) {
 						accumulator[key] = value;
@@ -26701,7 +26706,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(611);
+	__webpack_require__(617);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27982,8 +27987,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../css-loader/index.js!./prism-solarizedlight.css", function() {
-				var newContent = require("!!../../css-loader/index.js!./prism-solarizedlight.css");
+			module.hot.accept("!!./../../css-loader/index.js!./prism-solarizedlight.css", function() {
+				var newContent = require("!!./../../css-loader/index.js!./prism-solarizedlight.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28330,8 +28335,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./CodeSample.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./CodeSample.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./CodeSample.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./CodeSample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28415,8 +28420,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Demo.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Demo.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Demo.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Demo.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28455,8 +28460,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Example.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./Example.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Example.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./Example.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28605,8 +28610,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./View.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./View.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./View.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./View.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -28638,6 +28643,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.Number = exports.FileInput = exports.Label = exports.Tooltip = exports.TextArea = exports.ProgressBar = exports.Wizard = exports.LeftNav = exports.Icon = exports.Grid = exports.Table = exports.Select = exports.SegmentedControl = exports.CopyableInput = exports.TextInput = exports.ConfirmationButton = exports.ModalButton = exports.Button = exports.Modal = undefined;
 
 	var _flex = __webpack_require__(282);
 
@@ -28807,7 +28813,7 @@
 	  }
 	});
 
-	var _Label = __webpack_require__(598);
+	var _Label = __webpack_require__(600);
 
 	Object.defineProperty(exports, "Label", {
 	  enumerable: true,
@@ -28816,7 +28822,7 @@
 	  }
 	});
 
-	var _FileInput = __webpack_require__(602);
+	var _FileInput = __webpack_require__(604);
 
 	Object.defineProperty(exports, "FileInput", {
 	  enumerable: true,
@@ -28825,7 +28831,7 @@
 	  }
 	});
 
-	var _InfoPanel = __webpack_require__(606);
+	var _InfoPanel = __webpack_require__(608);
 
 	Object.keys(_InfoPanel).forEach(function (key) {
 	  if (key === "default" || key === "__esModule") return;
@@ -28836,6 +28842,14 @@
 	    }
 	  });
 	});
+
+	var _Number = __webpack_require__(613);
+
+	var _Number2 = _interopRequireDefault(_Number);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.Number = _Number2.default;
 
 /***/ },
 /* 282 */
@@ -46219,8 +46233,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./flex.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./flex.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./flex.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./flex.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46389,8 +46403,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tab.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tab.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tab.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tab.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46576,8 +46590,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TabBar.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TabBar.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TabBar.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TabBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46739,8 +46753,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Modal.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Modal.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Modal.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Modal.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -46890,8 +46904,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Button.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Button.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Button.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Button.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47207,8 +47221,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ConfirmationButton.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ConfirmationButton.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ConfirmationButton.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ConfirmationButton.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47426,8 +47440,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInput.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInput.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInput.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInput.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -47804,8 +47818,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInput.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInput.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInput.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInput.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -48002,8 +48016,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SegmentedControl.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SegmentedControl.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SegmentedControl.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SegmentedControl.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -50619,8 +50633,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../css-loader/index.js!./react-select.css", function() {
-				var newContent = require("!!../../css-loader/index.js!./react-select.css");
+			module.hot.accept("!!./../../css-loader/index.js!./react-select.css", function() {
+				var newContent = require("!!./../../css-loader/index.js!./react-select.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -50659,8 +50673,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Select.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Select.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Select.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Select.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -50829,6 +50843,8 @@
 	  }, {
 	    key: "_getDisplayedData",
 	    value: function _getDisplayedData() {
+	      var _this4 = this;
+
 	      var _props = this.props;
 	      var data = _props.data;
 	      var filter = _props.filter;
@@ -50844,20 +50860,22 @@
 	        displayedData = displayedData.filter(filter);
 	      }
 	      if (sortState) {
-	        var sortedColumn = this._getColumn(sortState.columnID);
-	        displayedData = displayedData.sortBy(function (row) {
-	          var value = sortedColumn.props.sortValueFn(row);
+	        (function () {
+	          var sortedColumn = _this4._getColumn(sortState.columnID);
+	          displayedData = displayedData.sortBy(function (row) {
+	            var value = sortedColumn.props.sortValueFn(row);
 
-	          if (typeof value === "string") {
-	            value = value.trim().toLowerCase();
+	            if (typeof value === "string") {
+	              value = value.trim().toLowerCase();
+	            }
+
+	            return value;
+	          });
+
+	          if (sortState.direction === _sortDirection2.default.DESCENDING) {
+	            displayedData = displayedData.reverse();
 	          }
-
-	          return value;
-	        });
-
-	        if (sortState.direction === _sortDirection2.default.DESCENDING) {
-	          displayedData = displayedData.reverse();
-	        }
+	        })();
 	      }
 
 	      displayedData = displayedData.value();
@@ -50880,7 +50898,7 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var _props2 = this.props;
 	      var columns = _props2.children;
@@ -50908,7 +50926,7 @@
 	        _react2.default.createElement(
 	          _Header2.default,
 	          { disableSort: disableSort, onSortChange: function onSortChange(columnID) {
-	              return _this4._toggleSort(columnID);
+	              return _this5._toggleSort(columnID);
 	            }, sortState: sortState },
 	          columns
 	        ),
@@ -50947,7 +50965,7 @@
 	        paginated && _react2.default.createElement(_Footer2.default, {
 	          currentPage: displayedPage,
 	          onPageChange: function onPageChange(newPage) {
-	            return _this4.setCurrentPage(newPage);
+	            return _this5.setCurrentPage(newPage);
 	          },
 	          numColumns: columns.length,
 	          numPages: numPages
@@ -51141,8 +51159,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Cell.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Cell.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Cell.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Cell.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51390,8 +51408,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Footer.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Footer.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Footer.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Footer.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51679,8 +51697,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./HeaderCell.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./HeaderCell.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./HeaderCell.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./HeaderCell.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51719,8 +51737,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Table.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Table.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Table.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Table.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -51941,8 +51959,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./grid.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./grid.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./grid.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./grid.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -52186,8 +52204,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Icon.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Icon.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Icon.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Icon.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -52683,6 +52701,8 @@
 	});
 	exports.LeftNav = undefined;
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(33);
@@ -52762,13 +52782,19 @@
 
 	        // Configure NavGroups to open/close themselves on click
 	        if (child.type === _NavGroup.NavGroup) {
-	          var open = child.props.id === _this2.state.openNavGroup;
-	          return _react2.default.cloneElement(child, {
-	            _open: open,
-	            _onClick: function _onClick() {
-	              return _this2.setState({ openNavGroup: open ? null : child.props.id });
-	            }
-	          });
+	          var _ret = function () {
+	            var open = child.props.id === _this2.state.openNavGroup;
+	            return {
+	              v: _react2.default.cloneElement(child, {
+	                _open: open,
+	                _onClick: function _onClick() {
+	                  return _this2.setState({ openNavGroup: open ? null : child.props.id });
+	                }
+	              })
+	            };
+	          }();
+
+	          if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
 	        }
 
 	        return null; // Should never get here thanks to PropType validation
@@ -53809,8 +53835,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LeftNav.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LeftNav.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LeftNav.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LeftNav.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -54337,8 +54363,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Wizard.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Wizard.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Wizard.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Wizard.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -54484,8 +54510,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBar.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBar.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBar.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -54697,8 +54723,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextArea.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextArea.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextArea.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextArea.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -54780,7 +54806,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(596);
+	__webpack_require__(598);
 
 	/**
 	 * Standardized tooltip component with fade-in/out transition and customizable positioning.
@@ -56930,7 +56956,7 @@
 
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 
-	var _createChainedFunction = __webpack_require__(595);
+	var _createChainedFunction = __webpack_require__(597);
 
 	var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
 
@@ -57193,11 +57219,10 @@
 
 	    var child = _react2['default'].Children.only(children);
 	    var childProps = child.props;
-	    var triggerProps = {};
 
-	    if (this.state.show) {
-	      triggerProps['aria-describedby'] = overlay.props.id;
-	    }
+	    var triggerProps = {
+	      'aria-describedby': overlay.props.id
+	    };
 
 	    // FIXME: The logic here for passing through handlers on this component is
 	    // inconsistent. We shouldn't be passing any of these props through.
@@ -57240,51 +57265,32 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	var canUseDOM = __webpack_require__(562);
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var contains = (function () {
+	  var root = canUseDOM && document.documentElement;
 
-	var _inDOM = __webpack_require__(562);
+	  return root && root.contains ? function (context, node) {
+	    return context.contains(node);
+	  } : root && root.compareDocumentPosition ? function (context, node) {
+	    return context === node || !!(context.compareDocumentPosition(node) & 16);
+	  } : function (context, node) {
+	    if (node) do {
+	      if (node === context) return true;
+	    } while (node = node.parentNode);
 
-	var _inDOM2 = _interopRequireDefault(_inDOM);
+	    return false;
+	  };
+	})();
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function () {
-	  // HTML DOM and SVG DOM may have different support levels,
-	  // so we need to check on context instead of a document root element.
-	  return _inDOM2.default ? function (context, node) {
-	    if (context.contains) {
-	      return context.contains(node);
-	    } else if (context.compareDocumentPosition) {
-	      return context === node || !!(context.compareDocumentPosition(node) & 16);
-	    } else {
-	      return fallback(context, node);
-	    }
-	  } : fallback;
-	}();
-
-	function fallback(context, node) {
-	  if (node) do {
-	    if (node === context) return true;
-	  } while (node = node.parentNode);
-
-	  return false;
-	}
-	module.exports = exports['default'];
+	module.exports = contains;
 
 /***/ },
 /* 562 */
 /***/ function(module, exports) {
 
 	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-	module.exports = exports['default'];
+	module.exports = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
 /***/ },
 /* 563 */
@@ -57326,11 +57332,11 @@
 
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 
-	var _elementType = __webpack_require__(592);
+	var _elementType = __webpack_require__(594);
 
 	var _elementType2 = _interopRequireDefault(_elementType);
 
-	var _Fade = __webpack_require__(593);
+	var _Fade = __webpack_require__(595);
 
 	var _Fade2 = _interopRequireDefault(_Fade);
 
@@ -57471,11 +57477,11 @@
 
 	var _Position2 = _interopRequireDefault(_Position);
 
-	var _RootCloseWrapper = __webpack_require__(588);
+	var _RootCloseWrapper = __webpack_require__(590);
 
 	var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 
-	var _elementType = __webpack_require__(592);
+	var _elementType = __webpack_require__(594);
 
 	var _elementType2 = _interopRequireDefault(_elementType);
 
@@ -58174,11 +58180,11 @@
 
 	var _offset2 = _interopRequireDefault(_offset);
 
-	var _position = __webpack_require__(575);
+	var _position = __webpack_require__(577);
 
 	var _position2 = _interopRequireDefault(_position);
 
-	var _scrollTop = __webpack_require__(586);
+	var _scrollTop = __webpack_require__(588);
 
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 
@@ -58302,11 +58308,11 @@
 	});
 	exports.default = offset;
 
-	var _contains = __webpack_require__(561);
+	var _contains = __webpack_require__(574);
 
 	var _contains2 = _interopRequireDefault(_contains);
 
-	var _isWindow = __webpack_require__(574);
+	var _isWindow = __webpack_require__(576);
 
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 
@@ -58343,6 +58349,57 @@
 
 /***/ },
 /* 574 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _inDOM = __webpack_require__(575);
+
+	var _inDOM2 = _interopRequireDefault(_inDOM);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  // HTML DOM and SVG DOM may have different support levels,
+	  // so we need to check on context instead of a document root element.
+	  return _inDOM2.default ? function (context, node) {
+	    if (context.contains) {
+	      return context.contains(node);
+	    } else if (context.compareDocumentPosition) {
+	      return context === node || !!(context.compareDocumentPosition(node) & 16);
+	    } else {
+	      return fallback(context, node);
+	    }
+	  } : fallback;
+	}();
+
+	function fallback(context, node) {
+	  if (node) do {
+	    if (node === context) return true;
+	  } while (node = node.parentNode);
+
+	  return false;
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 575 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+	module.exports = exports['default'];
+
+/***/ },
+/* 576 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -58357,7 +58414,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 575 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58374,19 +58431,19 @@
 
 	var _offset2 = _interopRequireDefault(_offset);
 
-	var _offsetParent = __webpack_require__(576);
+	var _offsetParent = __webpack_require__(578);
 
 	var _offsetParent2 = _interopRequireDefault(_offsetParent);
 
-	var _scrollTop = __webpack_require__(586);
+	var _scrollTop = __webpack_require__(588);
 
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 
-	var _scrollLeft = __webpack_require__(587);
+	var _scrollLeft = __webpack_require__(589);
 
 	var _scrollLeft2 = _interopRequireDefault(_scrollLeft);
 
-	var _style = __webpack_require__(577);
+	var _style = __webpack_require__(579);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -58423,7 +58480,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 576 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58437,7 +58494,7 @@
 
 	var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-	var _style = __webpack_require__(577);
+	var _style = __webpack_require__(579);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -58460,7 +58517,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 577 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58470,25 +58527,25 @@
 	});
 	exports.default = style;
 
-	var _camelizeStyle = __webpack_require__(578);
+	var _camelizeStyle = __webpack_require__(580);
 
 	var _camelizeStyle2 = _interopRequireDefault(_camelizeStyle);
 
-	var _hyphenateStyle = __webpack_require__(580);
+	var _hyphenateStyle = __webpack_require__(582);
 
 	var _hyphenateStyle2 = _interopRequireDefault(_hyphenateStyle);
 
-	var _getComputedStyle2 = __webpack_require__(582);
+	var _getComputedStyle2 = __webpack_require__(584);
 
 	var _getComputedStyle3 = _interopRequireDefault(_getComputedStyle2);
 
-	var _removeStyle = __webpack_require__(583);
+	var _removeStyle = __webpack_require__(585);
 
 	var _removeStyle2 = _interopRequireDefault(_removeStyle);
 
-	var _properties = __webpack_require__(584);
+	var _properties = __webpack_require__(586);
 
-	var _isTransform = __webpack_require__(585);
+	var _isTransform = __webpack_require__(587);
 
 	var _isTransform2 = _interopRequireDefault(_isTransform);
 
@@ -58527,7 +58584,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 578 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58537,7 +58594,7 @@
 	});
 	exports.default = camelizeStyleName;
 
-	var _camelize = __webpack_require__(579);
+	var _camelize = __webpack_require__(581);
 
 	var _camelize2 = _interopRequireDefault(_camelize);
 
@@ -58554,7 +58611,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 579 */
+/* 581 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -58573,7 +58630,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 580 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58583,7 +58640,7 @@
 	});
 	exports.default = hyphenateStyleName;
 
-	var _hyphenate = __webpack_require__(581);
+	var _hyphenate = __webpack_require__(583);
 
 	var _hyphenate2 = _interopRequireDefault(_hyphenate);
 
@@ -58601,7 +58658,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 581 */
+/* 583 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58619,7 +58676,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 582 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58629,7 +58686,7 @@
 	});
 	exports.default = _getComputedStyle;
 
-	var _camelizeStyle = __webpack_require__(578);
+	var _camelizeStyle = __webpack_require__(580);
 
 	var _camelizeStyle2 = _interopRequireDefault(_camelizeStyle);
 
@@ -58679,7 +58736,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 583 */
+/* 585 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58694,7 +58751,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 584 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58704,7 +58761,7 @@
 	});
 	exports.animationEnd = exports.animationDelay = exports.animationTiming = exports.animationDuration = exports.animationName = exports.transitionEnd = exports.transitionDuration = exports.transitionDelay = exports.transitionTiming = exports.transitionProperty = exports.transform = undefined;
 
-	var _inDOM = __webpack_require__(562);
+	var _inDOM = __webpack_require__(575);
 
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 
@@ -58809,7 +58866,7 @@
 	}
 
 /***/ },
-/* 585 */
+/* 587 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -58826,7 +58883,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 586 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58836,7 +58893,7 @@
 	});
 	exports.default = scrollTop;
 
-	var _isWindow = __webpack_require__(574);
+	var _isWindow = __webpack_require__(576);
 
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 
@@ -58852,7 +58909,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 587 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58862,7 +58919,7 @@
 	});
 	exports.default = scrollTop;
 
-	var _isWindow = __webpack_require__(574);
+	var _isWindow = __webpack_require__(576);
 
 	var _isWindow2 = _interopRequireDefault(_isWindow);
 
@@ -58878,7 +58935,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 588 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58889,7 +58946,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _contains = __webpack_require__(561);
+	var _contains = __webpack_require__(574);
 
 	var _contains2 = _interopRequireDefault(_contains);
 
@@ -58901,7 +58958,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _addEventListener = __webpack_require__(589);
+	var _addEventListener = __webpack_require__(591);
 
 	var _addEventListener2 = _interopRequireDefault(_addEventListener);
 
@@ -58926,13 +58983,6 @@
 	function isModifiedEvent(event) {
 	  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 	}
-
-	/**
-	 * The `<RootCloseWrapper/>` component registers your callback on the document
-	 * when rendered. Powers the `<Overlay/>` component. This is used achieve modal
-	 * style behavior where your callback is triggered when the user tries to
-	 * interact with the rest of the document or hits the `esc` key.
-	 */
 
 	var RootCloseWrapper = function (_React$Component) {
 	  _inherits(RootCloseWrapper, _React$Component);
@@ -59026,23 +59076,22 @@
 	  return RootCloseWrapper;
 	}(_react2.default.Component);
 
+	exports.default = RootCloseWrapper;
+
+
 	RootCloseWrapper.displayName = 'RootCloseWrapper';
 
 	RootCloseWrapper.propTypes = {
-	  /**
-	   * Callback fired after click or mousedown. Also triggers when user hits `esc`.
-	   */
 	  onRootClose: _react2.default.PropTypes.func,
-	  /**
-	   * Children to render.
-	   */
 	  children: _react2.default.PropTypes.element,
+
 	  /**
-	   * Disable the the RootCloseWrapper, preventing it from triggering `onRootClose`.
+	   * Disable the the RootCloseWrapper, preventing it from triggering
+	   * `onRootClose`.
 	   */
 	  disabled: _react2.default.PropTypes.bool,
 	  /**
-	   * Choose which document mouse event to bind to.
+	   * Choose which document mouse event to bind to
 	   */
 	  event: _react2.default.PropTypes.oneOf(['click', 'mousedown'])
 	};
@@ -59050,12 +59099,10 @@
 	RootCloseWrapper.defaultProps = {
 	  event: 'click'
 	};
-
-	exports.default = RootCloseWrapper;
 	module.exports = exports['default'];
 
 /***/ },
-/* 589 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59074,11 +59121,11 @@
 	  };
 	};
 
-	var _on = __webpack_require__(590);
+	var _on = __webpack_require__(592);
 
 	var _on2 = _interopRequireDefault(_on);
 
-	var _off = __webpack_require__(591);
+	var _off = __webpack_require__(593);
 
 	var _off2 = _interopRequireDefault(_off);
 
@@ -59087,7 +59134,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 590 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59096,7 +59143,7 @@
 	  value: true
 	});
 
-	var _inDOM = __webpack_require__(562);
+	var _inDOM = __webpack_require__(575);
 
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 
@@ -59123,7 +59170,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 591 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59132,7 +59179,7 @@
 	  value: true
 	});
 
-	var _inDOM = __webpack_require__(562);
+	var _inDOM = __webpack_require__(575);
 
 	var _inDOM2 = _interopRequireDefault(_inDOM);
 
@@ -59153,7 +59200,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 592 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59190,7 +59237,7 @@
 	exports.default = (0, _createChainableTypeChecker2.default)(elementType);
 
 /***/ },
-/* 593 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59221,7 +59268,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Transition = __webpack_require__(594);
+	var _Transition = __webpack_require__(596);
 
 	var _Transition2 = _interopRequireDefault(_Transition);
 
@@ -59232,11 +59279,6 @@
 	   * Show the component; triggers the fade in or fade out animation
 	   */
 	  'in': _react2['default'].PropTypes.bool,
-
-	  /**
-	   * Wait until the first "enter" transition to mount the component (add it to the DOM)
-	   */
-	  mountOnEnter: _react2['default'].PropTypes.bool,
 
 	  /**
 	   * Unmount the component (remove it from the DOM) when it is faded out
@@ -59285,7 +59327,6 @@
 	var defaultProps = {
 	  'in': false,
 	  timeout: 300,
-	  mountOnEnter: false,
 	  unmountOnExit: false,
 	  transitionAppear: false
 	};
@@ -59316,7 +59357,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 594 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59330,18 +59371,6 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _classnames = __webpack_require__(262);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _on = __webpack_require__(590);
-
-	var _on2 = _interopRequireDefault(_on);
-
-	var _properties = __webpack_require__(584);
-
-	var _properties2 = _interopRequireDefault(_properties);
-
 	var _react = __webpack_require__(33);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -59349,6 +59378,18 @@
 	var _reactDom = __webpack_require__(66);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _properties = __webpack_require__(586);
+
+	var _properties2 = _interopRequireDefault(_properties);
+
+	var _on = __webpack_require__(592);
+
+	var _on2 = _interopRequireDefault(_on);
+
+	var _classnames = __webpack_require__(262);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59374,7 +59415,7 @@
 	 * but is specifically optimized for transitioning a single child "in" or "out".
 	 *
 	 * You don't even need to use class based css transitions if you don't want to (but it is easiest).
-	 * The extensive set of lifecycle callbacks means you have control over
+	 * The extensive set of lifecyle callbacks means you have control over
 	 * the transitioning now at each step of the way.
 	 */
 
@@ -59387,23 +59428,12 @@
 	    var _this = _possibleConstructorReturn(this, (Transition.__proto__ || Object.getPrototypeOf(Transition)).call(this, props, context));
 
 	    var initialStatus = void 0;
-	    _this.nextStatus = null;
-
 	    if (props.in) {
-	      if (props.transitionAppear) {
-	        initialStatus = EXITED;
-	        _this.nextStatus = ENTERING;
-	      } else {
-	        initialStatus = ENTERED;
-	      }
+	      // Start enter transition in componentDidMount.
+	      initialStatus = props.transitionAppear ? EXITED : ENTERED;
 	    } else {
-	      if (props.unmountOnExit || props.mountOnEnter) {
-	        initialStatus = UNMOUNTED;
-	      } else {
-	        initialStatus = EXITED;
-	      }
+	      initialStatus = props.unmountOnExit ? UNMOUNTED : EXITED;
 	    }
-
 	    _this.state = { status: initialStatus };
 
 	    _this.nextCallback = null;
@@ -59413,31 +59443,57 @@
 	  _createClass(Transition, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.updateStatus();
+	      if (this.props.transitionAppear && this.props.in) {
+	        this.performEnter(this.props);
+	      }
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      var status = this.state.status;
-
-
-	      if (nextProps.in) {
-	        if (status === UNMOUNTED) {
+	      if (nextProps.in && this.props.unmountOnExit) {
+	        if (this.state.status === UNMOUNTED) {
+	          // Start enter transition in componentDidUpdate.
 	          this.setState({ status: EXITED });
 	        }
-	        if (status !== ENTERING && status !== ENTERED) {
-	          this.nextStatus = ENTERING;
-	        }
 	      } else {
-	        if (status === ENTERING || status === ENTERED) {
-	          this.nextStatus = EXITING;
-	        }
+	        this._needsUpdate = true;
 	      }
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      this.updateStatus();
+	      var status = this.state.status;
+
+	      if (this.props.unmountOnExit && status === EXITED) {
+	        // EXITED is always a transitional state to either ENTERING or UNMOUNTED
+	        // when using unmountOnExit.
+	        if (this.props.in) {
+	          this.performEnter(this.props);
+	        } else {
+	          this.setState({ status: UNMOUNTED });
+	        }
+
+	        return;
+	      }
+
+	      // guard ensures we are only responding to prop changes
+	      if (this._needsUpdate) {
+	        this._needsUpdate = false;
+
+	        if (this.props.in) {
+	          if (status === EXITING) {
+	            this.performEnter(this.props);
+	          } else if (status === EXITED) {
+	            this.performEnter(this.props);
+	          }
+	          // Otherwise we're already entering or entered.
+	        } else {
+	          if (status === ENTERING || status === ENTERED) {
+	            this.performExit(this.props);
+	          }
+	          // Otherwise we're already exited or exiting.
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -59445,45 +59501,46 @@
 	      this.cancelNextCallback();
 	    }
 	  }, {
-	    key: 'updateStatus',
-	    value: function updateStatus() {
+	    key: 'performEnter',
+	    value: function performEnter(props) {
 	      var _this2 = this;
 
-	      if (this.nextStatus !== null) {
-	        // nextStatus will always be ENTERING or EXITING.
-	        this.cancelNextCallback();
-	        var node = _reactDom2.default.findDOMNode(this);
+	      this.cancelNextCallback();
+	      var node = _reactDom2.default.findDOMNode(this);
 
-	        if (this.nextStatus === ENTERING) {
-	          this.props.onEnter(node);
+	      // Not this.props, because we might be about to receive new props.
+	      props.onEnter(node);
 
-	          this.safeSetState({ status: ENTERING }, function () {
-	            _this2.props.onEntering(node);
+	      this.safeSetState({ status: ENTERING }, function () {
+	        _this2.props.onEntering(node);
 
-	            _this2.onTransitionEnd(node, function () {
-	              _this2.safeSetState({ status: ENTERED }, function () {
-	                _this2.props.onEntered(node);
-	              });
-	            });
+	        _this2.onTransitionEnd(node, function () {
+	          _this2.safeSetState({ status: ENTERED }, function () {
+	            _this2.props.onEntered(node);
 	          });
-	        } else {
-	          this.props.onExit(node);
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'performExit',
+	    value: function performExit(props) {
+	      var _this3 = this;
 
-	          this.safeSetState({ status: EXITING }, function () {
-	            _this2.props.onExiting(node);
+	      this.cancelNextCallback();
+	      var node = _reactDom2.default.findDOMNode(this);
 
-	            _this2.onTransitionEnd(node, function () {
-	              _this2.safeSetState({ status: EXITED }, function () {
-	                _this2.props.onExited(node);
-	              });
-	            });
+	      // Not this.props, because we might be about to receive new props.
+	      props.onExit(node);
+
+	      this.safeSetState({ status: EXITING }, function () {
+	        _this3.props.onExiting(node);
+
+	        _this3.onTransitionEnd(node, function () {
+	          _this3.safeSetState({ status: EXITED }, function () {
+	            _this3.props.onExited(node);
 	          });
-	        }
-
-	        this.nextStatus = null;
-	      } else if (this.props.unmountOnExit && this.state.status === EXITED) {
-	        this.setState({ status: UNMOUNTED });
-	      }
+	        });
+	      });
 	    }
 	  }, {
 	    key: 'cancelNextCallback',
@@ -59504,14 +59561,14 @@
 	  }, {
 	    key: 'setNextCallback',
 	    value: function setNextCallback(callback) {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var active = true;
 
 	      this.nextCallback = function (event) {
 	        if (active) {
 	          active = false;
-	          _this3.nextCallback = null;
+	          _this4.nextCallback = null;
 
 	          callback(event);
 	        }
@@ -59578,11 +59635,6 @@
 	   * Show the component; triggers the enter or exit animation
 	   */
 	  in: _react2.default.PropTypes.bool,
-
-	  /**
-	   * Wait until the first "enter" transition to mount the component (add it to the DOM)
-	   */
-	  mountOnEnter: _react2.default.PropTypes.bool,
 
 	  /**
 	   * Unmount the component (remove it from the DOM) when it is not shown
@@ -59672,7 +59724,7 @@
 	exports.default = Transition;
 
 /***/ },
-/* 595 */
+/* 597 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59718,13 +59770,13 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 596 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(597);
+	var content = __webpack_require__(599);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -59733,8 +59785,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tooltip.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Tooltip.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tooltip.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Tooltip.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -59744,7 +59796,7 @@
 	}
 
 /***/ },
-/* 597 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -59758,7 +59810,7 @@
 
 
 /***/ },
-/* 598 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59768,7 +59820,7 @@
 	});
 	exports.Label = undefined;
 
-	var _Label = __webpack_require__(599);
+	var _Label = __webpack_require__(601);
 
 	var _Label2 = _interopRequireDefault(_Label);
 
@@ -59777,7 +59829,7 @@
 	exports.Label = _Label2.default;
 
 /***/ },
-/* 599 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59802,7 +59854,7 @@
 
 	var _Tooltip = __webpack_require__(466);
 
-	__webpack_require__(600);
+	__webpack_require__(602);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59922,13 +59974,13 @@
 	};
 
 /***/ },
-/* 600 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(601);
+	var content = __webpack_require__(603);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -59937,8 +59989,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Label.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Label.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Label.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Label.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -59948,7 +60000,7 @@
 	}
 
 /***/ },
-/* 601 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -59962,7 +60014,7 @@
 
 
 /***/ },
-/* 602 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59978,7 +60030,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDropzone = __webpack_require__(603);
+	var _reactDropzone = __webpack_require__(605);
 
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 
@@ -59996,7 +60048,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(604);
+	__webpack_require__(606);
 
 	function DefaultIcon() {
 	  return _react2.default.createElement(
@@ -60186,7 +60238,7 @@
 	};
 
 /***/ },
-/* 603 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -60753,13 +60805,13 @@
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 604 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(605);
+	var content = __webpack_require__(607);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -60768,8 +60820,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./FileInput.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./FileInput.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./FileInput.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./FileInput.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -60779,7 +60831,7 @@
 	}
 
 /***/ },
-/* 605 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -60793,7 +60845,7 @@
 
 
 /***/ },
-/* 606 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60803,11 +60855,11 @@
 	});
 	exports.InfoPanelColumn = exports.InfoPanel = undefined;
 
-	var _InfoPanel = __webpack_require__(607);
+	var _InfoPanel = __webpack_require__(609);
 
 	var _InfoPanel2 = _interopRequireDefault(_InfoPanel);
 
-	var _InfoPanelColumn = __webpack_require__(610);
+	var _InfoPanelColumn = __webpack_require__(612);
 
 	var _InfoPanelColumn2 = _interopRequireDefault(_InfoPanelColumn);
 
@@ -60817,7 +60869,7 @@
 	exports.InfoPanelColumn = _InfoPanelColumn2.default;
 
 /***/ },
-/* 607 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60835,7 +60887,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(608);
+	__webpack_require__(610);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60891,13 +60943,13 @@
 	};
 
 /***/ },
-/* 608 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(609);
+	var content = __webpack_require__(611);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -60906,8 +60958,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./InfoPanel.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./InfoPanel.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./InfoPanel.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./InfoPanel.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -60917,7 +60969,7 @@
 	}
 
 /***/ },
-/* 609 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -60931,7 +60983,7 @@
 
 
 /***/ },
-/* 610 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60974,13 +61026,1146 @@
 	};
 
 /***/ },
-/* 611 */
+/* 613 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _Number = __webpack_require__(614);
+
+	var _Number2 = _interopRequireDefault(_Number);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _Number2.default;
+
+/***/ },
+/* 614 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _classnames = __webpack_require__(262);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _numeral = __webpack_require__(615);
+
+	var _numeral2 = _interopRequireDefault(_numeral);
+
+	var _react = __webpack_require__(33);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _shortNumber = __webpack_require__(616);
+
+	var _shortNumber2 = _interopRequireDefault(_shortNumber);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * Provides consistent number formatting for long numbers (e.g. 4123456 -> 4,123,456), with optional
+	 * shortening (e.g. 4123456 -> 4.1M).
+	 */
+	var Number = function (_PureComponent) {
+	  _inherits(Number, _PureComponent);
+
+	  function Number() {
+	    _classCallCheck(this, Number);
+
+	    return _possibleConstructorReturn(this, (Number.__proto__ || Object.getPrototypeOf(Number)).apply(this, arguments));
+	  }
+
+	  _createClass(Number, [{
+	    key: "render",
+	    value: function render() {
+	      var cssClass = Number.cssClass;
+	      var format = Number.format;
+	      var _props = this.props;
+	      var children = _props.children;
+	      var className = _props.className;
+	      var short = _props.short;
+
+
+	      return _react2.default.createElement(
+	        "span",
+	        { className: (0, _classnames2.default)(cssClass.CONTAINER, className) },
+	        format(children, short)
+	      );
+	    }
+	  }], [{
+	    key: "format",
+	    value: function format(number) {
+	      var short = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+	      var rawNumber = parseInt(number || 0, 10);
+
+	      if (isNaN(rawNumber)) {
+	        throw new Error("A number is required.");
+	      }
+
+	      return short ? (0, _shortNumber2.default)(rawNumber) : (0, _numeral2.default)(rawNumber).format("0,0");
+	    }
+	  }]);
+
+	  return Number;
+	}(_react.PureComponent);
+
+	exports.default = Number;
+
+
+	Number.propTypes = {
+	  children: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string]),
+	  className: _react.PropTypes.string,
+	  short: _react.PropTypes.bool
+	};
+
+	Number.cssClass = {
+	  CONTAINER: "Number"
+	};
+
+/***/ },
+/* 615 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! @preserve
+	 * numeral.js
+	 * version : 2.0.4
+	 * author : Adam Draper
+	 * license : MIT
+	 * http://adamwdraper.github.com/Numeral-js/
+	 */
+
+	(function (global, factory) {
+	    if (true) {
+	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else if (typeof module === 'object' && module.exports) {
+	        module.exports = factory();
+	    } else {
+	        global.numeral = factory();
+	    }
+	}(this, function () {
+	    /************************************
+	        Variables
+	    ************************************/
+
+	    var numeral,
+	        _,
+	        VERSION = '2.0.4',
+	        formats = {},
+	        locales = {},
+	        defaults = {
+	            currentLocale: 'en',
+	            zeroFormat: null,
+	            nullFormat: null,
+	            defaultFormat: '0,0'
+	        },
+	        options = {
+	            currentLocale: defaults.currentLocale,
+	            zeroFormat: defaults.zeroFormat,
+	            nullFormat: defaults.nullFormat,
+	            defaultFormat: defaults.defaultFormat
+	        };
+
+
+	    /************************************
+	        Constructors
+	    ************************************/
+
+	    // Numeral prototype object
+	    function Numeral(input, number) {
+	        this._input = input;
+
+	        this._value = number;
+	    }
+
+	    numeral = function(input) {
+	        var value,
+	            kind,
+	            unformatFunction,
+	            regexp;
+
+	        if (numeral.isNumeral(input)) {
+	            value = input.value();
+	        } else if (input === 0 || typeof input === 'undefined') {
+	            value = 0;
+	        } else if (input === null || _.isNaN(input)) {
+	            value = null;
+	        } else if (typeof input === 'string') {
+	            if (options.zeroFormat && input === options.zeroFormat) {
+	                value = 0;
+	            } else if (options.nullFormat && input === options.nullFormat || !input.replace(/[^0-9]+/g, '').length) {
+	                value = null;
+	            } else {
+	                for (kind in formats) {
+	                    regexp = typeof formats[kind].regexps.unformat === 'function' ? formats[kind].regexps.unformat() : formats[kind].regexps.unformat;
+
+	                    if (regexp && input.match(regexp)) {
+	                        unformatFunction = formats[kind].unformat;
+
+	                        break;
+	                    }
+	                }
+
+	                unformatFunction = unformatFunction || numeral._.stringToNumber;
+
+	                value = unformatFunction(input);
+	            }
+	        } else {
+	            value = Number(input)|| null;
+	        }
+
+	        return new Numeral(input, value);
+	    };
+
+	    // version number
+	    numeral.version = VERSION;
+
+	    // compare numeral object
+	    numeral.isNumeral = function(obj) {
+	        return obj instanceof Numeral;
+	    };
+
+	    // helper functions
+	    numeral._ = _ = {
+	        // formats numbers separators, decimals places, signs, abbreviations
+	        numberToFormat: function(value, format, roundingFunction) {
+	            var locale = locales[numeral.options.currentLocale],
+	                negP = false,
+	                optDec = false,
+	                abbr = '',
+	                trillion = 1000000000000,
+	                billion = 1000000000,
+	                million = 1000000,
+	                thousand = 1000,
+	                decimal = '',
+	                neg = false,
+	                abbrForce, // force abbreviation
+	                abs,
+	                min,
+	                max,
+	                power,
+	                int,
+	                precision,
+	                signed,
+	                thousands,
+	                output;
+
+	            // make sure we never format a null value
+	            value = value || 0;
+
+	            abs = Math.abs(value);
+
+	            // see if we should use parentheses for negative number or if we should prefix with a sign
+	            // if both are present we default to parentheses
+	            if (numeral._.includes(format, '(')) {
+	                negP = true;
+	                format = format.replace(/[\(|\)]/g, '');
+	            } else if (numeral._.includes(format, '+') || numeral._.includes(format, '-')) {
+	                signed = numeral._.includes(format, '+') ? format.indexOf('+') : value < 0 ? format.indexOf('-') : -1;
+	                format = format.replace(/[\+|\-]/g, '');
+	            }
+
+	            // see if abbreviation is wanted
+	            if (numeral._.includes(format, 'a')) {
+	                abbrForce = format.match(/a(k|m|b|t)?/);
+
+	                abbrForce = abbrForce ? abbrForce[1] : false;
+
+	                // check for space before abbreviation
+	                if (numeral._.includes(format, ' a')) {
+	                    abbr = ' ';
+	                }
+
+	                format = format.replace(new RegExp(abbr + 'a[kmbt]?'), '');
+
+	                if (abs >= trillion && !abbrForce || abbrForce === 't') {
+	                    // trillion
+	                    abbr += locale.abbreviations.trillion;
+	                    value = value / trillion;
+	                } else if (abs < trillion && abs >= billion && !abbrForce || abbrForce === 'b') {
+	                    // billion
+	                    abbr += locale.abbreviations.billion;
+	                    value = value / billion;
+	                } else if (abs < billion && abs >= million && !abbrForce || abbrForce === 'm') {
+	                    // million
+	                    abbr += locale.abbreviations.million;
+	                    value = value / million;
+	                } else if (abs < million && abs >= thousand && !abbrForce || abbrForce === 'k') {
+	                    // thousand
+	                    abbr += locale.abbreviations.thousand;
+	                    value = value / thousand;
+	                }
+	            }
+
+	            // check for optional decimals
+	            if (numeral._.includes(format, '[.]')) {
+	                optDec = true;
+	                format = format.replace('[.]', '.');
+	            }
+
+	            // break number and format
+	            int = value.toString().split('.')[0];
+	            precision = format.split('.')[1];
+	            thousands = format.indexOf(',');
+
+	            if (precision) {
+	                if (numeral._.includes(precision, '[')) {
+	                    precision = precision.replace(']', '');
+	                    precision = precision.split('[');
+	                    decimal = numeral._.toFixed(value, (precision[0].length + precision[1].length), roundingFunction, precision[1].length);
+	                } else {
+	                    decimal = numeral._.toFixed(value, precision.length, roundingFunction);
+	                }
+
+	                int = decimal.split('.')[0];
+
+	                if (numeral._.includes(decimal, '.')) {
+	                    decimal = locale.delimiters.decimal + decimal.split('.')[1];
+	                } else {
+	                    decimal = '';
+	                }
+
+	                if (optDec && Number(decimal.slice(1)) === 0) {
+	                    decimal = '';
+	                }
+	            } else {
+	                int = numeral._.toFixed(value, null, roundingFunction);
+	            }
+
+	            // check abbreviation again after rounding
+	            if (abbr && !abbrForce && Number(int) >= 1000 && abbr !== locale.abbreviations.trillion) {
+	                int = String(Number(int) / 1000);
+
+	                switch (abbr) {
+	                    case locale.abbreviations.thousand:
+	                        abbr = locale.abbreviations.million;
+	                        break;
+	                    case locale.abbreviations.million:
+	                        abbr = locale.abbreviations.billion;
+	                        break;
+	                    case locale.abbreviations.billion:
+	                        abbr = locale.abbreviations.trillion;
+	                        break;
+	                }
+	            }
+
+
+	            // format number
+	            if (numeral._.includes(int, '-')) {
+	                int = int.slice(1);
+	                neg = true;
+	            }
+
+	            if (thousands > -1) {
+	                int = int.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + locale.delimiters.thousands);
+	            }
+
+	            if (format.indexOf('.') === 0) {
+	                int = '';
+	            }
+
+	            output = int + decimal + (abbr ? abbr : '');
+
+	            if (negP) {
+	                output = (negP && neg ? '(' : '') + output + (negP && neg ? ')' : '');
+	            } else {
+	                if (signed >= 0) {
+	                    output = signed === 0 ? (neg ? '-' : '+') + output : output + (neg ? '-' : '+');
+	                } else if (neg) {
+	                    output = '-' + output;
+	                }
+	            }
+
+	            return output;
+	        },
+	        // unformats numbers separators, decimals places, signs, abbreviations
+	        stringToNumber: function(string) {
+	            var locale = locales[options.currentLocale],
+	                stringOriginal = string,
+	                abbreviations = {
+	                    thousand: 3,
+	                    million: 6,
+	                    billion: 9,
+	                    trillion: 12
+	                },
+	                abbreviation,
+	                value,
+	                i,
+	                regexp;
+
+	            if (options.zeroFormat && string === options.zeroFormat) {
+	                value = 0;
+	            } else if (options.nullFormat && string === options.nullFormat || !string.replace(/[^0-9]+/g, '').length) {
+	                value = null;
+	            } else {
+	                value = 1;
+
+	                if (locale.delimiters.decimal !== '.') {
+	                    string = string.replace(/\./g, '').replace(locale.delimiters.decimal, '.');
+	                }
+
+	                for (abbreviation in abbreviations) {
+	                    regexp = new RegExp('[^a-zA-Z]' + locale.abbreviations[abbreviation] + '(?:\\)|(\\' + locale.currency.symbol + ')?(?:\\))?)?$');
+
+	                    if (stringOriginal.match(regexp)) {
+	                        value *= Math.pow(10, abbreviations[abbreviation]);
+	                        break;
+	                    }
+	                }
+
+	                // check for negative number
+	                value *= (string.split('-').length + Math.min(string.split('(').length - 1, string.split(')').length - 1)) % 2 ? 1 : -1;
+
+	                // remove non numbers
+	                string = string.replace(/[^0-9\.]+/g, '');
+
+	                value *= Number(string);
+	            }
+
+	            return value;
+	        },
+	        isNaN: function(value) {
+	            return typeof value === 'number' && isNaN(value);
+	        },
+	        includes: function(string, search) {
+	            return string.indexOf(search) !== -1;
+	        },
+	        insert: function(string, subString, start) {
+	            return string.slice(0, start) + subString + string.slice(start);
+	        },
+	        reduce: function(array, callback /*, initialValue*/) {
+	            if (this === null) {
+	                throw new TypeError('Array.prototype.reduce called on null or undefined');
+	            }
+
+	            if (typeof callback !== 'function') {
+	                throw new TypeError(callback + ' is not a function');
+	            }
+
+	            var t = Object(array),
+	                len = t.length >>> 0,
+	                k = 0,
+	                value;
+
+	            if (arguments.length === 3) {
+	                value = arguments[2];
+	            } else {
+	                while (k < len && !(k in t)) {
+	                    k++;
+	                }
+
+	                if (k >= len) {
+	                    throw new TypeError('Reduce of empty array with no initial value');
+	                }
+
+	                value = t[k++];
+	            }
+	            for (; k < len; k++) {
+	                if (k in t) {
+	                    value = callback(value, t[k], k, t);
+	                }
+	            }
+	            return value;
+	        },
+	        /**
+	         * Computes the multiplier necessary to make x >= 1,
+	         * effectively eliminating miscalculations caused by
+	         * finite precision.
+	         */
+	        multiplier: function (x) {
+	            var parts = x.toString().split('.');
+
+	            return parts.length < 2 ? 1 : Math.pow(10, parts[1].length);
+	        },
+	        /**
+	         * Given a variable number of arguments, returns the maximum
+	         * multiplier that must be used to normalize an operation involving
+	         * all of them.
+	         */
+	        correctionFactor: function () {
+	            var args = Array.prototype.slice.call(arguments);
+
+	            return args.reduce(function(accum, next) {
+	                var mn = _.multiplier(next);
+	                return accum > mn ? accum : mn;
+	            }, 1);
+	        },
+	        /**
+	         * Implementation of toFixed() that treats floats more like decimals
+	         *
+	         * Fixes binary rounding issues (eg. (0.615).toFixed(2) === '0.61') that present
+	         * problems for accounting- and finance-related software.
+	         */
+	        toFixed: function(value, maxDecimals, roundingFunction, optionals) {
+	            var splitValue = value.toString().split('.'),
+	                minDecimals = maxDecimals - (optionals || 0),
+	                boundedPrecision,
+	                optionalsRegExp,
+	                power,
+	                output;
+
+	            // Use the smallest precision value possible to avoid errors from floating point representation
+	            if (splitValue.length === 2) {
+	              boundedPrecision = Math.min(Math.max(splitValue[1].length, minDecimals), maxDecimals);
+	            } else {
+	              boundedPrecision = minDecimals;
+	            }
+
+	            power = Math.pow(10, boundedPrecision);
+
+	            //roundingFunction = (roundingFunction !== undefined ? roundingFunction : Math.round);
+	            // Multiply up by precision, round accurately, then divide and use native toFixed():
+	            output = (roundingFunction(value * power) / power).toFixed(boundedPrecision);
+
+	            if (optionals > maxDecimals - boundedPrecision) {
+	                optionalsRegExp = new RegExp('\\.?0{1,' + (optionals - (maxDecimals - boundedPrecision)) + '}$');
+	                output = output.replace(optionalsRegExp, '');
+	            }
+
+	            return output;
+	        }
+	    };
+
+	    // avaliable options
+	    numeral.options = options;
+
+	    // avaliable formats
+	    numeral.formats = formats;
+
+	    // avaliable formats
+	    numeral.locales = locales;
+
+	    // This function sets the current locale.  If
+	    // no arguments are passed in, it will simply return the current global
+	    // locale key.
+	    numeral.locale = function(key) {
+	        if (key) {
+	            options.currentLocale = key.toLowerCase();
+	        }
+
+	        return options.currentLocale;
+	    };
+
+	    // This function provides access to the loaded locale data.  If
+	    // no arguments are passed in, it will simply return the current
+	    // global locale object.
+	    numeral.localeData = function(key) {
+	        if (!key) {
+	            return locales[options.currentLocale];
+	        }
+
+	        key = key.toLowerCase();
+
+	        if (!locales[key]) {
+	            throw new Error('Unknown locale : ' + key);
+	        }
+
+	        return locales[key];
+	    };
+
+	    numeral.reset = function() {
+	        for (var property in defaults) {
+	            options[property] = defaults[property];
+	        }
+	    };
+
+	    numeral.zeroFormat = function(format) {
+	        options.zeroFormat = typeof(format) === 'string' ? format : null;
+	    };
+
+	    numeral.nullFormat = function (format) {
+	        options.nullFormat = typeof(format) === 'string' ? format : null;
+	    };
+
+	    numeral.defaultFormat = function(format) {
+	        options.defaultFormat = typeof(format) === 'string' ? format : '0.0';
+	    };
+
+	    numeral.register = function(type, name, format) {
+	        name = name.toLowerCase();
+
+	        if (this[type + 's'][name]) {
+	            throw new TypeError(name + ' ' + type + ' already registered.');
+	        }
+
+	        this[type + 's'][name] = format;
+
+	        return format;
+	    };
+
+
+	    numeral.validate = function(val, culture) {
+	        var _decimalSep,
+	            _thousandSep,
+	            _currSymbol,
+	            _valArray,
+	            _abbrObj,
+	            _thousandRegEx,
+	            localeData,
+	            temp;
+
+	        //coerce val to string
+	        if (typeof val !== 'string') {
+	            val += '';
+
+	            if (console.warn) {
+	                console.warn('Numeral.js: Value is not string. It has been co-erced to: ', val);
+	            }
+	        }
+
+	        //trim whitespaces from either sides
+	        val = val.trim();
+
+	        //if val is just digits return true
+	        if (!!val.match(/^\d+$/)) {
+	            return true;
+	        }
+
+	        //if val is empty return false
+	        if (val === '') {
+	            return false;
+	        }
+
+	        //get the decimal and thousands separator from numeral.localeData
+	        try {
+	            //check if the culture is understood by numeral. if not, default it to current locale
+	            localeData = numeral.localeData(culture);
+	        } catch (e) {
+	            localeData = numeral.localeData(numeral.locale());
+	        }
+
+	        //setup the delimiters and currency symbol based on culture/locale
+	        _currSymbol = localeData.currency.symbol;
+	        _abbrObj = localeData.abbreviations;
+	        _decimalSep = localeData.delimiters.decimal;
+	        if (localeData.delimiters.thousands === '.') {
+	            _thousandSep = '\\.';
+	        } else {
+	            _thousandSep = localeData.delimiters.thousands;
+	        }
+
+	        // validating currency symbol
+	        temp = val.match(/^[^\d]+/);
+	        if (temp !== null) {
+	            val = val.substr(1);
+	            if (temp[0] !== _currSymbol) {
+	                return false;
+	            }
+	        }
+
+	        //validating abbreviation symbol
+	        temp = val.match(/[^\d]+$/);
+	        if (temp !== null) {
+	            val = val.slice(0, -1);
+	            if (temp[0] !== _abbrObj.thousand && temp[0] !== _abbrObj.million && temp[0] !== _abbrObj.billion && temp[0] !== _abbrObj.trillion) {
+	                return false;
+	            }
+	        }
+
+	        _thousandRegEx = new RegExp(_thousandSep + '{2}');
+
+	        if (!val.match(/[^\d.,]/g)) {
+	            _valArray = val.split(_decimalSep);
+	            if (_valArray.length > 2) {
+	                return false;
+	            } else {
+	                if (_valArray.length < 2) {
+	                    return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_thousandRegEx));
+	                } else {
+	                    if (_valArray[0].length === 1) {
+	                        return ( !! _valArray[0].match(/^\d+$/) && !_valArray[0].match(_thousandRegEx) && !! _valArray[1].match(/^\d+$/));
+	                    } else {
+	                        return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_thousandRegEx) && !! _valArray[1].match(/^\d+$/));
+	                    }
+	                }
+	            }
+	        }
+
+	        return false;
+	    };
+
+
+	    /************************************
+	        Numeral Prototype
+	    ************************************/
+
+	    numeral.fn = Numeral.prototype = {
+	        clone: function() {
+	            return numeral(this);
+	        },
+	        format: function(inputString, roundingFunction) {
+	            var value = this._value,
+	                format = inputString || options.defaultFormat,
+	                kind,
+	                output,
+	                formatFunction;
+
+	            // make sure we have a roundingFunction
+	            roundingFunction = roundingFunction || Math.round;
+
+	            // format based on value
+	            if (value === 0 && options.zeroFormat !== null) {
+	                output = options.zeroFormat;
+	            } else if (value === null && options.nullFormat !== null) {
+	                output = options.nullFormat;
+	            } else {
+	                for (kind in formats) {
+	                    if (format.match(formats[kind].regexps.format)) {
+	                        formatFunction = formats[kind].format;
+
+	                        break;
+	                    }
+	                }
+
+	                formatFunction = formatFunction || numeral._.numberToFormat;
+
+	                output = formatFunction(value, format, roundingFunction);
+	            }
+
+	            return output;
+	        },
+	        value: function() {
+	            return this._value;
+	        },
+	        input: function() {
+	            return this._input;
+	        },
+	        set: function(value) {
+	            this._value = Number(value);
+
+	            return this;
+	        },
+	        add: function(value) {
+	            var corrFactor = _.correctionFactor.call(null, this._value, value);
+
+	            function cback(accum, curr, currI, O) {
+	                return accum + Math.round(corrFactor * curr);
+	            }
+
+	            this._value = _.reduce([this._value, value], cback, 0) / corrFactor;
+
+	            return this;
+	        },
+	        subtract: function(value) {
+	            var corrFactor = _.correctionFactor.call(null, this._value, value);
+
+	            function cback(accum, curr, currI, O) {
+	                return accum - Math.round(corrFactor * curr);
+	            }
+
+	            this._value = _.reduce([value], cback, Math.round(this._value * corrFactor)) / corrFactor;
+
+	            return this;
+	        },
+	        multiply: function(value) {
+	            function cback(accum, curr, currI, O) {
+	                var corrFactor = _.correctionFactor(accum, curr);
+	                return Math.round(accum * corrFactor) * Math.round(curr * corrFactor) / Math.round(corrFactor * corrFactor);
+	            }
+
+	            this._value = _.reduce([this._value, value], cback, 1);
+
+	            return this;
+	        },
+	        divide: function(value) {
+	            function cback(accum, curr, currI, O) {
+	                var corrFactor = _.correctionFactor(accum, curr);
+	                return Math.round(accum * corrFactor) / Math.round(curr * corrFactor);
+	            }
+
+	            this._value = _.reduce([this._value, value], cback);
+
+	            return this;
+	        },
+	        difference: function(value) {
+	            return Math.abs(numeral(this._value).subtract(value).value());
+	        }
+	    };
+
+	    /************************************
+	        Default Locale && Format
+	    ************************************/
+
+	    numeral.register('locale', 'en', {
+	        delimiters: {
+	            thousands: ',',
+	            decimal: '.'
+	        },
+	        abbreviations: {
+	            thousand: 'k',
+	            million: 'm',
+	            billion: 'b',
+	            trillion: 't'
+	        },
+	        ordinal: function(number) {
+	            var b = number % 10;
+	            return (~~(number % 100 / 10) === 1) ? 'th' :
+	                (b === 1) ? 'st' :
+	                (b === 2) ? 'nd' :
+	                (b === 3) ? 'rd' : 'th';
+	        },
+	        currency: {
+	            symbol: '$'
+	        }
+	    });
+
+	    
+
+	(function() {
+	        var decimal = {
+	            base: 1000,
+	            suffixes: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+	        },
+	        binary = {
+	            base: 1024,
+	            suffixes: ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
+	        };
+
+	    numeral.register('format', 'bytes', {
+	        regexps: {
+	            format: /([0\s]i?b)/,
+	            unformat: new RegExp('(' + decimal.suffixes.concat(binary.suffixes).join('|') + ')')
+	        },
+	        format: function(value, format, roundingFunction) {
+	            var output,
+	                bytes = numeral._.includes(format, 'ib') ? binary : decimal,
+	                suffix = numeral._.includes(format, ' b') || numeral._.includes(format, ' ib') ? ' ' : '',
+	                power,
+	                min,
+	                max;
+
+	            // check for space before
+	            format = format.replace(/\s?i?b/, '');
+
+	            for (power = 0; power <= bytes.suffixes.length; power++) {
+	                min = Math.pow(bytes.base, power);
+	                max = Math.pow(bytes.base, power + 1);
+
+	                if (value === null || value === 0 || value >= min && value < max) {
+	                    suffix += bytes.suffixes[power];
+
+	                    if (min > 0) {
+	                        value = value / min;
+	                    }
+
+	                    break;
+	                }
+	            }
+
+	            output = numeral._.numberToFormat(value, format, roundingFunction);
+
+	            return output + suffix;
+	        },
+	        unformat: function(string) {
+	            var value = numeral._.stringToNumber(string),
+	                power,
+	                bytesMultiplier;
+
+	            if (value) {
+	                for (power = decimal.suffixes.length - 1; power >= 0; power--) {
+	                    if (numeral._.includes(string, decimal.suffixes[power])) {
+	                        bytesMultiplier = Math.pow(decimal.base, power);
+
+	                        break;
+	                    }
+
+	                    if (numeral._.includes(string, binary.suffixes[power])) {
+	                        bytesMultiplier = Math.pow(binary.base, power);
+
+	                        break;
+	                    }
+	                }
+
+	                value *= (bytesMultiplier || 1);
+	            }
+
+	            return value;
+	        }
+	    });
+	})();
+
+
+	(function() {
+	        numeral.register('format', 'currency', {
+	        regexps: {
+	            format: /(\$)/
+	        },
+	        format: function(value, format, roundingFunction) {
+	            var locale = numeral.locales[numeral.options.currentLocale],
+	                symbols = {
+	                    before: format.match(/^([\+|\-|\(|\s|\$]*)/)[0],
+	                    after: format.match(/([\+|\-|\)|\s|\$]*)$/)[0]
+	                },
+	                output,
+	                symbol,
+	                i;
+
+	            // strip format of spaces and $
+	            format = format.replace(/\s?\$\s?/, '');
+
+	            // format the number
+	            output = numeral._.numberToFormat(value, format, roundingFunction);
+
+	            // update the before and after based on value
+	            if (value >= 0) {
+	                symbols.before = symbols.before.replace(/[\-\(]/, '');
+	                symbols.after = symbols.after.replace(/[\-\)]/, '');
+	            } else if (value < 0 && (!numeral._.includes(symbols.before, '-') && !numeral._.includes(symbols.before, '('))) {
+	                symbols.before = '-' + symbols.before;
+	            }
+
+	            // loop through each before symbol
+	            for (i = 0; i < symbols.before.length; i++) {
+	                symbol = symbols.before[i];
+
+	                switch (symbol) {
+	                    case '$':
+	                        output = numeral._.insert(output, locale.currency.symbol, i);
+	                        break;
+	                    case ' ':
+	                        output = numeral._.insert(output, ' ', i);
+	                        break;
+	                }
+	            }
+
+	            // loop through each after symbol
+	            for (i = symbols.after.length - 1; i >= 0; i--) {
+	                symbol = symbols.after[i];
+
+	                switch (symbol) {
+	                    case '$':
+	                        output = i === symbols.after.length - 1 ? output + locale.currency.symbol : numeral._.insert(output, locale.currency.symbol, -(symbols.after.length - (1 + i)));
+	                        break;
+	                    case ' ':
+	                        output = i === symbols.after.length - 1 ? output + ' ' : numeral._.insert(output, ' ', -(symbols.after.length - (1 + i)));
+	                        break;
+	                }
+	            }
+
+
+	            return output;
+	        }
+	    });
+	})();
+
+
+	(function() {
+	        numeral.register('format', 'exponential', {
+	        regexps: {
+	            format: /(e\+|e-)/,
+	            unformat: /(e\+|e-)/
+	        },
+	        format: function(value, format, roundingFunction) {
+	            var output,
+	                exponential = typeof value === 'number' && !numeral._.isNaN(value) ? value.toExponential() : '0e+0',
+	                parts = exponential.split('e');
+
+	            format = format.replace(/e[\+|\-]{1}0/, '');
+
+	            output = numeral._.numberToFormat(Number(parts[0]), format, roundingFunction);
+
+	            return output + 'e' + parts[1];
+	        },
+	        unformat: function(string) {
+	            var parts = numeral._.includes(string, 'e+') ? string.split('e+') : string.split('e-'),
+	                value = Number(parts[0]),
+	                power = Number(parts[1]);
+
+	            power = numeral._.includes(string, 'e-') ? power *= -1 : power;
+
+	            function cback(accum, curr, currI, O) {
+	                var corrFactor = numeral._.correctionFactor(accum, curr),
+	                    num = (accum * corrFactor) * (curr * corrFactor) / (corrFactor * corrFactor);
+	                return num;
+	            }
+
+	            return numeral._.reduce([value, Math.pow(10, power)], cback, 1);
+	        }
+	    });
+	})();
+
+
+	(function() {
+	        numeral.register('format', 'ordinal', {
+	        regexps: {
+	            format: /(o)/
+	        },
+	        format: function(value, format, roundingFunction) {
+	            var locale = numeral.locales[numeral.options.currentLocale],
+	                output,
+	                ordinal = numeral._.includes(format, ' o') ? ' ' : '';
+
+	            // check for space before
+	            format = format.replace(/\s?o/, '');
+
+	            ordinal += locale.ordinal(value);
+
+	            output = numeral._.numberToFormat(value, format, roundingFunction);
+
+	            return output + ordinal;
+	        }
+	    });
+	})();
+
+
+	(function() {
+	        numeral.register('format', 'percentage', {
+	        regexps: {
+	            format: /(%)/,
+	            unformat: /(%)/
+	        },
+	        format: function(value, format, roundingFunction) {
+	            var space = numeral._.includes(format, ' %') ? ' ' : '',
+	                output;
+
+	            value = value * 100;
+
+	            // check for space before %
+	            format = format.replace(/\s?\%/, '');
+
+	            output = numeral._.numberToFormat(value, format, roundingFunction);
+
+	            if (numeral._.includes(output, ')')) {
+	                output = output.split('');
+
+	                output.splice(-1, 0, space + '%');
+
+	                output = output.join('');
+	            } else {
+	                output = output + space + '%';
+	            }
+
+	            return output;
+	        },
+	        unformat: function(string) {
+	            return numeral._.stringToNumber(string) * 0.01;
+	        }
+	    });
+	})();
+
+
+	(function() {
+	        numeral.register('format', 'time', {
+	        regexps: {
+	            format: /(:)/,
+	            unformat: /(:)/
+	        },
+	        format: function(value, format, roundingFunction) {
+	            var hours = Math.floor(value / 60 / 60),
+	                minutes = Math.floor((value - (hours * 60 * 60)) / 60),
+	                seconds = Math.round(value - (hours * 60 * 60) - (minutes * 60));
+
+	            return hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
+	        },
+	        unformat: function(string) {
+	            var timeArray = string.split(':'),
+	                seconds = 0;
+
+	            // turn hours and minutes into seconds and add them all up
+	            if (timeArray.length === 3) {
+	                // hours
+	                seconds = seconds + (Number(timeArray[0]) * 60 * 60);
+	                // minutes
+	                seconds = seconds + (Number(timeArray[1]) * 60);
+	                // seconds
+	                seconds = seconds + Number(timeArray[2]);
+	            } else if (timeArray.length === 2) {
+	                // minutes
+	                seconds = seconds + (Number(timeArray[0]) * 60);
+	                // seconds
+	                seconds = seconds + Number(timeArray[1]);
+	            }
+	            return Number(seconds);
+	        }
+	    });
+	})();
+
+	return numeral;
+	}));
+
+
+/***/ },
+/* 616 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function (global, factory) {
+	     true ? module.exports = factory() :
+	    typeof define === 'function' && define.amd ? define(factory) :
+	    global.shortNumber = factory();
+	}(this, function (num) {
+	    'use strict';
+
+	    return function (num) {
+	        if(typeof num !== 'number') {
+	            throw new TypeError('Expected a number');
+	        }
+
+	        if(num > 1e19) {
+	            throw new RangeError('Input expected to be < 1e19');
+	        }
+
+	        if(num < -1e19) {
+	            throw new RangeError('Input expected to be > 1e19');
+	        }
+
+	        if(Math.abs(num) < 1000) {
+	            return num;
+	        }
+
+	        var shortNumber;
+	        var exponent;
+	        var size;
+	        var sign = num < 0 ? '-' : '';
+	        var suffixes = {
+	            'K': 6,
+	            'M': 9,
+	            'B': 12,
+	            'T': 16
+	        };
+
+	        num = Math.abs(num);
+	        size = num.toString().length;
+
+	        exponent = size % 3 === 0 ? size - 3 : size - (size % 3);
+	        shortNumber = Math.round(10 * (num / Math.pow(10, exponent))) / 10;
+
+	        for(var suffix in suffixes) {
+	            if(exponent < suffixes[suffix]) {
+	                shortNumber += suffix;
+	                break;
+	            }
+	        }
+
+	        return sign + shortNumber;
+	    };
+	}));
+
+
+/***/ },
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(612);
+	var content = __webpack_require__(618);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -60989,8 +62174,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ButtonView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ButtonView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ButtonView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ButtonView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -61000,7 +62185,7 @@
 	}
 
 /***/ },
-/* 612 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -61014,7 +62199,7 @@
 
 
 /***/ },
-/* 613 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61039,7 +62224,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(614);
+	__webpack_require__(620);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61690,13 +62875,13 @@
 	};
 
 /***/ },
-/* 614 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(615);
+	var content = __webpack_require__(621);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -61705,8 +62890,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ColorsView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ColorsView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ColorsView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ColorsView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -61716,7 +62901,7 @@
 	}
 
 /***/ },
-/* 615 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -61730,7 +62915,7 @@
 
 
 /***/ },
-/* 616 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61828,7 +63013,7 @@
 	};
 
 /***/ },
-/* 617 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61853,7 +63038,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(618);
+	__webpack_require__(624);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62006,13 +63191,13 @@
 	};
 
 /***/ },
-/* 618 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(619);
+	var content = __webpack_require__(625);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62021,8 +63206,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInputView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./CopyableInputView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInputView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./CopyableInputView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62032,7 +63217,7 @@
 	}
 
 /***/ },
-/* 619 */
+/* 625 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62046,7 +63231,7 @@
 
 
 /***/ },
-/* 620 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62061,7 +63246,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _FlexExample = __webpack_require__(621);
+	var _FlexExample = __webpack_require__(627);
 
 	var _FlexExample2 = _interopRequireDefault(_FlexExample);
 
@@ -62111,7 +63296,7 @@
 	};
 
 /***/ },
-/* 621 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62133,9 +63318,9 @@
 
 	var _flex = __webpack_require__(282);
 
-	__webpack_require__(622);
+	__webpack_require__(628);
 
-	__webpack_require__(624);
+	__webpack_require__(630);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62394,13 +63579,13 @@
 	};
 
 /***/ },
-/* 622 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(623);
+	var content = __webpack_require__(629);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62409,8 +63594,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./FlexExample.less", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./FlexExample.less");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./FlexExample.less", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./FlexExample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62420,7 +63605,7 @@
 	}
 
 /***/ },
-/* 623 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62434,13 +63619,13 @@
 
 
 /***/ },
-/* 624 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(625);
+	var content = __webpack_require__(631);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62449,8 +63634,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./spacing.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./spacing.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./spacing.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./spacing.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -62460,7 +63645,7 @@
 	}
 
 /***/ },
-/* 625 */
+/* 631 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62474,7 +63659,7 @@
 
 
 /***/ },
-/* 626 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62597,7 +63782,7 @@
 	};
 
 /***/ },
-/* 627 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62967,7 +64152,7 @@
 	};
 
 /***/ },
-/* 628 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63000,7 +64185,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(629);
+	__webpack_require__(635);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63245,13 +64430,13 @@
 	};
 
 /***/ },
-/* 629 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(630);
+	var content = __webpack_require__(636);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63260,8 +64445,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./GridView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./GridView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./GridView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./GridView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -63271,7 +64456,7 @@
 	}
 
 /***/ },
-/* 630 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63285,7 +64470,7 @@
 
 
 /***/ },
-/* 631 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63314,7 +64499,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(632);
+	__webpack_require__(638);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63391,13 +64576,13 @@
 	};
 
 /***/ },
-/* 632 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(633);
+	var content = __webpack_require__(639);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63406,8 +64591,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./IconView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./IconView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./IconView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./IconView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -63417,7 +64602,7 @@
 	}
 
 /***/ },
-/* 633 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63431,7 +64616,7 @@
 
 
 /***/ },
-/* 634 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63456,7 +64641,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(635);
+	__webpack_require__(641);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63539,13 +64724,13 @@
 	};
 
 /***/ },
-/* 635 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(636);
+	var content = __webpack_require__(642);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63554,8 +64739,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextAreaView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextAreaView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextAreaView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextAreaView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -63565,7 +64750,7 @@
 	}
 
 /***/ },
-/* 636 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63579,7 +64764,7 @@
 
 
 /***/ },
-/* 637 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63838,7 +65023,7 @@
 	};
 
 /***/ },
-/* 638 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63853,7 +65038,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loremIpsum = __webpack_require__(639);
+	var _loremIpsum = __webpack_require__(645);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -63865,7 +65050,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(642);
+	var _PropDocumentation = __webpack_require__(648);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -63875,7 +65060,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(645);
+	__webpack_require__(651);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64114,7 +65299,7 @@
 	};
 
 /***/ },
-/* 639 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var generator = function() {
@@ -64126,9 +65311,9 @@
 		  , paragraphLowerBound = options.paragraphLowerBound || 3
 		  , paragraphUpperBound = options.paragraphUpperBound || 7
 		  , format = options.format || 'plain'
-	    , words = options.words || __webpack_require__(640).words
+	    , words = options.words || __webpack_require__(646).words
 	    , random = options.random || Math.random
-	    , suffix = options.suffix || __webpack_require__(641).EOL;
+	    , suffix = options.suffix || __webpack_require__(647).EOL;
 
 	  units = simplePluralize(units.toLowerCase());
 
@@ -64242,7 +65427,7 @@
 
 
 /***/ },
-/* 640 */
+/* 646 */
 /***/ function(module, exports) {
 
 	var dictionary = {
@@ -64315,7 +65500,7 @@
 	module.exports = dictionary;
 
 /***/ },
-/* 641 */
+/* 647 */
 /***/ function(module, exports) {
 
 	exports.endianness = function () { return 'LE' };
@@ -64366,7 +65551,7 @@
 
 
 /***/ },
-/* 642 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64387,7 +65572,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(643);
+	__webpack_require__(649);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64501,13 +65686,13 @@
 	};
 
 /***/ },
-/* 643 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(644);
+	var content = __webpack_require__(650);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -64516,8 +65701,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./PropDocumentation.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./PropDocumentation.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./PropDocumentation.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./PropDocumentation.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -64527,7 +65712,7 @@
 	}
 
 /***/ },
-/* 644 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -64541,13 +65726,13 @@
 
 
 /***/ },
-/* 645 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(646);
+	var content = __webpack_require__(652);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -64556,8 +65741,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LabelView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LabelView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LabelView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./LabelView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -64567,7 +65752,7 @@
 	}
 
 /***/ },
-/* 646 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -64581,7 +65766,7 @@
 
 
 /***/ },
-/* 647 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64595,17 +65780,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SideBar = __webpack_require__(648);
+	var _SideBar = __webpack_require__(654);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _TopBar = __webpack_require__(658);
+	var _TopBar = __webpack_require__(664);
 
 	var _TopBar2 = _interopRequireDefault(_TopBar);
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(663);
+	__webpack_require__(669);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64646,7 +65831,7 @@
 	};
 
 /***/ },
-/* 648 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64655,7 +65840,7 @@
 	  value: true
 	});
 
-	var _SideBar = __webpack_require__(649);
+	var _SideBar = __webpack_require__(655);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
@@ -64664,7 +65849,7 @@
 	exports.default = _SideBar2.default;
 
 /***/ },
-/* 649 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64682,17 +65867,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavGroup = __webpack_require__(650);
+	var _NavGroup = __webpack_require__(656);
 
 	var _NavGroup2 = _interopRequireDefault(_NavGroup);
 
-	var _NavLink = __webpack_require__(651);
+	var _NavLink = __webpack_require__(657);
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(656);
+	__webpack_require__(662);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64808,6 +65993,11 @@
 	      ),
 	      _react2.default.createElement(
 	        _NavLink2.default,
+	        { href: "/components/number" },
+	        "Number"
+	      ),
+	      _react2.default.createElement(
+	        _NavLink2.default,
 	        { href: "/components/progress-bar" },
 	        "ProgressBar"
 	      ),
@@ -64878,7 +66068,7 @@
 	};
 
 /***/ },
-/* 650 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64900,13 +66090,13 @@
 
 	var _MorePropTypes2 = _interopRequireDefault(_MorePropTypes);
 
-	var _NavLink = __webpack_require__(651);
+	var _NavLink = __webpack_require__(657);
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(654);
+	__webpack_require__(660);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64946,7 +66136,7 @@
 	};
 
 /***/ },
-/* 651 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64969,7 +66159,7 @@
 
 	var _reactRouter = __webpack_require__(204);
 
-	__webpack_require__(652);
+	__webpack_require__(658);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65018,13 +66208,13 @@
 	};
 
 /***/ },
-/* 652 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(653);
+	var content = __webpack_require__(659);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65033,8 +66223,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavLink.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavLink.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavLink.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavLink.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65044,7 +66234,7 @@
 	}
 
 /***/ },
-/* 653 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65058,13 +66248,13 @@
 
 
 /***/ },
-/* 654 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(655);
+	var content = __webpack_require__(661);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65073,8 +66263,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavGroup.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./NavGroup.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65084,7 +66274,7 @@
 	}
 
 /***/ },
-/* 655 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65098,13 +66288,13 @@
 
 
 /***/ },
-/* 656 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(657);
+	var content = __webpack_require__(663);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65113,8 +66303,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./SideBar.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./SideBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65124,7 +66314,7 @@
 	}
 
 /***/ },
-/* 657 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65138,7 +66328,7 @@
 
 
 /***/ },
-/* 658 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65147,7 +66337,7 @@
 	  value: true
 	});
 
-	var _TopBar = __webpack_require__(659);
+	var _TopBar = __webpack_require__(665);
 
 	var _TopBar2 = _interopRequireDefault(_TopBar);
 
@@ -65156,7 +66346,7 @@
 	exports.default = _TopBar2.default;
 
 /***/ },
-/* 659 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65176,11 +66366,11 @@
 
 	var _src = __webpack_require__(281);
 
-	var _Logo = __webpack_require__(660);
+	var _Logo = __webpack_require__(666);
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
-	__webpack_require__(661);
+	__webpack_require__(667);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65235,7 +66425,7 @@
 	};
 
 /***/ },
-/* 660 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65300,13 +66490,13 @@
 	};
 
 /***/ },
-/* 661 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(662);
+	var content = __webpack_require__(668);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65315,8 +66505,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./TopBar.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./TopBar.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./TopBar.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./../../../node_modules/less-loader/index.js!./TopBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65326,7 +66516,7 @@
 	}
 
 /***/ },
-/* 662 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65340,13 +66530,13 @@
 
 
 /***/ },
-/* 663 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(664);
+	var content = __webpack_require__(670);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65355,8 +66545,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Layout.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./Layout.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Layout.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./Layout.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65366,7 +66556,7 @@
 	}
 
 /***/ },
-/* 664 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65380,7 +66570,7 @@
 
 
 /***/ },
-/* 665 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65399,7 +66589,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _LeftNavExample = __webpack_require__(666);
+	var _LeftNavExample = __webpack_require__(672);
 
 	var _LeftNavExample2 = _interopRequireDefault(_LeftNavExample);
 
@@ -65445,7 +66635,7 @@
 	};
 
 /***/ },
-/* 666 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65462,7 +66652,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(667);
+	__webpack_require__(673);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65584,13 +66774,13 @@
 	};
 
 /***/ },
-/* 667 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(668);
+	var content = __webpack_require__(674);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65599,8 +66789,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./LeftNavExample.less", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./LeftNavExample.less");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./LeftNavExample.less", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./LeftNavExample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65610,7 +66800,7 @@
 	}
 
 /***/ },
-/* 668 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65624,7 +66814,7 @@
 
 
 /***/ },
-/* 669 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65961,7 +67151,7 @@
 	};
 
 /***/ },
-/* 670 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65972,7 +67162,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _loremIpsum = __webpack_require__(639);
+	var _loremIpsum = __webpack_require__(645);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -66064,7 +67254,7 @@
 	};
 
 /***/ },
-/* 671 */
+/* 677 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66075,7 +67265,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _loremIpsum = __webpack_require__(639);
+	var _loremIpsum = __webpack_require__(645);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -66189,7 +67379,382 @@
 	};
 
 /***/ },
-/* 672 */
+/* 678 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(33);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Example = __webpack_require__(260);
+
+	var _Example2 = _interopRequireDefault(_Example);
+
+	var _PropDocumentation = __webpack_require__(648);
+
+	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
+
+	var _View = __webpack_require__(278);
+
+	var _View2 = _interopRequireDefault(_View);
+
+	var _src = __webpack_require__(281);
+
+	__webpack_require__(679);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NumberView = function (_Component) {
+	  _inherits(NumberView, _Component);
+
+	  function NumberView(props) {
+	    _classCallCheck(this, NumberView);
+
+	    var _this = _possibleConstructorReturn(this, (NumberView.__proto__ || Object.getPrototypeOf(NumberView)).call(this, props));
+
+	    _this.state = {
+	      format: "regular"
+	    };
+	    return _this;
+	  }
+
+	  _createClass(NumberView, [{
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+
+	      var cssClass = NumberView.cssClass;
+	      var format = this.state.format;
+
+
+	      var shouldShorten = format === "short";
+	      var arrow = _react2.default.createElement("span", { className: "fa fa-long-arrow-right" });
+
+	      return _react2.default.createElement(
+	        _View2.default,
+	        { className: cssClass.CONTAINER, title: "Number" },
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Provides consistent number formatting for long numbers, with optional shortening."
+	        ),
+	        _react2.default.createElement(
+	          _Example2.default,
+	          {
+	            code: "\n            <div className={cssClass.EXAMPLE}>\n              <p>\n                8 {arrow} <Number short={shouldShorten}>{8}</Number>\n              </p>\n              <p>\n                999 {arrow} <Number short={shouldShorten}>{999}</Number>\n              </p>\n            </div>\n          ",
+	            title: "Short numbers are left unchanged:"
+	          },
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.DEMO_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.EXAMPLE },
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "8 ",
+	                arrow,
+	                " ",
+	                _react2.default.createElement(
+	                  _src.Number,
+	                  { short: shouldShorten },
+	                  8
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "999 ",
+	                arrow,
+	                " ",
+	                _react2.default.createElement(
+	                  _src.Number,
+	                  { short: shouldShorten },
+	                  999
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.CONFIG_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.CONFIG },
+	              "Format:",
+	              _react2.default.createElement(_src.SegmentedControl, {
+	                className: cssClass.CONFIG_OPTIONS,
+	                value: format,
+	                onSelect: function onSelect(value) {
+	                  return _this2.setState({ format: value });
+	                },
+	                options: [{ content: "Regular", value: "regular" }, { content: "Short", value: "short" }]
+	              })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _Example2.default,
+	          {
+	            code: "\n            <div className={cssClass.EXAMPLE}>\n              <p>\n                1000 {arrow} <Number short={shouldShorten}>{1000}</Number>\n              </p>\n              <p>\n                907312456 {arrow} <Number short={shouldShorten}>{907312456}</Number>\n              </p>\n              <p>\n                7089123456 {arrow} <Number short={shouldShorten}>{7089123456}</Number>\n              </p>\n            </div>\n          ",
+	            title: "Formatting kicks in starting at 1000:"
+	          },
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.DEMO_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.EXAMPLE },
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "1000 ",
+	                arrow,
+	                " ",
+	                _react2.default.createElement(
+	                  _src.Number,
+	                  { short: shouldShorten },
+	                  1000
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "907312456 ",
+	                arrow,
+	                " ",
+	                _react2.default.createElement(
+	                  _src.Number,
+	                  { short: shouldShorten },
+	                  907312456
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "7089123456 ",
+	                arrow,
+	                " ",
+	                _react2.default.createElement(
+	                  _src.Number,
+	                  { short: shouldShorten },
+	                  7089123456
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.CONFIG_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.CONFIG },
+	              "Format:",
+	              _react2.default.createElement(_src.SegmentedControl, {
+	                className: cssClass.CONFIG_OPTIONS,
+	                value: format,
+	                onSelect: function onSelect(value) {
+	                  return _this2.setState({ format: value });
+	                },
+	                options: [{ content: "Regular", value: "regular" }, { content: "Short", value: "short" }]
+	              })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _Example2.default,
+	          {
+	            code: "\n            <div className={cssClass.EXAMPLE}>\n              <p>\n                5678 {arrow} <Number short={shouldShorten}>5678</Number>\n              </p>\n              <p>\n                1234567 {arrow} <Number short={shouldShorten}>{\"1234567\"}</Number>\n              </p>\n            </div>\n          ",
+	            title: "Numbers can be specified as text, as long as they can be parsed as integers:"
+	          },
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.DEMO_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.EXAMPLE },
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "5678 ",
+	                arrow,
+	                " ",
+	                _react2.default.createElement(
+	                  _src.Number,
+	                  { short: shouldShorten },
+	                  "5678"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "1234567 ",
+	                arrow,
+	                " ",
+	                _react2.default.createElement(
+	                  _src.Number,
+	                  { short: shouldShorten },
+	                  "1234567"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.CONFIG_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.CONFIG },
+	              "Format:",
+	              _react2.default.createElement(_src.SegmentedControl, {
+	                className: cssClass.CONFIG_OPTIONS,
+	                value: format,
+	                onSelect: function onSelect(value) {
+	                  return _this2.setState({ format: value });
+	                },
+	                options: [{ content: "Regular", value: "regular" }, { content: "Short", value: "short" }]
+	              })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _Example2.default,
+	          {
+	            code: "\n            <div className={cssClass.EXAMPLE}>\n              <p>\n                12345 {arrow} {Number.format(12345, shouldShorten)}\n              </p>\n              <p>\n                This may be useful in cases where a plain string is needed (e.g. when assigning a\n                prop that requires a string value).\n              </p>\n            </div>\n          ",
+	            title: "Formatting can be done directly, without rendering the component:"
+	          },
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.DEMO_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.EXAMPLE },
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "12345 ",
+	                arrow,
+	                " ",
+	                _src.Number.format(12345, shouldShorten)
+	              )
+	            ),
+	            "This may be useful in cases where a plain string is needed (e.g. when assigning a prop that requires a string value)."
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: cssClass.CONFIG_CONTAINER },
+	            _react2.default.createElement(
+	              "div",
+	              { className: cssClass.CONFIG },
+	              "Format:",
+	              _react2.default.createElement(_src.SegmentedControl, {
+	                className: cssClass.CONFIG_OPTIONS,
+	                value: format,
+	                onSelect: function onSelect(value) {
+	                  return _this2.setState({ format: value });
+	                },
+	                options: [{ content: "Regular", value: "regular" }, { content: "Short", value: "short" }]
+	              })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_PropDocumentation2.default, {
+	          availableProps: [{
+	            name: "children",
+	            type: "number or string",
+	            description: "The number (or string representation thereof).",
+	            defaultValue: "0"
+	          }, {
+	            name: "className",
+	            type: "string",
+	            description: "Optional additional classname to apply to the number span."
+	          }, {
+	            name: "short",
+	            type: "bool",
+	            description: "Whether or not long numbers should be shortened.",
+	            defaultValue: "false"
+	          }],
+	          className: cssClass.PROPS
+	        })
+	      );
+	    }
+	  }]);
+
+	  return NumberView;
+	}(_react.Component);
+
+	exports.default = NumberView;
+
+
+	NumberView.cssClass = {
+	  CONFIG_CONTAINER: "NumberView--configContainer",
+	  CONFIG_OPTIONS: "NumberView--configOptions",
+	  CONFIG: "NumberView--config",
+	  CONTAINER: "NumberView",
+	  DEMO_CONTAINER: "NumberView--demoContainer",
+	  EXAMPLE: "NumberView--example",
+	  FOCUS_CONTROL: "NumberView--focusControl",
+	  LABEL: "NumberView--number",
+	  PROPS: "NumberView--props"
+	};
+
+/***/ },
+/* 679 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(680);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(270)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./NumberView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./NumberView.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 680 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(269)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".NumberView--number {\n  margin-left: 0.75rem;\n  display: inline-block;\n}\n.NumberView--example {\n  margin-bottom: 1rem;\n}\n.NumberView--configContainer {\n  margin-top: 1rem;\n}\n.NumberView--config {\n  text-transform: uppercase;\n  font-size: 0.75rem;\n}\n.NumberView--config:not(:last-child) {\n  margin-bottom: 0.75rem;\n}\n.NumberView--configOptions {\n  margin-left: 0.25rem;\n  display: inline-block;\n}\n.NumberView--props {\n  margin-top: 1.5rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66333,7 +67898,7 @@
 	};
 
 /***/ },
-/* 673 */
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66358,7 +67923,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(674);
+	__webpack_require__(683);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66450,13 +68015,13 @@
 	};
 
 /***/ },
-/* 674 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(675);
+	var content = __webpack_require__(684);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -66465,8 +68030,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBarView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./ProgressBarView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBarView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./ProgressBarView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -66476,7 +68041,7 @@
 	}
 
 /***/ },
-/* 675 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -66490,7 +68055,7 @@
 
 
 /***/ },
-/* 676 */
+/* 685 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66639,7 +68204,7 @@
 	};
 
 /***/ },
-/* 677 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66668,7 +68233,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(678);
+	__webpack_require__(687);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66838,13 +68403,13 @@
 	};
 
 /***/ },
-/* 678 */
+/* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(679);
+	var content = __webpack_require__(688);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -66853,8 +68418,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SelectView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SelectView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SelectView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SelectView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -66864,7 +68429,7 @@
 	}
 
 /***/ },
-/* 679 */
+/* 688 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -66878,7 +68443,7 @@
 
 
 /***/ },
-/* 680 */
+/* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66903,7 +68468,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(681);
+	__webpack_require__(690);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67042,13 +68607,13 @@
 	};
 
 /***/ },
-/* 681 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(682);
+	var content = __webpack_require__(691);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -67057,8 +68622,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SizingView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./SizingView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SizingView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./SizingView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -67068,7 +68633,7 @@
 	}
 
 /***/ },
-/* 682 */
+/* 691 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -67082,7 +68647,7 @@
 
 
 /***/ },
-/* 683 */
+/* 692 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67143,7 +68708,7 @@
 	};
 
 /***/ },
-/* 684 */
+/* 693 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67162,7 +68727,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _TabBarExample = __webpack_require__(685);
+	var _TabBarExample = __webpack_require__(694);
 
 	var _TabBarExample2 = _interopRequireDefault(_TabBarExample);
 
@@ -67208,7 +68773,7 @@
 	};
 
 /***/ },
-/* 685 */
+/* 694 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67235,11 +68800,11 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(624);
+	__webpack_require__(630);
 
-	__webpack_require__(686);
+	__webpack_require__(695);
 
-	__webpack_require__(688);
+	__webpack_require__(697);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67462,13 +69027,13 @@
 	};
 
 /***/ },
-/* 686 */
+/* 695 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(687);
+	var content = __webpack_require__(696);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -67477,8 +69042,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./type-utilities.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./type-utilities.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./type-utilities.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./type-utilities.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -67488,7 +69053,7 @@
 	}
 
 /***/ },
-/* 687 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -67502,13 +69067,13 @@
 
 
 /***/ },
-/* 688 */
+/* 697 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(689);
+	var content = __webpack_require__(698);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -67517,8 +69082,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./TabBarExample.less", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/postcss-loader/index.js!../node_modules/less-loader/index.js!./TabBarExample.less");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./TabBarExample.less", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/postcss-loader/index.js!./../node_modules/less-loader/index.js!./TabBarExample.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -67528,7 +69093,7 @@
 	}
 
 /***/ },
-/* 689 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -67542,7 +69107,7 @@
 
 
 /***/ },
-/* 690 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67557,7 +69122,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loremIpsum = __webpack_require__(639);
+	var _loremIpsum = __webpack_require__(645);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -67776,7 +69341,7 @@
 	};
 
 /***/ },
-/* 691 */
+/* 700 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67801,7 +69366,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(635);
+	__webpack_require__(641);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67934,7 +69499,7 @@
 	};
 
 /***/ },
-/* 692 */
+/* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67959,7 +69524,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(693);
+	__webpack_require__(702);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68111,13 +69676,13 @@
 	};
 
 /***/ },
-/* 693 */
+/* 702 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(694);
+	var content = __webpack_require__(703);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -68126,8 +69691,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInputView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TextInputView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInputView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TextInputView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -68137,7 +69702,7 @@
 	}
 
 /***/ },
-/* 694 */
+/* 703 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -68151,7 +69716,7 @@
 
 
 /***/ },
-/* 695 */
+/* 704 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68170,7 +69735,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _loremIpsum = __webpack_require__(639);
+	var _loremIpsum = __webpack_require__(645);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -68182,7 +69747,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(642);
+	var _PropDocumentation = __webpack_require__(648);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -68192,7 +69757,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(696);
+	__webpack_require__(705);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68382,13 +69947,13 @@
 	};
 
 /***/ },
-/* 696 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(697);
+	var content = __webpack_require__(706);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -68397,8 +69962,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TooltipView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./TooltipView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TooltipView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./TooltipView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -68408,7 +69973,7 @@
 	}
 
 /***/ },
-/* 697 */
+/* 706 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -68422,7 +69987,7 @@
 
 
 /***/ },
-/* 698 */
+/* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68667,7 +70232,7 @@
 	};
 
 /***/ },
-/* 699 */
+/* 708 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68688,7 +70253,7 @@
 
 	var _src = __webpack_require__(281);
 
-	__webpack_require__(700);
+	__webpack_require__(709);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68883,13 +70448,13 @@
 	};
 
 /***/ },
-/* 700 */
+/* 709 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(701);
+	var content = __webpack_require__(710);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -68898,8 +70463,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./UITextView.less", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./UITextView.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./UITextView.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/less-loader/index.js!./UITextView.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -68909,7 +70474,7 @@
 	}
 
 /***/ },
-/* 701 */
+/* 710 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -68923,7 +70488,7 @@
 
 
 /***/ },
-/* 702 */
+/* 711 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68942,7 +70507,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _WizardExample = __webpack_require__(703);
+	var _WizardExample = __webpack_require__(712);
 
 	var _WizardExample2 = _interopRequireDefault(_WizardExample);
 
@@ -68988,7 +70553,7 @@
 	};
 
 /***/ },
-/* 703 */
+/* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
