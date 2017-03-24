@@ -14,6 +14,7 @@ import IconView from "./components/IconView";
 import IntroView from "./components/IntroView";
 import LabelView from "./components/LabelView";
 import Layout from "./components/Layout";
+import LayoutCompoundForm from "./components/LayoutCompoundForm";
 import LeftNavView from "./components/LeftNavView";
 import LessStyleGuideView from "./components/LessStyleGuideView";
 import ModalButtonView from "./components/ModalButtonView";
@@ -45,6 +46,7 @@ render((
         <Route path="typography(/*)" component={TypographyView} />
         <Route path="sizing(/*)" component={SizingView} />
         <Route path="page-layout(/*)" component={PageLayoutView} />
+        <Route path="compound-form(/*)" component={LayoutCompoundForm} />
         <Route path="ui-text(/*)" component={UITextView} />
       </Route>
       <Route path="components">
