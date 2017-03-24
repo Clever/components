@@ -48,7 +48,7 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-          <Row grow className="margin--bottom--xl">
+          <Row grow>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
               <img src="./assets/img/guide1_bad.png" alt="Unstacked form inputs" />
             </Col>
@@ -73,7 +73,7 @@ export default class LayoutCompoundForm extends PureComponent {
             </Col>
           </Row>
           <Row>
-            <Col span={12} className="flexbox margin--top--m">
+            <Col span={12} className="flexbox margin--top--2xl">
               <div>
                 <p className="text--semi-bold">
                   #2. Treat checkbox, radio, and type ahead search field layout similarly with TextInput component
@@ -84,7 +84,7 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-           <Row grow className="margin--bottom--xl">
+           <Row grow>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
               <img src="./assets/img/guide2_bad.png" alt="Checkbox field with no background" />
             </Col>
@@ -110,7 +110,7 @@ export default class LayoutCompoundForm extends PureComponent {
             </Col>
           </Row>
           <Row>
-            <Col span={12} className="flexbox margin--top--m">
+            <Col span={12} className="flexbox margin--top--2xl">
               <div>
                 <p>
                   <p className="text--semi-bold">
@@ -123,7 +123,7 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-          <Row grow className="margin--bottom--xl">
+          <Row grow>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
               <img src="./assets/img/guide3_bad.png" alt="Existing Client Secret workflow" />
             </Col>
@@ -149,7 +149,7 @@ export default class LayoutCompoundForm extends PureComponent {
             </Col>
           </Row>
           <Row>
-            <Col span={12} className="flexbox margin--top--m">
+            <Col span={12} className="flexbox margin--top--2xl">
               <div>
                 <p>
                   <p className="text--semi-bold">
@@ -162,7 +162,7 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-          <Row grow className="margin--bottom--xl">
+          <Row grow>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
               <img src="./assets/img/guide4_bad.png" alt="More info displayed using info icon outside of formInput" />
             </Col>
@@ -187,7 +187,7 @@ export default class LayoutCompoundForm extends PureComponent {
             </Col>
           </Row>
           <Row>
-            <Col span={12} className="flexbox margin--top--m">
+            <Col span={12} className="flexbox margin--top--2xl">
               <div>
                 <p className="text--semi-bold">
                   #5. Be explicit with the state of the form (view vs edit)
@@ -198,7 +198,7 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-          <Row grow className="margin--bottom--l">
+          <Row grow>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
             <div>
               <img src="./assets/img/guide5_bad.png" alt="Existing instant login Clever Password setting page" />
@@ -235,7 +235,7 @@ export default class LayoutCompoundForm extends PureComponent {
             </Col>
           </Row>
           <Row>
-            <Col span={12} className="flexbox">
+            <Col span={12} className="flexbox margin--top--s">
               <div>
                 <p className="text--semi-bold">
                   A. Application Settings Page - Apps Dashboard
@@ -246,7 +246,7 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-          <Row grow className="margin--bottom--xl">
+          <Row grow>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
               <img src="./assets/img/exampleA_before.png" alt="Existing Application Settings Page" />
             </Col>
@@ -272,7 +272,7 @@ export default class LayoutCompoundForm extends PureComponent {
             </Col>
           </Row>
            <Row>
-            <Col span={12} className="flexbox">
+            <Col span={12} className="flexbox margin--top--m">
               <div>
                 <p className="text--semi-bold">
                   B. Add resources modal (portal)
@@ -283,7 +283,7 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-          <Row grow className="margin--bottom--xl">
+          <Row grow>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
               <img src="./assets/img/exampleB_before.png" alt="Existing add a link modal in portal customization" />
             </Col>
