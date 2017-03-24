@@ -16,18 +16,16 @@ export default class LayoutCompoundForm extends PureComponent {
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox padding--right--l">
               <div>
-                <h2>Consistent structures</h2>
+                <h2>Layout Guidelines</h2>
                 <p>
                   Now that we have broken down most variation of input fields (TextInput, TextArea, etc), let’s hash out how they should behave together. Below are the basic guidelines we have set up based on the different use-cases we’ve encountered in our product. 
                 </p>
                 <p>
                   Please ping #design when you are unable to use the example below to design your own form! We will gladly take a look and add new use-cases to the working guidelines below!
-
                 </p>
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={12} className="flexbox">
               <div>
@@ -38,8 +36,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
-
           <Row>
             <Col span={12} className="flexbox">
               <div>
@@ -52,16 +48,14 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide1_bad.png" alt="Profile layout example" />
+              <img src="./assets/img/guide1_bad.png" alt="Unstacked form inputs" />
             </Col>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide1_good.png" alt="Profile layout example" width="50" height="50" />
+              <img src="./assets/img/guide1_good.png" alt="Stacked form inputs" />
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
@@ -78,8 +72,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
-
           <Row>
             <Col span={12} className="flexbox margin--top--m">
               <div>
@@ -92,13 +84,12 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
            <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide2_bad.png" alt="Profile layout example" />
+              <img src="./assets/img/guide2_bad.png" alt="Checkbox field with no background" />
             </Col>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide2_good.png" alt="Profile layout example" />
+              <img src="./assets/img/guide2_good.png" alt="Checkbox field with background" />
             </Col>
           </Row>
 
@@ -118,8 +109,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
-
           <Row>
             <Col span={12} className="flexbox margin--top--m">
               <div>
@@ -134,13 +123,12 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide3_bad.png" alt="Profile layout example" />
+              <img src="./assets/img/guide3_bad.png" alt="Existing Client Secret workflow" />
             </Col>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide3_good.png" alt="Profile layout example" />
+              <img src="./assets/img/guide3_good.png" alt="Explicit action on form input" />
             </Col>
           </Row>
 
@@ -160,7 +148,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row>
             <Col span={12} className="flexbox margin--top--m">
               <div>
@@ -175,16 +162,14 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide4_bad.png" alt="Profile layout example" />
+              <img src="./assets/img/guide4_bad.png" alt="More info displayed using info icon outside of formInput" />
             </Col>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/guide4_good.png" alt="Profile layout example" />
+              <img src="./assets/img/guide4_good.png" alt="More info displayed using hint pop-over above formInput" />
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--s padding--right--5xl imgCentered">
               <div>
@@ -201,7 +186,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row>
             <Col span={12} className="flexbox margin--top--m">
               <div>
@@ -214,21 +198,19 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--l">
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
             <div>
-              <img src="./assets/img/guide5_bad.png" alt="Profile layout example" />
+              <img src="./assets/img/guide5_bad.png" alt="Existing instant login Clever Password setting page" />
             </div>
             </Col>
             <Col span={6} className="flexbox margin--top--m padding--right--l imgCentered flexColumn">
               <div>
-                <img src="./assets/img/guide5_good_a.png" alt="Profile layout example" />
-                <img src="./assets/img/guide5_good_b.png" alt="Profile layout example" />
+                <img src="./assets/img/guide5_good_a.png" alt="Profile Settings displayed in an infoCard view mode" />
+                <img src="./assets/img/guide5_good_b.png" alt="Edit profile settings in a modal" />
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
@@ -245,7 +227,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row>
             <Col span={12} className="flexbox">
               <div>
@@ -253,7 +234,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-          
           <Row>
             <Col span={12} className="flexbox">
               <div>
@@ -266,17 +246,15 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/exampleA_before.png" alt="Profile layout example" />
+              <img src="./assets/img/exampleA_before.png" alt="Existing Application Settings Page" />
             </Col>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered flexColumn">
-              <img src="./assets/img/exampleA_after_a.png" alt="Profile layout example" />
-              <img src="./assets/img/exampleA_after_b.png" alt="Profile layout example" />
+              <img src="./assets/img/exampleA_after_a.png" alt="Redesigned Application Settings Page with infoCards" />
+              <img src="./assets/img/exampleA_after_b.png" alt="Edit modal" />
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
@@ -293,7 +271,6 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
            <Row>
             <Col span={12} className="flexbox">
               <div>
@@ -306,16 +283,14 @@ export default class LayoutCompoundForm extends PureComponent {
               </div>
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/exampleB_before.png" alt="Profile layout example" />
+              <img src="./assets/img/exampleB_before.png" alt="Existing add a link modal in portal customization" />
             </Col>
             <Col span={6} className="flexbox margin--top--m padding--right--5xl imgCentered">
-              <img src="./assets/img/exampleB_after.png" alt="Profile layout example" />
+              <img src="./assets/img/exampleB_after.png" alt="Redesigned add a link modal in portal customization" />
             </Col>
           </Row>
-
           <Row grow className="margin--bottom--xl">
             <Col span={6} className="flexbox margin--top--s padding--right--5xl">
               <div>
