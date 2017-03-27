@@ -42,14 +42,22 @@ export class Wizard extends React.Component {
   }
 
   nextStepHandler() {
+    const {steps} = this.props;
+    const {currentStep, data} = this.state;
+
+    // If an onStepComplete handler is provided for the current step, we will only proceed to the
+    // next step if the promise returned by the handler resolves to a truthy value.
+    if (steps[currentStep].onStepComplete) {
+      steps[currentStep].onStepComplete(data).then((success) => success && this.goToNextStep());
+      return;
+    }
+    this.goToNextStep();
+  }
+
+  goToNextStep() {
     const {onComplete, steps} = this.props;
     const {currentStep, data} = this.state;
 
-    // If an onComplete handler is provided for the current step, and it returns false, we won't
-    // proceed to the next step.
-    if (steps[currentStep].onStepComplete && !steps[currentStep].onStepComplete(data)) {
-      return;
-    }
     if (currentStep === steps.length - 1) {
       onComplete(data);
       return;
