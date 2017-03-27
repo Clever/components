@@ -1,3 +1,4 @@
+import Count from "./Count";
 // Number is a default export.
 // TODO(kofi): Convert all components to default exports to allow clients to import separate
 // components without pulling in the whole repo.
@@ -25,3 +26,4 @@ export {Label} from "./Label";
 export {FileInput} from "./FileInput/FileInput";
 export * from "./InfoPanel";
 export {Number};
+export {Count};
