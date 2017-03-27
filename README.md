@@ -625,7 +625,7 @@ to define the conditions under which their inputs are considered valid.
 | validate (required)    | Function  | Validates if the current step is complete. Provided `wizardState` as an argument, which this function is expected to examine for validity.         | None
 | help (optional)    | String or React Node | Help text to display for this step         | None
 | props (optional)    | Object | Props to provide to the component. If present, `wizardState` and `setWizardState` props are filtered out.         | {}
-| onComplete (optional) | Function | A custom action to be performed before navigating to the next step in the `Wizard`. The function should return a boolean. If it returns `false`, the `Wizard` won't navigate to the next step. The function is provided `wizardState` as an argument. | None
+| onStepComplete (optional) | Function | A custom action to be performed before navigating to the next step in the `Wizard`. The function will be provided `wizardState` as an argument and should return a promise. The `Wizard` will only proceed to the next step if the returned promise resolves to a truthy value. | None
 
 
 ##### `wizardButton` shape:
