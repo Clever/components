@@ -20,6 +20,7 @@ export default function SideBar({className}) {
         <NavLink href="/design/typography">Typography</NavLink>
         <NavLink href="/design/sizing">Sizing</NavLink>
         <NavLink href="/design/page-layout">Page Layout</NavLink>
+        <NavLink href="/design/compound-form">Compound Form</NavLink>
         <NavLink href="/design/ui-text">UI Text</NavLink>
       </NavGroup>
       <NavGroup title="Components">
