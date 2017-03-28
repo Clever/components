@@ -44,7 +44,9 @@ class ContactStep extends React.Component {
       "A custom action for the current step. We might, for example, want to save the phone " +
       `number (${wizardState.phoneNumber}) entered on this page in a database right away.`
     );
-    return true;
+
+    // onStepComplete must return a promise.
+    return Promise.resolve(true);
   }
 
   render() {
