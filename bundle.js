@@ -58,131 +58,135 @@
 
 	var _ButtonView2 = _interopRequireDefault(_ButtonView);
 
-	var _ColorsView = __webpack_require__(619);
+	var _ColorsView = __webpack_require__(617);
 
 	var _ColorsView2 = _interopRequireDefault(_ColorsView);
 
-	var _ConfirmationButtonView = __webpack_require__(622);
+	var _ConfirmationButtonView = __webpack_require__(620);
 
 	var _ConfirmationButtonView2 = _interopRequireDefault(_ConfirmationButtonView);
 
-	var _CopyableInputView = __webpack_require__(623);
+	var _CopyableInputView = __webpack_require__(621);
 
 	var _CopyableInputView2 = _interopRequireDefault(_CopyableInputView);
 
-	var _CountView = __webpack_require__(626);
+	var _CountView = __webpack_require__(624);
 
 	var _CountView2 = _interopRequireDefault(_CountView);
 
-	var _FileInputView = __webpack_require__(632);
+	var _FileInputView = __webpack_require__(630);
 
 	var _FileInputView2 = _interopRequireDefault(_FileInputView);
 
-	var _FlexBoxView = __webpack_require__(633);
+	var _FlexBoxView = __webpack_require__(631);
 
 	var _FlexBoxView2 = _interopRequireDefault(_FlexBoxView);
 
-	var _GettingStartedView = __webpack_require__(639);
+	var _GettingStartedView = __webpack_require__(637);
 
 	var _GettingStartedView2 = _interopRequireDefault(_GettingStartedView);
 
-	var _GridView = __webpack_require__(640);
+	var _GridView = __webpack_require__(638);
 
 	var _GridView2 = _interopRequireDefault(_GridView);
 
-	var _IconView = __webpack_require__(643);
+	var _IconView = __webpack_require__(641);
 
 	var _IconView2 = _interopRequireDefault(_IconView);
 
-	var _InfoPanelView = __webpack_require__(646);
+	var _InfoPanelView = __webpack_require__(644);
 
 	var _InfoPanelView2 = _interopRequireDefault(_InfoPanelView);
 
-	var _IntroView = __webpack_require__(649);
+	var _IntroView = __webpack_require__(647);
 
 	var _IntroView2 = _interopRequireDefault(_IntroView);
 
-	var _LabelView = __webpack_require__(650);
+	var _LabelView = __webpack_require__(648);
 
 	var _LabelView2 = _interopRequireDefault(_LabelView);
 
-	var _Layout = __webpack_require__(656);
+	var _Layout = __webpack_require__(654);
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _LeftNavView = __webpack_require__(674);
+	var _LayoutCompoundForm = __webpack_require__(672);
+
+	var _LayoutCompoundForm2 = _interopRequireDefault(_LayoutCompoundForm);
+
+	var _LeftNavView = __webpack_require__(675);
 
 	var _LeftNavView2 = _interopRequireDefault(_LeftNavView);
 
-	var _LessStyleGuideView = __webpack_require__(678);
+	var _LessStyleGuideView = __webpack_require__(679);
 
 	var _LessStyleGuideView2 = _interopRequireDefault(_LessStyleGuideView);
 
-	var _ModalButtonView = __webpack_require__(679);
+	var _ModalButtonView = __webpack_require__(680);
 
 	var _ModalButtonView2 = _interopRequireDefault(_ModalButtonView);
 
-	var _ModalView = __webpack_require__(680);
+	var _ModalView = __webpack_require__(681);
 
 	var _ModalView2 = _interopRequireDefault(_ModalView);
 
-	var _NumberView = __webpack_require__(681);
+	var _NumberView = __webpack_require__(682);
 
 	var _NumberView2 = _interopRequireDefault(_NumberView);
 
-	var _PageLayoutView = __webpack_require__(684);
+	var _PageLayoutView = __webpack_require__(685);
 
 	var _PageLayoutView2 = _interopRequireDefault(_PageLayoutView);
 
-	var _ProgressBarView = __webpack_require__(685);
+	var _ProgressBarView = __webpack_require__(686);
 
 	var _ProgressBarView2 = _interopRequireDefault(_ProgressBarView);
 
-	var _SegmentedControlView = __webpack_require__(688);
+	var _SegmentedControlView = __webpack_require__(689);
 
 	var _SegmentedControlView2 = _interopRequireDefault(_SegmentedControlView);
 
-	var _SelectView = __webpack_require__(689);
+	var _SelectView = __webpack_require__(690);
 
 	var _SelectView2 = _interopRequireDefault(_SelectView);
 
-	var _SizingView = __webpack_require__(692);
+	var _SizingView = __webpack_require__(693);
 
 	var _SizingView2 = _interopRequireDefault(_SizingView);
 
-	var _SpacingView = __webpack_require__(695);
+	var _SpacingView = __webpack_require__(696);
 
 	var _SpacingView2 = _interopRequireDefault(_SpacingView);
 
-	var _TabBarView = __webpack_require__(696);
+	var _TabBarView = __webpack_require__(697);
 
 	var _TabBarView2 = _interopRequireDefault(_TabBarView);
 
-	var _TableView = __webpack_require__(702);
+	var _TableView = __webpack_require__(703);
 
 	var _TableView2 = _interopRequireDefault(_TableView);
 
-	var _TextAreaView = __webpack_require__(703);
+	var _TextAreaView = __webpack_require__(704);
 
 	var _TextAreaView2 = _interopRequireDefault(_TextAreaView);
 
-	var _TextInputView = __webpack_require__(704);
+	var _TextInputView = __webpack_require__(705);
 
 	var _TextInputView2 = _interopRequireDefault(_TextInputView);
 
-	var _TooltipView = __webpack_require__(707);
+	var _TooltipView = __webpack_require__(708);
 
 	var _TooltipView2 = _interopRequireDefault(_TooltipView);
 
-	var _TypographyView = __webpack_require__(710);
+	var _TypographyView = __webpack_require__(711);
 
 	var _TypographyView2 = _interopRequireDefault(_TypographyView);
 
-	var _UITextView = __webpack_require__(711);
+	var _UITextView = __webpack_require__(712);
 
 	var _UITextView2 = _interopRequireDefault(_UITextView);
 
-	var _WizardView = __webpack_require__(714);
+	var _WizardView = __webpack_require__(715);
 
 	var _WizardView2 = _interopRequireDefault(_WizardView);
 
@@ -204,6 +208,7 @@
 	      _react2.default.createElement(_reactRouter.Route, { path: "typography(/*)", component: _TypographyView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "sizing(/*)", component: _SizingView2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "page-layout(/*)", component: _PageLayoutView2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: "compound-form(/*)", component: _LayoutCompoundForm2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: "ui-text(/*)", component: _UITextView2.default })
 	    ),
 	    _react2.default.createElement(
@@ -18134,10 +18139,10 @@
 	 */
 
 	function getUnboundedScrollPosition(scrollable) {
-	  if (scrollable === window) {
+	  if (scrollable.Window && scrollable instanceof scrollable.Window) {
 	    return {
-	      x: window.pageXOffset || document.documentElement.scrollLeft,
-	      y: window.pageYOffset || document.documentElement.scrollTop
+	      x: scrollable.pageXOffset || scrollable.document.documentElement.scrollLeft,
+	      y: scrollable.pageYOffset || scrollable.document.documentElement.scrollTop
 	    };
 	  }
 	  return {
@@ -18893,7 +18898,9 @@
 	 * @return {boolean} Whether or not the object is a DOM node.
 	 */
 	function isNode(object) {
-	  return !!(object && (typeof Node === 'function' ? object instanceof Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
+	  var doc = object ? object.ownerDocument || object : document;
+	  var defaultView = doc.defaultView || window;
+	  return !!(object && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
 	}
 
 	module.exports = isNode;
@@ -18902,7 +18909,7 @@
 /* 180 */
 /***/ function(module, exports) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -18923,19 +18930,24 @@
 	 *
 	 * The activeElement will be null only if the document or document body is not
 	 * yet defined.
+	 *
+	 * @param {?DOMDocument} doc Defaults to current document.
+	 * @return {?DOMElement}
 	 */
-	function getActiveElement() /*?DOMElement*/{
-	  if (typeof document === 'undefined') {
+	function getActiveElement(doc) /*?DOMElement*/{
+	  doc = doc || global.document;
+	  if (typeof doc === 'undefined') {
 	    return null;
 	  }
 	  try {
-	    return document.activeElement || document.body;
+	    return doc.activeElement || doc.body;
 	  } catch (e) {
-	    return document.body;
+	    return doc.body;
 	  }
 	}
 
 	module.exports = getActiveElement;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 181 */
@@ -24797,11 +24809,11 @@
 	 */
 	var useQueries = function useQueries(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    var history = createHistory(options);
-	    var stringifyQuery = options.stringifyQuery;
-	    var parseQueryString = options.parseQueryString;
+	    var stringifyQuery = options.stringifyQuery,
+	        parseQueryString = options.parseQueryString;
 
 
 	    if (typeof stringifyQuery !== 'function') stringifyQuery = defaultStringifyQuery;
@@ -25148,7 +25160,7 @@
 	exports.__esModule = true;
 	exports.locationsAreEqual = exports.statesAreEqual = exports.createLocation = exports.createQuery = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -25171,9 +25183,9 @@
 	};
 
 	var createLocation = exports.createLocation = function createLocation() {
-	  var input = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? _Actions.POP : arguments[1];
-	  var key = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+	  var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
+	  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Actions.POP;
+	  var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
 	  var object = typeof input === 'string' ? (0, _PathUtils.parsePath)(input) : input;
 
@@ -25253,12 +25265,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var addQueryStringValueToPath = exports.addQueryStringValueToPath = function addQueryStringValueToPath(path, key, value) {
-	  var _parsePath = parsePath(path);
-
-	  var pathname = _parsePath.pathname;
-	  var search = _parsePath.search;
-	  var hash = _parsePath.hash;
-
+	  var _parsePath = parsePath(path),
+	      pathname = _parsePath.pathname,
+	      search = _parsePath.search,
+	      hash = _parsePath.hash;
 
 	  return createPath({
 	    pathname: pathname,
@@ -25268,12 +25278,10 @@
 	};
 
 	var stripQueryStringValueFromPath = exports.stripQueryStringValueFromPath = function stripQueryStringValueFromPath(path, key) {
-	  var _parsePath2 = parsePath(path);
-
-	  var pathname = _parsePath2.pathname;
-	  var search = _parsePath2.search;
-	  var hash = _parsePath2.hash;
-
+	  var _parsePath2 = parsePath(path),
+	      pathname = _parsePath2.pathname,
+	      search = _parsePath2.search,
+	      hash = _parsePath2.hash;
 
 	  return createPath({
 	    pathname: pathname,
@@ -25285,9 +25293,8 @@
 	};
 
 	var getQueryStringValueFromPath = exports.getQueryStringValueFromPath = function getQueryStringValueFromPath(path, key) {
-	  var _parsePath3 = parsePath(path);
-
-	  var search = _parsePath3.search;
+	  var _parsePath3 = parsePath(path),
+	      search = _parsePath3.search;
 
 	  var match = search.match(new RegExp('[?&]' + key + '=([a-zA-Z0-9]+)'));
 	  return match && match[1];
@@ -25329,10 +25336,10 @@
 	var createPath = exports.createPath = function createPath(location) {
 	  if (location == null || typeof location === 'string') return location;
 
-	  var basename = location.basename;
-	  var pathname = location.pathname;
-	  var search = location.search;
-	  var hash = location.hash;
+	  var basename = location.basename,
+	      pathname = location.pathname,
+	      search = location.search,
+	      hash = location.hash;
 
 	  var path = (basename || '') + pathname;
 
@@ -25364,7 +25371,7 @@
 
 	var useBasename = function useBasename(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    var history = createHistory(options);
 	    var basename = options.basename;
@@ -25374,7 +25381,7 @@
 	      if (!location) return location;
 
 	      if (basename && location.basename == null) {
-	        if (location.pathname.indexOf(basename) === 0) {
+	        if (location.pathname.toLowerCase().indexOf(basename.toLowerCase()) === 0) {
 	          location.pathname = location.pathname.substring(basename.length);
 	          location.basename = basename;
 
@@ -25498,7 +25505,7 @@
 	};
 
 	var createMemoryHistory = function createMemoryHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  if (Array.isArray(options)) {
 	    options = { entries: options };
@@ -25565,9 +25572,9 @@
 	    go: go
 	  }));
 
-	  var _options = options;
-	  var entries = _options.entries;
-	  var current = _options.current;
+	  var _options = options,
+	      entries = _options.entries,
+	      current = _options.current;
 
 
 	  if (typeof entries === 'string') {
@@ -25627,13 +25634,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var createHistory = function createHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var getCurrentLocation = options.getCurrentLocation;
-	  var getUserConfirmation = options.getUserConfirmation;
-	  var pushLocation = options.pushLocation;
-	  var replaceLocation = options.replaceLocation;
-	  var go = options.go;
-	  var keyLength = options.keyLength;
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var getCurrentLocation = options.getCurrentLocation,
+	      getUserConfirmation = options.getUserConfirmation,
+	      pushLocation = options.pushLocation,
+	      replaceLocation = options.replaceLocation,
+	      go = options.go,
+	      keyLength = options.keyLength;
 
 
 	  var currentLocation = void 0;
@@ -25762,7 +25769,7 @@
 	  };
 
 	  var createLocation = function createLocation(location, action) {
-	    var key = arguments.length <= 2 || arguments[2] === undefined ? createKey() : arguments[2];
+	    var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : createKey();
 	    return (0, _LocationUtils.createLocation)(location, action, key);
 	  };
 
@@ -26002,18 +26009,18 @@
 	 * behavior using { forceRefresh: true } in options.
 	 */
 	var createBrowserHistory = function createBrowserHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Browser history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
 	  var useRefresh = options.forceRefresh || !(0, _DOMUtils.supportsHistory)();
 	  var Protocol = useRefresh ? RefreshProtocol : BrowserProtocol;
 
-	  var getUserConfirmation = Protocol.getUserConfirmation;
-	  var getCurrentLocation = Protocol.getCurrentLocation;
-	  var pushLocation = Protocol.pushLocation;
-	  var replaceLocation = Protocol.replaceLocation;
-	  var go = Protocol.go;
+	  var getUserConfirmation = Protocol.getUserConfirmation,
+	      getCurrentLocation = Protocol.getCurrentLocation,
+	      pushLocation = Protocol.pushLocation,
+	      replaceLocation = Protocol.replaceLocation,
+	      go = Protocol.go;
 
 
 	  var history = (0, _createHistory2.default)(_extends({
@@ -26119,8 +26126,9 @@
 
 	var startListener = exports.startListener = function startListener(listener) {
 	  var handlePopState = function handlePopState(event) {
-	    if (event.state !== undefined) // Ignore extraneous popstate events in WebKit
-	      listener(_createLocation(event.state));
+	    if ((0, _DOMUtils.isExtraneousPopstateEvent)(event)) // Ignore extraneous popstate events in WebKit
+	      return;
+	    listener(_createLocation(event.state));
 	  };
 
 	  (0, _DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
@@ -26143,8 +26151,8 @@
 	};
 
 	var updateLocation = function updateLocation(location, updateState) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 
 
 	  if (state !== undefined) (0, _DOMStateStorage.saveState)(key, state);
@@ -26211,6 +26219,15 @@
 	 */
 	var supportsPopstateOnHashchange = exports.supportsPopstateOnHashchange = function supportsPopstateOnHashchange() {
 	  return window.navigator.userAgent.indexOf('Trident') === -1;
+	};
+
+	/**
+	 * Returns true if a given popstate event is an extraneous WebKit event.
+	 * Accounts for the fact that Chrome on iOS fires real popstate events
+	 * containing undefined state when pressing the back button.
+	 */
+	var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+	  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 	};
 
 /***/ },
@@ -26453,12 +26470,12 @@
 	};
 
 	var createHashHistory = function createHashHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Hash history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
-	  var queryKey = options.queryKey;
-	  var hashType = options.hashType;
+	  var queryKey = options.queryKey,
+	      hashType = options.hashType;
 
 
 	  process.env.NODE_ENV !== 'production' ? (0, _warning2.default)(queryKey !== false, 'Using { queryKey: false } no longer works. Instead, just don\'t ' + 'use location state if you don\'t want a key in your URL query string') : void 0;
@@ -26653,8 +26670,8 @@
 	};
 
 	var updateLocation = function updateLocation(location, pathCoder, queryKey, updateHash) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 
 
 	  var path = pathCoder.encodePath((0, _PathUtils.createPath)(location));
@@ -26711,7 +26728,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(617);
+	__webpack_require__(615);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28095,7 +28112,7 @@
 			};
 		},
 		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
 		}),
 		getHeadElement = memoize(function () {
 			return document.head || document.getElementsByTagName("head")[0];
@@ -28517,7 +28534,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(615);
+	__webpack_require__(613);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61162,7 +61179,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _numeral = __webpack_require__(613);
+	var _numeral = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"numeral\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _numeral2 = _interopRequireDefault(_numeral);
 
@@ -61170,7 +61187,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _shortNumber = __webpack_require__(614);
+	var _shortNumber = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"short-number\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _shortNumber2 = _interopRequireDefault(_shortNumber);
 
@@ -61247,1085 +61264,10 @@
 /* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! @preserve
-	 * numeral.js
-	 * version : 2.0.6
-	 * author : Adam Draper
-	 * license : MIT
-	 * http://adamwdraper.github.com/Numeral-js/
-	 */
-
-	(function (global, factory) {
-	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	    } else if (typeof module === 'object' && module.exports) {
-	        module.exports = factory();
-	    } else {
-	        global.numeral = factory();
-	    }
-	}(this, function () {
-	    /************************************
-	        Variables
-	    ************************************/
-
-	    var numeral,
-	        _,
-	        VERSION = '2.0.6',
-	        formats = {},
-	        locales = {},
-	        defaults = {
-	            currentLocale: 'en',
-	            zeroFormat: null,
-	            nullFormat: null,
-	            defaultFormat: '0,0',
-	            scalePercentBy100: true
-	        },
-	        options = {
-	            currentLocale: defaults.currentLocale,
-	            zeroFormat: defaults.zeroFormat,
-	            nullFormat: defaults.nullFormat,
-	            defaultFormat: defaults.defaultFormat,
-	            scalePercentBy100: defaults.scalePercentBy100
-	        };
-
-
-	    /************************************
-	        Constructors
-	    ************************************/
-
-	    // Numeral prototype object
-	    function Numeral(input, number) {
-	        this._input = input;
-
-	        this._value = number;
-	    }
-
-	    numeral = function(input) {
-	        var value,
-	            kind,
-	            unformatFunction,
-	            regexp;
-
-	        if (numeral.isNumeral(input)) {
-	            value = input.value();
-	        } else if (input === 0 || typeof input === 'undefined') {
-	            value = 0;
-	        } else if (input === null || _.isNaN(input)) {
-	            value = null;
-	        } else if (typeof input === 'string') {
-	            if (options.zeroFormat && input === options.zeroFormat) {
-	                value = 0;
-	            } else if (options.nullFormat && input === options.nullFormat || !input.replace(/[^0-9]+/g, '').length) {
-	                value = null;
-	            } else {
-	                for (kind in formats) {
-	                    regexp = typeof formats[kind].regexps.unformat === 'function' ? formats[kind].regexps.unformat() : formats[kind].regexps.unformat;
-
-	                    if (regexp && input.match(regexp)) {
-	                        unformatFunction = formats[kind].unformat;
-
-	                        break;
-	                    }
-	                }
-
-	                unformatFunction = unformatFunction || numeral._.stringToNumber;
-
-	                value = unformatFunction(input);
-	            }
-	        } else {
-	            value = Number(input)|| null;
-	        }
-
-	        return new Numeral(input, value);
-	    };
-
-	    // version number
-	    numeral.version = VERSION;
-
-	    // compare numeral object
-	    numeral.isNumeral = function(obj) {
-	        return obj instanceof Numeral;
-	    };
-
-	    // helper functions
-	    numeral._ = _ = {
-	        // formats numbers separators, decimals places, signs, abbreviations
-	        numberToFormat: function(value, format, roundingFunction) {
-	            var locale = locales[numeral.options.currentLocale],
-	                negP = false,
-	                optDec = false,
-	                leadingCount = 0,
-	                abbr = '',
-	                trillion = 1000000000000,
-	                billion = 1000000000,
-	                million = 1000000,
-	                thousand = 1000,
-	                decimal = '',
-	                neg = false,
-	                abbrForce, // force abbreviation
-	                abs,
-	                min,
-	                max,
-	                power,
-	                int,
-	                precision,
-	                signed,
-	                thousands,
-	                output;
-
-	            // make sure we never format a null value
-	            value = value || 0;
-
-	            abs = Math.abs(value);
-
-	            // see if we should use parentheses for negative number or if we should prefix with a sign
-	            // if both are present we default to parentheses
-	            if (numeral._.includes(format, '(')) {
-	                negP = true;
-	                format = format.replace(/[\(|\)]/g, '');
-	            } else if (numeral._.includes(format, '+') || numeral._.includes(format, '-')) {
-	                signed = numeral._.includes(format, '+') ? format.indexOf('+') : value < 0 ? format.indexOf('-') : -1;
-	                format = format.replace(/[\+|\-]/g, '');
-	            }
-
-	            // see if abbreviation is wanted
-	            if (numeral._.includes(format, 'a')) {
-	                abbrForce = format.match(/a(k|m|b|t)?/);
-
-	                abbrForce = abbrForce ? abbrForce[1] : false;
-
-	                // check for space before abbreviation
-	                if (numeral._.includes(format, ' a')) {
-	                    abbr = ' ';
-	                }
-
-	                format = format.replace(new RegExp(abbr + 'a[kmbt]?'), '');
-
-	                if (abs >= trillion && !abbrForce || abbrForce === 't') {
-	                    // trillion
-	                    abbr += locale.abbreviations.trillion;
-	                    value = value / trillion;
-	                } else if (abs < trillion && abs >= billion && !abbrForce || abbrForce === 'b') {
-	                    // billion
-	                    abbr += locale.abbreviations.billion;
-	                    value = value / billion;
-	                } else if (abs < billion && abs >= million && !abbrForce || abbrForce === 'm') {
-	                    // million
-	                    abbr += locale.abbreviations.million;
-	                    value = value / million;
-	                } else if (abs < million && abs >= thousand && !abbrForce || abbrForce === 'k') {
-	                    // thousand
-	                    abbr += locale.abbreviations.thousand;
-	                    value = value / thousand;
-	                }
-	            }
-
-	            // check for optional decimals
-	            if (numeral._.includes(format, '[.]')) {
-	                optDec = true;
-	                format = format.replace('[.]', '.');
-	            }
-
-	            // break number and format
-	            int = value.toString().split('.')[0];
-	            precision = format.split('.')[1];
-	            thousands = format.indexOf(',');
-	            leadingCount = (format.split('.')[0].split(',')[0].match(/0/g) || []).length;
-
-	            if (precision) {
-	                if (numeral._.includes(precision, '[')) {
-	                    precision = precision.replace(']', '');
-	                    precision = precision.split('[');
-	                    decimal = numeral._.toFixed(value, (precision[0].length + precision[1].length), roundingFunction, precision[1].length);
-	                } else {
-	                    decimal = numeral._.toFixed(value, precision.length, roundingFunction);
-	                }
-
-	                int = decimal.split('.')[0];
-
-	                if (numeral._.includes(decimal, '.')) {
-	                    decimal = locale.delimiters.decimal + decimal.split('.')[1];
-	                } else {
-	                    decimal = '';
-	                }
-
-	                if (optDec && Number(decimal.slice(1)) === 0) {
-	                    decimal = '';
-	                }
-	            } else {
-	                int = numeral._.toFixed(value, 0, roundingFunction);
-	            }
-
-	            // check abbreviation again after rounding
-	            if (abbr && !abbrForce && Number(int) >= 1000 && abbr !== locale.abbreviations.trillion) {
-	                int = String(Number(int) / 1000);
-
-	                switch (abbr) {
-	                    case locale.abbreviations.thousand:
-	                        abbr = locale.abbreviations.million;
-	                        break;
-	                    case locale.abbreviations.million:
-	                        abbr = locale.abbreviations.billion;
-	                        break;
-	                    case locale.abbreviations.billion:
-	                        abbr = locale.abbreviations.trillion;
-	                        break;
-	                }
-	            }
-
-
-	            // format number
-	            if (numeral._.includes(int, '-')) {
-	                int = int.slice(1);
-	                neg = true;
-	            }
-
-	            if (int.length < leadingCount) {
-	                for (var i = leadingCount - int.length; i > 0; i--) {
-	                    int = '0' + int;
-	                }
-	            }
-
-	            if (thousands > -1) {
-	                int = int.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + locale.delimiters.thousands);
-	            }
-
-	            if (format.indexOf('.') === 0) {
-	                int = '';
-	            }
-
-	            output = int + decimal + (abbr ? abbr : '');
-
-	            if (negP) {
-	                output = (negP && neg ? '(' : '') + output + (negP && neg ? ')' : '');
-	            } else {
-	                if (signed >= 0) {
-	                    output = signed === 0 ? (neg ? '-' : '+') + output : output + (neg ? '-' : '+');
-	                } else if (neg) {
-	                    output = '-' + output;
-	                }
-	            }
-
-	            return output;
-	        },
-	        // unformats numbers separators, decimals places, signs, abbreviations
-	        stringToNumber: function(string) {
-	            var locale = locales[options.currentLocale],
-	                stringOriginal = string,
-	                abbreviations = {
-	                    thousand: 3,
-	                    million: 6,
-	                    billion: 9,
-	                    trillion: 12
-	                },
-	                abbreviation,
-	                value,
-	                i,
-	                regexp;
-
-	            if (options.zeroFormat && string === options.zeroFormat) {
-	                value = 0;
-	            } else if (options.nullFormat && string === options.nullFormat || !string.replace(/[^0-9]+/g, '').length) {
-	                value = null;
-	            } else {
-	                value = 1;
-
-	                if (locale.delimiters.decimal !== '.') {
-	                    string = string.replace(/\./g, '').replace(locale.delimiters.decimal, '.');
-	                }
-
-	                for (abbreviation in abbreviations) {
-	                    regexp = new RegExp('[^a-zA-Z]' + locale.abbreviations[abbreviation] + '(?:\\)|(\\' + locale.currency.symbol + ')?(?:\\))?)?$');
-
-	                    if (stringOriginal.match(regexp)) {
-	                        value *= Math.pow(10, abbreviations[abbreviation]);
-	                        break;
-	                    }
-	                }
-
-	                // check for negative number
-	                value *= (string.split('-').length + Math.min(string.split('(').length - 1, string.split(')').length - 1)) % 2 ? 1 : -1;
-
-	                // remove non numbers
-	                string = string.replace(/[^0-9\.]+/g, '');
-
-	                value *= Number(string);
-	            }
-
-	            return value;
-	        },
-	        isNaN: function(value) {
-	            return typeof value === 'number' && isNaN(value);
-	        },
-	        includes: function(string, search) {
-	            return string.indexOf(search) !== -1;
-	        },
-	        insert: function(string, subString, start) {
-	            return string.slice(0, start) + subString + string.slice(start);
-	        },
-	        reduce: function(array, callback /*, initialValue*/) {
-	            if (this === null) {
-	                throw new TypeError('Array.prototype.reduce called on null or undefined');
-	            }
-
-	            if (typeof callback !== 'function') {
-	                throw new TypeError(callback + ' is not a function');
-	            }
-
-	            var t = Object(array),
-	                len = t.length >>> 0,
-	                k = 0,
-	                value;
-
-	            if (arguments.length === 3) {
-	                value = arguments[2];
-	            } else {
-	                while (k < len && !(k in t)) {
-	                    k++;
-	                }
-
-	                if (k >= len) {
-	                    throw new TypeError('Reduce of empty array with no initial value');
-	                }
-
-	                value = t[k++];
-	            }
-	            for (; k < len; k++) {
-	                if (k in t) {
-	                    value = callback(value, t[k], k, t);
-	                }
-	            }
-	            return value;
-	        },
-	        /**
-	         * Computes the multiplier necessary to make x >= 1,
-	         * effectively eliminating miscalculations caused by
-	         * finite precision.
-	         */
-	        multiplier: function (x) {
-	            var parts = x.toString().split('.');
-
-	            return parts.length < 2 ? 1 : Math.pow(10, parts[1].length);
-	        },
-	        /**
-	         * Given a variable number of arguments, returns the maximum
-	         * multiplier that must be used to normalize an operation involving
-	         * all of them.
-	         */
-	        correctionFactor: function () {
-	            var args = Array.prototype.slice.call(arguments);
-
-	            return args.reduce(function(accum, next) {
-	                var mn = _.multiplier(next);
-	                return accum > mn ? accum : mn;
-	            }, 1);
-	        },
-	        /**
-	         * Implementation of toFixed() that treats floats more like decimals
-	         *
-	         * Fixes binary rounding issues (eg. (0.615).toFixed(2) === '0.61') that present
-	         * problems for accounting- and finance-related software.
-	         */
-	        toFixed: function(value, maxDecimals, roundingFunction, optionals) {
-	            var splitValue = value.toString().split('.'),
-	                minDecimals = maxDecimals - (optionals || 0),
-	                boundedPrecision,
-	                optionalsRegExp,
-	                power,
-	                output;
-
-	            // Use the smallest precision value possible to avoid errors from floating point representation
-	            if (splitValue.length === 2) {
-	              boundedPrecision = Math.min(Math.max(splitValue[1].length, minDecimals), maxDecimals);
-	            } else {
-	              boundedPrecision = minDecimals;
-	            }
-
-	            power = Math.pow(10, boundedPrecision);
-
-	            // Multiply up by precision, round accurately, then divide and use native toFixed():
-	            output = (roundingFunction(value + 'e+' + boundedPrecision) / power).toFixed(boundedPrecision);
-
-	            if (optionals > maxDecimals - boundedPrecision) {
-	                optionalsRegExp = new RegExp('\\.?0{1,' + (optionals - (maxDecimals - boundedPrecision)) + '}$');
-	                output = output.replace(optionalsRegExp, '');
-	            }
-
-	            return output;
-	        }
-	    };
-
-	    // avaliable options
-	    numeral.options = options;
-
-	    // avaliable formats
-	    numeral.formats = formats;
-
-	    // avaliable formats
-	    numeral.locales = locales;
-
-	    // This function sets the current locale.  If
-	    // no arguments are passed in, it will simply return the current global
-	    // locale key.
-	    numeral.locale = function(key) {
-	        if (key) {
-	            options.currentLocale = key.toLowerCase();
-	        }
-
-	        return options.currentLocale;
-	    };
-
-	    // This function provides access to the loaded locale data.  If
-	    // no arguments are passed in, it will simply return the current
-	    // global locale object.
-	    numeral.localeData = function(key) {
-	        if (!key) {
-	            return locales[options.currentLocale];
-	        }
-
-	        key = key.toLowerCase();
-
-	        if (!locales[key]) {
-	            throw new Error('Unknown locale : ' + key);
-	        }
-
-	        return locales[key];
-	    };
-
-	    numeral.reset = function() {
-	        for (var property in defaults) {
-	            options[property] = defaults[property];
-	        }
-	    };
-
-	    numeral.zeroFormat = function(format) {
-	        options.zeroFormat = typeof(format) === 'string' ? format : null;
-	    };
-
-	    numeral.nullFormat = function (format) {
-	        options.nullFormat = typeof(format) === 'string' ? format : null;
-	    };
-
-	    numeral.defaultFormat = function(format) {
-	        options.defaultFormat = typeof(format) === 'string' ? format : '0.0';
-	    };
-
-	    numeral.register = function(type, name, format) {
-	        name = name.toLowerCase();
-
-	        if (this[type + 's'][name]) {
-	            throw new TypeError(name + ' ' + type + ' already registered.');
-	        }
-
-	        this[type + 's'][name] = format;
-
-	        return format;
-	    };
-
-
-	    numeral.validate = function(val, culture) {
-	        var _decimalSep,
-	            _thousandSep,
-	            _currSymbol,
-	            _valArray,
-	            _abbrObj,
-	            _thousandRegEx,
-	            localeData,
-	            temp;
-
-	        //coerce val to string
-	        if (typeof val !== 'string') {
-	            val += '';
-
-	            if (console.warn) {
-	                console.warn('Numeral.js: Value is not string. It has been co-erced to: ', val);
-	            }
-	        }
-
-	        //trim whitespaces from either sides
-	        val = val.trim();
-
-	        //if val is just digits return true
-	        if (!!val.match(/^\d+$/)) {
-	            return true;
-	        }
-
-	        //if val is empty return false
-	        if (val === '') {
-	            return false;
-	        }
-
-	        //get the decimal and thousands separator from numeral.localeData
-	        try {
-	            //check if the culture is understood by numeral. if not, default it to current locale
-	            localeData = numeral.localeData(culture);
-	        } catch (e) {
-	            localeData = numeral.localeData(numeral.locale());
-	        }
-
-	        //setup the delimiters and currency symbol based on culture/locale
-	        _currSymbol = localeData.currency.symbol;
-	        _abbrObj = localeData.abbreviations;
-	        _decimalSep = localeData.delimiters.decimal;
-	        if (localeData.delimiters.thousands === '.') {
-	            _thousandSep = '\\.';
-	        } else {
-	            _thousandSep = localeData.delimiters.thousands;
-	        }
-
-	        // validating currency symbol
-	        temp = val.match(/^[^\d]+/);
-	        if (temp !== null) {
-	            val = val.substr(1);
-	            if (temp[0] !== _currSymbol) {
-	                return false;
-	            }
-	        }
-
-	        //validating abbreviation symbol
-	        temp = val.match(/[^\d]+$/);
-	        if (temp !== null) {
-	            val = val.slice(0, -1);
-	            if (temp[0] !== _abbrObj.thousand && temp[0] !== _abbrObj.million && temp[0] !== _abbrObj.billion && temp[0] !== _abbrObj.trillion) {
-	                return false;
-	            }
-	        }
-
-	        _thousandRegEx = new RegExp(_thousandSep + '{2}');
-
-	        if (!val.match(/[^\d.,]/g)) {
-	            _valArray = val.split(_decimalSep);
-	            if (_valArray.length > 2) {
-	                return false;
-	            } else {
-	                if (_valArray.length < 2) {
-	                    return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_thousandRegEx));
-	                } else {
-	                    if (_valArray[0].length === 1) {
-	                        return ( !! _valArray[0].match(/^\d+$/) && !_valArray[0].match(_thousandRegEx) && !! _valArray[1].match(/^\d+$/));
-	                    } else {
-	                        return ( !! _valArray[0].match(/^\d+.*\d$/) && !_valArray[0].match(_thousandRegEx) && !! _valArray[1].match(/^\d+$/));
-	                    }
-	                }
-	            }
-	        }
-
-	        return false;
-	    };
-
-
-	    /************************************
-	        Numeral Prototype
-	    ************************************/
-
-	    numeral.fn = Numeral.prototype = {
-	        clone: function() {
-	            return numeral(this);
-	        },
-	        format: function(inputString, roundingFunction) {
-	            var value = this._value,
-	                format = inputString || options.defaultFormat,
-	                kind,
-	                output,
-	                formatFunction;
-
-	            // make sure we have a roundingFunction
-	            roundingFunction = roundingFunction || Math.round;
-
-	            // format based on value
-	            if (value === 0 && options.zeroFormat !== null) {
-	                output = options.zeroFormat;
-	            } else if (value === null && options.nullFormat !== null) {
-	                output = options.nullFormat;
-	            } else {
-	                for (kind in formats) {
-	                    if (format.match(formats[kind].regexps.format)) {
-	                        formatFunction = formats[kind].format;
-
-	                        break;
-	                    }
-	                }
-
-	                formatFunction = formatFunction || numeral._.numberToFormat;
-
-	                output = formatFunction(value, format, roundingFunction);
-	            }
-
-	            return output;
-	        },
-	        value: function() {
-	            return this._value;
-	        },
-	        input: function() {
-	            return this._input;
-	        },
-	        set: function(value) {
-	            this._value = Number(value);
-
-	            return this;
-	        },
-	        add: function(value) {
-	            var corrFactor = _.correctionFactor.call(null, this._value, value);
-
-	            function cback(accum, curr, currI, O) {
-	                return accum + Math.round(corrFactor * curr);
-	            }
-
-	            this._value = _.reduce([this._value, value], cback, 0) / corrFactor;
-
-	            return this;
-	        },
-	        subtract: function(value) {
-	            var corrFactor = _.correctionFactor.call(null, this._value, value);
-
-	            function cback(accum, curr, currI, O) {
-	                return accum - Math.round(corrFactor * curr);
-	            }
-
-	            this._value = _.reduce([value], cback, Math.round(this._value * corrFactor)) / corrFactor;
-
-	            return this;
-	        },
-	        multiply: function(value) {
-	            function cback(accum, curr, currI, O) {
-	                var corrFactor = _.correctionFactor(accum, curr);
-	                return Math.round(accum * corrFactor) * Math.round(curr * corrFactor) / Math.round(corrFactor * corrFactor);
-	            }
-
-	            this._value = _.reduce([this._value, value], cback, 1);
-
-	            return this;
-	        },
-	        divide: function(value) {
-	            function cback(accum, curr, currI, O) {
-	                var corrFactor = _.correctionFactor(accum, curr);
-	                return Math.round(accum * corrFactor) / Math.round(curr * corrFactor);
-	            }
-
-	            this._value = _.reduce([this._value, value], cback);
-
-	            return this;
-	        },
-	        difference: function(value) {
-	            return Math.abs(numeral(this._value).subtract(value).value());
-	        }
-	    };
-
-	    /************************************
-	        Default Locale && Format
-	    ************************************/
-
-	    numeral.register('locale', 'en', {
-	        delimiters: {
-	            thousands: ',',
-	            decimal: '.'
-	        },
-	        abbreviations: {
-	            thousand: 'k',
-	            million: 'm',
-	            billion: 'b',
-	            trillion: 't'
-	        },
-	        ordinal: function(number) {
-	            var b = number % 10;
-	            return (~~(number % 100 / 10) === 1) ? 'th' :
-	                (b === 1) ? 'st' :
-	                (b === 2) ? 'nd' :
-	                (b === 3) ? 'rd' : 'th';
-	        },
-	        currency: {
-	            symbol: '$'
-	        }
-	    });
-
-	    
-
-	(function() {
-	        numeral.register('format', 'bps', {
-	            regexps: {
-	                format: /(BPS)/,
-	                unformat: /(BPS)/
-	            },
-	            format: function(value, format, roundingFunction) {
-	                var space = numeral._.includes(format, ' BPS') ? ' ' : '',
-	                    output;
-
-	                value = value * 10000;
-
-	                // check for space before BPS
-	                format = format.replace(/\s?BPS/, '');
-
-	                output = numeral._.numberToFormat(value, format, roundingFunction);
-
-	                if (numeral._.includes(output, ')')) {
-	                    output = output.split('');
-
-	                    output.splice(-1, 0, space + 'BPS');
-
-	                    output = output.join('');
-	                } else {
-	                    output = output + space + 'BPS';
-	                }
-
-	                return output;
-	            },
-	            unformat: function(string) {
-	                return +(numeral._.stringToNumber(string) * 0.0001).toFixed(15);
-	            }
-	        });
-	})();
-
-
-	(function() {
-	        var decimal = {
-	            base: 1000,
-	            suffixes: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-	        },
-	        binary = {
-	            base: 1024,
-	            suffixes: ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
-	        };
-
-	    var allSuffixes =  decimal.suffixes.concat(binary.suffixes.filter(function (item) {
-	            return decimal.suffixes.indexOf(item) < 0;
-	        }));
-	        var unformatRegex = allSuffixes.join('|');
-	        // Allow support for BPS (http://www.investopedia.com/terms/b/basispoint.asp)
-	        unformatRegex = '(' + unformatRegex.replace('B', 'B(?!PS)') + ')';
-
-	    numeral.register('format', 'bytes', {
-	        regexps: {
-	            format: /([0\s]i?b)/,
-	            unformat: new RegExp(unformatRegex)
-	        },
-	        format: function(value, format, roundingFunction) {
-	            var output,
-	                bytes = numeral._.includes(format, 'ib') ? binary : decimal,
-	                suffix = numeral._.includes(format, ' b') || numeral._.includes(format, ' ib') ? ' ' : '',
-	                power,
-	                min,
-	                max;
-
-	            // check for space before
-	            format = format.replace(/\s?i?b/, '');
-
-	            for (power = 0; power <= bytes.suffixes.length; power++) {
-	                min = Math.pow(bytes.base, power);
-	                max = Math.pow(bytes.base, power + 1);
-
-	                if (value === null || value === 0 || value >= min && value < max) {
-	                    suffix += bytes.suffixes[power];
-
-	                    if (min > 0) {
-	                        value = value / min;
-	                    }
-
-	                    break;
-	                }
-	            }
-
-	            output = numeral._.numberToFormat(value, format, roundingFunction);
-
-	            return output + suffix;
-	        },
-	        unformat: function(string) {
-	            var value = numeral._.stringToNumber(string),
-	                power,
-	                bytesMultiplier;
-
-	            if (value) {
-	                for (power = decimal.suffixes.length - 1; power >= 0; power--) {
-	                    if (numeral._.includes(string, decimal.suffixes[power])) {
-	                        bytesMultiplier = Math.pow(decimal.base, power);
-
-	                        break;
-	                    }
-
-	                    if (numeral._.includes(string, binary.suffixes[power])) {
-	                        bytesMultiplier = Math.pow(binary.base, power);
-
-	                        break;
-	                    }
-	                }
-
-	                value *= (bytesMultiplier || 1);
-	            }
-
-	            return value;
-	        }
-	    });
-	})();
-
-
-	(function() {
-	        numeral.register('format', 'currency', {
-	        regexps: {
-	            format: /(\$)/
-	        },
-	        format: function(value, format, roundingFunction) {
-	            var locale = numeral.locales[numeral.options.currentLocale],
-	                symbols = {
-	                    before: format.match(/^([\+|\-|\(|\s|\$]*)/)[0],
-	                    after: format.match(/([\+|\-|\)|\s|\$]*)$/)[0]
-	                },
-	                output,
-	                symbol,
-	                i;
-
-	            // strip format of spaces and $
-	            format = format.replace(/\s?\$\s?/, '');
-
-	            // format the number
-	            output = numeral._.numberToFormat(value, format, roundingFunction);
-
-	            // update the before and after based on value
-	            if (value >= 0) {
-	                symbols.before = symbols.before.replace(/[\-\(]/, '');
-	                symbols.after = symbols.after.replace(/[\-\)]/, '');
-	            } else if (value < 0 && (!numeral._.includes(symbols.before, '-') && !numeral._.includes(symbols.before, '('))) {
-	                symbols.before = '-' + symbols.before;
-	            }
-
-	            // loop through each before symbol
-	            for (i = 0; i < symbols.before.length; i++) {
-	                symbol = symbols.before[i];
-
-	                switch (symbol) {
-	                    case '$':
-	                        output = numeral._.insert(output, locale.currency.symbol, i);
-	                        break;
-	                    case ' ':
-	                        output = numeral._.insert(output, ' ', i + locale.currency.symbol.length - 1);
-	                        break;
-	                }
-	            }
-
-	            // loop through each after symbol
-	            for (i = symbols.after.length - 1; i >= 0; i--) {
-	                symbol = symbols.after[i];
-
-	                switch (symbol) {
-	                    case '$':
-	                        output = i === symbols.after.length - 1 ? output + locale.currency.symbol : numeral._.insert(output, locale.currency.symbol, -(symbols.after.length - (1 + i)));
-	                        break;
-	                    case ' ':
-	                        output = i === symbols.after.length - 1 ? output + ' ' : numeral._.insert(output, ' ', -(symbols.after.length - (1 + i) + locale.currency.symbol.length - 1));
-	                        break;
-	                }
-	            }
-
-
-	            return output;
-	        }
-	    });
-	})();
-
-
-	(function() {
-	        numeral.register('format', 'exponential', {
-	        regexps: {
-	            format: /(e\+|e-)/,
-	            unformat: /(e\+|e-)/
-	        },
-	        format: function(value, format, roundingFunction) {
-	            var output,
-	                exponential = typeof value === 'number' && !numeral._.isNaN(value) ? value.toExponential() : '0e+0',
-	                parts = exponential.split('e');
-
-	            format = format.replace(/e[\+|\-]{1}0/, '');
-
-	            output = numeral._.numberToFormat(Number(parts[0]), format, roundingFunction);
-
-	            return output + 'e' + parts[1];
-	        },
-	        unformat: function(string) {
-	            var parts = numeral._.includes(string, 'e+') ? string.split('e+') : string.split('e-'),
-	                value = Number(parts[0]),
-	                power = Number(parts[1]);
-
-	            power = numeral._.includes(string, 'e-') ? power *= -1 : power;
-
-	            function cback(accum, curr, currI, O) {
-	                var corrFactor = numeral._.correctionFactor(accum, curr),
-	                    num = (accum * corrFactor) * (curr * corrFactor) / (corrFactor * corrFactor);
-	                return num;
-	            }
-
-	            return numeral._.reduce([value, Math.pow(10, power)], cback, 1);
-	        }
-	    });
-	})();
-
-
-	(function() {
-	        numeral.register('format', 'ordinal', {
-	        regexps: {
-	            format: /(o)/
-	        },
-	        format: function(value, format, roundingFunction) {
-	            var locale = numeral.locales[numeral.options.currentLocale],
-	                output,
-	                ordinal = numeral._.includes(format, ' o') ? ' ' : '';
-
-	            // check for space before
-	            format = format.replace(/\s?o/, '');
-
-	            ordinal += locale.ordinal(value);
-
-	            output = numeral._.numberToFormat(value, format, roundingFunction);
-
-	            return output + ordinal;
-	        }
-	    });
-	})();
-
-
-	(function() {
-	        numeral.register('format', 'percentage', {
-	        regexps: {
-	            format: /(%)/,
-	            unformat: /(%)/
-	        },
-	        format: function(value, format, roundingFunction) {
-	            var space = numeral._.includes(format, ' %') ? ' ' : '',
-	                output;
-
-	            if (numeral.options.scalePercentBy100) {
-	                value = value * 100;
-	            }
-
-	            // check for space before %
-	            format = format.replace(/\s?\%/, '');
-
-	            output = numeral._.numberToFormat(value, format, roundingFunction);
-
-	            if (numeral._.includes(output, ')')) {
-	                output = output.split('');
-
-	                output.splice(-1, 0, space + '%');
-
-	                output = output.join('');
-	            } else {
-	                output = output + space + '%';
-	            }
-
-	            return output;
-	        },
-	        unformat: function(string) {
-	            var number = numeral._.stringToNumber(string);
-	            if (numeral.options.scalePercentBy100) {
-	                return number * 0.01;
-	            }
-	            return number;
-	        }
-	    });
-	})();
-
-
-	(function() {
-	        numeral.register('format', 'time', {
-	        regexps: {
-	            format: /(:)/,
-	            unformat: /(:)/
-	        },
-	        format: function(value, format, roundingFunction) {
-	            var hours = Math.floor(value / 60 / 60),
-	                minutes = Math.floor((value - (hours * 60 * 60)) / 60),
-	                seconds = Math.round(value - (hours * 60 * 60) - (minutes * 60));
-
-	            return hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
-	        },
-	        unformat: function(string) {
-	            var timeArray = string.split(':'),
-	                seconds = 0;
-
-	            // turn hours and minutes into seconds and add them all up
-	            if (timeArray.length === 3) {
-	                // hours
-	                seconds = seconds + (Number(timeArray[0]) * 60 * 60);
-	                // minutes
-	                seconds = seconds + (Number(timeArray[1]) * 60);
-	                // seconds
-	                seconds = seconds + Number(timeArray[2]);
-	            } else if (timeArray.length === 2) {
-	                // minutes
-	                seconds = seconds + (Number(timeArray[0]) * 60);
-	                // seconds
-	                seconds = seconds + Number(timeArray[1]);
-	            }
-	            return Number(seconds);
-	        }
-	    });
-	})();
-
-	return numeral;
-	}));
-
-
-/***/ },
-/* 614 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function (global, factory) {
-	     true ? module.exports = factory() :
-	    typeof define === 'function' && define.amd ? define(factory) :
-	    global.shortNumber = factory();
-	}(this, function (num) {
-	    'use strict';
-
-	    return function (num) {
-	        if(typeof num !== 'number') {
-	            throw new TypeError('Expected a number');
-	        }
-
-	        if(num > 1e19) {
-	            throw new RangeError('Input expected to be < 1e19');
-	        }
-
-	        if(num < -1e19) {
-	            throw new RangeError('Input expected to be > 1e19');
-	        }
-
-	        if(Math.abs(num) < 1000) {
-	            return num;
-	        }
-
-	        var shortNumber;
-	        var exponent;
-	        var size;
-	        var sign = num < 0 ? '-' : '';
-	        var suffixes = {
-	            'K': 6,
-	            'M': 9,
-	            'B': 12,
-	            'T': 16
-	        };
-
-	        num = Math.abs(num);
-	        size = num.toString().length;
-
-	        exponent = size % 3 === 0 ? size - 3 : size - (size % 3);
-	        shortNumber = Math.round(10 * (num / Math.pow(10, exponent))) / 10;
-
-	        for(var suffix in suffixes) {
-	            if(exponent < suffixes[suffix]) {
-	                shortNumber += suffix;
-	                break;
-	            }
-	        }
-
-	        return sign + shortNumber;
-	    };
-	}));
-
-/***/ },
-/* 615 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(616);
+	var content = __webpack_require__(614);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62345,7 +61287,7 @@
 	}
 
 /***/ },
-/* 616 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62359,13 +61301,13 @@
 
 
 /***/ },
-/* 617 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(618);
+	var content = __webpack_require__(616);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -62385,7 +61327,7 @@
 	}
 
 /***/ },
-/* 618 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -62399,7 +61341,7 @@
 
 
 /***/ },
-/* 619 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62424,7 +61366,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(620);
+	__webpack_require__(618);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63075,13 +62017,13 @@
 	};
 
 /***/ },
-/* 620 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(621);
+	var content = __webpack_require__(619);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63101,7 +62043,7 @@
 	}
 
 /***/ },
-/* 621 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63115,7 +62057,7 @@
 
 
 /***/ },
-/* 622 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63213,7 +62155,7 @@
 	};
 
 /***/ },
-/* 623 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63238,7 +62180,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(624);
+	__webpack_require__(622);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63391,13 +62333,13 @@
 	};
 
 /***/ },
-/* 624 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(625);
+	var content = __webpack_require__(623);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63417,7 +62359,7 @@
 	}
 
 /***/ },
-/* 625 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63431,7 +62373,7 @@
 
 
 /***/ },
-/* 626 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63452,7 +62394,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(627);
+	var _PropDocumentation = __webpack_require__(625);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -63462,7 +62404,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(630);
+	__webpack_require__(628);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63678,7 +62620,7 @@
 	};
 
 /***/ },
-/* 627 */
+/* 625 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63699,7 +62641,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(628);
+	__webpack_require__(626);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63813,13 +62755,13 @@
 	};
 
 /***/ },
-/* 628 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(629);
+	var content = __webpack_require__(627);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63839,7 +62781,7 @@
 	}
 
 /***/ },
-/* 629 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63853,13 +62795,13 @@
 
 
 /***/ },
-/* 630 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(631);
+	var content = __webpack_require__(629);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -63879,7 +62821,7 @@
 	}
 
 /***/ },
-/* 631 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -63893,7 +62835,7 @@
 
 
 /***/ },
-/* 632 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64016,7 +62958,7 @@
 	};
 
 /***/ },
-/* 633 */
+/* 631 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64031,7 +62973,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _FlexExample = __webpack_require__(634);
+	var _FlexExample = __webpack_require__(632);
 
 	var _FlexExample2 = _interopRequireDefault(_FlexExample);
 
@@ -64081,7 +63023,7 @@
 	};
 
 /***/ },
-/* 634 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64103,9 +63045,9 @@
 
 	var _flex = __webpack_require__(280);
 
-	__webpack_require__(635);
+	__webpack_require__(633);
 
-	__webpack_require__(637);
+	__webpack_require__(635);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64364,13 +63306,13 @@
 	};
 
 /***/ },
-/* 635 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(636);
+	var content = __webpack_require__(634);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -64390,7 +63332,7 @@
 	}
 
 /***/ },
-/* 636 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -64404,13 +63346,13 @@
 
 
 /***/ },
-/* 637 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(638);
+	var content = __webpack_require__(636);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -64430,7 +63372,7 @@
 	}
 
 /***/ },
-/* 638 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -64444,7 +63386,7 @@
 
 
 /***/ },
-/* 639 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64814,7 +63756,7 @@
 	};
 
 /***/ },
-/* 640 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64847,7 +63789,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(641);
+	__webpack_require__(639);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65092,13 +64034,13 @@
 	};
 
 /***/ },
-/* 641 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(642);
+	var content = __webpack_require__(640);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65118,7 +64060,7 @@
 	}
 
 /***/ },
-/* 642 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65132,7 +64074,7 @@
 
 
 /***/ },
-/* 643 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65161,7 +64103,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(644);
+	__webpack_require__(642);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65238,13 +64180,13 @@
 	};
 
 /***/ },
-/* 644 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(645);
+	var content = __webpack_require__(643);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65264,7 +64206,7 @@
 	}
 
 /***/ },
-/* 645 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65278,7 +64220,7 @@
 
 
 /***/ },
-/* 646 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65303,7 +64245,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(647);
+	__webpack_require__(645);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65386,13 +64328,13 @@
 	};
 
 /***/ },
-/* 647 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(648);
+	var content = __webpack_require__(646);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -65412,7 +64354,7 @@
 	}
 
 /***/ },
-/* 648 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -65426,7 +64368,7 @@
 
 
 /***/ },
-/* 649 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65685,7 +64627,7 @@
 	};
 
 /***/ },
-/* 650 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65700,7 +64642,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loremIpsum = __webpack_require__(651);
+	var _loremIpsum = __webpack_require__(649);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -65712,7 +64654,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(627);
+	var _PropDocumentation = __webpack_require__(625);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -65722,7 +64664,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(654);
+	__webpack_require__(652);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65961,7 +64903,7 @@
 	};
 
 /***/ },
-/* 651 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var generator = function() {
@@ -65973,9 +64915,9 @@
 		  , paragraphLowerBound = options.paragraphLowerBound || 3
 		  , paragraphUpperBound = options.paragraphUpperBound || 7
 		  , format = options.format || 'plain'
-	    , words = options.words || __webpack_require__(652).words
+	    , words = options.words || __webpack_require__(650).words
 	    , random = options.random || Math.random
-	    , suffix = options.suffix || __webpack_require__(653).EOL;
+	    , suffix = options.suffix || __webpack_require__(651).EOL;
 
 	  units = simplePluralize(units.toLowerCase());
 
@@ -66089,7 +65031,7 @@
 
 
 /***/ },
-/* 652 */
+/* 650 */
 /***/ function(module, exports) {
 
 	var dictionary = {
@@ -66162,7 +65104,7 @@
 	module.exports = dictionary;
 
 /***/ },
-/* 653 */
+/* 651 */
 /***/ function(module, exports) {
 
 	exports.endianness = function () { return 'LE' };
@@ -66213,13 +65155,13 @@
 
 
 /***/ },
-/* 654 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(655);
+	var content = __webpack_require__(653);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -66239,7 +65181,7 @@
 	}
 
 /***/ },
-/* 655 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -66253,7 +65195,7 @@
 
 
 /***/ },
-/* 656 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66267,17 +65209,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SideBar = __webpack_require__(657);
+	var _SideBar = __webpack_require__(655);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _TopBar = __webpack_require__(667);
+	var _TopBar = __webpack_require__(665);
 
 	var _TopBar2 = _interopRequireDefault(_TopBar);
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(672);
+	__webpack_require__(670);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66318,7 +65260,7 @@
 	};
 
 /***/ },
-/* 657 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66327,7 +65269,7 @@
 	  value: true
 	});
 
-	var _SideBar = __webpack_require__(658);
+	var _SideBar = __webpack_require__(656);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
@@ -66336,7 +65278,7 @@
 	exports.default = _SideBar2.default;
 
 /***/ },
-/* 658 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66354,17 +65296,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _NavGroup = __webpack_require__(659);
+	var _NavGroup = __webpack_require__(657);
 
 	var _NavGroup2 = _interopRequireDefault(_NavGroup);
 
-	var _NavLink = __webpack_require__(660);
+	var _NavLink = __webpack_require__(658);
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(665);
+	__webpack_require__(663);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66408,6 +65350,11 @@
 	        _NavLink2.default,
 	        { href: "/design/page-layout" },
 	        "Page Layout"
+	      ),
+	      _react2.default.createElement(
+	        _NavLink2.default,
+	        { href: "/design/compound-form" },
+	        "Compound Form"
 	      ),
 	      _react2.default.createElement(
 	        _NavLink2.default,
@@ -66560,7 +65507,7 @@
 	};
 
 /***/ },
-/* 659 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66582,13 +65529,13 @@
 
 	var _MorePropTypes2 = _interopRequireDefault(_MorePropTypes);
 
-	var _NavLink = __webpack_require__(660);
+	var _NavLink = __webpack_require__(658);
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(663);
+	__webpack_require__(661);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66628,7 +65575,7 @@
 	};
 
 /***/ },
-/* 660 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66651,7 +65598,7 @@
 
 	var _reactRouter = __webpack_require__(204);
 
-	__webpack_require__(661);
+	__webpack_require__(659);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66700,13 +65647,13 @@
 	};
 
 /***/ },
-/* 661 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(662);
+	var content = __webpack_require__(660);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -66726,7 +65673,7 @@
 	}
 
 /***/ },
-/* 662 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -66735,6 +65682,46 @@
 
 	// module
 	exports.push([module.id, ".SideBar--NavLink {\n  font-size: 1rem;\n  box-shadow: inset 0 0 #b5bcca;\n  color: #566279;\n  display: block;\n  padding: 0.75rem 1.5rem;\n  transition: box-shadow 0.15s ease-out;\n}\n.SideBar--NavLink:active,\n.SideBar--NavLink:focus,\n.SideBar--NavLink:hover {\n  outline: none;\n  text-decoration: none;\n}\n.SideBar--NavLink:focus,\n.SideBar--NavLink:hover {\n  box-shadow: inset 0.1875rem 0 #b5bcca;\n  color: #191926;\n}\n.SideBar--NavLink--active,\n.SideBar--NavLink--active:active,\n.SideBar--NavLink--active:focus,\n.SideBar--NavLink--active:hover {\n  font-weight: 600;\n  font-style: normal;\n  color: #4274f6;\n  box-shadow: inset 0.1875rem 0 #4274f6;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 661 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(662);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(270)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 662 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(269)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".SideBar--NavGroup--title {\n  font-size: 1rem;\n  font-weight: 600;\n  font-style: normal;\n  color: #191926;\n  margin: 0;\n  padding: 0.75rem 1.5rem;\n}\n.SideBar--NavGroup--subNav .SideBar--NavLink {\n  font-size: 0.75rem;\n  padding-left: 2.5rem;\n}\n", ""]);
 
 	// exports
 
@@ -66755,8 +65742,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./NavGroup.less");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -66774,7 +65761,7 @@
 
 
 	// module
-	exports.push([module.id, ".SideBar--NavGroup--title {\n  font-size: 1rem;\n  font-weight: 600;\n  font-style: normal;\n  color: #191926;\n  margin: 0;\n  padding: 0.75rem 1.5rem;\n}\n.SideBar--NavGroup--subNav .SideBar--NavLink {\n  font-size: 0.75rem;\n  padding-left: 2.5rem;\n}\n", ""]);
+	exports.push([module.id, ".SideBar {\n  background-color: #fafafc;\n  box-shadow: inset -0.5rem 0 0.5rem -0.5rem rgba(25, 25, 38, 0.15);\n  min-width: 12rem;\n  padding: 1rem 0;\n}\n", ""]);
 
 	// exports
 
@@ -66783,53 +65770,13 @@
 /* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(666);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(270)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/index.js!../../../node_modules/less-loader/index.js!./SideBar.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 666 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(269)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".SideBar {\n  background-color: #fafafc;\n  box-shadow: inset -0.5rem 0 0.5rem -0.5rem rgba(25, 25, 38, 0.15);\n  min-width: 12rem;\n  padding: 1rem 0;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 667 */
-/***/ function(module, exports, __webpack_require__) {
-
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _TopBar = __webpack_require__(668);
+	var _TopBar = __webpack_require__(666);
 
 	var _TopBar2 = _interopRequireDefault(_TopBar);
 
@@ -66838,7 +65785,7 @@
 	exports.default = _TopBar2.default;
 
 /***/ },
-/* 668 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66858,11 +65805,11 @@
 
 	var _src = __webpack_require__(279);
 
-	var _Logo = __webpack_require__(669);
+	var _Logo = __webpack_require__(667);
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
-	__webpack_require__(670);
+	__webpack_require__(668);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66917,7 +65864,7 @@
 	};
 
 /***/ },
-/* 669 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -66982,13 +65929,13 @@
 	};
 
 /***/ },
-/* 670 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(671);
+	var content = __webpack_require__(669);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -67008,7 +65955,7 @@
 	}
 
 /***/ },
-/* 671 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -67022,13 +65969,13 @@
 
 
 /***/ },
-/* 672 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(673);
+	var content = __webpack_require__(671);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -67048,7 +65995,7 @@
 	}
 
 /***/ },
-/* 673 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -67062,7 +66009,7 @@
 
 
 /***/ },
-/* 674 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67081,7 +66028,733 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _LeftNavExample = __webpack_require__(675);
+	var _src = __webpack_require__(279);
+
+	__webpack_require__(673);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LayoutCompoundForm = function (_PureComponent) {
+	  _inherits(LayoutCompoundForm, _PureComponent);
+
+	  function LayoutCompoundForm() {
+	    _classCallCheck(this, LayoutCompoundForm);
+
+	    return _possibleConstructorReturn(this, (LayoutCompoundForm.__proto__ || Object.getPrototypeOf(LayoutCompoundForm)).apply(this, arguments));
+	  }
+
+	  _createClass(LayoutCompoundForm, [{
+	    key: "render",
+	    value: function render() {
+	      var cssClass = LayoutCompoundForm.cssClass;
+	      var Col = _src.Grid.Col;
+	      var Row = _src.Grid.Row;
+
+
+	      return _react2.default.createElement(
+	        _View2.default,
+	        { className: cssClass.CONTAINER, title: "Compound Form" },
+	        _react2.default.createElement(
+	          _src.Grid,
+	          null,
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox padding--right--l" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "h2",
+	                  null,
+	                  "Layout Guidelines"
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "Now that we have broken down most variation of input fields (TextInput, TextArea, etc), let\u2019s hash out how they should behave together. Below are the basic guidelines we have set up based on the different use-cases we\u2019ve encountered in our product."
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "Please ping #design when you are unable to use the example below to design your own form! We will gladly take a look and add new use-cases to the working guidelines below!"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "h3",
+	                  null,
+	                  "Do's and Don'ts"
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "Below is a working list of simple guidelines to help ensures that your form-design will turn out \uD83D\uDD25!"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: "text--semi-bold" },
+	                  "#1. Form inputs should be stacked according to the order of proper information architecture"
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "Moving forward with the new component, this should become the default norm."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide1_bad.png", alt: "Unstacked form inputs" })
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide1_good.png", alt: "Stacked form inputs" })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Don\u2019t:"
+	                  ),
+	                  " arbitrarily add space between TextInput forms."
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Do:"
+	                  ),
+	                  " vertically stack relevant information form. A horizontal split is also appropriate for expected shorter content."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox margin--top--2xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: "text--semi-bold" },
+	                  "#2. Treat checkbox, radio, and type ahead search field layout similarly with TextInput component"
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "All method of inputs should be treated the same way--with white bounding box surround."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide2_bad.png", alt: "Checkbox field with no background" })
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide2_good.png", alt: "Checkbox field with background" })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Don\u2019t:"
+	                  ),
+	                  " remove the bounded background on alternative input fields."
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Do:"
+	                  ),
+	                  " treat them similarly to TextInput"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox margin--top--2xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "text--semi-bold" },
+	                    "#3. Use concise and thoughtful input labels"
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "This is one of the more difficult ones to achieve and often take several iterations to get right. However, the impact of having clear and concise instruction is definitely key to successful form design."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide3_bad.png", alt: "Existing Client Secret workflow" })
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide3_good.png", alt: "Explicit action on form input" })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Don\u2019t:"
+	                  ),
+	                  " be too wordy. Wordy \u2260 Descriptive."
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Do:"
+	                  ),
+	                  " be explicit with your labels."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox margin--top--2xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "text--semi-bold" },
+	                    "#4. Use the \u2018hint\u2019 pattern to only display more information about a field at the right time"
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "When relying on labels alone is not enough, we can utilize additional screen real-estate with a pop-over."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide4_bad.png", alt: "More info displayed using info icon outside of formInput" })
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/guide4_good.png", alt: "More info displayed using hint pop-over above formInput" })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl imgCentered" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Don\u2019t:"
+	                  ),
+	                  " add info bubble outside of bounded input to display additional information."
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl imgCentered" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Do:"
+	                  ),
+	                  " utilize the similar pattern with password hints on the login flow to pop-out important information just as the user need them."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox margin--top--2xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: "text--semi-bold" },
+	                  "#5. Be explicit with the state of the form (view vs edit)"
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "This is something that we at Clever could collectively get better at. We currently have a habit of displaying most of our form fields as \u2018active\u2019 and always in a ready to update state. This can often cause confusion due to the inherent lack of clarity of what is the current state of the page."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement("img", { src: "./assets/img/guide5_bad.png", alt: "Existing instant login Clever Password setting page" })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--l imgCentered flexColumn" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement("img", { src: "./assets/img/guide5_good_a.png", alt: "Profile Settings displayed in an infoCard view mode" }),
+	                _react2.default.createElement("img", { src: "./assets/img/guide5_good_b.png", alt: "Edit profile settings in a modal" })
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Don\u2019t:"
+	                  ),
+	                  " leave a \u2018free to edit\u2019 form inputs without a clear \u2018save\u2019 button in sight."
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Do:"
+	                  ),
+	                  " have an explicit \u2018view\u2019 (a) and \u2018edit\u2019 (b) mode."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "h3",
+	                  null,
+	                  "Example in practice"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox margin--top--s" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: "text--semi-bold" },
+	                  "A. Application Settings Page - Apps Dashboard"
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "Guidelines used in the example below: #1, 3, 4, 5."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/exampleA_before.png", alt: "Existing Application Settings Page" })
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered flexColumn" },
+	              _react2.default.createElement("img", { src: "./assets/img/exampleA_after_a.png", alt: "Redesigned Application Settings Page with infoCards" }),
+	              _react2.default.createElement("img", { src: "./assets/img/exampleA_after_b.png", alt: "Edit modal" })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Before:"
+	                  ),
+	                  " long in-page form without a clear state of whether or not any of the page content has been modified. \u2018Update\u2019 button is placed at the bottom of the page--past page fold and is easy to miss."
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "After:"
+	                  ),
+	                  " (a) Explicit \u2018view\u2019 mode; (b) Explicit edit state in modal"
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            null,
+	            _react2.default.createElement(
+	              Col,
+	              { span: 12, className: "flexbox margin--top--m" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: "text--semi-bold" },
+	                  "B. Add resources modal (portal)"
+	                ),
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  "Guidelines used in the example below: #1, 2, 3."
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/exampleB_before.png", alt: "Existing add a link modal in portal customization" })
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--m padding--right--5xl imgCentered" },
+	              _react2.default.createElement("img", { src: "./assets/img/exampleB_after.png", alt: "Redesigned add a link modal in portal customization" })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            Row,
+	            { grow: true, className: "margin--bottom--xl" },
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "Before:"
+	                  ),
+	                  " loosely structured form inputs"
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              Col,
+	              { span: 6, className: "flexbox margin--top--s padding--right--5xl" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                  "p",
+	                  null,
+	                  _react2.default.createElement(
+	                    "strong",
+	                    null,
+	                    "After:"
+	                  ),
+	                  " structured form inputs"
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LayoutCompoundForm;
+	}(_react.PureComponent);
+
+	exports.default = LayoutCompoundForm;
+
+
+	LayoutCompoundForm.cssClass = {
+	  CONTAINER: "LayoutCompoundForm"
+	};
+
+/***/ },
+/* 673 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(674);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(270)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LayoutCompoundForm.less", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/postcss-loader/index.js!../../node_modules/less-loader/index.js!./LayoutCompoundForm.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 674 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(269)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".imgCentered {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n}\n.flexColumn {\n  -ms-flex-direction: column;\n      flex-direction: column;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 675 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(33);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _View = __webpack_require__(278);
+
+	var _View2 = _interopRequireDefault(_View);
+
+	var _LeftNavExample = __webpack_require__(676);
 
 	var _LeftNavExample2 = _interopRequireDefault(_LeftNavExample);
 
@@ -67127,7 +66800,7 @@
 	};
 
 /***/ },
-/* 675 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67144,7 +66817,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(676);
+	__webpack_require__(677);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67266,13 +66939,13 @@
 	};
 
 /***/ },
-/* 676 */
+/* 677 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(677);
+	var content = __webpack_require__(678);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -67292,7 +66965,7 @@
 	}
 
 /***/ },
-/* 677 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -67306,7 +66979,7 @@
 
 
 /***/ },
-/* 678 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67643,7 +67316,7 @@
 	};
 
 /***/ },
-/* 679 */
+/* 680 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67654,7 +67327,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _loremIpsum = __webpack_require__(651);
+	var _loremIpsum = __webpack_require__(649);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -67746,7 +67419,7 @@
 	};
 
 /***/ },
-/* 680 */
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67757,7 +67430,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _loremIpsum = __webpack_require__(651);
+	var _loremIpsum = __webpack_require__(649);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -67871,7 +67544,7 @@
 	};
 
 /***/ },
-/* 681 */
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -67890,7 +67563,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(627);
+	var _PropDocumentation = __webpack_require__(625);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -67900,7 +67573,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(682);
+	__webpack_require__(683);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68206,13 +67879,13 @@
 	};
 
 /***/ },
-/* 682 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(683);
+	var content = __webpack_require__(684);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -68232,7 +67905,7 @@
 	}
 
 /***/ },
-/* 683 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -68246,7 +67919,7 @@
 
 
 /***/ },
-/* 684 */
+/* 685 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68390,7 +68063,7 @@
 	};
 
 /***/ },
-/* 685 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68415,7 +68088,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(686);
+	__webpack_require__(687);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68507,13 +68180,13 @@
 	};
 
 /***/ },
-/* 686 */
+/* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(687);
+	var content = __webpack_require__(688);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -68533,7 +68206,7 @@
 	}
 
 /***/ },
-/* 687 */
+/* 688 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -68547,7 +68220,7 @@
 
 
 /***/ },
-/* 688 */
+/* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68696,7 +68369,7 @@
 	};
 
 /***/ },
-/* 689 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68725,7 +68398,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(690);
+	__webpack_require__(691);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68895,13 +68568,13 @@
 	};
 
 /***/ },
-/* 690 */
+/* 691 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(691);
+	var content = __webpack_require__(692);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -68921,7 +68594,7 @@
 	}
 
 /***/ },
-/* 691 */
+/* 692 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -68935,7 +68608,7 @@
 
 
 /***/ },
-/* 692 */
+/* 693 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -68960,7 +68633,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(693);
+	__webpack_require__(694);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -69099,13 +68772,13 @@
 	};
 
 /***/ },
-/* 693 */
+/* 694 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(694);
+	var content = __webpack_require__(695);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -69125,7 +68798,7 @@
 	}
 
 /***/ },
-/* 694 */
+/* 695 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -69139,7 +68812,7 @@
 
 
 /***/ },
-/* 695 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69200,7 +68873,7 @@
 	};
 
 /***/ },
-/* 696 */
+/* 697 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69219,7 +68892,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _TabBarExample = __webpack_require__(697);
+	var _TabBarExample = __webpack_require__(698);
 
 	var _TabBarExample2 = _interopRequireDefault(_TabBarExample);
 
@@ -69265,7 +68938,7 @@
 	};
 
 /***/ },
-/* 697 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69292,11 +68965,11 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(637);
+	__webpack_require__(635);
 
-	__webpack_require__(698);
+	__webpack_require__(699);
 
-	__webpack_require__(700);
+	__webpack_require__(701);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -69519,13 +69192,13 @@
 	};
 
 /***/ },
-/* 698 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(699);
+	var content = __webpack_require__(700);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -69545,7 +69218,7 @@
 	}
 
 /***/ },
-/* 699 */
+/* 700 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -69559,13 +69232,13 @@
 
 
 /***/ },
-/* 700 */
+/* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(701);
+	var content = __webpack_require__(702);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -69585,7 +69258,7 @@
 	}
 
 /***/ },
-/* 701 */
+/* 702 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -69599,7 +69272,7 @@
 
 
 /***/ },
-/* 702 */
+/* 703 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69614,7 +69287,7 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _loremIpsum = __webpack_require__(651);
+	var _loremIpsum = __webpack_require__(649);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -69833,7 +69506,7 @@
 	};
 
 /***/ },
-/* 703 */
+/* 704 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -69858,7 +69531,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(647);
+	__webpack_require__(645);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -69991,7 +69664,7 @@
 	};
 
 /***/ },
-/* 704 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70016,7 +69689,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(705);
+	__webpack_require__(706);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70168,13 +69841,13 @@
 	};
 
 /***/ },
-/* 705 */
+/* 706 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(706);
+	var content = __webpack_require__(707);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -70194,7 +69867,7 @@
 	}
 
 /***/ },
-/* 706 */
+/* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -70208,7 +69881,7 @@
 
 
 /***/ },
-/* 707 */
+/* 708 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70227,7 +69900,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _loremIpsum = __webpack_require__(651);
+	var _loremIpsum = __webpack_require__(649);
 
 	var _loremIpsum2 = _interopRequireDefault(_loremIpsum);
 
@@ -70239,7 +69912,7 @@
 
 	var _Example2 = _interopRequireDefault(_Example);
 
-	var _PropDocumentation = __webpack_require__(627);
+	var _PropDocumentation = __webpack_require__(625);
 
 	var _PropDocumentation2 = _interopRequireDefault(_PropDocumentation);
 
@@ -70249,7 +69922,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(708);
+	__webpack_require__(709);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70439,13 +70112,13 @@
 	};
 
 /***/ },
-/* 708 */
+/* 709 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(709);
+	var content = __webpack_require__(710);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -70465,7 +70138,7 @@
 	}
 
 /***/ },
-/* 709 */
+/* 710 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -70479,7 +70152,7 @@
 
 
 /***/ },
-/* 710 */
+/* 711 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70724,7 +70397,7 @@
 	};
 
 /***/ },
-/* 711 */
+/* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70745,7 +70418,7 @@
 
 	var _src = __webpack_require__(279);
 
-	__webpack_require__(712);
+	__webpack_require__(713);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70940,13 +70613,13 @@
 	};
 
 /***/ },
-/* 712 */
+/* 713 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(713);
+	var content = __webpack_require__(714);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(270)(content, {});
@@ -70966,7 +70639,7 @@
 	}
 
 /***/ },
-/* 713 */
+/* 714 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(269)();
@@ -70980,7 +70653,7 @@
 
 
 /***/ },
-/* 714 */
+/* 715 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -70999,7 +70672,7 @@
 
 	var _View2 = _interopRequireDefault(_View);
 
-	var _WizardExample = __webpack_require__(715);
+	var _WizardExample = __webpack_require__(716);
 
 	var _WizardExample2 = _interopRequireDefault(_WizardExample);
 
@@ -71045,7 +70718,7 @@
 	};
 
 /***/ },
-/* 715 */
+/* 716 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
