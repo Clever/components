@@ -241,7 +241,6 @@ describe("Table", () => {
     for (let i = 0; i < rows.length; i++) {
       const event = {};
       rows.at(i).simulate("click", event);
-      // rows.at(i).props().onClick();
       sinon.assert.calledWith(onRowClick, event, DATA[i].id);
     }
   });
