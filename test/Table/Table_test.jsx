@@ -11,6 +11,7 @@ import Header from "../../src/Table/Header";
 import sortDirection from "../../src/Table/sortDirection";
 import {Table} from "../../src/Table/Table";
 
+
 const DATA = [{
   id: "item_1",
   name: "Item 1",
@@ -24,7 +25,6 @@ const DATA = [{
   name: "Item 3",
   description: "The third item.",
 }];
-
 
 describe("Table", () => {
   const {cssClass} = Table;
@@ -220,5 +220,28 @@ describe("Table", () => {
     assert.equal(footer.props().currentPage, 2, "Incorrect currrentPage prop value.");
     assert.equal(footer.props().numColumns, 2, "Incorrect numColumns prop value.");
     assert.equal(footer.props().numPages, DATA.length, "Incorrect numPages prop value.");
+  });
+
+  it("disables clickable rows if onRowClick is not specified", () => {
+    const table = newTable();
+    assert.equal(0, table.find(`.${cssClass.CLICKABLE_ROW}`).length);
+  });
+
+  it("enables clickable rows if onRowClick is specified", () => {
+    const table = newTable({onRowClick: sinon.stub()});
+    assert.equal(DATA.length, table.find(`.${cssClass.CLICKABLE_ROW}`).length);
+  });
+
+  it("invokes onRowClick with the selected row id", () => {
+    const onRowClick = sinon.stub();
+
+    const table = newTable({onRowClick});
+    const rows = table.find(`.${cssClass.CLICKABLE_ROW}`);
+
+    for (let i = 0; i < rows.length; i++) {
+      const event = {};
+      rows.at(i).simulate("click", event);
+      sinon.assert.calledWith(onRowClick, event, DATA[i].id);
+    }
   });
 });

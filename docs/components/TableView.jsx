@@ -7,10 +7,14 @@ import Example from "./Example";
 import View from "./View";
 import {Button, ModalButton, Table, TextInput} from "src";
 
+import "./TableView.less";
+
+
 export default class TableView extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      enableRowClick: true,
       tableFilter: "",
     };
   }
@@ -38,7 +42,7 @@ export default class TableView extends PureComponent {
 
   render() {
     const {cssClass} = TableView;
-    const {tableData} = this.state;
+    const {enableRowClick, tableData} = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Table">
@@ -55,7 +59,10 @@ export default class TableView extends PureComponent {
               ref="table"
               onPageChange={page => console.log("Table page changed:", page)}
               onSortChange={sortState => console.log("Table sort changed:", sortState)}
-              onRowClick={(e, row) => console.log("Table row clicked:", row)}
+              onRowClick={enableRowClick
+                ? (e, row) => console.log("Table row clicked:", row)
+                : undefined
+              }
               onViewChange={data => console.log("New rows:", data.map(d => d.id))}
               paginated
               pageSize={9}
@@ -145,7 +152,10 @@ export default class TableView extends PureComponent {
               ref="table"
               onPageChange={page => console.log("Table page changed:", page)}
               onSortChange={sortState => console.log("Table sort changed:", sortState)}
-              onRowClick={(e, row) => console.log("Table row clicked:", row)}
+              onRowClick={enableRowClick
+                ? (e, row) => console.log("Table row clicked:", row)
+                : undefined
+              }
               onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
               paginated
               pageSize={9}
@@ -202,6 +212,15 @@ export default class TableView extends PureComponent {
               />
             </Table>
           </div>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={enableRowClick}
+              onChange={({target}) => this.setState({enableRowClick: target.checked})}
+            />
+            {" "}
+            Clickable rows (see console)
+          </label>
         </Example>
       </View>
     );
@@ -209,5 +228,6 @@ export default class TableView extends PureComponent {
 }
 
 TableView.cssClass = {
+  CONFIG: "TableView--config",
   CONTAINER: "TableView",
 };

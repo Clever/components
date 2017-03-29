@@ -47,7 +47,7 @@ border-radius-styles:
 	@echo "Generating border-radius style definitions..."
 	@node genBorderRadius.js
 
-LINT_MAX_LESS_PROBLEMS := 141
+LINT_MAX_LESS_PROBLEMS := 140
 lint:
 	@echo "Linting files..."
 	@$(LINT) $(JS_FILES) $(JSX_FILES)

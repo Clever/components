@@ -1,6 +1,5 @@
-@import "../less/colors.less";
-@import "../less/fonts.less";
-@import "../less/sizing.less";
+@import "../less/index.less";
+
 
 .Table {
   border-collapse: collapse;
@@ -9,9 +8,10 @@
   font-size: 0.875rem;
   width: 100%;
 
-  &.Table--fixed {
-    table-layout: fixed;
-  }
+}
+
+&.Table--fixed {
+  table-layout: fixed;
 }
 
 .Table--no_data_cell {
@@ -20,12 +20,12 @@
   text-align: center;
 }
 
-.Table--body {
-  .Table--row {
-    border-bottom: @size_4xs solid @neutral_silver;
-    &.Table--clickable_row:hover {
-      .tint(background-color, @neutral_silver, 5);
-      cursor: pointer;
-    }
-  }
+.Table--row {
+  .border--bottom--s(@neutral_silver);
+  transition: background-color @timingImmediately ease-out;
+}
+
+&.Table--clickable_row:hover {
+  .tint(background-color, @neutral_silver, 5);
+  cursor: pointer;
 }
