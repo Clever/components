@@ -12,7 +12,7 @@ require("./Footer.less");
  * Pagination footer for the Table component.
  * Only rendered if there are at least 2 pages of data available.
  */
-export default function Footer({currentPage, numColumns, numPages, onPageChange}) {
+export default function Footer({currentPage, numColumns, numPages, onPageChange, showLastPage, isLoading}) {
   const {cssClass, VISIBLE_PAGE_RANGE_SIZE} = Footer;
 
   const renderEllipsis = () => <span className={cssClass.ELLIPSIS}>&hellip;</span>;
@@ -51,64 +51,73 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange}
           className={cssClass.CELL}
           colSpan={numColumns}
         >
-          <Button
-            className={cssClass.BUTTON_SCROLL}
-            disabled={currentPage === 1}
-            onClick={() => selectPage(currentPage - 1)}
-            type="linkPlain"
-            value="Prev"
-          />
-          <div className={cssClass.PAGE_NUMBERS}>
-            {/* Make sure the first page is always visible. */}
-            {visibleRange[0] > 1 && (
-              <Button
-                className={cssClass.BUTTON_PAGE}
-                key={1}
-                onClick={() => selectPage(1)}
-                type="linkPlain"
-                value="1"
-              />
-            )}
-            {/*
-              * Show ellipsis if there's at least one omitted page number between 1 and the start of
-              * the visible rnage.
-              */}
-            {visibleRange[0] > 2 && renderEllipsis()}
-            {visibleRange.map(pageNumber => (
-              <Button
-                className={classnames(
-                  cssClass.BUTTON_PAGE,
-                  pageNumber === currentPage && cssClass.BUTTON_PAGE_SELECTED
-                )}
-                key={pageNumber}
-                onClick={() => selectPage(pageNumber)}
-                type="linkPlain"
-                value={`${pageNumber}`}
-              />
-            ))}
-            {/*
-              * Show ellipsis if there's at least one omitted page number between the end of the
-              * visible range and the last page number.
-              */}
-            {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 && renderEllipsis()}
-            {/* Make sure the last page is always visible. */}
-            {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages && (
-              <Button
-                className={cssClass.BUTTON_PAGE}
-                key={numPages}
-                onClick={() => selectPage(numPages)}
-                type="linkPlain"
-                value={`${numPages}`}
-              />
+          <div className={cssClass.LOADING_CONTAINER}>
+            {isLoading && (
+              <div className={cssClass.LOADING_OUTER}>
+                <div className={cssClass.LOADING_INNER}>Loading...</div>
+              </div>
             )}
           </div>
-          <Button
-            className={cssClass.BUTTON_SCROLL}
-            disabled={currentPage === numPages}
-            onClick={() => selectPage(currentPage + 1, numPages)}
-            type="linkPlain"
-            value="Next"
-          />
+          <div>
+            <Button
+              className={cssClass.BUTTON_SCROLL}
+              disabled={currentPage === 1}
+              onClick={() => selectPage(currentPage - 1)}
+              type="linkPlain"
+              value="Prev"
+            />
+            <div className={cssClass.PAGE_NUMBERS}>
+              {/* Make sure the first page is always visible. */}
+              {visibleRange[0] > 1 && (
+                <Button
+                  className={cssClass.BUTTON_PAGE}
+                  key={1}
+                  onClick={() => selectPage(1)}
+                  type="linkPlain"
+                  value="1"
+                />
+              )}
+              {/*
+                * Show ellipsis if there's at least one omitted page number between 1 and the start of
+                * the visible rnage.
+                */}
+              {visibleRange[0] > 2 && renderEllipsis()}
+              {visibleRange.map(pageNumber => (
+                <Button
+                  className={classnames(
+                    cssClass.BUTTON_PAGE,
+                    pageNumber === currentPage && cssClass.BUTTON_PAGE_SELECTED
+                  )}
+                  key={pageNumber}
+                  onClick={() => selectPage(pageNumber)}
+                  type="linkPlain"
+                  value={`${pageNumber}`}
+                />
+              ))}
+              {/*
+                * Show ellipsis if there's at least one omitted page number between the end of the
+                * visible range and the last page number.
+                */}
+              {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 && renderEllipsis()}
+              {/* Make sure the last page is always visible. */}
+              {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages && showLastPage && (
+                <Button
+                  className={cssClass.BUTTON_PAGE}
+                  key={numPages}
+                  onClick={() => selectPage(numPages)}
+                  type="linkPlain"
+                  value={`${numPages}`}
+                />
+              )}
+            </div>
+            <Button
+              className={cssClass.BUTTON_SCROLL}
+              disabled={currentPage === numPages}
+              onClick={() => selectPage(currentPage + 1, numPages)}
+              type="linkPlain"
+              value="Next"
+            />
+          </div>
         </Cell>
       </tr>
     </tfoot>
@@ -120,10 +129,13 @@ Footer.propTypes = {
   onPageChange: PropTypes.func,
   numColumns: PropTypes.number.isRequired,
   numPages: PropTypes.number.isRequired,
+  showLastPage: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 Footer.defaultProps = {
   onPageChange: () => {},
+  showLastPage: true,
 };
 
 Footer.cssClass = {
@@ -135,6 +147,9 @@ Footer.cssClass = {
   ELLIPSIS: "Table--footer--ellipsis",
   PAGE_NUMBERS: "Table--footer--page_numbers",
   ROW: "Table--footer--row",
+  LOADING_CONTAINER: "Table--footer--loadingContainer",
+  LOADING_OUTER: "Table--footer--loadingOuter",
+  LOADING_INNER: "Table--footer--loadingInner",
 };
 
 Footer.VISIBLE_PAGE_RANGE_SIZE = 5;

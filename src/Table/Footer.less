@@ -1,5 +1,6 @@
 @import "../less/colors.less";
 @import "../less/sizing.less";
+@import "../less/border_radius.less";
 
 @pageNumberMargin: 0 5px;
 
@@ -43,4 +44,25 @@
   cursor: default;
   font-size: 1rem;
   margin: @pageNumberMargin;
+}
+
+.Table--footer--loadingContainer {
+  position: relative;
+}
+
+.Table--footer--loadingOuter {
+  position: absolute;
+  top: -@size_xl;
+  width: 100%;
+  text-align: center;
+}
+
+.Table--footer--loadingInner {
+  border-radius: @borderRadiusS;
+  box-shadow: 0 @size_3xs @size_3xs fade(@neutral_black, 20%);
+  font-family: "Proxima Nova";
+  background: @primary_blue;
+  color: @neutral_white;
+  padding: @size_xs;
+  display: inline-block;
 }
