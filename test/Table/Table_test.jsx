@@ -244,4 +244,67 @@ describe("Table", () => {
       sinon.assert.calledWith(onRowClick, event, DATA[i].id);
     }
   });
+
+  describe("lazy-loading", () => {
+    const newLazyTable = props => newTable({
+      lazy: true,
+      numRows: DATA.length,
+      paginated: true,
+      pageSize: 1,
+      data: null,
+      ...props,
+    });
+
+    it("doesn't show last page number in footer", () => {
+      const getData = sinon.stub().returns(Promise.resolve(DATA.slice(0, 1)));
+      const table = newLazyTable({getData});
+      const footer = table.find(Footer);
+      assert.equal(footer.props().showLastPage, false);
+    });
+
+    it("invokes getData on mount with first page", () => {
+      const getData = sinon.stub().returns(Promise.resolve(DATA.slice(0, 1)));
+      newLazyTable({getData});
+
+      sinon.assert.calledOnce(getData);
+      sinon.assert.calledWith(getData, {pageSize: 1});
+    });
+
+    it("invokes getData after clicking next", async () => {
+      const getData = sinon.stub().returns(Promise.resolve(DATA.slice(0, 1)));
+      const table = newLazyTable({getData});
+
+      // wait for the first page to be resolved
+      await new Promise(resolve => setImmediate(resolve));
+
+      await table.instance().setCurrentPage(2);
+      sinon.assert.calledTwice(getData);
+      sinon.assert.calledWith(getData, {pageSize: 1, startingAfter: DATA[0].id});
+    });
+
+    it("shows the right page after clicking next", async () => {
+      const getData = sinon.stub();
+      getData.withArgs({pageSize: 1}).returns(Promise.resolve(DATA.slice(0, 1)));
+      getData.withArgs({pageSize: 1, startingAfter: DATA[0].id}).returns(Promise.resolve(DATA.slice(1, 2)));
+      const table = newLazyTable({getData});
+
+      const assertShows = item => {
+        const rows = table.find(`.${cssClass.ROW}`);
+        assert.equal(rows.length, 1);
+        const cells = rows.find(Cell);
+        assert.equal(cells.length, 2, "Incorrect number of columns rendered");
+        assert.equal(cells.at(0).childAt(0).text(), item.name, "Unexpected content");
+        assert.equal(cells.at(1).childAt(0).text(), item.description, "Unexpected content");
+      };
+
+      // wait for the first page to be resolved
+      await new Promise(resolve => setImmediate(resolve));
+
+      assertShows(DATA[0]);
+
+      await table.instance().setCurrentPage(2);
+
+      assertShows(DATA[1]);
+    });
+  });
 });
