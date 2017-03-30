@@ -79,6 +79,8 @@ export class Table extends Component {
     const {pageSize, getData, rowIDFn} = this.props;
     const {lazyPages} = this.state;
 
+    // if we've already fetched the page, no need to do anything here -- it's
+    // cached
     if (pageIdx < lazyPages.length) {
       return;
     }
@@ -88,10 +90,13 @@ export class Table extends Component {
     const newPages = lazyPages.slice(0);
     for (let idx = lazyPages.length; idx <= pageIdx; idx++) {
       const query = {pageSize};
+
+      // the first page shouldn't have a startingAfter parameter
       if (idx !== 0) {
         const lastPage = newPages[idx - 1];
         query.startingAfter = rowIDFn(lastPage[lastPage.length - 1]);
       }
+
       const pageData = await getData(query);
       newPages.push(pageData);
     }
