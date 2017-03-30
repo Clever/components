@@ -19,27 +19,95 @@ export class Table extends Component {
   constructor(props) {
     super(props);
 
+    if (props.lazy) {
+      for (const p of ["data", "filter", "initialPage"]) {
+        if (props[p]) {
+          console.error(`Table: prop "${p}" may not be set if "lazy"`);
+        }
+      }
+      for (const p of ["getData", "numRows"]) {
+        if (!props[p]) {
+          console.error(`Table: prop "${p}" must be set if "lazy"`);
+        }
+      }
+    } else {
+      if (!props.data) {
+        console.error("Table: prop `data` must be set if not `lazy`");
+      }
+    }
+
     this.state = {
       currentPage: props.initialPage || 1,
       sortState: props.initialSortState,
+      lazyPages: [],
+      pageLoading: false,
     };
+  }
+
+  componentWillMount() {
+    if (this.props.lazy) {
+      this._fetchLazy(0);
+    }
   }
 
   /**
    * @param {number} page - 1-based index of the page to select.
    */
-  setCurrentPage(page) {
-    if (page === this.state.currentPage) {
+  async setCurrentPage(page) {
+    const {onPageChange, onViewChange, lazy} = this.props;
+    const {currentPage, pageLoading} = this.state;
+
+    if (page === currentPage || pageLoading) {
       return;
     }
 
+    if (lazy) {
+      const pageIdx = page - 1;
+      await this._fetchLazy(pageIdx);
+    }
+
     this.setState({currentPage: page}, () => {
-      this.props.onPageChange(page);
-      if (this.props.onViewChange) {
+      onPageChange(page);
+      if (onViewChange) {
         const {displayedData} = this._getDisplayedData();
-        this.props.onViewChange(displayedData);
+        onViewChange(displayedData);
       }
     });
+  }
+
+  async _fetchLazy(pageIdx) {
+    const {pageSize, getData, rowIDFn} = this.props;
+    const {lazyPages} = this.state;
+
+    if (pageIdx < lazyPages.length) {
+      return;
+    }
+
+    this.setState({pageLoading: true});
+
+    const newPages = lazyPages.slice(0);
+    for (let idx = lazyPages.length; idx <= pageIdx; idx++) {
+      const query = {pageSize};
+      if (idx !== 0) {
+        const lastPage = newPages[idx - 1];
+        query.startingAfter = rowIDFn(lastPage[lastPage.length - 1]);
+      }
+      const pageData = await getData(query);
+      newPages.push(pageData);
+    }
+
+    this.setState({lazyPages: newPages, pageLoading: false});
+  }
+
+  /**
+   * Resets all lazily-loaded data. Call this if you change the backing data
+   * behind the `getData` function (i.e. apply a search filter).
+   */
+  lazyReset() {
+    if (this.props.lazy) {
+      this.setCurrentPage(1);
+      this.setState({lazyPages: []});
+    }
   }
 
   _getColumn(columnID) {
@@ -69,9 +137,10 @@ export class Table extends Component {
         this.props.onViewChange(displayedData);
       }
     });
+    this.lazyReset();
   }
 
-  _getDisplayedData() {
+  _getSynchronousData() {
     const {
       data,
       filter,
@@ -119,6 +188,26 @@ export class Table extends Component {
     return {displayedData: pages[idx], numPages};
   }
 
+  _getLazyData() {
+    const {numRows, pageSize} = this.props;
+    const {currentPage, lazyPages} = this.state;
+
+    const numPages = Math.ceil(numRows / pageSize);
+    const idx = Math.min(currentPage, numPages) - 1;
+
+    if (idx < lazyPages.length) {
+      return {displayedData: lazyPages[idx], numPages};
+    }
+    return {displayedData: [], numPages, loading: true};
+  }
+
+  _getDisplayedData() {
+    if (!this.props.lazy) {
+      return this._getSynchronousData();
+    }
+    return this._getLazyData();
+  }
+
   render() {
     const {
       children: columns,
@@ -128,12 +217,13 @@ export class Table extends Component {
       rowIDFn,
       onRowClick,
     } = this.props;
-    const {currentPage, sortState} = this.state;
     const {cssClass} = Table;
+    const {lazy} = this.props;
+    const {currentPage, sortState, pageLoading} = this.state;
 
     const {displayedData, numPages} = this._getDisplayedData();
     const displayedPage = Math.min(currentPage, numPages);
-    const disableSort = displayedData.length <= 1;
+    const disableSort = numPages <= 1 && displayedData.length <= 1;
 
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
@@ -144,10 +234,10 @@ export class Table extends Component {
           {displayedData.length === 0 ? (
             <tr className={cssClass.ROW}>
               <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
-                NO DATA
+                {!pageLoading && "NO DATA"}
               </Cell>
             </tr>
-            ) : displayedData.map(rowData => (
+          ) : displayedData.map(rowData =>
             <tr
               className={classnames(cssClass.ROW, onRowClick && cssClass.CLICKABLE_ROW)}
               key={rowIDFn(rowData)}
@@ -159,7 +249,7 @@ export class Table extends Component {
                 </Cell>
               ))}
             </tr>
-          ))}
+          )}
         </tbody>
         {paginated && (
           <Footer
@@ -167,6 +257,8 @@ export class Table extends Component {
             onPageChange={newPage => this.setCurrentPage(newPage)}
             numColumns={columns.length}
             numPages={numPages}
+            showLastPage={!lazy}
+            isLoading={pageLoading}
           />
         )}
       </table>
@@ -177,7 +269,7 @@ export class Table extends Component {
 Table.propTypes = {
   children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
   className: PropTypes.string,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array,
   filter: PropTypes.func,
   fixed: PropTypes.bool,
   initialPage: tablePropTypes.pageNumber,
@@ -189,10 +281,14 @@ Table.propTypes = {
   pageSize: PropTypes.number,
   paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
+
+  // these must all be set together
+  lazy: PropTypes.bool,
+  getData: PropTypes.func,
+  numRows: PropTypes.number,
 };
 
 Table.defaultProps = {
-  filter: () => true,
   onPageChange: () => {},
   onSortChange: () => {},
   pageSize: DEFAULT_PAGE_SIZE,
