@@ -44,6 +44,15 @@ export default class TableView extends PureComponent {
     const {cssClass} = TableView;
     const {enableRowClick, tableData} = this.state;
 
+    const getDataLazily = async ({startingAfter, pageSize}) => {
+      let start = 0;
+      if (startingAfter != null) {
+        start = _.findIndex(tableData, r => r.id === startingAfter);
+      }
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return tableData.slice(start + 1, start + pageSize + 1);
+    };
+
     return (
       <View className={cssClass.CONTAINER} title="Table">
         <Example
@@ -221,6 +230,134 @@ export default class TableView extends PureComponent {
             {" "}
             Clickable rows (see console)
           </label>
+        </Example>
+
+        <Example
+          code={`
+            <Table
+              lazy
+              getData={
+                async ({startingAfter, pageSize}) => {
+                  let start = 0;
+                  if (startingAfter != null) {
+                    start = _.findIndex(tableData, r => r.id === startingAfter);
+                  }
+                  await new Promise(resolve => setTimeout(resolve, 1000));
+                  return tableData.slice(start + 1, start + pageSize + 1);
+                }
+              }
+              numRows={tableData.length}
+              onPageChange={page => console.log("Table page changed:", page)}
+              onSortChange={sortState => console.log("Table sort changed:", sortState)}
+              onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
+              paginated
+              pageSize={9}
+              rowIDFn={r => r.id}
+            >
+              <Table.Column
+                id="details"
+                cell={{renderer: r => (
+                  <ModalButton
+                    type="link"
+                    size="small"
+                    value={"\u2630 Details"}
+                    modalTitle="Details"
+                  >
+                    <p style={{whiteSpace: "normal"}}>{r.notes}</p>
+                  </ModalButton>
+                )}}
+                noWrap
+              />
+
+              <Table.Column
+                id="name"
+                header={{content: "Name"}}
+                cell={{
+                  className: "capitalize",
+                  renderer: r => [r.name.first, r.name.last].join(" "),
+                }}
+                width="25%"
+              />
+
+              <Table.Column
+                id="age"
+                header={{content: "Age"}}
+                cell={{renderer: r => r.age}}
+              />
+
+              <Table.Column
+                id="status"
+                header={{content: "Status"}}
+                cell={{renderer: r => r.status}}
+              />
+
+              <Table.Column
+                id="notes"
+                header={{content: "Notes"}}
+                cell={{renderer: r => r.notes}}
+                width="100%"
+              />
+            </Table>
+          `}
+        >
+          <h2>Lazy Table</h2>
+          <div style={{marginTop: "20px"}}>
+            <Table
+              lazy
+              getData={getDataLazily}
+              numRows={tableData.length}
+              onPageChange={page => console.log("Table page changed:", page)}
+              onSortChange={sortState => console.log("Table sort changed:", sortState)}
+              onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
+              paginated
+              pageSize={9}
+              rowIDFn={r => r.id}
+            >
+              <Table.Column
+                id="details"
+                cell={{renderer: r => (
+                  <ModalButton
+                    type="link"
+                    size="small"
+                    value={"\u2630 Details"}
+                    modalTitle="Details"
+                  >
+                    <p style={{whiteSpace: "normal"}}>{r.notes}</p>
+                  </ModalButton>
+                )}}
+                noWrap
+              />
+
+              <Table.Column
+                id="name"
+                header={{content: "Name"}}
+                cell={{
+                  className: "capitalize",
+                  renderer: r => [r.name.first, r.name.last].join(" "),
+                }}
+                width="25%"
+              />
+
+              <Table.Column
+                id="age"
+                header={{content: "Age"}}
+                cell={{renderer: r => r.age}}
+              />
+
+              <Table.Column
+                id="status"
+                header={{content: "Status"}}
+                cell={{renderer: r => r.status}}
+              />
+
+              <Table.Column
+                id="notes"
+                header={{content: "Notes"}}
+                cell={{renderer: r => r.notes}}
+                width="100%"
+              />
+            </Table>
+          </div>
         </Example>
       </View>
     );
