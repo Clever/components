@@ -51,13 +51,11 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
           className={cssClass.CELL}
           colSpan={numColumns}
         >
-          <div className={cssClass.LOADING_CONTAINER}>
-            {isLoading && (
-              <div className={cssClass.LOADING_OUTER}>
-                <div className={cssClass.LOADING_INNER}>Loading...</div>
-              </div>
-            )}
-          </div>
+          {isLoading && (
+            <div className={cssClass.LOADING_CONTAINER}>
+              <div className={cssClass.LOADING_PILL}>Loading...</div>
+            </div>
+          )}
           <div>
             <Button
               className={cssClass.BUTTON_SCROLL}
@@ -148,8 +146,7 @@ Footer.cssClass = {
   PAGE_NUMBERS: "Table--footer--page_numbers",
   ROW: "Table--footer--row",
   LOADING_CONTAINER: "Table--footer--loadingContainer",
-  LOADING_OUTER: "Table--footer--loadingOuter",
-  LOADING_INNER: "Table--footer--loadingInner",
+  LOADING_PILL: "Table--footer--loadingPill",
 };
 
 Footer.VISIBLE_PAGE_RANGE_SIZE = 5;

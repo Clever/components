@@ -12,6 +12,7 @@
   font-size: @size_s;
   padding: @size_s;
   text-align: center;
+  position: relative;
 }
 
 .Button.Table--footer--button--scroll {
@@ -47,17 +48,14 @@
 }
 
 .Table--footer--loadingContainer {
-  position: relative;
-}
-
-.Table--footer--loadingOuter {
   position: absolute;
-  top: -@size_xl;
+  left: 0;
+  top: -@size_l;
   width: 100%;
   text-align: center;
 }
 
-.Table--footer--loadingInner {
+.Table--footer--loadingPill {
   border-radius: @borderRadiusS;
   box-shadow: 0 @size_3xs @size_3xs fade(@neutral_black, 20%);
   font-family: "Proxima Nova";
