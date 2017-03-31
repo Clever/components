@@ -58,7 +58,7 @@ render((
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
         <Route path="count(/*)" component={CountView} />
-	<Route path="dollar-amount(/*)" component={DollarAmountView} />
+	      <Route path="dollar-amount(/*)" component={DollarAmountView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="grid(/*)" component={GridView} />
