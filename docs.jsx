@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import {render} from "react-dom";
 import {IndexRedirect, Route, Router, hashHistory} from "react-router";
 
@@ -7,6 +7,7 @@ import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
 import CopyableInputView from "./components/CopyableInputView";
 import CountView from "./components/CountView";
+import DatePickerView from "./components/DatePickerView";
 import DollarAmountView from "./components/DollarAmountView";
 import FileInputView from "./components/FileInputView";
 import FlexBoxView from "./components/FlexBoxView";
@@ -58,6 +59,7 @@ render((
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
         <Route path="count(/*)" component={CountView} />
+        <Route path="date-picker(/*)" component={DatePickerView} />
         <Route path="dollar-amount(/*)" component={DollarAmountView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="file-input(/*)" component={FileInputView} />
