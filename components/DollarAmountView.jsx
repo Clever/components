@@ -26,36 +26,36 @@ export default class DollarAmountView extends Component {
 
     return (
       <div className={cssClass.CONFIG_CONTAINER}>
-	<div className={cssClass.CONFIG}>
-	  Amount:
-	  <SegmentedControl
-	    className={cssClass.CONFIG_OPTIONS}
-	    onSelect={value => this.setState({number: value})}
-	    options={Object.keys(NumberOptions).map(n => ({content: n, value: NumberOptions[n]}))}
-	    value={number}
-	  />
-	</div>
-	<div className={cssClass.CONFIG}>
-	  Dollar Format:
-	  <SegmentedControl
-	    className={cssClass.CONFIG_OPTIONS}
-	    onSelect={value => this.setState({alwaysShowCents: value})}
-	    options={[
-	      {content: "Regular", value: "no"},
-	      {content: "Always Show Cents", value: "yes"},
-	    ]}
-	    value={alwaysShowCents}
-	  />
-	  <SegmentedControl
-	    className={cssClass.CONFIG_OPTIONS}
-	    onSelect={value => this.setState({zeroIsFree: value})}
-	    options={[
-	      {content: "Regular", value: "no"},
-	      {content: "Zero is 'Free'", value: "yes"},
-	    ]}
-	    value={zeroIsFree}
-	  />
-	</div>
+        <div className={cssClass.CONFIG}>
+          Amount:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={value => this.setState({number: value})}
+            options={Object.keys(NumberOptions).map(n => ({content: n, value: NumberOptions[n]}))}
+            value={number}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          Dollar Format:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={value => this.setState({alwaysShowCents: value})}
+            options={[
+              {content: "Regular", value: "no"},
+              {content: "Always Show Cents", value: "yes"},
+            ]}
+            value={alwaysShowCents}
+          />
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={value => this.setState({zeroIsFree: value})}
+            options={[
+              {content: "Regular", value: "no"},
+              {content: "Zero is 'Free'", value: "yes"},
+            ]}
+            value={zeroIsFree}
+          />
+        </div>
       </div>
     );
   }
