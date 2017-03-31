@@ -27,3 +27,6 @@ export {FileInput} from "./FileInput/FileInput";
 export * from "./InfoPanel";
 export {Number};
 export {Count};
+
+import DollarAmount from "./DollarAmount";
+export {DollarAmount};
