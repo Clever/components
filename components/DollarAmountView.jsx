@@ -69,55 +69,55 @@ export default class DollarAmountView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="DollarAmount" sourcePath="src/DollarAmount/DollarAmount.jsx">
-	<div className={cssClass.INTRO}>
-	  <p>Provides a convenient wrapper for displaying dollar values.</p>
-	  <CodeSample>
-	    {`
-	      import {DollarAmount} from "clever-components";
-	    `}
-	  </CodeSample>
-	</div>
-
-	<Example
-	  code={`
-	    <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
-	    <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
-	  `}
-	  title="Defaults to not showing cents if the value is an integer, but showing cents if value is a float"
-	>
-	  <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
-	  <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
-	  {this.renderConfig()}
-	</Example>
-
-	<PropDocumentation
-	  availableProps={[
-	    {
-	      name: "children",
-	      type: "number or string",
-	      description: "The number (or string representation thereof).",
-	      defaultValue: "0",
-	    },
-	    {
-	      name: "className",
-	      type: "string",
-	      description: "Optional additional classname to apply to the DollarAmount span.",
-	    },
-	    {
-	      name: "alwaysShowCents",
-	      type: "bool",
-	      description: "Always include two decimal points, even if the value is an integer",
-	      defaultValue: "false",
-	    },
-	    {
-	      name: "zeroIsFree",
-	      type: "bool",
-	      description: "A value of zero should be represented as the string 'Free'",
-	      defaultValue: "false",
-	    },
-	  ]}
-	  className={cssClass.PROPS}
-	/>
+        <div className={cssClass.INTRO}>
+          <p>Provides a convenient wrapper for displaying dollar values.</p>
+          <CodeSample>
+            {`
+              import {DollarAmount} from "clever-components";
+            `}
+          </CodeSample>
+        </div>
+  
+        <Example
+          code={`
+            <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
+            <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
+          `}
+          title="Defaults to not showing cents if the value is an integer, but showing cents if value is a float"
+        >
+          <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
+          <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
+          {this.renderConfig()}
+        </Example>
+  
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "children",
+              type: "number or string",
+              description: "The number (or string representation thereof).",
+              defaultValue: "0",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional additional classname to apply to the DollarAmount span.",
+            },
+            {
+              name: "alwaysShowCents",
+              type: "bool",
+              description: "Always include two decimal points, even if the value is an integer",
+              defaultValue: "false",
+            },
+            {
+              name: "zeroIsFree",
+              type: "bool",
+              description: "A value of zero should be represented as the string 'Free'",
+              defaultValue: "false",
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
       </View>
     );
   }
