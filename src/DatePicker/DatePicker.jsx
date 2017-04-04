@@ -30,22 +30,22 @@ class DatePickerComponent extends Component {
 
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>
-	<FlexBox className={cssClass.HEADER} alignItems={ItemAlign.CENTER}>
-	  <span className={cssClass.TITLE}>{title}</span>
-	  <FlexItem grow />
-	  <FlexItem onClick={onClose}>
-	    <FontAwesome className={cssClass.CLOSE_BUTTON} name="times" />
-	  </FlexItem>
-	</FlexBox>
-	<div className={cssClass.DATE_INPUT}>
-	  <DatePicker
-	    inline
-	    selected={selected}
-	    onChange={d => this._onChange(d)}
-	    {...datePickerProps}
-	  />
-	</div>
-	{footer}
+        <FlexBox className={cssClass.HEADER} alignItems={ItemAlign.CENTER}>
+          <span className={cssClass.TITLE}>{title}</span>
+          <FlexItem grow />
+          <FlexItem onClick={onClose}>
+            <FontAwesome className={cssClass.CLOSE_BUTTON} name="times" />
+          </FlexItem>
+        </FlexBox>
+        <div className={cssClass.DATE_INPUT}>
+          <DatePicker
+            inline
+            selected={selected}
+            onChange={d => this._onChange(d)}
+            {...datePickerProps}
+          />
+        </div>
+        {footer}
       </div>
     );
   }
