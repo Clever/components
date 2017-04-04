@@ -28,6 +28,7 @@ export default function SideBar({className}) {
         <NavLink href="/components/confirmation-button">ConfirmationButton</NavLink>
         <NavLink href="/components/copyable-input">CopyableInput</NavLink>
         <NavLink href="/components/count">Count</NavLink>
+        <NavLink href="/components/dollar-amount">DollarValue</NavLink>
         <NavLink href="/components/flex-box">FlexBox</NavLink>
         <NavLink href="/components/file-input">FileInput</NavLink>
         <NavLink href="/components/grid">Grid</NavLink>
