@@ -53,10 +53,7 @@ class DatePickerComponent extends Component {
 
 DatePickerComponent.propTypes = {
   className: PropTypes.string,
-  title: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-  ]).isRequired,
+  title: PropTypes.node.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.instanceOf(Date),
@@ -69,10 +66,10 @@ DatePickerComponent.propTypes = {
 
 DatePickerComponent.cssClass = {
   CONTAINER: "DatePicker",
-  HEADER: "DatePicker--header",
-  TITLE: "DatePicker--title",
-  CLOSE_BUTTON: "DatePicker--close",
-  DATE_INPUT: "DatePicker--date-input",
+  HEADER: "DatePicker--Header",
+  TITLE: "DatePicker--Title",
+  CLOSE_BUTTON: "DatePicker--Close",
+  DATE_INPUT: "DatePicker--DateInput",
 };
 
 export {

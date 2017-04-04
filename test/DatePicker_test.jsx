@@ -13,7 +13,7 @@ describe("DatePicker", () => {
       <DatePicker title="Pick a date" onClose={() => {}} />
     );
     const container = datePicker.find("div.DatePicker");
-    const title = datePicker.find("span.DatePicker--title");
+    const title = datePicker.find("span.DatePicker--Title");
     const picker = datePicker.find("div.react-datepicker");
 
     assert.equal(container.length, 1);
@@ -26,7 +26,7 @@ describe("DatePicker", () => {
     const datePicker = mount(
       <DatePicker title="Pick a date" onClose={stub} />
     );
-    const closeButton = datePicker.find(".DatePicker--close");
+    const closeButton = datePicker.find(".DatePicker--Close");
     closeButton.simulate("click");
     assert(stub.calledOnce);
   });

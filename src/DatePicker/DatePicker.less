@@ -2,31 +2,31 @@
 @import "~react-datepicker/dist/react-datepicker.min.css";
 
 .DatePicker {
+  .margin--top--2xs;
+  .zIndex--2;
+  .border--s(@neutral_silver);
   background-color: @neutral_off_white;
   position: absolute;
-  margin-top: @size_2xs;
-  .border--s(@neutral_silver);
-  z-index: @zIndex2;
 }
 
-.DatePicker--header {
-  padding: @size_xs;
+.DatePicker--Header {
+  .padding--xs;
   .border--bottom--s(@neutral_silver);
   color: @neutral_dark_gray;
 }
 
-.DatePicker--title {
-  font-size: @type_small;
-  font-weight: bold;
-}
-
-.DatePicker--close {
-  cursor: pointer;
+.DatePicker--Title {
   .text--small;
+  .text--semi-bold;
 }
 
-.DatePicker--date-input {
-  padding: 0 @size_xs;
+.DatePicker--Close {
+  .text--small;
+  cursor: pointer;
+}
+
+.DatePicker--DateInput {
+  .padding--x--xs;
 
   .react-datepicker {
     border: none;
@@ -60,12 +60,12 @@
   }
 
   .react-datepicker__day--today {
-    font-weight: normal;
+    .text--regular;
   }
 
   .react-datepicker__day:hover {
-    border-radius: 50%;
     .shade(background-color, @neutral_off_white, 1);
+    border-radius: 50%;
   }
 
   .react-datepicker__day--selected {
