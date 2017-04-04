@@ -77,7 +77,7 @@ export default class DollarAmountView extends Component {
             `}
           </CodeSample>
         </div>
-  
+
         <Example
           code={`
             <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
@@ -89,7 +89,7 @@ export default class DollarAmountView extends Component {
           <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
           {this.renderConfig()}
         </Example>
-  
+
         <PropDocumentation
           availableProps={[
             {

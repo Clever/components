@@ -28,7 +28,7 @@ export default class DollarAmount extends PureComponent {
 
     return (
       <span className={classnames(cssClass.CONTAINER, className)}>
-	      {format(children, zeroIsFree, alwaysShowCents)}
+        {format(children, zeroIsFree, alwaysShowCents)}
       </span>
     );
   }
