@@ -66,7 +66,8 @@ export class TextArea extends React.Component {
     let inputNote;
     if (this.props.required) {
       inputNote = <span className="TextArea--required">required</span>;
-    } else {
+    }
+    if (this.props.optional) {
       inputNote = <span className="TextArea--optional">optional</span>;
     }
 
@@ -111,6 +112,7 @@ TextArea.propTypes = {
   onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onFocus: React.PropTypes.func,
+  optional: React.PropTypes.bool,
   placeholder: React.PropTypes.node,
   readOnly: React.PropTypes.bool,
   required: React.PropTypes.bool,

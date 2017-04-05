@@ -45,6 +45,7 @@ export default class TextAreaView extends React.Component {
               label="TextArea Label"
               readOnly={this.state.readOnly}
               required={this.state.required}
+              optional={this.state.optional}
               spellCheck={this.state.spellCheck}
               placeholder="TextArea Placeholder"
               onChange={e => this.setState({inputValue: e.target.value})}
@@ -72,8 +73,19 @@ export default class TextAreaView extends React.Component {
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
+              checked={this.state.optional}
+              onChange={({target}) => this.setState({optional: target.checked})}
+              disabled={this.state.required}
+            />
+            {" "}
+            Optional
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
               checked={this.state.required}
               onChange={({target}) => this.setState({required: target.checked})}
+              disabled={this.state.optional}
             />
             {" "}
             Required

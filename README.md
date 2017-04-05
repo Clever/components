@@ -306,11 +306,14 @@ This component is a `text area` that lets the user input multiple lines of text.
 | minLength (optional) | Number | Minimum number of characters required | None
 | name (required) | String | Name for input element | None
 | onChange (optional) | Function | Called when value of input changes | None
+| optional (optinoal) | Bool | Marks input as optional and adds indicator | False
 | placeholder (optional) | Node | Placeholder node for input | None
 | readOnly (optional) | Bool | Sets element as read-only | false
 | required (optional) | Bool | Marks input as required and adds indicator | false
 | spellCheck (optional) | Bool | Turns on spelling/grammar check for input | false
 | value (optional) | Node | Value of input | None
+
+Note: use the `required` prop to add a "Required" input label on a required field, and `optional` to add an "Optional" input label. By default, `required` and `optional` are both `false` and no label is shown.
 
 **Usage Example**
 
