@@ -313,8 +313,6 @@ This component is a `text area` that lets the user input multiple lines of text.
 | spellCheck (optional) | Bool | Turns on spelling/grammar check for input | false
 | value (optional) | Node | Value of input | None
 
-Note: use the `required` prop to add a "Required" input label on a required field and the `optional` prop to add an "Optional" input label on an optional field. By default, `required` and `optional` are both `false`, which means that no label is shown.
-
 **Usage Example**
 
 ```jsx
