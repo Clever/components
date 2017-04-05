@@ -306,6 +306,7 @@ This component is a `text area` that lets the user input multiple lines of text.
 | minLength (optional) | Number | Minimum number of characters required | None
 | name (required) | String | Name for input element | None
 | onChange (optional) | Function | Called when value of input changes | None
+| optional (optional) | Bool | Marks input as optional and adds indicator | False
 | placeholder (optional) | Node | Placeholder node for input | None
 | readOnly (optional) | Bool | Sets element as read-only | false
 | required (optional) | Bool | Marks input as required and adds indicator | false
