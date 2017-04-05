@@ -3,15 +3,21 @@ import classnames from "classnames";
 
 import "./TextArea.less";
 
-/*
-  Add a description of your component here.
-
-  If your component can be expressed without state,
-  use the stateless function syntax instead!
-*/
 export class TextArea extends React.Component {
+  static validateProps(props) {
+    if (props.required && props.optional) {
+      throw new Error("You cannot pass both `required` and `optional` on a TextArea.");
+    }
+
+    if (["readOnly", "disabled", "inFocus"].filter((x) => props[x]).length > 1) {
+      throw new Error("The readOnly, disabled, and inFocus props on a TextArea are mutually exclusive.");
+    }
+
+    return props;
+  }
+
   constructor(props) {
-    super(props);
+    super(TextArea.validateProps(props));
 
     this.state = {inFocus: false};
     this.onFocus = this.onFocus.bind(this);
@@ -48,7 +54,6 @@ export class TextArea extends React.Component {
 
     if (this.props.error) wrapperClass += " TextArea--hasError";
 
-    // TODO:  throw error for mutually exclusive states
     if (this.props.readOnly) {
       wrapperClass += " TextArea--readonly";
     } else if (this.props.disabled) {
