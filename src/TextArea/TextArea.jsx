@@ -66,7 +66,10 @@ export class TextArea extends React.Component {
     let inputNote;
     if (this.props.required) {
       inputNote = <span className="TextArea--required">required</span>;
+    } else {
+      inputNote = <span className="TextArea--optional">optional</span>;
     }
+
     if (this.props.error) {
       inputNote = <span className="TextArea--error">{this.props.error}</span>;
     }
