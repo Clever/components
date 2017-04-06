@@ -11,7 +11,7 @@ export function Icon(props) {
 
   const filename = `${props.name}.svg`;
   return (
-    <span className={classnames(cssClass.CONTAINER, cssClass.size(props.size), this.props.className)}>
+    <span className={classnames(cssClass.CONTAINER, cssClass.size(props.size), props.className)}>
       <img src={imgUrls[filename]} />
     </span>
   );
