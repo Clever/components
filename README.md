@@ -84,6 +84,7 @@ This component gives you access to a library of over 60 bespoke icons designed s
 |---------------------|----------|------------------------------------------------------|---------
 | name                | String   | The name of the icon to use. See the [live examples](http://clever.github.io/components#icon) for options. | None
 | type                | String   | One of `small`, `medium`, `large`                    | `medium`
+| className (optional)| String | Additional classname to apply to the table. | None
 
 **Usage Example**
 
