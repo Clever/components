@@ -12,7 +12,7 @@ require("./Footer.less");
  * Pagination footer for the Table component.
  * Only rendered if there are at least 2 pages of data available.
  */
-export default function Footer({currentPage, numColumns, numPages, onPageChange, showLastPage, isLoading}) {
+export default function Footer({currentPage, numColumns, numPages, onPageChange, showLastPage, isLoading, lengthUnknown}) {
   const {cssClass, VISIBLE_PAGE_RANGE_SIZE} = Footer;
 
   const renderEllipsis = () => <span className={cssClass.ELLIPSIS}>&hellip;</span>;
@@ -25,7 +25,7 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
     onPageChange(page);
   };
 
-  if (numPages < 2) {
+  if (numPages < 2 && !lengthUnknown) {
     return null;
   }
 
@@ -96,7 +96,8 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
                 * Show ellipsis if there's at least one omitted page number between the end of the
                 * visible range and the last page number.
                 */}
-              {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 && renderEllipsis()}
+              {(visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 || lengthUnknown) &&
+                renderEllipsis()}
               {/* Make sure the last page is always visible. */}
               {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages && showLastPage && (
                 <Button
@@ -110,7 +111,7 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
             </div>
             <Button
               className={cssClass.BUTTON_SCROLL}
-              disabled={currentPage === numPages}
+              disabled={currentPage === numPages && !lengthUnknown}
               onClick={() => selectPage(currentPage + 1, numPages)}
               type="linkPlain"
               value="Next"
@@ -129,6 +130,7 @@ Footer.propTypes = {
   numPages: PropTypes.number.isRequired,
   showLastPage: PropTypes.bool,
   isLoading: PropTypes.bool,
+  lengthUnknown: PropTypes.bool,
 };
 
 Footer.defaultProps = {
