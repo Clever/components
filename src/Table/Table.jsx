@@ -25,10 +25,8 @@ export class Table extends Component {
           console.error(`Table: prop "${p}" may not be set if "lazy"`);
         }
       }
-      for (const p of ["getData"]) {
-        if (!props[p]) {
-          console.error(`Table: prop "${p}" must be set if "lazy"`);
-        }
+      if (!props.getData) {
+        console.error("Table: prop \"getData\" must be set if \"lazy\"");
       }
     } else {
       if (!props.data) {
