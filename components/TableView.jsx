@@ -38,6 +38,9 @@ export default class TableView extends PureComponent {
       });
     }
     this.setState({tableData});
+    if (this._lazyTable) {
+      this._lazyTable.lazyReset();
+    }
   }
 
   render() {
@@ -47,10 +50,10 @@ export default class TableView extends PureComponent {
     const getDataLazily = async ({startingAfter, pageSize}) => {
       let start = 0;
       if (startingAfter != null) {
-        start = _.findIndex(tableData, r => r.id === startingAfter);
+        start = _.findIndex(tableData, r => r.id === startingAfter) + 1;
       }
       await new Promise(resolve => setTimeout(resolve, 1000));
-      return tableData.slice(start + 1, start + pageSize + 1);
+      return tableData.slice(start, start + pageSize);
     };
 
     return (
@@ -235,15 +238,16 @@ export default class TableView extends PureComponent {
         <Example
           code={`
             <Table
+              ref={t => {this._lazyTable = t;}}
               lazy
               getData={
                 async ({startingAfter, pageSize}) => {
                   let start = 0;
                   if (startingAfter != null) {
-                    start = _.findIndex(tableData, r => r.id === startingAfter);
+                    start = _.findIndex(tableData, r => r.id === startingAfter) + 1;
                   }
                   await new Promise(resolve => setTimeout(resolve, 1000));
-                  return tableData.slice(start + 1, start + pageSize + 1);
+                  return tableData.slice(start, start + pageSize);
                 }
               }
               numRows={tableData.length}
@@ -303,6 +307,7 @@ export default class TableView extends PureComponent {
           <h2>Lazy Table</h2>
           <div style={{marginTop: "20px"}}>
             <Table
+              ref={t => {this._lazyTable = t;}}
               lazy
               getData={getDataLazily}
               numRows={tableData.length}
