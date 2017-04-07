@@ -25,22 +25,30 @@ export class Table extends Component {
           console.error(`Table: prop "${p}" may not be set if "lazy"`);
         }
       }
-      for (const p of ["getData", "numRows"]) {
+      for (const p of ["getData"]) {
         if (!props[p]) {
           console.error(`Table: prop "${p}" must be set if "lazy"`);
         }
       }
     } else {
       if (!props.data) {
-        console.error("Table: prop `data` must be set if not `lazy`");
+        console.error("Table: prop \"data\" must be set if not \"lazy\"");
+      }
+      for (const p of ["getData", "numRows"]) {
+        if (props[p]) {
+          console.error(`Table: prop "${p}" may not be set if not "lazy"`);
+        }
       }
     }
 
     this.state = {
       currentPage: props.initialPage || 1,
       sortState: props.initialSortState,
+
+      // lazy table state
       lazyPages: [],
       pageLoading: false,
+      allLoaded: false,
     };
   }
 
@@ -101,6 +109,15 @@ export class Table extends Component {
       newPages.push(pageData);
     }
 
+    if (newPages[newPages.length - 1].length < pageSize) {
+      this.setState({allLoaded: true});
+      if (newPages[newPages.length - 1].length === 0) {
+        // remove the last page if it's empty (this happens if the number of
+        // rows is divisible by the page size)
+        newPages.splice(-1);
+      }
+    }
+
     this.setState({lazyPages: newPages, pageLoading: false});
   }
 
@@ -111,7 +128,9 @@ export class Table extends Component {
   lazyReset() {
     if (this.props.lazy) {
       this.setCurrentPage(1);
-      this.setState({lazyPages: []});
+      this.setState({lazyPages: [], allLoaded: false}, () => {
+        this._fetchLazy(0);
+      });
     }
   }
 
@@ -197,13 +216,23 @@ export class Table extends Component {
     const {numRows, pageSize} = this.props;
     const {currentPage, lazyPages} = this.state;
 
-    const numPages = Math.ceil(numRows / pageSize);
+    let numPages;
+    if (numRows != null) {
+      numPages = Math.ceil(numRows / pageSize);
+    } else {
+      if (lazyPages.length === 0) {
+        numPages = 1;
+      } else {
+        numPages = lazyPages.length;
+      }
+    }
+
     const idx = Math.min(currentPage, numPages) - 1;
 
     if (idx < lazyPages.length) {
       return {displayedData: lazyPages[idx], numPages};
     }
-    return {displayedData: [], numPages, loading: true};
+    return {displayedData: [], numPages};
   }
 
   _getDisplayedData() {
@@ -223,8 +252,8 @@ export class Table extends Component {
       onRowClick,
     } = this.props;
     const {cssClass} = Table;
-    const {lazy} = this.props;
-    const {currentPage, sortState, pageLoading} = this.state;
+    const {lazy, numRows} = this.props;
+    const {currentPage, sortState, pageLoading, allLoaded} = this.state;
 
     const {displayedData, numPages} = this._getDisplayedData();
     const displayedPage = Math.min(currentPage, numPages);
@@ -264,6 +293,7 @@ export class Table extends Component {
             numPages={numPages}
             showLastPage={!lazy}
             isLoading={pageLoading}
+            lengthUnknown={lazy && numRows == null && !allLoaded}
           />
         )}
       </table>
