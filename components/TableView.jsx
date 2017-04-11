@@ -79,6 +79,7 @@ export default class TableView extends PureComponent {
               paginated
               pageSize={9}
               rowIDFn={r => r.id}
+              rowClassNameFn={r => r.age < 10 ? "additionalClass" : null}
             >
               <Table.Column
                 id="details"
@@ -172,6 +173,7 @@ export default class TableView extends PureComponent {
               paginated
               pageSize={9}
               rowIDFn={r => r.id}
+              rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
             >
               <Table.Column
                 id="details"
@@ -257,6 +259,7 @@ export default class TableView extends PureComponent {
               paginated
               pageSize={9}
               rowIDFn={r => r.id}
+              rowClassNameFn={r => r.age < 10 ? "additionalClass" : null}
             >
               <Table.Column
                 id="details"
@@ -317,6 +320,7 @@ export default class TableView extends PureComponent {
               paginated
               pageSize={9}
               rowIDFn={r => r.id}
+              rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
             >
               <Table.Column
                 id="details"
