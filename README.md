@@ -435,6 +435,7 @@ Table component supporting sorting, filtering and pagination.
 | pageSize (optional) | Number | The number of data rows to display on each page. | 10
 | paginated (optional) | Boolean | Whether or not to enable pagination. See `pageSize` | false
 | rowIDFn (required) | Function | Called with data for a single row. Should return the unique ID for that row. | None
+| rowClassNameFn (optional) | Function | Called with data with a single row. Returns an additional className for the row. | None
 
 **API**
 
