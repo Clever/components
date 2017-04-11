@@ -247,6 +247,7 @@ export class Table extends Component {
       fixed,
       paginated,
       rowIDFn,
+      rowClassNameFn,
       onRowClick,
     } = this.props;
     const {cssClass} = Table;
@@ -271,7 +272,11 @@ export class Table extends Component {
             </tr>
           ) : displayedData.map(rowData =>
             <tr
-              className={classnames(cssClass.ROW, onRowClick && cssClass.CLICKABLE_ROW)}
+              className={classnames(
+                cssClass.ROW,
+                onRowClick && cssClass.CLICKABLE_ROW,
+                rowClassNameFn && rowClassNameFn(rowData)
+              )}
               key={rowIDFn(rowData)}
               onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData))}
             >
@@ -314,6 +319,7 @@ Table.propTypes = {
   pageSize: PropTypes.number,
   paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
+  rowClassNameFn: PropTypes.func,
 
   // these must all be set together
   lazy: PropTypes.bool,
