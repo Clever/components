@@ -30,3 +30,6 @@ export {Count};
 
 import DollarAmount from "./DollarAmount";
 export {DollarAmount};
+
+import DatePicker from "./DatePicker";
+export {DatePicker};
