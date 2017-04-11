@@ -84,6 +84,7 @@ This component gives you access to a library of over 60 bespoke icons designed s
 |---------------------|----------|------------------------------------------------------|---------
 | name                | String   | The name of the icon to use. See the [live examples](http://clever.github.io/components#icon) for options. | None
 | type                | String   | One of `small`, `medium`, `large`                    | `medium`
+| className (optional)| String | Additional classname to apply to the table. | None
 
 **Usage Example**
 
@@ -306,6 +307,7 @@ This component is a `text area` that lets the user input multiple lines of text.
 | minLength (optional) | Number | Minimum number of characters required | None
 | name (required) | String | Name for input element | None
 | onChange (optional) | Function | Called when value of input changes | None
+| optional (optional) | Bool | Marks input as optional and adds indicator | False
 | placeholder (optional) | Node | Placeholder node for input | None
 | readOnly (optional) | Bool | Sets element as read-only | false
 | required (optional) | Bool | Marks input as required and adds indicator | false

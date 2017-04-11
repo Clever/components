@@ -11,7 +11,7 @@ export function Icon(props) {
 
   const filename = `${props.name}.svg`;
   return (
-    <span className={classnames(cssClass.CONTAINER, cssClass.size(props.size))}>
+    <span className={classnames(cssClass.CONTAINER, cssClass.size(props.size), props.className)}>
       <img src={imgUrls[filename]} />
     </span>
   );
@@ -97,6 +97,7 @@ Icon.defaultProps = {
 Icon.propTypes = {
   name: React.PropTypes.oneOf(lodash.values(Icon.names)).isRequired,
   size: React.PropTypes.oneOf(lodash.values(Icon.sizes)),
+  className: React.PropTypes.string,
 };
 
 Icon.cssClass = {
