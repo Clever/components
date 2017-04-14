@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React, {PureComponent} from "react";
 
+import PropDocumentation from "./PropDocumentation";
 import Example from "./Example";
 import View from "./View";
 import {Icon, SegmentedControl} from "src";
@@ -43,6 +44,29 @@ export default class IconView extends PureComponent {
             )}
           </ul>
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the icon",
+            },
+            {
+              name: "name",
+              type: "String",
+              description: "The name of the icon to use",
+            },
+            {
+              name: "type",
+              type: "String",
+              description: "One of small, medium, large",
+              defaultValue: "medium",
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="Icon"
+        />
       </View>
     );
   }
