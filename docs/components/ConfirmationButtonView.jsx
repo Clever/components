@@ -71,6 +71,13 @@ export default class ConfirmationButtonView extends Component {
               defaultValue: "regular",
             },
             {
+              name: "modalWidth",
+              type: "Number",
+              description: "Width of the modal",
+              defaultValue: "400px",
+              optional: true,
+            },
+            {
               name: "onClick",
               type: "Function",
               description: "Called when the user clicks on the button",
