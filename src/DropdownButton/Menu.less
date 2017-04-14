@@ -1,0 +1,53 @@
+@import (reference) "../less/index";
+
+
+.DropdownButton--Menu {
+  .margin--none;
+  .padding--none;
+  .zIndex--2;
+  box-shadow: 0 0 @size_xs rgba(0, 0, 0, .15);
+  position: absolute;
+  width: 100%;
+}
+
+.Button.DropdownButton--Option {
+  .borderRadius--0;
+  .text--left;
+  border-top: 0;
+  border-bottom-width: @borderWidthS;
+
+  &:last-child {
+    .borderRadius--bottom--s;
+  }
+}
+
+// Reset the disabled border styles for the secondary button's left and right borders, so it they
+// match those of the siblings in the menu.
+.Button--secondary.DropdownButton--Option[disabled] {
+  .border--x--s(@primary_blue);
+  .border--bottom--s(@primary_blue);
+
+  &:active,
+  &:focus,
+  &:hover {
+    .border--x--s(@primary_blue);
+    .border--bottom--s(@primary_blue);
+  }
+}
+
+/*
+ * <Button /> styles have smaller padding on the bottom by default to offset the thicker bottom
+ * border. These resets ensure that text is centered vertically when using them as dropdown options:
+ */
+
+.Button--small.DropdownButton--Option {
+  .padding--y--2xs;
+}
+
+.Button--regular.DropdownButton--Option {
+  .padding--y--xs;
+}
+
+.Button--large.DropdownButton--Option {
+  .padding--y--s;
+}

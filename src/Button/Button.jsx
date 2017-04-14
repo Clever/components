@@ -1,10 +1,14 @@
+import _ from "lodash";
 import classnames from "classnames";
 import React from "react";
 
-require("./Button.less");
+import "./Button.less";
+
 
 export function Button(props) {
-  if (props.type === "destructive" && props.size === "small") {
+  const {Size, Type} = Button;
+
+  if (props.type === Type.DESTRUCTIVE && props.size === Size.S) {
     throw new Error("Small destructive buttons are not supported");
   }
 
@@ -34,16 +38,31 @@ export function Button(props) {
   );
 }
 
+Button.Size = {
+  S: "small",
+  M: "regular",
+  L: "large",
+};
+
+Button.Type = {
+  PRIMARY: "primary",
+  SECONDARY: "secondary",
+  DESTRUCTIVE: "destructive",
+  LINK: "link",
+  LINK_PLAIN: "linkPlain",
+  PLAIN: "plain",
+};
+
 Button.defaultProps = {
-  type: "secondary",
-  size: "regular",
+  type: Button.Type.SECONDARY,
+  size: Button.Size.M,
   target: "_blank",
 };
 
 Button.propTypes = {
   className: React.PropTypes.string,
-  type: React.PropTypes.oneOf(["primary", "secondary", "destructive", "link", "linkPlain", "plain"]),
-  size: React.PropTypes.oneOf(["large", "regular", "small"]),
+  type: React.PropTypes.oneOf(_.values(Button.Type)),
+  size: React.PropTypes.oneOf(_.values(Button.Size)),
   value: React.PropTypes.node.isRequired,
   href: React.PropTypes.string,
   target: React.PropTypes.oneOf(["_self", "_blank"]),
