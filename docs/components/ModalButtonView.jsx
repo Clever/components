@@ -96,7 +96,7 @@ export default class ModalButtonView extends Component {
             },
             {
               name: "target",
-              type:"String",
+              type: "String",
               description: "For links, either _self or _blank",
               defaultValue: "_blank",
               optional: true,

@@ -103,7 +103,7 @@ export default class ConfirmationButtonView extends Component {
             },
             {
               name: "confirmButtonTarget",
-              type:"String",
+              type: "String",
               description: "For links, either _self or _blank",
               defaultValue: "_blank",
               optional: true,

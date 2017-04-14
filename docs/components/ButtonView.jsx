@@ -174,7 +174,7 @@ export default function ButtonView() {
           },
           {
             name: "target",
-            type:"String",
+            type: "String",
             description: "For links, either _self or _blank",
             defaultValue: "_blank",
             optional: true,
