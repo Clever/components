@@ -145,7 +145,6 @@ export default class TextInputView extends Component {
               name: "name",
               type: "String",
               description: "Name for input element",
-              optional: true,
             },
             {
               name: "onBlur",
