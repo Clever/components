@@ -1,0 +1,57 @@
+@import (reference) "~less/index";
+
+
+.DropdownButtonView--intro {
+  .margin--bottom--xl;
+}
+
+.DropdownButtonView--dropdown--400px {
+  width: 25rem;
+}
+
+.DropdownButtonView--hello {
+  .margin--bottom--m;
+  .text--colossal;
+  .text--light;
+  color: @neutral_gray;
+  display: block;
+}
+
+.Button.DropdownButtonView--moreSamples {
+  .margin--left--s;
+  color: @neutral_gray;
+
+  &:focus,
+  &:hover {
+    color: @neutral_dark_gray;
+  }
+
+  &:active {
+    color: @alert_orange;
+  }
+}
+
+.DropdownButtonView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.DropdownButtonView--config {
+  .margin--right--xl;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--bottom--s;
+  }
+}
+
+.DropdownButtonView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.DropdownButtonView--props {
+  .margin--top--l;
+}

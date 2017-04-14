@@ -30,6 +30,7 @@ export default function SideBar({className}) {
         <NavLink href="/components/count">Count</NavLink>
         <NavLink href="/components/date-picker">DatePicker</NavLink>
         <NavLink href="/components/dollar-amount">DollarValue</NavLink>
+        <NavLink href="/components/dropdown-button">DropdownButton</NavLink>
         <NavLink href="/components/flex-box">FlexBox</NavLink>
         <NavLink href="/components/file-input">FileInput</NavLink>
         <NavLink href="/components/grid">Grid</NavLink>
