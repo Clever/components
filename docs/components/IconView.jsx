@@ -51,6 +51,7 @@ export default class IconView extends PureComponent {
               name: "className",
               type: "String",
               description: "Additional classname to apply to the icon",
+              optional: true,
             },
             {
               name: "name",

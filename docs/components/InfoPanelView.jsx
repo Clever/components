@@ -1,6 +1,7 @@
 import React from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {InfoPanel, InfoPanelColumn} from "src";
 
@@ -46,6 +47,53 @@ export default class InfoPanelView extends React.Component {
             </InfoPanel>
           </div>
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "children",
+              type: "InfoPanelColumn",
+              description: "The child columns to render",
+            },
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the InfoPanel",
+              optional: true,
+            },
+            {
+              name: "footer",
+              type: "React Node",
+              description: "Content to render in the InfoPanel footer",
+              optional: true,
+            },
+            {
+              name: "title",
+              type: "String",
+              description: "The InfoPanel title",
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="InfoPanel"
+        />
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "children",
+              type: "InfoPanelColumn",
+              description: "The children elements to render in the column",
+            },
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the InfoPanelColumn",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="InfoPanelColumn"
+        />
       </View>
     );
   }
