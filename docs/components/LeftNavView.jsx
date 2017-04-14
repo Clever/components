@@ -15,16 +15,22 @@ export default class LeftNavView extends PureComponent {
         <PropDocumentation
           availableProps={[
             {
+              name: "children",
+              type: "Array<Union<LeftNav.NavLink,LeftNav.NavGroup",
+              description: "The links and link groups to render in the nav",
+              optional: true,
+            },
+            {
+              name: "className",
+              type: "String",
+              description: "Any additional classes to add to LeftNav",
+              optional: true,
+            },
+            {
               name: "collapsed",
               type: "Boolean",
               description: "Shrinks the main navigation to just icons",
               defaultValue: false,
-              optional: true,
-            },
-            {
-              name: "children",
-              type: "Array<Union<LeftNav.NavLink,LeftNav.NavGroup",
-              description: "The links and link groups to render in the nav",
               optional: true,
             },
           ]}
@@ -34,6 +40,12 @@ export default class LeftNavView extends PureComponent {
 
         <PropDocumentation
           availableProps={[
+            {
+              name: "className",
+              type: "String",
+              description: "Any additional classes to add to NavGroup",
+              optional: true,
+            },
             {
               name: "icon",
               type: "Node",
@@ -57,6 +69,12 @@ export default class LeftNavView extends PureComponent {
 
         <PropDocumentation
           availableProps={[
+            {
+              name: "className",
+              type: "String",
+              description: "Any additional classes to add to NavLink",
+              optional: true,
+            },
             {
               name: "icon",
               type: "Node",
