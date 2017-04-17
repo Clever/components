@@ -1,0 +1,92 @@
+@import (reference) "../less/index";
+
+
+.DropdownButton {
+  display: inline-block;
+  overflow: visible;
+  position: relative;
+}
+
+.Button.DropdownButton--main {
+  .flexShrink(0);
+
+  &:not(:last-child) {
+    .text--left;
+    border-top-right-radius: 0;
+    border-right: 0;
+  }
+}
+
+.Button.DropdownButton--toggle {
+  .flex(0, 0);
+  // Padding will be re-applied on the child Caret--container element.
+  .padding--x--none;
+  border-left: 0;
+  box-sizing: content-box;
+  border-top-left-radius: 0;
+}
+
+.DropdownButton--Caret--container {
+  transition: border .25s ease-out;
+}
+
+/*
+ * The caret container is used to provide a partition border that doesn't extend all the way
+ * vertically. The following styles are intended to match the base Button padding.
+ */
+
+.Button--small.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .padding--x--s;
+  }
+}
+
+.Button--regular.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .padding--x--m;
+  }
+}
+
+.Button--large.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .padding--x--l;
+  }
+}
+
+/*
+ * Similarly, the following adjust the partition border color based on the button color.
+ */
+
+.Button--primary.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .border--left--s(shade(@primary_blue, @shadeStepAmount * 2));
+  }
+}
+
+.Button--secondary.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .border--left--s(@primary_blue);
+  }
+}
+
+.Button--destructive.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .border--left--s(shade(@alert_red, @shadeStepAmount * 2));
+  }
+}
+
+.Button.DropdownButton--toggle[disabled] {
+  .DropdownButton--Caret--container {
+    .border--left--s(shade(@neutral_silver, @shadeStepAmount * 2));
+  }
+}
+
+// Hide the partition on hover to avoid clashing with the darkened background in the "primary" and
+// "destructive" button types.
+.DropdownButton--buttons:hover {
+  .Button.DropdownButton--toggle:not(.Button--secondary):not([disabled]) {
+    .DropdownButton--Caret--container {
+      .border--left--s(transparent);
+    }
+  }
+}

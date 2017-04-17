@@ -22,6 +22,9 @@ a, button {
   &.Button {
     .border--s(transparent);
     .borderRadius--top--m;
+    // Safari weirdly adds margins to adjacent buttons. Reset that:
+    .margin--none;
+    .padding--none;
     .text--medium;
     border-bottom-width: @borderWidthL;
     box-sizing: border-box;
@@ -30,7 +33,7 @@ a, button {
     font-family: "Proxima Nova";
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.25s ease-out, border-color 0.25s ease-out, color 0.25s ease-out;
+    transition: all 0.25s ease-out;
 
     &[disabled],
     &[disabled]:hover,
@@ -63,6 +66,12 @@ a, button {
   &.Button--primary {
     .buttonColor(@primary_blue);
     color: @neutral_off_white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: @neutral_off_white;
+    }
   }
 
   &.Button--secondary {
@@ -81,6 +90,12 @@ a, button {
   &.Button--destructive {
     .buttonColor(@alert_red);
     color: @neutral_off_white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: @neutral_off_white;
+    }
   }
 
   &.Button--linkPlain,

@@ -9,6 +9,7 @@ import CopyableInputView from "./components/CopyableInputView";
 import CountView from "./components/CountView";
 import DatePickerView from "./components/DatePickerView";
 import DollarAmountView from "./components/DollarAmountView";
+import DropdownButtonView from "./components/DropdownButtonView";
 import FileInputView from "./components/FileInputView";
 import FlexBoxView from "./components/FlexBoxView";
 import GettingStartedView from "./components/GettingStartedView";
@@ -61,6 +62,7 @@ render((
         <Route path="count(/*)" component={CountView} />
         <Route path="date-picker(/*)" component={DatePickerView} />
         <Route path="dollar-amount(/*)" component={DollarAmountView} />
+        <Route path="dropdown-button(/*)" component={DropdownButtonView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="grid(/*)" component={GridView} />
