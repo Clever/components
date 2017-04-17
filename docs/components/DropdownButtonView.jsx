@@ -278,7 +278,7 @@ export default class DropdownButtonView extends Component {
               name: "href",
               type: "string",
               description:
-                "Optional URL for the main action button. The button is rendered as an anchor"
+                "Optional URL for the main action button. The button is rendered as an anchor "
                   + "element if `href`` is specified.",
             },
             {
@@ -300,7 +300,12 @@ export default class DropdownButtonView extends Component {
             {
               name: "target",
               type: "string",
-              description: "The window target for the link button, if `href` is specified.",
+              description: (
+                <div>
+                  <p>The window target for the link button, if `href` is specified.</p>
+                  <p>Supports <code>_self</code> and <code>_blank</code>.</p>
+                </div>
+              ),
               defaultValue: "_blank",
             },
             {
@@ -336,7 +341,7 @@ export default class DropdownButtonView extends Component {
               name: "href",
               type: "string",
               description:
-                "Optional URL for the main action button. The button is rendered as an anchor"
+                "Optional URL for the main action button. The button is rendered as an anchor "
                   + "element if `href`` is specified.",
             },
             {
@@ -351,9 +356,12 @@ export default class DropdownButtonView extends Component {
               defaultValue: "DropdownButton.Size.M",
             },
             {
-              name: "target",
-              type: "string",
-              description: "The window target for the link button, if `href` is specified.",
+              description: (
+                <div>
+                  <p>The window target for the link button, if `href` is specified.</p>
+                  <p>Supports <code>_self</code> and <code>_blank</code>.</p>
+                </div>
+              ),
               defaultValue: "_blank",
             },
           ]}
