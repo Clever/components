@@ -65,7 +65,7 @@ PropDocumentation.propTypes = {
   availableProps: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.node.isRequired,
     defaultValue: PropTypes.string,
     optional: PropTypes.bool,
   })),

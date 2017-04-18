@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router";
 
 import Example from "./Example";
 import PropDocumentation from "./PropDocumentation";
@@ -12,11 +13,19 @@ export default function ButtonView() {
   const {cssClass} = ButtonView;
 
   return (
-    <View className={cssClass.CONTAINER} title="Button">
+    <View className={cssClass.CONTAINER} title="Button" sourcePath="src/Button/Button.jsx">
       <p>
         This is a set of button components with various sizes and types.
       </p>
-
+      <p>
+        See also:
+        {" "}
+        <Link to="/components/confirmation-button">Confirmation Button</Link>
+        {" | "}
+        <Link to="/components/dropdown-button">Dropdown Button</Link>
+        {" | "}
+        <Link to="/components/modal-button">Modal Button</Link>
+      </p>
       <Example
         title="Button Sizing"
         code={`
