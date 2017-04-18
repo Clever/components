@@ -4,6 +4,7 @@ import loremIpsum from "lorem-ipsum";
 import React, {PureComponent} from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Button, ModalButton, Table, TextInput} from "src";
 
@@ -236,6 +237,145 @@ export default class TableView extends PureComponent {
             Clickable rows (see console)
           </label>
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "data",
+              type: "Array",
+              description: "The array of data items, each corresponding to a single potential table row",
+            },
+            {
+              name: "rowIDFn",
+              type: "Function",
+              description: "Called with data for a single row. Should return the unique ID for that row",
+            },
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the table",
+              optional: true,
+            },
+            {
+              name: "filter",
+              type: "Function",
+              description: "Called with data for a single row. Should return false if the row should be filtered out"
+              + " or true otherwise.",
+              optional: true,
+            },
+            {
+              name: "fixed",
+              type: "Boolean",
+              description: "Whether or not table column widths should be fixed vs. fluid",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "initialPage",
+              type: "Number",
+              description: "The 1-based index of the initial page to be displayed initially",
+              optional: true,
+            },
+            {
+              name: "initialSortState",
+              type: "{columnID: String, direction: Table.sortDirection}",
+              description: "The initial sort state of the table",
+              optional: true,
+            },
+            {
+              name: "onPageChange",
+              type: "Function",
+              description: "Callback function for the 1-based index displayed page change event",
+              optional: true,
+            },
+            {
+              name: "onSortChange",
+              type: "Function",
+              description: "Callback function for the sort state change event",
+              optional: true,
+            },
+            {
+              name: "pageSize",
+              type: "Number",
+              description: "The number of data rows to display on each page",
+              defaultValue: "10",
+              optional: true,
+            },
+            {
+              name: "paginated",
+              type: "Boolean",
+              description: "Whether or not to enable pagination, see pageSize",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "rowClassNameFn",
+              type: "Function",
+              description: "Called with data with a single row. Returns an additional className for the row",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="Table"
+        />
+
+        <p><strong>API</strong></p>
+        <p>
+          <code>setCurrentPage(page:Number)</code> – Explicitly sets the displayed page on the Table with the specified 1-based
+          page. Useful for reacting to data or filter changes that warrant resetting the current page. <strong>Note:</strong> The
+          current page is automatically reset to the first page on every sort state change.
+        </p>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "cell",
+              type: "{className: String (optional), renderer: Function}",
+              description: "Configuration for the table body cell for this column. renderer will be called with data"
+              + " for a single row and should return content that can be rendered by the React DOM renderer",
+            },
+            {
+              name: "id",
+              type: "String",
+              description: "Unique identifier for the column. Can be used in referencing columns for sorting",
+            },
+            {
+              name: "header",
+              type: "{className: String (optional), content: Any (optional)}",
+              description: "Configuration for the header cell of this column",
+              optional: true,
+            },
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the table column",
+              optional: true,
+            },
+            {
+              name: "noWrap",
+              type: "Boolean",
+              description: "Prevents the column conten from wrapping. In the non-fixed mode, the table column will "
+              + "automatically expand to fit all content in the column on a single line.",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "sortable",
+              type: "Boolean",
+              description: "Enables sorting for the column",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "sortValueFn",
+              type: "Function",
+              description: "Called with data for a single row. Should return a sortable value for row",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="Table.Column"
+        />
 
         <Example
           code={`
