@@ -18,6 +18,11 @@ export default class ConfirmationButtonView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="ConfirmationButton">
+        <p>
+          This component is a <code>Button</code> that triggers the appearance of a modal with "Confirm" and "Cancel"
+          buttons when clicked.
+        </p>
+
         <Example
           code={`
             <ConfirmationButton

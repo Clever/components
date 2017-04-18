@@ -18,6 +18,11 @@ export default class SegmentedControlView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="SegmentedControl">
+        <p>
+          This component is a <code>segmented control</code>. It functions as a variation on radiobuttons for
+          when a user needs to select one of a handful of options.
+        </p>
+
         <Example
           title="Basic"
           code={`

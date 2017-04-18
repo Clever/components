@@ -19,6 +19,10 @@ export default class ModalButtonView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="ModalButton">
+        <p>
+          This component is a <code>Button</code> that triggers the appearance of a modal when clicked.
+        </p>
+
         <Example
           code={`
             <ModalButton

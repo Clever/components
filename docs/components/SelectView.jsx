@@ -32,6 +32,11 @@ export default class SelectView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="Select">
+        <p>
+          This component replaces the <code>select</code> input and allows users to select options from a
+          list.
+        </p>
+
         <Example
           code={`
             <Select
@@ -133,7 +138,8 @@ export default class SelectView extends Component {
               name: "name",
               type: "String",
               description: "Name for the select element",
-            },            {
+            },
+            {
               name: "className",
               type: "String",
               description: "Additional classname to apply to the select element",

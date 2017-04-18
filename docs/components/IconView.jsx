@@ -21,6 +21,11 @@ export default class IconView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="Icon">
+        <p>
+          This component gives you access to a library of over 60 bespoke icons designed
+          specifically for Clever products. Each icon comes in three sizes.
+        </p>
+
         <Example
           code={`
             <Icon size={Icon.sizes.MEDIUM} name={Icon.names.BLOCKS} />

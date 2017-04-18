@@ -10,6 +10,20 @@ export default class FlexBoxView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="FlexBox">
+        <p>
+          <code>FlexBox</code> provides a flex-enabled container as a convenience wrapper around the clever-components
+          flex CSS classes. A <code>FlexBox</code> may contain any other renderable elements, including other
+          <code>FlexBox</code> components or <code>FlexItems</code>.
+        </p>
+        <p>
+          <code>FlexItem</code> similarly provides a convenience wrapper around flex item-specific CSS classes and may
+          in turn contain any combination of React-supported elements.
+        </p>
+        <p>
+          <strong>NOTE:</strong> Using a <code>FlexItem</code> properties have no effect on an element unless it is
+          rendered within a <code>FlexBox</code> or other <code>display: flex</code> container. However <code>FlexBox</code>
+          can be used without <code>FlexItem</code> in many cases.
+        </p>
         <FlexExample />
 
         <PropDocumentation

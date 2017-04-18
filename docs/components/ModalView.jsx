@@ -19,6 +19,10 @@ export default class ModalView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="Modal">
+        <p>
+          This component wraps your content and displays it in a modal and obscures the underlying content.
+        </p>
+
         <Example
           code={`
             <Button

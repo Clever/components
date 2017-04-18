@@ -10,6 +10,13 @@ export default class LeftNavView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="LeftNav">
+        <p>
+          <code>LeftNav</code> is a navigation sidebar component designed to be anchored to
+          the left side of the page. It takes as its children a list consisting of top-level
+          links (<code>LeftNav.NavLink</code>) as well as groups of nested links
+          (<code>LeftNav.NavGroup</code>). Nested links are rendered in a slide-out drawer.
+        </p>
+
         <LeftNavExample />
 
         <PropDocumentation
@@ -98,7 +105,7 @@ export default class LeftNavView extends PureComponent {
               description: "Whether or not to render the link as selected",
               defaultValue: false,
               optional: true,
-            }
+            },
           ]}
           className={cssClass.PROPS}
           title="NavLink"

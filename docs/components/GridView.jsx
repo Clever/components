@@ -35,6 +35,24 @@ export default class GridView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="Grid" subtitle="Flexible, 12-Column Grid Layout">
+        <p>
+          12-column grid component for consistent, simple and flexible layouts.
+        </p>
+        <p>
+          The <code>Grid</code> is a single column of any number of <code>Grid.Rows</code>, which contain
+          any number of <code>Grid.Cols</code>.
+        </p>
+        <p>
+          <code>Grid.Cols</code> can have varying sizes, determined by the values of their span prop. A
+          single <code>Grid.Col</code> can have different span lengths for different viewport sizes to
+          enable layouts that update dynamically based on available space in the viewport.
+        </p>
+        <p>
+          <strong>NOTE:</strong> A row of <code>Grid.Cols</code> is guaranteed to fit on a single line only
+          if the sum of the spans add up to 12 in the current viewport. Any additional <code>Grid.Cols</code>
+          will wrap onto the following line.
+        </p>
+
         <Example
           title="Single Layout"
           code={`

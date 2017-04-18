@@ -24,6 +24,10 @@ export default class TextAreaView extends React.Component {
 
     return (
       <View className={cssClass.CONTAINER} title="TextArea">
+        <p>
+          This component is a <code>textarea</code> that lets the user input multiple lines of text.
+        </p>
+
         <Example
           code={`
             <TextArea

@@ -10,6 +10,18 @@ export default class TabBarView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="TabBar">
+        <p>
+          <code>TabBar</code> provides a simple horizontal flex-enabled tab bar supporting various
+          alignment and sizing options. It requires <code>Tab</code> components as children.
+        </p>
+        <p>
+          <code>Tab</code> provides a self-contained tab button supporting selected and disabled
+          states as well as HREFs. <code>Tab</code> inherits its sizing from its parent, so although
+          it can be used independently of <code>TabBar</code>, the alignment and sizing features
+          provided via <code>TabBar</code> are only available when rendering <code>Tabs</code>
+          within a <code>TabBar</code>.
+        </p>
+
         <TabBarExample />
 
         <PropDocumentation

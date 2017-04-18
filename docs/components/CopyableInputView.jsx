@@ -27,6 +27,11 @@ export default class CopyableInputView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="CopyableInput">
+        <p>
+          This is a special TextInput that allows the user to show/hide the value of the input and copy to
+          clipboard. Ideal for passwords and other secret keys.
+        </p>
+
         <Example
           code={`
             <CopyableInput

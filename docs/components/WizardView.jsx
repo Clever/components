@@ -10,6 +10,22 @@ export default class WizardView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="Wizard">
+        <p>
+          <code>Wizard</code> provides an interface for making guided wizards. A <code>Wizard</code>
+          is provided several steps that consist of a <code>Component</code> to render, a validate
+          function, and a few other fields.
+        </p>
+        <p>
+          The <code>Component</code> gets two props:
+          <ul>
+            <li><code>setWizardState</code>: setWizardState allows each step to add data to the wizardState</li>
+            <li><code>wizardState</code>: wizardState contains any data that has been set by any step before</li>
+          </ul>
+
+          The validate function receives this shared state as an argument, allowing each step to define
+          the conditions under which their inputs are considered valid.
+        </p>
+
         <WizardExample />
 
         <PropDocumentation
@@ -22,7 +38,8 @@ export default class WizardView extends PureComponent {
             {
               name: "onComplete",
               type: "Function",
-              description: "Defines what happens when all steps are valid, and the user clicks the next button past final step",
+              description: "Defines what happens when all steps are valid, and the user clicks the next"
+              + "button past final step",
             },
             {
               name: "steps",

@@ -13,6 +13,10 @@ export default function ButtonView() {
 
   return (
     <View className={cssClass.CONTAINER} title="Button">
+      <p>
+        This is a set of button components with various sizes and types.
+      </p>
+
       <Example
         title="Button Sizing"
         code={`

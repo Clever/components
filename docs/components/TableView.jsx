@@ -59,6 +59,10 @@ export default class TableView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="Table">
+        <p>
+          This table component supports sorting, filtering, and pagination. There is also a lazy loading
+          table available for very large sets of data.
+        </p>
         <Example
           code={`
             <Table

@@ -27,6 +27,10 @@ export default class TextInputView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="TextInput">
+        <p>
+          This is your standard <code>input type="text"</code> component.
+        </p>
+
         <Example
           code={`
             <TextInput
