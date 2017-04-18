@@ -198,7 +198,7 @@ export default class SegmentedControlView extends Component {
             },
           ]}
           className={cssClass.PROPS}
-          title="InfoPanel"
+          title="SegmentedControl"
         />
       </View>
     );
