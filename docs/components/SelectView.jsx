@@ -2,6 +2,7 @@ import _ from "lodash";
 import React, {Component} from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Select} from "src";
 
@@ -31,6 +32,11 @@ export default class SelectView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="Select">
+        <p>
+          This component replaces the <code>select</code> input and allows users to select options from a
+          list.
+        </p>
+
         <Example
           code={`
             <Select
@@ -120,6 +126,95 @@ export default class SelectView extends Component {
             Read Only
           </label>
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "id",
+              type: "String",
+              description: "ID for the select element to be used by the label, must be unique",
+            },
+            {
+              name: "name",
+              type: "String",
+              description: "Name for the select element",
+            },
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the select element",
+              optional: true,
+            },
+            {
+              name: "clearable",
+              type: "Boolean",
+              description: "Whether the selected value can be cleared",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "disabled",
+              type: "Boolean",
+              description: "Whether the select is disabled",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "label",
+              type: "String",
+              description: "Label for the select element",
+              optional: true,
+            },
+            {
+              name: "multi",
+              type: "Boolean",
+              description: "Whether multiple options may be selected",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "onChange",
+              type: "Function",
+              description: "Called with new value when it changes",
+              optional: true,
+            },
+            {
+              name: "optionRenderer",
+              type: "Function",
+              description: "A function that returns a custom display node for a specific select option. "
+              + "Invoked with a single option as specified in options as the first argument and the index "
+              + "of the option as the second",
+              optional: true,
+            },
+            {
+              name: "options",
+              type: "Array",
+              description: "Possible options, must contain objects with label and value attributes.",
+              optional: true,
+            },
+            {
+              name: "placeholder",
+              type: "String",
+              description: "Placeholder text for the select element",
+              optional: true,
+            },
+            {
+              name: "searchable",
+              type: "Boolean",
+              description: "Whether or not the values in the dropdown are searchable",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "value",
+              type: "String",
+              description: "Selected value. Must be updated by caller in the onChange",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="Select"
+        />
       </View>
     );
   }

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {ProgressBar} from "src";
 
@@ -56,6 +57,45 @@ export default class ProgressBarView extends Component {
           <ProgressBar percentage={this.state.progress} direction="down" length="200px" />
           <ProgressBar percentage={this.state.progress} direction="up" length="200px" />
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "className",
+              type: "String",
+              description: "Any additional classes to add to ProgressBar",
+              optional: true,
+            },
+            {
+              name: "direction",
+              type: "String",
+              description: "The direction the bar should fill up. Any of up, down, left, or right",
+              defaultValue: "right",
+              optional: true,
+            },
+            {
+              name: "length",
+              type: "String",
+              description: "CSS size string for how long the progress bar should be. Non-percentage for vertical bars.",
+              defaultValue: "100%",
+              optional: true,
+            },
+            {
+              name: "percentage",
+              type: "Number",
+              description: "How much of the progress bar should be filled in",
+              optional: true,
+            },
+            {
+              name: "style",
+              type: "Object",
+              description: "Add custom styles (e.g. margin) if you must",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="ProgressBar"
+        />
       </View>
     );
   }

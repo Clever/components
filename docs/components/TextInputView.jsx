@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {TextInput} from "src";
 
@@ -26,6 +27,10 @@ export default class TextInputView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="TextInput">
+        <p>
+          This is your standard <code>input type="text"</code> component.
+        </p>
+
         <Example
           code={`
             <TextInput
@@ -107,6 +112,105 @@ export default class TextInputView extends Component {
             Obscured
           </label>
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "disabled",
+              type: "Bool",
+              description: "Sets element as disabled",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "disableAutocomplete",
+              type: "Bool",
+              description: "Sets autocomplete='off' on the input element to disable default browser autocomplete",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "enableShow",
+              type: "Bool",
+              description: "Displays a show/hide text link that reveals passwords",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "error",
+              type: "String",
+              description: "Adds indicator and error text to element",
+              optional: true,
+            },
+            {
+              name: "label",
+              type: "String",
+              description: "Label for input",
+              optional: true,
+            },
+            {
+              name: "name",
+              type: "String",
+              description: "Name for input element",
+            },
+            {
+              name: "onBlur",
+              type: "Function",
+              description: "Called when focus leaves the input",
+              optional: true,
+            },
+            {
+              name: "onChange",
+              type: "Function",
+              description: "Called when value of input changes",
+              optional: true,
+            },
+            {
+              name: "onFocus",
+              type: "Function",
+              description: "Called when when the input acquires focus",
+              optional: true,
+            },
+            {
+              name: "onKeyPress",
+              type: "Function",
+              description: "Called when a key is pressed",
+              optional: true,
+            },
+            {
+              name: "placeholder",
+              type: "Node",
+              description: "Placeholder node for input",
+              optional: true,
+            },
+            {
+              name: "readOnly",
+              type: "Bool",
+              description: "Sets element as read only",
+              optional: true,
+            },
+            {
+              name: "required",
+              type: "Bool",
+              description: "Marks input as required and adds indicator",
+              optional: true,
+            },
+            {
+              name: "type",
+              type: "String",
+              description: "The type of control to display, tested 'number' and 'text'",
+              defaultValue: "text",
+              optional: true,
+            },
+            {
+              name: "value",
+              type: "Node",
+              description: "Value of input",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
       </View>
     );
   }

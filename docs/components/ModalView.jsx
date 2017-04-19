@@ -2,6 +2,7 @@ import loremIpsum from "lorem-ipsum";
 import React, {Component} from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Button, Modal} from "src";
 
@@ -18,6 +19,10 @@ export default class ModalView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="Modal">
+        <p>
+          This component wraps your content and displays it in a modal and obscures the underlying content.
+        </p>
+
         <Example
           code={`
             <Button
@@ -75,6 +80,42 @@ export default class ModalView extends Component {
             </Modal>
           )}
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "children",
+              type: "Node",
+              description: "The content to render within the modal",
+            },
+            {
+              name: "className",
+              type: "String",
+              description: "Any additional classes to add to Modal",
+              optional: true,
+            },
+            {
+              name: "closeModal",
+              type: "Function",
+              description: "Called when the user clicks outside the modal",
+            },
+            {
+              name: "title",
+              type: "String",
+              description: "The title of the modal",
+            },
+            {
+              name: "width",
+              type: "Number",
+              description: "The width of the modal",
+              defaultValue: "400px",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="Modal"
+        />
+
       </View>
     );
   }
