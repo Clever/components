@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {SegmentedControl} from "src";
 
@@ -17,6 +18,11 @@ export default class SegmentedControlView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="SegmentedControl">
+        <p>
+          This component is a <code>segmented control</code>. It functions as a variation on radiobuttons for
+          when a user needs to select one of a handful of options.
+        </p>
+
         <Example
           title="Basic"
           code={`
@@ -161,6 +167,44 @@ export default class SegmentedControlView extends Component {
             ]}
           />
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the InfoPanel",
+              optional: true,
+            },
+            {
+              name: "defaultValue",
+              type: "String",
+              description: "Key of the option as selected",
+              defaultValue: "Null",
+              optional: true,
+            },
+            {
+              name: "disabled",
+              type: "Boolean",
+              description: "Whether the segmented control is disabled",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "onSelect",
+              type: "Function",
+              description: "Called with the key of selected item on select",
+              optional: true,
+            },
+            {
+              name: "options",
+              type: "Object",
+              description: "Array of objects with a value (unique ID), content (what to render), and disabled (optional)",
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="SegmentedControl"
+        />
       </View>
     );
   }
