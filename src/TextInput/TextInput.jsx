@@ -90,6 +90,7 @@ export class TextInput extends React.Component {
           required={this.props.required}
           type={type}
           value={this.props.value}
+          {...inputProps}
         />
         {this.props.enableShow &&
           <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
@@ -118,4 +119,5 @@ TextInput.propTypes = {
   type: React.PropTypes.string,
   value: React.PropTypes.node,
   className: React.PropTypes.string,
+  inputProps: React.PropTypes.object,
 };
