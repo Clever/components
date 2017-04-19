@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React, {PureComponent} from "react";
 
+import PropDocumentation from "./PropDocumentation";
 import Example from "./Example";
 import View from "./View";
 import {Icon, SegmentedControl} from "src";
@@ -20,6 +21,11 @@ export default class IconView extends PureComponent {
 
     return (
       <View className={cssClass.CONTAINER} title="Icon">
+        <p>
+          This component gives you access to a library of over 60 bespoke icons designed
+          specifically for Clever products. Each icon comes in three sizes.
+        </p>
+
         <Example
           code={`
             <Icon size={Icon.sizes.MEDIUM} name={Icon.names.BLOCKS} />
@@ -43,6 +49,30 @@ export default class IconView extends PureComponent {
             )}
           </ul>
         </Example>
+
+        <PropDocumentation
+          availableProps={[
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the icon",
+              optional: true,
+            },
+            {
+              name: "name",
+              type: "String",
+              description: "The name of the icon to use",
+            },
+            {
+              name: "type",
+              type: "String",
+              description: "One of small, medium, large",
+              defaultValue: "medium",
+            },
+          ]}
+          className={cssClass.PROPS}
+          title="Icon"
+        />
       </View>
     );
   }

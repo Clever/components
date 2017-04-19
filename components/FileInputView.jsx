@@ -1,6 +1,7 @@
 import React from "react";
 
 import Example from "./Example";
+import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {FileInput} from "src";
 
@@ -37,7 +38,7 @@ export default function FileInputView() {
               error(e);
             }
           }
-          
+
           <FileInput
             label="Icon"
             store={store}
@@ -60,6 +61,37 @@ export default function FileInputView() {
           </ul>
         </div>
       </Example>
+
+      <PropDocumentation
+        availableProps={[
+          {
+            name: "accept",
+            type: "String",
+            description: "Sets accepted list of files",
+            defaultValue: "Any",
+            optional: true,
+          },
+          {
+            name: "className",
+            type: "String",
+            description: "Additional classname to apply to the flex box",
+            optional: true,
+          },
+          {
+            name: "label",
+            type: "String",
+            description: "Sets the label of the file input",
+          },
+          {
+            name: "store",
+            type: "Function",
+            description: "Function to be called when the user has seleceted a file to be uploaded",
+            defaultValue: "False",
+          },
+        ]}
+        className={cssClass.PROPS}
+        title="FileInput"
+      />
     </View>
   );
 }

@@ -49,6 +49,12 @@ export default class PropDocumentation extends PureComponent {
             cell={{renderer: p => p.defaultValue || "None"}}
             noWrap
           />
+          <Column
+            id="optional"
+            header={{content: "Required"}}
+            cell={{renderer: p => (p.optional ? "False" : "True")}}
+            noWrap
+          />
         </Table>
       </div>
     );
@@ -61,6 +67,7 @@ PropDocumentation.propTypes = {
     type: PropTypes.string.isRequired,
     description: PropTypes.node.isRequired,
     defaultValue: PropTypes.string,
+    optional: PropTypes.bool,
   })),
   className: PropTypes.string,
   title: PropTypes.string,
