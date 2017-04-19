@@ -78,6 +78,7 @@ export class TextInput extends React.Component {
           {inputNote}
         </div>
         <input
+          {...additionalProps}
           autoComplete={this.props.disableAutocomplete && "off"}
           className="TextInput--input"
           disabled={this.props.disabled}
@@ -92,7 +93,6 @@ export class TextInput extends React.Component {
           required={this.props.required}
           type={type}
           value={this.props.value}
-          {...additionalProps}
         />
         {this.props.enableShow &&
           <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
