@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import _ from "lodash";
 
 require("./TextInput.less");
 
@@ -68,6 +69,7 @@ export class TextInput extends React.Component {
     }
 
     let type = (this.props.type === "password" && this.state.hidden) ? "password" : "text";
+    const additionalProps = _.omit(this.props, Object.keys(TextInput.propTypes));
 
     return (
       <div className={classnames(wrapperClass, this.props.className)}>
@@ -90,7 +92,7 @@ export class TextInput extends React.Component {
           required={this.props.required}
           type={type}
           value={this.props.value}
-          {...inputProps}
+          {...additionalProps}
         />
         {this.props.enableShow &&
           <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
@@ -119,5 +121,4 @@ TextInput.propTypes = {
   type: React.PropTypes.string,
   value: React.PropTypes.node,
   className: React.PropTypes.string,
-  inputProps: React.PropTypes.object,
 };
