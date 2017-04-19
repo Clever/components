@@ -40,6 +40,8 @@ export default class TextInputView extends Component {
               placeholder="TextInput Placeholder"
               onChange={e => this.setState({inputValue: e.target.value})}
               value={this.state.inputValue}
+              //You can pass additional properties as well to the inner input element
+              onMouseOver={e => {console.log("mouseover!", e)}}
             />
           `}
         >
@@ -56,6 +58,7 @@ export default class TextInputView extends Component {
               placeholder="TextInput Placeholder"
               onChange={e => this.setState({inputValue: e.target.value})}
               value={this.state.inputValue}
+              onMouseOver={e => {console.log("mouseover!", e);}}
             />
           </div>
           <label className={cssClass.CONFIG}>

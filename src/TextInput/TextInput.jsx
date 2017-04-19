@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import _ from "lodash";
 
 require("./TextInput.less");
 
@@ -68,6 +69,7 @@ export class TextInput extends React.Component {
     }
 
     let type = (this.props.type === "password" && this.state.hidden) ? "password" : "text";
+    const additionalProps = _.omit(this.props, Object.keys(TextInput.propTypes));
 
     return (
       <div className={classnames(wrapperClass, this.props.className)}>
@@ -76,6 +78,7 @@ export class TextInput extends React.Component {
           {inputNote}
         </div>
         <input
+          {...additionalProps}
           autoComplete={this.props.disableAutocomplete && "off"}
           className="TextInput--input"
           disabled={this.props.disabled}
