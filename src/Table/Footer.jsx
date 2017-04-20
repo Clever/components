@@ -61,7 +61,8 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
               className={cssClass.BUTTON_SCROLL}
               disabled={currentPage === 1}
               onClick={() => selectPage(currentPage - 1)}
-              type="linkPlain"
+              type="link"
+              size="small"
               value="Prev"
             />
             <div className={cssClass.PAGE_NUMBERS}>
@@ -71,7 +72,8 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
                   className={cssClass.BUTTON_PAGE}
                   key={1}
                   onClick={() => selectPage(1)}
-                  type="linkPlain"
+                  type="link"
+                  size="small"
                   value="1"
                 />
               )}
@@ -88,7 +90,8 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
                   )}
                   key={pageNumber}
                   onClick={() => selectPage(pageNumber)}
-                  type="linkPlain"
+                  type="link"
+                  size="small"
                   value={`${pageNumber}`}
                 />
               ))}
@@ -104,7 +107,8 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
                   className={cssClass.BUTTON_PAGE}
                   key={numPages}
                   onClick={() => selectPage(numPages)}
-                  type="linkPlain"
+                  type="link"
+                  size="small"
                   value={`${numPages}`}
                 />
               )}
@@ -113,7 +117,8 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
               className={cssClass.BUTTON_SCROLL}
               disabled={currentPage === numPages && !lengthUnknown}
               onClick={() => selectPage(currentPage + 1, numPages)}
-              type="linkPlain"
+              type="link"
+              size="small"
               value="Next"
             />
           </div>
