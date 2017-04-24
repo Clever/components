@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, {Component} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Select} from "src";
@@ -37,39 +37,24 @@ export default class SelectView extends Component {
           list.
         </p>
 
-        <Example
-          code={`
-            <Select
-              id="select"
-              label="Select Label"
-              disabled={this.state.disabled}
-              clearable={this.state.clearable}
-              searchable={this.state.searchable}
-              multi={this.state.multi}
-              readOnly={this.state.readOnly}
-              name="select"
-              onChange={value => this.setState({selectValue: value})}
-              options={_.range(100).map(i => ({label: \`Option \${i + 1}\`, value: \`\${i + 1}\`}))}
-              placeholder="Select Placeholder"
-              value={this.state.selectValue}
-            />
-          `}
-        >
+        <Example>
           <div className={cssClass.INPUT_CONTAINER}>
-            <Select
-              id="select"
-              label="Select Label"
-              disabled={this.state.disabled}
-              clearable={this.state.clearable}
-              searchable={this.state.searchable}
-              multi={this.state.multi}
-              readOnly={this.state.readOnly}
-              name="select"
-              onChange={value => this.setState({selectValue: value})}
-              options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
-              placeholder="Select Placeholder"
-              value={this.state.selectValue}
-            />
+            <ExampleCode>
+              <Select
+                id="select"
+                label="Select Label"
+                disabled={this.state.disabled}
+                clearable={this.state.clearable}
+                searchable={this.state.searchable}
+                multi={this.state.multi}
+                readOnly={this.state.readOnly}
+                name="select"
+                onChange={value => this.setState({selectValue: value})}
+                options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
+                placeholder="Select Placeholder"
+                value={this.state.selectValue}
+              />
+            </ExampleCode>
           </div>
           <label className={cssClass.CONFIG}>
             <input

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {TextInput} from "src";
@@ -31,40 +31,24 @@ export default class TextInputView extends Component {
           This is your standard <code>input type="text"</code> component.
         </p>
 
-        <Example
-          code={`
-            <TextInput
-              disabled={this.state.disabled}
-              readOnly={this.state.readOnly}
-              required={this.state.required}
-              enableShow={this.state.obscured}
-              error={this.state.hasError ? "Enter a valid email address" : null}
-              type={this.state.obscured ? "password" : "text"}
-              label="TextInput Label"
-              name="TextInputName"
-              placeholder="TextInput Placeholder"
-              onChange={e => this.setState({inputValue: e.target.value})}
-              value={this.state.inputValue}
-              //You can pass additional properties as well to the inner input element
-              onMouseOver={e => {console.log("mouseover!", e)}}
-            />
-          `}
-        >
+        <Example>
           <div className={cssClass.INPUT_CONTAINER}>
-            <TextInput
-              disabled={this.state.disabled}
-              readOnly={this.state.readOnly}
-              required={this.state.required}
-              enableShow={this.state.obscured}
-              error={this.state.hasError ? "Invalid password" : null}
-              type={this.state.obscured ? "password" : "text"}
-              label="TextInput Label"
-              name="TextInputName"
-              placeholder="TextInput Placeholder"
-              onChange={e => this.setState({inputValue: e.target.value})}
-              value={this.state.inputValue}
-              onMouseOver={e => {console.log("mouseover!", e);}}
-            />
+            <ExampleCode>
+              <TextInput
+                disabled={this.state.disabled}
+                readOnly={this.state.readOnly}
+                required={this.state.required}
+                enableShow={this.state.obscured}
+                error={this.state.hasError ? "Invalid password" : null}
+                type={this.state.obscured ? "password" : "text"}
+                label="TextInput Label"
+                name="TextInputName"
+                placeholder="TextInput Placeholder"
+                onChange={e => this.setState({inputValue: e.target.value})}
+                value={this.state.inputValue}
+                onMouseOver={e => {console.log("mouseover!", e);}}
+              />
+            </ExampleCode>
           </div>
           <label className={cssClass.CONFIG}>
             <input

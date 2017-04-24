@@ -3,7 +3,7 @@ import _ from "lodash";
 import loremIpsum from "lorem-ipsum";
 import React, {PureComponent} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Button, ModalButton, Table, TextInput} from "src";
@@ -48,96 +48,13 @@ export default class TableView extends PureComponent {
     const {cssClass} = TableView;
     const {enableRowClick, tableData} = this.state;
 
-    const getDataLazily = async ({startingAfter, pageSize}) => {
-      let start = 0;
-      if (startingAfter != null) {
-        start = _.findIndex(tableData, r => r.id === startingAfter) + 1;
-      }
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      return tableData.slice(start, start + pageSize);
-    };
-
     return (
       <View className={cssClass.CONTAINER} title="Table">
         <p>
           This table component supports sorting, filtering, and pagination. There is also a lazy loading
           table available for very large sets of data.
         </p>
-        <Example
-          code={`
-            <Table
-              data={tableData}
-              filter={rowData => !this.state.tableFilter || _.includes(
-                [rowData.name.first, rowData.name.last].join(" "),
-                this.state.tableFilter.trim().toLowerCase()
-              )}
-              initialPage={24}
-              initialSortState={{columnID: "name", direction: Table.sortDirection.ASCENDING}}
-              ref="table"
-              onPageChange={page => console.log("Table page changed:", page)}
-              onSortChange={sortState => console.log("Table sort changed:", sortState)}
-              onRowClick={enableRowClick
-                ? (e, row) => console.log("Table row clicked:", row)
-                : undefined
-              }
-              onViewChange={data => console.log("New rows:", data.map(d => d.id))}
-              paginated
-              pageSize={9}
-              rowIDFn={r => r.id}
-              rowClassNameFn={r => r.age < 10 ? "additionalClass" : null}
-            >
-              <Table.Column
-                id="details"
-                cell={{renderer: r => (
-                  <ModalButton
-                    type="link"
-                    size="small"
-                    value={"\u2630 Details"}
-                    modalTitle="Details"
-                  >
-                    <p style={{whiteSpace: "normal"}}>{r.notes}</p>
-                  </ModalButton>
-                )}}
-                noWrap
-              />
-
-              <Table.Column
-                id="name"
-                header={{content: "Name"}}
-                cell={{
-                  className: "capitalize",
-                  renderer: r => [r.name.first, r.name.last].join(" "),
-                }}
-                sortable
-                sortValueFn={r => [r.name.first, r.name.last].join(" ")}
-                width="25%"
-              />
-
-              <Table.Column
-                id="age"
-                header={{content: "Age"}}
-                cell={{renderer: r => r.age}}
-                sortable
-                sortValueFn={r => r.age}
-              />
-
-              <Table.Column
-                id="status"
-                header={{content: "Status"}}
-                cell={{renderer: r => r.status}}
-                sortable
-                sortValueFn={r => r.status}
-              />
-
-              <Table.Column
-                id="notes"
-                header={{content: "Notes"}}
-                cell={{renderer: r => r.notes}}
-                width="100%"
-              />
-            </Table>
-          `}
-        >
+        <Example>
           <Button
             onClick={() => {
               this._reload(Math.random() * 5000);
@@ -159,77 +76,79 @@ export default class TableView extends PureComponent {
             />
           </div>
           <div style={{marginTop: "20px"}}>
-            <Table
-              data={tableData}
-              filter={rowData => !this.state.tableFilter || _.includes(
-                [rowData.name.first, rowData.name.last].join(" "),
-                this.state.tableFilter.trim().toLowerCase()
-              )}
-              initialPage={24}
-              initialSortState={{columnID: "name", direction: Table.sortDirection.ASCENDING}}
-              ref="table"
-              onPageChange={page => console.log("Table page changed:", page)}
-              onSortChange={sortState => console.log("Table sort changed:", sortState)}
-              onRowClick={enableRowClick
-                ? (e, row) => console.log("Table row clicked:", row)
-                : undefined
-              }
-              onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
-              paginated
-              pageSize={9}
-              rowIDFn={r => r.id}
-              rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
-            >
-              <Table.Column
-                id="details"
-                cell={{renderer: r => (
-                  <ModalButton
-                    type="link"
-                    size="small"
-                    value={"\u2630 Details"}
-                    modalTitle="Details"
-                  >
-                    <p style={{whiteSpace: "normal"}}>{r.notes}</p>
-                  </ModalButton>
-                )}}
-                noWrap
-              />
+            <ExampleCode>
+              <Table
+                data={tableData}
+                filter={rowData => !this.state.tableFilter || _.includes(
+                  [rowData.name.first, rowData.name.last].join(" "),
+                  this.state.tableFilter.trim().toLowerCase()
+                )}
+                initialPage={24}
+                initialSortState={{columnID: "name", direction: Table.sortDirection.ASCENDING}}
+                ref="table"
+                onPageChange={page => console.log("Table page changed:", page)}
+                onSortChange={sortState => console.log("Table sort changed:", sortState)}
+                onRowClick={enableRowClick
+                  ? (e, row) => console.log("Table row clicked:", row)
+                  : undefined
+                }
+                onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
+                paginated
+                pageSize={9}
+                rowIDFn={r => r.id}
+                rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
+              >
+                <Table.Column
+                  id="details"
+                  cell={{renderer: r => (
+                    <ModalButton
+                      type="link"
+                      size="small"
+                      value={"\u2630 Details"}
+                      modalTitle="Details"
+                    >
+                      <p style={{whiteSpace: "normal"}}>{r.notes}</p>
+                    </ModalButton>
+                  )}}
+                  noWrap
+                />
 
-              <Table.Column
-                id="name"
-                header={{content: "Name"}}
-                cell={{
-                  className: "capitalize",
-                  renderer: r => [r.name.first, r.name.last].join(" "),
-                }}
-                sortable
-                sortValueFn={r => [r.name.first, r.name.last].join(" ")}
-                width="25%"
-              />
+                <Table.Column
+                  id="name"
+                  header={{content: "Name"}}
+                  cell={{
+                    className: "capitalize",
+                    renderer: r => [r.name.first, r.name.last].join(" "),
+                  }}
+                  sortable
+                  sortValueFn={r => [r.name.first, r.name.last].join(" ")}
+                  width="25%"
+                />
 
-              <Table.Column
-                id="age"
-                header={{content: "Age"}}
-                cell={{renderer: r => r.age}}
-                sortable
-                sortValueFn={r => r.age}
-              />
+                <Table.Column
+                  id="age"
+                  header={{content: "Age"}}
+                  cell={{renderer: r => r.age}}
+                  sortable
+                  sortValueFn={r => r.age}
+                />
 
-              <Table.Column
-                id="status"
-                header={{content: "Status"}}
-                cell={{renderer: r => r.status}}
-                sortable
-                sortValueFn={r => r.status}
-              />
+                <Table.Column
+                  id="status"
+                  header={{content: "Status"}}
+                  cell={{renderer: r => r.status}}
+                  sortable
+                  sortValueFn={r => r.status}
+                />
 
-              <Table.Column
-                id="notes"
-                header={{content: "Notes"}}
-                cell={{renderer: r => r.notes}}
-                width="100%"
-              />
-            </Table>
+                <Table.Column
+                  id="notes"
+                  header={{content: "Notes"}}
+                  cell={{renderer: r => r.notes}}
+                  width="100%"
+                />
+              </Table>
+            </ExampleCode>
           </div>
           <label className={cssClass.CONFIG}>
             <input
@@ -381,136 +300,71 @@ export default class TableView extends PureComponent {
           title="Table.Column"
         />
 
-        <Example
-          code={`
-            <Table
-              ref={t => {this._lazyTable = t;}}
-              lazy
-              getData={
-                async ({startingAfter, pageSize}) => {
-                  let start = 0;
-                  if (startingAfter != null) {
-                    start = _.findIndex(tableData, r => r.id === startingAfter) + 1;
-                  }
-                  await new Promise(resolve => setTimeout(resolve, 1000));
-                  return tableData.slice(start, start + pageSize);
-                }
+        <Example title="Lazy Table">
+          <Table
+            ref={t => {this._lazyTable = t;}}
+            lazy
+            getData={async ({startingAfter, pageSize}) => {
+              let start = 0;
+              if (startingAfter != null) {
+                start = _.findIndex(tableData, r => r.id === startingAfter) + 1;
               }
-              numRows={tableData.length}
-              onPageChange={page => console.log("Table page changed:", page)}
-              onSortChange={sortState => console.log("Table sort changed:", sortState)}
-              onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
-              paginated
-              pageSize={9}
-              rowIDFn={r => r.id}
-              rowClassNameFn={r => r.age < 10 ? "additionalClass" : null}
-            >
-              <Table.Column
-                id="details"
-                cell={{renderer: r => (
-                  <ModalButton
-                    type="link"
-                    size="small"
-                    value={"\u2630 Details"}
-                    modalTitle="Details"
-                  >
-                    <p style={{whiteSpace: "normal"}}>{r.notes}</p>
-                  </ModalButton>
-                )}}
-                noWrap
-              />
+              await new Promise(resolve => setTimeout(resolve, 1000));
+              return tableData.slice(start, start + pageSize);
+            }}
+            numRows={tableData.length}
+            onPageChange={page => console.log("Table page changed:", page)}
+            onSortChange={sortState => console.log("Table sort changed:", sortState)}
+            onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
+            paginated
+            pageSize={9}
+            rowIDFn={r => r.id}
+            rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
+          >
+            <Table.Column
+              id="details"
+              cell={{renderer: r => (
+                <ModalButton
+                  type="link"
+                  size="small"
+                  value={"\u2630 Details"}
+                  modalTitle="Details"
+                >
+                  <p style={{whiteSpace: "normal"}}>{r.notes}</p>
+                </ModalButton>
+              )}}
+              noWrap
+            />
 
-              <Table.Column
-                id="name"
-                header={{content: "Name"}}
-                cell={{
-                  className: "capitalize",
-                  renderer: r => [r.name.first, r.name.last].join(" "),
-                }}
-                width="25%"
-              />
+            <Table.Column
+              id="name"
+              header={{content: "Name"}}
+              cell={{
+                className: "capitalize",
+                renderer: r => [r.name.first, r.name.last].join(" "),
+              }}
+              width="25%"
+            />
 
-              <Table.Column
-                id="age"
-                header={{content: "Age"}}
-                cell={{renderer: r => r.age}}
-              />
+            <Table.Column
+              id="age"
+              header={{content: "Age"}}
+              cell={{renderer: r => r.age}}
+            />
 
-              <Table.Column
-                id="status"
-                header={{content: "Status"}}
-                cell={{renderer: r => r.status}}
-              />
+            <Table.Column
+              id="status"
+              header={{content: "Status"}}
+              cell={{renderer: r => r.status}}
+            />
 
-              <Table.Column
-                id="notes"
-                header={{content: "Notes"}}
-                cell={{renderer: r => r.notes}}
-                width="100%"
-              />
-            </Table>
-          `}
-        >
-          <h2>Lazy Table</h2>
-          <div style={{marginTop: "20px"}}>
-            <Table
-              ref={t => {this._lazyTable = t;}}
-              lazy
-              getData={getDataLazily}
-              numRows={tableData.length}
-              onPageChange={page => console.log("Table page changed:", page)}
-              onSortChange={sortState => console.log("Table sort changed:", sortState)}
-              onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
-              paginated
-              pageSize={9}
-              rowIDFn={r => r.id}
-              rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
-            >
-              <Table.Column
-                id="details"
-                cell={{renderer: r => (
-                  <ModalButton
-                    type="link"
-                    size="small"
-                    value={"\u2630 Details"}
-                    modalTitle="Details"
-                  >
-                    <p style={{whiteSpace: "normal"}}>{r.notes}</p>
-                  </ModalButton>
-                )}}
-                noWrap
-              />
-
-              <Table.Column
-                id="name"
-                header={{content: "Name"}}
-                cell={{
-                  className: "capitalize",
-                  renderer: r => [r.name.first, r.name.last].join(" "),
-                }}
-                width="25%"
-              />
-
-              <Table.Column
-                id="age"
-                header={{content: "Age"}}
-                cell={{renderer: r => r.age}}
-              />
-
-              <Table.Column
-                id="status"
-                header={{content: "Status"}}
-                cell={{renderer: r => r.status}}
-              />
-
-              <Table.Column
-                id="notes"
-                header={{content: "Notes"}}
-                cell={{renderer: r => r.notes}}
-                width="100%"
-              />
-            </Table>
-          </div>
+            <Table.Column
+              id="notes"
+              header={{content: "Notes"}}
+              cell={{renderer: r => r.notes}}
+              width="100%"
+            />
+          </Table>
         </Example>
       </View>
     );

@@ -37,23 +37,11 @@ export default class ProgressBarView extends Component {
             />
           </label>
         </h3>
-        <Example
-          title="Horizontal"
-          code={`
-            <ProgressBar percentage={this.state.progress} length="500px" />
-            <ProgressBar percentage={this.state.progress} direction="left" length="500px" />
-          `}
-        >
+        <Example title="Horizontal">
           <ProgressBar percentage={this.state.progress} length="500px" />
           <ProgressBar percentage={this.state.progress} direction="left" length="500px" />
         </Example>
-        <Example
-          title="Vertical"
-          code={`
-            <ProgressBar percentage={this.state.progress} direction="down" length="200px" />
-            <ProgressBar percentage={this.state.progress} direction="up" length="200px" />
-          `}
-        >
+        <Example title="Vertical">
           <ProgressBar percentage={this.state.progress} direction="down" length="200px" />
           <ProgressBar percentage={this.state.progress} direction="up" length="200px" />
         </Example>
