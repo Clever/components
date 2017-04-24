@@ -36,6 +36,7 @@ module.exports = {
         loader: "babel",
         query: {
           presets: ["react", "es2015", "stage-3"],
+          plugins: [`${__dirname}/transform-code-string`],
         },
       },
     ],
