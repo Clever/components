@@ -58,35 +58,25 @@
  */
 
 .Button--primary.DropdownButton--toggle {
-  .DropdownButton--Caret--container {
-    .border--left--s(shade(@primary_blue, @shadeStepAmount * 2));
-  }
+  .border--left--s(shade(@primary_blue, @shadeStepAmount * 2));
 }
 
 .Button--secondary.DropdownButton--toggle {
-  .DropdownButton--Caret--container {
-    .border--left--s(@primary_blue);
-  }
+  .border--left--s(tint(@primary_blue, @shadeStepAmount * 2));
 }
 
 .Button--destructive.DropdownButton--toggle {
-  .DropdownButton--Caret--container {
-    .border--left--s(shade(@alert_red, @shadeStepAmount * 2));
-  }
+  .border--left--s(shade(@alert_red, @shadeStepAmount * 2));
 }
 
 .Button.DropdownButton--toggle[disabled] {
-  .DropdownButton--Caret--container {
-    .border--left--s(shade(@neutral_silver, @shadeStepAmount * 2));
-  }
+  .border--left--s(shade(@neutral_silver, @shadeStepAmount * 2));
 }
 
 // Hide the partition on hover to avoid clashing with the darkened background in the "primary" and
 // "destructive" button types.
 .DropdownButton--buttons:hover {
   .Button.DropdownButton--toggle:not(.Button--secondary):not([disabled]) {
-    .DropdownButton--Caret--container {
-      .border--left--s(transparent);
-    }
+    .border--left--s(transparent);
   }
 }
