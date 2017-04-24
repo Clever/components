@@ -24,28 +24,15 @@ export default class InfoPanelView extends React.Component {
 
     return (
       <View className={cssClass.CONTAINER} title="InfoPanel">
-        <Example
-          code={`
-            <InfoPanel title="Info Panel Title">
-              <InfoPanelColumn>
-                <p>column 1 content</p>
-              </InfoPanelColumn>
-              <InfoPanelColumn>
-                <p>column 2 content</p>
-              </InfoPanelColumn>
-            </InfoPanel>
-          `}
-        >
-          <div>
-            <InfoPanel title="Info Panel Title">
-              <InfoPanelColumn>
-                <p>column 1 content</p>
-              </InfoPanelColumn>
-              <InfoPanelColumn>
-                <p>column 2 content</p>
-              </InfoPanelColumn>
-            </InfoPanel>
-          </div>
+        <Example>
+          <InfoPanel title="Info Panel Title">
+            <InfoPanelColumn>
+              <p>column 1 content</p>
+            </InfoPanelColumn>
+            <InfoPanelColumn>
+              <p>column 2 content</p>
+            </InfoPanelColumn>
+          </InfoPanel>
         </Example>
 
         <PropDocumentation

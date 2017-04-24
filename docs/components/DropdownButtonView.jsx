@@ -3,7 +3,7 @@ import Fade from "react-bootstrap/lib/Fade";
 import React, {Component} from "react";
 import {Link} from "react-router";
 
-import Example, {CodeSample} from "./Example";
+import Example, {CodeSample, ExampleCode} from "./Example";
 import Hello from "./DropdownButtonViewData";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
@@ -125,41 +125,26 @@ export default class DropdownButtonView extends Component {
           </CodeSample>
         </div>
 
-        <Example
-          code={`
-            <DropdownButton
-              disabled={disabled}
-              label="Say Hello"
-              onClick={() => this.say("Hello")}
-              size={size}
-              type={type}
-            >
-              {Object.keys(samples).map(countryCode => (
-                <Option key={countryCode} onClick={() => this.say(samples[countryCode].hello)}>
-                  {samples[countryCode].country}
-                </Option>
-              ))}
-            </DropdownButton>
-          `}
-          title="Basic Usage:"
-        >
+        <Example title="Basic Usage:">
           <Fade in={!goodbye} timeout={1000}>
             <span className={cssClass.HELLO}>{hello}</span>
           </Fade>
           <FlexBox alignItems={ItemAlign.CENTER}>
-            <DropdownButton
-              disabled={disabled}
-              label="Say Hello"
-              onClick={() => this.say("Hello")}
-              size={size}
-              type={type}
-            >
-              {Object.keys(samples).map(countryCode => (
-                <Option key={countryCode} onClick={() => this.say(samples[countryCode].hello)}>
-                  {samples[countryCode].country}
-                </Option>
-              ))}
-            </DropdownButton>
+            <ExampleCode>
+              <DropdownButton
+                disabled={disabled}
+                label="Say Hello"
+                onClick={() => this.say("Hello")}
+                size={size}
+                type={type}
+              >
+                {Object.keys(samples).map(countryCode => (
+                  <Option key={countryCode} onClick={() => this.say(samples[countryCode].hello)}>
+                    {samples[countryCode].country}
+                  </Option>
+                ))}
+              </DropdownButton>
+            </ExampleCode>
             <Button
               className={cssClass.MORE_SAMPLES}
               onClick={() => this.moreSamples()}
@@ -170,8 +155,8 @@ export default class DropdownButtonView extends Component {
           {this.renderConfig()}
         </Example>
 
-        <Example
-          code={`
+        <Example title="With Fixed Width:">
+          <ExampleCode>
             <DropdownButton
               className={cssClass.DROPDOWN_WIDTH_400PX}
               disabled={disabled}
@@ -184,26 +169,12 @@ export default class DropdownButtonView extends Component {
                 Secondary option labels will wrap if they are longer than the main one.
               </Option>
             </DropdownButton>
-          `}
-          title="With Fixed Width:"
-        >
-          <DropdownButton
-            className={cssClass.DROPDOWN_WIDTH_400PX}
-            disabled={disabled}
-            label="A really really long label"
-            size={size}
-            type={type}
-          >
-            <Option>Another really really long label.</Option>
-            <Option>
-              Secondary option labels will wrap if they are longer than the main one.
-            </Option>
-          </DropdownButton>
+          </ExampleCode>
           {this.renderConfig()}
         </Example>
 
-        <Example
-          code={`
+        <Example title="With HREFs:">
+          <ExampleCode>
             <DropdownButton
               disabled={disabled}
               label="EdTech News"
@@ -217,41 +188,19 @@ export default class DropdownButtonView extends Component {
               <Option href="http://www.edtechmagazine.com">EdTech Magazine</Option>
               <Option href="http://www.techlearning.com">Tech & Learning</Option>
             </DropdownButton>
-          `}
-          title="With HREFs:"
-        >
-          <DropdownButton
-            disabled={disabled}
-            label="EdTech News"
-            href="http://google.com/search?q=edtech+news"
-            size={size}
-            type={type}
-          >
-            <Option href="http://www.centerdigitaled.com">Converge</Option>
-            <Option href="http://www.example.com" disabled>Disabled Option</Option>
-            <Option href="http://www.edsurge.com">EdSurge</Option>
-            <Option href="http://www.edtechmagazine.com">EdTech Magazine</Option>
-            <Option href="http://www.techlearning.com">Tech & Learning</Option>
-          </DropdownButton>
+          </ExampleCode>
           {this.renderConfig()}
         </Example>
 
-        <Example
-          code={`
+        <Example title="With Single-Button Fallback:">
+          <p>If no options are available, no toggle is rendered with the primary action.</p>
+          <ExampleCode>
             <DropdownButton disabled={disabled} label="Primary action" size={size} type={type}>
               {emptyArray.map(secondaryAction => (
                 <Option key={secondaryAction}>{secondaryAction}</Option>
               ))}
             </DropdownButton>
-          `}
-          title="With Single-Button Fallback:"
-        >
-          <p>If no options are available, no toggle is rendered with the primary action.</p>
-          <DropdownButton disabled={disabled} label="Primary action" size={size} type={type}>
-            {emptyArray.map(secondaryAction => (
-              <Option key={secondaryAction}>{secondaryAction}</Option>
-            ))}
-          </DropdownButton>
+          </ExampleCode>
           {this.renderConfig()}
         </Example>
 

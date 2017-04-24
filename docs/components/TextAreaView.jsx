@@ -1,6 +1,6 @@
 import React from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import View from "./View";
 import {TextArea} from "src";
 import PropDocumentation from "./PropDocumentation";
@@ -28,22 +28,8 @@ export default class TextAreaView extends React.Component {
           This component is a <code>textarea</code> that lets the user input multiple lines of text.
         </p>
 
-        <Example
-          code={`
-            <TextArea
-              disabled={this.state.disabled}
-              name="TextAreaName"
-              label="TextArea Label"
-              readOnly={this.state.readOnly}
-              required={this.state.required}
-              spellCheck={this.state.spellCheck}
-              placeholder="TextArea Placeholder"
-              onChange={e => this.setState({inputValue: e.target.value})}
-              value={this.state.inputValue}
-            />
-          `}
-        >
-          <div>
+        <Example>
+          <ExampleCode>
             <TextArea
               disabled={this.state.disabled}
               name="TextAreaName"
@@ -56,7 +42,7 @@ export default class TextAreaView extends React.Component {
               onChange={e => this.setState({inputValue: e.target.value})}
               value={this.state.inputValue}
             />
-          </div>
+          </ExampleCode>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"

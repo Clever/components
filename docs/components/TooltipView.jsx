@@ -3,7 +3,7 @@ import classnames from "classnames";
 import loremIpsum from "lorem-ipsum";
 import React, {Component} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Button, SegmentedControl, Tooltip} from "src";
@@ -27,99 +27,54 @@ export default class TooltipView extends Component {
 
     return (
       <View className={cssClass.CONTAINER} title="Tooltip">
-        <Example
-          code={`
-            <div className={cssClass.EXAMPLE}>
-              Simple
-              {" "}
-              <Tooltip
-                content="Here is a simple tooltip."
-                placement={placement}
-                textAlign={textAlign}
-              >
-                <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
-              </Tooltip>
-            </div>
-            <div className={cssClass.EXAMPLE}>
-              HTML + long text
-              {" "}
-              <Tooltip
-                content={
-                  <div>
-                    Here is a tooltip with long text to demonstrate wrapping and HTML formatting.
-                    <br />
-                    <br />
-                    {loremIpsum({count: 3, units: "sentences"})}
-                  </div>
-                }
-                placement={placement}
-                textAlign={textAlign}
-              >
-                <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
-              </Tooltip>
-            </div>
-            <div className={cssClass.EXAMPLE}>
-              With focusable trigger
-              {" "}
-              <Tooltip
-                content="Tooltips can be triggered by focus as well."
-                placement={placement}
-                textAlign={textAlign}
-              >
-                <span
-                  className={classnames("fa fa-question-circle", cssClass.TRIGGER)}
-                  ref="focusableTrigger"
-                  tabIndex={0}
-                />
-              </Tooltip>
-            </div>
-          `}
-        >
+        <Example>
           <div className={cssClass.DEMO_CONTAINER}>
-            <div className={cssClass.EXAMPLE}>
-              Simple
-              {" "}
-              <Tooltip
-                content="Here is a simple tooltip."
-                placement={placement}
-                textAlign={textAlign}
-              >
-                <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
-              </Tooltip>
-            </div>
-            <div className={cssClass.EXAMPLE}>
-              HTML + long text
-              {" "}
-              <Tooltip
-                content={
-                  <div>
-                    Here is a tooltip with long text to demonstrate wrapping and HTML formatting.
-                    <br />
-                    <br />
-                    {loremIpsum({count: 3, units: "sentences"})}
-                  </div>
-                }
-                placement={placement}
-                textAlign={textAlign}
-              >
-                <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
-              </Tooltip>
-            </div>
-            <div className={cssClass.EXAMPLE}>
-              With focusable trigger
-              {" "}
-              <Tooltip
-                content="Tooltips can be triggered by focus as well."
-                placement={placement}
-                textAlign={textAlign}
-              >
-                <span
-                  className={classnames("fa fa-question-circle", cssClass.TRIGGER)}
-                  ref="focusableTrigger"
-                  tabIndex={0}
-                />
-              </Tooltip>
-            </div>
+            <ExampleCode>
+              <div className={cssClass.EXAMPLE}>
+                Simple
+                {" "}
+                <Tooltip
+                  content="Here is a simple tooltip."
+                  placement={placement}
+                  textAlign={textAlign}
+                >
+                  <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
+                </Tooltip>
+              </div>
+              <div className={cssClass.EXAMPLE}>
+                HTML + long text
+                {" "}
+                <Tooltip
+                  content={
+                    <div>
+                      Here is a tooltip with long text to demonstrate wrapping and HTML formatting.
+                      <br />
+                      <br />
+                      {loremIpsum({count: 3, units: "sentences"})}
+                    </div>
+                  }
+                  placement={placement}
+                  textAlign={textAlign}
+                >
+                  <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
+                </Tooltip>
+              </div>
+              <div className={cssClass.EXAMPLE}>
+                With focusable trigger
+                {" "}
+                <Tooltip
+                  content="Tooltips can be triggered by focus as well."
+                  placement={placement}
+                  textAlign={textAlign}
+                >
+                  <span
+                    className={classnames("fa fa-question-circle", cssClass.TRIGGER)}
+                    ref="focusableTrigger"
+                    tabIndex={0}
+                  />
+                </Tooltip>
+              </div>
+            </ExampleCode>
           </div>
           <div className={cssClass.CONFIG}>
             Placement:

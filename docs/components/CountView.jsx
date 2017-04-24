@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
 
-import Example, {CodeSample} from "./Example";
+import Example, {ExampleCode, CodeSample} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Count, SegmentedControl} from "src";
@@ -73,27 +73,27 @@ export default class CountView extends Component {
         </div>
 
         <Example
-          code={`
-            🐝 <Count short={shouldShorten} singular="bee">{number}</Count>
-          `}
           title="Defaults to the singular form with an appended 's' if no plural is given:"
         >
-          🐝 <Count short={shouldShorten} singular="bee">{number}</Count>
+          <ExampleCode>
+            🐝 <Count short={shouldShorten} singular="bee">{number}</Count>
+          </ExampleCode>
           {this.renderConfig()}
         </Example>
 
         <Example
-          code={`
-            🐝 <Count short={shouldShorten} singular="bee. 😐" plural="BEES!! 😱">{number}</Count>
-          `}
           title="A custom plural form can be specified:"
         >
-          🐝 <Count short={shouldShorten} singular="bee. 😐" plural="BEES!! 😱">{number}</Count>
+          <ExampleCode>
+            🐝 <Count short={shouldShorten} singular="bee. 😐" plural="BEES!! 😱">{number}</Count>
+          </ExampleCode>
           {this.renderConfig()}
         </Example>
 
         <Example
-          code={`
+          title="Specify `zeroOverride` to modify the text in the 0 case:"
+        >
+          <ExampleCode>
             🐝
             {" "}
             <Count
@@ -104,19 +104,7 @@ export default class CountView extends Component {
             >
               {number}
             </Count>
-          `}
-          title="Specify `zeroOverride` to modify the text in the 0 case:"
-        >
-          🐝
-          {" "}
-          <Count
-            short={shouldShorten}
-            singular="bee. 😐"
-            plural="BEES!! 😱"
-            zeroOverride="🚫😌"
-          >
-            {number}
-          </Count>
+          </ExampleCode>
           {this.renderConfig()}
         </Example>
 

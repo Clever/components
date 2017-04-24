@@ -91,7 +91,6 @@ export default function LessStyleGuideView() {
             There are also a set of shade and tint mixin functions for variations on the core colors.</p>
 
             <Example
-              title=""
               code={`
                 .Header--StatusBox {
                   font-size: 16px;
@@ -108,7 +107,6 @@ export default function LessStyleGuideView() {
             </Example>
 
             <Example
-              title=""
               code={`
                 .Header--StatusBox {
                   .padding--x--m;
@@ -130,7 +128,6 @@ export default function LessStyleGuideView() {
             e.g. <code>:focus</code>, or pseudo-selectors, e.g. <code>::first-leter</code></p>
 
             <Example
-              title=""
               code={`
                 .TabBar {
                   transition: font-size .25s ease-out, box-shadow .25s ease-out;
@@ -160,7 +157,6 @@ export default function LessStyleGuideView() {
             </Example>
 
             <Example
-              title=""
               code={`
                 .TabBar {
                   transition: font-size .25s ease-out, box-shadow .25s ease-out;
@@ -189,7 +185,6 @@ export default function LessStyleGuideView() {
             and diverges from the goals of the design system.</p>
 
             <Example
-              title=""
               code={`
                 .Alert .TabBar .TabBar--Tab {
                   .border--bottom--m(@alertRed);
@@ -208,7 +203,6 @@ export default function LessStyleGuideView() {
             </Example>
 
             <Example
-              title=""
               code={`
                 .TabBar--Tab--alert {
                   .border--bottom--m(@alertRed);

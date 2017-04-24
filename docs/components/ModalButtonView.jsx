@@ -23,20 +23,7 @@ export default class ModalButtonView extends Component {
           This component is a <code>Button</code> that triggers the appearance of a modal when clicked.
         </p>
 
-        <Example
-          code={`
-            <ModalButton
-              type="primary"
-              modalTitle="Helpful info"
-              onClick={() => console.log("ModalButton: modal opened!")}
-              onClose={() => console.log("ModalButton: modal closed!")}
-              value="More info"
-            >
-              <p>{loremIpsum({count: 1, units: "paragraphs"})}</p>
-              <p>{loremIpsum({count: 1, units: "paragraphs"})}</p>
-            </ModalButton>
-          `}
-        >
+        <Example>
           <ModalButton
             type="primary"
             modalTitle="Helpful info"

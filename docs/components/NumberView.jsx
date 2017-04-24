@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Number, SegmentedControl} from "src";
@@ -28,28 +28,50 @@ export default class NumberView extends Component {
       <View className={cssClass.CONTAINER} title="Number" sourcePath="src/Number/Number.jsx">
         <p>Provides consistent number formatting for long numbers, with optional shortening.</p>
 
-        <Example
-          code={`
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                8 {arrow} <Number short={shouldShorten}>{8}</Number>
-              </p>
-              <p>
-                999 {arrow} <Number short={shouldShorten}>{999}</Number>
-              </p>
-            </div>
-          `}
-          title="Short numbers are left unchanged:"
-        >
+        <Example title="Short numbers are left unchanged:">
           <div className={cssClass.DEMO_CONTAINER}>
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                8 {arrow} <Number short={shouldShorten}>{8}</Number>
-              </p>
-              <p>
-                999 {arrow} <Number short={shouldShorten}>{999}</Number>
-              </p>
+            <ExampleCode>
+              <div className={cssClass.EXAMPLE}>
+                <p>
+                  8 {arrow} <Number short={shouldShorten}>{8}</Number>
+                </p>
+                <p>
+                  999 {arrow} <Number short={shouldShorten}>{999}</Number>
+                </p>
+              </div>
+            </ExampleCode>
+          </div>
+          <div className={cssClass.CONFIG_CONTAINER}>
+            <div className={cssClass.CONFIG}>
+              Format:
+              <SegmentedControl
+                className={cssClass.CONFIG_OPTIONS}
+                value={format}
+                onSelect={value => this.setState({format: value})}
+                options={[
+                  {content: "Regular", value: "regular"},
+                  {content: "Short", value: "short"},
+                ]}
+              />
             </div>
+          </div>
+        </Example>
+
+        <Example title="Formatting kicks in starting at 1000:">
+          <div className={cssClass.DEMO_CONTAINER}>
+            <ExampleCode>
+              <div className={cssClass.EXAMPLE}>
+                <p>
+                  1000 {arrow} <Number short={shouldShorten}>{1000}</Number>
+                </p>
+                <p>
+                  907312456 {arrow} <Number short={shouldShorten}>{907312456}</Number>
+                </p>
+                <p>
+                  7089123456 {arrow} <Number short={shouldShorten}>{7089123456}</Number>
+                </p>
+              </div>
+            </ExampleCode>
           </div>
           <div className={cssClass.CONFIG_CONTAINER}>
             <div className={cssClass.CONFIG}>
@@ -68,72 +90,19 @@ export default class NumberView extends Component {
         </Example>
 
         <Example
-          code={`
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                1000 {arrow} <Number short={shouldShorten}>{1000}</Number>
-              </p>
-              <p>
-                907312456 {arrow} <Number short={shouldShorten}>{907312456}</Number>
-              </p>
-              <p>
-                7089123456 {arrow} <Number short={shouldShorten}>{7089123456}</Number>
-              </p>
-            </div>
-          `}
-          title="Formatting kicks in starting at 1000:"
-        >
-          <div className={cssClass.DEMO_CONTAINER}>
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                1000 {arrow} <Number short={shouldShorten}>{1000}</Number>
-              </p>
-              <p>
-                907312456 {arrow} <Number short={shouldShorten}>{907312456}</Number>
-              </p>
-              <p>
-                7089123456 {arrow} <Number short={shouldShorten}>{7089123456}</Number>
-              </p>
-            </div>
-          </div>
-          <div className={cssClass.CONFIG_CONTAINER}>
-            <div className={cssClass.CONFIG}>
-              Format:
-              <SegmentedControl
-                className={cssClass.CONFIG_OPTIONS}
-                value={format}
-                onSelect={value => this.setState({format: value})}
-                options={[
-                  {content: "Regular", value: "regular"},
-                  {content: "Short", value: "short"},
-                ]}
-              />
-            </div>
-          </div>
-        </Example>
-
-        <Example
-          code={`
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                5678 {arrow} <Number short={shouldShorten}>5678</Number>
-              </p>
-              <p>
-                1234567 {arrow} <Number short={shouldShorten}>{"1234567"}</Number>
-              </p>
-            </div>
-          `}
           title="Numbers can be specified as text, as long as they can be parsed as integers:"
         >
           <div className={cssClass.DEMO_CONTAINER}>
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                5678 {arrow} <Number short={shouldShorten}>5678</Number>
-              </p>
-              <p>
-                1234567 {arrow} <Number short={shouldShorten}>{"1234567"}</Number>
-              </p>
-            </div>
+            <ExampleCode>
+              <div className={cssClass.EXAMPLE}>
+                <p>
+                  5678 {arrow} <Number short={shouldShorten}>5678</Number>
+                </p>
+                <p>
+                  1234567 {arrow} <Number short={shouldShorten}>{"1234567"}</Number>
+                </p>
+              </div>
+            </ExampleCode>
           </div>
           <div className={cssClass.CONFIG_CONTAINER}>
             <div className={cssClass.CONFIG}>
@@ -152,25 +121,16 @@ export default class NumberView extends Component {
         </Example>
 
         <Example
-          code={`
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                12345 {arrow} {Number.format(12345, shouldShorten)}
-              </p>
-              <p>
-                This may be useful in cases where a plain string is needed (e.g. when assigning a
-                prop that requires a string value).
-              </p>
-            </div>
-          `}
           title="Formatting can be done directly, without rendering the component:"
         >
           <div className={cssClass.DEMO_CONTAINER}>
-            <div className={cssClass.EXAMPLE}>
-              <p>
-                12345 {arrow} {Number.format(12345, shouldShorten)}
-              </p>
-            </div>
+            <ExampleCode>
+              <div className={cssClass.EXAMPLE}>
+                <p>
+                  12345 {arrow} {Number.format(12345, shouldShorten)}
+                </p>
+              </div>
+            </ExampleCode>
             This may be useful in cases where a plain string is needed (e.g. when assigning a
             prop that requires a string value).
           </div>
