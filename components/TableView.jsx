@@ -237,8 +237,30 @@ export default class TableView extends PureComponent {
               description: "Called with data with a single row. Returns an additional className for the row",
               optional: true,
             },
+            {
+              name: "lazy",
+              type: "boolean",
+              description: "Puts the table in \"lazy\" mode - data is fetched " +
+                "from the getData function rather than needing the whole \"data\" " +
+                "array up front.",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "getData",
+              type: "({startingAfter?: string, pageSize: number}) => Object[]",
+              description: "If `lazy`, this function is called to retrieve new " +
+                "data. Cannot be provided if not `lazy`.",
+            },
+            {
+              name: "numRows",
+              type: "number",
+              description: "If `lazy`, this gives the total count of rows so that " +
+                "the number of pages is known up front. Cannot be provided if not " +
+                "`lazy`.",
+              optional: true,
+            },
           ]}
-          className={cssClass.PROPS}
           title="Table"
         />
 
@@ -296,7 +318,6 @@ export default class TableView extends PureComponent {
               optional: true,
             },
           ]}
-          className={cssClass.PROPS}
           title="Table.Column"
         />
 
