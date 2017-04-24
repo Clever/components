@@ -53,12 +53,7 @@ export default class GridView extends PureComponent {
           will wrap onto the following line.
         </p>
 
-        <Example
-          title="Single Layout"
-          code={`
-            // TODO
-          `}
-        >
+        <Example title="Single Layout">
           <Grid className="outlined resizable">
             <Row grow>{this.renderCol(2)}{this.renderCol(7)}{this.renderCol(3)}</Row>
             <Row grow>
@@ -68,12 +63,7 @@ export default class GridView extends PureComponent {
           </Grid>
         </Example>
 
-        <Example
-          title="Single Layout (with gutters)"
-          code={`
-            // TODO
-          `}
-        >
+        <Example title="Single Layout (with gutters)">
           <Grid className="outlined resizable">
             <Row className="margin--bottom--xs" grow>
               {this.renderCol(2, "padding--right--xs")}
@@ -90,12 +80,7 @@ export default class GridView extends PureComponent {
           </Grid>
         </Example>
 
-        <Example
-          title="Mixed Layouts"
-          code={`
-            // TODO
-          `}
-        >
+        <Example title="Mixed Layouts">
           <Grid className="outlined resizable">
             <Row grow>
               {this.renderCol({
@@ -128,12 +113,7 @@ export default class GridView extends PureComponent {
           </Grid>
         </Example>
 
-        <Example
-          title="Nested Grids"
-          code={`
-            // TODO
-          `}
-        >
+        <Example title="Nested Grids">
           <Grid className="items--center outlined resizable" style={{height: "400px", minWidth: "550px"}}>
             <Row className="shaded outlined" style={{marginBottom: "1rem"}}>
               <Col span={12} className="flexbox justify--center">
@@ -154,12 +134,7 @@ export default class GridView extends PureComponent {
           </Grid>
         </Example>
 
-        <Example
-          title="Standalone Row"
-          code={`
-            // TODO
-          `}
-        >
+        <Example title="Standalone Row">
           <Row>
             {this.renderCol(3, "padding--right--xs")}
             {this.renderCol(3, "padding--right--xs")}

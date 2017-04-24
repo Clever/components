@@ -23,36 +23,7 @@ export default class ModalView extends Component {
           This component wraps your content and displays it in a modal and obscures the underlying content.
         </p>
 
-        <Example
-          code={`
-            <Button
-              type="primary"
-              onClick={() => this.setState({isModalOpen: true})}
-              value="Open Modal"
-            />
-            {this.state.isModalOpen && (
-              <Modal
-                title="Hello Modal"
-                closeModal={() => this.setState({isModalOpen: false})}
-              >
-                <p>{loremIpsum({count: 1, units: "paragraphs"})}</p>
-                <p>{loremIpsum({count: 1, units: "paragraphs"})}</p>
-                <footer>
-                  <Button
-                    value="Never mind"
-                    type="link"
-                    onClick={() => this.setState({isModalOpen: false})}
-                  />
-                  <Button
-                    value="Sounds good"
-                    type="primary"
-                    onClick={() => this.setState({isModalOpen: false})}
-                  />
-                </footer>
-              </Modal>
-            )}
-          `}
-        >
+        <Example>
           <Button
             type="primary"
             onClick={() => this.setState({isModalOpen: true})}

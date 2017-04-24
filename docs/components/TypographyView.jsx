@@ -46,18 +46,7 @@ export default class TypographyView extends PureComponent {
               </div>
             </Col>
             <Col span={4} className="flexbox">
-              <Example
-                title=""
-                code={`
-                  <p className="text--colossal">Colossal</p>
-                  <p className="text--gargantuan">Gargantuan</p>
-                  <p className="text--huge">Huge</p>
-                  <p className="text--large">Large</p>
-                  <p className="text--medium">Medium</p>
-                  <p className="text--small">Small</p>
-                  <p className="text--tiny">Tiny</p>
-                `}
-              >
+              <Example>
                 <p className="text--colossal margin--none">Colossal</p>
                 <p className="text--gargantuan margin--none">Gargantuan</p>
                 <p className="text--huge margin--none">Huge</p>
@@ -79,16 +68,7 @@ export default class TypographyView extends PureComponent {
               </div>
             </Col>
             <Col span={4} className="flexbox">
-              <Example
-                title=""
-                code={`
-                  <p className="text--light">Proxima Nova Light</p>
-                  <p className="text--regular">Proxima Nova Regular</p>
-                  <p className="text--semi-bold">Proxima Nova Semibold</p>
-                  <p className="text--bold">Proxima Nova Bold</p>
-                  <p className="text--heavy">Proxima Nova Heavy</p>
-                `}
-              >
+              <Example>
                 <p className="text--large text--light">Proxima Nova Light</p>
                 <p className="text--large text--regular">Proxima Nova Regular</p>
                 <p className="text--large text--semi-bold">Proxima Nova Semibold</p>

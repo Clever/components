@@ -23,21 +23,7 @@ export default class ConfirmationButtonView extends Component {
           buttons when clicked.
         </p>
 
-        <Example
-          code={`
-            <ConfirmationButton
-              type="primary"
-              confirmButtonType="destructive"
-              modalTitle="Are you sure?"
-              onClick={() => console.log("ConfirmationButton: modal opened!")}
-              onClose={() => console.log("ConfirmationButton: modal closed!")}
-              onConfirm={() => console.log("ConfirmationButton: confirmed!")}
-              value="Submit for confirmation"
-            >
-              <p>This action requires confirmation. Please confirm!</p>
-            </ConfirmationButton>
-          `}
-        >
+        <Example>
           <ConfirmationButton
             type="primary"
             confirmButtonType="destructive"
