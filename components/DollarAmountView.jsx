@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import Example, {CodeSample} from "./Example";
+import Example, {CodeSample, ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {SegmentedControl} from "src";
@@ -79,14 +79,12 @@ export default class DollarAmountView extends Component {
         </div>
 
         <Example
-          code={`
-            <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
-            <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
-          `}
           title="Defaults to not showing cents if the value is an integer, but showing cents if value is a float"
         >
-          <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
-          <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
+          <ExampleCode>
+            <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
+            <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
+          </ExampleCode>
           {this.renderConfig()}
         </Example>
 

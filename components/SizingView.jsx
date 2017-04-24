@@ -44,7 +44,6 @@ export default class SizingView extends PureComponent {
             </Col>
             <Col span={4} className="flexbox self--start padding--right--l">
               <Example
-                title=""
                 code={`
                   <style>
                     .Size--m {

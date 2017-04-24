@@ -2,7 +2,7 @@ import _ from "lodash";
 import loremIpsum from "lorem-ipsum";
 import React, {Component} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {Button, Label, SegmentedControl, Tooltip} from "src";
@@ -35,74 +35,43 @@ export default class LabelView extends Component {
           They can be particularly useful when displaying a list or table of information as a visual
           aid for a user scanning through the information.
         </p>
-        <Example
-          code={`
-            <h4 className={cssClass.EXAMPLE}>
-              Labels are inline by default
-              <Label className={cssClass.LABEL} color={color} size={size}>
-                Simple Label
-              </Label>
-            </h4>
-            <h4 className={cssClass.EXAMPLE}>
-              And can vary in size and color
-              <Label className={cssClass.LABEL} color={color} size={size}>
-                With HTML Content <span className={"fa fa-check-circle"} />
-              </Label>
-              <Label
-                className={cssClass.LABEL}
-                color={color}
-                ref="focusableLabel"
-                size={size}
-                tooltip={
-                  <div>
-                    This label has a tooltip. It has a lot to say.
-                    <br />
-                    <br />
-                    {loremIpsum({count: 3, units: "sentences"})}
-                  </div>
-                }
-                tooltipPlacement={tooltipPlacement}
-                tooltipTextAlign={tooltipTextAlign}
-              >
-                With Tooltip
-              </Label>
-            </h4>
-          `}
-        >
+        <Example>
           <div className={cssClass.DEMO_CONTAINER}>
-            <h4 className={cssClass.EXAMPLE}>
-              Labels are inline by default
-              <Label className={cssClass.LABEL} color={color} size={size}>
-                Simple Label
-              </Label>
-            </h4>
-            <h4 className={cssClass.EXAMPLE}>
-              And can vary in size and color
-              <Label className={cssClass.LABEL} color={color} size={size}>
-                With HTML Content <span className={"fa fa-check-circle"} />
-              </Label>
-            </h4>
-            <h4 className={cssClass.EXAMPLE}>
-              They can include an optional tooltip with hover state shading
-              <Label
-                className={cssClass.LABEL}
-                color={color}
-                ref="focusableLabel"
-                size={size}
-                tooltip={
-                  <div>
-                    This label has a tooltip. It has a lot to say.
-                    <br />
-                    <br />
-                    {loremIpsum({count: 3, units: "sentences"})}
-                  </div>
-                }
-                tooltipPlacement={tooltipPlacement}
-                tooltipTextAlign={tooltipTextAlign}
-              >
-                With Tooltip
-              </Label>
-            </h4>
+            <ExampleCode>
+              <h4 className={cssClass.EXAMPLE}>
+                Labels are inline by default
+                <Label className={cssClass.LABEL} color={color} size={size}>
+                  Simple Label
+                </Label>
+              </h4>
+              <h4 className={cssClass.EXAMPLE}>
+                And can vary in size and color
+                <Label className={cssClass.LABEL} color={color} size={size}>
+                  With HTML Content <span className={"fa fa-check-circle"} />
+                </Label>
+              </h4>
+              <h4 className={cssClass.EXAMPLE}>
+                They can include an optional tooltip with hover state shading
+                <Label
+                  className={cssClass.LABEL}
+                  color={color}
+                  ref="focusableLabel"
+                  size={size}
+                  tooltip={
+                    <div>
+                      This label has a tooltip. It has a lot to say.
+                      <br />
+                      <br />
+                      {loremIpsum({count: 3, units: "sentences"})}
+                    </div>
+                  }
+                  tooltipPlacement={tooltipPlacement}
+                  tooltipTextAlign={tooltipTextAlign}
+                >
+                  With Tooltip
+                </Label>
+              </h4>
+            </ExampleCode>
           </div>
           <div className={cssClass.CONFIG_CONTAINER}>
             <div className={cssClass.CONFIG}>

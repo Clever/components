@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {CopyableInput} from "src";
@@ -32,39 +32,24 @@ export default class CopyableInputView extends Component {
           clipboard. Ideal for passwords and other secret keys.
         </p>
 
-        <Example
-          code={`
-            <CopyableInput
-              enableCopy
-              disabled={this.state.disabled}
-              required={this.state.required}
-              enableShow={this.state.obscured}
-              error={this.state.hasError ? "Enter a valid email address" : null}
-              type={this.state.obscured ? "password" : "text"}
-              label="CopyableInput Label"
-              name="CopyableInputName"
-              placeholder="CopyableInput Placeholder"
-              onChange={e => this.setState({inputValue: e.target.value})}
-              value={this.state.inputValue}
-              readOnly={this.state.readOnly}
-            />
-          `}
-        >
+        <Example>
           <div className={cssClass.INPUT_CONTAINER}>
-            <CopyableInput
-              enableCopy
-              disabled={this.state.disabled}
-              readOnly={this.state.readOnly}
-              required={this.state.required}
-              enableShow={this.state.obscured}
-              error={this.state.hasError ? "Enter a valid email address" : null}
-              type={this.state.obscured ? "password" : "text"}
-              label="CopyableInput Label"
-              name="CopyableInputName"
-              placeholder="CopyableInput Placeholder"
-              onChange={e => this.setState({inputValue: e.target.value})}
-              value={this.state.inputValue}
-            />
+            <ExampleCode>
+              <CopyableInput
+                enableCopy
+                disabled={this.state.disabled}
+                readOnly={this.state.readOnly}
+                required={this.state.required}
+                enableShow={this.state.obscured}
+                error={this.state.hasError ? "Enter a valid email address" : null}
+                type={this.state.obscured ? "password" : "text"}
+                label="CopyableInput Label"
+                name="CopyableInputName"
+                placeholder="CopyableInput Placeholder"
+                onChange={e => this.setState({inputValue: e.target.value})}
+                value={this.state.inputValue}
+              />
+            </ExampleCode>
           </div>
           <label className={cssClass.CONFIG}>
             <input
