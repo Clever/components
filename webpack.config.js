@@ -1,7 +1,7 @@
 const autoprefixer = require("autoprefixer");
 
 module.exports = {
-  entry: ["babel-polyfill", "./docs/docs.jsx"],
+  entry: "./docs/docs.jsx",
   output: {
     path: "docs",
     filename: "bundle.js",
@@ -35,7 +35,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel",
         query: {
-          presets: ["react", "es2015", "stage-3"],
           plugins: [`${__dirname}/transform-code-string`],
         },
       },
