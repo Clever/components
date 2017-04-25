@@ -21,7 +21,6 @@
   .flex(0, 0);
   // Padding will be re-applied on the child Caret--container element.
   .padding--x--none;
-  border-left: 0;
   box-sizing: content-box;
   border-top-left-radius: 0;
 }
@@ -61,22 +60,10 @@
   .border--left--s(shade(@primary_blue, @shadeStepAmount * 2));
 }
 
-.Button--secondary.DropdownButton--toggle {
-  .border--left--s(tint(@primary_blue, @shadeStepAmount * 2));
-}
-
 .Button--destructive.DropdownButton--toggle {
   .border--left--s(shade(@alert_red, @shadeStepAmount * 2));
 }
 
 .Button.DropdownButton--toggle[disabled] {
   .border--left--s(shade(@neutral_silver, @shadeStepAmount * 2));
-}
-
-// Hide the partition on hover to avoid clashing with the darkened background in the "primary" and
-// "destructive" button types.
-.DropdownButton--buttons:hover {
-  .Button.DropdownButton--toggle:not(.Button--secondary):not([disabled]) {
-    .border--left--s(transparent);
-  }
 }
