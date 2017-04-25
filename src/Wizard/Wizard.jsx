@@ -148,7 +148,7 @@ export class Wizard extends React.Component {
             componentProps={steps[this.state.currentStep].props}
             stepNumber={this.state.currentStep}
             setWizardState={(changes) => {
-              const newState = _.merge(this.state.data, changes);
+              const newState = Object.assign(this.state.data, changes);
               this.setState({data: newState});
               return newState;
             }}
