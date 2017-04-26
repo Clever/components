@@ -36,3 +36,5 @@ export {DatePicker};
 
 import DropdownButton from "./DropdownButton";
 export {DropdownButton};
+
+export {DateInput} from "./DateInput/DateInput";
