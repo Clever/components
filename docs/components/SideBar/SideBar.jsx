@@ -28,6 +28,7 @@ export default function SideBar({className}) {
         <NavLink href="/components/confirmation-button">ConfirmationButton</NavLink>
         <NavLink href="/components/copyable-input">CopyableInput</NavLink>
         <NavLink href="/components/count">Count</NavLink>
+        <NavLink href="/components/date-input">DateInput</NavLink>
         <NavLink href="/components/date-picker">DatePicker</NavLink>
         <NavLink href="/components/dollar-amount">DollarValue</NavLink>
         <NavLink href="/components/dropdown-button">DropdownButton</NavLink>

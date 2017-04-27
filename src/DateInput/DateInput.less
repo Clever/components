@@ -1,0 +1,32 @@
+@import (reference) "../less/index";
+
+.DateInput {
+  .padding--x--s;
+  .padding--top--xs;
+  .text--regular;
+  .border--s(@neutral_silver);
+  color: @neutral_black;
+  background: @neutral_white;
+  box-sizing: border-box;
+  height: @size_4xl;
+  width: 100%;
+}
+
+.DateInput--InfoRow {
+  .text--tiny;
+  .text--caps;
+  .text--semi-bold;
+  top: @size_xs;
+  width: 100%;
+  color: @neutral_dark_gray;
+}
+
+.DateInput--DateRow {
+  line-height: @size_xl;
+  min-height: @size_xl;
+}
+
+button.Button--small.DateInput--EditButton,
+button.Button--small.DateInput--ClearButton {
+  .padding--top--2xs;
+}
