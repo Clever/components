@@ -7,6 +7,7 @@ import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
 import CopyableInputView from "./components/CopyableInputView";
 import CountView from "./components/CountView";
+import DateInputView from "./components/DateInputView";
 import DatePickerView from "./components/DatePickerView";
 import DollarAmountView from "./components/DollarAmountView";
 import DropdownButtonView from "./components/DropdownButtonView";
@@ -60,6 +61,7 @@ render((
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
         <Route path="count(/*)" component={CountView} />
+        <Route path="date-input(/*)" component={DateInputView} />
         <Route path="date-picker(/*)" component={DatePickerView} />
         <Route path="dollar-amount(/*)" component={DollarAmountView} />
         <Route path="dropdown-button(/*)" component={DropdownButtonView} />
