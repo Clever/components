@@ -4,76 +4,28 @@ import React, {Component} from "react";
 import Example from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Button, DatePicker, FlexBox, FlexItem, Justify} from "src";
-import FontAwesome from "react-fontawesome";
-
+import {DatePicker} from "src";
 
 export default class DatePickerView extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
+    this.state = { value: null };
   }
 
   render() {
-    const {cssClass} = DatePickerView;
-
     return (
-      <View className={cssClass.CONTAINER} title="DatePicker" sourcePath="src/DatePicker/DatePicker.jsx">
-        <p>DatePickers can be rendered simply, with an onClose action similar to modals and an onChange similar to buttons. Onchange values are returned as momentjs dates.</p>
+      <View title="DatePicker" sourcePath="src/DatePicker/DatePicker.jsx">
+        <p>
+          DatePickers are cards that can be used to select a date.
+          They're thin wrappers around <a href="https://hacker0x01.github.io/react-datepicker" target="blank">
+            react-datepicker
+          </a>, with Clever styles applied. 
+        </p>
         <Example>
-          <Button value="Show Picker" type="primary" onClick={() => this.setState({showPicker1: true})} />
-          {this.state.showPicker1 && <DatePicker
-            title="Pick a date"
-            onChange={(date) => console.log(date)}
-            onClose={() => this.setState({showPicker1: false})}
-          />}
-        </Example>
-
-        <p>The default date is today, but you can also pass in a string or Date object. You can also pass in a custom title.</p>
-        <Example>
-          <Button value="Show Picker" type="primary" onClick={() => this.setState({showPicker2: true})} />
-          {this.state.showPicker2 && <DatePicker
-            title="Date in the past"
-            onChange={(date) => console.log(date)}
-            onClose={() => this.setState({showPicker2: false})}
-            value="3/12/2017"
-          />}
-        </Example>
-
-        <p>You have quite a bit of flexibility; you can pass in a React node to the title, add in a footer, or pass props directly to the datepicker for things like min/max dates.</p>
-        <Example>
-          <Button value="Show Picker" type="primary" onClick={() => this.setState({showPicker3: true})} />
-          {this.state.showPicker3 && <DatePicker
-            title={(<div>Set Launch Date <FontAwesome name="question-circle" /> </div>)}
-            onChange={(date) => console.log(date)}
-            onClose={() => this.setState({showPicker3: false})}
-            footer={
-              <FlexBox className={cssClass.BUTTON_BAR} justify={Justify.BETWEEN}>
-          <FlexItem>
-            <Button
-              size="small"
-              type="link"
-              value="Launch Now"
-              onClick={() => console.log("Launch Now")}
-            />
-          </FlexItem>
-          <FlexItem>
-            <Button
-              className={cssClass.RIGHT_BUTTON}
-              size="small"
-              type="primary"
-              value="Reschedule"
-              onClick={() => console.log("Reschedule")}
-            />
-          </FlexItem>
-              </FlexBox>
-            }
-            datePickerProps={{
-              minDate: moment().add(1, "day"),
-              maxDate: moment().add(6, "months"),
-            }}
-          />}
+          <DatePicker
+            onChange={(date) => this.setState({value: date})}
+            selected={this.state.value}
+          />
         </Example>
 
         <PropDocumentation
@@ -81,47 +33,35 @@ export default class DatePickerView extends Component {
             {
               name: "className",
               type: "string",
-              description: "Optional additional classname to apply to the datepicker container.",
+              description: "Optional additional classname to apply.",
+              optional: true,
             },
             {
-              name: "title",
-              type: "string OR node",
-              description: "Header for the datepicker. Required.",
-            },
-            {
-              name: "value",
-              type: "string OR Date",
+              name: "selected",
+              type: "Date",
               description: "Optional default date for the datepicker",
-              defaultValue: "Today's date",
-            },
-            {
-              name: "onClose",
-              type: "function",
-              description: "Called when the close button is clicked. Like with a modal, this should remove the datePicker from the DOM",
+              optional: true,
             },
             {
               name: "onChange",
               type: "function",
-              description: "Called when a new date is selected. By default the datepicker does not close when a new date is entered, but you could close it in this function.",
+              description: "Called when a new date is selected.",
             },
             {
-              name: "footer",
-              type: "node",
-              description: "Optional content to place beneath the datepicker in the popover. This is a good place for action buttons, for instance.",
+              name: "minDate",
+              type: "Date",
+              description: "Minimum date the user can select.",
+              optional: true,
             },
             {
-              name: "datePickerProps",
-              type: "object",
-              description: "Set of properties to pass along to the wrapped react-datepicker object. This can be used for additional customization.",
+              name: "maxDate",
+              type: "Date",
+              description: "Maximum date the user can select.",
+              optional: true,
             },
           ]}
-          className={cssClass.PROPS}
         />
       </View>
     );
   }
 }
-
-DatePickerView.cssClass = {
-  CONTAINER: "DatePickerView",
-};

@@ -2,37 +2,10 @@
 @import "~react-datepicker/dist/react-datepicker.min.css";
 
 .DatePicker {
-  .margin--top--2xs;
-  .zIndex--2;
+  .borderRadius--0;
   .border--s(@neutral_silver);
   background-color: @neutral_off_white;
-  position: absolute;
-}
-
-.DatePicker--Header {
-  .padding--xs;
-  .border--bottom--s(@neutral_silver);
-  color: @neutral_dark_gray;
-}
-
-.DatePicker--Title {
-  .text--small;
-  .text--semi-bold;
-}
-
-.DatePicker--Close {
-  .text--small;
-  cursor: pointer;
-}
-
-.DatePicker--DateInput {
-  .padding--x--xs;
-
-  .react-datepicker {
-    border: none;
-    background: none;
-    font-family: inherit;
-  }
+  font-family: inherit;
 
   .react-datepicker__current-month {
     color: @neutral_black;
