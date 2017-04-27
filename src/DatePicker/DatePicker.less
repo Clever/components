@@ -36,7 +36,7 @@
     .text--regular;
   }
 
-  .react-datepicker__day:hover {
+  .react-datepicker__day--keyboard-selected, .react-datepicker__day:hover {
     .shade(background-color, @neutral_off_white, 1);
     border-radius: 50%;
   }
@@ -56,5 +56,9 @@
 
   .react-datepicker__day--disabled {
     color: @neutral_silver;
+  }
+
+  .react-datepicker__triangle {
+    display: none;
   }
 }

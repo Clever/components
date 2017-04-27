@@ -1,7 +1,7 @@
 import moment from "moment";
 import classnames from "classnames";
 import React, {PropTypes} from "react";
-import ReactDatePicker, { propTypes as Reac} from "react-datepicker";
+import ReactDatePicker from "react-datepicker";
 
 import "./DatePicker.less";
 
@@ -16,7 +16,7 @@ export default function DatePicker(props) {
 const stringOrDate = PropTypes.oneOfType([
   PropTypes.instanceOf(Date),
   PropTypes.instanceOf(moment),
-])
+]);
 
 DatePicker.propTypes = { // A subset of the react-datepicker properties we support. Will maybe need to add more later
   className: PropTypes.string,

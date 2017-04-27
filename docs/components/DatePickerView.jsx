@@ -1,4 +1,3 @@
-import moment from "moment";
 import React, {Component} from "react";
 
 import Example from "./Example";
@@ -9,7 +8,7 @@ import {DatePicker} from "src";
 export default class DatePickerView extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: null };
+    this.state = {value: null};
   }
 
   render() {
@@ -19,7 +18,7 @@ export default class DatePickerView extends Component {
           DatePickers are cards that can be used to select a date.
           They're thin wrappers around <a href="https://hacker0x01.github.io/react-datepicker" target="blank">
             react-datepicker
-          </a>, with Clever styles applied. 
+          </a>, with Clever styles applied.
         </p>
         <Example>
           <DatePicker
