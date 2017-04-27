@@ -1,37 +1,38 @@
-@import "../less/colors.less";
-@import "../less/sizing.less";
-@import "../less/border_radius.less";
+@import (reference) "../less/utilities.less";
 
-@pageNumberMargin: 0 5px;
+@pageNumberMargin: 0 @size_2xs;
 
 .Table--footer {
   background-color: @neutral_off_white;
 }
 
 .Table--footer--cell {
-  padding: @size_s;
-  text-align: center;
+  .padding--s;
+  .text--center;
   position: relative;
 }
 
 .Button.Table--footer--button--scroll {
-  @spacing: 40px;
-  margin: 0;
+  .margin--none;
 
   &:not(:last-child) {
-    margin-right: @spacing;
+    margin-right: @size_2xl;
   }
 
   &:not(:first-child) {
-    margin-left: @spacing;
+    margin-left: @size_2xl;
   }
 }
 
 .Button.Table--footer--button--page {
   margin: @pageNumberMargin;
+  transition: background-color @timingQuickly @motionSnappy;
 
   &.Button.Table--footer--button--page--selected {
-    color: @neutral_black;
+    .borderRadius--s;
+    .padding--top--2xs;
+    color: @neutral_white;
+    background-color: @primary_blue;
   }
 }
 
@@ -40,25 +41,25 @@
 }
 
 .Table--footer--ellipsis {
+  .text--medium;
   cursor: default;
-  font-size: 1rem;
   margin: @pageNumberMargin;
 }
 
 .Table--footer--loadingContainer {
-  position: absolute;
+  .text--center;
   left: 0;
-  top: -@size_l;
+  position: absolute;
+  top: -@size_2xl;
   width: 100%;
-  text-align: center;
 }
 
 .Table--footer--loadingPill {
-  border-radius: @borderRadiusS;
-  box-shadow: 0 @size_3xs @size_3xs fade(@neutral_black, 20%);
-  font-family: "Proxima Nova";
+  .borderRadius--s;
+  .padding--xs;
   background: @primary_blue;
+  box-shadow: 0 @size_3xs @size_3xs fade(@neutral_black, 20%);
   color: @neutral_white;
-  padding: @size_xs;
   display: inline-block;
+  font-family: "Proxima Nova";
 }

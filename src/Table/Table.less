@@ -1,4 +1,4 @@
-@import "../less/index.less";
+@import (reference) "../less/utilities.less";
 
 
 .Table {
@@ -7,7 +7,6 @@
   font-family: "Proxima Nova";
   font-size: 0.875rem;
   width: 100%;
-
 }
 
 &.Table--fixed {
@@ -22,7 +21,7 @@
 
 .Table--row {
   .border--bottom--s(@neutral_silver);
-  transition: background-color @timingImmediately ease-out;
+  transition: background-color @timingImmediately @motionSmooth;
 }
 
 &.Table--clickable_row:hover {
