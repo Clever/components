@@ -13,14 +13,14 @@ export default function DatePicker(props) {
   />);
 }
 
-const stringOrDate = PropTypes.oneOfType([
+const dateType = PropTypes.oneOfType([
   PropTypes.instanceOf(Date),
   PropTypes.instanceOf(moment),
 ]);
 
 DatePicker.propTypes = { // A subset of the react-datepicker properties we support. Will maybe need to add more later
   className: PropTypes.string,
-  minDate: stringOrDate,
-  maxDate: stringOrDate,
-  selected: stringOrDate,
+  minDate: dateType,
+  maxDate: dateType,
+  selected: dateType,
 };
