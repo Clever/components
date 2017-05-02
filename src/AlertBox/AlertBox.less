@@ -1,0 +1,80 @@
+@import (reference) "../less/index";
+
+@pale_steps: 6;
+
+.AlertBox--container {
+  .borderRadius--l;
+  .padding--s;
+  .border--s(transparent);
+  border-left-width: @size_s;
+}
+
+.AlertBox--title {
+  display: inline;
+  .margin--left--2xs;
+  .text--semi-bold;
+}
+
+.AlertBox--header {
+  .padding--bottom--xs;
+}
+
+.AlertBox--Icon {
+  height: @size_m;
+  width: @size_m;
+}
+
+.AlertBox--warning {
+  border-color: @alert_orange;
+  .tint(background-color, @alert_orange, @pale_steps);
+}
+
+.AlertBox--Icon--warning {
+  fill: @alert_orange;
+}
+
+.AlertBox--success {
+  border-color: @alert_green;
+  .tint(background-color, @alert_green, @pale_steps);
+}
+
+.AlertBox--Icon--success {
+  fill: @alert_green;
+}
+
+.AlertBox--error {
+  border-color: @alert_red;
+  .tint(background-color, @alert_red, @pale_steps);
+}
+
+.AlertBox--Icon--error {
+  fill: @alert_red;
+}
+
+.AlertBox--info {
+  border-color: @primary_blue;
+  .tint(background-color, @primary_blue, @pale_steps);
+}
+
+.AlertBox--Icon--info {
+  fill: @primary_blue;
+}
+
+.AlertBox--close {
+  display: inline;
+  cursor: pointer;
+  height: @size_m;
+  width: @size_m;
+  background: none;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0.4;
+  float: right;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+

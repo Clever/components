@@ -39,3 +39,6 @@ export {DropdownButton};
 
 import DateInput from "./DateInput/DateInput";
 export {DateInput};
+
+import AlertBox from "./AlertBox/AlertBox";
+export {AlertBox};
