@@ -89,57 +89,59 @@ export class Wizard extends React.Component {
     return (
       <div className={classes} style={style}>
         <div className="Wizard--sidebar">
-          <h2>{title}</h2>
-          {_.isString(description) ?
-            <p className="Wizard--description">{description}</p>
-          :
-            <div className="Wizard--description">{description}</div>
-          }
-          { !hideProgressBar &&
-            <ProgressBar percentage={this.state.percentComplete} />
-          }
-          <ul className="Wizard--stepsDisplay">
-            {steps.map((step, idx) => {
-              const stepValid = step.validate(this.state.data);
-              const stepVisited = _.includes(this.state.stepsVisited, idx);
-              const stepClassName = classnames(
-                "Wizard--stepsDisplay--step",
-                idx === this.state.currentStep && "Wizard--stepsDisplay--currentStep",
-                stepValid && "Wizard--stepsDisplay--valid",
-                stepVisited && "Wizard--stepsDisplay--visited",
-                seekable && "Wizard--stepsDisplay--stepLink"
-              );
-              const listValue = (<span className={stepClassName}>
-                <span className="Wizard--stepsDisplay--icon" />
-                <span className="Wizard--stepsDisplay--stepTitle">{step.title}</span>
-              </span>);
-              return (
-                <li key={idx}>
-                  { seekable ?
-                    <Button
-                      className="Wizard--stepsDisplay--stepButton"
-                      type="link" onClick={() => this.jumpToStep(idx)}
-                      value={listValue}
-                    />
-                  :
-                    listValue
-                  }
-                </li>
-              );
-            })}
-          </ul>
-          {wizardButtons &&
-            <div className="Wizard--controls">
-              {wizardButtons.map((btnSpec, idx) => (
-                <Button
-                  key={idx}
-                  onClick={() => btnSpec.handler(this.state.data, {resetWizard: this.reset})}
-                  value={btnSpec.buttonValue}
-                  className={classnames("Wizard--controls--control", btnSpec.buttonClassName)}
-                />
-              ))}
-            </div>
-          }
+          <div className="Wizard--sidebarContent">
+            <h2>{title}</h2>
+            {_.isString(description) ?
+              <p className="Wizard--description">{description}</p>
+            :
+              <div className="Wizard--description">{description}</div>
+            }
+            { !hideProgressBar &&
+              <ProgressBar percentage={this.state.percentComplete} />
+            }
+            <ul className="Wizard--stepsDisplay">
+              {steps.map((step, idx) => {
+                const stepValid = step.validate(this.state.data);
+                const stepVisited = _.includes(this.state.stepsVisited, idx);
+                const stepClassName = classnames(
+                  "Wizard--stepsDisplay--step",
+                  idx === this.state.currentStep && "Wizard--stepsDisplay--currentStep",
+                  stepValid && "Wizard--stepsDisplay--valid",
+                  stepVisited && "Wizard--stepsDisplay--visited",
+                  seekable && "Wizard--stepsDisplay--stepLink"
+                );
+                const listValue = (<span className={stepClassName}>
+                  <span className="Wizard--stepsDisplay--icon" />
+                  <span className="Wizard--stepsDisplay--stepTitle">{step.title}</span>
+                </span>);
+                return (
+                  <li key={idx}>
+                    { seekable ?
+                      <Button
+                        className="Wizard--stepsDisplay--stepButton"
+                        type="link" onClick={() => this.jumpToStep(idx)}
+                        value={listValue}
+                      />
+                    :
+                      listValue
+                    }
+                  </li>
+                );
+              })}
+            </ul>
+            {wizardButtons &&
+              <div className="Wizard--controls">
+                {wizardButtons.map((btnSpec, idx) => (
+                  <Button
+                    key={idx}
+                    onClick={() => btnSpec.handler(this.state.data, {resetWizard: this.reset})}
+                    value={btnSpec.buttonValue}
+                    className={classnames("Wizard--controls--control", btnSpec.buttonClassName)}
+                  />
+                ))}
+              </div>
+            }
+          </div>
         </div>
 
         <div className="Wizard--step">
