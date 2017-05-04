@@ -6,6 +6,7 @@ import {omitKeys, prefixKeys, propsFor, unprefixKeys} from "../utils";
 
 const excludeModalProps = ["closeModal", "children"];
 
+import "./ModalButton.less";
 export class ModalButton extends React.Component {
   constructor(props) {
     super(props);
