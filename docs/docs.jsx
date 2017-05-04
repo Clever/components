@@ -40,6 +40,7 @@ import TooltipView from "./components/TooltipView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WizardView from "./components/WizardView";
+import AlertBoxView from "./components/AlertBoxView";
 
 
 render((
@@ -57,6 +58,7 @@ render((
         <Route path="ui-text(/*)" component={UITextView} />
       </Route>
       <Route path="components">
+        <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
