@@ -1,7 +1,7 @@
 SHELL = /bin/bash
-JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js")
-JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*")
-LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*")
+JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js" -not -path "./vendor/*")
+JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
+LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
 TESTS := $(shell find test -name "*_test*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./.stylelintrc
