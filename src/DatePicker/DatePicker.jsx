@@ -1,7 +1,7 @@
 import moment from "moment";
 import classnames from "classnames";
 import React, {PropTypes} from "react";
-import ReactDatePicker from "react-datepicker";
+import ReactDatePicker from "../../vendor/react-datepicker/dist/react-datepicker.min.js";
 
 import "./DatePicker.less";
 
