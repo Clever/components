@@ -19,6 +19,7 @@ export default class SelectView extends Component {
       multi: false,
       readOnly: false,
       searchable: false,
+      creatable: false,
       selectValue: null,
     };
   }
@@ -46,6 +47,8 @@ export default class SelectView extends Component {
                 disabled={this.state.disabled}
                 clearable={this.state.clearable}
                 searchable={this.state.searchable}
+                creatable={this.state.creatable}
+                creatableProps={{promptTextCreator: (label) => `Add new option: ${label}`}}
                 multi={this.state.multi}
                 readOnly={this.state.readOnly}
                 name="select"
@@ -82,6 +85,15 @@ export default class SelectView extends Component {
             />
             {" "}
             Searchable
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.creatable}
+              onChange={({target}) => this.setState({creatable: target.checked})}
+            />
+            {" "}
+            Creatable
           </label>
           <label className={cssClass.CONFIG}>
             <input
@@ -135,6 +147,19 @@ export default class SelectView extends Component {
               type: "Boolean",
               description: "Whether the selected value can be cleared",
               defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "creatable",
+              type: "Boolean",
+              description: "Whether to allow users to create custom new options. Only works when searchable enabled.",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "creatableProps",
+              type: "Object",
+              description: "If creatable is true, creatableProps can be passed in to customize the behavior of new option creation. See the ReactSelect docs for the Creatable component to learn about these options.",
               optional: true,
             },
             {
