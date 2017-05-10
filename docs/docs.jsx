@@ -2,6 +2,7 @@ import React from "react";
 import {render} from "react-dom";
 import {IndexRedirect, Route, Router, hashHistory} from "react-router";
 
+import AlertBoxView from "./components/AlertBoxView";
 import ButtonView from "./components/ButtonView";
 import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
@@ -40,7 +41,6 @@ import TooltipView from "./components/TooltipView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WizardView from "./components/WizardView";
-import AlertBoxView from "./components/AlertBoxView";
 
 
 render((

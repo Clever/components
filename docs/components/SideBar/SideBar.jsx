@@ -24,6 +24,7 @@ export default function SideBar({className}) {
         <NavLink href="/design/ui-text">UI Text</NavLink>
       </NavGroup>
       <NavGroup title="Components">
+        <NavLink href="/components/alert-box">AlertBox</NavLink>
         <NavLink href="/components/button">Button</NavLink>
         <NavLink href="/components/confirmation-button">ConfirmationButton</NavLink>
         <NavLink href="/components/copyable-input">CopyableInput</NavLink>
