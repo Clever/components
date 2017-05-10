@@ -222,31 +222,18 @@ describe("Select", () => {
     assert.equal(creatable.prop("name"), "testname");
   });
 
-  it("passes through creatableProps to the ReactSelect Creatable component to allow customizing", () => {
-    const creatableProps = {promptTextCreator: (label) => `Add ${label}`};
+  it("passes through creatablePromptFn to the ReactSelect Creatable component to allow customizing prompt text for new options", () => {
+    const promptFn = label => `Add ${label}`;
     const select = shallow(
       <Select
         id="testid"
         name="testname"
         creatable
-        creatableProps={creatableProps}
+        creatablePromptFn={promptFn}
       />
     );
     const creatable = select.find(ReactSelect.Creatable);
     assert(!creatable.isEmpty());
-    assert.equal(creatable.prop("promptTextCreator"), creatableProps.promptTextCreator);
-  });
-
-  it("doesn't pass through creatableProps if creatable false", () => {
-    const creatableProps = {promptTextCreator: (label) => `Add ${label}`};
-    const select = shallow(
-      <Select
-        id="testid"
-        name="testname"
-        creatableProps={creatableProps}
-      />
-    );
-    const reactSelect = select.find(ReactSelect);
-    assert(!reactSelect.prop("promptTextCreator"));
+    assert.equal(creatable.prop("promptTextCreator"), promptFn);
   });
 });

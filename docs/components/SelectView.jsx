@@ -48,7 +48,7 @@ export default class SelectView extends Component {
                 clearable={this.state.clearable}
                 searchable={this.state.searchable}
                 creatable={this.state.creatable}
-                creatableProps={{promptTextCreator: (label) => `Add new option: ${label}`}}
+                creatablePromptFn={label => `Add new option: ${label}`}
                 multi={this.state.multi}
                 readOnly={this.state.readOnly}
                 name="select"
@@ -157,9 +157,10 @@ export default class SelectView extends Component {
               optional: true,
             },
             {
-              name: "creatableProps",
-              type: "Object",
-              description: "If creatable is true, creatableProps can be passed in to customize the behavior of new option creation. See the ReactSelect docs for the Creatable component to learn about these options.",
+              name: "creatablePromptFn",
+              type: "Function",
+              description: "If creatable is true, creatablePromptFn can be passed in to customize the prompt shown for creating a new option. The function should take the string entered by the user and returns a string to use as the prompt.",
+              defaultValue: "(label) => `Create option \"${label}\"`",
               optional: true,
             },
             {
