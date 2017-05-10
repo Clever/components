@@ -8,6 +8,7 @@
         "jsx": "react",
         "lib": ["es2017", "dom"],
         "outDir": "dist",
+        "allowJs": true,
         "typeRoots": [
             "node_modules/@types", "./types"
         ]
