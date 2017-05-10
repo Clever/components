@@ -6,7 +6,8 @@
     "type": "git",
     "url": "git+https://github.com/Clever/components.git"
   },
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
   "bugs": {
     "url": "https://github.com/Clever/components/issues"
   },
@@ -31,6 +32,7 @@
     "tether": "^1.4.0"
   },
   "devDependencies": {
+    "@types/react": "Clever/minimal-react-typings",
     "autoprefixer": "^6.5.3",
     "babel-cli": "~6.0.0",
     "babel-core": "~6.7.4",
@@ -65,9 +67,15 @@
     "react-addons-test-utils": "~15.3.0",
     "react-dom": "~15.3.0",
     "react-router": "^3.0.0",
+    "react-svg-loader": "^1.1.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-typescript2": "^0.4.1",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.0",
     "stylelint": "^7.9.0",
+    "tslib": "^1.7.0",
+    "typescript": "^2.3.2",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"

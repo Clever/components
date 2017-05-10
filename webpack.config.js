@@ -8,7 +8,7 @@ module.exports = {
     publicPath: "/",
   },
   resolve: {
-    extensions: ["", ".js", ".jsx", ".less"],
+    extensions: ["", ".js", ".jsx", ".less", ".svg"],
     alias: {
       src: "src",
       utils: "src/utils",
@@ -19,8 +19,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(eot|woff|svg|ttf|png)$/,
+        test: /\.(eot|woff|ttf|png)$/,
         loader: "url",
+      },
+      {
+        test: /\.svg$/,
+        loaders: ["babel", "react-svg-loader"],
       },
       {
         test: /\.css$/,

@@ -1,0 +1,10 @@
+import {TYPES as BUTTON_TYPES} from "../Button/Button";
+
+
+const Type = {
+  PRIMARY: BUTTON_TYPES.PRIMARY,
+  SECONDARY: BUTTON_TYPES.SECONDARY,
+  DESTRUCTIVE: BUTTON_TYPES.DESTRUCTIVE,
+};
+
+export default Type;
