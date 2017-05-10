@@ -37,6 +37,8 @@ export function Select({
   placeholder = "",
   readOnly,
   searchable,
+  creatable,
+  creatablePromptFn,
   value,
   className,
 }) {
@@ -52,14 +54,17 @@ export function Select({
     reactSelectClasses += ` ${cssClass.READ_ONLY}`;
   }
 
+  const SelectComponent = creatable ? ReactSelect.Creatable : ReactSelect;
+
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
   return (
     <div className={classnames(cssClass.CONTAINER, className)}>
       <div id={id}>
-        <ReactSelect
+        <SelectComponent
           className={reactSelectClasses}
           clearable={clearable}
+          promptTextCreator={creatablePromptFn}
           disabled={disabled || readOnly}
           multi={multi}
           name={name}
@@ -105,6 +110,8 @@ Select.propTypes = {
   placeholder: React.PropTypes.string,
   readOnly: React.PropTypes.bool,
   searchable: React.PropTypes.bool,
+  creatable: React.PropTypes.bool,
+  creatablePromptFn: React.PropTypes.func,
   value: React.PropTypes.oneOfType([
     React.PropTypes.string,
     selectValuePropType,
@@ -118,4 +125,5 @@ Select.defaultProps = {
   clearable: false,
   placeholder: "",
   searchable: false,
+  creatable: false,
 };

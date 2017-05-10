@@ -208,4 +208,32 @@ describe("Select", () => {
     const reactSelect = select.find(ReactSelect);
     assert.equal(reactSelect.prop("placeholder"), "");
   });
+
+  it("uses the ReactSelect Creatable component to allow creating custom options if creatable prop is true", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        creatable
+      />
+    );
+    const creatable = select.find(ReactSelect.Creatable);
+    assert(!creatable.isEmpty());
+    assert.equal(creatable.prop("name"), "testname");
+  });
+
+  it("passes through creatablePromptFn to the ReactSelect Creatable component to allow customizing prompt text for new options", () => {
+    const promptFn = label => `Add ${label}`;
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        creatable
+        creatablePromptFn={promptFn}
+      />
+    );
+    const creatable = select.find(ReactSelect.Creatable);
+    assert(!creatable.isEmpty());
+    assert.equal(creatable.prop("promptTextCreator"), promptFn);
+  });
 });
