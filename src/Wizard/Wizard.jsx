@@ -18,10 +18,21 @@ export class Wizard extends React.Component {
     this.state = _.assign(INITIAL_STATE, {
       data: props.initialWizardData || {},
     });
+
     this.reset = this.reset.bind(this);
     this.prevStepHandler = this.prevStepHandler.bind(this);
     this.nextStepHandler = this.nextStepHandler.bind(this);
     this.calculatePercentComplete = this.calculatePercentComplete.bind(this);
+
+    // Launch the wizard at a specific step (e.g. to resume at furthest step)
+    if (this.props.initialStep) {
+      const idx = this.props.initialStep;
+      Object.assign(this.state, {
+        currentStep: idx,
+        stepsVisited: _.range(idx + 1), // include the step itself
+        percentComplete: this.calculatePercentComplete(),
+      });
+    }
   }
 
   reset() {
@@ -214,6 +225,7 @@ Wizard.propTypes = {
     props: PropTypes.object,
     onStepComplete: PropTypes.func,
   })).isRequired,
+  initialStep: PropTypes.number,
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   seekable: PropTypes.bool,

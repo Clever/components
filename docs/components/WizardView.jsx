@@ -72,6 +72,13 @@ export default class WizardView extends PureComponent {
               optional: true,
             },
             {
+              name: "initialStep",
+              type: "Number",
+              description: "The index of the step to open the wizard at",
+              defaultValue: 0,
+              optional: true,
+            },
+            {
               name: "initialWizardData",
               type: "Object",
               description: "Initial data to seed wizardState. Useful for saving the state of a form for later",
