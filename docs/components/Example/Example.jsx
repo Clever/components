@@ -27,7 +27,7 @@ Example.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   code: PropTypes.string.isRequired,
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 Example.cssClass = {
