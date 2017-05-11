@@ -5,37 +5,78 @@ import React from "react";
 import "./Button.less";
 
 
-export function Button(props) {
-  const {Size, Type} = Button;
+export class Button extends React.PureComponent {
+  _buttonRef;
 
-  if (props.type === Type.DESTRUCTIVE && props.size === Size.S) {
-    throw new Error("Small destructive buttons are not supported");
+  focus() {
+    if (this._buttonRef) {
+      this._buttonRef.focus();
+    }
   }
 
-  if (props.href && props.submit) {
-    throw new Error("Buttons with href do not support the submit option");
+  blur() {
+    if (this._buttonRef) {
+      this._buttonRef.blur();
+    }
   }
 
-  const classes = classnames(
-    `Button Button--${props.type}`,
-    `Button--${props.size}`,
-    props.className
-  );
-  const type = props.submit ? "submit" : "button";
+  render() {
+    const {Size, Type} = Button;
+    const {
+      className,
+      disabled,
+      href,
+      onClick,
+      size,
+      style,
+      submit,
+      target,
+      type,
+      value,
+    } = this.props;
 
-  if (props.href == null || props.disabled) {
-    // use <button>s for all disabled links and things with no href prop (buttons)
+    if (type === Type.DESTRUCTIVE && size === Size.S) {
+      throw new Error("Small destructive buttons are not supported");
+    }
+
+    if (href && submit) {
+      throw new Error("Buttons with href do not support the submit option");
+    }
+
+    const classes = classnames(
+      `Button Button--${type}`,
+      `Button--${size}`,
+      className
+    );
+
+    if (href == null || disabled) {
+      // use <button>s for all disabled links and things with no href prop (buttons)
+      return (
+        <button
+          className={classes}
+          disabled={disabled}
+          onClick={onClick}
+          ref={ref => { this._buttonRef = ref; }}
+          style={style}
+          type={submit ? "submit" : "button"}
+        >
+          {value}
+        </button>
+      );
+    }
     return (
-      <button type={type} className={classes} onClick={props.onClick} disabled={props.disabled} style={props.style}>
-        {props.value}
-      </button>
+      <a
+        className={classes}
+        href={href}
+        onClick={onClick}
+        ref={ref => { this._buttonRef = ref; }}
+        style={style}
+        target={target}
+      >
+        {value}
+      </a>
     );
   }
-  return (
-    <a className={classes} target={props.target} href={props.href} onClick={props.onClick} style={props.style}>
-      {props.value}
-    </a>
-  );
 }
 
 Button.Size = {
