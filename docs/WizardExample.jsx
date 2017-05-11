@@ -143,6 +143,7 @@ export default class WizardExample extends React.Component {
     this.state = {
       seekable: false,
       showHelp: false,
+      sticky: false,
       prevButtonValue: "Back",
       hideProgressBar: false,
       recipient: "Kristen Stark",
@@ -211,6 +212,15 @@ export default class WizardExample extends React.Component {
             </label>
           </li>
           <li>
+            <label>
+              <input
+                type="checkbox"
+                onChange={(e) => this.setState({sticky: e.target.checked})}
+              />
+              Sticky sidebar?
+            </label>
+          </li>
+          <li>
             <TextInput
               value={this.state.recipient}
               onChange={(e) => this.setState({recipient: e.target.value})}
@@ -232,6 +242,7 @@ export default class WizardExample extends React.Component {
       <Wizard
         title="Delivery setup"
         description="Ensure that your delivery will come on time"
+        stickySidebar={this.state.sticky}
         steps={steps}
         prevButtonValue={this.state.prevButtonValue}
         onComplete={(state) =>
@@ -257,6 +268,7 @@ export default class WizardExample extends React.Component {
         )}
         seekable={this.state.seekable}
         hideProgressBar={this.state.hideProgressBar}
+        style={{height: 700}}
       />
     </div>);
   }
