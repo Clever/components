@@ -9,6 +9,8 @@ import {Button} from "src";
 import "./ButtonView.less";
 
 
+let _focusExampleRef;
+
 export default function ButtonView() {
   const {cssClass} = ButtonView;
 
@@ -93,6 +95,35 @@ export default function ButtonView() {
           )}
         />
       </Example>
+
+      <h3>API:</h3>
+
+      <Example
+        title={(
+          <span>
+            <code>focus()</code>/<code>blur()</code>
+          </span>
+        )}
+      >
+        <ExampleCode>
+          <Button
+            ref={ref => { _focusExampleRef = ref; }}
+            type="destructive"
+            value="Focus on me!"
+          />
+
+          <Button
+            onClick={() => {
+              _focusExampleRef.focus();
+              window.setTimeout(() => _focusExampleRef.blur(), 1000);
+            }}
+            size={Button.Size.S}
+            type="link"
+            value={<span><code>focus()</code> ...but just for a second</span>}
+          />
+        </ExampleCode>
+      </Example>
+
 
       <PropDocumentation
         availableProps={[
