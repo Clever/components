@@ -121,6 +121,13 @@ export default class WizardView extends PureComponent {
               defaultValue: "[]",
               optional: true,
             },
+            {
+              name: "stickySidebar",
+              type: "boolean",
+              description: "Whether the sidebar should be fixed vertically",
+              defaultValue: "false",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="Wizard"
