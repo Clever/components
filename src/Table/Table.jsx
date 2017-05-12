@@ -216,7 +216,7 @@ export class Table extends Component {
 
     let numPages;
     if (numRows != null) {
-      numPages = Math.ceil(numRows / pageSize);
+      numPages = Math.max(Math.ceil(numRows / pageSize), 1);
     } else {
       if (lazyPages.length === 0) {
         numPages = 1;
