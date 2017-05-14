@@ -2,7 +2,7 @@ import _ from "lodash";
 import classnames from "classnames";
 import React, {PropTypes, PureComponent} from "react";
 
-import {Tooltip} from "../Tooltip";
+import Tooltip from "../Tooltip";
 
 import "./Label.less";
 

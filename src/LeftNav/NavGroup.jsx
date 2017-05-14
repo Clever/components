@@ -1,31 +1,61 @@
-import React, {PropTypes} from "react";
+import * as _ from "lodash";
+import * as PropTypes from "prop-types";
+import * as React from "react";
 import classnames from "classnames";
 
+import MorePropTypes from "../utils/MorePropTypes";
 import {NavLink} from "./NavLink";
+
+import "./NavGroup.less";
+
 
 // NavGroup doesn't render its children because LeftNav will render them in
 // a drawer if the NavGroup is open.
-export function NavGroup(props) {
-  const {cssClass} = NavGroup;
+export class NavGroup extends React.PureComponent {
+  render() {
+    const {cssClass} = NavGroup;
+    const {
+      _collapsed,
+      _onClick,
+      _open,
+      _withActiveNavGroups,
+      _withTooltips,
+      children,
+      className,
+      icon,
+      label,
+    } = this.props;
 
-  const open = props._open ? cssClass.OPEN : null;
-  return (
-    <NavLink
-      className={classnames(cssClass.CONTAINER, props.className, open)}
-      label={props.label}
-      icon={props.icon}
-      onClick={props._onClick}
-    />
-  );
+    const childSelected = !!_.find(React.Children.toArray(children), item => item.props.selected);
+
+    return (
+      <NavLink
+        className={classnames(cssClass.CONTAINER, _open && cssClass.OPEN, className)}
+        icon={icon}
+        label={label}
+        onClick={_onClick}
+        selected={_withActiveNavGroups && childSelected}
+        _collapsed={_collapsed}
+        _withArrow
+        _withTooltips={_withTooltips}
+      />
+    );
+  }
 }
 
 NavGroup.propTypes = {
+  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(NavLink)),
   className: PropTypes.string,
-  id: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
-  _open: PropTypes.bool, // private - used by LeftNav only
-  _onClick: PropTypes.func, // private - used by LeftNav only
+  id: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
+
+  // Internal use only:
+  _collapsed: PropTypes.bool,
+  _onClick: PropTypes.func,
+  _open: PropTypes.bool,
+  _withActiveNavGroups: PropTypes.bool,
+  _withTooltips: PropTypes.bool,
 };
 
 NavGroup.cssClass = {

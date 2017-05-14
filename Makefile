@@ -29,7 +29,7 @@ docs:
 	@echo '✓ Rebuild docs'
 	@$(WEBPACK)
 
-build: clean es5 styles docs
+build: clean es5 styles
 
 styles:
 	@echo "Building stylesheet"

@@ -18,7 +18,7 @@ export default class MorePropTypes {
     return MorePropTypes.makeRequirable((props, propName, parentComponentName) => {
       const value = props[propName];
 
-      if (value === null || value === undefined) {
+      if (!value) {
         return null;
       }
 

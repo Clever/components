@@ -1,145 +1,96 @@
 @import (reference) "../less/utilities";
+@import (reference) "./animation";
+@import (reference) "./sizing";
+@import "../less/fonts";
 
-.animateWidth {
-  .timingSlowly;
-  .transition-timing-function(@motionSmooth);
-  transition-propery: width;
-}
-
-.animateOpacity {
-  .delayMoment;
-  .timingPromptly;
-  .transition-timing-function(@motionSnappy);
-  transition-property: opacity;
-}
 
 .LeftNav {
+  .animateWidth;
   .flexbox;
   .shade(color, @primary_blue, 2);
   background: @neutral_off_white;
-  user-select: none;
-}
-
-.LeftNav--topnav,
-.LeftNav--subnav {
-  .animateWidth;
-  .list-reset;
-  overflow: hidden;
-  width: 12rem;
-  box-sizing: border-box;
-  .border--right--s(@neutral_silver)
-}
-
-.LeftNav--subnav {
-  .shade(background, @neutral_off_white, .15);
-  color: @neutral_black;
+  font-family: "Proxima Nova";
   height: 100%;
+  user-select: none;
+  width: @paneWidth;
 }
 
-.NavLink {
-  font: inherit;
-  background: inherit;
-  /* stylelint-disable-next-line */
-  .shade(color, @primary_blue, 3);
-  width: 100%;
-  .items--center;
-  .padding--left--m;
-  .padding--right--xl;
-  .padding--y--m;
-  .text--decoration-none;
-  border: none;
-  outline: none;
-  .border--bottom--s(@neutral_silver);
-  position: relative; // Enables z-index to work
-  cursor: pointer;
-  .flexbox;
-
-  &:visited, &:active {
-    .shade(color, @primary_blue, 2);
-  }
-}
-
-.NavLink--contents {
-  .flexbox;
-}
-
-.NavLink--icon {
-  .padding--right--s;
-  height: @size_l;
-}
-
-.NavLink--label {
-  .animateOpacity;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  opacity: 1;
-}
-
-.LeftNav--subnav .NavLink {
-  .padding--left--s;
-  .padding--right--l;
-}
-
-.NavLink--selected {
-  .text--semi-bold;
-  .tint(background, @primary_blue, 6.15);
-  .shade(color, @primary_blue, 3);
-}
-
-.right-arrow {
-  background-image: url("./right-arrow.svg");
-  background-repeat: no-repeat;
-  background-position: right @size_xs center;
-}
-
-.NavGroup {
-  .right-arrow;
-}
-
-.NavGroup--open {
-  // In order to have a background image (right arrow) and a background color
-  // simultaneously, they both must be written in the same CSS rule and the
-  // image must come second.
-  .shade(background, @neutral_off_white, .15);
-  .shade(color, @primary_blue, 3);
-  .right-arrow;
-}
-
-.NavLink:hover, .NavLink:focus {
-  box-shadow: inset @borderWidthL 0 @primary_blue; // blue bar on left
-  .zIndex--2; // For subnav links, ensure this goes over the shadow from the topnav
-  text-decoration: none;
-}
-
-.NavGroup--open,
-.NavLink--selected,
-.NavGroup--open:hover,
-.NavLink--selected:hover {
-  box-shadow: inset @borderWidthL 0 @primary_blue; // blue bar on left
-  .zIndex--2; // For subnav links, ensure this goes over the shadow from the topnav
+.LeftNav--withSubnavOpen {
+  width: @paneWidth * 2;
 }
 
 .LeftNav--collapsed {
-  width: 4rem;
+  width: @paneWidthCollapsed;
 
-  .NavLink {
-    .padding--right--s;
+  &.LeftNav--withSubnavOpen {
+    width: @paneWidthCollapsed + @paneWidth;
   }
+}
 
-  .NavLink--label {
+.LeftNav--topnav,
+.LeftNav--subnav,
+.LeftNav--subnav--content {
+  .list-reset;
+  box-sizing: border-box;
+  display: inline-block;
+  height: auto;
+  overflow: hidden;
+}
+
+.LeftNav--topnav,
+.LeftNav--subnav--content {
+  .border--right--s(@neutral_silver);
+}
+
+.LeftNav--topnav {
+  .animateWidth;
+  .flexShrink(0);
+  max-width: @paneWidth;
+  width: @paneWidth;
+}
+
+.LeftNav--topnav--collapsed {
+  width: @paneWidthCollapsed;
+}
+
+.LeftNav--subnav {
+  .animateWidth;
+  .flexbox;
+  .flex--direction--column;
+  .flexShrink(0);
+  .shade(background, @neutral_off_white, .15);
+  width: 0;
+
+  .NavLink--label--container {
+    width: @paneWidth - @linkPaddingLeft - @linkPaddingRight;
+  }
+}
+
+.LeftNav--subnav--content {
+  .flex--grow;
+  height: auto;
+  width: 100%;
+}
+
+.LeftNav--subnav--open {
+  max-width: @paneWidth;
+  width: @paneWidth;
+}
+
+.LeftNav--subnav--content--anim-enter {
+  .animateOpacity;
+  opacity: 0;
+
+  &.LeftNav--subnav--content--anim-enter-active {
+    opacity: 1;
+  }
+}
+
+.LeftNav--subnav--content--anim-leave {
+  .animateOpacity;
+  opacity: 1;
+
+  &.LeftNav--subnav--content--anim-leave-active {
     opacity: 0;
   }
-}
-
-.LeftNav--drawer-anim-enter {
-  width: 0;
-  .animateWidth
-}
-
-.LeftNav--drawer-anim-enter.LeftNav--drawer-anim-enter-active {
-  width: 12rem;
-}
-
-.LeftNav--drawer-anim-leave.LeftNav--drawer-anim-leave-active {
-  width: 0;
 }

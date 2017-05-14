@@ -1,8 +1,5 @@
-import Count from "./Count";
-// Number is a default export.
 // TODO(kofi): Convert all components to default exports to allow clients to import separate
 // components without pulling in the whole repo.
-import Number from "./Number";
 
 export * from "./flex";
 export * from "./TabBar";
@@ -21,24 +18,30 @@ export {LeftNav} from "./LeftNav/LeftNav";
 export {Wizard} from "./Wizard/Wizard";
 export {ProgressBar} from "./ProgressBar/ProgressBar";
 export {TextArea} from "./TextArea/TextArea";
-export {Tooltip} from "./Tooltip";
 export {Label} from "./Label";
 export {FileInput} from "./FileInput/FileInput";
 export * from "./InfoPanel";
-export {Number};
+
+import AlertBox from "./AlertBox/AlertBox";
+export {AlertBox};
+
+import Count from "./Count";
 export {Count};
-
-import DollarAmount from "./DollarAmount";
-export {DollarAmount};
-
-import DatePicker from "./DatePicker";
-export {DatePicker};
-
-import DropdownButton from "./DropdownButton";
-export {DropdownButton};
 
 import DateInput from "./DateInput/DateInput";
 export {DateInput};
 
-import AlertBox from "./AlertBox/AlertBox";
-export {AlertBox};
+import DatePicker from "./DatePicker";
+export {DatePicker};
+
+import DollarAmount from "./DollarAmount";
+export {DollarAmount};
+
+import DropdownButton from "./DropdownButton";
+export {DropdownButton};
+
+import Number from "./Number";
+export {Number};
+
+import Tooltip from "./Tooltip";
+export {Tooltip};
