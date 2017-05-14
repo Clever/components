@@ -44,7 +44,7 @@ export class NavGroup extends React.PureComponent {
 }
 
 NavGroup.propTypes = {
-  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(NavLink)),
+  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(NavLink)).isRequired,
   className: PropTypes.string,
   icon: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,

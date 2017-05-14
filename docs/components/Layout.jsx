@@ -10,20 +10,25 @@ import "./Layout.less";
 /**
  * Global layout for the Design System docs.
  */
-export default function Layout({children}) {
-  const {cssClass} = Layout;
+export default class Layout extends React.PureComponent {
+  _sidebarRef;
 
-  return (
-    <FlexBox className={cssClass.LAYOUT} column grow>
-      <TopBar />
-      <FlexBox className={cssClass.MAIN} grow>
-        <SideBar />
-        <FlexItem className={cssClass.VIEW_CONTAINER} grow>
-          {children}
-        </FlexItem>
+  render() {
+    const {cssClass} = Layout;
+    const {children} = this.props;
+
+    return (
+      <FlexBox className={cssClass.LAYOUT} column grow>
+        <TopBar onToggleMenu={() => this._sidebarRef.toggle()} />
+        <FlexBox className={cssClass.MAIN} grow>
+          <SideBar className={cssClass.SIDE_BAR} ref={ref => { this._sidebarRef = ref; }} />
+          <FlexItem className={cssClass.VIEW_CONTAINER} grow>
+            {children}
+          </FlexItem>
+        </FlexBox>
       </FlexBox>
-    </FlexBox>
-  );
+    );
+  }
 }
 
 Layout.propTypes = {
@@ -34,5 +39,6 @@ Layout.cssClass = {
   LAYOUT: "Layout",
   LEGACY_CONTAINER: "layout-container",
   MAIN: "Layout--mainContainer",
+  SIDE_BAR: "Layout--sideBar",
   VIEW_CONTAINER: "Layout--viewContainer",
 };
