@@ -161,58 +161,56 @@ export class Wizard extends React.Component {
       validSteps.length !== steps.length : !curStep.validate(this.state.data);
 
     return (
-      <StickyContainer>
-        <div className={classes} style={style}>
-          <div className="Wizard--sidebar">
-            {!stickySidebar ? this._renderSidebar() : (
-              <Sticky topOffset={24}>
-                {({style: sidebarStyle}) => this._renderSidebar(sidebarStyle)}
-              </Sticky>
-            )}
-          </div>
+      <StickyContainer className={classes} style={style}>
+        <div className="Wizard--sidebar">
+          {!stickySidebar ? this._renderSidebar() : (
+            <Sticky topOffset={24}>
+              {({style: sidebarStyle}) => this._renderSidebar(sidebarStyle)}
+            </Sticky>
+          )}
+        </div>
 
-          <div className="Wizard--step">
-            <WizardStep
-              Component={steps[this.state.currentStep].component}
-              componentProps={steps[this.state.currentStep].props}
-              stepNumber={this.state.currentStep}
-              setWizardState={(changes) => {
-                const newState = Object.assign(this.state.data, changes);
-                this.setState({data: newState});
-                return newState;
-              }}
-              wizardState={this.state.data}
-              updatePercentComplete={(wizardState) => this.setState({
-                percentComplete: this.calculatePercentComplete(wizardState)})
-              }
-              calculatePercentComplete={this.calculatePercentComplete}
-              percentComplete={this.state.percentComplete}
-              totalSteps={steps.length}
-              title={curStep.title}
-              description={curStep.description}
-              currentStep={this.state.currentStep}
-              help={curStep.help ? curStep.help : help}
-              validate={curStep.validate}
-              prevButtonValue={curStep.prevButtonValue}
-              nextButtonValue={curStep.nextButtonValue}
-            />
+        <div className="Wizard--step">
+          <WizardStep
+            Component={steps[this.state.currentStep].component}
+            componentProps={steps[this.state.currentStep].props}
+            stepNumber={this.state.currentStep}
+            setWizardState={(changes) => {
+              const newState = Object.assign(this.state.data, changes);
+              this.setState({data: newState});
+              return newState;
+            }}
+            wizardState={this.state.data}
+            updatePercentComplete={(wizardState) => this.setState({
+              percentComplete: this.calculatePercentComplete(wizardState)})
+            }
+            calculatePercentComplete={this.calculatePercentComplete}
+            percentComplete={this.state.percentComplete}
+            totalSteps={steps.length}
+            title={curStep.title}
+            description={curStep.description}
+            currentStep={this.state.currentStep}
+            help={curStep.help ? curStep.help : help}
+            validate={curStep.validate}
+            prevButtonValue={curStep.prevButtonValue}
+            nextButtonValue={curStep.nextButtonValue}
+          />
 
-            <div className="Wizard--contentGroup Wizard--navButtons">
-              { this.state.currentStep !== 0 &&
-                <Button
-                  className="Wizard--prevButton" type="link"
-                  onClick={this.prevStepHandler}
-                  value={curStep.prevButtonValue || prevButtonValue || "Back"}
-                />
-              }
-
+          <div className="Wizard--contentGroup Wizard--navButtons">
+            { this.state.currentStep !== 0 &&
               <Button
-                className="Wizard--nextButton"
-                onClick={this.nextStepHandler}
-                disabled={nextDisabled} type="primary"
-                value={curStep.nextButtonValue || nextButtonValue || "Next"}
+                className="Wizard--prevButton" type="link"
+                onClick={this.prevStepHandler}
+                value={curStep.prevButtonValue || prevButtonValue || "Back"}
               />
-            </div>
+            }
+
+            <Button
+              className="Wizard--nextButton"
+              onClick={this.nextStepHandler}
+              disabled={nextDisabled} type="primary"
+              value={curStep.nextButtonValue || nextButtonValue || "Next"}
+            />
           </div>
         </div>
       </StickyContainer>
