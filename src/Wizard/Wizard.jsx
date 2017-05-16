@@ -9,7 +9,7 @@ import {Button, ProgressBar} from "../";
 import "./Wizard.less";
 
 // this is a function so that we get a new array each time
-const INITIAL_STATE = () => ({
+const getInitialState = () => ({
   currentStep: 0,
   percentComplete: 0,
   stepsVisited: [0],
@@ -18,7 +18,7 @@ const INITIAL_STATE = () => ({
 export class Wizard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, INITIAL_STATE(), {
+    this.state = Object.assign({}, getInitialState(), {
       data: props.initialWizardData || {},
     });
 
@@ -39,7 +39,7 @@ export class Wizard extends React.Component {
   }
 
   reset() {
-    this.setState(Object.assign({}, INITIAL_STATE(), {data: {}}));
+    this.setState(Object.assign({}, getInitialState(), {data: {}}));
   }
 
   jumpToStep(idx) {
