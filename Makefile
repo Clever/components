@@ -29,7 +29,7 @@ docs:
 	@echo '✓ Rebuild docs'
 	@$(WEBPACK)
 
-build: clean es5 styles docs
+build: clean es5 styles
 
 styles:
 	@echo "Building stylesheet"
@@ -47,7 +47,7 @@ border-radius-styles:
 	@echo "Generating border-radius style definitions..."
 	@node genBorderRadius.js
 
-LINT_MAX_LESS_PROBLEMS := 129
+LINT_MAX_LESS_PROBLEMS := 125
 lint:
 	@echo "Linting files..."
 	@$(LINT) $(JS_FILES) $(JSX_FILES)

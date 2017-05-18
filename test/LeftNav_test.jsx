@@ -9,7 +9,7 @@ describe("LeftNav", function LeftNavTest() {
   const {cssClass: navCss} = LeftNav;
   const {cssClass: linkCss} = NavLink;
 
-  const fakeIcon = <img src="iconSrc" />;
+  const fakeIcon = <img className="fakeIcon" src="iconSrc" />;
 
   const topNavLinkSpy = sinon.spy();
   const subNavLinkSpy = sinon.spy();
@@ -35,7 +35,7 @@ describe("LeftNav", function LeftNavTest() {
     const nav = renderLeftNav();
 
     it("renders nav", () => {
-      assert.equal(nav.type(), "nav");
+      assert(nav.find("nav").exists());
     });
 
     it("renders top nav with NavLinks and NavGroups", () => {
@@ -46,18 +46,20 @@ describe("LeftNav", function LeftNavTest() {
     });
 
     it("doesn't render the subnav drawer initially", () => {
-      assert(nav.find(`.${navCss.SUBNAV}`).isEmpty());
+      assert(nav.find(`.${navCss.SUBNAV_CONTENT}`).isEmpty());
     });
 
     it("renders topnav NavLink with label and icon", () => {
       const link = nav.find(NavLink).first().dive();
-      const label = link.find(`.${linkCss.LABEL}`);
-      const icon = link.find(`.${linkCss.ICON}`);
       assert.equal(link.type(), "button");
+
+      const label = link.find(`.${linkCss.LABEL}`);
       assert(!label.isEmpty());
       assert.equal(label.text(), "topLink1");
+
+      const icon = link.find(`.${fakeIcon.props.className}`);
       assert(!icon.isEmpty());
-      assert.equal(icon.childAt(0).get(0), fakeIcon);
+      assert.equal(icon.props().src, fakeIcon.props.src);
     });
 
     it("renders topnav NavGroup as a NavLink, without rendering its subnav children", () => {
@@ -80,7 +82,7 @@ describe("LeftNav", function LeftNavTest() {
       group.simulate("click", mockEvent);
       // Manually trigger update since enzyme doesn't detect LeftNav state change for some reason
       nav.update();
-      const subnav = nav.find(`.${navCss.SUBNAV}`);
+      const subnav = nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(!subnav.isEmpty());
       assert.equal(subnav.children().length, 2);
       assert.equal(subnav.childAt(0).prop("label"), "subLink11");
@@ -103,7 +105,7 @@ describe("LeftNav", function LeftNavTest() {
       assert(subNavLinkSpy.calledOnce);
       // And the drawer stays open
       this.nav.update();
-      const subnav = this.nav.find(`.${navCss.SUBNAV}`);
+      const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(!subnav.isEmpty());
     });
 
@@ -111,7 +113,7 @@ describe("LeftNav", function LeftNavTest() {
       const group = this.nav.find(NavGroup).first().dive();
       group.simulate("click", mockEvent);
       this.nav.update();
-      const subnav = this.nav.find(`.${navCss.SUBNAV}`);
+      const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(subnav.isEmpty());
     });
 
@@ -119,7 +121,7 @@ describe("LeftNav", function LeftNavTest() {
       const link = this.nav.find(NavLink).first().dive();
       link.simulate("click", mockEvent);
       this.nav.update();
-      const subnav = this.nav.find(`.${navCss.SUBNAV}`);
+      const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(subnav.isEmpty());
     });
 
@@ -127,7 +129,7 @@ describe("LeftNav", function LeftNavTest() {
       const otherGroup = this.nav.find(NavGroup).last().dive();
       otherGroup.simulate("click", mockEvent);
       this.nav.update();
-      const subnav = this.nav.find(`.${navCss.SUBNAV}`);
+      const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(!subnav.isEmpty());
       assert.equal(subnav.children().length, 2);
       assert.equal(subnav.childAt(0).prop("label"), "subLink21");
@@ -164,14 +166,14 @@ describe("LeftNav", function LeftNavTest() {
     });
 
     it("renders the subnav drawer corresponding to the link's parent NavGroup", () => {
-      const subnav = this.nav.find(`.${navCss.SUBNAV}`);
+      const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(!subnav.isEmpty());
       assert.equal(subnav.children().length, 1);
       assert.equal(subnav.childAt(0).prop("label"), "subLink11");
     });
 
     it("renders the NavLink with the 'selected' class", () => {
-      const subnav = this.nav.find(`.${navCss.SUBNAV}`);
+      const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       const link = subnav.find(NavLink).first().dive();
       assert(link.hasClass(linkCss.SELECTED));
     });
@@ -180,7 +182,7 @@ describe("LeftNav", function LeftNavTest() {
       const otherGroup = this.nav.find(NavGroup).last().dive();
       otherGroup.simulate("click", mockEvent);
       this.nav.update();
-      const subnav = this.nav.find(`.${navCss.SUBNAV}`);
+      const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(!subnav.isEmpty());
       assert.equal(subnav.children().length, 1);
       assert.equal(subnav.childAt(0).prop("label"), "subLink21");
@@ -188,11 +190,15 @@ describe("LeftNav", function LeftNavTest() {
   });
 
   describe("when collapsed", () => {
-    const nav = renderLeftNav({collapsed: true});
+    let nav;
 
-    it("renders the topnav with the 'collapsed' class", () => {
-      const topnav = nav.find(`.${navCss.TOPNAV}`);
-      assert(topnav.hasClass(navCss.COLLAPSED));
+    beforeEach(() => {
+      nav = renderLeftNav({collapsed: true});
+    });
+
+    it("renders all nav items with the '_collapsed' prop", () => {
+      const topNavItems = nav.find(`.${navCss.TOPNAV}`).children();
+      topNavItems.forEach(item => assert(item.props()._collapsed));
     });
   });
 });

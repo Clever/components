@@ -1,0 +1,13 @@
+@import (reference) "../less/utilities";
+
+
+.NavGroup--open,
+.NavGroup--open:active,
+.NavGroup--open:focus,
+.NavGroup--open:hover {
+  .shade(background-color, @neutral_off_white, .15);
+
+  &:not(.NavLink--selected) {
+    box-shadow: inset @borderWidthL 0 tint(@primary_blue, 3 * @shadeStepAmount);
+  }
+}

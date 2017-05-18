@@ -1,43 +1,107 @@
-import React, {PropTypes} from "react";
+import * as PropTypes from "prop-types";
+import * as React from "react";
 import classnames from "classnames";
-import * as _ from "lodash";
 
-export function NavLink(props) {
-  const {cssClass} = NavLink;
+import Tooltip from "../Tooltip";
+import Arrow from "./Arrow";
 
-  const selected = props.selected ? cssClass.SELECTED : null;
-  let Component = "button";
-  if (props.component) {
-    Component = props.component;
-  } else if (props.href) {
-    Component = "a";
+import "./NavLink.less";
+
+
+export class NavLink extends React.PureComponent {
+  render() {
+    const {cssClass} = NavLink;
+    const {
+      _collapsed,
+      _withArrow,
+      _withTooltips,
+      className,
+      component,
+      href,
+      icon,
+      label,
+      onClick,
+      selected,
+      ...additionalProps,
+    } = this.props;
+
+    let Component = "button";
+    if (component) {
+      Component = component;
+    } else if (href) {
+      Component = "a";
+    }
+
+    const element = (
+      <Component
+        {...additionalProps}
+        className={classnames(
+          cssClass.CONTAINER,
+          selected && cssClass.SELECTED,
+          _collapsed && cssClass.COLLAPSED,
+          _withArrow && cssClass.WITH_ARROW,
+          className,
+        )}
+        href={href}
+        onClick={onClick}
+      >
+        <div className={cssClass.CONTENTS}>
+          {icon && (
+            <div className={cssClass.ICON_CONTAINER}>
+              {React.cloneElement(icon, {
+                className: classnames(cssClass.ICON, icon.props.className),
+              })}
+            </div>
+          )}
+          <div className={cssClass.LABEL_CONTAINER}>
+            <div className={cssClass.LABEL} title={label}>{label}</div>
+          </div>
+          {_withArrow && (
+            <div className={cssClass.ARROW_CONTAINER}>
+              <Arrow className={cssClass.ARROW_ICON} />
+            </div>
+          )}
+        </div>
+      </Component>
+    );
+
+    if (!_withTooltips) {
+      return element;
+    }
+
+    return (
+      <Tooltip content={label} hide={!_collapsed} placement={Tooltip.Placement.RIGHT}>
+        {element}
+      </Tooltip>
+    );
   }
-
-  return (
-    <Component className={classnames(cssClass.CONTAINER, props.className, selected)} {..._.pick(props, ["href", "to", "onClick"])}>
-      <div className={cssClass.INNER_DIV}>
-        <div className={cssClass.ICON}>{props.icon}</div>
-        <div className={cssClass.LABEL}>{props.label}</div>
-      </div>
-    </Component>
-  );
 }
 
 NavLink.propTypes = {
   className: PropTypes.string,
-  icon: PropTypes.node,
-  label: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  to: PropTypes.string,
-  href: PropTypes.string,
-  selected: PropTypes.bool,
   component: PropTypes.any,
+  href: PropTypes.string,
+  icon: PropTypes.node,
+  label: PropTypes.node,
+  onClick: PropTypes.func,
+  selected: PropTypes.bool,
+
+  // Internal use only:
+  _collapsed: PropTypes.bool,
+  _withArrow: PropTypes.bool,
+  _withTooltips: PropTypes.bool,
 };
 
 NavLink.cssClass = {
+  ARROW_CONTAINER: "NavLink--arrow--container",
+  ARROW_ICON: "NavLink--arrow",
+  COLLAPSED: "NavLink--collapsed",
   CONTAINER: "NavLink",
-  INNER_DIV: "NavLink--contents",
-  LABEL: "NavLink--label",
+  CONTENTS: "NavLink--contents",
   ICON: "NavLink--icon",
+  ICON_CONTAINER: "NavLink--icon--container",
+  LABEL: "NavLink--label",
+  LABEL_CONTAINER: "NavLink--label--container",
   SELECTED: "NavLink--selected",
+  WITH_ARROW: "NavLink--withArrow",
 };

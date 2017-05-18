@@ -5,7 +5,7 @@ import BootstrapTooltip from "react-bootstrap/lib/Tooltip";
 import OverlayTrigger from "react-bootstrap/lib/OverlayTrigger";
 import React, {Component, PropTypes} from "react";
 
-require("./Tooltip.less");
+import "./Tooltip.less";
 
 
 /**
@@ -21,18 +21,24 @@ export default class Tooltip extends Component {
 
   render() {
     const {cssClass} = Tooltip;
-    const {children, content, placement, textAlign} = this.props;
+    const {children, className, content, delayMs, hide, placement, textAlign} = this.props;
 
     const tooltip = (
       <BootstrapTooltip id={this.id}>
-        <div className={classnames(cssClass.CONTENT, `${cssClass.CONTENT}--${textAlign}`, this.props.className)}>
+        <div className={classnames(cssClass.CONTENT, cssClass.align(textAlign), className)}>
           {content}
         </div>
       </BootstrapTooltip>
     );
 
     return (
-      <OverlayTrigger overlay={tooltip} placement={placement}>
+      <OverlayTrigger
+        delayShow={delayMs}
+        overlay={tooltip}
+        placement={placement}
+        rootClose
+        trigger={hide ? [] : ["focus", "hover"]}
+      >
         {children}
       </OverlayTrigger>
     );
@@ -58,6 +64,8 @@ Tooltip.Placement = {
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
+  delayMs: PropTypes.number,
+  hide: PropTypes.bool,
   placement: PropTypes.oneOf(_.values(Tooltip.Placement)),
   textAlign: PropTypes.oneOf(_.values(Tooltip.Align)),
   className: React.PropTypes.string,
@@ -70,4 +78,6 @@ Tooltip.defaultProps = {
 
 Tooltip.cssClass = {
   CONTENT: "Tooltip--content",
+
+  align: textAlign => `Tooltip--content--${textAlign}`,
 };
