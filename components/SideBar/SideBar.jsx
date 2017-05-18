@@ -1,65 +1,111 @@
 import classnames from "classnames";
 import React, {PropTypes} from "react";
+import {Link as ReactRouterLink, routerShape} from "react-router";
 
-import NavGroup from "./NavGroup";
-import NavLink from "./NavLink";
-import {FlexBox} from "../../../src";
+import {Icon, LeftNav} from "../../../src";
 
 import "./SideBar.less";
 
 
-export default function SideBar({className}) {
-  const {cssClass} = SideBar;
+export default class SideBar extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <FlexBox className={classnames(cssClass.CONTAINER, className)} column>
-      <NavLink href="/intro">Introduction</NavLink>
-      <NavLink href="/getting-started">Getting Started</NavLink>
-      <NavGroup title="Design">
-        <NavLink href="/design/colors">Colors</NavLink>
-        <NavLink href="/design/typography">Typography</NavLink>
-        <NavLink href="/design/sizing">Sizing</NavLink>
-        <NavLink href="/design/page-layout">Page Layout</NavLink>
-        <NavLink href="/design/compound-form">Compound Form</NavLink>
-        <NavLink href="/design/ui-text">UI Text</NavLink>
-      </NavGroup>
-      <NavGroup title="Components">
-        <NavLink href="/components/alert-box">AlertBox</NavLink>
-        <NavLink href="/components/button">Button</NavLink>
-        <NavLink href="/components/confirmation-button">ConfirmationButton</NavLink>
-        <NavLink href="/components/copyable-input">CopyableInput</NavLink>
-        <NavLink href="/components/count">Count</NavLink>
-        <NavLink href="/components/date-input">DateInput</NavLink>
-        <NavLink href="/components/date-picker">DatePicker</NavLink>
-        <NavLink href="/components/dollar-amount">DollarValue</NavLink>
-        <NavLink href="/components/dropdown-button">DropdownButton</NavLink>
-        <NavLink href="/components/flex-box">FlexBox</NavLink>
-        <NavLink href="/components/file-input">FileInput</NavLink>
-        <NavLink href="/components/grid">Grid</NavLink>
-        <NavLink href="/components/icon">Icon</NavLink>
-        <NavLink href="/components/info-panel">InfoPanel</NavLink>
-        <NavLink href="/components/label">Label</NavLink>
-        <NavLink href="/components/left-nav">LeftNav</NavLink>
-        <NavLink href="/components/modal">Modal</NavLink>
-        <NavLink href="/components/modal-button">ModalButton</NavLink>
-        <NavLink href="/components/number">Number</NavLink>
-        <NavLink href="/components/progress-bar">ProgressBar</NavLink>
-        <NavLink href="/components/segmented-control">SegmentedControl</NavLink>
-        <NavLink href="/components/select">Select</NavLink>
-        <NavLink href="/components/tab-bar">TabBar</NavLink>
-        <NavLink href="/components/table">Table</NavLink>
-        <NavLink href="/components/text-area">TextArea</NavLink>
-        <NavLink href="/components/text-input">TextInput</NavLink>
-        <NavLink href="/components/tooltip">Tooltip</NavLink>
-        <NavLink href="/components/wizard">Wizard</NavLink>
-      </NavGroup>
-      <NavGroup title="LESS">
-        <NavLink href="/less/less-style-guide">Style Guide</NavLink>
-        <NavLink href="/less/spacing">Spacing</NavLink>
-      </NavGroup>
-    </FlexBox>
-  );
+    this.state = {
+      collapsed: false,
+    };
+  }
+
+  toggle() {
+    this.setState({collapsed: !this.state.collapsed});
+  }
+
+  _renderLink(path, label, icon = null) {
+    const {NavLink} = LeftNav;
+    const {router} = this.context;
+
+    return (
+      <NavLink
+        component={ReactRouterLink}
+        icon={icon}
+        label={label}
+        selected={router.isActive(path)}
+        to={path}
+      />
+    );
+  }
+
+  render() {
+    const {NavGroup} = LeftNav;
+    const {cssClass} = SideBar;
+    const {className} = this.props;
+    const {collapsed} = this.state;
+
+    const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
+    const faIcon = name => <span className={classnames(cssClass.FA_ICON, `fa fa-${name}`)} />;
+
+    return (
+      <LeftNav
+        className={classnames(cssClass.CONTAINER, className)}
+        closeSubNavOnBlur
+        collapseOnSubNavOpen
+        collapsed={collapsed}
+        withActiveNavGroups
+        withTooltips
+      >
+        {this._renderLink("/intro", "Introduction", icon(Icon.names.PRESENTATION))}
+        {this._renderLink("/getting-started", "Getting Started", icon(Icon.names.BLOCKS))}
+        <NavGroup id="design" label="Design" icon={icon(Icon.names.ORIGAMI)}>
+          {this._renderLink("/design/colors", "Colors")}
+          {this._renderLink("/design/typography", "Typography")}
+          {this._renderLink("/design/sizing", "Sizing")}
+          {this._renderLink("/design/page-layout", "Page Layout")}
+          {this._renderLink("/design/compound-form", "Compound Form")}
+          {this._renderLink("/design/ui-text", "UI Text")}
+        </NavGroup>
+        <NavGroup id="components" label="Components" icon={icon(Icon.names.WEBSITE_HTML)}>
+          {this._renderLink("/components/alert-box", "AlertBox")}
+          {this._renderLink("/components/button", "Button")}
+          {this._renderLink("/components/confirmation-button", "ConfirmationButton")}
+          {this._renderLink("/components/copyable-input", "CopyableInput")}
+          {this._renderLink("/components/count", "Count")}
+          {this._renderLink("/components/date-input", "DateInput")}
+          {this._renderLink("/components/date-picker", "DatePicker")}
+          {this._renderLink("/components/dollar-amount", "DollarValue")}
+          {this._renderLink("/components/dropdown-button", "DropdownButton")}
+          {this._renderLink("/components/flex-box", "FlexBox")}
+          {this._renderLink("/components/file-input", "FileInput")}
+          {this._renderLink("/components/grid", "Grid")}
+          {this._renderLink("/components/icon", "Icon")}
+          {this._renderLink("/components/info-panel", "InfoPanel")}
+          {this._renderLink("/components/label", "Label")}
+          {this._renderLink("/components/left-nav", "LeftNav")}
+          {this._renderLink("/components/modal", "Modal")}
+          {this._renderLink("/components/modal-button", "ModalButton")}
+          {this._renderLink("/components/number", "Number")}
+          {this._renderLink("/components/progress-bar", "ProgressBar")}
+          {this._renderLink("/components/segmented-control", "SegmentedControl")}
+          {this._renderLink("/components/select", "Select")}
+          {this._renderLink("/components/tab-bar", "TabBar")}
+          {this._renderLink("/components/table", "Table")}
+          {this._renderLink("/components/text-area", "TextArea")}
+          {this._renderLink("/components/text-input", "TextInput")}
+          {this._renderLink("/components/tooltip", "Tooltip")}
+          {this._renderLink("/components/wizard", "Wizard")}
+        </NavGroup>
+        <NavGroup id="less" label="LESS" icon={faIcon("css3")}>
+          {this._renderLink("/less/less-style-guide", "Style Guide")}
+          {this._renderLink("/less/spacing", "Spacing")}
+        </NavGroup>
+      </LeftNav>
+    );
+  }
 }
+
+SideBar.contextTypes = {
+  router: routerShape,
+};
+
 
 SideBar.propTypes = {
   className: PropTypes.string,
@@ -67,4 +113,5 @@ SideBar.propTypes = {
 
 SideBar.cssClass = {
   CONTAINER: "SideBar",
+  FA_ICON: "SideBar--faIcon",
 };

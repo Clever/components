@@ -3,15 +3,17 @@ import React, {PropTypes} from "react";
 
 import {FlexBox, FlexItem, ItemAlign} from "../../../src";
 import Logo from "./Logo";
+import SideBarToggle from "./SideBarToggle";
 
 import "./TopBar.less";
 
 
-export default function TopBar({className}) {
+export default function TopBar({className, onToggleMenu}) {
   const {cssClass} = TopBar;
 
   return (
     <FlexBox alignItems={ItemAlign.CENTER} className={classnames(cssClass.CONTAINER, className)}>
+      <SideBarToggle onClick={onToggleMenu} />
       <FlexBox
         alignItems={ItemAlign.CENTER}
         className={cssClass.HOME_LINK}
@@ -33,6 +35,7 @@ export default function TopBar({className}) {
 
 TopBar.propTypes = {
   className: PropTypes.string,
+  onToggleMenu: PropTypes.func.isRequired,
 };
 
 TopBar.cssClass = {

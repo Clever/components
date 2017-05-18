@@ -1,0 +1,24 @@
+@import (reference) "../../../src/less/index";
+@import (reference) "../../../src/LeftNav/sizing";
+
+
+.SideBarToggle {
+  .button--reset;
+  .text--large;
+  .border--right--s(@primary_blue);
+  background: @primary_blue;
+  border: 0;
+  color: @neutral_white;
+  height: 100%;
+  text-align: center;
+  width: @paneWidthCollapsed;
+
+  &:focus,
+  &:hover {
+    .shade(background, @primary_blue, 2);
+  }
+
+  &:active {
+    .shade(background, @primary_blue, 4);
+  }
+}

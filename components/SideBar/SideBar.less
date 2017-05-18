@@ -2,8 +2,10 @@
 
 
 .SideBar {
-  background-color: @neutral_off_white;
-  box-shadow: inset -@size_xs 0 @size_xs -@size_xs fadeout(@neutral_black, 85%);
-  min-width: 12rem;
-  padding: @size_m 0;
+  box-shadow: 0 0 @size_2xs rgba(0, 0, 0, 0.1);
+}
+
+.SideBar--faIcon {
+  .text--large;
+  .tint(color, @primary_blue, 2);
 }
