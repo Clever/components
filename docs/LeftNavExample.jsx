@@ -29,7 +29,7 @@ export default class LeftNavExample extends React.Component {
           type="checkbox"
           onChange={e => this.setState({[id]: e.target.checked})}
         />
-        {" "}
+        &nbsp;
         {id}
       </label>
     );

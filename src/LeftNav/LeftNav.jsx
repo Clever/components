@@ -12,6 +12,9 @@ import {NavGroup} from "./NavGroup";
 import "./LeftNav.less";
 
 
+/** NOTE: Corresponds to the `@timingSlowly` LESS constant in src/less/animations.less. */
+const WIDTH_TRANSITION_DURATION_MS = 400;
+
 export class LeftNav extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -90,8 +93,8 @@ export class LeftNav extends React.PureComponent {
           </div>
           <ReactCSSTransitionGroup
             className={classnames(cssClass.SUBNAV, openChild && cssClass.SUBNAV_OPEN)}
-            transitionEnterTimeout={400}
-            transitionLeaveTimeout={400}
+            transitionEnterTimeout={WIDTH_TRANSITION_DURATION_MS}
+            transitionLeaveTimeout={WIDTH_TRANSITION_DURATION_MS}
             component="div"
             transitionName={cssClass.SUBNAV_CONTENT_ANIM}
           >
