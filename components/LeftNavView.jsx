@@ -4,12 +4,13 @@ import View from "./View";
 import PropDocumentation from "./PropDocumentation";
 import LeftNavExample from "../LeftNavExample";
 
+
 export default class LeftNavView extends PureComponent {
   render() {
     const {cssClass} = LeftNavView;
 
     return (
-      <View className={cssClass.CONTAINER} title="LeftNav">
+      <View className={cssClass.CONTAINER} title="LeftNav" sourcePath="src/LeftNav/LeftNav.jsx">
         <p>
           <code>LeftNav</code> is a navigation sidebar component designed to be anchored to
           the left side of the page. It takes as its children a list consisting of top-level
@@ -23,21 +24,46 @@ export default class LeftNavView extends PureComponent {
           availableProps={[
             {
               name: "children",
-              type: "Array<Union<LeftNav.NavLink,LeftNav.NavGroup",
-              description: "The links and link groups to render in the nav",
+              type: "Array<NavLink | NavGroup>",
+              description: "The links and link groups to render in the nav.",
               optional: true,
             },
             {
               name: "className",
               type: "String",
-              description: "Any additional classes to add to LeftNav",
+              description: "Any additional classes to add to LeftNav.",
+              optional: true,
+            },
+            {
+              name: "closeSubNavOnBlur",
+              type: "String",
+              description:
+                "If true, the sub nav will be closed when the user clicks outside the LeftNav "
+                + "or hits the escape key.",
+              defaultValue: "false",
               optional: true,
             },
             {
               name: "collapsed",
               type: "Boolean",
-              description: "Shrinks the main navigation to just icons",
-              defaultValue: false,
+              description: "Shrinks the main navigation to just icons.",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "withActiveNavGroups",
+              type: "Boolean",
+              description:
+                "Enables active styling for nav groups with an active child, even when the sub nav "
+                + "is closed.",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "withTooltips",
+              type: "Boolean",
+              description: "Enables icon tooltips when the LeftNav is collapsed.",
+              defaultValue: "false",
               optional: true,
             },
           ]}
@@ -47,6 +73,11 @@ export default class LeftNavView extends PureComponent {
 
         <PropDocumentation
           availableProps={[
+            {
+              name: "children",
+              type: "NavLink | Array<NavLink>",
+              description: "The links to render in the nav group",
+            },
             {
               name: "className",
               type: "String",
@@ -103,7 +134,7 @@ export default class LeftNavView extends PureComponent {
               name: "selected",
               type: "Boolean",
               description: "Whether or not to render the link as selected",
-              defaultValue: false,
+              defaultValue: "false",
               optional: true,
             },
           ]}

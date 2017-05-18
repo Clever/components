@@ -1,14 +1,36 @@
-@import (reference) "../src/less/index.less";
+@import (reference) "../src/less/index";
+@import (reference) "../src/LeftNav/sizing";
+
 
 .LeftNavExample {
   .border--s(@neutral_gray);
-  height: 40rem;
+  height: 30rem;
 }
 
 .LeftNavExample--rightPane {
   .padding--x--l;
 }
 
-.LeftNavExample--collapse {
-  .margin--bottom--l;
+.Button.LeftNavExample--collapse {
+  .padding--x--none;
+  .text--large;
+  border-right: 0;
+  box-sizing: content-box;
+  width: @paneWidthCollapsed;
+}
+
+.LeftNavExample--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.LeftNavExample--config {
+  .margin--right--xl;
+  cursor: pointer;
+  display: inline-block;
+
+  &:not(:last-child) {
+    .margin--bottom--s;
+  }
 }
