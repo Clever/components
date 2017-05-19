@@ -48,6 +48,10 @@ export class Table extends Component {
       pageLoading: false,
       allLoaded: false,
     };
+
+    // the epoch is incremented on calls to this.lazyReset, so we know to throw
+    // out in-progress fetches if the table gets reset (see this._fetchLazy).
+    this._epoch = 0;
   }
 
   componentWillMount() {
@@ -91,6 +95,8 @@ export class Table extends Component {
       return;
     }
 
+    const startEpoch = this._epoch;
+
     this.setState({pageLoading: true});
 
     const newPages = lazyPages.slice(0);
@@ -105,6 +111,12 @@ export class Table extends Component {
 
       const pageData = await getData(query);
       newPages.push(pageData);
+    }
+
+    if (this._epoch !== startEpoch) {
+      // the table was reset while we were fetching, so we don't want to
+      // actually insert our data
+      return;
     }
 
     if (newPages[newPages.length - 1].length < pageSize) {
@@ -125,6 +137,7 @@ export class Table extends Component {
    */
   lazyReset() {
     if (this.props.lazy) {
+      this._epoch++;
       this.setCurrentPage(1);
       this.setState({lazyPages: [], allLoaded: false}, () => {
         this._fetchLazy(0);
