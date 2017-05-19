@@ -25,7 +25,7 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
     onPageChange(page);
   };
 
-  if (numPages < 2 && !lengthUnknown) {
+  if (numPages < 2 && !lengthUnknown && !isLoading) {
     return null;
   }
 
