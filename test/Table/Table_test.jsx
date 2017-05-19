@@ -306,5 +306,65 @@ describe("Table", () => {
 
       assertShows(DATA[1]);
     });
+
+    // This test is a little confusing. At a high level, we're trying to test
+    // this flow:
+    // 1. The table loads an initial page of data.
+    // 2. The underlying data changes (e.g. a search filter is applied) and
+    //    table.lazyReset is called, kicking off a fetch for the new first page.
+    // 3. The underlying data changes _again_ and table.lazyReset is called,
+    //    kicking off another fetch for the new first page.
+    // 4. The fetch for (3) finishes.
+    // 5. The fetch for (2) finishes.
+    //
+    // Naïvely, this would result in the data from (2) being displayed. This
+    // test asserts that we've added in logic to be resilient to reordering of
+    // HTTP responses.
+    it("enforces expected ordering of .lazyReset calls", async () => {
+      const getData = sinon.stub();
+
+      // return the first entry in DATA for the initial table fetch
+      getData.onFirstCall().returns(Promise.resolve([DATA[0]]));
+
+      // hold on to resolvers for the second and third table fetches - we'll call
+      // them later
+      let firstResolver;
+      let secondResolver;
+      getData.onSecondCall().returns(new Promise(resolve => { firstResolver = resolve; }));
+      getData.onThirdCall().returns(new Promise(resolve => { secondResolver = resolve; }));
+
+      const table = newLazyTable({getData});
+
+      const assertShows = item => {
+        const rows = table.find(`.${cssClass.ROW}`);
+        assert.equal(rows.length, 1);
+        const cells = rows.find(Cell);
+        assert.equal(cells.length, 2, "Incorrect number of columns rendered");
+        assert.equal(cells.at(0).childAt(0).text(), item.name, "Unexpected content");
+        assert.equal(cells.at(1).childAt(0).text(), item.description, "Unexpected content");
+      };
+
+      // wait for the first page to be resolved, and make sure we're seeing the
+      // right element
+      await new Promise(resolve => setImmediate(resolve));
+      assertShows(DATA[0]);
+
+      // call lazyReset and then wait for the async fetch call to be made
+      table.instance().lazyReset();
+      await new Promise(resolve => setImmediate(resolve));
+
+      // call lazyReset again and then wait for the async fetch call to be made
+      table.instance().lazyReset();
+      await new Promise(resolve => setImmediate(resolve));
+
+      // resolve the second fetch before the first one, and then wait for those
+      // async calls to complete
+      secondResolver([DATA[2]]);
+      await new Promise(resolve => setImmediate(resolve));
+      firstResolver([DATA[1]]);
+      await new Promise(resolve => setImmediate(resolve));
+
+      assertShows(DATA[2]);
+    });
   });
 });
