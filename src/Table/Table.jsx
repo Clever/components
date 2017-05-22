@@ -190,18 +190,22 @@ export class Table extends Component {
     }
     if (sortState) {
       const sortedColumn = this._getColumn(sortState.columnID);
-      displayedData = displayedData.sortBy(row => {
-        let value = sortedColumn.props.sortValueFn(row);
+      // sortedColumn might not exist if a column is removed from the table
+      // dynamically. in this case, just ignore the sort state.
+      if (sortedColumn) {
+        displayedData = displayedData.sortBy(row => {
+          let value = sortedColumn.props.sortValueFn(row);
 
-        if (typeof value === "string") {
-          value = value.trim().toLowerCase();
+          if (typeof value === "string") {
+            value = value.trim().toLowerCase();
+          }
+
+          return value;
+        });
+
+        if (sortState.direction === sortDirection.DESCENDING) {
+          displayedData = displayedData.reverse();
         }
-
-        return value;
-      });
-
-      if (sortState.direction === sortDirection.DESCENDING) {
-        displayedData = displayedData.reverse();
       }
     }
 
