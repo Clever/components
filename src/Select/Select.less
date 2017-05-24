@@ -53,6 +53,11 @@
       .padding--y--xs;
       .padding--left--2xs;
       .margin--top--s;
+
+      .Select-placeholder {
+        .padding--top--m;
+      }
+
       .Select-value {
         .margin--top--2xs;
         .margin--left--2xs;
@@ -60,14 +65,22 @@
         border-color: @neutral_silver;
         color: @neutral_black;
         line-height: @size_m;
+
         .Select-value-icon {
           background-color: @neutral_silver;
           float: right;
           border-color: @neutral_silver;
         }
+
         .Select-value-label {
           background-color: @neutral_off_white;
         }
+      }
+
+      .Select-input {
+        position: relative;
+        top: -@size_2xs;
+        left: -@size_4xs;
       }
     }
   }
@@ -86,30 +99,35 @@
       text-transform: uppercase;
     }
 
-    .Select-input {
-      position: absolute;
-    }
-
     .Select-input,
     .Select-value {
-      .padding--left--s;
       .text--medium;
       line-height: @size_2xl;
       top: @size_s;
+    }
+
+    .Select-value {
+      .padding--left--s;
+    }
+
+    .Select-input {
+      position: absolute;
     }
   }
 
   // overrides styles from the exact same selector in react-select's CSS
   .has-value.Select--single > .Select-control .Select-value .Select-value-label,
-  .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label{
+  .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
     color: @neutral_black
   }
 
   .Select-menu-outer {
     border-radius: @size_none;
     border-color: @neutral_silver;
+
     .Select-option {
       color: @neutral_black;
+
       &.is-focused {
         box-shadow: inset @size_2xs 0 @primary_blue;
         background-color: @neutral_off_white;
