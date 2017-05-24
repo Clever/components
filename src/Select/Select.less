@@ -53,6 +53,11 @@
       .padding--y--xs;
       .padding--left--2xs;
       .margin--top--s;
+
+      .Select-placeholder {
+        .padding--top--m;
+      }
+
       .Select-value {
         .margin--top--2xs;
         .margin--left--2xs;
@@ -60,14 +65,22 @@
         border-color: @neutral_silver;
         color: @neutral_black;
         line-height: @size_m;
+
         .Select-value-icon {
           background-color: @neutral_silver;
           float: right;
           border-color: @neutral_silver;
         }
+
         .Select-value-label {
           background-color: @neutral_off_white;
         }
+      }
+
+      .Select-input {
+        position: relative;
+        top: -@size_2xs;
+        left: -@size_4xs;
       }
     }
   }
@@ -86,16 +99,19 @@
       text-transform: uppercase;
     }
 
-    .Select-input {
-      position: absolute;
-    }
-
     .Select-input,
     .Select-value {
-      .padding--left--s;
       .text--medium;
       line-height: @size_2xl;
       top: @size_s;
+    }
+
+    .Select-value {
+      .padding--left--s;
+    }
+
+    .Select-input {
+      position: absolute;
     }
   }
 
