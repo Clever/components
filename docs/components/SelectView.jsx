@@ -216,8 +216,21 @@ export default class SelectView extends Component {
             },
             {
               name: "options",
-              type: "Array",
-              description: "Possible options, must contain objects with label and value attributes.",
+              type: "{label: string; value: string}[]",
+              description: "Possible options, must contain objects with label and value attributes. Must not be set if `lazy`.",
+              optional: true,
+            },
+            {
+              name: "lazy",
+              type: "boolean",
+              description: "Set to true to fetch options asynchronously using the `loadOptions` function.",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "loadOptions",
+              type: "(input: string) => Promise<{options: {label: string; value: string}[]}>",
+              description: "Function to load options for a given search input. Required if `lazy`.",
               optional: true,
             },
             {
