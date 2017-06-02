@@ -19,11 +19,9 @@ function isLabelHidden(placeholder, value) {
 }
 
 /*
-  Component to allow selecting options from a list. Right now this only supports a basic dropdown
-  with a fixed list of options. This component will be updated to allow searching for options that
-  may be fetched asynchronously.
-*/
-
+ * Component to allow selecting options from a list. It can fetch those options
+ * synchronously or asynchronously by specifying the `lazy` parameter.
+ */
 export function Select({
   id,
   name,
@@ -34,6 +32,8 @@ export function Select({
   onChange,
   optionRenderer,
   options,
+  lazy,
+  loadOptions,
   placeholder = "",
   readOnly,
   searchable,
@@ -43,6 +43,22 @@ export function Select({
   className,
 }) {
   const {cssClass} = Select;
+
+  if (!lazy) {
+    if (!options) {
+      console.error("Select: prop \"options\" must be set if not \"lazy\"");
+    }
+    if (loadOptions) {
+      console.error("Select: prop \"loadOptions\" may not be set if not \"lazy\"");
+    }
+  } else {
+    if (options) {
+      console.error("Select: prop \"options\" may not be set if not \"lazy\"");
+    }
+    if (!loadOptions) {
+      console.error("Select: prop \"loadOptions\" must be set if not \"lazy\"");
+    }
+  }
 
   let labelContainerClasses = cssClass.LABEL_CONTAINER;
   if (isLabelHidden(placeholder, value)) {
@@ -54,7 +70,11 @@ export function Select({
     reactSelectClasses += ` ${cssClass.READ_ONLY}`;
   }
 
-  const SelectComponent = creatable ? ReactSelect.Creatable : ReactSelect;
+  const SelectComponent =
+    creatable && lazy ? ReactSelect.AsyncCreatable :
+    creatable ? ReactSelect.Creatable :
+    lazy ? ReactSelect.Async :
+    ReactSelect;
 
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
@@ -71,6 +91,7 @@ export function Select({
           onChange={onChange}
           optionRenderer={optionRenderer}
           options={options}
+          loadOptions={loadOptions}
           placeholder={placeholder}
           searchable={searchable}
           value={value}
