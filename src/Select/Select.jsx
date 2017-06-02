@@ -70,11 +70,14 @@ export function Select({
     reactSelectClasses += ` ${cssClass.READ_ONLY}`;
   }
 
-  const SelectComponent =
-    creatable && lazy ? ReactSelect.AsyncCreatable :
-    creatable ? ReactSelect.Creatable :
-    lazy ? ReactSelect.Async :
-    ReactSelect;
+  let SelectComponent = ReactSelect;
+  if (creatable && lazy) {
+    SelectComponent = ReactSelect.AsyncCreatable;
+  } else if (creatable) {
+    SelectComponent = ReactSelect.Creatable;
+  } else if (lazy) {
+    SelectComponent = ReactSelect.Async;
+  }
 
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
@@ -128,6 +131,8 @@ Select.propTypes = {
   onChange: React.PropTypes.func,
   optionRenderer: React.PropTypes.func,
   options: React.PropTypes.arrayOf(selectValuePropType),
+  lazy: React.PropTypes.bool,
+  loadOptions: React.PropTypes.func,
   placeholder: React.PropTypes.string,
   readOnly: React.PropTypes.bool,
   searchable: React.PropTypes.bool,
