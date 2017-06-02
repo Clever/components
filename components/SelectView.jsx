@@ -20,6 +20,7 @@ export default class SelectView extends Component {
       readOnly: false,
       searchable: false,
       creatable: false,
+      lazy: false,
       selectValue: null,
     };
   }
@@ -48,12 +49,19 @@ export default class SelectView extends Component {
                 clearable={this.state.clearable}
                 searchable={this.state.searchable}
                 creatable={this.state.creatable}
+                lazy={this.state.lazy}
                 creatablePromptFn={label => `Add new option: ${label}`}
                 multi={this.state.multi}
                 readOnly={this.state.readOnly}
                 name="select"
                 onChange={value => this.setState({selectValue: value})}
-                options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
+                options={!this.state.lazy && _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
+                loadOptions={this.state.lazy && (async (input) => {
+                  await new Promise(resolve => setTimeout(resolve, 1000));
+                  const allOptions = _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}));
+                  const options = allOptions.filter(x => x.label.toLowerCase().startsWith(input.toLowerCase()));
+                  return {options};
+                })}
                 placeholder="Select Placeholder"
                 value={this.state.selectValue}
               />
@@ -94,6 +102,15 @@ export default class SelectView extends Component {
             />
             {" "}
             Creatable
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.lazy}
+              onChange={({target}) => this.setState({lazy: target.checked})}
+            />
+            {" "}
+            Lazy
           </label>
           <label className={cssClass.CONFIG}>
             <input
