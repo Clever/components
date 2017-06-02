@@ -4,15 +4,21 @@ import lodash from "lodash";
 
 import "./Icon.less";
 
-import imgUrls from "./load-icons";
+import icons from "./icons";
 
 export function Icon(props) {
   const {cssClass} = Icon;
 
-  const filename = `${props.name}.svg`;
+  const IconImage = icons[props.name];
   return (
-    <span className={classnames(cssClass.CONTAINER, cssClass.size(props.size), props.className)}>
-      <img src={imgUrls[filename]} />
+    <span
+      className={classnames(
+        cssClass.CONTAINER,
+        cssClass.size(props.size),
+        props.className
+      )}
+    >
+      <IconImage />
     </span>
   );
 }
