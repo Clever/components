@@ -229,8 +229,14 @@ export default class SelectView extends Component {
             },
             {
               name: "loadOptions",
-              type: "(input: string) => Promise<{options: {label: string; value: string}[]}>",
-              description: "Function to load options for a given search input. Required if `lazy`.",
+              type: "(input: string) => Promise<{options: {label: string; value: string}[], complete: boolean}>",
+              description: "Function to load options for a given search input. " +
+                "Required if `lazy`. When the component is mounted, this function " +
+                "will be called with the empty string as input to seed the default " +
+                "set of options. Results are cached. If you set `complete` to `true` " +
+                "in the return value to indicate that the set of options is the complete " +
+                "set for that query, then more specific queries will not incur new " +
+                "(unnecessary) calls to `loadOptions`.
               optional: true,
             },
             {

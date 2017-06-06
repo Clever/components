@@ -46,17 +46,17 @@ export function Select({
 
   if (!lazy) {
     if (!options) {
-      console.error("Select: prop \"options\" must be set if not \"lazy\"");
+      console.warn("Select: prop \"options\" must be set if not \"lazy\"");
     }
     if (loadOptions) {
-      console.error("Select: prop \"loadOptions\" may not be set if not \"lazy\"");
+      console.warn("Select: prop \"loadOptions\" may not be set if not \"lazy\"");
     }
   } else {
     if (options) {
-      console.error("Select: prop \"options\" may not be set if not \"lazy\"");
+      console.warn("Select: prop \"options\" may not be set if not \"lazy\"");
     }
     if (!loadOptions) {
-      console.error("Select: prop \"loadOptions\" must be set if not \"lazy\"");
+      console.warn("Select: prop \"loadOptions\" must be set if not \"lazy\"");
     }
   }
 
