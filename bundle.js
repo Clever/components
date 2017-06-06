@@ -47371,7 +47371,8 @@
 
 	ModalButton.propTypes = _extends({}, _.Button.propTypes, modalPropTypes, {
 	  children: _.Modal.propTypes.children,
-	  onClose: _react2.default.PropTypes.func });
+	  onClose: _react2.default.PropTypes.func // not required; just closes modal otherwise
+	});
 
 	// closeModal has no default, so no need to filter out of defaultProps
 	ModalButton.defaultProps = _extends({}, _.Button.defaultProps, (0, _utils.prefixKeys)(_.Modal.defaultProps, "modal"));
@@ -48434,11 +48435,9 @@
 	}
 
 	/*
-	  Component to allow selecting options from a list. Right now this only supports a basic dropdown
-	  with a fixed list of options. This component will be updated to allow searching for options that
-	  may be fetched asynchronously.
-	*/
-
+	 * Component to allow selecting options from a list. It can fetch those options
+	 * synchronously or asynchronously by specifying the `lazy` parameter.
+	 */
 	function Select(_ref) {
 	  var id = _ref.id;
 	  var name = _ref.name;
@@ -48449,6 +48448,8 @@
 	  var onChange = _ref.onChange;
 	  var optionRenderer = _ref.optionRenderer;
 	  var options = _ref.options;
+	  var lazy = _ref.lazy;
+	  var loadOptions = _ref.loadOptions;
 	  var _ref$placeholder = _ref.placeholder;
 	  var placeholder = _ref$placeholder === undefined ? "" : _ref$placeholder;
 	  var readOnly = _ref.readOnly;
@@ -48460,6 +48461,22 @@
 	  var cssClass = Select.cssClass;
 
 
+	  if (!lazy) {
+	    if (!options) {
+	      console.warn("Select: prop \"options\" must be set if not \"lazy\"");
+	    }
+	    if (loadOptions) {
+	      console.warn("Select: prop \"loadOptions\" may not be set if not \"lazy\"");
+	    }
+	  } else {
+	    if (options) {
+	      console.warn("Select: prop \"options\" may not be set if not \"lazy\"");
+	    }
+	    if (!loadOptions) {
+	      console.warn("Select: prop \"loadOptions\" must be set if not \"lazy\"");
+	    }
+	  }
+
 	  var labelContainerClasses = cssClass.LABEL_CONTAINER;
 	  if (isLabelHidden(placeholder, value)) {
 	    labelContainerClasses += " " + cssClass.LABEL_HIDDEN;
@@ -48470,7 +48487,14 @@
 	    reactSelectClasses += " " + cssClass.READ_ONLY;
 	  }
 
-	  var SelectComponent = creatable ? _reactSelect2.default.Creatable : _reactSelect2.default;
+	  var SelectComponent = _reactSelect2.default;
+	  if (creatable && lazy) {
+	    SelectComponent = _reactSelect2.default.AsyncCreatable;
+	  } else if (creatable) {
+	    SelectComponent = _reactSelect2.default.Creatable;
+	  } else if (lazy) {
+	    SelectComponent = _reactSelect2.default.Async;
+	  }
 
 	  // The label container must be returned after the ReactSelect otherwise it does not get displayed
 	  // in the browser.
@@ -48490,6 +48514,7 @@
 	        onChange: onChange,
 	        optionRenderer: optionRenderer,
 	        options: options,
+	        loadOptions: loadOptions,
 	        placeholder: placeholder,
 	        searchable: searchable,
 	        value: value
@@ -48531,6 +48556,8 @@
 	  onChange: _react2.default.PropTypes.func,
 	  optionRenderer: _react2.default.PropTypes.func,
 	  options: _react2.default.PropTypes.arrayOf(selectValuePropType),
+	  lazy: _react2.default.PropTypes.bool,
+	  loadOptions: _react2.default.PropTypes.func,
 	  placeholder: _react2.default.PropTypes.string,
 	  readOnly: _react2.default.PropTypes.bool,
 	  searchable: _react2.default.PropTypes.bool,
@@ -101277,6 +101304,10 @@
 	  value: true
 	});
 
+	var _regenerator = __webpack_require__(342);
+
+	var _regenerator2 = _interopRequireDefault(_regenerator);
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _lodash = __webpack_require__(277);
@@ -101305,6 +101336,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -101328,6 +101361,7 @@
 	      readOnly: false,
 	      searchable: false,
 	      creatable: false,
+	      lazy: false,
 	      selectValue: null
 	    };
 	    return _this;
@@ -101363,7 +101397,7 @@
 	        _react2.default.createElement(
 	          _Example2.default,
 	          {
-	            code: "              <Select\n                id=\"select\"\n                label=\"Select Label\"\n                disabled={this.state.disabled}\n                clearable={this.state.clearable}\n                searchable={this.state.searchable}\n                creatable={this.state.creatable}\n                creatablePromptFn={label => `Add new option: ${label}`}\n                multi={this.state.multi}\n                readOnly={this.state.readOnly}\n                name=\"select\"\n                onChange={value => this.setState({selectValue: value})}\n                options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}\n                placeholder=\"Select Placeholder\"\n                value={this.state.selectValue}\n              />\n            "
+	            code: "              <Select\n                id=\"select\"\n                label=\"Select Label\"\n                disabled={this.state.disabled}\n                clearable={this.state.clearable}\n                searchable={this.state.searchable}\n                creatable={this.state.creatable}\n                lazy={this.state.lazy}\n                creatablePromptFn={label => `Add new option: ${label}`}\n                multi={this.state.multi}\n                readOnly={this.state.readOnly}\n                name=\"select\"\n                onChange={value => this.setState({selectValue: value})}\n                options={!this.state.lazy && _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}\n                loadOptions={this.state.lazy && (async (input) => {\n                  await new Promise(resolve => setTimeout(resolve, 1000));\n                  const allOptions = _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}));\n                  const options = allOptions.filter(x => x.label.toLowerCase().startsWith(input.toLowerCase()));\n                  return {options};\n                })}\n                placeholder=\"Select Placeholder\"\n                value={this.state.selectValue}\n              />\n            "
 	          },
 	          _react2.default.createElement(
 	            "div",
@@ -101378,6 +101412,7 @@
 	                clearable: this.state.clearable,
 	                searchable: this.state.searchable,
 	                creatable: this.state.creatable,
+	                lazy: this.state.lazy,
 	                creatablePromptFn: function creatablePromptFn(label) {
 	                  return "Add new option: " + label;
 	                },
@@ -101387,9 +101422,42 @@
 	                onChange: function onChange(value) {
 	                  return _this2.setState({ selectValue: value });
 	                },
-	                options: _lodash2.default.range(100).map(function (i) {
+	                options: !this.state.lazy && _lodash2.default.range(100).map(function (i) {
 	                  return { label: "Option " + (i + 1), value: "" + (i + 1) };
 	                }),
+	                loadOptions: this.state.lazy && function () {
+	                  var _ref = _asyncToGenerator(_regenerator2.default.mark(function _callee(input) {
+	                    var allOptions, options;
+	                    return _regenerator2.default.wrap(function _callee$(_context) {
+	                      while (1) {
+	                        switch (_context.prev = _context.next) {
+	                          case 0:
+	                            _context.next = 2;
+	                            return new Promise(function (resolve) {
+	                              return setTimeout(resolve, 1000);
+	                            });
+
+	                          case 2:
+	                            allOptions = _lodash2.default.range(100).map(function (i) {
+	                              return { label: "Option " + (i + 1), value: "" + (i + 1) };
+	                            });
+	                            options = allOptions.filter(function (x) {
+	                              return x.label.toLowerCase().startsWith(input.toLowerCase());
+	                            });
+	                            return _context.abrupt("return", { options: options });
+
+	                          case 5:
+	                          case "end":
+	                            return _context.stop();
+	                        }
+	                      }
+	                    }, _callee, _this2);
+	                  }));
+
+	                  return function (_x) {
+	                    return _ref.apply(this, arguments);
+	                  };
+	                }(),
 	                placeholder: "Select Placeholder",
 	                value: this.state.selectValue
 	              })
@@ -101401,8 +101469,8 @@
 	            _react2.default.createElement("input", {
 	              type: "checkbox",
 	              checked: this.state.disabled,
-	              onChange: function onChange(_ref) {
-	                var target = _ref.target;
+	              onChange: function onChange(_ref2) {
+	                var target = _ref2.target;
 	                return _this2.setState({ disabled: target.checked });
 	              }
 	            }),
@@ -101415,8 +101483,8 @@
 	            _react2.default.createElement("input", {
 	              type: "checkbox",
 	              checked: this.state.clearable,
-	              onChange: function onChange(_ref2) {
-	                var target = _ref2.target;
+	              onChange: function onChange(_ref3) {
+	                var target = _ref3.target;
 	                return _this2.setState({ clearable: target.checked });
 	              }
 	            }),
@@ -101429,8 +101497,8 @@
 	            _react2.default.createElement("input", {
 	              type: "checkbox",
 	              checked: this.state.searchable,
-	              onChange: function onChange(_ref3) {
-	                var target = _ref3.target;
+	              onChange: function onChange(_ref4) {
+	                var target = _ref4.target;
 	                return _this2.setState({ searchable: target.checked });
 	              }
 	            }),
@@ -101443,8 +101511,8 @@
 	            _react2.default.createElement("input", {
 	              type: "checkbox",
 	              checked: this.state.creatable,
-	              onChange: function onChange(_ref4) {
-	                var target = _ref4.target;
+	              onChange: function onChange(_ref5) {
+	                var target = _ref5.target;
 	                return _this2.setState({ creatable: target.checked });
 	              }
 	            }),
@@ -101456,9 +101524,23 @@
 	            { className: cssClass.CONFIG },
 	            _react2.default.createElement("input", {
 	              type: "checkbox",
+	              checked: this.state.lazy,
+	              onChange: function onChange(_ref6) {
+	                var target = _ref6.target;
+	                return _this2.setState({ lazy: target.checked });
+	              }
+	            }),
+	            " ",
+	            "Lazy"
+	          ),
+	          _react2.default.createElement(
+	            "label",
+	            { className: cssClass.CONFIG },
+	            _react2.default.createElement("input", {
+	              type: "checkbox",
 	              checked: this.state.multi,
-	              onChange: function onChange(_ref5) {
-	                var target = _ref5.target;
+	              onChange: function onChange(_ref7) {
+	                var target = _ref7.target;
 
 	                var multi = target.checked;
 	                var selectValue = _this2.state.selectValue;
@@ -101479,8 +101561,8 @@
 	            _react2.default.createElement("input", {
 	              type: "checkbox",
 	              checked: this.state.readOnly,
-	              onChange: function onChange(_ref6) {
-	                var target = _ref6.target;
+	              onChange: function onChange(_ref8) {
+	                var target = _ref8.target;
 	                return _this2.setState({ readOnly: target.checked });
 	              }
 	            }),
@@ -101549,8 +101631,19 @@
 	            optional: true
 	          }, {
 	            name: "options",
-	            type: "Array",
-	            description: "Possible options, must contain objects with label and value attributes.",
+	            type: "{label: string; value: string}[]",
+	            description: "Possible options, must contain objects with label and value attributes. Must not be set if `lazy`.",
+	            optional: true
+	          }, {
+	            name: "lazy",
+	            type: "boolean",
+	            description: "Set to true to fetch options asynchronously using the `loadOptions` function.",
+	            defaultValue: "false",
+	            optional: true
+	          }, {
+	            name: "loadOptions",
+	            type: "(input: string) => Promise<{options: {label: string; value: string}[], complete: boolean}>",
+	            description: "Function to load options for a given search input. " + "Required if `lazy`. When the component is mounted, this function " + "will be called with the empty string as input to seed the default " + "set of options. Results are cached. If you set `complete` to `true` " + "in the return value to indicate that the set of options is the complete " + "set for that query, then more specific queries will not incur new " + "(unnecessary) calls to `loadOptions`.",
 	            optional: true
 	          }, {
 	            name: "placeholder",
