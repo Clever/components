@@ -236,7 +236,7 @@ export default class SelectView extends Component {
                 "set of options. Results are cached. If you set `complete` to `true` " +
                 "in the return value to indicate that the set of options is the complete " +
                 "set for that query, then more specific queries will not incur new " +
-                "(unnecessary) calls to `loadOptions`.
+                "(unnecessary) calls to `loadOptions`.",
               optional: true,
             },
             {
