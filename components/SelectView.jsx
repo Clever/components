@@ -20,6 +20,7 @@ export default class SelectView extends Component {
       readOnly: false,
       searchable: false,
       creatable: false,
+      lazy: false,
       selectValue: null,
     };
   }
@@ -48,12 +49,19 @@ export default class SelectView extends Component {
                 clearable={this.state.clearable}
                 searchable={this.state.searchable}
                 creatable={this.state.creatable}
+                lazy={this.state.lazy}
                 creatablePromptFn={label => `Add new option: ${label}`}
                 multi={this.state.multi}
                 readOnly={this.state.readOnly}
                 name="select"
                 onChange={value => this.setState({selectValue: value})}
-                options={_.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
+                options={!this.state.lazy && _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
+                loadOptions={this.state.lazy && (async (input) => {
+                  await new Promise(resolve => setTimeout(resolve, 1000));
+                  const allOptions = _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}));
+                  const options = allOptions.filter(x => x.label.toLowerCase().startsWith(input.toLowerCase()));
+                  return {options};
+                })}
                 placeholder="Select Placeholder"
                 value={this.state.selectValue}
               />
@@ -94,6 +102,15 @@ export default class SelectView extends Component {
             />
             {" "}
             Creatable
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.lazy}
+              onChange={({target}) => this.setState({lazy: target.checked})}
+            />
+            {" "}
+            Lazy
           </label>
           <label className={cssClass.CONFIG}>
             <input
@@ -199,8 +216,27 @@ export default class SelectView extends Component {
             },
             {
               name: "options",
-              type: "Array",
-              description: "Possible options, must contain objects with label and value attributes.",
+              type: "{label: string; value: string}[]",
+              description: "Possible options, must contain objects with label and value attributes. Must not be set if `lazy`.",
+              optional: true,
+            },
+            {
+              name: "lazy",
+              type: "boolean",
+              description: "Set to true to fetch options asynchronously using the `loadOptions` function.",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "loadOptions",
+              type: "(input: string) => Promise<{options: {label: string; value: string}[], complete: boolean}>",
+              description: "Function to load options for a given search input. " +
+                "Required if `lazy`. When the component is mounted, this function " +
+                "will be called with the empty string as input to seed the default " +
+                "set of options. Results are cached. If you set `complete` to `true` " +
+                "in the return value to indicate that the set of options is the complete " +
+                "set for that query, then more specific queries will not incur new " +
+                "(unnecessary) calls to `loadOptions`.",
               optional: true,
             },
             {
