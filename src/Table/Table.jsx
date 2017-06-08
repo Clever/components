@@ -295,7 +295,7 @@ export class Table extends Component {
                 rowClassNameFn && rowClassNameFn(rowData)
               )}
               key={rowIDFn(rowData)}
-              onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData))}
+              onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
             >
               {columns.map(({props: col}) => (
                 <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
