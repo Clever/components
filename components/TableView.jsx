@@ -89,7 +89,7 @@ export default class TableView extends PureComponent {
                 onPageChange={page => console.log("Table page changed:", page)}
                 onSortChange={sortState => console.log("Table sort changed:", sortState)}
                 onRowClick={enableRowClick
-                  ? (e, row) => console.log("Table row clicked:", row)
+                  ? (e, rowID, rowData) => console.log("Table row clicked:", {rowID, rowData})
                   : undefined
                 }
                 onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
@@ -209,6 +209,12 @@ export default class TableView extends PureComponent {
               name: "onPageChange",
               type: "Function",
               description: "Callback function for the 1-based index displayed page change event",
+              optional: true,
+            },
+            {
+              name: "onRowClick",
+              type: "Function",
+              description: "Callback function for when a table row is clicked",
               optional: true,
             },
             {
