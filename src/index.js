@@ -31,6 +31,9 @@ export {Count};
 import DateInput from "./DateInput/DateInput";
 export {DateInput};
 
+import RichText from "./RichText/RichText";
+export {RichText};
+
 import DatePicker from "./DatePicker";
 export {DatePicker};
 
