@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "0.25.11",
+  "version": "0.25.12",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "react-bootstrap": "^0.30.0",
     "react-copy-to-clipboard": "^4.2.1",
     "react-dropzone": "^3.11.0",
+    "react-linkify": "^0.2.1",
     "react-onclickoutside": "^5.11.1",
     "react-overlays": "^0.7.0",
     "react-select": "^1.0.0-beta14",

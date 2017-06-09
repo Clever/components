@@ -30,6 +30,7 @@ import NumberView from "./components/NumberView";
 import PageLayoutView from "./components/PageLayoutView";
 import ProgressBarView from "./components/ProgressBarView";
 import SegmentedControlView from "./components/SegmentedControlView";
+import RichTextView from "./components/RichTextView";
 import SelectView from "./components/SelectView";
 import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
@@ -78,6 +79,7 @@ render((
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
+        <Route path="rich-text(/*)" component={RichTextView} />
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
