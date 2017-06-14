@@ -240,6 +240,7 @@ export default class WizardExample extends React.Component {
       </fieldset>
 
       <Wizard
+        className="ExampleWizard"
         title="Delivery setup"
         description="Ensure that your delivery will come on time"
         stickySidebar={this.state.sticky}
