@@ -20,7 +20,7 @@ export default function School(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="school">
           <g
@@ -28,7 +28,7 @@ export default function School(props) {
             transform="translate(3.000000, 1.000000)"
             strokeLinecap="round"
             strokeWidth={2}
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           >
             <g id="Group">
               <polyline

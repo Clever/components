@@ -20,7 +20,7 @@ export default function Graph(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="line-chart" strokeWidth={2} stroke="#4FA97B">
           <g id="Group-2" transform="translate(1.000000, 3.000000)">
@@ -46,7 +46,7 @@ export default function Graph(props) {
               <g id="Group">
                 <polyline
                   id="Shape"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                   points="0 20 4 23 8 16 14 27 18 19 22 22 26.2 17.2"
                 />
                 <path d="M30,20 L30,40" id="Shape" />

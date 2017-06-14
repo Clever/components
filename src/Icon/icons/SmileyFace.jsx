@@ -20,7 +20,7 @@ export default function SmileyFace(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="smile-face" strokeWidth={2} stroke="#A6A05A">
           <g

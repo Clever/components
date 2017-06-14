@@ -20,7 +20,7 @@ export default function Camera(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="camera">
           <g id="Step2" transform="translate(1.000000, 3.000000)">
@@ -31,7 +31,7 @@ export default function Camera(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
               />
               <path
@@ -40,7 +40,7 @@ export default function Camera(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M43,31 L1,31"
@@ -48,7 +48,7 @@ export default function Camera(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <rect
                 id="Rectangle-10"

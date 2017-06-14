@@ -20,8 +20,8 @@ export default function Glasses(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
-        stroke-linejoin="round"
+        fillRule="evenodd"
+        strokeLinejoin="round"
       >
         <g id="glasses" strokeWidth={2} stroke="#62748C">
           <g id="Page-1" transform="translate(1.000000, 3.000000)">

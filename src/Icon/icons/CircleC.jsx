@@ -34,7 +34,7 @@ export default function CircleC(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="clever-circle">
           <g id="clever-brand">

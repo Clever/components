@@ -20,7 +20,7 @@ export default function WebsiteHTML(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="window-dev">
           <g
@@ -49,7 +49,7 @@ export default function WebsiteHTML(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 points="14 22 10 26 14 30"
               />
               <polyline
@@ -57,7 +57,7 @@ export default function WebsiteHTML(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 points="30 22 34 26 30 30"
               />
               <path
@@ -66,7 +66,7 @@ export default function WebsiteHTML(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M6,6 L8,6"
@@ -74,7 +74,7 @@ export default function WebsiteHTML(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M14,6 L16,6"
@@ -82,7 +82,7 @@ export default function WebsiteHTML(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M30,6 L38,6"
@@ -90,7 +90,7 @@ export default function WebsiteHTML(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M0,12 L44,12"
@@ -98,14 +98,14 @@ export default function WebsiteHTML(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <rect
                 id="Rectangle-path"
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 x={0}
                 y={0}
                 width={44}

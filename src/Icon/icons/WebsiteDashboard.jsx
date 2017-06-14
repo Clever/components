@@ -20,7 +20,7 @@ export default function WebsiteDashboard(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="window-web">
           <g
@@ -105,7 +105,7 @@ export default function WebsiteDashboard(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M0,12 L44,12"

@@ -20,7 +20,7 @@ export default function Tablet(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="tablet" strokeWidth={2}>
           <g
@@ -45,7 +45,7 @@ export default function Tablet(props) {
               <polyline
                 id="Shape"
                 stroke="#62748C"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#BCCEFF"
                 points="35 14 38 14 38 34 16 34 16 14 27 14"
               />
@@ -54,14 +54,14 @@ export default function Tablet(props) {
                 id="Shape"
                 stroke="#62748C"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M8,32 L8,34"
                 id="Shape"
                 stroke="#62748C"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M24.172,20.828 L25.172,15.828 L39.172,1.828 C40.277,0.723 42.067,0.723 43.172,1.828 C44.276,2.932 44.277,4.723 43.172,5.828 L29.172,19.828 L24.172,20.828 L24.172,20.828 Z"

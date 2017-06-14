@@ -20,7 +20,7 @@ export default function Pdf(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="pdf">
           <g
@@ -34,7 +34,7 @@ export default function Pdf(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
               />
               <path
@@ -43,7 +43,7 @@ export default function Pdf(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M5,39 L5,41.9951185 C5,43.102384 5.89194115,44 6.9999204,44 L37.0000796,44 C38.1046051,44 39,43.1061002 39,41.9951185 L39,39"
@@ -51,7 +51,7 @@ export default function Pdf(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
               />
               <rect
@@ -68,7 +68,7 @@ export default function Pdf(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M43,21 L1,21"
@@ -76,7 +76,7 @@ export default function Pdf(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M18.071,28.645 C18.071,29.523 17.812,30.201 17.295,30.678 C16.777,31.157 16.043,31.395 15.09,31.395 L14.494,31.395 L14.494,34 L12.372,34 L12.372,26.147 L15.09,26.147 C16.082,26.147 16.827,26.364 17.324,26.796 C17.822,27.23 18.071,27.847 18.071,28.645 L18.071,28.645 Z M14.494,29.666 L14.881,29.666 C15.2,29.666 15.453,29.576 15.641,29.396 C15.829,29.217 15.923,28.97 15.923,28.656 C15.923,28.126 15.63,27.861 15.042,27.861 L14.494,27.861 L14.494,29.666 L14.494,29.666 Z"

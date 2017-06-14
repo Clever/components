@@ -20,7 +20,7 @@ export default function Shield(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="shield">
           <g
@@ -34,7 +34,7 @@ export default function Shield(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
               />
               <path
@@ -52,14 +52,14 @@ export default function Shield(props) {
                 id="Shape"
                 stroke="#62748C"
                 strokeWidth={2}
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M37.807,20 L2.193,20"
                 id="Shape"
                 stroke="#62748C"
                 strokeWidth={2}
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M20,0 C14,4 6,6 0,6 C0,20 6,34 20,40 C34,34 40,20 40,6 C34,6 26,4 20,0 L20,0 Z"
@@ -67,7 +67,7 @@ export default function Shield(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
             </g>
           </g>

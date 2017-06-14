@@ -20,9 +20,9 @@ export default function Microphone(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="microphone" strokeWidth={2} stroke="#62748C">
           <g

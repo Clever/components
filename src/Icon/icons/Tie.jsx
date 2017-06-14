@@ -20,9 +20,9 @@ export default function Tie(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="tie" stroke="#B4883D" strokeWidth={2} fill="#FEBD54">
           <g

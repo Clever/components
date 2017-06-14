@@ -20,9 +20,9 @@ export default function User(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="bevel"
+        strokeLinejoin="bevel"
       >
         <g id="user" strokeWidth={2} stroke="#62748C">
           <g

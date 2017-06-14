@@ -20,9 +20,9 @@ export default function Checkmark(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="checkmark" stroke="#4FA97B" strokeWidth={2} fill="#85EBB6">
           <g

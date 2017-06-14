@@ -47,7 +47,7 @@ export default function MobileApps(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="mobile-apps">
           <use

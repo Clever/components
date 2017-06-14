@@ -73,7 +73,7 @@ export default function PenPaper(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="pen-paper">
           <g id="Page-1" transform="translate(7.000000, 1.000000)">
@@ -83,7 +83,7 @@ export default function PenPaper(props) {
               stroke="#62748C"
               strokeWidth={2}
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               fill="#FFFFFF"
             />
             <path
@@ -92,7 +92,7 @@ export default function PenPaper(props) {
               stroke="#62748C"
               strokeWidth={2}
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               fill="#B6C8F9"
             />
             <rect
@@ -117,7 +117,7 @@ export default function PenPaper(props) {
               stroke="#62748C"
               strokeWidth={2}
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <path
               d="M32,26 L38,26"
@@ -125,7 +125,7 @@ export default function PenPaper(props) {
               stroke="#62748C"
               strokeWidth={2}
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <path
               d="M28,29 L28,14 C28,12.344 29.343,11 31,11 L32,11"
@@ -133,7 +133,7 @@ export default function PenPaper(props) {
               stroke="#62748C"
               strokeWidth={2}
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <path
               d="M38,41 C38,42.657 36.657,44 35,44 C33.343,44 32,42.657 32,41 L32,12 C32,10.344 33.343,9 35,9 C36.657,9 38,10.344 38,12 L38,41 L38,41 Z"
@@ -141,7 +141,7 @@ export default function PenPaper(props) {
               stroke="#62748C"
               strokeWidth={2}
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
           </g>
           <path
@@ -150,7 +150,7 @@ export default function PenPaper(props) {
             stroke="#62748C"
             strokeWidth={2}
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
             fill="#FFFFFF"
           />
           <polygon
@@ -158,7 +158,7 @@ export default function PenPaper(props) {
             stroke="#62748C"
             strokeWidth={2}
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
             fill="#FFFFFF"
             points="6 45 28 45 28 13 6 13"
           />

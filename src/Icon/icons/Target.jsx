@@ -20,7 +20,7 @@ export default function Target(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="target" strokeWidth={2} stroke="#CA091B">
           <g

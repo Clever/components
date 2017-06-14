@@ -20,7 +20,7 @@ export default function Lock(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="lock" strokeWidth={2}>
           <g
@@ -56,7 +56,7 @@ export default function Lock(props) {
                 id="Shape"
                 stroke="#A6A05A"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
             </g>
           </g>

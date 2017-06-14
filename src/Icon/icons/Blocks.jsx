@@ -20,7 +20,7 @@ export default function Blocks(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="blocks" strokeWidth={2}>
           <g id="Step3_v1" transform="translate(1.000000, 1.000000)">
@@ -39,7 +39,7 @@ export default function Blocks(props) {
               id="Stroke-13"
               stroke="#C81725"
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <rect
               id="Rectangle-11-Copy"
@@ -56,7 +56,7 @@ export default function Blocks(props) {
               id="Stroke-16"
               stroke="#62748C"
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <rect
               id="Rectangle-11-Copy-2"
@@ -73,7 +73,7 @@ export default function Blocks(props) {
               id="Stroke-17"
               stroke="#51A87C"
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
           </g>
         </g>

@@ -20,9 +20,9 @@ export default function Menu(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="menu" stroke="#62748C" strokeWidth={4}>
           <g id="Page-1-Copy" transform="translate(7.000000, 8.000000)">
