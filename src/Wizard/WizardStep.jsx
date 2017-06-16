@@ -1,6 +1,7 @@
 import React, {PropTypes} from "react";
 import _ from "lodash";
 import classnames from "classnames";
+import {classNameFor} from "../utils";
 
 // 58.25 rem = width of sidebar + width of left column
 const COLLAPSE_BREAKPOINT_WIDTH_REM = 63.25;
@@ -41,37 +42,51 @@ export default class WizardStep extends React.Component {
     const {
       title, description, Component, setWizardState, currentStep, wizardState, help,
       percentComplete, calculatePercentComplete, updatePercentComplete, totalSteps,
-      componentProps,
+      componentProps, className,
     } = this.props;
     const props = _.omit(componentProps || {}, ["wizardState", "setWizardState"]);
+    const baseClasses = ["Wizard", className].filter(c => !!c).map(c =>
+      classNameFor(c, "WizardStep")
+    );
+    const contentGroupClass = classNameFor(["Wizard", className], "contentGroup");
     return (
-      <div className="Wizard--WizardStep" ref={(e) => { this.component = e; }}>
-        <div className="Wizard--WizardStep--title">
+      <div className={classnames(baseClasses)} ref={e => { this.component = e; }}>
+        <div className={classNameFor(baseClasses, "title")}>
           <h1>Step {currentStep + 1}: {title}</h1>
         </div>
 
-        <div className="Wizard--WizardStep--topInfo">
-          { description && (
-            <div className="Wizard--contentGroup Wizard--WizardStep--description">
-              { _.isString(description) ? <p>{description}</p> : description }
-            </div>
-          )}
-          { help && (
+        <div className={classNameFor(baseClasses, "topInfo")}>
+          {description &&
             <div
               className={classnames(
-                "Wizard--contentGroup", "Wizard--WizardStep--help",
-                this.state.helpTextCollapsed && "Wizard--WizardStep--helpCollapsed"
+                contentGroupClass,
+                classNameFor(baseClasses, "description")
+              )}
+            >
+              {_.isString(description) ? <p>{description}</p> : description}
+            </div>}
+          {help &&
+            <div
+              className={classnames(
+                contentGroupClass,
+                classNameFor(baseClasses, "help"),
+                this.state.helpTextCollapsed &&
+                classNameFor(baseClasses, "helpCollapsed")
               )}
             >
               {_.isString(help) ? <p>{help}</p> : help}
-            </div>
-          )}
+            </div>}
         </div>
 
-        <div className="Wizard--contentGroup Wizard--WizardStep--component">
+        <div
+          className={classnames(
+            contentGroupClass,
+            classNameFor(baseClasses, "component")
+          )}
+        >
           <Component
             {...props}
-            setWizardState={(modifications) => {
+            setWizardState={modifications => {
               const newState = setWizardState(modifications);
 
               // this conditional updates the progress bar in 2 scenarios:
@@ -105,6 +120,7 @@ WizardStep.propTypes = {
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 
   // internal facing
+  className: PropTypes.string,
   currentStep: PropTypes.number.isRequired,
   totalSteps: PropTypes.number.isRequired,
   updatePercentComplete: PropTypes.func.isRequired,
