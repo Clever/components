@@ -20,9 +20,9 @@ export default function Phone(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="phone" strokeWidth={2} stroke="#4FA97B">
           <g

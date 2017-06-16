@@ -20,9 +20,9 @@ export default function QR(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="qr-code" strokeWidth={2} stroke="#62748C">
           <g

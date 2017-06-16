@@ -20,7 +20,7 @@ export default function Man(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="business-man" strokeWidth={2}>
           <g
@@ -28,7 +28,7 @@ export default function Man(props) {
             transform="translate(1.000000, 29.000000)"
             strokeLinecap="round"
             stroke="#62748C"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           >
             <g id="Group">
               <path
@@ -53,7 +53,7 @@ export default function Man(props) {
             id="Page-1"
             transform="translate(11.000000, 1.000000)"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           >
             <path
               d="M17,9.6 C15.3,13.4 11.4,16 7,16 C4.3,16 1.9,15.1 0,13.5 L0,18 C0,24.6 5.4,30 12,30 C18.6,30 24,24.6 24,18 L24,15.6 C20.9,14.7 18.3,12.5 17,9.6 L17,9.6 Z"

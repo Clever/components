@@ -20,7 +20,7 @@ export default function MagnifyC(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="clever-search">
           <g
@@ -34,14 +34,14 @@ export default function MagnifyC(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <circle
                 id="Oval"
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
                 cx={20}
                 cy={20}

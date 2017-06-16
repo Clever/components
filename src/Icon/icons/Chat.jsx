@@ -20,7 +20,7 @@ export default function Chat(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="chat" strokeWidth={2} stroke="#62748C">
           <g

@@ -20,7 +20,7 @@ export default function PhoneSync(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="sync">
           <g
@@ -29,7 +29,7 @@ export default function PhoneSync(props) {
             strokeLinecap="round"
             strokeWidth={2}
             stroke="#62748C"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           >
             <g id="Group">
               <path

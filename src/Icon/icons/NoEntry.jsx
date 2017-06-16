@@ -20,7 +20,7 @@ export default function NoEntry(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="ban" strokeWidth={2} stroke="#C9081A" fill="#FD8874">
           <g

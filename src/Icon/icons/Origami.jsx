@@ -20,7 +20,7 @@ export default function Origami(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="origami">
           <g id="Page-1-Copy" transform="translate(1.000000, 1.000000)">
@@ -33,7 +33,7 @@ export default function Origami(props) {
               id="Stroke-2"
               stroke="#62748C"
               strokeWidth="2.028"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="7.98583534 13 0 21 12 21"
             />
             <polyline
@@ -45,7 +45,7 @@ export default function Origami(props) {
               id="Stroke-5"
               stroke="#62748C"
               strokeWidth="2.028"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="12 20.5379692 20 35 41 43 20 13 20 35"
             />
             <path
@@ -53,7 +53,7 @@ export default function Origami(props) {
               id="Stroke-7"
               stroke="#62748C"
               strokeWidth="2.028"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <polyline
               id="Fill-8"
@@ -64,7 +64,7 @@ export default function Origami(props) {
               id="Stroke-9"
               stroke="#62748C"
               strokeWidth="2.028"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="32 10.3828304 44 4 33 31"
             />
             <polygon
@@ -76,7 +76,7 @@ export default function Origami(props) {
               id="Stroke-12"
               stroke="#62748C"
               strokeWidth="2.028"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="34 32 34 0 20 12.9918022"
             />
           </g>

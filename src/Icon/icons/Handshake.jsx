@@ -20,7 +20,7 @@ export default function Handshake(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="partner" fill="#F8DFB2">
           <g
@@ -44,7 +44,7 @@ export default function Handshake(props) {
                 stroke="#B8865D"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M30.1,26.6 L33.7,30.2 C34.8,31.3 36.6,31.3 37.7,30.2 L37.8,30.1 C38.9,29 38.9,27.3 37.9,26.2 L27.5,15.2"

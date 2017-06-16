@@ -20,8 +20,8 @@ export default function Pickax(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
-        stroke-linejoin="round"
+        fillRule="evenodd"
+        strokeLinejoin="round"
       >
         <g id="pickaxe" stroke="#62748C" strokeWidth={2}>
           <g id="Page-1" transform="translate(1.000000, 1.000000)">

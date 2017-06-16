@@ -20,7 +20,7 @@ export default function ChatHeart(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="chat-heart" strokeWidth={2}>
           <g

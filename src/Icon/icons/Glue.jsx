@@ -47,7 +47,7 @@ export default function Glue(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="glue">
           <g id="Page-1-Copy-3" transform="translate(9.000000, 1.000000)">
@@ -61,7 +61,7 @@ export default function Glue(props) {
               <polygon
                 id="Stroke-3"
                 strokeWidth={2}
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 points="19 15 9 15 14 0"
               />
             </g>
@@ -74,7 +74,7 @@ export default function Glue(props) {
               id="Stroke-9"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="22 38 6 38 6 27 22 27"
             />
             <use

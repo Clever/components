@@ -20,9 +20,9 @@ export default function Typewriter(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="typewriter" stroke="#62748C" strokeWidth={2}>
           <g id="Page-1" transform="translate(0.000000, 2.000000)">

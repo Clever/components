@@ -20,7 +20,7 @@ export default function Play(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="play" strokeWidth={2}>
           <g

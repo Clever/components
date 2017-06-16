@@ -20,7 +20,7 @@ export default function Printer(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
       >
         <g id="printer" strokeWidth={2}>
@@ -33,13 +33,13 @@ export default function Printer(props) {
                 d="M8,34 L1.99810135,34 C0.894580447,34 0,33.1017876 0,32.0092049 L0,14 C0,11.791 1.791,10 4,10 L40,10 C42.209,10 44,11.791 44,14 L44,32.0092049 C44,33.1086907 43.1132936,34 42.0018986,34 L36,34"
                 id="Shape"
                 stroke="#62748C"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#D8D8D8"
               />
               <polyline
                 id="Shape"
                 stroke="#62748C"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 points="8 5 8 0 36 0 36 5"
               />
               <rect

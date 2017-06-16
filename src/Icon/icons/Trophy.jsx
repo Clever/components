@@ -20,9 +20,9 @@ export default function Trophy(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       >
         <g id="trophy" stroke="#A6A05A" strokeWidth={2} fill="#FFF49A">
           <g

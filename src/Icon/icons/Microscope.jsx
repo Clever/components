@@ -20,7 +20,7 @@ export default function Microscope(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="microscope">
           <g
@@ -34,14 +34,14 @@ export default function Microscope(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <rect
                 id="Rectangle-path"
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#B6C8F9"
                 x={0}
                 y={38}
@@ -53,7 +53,7 @@ export default function Microscope(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
                 points="22 21.3 14.6 24.3 6.3 4 13.7 0.9 13.7 0.9"
               />
@@ -63,7 +63,7 @@ export default function Microscope(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 points="22 21.3 14.6 24.3 6.3 4 13.7 0.9 13.7 0.9"
               />
               <path
@@ -72,7 +72,7 @@ export default function Microscope(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M8.6,9.8 L16.1,6.8"
@@ -80,7 +80,7 @@ export default function Microscope(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M8,38 L0,38 L0,26 L0,26 C4.4,26 8,29.6 8,34 L8,38 L8,38 Z"
@@ -88,7 +88,7 @@ export default function Microscope(props) {
                 stroke="#62748C"
                 strokeWidth={2}
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
               />
             </g>

@@ -20,7 +20,7 @@ export default function Server(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="servers">
           <g id="Page-1" transform="translate(2.000000, 0.000000)">
@@ -52,14 +52,14 @@ export default function Server(props) {
               id="Stroke-1"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="0 45 14 45 14 1 0 1"
             />
             <polygon
               id="Stroke-3"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               fill="#FFFFFF"
               points="4 28 10 28 10 4 4 4"
             />
@@ -68,20 +68,20 @@ export default function Server(props) {
               id="Stroke-4"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <polygon
               id="Stroke-5"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="14 45 28 45 28 1 14 1"
             />
             <polygon
               id="Stroke-7"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               fill="#FFFFFF"
               points="18 28 24 28 24 4 18 4"
             />
@@ -90,20 +90,20 @@ export default function Server(props) {
               id="Stroke-8"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <polygon
               id="Stroke-9"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               points="28 45 42 45 42 1 28 1"
             />
             <polygon
               id="Stroke-11"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               fill="#FFFFFF"
               points="32 28 38 28 38 4 32 4"
             />
@@ -112,7 +112,7 @@ export default function Server(props) {
               id="Stroke-12"
               stroke="#62748C"
               strokeWidth={2}
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             />
             <g
               id="Group-19"
@@ -120,7 +120,7 @@ export default function Server(props) {
               stroke="#62748C"
               strokeWidth={2}
               fill="#FFFFFF"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
             >
               <path
                 d="M6,3 C6,4.657 4.657,6 3,6 C1.343,6 0,4.657 0,3 C0,1.343 1.343,0 3,0 C4.657,0 6,1.343 6,3 L6,3 Z"

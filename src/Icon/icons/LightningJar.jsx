@@ -20,7 +20,7 @@ export default function LightningJar(props) {
         stroke="none"
         strokeWidth={1}
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="lightning-jar" strokeWidth={2}>
           <g
@@ -37,14 +37,14 @@ export default function LightningJar(props) {
               <polyline
                 id="Shape"
                 stroke="#FFFFFF"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 points="22 20 16 26 24 26 18 32"
               />
               <rect
                 id="Rectangle-path"
                 stroke="#62748C"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 fill="#FFFFFF"
                 x={4}
                 y={0}
