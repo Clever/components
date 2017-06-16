@@ -54138,7 +54138,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54161,7 +54161,7 @@
 	            id: "Stroke-13",
 	            stroke: "#C81725",
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("rect", {
 	            id: "Rectangle-11-Copy",
@@ -54178,7 +54178,7 @@
 	            id: "Stroke-16",
 	            stroke: "#62748C",
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("rect", {
 	            id: "Rectangle-11-Copy-2",
@@ -54195,7 +54195,7 @@
 	            id: "Stroke-17",
 	            stroke: "#51A87C",
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          })
 	        )
 	      )
@@ -54252,9 +54252,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54339,9 +54339,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54445,7 +54445,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54462,7 +54462,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#FFFFFF"
 	            }),
 	            _react2.default.createElement("path", {
@@ -54471,7 +54471,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M43,31 L1,31",
@@ -54479,7 +54479,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("rect", {
 	              id: "Rectangle-10",
@@ -54577,9 +54577,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54677,7 +54677,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54770,7 +54770,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54850,9 +54850,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -54944,7 +54944,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55020,7 +55020,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round"
 	      },
 	      _react2.default.createElement(
@@ -55093,9 +55093,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55188,9 +55188,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55266,7 +55266,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55284,7 +55284,7 @@
 	              d: "M44,22 C44,19.791 42.209,18 40,18 L37.476,18 C37.098,16.536 36.523,15.155 35.773,13.885 L37.557,12.101 C39.119,10.539 39.119,8.006 37.557,6.444 C35.995,4.882 33.462,4.882 31.9,6.444 L30.116,8.228 C28.846,7.478 27.465,6.902 26.001,6.525 L26.001,4 C26.001,1.791 24.21,0 22.001,0 C19.792,0 18.001,1.791 18.001,4 L18.001,6.524 C16.537,6.902 15.156,7.477 13.886,8.227 L12.102,6.443 C10.54,4.881 8.007,4.881 6.445,6.443 C4.883,8.005 4.883,10.538 6.445,12.1 L8.229,13.884 C7.479,15.154 6.903,16.535 6.526,17.999 L4,17.999 C1.791,17.999 0,19.79 0,21.999 C0,24.208 1.791,25.999 4,25.999 L6.524,25.999 C6.902,27.463 7.477,28.844 8.227,30.114 L6.443,31.898 C4.881,33.46 4.881,35.993 6.443,37.555 C8.005,39.117 10.538,39.117 12.1,37.555 L13.884,35.771 C15.154,36.521 16.535,37.097 17.999,37.474 L17.999,40 C17.999,42.209 19.79,44 21.999,44 C24.208,44 25.999,42.209 25.999,40 L25.999,37.476 C27.463,37.098 28.844,36.523 30.114,35.773 L31.898,37.557 C33.46,39.119 35.993,39.119 37.555,37.557 C39.117,35.995 39.117,33.462 37.555,31.9 L35.771,30.116 C36.521,28.846 37.097,27.465 37.474,26.001 L40,26.001 C42.209,26 44,24.209 44,22 L44,22 Z",
 	              id: "Shape",
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#D8D8D8"
 	            }),
 	            _react2.default.createElement("circle", { id: "Oval", fill: "#FFFFFF", cx: 22, cy: 22, r: 6 })
@@ -55344,8 +55344,8 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
-	        "stroke-linejoin": "round"
+	        fillRule: "evenodd",
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55469,7 +55469,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55489,7 +55489,7 @@
 	            _react2.default.createElement("polygon", {
 	              id: "Stroke-3",
 	              strokeWidth: 2,
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              points: "19 15 9 15 14 0"
 	            })
 	          ),
@@ -55502,7 +55502,7 @@
 	            id: "Stroke-9",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "22 38 6 38 6 27 22 27"
 	          }),
 	          _react2.default.createElement("use", {
@@ -55589,7 +55589,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55623,7 +55623,7 @@
 	              { id: "Group" },
 	              _react2.default.createElement("polyline", {
 	                id: "Shape",
-	                "stroke-linejoin": "round",
+	                strokeLinejoin: "round",
 	                points: "0 20 4 23 8 16 14 27 18 19 22 22 26.2 17.2"
 	              }),
 	              _react2.default.createElement("path", { d: "M30,20 L30,40", id: "Shape" }),
@@ -55686,9 +55686,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55766,7 +55766,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55796,7 +55796,7 @@
 	              stroke: "#B8865D",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M30.1,26.6 L33.7,30.2 C34.8,31.3 36.6,31.3 37.7,30.2 L37.8,30.1 C38.9,29 38.9,27.3 37.9,26.2 L27.5,15.2",
@@ -55902,9 +55902,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -55992,9 +55992,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56077,9 +56077,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56163,7 +56163,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56186,14 +56186,14 @@
 	            _react2.default.createElement("polyline", {
 	              id: "Shape",
 	              stroke: "#FFFFFF",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              points: "22 20 16 26 24 26 18 32"
 	            }),
 	            _react2.default.createElement("rect", {
 	              id: "Rectangle-path",
 	              stroke: "#62748C",
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#FFFFFF",
 	              x: 4,
 	              y: 0,
@@ -56259,7 +56259,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56301,7 +56301,7 @@
 	              id: "Shape",
 	              stroke: "#A6A05A",
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            })
 	          )
 	        )
@@ -56359,7 +56359,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56379,14 +56379,14 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("circle", {
 	              id: "Oval",
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#FFFFFF",
 	              cx: 20,
 	              cy: 20,
@@ -56453,9 +56453,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56536,7 +56536,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56548,7 +56548,7 @@
 	            transform: "translate(1.000000, 29.000000)",
 	            strokeLinecap: "round",
 	            stroke: "#62748C",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          },
 	          _react2.default.createElement(
 	            "g",
@@ -56577,7 +56577,7 @@
 	            id: "Page-1",
 	            transform: "translate(11.000000, 1.000000)",
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          },
 	          _react2.default.createElement("path", {
 	            d: "M17,9.6 C15.3,13.4 11.4,16 7,16 C4.3,16 1.9,15.1 0,13.5 L0,18 C0,24.6 5.4,30 12,30 C18.6,30 24,24.6 24,18 L24,15.6 C20.9,14.7 18.3,12.5 17,9.6 L17,9.6 Z",
@@ -56646,9 +56646,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56714,9 +56714,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56793,7 +56793,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -56813,14 +56813,14 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("rect", {
 	              id: "Rectangle-path",
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#B6C8F9",
 	              x: 0,
 	              y: 38,
@@ -56832,7 +56832,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#FFFFFF",
 	              points: "22 21.3 14.6 24.3 6.3 4 13.7 0.9 13.7 0.9"
 	            }),
@@ -56842,7 +56842,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              points: "22 21.3 14.6 24.3 6.3 4 13.7 0.9 13.7 0.9"
 	            }),
 	            _react2.default.createElement("path", {
@@ -56851,7 +56851,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M8.6,9.8 L16.1,6.8",
@@ -56859,7 +56859,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M8,38 L0,38 L0,26 L0,26 C4.4,26 8,29.6 8,34 L8,38 L8,38 Z",
@@ -56867,7 +56867,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#FFFFFF"
 	            })
 	          )
@@ -56959,7 +56959,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57106,7 +57106,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57180,7 +57180,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57197,7 +57197,7 @@
 	            id: "Stroke-2",
 	            stroke: "#62748C",
 	            strokeWidth: "2.028",
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "7.98583534 13 0 21 12 21"
 	          }),
 	          _react2.default.createElement("polyline", {
@@ -57209,7 +57209,7 @@
 	            id: "Stroke-5",
 	            stroke: "#62748C",
 	            strokeWidth: "2.028",
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "12 20.5379692 20 35 41 43 20 13 20 35"
 	          }),
 	          _react2.default.createElement("path", {
@@ -57217,7 +57217,7 @@
 	            id: "Stroke-7",
 	            stroke: "#62748C",
 	            strokeWidth: "2.028",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("polyline", {
 	            id: "Fill-8",
@@ -57228,7 +57228,7 @@
 	            id: "Stroke-9",
 	            stroke: "#62748C",
 	            strokeWidth: "2.028",
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "32 10.3828304 44 4 33 31"
 	          }),
 	          _react2.default.createElement("polygon", {
@@ -57240,7 +57240,7 @@
 	            id: "Stroke-12",
 	            stroke: "#62748C",
 	            strokeWidth: "2.028",
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "34 32 34 0 20 12.9918022"
 	          })
 	        )
@@ -57298,9 +57298,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57451,7 +57451,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57465,7 +57465,7 @@
 	            stroke: "#62748C",
 	            strokeWidth: 2,
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            fill: "#FFFFFF"
 	          }),
 	          _react2.default.createElement("path", {
@@ -57474,7 +57474,7 @@
 	            stroke: "#62748C",
 	            strokeWidth: 2,
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            fill: "#B6C8F9"
 	          }),
 	          _react2.default.createElement("rect", {
@@ -57499,7 +57499,7 @@
 	            stroke: "#62748C",
 	            strokeWidth: 2,
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("path", {
 	            d: "M32,26 L38,26",
@@ -57507,7 +57507,7 @@
 	            stroke: "#62748C",
 	            strokeWidth: 2,
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("path", {
 	            d: "M28,29 L28,14 C28,12.344 29.343,11 31,11 L32,11",
@@ -57515,7 +57515,7 @@
 	            stroke: "#62748C",
 	            strokeWidth: 2,
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("path", {
 	            d: "M38,41 C38,42.657 36.657,44 35,44 C33.343,44 32,42.657 32,41 L32,12 C32,10.344 33.343,9 35,9 C36.657,9 38,10.344 38,12 L38,41 L38,41 Z",
@@ -57523,7 +57523,7 @@
 	            stroke: "#62748C",
 	            strokeWidth: 2,
 	            strokeLinecap: "round",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          })
 	        ),
 	        _react2.default.createElement("path", {
@@ -57532,7 +57532,7 @@
 	          stroke: "#62748C",
 	          strokeWidth: 2,
 	          strokeLinecap: "round",
-	          "stroke-linejoin": "round",
+	          strokeLinejoin: "round",
 	          fill: "#FFFFFF"
 	        }),
 	        _react2.default.createElement("polygon", {
@@ -57540,7 +57540,7 @@
 	          stroke: "#62748C",
 	          strokeWidth: 2,
 	          strokeLinecap: "round",
-	          "stroke-linejoin": "round",
+	          strokeLinejoin: "round",
 	          fill: "#FFFFFF",
 	          points: "6 45 28 45 28 13 6 13"
 	        }),
@@ -57630,9 +57630,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57721,7 +57721,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57734,7 +57734,7 @@
 	            strokeLinecap: "round",
 	            strokeWidth: 2,
 	            stroke: "#62748C",
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          },
 	          _react2.default.createElement(
 	            "g",
@@ -57833,9 +57833,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57912,8 +57912,8 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
-	        "stroke-linejoin": "round"
+	        fillRule: "evenodd",
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -57986,7 +57986,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58072,7 +58072,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58156,9 +58156,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58255,9 +58255,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58344,7 +58344,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round"
 	      },
 	      _react2.default.createElement(
@@ -58363,13 +58363,13 @@
 	              d: "M8,34 L1.99810135,34 C0.894580447,34 0,33.1017876 0,32.0092049 L0,14 C0,11.791 1.791,10 4,10 L40,10 C42.209,10 44,11.791 44,14 L44,32.0092049 C44,33.1086907 43.1132936,34 42.0018986,34 L36,34",
 	              id: "Shape",
 	              stroke: "#62748C",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#D8D8D8"
 	            }),
 	            _react2.default.createElement("polyline", {
 	              id: "Shape",
 	              stroke: "#62748C",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              points: "8 5 8 0 36 0 36 5"
 	            }),
 	            _react2.default.createElement("rect", {
@@ -58440,9 +58440,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58526,9 +58526,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58620,7 +58620,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58632,7 +58632,7 @@
 	            transform: "translate(3.000000, 1.000000)",
 	            strokeLinecap: "round",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          },
 	          _react2.default.createElement(
 	            "g",
@@ -58721,7 +58721,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58757,14 +58757,14 @@
 	            id: "Stroke-1",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "0 45 14 45 14 1 0 1"
 	          }),
 	          _react2.default.createElement("polygon", {
 	            id: "Stroke-3",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            fill: "#FFFFFF",
 	            points: "4 28 10 28 10 4 4 4"
 	          }),
@@ -58773,20 +58773,20 @@
 	            id: "Stroke-4",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("polygon", {
 	            id: "Stroke-5",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "14 45 28 45 28 1 14 1"
 	          }),
 	          _react2.default.createElement("polygon", {
 	            id: "Stroke-7",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            fill: "#FFFFFF",
 	            points: "18 28 24 28 24 4 18 4"
 	          }),
@@ -58795,20 +58795,20 @@
 	            id: "Stroke-8",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement("polygon", {
 	            id: "Stroke-9",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            points: "28 45 42 45 42 1 28 1"
 	          }),
 	          _react2.default.createElement("polygon", {
 	            id: "Stroke-11",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round",
+	            strokeLinejoin: "round",
 	            fill: "#FFFFFF",
 	            points: "32 28 38 28 38 4 32 4"
 	          }),
@@ -58817,7 +58817,7 @@
 	            id: "Stroke-12",
 	            stroke: "#62748C",
 	            strokeWidth: 2,
-	            "stroke-linejoin": "round"
+	            strokeLinejoin: "round"
 	          }),
 	          _react2.default.createElement(
 	            "g",
@@ -58827,7 +58827,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              fill: "#FFFFFF",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            },
 	            _react2.default.createElement("path", {
 	              d: "M6,3 C6,4.657 4.657,6 3,6 C1.343,6 0,4.657 0,3 C0,1.343 1.343,0 3,0 C4.657,0 6,1.343 6,3 L6,3 Z",
@@ -58897,7 +58897,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -58917,7 +58917,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#FFFFFF"
 	            }),
 	            _react2.default.createElement("path", {
@@ -58935,14 +58935,14 @@
 	              id: "Shape",
 	              stroke: "#62748C",
 	              strokeWidth: 2,
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M37.807,20 L2.193,20",
 	              id: "Shape",
 	              stroke: "#62748C",
 	              strokeWidth: 2,
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M20,0 C14,4 6,6 0,6 C0,20 6,34 20,40 C34,34 40,20 40,6 C34,6 26,4 20,0 L20,0 Z",
@@ -58950,7 +58950,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            })
 	          )
 	        )
@@ -59008,7 +59008,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59104,7 +59104,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59183,9 +59183,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59265,7 +59265,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59296,7 +59296,7 @@
 	            _react2.default.createElement("polyline", {
 	              id: "Shape",
 	              stroke: "#62748C",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              fill: "#BCCEFF",
 	              points: "35 14 38 14 38 34 16 34 16 14 27 14"
 	            }),
@@ -59305,14 +59305,14 @@
 	              id: "Shape",
 	              stroke: "#62748C",
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M8,32 L8,34",
 	              id: "Shape",
 	              stroke: "#62748C",
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M24.172,20.828 L25.172,15.828 L39.172,1.828 C40.277,0.723 42.067,0.723 43.172,1.828 C44.276,2.932 44.277,4.723 43.172,5.828 L29.172,19.828 L24.172,20.828 L24.172,20.828 Z",
@@ -59376,7 +59376,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59449,9 +59449,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59549,9 +59549,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59639,9 +59639,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59724,9 +59724,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59798,9 +59798,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59887,9 +59887,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -59986,9 +59986,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "bevel"
+	        strokeLinejoin: "bevel"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -60068,9 +60068,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -60166,7 +60166,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -60257,7 +60257,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M0,12 L44,12",
@@ -60321,7 +60321,7 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd"
+	        fillRule: "evenodd"
 	      },
 	      _react2.default.createElement(
 	        "g",
@@ -60356,7 +60356,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              points: "14 22 10 26 14 30"
 	            }),
 	            _react2.default.createElement("polyline", {
@@ -60364,7 +60364,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              points: "30 22 34 26 30 30"
 	            }),
 	            _react2.default.createElement("path", {
@@ -60373,7 +60373,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M6,6 L8,6",
@@ -60381,7 +60381,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M14,6 L16,6",
@@ -60389,7 +60389,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M30,6 L38,6",
@@ -60397,7 +60397,7 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("path", {
 	              d: "M0,12 L44,12",
@@ -60405,14 +60405,14 @@
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round"
+	              strokeLinejoin: "round"
 	            }),
 	            _react2.default.createElement("rect", {
 	              id: "Rectangle-path",
 	              stroke: "#62748C",
 	              strokeWidth: 2,
 	              strokeLinecap: "round",
-	              "stroke-linejoin": "round",
+	              strokeLinejoin: "round",
 	              x: 0,
 	              y: 0,
 	              width: 44,
@@ -60475,9 +60475,9 @@
 	        stroke: "none",
 	        strokeWidth: 1,
 	        fill: "none",
-	        "fill-rule": "evenodd",
+	        fillRule: "evenodd",
 	        strokeLinecap: "round",
-	        "stroke-linejoin": "round"
+	        strokeLinejoin: "round"
 	      },
 	      _react2.default.createElement(
 	        "g",
