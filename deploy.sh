@@ -16,6 +16,7 @@ then
   exit 1;
 fi
 
+npm install
 ./node_modules/.bin/webpack
 
 git add docs/
