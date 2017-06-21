@@ -4,6 +4,7 @@ import {IndexRedirect, Route, Router, hashHistory} from "react-router";
 
 import AlertBoxView from "./components/AlertBoxView";
 import ButtonView from "./components/ButtonView";
+import CleverLogInButtonView from "./components/CleverLogInButtonView";
 import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
 import CopyableInputView from "./components/CopyableInputView";
@@ -61,6 +62,7 @@ render((
       <Route path="components">
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="button(/*)" component={ButtonView} />
+        <Route path="clever-log-in-button(/*)" component={CleverLogInButtonView} />
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
         <Route path="count(/*)" component={CountView} />

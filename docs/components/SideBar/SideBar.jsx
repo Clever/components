@@ -66,6 +66,7 @@ export default class SideBar extends React.Component {
         <NavGroup id="components" label="Components" icon={icon(Icon.names.WEBSITE_HTML)}>
           {this._renderLink("/components/alert-box", "AlertBox")}
           {this._renderLink("/components/button", "Button")}
+          {this._renderLink("/components/clever-log-in-button", "Clever Log In Button")}
           {this._renderLink("/components/confirmation-button", "ConfirmationButton")}
           {this._renderLink("/components/copyable-input", "CopyableInput")}
           {this._renderLink("/components/count", "Count")}

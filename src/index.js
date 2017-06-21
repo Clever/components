@@ -48,3 +48,4 @@ export {Number};
 
 import Tooltip from "./Tooltip";
 export {Tooltip};
+export {CleverLogInButton} from "./CleverLogInButton/CleverLogInButton";
