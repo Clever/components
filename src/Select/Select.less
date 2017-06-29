@@ -52,19 +52,22 @@
     .Select-multi-value-wrapper {
       .padding--y--xs;
       .padding--left--2xs;
-      .margin--top--s;
 
       .Select-placeholder {
-        .padding--top--m;
+        padding-top: @size_xs;
       }
 
       .Select-value {
-        .margin--top--2xs;
         .margin--left--2xs;
         padding: @size_none;
         border-color: @neutral_silver;
         color: @neutral_black;
         line-height: @size_m;
+
+        margin-top: @size_2xs;
+        &:first-child {
+          margin-top: @size_s;
+        }
 
         .Select-value-icon {
           background-color: @neutral_silver;
