@@ -1,0 +1,45 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+.CleverLogInButton--Inverse {
+
+}
+
+.CleverLogInButton {
+    .border--s(transparent);
+    .buttonColor(@primary_blue);
+    .borderRadius--top--m;
+    .text--medium;
+    border-bottom-width: @borderWidthL;
+    box-sizing: border-box;
+    color: @neutral_white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Proxima Nova";
+    font-weight: 600;
+    padding: @size_s @size_m @size_xs;
+    text-decoration: none;
+    transition: all @timingPromptly @motionSmooth;
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus
+    &[disabled]:active {
+      .buttonColor(@neutral_silver);
+      cursor: not-allowed;
+      color: @neutral_dark_gray;
+    }
+
+    &:hover,
+    &:focus,
+    &:active{
+      outline: 0;
+      color: @neutral_white;
+    }
+  }
+
+  .CleverLogInButton--Icon {
+    .margin--right--xs;
+    .padding--right--xs;
+    border-right: 1px solid @neutral_white;
+  }
