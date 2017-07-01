@@ -50,24 +50,19 @@
 
   &.Select--multi {
     .Select-multi-value-wrapper {
-      .padding--y--xs;
-      .padding--left--2xs;
+      padding-top: @size_m;
+      padding-bottom: @size_2xs;
 
       .Select-placeholder {
         padding-top: @size_xs;
       }
 
       .Select-value {
-        .margin--left--2xs;
-        padding: @size_none;
+        padding: 0;
         border-color: @neutral_silver;
         color: @neutral_black;
         line-height: @size_m;
-
-        margin-top: @size_2xs;
-        &:first-child {
-          margin-top: @size_s;
-        }
+        margin-top: @size_2xs 0 0 @size_2xs;
 
         .Select-value-icon {
           background-color: @neutral_silver;
