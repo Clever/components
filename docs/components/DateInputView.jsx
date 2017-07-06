@@ -1,30 +1,82 @@
 import React, {Component} from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {DateInput} from "src";
 
+import "./DateInputView.less";
+
 export default class DateInputView extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: null};
+
+    this.state = {
+      disabled: false,
+      readOnly: false,
+      hasError: false,
+      required: false,
+      value: null,
+    };
   }
 
   render() {
+    const {cssClass} = DateInputView;
+
     return (
       <View title="DateInput" sourcePath="src/DateInput/DateInput.jsx">
         <p>
           DateInput is an input that allows the user to select dates from a DatePicker.
         </p>
         <Example>
-          <DateInput
-            label="label"
-            placeholder="Placeholder"
-            required
-            value={this.state.value}
-            onChange={(value) => this.setState({value})}
-          />
+          <ExampleCode>
+            <DateInput
+              disabled={this.state.disabled}
+              error={this.state.hasError ? "Invalid date" : null}
+              label="label"
+              onChange={(value) => this.setState({value})}
+              placeholder="Placeholder"
+              readOnly={this.state.readOnly}
+              required={this.state.required}
+              value={this.state.value}
+            />
+          </ExampleCode>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.disabled}
+              onChange={({target}) => this.setState({disabled: target.checked})}
+            />
+            {" "}
+            Disabled
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.readOnly}
+              onChange={({target}) => this.setState({readOnly: target.checked})}
+            />
+            {" "}
+            Read Only
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.required}
+              onChange={({target}) => this.setState({required: target.checked})}
+            />
+            {" "}
+            Required
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.hasError}
+              onChange={({target}) => this.setState({hasError: target.checked})}
+            />
+            {" "}
+            Error
+          </label>
         </Example>
 
         <PropDocumentation
@@ -78,6 +130,12 @@ export default class DateInputView extends Component {
               optional: true,
             },
             {
+              name: "readOnly",
+              type: "Bool",
+              description: "Enable read-only styling and disable date input interaction",
+              optional: true,
+            },
+            {
               name: "required",
               type: "Bool",
               description: "Marks input as required and adds indicator",
@@ -107,3 +165,9 @@ export default class DateInputView extends Component {
     );
   }
 }
+
+DateInputView.cssClass = {
+  CONFIG: "DateInputView--config",
+  CONTAINER: "DateInputView",
+  INPUT_CONTAINER: "DateInputView--inputContainer",
+};
