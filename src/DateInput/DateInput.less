@@ -80,4 +80,20 @@
     box-shadow: inset @size_2xs 0 @primary_blue;
     transition: box-shadow .25s ease-out;
   }
+
+  &.DateInput--disabled {
+    .border--s(@neutral_silver);
+    color: @neutral_dark_gray;
+    background: @neutral_silver;
+
+    .DateInput--input {
+      background: transparent;
+    }
+  }
+
+  &.DateInput--readonly {
+    .border--s(transparent);
+    color: @neutral_black;
+    background: transparent;
+  }
 }
