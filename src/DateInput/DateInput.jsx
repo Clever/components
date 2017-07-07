@@ -17,21 +17,25 @@ export default class DateInput extends React.Component {
   }
 
   render() {
-    let wrapperClass = "DateInput";
+    const classes = ["DateInput"];
 
     // add additional wrapper classes
-    if (this.props.error) wrapperClass += " DateInput--hasError";
+    if (this.props.error) {
+      classes.push("DateInput--hasError");
+    }
 
     // TODO:  throw error for mutually exclusive states
-    if (this.props.disabled) {
-      wrapperClass += " DateInput--disabled";
+    if (this.props.readOnly) {
+      classes.push("DateInput--readonly");
+    } else if (this.props.disabled) {
+      classes.push("DateInput--disabled");
     } else if (this.state.inFocus) {
-      wrapperClass += " DateInput--inFocus";
+      classes.push("DateInput--inFocus");
     }
 
     // placeholder shown
     if (!this.props.value && this.props.placeholder) {
-      wrapperClass += " DateInput--placeholder-shown";
+      classes.push("DateInput--placeholder-shown");
     }
 
     // note on the upper right corner
@@ -45,25 +49,26 @@ export default class DateInput extends React.Component {
 
 
     return (
-      <div className={classnames(wrapperClass, this.props.className)}>
+      <div className={classnames(classes, this.props.className)}>
         <div className="DateInput--infoRow">
           <label className="DateInput--label" htmlFor={this.props.name}>{this.props.label}</label>
           {inputNote}
         </div>
         <ReactDatePicker
-          ref="input"
-          className="DateInput--input"
           calendarClassName="DatePicker"
-          disabled={this.props.disabled}
-          name={this.props.name}
-          onFocus={() => this.setState({inFocus: true})}
-          onBlur={() => this.setState({inFocus: false})}
-          placeholderText={this.props.placeholder}
-          required={this.props.required}
-          onSelect={this.props.onChange}
-          selected={this.props.value}
-          minDate={this.props.min}
+          className="DateInput--input"
+          disabled={this.props.disabled || this.props.readOnly}
           maxDate={this.props.max}
+          minDate={this.props.min}
+          name={this.props.name}
+          onBlur={() => this.setState({inFocus: false})}
+          onFocus={() => this.setState({inFocus: true})}
+          onSelect={this.props.onChange}
+          placeholderText={this.props.placeholder}
+          readOnly={this.props.readOnly}
+          ref="input"
+          required={this.props.required}
+          selected={this.props.value}
         />
       </div>
     );
@@ -84,6 +89,7 @@ DateInput.propTypes = {
   onFocus: React.PropTypes.func,
   onBlur: React.PropTypes.func,
   placeholder: React.PropTypes.node,
+  readOnly: React.PropTypes.bool,
   required: React.PropTypes.bool,
   type: React.PropTypes.string,
   value: dateType,
