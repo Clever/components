@@ -4,6 +4,7 @@ import React, {PropTypes} from "react";
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
 import SortIcons from "./SortIcons";
+import {FlexBox, ItemAlign} from "../flex";
 
 require("./HeaderCell.less");
 
@@ -25,14 +26,19 @@ export default function HeaderCell({
         sortable && cssClass.SORTABLE,
         className
       )}
-      noWrap
       onClick={() => sortable && onSortChange()}
       width={width}
     >
-      <div className={cssClass.LABEL}>
-        {children}
-      </div>
-      {sortable && <SortIcons direction={activeSortDirection} className={cssClass.SORT} />}
+      <FlexBox alignItems={ItemAlign.CENTER} >
+        <div className={cssClass.LABEL}>
+          {children}
+        </div>
+        {sortable && (
+          <div>
+            <SortIcons direction={activeSortDirection} className={cssClass.SORT} />
+          </div>
+        )}
+      </FlexBox>
     </Cell>
   );
 }
