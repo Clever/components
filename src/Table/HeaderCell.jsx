@@ -29,7 +29,7 @@ export default function HeaderCell({
       onClick={() => sortable && onSortChange()}
       width={width}
     >
-      <FlexBox alignItems={ItemAlign.CENTER} >
+      <FlexBox alignItems={ItemAlign.CENTER}>
         <div className={cssClass.LABEL}>
           {children}
         </div>
