@@ -36,6 +36,7 @@ export function Select({
   loadOptions,
   placeholder = "",
   readOnly,
+  required,
   searchable,
   creatable,
   creatablePromptFn,
@@ -60,9 +61,14 @@ export function Select({
     }
   }
 
-  let labelContainerClasses = cssClass.LABEL_CONTAINER;
+  let labelClasses = cssClass.LABEL;
   if (isLabelHidden(placeholder, value)) {
-    labelContainerClasses += ` ${cssClass.LABEL_HIDDEN}`;
+    labelClasses += ` ${cssClass.LABEL_HIDDEN}`;
+  }
+
+  let inputNote;
+  if (required) {
+    inputNote = <span className="Select--required">required</span>;
   }
 
   let reactSelectClasses = cssClass.REACT_SELECT;
@@ -100,8 +106,9 @@ export function Select({
           value={value}
         />
       </div>
-      <div className={labelContainerClasses}>
-        <label className={cssClass.LABEL} htmlFor={id}>{label}</label>
+      <div className={cssClass.LABEL_CONTAINER}>
+        <label className={labelClasses} htmlFor={id}>{label}</label>
+        {inputNote}
       </div>
     </div>
   );
@@ -138,6 +145,7 @@ Select.propTypes = {
   searchable: React.PropTypes.bool,
   creatable: React.PropTypes.bool,
   creatablePromptFn: React.PropTypes.func,
+  required: React.PropTypes.bool,
   value: React.PropTypes.oneOfType([
     React.PropTypes.string,
     selectValuePropType,

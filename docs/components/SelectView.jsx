@@ -22,6 +22,7 @@ export default class SelectView extends Component {
       creatable: false,
       lazy: false,
       selectValue: null,
+      required: false,
     };
   }
 
@@ -53,6 +54,7 @@ export default class SelectView extends Component {
                 creatablePromptFn={label => `Add new option: ${label}`}
                 multi={this.state.multi}
                 readOnly={this.state.readOnly}
+                required={this.state.required}
                 name="select"
                 onChange={value => this.setState({selectValue: value})}
                 options={!this.state.lazy && _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
@@ -138,6 +140,15 @@ export default class SelectView extends Component {
             />
             {" "}
             Read Only
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.required}
+              onChange={({target}) => this.setState({required: target.checked})}
+            />
+            {" "}
+            Required
           </label>
         </Example>
 
