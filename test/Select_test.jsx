@@ -208,6 +208,17 @@ describe("Select", () => {
     assert.equal(reactSelect.prop("placeholder"), "");
   });
 
+  it("renders the required label if specified", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        required
+      />
+    );
+    assert(select.find("Select--required"));
+  });
+
   it("uses the ReactSelect Creatable component to allow creating custom options if creatable prop is true", () => {
     const select = shallow(
       <Select
