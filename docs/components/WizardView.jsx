@@ -184,6 +184,13 @@ export default class WizardView extends PureComponent {
               defaultValue: "{}",
               optional: true,
             },
+            {
+              name: "shouldSkipStep",
+              type: "Function",
+              description: "A function to check if this step should be immediately skipped when navigating "
+              + "backwards/fowards through the wizard.",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="step"

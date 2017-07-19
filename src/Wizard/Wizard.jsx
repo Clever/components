@@ -52,7 +52,12 @@ export class Wizard extends React.Component {
   }
 
   prevStepHandler() {
-    const prevStep = Math.max(0, this.state.currentStep - 1);
+    const {steps} = this.props;
+
+    let prevStep = Math.max(0, this.state.currentStep - 1);
+    if (steps[prevStep].shouldSkipStep && steps[prevStep].shouldSkipStep(this.state.data)) {
+      prevStep = Math.max(0, prevStep - 1);
+    }
     this.jumpToStep(prevStep);
   }
 
@@ -77,7 +82,10 @@ export class Wizard extends React.Component {
       onComplete(data);
       return;
     }
-    const nextStep = Math.min(currentStep + 1);
+    let nextStep = Math.min(steps.length - 1, currentStep + 1);
+    if (steps[nextStep].shouldSkipStep && steps[nextStep].shouldSkipStep(this.state.data)) {
+      nextStep = Math.min(steps.length - 1, nextStep + 1);
+    }
     this.jumpToStep(nextStep);
   }
 
