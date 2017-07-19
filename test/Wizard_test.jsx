@@ -281,7 +281,7 @@ describe("Wizard", () => {
     it("updates the displayed step upon next button click", () => {
       const renderedWizard = shallow(<Wizard
         title="title"
-        description="descritpion"
+        description="description"
         onComplete={() => {}}
         steps={[
           {title: "step1", validate: () => true, component: TestComponent},
@@ -309,7 +309,7 @@ describe("Wizard", () => {
     it("updates the displayed step upon prev button click", () => {
       const renderedWizard = shallow(<Wizard
         title="title"
-        description="descritpion"
+        description="description"
         onComplete={() => {}}
         steps={[
           {title: "step1", validate: () => true, component: TestComponent},
@@ -332,11 +332,39 @@ describe("Wizard", () => {
       assert.equal(newPrevBtnMatch.length, 0);
     });
 
+    it("handles skipping steps", () => {
+      const renderedWizard = shallow(<Wizard
+        title="title"
+        description="description"
+        onComplete={() => {}}
+        steps={[
+          {title: "step1", validate: () => false, component: TestComponent},
+          {title: "step2", validate: () => false, shouldSkipStep: () => true, component: TestComponent},
+          {title: "step3", validate: () => false, component: TestComponent},
+        ]}
+      />);
+      const nextBtnMatch = renderedWizard.find(".Wizard--nextButton");
+      assert.equal(nextBtnMatch.length, 1);
+
+      nextBtnMatch.simulate("click");
+
+      assert.strictEqual(renderedWizard.state("currentStep"), 2);
+      const prevBtnMatch = renderedWizard.find(".Wizard--prevButton");
+      assert.equal(prevBtnMatch.length, 1);
+
+      prevBtnMatch.simulate("click");
+
+      assert.strictEqual(renderedWizard.state("currentStep"), 0);
+      const newPrevBtnMatch = renderedWizard.find(".Wizard--prevButton");
+      assert.equal(newPrevBtnMatch.length, 0);
+    });
+
+
     it("doesn't update the displayed step upon next button click if last step, calls onComplete", () => {
       const onCompleteSpy = sinon.spy();
       const renderedWizard = shallow(<Wizard
         title="title"
-        description="descritpion"
+        description="description"
         onComplete={onCompleteSpy}
         steps={[{title: "step", validate: () => true, component: TestComponent}]}
       />);
@@ -352,7 +380,7 @@ describe("Wizard", () => {
       let valid = false;
       const renderedWizard = shallow(<Wizard
         title="title"
-        description="descritpion"
+        description="description"
         onComplete={() => {}}
         steps={[
           {title: "step1", validate: () => valid, component: TestComponent},
