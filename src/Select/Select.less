@@ -14,14 +14,19 @@
   top: @size_xs;
   width: 100%;
 
-  &.Select--labelHidden {
-    opacity: 0 !important;
+  .Select--required {
+    position: absolute;
+    right: @size_l;
   }
 }
 
 .Select--label {
   left: @size_s;
   position: absolute;
+
+  &.Select--labelHidden {
+    opacity: 0 !important;
+  }
 }
 
 .Select--ReactSelect {

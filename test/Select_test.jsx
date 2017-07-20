@@ -35,9 +35,8 @@ describe("Select", () => {
         label="test label"
       />
     );
-    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
-    assert.equal(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN), false);
-    const label = labelContainer.find(`label.${Select.cssClass.LABEL}`);
+    const label = select.find(`label.${Select.cssClass.LABEL}`);
+    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
     assert.equal(label.prop("htmlFor"), "testid");
   });
 
@@ -49,8 +48,8 @@ describe("Select", () => {
         label="test label"
       />
     );
-    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
-    assert.equal(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+    const label = select.find(`.${Select.cssClass.LABEL}`);
+    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
   });
 
   it("renders the label when a value is selected", () => {
@@ -64,8 +63,8 @@ describe("Select", () => {
         value={testOptions[2]}
       />
     );
-    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
-    assert.equal(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+    const label = select.find(`.${Select.cssClass.LABEL}`);
+    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
   });
 
   it("hides the label when a placeholder is provided but no value is selected", () => {
@@ -77,8 +76,8 @@ describe("Select", () => {
         placeholder="test placeholder"
       />
     );
-    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
-    assert(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN));
+    const label = select.find(`.${Select.cssClass.LABEL}`);
+    assert(label.hasClass(Select.cssClass.LABEL_HIDDEN));
   });
 
   it("renders the label when multiple values are selected", () => {
@@ -92,8 +91,8 @@ describe("Select", () => {
         value={[testOptions[2], testOptions[0]]}
       />
     );
-    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
-    assert.equal(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+    const label = select.find(`.${Select.cssClass.LABEL}`);
+    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
   });
 
   it("hides the label when a placeholder is provided and value is an empty array", () => {
@@ -106,8 +105,8 @@ describe("Select", () => {
         value={[]}
       />
     );
-    const labelContainer = select.find(`.${Select.cssClass.LABEL_CONTAINER}`);
-    assert(labelContainer.hasClass(Select.cssClass.LABEL_HIDDEN));
+    const label = select.find(`.${Select.cssClass.LABEL}`);
+    assert(label.hasClass(Select.cssClass.LABEL_HIDDEN));
   });
 
   it("correctly sets the appropriate props on ReactSelect", () => {
@@ -207,6 +206,17 @@ describe("Select", () => {
     );
     const reactSelect = select.find(ReactSelect);
     assert.equal(reactSelect.prop("placeholder"), "");
+  });
+
+  it("renders the required label if specified", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        required
+      />
+    );
+    assert(select.find("Select--required"));
   });
 
   it("uses the ReactSelect Creatable component to allow creating custom options if creatable prop is true", () => {
