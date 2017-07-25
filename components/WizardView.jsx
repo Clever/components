@@ -159,9 +159,9 @@ export default class WizardView extends PureComponent {
             },
             {
               name: "canContinue",
-              type: "(wizardData: any) => bool"
+              type: "(wizardData: any) => bool",
               description: "If defined, used to determine whether the 'Next' " +
-                "button is clickable. Otherwise, `validate` is used."
+                "button is clickable. Otherwise, `validate` is used.",
               optional: true,
             },
             {
