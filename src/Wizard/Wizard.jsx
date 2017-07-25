@@ -184,8 +184,13 @@ export class Wizard extends React.Component {
 
     // If on the last step, cannot click next (i.e. complete) unless the whole form is valid; for
     // all other steps, only the current step needs to be valid.
-    const nextDisabled = this.state.currentStep === steps.length - 1 ?
-      validSteps.length !== steps.length : !curStep.validate(this.state.data);
+    let nextDisabled;
+    if (curStep.canContinue != null) {
+      nextDisabled = !curStep.canContinue(this.state.data);
+    } else {
+      nextDisabled = this.state.currentStep === steps.length - 1 ?
+        validSteps.length !== steps.length : !curStep.validate(this.state.data);
+    }
 
     return (
       <StickyContainer className={classnames(baseClasses)} style={style}>
@@ -272,6 +277,7 @@ Wizard.propTypes = {
       PropTypes.instanceOf(React.Component),
     ]).isRequired,
     validate: PropTypes.func.isRequired,
+    canContinue: PropTypes.func,
     help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     props: PropTypes.object,
     onStepComplete: PropTypes.func,

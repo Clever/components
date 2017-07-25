@@ -158,6 +158,13 @@ export default class WizardView extends PureComponent {
               + " function is expected to examine for validity",
             },
             {
+              name: "canContinue",
+              type: "(wizardData: any) => bool",
+              description: "If defined, used to determine whether the 'Next' " +
+                "button is clickable. Otherwise, `validate` is used.",
+              optional: true,
+            },
+            {
               name: "className",
               type: "String",
               description: "Additional classname to apply to the step",
