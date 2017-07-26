@@ -32,7 +32,7 @@ export default function InfoPanel({children, className, title, footer}) {
 InfoPanel.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
   footer: PropTypes.node,
 };
 
