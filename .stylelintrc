@@ -16,7 +16,7 @@
     "no-descending-specificity": true,
     "no-duplicate-selectors": true,
     "rule-nested-empty-line-before": ["always", {except: ["first-nested"]}],
-    "selector-no-id": true,
+    "selector-max-id": 0,
     "value-list-comma-space-after": "always-single-line",
     "value-list-comma-newline-after": "always-multi-line",
     "unit-whitelist": ["em", "rem", "%", "s", "vh", "ms"],
