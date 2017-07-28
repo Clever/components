@@ -8,12 +8,13 @@
  * Usage: webpack --config webpack_styles.config.js
  */
 
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const autoprefixer = require("autoprefixer");
 
-var version = require("./package.json").version;
-var filename = `style_${version}.css`;
+const version = require("./package.json").version;
+const filename = `style_${version}.css`;
 
-var entries = {};
+const entries = {};
 entries[filename] = "./src/less/index.less";
 
 module.exports = {
@@ -33,13 +34,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ["style", "css"],
+        loaders: ["style", "css", "postcss"],
       },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader"),
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader"),
       },
     ],
   },
+  postcss: [autoprefixer({browsers: "> 1% in US, last 3 versions, ie > 9"})],
   plugins: [new ExtractTextPlugin(filename)],
 };
