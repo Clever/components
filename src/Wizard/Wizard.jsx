@@ -78,13 +78,13 @@ export class Wizard extends React.Component {
     const {onComplete, steps} = this.props;
     const {currentStep, data} = this.state;
 
-    if (currentStep === steps.length - 1) {
+    let nextStep = currentStep + 1;
+    while ((nextStep < steps.length) && steps[nextStep].shouldSkipStep && steps[nextStep].shouldSkipStep(this.state.data)) {
+      nextStep++;
+    }
+    if (nextStep === steps.length) {
       onComplete(data);
       return;
-    }
-    let nextStep = Math.min(steps.length - 1, currentStep + 1);
-    if (steps[nextStep].shouldSkipStep && steps[nextStep].shouldSkipStep(this.state.data)) {
-      nextStep = Math.min(steps.length - 1, nextStep + 1);
     }
     this.jumpToStep(nextStep);
   }
