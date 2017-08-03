@@ -1,0 +1,14 @@
+@import (reference) "../less/utilities";
+@import (reference) "../Table/Cell";
+
+.List--Item {
+  // Match the Table component's cell styling.
+  .Table--cell();
+  border-color: @neutral_silver;
+  list-style: none;
+  transition: all @timingPromptly ease-out;
+}
+
+.List--empty {
+  color: @neutral_gray;
+}

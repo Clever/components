@@ -259,7 +259,7 @@ export class Table extends Component {
 
   render() {
     const {
-      children: columns,
+      children,
       className,
       fixed,
       paginated,
@@ -270,6 +270,13 @@ export class Table extends Component {
     const {cssClass} = Table;
     const {lazy, numRows} = this.props;
     const {currentPage, sortState, pageLoading, allLoaded} = this.state;
+
+    const columns = lodash.compact(React.Children.toArray(children));
+    if (columns.length < 2) {
+      throw new Error(
+        "Table requires at least 2 columns. Consider using the List component instead."
+      );
+    }
 
     const {displayedData, numPages} = this._getDisplayedData();
     const displayedPage = Math.min(currentPage, numPages);
