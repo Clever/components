@@ -5,6 +5,8 @@
     "stage-3"
   ],
   "plugins": [
+    "./transform-code-string",
+    "transform-class-properties",
     "transform-es2015-destructuring",
     "transform-object-assign",
     "transform-object-rest-spread",
