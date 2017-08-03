@@ -41,7 +41,7 @@ class ContactStep extends React.Component {
 
   static onStepComplete(wizardState) {
     alert(
-      "A custom action for the current step. We might, for example, want to save the phone " +
+      "Step.onStepComplete: A custom action for the current step. We might, for example, want to save the phone " +
       `number (${wizardState.phoneNumber}) entered on this page in a database right away.`
     );
 
@@ -171,12 +171,39 @@ export default class WizardExample extends React.Component {
         onStepComplete: ContactStep.onStepComplete,
       },
       {
+        title: "Skip Intermediate Step 1",
+        description: "Who should we contact when we have arrived to your delivery address?",
+        component: ContactStep,
+        validate: () => (false),
+        shouldSkipStep: () => (true),
+        nextButtonValue: "Save contact",
+        onStepComplete: undefined,
+      },
+      {
+        title: "Skip Intermediate Step 2",
+        description: "Who should we contact when we have arrived to your delivery address?",
+        component: ContactStep,
+        validate: () => (false),
+        shouldSkipStep: () => (true),
+        nextButtonValue: "Save contact",
+        onStepComplete: undefined,
+      },
+      {
         title: "Review",
         description: "Please review and double check the information below before finalizing the " +
           "delivery process.",
         component: ReviewStep,
         validate: ReviewStep.validate,
         nextButtonValue: "Set delivery",
+      },
+      {
+        title: "Skip Final Step",
+        description: "Who should we contact when we have arrived to your delivery address?",
+        component: ContactStep,
+        validate: () => (false),
+        shouldSkipStep: () => (true),
+        nextButtonValue: "Save contact",
+        onStepComplete: undefined,
       },
     ];
 
@@ -247,7 +274,7 @@ export default class WizardExample extends React.Component {
         steps={steps}
         prevButtonValue={this.state.prevButtonValue}
         onComplete={(state) =>
-          alert(`Delivering to ${state.fullName} at ${state.address}. ` +
+          alert(`Wizard.OnComplete: Delivering to ${state.fullName} at ${state.address}. ` +
                 `Please call ${state.phoneNumber} upon delivery`)
         }
         wizardButtons={[{
