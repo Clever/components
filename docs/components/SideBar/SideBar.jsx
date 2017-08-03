@@ -80,6 +80,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/info-panel", "InfoPanel")}
           {this._renderLink("/components/label", "Label")}
           {this._renderLink("/components/left-nav", "LeftNav")}
+          {this._renderLink("/components/list", "List")}
           {this._renderLink("/components/modal", "Modal")}
           {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/number", "Number")}
