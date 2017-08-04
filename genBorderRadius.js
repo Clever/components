@@ -26,17 +26,17 @@ _.forEach(borderRadii, (radius, name) => {
 
     `/** ${radiusVar} */`,
 
-    `.borderRadius--${name} { border-radius: ${radiusVar}; }`,
+    `.borderRadius--${name} { border-radius: ${radiusVar}; }\n`,
 
-    `.borderRadius--topLeft--${name} { border-top-left-radius: ${radiusVar}; }`,
+    `.borderRadius--topLeft--${name} { border-top-left-radius: ${radiusVar}; }\n`,
 
-    `.borderRadius--topRight--${name} { border-top-right-radius: ${radiusVar}; }`,
+    `.borderRadius--topRight--${name} { border-top-right-radius: ${radiusVar}; }\n`,
 
-    `.borderRadius--bottomLeft--${name} { border-bottom-left-radius: ${radiusVar}; }`,
+    `.borderRadius--bottomLeft--${name} { border-bottom-left-radius: ${radiusVar}; }\n`,
 
-    `.borderRadius--bottomRight--${name} { border-bottom-right-radius: ${radiusVar}; }`,
+    `.borderRadius--bottomRight--${name} { border-bottom-right-radius: ${radiusVar}; }\n`,
 
-    `.borderRadius--top--${name} { .borderRadius--topLeft--${name}; .borderRadius--topRight--${name}; }`,
+    `.borderRadius--top--${name} { .borderRadius--topLeft--${name}; .borderRadius--topRight--${name}; }\n`,
 
     `.borderRadius--bottom--${name} { .borderRadius--bottomLeft--${name}; .borderRadius--bottomRight--${name}; }`,
   ]);

@@ -253,43 +253,68 @@
  */
 
 .flexbox { .flexbox() }
+
 /* Enable flex for specific layout breakpoints. */
 .breakpointS({ .flexbox--s { .flexbox } });
+
 .breakpointM({ .flexbox--m { .flexbox } });
+
 .breakpointL({ .flexbox--l { .flexbox } });
 
 .flexbox--inline { .inlineFlexbox() }
+
 .flex--direction--column { .flexDirection(column) }
+
 .flex--wrap { .flexWrap(wrap) }
+
 .flex--nowrap { .flexWrap(nowrap) }
 
 .flex--grow { .flexGrow(1) }
+
 .flex--none { .flexNone() }
+
 .flex--shrink { .flexShrink(1) }
 
 .items--baseline { .alignItems(baseline) }
+
 .items--center { .alignItems(center) }
+
 .items--end { .alignItems(flex-end) }
+
 .items--start { .alignItems(flex-start) }
+
 .items--stretch { .alignItems(stretch) }
 
 .self--baseline { .alignSelf(baseline) }
+
 .self--center { .alignSelf(center) }
+
 .self--end { .alignSelf(flex-end) }
+
 .self--start { .alignSelf(flex-start) }
+
 .self--stretch { .alignSelf(stretch) }
 
 .justify--around { .justifyContent(space-around) }
+
 .justify--between { .justifyContent(space-between) }
+
 .justify--center { .justifyContent(center) }
+
 .justify--end { .justifyContent(flex-end) }
+
 .justify--start { .justifyContent(flex-start) }
 
 .content--around { .alignContent(space-around) }
+
 .content--between { .alignContent(space-between) }
+
 .content--center { .alignContent(center) }
+
 .content--end { .alignContent(flex-end) }
+
 .content--start { .alignContent(flex-start) }
+
 .content--stretch { .alignContent(stretch) }
 
 /* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
@@ -300,7 +325,11 @@
 }
 
 .order--0 { .order(0) }
+
 .order--1 { .order(1) }
+
 .order--2 { .order(2) }
+
 .order--3 { .order(3) }
+
 .order--last { .order(99999) }
