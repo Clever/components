@@ -15,7 +15,13 @@
     }],
     "no-descending-specificity": true,
     "no-duplicate-selectors": true,
-    "rule-nested-empty-line-before": ["always", {except: ["first-nested"]}],
+    "rule-empty-line-before": [
+      "always",
+      {
+        except: ["first-nested"],
+        ignore: ["after-comment"]
+      }
+    ],
     "selector-max-id": 0,
     "value-list-comma-space-after": "always-single-line",
     "value-list-comma-newline-after": "always-multi-line",

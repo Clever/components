@@ -1,0 +1,41 @@
+@import (reference) "~less/index";
+
+
+.ListView--intro {
+  .margin--bottom--xl;
+}
+
+.ListView--list {
+  width: 16rem;
+}
+
+.ListView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.ListView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.ListView--config {
+  cursor: pointer;
+}
+
+.ListView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.ListView--props {
+  .margin--top--l;
+}
