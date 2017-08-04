@@ -43,9 +43,6 @@ export default class ListView extends Component {
     showBorder: true,
   };
 
-  componentWillMount() {
-  }
-
   renderConfig() {
     const {cssClass} = ListView;
     const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle} = this.state;
@@ -165,7 +162,6 @@ export default class ListView extends Component {
               name: "children",
               type: "List.Item | List.Item[]",
               description: "List items to display.",
-              optional: true,
             },
             {
               name: "className",
