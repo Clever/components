@@ -25,12 +25,15 @@ export default class PropDocumentation extends PureComponent {
           className={cssClass.TABLE}
           data={availableProps}
           rowIDFn={p => p.name}
+          initialSortState={{columnID: "name", direction: Table.sortDirection.ASCENDING}}
         >
           <Column
             id="name"
             header={{content: "Prop Name"}}
             cell={{renderer: p => p.name}}
             noWrap
+            sortable
+            sortValueFn={p => p.name.trim().toLowerCase()}
           />
           <Column
             id="type"
@@ -66,7 +69,7 @@ PropDocumentation.propTypes = {
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     description: PropTypes.node.isRequired,
-    defaultValue: PropTypes.string,
+    defaultValue: PropTypes.node,
     optional: PropTypes.bool,
   })),
   className: PropTypes.string,
