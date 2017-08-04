@@ -7,6 +7,7 @@ const SIZING_FILENAME = "sizing.less";
 const SPACING_FILENAME = "spacing.less";
 const sizes = {
   none: 0,
+  "4xs": 0.0625,
   "3xs": 0.125,
   "2xs": 0.25,
   xs: 0.5,
@@ -37,19 +38,19 @@ _.forEach(sizes, (size, sizeName) => {
   ["margin", "padding"].forEach(type => {
     const classPrefix = `${type}`;
     spacingContents = spacingContents.concat([
-      `.${classPrefix}--${sizeName} { ${type}: ${sizeVar} };`,
+      `.${classPrefix}--${sizeName} { ${type}: ${sizeVar} }\n`,
 
-      `.${classPrefix}--top--${sizeName} { ${type}-top: ${sizeVar} };`,
+      `.${classPrefix}--top--${sizeName} { ${type}-top: ${sizeVar} }\n`,
 
-      `.${classPrefix}--right--${sizeName} { ${type}-right: ${sizeVar} };`,
+      `.${classPrefix}--right--${sizeName} { ${type}-right: ${sizeVar} }\n`,
 
-      `.${classPrefix}--bottom--${sizeName} { ${type}-bottom: ${sizeVar} };`,
+      `.${classPrefix}--bottom--${sizeName} { ${type}-bottom: ${sizeVar} }\n`,
 
-      `.${classPrefix}--left--${sizeName} { ${type}-left: ${sizeVar} };`,
+      `.${classPrefix}--left--${sizeName} { ${type}-left: ${sizeVar} }\n`,
 
-      `.${classPrefix}--x--${sizeName} { ${type}-left: ${sizeVar}; ${type}-right: ${sizeVar} };`,
+      `.${classPrefix}--x--${sizeName} { ${type}-left: ${sizeVar}; ${type}-right: ${sizeVar} }\n`,
 
-      `.${classPrefix}--y--${sizeName} { ${type}-top: ${sizeVar}; ${type}-bottom: ${sizeVar} };`,
+      `.${classPrefix}--y--${sizeName} { ${type}-top: ${sizeVar}; ${type}-bottom: ${sizeVar} }`,
     ]);
 
     spacingContents.push("");

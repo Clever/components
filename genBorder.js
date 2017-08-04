@@ -26,17 +26,17 @@ _.forEach(borderWidths, (width, name) => {
 
     `/** ${widthVar} */`,
 
-    `.border--${name}(@color) { border: ${widthVar} solid @color; }`,
+    `.border--${name}(@color) { border: ${widthVar} solid @color; }\n`,
 
-    `.border--top--${name}(@color) { border-top: ${widthVar} solid @color; }`,
+    `.border--top--${name}(@color) { border-top: ${widthVar} solid @color; }\n`,
 
-    `.border--right--${name}(@color) { border-right: ${widthVar} solid @color; }`,
+    `.border--right--${name}(@color) { border-right: ${widthVar} solid @color; }\n`,
 
-    `.border--bottom--${name}(@color) { border-bottom: ${widthVar} solid @color; }`,
+    `.border--bottom--${name}(@color) { border-bottom: ${widthVar} solid @color; }\n`,
 
-    `.border--left--${name}(@color) { border-left: ${widthVar} solid @color; }`,
+    `.border--left--${name}(@color) { border-left: ${widthVar} solid @color; }\n`,
 
-    `.border--x--${name}(@color) { .border--left--${name}(@color); .border--right--${name}(@color); }`,
+    `.border--x--${name}(@color) { .border--left--${name}(@color); .border--right--${name}(@color); }\n`,
 
     `.border--y--${name}(@color) { .border--top--${name}(@color); .border--bottom--${name}(@color); }`,
   ]);
