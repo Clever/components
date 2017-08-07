@@ -305,6 +305,8 @@ export default class DropdownButtonView extends Component {
               defaultValue: "DropdownButton.Size.M",
             },
             {
+              name: "target",
+              type: "string",
               description: (
                 <div>
                   <p>The window target for the link button, if `href` is specified.</p>
