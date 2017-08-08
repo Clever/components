@@ -10,6 +10,7 @@ const borderRadii = {
   m: 0.1875, // 3px
   l: 0.25, // 4px
   xl: 0.5, // 8px
+  "10percent": "10%", // for apps
 };
 
 const constants = [];
@@ -17,9 +18,14 @@ let classes = [];
 
 _.forEach(borderRadii, (radius, name) => {
   // Trim leading 0s on fractional radiuss.
+  let radiusVar = `@borderRadius${name.toUpperCase()}`;
   const radiusStr = `${radius}`.replace("0.", ".");
-  const radiusVar = `@borderRadius${name.toUpperCase()}`;
-  constants.push(`${radiusVar}: ${radiusStr}rem;  /* ${radius * 16}px */`);
+  if (`${radius}`.endsWith("%")) {
+    radiusVar = `@borderRadius${name}`;
+    constants.push(`${radiusVar}: ${radius};  /* ${radius} */`);
+  } else {
+    constants.push(`${radiusVar}: ${radiusStr}rem;  /* ${radius * 16}px */`);
+  }
 
   classes = classes.concat([
     "",
