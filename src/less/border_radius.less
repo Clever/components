@@ -13,7 +13,7 @@
 @borderRadiusM: .1875rem;  /* 3px */
 @borderRadiusL: .25rem;  /* 4px */
 @borderRadiusXL: .5rem;  /* 8px */
-
+@borderRadiusAppIcon: 10%;
 
 /**
  * Border radius classes.
@@ -93,3 +93,6 @@
 .borderRadius--top--xl { .borderRadius--topLeft--xl; .borderRadius--topRight--xl; }
 
 .borderRadius--bottom--xl { .borderRadius--bottomLeft--xl; .borderRadius--bottomRight--xl; }
+
+/** @borderRadiusAppIcon */
+.borderRadius--appIcon { border-radius: @borderRadiusAppIcon; }
