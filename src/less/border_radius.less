@@ -1,3 +1,5 @@
+// stylelint-disable max-line-length
+
 /**
  * Common border-radius definitions.
  *
@@ -13,6 +15,7 @@
 @borderRadiusM: .1875rem;  /* 3px */
 @borderRadiusL: .25rem;  /* 4px */
 @borderRadiusXL: .5rem;  /* 8px */
+@borderRadius10percent: 10%;  /* 10% */
 
 
 /**
@@ -93,3 +96,18 @@
 .borderRadius--top--xl { .borderRadius--topLeft--xl; .borderRadius--topRight--xl; }
 
 .borderRadius--bottom--xl { .borderRadius--bottomLeft--xl; .borderRadius--bottomRight--xl; }
+
+/** @borderRadius10percent */
+.borderRadius--10percent { border-radius: @borderRadius10percent; }
+
+.borderRadius--topLeft--10percent { border-top-left-radius: @borderRadius10percent; }
+
+.borderRadius--topRight--10percent { border-top-right-radius: @borderRadius10percent; }
+
+.borderRadius--bottomLeft--10percent { border-bottom-left-radius: @borderRadius10percent; }
+
+.borderRadius--bottomRight--10percent { border-bottom-right-radius: @borderRadius10percent; }
+
+.borderRadius--top--10percent { .borderRadius--topLeft--10percent; .borderRadius--topRight--10percent; }
+
+.borderRadius--bottom--10percent { .borderRadius--bottomLeft--10percent; .borderRadius--bottomRight--10percent; }
