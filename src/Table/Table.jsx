@@ -146,7 +146,10 @@ export class Table extends Component {
   }
 
   _getColumn(columnID) {
-    return lodash.find(this.props.children, column => column.props.id === columnID);
+    return lodash.find(
+      React.Children.toArray(this.props.children),
+      column => column.props.id === columnID,
+    );
   }
 
   _toggleSort(columnID) {
