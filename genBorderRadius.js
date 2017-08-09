@@ -10,7 +10,7 @@ const borderRadii = {
   m: 0.1875, // 3px
   l: 0.25, // 4px
   xl: 0.5, // 8px
-  "10percent": "10%", // for apps
+  "10percent": "10%",
 };
 
 const constants = [];
