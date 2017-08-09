@@ -146,7 +146,10 @@ export class Table extends Component {
   }
 
   _getColumn(columnID) {
-    return lodash.find(this.props.children, column => column.props.id === columnID);
+    return lodash.find(
+      React.Children.toArray(this.props.children),
+      column => column.props.id === columnID,
+    );
   }
 
   _toggleSort(columnID) {
@@ -272,8 +275,8 @@ export class Table extends Component {
     const {currentPage, sortState, pageLoading, allLoaded} = this.state;
 
     const columns = lodash.compact(React.Children.toArray(children));
-    if (columns.length < 2) {
-      throw new Error(
+    if (columns.length < 2 && process.env.NODE_ENV !== "production") {
+      console.error(
         "Table requires at least 2 columns. Consider using the List component instead."
       );
     }
