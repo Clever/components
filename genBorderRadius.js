@@ -49,6 +49,8 @@ _.forEach(borderRadii, (radius, name) => {
 });
 
 const contents = [
+  "// stylelint-disable max-line-length",
+  "",
   "/**",
   " * Common border-radius definitions.",
   " *",
