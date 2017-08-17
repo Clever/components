@@ -94,7 +94,7 @@ export default function GettingStartedView() {
                 autogenerate source and test stubs
               </li>
               <li>Use Example and Demo to document your component in /docs</li>
-              <li>To run locally, run make dev-server and open http://localhost:8080/</li>
+              <li>To run locally, run <code className="text--small">make dev-server</code> and open http://localhost:5010/</li>
               <li>Use <code className="text--small">make test</code> to run tests locally</li>
               <li>Test cross-browser with Browserstack</li>
               <li>Open a PR, fill out the template, and assign it to someone in @frontend</li>
