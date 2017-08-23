@@ -7,6 +7,7 @@ import ChatHeart from "./ChatHeart";
 import Chat from "./Chat";
 import Checkmark from "./Checkmark";
 import CircleC from "./CircleC";
+import CleverC from "./CleverC";
 import Clock from "./Clock";
 import Diploma from "./Diploma";
 import Funnel from "./Funnel";
@@ -73,6 +74,7 @@ export default {
   chat: Chat,
   checkmark: Checkmark,
   "circle-c": CircleC,
+  "clever-c": CleverC,
   clock: Clock,
   diploma: Diploma,
   funnel: Funnel,

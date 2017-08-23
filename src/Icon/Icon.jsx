@@ -33,6 +33,7 @@ Icon.names = {
   CHAT_HEART:         "chat-heart",
   CHECKMARK:          "checkmark",
   CIRCLE_C:           "circle-c",
+  CLEVER_C:           "clever-c",
   CLOCK:              "clock",
   DIPLOMA:            "diploma",
   FUNNEL:             "funnel",
