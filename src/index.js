@@ -51,3 +51,4 @@ export {Number};
 
 import Tooltip from "./Tooltip";
 export {Tooltip};
+export {TabbedTable} from "./TabbedTable/TabbedTable";
