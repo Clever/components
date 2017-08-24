@@ -1,11 +1,34 @@
-.TabbedTable {
- /*
-    Use namespaced classes that begin with "TabbedTable"
-    to avoid clashing with global styles. If possible, avoid
-    over-nesting selectors and instead use clear class names
-    that convey the purpose and/or state of the element:
+@import (reference) "~clever-components/dist/less/index";
 
-    .TabbedTable--container
-    .TabbedTable--input-disabled
- */
+.TabbedTable--TabBar {
+  .margin--bottom--m;
+}
+
+.TabbedTable--Title {
+  display: inline-block;
+  border-right: @size_4xs solid @neutral_gray;
+  color: @neutral_black;
+  padding: @size_2xs @size_m;
+  .margin--right--m;
+  .text--large;
+  .text--semi-bold;
+}
+
+.TabbedTable--Tabs {
+  font-size: @size_s;
+  color: @neutral_dark_gray;
+}
+
+.TabbedTable--TabName {
+  .margin--left--s;
+  color: @neutral_dark_gray;
+}
+
+.TabbedTable--TabName:hover {
+  cursor: pointer;
+}
+
+.TabbedTable--SelectedTabName {
+  color: @primary_blue;
+  .text--semi-bold;
 }
