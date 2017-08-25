@@ -55,8 +55,7 @@ export default class WizardStep extends React.Component {
           <h1>Step {currentStep + 1}: {title}</h1>
         </div>
 
-        <div className={classNameFor(baseClasses, "topInfo")}>
-          {description &&
+          {description && <div className={classNameFor(baseClasses, "topInfo")}>
             <div
               className={classnames(
                 contentGroupClass,
