@@ -38,6 +38,7 @@ export function Select({
   readOnly,
   required,
   searchable,
+  noResultsText,
   creatable,
   creatablePromptFn,
   value,
@@ -103,6 +104,7 @@ export function Select({
           loadOptions={loadOptions}
           placeholder={placeholder}
           searchable={searchable}
+          noResultsText={noResultsText}
           value={value}
         />
       </div>
@@ -145,6 +147,7 @@ Select.propTypes = {
   searchable: React.PropTypes.bool,
   creatable: React.PropTypes.bool,
   creatablePromptFn: React.PropTypes.func,
+  noResultsText: React.PropTypes.node,
   required: React.PropTypes.bool,
   value: React.PropTypes.oneOfType([
     React.PropTypes.string,
