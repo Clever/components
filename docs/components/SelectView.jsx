@@ -264,6 +264,13 @@ export default class SelectView extends Component {
               optional: true,
             },
             {
+              name: "noResultsText",
+              type: "node",
+              description: "Text to display when there are no results found in search",
+              defaultValue: "'No results found'",
+              optional: true,
+            },
+            {
               name: "value",
               type: "String",
               description: "Selected value. Must be updated by caller in the onChange",
