@@ -10,13 +10,15 @@
 }
 
 .AlertBox--title {
-  display: inline;
-  .margin--left--2xs;
+  .margin--left--xs;
   .text--semi-bold;
+  flex-grow: 1;
 }
 
 .AlertBox--header {
   .padding--bottom--xs;
+  align-items: center;
+  display: flex;
 }
 
 .AlertBox--Icon {
@@ -61,7 +63,6 @@
 }
 
 .AlertBox--close {
-  display: inline;
   cursor: pointer;
   height: @size_m;
   width: @size_m;

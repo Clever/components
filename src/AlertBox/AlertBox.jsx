@@ -42,8 +42,8 @@ export default class AlertBox extends PureComponent {
     return (
       <div className={classnames(`AlertBox--${type}`, CLASSNAMES.CONTAINER, className)}>
         <div className={CLASSNAMES.HEADER}>
-          <span><Icon /></span>
-          <strong className={CLASSNAMES.TITLE}> {title} </strong>
+          <Icon />
+          <strong className={CLASSNAMES.TITLE}>{title}</strong>
           {isClosable &&
             <button className={CLASSNAMES.CLOSE} onClick={() => this.closeBox()}><CloseIcon /></button>
           }
