@@ -3,7 +3,7 @@ import classnames from "classnames";
 import React, {PureComponent, PropTypes} from "react";
 
 import {CloseIcon, WarningIcon, SuccessIcon, ErrorIcon, InfoIcon} from "./icons";
-import {FlexBox, ItemAlign} from "../flex";
+import {FlexBox, FlexItem, ItemAlign} from "../flex";
 
 import "./AlertBox.less";
 
@@ -45,7 +45,7 @@ export default class AlertBox extends PureComponent {
       <div className={classnames(`AlertBox--${type}`, CLASSNAMES.CONTAINER, className)}>
         <FlexBox className={CLASSNAMES.HEADER} alignItems={ItemAlign.CENTER}>
           <Icon />
-          <FlexBox className={CLASSNAMES.TITLE} grow>{title}</FlexBox>
+          <FlexItem className={CLASSNAMES.TITLE} grow>{title}</FlexItem>
           {isClosable && (
             <button className={CLASSNAMES.CLOSE} onClick={() => this.closeBox()}>
               <CloseIcon />
