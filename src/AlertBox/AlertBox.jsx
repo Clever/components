@@ -2,8 +2,10 @@ import _ from "lodash";
 import classnames from "classnames";
 import React, {PureComponent, PropTypes} from "react";
 
-import "./AlertBox.less";
 import {CloseIcon, WarningIcon, SuccessIcon, ErrorIcon, InfoIcon} from "./icons";
+import {FlexBox, FlexItem, ItemAlign} from "../flex";
+
+import "./AlertBox.less";
 
 const ICONS = {
   warning: WarningIcon,
@@ -41,13 +43,15 @@ export default class AlertBox extends PureComponent {
     }
     return (
       <div className={classnames(`AlertBox--${type}`, CLASSNAMES.CONTAINER, className)}>
-        <div className={CLASSNAMES.HEADER}>
-          <span><Icon /></span>
-          <strong className={CLASSNAMES.TITLE}> {title} </strong>
-          {isClosable &&
-            <button className={CLASSNAMES.CLOSE} onClick={() => this.closeBox()}><CloseIcon /></button>
-          }
-        </div>
+        <FlexBox className={CLASSNAMES.HEADER} alignItems={ItemAlign.CENTER}>
+          <Icon />
+          <FlexItem className={CLASSNAMES.TITLE} grow>{title}</FlexItem>
+          {isClosable && (
+            <button className={CLASSNAMES.CLOSE} onClick={() => this.closeBox()}>
+              <CloseIcon />
+            </button>
+          )}
+        </FlexBox>
         {children}
       </div>
     );
