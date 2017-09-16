@@ -1,14 +1,16 @@
 SHELL = /bin/bash
+
+BABEL := node_modules/babel-cli/bin/babel.js
+JEST := ./node_modules/.bin/jest --maxWorkers=1 --config ./jestconfig.json
 JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js" -not -path "./vendor/*")
 JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
 TS_FILES := $(shell find . -regex ".*\.tsx*" -not -path "./node_modules/*")
 LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
-TESTS := $(shell find test -name "*_test*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./.stylelintrc
-MOCHA := node_modules/mocha/bin/mocha
-MOCHA_OPTIONS := --compilers jsx:babel-register --require ignore-styles --require jsdom-global/register
-BABEL := node_modules/babel-cli/bin/babel.js
+TESTS := $(TESTS_JS) $(TESTS_TS)
+TESTS_JS := $(shell find . -regex ".*_test\.jsx*" -not -path "./node_modules/*")
+TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" -not -path "./bin/*")
 WEBPACK := node_modules/webpack/bin/webpack.js
 
 .PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles sizing-styles border-styles
@@ -82,12 +84,12 @@ lint:
 
 test: lint
 	@echo "Running unit tests..."
-	NODE_ENV=test $(MOCHA) $(MOCHA_OPTIONS) --recursive
+	NODE_ENV=test $(JEST)
 
 $(TESTS):
 	@echo "Running tests for $@"
 	@$(LINT) $@
-	@NODE_ENV=test $(MOCHA) $(MOCHA_OPTIONS) $@
+	@NODE_ENV=test $(JEST) $@
 
 dev-server:
 	npm run-script dev-server
