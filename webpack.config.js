@@ -8,7 +8,7 @@ module.exports = {
     publicPath: "/",
   },
   resolve: {
-    extensions: ["", ".js", ".jsx", ".less"],
+    extensions: ["", ".ts", ".tsx", ".js", ".jsx", ".less"],
     alias: {
       src: "src",
       utils: "src/utils",
@@ -29,6 +29,16 @@ module.exports = {
       {
         test: /\.less$/,
         loader: "style!css!postcss!less",
+      },
+      {
+        test: /\.tsx?$/,
+        loader: "awesome-typescript-loader",
+        query: {
+          configFileName: "./tsconfig.docs.json",
+          ignoreDiagnostics: [
+            2307,
+          ],
+        },
       },
       {
         test: /\.jsx?$/,

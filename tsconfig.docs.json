@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "types": [
+      "prop-types",
+      "react"
+    ]
+  },
+  "exclude": [
+    "./assets",
+    "./bin",
+    "./dist",
+    "./src",
+    "./node_modules",
+    "./vendor",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*_test.ts",
+    "**/*_test.tsx"
+  ],
+  "include": [
+    "docs/**/*"
+  ]
+}

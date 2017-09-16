@@ -1,6 +1,7 @@
 extends: "airbnb"
 env:
     mocha: true
+    jest: true
 parser: "babel-eslint"
 parserOptions:
   ecmaVersion: 6
@@ -47,3 +48,11 @@ rules:
   key-spacing:
     - 2
     - mode: "minimum"
+
+  # Allow functions and classes to be declared after they are referenced.
+  # This enables us to define more important public functions/classes toward the top of a file and
+  # less relevant private helpers below.
+  no-use-before-define:
+    - 2
+    - classes: false
+      functions: false
