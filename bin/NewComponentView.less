@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.NewComponentView--intro {
+  .margin--bottom--xl;
+}
+
+.NewComponentView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.NewComponentView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.NewComponentView--config {
+  cursor: pointer;
+}
+
+.NewComponentView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.NewComponentView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.NewComponentView--props {
+  .margin--top--l;
+}
+
