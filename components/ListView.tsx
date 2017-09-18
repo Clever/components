@@ -1,5 +1,5 @@
-import _ from "lodash";
-import React, {Component} from "react";
+import * as _ from "lodash";
+import * as React from "react";
 import {Link} from "react-router";
 
 import Example, {CodeSample, ExampleCode} from "./Example";
@@ -24,7 +24,7 @@ const Items = {
   ],
 };
 
-export default class ListView extends Component {
+export default class ListView extends React.PureComponent {
   static cssClass = {
     CONFIG_CONTAINER: "ListView--configContainer",
     CONFIG_OPTIONS: "ListView--configOptions",
