@@ -1,6 +1,8 @@
 // TODO(kofi): Convert all components to default exports to allow clients to import separate
 // components without pulling in the whole repo.
 
+import "core-js"; // Provides es5 polyfills not included by the typescript compiler.
+
 export * from "./flex";
 export * from "./TabBar";
 export {Modal} from "./Modal/Modal";

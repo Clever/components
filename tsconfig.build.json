@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "types": [
+      "prop-types",
+      "react"
+    ]
+  },
+  "exclude": [
+    "./assets",
+    "./bin",
+    "./dist",
+    "./docs",
+    "./node_modules",
+    "./vendor",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*_test.ts",
+    "**/*_test.tsx"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
+}

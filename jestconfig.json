@@ -1,0 +1,26 @@
+{
+  "automock": false,
+  "testRegex": ".+_test\\.(j|t)sx?$",
+  "testPathIgnorePatterns": [
+    "/.*\/bin/",
+    "/.*\/node_modules/"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "jsx",
+    "ts",
+    "tsx"
+  ],
+  "moduleNameMapper": {
+    ".*(css|less|png|svg)$": "<rootDir>/jest_css_import_stub.js"
+  },
+  "setupFiles": [
+    "./setUpJestTests.js"
+  ],
+  "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+  "transform": {
+    ".*(js|jsx|ts|tsx)$": "./jest_preprocessor.js"
+  },
+  "verbose": true
+}

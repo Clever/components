@@ -1,9 +1,10 @@
-import classnames from "classnames";
-import React, {PropTypes, PureComponent} from "react";
+import * as classnames from "classnames";
+import * as React from "react";
+import * as PropTypes from "prop-types";
 
 import "./Item.less";
 
-export default class Item extends PureComponent {
+export default class Item extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,

@@ -1,29 +1,46 @@
 SHELL = /bin/bash
+
+BABEL := node_modules/babel-cli/bin/babel.js
+JEST := ./node_modules/.bin/jest --maxWorkers=1 --config ./jestconfig.json
 JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js" -not -path "./vendor/*")
 JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
+TS_FILES := $(shell find . -regex ".*\.tsx*" -not -path "./node_modules/*")
 LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
-TESTS := $(shell find test -name "*_test*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./.stylelintrc
-MOCHA := node_modules/mocha/bin/mocha
-MOCHA_OPTIONS := --compilers jsx:babel-register --require ignore-styles --require jsdom-global/register
-BABEL := node_modules/babel-cli/bin/babel.js
+TESTS := $(TESTS_JS) $(TESTS_TS)
+TESTS_JS := $(shell find . -regex ".*_test\.jsx*" -not -path "./node_modules/*")
+TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" -not -path "./bin/*")
 WEBPACK := node_modules/webpack/bin/webpack.js
 
 .PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles sizing-styles border-styles
 .PHONY: border-radius-styles deploy-docs generate
 
+GREEN_CHECK_MARK := " \033[0;32m✓\033[0m"
 clean:
-	@echo '✓ Clean out dist directory'
+	@echo -n 'Cleaning out dist directory...'
 	@rm -rf dist
+	@echo -e $(GREEN_CHECK_MARK)
 
 es5:
+	@echo -n 'Copying /src to /dist...'
 	@cp -r src dist
-	@echo '✓ Copy /src to /dist'
-	@$(BABEL) dist -d dist > ._babel_tmp && rm ._babel_tmp
-	@echo '✓ Convert ES6 to ES5'
-	@find ./dist -name "*.jsx" | xargs -n1 rm
-	@echo '✓ Remove JSX files'
+	@echo -e $(GREEN_CHECK_MARK)
+
+	@# Compile ts[x] first, since it may compile js[x] dependencies that we'll want to overwrite with
+	@# the babel-compiled versions.
+	@echo -n 'Converting .ts[x] to ES5...'
+	@./node_modules/.bin/tsc --project ./tsconfig.build.json
+	@echo -e $(GREEN_CHECK_MARK)
+
+	@echo -n 'Converting .js[x] files to ES5...'
+	@$(BABEL) src -d dist > ._babel_tmp && rm ._babel_tmp
+	@echo -e $(GREEN_CHECK_MARK)
+
+	@echo -n 'Removing .js[x] & .ts[x] files...'
+	@find ./dist -regex ".*\.[jt]sx" | xargs -n1 rm
+	@find ./dist -regex ".*\.ts" | xargs -n1 rm
+	@echo -e $(GREEN_CHECK_MARK)
 
 docs:
 	@echo '✓ Rebuild docs'
@@ -52,7 +69,7 @@ border-radius-styles:
 LINT_MAX_LESS_PROBLEMS := 122
 lint:
 	@echo "Linting files..."
-	@$(LINT) $(JS_FILES) $(JSX_FILES)
+	@$(LINT) $(JS_FILES) $(JSX_FILES) $(TS_FILES)
 	@$(STYLELINT) $(LESS_FILES) | tee /tmp/less-lint-output.txt || true
 	@cat /tmp/less-lint-output.txt | sed -e 's/\(.\)/\1\n/g' | grep '✖' | wc -l > /tmp/less-lint-problem-count
 	@if [[ "`cat /tmp/less-lint-problem-count`" -gt "$(LINT_MAX_LESS_PROBLEMS)" ]]; then \
@@ -67,12 +84,12 @@ lint:
 
 test: lint
 	@echo "Running unit tests..."
-	NODE_ENV=test $(MOCHA) $(MOCHA_OPTIONS) --recursive
+	NODE_ENV=test $(JEST)
 
 $(TESTS):
 	@echo "Running tests for $@"
 	@$(LINT) $@
-	@NODE_ENV=test $(MOCHA) $(MOCHA_OPTIONS) $@
+	@NODE_ENV=test $(JEST) $@
 
 dev-server:
 	npm run-script dev-server

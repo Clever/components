@@ -2,7 +2,29 @@
 
 Check out [documentation and live examples](https://clever.github.io/components/#/intro) for Dewey, as well as our [getting starting guide](https://clever.github.io/components/#/getting-started).
 
-## Notes
+## Development
+
+### Adding a new component
+
+The following command will create a new component shell in `src/MyNewComponent/` along with a starter test file and demo boilerplate:
+```sh
+./bin/new_component.sh MyNewComponent
+```
+
+You can also create additional sub-components in any existing directory by running:
+```sh
+./bin/new_sub_component.sh MyNewSubComponent ./src/MyNewComponent
+```
+
+You can then modify the component and demo code as needed.
+Your new component can be viewed at `http://localhost:5010/#/components/my-new-component` while the demo server is running.
+
+### Running the demo server locally
+
+Start up the demo server by running
+```sh
+make dev-server
+```
 
 ### SVG components
 

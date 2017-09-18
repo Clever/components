@@ -1,6 +1,7 @@
-import _ from "lodash";
-import classnames from "classnames";
-import React, {PropTypes, PureComponent} from "react";
+import * as _ from "lodash";
+import * as classnames from "classnames";
+import * as PropTypes from "prop-types";
+import * as React from "react";
 
 import Item from "./Item";
 import MorePropTypes from "../utils/MorePropTypes";
@@ -23,7 +24,7 @@ const cssClass = {
   rowType: type => `List--items--${type}`,
 };
 
-export default class List extends PureComponent {
+export default class List extends React.PureComponent {
   static propTypes = {
     children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Item)),
     className: PropTypes.string,
