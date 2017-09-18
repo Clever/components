@@ -90,7 +90,7 @@ export default function GettingStartedView() {
             <strong>How to add a component</strong>
             <ul className="text--line-height-4">
               <li>
-                Run <code className="text--small">./bin/new_component &#60;your component&#62;</code> to
+                Run <code className="text--small">./bin/new_component.sh MyNewComponent</code> to
                 autogenerate source and test stubs
               </li>
               <li>Use Example and Demo to document your component in /docs</li>
