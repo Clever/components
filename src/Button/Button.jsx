@@ -59,6 +59,7 @@ export class Button extends React.PureComponent {
           ref={ref => { this._buttonRef = ref; }}
           style={style}
           type={submit ? "submit" : "button"}
+          aria-label={(typeof value === "string") ? value : null}
         >
           {value}
         </button>
@@ -72,6 +73,7 @@ export class Button extends React.PureComponent {
         ref={ref => { this._buttonRef = ref; }}
         style={style}
         target={target}
+        aria-label={(typeof value === "string") ? value : null}
       >
         {value}
       </a>
