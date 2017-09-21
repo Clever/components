@@ -36,18 +36,21 @@ describe("Button", () => {
     const button = shallow(<Button value="A button" />);
     assert.equal(button.find("button[type='button']").length, 1);
     assert.equal(button.text(), "A button");
+    assert.equal(button.props()["aria-label"], "A button");
   });
 
   it("renders a <button> element with [type=submit] if submit is true", () => {
     const button = shallow(<Button value="A submit button" submit />);
     assert.equal(button.find("button[type='submit']").length, 1);
     assert.equal(button.text(), "A submit button");
+    assert.equal(button.props()["aria-label"], "A submit button");
   });
 
   it("renders a <a> element if href is provided", () => {
     const button = shallow(<Button value="A link" href="http://clever.com" />);
     assert.equal(button.find("a[target='_blank']").length, 1);
     assert.equal(button.text(), "A link");
+    assert.equal(button.props()["aria-label"], "A link");
   });
 
   it("throws an error if href and submit are both set", () => {
