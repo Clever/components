@@ -39,7 +39,7 @@ export default class NewComponent extends React.PureComponent {
         <p>{children}</p>
         <div className={cssClass.SUB_ELEMENT}>
           <Button
-            onClick={() => this._handlePerformAction()}
+            onClick={this._handlePerformAction}
             type={Button.Type.PRIMARY}
             value="Do something"
           />
@@ -48,7 +48,5 @@ export default class NewComponent extends React.PureComponent {
     );
   }
 
-  _handlePerformAction() {
-    this.props.onPerformAction("action performed");
-  }
+  _handlePerformAction = () => this.props.onPerformAction("action performed");
 }
