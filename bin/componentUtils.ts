@@ -90,7 +90,9 @@ export function createNewComponentDemo(componentName) {
   requireArg("component name", componentName);
 
   const componentDemoClass = renderTemplate(`${COMPONENT_NAME_PLACEHOLDER}View.tsx`, componentName);
-  fs.writeFileSync(`${DEMO_COMPONENTS_DIR_PATH}/${componentName}View.tsx`, componentDemoClass);
+  // TODO: Figure out how to get fish's magic babel transform working for tsx compilation so we can
+  // generate .tsx for this.
+  fs.writeFileSync(`${DEMO_COMPONENTS_DIR_PATH}/${componentName}View.jsx`, componentDemoClass);
 
   const componentDemoStyles = renderTemplate(
     `${COMPONENT_NAME_PLACEHOLDER}View.less`,
