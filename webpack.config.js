@@ -38,6 +38,7 @@ module.exports = {
           ignoreDiagnostics: [
             2307,
           ],
+          useCache: true,
         },
       },
       {

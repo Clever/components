@@ -42,6 +42,7 @@
     "@types/jest": "^20.0.8",
     "@types/jest-matchers": "^20.0.0",
     "@types/lodash": "^4.14.74",
+    "@types/moment": "^2.13.0",
     "@types/node": "^8.0.28",
     "@types/prop-types": "^15.5.1",
     "@types/react": "Clever/minimal-react-typings#v2.0.0",

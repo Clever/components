@@ -1,0 +1,52 @@
+@import (reference) "~src/less/utilities";
+
+.SliderView--intro {
+  .margin--bottom--xl;
+}
+
+.SliderView--displayValue {
+  .margin--bottom--l;
+  .text--huge;
+  color: @neutral_dark_gray;
+  transition: all @timingPromptly ease-out;
+}
+
+.SliderView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--3xl;
+  .padding--top--l;
+}
+
+.SliderView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.SliderView--config {
+  cursor: pointer;
+}
+
+.SliderView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.SliderView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.SliderView--props {
+  .margin--top--l;
+}
+
