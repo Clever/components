@@ -1,0 +1,110 @@
+@import "~rc-slider/dist/rc-slider.min.css";
+
+@import (reference) "../less/utilities";
+
+.Slider {
+  .padding--x--2xs;
+  .padding--bottom--m;
+}
+
+.Slider--slider {
+  .rc-slider-rail {
+    .borderRadius--m;
+    background-color: @neutral_silver;
+    cursor: pointer;
+    height: @size_2xs;
+    transition-duration: @timingPromptly;
+    transition-property: background-color;
+    transition-timing-function: ease-out;
+  }
+
+  .rc-slider-track {
+    background-color: @primary_blue;
+    cursor: pointer;
+    transition-duration: @timingPromptly;
+    transition-property: background-color;
+    transition-timing-function: ease-out;
+  }
+
+  .rc-slider-handle {
+    .borderRadius--s;
+    .border--m(@primary_blue);
+    cursor: col-resize;
+    cursor: -webkit-grab;
+    cursor: grab;
+    height: @size_m;
+    transition-duration: @timingPromptly;
+    transition-property: background-color, border-color, box-shadow;
+    transition-timing-function: ease-out;
+    width: @size_m;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: @neutral_off_white;
+      box-shadow: 0 0 @size_2xs fadein(@primary_blue, 10%);
+    }
+
+    &:active {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
+  }
+
+  .rc-slider-mark-text {
+    .text--small;
+    color: @neutral_gray;
+    transition-duration: @timingPromptly;
+    transition-property: color;
+    transition-timing-function: ease-out;
+  }
+
+  .rc-slider-mark-text-active {
+    color: @neutral_dark_gray;
+  }
+
+  .rc-slider-dot {
+    .border--m(@neutral_silver);
+    transition-duration: @timingPromptly;
+    transition-property: background-color, border-color;
+    transition-timing-function: ease-out;
+  }
+
+  .rc-slider-dot-active {
+    .border--m(@primary_blue);
+  }
+
+  &.rc-slider-disabled {
+    background: none;
+
+    .rc-slider-rail {
+      background-color: @neutral_silver;
+      cursor: not-allowed;
+    }
+
+    .rc-slider-track {
+      background-color: @neutral_gray;
+      cursor: not-allowed;
+    }
+
+    .rc-slider-dot-active {
+      .border--m(@neutral_gray);
+    }
+
+    .rc-slider-handle {
+      .borderRadius--s;
+      .border--m(@neutral_gray);
+      box-shadow: none;
+      cursor: not-allowed;
+      height: @size_m;
+    }
+  }
+}
+
+.Slider--tooltip {
+  .rc-slider-tooltip-inner {
+    .borderRadius--m;
+    .padding--x--xs;
+    height: auto;
+  }
+}
