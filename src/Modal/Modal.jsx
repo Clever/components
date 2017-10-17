@@ -42,25 +42,28 @@ export class Modal extends React.Component {
       marginLeft: `-${this.props.width / 2}px`,
     };
     // The content is max 90% of the window height less 60px (height of the header)
-    let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};    
-    // Wrap the modal with the FocusTrap component or a dummy div
-    const OuterTag = this.props.isFocusTrap ? FocusTrap : 'div';
-    return (
-      <OuterTag>
-        <div className={classnames("Modal", this.props.className)}>
-          <div className="Modal--background" onClick={this.props.closeModal} />
-          <div className="Modal--window" style={windowStyle}>
-            <header className="Modal--header">
-              <button className="Modal--close" onClick={this.props.closeModal}>{closeIcon}</button>
-              <h2>{this.props.title}</h2>
-            </header>
-            <div style={contentStyle} className="Modal--window--content">
-              {this.props.children}
-            </div>
+    let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};  
+    const modalContent = (
+      <div className={classnames("Modal", this.props.className)}>
+        <div className="Modal--background" onClick={this.props.closeModal} />
+        <div className="Modal--window" style={windowStyle}>
+          <header className="Modal--header">
+            <button className="Modal--close" onClick={this.props.closeModal}>{closeIcon}</button>
+            <h2>{this.props.title}</h2>
+          </header>
+          <div style={contentStyle} className="Modal--window--content">
+            {this.props.children}
           </div>
         </div>
-      </OuterTag>
+      </div>
     );
+    let modal;
+    if (this.props.isFocusTrap) {
+      modal = <FocusTrap>{modalContent}</FocusTrap>;
+    } else {
+      modal = modalContent;
+    }
+    return modal;
   }
 }
 
