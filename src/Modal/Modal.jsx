@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-
-const FocusTrap = require('node_modules/focus-trap-react');
+import FocusTrap from "focus-trap-react";
 
 require("./Modal.less");
 
