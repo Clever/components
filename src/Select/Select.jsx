@@ -42,6 +42,7 @@ export function Select({
   creatable,
   creatablePromptFn,
   value,
+  valueRenderer,
   className,
 }) {
   const {cssClass} = Select;
@@ -106,6 +107,7 @@ export function Select({
           searchable={searchable}
           noResultsText={noResultsText}
           value={value}
+          valueRenderer={valueRenderer}
         />
       </div>
       <div className={cssClass.LABEL_CONTAINER}>
@@ -155,6 +157,7 @@ Select.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.string),
     React.PropTypes.arrayOf(selectValuePropType),
   ]),
+  valueRenderer: React.PropTypes.func,
   className: React.PropTypes.string,
 };
 
