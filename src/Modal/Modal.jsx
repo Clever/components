@@ -42,9 +42,11 @@ export class Modal extends React.Component {
       marginLeft: `-${this.props.width / 2}px`,
     };
     // The content is max 90% of the window height less 60px (height of the header)
-    let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};
+    let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};    
+    // Wrap the modal with the FocusTrap component or a dummy div
+    const OuterTag = this.props.isFocusTrap ? FocusTrap : 'div';
     return (
-      <FocusTrap>
+      <OuterTag>
         <div className={classnames("Modal", this.props.className)}>
           <div className="Modal--background" onClick={this.props.closeModal} />
           <div className="Modal--window" style={windowStyle}>
@@ -57,7 +59,7 @@ export class Modal extends React.Component {
             </div>
           </div>
         </div>
-      </FocusTrap>
+      </OuterTag>
     );
   }
 }
@@ -68,8 +70,10 @@ Modal.propTypes = {
   title: React.PropTypes.string.isRequired,
   closeModal: React.PropTypes.func.isRequired,
   children: React.PropTypes.node.isRequired,
+  isFocusTrap: React.PropTypes.bool,
 };
 
 Modal.defaultProps = {
   width: DEFAULT_WIDTH,
+  isFocusTrap: false,
 };
