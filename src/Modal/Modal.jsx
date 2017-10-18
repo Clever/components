@@ -46,7 +46,7 @@ export class Modal extends React.Component {
     let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};
     const modalContent = (
       <div className={classnames("Modal", this.props.className)}>
-        <div className="Modal--background" onClick={this.props.closeModal} />
+        <div className="Modal--background" onClick={this.props.closeModal} aria-hidden="true" />
         <div className="Modal--window" style={windowStyle}>
           <header className="Modal--header">
             <button className="Modal--close" onClick={this.props.closeModal}>{closeIcon}</button>
