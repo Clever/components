@@ -82,6 +82,13 @@ export default class ModalView extends Component {
               defaultValue: "400px",
               optional: true,
             },
+            {
+              name: "focusLocked",
+              type: "Boolean",
+              description: "Whether or not focus stays within the modal when tabbing",
+              defaultValue: "true",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="Modal"

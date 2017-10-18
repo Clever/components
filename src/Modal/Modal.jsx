@@ -79,5 +79,5 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   width: DEFAULT_WIDTH,
-  focusLocked: false,
+  focusLocked: true,
 };
