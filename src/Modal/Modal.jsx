@@ -59,7 +59,7 @@ export class Modal extends React.Component {
       </div>
     );
     let modal;
-    if (this.props.isFocusTrap) {
+    if (this.props.focusLocked) {
       modal = <FocusTrap>{modalContent}</FocusTrap>;
     } else {
       modal = modalContent;
@@ -74,10 +74,10 @@ Modal.propTypes = {
   title: React.PropTypes.string.isRequired,
   closeModal: React.PropTypes.func.isRequired,
   children: React.PropTypes.node.isRequired,
-  isFocusTrap: React.PropTypes.bool,
+  focusLocked: React.PropTypes.bool,
 };
 
 Modal.defaultProps = {
   width: DEFAULT_WIDTH,
-  isFocusTrap: false,
+  focusLocked: false,
 };
