@@ -49,7 +49,7 @@ export class Modal extends React.Component {
         <div className="Modal--background" onClick={this.props.closeModal} aria-hidden="true" />
         <div className="Modal--window" style={windowStyle}>
           <header className="Modal--header">
-            <button className="Modal--close" onClick={this.props.closeModal}>{closeIcon}</button>
+            <button className="Modal--close" onClick={this.props.closeModal} type="button" aria-label="close modal window">{closeIcon}</button>
             <h1>{this.props.title}</h1>
           </header>
           <div style={contentStyle} className="Modal--window--content">
