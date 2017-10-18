@@ -19,8 +19,8 @@ describe("Modal", () => {
     assert.equal(windoe.length, 1);
     assert.deepEqual(windoe.prop("style"), {marginLeft: "-200px", width: "400px"});
     assert.equal(header.length, 1);
-    assert.equal(header.find("h2").length, 1);
-    assert.equal(header.find("h2").text(), "My Title");
+    assert.equal(header.find("h1").length, 1);
+    assert.equal(header.find("h1").text(), "My Title");
     assert.equal(content.length, 1);
     assert.equal(content.text(), "Example Content");
   });
