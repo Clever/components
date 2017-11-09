@@ -136,12 +136,14 @@ export default function ButtonView() {
             name: "type",
             type: "String",
             description: "One of primary, secondary, destructive, link, linkPlain, plain",
+            optional: true,
             defaultValue: "secondary",
           },
           {
             name: "size",
             type: "String",
             description: "One of large, regular, small",
+            optional: true,
             defaultValue: "regular",
           },
           {
