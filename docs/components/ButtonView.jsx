@@ -182,6 +182,13 @@ export default function ButtonView() {
             description: "Optional additional classname to apply to the button",
             optional: true,
           },
+          {
+            name: "submit",
+            type: "Bool",
+            description: "Behaves as a submit button when true",
+            optional: true,
+            defaultValue: "false",
+          },
         ]}
         className={cssClass.PROPS}
       />
