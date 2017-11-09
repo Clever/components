@@ -136,12 +136,14 @@ export default function ButtonView() {
             name: "type",
             type: "String",
             description: "One of primary, secondary, destructive, link, linkPlain, plain",
+            optional: true,
             defaultValue: "secondary",
           },
           {
             name: "size",
             type: "String",
             description: "One of large, regular, small",
+            optional: true,
             defaultValue: "regular",
           },
           {
@@ -181,6 +183,13 @@ export default function ButtonView() {
             type: "string",
             description: "Optional additional classname to apply to the button",
             optional: true,
+          },
+          {
+            name: "submit",
+            type: "Bool",
+            description: "Behaves as a submit button when true",
+            optional: true,
+            defaultValue: "false",
           },
         ]}
         className={cssClass.PROPS}
