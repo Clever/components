@@ -28,8 +28,8 @@ export class ModalButton extends React.Component {
 
     return (<div className={classnames("ModalButton", this.props.className)}>
       <Button
-        {...buttonProps} onClick={() => {
-          if (this.props.onClick) this.props.onClick();
+        {...buttonProps} onClick={(e) => {
+          if (this.props.onClick) this.props.onClick(e);
           this.showModal();
         }}
       />
