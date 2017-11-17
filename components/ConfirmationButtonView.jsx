@@ -40,6 +40,11 @@ export default class ConfirmationButtonView extends Component {
         <PropDocumentation
           availableProps={[
             {
+              name: "value",
+              type: "string",
+              description: "The text that appears on the modal activation button",
+            },
+            {
               name: "modalTitle",
               type: "string",
               description: "Header text for the modal",
@@ -48,18 +53,22 @@ export default class ConfirmationButtonView extends Component {
               name: "confirmButtonValue",
               type: "string",
               description: "The text that appears on the Confirm button",
+              defaultValue: "Confirm",
+              optional: true,
             },
             {
               name: "confirmButtonType",
               type: "String",
               description: "One of primary, secondary, destructive, link, linkPlain, plain",
-              defaultValue: "secondary",
+              defaultValue: "primary",
+              optional: true,
             },
             {
               name: "confirmButtonSize",
               type: "String",
               description: "One of large, regular, small",
               defaultValue: "regular",
+              optional: true,
             },
             {
               name: "modalWidth",
