@@ -102,8 +102,17 @@ describe("SegmentedControl", () => {
 
     const options = control.find(`.${cssClass.OPTION}`);
     options.forEach((option, i) => {
+      onSelect.reset();
+
       option.simulate("click");
-      sinon.assert.calledWith(onSelect, testOptions[i].value);
+
+      if (option.props().children === controlledValue.content) {
+        // We don't expect the onSelect event to fire if the value is unchanged.
+        sinon.assert.notCalled(onSelect);
+      } else {
+        sinon.assert.calledWith(onSelect, testOptions[i].value);
+      }
+
       assert(options.at(1).hasClass(cssClass.SELECTED), "Option at index 1 should remain selected");
     });
   });
