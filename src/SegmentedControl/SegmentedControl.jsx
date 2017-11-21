@@ -38,10 +38,14 @@ export class SegmentedControl extends React.Component {
   }
 
   onSelect({disabled, value}) {
+    // TODO: We need to do an audit for SegmentedControl usage and figure out if we can safely get
+    // rid of the uncontrolled mode (and stop tracking state internally) so we avoid this complexity
+    // (or just make a breaking change).
+    const previousValue = this.props.value || this.state.selected;
     if (
       disabled
       || this.props.disabled
-      || value === this.state.selected
+      || value === previousValue
     ) {
       return;
     }
