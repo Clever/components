@@ -14,9 +14,10 @@
   top: @size_xs;
   width: 100%;
 
+  // aligns REQUIRED text with text in other forms
   .Select--required {
     position: absolute;
-    right: @size_l;
+    right: 0.8rem;
   }
 }
 
@@ -51,6 +52,11 @@
     .Select-arrow {
       display: none;
     }
+  }
+
+  // aligns the arrow with REQUIRED text (so both align with other forms)
+  .Select-arrow-zone {
+    padding-right: 0.6rem;
   }
 
   &.Select--multi {
