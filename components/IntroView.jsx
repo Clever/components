@@ -14,7 +14,7 @@ export default function IntroView() {
         <Row grow className="margin--bottom--xl">
           <Col span={6} className="flexbox self--center padding--right--xl">
             <div>
-              <h2>A design system for the ed-tech ecosytem</h2>
+              <h2>A design system for the ed-tech ecosystem</h2>
               <p>As
               {" "}
               <a
