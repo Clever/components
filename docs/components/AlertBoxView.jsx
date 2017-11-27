@@ -83,7 +83,7 @@ export default class AlertBoxView extends PureComponent {
               optional: true,
             },
             {
-              name: "chrildren",
+              name: "children",
               type: "node",
               description: "Body",
               defaultValue: "",
