@@ -1,10 +1,11 @@
-@import "../less/colors.less";
 @import "../less/fonts.less";
+@import (reference) "../less/index";
 
 .segmented_control {
   white-space: nowrap;
 
   .segmented_control--selectable-item {
+    .button--reset;
     background-color: @neutral_white;
     border: 1px solid @neutral_silver;
     color: @neutral_dark_gray;
