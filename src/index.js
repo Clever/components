@@ -53,3 +53,6 @@ export {Number};
 
 import Tooltip from "./Tooltip";
 export {Tooltip};
+
+import Drawer from "./Drawer";
+export {Drawer};

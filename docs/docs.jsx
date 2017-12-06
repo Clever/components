@@ -11,6 +11,7 @@ import CountView from "./components/CountView";
 import DateInputView from "./components/DateInputView";
 import DatePickerView from "./components/DatePickerView";
 import DollarAmountView from "./components/DollarAmountView";
+import DrawerView from "./components/DrawerView";
 import DropdownButtonView from "./components/DropdownButtonView";
 import FileInputView from "./components/FileInputView";
 import FlexBoxView from "./components/FlexBoxView";
@@ -30,8 +31,8 @@ import ModalView from "./components/ModalView";
 import NumberView from "./components/NumberView";
 import PageLayoutView from "./components/PageLayoutView";
 import ProgressBarView from "./components/ProgressBarView";
-import SegmentedControlView from "./components/SegmentedControlView";
 import RichTextView from "./components/RichTextView";
+import SegmentedControlView from "./components/SegmentedControlView";
 import SelectView from "./components/SelectView";
 import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
@@ -68,9 +69,10 @@ render((
         <Route path="date-input(/*)" component={DateInputView} />
         <Route path="date-picker(/*)" component={DatePickerView} />
         <Route path="dollar-amount(/*)" component={DollarAmountView} />
+        <Route path="drawer(/*)" component={DrawerView} />
         <Route path="dropdown-button(/*)" component={DropdownButtonView} />
-        <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="file-input(/*)" component={FileInputView} />
+        <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="grid(/*)" component={GridView} />
         <Route path="icon(/*)" component={IconView} />
         <Route path="info-panel" component={InfoPanelView} />
@@ -85,10 +87,10 @@ render((
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
-        <Route path="text-area(/*)" component={TextAreaView} />
-        <Route path="tooltip" component={TooltipView} />
         <Route path="table(/*)" component={TableView} />
+        <Route path="text-area(/*)" component={TextAreaView} />
         <Route path="text-input(/*)" component={TextInputView} />
+        <Route path="tooltip" component={TooltipView} />
         <Route path="wizard(/*)" component={WizardView} />
       </Route>
       <Route path="LESS">

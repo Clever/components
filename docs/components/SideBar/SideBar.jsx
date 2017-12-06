@@ -72,9 +72,10 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/date-input", "DateInput")}
           {this._renderLink("/components/date-picker", "DatePicker")}
           {this._renderLink("/components/dollar-amount", "DollarValue")}
+          {this._renderLink("/components/drawer", "Drawer")}
           {this._renderLink("/components/dropdown-button", "DropdownButton")}
-          {this._renderLink("/components/flex-box", "FlexBox")}
           {this._renderLink("/components/file-input", "FileInput")}
+          {this._renderLink("/components/flex-box", "FlexBox")}
           {this._renderLink("/components/grid", "Grid")}
           {this._renderLink("/components/icon", "Icon")}
           {this._renderLink("/components/info-panel", "InfoPanel")}

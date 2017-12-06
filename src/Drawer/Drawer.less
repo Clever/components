@@ -1,0 +1,35 @@
+@import (reference) "../less/utilities";
+
+.Drawer {
+  .border--s(@neutral_silver);
+  .borderRadius--m;
+  .padding--m;
+  background-color: @neutral_off_white;
+}
+
+.Drawer--subElement {
+  .border--s(@neutral_silver);
+  .padding--s;
+  background-color: @neutral_white;
+  text-align: right;
+}
+
+.Drawer--drawerDiv {
+  margin-top: 64px;
+  background-color: @neutral_off_white;
+  height: calc(~'100% - @size_m');
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 375px;
+  height: 100%;
+  right: -375px;
+  overflow-x: hidden;
+  transition: right .5s ease-in-out, box-shadow .5s ease-in-out;
+  .flexbox();
+  .flexDirection(column);
+  &.drawerOpen {
+    right: 0px;
+    box-shadow: -2px 2px 4px 0 @neutral_gray;
+  }
+}

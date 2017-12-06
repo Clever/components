@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.DrawerView--intro {
+  .margin--bottom--xl;
+}
+
+.DrawerView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.DrawerView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.DrawerView--config {
+  cursor: pointer;
+}
+
+.DrawerView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.DrawerView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.DrawerView--props {
+  .margin--top--l;
+}
+
