@@ -68,7 +68,13 @@ export class TextInput extends React.Component {
       inputNote = <span className="TextInput--error">{this.props.error}</span>;
     }
 
-    let type = (this.props.type === "password" && this.state.hidden) ? "password" : "text";
+    let type;
+    if (this.props.type === "password") {
+      type = this.state.hidden ? "password" : "text";
+    } else {
+      type = this.props.type || "text";
+    }
+
     const additionalProps = _.omit(this.props, Object.keys(TextInput.propTypes));
 
     return (
