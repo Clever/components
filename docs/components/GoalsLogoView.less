@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.GoalsLogoView--intro {
+  .margin--bottom--xl;
+}
+
+.GoalsLogoView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.GoalsLogoView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.GoalsLogoView--config {
+  cursor: pointer;
+}
+
+.GoalsLogoView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.GoalsLogoView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.GoalsLogoView--props {
+  .margin--top--l;
+}
+
