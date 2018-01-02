@@ -41,6 +41,8 @@ export default class NewComponentView extends React.PureComponent {
           <CodeSample>
             {`
               import {NewComponent} from "clever-components";
+              // OR
+              import NewComponent from "clever-components/dist/NewComponent"; // Avoids importing all of clever-components.
             `}
           </CodeSample>
         </header>

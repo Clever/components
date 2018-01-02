@@ -1,0 +1,28 @@
+@import (reference) "../less/utilities";
+@import "../less/fonts";
+
+.GoalsLogo {
+  .font--ProximaNova();
+  color: @neutral_white;
+  display: inline-block;
+  line-height: 1;
+  transition: all @timingPromptly ease-out;
+}
+
+.GoalsLogo--text {
+  letter-spacing: -0.05em;
+}
+
+.GoalsLogo--progressBar {
+  @height: 0.2em;
+  background-color: @neutral_white;
+  border-radius: @height / 2;
+  height: @height;
+  overflow: hidden;
+}
+
+.GoalsLogo--progressBar--inner {
+  background-color: @alert_green;
+  height: 100%;
+  width: 60%;
+}
