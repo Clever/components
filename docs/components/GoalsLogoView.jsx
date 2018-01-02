@@ -14,6 +14,7 @@ const cssClass = {
   CONFIG_TOGGLE: "GoalsLogoView--configToggle",
   CONTAINER: "GoalsLogoView",
   INTRO: "GoalsLogoView--intro",
+  LOGO_CONTAINER: "GoalsLogoView--logoContainer",
   PROPS: "GoalsLogoView--props",
 };
 
@@ -21,13 +22,11 @@ export default class GoalsLogoView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    multiOption1: "small",
-    optionToggle1: false,
-    optionToggle2: true,
+    size: GoalsLogo.defaultProps.size,
   };
 
   render() {
-    const {optionToggle1} = this.state;
+    const {size} = this.state;
 
     return (
       <View
@@ -36,21 +35,22 @@ export default class GoalsLogoView extends React.PureComponent {
         sourcePath="src/GoalsLogo/GoalsLogo.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>TODO: Describe your component/state it's purpose</p>
-          <p>TODO(optional): Describe scenarios where the component might be useful.</p>
+          <p>Brand logo for the Clever Goals product.</p>
           <CodeSample>
             {`
               import {GoalsLogo} from "clever-components";
+              // OR
+              import GoalsLogo from "clever-components/dist/GoalsLogo"; // Avoids importing all of clever-components.
             `}
           </CodeSample>
         </header>
 
         <Example title="Basic Usage:">
-          <ExampleCode>
-            <GoalsLogo className="my--custom--class" onPerformAction={console.log}>
-              {optionToggle1 ? "Something changed 🤔" : "My custom content."}
-            </GoalsLogo>
-          </ExampleCode>
+          <div className={cssClass.LOGO_CONTAINER}>
+            <ExampleCode>
+              <GoalsLogo className="my--custom--class" size={size} />
+            </ExampleCode>
+          </div>
           {this._renderConfig()}
         </Example>
 
@@ -59,9 +59,8 @@ export default class GoalsLogoView extends React.PureComponent {
     );
   }
 
-  // TODO: Update or remove config options.
   _renderConfig() {
-    const {multiOption1, optionToggle1, optionToggle2} = this.state;
+    const {size} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -69,48 +68,24 @@ export default class GoalsLogoView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({multiOption1: value})}
+            onSelect={value => this.setState({size: value})}
             options={[
               {content: "Small", value: "small"},
               {content: "Medium", value: "medium"},
               {content: "Large", value: "large"},
             ]}
-            value={multiOption1}
+            value={size}
           />
         </div>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={optionToggle1}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({optionToggle1: e.target.checked})}
-          />{" "}
-          Option Toggle 1
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={optionToggle2}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({optionToggle2: e.target.checked})}
-          />{" "}
-          Option Toggle 2
-        </label>
       </FlexBox>
     );
   }
 
-  // TODO: Update prop documentation.
   _renderProps() {
     return (
       <PropDocumentation
         title="<GoalsLogo /> Props"
         availableProps={[
-          {
-            name: "children",
-            type: "React.Node",
-            description: "GoalsLogo content.",
-          },
           {
             name: "className",
             type: "string",
@@ -118,9 +93,11 @@ export default class GoalsLogoView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "onPerformAction",
-            type: "Function",
-            description: "Handler function for the performAction event.",
+            name: "size",
+            type: "GoalsLogo.Size",
+            description: "Logo size",
+            defaultValue: "GoalsLogo.Size.M",
+            optional: true,
           },
         ]}
         className={cssClass.PROPS}

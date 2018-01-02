@@ -2,51 +2,54 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {Button} from "../Button/Button";
-
 import "./GoalsLogo.less";
 
+const Size = {
+  S: "small",
+  M: "medium",
+  L: "large",
+};
+
 const propTypes = {
-  children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  onPerformAction: PropTypes.func.isRequired,
+  size: PropTypes.oneOf(Object.values(Size)),
+};
+
+const SizeClass = {
+  [Size.S]: "text--large",
+  [Size.M]: "text--huge",
+  [Size.L]: "text--gargantuan",
 };
 
 const cssClass = {
   CONTAINER: "GoalsLogo",
-  SUB_ELEMENT: "GoalsLogo--subElement",
+  PROGRESS_BAR_INNER: "GoalsLogo--progressBar--inner",
+  PROGRESS_BAR: "GoalsLogo--progressBar",
+  TEXT: "GoalsLogo--text",
 };
 
 /**
- * TODO: Add short description.
+ * Brand logo for the Clever Goals product.
  */
 export default class GoalsLogo extends React.PureComponent {
   static propTypes = propTypes;
   static cssClass = cssClass;
+  static Size = Size;
 
-  // TODO: Uncomment if this component is stateful. Remove otherwise.
-  // state = {
-  //   sampleState1: false,
-  //   sampleState2: "foo",
-  // };
+  static defaultProps = {
+    size: Size.M,
+  };
 
   render() {
-    const {children, className} = this.props;
+    const {className, size} = this.props;
 
     return (
-      <div className={classnames(cssClass.CONTAINER, className)}>
-        <h3>TODO</h3>
-        <p>{children}</p>
-        <div className={cssClass.SUB_ELEMENT}>
-          <Button
-            onClick={this._handlePerformAction}
-            type={Button.Type.PRIMARY}
-            value="Do something"
-          />
+      <div className={classnames(cssClass.CONTAINER, SizeClass[size], className)}>
+        <div className={cssClass.TEXT}>Goals</div>
+        <div className={cssClass.PROGRESS_BAR}>
+          <div className={cssClass.PROGRESS_BAR_INNER} />
         </div>
       </div>
     );
   }
-
-  _handlePerformAction = () => this.props.onPerformAction("action performed");
 }
