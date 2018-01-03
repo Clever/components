@@ -2,30 +2,10 @@
 @import "../less/fonts";
 
 .GoalsLogo {
-  .font--ProximaNova();
-  color: @neutral_white;
-  display: inline-block;
-  line-height: 1;
-  // Add bottom weighting to match the leading vertical space due to excess line-height to visually
-  // center the logo.
-  margin-bottom: 0.125em;
+  line-height: 0;
+}
+
+.GoalsLogo--image {
+  height: 1em;
   transition: all @timingPromptly ease-out;
-}
-
-.GoalsLogo--text {
-  letter-spacing: -0.05em;
-}
-
-.GoalsLogo--progressBar {
-  @height: 0.2em;
-  background-color: @neutral_white;
-  border-radius: @height / 2;
-  height: @height;
-  overflow: hidden;
-}
-
-.GoalsLogo--progressBar--inner {
-  background-color: @alert_green;
-  height: 100%;
-  width: 60%;
 }
