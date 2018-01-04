@@ -13,7 +13,7 @@ export default function Row({
   className,
   grow,
   wrapperComponent: Wrapper,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = Row;
 

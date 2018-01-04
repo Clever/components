@@ -22,7 +22,7 @@ export class NavLink extends React.PureComponent {
       label,
       onClick,
       selected,
-      ...additionalProps,
+      ...additionalProps
     } = this.props;
 
     let Component = "button";

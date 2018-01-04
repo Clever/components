@@ -19,7 +19,7 @@ export default function FlexBox({
   inline,
   justify,
   wrap,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = FlexBox;
 

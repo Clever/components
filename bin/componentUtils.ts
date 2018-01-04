@@ -20,7 +20,7 @@ export function createNewComponent(componentName) {
     fs.mkdirSync(srcDirPath);
     process.stdout.write("✅\n");
   } else {
-    process.stdout.write(`⚠️  already exists - component will be overwritten.\n`);
+    process.stdout.write("⚠️  already exists - component will be overwritten.\n");
   }
 
   createNewSubComponent(componentName, srcDirPath);
