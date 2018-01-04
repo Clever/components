@@ -22,7 +22,7 @@ a, button {
   &.Button {
     .button--reset;
     .border--s(transparent);
-    .borderRadius--top--m;
+    .borderRadius--l;
     // Safari weirdly adds margins to adjacent buttons. Reset that:
     .margin--none;
     .padding--none;
@@ -40,7 +40,9 @@ a, button {
     &[disabled]:hover,
     &[disabled]:focus
     &[disabled]:active {
-      .buttonColor(@neutral_silver, true);
+      background-color: @neutral_silver;
+      border-color: @neutral_silver;
+      border-bottom-color: @neutral_silver;
       cursor: not-allowed;
       color: @neutral_dark_gray;
 
@@ -65,38 +67,50 @@ a, button {
   }
 
   &.Button--primary {
-    .buttonColor(@primary_blue);
-    color: @neutral_off_white;
+    background-color: @primary_blue;
+    border-color: @primary_blue;
+    border-bottom-color: @primary_blue_shade_1;
+    color: @neutral_white;
 
     &:hover,
     &:focus,
     &:active {
-      color: @neutral_off_white;
+      background-color: @primary_blue_shade_2;
+      border-color: @primary_blue_shade_2;
+      border-bottom-color: @primary_blue_shade_2;
+      color: @neutral_white;
     }
   }
 
   &.Button--secondary {
-    .tint(border-color, @primary_blue, 2);
-    background-color: @neutral_off_white;
+    background-color: @neutral_white;
+    border-color: @primary_blue_tint_2;
+    border-bottom-color: @primary_blue;
     color: @primary_blue;
 
     &:hover,
     &:focus,
     &:active {
-      .shade(border-color, @primary_blue, 2);
-      .shade(color, @primary_blue, 2);
-      background-color: @neutral_off_white;
+      background-color: @primary_blue_tint_2;
+      border-color: @primary_blue_tint_2;
+      border-bottom-color: @primary_blue_tint_1;
+      color: @neutral_white;
     }
   }
 
   &.Button--destructive {
-    .buttonColor(@alert_red);
-    color: @neutral_off_white;
+    background-color: @alert_red;
+    border-color: @alert_red;
+    border-bottom-color: @alert_red_shade_1;
+    color: @neutral_white;
 
     &:hover,
     &:focus,
     &:active {
-      color: @neutral_off_white;
+      background-color: @alert_red_shade_1;
+      border-color: @alert_red_shade_1;
+      border-bottom-color: @alert_red_shade_2;
+      color: @neutral_white;
     }
   }
 
@@ -104,17 +118,28 @@ a, button {
   &.Button--link,
   &.Button--plain {
     background: none;
-    border: transparent;
+    border-color: transparent;
   }
 
-  &.Button--linkPlain,
   &.Button--link {
     color: @primary_blue;
 
     &:hover,
     &:focus,
     &:active {
-      .shade(color, @primary_blue, 2);
+      color: @primary_blue_shade_2;
+      border-color: @neutral_silver;
+    }
+  }
+
+  &.Button--linkPlain
+  {
+    color: @primary_blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: @primary_blue_shade_2;
     }
   }
 
@@ -128,6 +153,7 @@ a, button {
   }
 
   &.Button--large {
+    .borderRadius--xl;
     .text--large;
     padding: @size_m @size_l @size_s;
   }
