@@ -13,7 +13,7 @@ export default function FlexItem({
   className,
   component: Wrapper,
   grow,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = FlexItem;
 

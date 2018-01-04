@@ -9,7 +9,7 @@ describe("LeftNav", function LeftNavTest() {
   const {cssClass: navCss} = LeftNav;
   const {cssClass: linkCss} = NavLink;
 
-  const fakeIcon = <img className="fakeIcon" src="iconSrc" />;
+  const fakeIcon = <img className="fakeIcon" alt="fakeIcon for testing" src="iconSrc" />;
 
   const topNavLinkSpy = sinon.spy();
   const subNavLinkSpy = sinon.spy();

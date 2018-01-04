@@ -72,7 +72,7 @@ LINT_MAX_LESS_PROBLEMS := 122
 lint-styles:
 	@echo "Linting style files..."
 	@$(STYLELINT) $(LESS_FILES) | tee /tmp/less-lint-output.txt || true
-	@sed -n 's/^✖ \(.*\) problems.*/\1/p' /tmp/eslint-output.txt > /tmp/eslint-problem-count
+	@cat /tmp/less-lint-output.txt | sed -e 's/\(.\)/\1\n/g' | grep '✖' | wc -l > /tmp/less-lint-problem-count
 	@if [[ "`cat /tmp/less-lint-problem-count`" -gt "$(LINT_MAX_LESS_PROBLEMS)" ]]; then \
 		echo -e "\033[0;31m✖ You have `cat /tmp/less-lint-problem-count` errors which is more than $(LINT_MAX_LESS_PROBLEMS) problems reported by stylelint. Please check for stylelint errors in the changes you've made.\033[0m\n"; \
 		exit 1; \
@@ -84,7 +84,8 @@ lint-styles:
 	fi
 
 
-LINT_MAX_ES_PROBLEMS := 68
+
+LINT_MAX_ES_PROBLEMS := 57
 lint-es:
 	@echo "Linting es files..."
 	@$(LINT) $(JS_FILES) $(JSX_FILES) $(TS_FILES)| tee /tmp/eslint-output.txt || true

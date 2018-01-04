@@ -38,12 +38,12 @@ export class Modal extends React.Component {
   }
 
   render() {
-    let windowStyle = {
+    const windowStyle = {
       width: `${this.props.width}px`,
       marginLeft: `-${this.props.width / 2}px`,
     };
     // The content is max 90% of the window height less 60px (height of the header)
-    let contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};
+    const contentStyle = {maxHeight: (this.state.windowHeight * 0.9) - 60};
     const modalContent = (
       <div className={classnames("Modal", this.props.className)}>
         <div className="Modal--background" onClick={this.props.closeModal} aria-hidden="true" />
