@@ -49,7 +49,10 @@ describe("Table", () => {
     <Column
       id="description"
       header={{content: "Description"}}
-      cell={{renderer: r => r.description}}
+      cell={{
+        className: r => r.id,
+        renderer: r => r.description,
+      }}
     />
   );
 
@@ -108,6 +111,19 @@ describe("Table", () => {
       assert(
         lodash.includes(nameCell.props().className, nameColumn.props.cell.className),
         `Expected ${nameCell.props().className} to contain ${nameColumn.props.cell.className}`
+      );
+    });
+
+    it("assigns custom cell class name if specified as a function", () => {
+      const descriptionCell = newTable()
+        .find(`.${cssClass.ROW}`).first()
+        .find(Cell).at(1);
+
+      assert(
+        descriptionCell.props().className.includes(descriptionColumn.props.cell.className(DATA[0])),
+        `Expected ${
+          descriptionCell.props().className
+        } to contain ${descriptionColumn.props.cell.className(DATA[0])}`
       );
     });
 

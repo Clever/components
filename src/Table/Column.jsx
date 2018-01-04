@@ -7,7 +7,10 @@ export default function Column() {
 
 Column.propTypes = {
   cell: PropTypes.shape({
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.func,
+    ]),
     renderer: PropTypes.func.isRequired,
   }),
   id: PropTypes.string.isRequired,
