@@ -32,7 +32,6 @@ a, button {
     cursor: pointer;
     display: inline-block;
     font-family: "Proxima Nova";
-    font-weight: 600;
     text-decoration: none;
     transition: all 0.25s ease-out;
 
@@ -117,6 +116,7 @@ a, button {
   &.Button--linkPlain,
   &.Button--link,
   &.Button--plain {
+    .text--semi-bold;
     background: none;
     border-color: transparent;
   }
@@ -128,7 +128,7 @@ a, button {
     &:focus,
     &:active {
       color: @primary_blue_shade_2;
-      border-color: @neutral_silver;
+      background-color: fade(@primary_blue, 5%);
     }
   }
 
