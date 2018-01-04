@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import _ from "lodash";
+import classnames from "classnames";
 import loremIpsum from "lorem-ipsum";
 import React, {PureComponent} from "react";
 
@@ -15,6 +16,7 @@ export default class TableView extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      enableDynamicCellClass: false,
       enableRowClick: true,
       tableFilter: "",
     };
@@ -46,7 +48,7 @@ export default class TableView extends PureComponent {
 
   render() {
     const {cssClass} = TableView;
-    const {enableRowClick, tableData} = this.state;
+    const {enableDynamicCellClass, enableRowClick, tableData} = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Table">
@@ -136,7 +138,13 @@ export default class TableView extends PureComponent {
                 <Table.Column
                   id="status"
                   header={{content: "Status"}}
-                  cell={{renderer: r => r.status}}
+                  cell={{
+                    className: r => classnames(
+                      "TableView--status",
+                      enableDynamicCellClass && r.status.includes("e") && "TableView--status--red"
+                    ),
+                    renderer: r => r.status,
+                  }}
                   sortable
                   sortValueFn={r => r.status}
                 />
@@ -158,6 +166,15 @@ export default class TableView extends PureComponent {
             />
             {" "}
             Clickable rows (see console)
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={enableDynamicCellClass}
+              onChange={({target}) => this.setState({enableDynamicCellClass: target.checked})}
+            />
+            {" "}
+            Dynamic cell class names
           </label>
         </Example>
 
@@ -281,9 +298,20 @@ export default class TableView extends PureComponent {
           availableProps={[
             {
               name: "cell",
-              type: "{className: String (optional), renderer: Function}",
-              description: "Configuration for the table body cell for this column. renderer will be called with data"
-              + " for a single row and should return content that can be rendered by the React DOM renderer",
+              type: "{className: String or Function (optional), renderer: Function}",
+              description: (
+                <div>
+                  <p>Configuration for the table body cell for this column.</p>
+                  <p>
+                    <code>renderer</code> will be called with data for a single row and should return content that can
+                    be rendered by the React DOM renderer.
+                  </p>
+                  <p>
+                    If <code>className</code> is a function, it will also be called with row data and should return a
+                    render-compatible value.
+                  </p>
+                </div>
+              ),
             },
             {
               name: "id",
