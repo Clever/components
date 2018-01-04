@@ -7,7 +7,7 @@
 .LeftNav {
   .animateWidth;
   .flexbox;
-  .shade(color, @primary_blue, 2);
+  color: @primary_blue_shade_2;
   background: @neutral_off_white;
   font-family: "Proxima Nova";
   height: 100%;
@@ -39,7 +39,6 @@
 
 .LeftNav--topnav,
 .LeftNav--subnav--content {
-  .border--right--s(@neutral_silver);
 }
 
 .LeftNav--topnav {
@@ -58,7 +57,7 @@
   .flexbox;
   .flex--direction--column;
   .flexShrink(0);
-  .shade(background, @neutral_off_white, .15);
+  background-color: fade(@neutral_gray, 5%);
   width: 0;
 
   .NavLink--label--container {
