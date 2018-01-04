@@ -7,8 +7,7 @@
   .animateWidth;
   .button--reset;
   .padding--y--m;
-  .shade(color, @primary_blue, 3);
-  .border--bottom--s(@neutral_silver);
+  color: @primary_blue_shade_2;
   box-sizing: border-box;
   display: block;
   padding-left: @linkPaddingLeft;
@@ -21,7 +20,7 @@
   &:hover {
     // Lighten the focus indicator slightly for unselected items to distinguish them from the
     // current selection:
-    box-shadow: inset @borderWidthL 0 tint(@primary_blue, 3 * @shadeStepAmount);
+    box-shadow: inset @borderWidthL 0 @primary_blue_tint_2;
   }
 
   // Remove rogue outlines/borders around icons in IE.
@@ -95,7 +94,6 @@
 .NavLink--selected:focus,
 .NavLink--selected:hover {
   .text--semi-bold;
-  .tint(background, @primary_blue, 6.15);
   box-shadow: inset @borderWidthL 0 @primary_blue;
 }
 

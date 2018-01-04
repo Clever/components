@@ -5,9 +5,9 @@
 .NavGroup--open:active,
 .NavGroup--open:focus,
 .NavGroup--open:hover {
-  .shade(background-color, @neutral_off_white, .15);
+  background-color: fade(@neutral_gray, 5%);
 
   &:not(.NavLink--selected) {
-    box-shadow: inset @borderWidthL 0 tint(@primary_blue, 3 * @shadeStepAmount);
+    box-shadow: inset @borderWidthL 0 @primary_blue_tint_2;
   }
 }
