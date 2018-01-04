@@ -2,28 +2,21 @@
 
 
 .TopBar {
-  background-color: @primary_blue;
-  box-sizing: border-box;
-  color: @neutral_white;
+  .border--bottom--xl(@primary_blue);
+  background-color: @neutral_off_white;
+  color: @primary_blue;
   height: @size_5xl;
   padding: 0 @size_m 0 0;
 }
 
 .TopBar--homeLink {
-  background-color: @primary_blue;
-  box-sizing: border-box;
+  background-color: @neutral_off_white;
   height: 100%;
   padding: 0 @size_m @size_3xs;
-  transition: background-color .25s ease-out;
-
-  &:hover,
-  &:focus {
-    .shade(background-color, @primary_blue, 2);
-  }
 }
 
 .TopBar--logo {
-  color: @neutral_white;
+  color: @primary_blue;
   height: @size_xl;
   margin: 0;
   padding: 0;
@@ -44,14 +37,14 @@
 
 .TopBar--githubLink {
   .text--huge;
-  color: @neutral_white;
+  color: @primary_blue;
   cursor: pointer;
   opacity: .5;
   transition: opacity .25s ease-out;
 
   &:focus,
   &:hover {
-    color: @neutral_white;
+    color: @primary_blue;
     opacity: 1;
   }
 }

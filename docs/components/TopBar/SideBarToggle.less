@@ -5,20 +5,20 @@
 .SideBarToggle {
   .button--reset;
   .text--large;
-  .border--right--s(@primary_blue);
-  background: @primary_blue;
+  background: @neutral_off_white;
   border: 0;
-  color: @neutral_white;
+  opacity: .8;
+  color: @primary_blue;
   height: 100%;
   text-align: center;
   width: @paneWidthCollapsed;
 
   &:focus,
   &:hover {
-    .shade(background, @primary_blue, 2);
+    opacity: 1;
   }
 
   &:active {
-    .shade(background, @primary_blue, 4);
+    opacity: 1;
   }
 }
