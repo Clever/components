@@ -308,7 +308,7 @@ export class Table extends Component {
               onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
             >
               {columns.map(({props: col}) => (
-                <Cell className={col.cell.className} key={col.id} noWrap={col.noWrap}>
+                <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
                   {col.cell.renderer(rowData)}
                 </Cell>
               ))}
@@ -329,6 +329,16 @@ export class Table extends Component {
       </table>
     );
   }
+}
+
+function getCellClassName(columnProps, rowData) {
+  const {className} = columnProps.cell;
+
+  if (typeof className === "function") {
+    return className(rowData);
+  }
+
+  return className;
 }
 
 Table.propTypes = {
