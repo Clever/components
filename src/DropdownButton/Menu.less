@@ -3,6 +3,7 @@
 
 .DropdownButton--Menu {
   .margin--none;
+  .margin--top--xs;
   .padding--none;
   .zIndex--2;
   box-shadow: 0 0 @size_xs rgba(0, 0, 0, .15);
@@ -13,9 +14,14 @@
 .Button.DropdownButton--Option {
   .borderRadius--0;
   .text--left;
-  border-top: 0;
   border-bottom-width: @borderWidthS;
 
+  &not(:first-child) {
+    border-top: 0;
+  }
+  &:first-child {
+    .borderRadius--top--s;
+  }
   &:last-child {
     .borderRadius--bottom--s;
   }
@@ -24,14 +30,14 @@
 // Reset the disabled border styles for the secondary button's left and right borders, so it they
 // match those of the siblings in the menu.
 .Button--secondary.DropdownButton--Option[disabled] {
-  .border--x--s(@primary_blue);
-  .border--bottom--s(@primary_blue);
+  .border--x--s(@primary_blue_tint_2);
+  .border--bottom--s(@primary_blue_tint_2);
 
   &:active,
   &:focus,
   &:hover {
-    .border--x--s(@primary_blue);
-    .border--bottom--s(@primary_blue);
+    .border--x--s(@primary_blue_tint_2);
+    .border--bottom--s(@primary_blue_tint_2);
   }
 }
 
