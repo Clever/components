@@ -1,17 +1,16 @@
 @import (reference) "../less/index";
 
-@pale_steps: 6;
-
 .AlertBox--container {
-  .borderRadius--l;
+  .margin--y--m;
   .padding--s;
   .border--s(transparent);
-  border-left-width: @size_s;
+  border-left-width: @size_xs;
 }
 
 .AlertBox--title {
   .margin--left--xs;
   .text--semi-bold;
+  .text--large;
 }
 
 .AlertBox--header {
@@ -19,13 +18,13 @@
 }
 
 .AlertBox--Icon {
-  height: @size_m;
-  width: @size_m;
+  height: @size_l;
+  width: @size_l;
 }
 
 .AlertBox--warning {
   border-color: @alert_orange;
-  .tint(background-color, @alert_orange, @pale_steps);
+  background-color: fade(@alert_orange, 2%);
 }
 
 .AlertBox--Icon--warning {
@@ -34,7 +33,7 @@
 
 .AlertBox--success {
   border-color: @alert_green;
-  .tint(background-color, @alert_green, @pale_steps);
+  background-color: fade(@alert_green, 2%);
 }
 
 .AlertBox--Icon--success {
@@ -43,7 +42,7 @@
 
 .AlertBox--error {
   border-color: @alert_red;
-  .tint(background-color, @alert_red, @pale_steps);
+  background-color: fade(@alert_red, 2%);
 }
 
 .AlertBox--Icon--error {
@@ -52,7 +51,7 @@
 
 .AlertBox--info {
   border-color: @primary_blue;
-  .tint(background-color, @primary_blue, @pale_steps);
+  background-color: fade(@primary_blue, 2%);
 }
 
 .AlertBox--Icon--info {
@@ -68,11 +67,11 @@
   border: none;
   padding: 0;
   margin: 0;
-  opacity: 0.4;
+  opacity: 0.6;
   float: right;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 1;
   }
 }
 
