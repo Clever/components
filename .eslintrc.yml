@@ -1,4 +1,6 @@
-extends: "airbnb"
+extends:
+  - "airbnb"
+  - "plugin:jsx-a11y/recommended"
 env:
     mocha: true
     jest: true
@@ -7,6 +9,7 @@ parserOptions:
   ecmaVersion: 6
 plugins:
   - "react"
+  - "jsx-a11y"
 settings:
   import/resolver: webpack
 rules:

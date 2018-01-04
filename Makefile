@@ -6,7 +6,7 @@ JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path
 JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
 TS_FILES := $(shell find . -regex ".*\.tsx*" -not -path "./node_modules/*")
 LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
-LINT := ./node_modules/.bin/eslint
+LINT := ./node_modules/.bin/eslint --no-color
 STYLELINT := ./node_modules/.bin/stylelint --config ./.stylelintrc
 TESTS := $(TESTS_JS) $(TESTS_TS)
 TESTS_JS := $(shell find . -regex ".*_test\.jsx*" -not -path "./node_modules/*")
@@ -66,12 +66,13 @@ border-radius-styles:
 	@echo "Generating border-radius style definitions..."
 	@node genBorderRadius.js
 
+lint: lint-es lint-styles
+
 LINT_MAX_LESS_PROBLEMS := 122
-lint:
-	@echo "Linting files..."
-	@$(LINT) $(JS_FILES) $(JSX_FILES) $(TS_FILES)
+lint-styles:
+	@echo "Linting style files..."
 	@$(STYLELINT) $(LESS_FILES) | tee /tmp/less-lint-output.txt || true
-	@cat /tmp/less-lint-output.txt | sed -e 's/\(.\)/\1\n/g' | grep '✖' | wc -l > /tmp/less-lint-problem-count
+	@sed -n 's/^✖ \(.*\) problems.*/\1/p' /tmp/eslint-output.txt > /tmp/eslint-problem-count
 	@if [[ "`cat /tmp/less-lint-problem-count`" -gt "$(LINT_MAX_LESS_PROBLEMS)" ]]; then \
 		echo -e "\033[0;31m✖ You have `cat /tmp/less-lint-problem-count` errors which is more than $(LINT_MAX_LESS_PROBLEMS) problems reported by stylelint. Please check for stylelint errors in the changes you've made.\033[0m\n"; \
 		exit 1; \
@@ -81,6 +82,23 @@ lint:
 	else \
 		echo -e "\033[0;32m✓ No new lint errors found.\033[0m\n"; \
 	fi
+
+
+LINT_MAX_ES_PROBLEMS := 68
+lint-es:
+	@echo "Linting es files..."
+	@$(LINT) $(JS_FILES) $(JSX_FILES) $(TS_FILES)| tee /tmp/eslint-output.txt || true
+	@sed -n 's/^✖ \(.*\) problems.*/\1/p' /tmp/eslint-output.txt > /tmp/eslint-problem-count
+	@(if [ "`cat /tmp/eslint-problem-count`" -gt "$(LINT_MAX_ES_PROBLEMS)" ]; then \
+		echo "More than $(LINT_MAX_ES_PROBLEMS) problems reported by eslint. Please check for eslint errors in the changes you've made."; \
+		exit 1; \
+	elif [ "`cat /tmp/eslint-problem-count`" -lt "$(LINT_MAX_ES_PROBLEMS)" ]; then \
+		echo "Congrats! You have fewer than $(LINT_MAX_ES_PROBLEMS) eslint problems. Please make a change to lower the LINT_MAX_ES_PROBLEMS in the Makefile."; \
+		exit 1; \
+	else \
+		echo -e "\033[0;32m✓ No new eslint errors found.\033[0m\n"; \
+	fi)
+
 
 test: lint
 	@echo "Running unit tests..."
