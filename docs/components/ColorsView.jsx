@@ -23,32 +23,32 @@ export default class ColorsView extends PureComponent {
                 </p>
               </div>
             </Col>
-            <Col span={5} className="flexbox">
-              <Row grow>
-                <Col span={12} className="flexbox">
+            <Col span={5} className="flexbox flex--wrap">
+              <Row grow className="flex--direction--row">
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--primary_blue--shade-2">
+                    <h4 className="text--vertical">Shade 2</h4>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--primary_blue--shade-1">
+                    <h4 className="text--vertical">Shade 1</h4>
+                  </div>
+                </Col>
+                <Col span={8} className="flexbox">
                   <div className="color--block large--color--block bg--primary_blue">
                     <h2 className="">Primary Blue</h2>
                     <p>@primary_blue</p>
                   </div>
                 </Col>
-                <Col span={3} className="flexbox">
-                  <div className="color--block step--color--block bg--primary_blue--shade-4">
-                    <h4 className="">Shade 4</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--primary_blue--tint-1">
+                    <h4 className="text--vertical">Tint 1</h4>
                   </div>
                 </Col>
-                <Col span={3} className="flexbox">
-                  <div className="color--block step--color--block bg--primary_blue--shade-2">
-                    <h4 className="">Shade 2</h4>
-                  </div>
-                </Col>
-                <Col span={3} className="flexbox">
+                <Col span={1} className="flexbox">
                   <div className="color--block step--color--block bg--primary_blue--tint-2">
-                    <h4 className="">Tint 2</h4>
-                  </div>
-                </Col>
-                <Col span={3} className="flexbox">
-                  <div className="color--block step--color--block bg--primary_blue--tint-4">
-                    <h4 className="">Tint 4</h4>
+                    <h4 className="text--vertical">Tint 2</h4>
                   </div>
                 </Col>
               </Row>
@@ -109,21 +109,88 @@ export default class ColorsView extends PureComponent {
                 </p>
               </div>
             </Col>
-            <Col span={5} className="flexbox">
-              <Row grow>
-                <Col span={4} className="flexbox margin--bottom--l">
-                  <div className="color--block bg--alert_green">
-                    <h4 className="">@alert_green</h4>
+            <Col span={5} className="flexbox flex--wrap">
+              <Row grow className="flex--direction--row margin--bottom--l">
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_green--shade-2">
+                    <h4 className="text--vertical">Shade 2</h4>
                   </div>
                 </Col>
-                <Col span={4} className="flexbox margin--bottom--l">
-                  <div className="color--block bg--alert_orange">
-                    <h4 className="">@alert_orange</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_green--shade-1">
+                    <h4 className="text--vertical">Shade 1</h4>
                   </div>
                 </Col>
-                <Col span={4} className="flexbox margin--bottom--l">
-                  <div className="color--block bg--alert_red">
-                    <h4 className="">@alert_red</h4>
+                <Col span={8} className="flexbox">
+                  <div className="color--block large--color--block bg--alert_green">
+                    <h2 className="">Alert Green</h2>
+                    <p>@alert_green</p>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_green--tint-1">
+                    <h4 className="text--vertical">Tint 1</h4>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_green--tint-2">
+                    <h4 className="text--vertical">Tint 2</h4>
+                  </div>
+                </Col>
+              </Row>
+              <Row grow className="flex--direction--row margin--bottom--l">
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_red--shade-2">
+                    <h4 className="text--vertical">Shade 2</h4>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_red--shade-1">
+                    <h4 className="text--vertical">Shade 1</h4>
+                  </div>
+                </Col>
+                <Col span={8} className="flexbox">
+                  <div className="color--block large--color--block bg--alert_red">
+                    <h2 className="">Alert Red</h2>
+                    <p>@alert_red</p>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_red--tint-1">
+                    <h4 className="text--vertical">Tint 1</h4>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_red--tint-2">
+                    <h4 className="text--vertical">Tint 2</h4>
+                  </div>
+                </Col>
+              </Row>
+              <Row grow className="flex--direction--row margin--bottom--l">
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_orange--shade-2">
+                    <h4 className="text--vertical">Shade 2</h4>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_orange--shade-1">
+                    <h4 className="text--vertical">Shade 1</h4>
+                  </div>
+                </Col>
+                <Col span={8} className="flexbox">
+                  <div className="color--block large--color--block bg--alert_orange">
+                    <h2 className="">Alert Orange</h2>
+                    <p>@alert_orange</p>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_orange--tint-1">
+                    <h4 className="text--vertical">Tint 1</h4>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--alert_orange--tint-2">
+                    <h4 className="text--vertical">Tint 2</h4>
                   </div>
                 </Col>
               </Row>
@@ -139,103 +206,88 @@ export default class ColorsView extends PureComponent {
                 </p>
               </div>
             </Col>
-            <Col span={5} className="flexbox">
-              <Row grow className="">
-                <Col span={4} className="flexbox margin--bottom--l">
-                  <div className="color--block bg--accent_aqua">
-                    <h4 className="">@accent_aqua</h4>
+            <Col span={5} className="flexbox flex--wrap">
+              <Row grow className="flex--direction--row margin--bottom--l">
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_teal--shade-2">
+                    <h4 className="text--vertical">Shade 2</h4>
                   </div>
                 </Col>
-                <Col span={4} className="flexbox margin--bottom--l">
-                  <div className="color--block bg--accent_pink">
-                    <h4 className="">@accent_pink</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_teal--shade-1">
+                    <h4 className="text--vertical">Shade 1</h4>
                   </div>
                 </Col>
-                <Col span={4} className="flexbox margin--bottom--l">
-                  <div className="color--block bg--accent_purple">
-                    <h4 className="">@accent_purple</h4>
+                <Col span={8} className="flexbox">
+                  <div className="color--block large--color--block bg--accent_teal">
+                    <h2 className="">Accent Teal</h2>
+                    <p>@accent_teal</p>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_teal--tint-1">
+                    <h4 className="text--vertical">Tint 1</h4>
+                  </div>
+                </Col>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_teal--tint-2">
+                    <h4 className="text--vertical">Tint 2</h4>
                   </div>
                 </Col>
               </Row>
-            </Col>
-          </Row>
-          <Row grow className="margin--bottom--5xl padding--right--m">
-            <Col span={6} className="flexbox self--start padding--right--l">
-              <div>
-                <h2>Shades and Tints</h2>
-                <p>
-                  To provide the subtly and range necessary for interaction patterns on a modern web interface,
-                  we use a scale of shades and tints for our existing color palettes. We use a tint and shade
-                  scale which add white or black respectively to the base color in 15% increments.
-                </p>
-              </div>
-            </Col>
-            <Col span={5} className="flexbox">
-              <Row grow className="justify--left">
-                <Col span={12} className="flexbox">
-                  <div className="color--block large--color--block bg--alert_green">
-                    <h2 className="">Example</h2>
-                    <p>@alert_green</p>
+              <Row grow className="flex--direction--row margin--bottom--l">
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_pink--shade-2">
+                    <h4 className="text--vertical">Shade 2</h4>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--shade-6">
-                    <h4 className="">Shade 6</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_pink--shade-1">
+                    <h4 className="text--vertical">Shade 1</h4>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--shade-5">
-                    <h4 className="">Shade 5</h4>
+                <Col span={8} className="flexbox">
+                  <div className="color--block large--color--block bg--accent_pink">
+                    <h2 className="">Accent Pink</h2>
+                    <p>@accent_pink</p>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--shade-4">
-                    <h4 className="">Shade 4</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_pink--tint-1">
+                    <h4 className="text--vertical">Tint 1</h4>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--shade-3">
-                    <h4 className="">Shade 3</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_pink--tint-2">
+                    <h4 className="text--vertical">Tint 2</h4>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--shade-2">
-                    <h4 className="">Shade 2</h4>
+              </Row>
+              <Row grow className="flex--direction--row margin--bottom--l">
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_purple--shade-2">
+                    <h4 className="text--vertical">Shade 2</h4>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--shade-1">
-                    <h4 className="">Shade 1</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_purple--shade-1">
+                    <h4 className="text--vertical">Shade 1</h4>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--tint-1">
-                    <h4 className="">Tint 1</h4>
+                <Col span={8} className="flexbox">
+                  <div className="color--block large--color--block bg--accent_purple">
+                    <h2 className="">Accent Purple</h2>
+                    <p>@accent_purple</p>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--tint-2">
-                    <h4 className="">Tint 2</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_purple--tint-1">
+                    <h4 className="text--vertical">Tint 1</h4>
                   </div>
                 </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--tint-3">
-                    <h4 className="">Tint 3</h4>
-                  </div>
-                </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--tint-4">
-                    <h4 className="">Tint 4</h4>
-                  </div>
-                </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--tint-5">
-                    <h4 className="">Tint 5</h4>
-                  </div>
-                </Col>
-                <Col span={2} className="flexbox">
-                  <div className="color--block step--color--block bg--alert_green--tint-6">
-                    <h4 className="">Tint 6</h4>
+                <Col span={1} className="flexbox">
+                  <div className="color--block step--color--block bg--accent_purple--tint-2">
+                    <h4 className="text--vertical">Tint 2</h4>
                   </div>
                 </Col>
               </Row>
@@ -248,35 +300,34 @@ export default class ColorsView extends PureComponent {
                 <p>
                   Whenever you declare a color in LESS, you should reference the color variable instead of
                   declaring a fixed value. If you need to use a tinted or shaded variation of a color, use
-                  the appropriate LESS mixin function.
+                  only the declared tints or shades.
                 </p>
-                <strong>Tint and shade mixin functions</strong>
+                <strong>Tint and shade usage</strong>
                 <p>
-                  You pass the mixin functions an attribute, the color variable, and a number of steps usually
-                  between 1 and 6.
+                  Each color variable has two defined tints and shades that can be used.
                 </p>
-                <code>.shade(background-color, @alert_red, 2);</code>
+                <code>color: @primary_blue_tint_2;</code>
               </div>
             </Col>
             <Col span={4} className="flexbox">
               <Example
                 title="Example"
                 code={`
-                  <span className="callout--box">This is a blue callout box.</span>
+                  <span className="callout--box">This is a blue bordered box.</span>
                   
                   <style>
                     .callout--box {
-                      border: @size_3xs solid @primary_blue;
+                      border: @size_3xs solid @primary_blue_tint_2;
                       background-color: @neutral_off_white;
                       height: 3rem;
                       &:hover {
-                        .shade(border-color, @primary_blue, 2);
+                        border-color: @primary_blue_shade_2;
                       }
                     }
                   </style>
                 `}
               >
-                <span className="callout--box">This is a callout box.</span>
+                <span className="callout--box">This is a blue bordered box.</span>
               </Example>
             </Col>
           </Row>
