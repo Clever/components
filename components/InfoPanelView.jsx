@@ -1,9 +1,9 @@
 import React from "react";
 
-import Example from "./Example";
+import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {InfoPanel, InfoPanelColumn} from "src";
+import {FlexBox, InfoPanel, InfoPanelColumn} from "src";
 
 import "./TextAreaView.less";
 
@@ -16,24 +16,52 @@ export default class InfoPanelView extends React.Component {
       readOnly: false,
       required: false,
       inputValue: "",
+      collapsible: false,
+      footer: false,
     };
+  }
+
+  _renderCheckbox(id) {
+    const {cssClass} = InfoPanelView;
+
+    return (
+      <label className={cssClass.CONFIG}>
+        <input
+          checked={this.state[id]}
+          type="checkbox"
+          onChange={e => this.setState({[id]: e.target.checked})}
+        />
+        &nbsp;
+        {id}
+      </label>
+    );
   }
 
   render() {
     const {cssClass} = InfoPanelView;
+    const {collapsible, footer} = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="InfoPanel">
         <Example>
-          <InfoPanel title="Info Panel Title">
+          <ExampleCode>
+          <InfoPanel title="Info Panel Title"
+            collapsible={collapsible}
+            footer={footer ? "footer content" : null}
+          >
             <InfoPanelColumn>
               <p>column 1 content</p>
             </InfoPanelColumn>
             <InfoPanelColumn>
               <p>column 2 content</p>
             </InfoPanelColumn>
-          </InfoPanel>
-        </Example>
+            </InfoPanel>
+          </ExampleCode>
+          <FlexBox className={cssClass.CONFIG_CONTAINER}>
+            {this._renderCheckbox("collapsible")}
+            {this._renderCheckbox("footer")}
+          </FlexBox>
+         </Example>
 
         <PropDocumentation
           availableProps={[
@@ -58,6 +86,18 @@ export default class InfoPanelView extends React.Component {
               name: "title",
               type: "String",
               description: "The InfoPanel title",
+            },
+            {
+              name: "collapsible",
+              type: "Boolean",
+              description: "True if InfoPanel content can collapse into the title",
+              optional: true,
+            },
+            {
+              name: "open",
+              type: "Boolean",
+              description: "Used in conjunction with collapsible. True if the InfoPanel should be open on loading",
+              optional: true,
             },
           ]}
           className={cssClass.PROPS}
@@ -89,5 +129,7 @@ export default class InfoPanelView extends React.Component {
 
 InfoPanelView.cssClass = {
   CONTAINER: "InfoPanelView",
+  CONFIG: "TextAreaView--configContainer",
+  CONFIG_CONTAINER: "TextAreaView--config",
 };
 
