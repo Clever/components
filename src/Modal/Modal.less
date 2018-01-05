@@ -1,8 +1,8 @@
 @import (reference) "../less/index.less";
 
 .Modal {
+  .zIndex--3;
   position: fixed;
-  z-index: 200;
 }
 
 .Modal--background {
@@ -11,37 +11,37 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: #191926;
-  opacity: 0.6;
+  background: fade(@neutral_black, 60%);
 }
 
 .Modal--window {
+  .borderRadius--l;
+  .border--s(@neutral_silver);
   position: relative;
   top: 50%;
   left: 50%;
   transform: translateY(-50%);
   position: fixed;
-  border-radius: 3px;
   font-family: "Proxima Nova";
-  box-shadow: 0 10px 10px rgba(0,0,0,.2);
-  border: 1px solid #FAFCFC;
-  background: #FAFCFC;
+  box-shadow: 0 @size_s @size_s fade(@neutral_black, 20%);
+  background: @neutral_white;
 }
 
 .Modal--header {
-  background: #E3E6EB;
-  height: 60px;
-  padding: 15px 30px;
+  .padding--y--m;
+  .padding--x--l;
+  background: @neutral_off_white;
+  height: @size_5xl;
   box-sizing: border-box;
   position: relative;
 
   h1 {
-    padding: 0;
-    margin: 0 20px 0 0; /* for close button on right */
-    font-size: 22px;
-    line-height: 30px;
-    font-weight: 500;
-    color: #121212;
+    .margin--none;
+    .margin--right--xl;
+    .padding--none;
+    .text--large;
+    .text--line-height-4;
+    color: @neutral_black;
     font-family: "Proxima Nova", Arial, sans-serif;
     overflow: hidden;
     white-space: nowrap;
@@ -61,37 +61,37 @@
   border: none;
   padding: 0;
   margin: 0;
-  opacity: 0.4;
+  opacity: 0.5;
   top: 50%;
-  margin-top: -(@size_m/2);
+  margin-top: -@size_xs;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 1;
   }
 }
 
 .Modal--window--content {
   position: relative;
-  padding: 30px 30px 25px;
-  background-color: #FAFCFC;
+  .padding--l;
+  background-color: @neutral_white;
   box-sizing: border-box;
   overflow-y: auto;
 
   p {
-    margin-top: 0;
-    margin-bottom: 15px;
+    .margin--bottom--m;
+    .margin--top--none;
   }
 }
 
 .Modal footer {
-  margin-top: 40px;
+  .margin--top--xl;
   text-align: right;
 
   .Button {
-    margin-right: 20px;
+    .margin--right--l;
   }
 
   .Button:last-child {
-    margin-right: 0;
+    .margin--right--none;
   }
 }
