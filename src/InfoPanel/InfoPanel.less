@@ -1,3 +1,4 @@
+@import (reference) "../less/utilities";
 @import (reference) "../less/index";
 
 
@@ -21,25 +22,47 @@
   }
 }
 
-.InfoPanel--header {
-  .border--bottom--s(@neutral_silver);
-  background-color: @neutral_off_white;
-  padding: @size_s @size_m;
-}
-
-.InfoPanel--title {
-  .text--regular;
-  color: @neutral_dark_gray;
-  font-family: "Proxima Nova";
-  margin: 0;
-  padding: 0;
+.InfoPanel--collapsible {
 }
 
 .InfoPanel--content {
-  padding: @size_m;
+  background-color: @neutral_white;
+  padding: @size_s @size_m;
 }
 
 .InfoPanel--footer {
   .border--top--s(@neutral_silver);
   padding: @size_s @size_m;
+}
+
+.InfoPanel--headerOpen {
+  background-color: @neutral_off_white;
+  .border--bottom--s(@neutral_silver);
+  padding: @size_s @size_m;
+  .text--regular;
+  color: @neutral_dark_gray;
+  font-family: "Proxima Nova";
+  margin: 0;
+  padding: @size_s @size_m;
+  display: block;
+}
+
+.InfoPanel--headerClosed {
+  background-color: @neutral_off_white;
+  padding: @size_s @size_m;
+  .text--regular;
+  color: @neutral_dark_gray;
+  font-family: "Proxima Nova";
+  margin: 0;
+  padding: @size_s @size_m;
+  display: block;
+}
+
+.InfoPanel--title {
+  display: inline-block;
+}
+
+.InfoPanel--collapseArrow {
+  width: @size_s;
+  display: inline-block;
 }

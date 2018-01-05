@@ -5,11 +5,20 @@
   min-width: 15rem;
 }
 
-.TextAreaView--config {
-  .text--small;
-  cursor: pointer;
+.TextAreaView--configContainer {
   display: inline-block;
-  margin: @size_xs;
-  margin-left: 0;
-  text-transform: uppercase;
+  .margin--right--xl;
+  .margin--top--l;
+}
+
+.TextAreaView--config {
+  .border--top--l(@neutral_silver);
+  .margin--top--l;
+  .margin--right--xl;
+  cursor: pointer;
+  display: block;
+
+  &:not(:last-child) {
+    .margin--bottom--s;
+  }
 }

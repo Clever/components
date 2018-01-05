@@ -12,9 +12,11 @@ describe("InfoPanel", () => {
     assert(panel.hasClass("custom"));
   });
 
-  it("renders title", () => {
+  it("renders title in the Collapsible trigger", () => {
+    const title = <div>Panel Title</div>;
     const panel = shallow(<InfoPanel title="Panel Title" />);
-    assert.equal(panel.find(`.${cssClass.TITLE}`).text(), "Panel Title");
+    assert.deepEqual(panel.find(`.${cssClass.COLLAPSIBLE}`).props().trigger,
+      title);
   });
 
   it("renders content", () => {
