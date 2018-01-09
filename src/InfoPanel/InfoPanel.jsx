@@ -42,7 +42,6 @@ export default class InfoPanel extends Component {
           open={ collapsible ? defaultOpen : true }
           onOpening={() => this.setState({isCollapsed: true})}
           onClosing={() => this.setState({isCollapsed: false})}
-          className={cssClass.COLLAPSIBLE}
         >
           <div className={cssClass.CONTENT}>
             {children}
@@ -75,5 +74,4 @@ InfoPanel.cssClass = {
   HEADER_CLOSED: "InfoPanel--headerClosed",
   COLLAPSE_ARROW: "InfoPanel--collapseArrow",
   TITLE: "InfoPanel--title",
-  COLLAPSIBLE: "InfoPanel--collapsible",
 };
