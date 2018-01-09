@@ -94,7 +94,7 @@ export default class InfoPanelView extends React.Component {
               optional: true,
             },
             {
-              name: "open",
+              name: "defaultOpen",
               type: "Boolean",
               description: "Used in conjunction with collapsible. True if the InfoPanel should be open on loading",
               optional: true,
