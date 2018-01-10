@@ -17,8 +17,6 @@ export default class InfoPanel extends Component {
   }
 
   toggleArrow(keys) {
-    console.log(this.state.isCollapsed);
-    console.log(keys);
     this.setState({isCollapsed: !(typeof keys !== "undefined")});
   }
 
