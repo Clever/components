@@ -1,10 +1,8 @@
 import classnames from "classnames";
 import React, {Component, PropTypes} from "react";
 import FontAwesome from "react-fontawesome";
-import ReactCollapsible from "react-collapsible";
-
+import {Accordion, AccordionItem, AccordionItemTitle, AccordionItemBody} from "react-accessible-accordion";
 import "./InfoPanel.less";
-
 
 /**
  * Base presentational component for the displaying information in paneled format.
@@ -13,36 +11,31 @@ export default class InfoPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isCollapsed: props.defaultOpen,
+      isCollapsed: !props.defaultOpen,
+      collapseArrow: (props.defaultOpen ? "caret-down" : "caret-right"),
     };
+  }
+
+  toggleArrow(keys) {
+    console.log(this.state.isCollapsed);
+    console.log(keys);
+    this.setState({isCollapsed: !(typeof keys !== "undefined")});
   }
 
   render() {
     const {children, className, title, footer, collapsible, defaultOpen} = this.props;
     const {isCollapsed} = this.state;
+    let {collapseArrow} = this.state;
     const {cssClass} = InfoPanel;
-    let collapseArrow = "";
 
-    if (collapsible && isCollapsed) {
-      collapseArrow = <FontAwesome name="caret-down" />;
-    } else if (collapsible && !isCollapsed) {
-      collapseArrow = <FontAwesome name="caret-right" />;
-    }
-
-    return (
-      <div className={classnames(cssClass.CONTAINER, className)}>
-        <ReactCollapsible trigger={collapsible ?
-          (<div>
-            <div className={cssClass.COLLAPSE_ARROW}>{collapseArrow}</div>
-            <div className={cssClass.TITLE}>{title}</div>
-          </div>) : <div>{title}</div>}
-          triggerClassName={cssClass.HEADER_CLOSED}
-          triggerOpenedClassName={cssClass.HEADER_OPEN}
-          triggerDisabled={!collapsible}
-          open={ collapsible ? defaultOpen : true }
-          onOpening={() => this.setState({isCollapsed: true})}
-          onClosing={() => this.setState({isCollapsed: false})}
-        >
+    if (!collapsible) {
+      return (
+        <div className={classnames(cssClass.CONTAINER, className)}>
+          <div className={cssClass.HEADER}>
+            <h4 className={cssClass.TITLE}>
+              {title}
+            </h4>
+          </div>
           <div className={cssClass.CONTENT}>
             {children}
           </div>
@@ -51,7 +44,38 @@ export default class InfoPanel extends Component {
               {footer}
             </div>
           )}
-        </ReactCollapsible>
+        </div>
+      );
+    }
+
+    if (isCollapsed) {
+      collapseArrow = "caret-right";
+    } else {
+      collapseArrow = "caret-down";
+    }
+
+    return (
+      <div className={classnames(cssClass.CONTAINER, className)}>
+        <Accordion onChange={keys => this.toggleArrow(keys)}>
+          <AccordionItem expanded={defaultOpen}>
+            <AccordionItemTitle className={cssClass.COLLAPSIBLE_HEADER}>
+              <div>
+                <div className={cssClass.COLLAPSE_ARROW}><FontAwesome name={collapseArrow} /></div>
+                <div className={cssClass.COLLAPSIBLE_TITLE}>{title}</div>
+              </div>
+            </AccordionItemTitle>
+            <AccordionItemBody>
+              <div className={cssClass.CONTENT}>
+                {children}
+              </div>
+              {footer && (
+                <div className={cssClass.FOOTER}>
+                  {footer}
+                </div>
+              )}
+            </AccordionItemBody>
+          </AccordionItem>
+        </Accordion>
       </div>
     );
   }
@@ -68,10 +92,11 @@ InfoPanel.propTypes = {
 
 InfoPanel.cssClass = {
   CONTAINER: "InfoPanel",
-  CONTENT: "InfoPanel--content",
   FOOTER: "InfoPanel--footer",
-  HEADER_OPEN: "InfoPanel--headerOpen",
-  HEADER_CLOSED: "InfoPanel--headerClosed",
-  COLLAPSE_ARROW: "InfoPanel--collapseArrow",
   TITLE: "InfoPanel--title",
+  HEADER: "InfoPanel--header",
+  CONTENT: "InfoPanel--content",
+  COLLAPSE_ARROW: "InfoPanel--collapseArrow",
+  COLLAPSIBLE_TITLE: "InfoPanel--collapsibleTitle",
+  COLLAPSIBLE_HEADER: "InfoPanel--collapsibleHeader",
 };
