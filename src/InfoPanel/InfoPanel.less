@@ -1,5 +1,5 @@
+@import (reference) "../less/utilities";
 @import (reference) "../less/index";
-
 
 .InfoPanel {
   .borderRadius--m;
@@ -31,8 +31,8 @@
   .text--regular;
   color: @neutral_dark_gray;
   font-family: "Proxima Nova";
-  margin: 0;
-  padding: 0;
+  .margin--none;
+  .padding--none;
 }
 
 .InfoPanel--content {
@@ -43,3 +43,39 @@
   .border--top--s(@neutral_silver);
   padding: @size_s @size_m;
 }
+
+.InfoPanel--collapsibleHeader {
+  background-color: @neutral_off_white;
+  .border--bottom--s(@neutral_silver);
+  padding: @size_s @size_m;
+  .text--regular;
+  color: @neutral_dark_gray;
+  font-family: "Proxima Nova";
+  .margin--none;
+  padding: @size_s @size_m;
+  display: block;
+}
+
+.InfoPanel--collapsibleTitle {
+  display: inline-block;
+}
+
+.InfoPanel--collapseArrow {
+  width: @size_s;
+  display: inline-block;
+}
+
+
+// classes picked up by react-accessible-accordion to show
+// and hide content
+.accordion__body {
+    display: block;
+    animation: fadein .35s ease-in;
+}
+
+.accordion__body--hidden {
+    display: none;
+    opacity: 0;
+    animation: fadein .35s ease-in;
+}
+
