@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "0.26.12",
+  "version": "0.27.0",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "prop-types": "^15.5.10",
     "react-accessible-accordion": "^1.0.2",
     "react-addons-css-transition-group": "^15.4.2",
+    "react-autosize-textarea": "^3.0.1",
     "react-bootstrap": "^0.30.0",
     "react-copy-to-clipboard": "^4.2.1",
     "react-dropzone": "^3.11.0",
