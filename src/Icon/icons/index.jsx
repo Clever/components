@@ -21,6 +21,7 @@ import Juggler from "./Juggler";
 import Leader from "./Leader";
 import LightningJar from "./LightningJar";
 import Lock from "./Lock";
+import MagicLamp from "./MagicLamp";
 import MagnifyC from "./MagnifyC";
 import MagnifyUser from "./MagnifyUser";
 import Man from "./Man";
@@ -87,6 +88,7 @@ export default {
   leader: Leader,
   "lightning-jar": LightningJar,
   lock: Lock,
+  "magic-lamp": MagicLamp,
   "magnify-c": MagnifyC,
   "magnify-user": MagnifyUser,
   man: Man,
