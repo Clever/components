@@ -47,6 +47,8 @@ Icon.names = {
   LEADER:             "leader",
   LIGHTNING_JAR:      "lightning-jar",
   LOCK:               "lock",
+  MAP:                "map",
+  MAGIC_LAMP:         "magic-lamp",
   MAGNIFY_C:          "magnify-c",
   MAGNIFY_USER:       "magnify-user",
   MAN:                "man",
