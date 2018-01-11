@@ -25,6 +25,7 @@ import MagicLamp from "./MagicLamp";
 import MagnifyC from "./MagnifyC";
 import MagnifyUser from "./MagnifyUser";
 import Man from "./Man";
+import Map from "./Map";
 import Menu from "./Menu";
 import Microphone from "./Microphone";
 import Microscope from "./Microscope";
@@ -92,6 +93,7 @@ export default {
   "magnify-c": MagnifyC,
   "magnify-user": MagnifyUser,
   man: Man,
+  map: Map,
   menu: Menu,
   microphone: Microphone,
   microscope: Microscope,
