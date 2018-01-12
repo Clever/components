@@ -16,6 +16,8 @@ export default class TextAreaView extends React.Component {
       readOnly: false,
       required: false,
       inputValue: "",
+      autoResize: true,
+      placeholder: true,
     };
   }
 
@@ -31,6 +33,7 @@ export default class TextAreaView extends React.Component {
         <Example>
           <ExampleCode>
             <TextArea
+              autoResize={this.state.autoResize}
               disabled={this.state.disabled}
               name="TextAreaName"
               label="TextArea Label"
@@ -38,7 +41,7 @@ export default class TextAreaView extends React.Component {
               required={this.state.required}
               optional={this.state.optional}
               spellCheck={this.state.spellCheck}
-              placeholder="TextArea Placeholder"
+              placeholder={this.state.placeholder ? "TextArea Placeholder" : ""}
               onChange={e => this.setState({inputValue: e.target.value})}
               value={this.state.inputValue}
             />
@@ -89,6 +92,24 @@ export default class TextAreaView extends React.Component {
             />
             {" "}
             Spell Check
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.autoResize}
+              onChange={({target}) => this.setState({autoResize: target.checked})}
+            />
+            {" "}
+            Auto Resize
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.placeholder}
+              onChange={({target}) => this.setState({placeholder: target.checked})}
+            />
+            {" "}
+            Show Placeholder
           </label>
         </Example>
 
@@ -194,6 +215,19 @@ export default class TextAreaView extends React.Component {
               name: "className",
               type: "string",
               description: "Optional additional classname to apply to the TextArea",
+              optional: true,
+            },
+            {
+              name: "autoResize",
+              type: "boolean",
+              description: "Auto grow the textarea in response to user input",
+              optional: true,
+              defaultValue: "false",
+            },
+            {
+              name: "rows",
+              type: "number",
+              description: "The number of rows to start the textarea with",
               optional: true,
             },
           ]}

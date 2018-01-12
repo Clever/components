@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import TextareaAutosize from "react-autosize-textarea";
 
 import "./TextArea.less";
 
@@ -80,28 +81,44 @@ export class TextArea extends React.Component {
       inputNote = <span className="TextArea--error">{this.props.error}</span>;
     }
 
+    const props = {
+      className: "TextArea--input",
+      disabled: this.props.disabled,
+      maxLength: this.props.maxLength,
+      minLength: this.props.minLength,
+      name: this.props.name,
+      onBlur: this.onBlur,
+      onChange: this.props.onChange,
+      onFocus: this.onFocus,
+      placeholder: this.props.placeholder,
+      readOnly: this.props.readOnly,
+      ref: "input",
+      required: this.props.required,
+      spellCheck: this.props.spellCheck,
+      value: this.props.value,
+      rows: this.props.rows || 1,
+    };
+
+    let rows = this.props.rows;
+    if (this.props.placeholder) {
+      // Need to add another row for autoGrow since it seems to collapse in a way that conflicts with the placeholder
+      // margin
+      rows = this.props.rows + 1;
+    }
+
+    let textarea = <textarea {...props} rows={rows} />;
+    if (this.props.autoResize) {
+      rows++;
+      textarea = <TextareaAutosize {...props} rows={rows} />;
+    }
+
     return (
       <div className={classnames(wrapperClass, this.props.className)}>
         <div className="TextArea--infoRow">
           <label className="TextArea--label" htmlFor={this.props.name}>{this.props.label}</label>
           {inputNote}
         </div>
-        <textarea
-          className="TextArea--input"
-          disabled={this.props.disabled}
-          maxLength={this.props.maxLength}
-          minLength={this.props.minLength}
-          name={this.props.name}
-          onBlur={this.onBlur}
-          onChange={this.props.onChange}
-          onFocus={this.onFocus}
-          placeholder={this.props.placeholder}
-          readOnly={this.props.readOnly}
-          ref="input"
-          required={this.props.required}
-          spellCheck={this.props.spellCheck}
-          value={this.props.value}
-        />
+        {textarea}
       </div>
     );
   }
@@ -124,4 +141,6 @@ TextArea.propTypes = {
   spellCheck: React.PropTypes.bool,
   value: React.PropTypes.node,
   className: React.PropTypes.string,
+  autoResize: React.PropTypes.bool,
+  rows: React.PropTypes.number,
 };

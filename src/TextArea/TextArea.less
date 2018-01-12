@@ -45,15 +45,8 @@
   .text--medium;
   display: block;
   width: 100%;
-  .border--s(transparent);
-
-  /**
-   * Use a transparent border to position the TextArea input instead of padding or a margin because
-   *  1. Text is still visible in the padding region.
-   *  2. The underlying textarea element overwrites margin values when the user adjusts the
-   *     element's height.
-   */
-  border-top-width: @size_l;
+  border: none;
+  .margin--top--l;
 
   .text--line-height-3;
   padding: @size_none;
@@ -74,7 +67,7 @@
     .text--small;
     .text--caps;
     color: @neutral_dark_gray;
-    border-top-width: @size_m;
+    .margin--top--m;
   }
 }
 
