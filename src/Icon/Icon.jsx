@@ -74,6 +74,7 @@ Icon.names = {
   SCHOOL:             "school",
   SERVER:             "server",
   SHIELD:             "shield",
+  SHOPPING_CART:      "shopping-cart",
   SMILEY_FACE:        "smiley-face",
   SQUARE_C:           "square-c",
   SYNC_ARROWS:        "sync-arrows",
