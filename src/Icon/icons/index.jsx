@@ -48,6 +48,7 @@ import RibbonAward from "./RibbonAward";
 import School from "./School";
 import Server from "./Server";
 import Shield from "./Shield";
+import ShoppingCart from "./ShoppingCart";
 import SmileyFace from "./SmileyFace";
 import SquareC from "./SquareC";
 import SyncArrows from "./SyncArrows";
@@ -116,6 +117,7 @@ export default {
   school: School,
   server: Server,
   shield: Shield,
+  "shopping-cart": ShoppingCart,
   "smiley-face": SmileyFace,
   "square-c": SquareC,
   "sync-arrows": SyncArrows,
