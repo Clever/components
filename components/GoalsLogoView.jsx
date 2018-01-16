@@ -1,4 +1,5 @@
 import * as React from "react";
+import classnames from "classnames";
 
 import Example, {CodeSample, ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
@@ -15,6 +16,7 @@ const cssClass = {
   CONTAINER: "GoalsLogoView",
   INTRO: "GoalsLogoView--intro",
   LOGO_CONTAINER: "GoalsLogoView--logoContainer",
+  LOGO_CONTAINER_WHITE: "GoalsLogoView--logoContainer--white",
   PROPS: "GoalsLogoView--props",
 };
 
@@ -49,6 +51,15 @@ export default class GoalsLogoView extends React.PureComponent {
           <div className={cssClass.LOGO_CONTAINER}>
             <ExampleCode>
               <GoalsLogo className="my--custom--class" size={size} />
+            </ExampleCode>
+          </div>
+          {this._renderConfig()}
+        </Example>
+
+        <Example title="With Clever logo:">
+          <div className={classnames(cssClass.LOGO_CONTAINER, cssClass.LOGO_CONTAINER_WHITE)}>
+            <ExampleCode>
+              <GoalsLogo className="my--custom--class" size={size} withClever />
             </ExampleCode>
           </div>
           {this._renderConfig()}
