@@ -128,6 +128,18 @@ export default class TooltipView extends Component {
               description: "Alignment of the tooltip text content.",
               defaultValue: "Tooltip.Align.LEFT",
             },
+            {
+              name: "delayMs",
+              type: "number",
+              description: "Number of ms to wait before showing the tooltip",
+              defaultValue: 0,
+            },
+            {
+              name: "delayHideMs",
+              type: "number",
+              description: "Number of ms to wait before hiding the tooltip",
+              defaultValue: 0,
+            },
           ]}
           className={cssClass.PROPS}
         />

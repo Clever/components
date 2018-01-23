@@ -21,7 +21,7 @@ export default class Tooltip extends Component {
 
   render() {
     const {cssClass} = Tooltip;
-    const {children, className, content, delayMs, hide, placement, textAlign} = this.props;
+    const {children, className, content, delayMs, hide, placement, textAlign, delayHideMs} = this.props;
 
     const tooltip = (
       <BootstrapTooltip id={this.id}>
@@ -34,6 +34,7 @@ export default class Tooltip extends Component {
     return (
       <OverlayTrigger
         delayShow={delayMs}
+        delayHide={delayHideMs}
         overlay={tooltip}
         placement={placement}
         rootClose
@@ -65,6 +66,7 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
   delayMs: PropTypes.number,
+  delayHideMs: PropTypes.number,
   hide: PropTypes.bool,
   placement: PropTypes.oneOf(_.values(Tooltip.Placement)),
   textAlign: PropTypes.oneOf(_.values(Tooltip.Align)),
