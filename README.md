@@ -34,3 +34,12 @@ make dev-server
   attributes, which can be fixed by find-replaces across files. For example:
   * `xmlns:xlink` should be `xmlnsXlink`
   * `stroke-width` should be `strokeWidth`
+
+### Adding new Icons
+We use SVGs as JSX components for `Icon`s, following this process:
+1. Optimize the svg at [svgomg](https://jakearchibald.github.io/svgomg/)
+2. Make it React compatible with double quotes option at [svg2jsx](http://svg2jsx.herokuapp.com/)
+3. Prefix DOM Ids and classnames with component name if necessary
+4. Add it to the code:
+    * Create a new file in `src/Icon/icons/<<NewIcon>>.jsx`
+    * Add to `src/Icon/icons/index.jsx` and `src/Icon/Icon.jsx`
