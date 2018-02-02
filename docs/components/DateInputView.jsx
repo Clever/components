@@ -16,6 +16,7 @@ export default class DateInputView extends Component {
       readOnly: false,
       hasError: false,
       required: false,
+      useTime: false,
       value: null,
     };
   }
@@ -39,6 +40,7 @@ export default class DateInputView extends Component {
               readOnly={this.state.readOnly}
               required={this.state.required}
               value={this.state.value}
+              useTime={this.state.useTime}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -76,6 +78,15 @@ export default class DateInputView extends Component {
             />
             {" "}
             Error
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.useTime}
+              onChange={({target}) => this.setState({useTime: target.checked})}
+            />
+            {" "}
+            Use Time
           </label>
         </Example>
 
@@ -157,6 +168,12 @@ export default class DateInputView extends Component {
               name: "max",
               type: "Date",
               description: "Maximum date the user can select.",
+              optional: true,
+            },
+            {
+              name: "useTime",
+              type: "Bool",
+              description: "Flag to switch to date time picker input",
               optional: true,
             },
           ]}
