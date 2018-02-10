@@ -146,7 +146,11 @@ export default class ListView extends React.PureComponent {
               title={showTitle ? "A Few of My Favourite Things" : undefined}
             >
               {items.map((item, i) => (
-                <Item className="my--custom--class" key={i}>
+                <Item
+                  key={i}
+                  className="my--custom--class"
+                  onClick={() => console.log(`${item} clicked`)}
+                >
                   {item}
                 </Item>
               ))}
@@ -217,6 +221,12 @@ export default class ListView extends React.PureComponent {
               name: "className",
               type: "string",
               description: "Optional additional CSS class name to apply to the list item.",
+            },
+            {
+              name: "onClick",
+              type: "function",
+              description: "onClick handler",
+              optional: true,
             },
           ]}
           className={cssClass.PROPS}
