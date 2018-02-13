@@ -13,8 +13,6 @@ export default class Item extends React.PureComponent {
 
   static cssClass = {
     CONTAINER: "List--Item",
-    CLICKABLE_CONTAINER: "List--Item--Clickable",
-    CLICKABLE_ITEM: "List--Item--ClickableItem",
     CONTENT_WRAPPER: "List--Item--ContentWrapper",
     CONTENT_ONCLICK: "List--Item--ContentWrapperClickable",
 
