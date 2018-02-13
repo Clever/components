@@ -15,6 +15,8 @@ export default class Item extends React.PureComponent {
     CONTAINER: "List--Item",
     CLICKABLE_CONTAINER: "List--Item--Clickable",
     CLICKABLE_ITEM: "List--Item--ClickableItem",
+    CONTENT_WRAPPER: "List--Item--ContentWrapper",
+    CONTENT_ONCLICK: "List--Item--ContentWrapperClickable",
 
     type: type => `List--Item--${type}`,
   };
@@ -23,19 +25,19 @@ export default class Item extends React.PureComponent {
     const {cssClass} = Item;
     const {children, className, onClick} = this.props;
 
+    let Wrapper = "div";
     if (onClick) {
-      return (
-        <li className={classnames(cssClass.CONTAINER, cssClass.CLICKABLE_CONTAINER, className)}>
-          <button className={cssClass.CLICKABLE_ITEM} onClick={onClick}>
-            {children}
-          </button>
-        </li>
-      );
+      Wrapper = "button";
     }
 
     return (
       <li className={classnames(cssClass.CONTAINER, className)}>
-        {children}
+        <Wrapper
+          className={classnames(cssClass.CONTENT_WRAPPER, onClick && cssClass.CONTENT_ONCLICK)}
+          onClick={onClick}
+        >
+          {children}
+        </Wrapper>
       </li>
     );
   }
