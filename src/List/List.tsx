@@ -28,6 +28,7 @@ export default class List extends React.PureComponent {
   static propTypes = {
     children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Item)),
     className: PropTypes.string,
+    itemsClassName: PropTypes.string,
     emptyMessage: PropTypes.node,
     noBorder: PropTypes.bool,
     rowType: PropTypes.oneOf(_.values(RowType)),
@@ -46,7 +47,7 @@ export default class List extends React.PureComponent {
   static RowType = RowType;
 
   render() {
-    const {children, className, emptyMessage, noBorder, rowType, title} = this.props;
+    const {children, className, itemsClassName, emptyMessage, noBorder, rowType, title} = this.props;
 
     const items = _.compact(React.Children.toArray(children)).length === 0
       ? <Item>{emptyMessage}</Item>
@@ -59,7 +60,7 @@ export default class List extends React.PureComponent {
             {title}
           </header>
         )}
-        <ul className={classnames(cssClass.ITEMS, cssClass.rowType(rowType))}>
+        <ul className={classnames(cssClass.ITEMS, cssClass.rowType(rowType), itemsClassName)}>
           {items}
         </ul>
       </div>

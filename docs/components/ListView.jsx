@@ -184,6 +184,12 @@ export default class ListView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "itemsClassName",
+              type: "string",
+              description: "Optional additional CSS class name to apply to the list items container.",
+              optional: true,
+            },
+            {
               name: "emptyMessage",
               type: "React Node",
               description: "Content to display when the list is empty.",
