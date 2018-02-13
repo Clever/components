@@ -41,11 +41,12 @@ export default class ListView extends React.PureComponent {
     showCustomEmptyMessage: false,
     showTitle: true,
     showBorder: true,
+    showOnClick: false,
   };
 
   renderConfig() {
     const {cssClass} = ListView;
-    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle} = this.state;
+    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle, showOnClick} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -97,6 +98,15 @@ export default class ListView extends React.PureComponent {
           {" "}
           Custom Empty Message
         </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={showOnClick}
+            onChange={e => this.setState({showOnClick: e.target.checked})}
+          />
+          {" "}
+          On Click Handler
+        </label>
       </FlexBox>
     );
   }
@@ -104,7 +114,7 @@ export default class ListView extends React.PureComponent {
   render() {
     const {Item} = List;
     const {cssClass} = ListView;
-    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle} = this.state;
+    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle, showOnClick} = this.state;
     const items = Items[itemsKey];
 
     return (
@@ -146,7 +156,11 @@ export default class ListView extends React.PureComponent {
               title={showTitle ? "A Few of My Favourite Things" : undefined}
             >
               {items.map((item, i) => (
-                <Item className="my--custom--class" key={i}>
+                <Item
+                  key={i}
+                  className="my--custom--class"
+                  onClick={showOnClick ? () => console.log(`${item} clicked`) : null}
+                >
                   {item}
                 </Item>
               ))}
@@ -167,6 +181,12 @@ export default class ListView extends React.PureComponent {
               name: "className",
               type: "string",
               description: "Optional additional CSS class name to apply to the list.",
+              optional: true,
+            },
+            {
+              name: "itemsClassName",
+              type: "string",
+              description: "Optional additional CSS class name to apply to the list items container.",
               optional: true,
             },
             {
@@ -217,6 +237,12 @@ export default class ListView extends React.PureComponent {
               name: "className",
               type: "string",
               description: "Optional additional CSS class name to apply to the list item.",
+            },
+            {
+              name: "onClick",
+              type: "function",
+              description: "onClick handler",
+              optional: true,
             },
           ]}
           className={cssClass.PROPS}
