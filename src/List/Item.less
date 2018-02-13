@@ -9,6 +9,21 @@
   transition: all @timingPromptly ease-out;
 }
 
+.List--Item--Clickable {
+  padding: 0;
+
+  &:hover {
+    background-color: @neutral_off_white;
+  }
+}
+
+.List--Item--ClickableItem {
+  .button--reset;
+
+  // Match the Table component's cell styling.
+  .Table--cell();
+}
+
 .List--empty {
   color: @neutral_gray;
 }

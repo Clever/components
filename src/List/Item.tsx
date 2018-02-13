@@ -13,6 +13,8 @@ export default class Item extends React.PureComponent {
 
   static cssClass = {
     CONTAINER: "List--Item",
+    CLICKABLE_CONTAINER: "List--Item--Clickable",
+    CLICKABLE_ITEM: "List--Item--ClickableItem",
 
     type: type => `List--Item--${type}`,
   };
@@ -21,8 +23,18 @@ export default class Item extends React.PureComponent {
     const {cssClass} = Item;
     const {children, className, onClick} = this.props;
 
+    if (onClick) {
+      return (
+        <li className={classnames(cssClass.CONTAINER, cssClass.CLICKABLE_CONTAINER, className)}>
+          <button className={cssClass.CLICKABLE_ITEM} onClick={onClick}>
+            {children}
+          </button>
+        </li>
+      );
+    }
+
     return (
-      <li className={classnames(cssClass.CONTAINER, className)} onClick={onClick}>
+      <li className={classnames(cssClass.CONTAINER, className)}>
         {children}
       </li>
     );

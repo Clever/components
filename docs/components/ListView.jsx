@@ -41,11 +41,12 @@ export default class ListView extends React.PureComponent {
     showCustomEmptyMessage: false,
     showTitle: true,
     showBorder: true,
+    showOnClick: false,
   };
 
   renderConfig() {
     const {cssClass} = ListView;
-    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle} = this.state;
+    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle, showOnClick} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -97,6 +98,15 @@ export default class ListView extends React.PureComponent {
           {" "}
           Custom Empty Message
         </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={showOnClick}
+            onChange={e => this.setState({showOnClick: e.target.checked})}
+          />
+          {" "}
+          On Click Handler
+        </label>
       </FlexBox>
     );
   }
@@ -104,7 +114,7 @@ export default class ListView extends React.PureComponent {
   render() {
     const {Item} = List;
     const {cssClass} = ListView;
-    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle} = this.state;
+    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle, showOnClick} = this.state;
     const items = Items[itemsKey];
 
     return (
@@ -149,7 +159,7 @@ export default class ListView extends React.PureComponent {
                 <Item
                   key={i}
                   className="my--custom--class"
-                  onClick={() => console.log(`${item} clicked`)}
+                  onClick={showOnClick ? () => console.log(`${item} clicked`) : null}
                 >
                   {item}
                 </Item>
