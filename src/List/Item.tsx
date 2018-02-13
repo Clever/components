@@ -31,7 +31,7 @@ export default class Item extends React.PureComponent {
     return (
       <li className={classnames(cssClass.CONTAINER, className)}>
         <Wrapper
-          className={classnames(cssClass.CONTENT_WRAPPER, onClick && cssClass.CONTENT_ONCLICK)}
+          className={classnames(cssClass.CONTENT_WRAPPER, !!onClick && cssClass.CONTENT_ONCLICK)}
           onClick={onClick}
         >
           {children}
