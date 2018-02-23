@@ -12,17 +12,15 @@
 
   &:not(:last-child) {
     .text--left;
-    border-top-right-radius: 0;
-    border-right: 0;
   }
 }
 
 .Button.DropdownButton--toggle {
   .flex(0, 0);
+  .margin--left--xs;
   // Padding will be re-applied on the child Caret--container element.
   .padding--x--none;
   box-sizing: content-box;
-  border-top-left-radius: 0;
 }
 
 .DropdownButton--Caret--container {
@@ -50,20 +48,4 @@
   .DropdownButton--Caret--container {
     .padding--x--l;
   }
-}
-
-/*
- * Similarly, the following adjust the partition border color based on the button color.
- */
-
-.Button--primary.DropdownButton--toggle {
-  .border--left--s(shade(@primary_blue, @shadeStepAmount * 2));
-}
-
-.Button--destructive.DropdownButton--toggle {
-  .border--left--s(shade(@alert_red, @shadeStepAmount * 2));
-}
-
-.Button.DropdownButton--toggle[disabled] {
-  .border--left--s(shade(@neutral_silver, @shadeStepAmount * 2));
 }
