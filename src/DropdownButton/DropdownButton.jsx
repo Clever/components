@@ -2,7 +2,8 @@ import _ from "lodash";
 import classnames from "classnames";
 import MorePropTypes from "../utils/MorePropTypes";
 import Overlay from "react-bootstrap/lib/Overlay";
-import React, {PropTypes, PureComponent} from "react";
+import React, {PureComponent} from "react";
+import * as PropTypes from "prop-types";
 
 import FlexBox from "../flex/FlexBox";
 import FlexItem from "../flex/FlexItem";

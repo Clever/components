@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import lodash from "lodash";
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
+import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";

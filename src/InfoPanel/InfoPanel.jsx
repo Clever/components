@@ -1,5 +1,6 @@
 import classnames from "classnames";
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
+import * as PropTypes from "prop-types";
 import FontAwesome from "react-fontawesome";
 import {Accordion, AccordionItem, AccordionItemTitle, AccordionItemBody} from "react-accessible-accordion";
 import "./InfoPanel.less";

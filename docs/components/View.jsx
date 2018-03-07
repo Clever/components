@@ -1,5 +1,6 @@
 import classnames from "classnames";
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
+import * as PropTypes from "prop-types";
 
 import {Button} from "src";
 

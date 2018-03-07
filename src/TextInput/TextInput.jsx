@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import _ from "lodash";
 
@@ -111,20 +112,20 @@ export class TextInput extends React.Component {
 }
 
 TextInput.propTypes = {
-  disabled: React.PropTypes.bool,
-  disableAutocomplete: React.PropTypes.bool,
-  enableShow: React.PropTypes.bool,
-  error: React.PropTypes.string,
-  label: React.PropTypes.string,
-  name: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func,
-  onKeyPress: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
-  onBlur: React.PropTypes.func,
-  placeholder: React.PropTypes.node,
-  readOnly: React.PropTypes.bool,
-  required: React.PropTypes.bool,
-  type: React.PropTypes.string,
-  value: React.PropTypes.node,
-  className: React.PropTypes.string,
+  disabled: PropTypes.bool,
+  disableAutocomplete: PropTypes.bool,
+  enableShow: PropTypes.bool,
+  error: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.node,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  type: PropTypes.string,
+  value: PropTypes.node,
+  className: PropTypes.string,
 };

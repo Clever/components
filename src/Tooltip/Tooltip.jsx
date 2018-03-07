@@ -3,7 +3,8 @@ import _ from "lodash";
 import classnames from "classnames";
 import BootstrapTooltip from "react-bootstrap/lib/Tooltip";
 import OverlayTrigger from "react-bootstrap/lib/OverlayTrigger";
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
+import * as PropTypes from "prop-types";
 
 import "./Tooltip.less";
 
@@ -70,7 +71,7 @@ Tooltip.propTypes = {
   hide: PropTypes.bool,
   placement: PropTypes.oneOf(_.values(Tooltip.Placement)),
   textAlign: PropTypes.oneOf(_.values(Tooltip.Align)),
-  className: React.PropTypes.string,
+  className: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
