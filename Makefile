@@ -2,10 +2,10 @@ SHELL = /bin/bash
 
 BABEL := node_modules/babel-cli/bin/babel.js
 JEST := ./node_modules/.bin/jest --maxWorkers=1 --config ./jestconfig.json
-JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js" -not -path "./vendor/*")
-JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
+JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js")
+JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*")
 TS_FILES := $(shell find . -regex ".*\.tsx*" -not -path "./node_modules/*")
-LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*" -not -path "./vendor/*")
+LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./stylelint.config.js
 TESTS := $(TESTS_JS) $(TESTS_TS)

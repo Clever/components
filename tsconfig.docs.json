@@ -12,7 +12,6 @@
     "./dist",
     "./src",
     "./node_modules",
-    "./vendor",
     "**/*.js",
     "**/*.jsx",
     "**/*_test.ts",
