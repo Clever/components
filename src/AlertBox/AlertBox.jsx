@@ -1,6 +1,7 @@
 import _ from "lodash";
 import classnames from "classnames";
-import React, {PureComponent, PropTypes} from "react";
+import React, {PureComponent} from "react";
+import * as PropTypes from "prop-types";
 
 import {CloseIcon, WarningIcon, SuccessIcon, ErrorIcon, InfoIcon} from "./icons";
 import {FlexBox, FlexItem, ItemAlign} from "../flex";

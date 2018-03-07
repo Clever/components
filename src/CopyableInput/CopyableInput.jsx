@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import CopyToClipboard from "react-copy-to-clipboard";
 
@@ -64,8 +65,8 @@ export class CopyableInput extends React.Component {
 CopyableInput.propTypes = Object.assign({},
   TextInput.propTypes,
   {
-    className: React.PropTypes.string,
-    enableCopy: React.PropTypes.bool,
+    className: PropTypes.string,
+    enableCopy: PropTypes.bool,
   }
 );
 

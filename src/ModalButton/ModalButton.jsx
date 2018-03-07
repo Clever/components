@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import classnames from "classnames";
 
 import {Button, Modal} from "..";
@@ -53,7 +54,7 @@ ModalButton.propTypes = Object.assign({},
   modalPropTypes,
   {
     children: Modal.propTypes.children,
-    onClose: React.PropTypes.func, // not required; just closes modal otherwise
+    onClose: PropTypes.func, // not required; just closes modal otherwise
   }
 );
 

@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import TextareaAutosize from "react-autosize-textarea";
 
@@ -125,22 +126,22 @@ export class TextArea extends React.Component {
 }
 
 TextArea.propTypes = {
-  disabled: React.PropTypes.bool,
-  error: React.PropTypes.string,
-  label: React.PropTypes.string,
-  maxLength: React.PropTypes.number,
-  minLength: React.PropTypes.number,
-  name: React.PropTypes.string.isRequired,
-  onBlur: React.PropTypes.func,
-  onChange: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
-  optional: React.PropTypes.bool,
-  placeholder: React.PropTypes.node,
-  readOnly: React.PropTypes.bool,
-  required: React.PropTypes.bool,
-  spellCheck: React.PropTypes.bool,
-  value: React.PropTypes.node,
-  className: React.PropTypes.string,
-  autoResize: React.PropTypes.bool,
-  rows: React.PropTypes.number,
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  label: PropTypes.string,
+  maxLength: PropTypes.number,
+  minLength: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  optional: PropTypes.bool,
+  placeholder: PropTypes.node,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  spellCheck: PropTypes.bool,
+  value: PropTypes.node,
+  className: PropTypes.string,
+  autoResize: PropTypes.bool,
+  rows: PropTypes.number,
 };

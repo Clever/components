@@ -1,6 +1,7 @@
 import _ from "lodash";
 import classnames from "classnames";
-import React, {PropTypes} from "react";
+import React from "react";
+import * as PropTypes from "prop-types";
 
 import ContentAlign from "./ContentAlign";
 import FlexItem from "./FlexItem";

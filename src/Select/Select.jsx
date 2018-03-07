@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import ReactSelect from "react-select";
 import classnames from "classnames";
 
@@ -125,37 +126,37 @@ Select.cssClass = {
   READ_ONLY: "Select--readOnly",
 };
 
-const selectValuePropType = React.PropTypes.shape({
-  label: React.PropTypes.string.isRequired,
-  value: React.PropTypes.string.isRequired,
+const selectValuePropType = PropTypes.shape({
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 });
 
 Select.propTypes = {
-  id: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  clearable: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  multi: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
-  optionRenderer: React.PropTypes.func,
-  options: React.PropTypes.arrayOf(selectValuePropType),
-  lazy: React.PropTypes.bool,
-  loadOptions: React.PropTypes.func,
-  placeholder: React.PropTypes.string,
-  readOnly: React.PropTypes.bool,
-  searchable: React.PropTypes.bool,
-  creatable: React.PropTypes.bool,
-  creatablePromptFn: React.PropTypes.func,
-  noResultsText: React.PropTypes.node,
-  required: React.PropTypes.bool,
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  clearable: PropTypes.bool,
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+  multi: PropTypes.bool,
+  onChange: PropTypes.func,
+  optionRenderer: PropTypes.func,
+  options: PropTypes.arrayOf(selectValuePropType),
+  lazy: PropTypes.bool,
+  loadOptions: PropTypes.func,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  searchable: PropTypes.bool,
+  creatable: PropTypes.bool,
+  creatablePromptFn: PropTypes.func,
+  noResultsText: PropTypes.node,
+  required: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
     selectValuePropType,
-    React.PropTypes.arrayOf(React.PropTypes.string),
-    React.PropTypes.arrayOf(selectValuePropType),
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(selectValuePropType),
   ]),
-  className: React.PropTypes.string,
+  className: PropTypes.string,
 };
 
 Select.defaultProps = {

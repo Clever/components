@@ -1,7 +1,8 @@
 import _ from "lodash";
 import classnames from "classnames";
 import MorePropTypes from "../utils/MorePropTypes";
-import React, {PropTypes, PureComponent} from "react";
+import React, {PureComponent} from "react";
+import * as PropTypes from "prop-types";
 
 import {Button} from "../Button/Button";
 import FlexBox from "../flex/FlexBox";

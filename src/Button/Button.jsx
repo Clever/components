@@ -1,6 +1,7 @@
 import _ from "lodash";
 import classnames from "classnames";
 import React from "react";
+import * as PropTypes from "prop-types";
 
 import "./Button.less";
 
@@ -103,14 +104,14 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  className: React.PropTypes.string,
-  type: React.PropTypes.oneOf(_.values(Button.Type)),
-  size: React.PropTypes.oneOf(_.values(Button.Size)),
-  value: React.PropTypes.node.isRequired,
-  href: React.PropTypes.string,
-  target: React.PropTypes.oneOf(["_self", "_blank"]),
-  disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  submit: React.PropTypes.bool,
-  style: React.PropTypes.object,
+  className: PropTypes.string,
+  type: PropTypes.oneOf(_.values(Button.Type)),
+  size: PropTypes.oneOf(_.values(Button.Size)),
+  value: PropTypes.node.isRequired,
+  href: PropTypes.string,
+  target: PropTypes.oneOf(["_self", "_blank"]),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  submit: PropTypes.bool,
+  style: PropTypes.object,
 };

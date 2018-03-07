@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import FocusTrap from "focus-trap-react";
 
@@ -69,12 +70,12 @@ export class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  className: React.PropTypes.string,
-  width: React.PropTypes.number,
-  title: React.PropTypes.string.isRequired,
-  closeModal: React.PropTypes.func.isRequired,
-  children: React.PropTypes.node.isRequired,
-  focusLocked: React.PropTypes.bool,
+  className: PropTypes.string,
+  width: PropTypes.number,
+  title: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  focusLocked: PropTypes.bool,
 };
 
 Modal.defaultProps = {

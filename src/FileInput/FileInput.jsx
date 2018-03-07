@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import Dropzone from "react-dropzone";
 import {FlexBox, FlexItem} from "../flex";
 import classnames from "classnames";
@@ -50,7 +51,7 @@ function UploadingIcon(props) {
 }
 
 UploadingIcon.propTypes = {
-  percent: React.PropTypes.number.isRequired,
+  percent: PropTypes.number.isRequired,
 };
 
 export class FileInput extends React.Component {
@@ -133,8 +134,8 @@ export class FileInput extends React.Component {
 }
 
 FileInput.propTypes = {
-  className: React.PropTypes.string,
-  label: React.PropTypes.string.isRequired,
-  store: React.PropTypes.func.isRequired,
-  accept: React.PropTypes.string,
+  className: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  store: PropTypes.func.isRequired,
+  accept: PropTypes.string,
 };
