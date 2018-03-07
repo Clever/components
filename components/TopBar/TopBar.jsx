@@ -1,5 +1,6 @@
 import classnames from "classnames";
-import React, {PropTypes} from "react";
+import React from "react";
+import * as PropTypes from "prop-types";
 
 import {FlexBox, FlexItem, ItemAlign} from "../../../src";
 import Logo from "./Logo";

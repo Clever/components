@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import Prism from "prismjs";
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
+import * as PropTypes from "prop-types";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-less";
 
