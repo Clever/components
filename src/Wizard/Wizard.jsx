@@ -225,8 +225,6 @@ export class Wizard extends React.Component {
             currentStep={this.state.currentStep}
             help={curStep.help ? curStep.help : help}
             validate={curStep.validate}
-            prevButtonValue={curStep.prevButtonValue}
-            nextButtonValue={curStep.nextButtonValue}
           />
 
           <div
@@ -247,7 +245,12 @@ export class Wizard extends React.Component {
               className={classNameFor(baseClasses, "nextButton")}
               onClick={this.nextStepHandler}
               disabled={nextDisabled} type="primary"
-              value={curStep.nextButtonValue || nextButtonValue || "Next"}
+              value={
+                typeof curStep.nextButtonValue === "function" ?
+                curStep.nextButtonValue(this.state.data) : curStep.nextButtonValue ||
+                nextButtonValue ||
+                "Next"
+              }
             />
           </div>
         </div>
@@ -276,6 +279,7 @@ Wizard.propTypes = {
       PropTypes.func,
       PropTypes.instanceOf(React.Component),
     ]).isRequired,
+    nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
     validate: PropTypes.func.isRequired,
     canContinue: PropTypes.func,
     help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
