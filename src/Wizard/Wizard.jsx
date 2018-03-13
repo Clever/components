@@ -225,7 +225,6 @@ export class Wizard extends React.Component {
             currentStep={this.state.currentStep}
             help={curStep.help ? curStep.help : help}
             validate={curStep.validate}
-            prevButtonValue={curStep.prevButtonValue}
           />
 
           <div

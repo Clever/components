@@ -116,7 +116,6 @@ WizardStep.propTypes = {
   help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)]).isRequired,
   componentProps: PropTypes.object,
-  prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 
   // internal facing
   className: PropTypes.string,
