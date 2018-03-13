@@ -198,6 +198,14 @@ export default class WizardView extends PureComponent {
               + "backwards/fowards through the wizard.",
               optional: true,
             },
+            {
+              name: "nextButtonValue",
+              type: "String, React Node, or Function",
+              description: "Text to display on next buttons in form. Function can be used to dynamically change "
+              + "the button text based on wizardstate",
+              defaultValue: "Next",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="step"
