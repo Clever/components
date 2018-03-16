@@ -135,6 +135,24 @@ export default class FlexBoxView extends PureComponent {
               optional: true,
             },
             {
+              name: "noShrink",
+              type: "Boolean",
+              description: (
+                <div>
+                  Prevents the item from shrinking past its set width or width of its contents.
+                  Equivalent to setting <code>flex-shrink</code> to 0.{" "}
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink"
+                    target="_blank"
+                  >
+                    Learn more
+                  </a>
+                </div>
+              ),
+              defaultValue: "False",
+              optional: true,
+            },
+            {
               name: "wrap",
               type: "Boolean",
               description: "Causes child items to wrap if they are unable to fit on a single line. By default, flex items"

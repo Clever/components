@@ -13,6 +13,7 @@ export default function FlexItem({
   className,
   component: Wrapper,
   grow,
+  noShrink,
   ...additionalProps,
 }) {
   const {cssClass} = FlexItem;
@@ -22,6 +23,7 @@ export default function FlexItem({
       className={classnames(
         alignSelf && cssClass.alignSelf(alignSelf),
         grow && cssClass.GROW,
+        noShrink && cssClass.NO_SHRINK,
         className
       )}
       {...additionalProps}
@@ -37,6 +39,7 @@ FlexItem.propTypes = {
   className: PropTypes.string,
   component: PropTypes.any,
   grow: PropTypes.bool,
+  noShrink: PropTypes.bool,
 };
 
 FlexItem.defaultProps = {
@@ -45,6 +48,7 @@ FlexItem.defaultProps = {
 
 FlexItem.cssClass = {
   GROW: "flex--grow",
+  NO_SHRINK: "flex--noShrink",
 
   alignSelf: value => `self--${value}`,
 };
