@@ -10,6 +10,7 @@ const borderWidths = {
   s: 0.0625, // 1px
   m: 0.125, // 2px
   l: 0.1875, // 3px
+  xl: 0.25, // 4px
 };
 
 const constants = [];

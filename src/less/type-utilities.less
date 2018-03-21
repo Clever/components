@@ -1,4 +1,7 @@
+@import (reference) "./colors.less";
 @import (reference) "./fonts.less";
+@import (reference) "./spacing.less";
+@import (reference) "./type-size.less";
 
 .font-family-inherit { font-family: inherit }
 
@@ -83,4 +86,14 @@
   list-style: none;
   padding-left: 0;
   margin: 0;
+}
+
+.cardHeader {
+  .padding--x--m;
+  .padding--y--s;
+  .text--medium;
+  .text--semi-bold;
+  background-color: @neutral_off_white;
+  color: @neutral_dark_gray;
+  font-family: "Proxima Nova"
 }

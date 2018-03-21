@@ -1,12 +1,8 @@
-@import "../less/colors.less";
-@import "../less/sizing.less";
+@import (reference) "../less/index.less";
 
 .Table--header--cell {
-  background-color: @neutral_off_white;
+  .cardHeader();
   border-bottom: @size_4xs solid @neutral_silver;
-  color: @neutral_black;
-  font-size: 1rem;
-  font-weight: 600;
 }
 
 .Table--header--cell--sortable {
