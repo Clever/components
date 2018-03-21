@@ -1,4 +1,3 @@
-@import (reference) "../less/utilities";
 @import (reference) "../less/index";
 
 .InfoPanel {
@@ -24,17 +23,14 @@
 }
 
 .InfoPanel--header {
+  .cardHeader();
   .border--bottom--s(@neutral_silver);
-  background-color: @neutral_off_white;
-  padding: @size_s @size_m;
 }
 
 .InfoPanel--title {
-  .text--semi-bold;
-  color: @neutral_dark_gray;
-  font-family: "Proxima Nova";
   .margin--none;
   .padding--none;
+  font-size: inherit;
 }
 
 .InfoPanel--content {
