@@ -2,7 +2,7 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import _ from "lodash";
 import classnames from "classnames";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import {CSSTransitionGroup} from "react-transition-group";
 import RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import MorePropTypes from "../utils/MorePropTypes";
@@ -91,7 +91,7 @@ export class LeftNav extends React.PureComponent {
           <div className={classnames(cssClass.TOPNAV, _collapsed && cssClass.TOPNAV_COLLAPSED)}>
             {navItems}
           </div>
-          <ReactCSSTransitionGroup
+          <CSSTransitionGroup
             className={classnames(cssClass.SUBNAV, openChild && cssClass.SUBNAV_OPEN)}
             transitionEnterTimeout={WIDTH_TRANSITION_DURATION_MS}
             transitionLeaveTimeout={WIDTH_TRANSITION_DURATION_MS}
@@ -103,7 +103,7 @@ export class LeftNav extends React.PureComponent {
                 {openChild.props.children}
               </div>
             )}
-          </ReactCSSTransitionGroup>
+          </CSSTransitionGroup>
         </nav>
       </RootCloseWrapper>
     );
