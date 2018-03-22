@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 
+import Colors from "src/utils/Colors";
 import Example from "./Example";
 import View from "./View";
 import {Grid} from "src";
@@ -59,7 +60,7 @@ export default class ColorsView extends PureComponent {
               <div>
                 <h2>Neutral Colors</h2>
                 <p>
-                  To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
+                  To support the Clever Blue, these neutral colors have been chosen to add contrast and hierarchy
                   for borders, backgrounds, and text styles.
                 </p>
               </div>
@@ -104,7 +105,7 @@ export default class ColorsView extends PureComponent {
               <div>
                 <h2>Alert Colors</h2>
                 <p>
-                  To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
+                  To support the Clever Blue, these neutral colors have been chosen to add contrast and hierarchy
                   for borders, backgrounds, and text styles.
                 </p>
               </div>
@@ -201,7 +202,7 @@ export default class ColorsView extends PureComponent {
               <div>
                 <h2>Accent Colors</h2>
                 <p>
-                  To support the Clever Blue, these neutral colors have been chosen to add contrast and heirarchy
+                  To support the Clever Blue, these neutral colors have been chosen to add contrast and hierarchy
                   for borders, backgrounds, and text styles.
                 </p>
               </div>
@@ -311,15 +312,16 @@ export default class ColorsView extends PureComponent {
             </Col>
             <Col span={4} className="flexbox">
               <Example
-                title="Example"
+                title="LESS Example"
                 code={`
                   <span className="callout--box">This is a blue bordered box.</span>
-                  
+
                   <style>
                     .callout--box {
                       border: @size_3xs solid @primary_blue_tint_2;
                       background-color: @neutral_off_white;
                       height: 3rem;
+
                       &:hover {
                         border-color: @primary_blue_shade_2;
                       }
@@ -328,6 +330,45 @@ export default class ColorsView extends PureComponent {
                 `}
               >
                 <span className="callout--box">This is a blue bordered box.</span>
+              </Example>
+            </Col>
+          </Row>
+          <Row grow className="margin--bottom--5xl padding--right--m">
+            <Col span={6} className="flexbox self--start padding--right--l">
+              <div>
+                <h2>JS Color Variables</h2>
+                <p>
+                  In some cases, you may need to specify colors in JS. e.g. When using a third-party
+                  library that doesn't enable styling via CSS.
+                </p>
+                <p>
+                  There are pre-defined JS color variables available for this reason:
+                </p>
+                <code>import Colors from "clever-components/dist/utils/Colors";</code>
+              </div>
+            </Col>
+            <Col span={4} className="flexbox">
+              <Example
+                title="JS Example"
+                code={`
+                  import Colors from "clever-components/dist/utils/Colors";
+                  import Circle from "third-party-library";
+
+                  <Circle
+                    borderColor={Colors.NEUTRAL_GRAY}
+                    fillColor={Colors.NEUTRAL_SILVER}
+                  />
+                `}
+              >
+                <svg viewBox="0 0 20 12">
+                  <circle
+                    cx={10}
+                    cy={6}
+                    r={5}
+                    fill={Colors.NEUTRAL_SILVER}
+                    stroke={Colors.NEUTRAL_GRAY}
+                  />
+                </svg>
               </Example>
             </Col>
           </Row>
