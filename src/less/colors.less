@@ -1,3 +1,10 @@
+/**
+ * ====  NOTE: Auto-generated file. Do NOT edit directly! ====
+ * ====  Edit genColors.ts instead and run make generate. ====
+ *
+ * Standard color variables.
+ */
+
 // Primary colors:
 @primary_blue: #2e00d9;
 @primary_blue_shade_1: #0500b0;
@@ -19,41 +26,38 @@
 @alert_green_shade_2: #004c26;
 @alert_green_tint_1: #14b28c;
 @alert_green_tint_2: #3ddbb5;
-
 @alert_orange: #ed8a00;
 @alert_orange_shade_1: #d97600;
 @alert_orange_shade_2: #b04d00;
 @alert_orange_tint_1: #ff9e14;
 @alert_orange_tint_2: #ffc73d;
-
 @alert_red: #de004b;
 @alert_red_shade_1: #ca0037;
 @alert_red_shade_2: #a1000e;
 @alert_red_tint_1: #f51152;
 @alert_red_tint_2: #ff4268;
 
-// Secondary colors:
+// Accent colors:
 @accent_teal: #00c7c7;
 @accent_teal_shade_1: #00b3b3;
 @accent_teal_shade_2: #008a8a;
 @accent_teal_tint_1: #14dbdb;
 @accent_teal_tint_2: #29f0f0;
-
-@accent_aqua: @accent_teal; // to do: deprecate
-
 @accent_pink: #f70099;
 @accent_pink_shade_1: #e30085;
 @accent_pink_shade_2: #ba005c;
 @accent_pink_tint_1: #ff29ae;
 @accent_pink_tint_2: #ff52ce;
-
 @accent_purple: #8000ff;
 @accent_purple_shade_1: #6c00eb;
 @accent_purple_shade_2: #4e00c2;
 @accent_purple_tint_1: #9414ff;
 @accent_purple_tint_2: #bd3dff;
 
-// to do: deprecate
+// DEPRECATED COLORS:
+@accent_aqua: #00c7c7;
+
+// DEPRECATED: Use pre-defined tints and shades above instead.
 @shadeStepAmount: 15%;
 .shade(@property, @color, @steps: 1) {
   @{property}: shade(@color, @shadeStepAmount * @steps);

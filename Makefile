@@ -13,8 +13,8 @@ TESTS_JS := $(shell find . -regex ".*_test\.jsx*" -not -path "./node_modules/*")
 TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" -not -path "./bin/*")
 WEBPACK := node_modules/webpack/bin/webpack.js
 
-.PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles sizing-styles border-styles
-.PHONY: border-radius-styles deploy-docs generate
+.PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles gen-sizing-styles
+.PHONY: gen-border-styles gen-border-radius-styles deploy-docs generate gen-colors
 
 GREEN_CHECK_MARK := " \033[0;32m✓\033[0m"
 clean:
@@ -52,17 +52,21 @@ styles:
 	@echo "Building stylesheet"
 	@$(WEBPACK) --config webpack_styles.config.js
 
-generate: sizing-styles border-styles border-radius-styles
+generate: gen-sizing-styles gen-border-styles gen-border-radius-styles gen-colors
 
-sizing-styles:
+gen-colors:
+	@echo "Generating color definitions..."
+	@./node_modules/.bin/ts-node --project ./tsconfig.json genColors.ts
+
+gen-sizing-styles:
 	@echo "Generating sizing style definitions..."
 	@node genSizing.js
 
-border-styles:
+gen-border-styles:
 	@echo "Generating border style definitions..."
 	@node genBorder.js
 
-border-radius-styles:
+gen-border-radius-styles:
 	@echo "Generating border-radius style definitions..."
 	@node genBorderRadius.js
 
