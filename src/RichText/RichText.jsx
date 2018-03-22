@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import Linkify from "react-linkify";
 
 export default function RichText(props) {
@@ -8,5 +9,5 @@ export default function RichText(props) {
 }
 
 RichText.propTypes = {
-  text: React.PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };

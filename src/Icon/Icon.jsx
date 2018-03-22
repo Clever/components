@@ -1,4 +1,5 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import lodash from "lodash";
 
@@ -104,9 +105,9 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-  name: React.PropTypes.oneOf(lodash.values(Icon.names)).isRequired,
-  size: React.PropTypes.oneOf(lodash.values(Icon.sizes)),
-  className: React.PropTypes.string,
+  name: PropTypes.oneOf(lodash.values(Icon.names)).isRequired,
+  size: PropTypes.oneOf(lodash.values(Icon.sizes)),
+  className: PropTypes.string,
 };
 
 Icon.cssClass = {

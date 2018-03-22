@@ -1,5 +1,6 @@
 import moment from "moment";
 import React from "react";
+import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import ReactDatePicker from "../../vendor/react-datepicker/dist/react-datepicker.min.js";
 import ReactDateTime from "react-datetime";
@@ -107,26 +108,26 @@ export default class DateInput extends React.Component {
   }
 }
 
-const dateType = React.PropTypes.oneOfType([
-  React.PropTypes.instanceOf(Date),
-  React.PropTypes.instanceOf(moment),
+const dateType = PropTypes.oneOfType([
+  PropTypes.instanceOf(Date),
+  PropTypes.instanceOf(moment),
 ]);
 
 DateInput.propTypes = {
-  disabled: React.PropTypes.bool,
-  error: React.PropTypes.string,
-  label: React.PropTypes.string,
-  name: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
-  onBlur: React.PropTypes.func,
-  placeholder: React.PropTypes.node,
-  readOnly: React.PropTypes.bool,
-  required: React.PropTypes.bool,
-  type: React.PropTypes.string,
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.node,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  type: PropTypes.string,
   value: dateType,
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   min: dateType,
   max: dateType,
-  useTime: React.PropTypes.bool,
+  useTime: PropTypes.bool,
 };

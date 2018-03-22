@@ -1,5 +1,6 @@
 import classnames from "classnames";
-import React, {PropTypes, PureComponent} from "react";
+import React, {PureComponent} from "react";
+import * as PropTypes from "prop-types";
 
 import Number from "../Number";
 

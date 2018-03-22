@@ -1,5 +1,6 @@
 import classnames from "classnames";
-import React, {PropTypes} from "react";
+import React from "react";
+import * as PropTypes from "prop-types";
 import {Sticky, StickyContainer} from "react-sticky";
 import _ from "lodash";
 

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-multi-comp, no-alert */
-import React, {PropTypes} from "react";
+import React from "react";
+import * as PropTypes from "prop-types";
 
 import {Button, Wizard, TextInput} from "../src/";
 
