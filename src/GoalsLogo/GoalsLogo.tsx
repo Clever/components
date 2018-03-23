@@ -8,6 +8,7 @@ const Size = {
   S: "small",
   M: "medium",
   L: "large",
+  CUSTOM: "custom",
 };
 
 const propTypes = {

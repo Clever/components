@@ -26,6 +26,7 @@ import LayoutCompoundForm from "./components/LayoutCompoundForm";
 import LeftNavView from "./components/LeftNavView";
 import LessStyleGuideView from "./components/LessStyleGuideView";
 import ListView from "./components/ListView";
+import LogoView from "./components/LogoView";
 import ModalButtonView from "./components/ModalButtonView";
 import ModalView from "./components/ModalView";
 import NumberView from "./components/NumberView";
@@ -79,6 +80,7 @@ render((
         <Route path="label(/*)" component={LabelView} />
         <Route path="left-nav(/*)" component={LeftNavView} />
         <Route path="list(/*)" component={ListView} />
+        <Route path="logo(/*)" component={LogoView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="number(/*)" component={NumberView} />

@@ -56,3 +56,6 @@ export {Tooltip};
 
 import GoalsLogo from "./GoalsLogo";
 export {GoalsLogo};
+
+import Logo from "./Logo";
+export {Logo};
