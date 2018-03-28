@@ -1,0 +1,97 @@
+@import (reference) "../less/index.less";
+
+.Modal {
+  .zIndex--3;
+  position: fixed;
+}
+
+.Modal--background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: fade(@neutral_black, 60%);
+}
+
+.Modal--window {
+  .borderRadius--l;
+  .border--s(@neutral_silver);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  position: fixed;
+  font-family: "Proxima Nova";
+  box-shadow: 0 @size_s @size_s fade(@neutral_black, 20%);
+  background: @neutral_white;
+}
+
+.Modal--header {
+  .padding--y--m;
+  .padding--x--l;
+  background: @neutral_off_white;
+  height: @size_5xl;
+  box-sizing: border-box;
+  position: relative;
+
+  h1 {
+    .margin--none;
+    .margin--right--xl;
+    .padding--none;
+    .text--large;
+    .text--line-height-4;
+    color: @neutral_black;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.Modal--close {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  height: @size_m;
+  width: @size_m;
+  background: none;
+  right: @size_l;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0.5;
+  top: 50%;
+  margin-top: -@size_xs;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.Modal--window--content {
+  position: relative;
+  .padding--l;
+  background-color: @neutral_white;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  p {
+    .margin--bottom--m;
+    .margin--top--none;
+  }
+}
+
+.Modal footer {
+  .margin--top--xl;
+  text-align: right;
+
+  .Button {
+    .margin--right--l;
+  }
+
+  .Button:last-child {
+    .margin--right--none;
+  }
+}

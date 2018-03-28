@@ -1,0 +1,23 @@
+@import (reference) "./animations";
+
+.button--reset {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  transition: all @timingPromptly ease-out;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: none;
+    outline: 0;
+    text-decoration: none;
+  }
+}

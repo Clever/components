@@ -1,0 +1,42 @@
+@import "../less/colors.less";
+@import "../less/sizing.less";
+
+.Table--header--cell {
+  background-color: @neutral_off_white;
+  border-bottom: @size_4xs solid @neutral_silver;
+  color: @neutral_black;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.Table--header--cell--sortable {
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    .Table--header--cell--sort_icons {
+      fill: lighten(@neutral_dark_gray, 20%);
+    }
+  }
+}
+
+.Table--header--cell--content {
+  align-items: center;
+  display: flex;
+}
+
+.Table--header--cell--label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Table--header--cell--sort_icons {
+  fill: darken(@neutral_silver, 5%);
+  margin-left: 5px;
+  transition: fill 0.25s ease-out;
+  vertical-align: middle;
+
+  .Table--sort_icons--direction--active {
+    fill: @neutral_black;
+  }
+}

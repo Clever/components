@@ -1,0 +1,28 @@
+/* stylelint-disable unit-whitelist */
+@import (reference) "../less/index";
+
+.Icon {
+  display: inline-block;
+  transition: height @timingPromptly ease-out, width @timingPromptly ease-out;
+  vertical-align: middle;
+
+  & > svg {
+  	width: 100%;
+  	height: 100%;
+  }
+}
+
+.Icon--small {
+  height: @size_l;
+  width: @size_l;
+}
+
+.Icon--medium {
+  height: @size_2xl;
+  width: @size_2xl;
+}
+
+.Icon--large {
+  height: @size_5xl;
+  width: @size_5xl;
+}

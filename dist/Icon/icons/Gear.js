@@ -1,0 +1,73 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = Gear;
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Gear(props) {
+  return _react2.default.createElement(
+    "svg",
+    _extends({
+      width: "46px",
+      height: "46px",
+      viewBox: "0 0 46 46",
+      version: "1.1",
+      xmlns: "http://www.w3.org/2000/svg",
+      xmlnsXlink: "http://www.w3.org/1999/xlink"
+    }, props),
+    _react2.default.createElement(
+      "title",
+      null,
+      "gear"
+    ),
+    _react2.default.createElement(
+      "desc",
+      null,
+      "Created with Sketch."
+    ),
+    _react2.default.createElement("defs", null),
+    _react2.default.createElement(
+      "g",
+      {
+        id: "Artboards",
+        stroke: "none",
+        strokeWidth: 1,
+        fill: "none",
+        fillRule: "evenodd"
+      },
+      _react2.default.createElement(
+        "g",
+        { id: "gear", strokeWidth: 2, stroke: "#62748C" },
+        _react2.default.createElement(
+          "g",
+          {
+            id: "ui-48px-outline-1_settings-gear-65",
+            transform: "translate(1.000000, 1.000000)"
+          },
+          _react2.default.createElement(
+            "g",
+            { id: "Group" },
+            _react2.default.createElement("path", {
+              d: "M44,22 C44,19.791 42.209,18 40,18 L37.476,18 C37.098,16.536 36.523,15.155 35.773,13.885 L37.557,12.101 C39.119,10.539 39.119,8.006 37.557,6.444 C35.995,4.882 33.462,4.882 31.9,6.444 L30.116,8.228 C28.846,7.478 27.465,6.902 26.001,6.525 L26.001,4 C26.001,1.791 24.21,0 22.001,0 C19.792,0 18.001,1.791 18.001,4 L18.001,6.524 C16.537,6.902 15.156,7.477 13.886,8.227 L12.102,6.443 C10.54,4.881 8.007,4.881 6.445,6.443 C4.883,8.005 4.883,10.538 6.445,12.1 L8.229,13.884 C7.479,15.154 6.903,16.535 6.526,17.999 L4,17.999 C1.791,17.999 0,19.79 0,21.999 C0,24.208 1.791,25.999 4,25.999 L6.524,25.999 C6.902,27.463 7.477,28.844 8.227,30.114 L6.443,31.898 C4.881,33.46 4.881,35.993 6.443,37.555 C8.005,39.117 10.538,39.117 12.1,37.555 L13.884,35.771 C15.154,36.521 16.535,37.097 17.999,37.474 L17.999,40 C17.999,42.209 19.79,44 21.999,44 C24.208,44 25.999,42.209 25.999,40 L25.999,37.476 C27.463,37.098 28.844,36.523 30.114,35.773 L31.898,37.557 C33.46,39.119 35.993,39.119 37.555,37.557 C39.117,35.995 39.117,33.462 37.555,31.9 L35.771,30.116 C36.521,28.846 37.097,27.465 37.474,26.001 L40,26.001 C42.209,26 44,24.209 44,22 L44,22 Z",
+              id: "Shape",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              fill: "#D8D8D8"
+            }),
+            _react2.default.createElement("circle", { id: "Oval", fill: "#FFFFFF", cx: 22, cy: 22, r: 6 })
+          )
+        )
+      )
+    )
+  );
+}

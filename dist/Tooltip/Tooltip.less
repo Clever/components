@@ -1,0 +1,31 @@
+@import "../less/index";
+
+@import "./ReactBootstrapTooltip";
+
+
+.Tooltip--content {
+  display: inline-block;
+  padding: 0;
+  .padding--y--xs;
+  word-break: break-all;
+  // Better breaking for webkit browsers (non-IE, basically):
+  word-break: break-word;
+  font-family: "Proxima Nova";
+  .text--medium;
+}
+
+.Tooltip--content--center {
+  text-align: center;
+}
+
+.Tooltip--content--justify {
+  text-align: justify;
+}
+
+.Tooltip--content--left {
+  text-align: left;
+}
+
+.Tooltip--content--right {
+  text-align: right;
+}
