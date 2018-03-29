@@ -70,6 +70,6 @@ module.exports = {
     "selector-max-id": 0,
     "value-list-comma-space-after": "always-single-line",
     "value-list-comma-newline-after": "always-multi-line",
-    "unit-whitelist": ["em", "rem", "%", "s", "vh", "ms", "turn", "deg"],
+    "unit-whitelist": ["em", "rem", "%", "s", "vh", "vw", "ms", "turn", "deg"],
   },
 };

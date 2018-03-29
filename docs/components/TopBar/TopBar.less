@@ -1,46 +1,7 @@
 @import (reference) "~less/index";
 
 
-.TopBar {
-  .border--bottom--xl(@primary_blue);
-  background-color: @neutral_off_white;
-  color: @primary_blue;
-  height: @size_5xl;
-  padding: 0 @size_m 0 0;
-}
-
-.TopBar--homeLink {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 0 @size_m @size_3xs;
-}
-
-.TopBar--logo {
-  height: @size_xl;
-}
-
-.TopBar--title {
-  .text--large;
-  .text--semi-bold;
-  margin-left: @size_xs;
-  padding-top: @size_2xs;
-  vertical-align: middle;
-}
-
-.TopBar--githubLinkContainer {
-  text-align: right;
-}
-
-.TopBar--githubLink {
+.docs--TopBar--githubLink {
   .text--huge;
-  color: @primary_blue;
-  cursor: pointer;
-  opacity: .5;
-  transition: opacity .25s ease-out;
-
-  &:focus,
-  &:hover {
-    color: @primary_blue;
-    opacity: 1;
-  }
+  max-width: 100vw;
 }

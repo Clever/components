@@ -84,6 +84,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/left-nav", "LeftNav")}
           {this._renderLink("/components/list", "List")}
           {this._renderLink("/components/logo", "Logo")}
+          {this._renderLink("/components/menu", "Menu")}
           {this._renderLink("/components/modal", "Modal")}
           {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/number", "Number")}
@@ -96,6 +97,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/text-area", "TextArea")}
           {this._renderLink("/components/text-input", "TextInput")}
           {this._renderLink("/components/tooltip", "Tooltip")}
+          {this._renderLink("/components/top-bar", "TopBar")}
           {this._renderLink("/components/wizard", "Wizard")}
         </NavGroup>
         <NavGroup id="less" label="LESS" icon={faIcon("css3")}>
