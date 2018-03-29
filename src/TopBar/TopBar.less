@@ -2,7 +2,6 @@
 @import (reference) "./common";
 
 .dewey--TopBar {
-  background-color: @neutral_off_white;
   color: @primary_blue;
   height: @topBarHeight;
   min-width: 0;
@@ -22,7 +21,7 @@
 }
 
 .colorTopBar(@topBarColor) {
-  background: linear-gradient(to right, @primary_blue, @topBarColor) bottom;
+  background: linear-gradient(to right, @primary_blue, @topBarColor) bottom, @neutral_off_white;
   background-size: 100% @topBarBorderWidth;
   background-repeat: no-repeat;
 
