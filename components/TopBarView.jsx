@@ -141,13 +141,15 @@ export default class TopBarView extends React.PureComponent {
                   Goals
                 </TopBar.Button>
                 <TopBar.Menu
+                  dropdownPlacement={TopBar.Menu.Placement.RIGHT}
                   label={
                     <FlexBox alignItems="center">
                       <span className="fa fa-user" style={{marginRight: "0.25rem"}} />
                       <span className={cssClass.USER_NAME}>K. Stark</span>
                     </FlexBox>
                   }
-                  dropdownPlacement={TopBar.Menu.Placement.RIGHT}
+                  maxWidth="20rem"
+                  minWidth="7rem"
                 >
                   <TopBar.Menu.Item>Profile Settings</TopBar.Menu.Item>
                   <TopBar.Menu.Item>Email Settings</TopBar.Menu.Item>
