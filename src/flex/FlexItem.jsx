@@ -8,12 +8,14 @@ import ItemAlign from "./ItemAlign";
 import "../less/flex.less";
 
 
+let TYPE_ANY;
+
 export default function FlexItem({
-  alignSelf,
-  children,
-  className,
-  component: Wrapper,
-  grow,
+  alignSelf = "",
+  children = TYPE_ANY,
+  className = "",
+  component: Wrapper = "div",
+  grow = false,
   ...additionalProps,
 }) {
   const {cssClass} = FlexItem;
