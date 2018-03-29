@@ -172,10 +172,14 @@ export default class Menu extends React.PureComponent {
 
   _handleFocusOut = e => {
     const nextElement = e.relatedTarget;
-    if (nextElement && nextElement.classList.contains(MenuItem.cssClass.CONTAINER)) {
+    if (
+      nextElement &&
+      nextElement.classList.contains(MenuItem.cssClass.CONTAINER) &&
+      nextElement.parentNode.parentNode.id === this.IDs.DROPDOWN
+    ) {
       return;
     }
-    if (nextElement && nextElement.classList.contains(cssClass.TRIGGER)) {
+    if (nextElement && nextElement.id === this.IDs.TRIGGER) {
       return;
     }
 
