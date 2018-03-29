@@ -26,6 +26,8 @@ import LayoutCompoundForm from "./components/LayoutCompoundForm";
 import LeftNavView from "./components/LeftNavView";
 import LessStyleGuideView from "./components/LessStyleGuideView";
 import ListView from "./components/ListView";
+import LogoView from "./components/LogoView";
+import MenuView from "./components/MenuView";
 import ModalButtonView from "./components/ModalButtonView";
 import ModalView from "./components/ModalView";
 import NumberView from "./components/NumberView";
@@ -41,6 +43,7 @@ import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
 import TooltipView from "./components/TooltipView";
+import TopBarView from "./components/TopBarView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WizardView from "./components/WizardView";
@@ -79,6 +82,8 @@ render((
         <Route path="label(/*)" component={LabelView} />
         <Route path="left-nav(/*)" component={LeftNavView} />
         <Route path="list(/*)" component={ListView} />
+        <Route path="logo(/*)" component={LogoView} />
+        <Route path="menu(/*)" component={MenuView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="number(/*)" component={NumberView} />
@@ -91,6 +96,7 @@ render((
         <Route path="text-area(/*)" component={TextAreaView} />
         <Route path="text-input(/*)" component={TextInputView} />
         <Route path="tooltip" component={TooltipView} />
+        <Route path="top-bar(/*)" component={TopBarView} />
         <Route path="wizard(/*)" component={WizardView} />
       </Route>
       <Route path="LESS">
