@@ -17,18 +17,24 @@ const Placement = {
 const propTypes = {
   children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(MenuItem)),
   className: PropTypes.string,
+  maxHeight: PropTypes.string,
   maxWidth: PropTypes.string,
+  minWidth: PropTypes.string,
   onOpenChange: PropTypes.func,
   onSelect: PropTypes.func,
   placement: PropTypes.oneOf(Object.values(Placement)),
   stayOpenOnSelect: PropTypes.bool,
   trigger: PropTypes.node.isRequired,
+  wrapItems: PropTypes.bool,
 };
 
 const defaultProps = {
-  placement: Placement.LEFT,
+  maxHeight: "50vh",
+  maxWidth: "50vw",
+  minWidth: "100%",
   onOpenChange: _.noop,
   onSelect: _.noop,
+  placement: Placement.LEFT,
 };
 
 const cssClass = {
@@ -37,6 +43,7 @@ const cssClass = {
   DROPDOWN: "Menu--dropdown",
   ITEM_WRAPPER: "Menu--itemWrapper",
   TRIGGER: "Menu--trigger",
+  WRAP: "Menu--dropdown--wrap",
 
   placement: p => `Menu--dropdown--placement--${p}`,
 };
@@ -103,7 +110,7 @@ export default class Menu extends React.PureComponent {
   };
 
   render() {
-    const {className, maxWidth, placement, trigger} = this.props;
+    const {className, maxHeight, maxWidth, minWidth, placement, trigger, wrapItems} = this.props;
     const {open} = this.state;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
 
@@ -127,10 +134,14 @@ export default class Menu extends React.PureComponent {
         {open && (
           <ul
             aria-labelled-by={this.IDs.TRIGGER}
-            className={classnames(cssClass.DROPDOWN, cssClass.placement(placement))}
+            className={classnames(
+              cssClass.DROPDOWN,
+              cssClass.placement(placement),
+              wrapItems && cssClass.WRAP,
+            )}
             id={this.IDs.DROPDOWN}
             role="menu"
-            style={{maxWidth}}
+            style={{maxHeight, maxWidth, minWidth}}
           >
             {this._getMenuItems().map((menuItem, i) => (
               <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
