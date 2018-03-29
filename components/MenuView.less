@@ -1,0 +1,54 @@
+@import (reference) "~src/less/utilities";
+
+.MenuView--intro {
+  .margin--bottom--xl;
+}
+
+.MenuView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.MenuView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.MenuView--config {
+  cursor: pointer;
+}
+
+.MenuView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.MenuView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.MenuView--props {
+  .margin--top--l;
+}
+
+.MenuView--a11yChecklist {
+  line-height: 1.6;
+  max-width: 40rem;
+}
+
+.MenuView--customItem {
+  .padding--s();
+  width: 100%;
+}

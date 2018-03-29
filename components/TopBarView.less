@@ -1,0 +1,92 @@
+@import (reference) "~src/less/utilities";
+
+.TopBarView--intro {
+  .margin--bottom--xl;
+}
+
+.TopBarView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.TopBarView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.TopBarView--config {
+  cursor: pointer;
+}
+
+.TopBarView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.TopBarView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.TopBarView--window {
+  .border--s(@neutral_silver);
+  padding-bottom: 12rem;
+}
+
+.TopBarView--props {
+  .margin--top--l;
+}
+
+.TopBarView--topBar {
+  max-width: 70rem;
+}
+
+.TopBarView--dropdown--color {
+  width: 7rem;
+}
+
+.TopBarView--input--title {
+  width: 15rem;
+}
+
+.TopBarView--searchBox {
+  .border--s(@neutral_silver);
+  .borderRadius--l();
+  .margin--x--xs();
+  background: @neutral_white;
+  max-width: 12rem;
+  min-width: 6rem;
+  overflow: hidden;
+}
+
+.TopBarView--searchIcon {
+  .padding--s();
+  display: block;
+}
+
+.TopBarView--searchInput {
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  height: 100%;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.TopBarView--userName {
+  white-space: nowrap;
+}
