@@ -11,15 +11,17 @@ import Justify from "./Justify";
 import "../less/flex.less";
 
 
+let TYPE_ANY;
+
 export default function FlexBox({
-  alignContent,
-  alignItems,
-  children,
-  className,
-  column,
-  inline,
-  justify,
-  wrap,
+  alignContent = "",
+  alignItems = "",
+  children = TYPE_ANY,
+  className = "",
+  column = false,
+  inline = false,
+  justify = "",
+  wrap = false,
   ...additionalProps,
 }) {
   const {cssClass} = FlexBox;

@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "0.29.5",
+  "version": "0.29.6",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "@types/lodash": "^4.14.74",
     "@types/node": "^8.0.28",
     "@types/prop-types": "^15.5.1",
-    "@types/react": "Clever/minimal-react-typings#v2.0.0",
+    "@types/react": "Clever/minimal-react-typings#v2.0.3",
     "autoprefixer": "^6.5.3",
     "awesome-typescript-loader": "^3.2.3",
     "babel-cli": "~6.0.0",

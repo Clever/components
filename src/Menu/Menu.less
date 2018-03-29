@@ -1,0 +1,29 @@
+@import (reference) "../less/utilities";
+
+.Menu {
+  display: inline-block;
+  position: relative;
+}
+
+.Menu--dropdown {
+  .border--s(@neutral_silver);
+  .borderRadius--m;
+  .list-reset();
+  .margin--top--2xs;
+  .zIndex--1();
+  background-color: @neutral_white;
+  box-sizing: border-box;
+  box-shadow: 0 @size_3xs @size_2xs fade(@neutral_black, 10%);
+  min-width: 100%;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.Menu--dropdown--placement--left {
+  left: 0;
+}
+
+.Menu--dropdown--placement--right {
+  right: 0;
+}

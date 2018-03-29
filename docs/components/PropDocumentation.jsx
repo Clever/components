@@ -68,7 +68,7 @@ export default class PropDocumentation extends PureComponent {
 PropDocumentation.propTypes = {
   availableProps: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.node.isRequired,
     description: PropTypes.node.isRequired,
     defaultValue: PropTypes.node,
     optional: PropTypes.bool,

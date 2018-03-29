@@ -1,0 +1,54 @@
+@import (reference) "../less/index";
+@import (reference) "./common";
+
+.TopBarButton {
+  .button--reset();
+
+  .flexbox();
+  .flexDirection(column);
+  .flexShrink(0);
+  .items--stretch();
+  .justify--center();
+  .padding--x--s();
+  .text--semi-bold();
+  background-color: fade(@primary_blue_tint_2, 0%);
+  box-sizing: border-box;
+  color: @primary_blue;
+  height: @topBarHeight;
+  position: relative;
+  text-align: center;
+}
+
+.TopBarButton--marker {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+.TopBarButton--marker--shape {
+  transition: all @timingPromptly ease-out;
+}
+
+.TopBarButton--marker--circle {
+  bottom: @topBarBorderWidth / 2;
+  height: 0.875rem;
+  transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.TopBarButton--marker--triangle {
+  height: @size_s;
+}
+
+.TopBarButton:focus,
+.TopBarButton:hover {
+  background-color: fade(@primary_blue_tint_2, 10%);
+  color: @primary_blue_shade_1;
+}
+
+.TopBarButton:active {
+  background-color: fade(@primary_blue_tint_2, 20%);
+  color: @primary_blue_shade_2;
+}

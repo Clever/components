@@ -56,3 +56,12 @@ export {Tooltip};
 
 import GoalsLogo from "./GoalsLogo";
 export {GoalsLogo};
+
+import Logo from "./Logo";
+export {Logo};
+
+import Menu from "./Menu";
+export {Menu};
+
+import TopBar from "./TopBar";
+export {TopBar};

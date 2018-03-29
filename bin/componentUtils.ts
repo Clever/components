@@ -39,7 +39,7 @@ export function createNewComponent(componentName) {
 
   const srcIndexFilePath = getAbsoluteFilePath("src/index.js");
   let indexFileContents = readFileContents(srcIndexFilePath);
-  if (!indexFileContents.includes(componentName)) {
+  if (!indexFileContents.includes(`export {${componentName}}`)) {
     indexFileContents = [
       indexFileContents,
       `import ${componentName} from "./${componentName}";`,
