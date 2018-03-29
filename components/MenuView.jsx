@@ -29,11 +29,12 @@ export default class MenuView extends React.PureComponent {
     placement: Menu.defaultProps.placement,
     stayOpenOnSelect: false,
     triggerLabel: <span>Open ▾</span>,
+    wrapItems: false,
   };
 
   render() {
     const {location} = this.props;
-    const {placement, stayOpenOnSelect, triggerLabel} = this.state;
+    const {placement, stayOpenOnSelect, triggerLabel, wrapItems} = this.state;
     const page = location.query.page;
 
     return (
@@ -172,6 +173,7 @@ export default class MenuView extends React.PureComponent {
             <Menu
               className="my--custom--class"
               maxWidth="20rem"
+              minWidth="10rem"
               onOpenChange={isOpen =>
                 this.setState({
                   triggerLabel: isOpen ? <span>Close ▴</span> : <span>Open ▾</span>,
@@ -180,6 +182,7 @@ export default class MenuView extends React.PureComponent {
               placement={placement}
               stayOpenOnSelect={stayOpenOnSelect}
               trigger={<Button className={cssClass.TRIGGER} type="primary" value={triggerLabel} />}
+              wrapItems={wrapItems}
             >
               <Menu.Item onClick={this._goToPageOne} selected={page === "one"}>
                 Button Menu Item
@@ -213,7 +216,7 @@ export default class MenuView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {placement, stayOpenOnSelect} = this.state;
+    const {placement, stayOpenOnSelect, wrapItems} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -238,6 +241,15 @@ export default class MenuView extends React.PureComponent {
           />{" "}
           Stay open on select
         </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={wrapItems}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={e => this.setState({wrapItems: e.target.checked})}
+          />{" "}
+          Wrap items
+        </label>
       </FlexBox>
     );
   }
@@ -259,9 +271,37 @@ export default class MenuView extends React.PureComponent {
             optional: true,
           },
           {
+            name: "maxHeight",
+            type: "string (CSS height)",
+            description: "Max height for the dropdown menu.",
+            optional: true,
+            defaultValue: (
+              <span>
+                <code>50vh</code> (50% of the viewport height)
+              </span>
+            ),
+          },
+          {
             name: "maxWidth",
             type: "string (CSS width)",
             description: "Max width for the dropdown menu.",
+            optional: true,
+            defaultValue: (
+              <span>
+                <code>50vw</code> (50% of the viewport width)
+              </span>
+            ),
+          },
+          {
+            name: "minWidth",
+            type: "string (CSS width)",
+            description: "Min width for the dropdown menu.",
+            optional: true,
+            defaultValue: (
+              <span>
+                <code>100%</code> (relative to the width of the trigger)
+              </span>
+            ),
           },
           {
             name: "onOpenChange",
