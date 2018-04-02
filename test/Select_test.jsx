@@ -21,6 +21,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         label="test label"
+        options={[]}
       />
     );
     const idWrapper = select.find("#testid");
@@ -33,6 +34,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         label="test label"
+        options={[]}
       />
     );
     const label = select.find(`label.${Select.cssClass.LABEL}`);
@@ -46,6 +48,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         label="test label"
+        options={[]}
       />
     );
     const label = select.find(`.${Select.cssClass.LABEL}`);
@@ -74,6 +77,7 @@ describe("Select", () => {
         name="testname"
         label="test label"
         placeholder="test placeholder"
+        options={[]}
       />
     );
     const label = select.find(`.${Select.cssClass.LABEL}`);
@@ -103,6 +107,7 @@ describe("Select", () => {
         label="test label"
         placeholder="test placeholder"
         value={[]}
+        options={[]}
       />
     );
     const label = select.find(`.${Select.cssClass.LABEL}`);
@@ -167,6 +172,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         disabled
+        options={[]}
       />
     );
     const reactSelect = select.find(ReactSelect);
@@ -179,6 +185,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         clearable
+        options={[]}
       />
     );
     const reactSelect = select.find(ReactSelect);
@@ -191,6 +198,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         searchable
+        options={[]}
       />
     );
     const reactSelect = select.find(ReactSelect);
@@ -202,6 +210,7 @@ describe("Select", () => {
       <Select
         id="testid"
         name="testname"
+        options={[]}
       />
     );
     const reactSelect = select.find(ReactSelect);
@@ -214,6 +223,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         required
+        options={[]}
       />
     );
     assert(select.find("Select--required"));
@@ -225,6 +235,7 @@ describe("Select", () => {
         id="testid"
         name="testname"
         creatable
+        options={[]}
       />
     );
     const creatable = select.find(ReactSelect.Creatable);
@@ -240,6 +251,7 @@ describe("Select", () => {
         name="testname"
         creatable
         creatablePromptFn={promptFn}
+        options={[]}
       />
     );
     const creatable = select.find(ReactSelect.Creatable);
