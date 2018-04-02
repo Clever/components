@@ -112,10 +112,8 @@ export default class LayoutCompoundForm extends PureComponent {
           <Row>
             <Col span={12} className="flexbox margin--top--2xl">
               <div>
-                <p>
-                  <p className="text--semi-bold">
-                    #3. Use concise and thoughtful input labels
-                  </p>
+                <p className="text--semi-bold">
+                  #3. Use concise and thoughtful input labels
                 </p>
                 <p>
                   This is one of the more difficult ones to achieve and often take several iterations to get right. However, the impact of having clear and concise instruction is definitely key to successful form design.
@@ -151,10 +149,8 @@ export default class LayoutCompoundForm extends PureComponent {
           <Row>
             <Col span={12} className="flexbox margin--top--2xl">
               <div>
-                <p>
-                  <p className="text--semi-bold">
-                    #4. Use the ‘hint’ pattern to only display more information about a field at the right time
-                  </p>
+                <p className="text--semi-bold">
+                  #4. Use the ‘hint’ pattern to only display more information about a field at the right time
                 </p>
                 <p>
                   When relying on labels alone is not enough, we can utilize additional screen real-estate with a pop-over.
