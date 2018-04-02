@@ -133,13 +133,13 @@ export default function GettingStartedView() {
             <h3>Updating Documentation</h3>
             <p>
               After merging to master, you can update the live examples by running <code>make deploy-docs</code>:
+            </p>
               <CodeSample>
                 sh
                 git checkout master
                 git pull
                 make deploy-docs
               </CodeSample>
-            </p>
             <h3>Testing</h3>
             <p>Run the entire test suite with <code>make test</code> or a single component with <code>make test/component_test.jsx</code></p>
           </Col>

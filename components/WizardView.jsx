@@ -17,11 +17,12 @@ export default class WizardView extends PureComponent {
         </p>
         <p>
           The <code>Component</code> gets two props:
-          <ul>
-            <li><code>setWizardState</code>: setWizardState allows each step to add data to the wizardState</li>
-            <li><code>wizardState</code>: wizardState contains any data that has been set by any step before</li>
-          </ul>
-
+        </p>
+        <ul>
+          <li><code>setWizardState</code>: setWizardState allows each step to add data to the wizardState</li>
+          <li><code>wizardState</code>: wizardState contains any data that has been set by any step before</li>
+        </ul>
+        <p>
           The validate function receives this shared state as an argument, allowing each step to define
           the conditions under which their inputs are considered valid.
         </p>
