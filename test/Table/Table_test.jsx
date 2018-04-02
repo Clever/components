@@ -305,6 +305,7 @@ describe("Table", () => {
       const table = newLazyTable({getData});
 
       const assertShows = item => {
+        table.update();
         const rows = table.find(`.${cssClass.ROW}`);
         assert.equal(rows.length, 1);
         const cells = rows.find(Cell);
@@ -352,6 +353,7 @@ describe("Table", () => {
       const table = newLazyTable({getData});
 
       const assertShows = item => {
+        table.update();
         const rows = table.find(`.${cssClass.ROW}`);
         assert.equal(rows.length, 1);
         const cells = rows.find(Cell);

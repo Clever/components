@@ -1,7 +1,7 @@
 import assert from "assert";
 import React from "react";
 import sinon from "sinon";
-import {shallow} from "enzyme";
+import {shallow, mount} from "enzyme";
 import _ from "lodash";
 
 import {Wizard} from "../src";
@@ -36,7 +36,7 @@ describe("WizardStep", () => {
 
     testCases.forEach(({title, description, selector}) => {
       it(`displays ${title} descriptions`, () => {
-        const renderedStep = shallow(<WizardStep
+        const renderedStep = mount(<WizardStep
           title="title"
           description={description}
           Component={() => <div />}
@@ -80,7 +80,7 @@ describe("WizardStep", () => {
 
     testCases.forEach(({title, help, selector}) => {
       it(`displays ${title} help`, () => {
-        const renderedStep = shallow(<WizardStep
+        const renderedStep = mount(<WizardStep
           title="title"
           help={help}
           Component={() => <div />}
@@ -107,7 +107,7 @@ describe("WizardStep", () => {
       const totalSteps = 10;
       const title = "My super cool title";
       for (let curStep = 0; curStep < totalSteps; ++curStep) {
-        const renderedStep = shallow(<WizardStep
+        const renderedStep = mount(<WizardStep
           title={title}
           Component={() => <div />}
           currentStep={curStep}
@@ -128,7 +128,7 @@ describe("WizardStep", () => {
       const testState = {test: "data"};
       const testModification = {newTest: "newData"};
       const spySetWizardState = sinon.spy();
-      const renderedStep = shallow(<WizardStep
+      const renderedStep = mount(<WizardStep
         title="title"
         Component={TestComponent}
         currentStep={0}
@@ -154,7 +154,7 @@ describe("WizardStep", () => {
     it("is modified if the current step is the last one", () => {
       for (let totalSteps = 1; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = shallow(<WizardStep
+        const renderedStep = mount(<WizardStep
           title="title"
           Component={TestComponent}
           currentStep={totalSteps - 1}
@@ -177,7 +177,7 @@ describe("WizardStep", () => {
     it("is modified if the new percentage decreases", () => {
       for (let totalSteps = 2; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = shallow(<WizardStep
+        const renderedStep = mount(<WizardStep
           title="title"
           Component={TestComponent}
           currentStep={totalSteps - 2}
@@ -200,7 +200,7 @@ describe("WizardStep", () => {
     it("is not modified if the percentage increases and it is not the last step", () => {
       for (let totalSteps = 2; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = shallow(<WizardStep
+        const renderedStep = mount(<WizardStep
           title="title"
           Component={TestComponent}
           currentStep={totalSteps - 2}
@@ -223,7 +223,7 @@ describe("WizardStep", () => {
     it("is not modified if the percentage stays the same and it is not the last step", () => {
       for (let totalSteps = 2; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = shallow(<WizardStep
+        const renderedStep = mount(<WizardStep
           title="title"
           Component={TestComponent}
           currentStep={totalSteps - 2}
