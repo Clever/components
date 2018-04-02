@@ -37,6 +37,7 @@ export default class DateInputView extends Component {
               label="label"
               onChange={(value) => this.setState({value})}
               placeholder="Placeholder"
+              name="name"
               readOnly={this.state.readOnly}
               required={this.state.required}
               value={this.state.value}

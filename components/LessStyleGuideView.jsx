@@ -147,13 +147,12 @@ export default function LessStyleGuideView() {
               `}
             >
               <strong>Incorrect nesting</strong>
-              <p>When selectors become this long, you're likely writing CSS that is:
-                <ul>
-                  <li>Strongly coupled to the HTML (fragile) —OR—</li>
-                  <li>Overly specific (powerful) —OR—</li>
-                  <li>Not reusable</li>
-                </ul>
-              </p>
+              <p>When selectors become this long, you're likely writing CSS that is:</p>
+              <ul>
+                <li>Strongly coupled to the HTML (fragile) —OR—</li>
+                <li>Overly specific (powerful) —OR—</li>
+                <li>Not reusable</li>
+              </ul>
             </Example>
 
             <Example
@@ -193,13 +192,12 @@ export default function LessStyleGuideView() {
               `}
             >
               <strong>Incorrect specificity</strong>
-              <p>When selectors become this long, you're likely writing CSS that is:
-                <ul>
-                  <li>Strongly coupled to the HTML (fragile) —OR—</li>
-                  <li>Overly specific (powerful) —OR—</li>
-                  <li>Not reusable</li>
-                </ul>
-              </p>
+              <p>When selectors become this long, you're likely writing CSS that is:</p>
+              <ul>
+                <li>Strongly coupled to the HTML (fragile) —OR—</li>
+                <li>Overly specific (powerful) —OR—</li>
+                <li>Not reusable</li>
+              </ul>
             </Example>
 
             <Example
