@@ -11,8 +11,8 @@ describe("FlexBox", () => {
   const {cssClass} = TabBar;
 
   const TABS = [
-    <Tab value={1}>Tab 1</Tab>,
-    <Tab value={2}>Tab 2</Tab>,
+    <Tab id="id_1" key="key_1" value={1}>Tab 1</Tab>,
+    <Tab id="id_2" key="key_2" value={2}>Tab 2</Tab>,
   ];
 
   const renderTabBar = (props = {}) => shallow(<TabBar {...props}>{TABS}</TabBar>);

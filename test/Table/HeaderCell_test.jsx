@@ -20,7 +20,7 @@ describe("Table -- HeaderCell", () => {
 
   it("sets custom class name", () => {
     const cell = newHeaderCell({className: "custom"});
-    assert(!cell.find(".custom").isEmpty(), `Expected ${cell.debug()} to have "custom" class.`);
+    assert(cell.find(".custom").exists(), `Expected ${cell.debug()} to have "custom" class.`);
   });
 
   it("sets column width on Cell", () => {
@@ -34,11 +34,11 @@ describe("Table -- HeaderCell", () => {
   });
 
   it("renders sort control for sortable columns", () => {
-    assert(newHeaderCell().find(SortIcons).isEmpty(), "SortIcons rendered for unsortable column.");
+    assert(!newHeaderCell().find(SortIcons).exists(), "SortIcons rendered for unsortable column.");
 
     const sortControl =
       newHeaderCell({sortable: true, activeSortDirection: sortDirection.DESCENDING}).find(SortIcons);
-    assert(!sortControl.isEmpty(), "SortIcons not found in sortable column.");
+    assert(sortControl.exists(), "SortIcons not found in sortable column.");
     assert.equal(sortControl.props().direction, sortDirection.DESCENDING, "Incorrect SortIcons direction set.");
   });
 

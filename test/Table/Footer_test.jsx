@@ -15,8 +15,8 @@ describe("Footer", () => {
   );
 
   it("is empty for numPages < 2", () => {
-    assert(newFooter({numPages: 0}).children().isEmpty(), "Footer should be empty for 0 pages.");
-    assert(newFooter({numPages: 1}).children().isEmpty(), "Footer should be empty for 1 page.");
+    assert(!newFooter({numPages: 0}).children().exists(), "Footer should be empty for 0 pages.");
+    assert(!newFooter({numPages: 1}).children().exists(), "Footer should be empty for 1 page.");
   });
 
   it("renders single cell spanning all columns", () => {

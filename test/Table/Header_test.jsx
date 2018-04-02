@@ -56,7 +56,7 @@ describe("Table -- Header", () => {
 
   it("handles columns with no header conent", () => {
     const emptyCell = newHeader().find(HeaderCell).at(2);
-    assert(emptyCell.children().isEmpty(), `Expected header cell '${emptyCell.debug()}' to be empty.`);
+    assert(!emptyCell.children().exists(), `Expected header cell '${emptyCell.debug()}' to be empty.`);
   });
 
   it("sets custom HeaderCell class name", () => {
