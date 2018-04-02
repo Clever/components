@@ -65,11 +65,11 @@ describe("Table", () => {
 
   it("applies custom classname", () => {
     const table = newTable({className: "custom"});
-    assert(!table.find(".custom").isEmpty(), "Custom class name not found");
+    assert(table.find(".custom").exists(), "Custom class name not found");
   });
 
   describe("header", () => {
-    it("is rendered", () => assert(!newTable().find(Header).isEmpty(), "Header not found."));
+    it("is rendered", () => assert(newTable().find(Header).exists(), "Header not found."));
 
     it("sets initial sort state by column ID", () => {
       const table = newTable({initialSortState: {columnID: "name", direction: sortDirection.DESCENDING}});
@@ -226,7 +226,7 @@ describe("Table", () => {
         `Expected\n${rows.debug()}\nto contain "${item.name}"`
       );
     });
-    assert(table.find(Footer).isEmpty(), "Footer should not be rendererd.");
+    assert(!table.find(Footer).exists(), "Footer should not be rendererd.");
   });
 
   it("renders footer if paginated", () => {

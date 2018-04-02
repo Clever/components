@@ -34,7 +34,7 @@ describe("SegmentedControl", () => {
     );
 
     const selected = control.find(`.${cssClass.SELECTED}`);
-    assert(selected.isEmpty(), "There should not be any initially selected items.");
+    assert(!selected.exists(), "There should not be any initially selected items.");
 
     testOptions.forEach(({content}, i) => {
       assert(
@@ -140,7 +140,7 @@ describe("SegmentedControl", () => {
       option.simulate("click");
 
       const selected = control.find(`.${cssClass.SELECTED}`);
-      assert(selected.isEmpty(), "Expected no selected items after click.");
+      assert(!selected.exists(), "Expected no selected items after click.");
       sinon.assert.notCalled(stub);
     });
   });

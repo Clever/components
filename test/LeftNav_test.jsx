@@ -40,13 +40,13 @@ describe("LeftNav", function LeftNavTest() {
 
     it("renders top nav with NavLinks and NavGroups", () => {
       const topnav = nav.find(`.${navCss.TOPNAV}`);
-      assert(!topnav.isEmpty());
+      assert(topnav.exists());
       assert.equal(topnav.type(), "div");
       assert.equal(topnav.children().length, 4);
     });
 
     it("doesn't render the subnav drawer initially", () => {
-      assert(nav.find(`.${navCss.SUBNAV_CONTENT}`).isEmpty());
+      assert(!nav.find(`.${navCss.SUBNAV_CONTENT}`).exists());
     });
 
     it("renders topnav NavLink with label and icon", () => {
@@ -54,11 +54,11 @@ describe("LeftNav", function LeftNavTest() {
       assert.equal(link.type(), "button");
 
       const label = link.find(`.${linkCss.LABEL}`);
-      assert(!label.isEmpty());
+      assert(label.exists());
       assert.equal(label.text(), "topLink1");
 
       const icon = link.find(`.${fakeIcon.props.className}`);
-      assert(!icon.isEmpty());
+      assert(icon.exists());
       assert.equal(icon.props().src, fakeIcon.props.src);
     });
 
@@ -68,7 +68,7 @@ describe("LeftNav", function LeftNavTest() {
       assert.equal(group.type(), NavLink);
       assert.equal(link.props.label, "group1");
       assert.equal(link.props.icon, fakeIcon);
-      assert(group.children().find(NavLink).isEmpty());
+      assert(!group.children().find(NavLink).exists());
     });
 
     it("calls the onClick handler when a topnav NavLink is clicked", () => {
@@ -83,7 +83,7 @@ describe("LeftNav", function LeftNavTest() {
       // Manually trigger update since enzyme doesn't detect LeftNav state change for some reason
       nav.update();
       const subnav = nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      assert(!subnav.isEmpty());
+      assert(subnav.exists());
       assert.equal(subnav.children().length, 2);
       assert.equal(subnav.childAt(0).prop("label"), "subLink11");
       assert.equal(subnav.childAt(1).prop("label"), "subLink12");
@@ -106,7 +106,7 @@ describe("LeftNav", function LeftNavTest() {
       // And the drawer stays open
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      assert(!subnav.isEmpty());
+      assert(subnav.exists());
     });
 
     it("closes the subnav drawer when the open NavGroup is clicked", () => {
@@ -114,7 +114,7 @@ describe("LeftNav", function LeftNavTest() {
       group.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      assert(subnav.isEmpty());
+      assert(!subnav.exists());
     });
 
     it("closes the subnav drawer when a topnav NavLink is clicked", () => {
@@ -122,7 +122,7 @@ describe("LeftNav", function LeftNavTest() {
       link.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      assert(subnav.isEmpty());
+      assert(!subnav.exists());
     });
 
     it("rerenders the subnav drawer when a different NavGroup is clicked", () => {
@@ -130,7 +130,7 @@ describe("LeftNav", function LeftNavTest() {
       otherGroup.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      assert(!subnav.isEmpty());
+      assert(subnav.exists());
       assert.equal(subnav.children().length, 2);
       assert.equal(subnav.childAt(0).prop("label"), "subLink21");
       assert.equal(subnav.childAt(1).prop("label"), "subLink22");
@@ -167,7 +167,7 @@ describe("LeftNav", function LeftNavTest() {
 
     it("renders the subnav drawer corresponding to the link's parent NavGroup", () => {
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      assert(!subnav.isEmpty());
+      assert(subnav.exists());
       assert.equal(subnav.children().length, 1);
       assert.equal(subnav.childAt(0).prop("label"), "subLink11");
     });
@@ -183,7 +183,7 @@ describe("LeftNav", function LeftNavTest() {
       otherGroup.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      assert(!subnav.isEmpty());
+      assert(subnav.exists());
       assert.equal(subnav.children().length, 1);
       assert.equal(subnav.childAt(0).prop("label"), "subLink21");
     });

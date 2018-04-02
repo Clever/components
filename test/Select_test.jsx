@@ -25,7 +25,7 @@ describe("Select", () => {
       />
     );
     const idWrapper = select.find("#testid");
-    assert.equal(idWrapper.find(ReactSelect).isEmpty(), false);
+    assert(idWrapper.find(ReactSelect).exists());
   });
 
   it("sets htmlFor for label to point to provided id", () => {
@@ -239,7 +239,7 @@ describe("Select", () => {
       />
     );
     const creatable = select.find(ReactSelect.Creatable);
-    assert(!creatable.isEmpty());
+    assert(creatable.exists());
     assert.equal(creatable.prop("name"), "testname");
   });
 
@@ -255,7 +255,7 @@ describe("Select", () => {
       />
     );
     const creatable = select.find(ReactSelect.Creatable);
-    assert(!creatable.isEmpty());
+    assert(creatable.exists());
     assert.equal(creatable.prop("promptTextCreator"), promptFn);
   });
 });
