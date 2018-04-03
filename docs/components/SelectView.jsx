@@ -58,12 +58,15 @@ export default class SelectView extends Component {
                 name="select"
                 onChange={value => this.setState({selectValue: value})}
                 options={!this.state.lazy && _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
-                loadOptions={this.state.lazy && (async (input) => {
-                  await new Promise(resolve => setTimeout(resolve, 1000));
-                  const allOptions = _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}));
-                  const options = allOptions.filter(x => x.label.toLowerCase().startsWith(input.toLowerCase()));
-                  return {options};
-                })}
+                loadOptions={this.state.lazy ?
+                  async input => {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    const allOptions = _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}));
+                    const options = allOptions.filter(x => x.label.toLowerCase().startsWith(input.toLowerCase()));
+                    return {options};
+                  }
+                  : null
+                }
                 placeholder="Select Placeholder"
                 value={this.state.selectValue}
               />
