@@ -1,0 +1,61 @@
+/**
+ * Animation Less Mixins
+ */
+
+// timing variables
+@timingInstantly: 0s;
+@timingImmediately: 50ms;
+@timingQuickly: 100ms;
+@timingPromptly: 200ms;
+@timingSlowly: 400ms;
+
+// timing function variables
+@motionBounce: cubic-bezier(0.710, -0.360, 0.225, 1.375);
+@motionSmooth: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+@motionSnappy: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+@motionLinear: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+@motionWindUp: cubic-bezier(1.000, -0.530, 0.405, 1.425);
+
+.timingInstantly {
+  transition-duration: @timingInstantly;
+}
+
+.timingImmediately {
+  transition-duration: @timingImmediately;
+}
+
+.timingQuickly {
+  transition-duration: @timingQuickly;
+}
+
+.timingPromptly {
+  transition-duration: @timingPromptly;
+}
+
+.timingSlowly {
+  transition-duration: @timingSlowly
+}
+
+.delayNone {
+  transition-delay: @timingInstantly;
+}
+
+.delayMoment {
+  transition-delay: @timingImmediately;
+}
+
+.delayShort {
+  transition-delay: @timingQuickly;
+}
+
+.delayMedium{
+  transition-delay: @timingPromptly;
+}
+
+.delayLong {
+  transition-delay: @timingSlowly;
+}
+
+.transition-timing-function(@function) {
+  transition-timing-function: @function;
+}

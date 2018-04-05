@@ -1,0 +1,67 @@
+/**
+ * ====  NOTE: Auto-generated file. Do NOT edit directly! ====
+ * ====  Edit genColors.ts instead and run make generate. ====
+ *
+ * Standard color variables.
+ */
+
+// Primary colors:
+@primary_blue: #4274f6;
+@primary_blue_shade_1: #3863d1;
+@primary_blue_shade_2: #2e51ac;
+@primary_blue_tint_1: #5e89f7;
+@primary_blue_tint_2: #7b9ef9;
+
+// Neutral colors:
+@neutral_black: #191926;
+@neutral_dark_gray: #566279;
+@neutral_gray: #b5bcca;
+@neutral_silver: #e3e6eb;
+@neutral_off_white: #fafafc;
+@neutral_white: #fff;
+
+// Alert colors:
+@alert_green: #01d59a;
+@alert_green_shade_1: #01b583;
+@alert_green_shade_2: #01956c;
+@alert_green_tint_1: #27dba9;
+@alert_green_tint_2: #4de2b8;
+@alert_orange: #fca53a;
+@alert_orange_shade_1: #d68c31;
+@alert_orange_shade_2: #b07329;
+@alert_orange_tint_1: #fcb358;
+@alert_orange_tint_2: #fdc075;
+@alert_red: #eb3b49;
+@alert_red_shade_1: #c8323e;
+@alert_red_shade_2: #a52933;
+@alert_red_tint_1: #ee5864;
+@alert_red_tint_2: #f17680;
+
+// Accent colors:
+@accent_teal: #33f7f1;
+@accent_teal_shade_1: #2bd2cd;
+@accent_teal_shade_2: #24ada9;
+@accent_teal_tint_1: #52f8f3;
+@accent_teal_tint_2: #70f9f5;
+@accent_pink: #e838bf;
+@accent_pink_shade_1: #c530a2;
+@accent_pink_shade_2: #a22786;
+@accent_pink_tint_1: #eb56c9;
+@accent_pink_tint_2: #ef74d2;
+@accent_purple: #7e1dff;
+@accent_purple_shade_1: #6b19d9;
+@accent_purple_shade_2: #5814b3;
+@accent_purple_tint_1: #913fff;
+@accent_purple_tint_2: #a561ff;
+
+// DEPRECATED COLORS:
+@accent_aqua: #33f7f1;
+
+// DEPRECATED: Use pre-defined tints and shades above instead.
+@shadeStepAmount: 15%;
+.shade(@property, @color, @steps: 1) {
+  @{property}: shade(@color, @shadeStepAmount * @steps);
+}
+.tint(@property, @color, @steps: 1) {
+  @{property}: tint(@color, @shadeStepAmount * @steps);
+}

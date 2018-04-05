@@ -1,0 +1,95 @@
+@import (reference) "../less/utilities";
+@import (reference) "./animation";
+@import (reference) "./sizing";
+@import "../less/fonts";
+
+
+.LeftNav {
+  .animateWidth;
+  .flexbox;
+  color: @primary_blue_shade_2;
+  background: @neutral_off_white;
+  font-family: "Proxima Nova";
+  height: 100%;
+  user-select: none;
+  width: @paneWidth;
+}
+
+.LeftNav--withSubnavOpen {
+  width: @paneWidth * 2;
+}
+
+.LeftNav--collapsed {
+  width: @paneWidthCollapsed;
+
+  &.LeftNav--withSubnavOpen {
+    width: @paneWidthCollapsed + @paneWidth;
+  }
+}
+
+.LeftNav--topnav,
+.LeftNav--subnav,
+.LeftNav--subnav--content {
+  .list-reset;
+  box-sizing: border-box;
+  display: inline-block;
+  height: auto;
+  overflow: hidden;
+}
+
+.LeftNav--topnav,
+.LeftNav--subnav--content {
+}
+
+.LeftNav--topnav {
+  .animateWidth;
+  .flexShrink(0);
+  max-width: @paneWidth;
+  width: @paneWidth;
+}
+
+.LeftNav--topnav--collapsed {
+  width: @paneWidthCollapsed;
+}
+
+.LeftNav--subnav {
+  .animateWidth;
+  .flexbox;
+  .flex--direction--column;
+  .flexShrink(0);
+  background-color: fade(@neutral_gray, 5%);
+  width: 0;
+
+  .NavLink--label--container {
+    width: @paneWidth - @linkPaddingLeft - @linkPaddingRight;
+  }
+}
+
+.LeftNav--subnav--content {
+  .flex--grow;
+  height: auto;
+  width: 100%;
+}
+
+.LeftNav--subnav--open {
+  max-width: @paneWidth;
+  width: @paneWidth;
+}
+
+.LeftNav--subnav--content--anim-enter {
+  .animateOpacity;
+  opacity: 0;
+
+  &.LeftNav--subnav--content--anim-enter-active {
+    opacity: 1;
+  }
+}
+
+.LeftNav--subnav--content--anim-leave {
+  .animateOpacity;
+  opacity: 1;
+
+  &.LeftNav--subnav--content--anim-leave-active {
+    opacity: 0;
+  }
+}

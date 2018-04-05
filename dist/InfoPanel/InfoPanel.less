@@ -1,0 +1,80 @@
+@import (reference) "../less/index";
+
+.InfoPanel {
+  .borderRadius--m;
+  .border--s(@neutral_silver);
+  background-color: @neutral_white;
+  .flexbox();
+  .flexDirection(column);
+
+  .InfoPanelColumn {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+
+    &:nth-child(even) {
+      padding-left: @size_m;
+    }
+
+    &:not(:nth-last-child(-n+2)) {
+      margin-bottom: @size_m;
+    }
+  }
+}
+
+.InfoPanel--header {
+  .cardHeader();
+  .border--bottom--s(@neutral_silver);
+}
+
+.InfoPanel--title {
+  .margin--none;
+  .padding--none;
+  font-size: inherit;
+}
+
+.InfoPanel--content {
+  padding: @size_m;
+  .flex--auto;
+}
+
+.InfoPanel--footer {
+  .border--top--s(@neutral_silver);
+  padding: @size_s @size_m;
+}
+
+.InfoPanel--collapsibleHeader {
+  background-color: @neutral_off_white;
+  .border--bottom--s(@neutral_silver);
+  padding: @size_s @size_m;
+  .text--regular;
+  color: @neutral_dark_gray;
+  font-family: "Proxima Nova";
+  .margin--none;
+  padding: @size_s @size_m;
+  display: block;
+}
+
+.InfoPanel--collapsibleTitle {
+  display: inline-block;
+}
+
+.InfoPanel--collapseArrow {
+  width: @size_s;
+  display: inline-block;
+}
+
+
+// classes picked up by react-accessible-accordion to show
+// and hide content
+.accordion__body {
+    display: block;
+    animation: fadein .35s ease-in;
+}
+
+.accordion__body--hidden {
+    display: none;
+    opacity: 0;
+    animation: fadein .35s ease-in;
+}
+

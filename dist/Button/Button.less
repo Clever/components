@@ -1,0 +1,175 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+
+.buttonColor(@backgroundColor: @primary_blue, @disabled: false) {
+  background-color: @backgroundColor;
+  border-color: @backgroundColor;
+  .shade(border-bottom-color, @backgroundColor, 2);
+
+  & when (@disabled = false) {
+    &:hover,
+    &:focus,
+    &:active {
+      .shade(background-color, @backgroundColor, 2);
+      .shade(border-color, @backgroundColor, 2);
+      .shade(border-bottom-color, @backgroundColor, 4);
+    }
+  }
+}
+
+a, button {
+  &.Button {
+    .button--reset;
+    .border--s(transparent);
+    .borderRadius--l;
+    // Safari weirdly adds margins to adjacent buttons. Reset that:
+    .margin--none;
+    .padding--none;
+    .text--medium;
+    border-bottom-width: @borderWidthL;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Proxima Nova";
+    text-decoration: none;
+    transition: all 0.25s ease-out;
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus
+    &[disabled]:active {
+      background-color: @neutral_silver;
+      border-color: @neutral_silver;
+      border-bottom-color: @neutral_silver;
+      cursor: not-allowed;
+      color: @neutral_dark_gray;
+
+      &.Button--linkPlain,
+      &.Button--link,
+      &.Button--plain {
+        background: none;
+        border: transparent;
+      }
+
+      &.Button--linkPlain,
+      &.Button--link {
+        color: @neutral_gray;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active{
+      outline: 0;
+    }
+  }
+
+  &.Button--primary {
+    background-color: @primary_blue;
+    border-color: @primary_blue;
+    border-bottom-color: @primary_blue_shade_1;
+    color: @neutral_white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @primary_blue_shade_2;
+      border-color: @primary_blue_shade_2;
+      border-bottom-color: @primary_blue_shade_2;
+      color: @neutral_white;
+    }
+  }
+
+  &.Button--secondary {
+    background-color: @neutral_white;
+    border-color: @primary_blue_tint_2;
+    border-bottom-color: @primary_blue;
+    color: @primary_blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @primary_blue_tint_2;
+      border-color: @primary_blue_tint_2;
+      border-bottom-color: @primary_blue_tint_1;
+      color: @neutral_white;
+    }
+  }
+
+  &.Button--destructive {
+    background-color: @alert_red;
+    border-color: @alert_red;
+    border-bottom-color: @alert_red_shade_1;
+    color: @neutral_white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @alert_red_shade_1;
+      border-color: @alert_red_shade_1;
+      border-bottom-color: @alert_red_shade_2;
+      color: @neutral_white;
+    }
+  }
+
+  &.Button--linkPlain,
+  &.Button--link,
+  &.Button--plain {
+    .text--semi-bold;
+    background: none;
+    border-color: transparent;
+  }
+
+  &.Button--link {
+    color: @primary_blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: @primary_blue_shade_2;
+      background-color: fade(@primary_blue, 5%);
+    }
+  }
+
+  &.Button--linkPlain
+  {
+    color: @primary_blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: @primary_blue_shade_2;
+    }
+  }
+
+  &.Button--small {
+    .text--small;
+    padding: @size_xs @size_s @size_2xs;
+  }
+
+  &.Button--regular {
+    padding: @size_s @size_m @size_xs;
+  }
+
+  &.Button--large {
+    .borderRadius--xl;
+    .text--large;
+    padding: @size_m @size_l @size_s;
+  }
+
+  &.Button--linkPlain,
+  &.Button--plain {
+    border: none;
+    font-size: 1em;  /* Match surrounding text. */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Match surroundings even more. */
+  &.Button--plain {
+    color: inherit;
+    font-weight: inherit;
+    text-align: inherit;
+  }
+}

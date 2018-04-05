@@ -1,0 +1,48 @@
+@import (reference) "../less/utilities";
+
+.Menu--MenuItem {
+  .flex--grow;
+}
+
+button.Menu--MenuItem--default {
+  .button--reset();
+}
+
+.Menu--MenuItem--default,
+a.Menu--MenuItem--default,
+button.Menu--MenuItem--default {
+  .padding--m;
+  background-color: @neutral_white;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: @neutral_black;
+  display: block;
+  transition: all @timingPromptly ease-out;
+  width: 100%;
+
+  &:focus,
+  &:hover {
+    background-color: fade(@primary_blue_tint_2, 10%);
+    box-shadow: inset @borderWidthL 0 fade(@primary_blue_tint_2, 50%);
+    // box-shadow: inset @borderWidthL 0 @primary_blue_tint_2;
+    color: @primary_blue_shade_1;
+  }
+
+  &:active {
+    background-color: fade(@primary_blue_tint_2, 20%);
+    box-shadow: inset @borderWidthL 0 @primary_blue_shade_1;
+    color: @primary_blue_shade_2;
+  }
+}
+
+.Menu--MenuItem--default.Menu--MenuItem--selected {
+  .text--semi-bold();
+  box-shadow: inset @borderWidthL 0 @primary_blue;
+  color: @primary_blue_shade_2;
+
+  &:focus,
+  &:hover {
+    box-shadow: inset @borderWidthL 0 @primary_blue;
+    color: @primary_blue_shade_2;
+  }
+}

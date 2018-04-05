@@ -1,0 +1,9 @@
+@import (reference) "../less/utilities";
+
+.BetaTag {
+  height: 1em;
+  transition: all @timingPromptly ease-out;
+
+  // Required to maintain aspect ratio in IE10. These are measurements from the SVG view box.
+  width: 32em / 14;
+}

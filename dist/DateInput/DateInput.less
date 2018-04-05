@@ -1,0 +1,100 @@
+@import (reference) "../less/colors";
+@import (reference) "../less/border";
+@import (reference) "../less/sizing";
+@import (reference) "../less/type-size";
+@import (reference) "../less/type-utilities";
+@import (reference) "../less/spacing";
+@import "~react-datetime/css/react-datetime.css";
+
+.DateInput {
+  .padding--x--s;
+  .padding--top--3xs;
+  .text--regular;
+  .border--s(@neutral_silver);
+  position: relative;
+  color: @neutral_black;
+  background: @neutral_white;
+  box-sizing: border-box;
+  height: @size_4xl;
+  width: 100%;
+
+  .DateInput--infoRow {
+    .text--tiny;
+    .text--caps;
+    position: absolute;
+    top: @size_xs;
+    width: 100%;
+    color: @neutral_dark_gray;
+
+    .DateInput--label {
+      left: @size_s;
+      opacity: 1;
+    }
+
+    .DateInput--required {
+      position: absolute;
+      right: @size_l;
+    }
+
+    .DateInput--error {
+      color: @alert_red;
+      position: absolute;
+      right: @size_l;
+    }
+  }
+
+  .react-datepicker__input-container {
+    width: 100%;
+  }
+
+  .DateInput--input {
+    .text--medium;
+    display: block;
+    border: none;
+    width: 100%;
+    line-height: @size_2xl;
+    min-height: @size_2xl;
+    padding-top: @size_s;
+    background-color: transparent;
+    outline: none;
+  }
+
+  &.DateInput--placeholder-shown {
+    label { opacity: 0 !important; }
+
+    .DateInput--input {
+      .text--small;
+      .text--caps;
+      .padding--top--xs;
+      line-height: @size_2xl;
+      min-height: @size_2xl;
+      color: @neutral_dark_gray;
+    }
+  }
+
+  &.DateInput--hasError {
+    box-shadow: inset @size_2xs 0 @alert_red;
+    transition: box-shadow .25s ease-out;
+  }
+
+  &.DateInput--inFocus {
+    box-shadow: inset @size_2xs 0 @primary_blue;
+    transition: box-shadow .25s ease-out;
+  }
+
+  &.DateInput--disabled {
+    .border--s(@neutral_silver);
+    color: @neutral_dark_gray;
+    background: @neutral_silver;
+
+    .DateInput--input {
+      background: transparent;
+    }
+  }
+
+  &.DateInput--readonly {
+    .border--s(transparent);
+    color: @neutral_black;
+    background: transparent;
+  }
+}

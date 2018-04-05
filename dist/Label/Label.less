@@ -1,0 +1,113 @@
+@import (reference) "../less/index";
+
+
+.Label {
+  .text--caps;
+  .text--center;
+  .text--line-height-3;
+  .text--nowrap;
+  .text--regular;
+  cursor: default;
+  display: inline-block;
+  letter-spacing: 0.04em;
+  transition:
+    background-color 0.25s ease-out,
+    color 0.25s ease-out,
+    font-size 0.25s ease-out,
+    padding 0.25s ease-out;
+  vertical-align: middle;
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+}
+
+.Label--withTooltip {
+  cursor: help;
+  // Relative positioning needed to provide tooltip anchor.
+  position: relative;
+}
+
+.Label--s {
+  .borderRadius--s;
+  .text--tiny;
+  padding: @size_2xs @size_xs;
+}
+
+.Label--m {
+  .borderRadius--s;
+  .text--small;
+  padding: @size_xs @size_s;
+}
+
+.Label--l {
+  .borderRadius--m;
+  .text--medium;
+  padding: @size_s @size_m;
+}
+
+.Label--gray {
+  .colorize(@neutral_gray);
+}
+
+.Label--blue {
+  .colorize(@primary_blue);
+}
+
+.Label--error {
+  .colorize(@alert_red);
+}
+
+.Label--success {
+  .colorize(@alert_green);
+}
+
+.Label--warning {
+  .colorize(@alert_orange);
+}
+
+.Label--aqua {
+  .colorize(@accent_teal);
+}
+
+.Label--pink {
+  .colorize(@accent_pink);
+}
+
+.Label--purple {
+  .colorize(@accent_purple);
+}
+
+.colorize(@color) {
+  &:not(.Label--withTooltip) {
+    .highlight(@color);
+  }
+
+  &.Label--withTooltip {
+    .highlight(@color, true);
+  }
+}
+
+/**
+ * Creates text higlighting with the given background color.
+ * Adjusts the text color for appropriate contrast with the given highlight color.
+ * @param {Color} @color
+ * @param {boolean} @darkenOnHover
+ */
+.highlight(@color, @darkenOnHover: false) {
+  /* stylelint-disable-next-line declaration-property-value-whitelist */
+  background-color: @color;
+  color: @neutral_white;
+}
+
+.highlight(@color, @darkenOnHover: false) when (luma(@color) >= 50%) {
+  color: @neutral_black;
+}
+
+.highlight(@color, @darkenOnHover) when (@darkenOnHover = true) {
+  &:focus,
+  &:hover {
+    .shade(background-color, @color, 1);
+  }
+}

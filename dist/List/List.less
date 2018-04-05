@@ -1,0 +1,37 @@
+@import (reference) "../less/utilities";
+@import (reference) "../Table/HeaderCell";
+@import (reference) "../Table/Cell";
+
+.List {
+  .border--s(@neutral_silver);
+  transition: all @timingPromptly ease-out;
+}
+
+.List--noBorder {
+  border: 0;
+  border-color: @neutral_silver;
+}
+
+.List--header {
+  // Match the Table component's header cell styling.
+  .Table--header--cell();
+  transition: all @timingPromptly ease-out;
+}
+
+.List--items {
+  margin: 0;
+  padding: 0;
+  transition: all @timingPromptly ease-out;
+}
+
+.List--items--bordered {
+  .List--Item:not(:last-child) {
+    .border--bottom--s(@neutral_silver);
+  }
+}
+
+.List--items--zebra {
+  .List--Item:nth-child(even) {
+    background-color: @neutral_off_white;
+  }
+}

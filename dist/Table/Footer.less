@@ -1,0 +1,65 @@
+@import (reference) "../less/utilities.less";
+
+@pageNumberMargin: 0 @size_2xs;
+
+.Table--footer {
+  background-color: @neutral_off_white;
+}
+
+.Table--footer--cell {
+  .padding--s;
+  .text--center;
+  position: relative;
+}
+
+.Button.Table--footer--button--scroll {
+  .margin--none;
+
+  &:not(:last-child) {
+    margin-right: @size_2xl;
+  }
+
+  &:not(:first-child) {
+    margin-left: @size_2xl;
+  }
+}
+
+.Button.Table--footer--button--page {
+  margin: @pageNumberMargin;
+  transition: background-color @timingQuickly @motionSnappy;
+
+  &.Button.Table--footer--button--page--selected {
+    .borderRadius--s;
+    .padding--top--2xs;
+    color: @neutral_white;
+    background-color: @primary_blue;
+  }
+}
+
+.Table--footer--page_numbers {
+  display: inline-block;
+}
+
+.Table--footer--ellipsis {
+  .text--medium;
+  cursor: default;
+  margin: @pageNumberMargin;
+}
+
+.Table--footer--loadingContainer {
+  .text--center;
+  left: 0;
+  position: absolute;
+  top: -@size_2xl;
+  width: 100%;
+}
+
+.Table--footer--loadingPill {
+  .borderRadius--s;
+  .padding--xs;
+  background: @primary_blue;
+  box-shadow: 0 @size_3xs @size_3xs fade(@neutral_black, 20%);
+  color: @neutral_white;
+  display: inline-block;
+  font-family: "Proxima Nova";
+}

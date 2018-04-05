@@ -1,0 +1,122 @@
+@import (reference) "../less/utilities";
+@import (reference) "./animation";
+@import (reference) "./sizing";
+
+
+.NavLink {
+  .animateWidth;
+  .button--reset;
+  .padding--y--m;
+  color: @primary_blue_shade_2;
+  box-sizing: border-box;
+  display: block;
+  padding-left: @linkPaddingLeft;
+  padding-right: @linkPaddingRight;
+  transition-property: background-color, box-shadow, padding;
+  width: 100%;
+
+  &:active,
+  &:focus,
+  &:hover {
+    // Lighten the focus indicator slightly for unselected items to distinguish them from the
+    // current selection:
+    box-shadow: inset @borderWidthL 0 @primary_blue_tint_2;
+  }
+
+  // Remove rogue outlines/borders around icons in IE.
+  img {
+    border: 0;
+    outline: 0;
+  }
+}
+
+.NavLink--contents {
+  height: @size_l;
+  line-height: @size_l;
+  white-space: nowrap;
+}
+
+.NavLink--icon--container {
+  .animateWidth;
+  .margin--right--s;
+  display: inline-block;
+  height: @size_l;
+  transition-property: margin;
+  vertical-align: middle;
+}
+
+.NavLink--icon {
+  // The base Icon styles include vertical alignment. Reset that so it doesn't conflict with the
+  // alignment we assign to the container above.
+  vertical-align: initial;
+}
+
+.NavLink--label--container {
+  .animateWidth;
+  display: inline-block;
+  vertical-align: middle;
+  width: @linkLabelWidthNoArrow;
+}
+
+.NavLink--withArrow {
+  .NavLink--label--container {
+    width: @linkLabelWidth;
+  }
+}
+
+.NavLink--label {
+  .animateOpacity;
+  opacity: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.NavLink--arrow--container {
+  .animateWidth;
+  display: inline-block;
+  height: @size_l;
+  margin-left: @linkArrowMarginLeft;
+  margin-right: @linkArrowMarginRight;
+  transition-property: margin;
+  width: @linkArrowWidth;
+}
+
+.NavLink--arrow {
+  height: @size_m;
+  vertical-align: middle;
+  width: @linkArrowWidth;
+}
+
+.NavLink--selected,
+.NavLink--selected:active,
+.NavLink--selected:focus,
+.NavLink--selected:hover {
+  .text--semi-bold;
+  box-shadow: inset @borderWidthL 0 @primary_blue;
+}
+
+.NavLink--collapsed {
+  padding-left: @linkPaddingLeftCollapsed;
+  padding-right: @linkPaddingRightCollapsed;
+
+  .NavLink--icon--container {
+    margin: @linkIconMarginRightCollapsed;
+  }
+
+  .NavLink--label--container {
+    width: @linkLabelWidthCollapsed;
+  }
+
+  .NavLink--label {
+    opacity: 0;
+    text-overflow: clip;
+  }
+
+  .NavLink--arrow--container {
+    margin-left: @linkArrowMarginLeftCollapsed;
+    margin-right: @linkArrowMarginRightCollapsed;
+  }
+}
+
