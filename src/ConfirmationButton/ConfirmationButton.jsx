@@ -2,7 +2,8 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 
-import {Button, ModalButton} from "..";
+import {Button} from "../Button/Button";
+import {ModalButton} from "../ModalButton/ModalButton";
 import {propsFor, prefixKeys, unprefixKeys} from "../utils";
 
 require("./ConfirmationButton.less");
