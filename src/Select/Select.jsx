@@ -87,6 +87,8 @@ export function Select({
     SelectComponent = ReactSelect.Async;
   }
 
+  const overrideProps = lazy ? {filterOptions: (results) => results} : {};
+
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
   return (
@@ -107,6 +109,7 @@ export function Select({
           searchable={searchable}
           noResultsText={noResultsText}
           value={value}
+          {...overrideProps}
         />
       </div>
       <div className={cssClass.LABEL_CONTAINER}>
