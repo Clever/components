@@ -78,8 +78,8 @@ export class FileInput extends React.Component {
         }
         this.setState({success: true});
       },
-      error: () => {
-        this.setState({error: "Unknown error"});
+      error: (errMsg = "Unknown error") => {
+        this.setState({error: errMsg});
       },
       progress: (progress) => {
         if (this.state.fileKey !== fileKey) {
