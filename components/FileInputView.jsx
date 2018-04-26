@@ -17,7 +17,7 @@ export default function FileInputView() {
             <FileInput
               label="Icon"
               accept="image/png"
-              store={(file, {progress, success}) => {
+              store={(file, {progress, error, success}) => {
                 // Example store function using filestack
                 let progressPercent = 0;
                 progress(progressPercent);
@@ -25,6 +25,9 @@ export default function FileInputView() {
                   if (progressPercent !== 100) {
                     progressPercent += 5;
                     progress(progressPercent);
+                  } else if (this.state.error) {
+                    error("An error occurred");
+                    clearInterval(intervalID);
                   } else {
                     success();
                     clearInterval(intervalID);
@@ -37,7 +40,7 @@ export default function FileInputView() {
           The caller is responsible for calling 3 provided callbacks:</p>
           <ul>
             <li><code>success</code> - Called when the upload is complete</li>
-            <li><code>error</code> - Called if the upload failed for unexpected reasons</li>
+            <li><code>error</code> - Called if the upload failed for unexpected reasons with an optional error message</li>
             <li><code>progress</code> - Called during upload with a number between 0-100 representing the % completed</li>
           </ul>
         </div>
