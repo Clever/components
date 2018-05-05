@@ -1,0 +1,15 @@
+@import (reference) "../less/utilities";
+
+
+.animateWidth {
+  .timingSlowly;
+  .transition-timing-function(@motionSmooth);
+  transition-property: width;
+}
+
+.animateOpacity {
+  .delayMoment;
+  .timingPromptly;
+  .transition-timing-function(@motionSnappy);
+  transition-property: opacity;
+}

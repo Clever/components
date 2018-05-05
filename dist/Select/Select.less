@@ -1,0 +1,148 @@
+@import (reference) "../less/colors";
+@import (reference) "../less/spacing";
+@import (reference) "../less/type-size";
+
+.Select--container {
+  position: relative;
+}
+
+.Select--labelContainer {
+  .text--tiny;
+  color: @neutral_dark_gray;
+  position: absolute;
+  text-transform: uppercase;
+  top: @size_xs;
+  width: 100%;
+
+  // aligns REQUIRED text with text in other forms
+  .Select--required {
+    position: absolute;
+    right: 0.8rem;
+  }
+}
+
+.Select--label {
+  left: @size_s;
+  position: absolute;
+
+  &.Select--labelHidden {
+    opacity: 0 !important;
+  }
+}
+
+.Select--ReactSelect {
+  // overrides styles from the exact same selector in react-select's CSS
+  &.is-focused:not(.is-open) > .Select-control {
+    border-color: @neutral_silver;
+    box-shadow: inset @size_2xs 0 @primary_blue;
+    transition: box-shadow .25s ease-out;
+  }
+
+  &.is-disabled {
+    .Select-control {
+      background-color: @neutral_silver;
+    }
+  }
+
+  &.Select--readOnly {
+    .Select-control {
+      background-color: transparent;
+      border-color: transparent;
+    }
+    .Select-arrow {
+      display: none;
+    }
+  }
+
+  // aligns the arrow with REQUIRED text (so both align with other forms)
+  .Select-arrow-zone {
+    padding-right: 0.6rem;
+  }
+
+  &.Select--multi {
+    .Select-multi-value-wrapper {
+      padding-top: @size_m;
+      padding-bottom: @size_2xs;
+
+      .Select-placeholder {
+        padding-top: @size_xs;
+      }
+
+      .Select-value {
+        padding: 0;
+        background-color: @neutral_off_white !important;
+        border-color: @neutral_silver;
+        color: @neutral_black;
+        line-height: @size_m;
+        margin-top: @size_2xs 0 0 @size_2xs;
+
+        .Select-value-icon {
+          background-color: @neutral_silver;
+          float: right;
+          border-color: @neutral_silver;
+        }
+
+        .Select-value-label {
+          background-color: @neutral_off_white;
+        }
+      }
+
+      .Select-input {
+        position: relative;
+        top: -@size_2xs;
+        left: -@size_4xs;
+      }
+    }
+  }
+
+  .Select-control {
+    border-radius: 0px;
+    border-color: @neutral_silver;
+    height: @size_4xl;
+
+    .Select-placeholder {
+      .padding--left--s;
+      .padding--right--s;
+      .padding--top--xs;
+      .text--small;
+      line-height: @size_2xl;
+      text-transform: uppercase;
+    }
+
+    .Select-input,
+    .Select-value {
+      .text--medium;
+      line-height: @size_2xl;
+      top: @size_s;
+    }
+
+    .Select-value {
+      .padding--left--s;
+    }
+
+    .Select-input {
+      position: absolute;
+      background-color: transparent;
+    }
+  }
+
+  // overrides styles from the exact same selector in react-select's CSS
+  .has-value.Select--single > .Select-control .Select-value .Select-value-label,
+  .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+    color: @neutral_black
+  }
+
+  .Select-menu-outer {
+    border-radius: @size_none;
+    border-color: @neutral_silver;
+
+    .Select-option {
+      color: @neutral_black;
+
+      &.is-focused {
+        box-shadow: inset @size_2xs 0 @primary_blue;
+        background-color: @neutral_off_white;
+      }
+    }
+  }
+}

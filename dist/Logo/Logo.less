@@ -1,0 +1,26 @@
+@import (reference) "../less/utilities";
+
+.dewey--Logo {
+  .flexbox();
+  .items--start();
+}
+
+.dewey--Logo--image {
+  .flexShrink(0);
+  height: 1em;
+  transition: all @timingPromptly ease-out;
+
+  // Required to maintain aspect ratio in IE10. These are measurements from the SVG view box.
+  width: 198em / 55;
+}
+
+.dewey--Logo--text {
+  transition: all @timingPromptly ease-out;
+}
+
+.dewey--Logo--betaTag {
+  .flexShrink(0);
+  font-size: 0.5em;
+  margin-left: 0.25em;
+  opacity: 0.5;
+}

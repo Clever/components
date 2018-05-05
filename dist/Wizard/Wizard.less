@@ -1,0 +1,148 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+.Wizard {
+  .flexbox();
+}
+
+.Wizard--sidebar {
+  .flex(0, 0, 15rem);
+  width: 15rem;
+  .padding--x--m;
+  .padding--y--l;
+  background-color: @neutral_off_white;
+  .border--right--m(@neutral_silver);
+
+  h2 {
+    .text--regular;
+    .padding--none;
+    .margin--bottom--m;
+  }
+}
+
+@content_width: 37.5rem;
+@help_min_width: 18.75rem;
+.Wizard--contentGroup {
+  .margin--right--4xl;
+  min-width: @content_width;
+  max-width: @content_width;
+  .margin--bottom--s;
+  .margin--left--none;
+}
+
+.Wizard--navButtons {
+  text-align: right;
+}
+
+.Wizard--step {
+  .flex(1);
+  .padding--l;
+}
+
+.Wizard--WizardStep--title {
+  width: 100%;
+  .border--bottom--m(@neutral_silver);
+}
+
+.Wizard--stepContainer {
+  display: none;
+
+  &.Wizard--stepContainer--current {
+    display: block;
+  }
+}
+
+.Wizard--stepsDisplay {
+  list-style-type: none;
+  .padding--none;
+  .margin--top--m;
+
+  li {
+    &:not(:last-child)::after {
+      display: block;
+      content: "";
+      .border--left--s(@neutral_gray);
+      .margin--left--s;
+      height: @size_l;
+    }
+  }
+}
+
+.Wizard--controls {
+  .margin--top--3xl;
+}
+
+.Wizard--stepsDisplay--stepButton.Button {
+  .padding--none;
+  text-align: left;
+  .text--line-height-3;
+}
+
+.Wizard--stepsDisplay--step {
+  // ensure each item in list is vertically centered
+  .flexbox();
+  .alignItems(center);
+  width: 100%;
+  .padding--y--2xs;
+
+  &:not(.Wizard--stepsDisplay--visited):not(.Wizard--stepsDisplay--stepLink) {
+    .shade(color, @neutral_gray, 1);
+  }
+
+  &.Wizard--stepsDisplay--visited {
+    .Wizard--stepsDisplay--icon {
+      background-image: url("../../assets/images/progress_notFinished.svg");
+    }
+  }
+
+  &.Wizard--stepsDisplay--valid {
+    .Wizard--stepsDisplay--icon {
+      background-image: url("../../assets/images/progress_done.svg");
+    }
+  }
+
+  &.Wizard--stepsDisplay--currentStep {
+    .Wizard--stepsDisplay--icon {
+      background-image: url("../../assets/images/progress_here.svg");
+    }
+  }
+}
+
+.Wizard--stepsDisplay--stepTitle {
+  display: block;
+  overflow: hidden;
+  -ms-flex: 0 1 auto;
+}
+
+.Wizard--stepsDisplay--icon {
+  display: inline-block;
+  .flexShrink(0);
+  width: @size_l;
+  height: @size_l;
+  background-image: url("../../assets/images/progress_notStarted.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  .margin--right--s;
+}
+
+.Wizard--WizardStep--component {
+  .flex(1, 0, 37.5rem);
+  .margin--bottom--2xl;
+}
+
+.Wizard--WizardStep--topInfo {
+  .flexbox();
+  .flexWrap(wrap);
+  .alignItems(flex-start);
+  .margin--top--l;
+  .margin--bottom--m;
+}
+
+.Wizard--WizardStep--help {
+  min-width: @help_min_width;
+  .flex(1, 0, @help_min_width);
+  &:not(.Wizard--WizardStep--helpCollapsed) {
+    height: 0;
+    overflow: visible;
+  }
+}

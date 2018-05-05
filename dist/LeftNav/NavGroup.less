@@ -1,0 +1,13 @@
+@import (reference) "../less/utilities";
+
+
+.NavGroup--open,
+.NavGroup--open:active,
+.NavGroup--open:focus,
+.NavGroup--open:hover {
+  background-color: fade(@neutral_gray, 5%);
+
+  &:not(.NavLink--selected) {
+    box-shadow: inset @borderWidthL 0 @primary_blue_tint_2;
+  }
+}

@@ -1,0 +1,51 @@
+@import (reference) "../less/index";
+
+
+.DropdownButton {
+  display: inline-block;
+  overflow: visible;
+  position: relative;
+}
+
+.Button.DropdownButton--main {
+  .flexShrink(0);
+
+  &:not(:last-child) {
+    .text--left;
+  }
+}
+
+.Button.DropdownButton--toggle {
+  .flex(0, 0);
+  .margin--left--xs;
+  // Padding will be re-applied on the child Caret--container element.
+  .padding--x--none;
+  box-sizing: content-box;
+}
+
+.DropdownButton--Caret--container {
+  transition: border .25s ease-out;
+}
+
+/*
+ * The caret container is used to provide a partition border that doesn't extend all the way
+ * vertically. The following styles are intended to match the base Button padding.
+ */
+
+.Button--small.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .padding--x--s;
+  }
+}
+
+.Button--regular.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .padding--x--m;
+  }
+}
+
+.Button--large.DropdownButton--toggle {
+  .DropdownButton--Caret--container {
+    .padding--x--l;
+  }
+}
