@@ -35,7 +35,7 @@ export default class TextTruncateView extends React.PureComponent {
     super(props);
 
     this.shortText = loremIpsum({count: 7, units: "words"});
-    this.longText = loremIpsum({count: 70, units: "sentences"});
+    this.longText = loremIpsum({count: 25, units: "sentences"});
   }
 
   render() {
