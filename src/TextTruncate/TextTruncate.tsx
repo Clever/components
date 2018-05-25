@@ -70,6 +70,4 @@ export default class TextTruncate extends React.PureComponent {
       </div>
     );
   }
-
-  _handlePerformAction = () => this.props.onPerformAction("action performed");
 }
