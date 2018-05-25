@@ -14,8 +14,8 @@ const cssClass = {
   CONFIG_OPTIONS: "TextTruncateView--configOptions",
   USAGE: "TextTruncateView--usage",
   CONFIG: "TextTruncateView--config",
-  CONFIG_INPUT_MORE: "TextTruncateView--input--more",
-  CONFIG_INPUT_LESS: "TextTruncateView--input--less",
+  CONFIG_INPUT_MORE: "TextTruncateView--input--showMoreLabel",
+  CONFIG_INPUT_LESS: "TextTruncateView--input--showLessLabel",
   CONTAINER: "TextTruncateView",
   INTRO: "TextTruncateView--intro",
   PROPS: "TextTruncateView--props",
@@ -25,9 +25,9 @@ export default class TextTruncateView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    characters: 300,
-    more: "Show more",
-    less: "Show less",
+    maxCharsShown: 300,
+    showMoreLabel: "Show more",
+    showLessLabel: "Show less",
     showLongText: true,
   };
 
@@ -39,7 +39,7 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   render() {
-    const {characters, more, less, showLongText} = this.state;
+    const {maxCharsShown, showMoreLabel, showLessLabel, showLongText} = this.state;
 
     return (
       <View
@@ -62,9 +62,9 @@ export default class TextTruncateView extends React.PureComponent {
           <ExampleCode>
             <TextTruncate
               className={cssClass.USAGE}
-              characters={characters}
-              more={more}
-              less={less}
+              maxCharsShown={maxCharsShown}
+              showMoreLabel={showMoreLabel}
+              showLessLabel={showLessLabel}
               text={showLongText ? this.longText : this.shortText}
             />
           </ExampleCode>
@@ -77,7 +77,7 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {showLongText, characters, more, less} = this.state;
+    const {showLongText, maxCharsShown, showMoreLabel, showLessLabel} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -97,33 +97,33 @@ export default class TextTruncateView extends React.PureComponent {
           Character limit for truncation:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({characters: parseInt(value, 10)})}
+            onSelect={value => this.setState({maxCharsShown: parseInt(value, 10)})}
             options={[
               {content: "0", value: "0"},
               {content: "300", value: "300"},
               {content: "1000", value: "1000"},
             ]}
-            value={`${characters}`}
+            value={`${maxCharsShown}`}
           />
         </div>
         <div className={cssClass.CONFIG}>
           <TextInput
             className={classNames(cssClass.CONFIG_OPTIONS, cssClass.CONFIG_INPUT_MORE)}
             id={cssClass.CONFIG_INPUT_MORE}
-            label="'More' button"
+            label="'Show more' label"
             name={cssClass.CONFIG_INPUT_MORE}
-            onChange={e => this.setState({more: e.target.value})}
-            value={more}
+            onChange={e => this.setState({showMoreLabel: e.target.value})}
+            value={showMoreLabel}
           />
         </div>
         <div className={cssClass.CONFIG}>
           <TextInput
             className={classNames(cssClass.CONFIG_OPTIONS, cssClass.CONFIG_INPUT_LESS)}
             id={cssClass.CONFIG_INPUT_LESS}
-            label="'Less' button"
+            label="'Show less' label"
             name={cssClass.CONFIG_INPUT_LESS}
-            onChange={e => this.setState({less: e.target.value})}
-            value={less}
+            onChange={e => this.setState({showLessLabel: e.target.value})}
+            value={showLessLabel}
           />
         </div>
       </FlexBox>
@@ -147,21 +147,21 @@ export default class TextTruncateView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "more",
+            name: "showMoreLabel",
             type: "string",
             description: "Text for 'show more' clickable toggle",
             defaultValue: "Show more",
             optional: true,
           },
           {
-            name: "less",
+            name: "showLessLabel",
             type: "string",
             description: "Text for 'show less' clickable toggle",
             defaultValue: "Show less",
             optional: true,
           },
           {
-            name: "characters",
+            name: "maxCharsShown",
             type: "number",
             description: "Number of characters to show before truncation",
             defaultValue: 300,

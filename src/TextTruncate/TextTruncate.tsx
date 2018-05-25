@@ -4,32 +4,28 @@ import * as React from "react";
 
 import {Button} from "../Button/Button";
 
-import "./TextTruncate.less";
-
 const propTypes = {
   className: PropTypes.string,
   text: PropTypes.string.isRequired,
-  more: PropTypes.string,
-  less: PropTypes.string,
+  showMoreLabel: PropTypes.string,
+  showLessLabel: PropTypes.string,
   lines: PropTypes.number,
-  characters: PropTypes.number,
+  maxCharsShown: PropTypes.number,
 };
 
 const defaultProps = {
-  characters: 300,
-  more: "Show more",
-  less: "Show less",
+  maxCharsShown: 300,
+  showMoreLabel: "Show more",
+  showLessLabel: "Show less",
 };
 
 const cssClass = {
   CONTAINER: "TextTruncate",
-  TEXT: "TextTruncate--text",
 };
 
 /**
  * Truncate long text
  * Comes with read more/less toggle
- * Adapted from https://www.npmjs.com/package/react-truncate#integrated-example-for-toggling-read-more-text
  */
 export default class TextTruncate extends React.PureComponent {
   static propTypes = propTypes;
@@ -40,21 +36,21 @@ export default class TextTruncate extends React.PureComponent {
     truncated: true,
   };
 
-  toggleTruncation(event) {
+  toggleTruncation = (event) => {
     event.preventDefault();
 
     this.setState({truncated: !this.state.truncated});
   }
 
   truncate(text) {
-    return text.substring(0, this.props.characters);
+    return text.substring(0, this.props.maxCharsShown);
   }
 
   render() {
-    const {className, text, more, less, characters} = this.props;
+    const {className, text, showMoreLabel, showLessLabel, maxCharsShown} = this.props;
     const {truncated} = this.state;
 
-    if (text.length < characters) {
+    if (text.length < maxCharsShown) {
       return (<div className={classnames(cssClass.CONTAINER, className)}>
         {text}
       </div>);
@@ -64,11 +60,11 @@ export default class TextTruncate extends React.PureComponent {
       <div>
         {truncated ?
           <div className={classnames(cssClass.CONTAINER, className)}>
-            {this.truncate(text)}
-            <Button type="linkPlain" onClick={(e) => this.toggleTruncation(e)} value={`... ${more}`} />
+            {this.truncate(text)} ... <Button
+              type="linkPlain" onClick={this.toggleTruncation} value={showMoreLabel} />
           </div> :
           <div className={classnames(cssClass.CONTAINER, className)}>
-            {text} <Button type="linkPlain" onClick={(e) => this.toggleTruncation(e)} value={less} />
+            {text} <Button type="linkPlain" onClick={(e) => this.toggleTruncation(e)} value={showLessLabel} />
           </div>
         }
       </div>
