@@ -65,3 +65,6 @@ export {Menu};
 
 import TopBar from "./TopBar";
 export {TopBar};
+
+import TextTruncate from "./TextTruncate";
+export {TextTruncate};

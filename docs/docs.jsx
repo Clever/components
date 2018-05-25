@@ -42,6 +42,7 @@ import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
+import TextTruncateView from "./components/TextTruncateView";
 import TooltipView from "./components/TooltipView";
 import TopBarView from "./components/TopBarView";
 import TypographyView from "./components/TypographyView";
@@ -95,6 +96,7 @@ render((
         <Route path="table(/*)" component={TableView} />
         <Route path="text-area(/*)" component={TextAreaView} />
         <Route path="text-input(/*)" component={TextInputView} />
+        <Route path="text-truncate(/*)" component={TextTruncateView} />
         <Route path="tooltip" component={TooltipView} />
         <Route path="top-bar(/*)" component={TopBarView} />
         <Route path="wizard(/*)" component={WizardView} />

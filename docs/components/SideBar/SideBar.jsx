@@ -96,6 +96,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/table", "Table")}
           {this._renderLink("/components/text-area", "TextArea")}
           {this._renderLink("/components/text-input", "TextInput")}
+          {this._renderLink("/components/text-truncate", "TextTruncate")}
           {this._renderLink("/components/tooltip", "Tooltip")}
           {this._renderLink("/components/top-bar", "TopBar")}
           {this._renderLink("/components/wizard", "Wizard")}
