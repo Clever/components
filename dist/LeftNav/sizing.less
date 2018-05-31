@@ -1,0 +1,44 @@
+@import (reference) "../less/utilities";
+
+
+@paneBorderWidth: @borderWidthS;
+
+@linkPaddingLeft: @size_m;
+@linkIconWidth: @size_l;
+@linkIconMarginRight: @size_s;
+@linkLabelWidth: 6.75rem;
+@linkArrowMarginLeft: @size_xs;
+@linkArrowWidth: @size_m;
+@linkArrowMarginRight: @size_xs;
+@linkPaddingRight: 0;
+@paneWidth:
+  @linkPaddingLeft
+  + @linkIconWidth
+  + @linkIconMarginRight
+  + @linkLabelWidth
+  + @linkArrowMarginLeft
+  + @linkArrowWidth
+  + @linkArrowMarginRight
+  + @linkPaddingRight
+  + @paneBorderWidth;
+
+@linkLabelWidthNoArrow: @linkLabelWidth + @linkArrowMarginLeft + @linkArrowWidth;
+
+@linkPaddingLeftCollapsed: @linkPaddingLeft;
+@linkIconWidthCollapsed: @linkIconWidth;
+@linkIconMarginRightCollapsed: 0;
+@linkLabelWidthCollapsed: 0;
+@linkArrowMarginLeftCollapsed: @size_3xs;
+@linkArrowWidthCollapsed: @size_m;
+@linkArrowMarginRightCollapsed: 0;
+@linkPaddingRightCollapsed: 0;
+@paneWidthCollapsed:
+  @linkPaddingLeftCollapsed
+  + @linkIconWidthCollapsed
+  + @linkIconMarginRightCollapsed
+  + @linkLabelWidthCollapsed
+  + @linkArrowMarginLeftCollapsed
+  + @linkArrowWidthCollapsed
+  + @linkArrowMarginRightCollapsed
+  + @linkPaddingRightCollapsed
+  + @paneBorderWidth;

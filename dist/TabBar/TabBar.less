@@ -1,0 +1,22 @@
+@import (reference) "./defs";
+@import (reference) "../less/index";
+
+
+.TabBar {
+  transition: font-size .25s ease-out, box-shadow .25s ease-out;
+}
+
+.TabBar--small {
+  .text--small;
+  box-shadow: inset 0 -@tabBorderWidthSmall @neutral_silver;
+}
+
+.TabBar--medium {
+  .text--medium;
+  box-shadow: inset 0 -@tabBorderWidthMedium @neutral_silver;
+}
+
+.TabBar--large {
+  .text--large;
+  box-shadow: inset 0 -@tabBorderWidthLarge @neutral_silver;
+}

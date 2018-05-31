@@ -1,0 +1,40 @@
+@import (reference) "../less/index";
+
+.FileInput {
+  .text--medium;
+  .text--caps;
+  .padding--x--s;
+  .border--s(@neutral_silver);
+  background: @neutral_white;
+  box-sizing: border-box;
+  color: @neutral_dark_gray;
+  cursor: pointer;
+  height: @size_4xl;
+  position: relative;
+  width: 100%;
+}
+
+.FileInput--Label {
+  .text--caps;
+  .text--tiny;
+  color: @neutral_dark_gray;
+  position: absolute;
+  top: @size_xs;
+  width: 100%;
+}
+
+.FileInput--Text, .FileInput--Icon {
+  .alignSelf(center);
+}
+
+.FileInput--Text--selected {
+  color: @neutral_black;
+  .margin--top--s;
+}
+
+// Overwrite the inlined styles on the hidden file input for accessibility
+.FileInput + input[type=file] {
+  display: inline !important;
+  margin-left: -10000rem;
+  position: fixed;
+}

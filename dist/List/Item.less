@@ -1,0 +1,30 @@
+@import (reference) "../less/utilities";
+@import (reference) "../Table/Cell";
+
+.List--Item {
+  border-color: @neutral_silver;
+  list-style: none;
+  transition: all @timingPromptly ease-out;
+}
+
+.List--Item--ContentWrapper {
+  // Match the Table component's cell styling.
+  .Table--cell();
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.List--Item--ContentWrapperClickable {
+  .button--reset;
+
+  // Match the Table component's cell styling.
+  .Table--cell();
+
+  &:hover {
+    .tint(background-color, @neutral_silver, 5);
+  }
+}
+
+.List--empty {
+  color: @neutral_gray;
+}

@@ -1,0 +1,337 @@
+/**
+ * Flex layout definitions and mixins.
+ */
+
+@import (reference) "./layout";
+
+/**
+ * Block flexbox display mixin.
+ * @target Flex container.
+ */
+.flexbox() {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+/**
+ * Inline flexbox display mixin.
+ * @target Flex container.
+ */
+.inlineFlexbox() {
+  display: -moz-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+/**
+ * Flex line-wrapping.
+ * @target Flex container.
+ * @param {nowrap|wrap|wrap-reverse}
+ * @initial {nowrap}
+ */
+.flexWrap(@wrap: wrap) {
+  -ms-flex-wrap: @wrap;
+  -webkit-flex-wrap: @wrap;
+  flex-wrap: @wrap;
+}
+
+/**
+ * Flex flow direction for flex containers.
+ * @target Flex container.
+ * @param {row|row-reverse|column|column-reverse} direction
+ * @initial {row}
+ */
+.flexDirection(@direction) {
+  -ms-flex-direction: @direction;
+  -webkit-flex-direction: @direction;
+  flex-direction: @direction;
+}
+
+/**
+ * Flex item shorthand rule mixin.
+ * Use one of `.flex-grow`, `.flex-shrink` or `.flex-basis` for more fine-grained control, if
+ * necessary.
+ * @target Flex item.
+ * @param {number|none} grow - See `.flex-grow`.
+ * @param {number} shrink - See `.flex-shrink`. Defaults to 1.
+ * @param {number} basis - See `.flex-basis`. Defaults to auto.
+ * @initial {0 1 auto}
+ */
+.flex(@grow, @shrink: 1, @basis: auto) {
+  -moz-box-flex: @grow @shrink @basis;
+  -ms-flex: @grow @shrink @basis;
+  -webkit-box-flex: @grow @shrink @basis;
+  -webkit-flex: @grow @shrink @basis;
+  flex: @grow @shrink @basis;
+}
+
+/**
+ * Flex item shorthand rule mixin for setting `flex: none`.
+ * @target Flex item.
+ * @initial {0 1 auto}
+ */
+.flexNone() {
+  -moz-box-flex: none;
+  -ms-flex: none;
+  -webkit-box-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+/**
+ * Grow flex item to fill availalbe space along the main axis, in proportion to the grow factor of
+ * its siblings. A value of 0 prevents the item from growing past its original size.
+ * @target Flex item.
+ * @param {number} value
+ * @initial {0}
+ */
+.flexGrow(@value: 1) {
+ -moz-box-flex-grow: @value;
+ -ms-flex-positive: @value;
+ -webkit-box-flex-grow: @value;
+ -webkit-flex-grow: @value;
+ flex-grow: @value;
+}
+
+/**
+ * Shrink flex item along the main axis, in respose to a shrinking parent, in proportion to the
+ * shrink factor of its siblings. A value of 0 prevents the item from shrinking past its original
+ * size.
+ * @target Flex item.
+ * @param {number} value
+ * @initial {1}
+ */
+.flexShrink(@value: 1) {
+ -moz-box-flex-shrink: @value;
+ -ms-flex-negative: @value;
+ -webkit-box-flex-shrink: @value;
+ -webkit-flex-shrink: @value;
+ flex-shrink: @value;
+}
+
+/**
+ * Initial size of the flex item along the main axis.
+ * @target Flex item.
+ * @param {auto|size} value
+ * @initial {auto}
+ */
+.flexBasis(@value: 1) {
+ -moz-box-flex-basis: @value;
+ -ms-flex-preferred-size: @value;
+ -webkit-box-flex-basis: @value;
+ -webkit-flex-basis: @value;
+ flex-basis: @value;
+}
+
+/**
+ * Flex item alignment along the main axis.
+ * @target Flex container.
+ * @param {flex-start|flex-end|center|space-between|space-around} justify
+ * @initial {flex-start}
+ */
+.justifyContent(@justify) {
+  -ms-flex-pack: @justify;
+  -webkit-justify-content: @justify;
+  justify-content: @justify;
+}
+.justifyContent(@justify) when (@justify = flex-start) {
+  -ms-flex-pack: start;
+  -webkit-justify-content: @justify;
+  justify-content: @justify;
+}
+.justifyContent(@justify) when (@justify = flex-end) {
+  -ms-flex-pack: end;
+  -webkit-justify-content: @justify;
+  justify-content: @justify;
+}
+.justifyContent(@justify) when (@justify = space-between) {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: @justify;
+  justify-content: @justify;
+}
+.justifyContent(@justify) when (@justify = space-around) {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: @justify;
+  justify-content: @justify;
+}
+
+/**
+ * Flex item alignment along the cross (perpendicular) axis.
+ * @target Flex container.
+ * @param {flex-start|flex-end|center|baseline|stretch} align
+ * @initial {stretch}
+ */
+.alignItems(@align) {
+  -ms-flex-align: @align;
+  -webkit-align-items: @align;
+  align-items: @align;
+}
+.alignItems(@align) when (@align = flex-start) {
+  -ms-flex-align: start;
+  -webkit-align-items: @align;
+  align-items: @align;
+}
+.alignItems(@align) when (@align = flex-end) {
+  -ms-flex-align: end;
+  -webkit-align-items: @align;
+  align-items: @align;
+}
+
+/**
+ * Flex item alignment along the cross axis.
+ * @target Flex container.
+ * @param {flex-start|flex-end|center|baseline|stretch} align
+ * @initial {stretch}
+ */
+.alignContent(@align) {
+  -webkit-align-content: @align;
+  -ms-flex-line-pack: @align;
+  align-content: @align;
+}
+.alignContent(@align) when (@align = flex-start) {
+  -ms-flex-line-pack: start;
+  -webkit-align-content: @align;
+  align-content: @align;
+}
+.alignContent(@align) when (@align = flex-end) {
+  -ms-flex-line-pack: end;
+  -webkit-align-content: @align;
+  align-content: @align;
+}
+.alignContent(@align) when (@align = space-between) {
+  -ms-flex-line-pack: justify;
+  -webkit-align-content: @align;
+  align-content: @align;
+}
+.alignContent(@align) when (@align = space-around) {
+  -ms-flex-line-pack: distribute;
+  -webkit-align-content: @align;
+  align-content: @align;
+}
+
+/**
+ * Individual flex item alignment along the cross axis.
+ * verrides `align-items` for a single flex item.
+ * @target Flex item.
+ * @param {flex-start|flex-end|center|baseline|stretch} [align] - Defaults to `stretch`.
+ */
+.alignSelf(@align) {
+  -webkit-align-self: @align;
+  -ms-flex-item-align: @align;
+  align-self: @align;
+}
+.alignSelf(@align) when (@align = flex-start) {
+  -ms-flex-item-align: start;
+  -webkit-align-self: @align;
+  align-self: @align;
+}
+.alignSelf(@align) when (@align = flex-end) {
+  -ms-flex-item-align: end;
+  -webkit-align-self: @align;
+  align-self: @align;
+}
+
+/**
+ * Flex order.
+ * Target: Flex item.
+ * @param {int} value
+ */
+.order(@value) {
+  -moz-box-ordinal-group: @value;
+  -ms-flex-order: @value;
+  -webkit-box-ordinal-group: @value;
+  -webkit-order: @value;
+  order: @value;
+}
+
+
+/*
+ * Convenience classes.
+ */
+
+.flexbox { .flexbox() }
+
+/* Enable flex for specific layout breakpoints. */
+.breakpointS({ .flexbox--s { .flexbox } });
+
+.breakpointM({ .flexbox--m { .flexbox } });
+
+.breakpointL({ .flexbox--l { .flexbox } });
+
+.flexbox--inline { .inlineFlexbox() }
+
+.flex--direction--column { .flexDirection(column) }
+
+.flex--direction--row { .flexDirection(row) }
+
+.flex--wrap { .flexWrap(wrap) }
+
+.flex--nowrap { .flexWrap(nowrap) }
+
+.flex--grow { .flexGrow(1) }
+
+.flex--none { .flexNone() }
+
+.flex--shrink { .flexShrink(1) }
+
+.items--baseline { .alignItems(baseline) }
+
+.items--center { .alignItems(center) }
+
+.items--end { .alignItems(flex-end) }
+
+.items--start { .alignItems(flex-start) }
+
+.items--stretch { .alignItems(stretch) }
+
+.self--baseline { .alignSelf(baseline) }
+
+.self--center { .alignSelf(center) }
+
+.self--end { .alignSelf(flex-end) }
+
+.self--start { .alignSelf(flex-start) }
+
+.self--stretch { .alignSelf(stretch) }
+
+.justify--around { .justifyContent(space-around) }
+
+.justify--between { .justifyContent(space-between) }
+
+.justify--center { .justifyContent(center) }
+
+.justify--end { .justifyContent(flex-end) }
+
+.justify--start { .justifyContent(flex-start) }
+
+.content--around { .alignContent(space-around) }
+
+.content--between { .alignContent(space-between) }
+
+.content--center { .alignContent(center) }
+
+.content--end { .alignContent(flex-end) }
+
+.content--start { .alignContent(flex-start) }
+
+.content--stretch { .alignContent(stretch) }
+
+/* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
+.flex--auto {
+  .flex(1, 1, auto);
+  min-width: 0; /* 1 */
+  min-height: 0; /* 1 */
+}
+
+.order--0 { .order(0) }
+
+.order--1 { .order(1) }
+
+.order--2 { .order(2) }
+
+.order--3 { .order(3) }
+
+.order--last { .order(99999) }

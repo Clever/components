@@ -1,0 +1,22 @@
+@import (reference) "../less/index";
+@import (reference) "../LeftNav/sizing";
+
+.MenuToggle {
+  .padding--none();
+  .text--large();
+  width: @paneWidthCollapsed;
+}
+
+.MenuToggle--bar {
+  .flexShrink(0);
+  background-color: @primary_blue;
+  border-radius: 0.0625em;
+  height: 0.125em;
+  margin: 0 auto;
+  width: 35%;
+
+  &:not(:first-child) {
+    .margin--top--2xs();
+  }
+}
+

@@ -1,0 +1,128 @@
+@import (reference) "../less/colors";
+@import (reference) "../less/border";
+@import (reference) "../less/sizing";
+@import (reference) "../less/type-size";
+@import (reference) "../less/type-utilities";
+@import (reference) "../less/spacing";
+
+.TextInput {
+  .padding--x--s;
+  .padding--top--3xs;
+  .text--regular;
+  .border--s(@neutral_silver);
+  position: relative;
+  color: @neutral_black;
+  background: @neutral_white;
+  box-sizing: border-box;
+  height: @size_4xl;
+  width: 100%;
+
+  .TextInput--infoRow {
+    .text--tiny;
+    .text--caps;
+    position: absolute;
+    top: @size_xs;
+    width: 100%;
+    color: @neutral_dark_gray;
+
+    .TextInput--label {
+      left: @size_s;
+      opacity: 1;
+    }
+
+    .TextInput--required {
+      position: absolute;
+      right: @size_l;
+    }
+
+    .TextInput--error {
+      color: @alert_red;
+      position: absolute;
+      right: @size_l;
+    }
+  }
+
+  .TextInput--input {
+    .text--medium;
+    display: block;
+    border: 0px solid;
+    width: 100%;
+    line-height: @size_2xl;
+    min-height: @size_2xl;
+    padding-top: @size_s;
+    background-color: transparent;
+  }
+
+  &.TextInput--placeholder-shown {
+    label { opacity: 0 !important; }
+    .TextInput--input {
+      .text--small;
+      .text--caps;
+      .padding--top--xs;
+      line-height: @size_2xl;
+      min-height: @size_2xl;
+      color: @neutral_dark_gray;
+    }
+  }
+
+  &.TextInput--hasError {
+    box-shadow: inset @size_2xs 0 @alert_red;
+    transition: box-shadow .25s ease-out;
+  }
+
+  &.TextInput--inFocus {
+    box-shadow: inset @size_2xs 0 @primary_blue;
+    transition: box-shadow .25s ease-out;
+  }
+
+  &.TextInput--disabled {
+    .border--s(@neutral_silver);
+    color: @neutral_dark_gray;
+    background: @neutral_silver;
+    .TextInput--input {
+      background: transparent;
+    }
+  }
+
+  &.TextInput--readonly {
+
+    .border--s(transparent);
+    color: @neutral_black;
+    background: transparent;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  .TextInput--link {
+    .text--small;
+    .border--s(@neutral_silver);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin: -@size_xs @size_xs;
+    border: 0;
+    background: none;
+    color: @primary_blue;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  .TextInput--link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .TextInput--link:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+
+  // Hides the IE copy and clear buttons
+  input::-ms-reveal, input::-ms-clear {
+    display: none;
+  }
+}

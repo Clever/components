@@ -1,0 +1,30 @@
+@import (reference) "../less/utilities.less";
+
+
+.Table {
+  border-collapse: collapse;
+  color: @neutral_black;
+  font-family: "Proxima Nova";
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+&.Table--fixed {
+  table-layout: fixed;
+}
+
+.Table--no_data_cell {
+  color: @neutral_gray;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.Table--row {
+  .border--bottom--s(@neutral_silver);
+  transition: background-color @timingImmediately @motionSmooth;
+}
+
+&.Table--clickable_row:hover {
+  .tint(background-color, @neutral_silver, 5);
+  cursor: pointer;
+}
