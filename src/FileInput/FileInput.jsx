@@ -102,29 +102,24 @@ export class FileInput extends React.Component {
       onDropAccepted={this.onDropAccepted}
       onDropRejected={this.onDropRejected}
     >{({isDragActive, isDragReject}) => {
-      let message = `Upload ${this.props.label}`;
       let icon = <DefaultIcon />;
       let selected = false;
       if (isDragActive) {
         selected = true;
-        message = "";
       } else if (isDragReject || this.state.error) {
         selected = true;
-        message = this.state.error || `Invalid ${this.props.label}`;
         icon = <ErrorIcon />;
       } else if (this.state.success) {
         selected = true;
-        message = this.state.filename;
         icon = <SuccessIcon />;
       } else if (this.state.filename) {
         icon = <UploadingIcon percent={this.state.progress} />;
-        message = this.state.filename;
         selected = true;
       }
       return (<FlexBox className={classnames("FileInput", this.props.className)} grow>
         {selected && <label className="FileInput--Label">{this.props.label}</label>}
         <FlexItem className={`FileInput--Text ${selected ? "FileInput--Text--selected" : ""}`} grow>
-          {message}
+          {/* {message} */}
         </FlexItem>
         {icon}
       </FlexBox>);
