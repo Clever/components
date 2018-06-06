@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Select} from "src";
+import {Select, TextInput} from "src";
 
 import "./SelectView.less";
 
@@ -23,6 +23,7 @@ export default class SelectView extends Component {
       lazy: false,
       selectValue: null,
       required: false,
+      error: "",
     };
   }
 
@@ -55,6 +56,7 @@ export default class SelectView extends Component {
                 multi={this.state.multi}
                 readOnly={this.state.readOnly}
                 required={this.state.required}
+                error={this.state.error}
                 name="select"
                 onChange={value => this.setState({selectValue: value})}
                 options={!this.state.lazy && _.range(100).map(i => ({label: `Option ${i + 1}`, value: `${i + 1}`}))}
@@ -153,6 +155,15 @@ export default class SelectView extends Component {
             {" "}
             Required
           </label>
+          <div className={cssClass.CONFIG}>
+            <TextInput
+              className={cssClass.CONFIG}
+              label="Error"
+              name="InputError"
+              onChange={e => this.setState({error: e.target.value})}
+              value={this.state.error}
+            />
+          </div>
         </Example>
 
         <PropDocumentation
@@ -199,6 +210,13 @@ export default class SelectView extends Component {
               type: "Boolean",
               description: "Whether the select is disabled",
               defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "error",
+              type: "String",
+              description: "Error to show the user, hides the required label. Useful if using a 'creatable' select.",
+              defaultValue: "",
               optional: true,
             },
             {
