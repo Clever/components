@@ -229,6 +229,20 @@ describe("Select", () => {
     assert(select.find(".Select--required").exists());
   });
 
+  it("renders the error if specified, hiding required", () => {
+    const select = shallow(
+      <Select
+        id="testid"
+        name="testname"
+        required
+        error="ERROR"
+        options={[]}
+      />
+    );
+    assert(select.find(".Select--error").exists());
+    assert(!select.find(".Select--required").exists());
+  });
+
   it("uses the ReactSelect Creatable component to allow creating custom options if creatable prop is true", () => {
     const select = shallow(
       <Select

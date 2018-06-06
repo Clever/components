@@ -44,6 +44,7 @@ export function Select({
   creatablePromptFn,
   value,
   className,
+  error,
 }) {
   const {cssClass} = Select;
 
@@ -73,6 +74,12 @@ export function Select({
     inputNote = <span className="Select--required">required</span>;
   }
 
+  let wrapperClass = className;
+  if (error) { // error should overwrite required
+    inputNote = <span className="Select--error">{error}</span>;
+    wrapperClass += " Select--hasError";
+  }
+
   let reactSelectClasses = cssClass.REACT_SELECT;
   if (readOnly) {
     reactSelectClasses += ` ${cssClass.READ_ONLY}`;
@@ -92,7 +99,7 @@ export function Select({
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
   return (
-    <div className={classnames(cssClass.CONTAINER, className)}>
+    <div className={classnames(cssClass.CONTAINER, wrapperClass)}>
       <div id={id}>
         <SelectComponent
           className={reactSelectClasses}
@@ -160,6 +167,7 @@ Select.propTypes = {
     PropTypes.arrayOf(selectValuePropType),
   ]),
   className: PropTypes.string,
+  error: PropTypes.string,
 };
 
 Select.defaultProps = {
