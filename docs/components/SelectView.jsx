@@ -71,6 +71,7 @@ export default class SelectView extends Component {
                 }
                 placeholder="Select Placeholder"
                 value={this.state.selectValue}
+                additionalProps={{matchPos: "start"}} // example prop
               />
             </ExampleCode>
           </div>
@@ -295,6 +296,14 @@ export default class SelectView extends Component {
               name: "value",
               type: "String",
               description: "Selected value. Must be updated by caller in the onChange",
+              optional: true,
+            },
+            {
+              name: "additionalProps",
+              type: "Object",
+              description: "Key Value pairs which are passed down as props into react-select. "
+              + "Useful so that we can use react-select features without having to laboriously "
+              + "update this component. See options at the react-select page.",
               optional: true,
             },
           ]}
