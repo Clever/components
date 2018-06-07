@@ -45,6 +45,7 @@ export function Select({
   value,
   className,
   error,
+  additionalProps,
 }) {
   const {cssClass} = Select;
 
@@ -94,7 +95,9 @@ export function Select({
     SelectComponent = ReactSelect.Async;
   }
 
-  const overrideProps = lazy ? {filterOptions: (results) => results} : {};
+  const overrideProps = lazy ?
+    {filterOptions: (results) => results, ...additionalProps} :
+    additionalProps;
 
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
@@ -168,6 +171,7 @@ Select.propTypes = {
   ]),
   className: PropTypes.string,
   error: PropTypes.string,
+  additionalProps: PropTypes.object,
 };
 
 Select.defaultProps = {
