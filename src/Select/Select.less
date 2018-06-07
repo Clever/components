@@ -1,6 +1,7 @@
 @import (reference) "../less/colors";
 @import (reference) "../less/spacing";
 @import (reference) "../less/type-size";
+@import (reference) "../less/type-utilities";
 
 .Select--container {
   position: relative;
@@ -8,9 +9,9 @@
 
 .Select--labelContainer {
   .text--tiny;
+  .text--caps;
   color: @neutral_dark_gray;
   position: absolute;
-  text-transform: uppercase;
   top: @size_xs;
   width: 100%;
 
@@ -18,6 +19,12 @@
   .Select--required {
     position: absolute;
     right: 0.8rem;
+  }
+
+  .Select--error {
+    color: @alert_red;
+    position: absolute;
+    right: @size_s;
   }
 }
 
