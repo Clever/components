@@ -220,6 +220,14 @@ export default class SelectView extends Component {
               optional: true,
             },
             {
+              name: "filterOptions",
+              type: "Function",
+              description: "Function to filter options when searching - see react-select docs for more. "
+              + "Signature: function(Array options, String filter, Array currentValues) returns Array",
+              defaultValue: "a simple search function included in react-select",
+              optional: true,
+            },
+            {
               name: "label",
               type: "String",
               description: "Label for the select element",
