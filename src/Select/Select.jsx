@@ -35,6 +35,7 @@ export function Select({
   options,
   lazy,
   loadOptions,
+  filterOptions,
   placeholder = "",
   readOnly,
   required,
@@ -94,7 +95,7 @@ export function Select({
     SelectComponent = ReactSelect.Async;
   }
 
-  const overrideProps = lazy ? {filterOptions: (results) => results} : {};
+  const overrideProps = (lazy && !filterOptions) ? {filterOptions: (results) => results} : {};
 
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
@@ -112,6 +113,7 @@ export function Select({
           optionRenderer={optionRenderer}
           options={options}
           loadOptions={loadOptions}
+          filterOptions={filterOptions}
           placeholder={placeholder}
           searchable={searchable}
           noResultsText={noResultsText}
@@ -153,6 +155,7 @@ Select.propTypes = {
   options: PropTypes.arrayOf(selectValuePropType),
   lazy: PropTypes.bool,
   loadOptions: PropTypes.func,
+  filterOptions: PropTypes.func,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
   searchable: PropTypes.bool,
