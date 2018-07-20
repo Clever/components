@@ -11,8 +11,8 @@ export default class WizardView extends PureComponent {
     return (
       <View className={cssClass.CONTAINER} title="Wizard">
         <p>
-          <code>Wizard</code> provides an interface for making guided wizards. A <code>Wizard</code>
-          is provided several steps that consist of a <code>Component</code> to render, a validate
+          <code>Wizard</code> provides an interface for making guided wizards. A <code>Wizard</code> is provided
+          several steps that consist of a <code>Component</code> to render, a validate
           function, and a few other fields.
         </p>
         <p>
