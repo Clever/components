@@ -43,7 +43,7 @@ export default class WizardStep extends React.Component {
     const {
       title, description, Component, setWizardState, currentStep, wizardState, help,
       percentComplete, calculatePercentComplete, updatePercentComplete, totalSteps,
-      componentProps, className,
+      componentProps, className, stepNumberInTitle,
     } = this.props;
     const props = _.omit(componentProps || {}, ["wizardState", "setWizardState"]);
     const baseClasses = ["Wizard", className].filter(c => !!c).map(c =>
@@ -53,7 +53,7 @@ export default class WizardStep extends React.Component {
     return (
       <div className={classnames(baseClasses)} ref={e => { this.component = e; }}>
         <div className={classNameFor(baseClasses, "title")}>
-          <h1>Step {currentStep + 1}: {title}</h1>
+          <h1>{stepNumberInTitle && `Step ${currentStep + 1}: `}{title}</h1>
         </div>
 
         <div className={classNameFor(baseClasses, "topInfo")}>
@@ -113,6 +113,7 @@ export default class WizardStep extends React.Component {
 WizardStep.propTypes = {
   // external facing
   title: PropTypes.string.isRequired,
+  stepNumberInTitle: PropTypes.bool.isRequired,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)]).isRequired,

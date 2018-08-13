@@ -176,7 +176,7 @@ export class Wizard extends React.Component {
   render() {
     const {
       className, style, help, steps, nextButtonValue,
-      prevButtonValue, stickySidebar,
+      prevButtonValue, stickySidebar, stepNumberInTitle,
     } = this.props;
 
     const baseClasses = ["Wizard", className].filter(c => !!c);
@@ -208,6 +208,7 @@ export class Wizard extends React.Component {
             Component={steps[this.state.currentStep].component}
             componentProps={steps[this.state.currentStep].props}
             stepNumber={this.state.currentStep}
+            stepNumberInTitle={stepNumberInTitle}
             setWizardState={changes => {
               const newState = Object.assign(this.state.data, changes);
               this.setState({data: newState});
@@ -293,4 +294,9 @@ Wizard.propTypes = {
   seekable: PropTypes.bool,
   hideProgressBar: PropTypes.bool,
   stickySidebar: PropTypes.bool,
+  stepNumberInTitle: PropTypes.bool,
+};
+
+Wizard.defaultProps = {
+  stepNumberInTitle: true,
 };

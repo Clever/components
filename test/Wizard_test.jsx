@@ -47,6 +47,7 @@ describe("WizardStep", () => {
           percentComplete={0}
           setWizardState={() => {}}
           wizardState={{}}
+          stepNumberInTitle
         />);
 
         const descriptionMatches = renderedStep.find(selector);
@@ -91,6 +92,7 @@ describe("WizardStep", () => {
           percentComplete={0}
           setWizardState={() => {}}
           wizardState={{}}
+          stepNumberInTitle
         />);
 
         const helpMatches = renderedStep.find(selector);
@@ -117,11 +119,31 @@ describe("WizardStep", () => {
           percentComplete={0}
           setWizardState={() => {}}
           wizardState={{}}
+          stepNumberInTitle
         />);
         const headingMatch = renderedStep.find("h1");
         assert.equal(headingMatch.length, 1);
         assert.equal(headingMatch.text(), `Step ${curStep + 1}: ${title}`);
       }
+    });
+
+    it("omits step title prefix if stepNumberInTitle is set to false", () => {
+      const title = "My super cool title";
+      const renderedStep = mount(<WizardStep
+        title={title}
+        Component={() => <div />}
+        currentStep={3}
+        totalSteps={7}
+        updatePercentComplete={() => {}}
+        calculatePercentComplete={() => {}}
+        percentComplete={0}
+        setWizardState={() => {}}
+        wizardState={{}}
+        stepNumberInTitle={false}
+      />);
+      const headingMatch = renderedStep.find("h1");
+      assert.equal(headingMatch.length, 1);
+      assert.equal(headingMatch.text(), title);
     });
 
     it("renders the component with setWizardState and wizardState", () => {
@@ -138,6 +160,7 @@ describe("WizardStep", () => {
         percentComplete={0}
         setWizardState={spySetWizardState}
         wizardState={testState}
+        stepNumberInTitle
       />);
       const componentMatch = renderedStep.find(TestComponent);
       assert.equal(componentMatch.length, 1);
@@ -164,6 +187,7 @@ describe("WizardStep", () => {
           percentComplete={0}
           setWizardState={() => {}}
           wizardState={{}}
+          stepNumberInTitle
         />);
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
@@ -187,6 +211,7 @@ describe("WizardStep", () => {
           percentComplete={0.5}
           setWizardState={() => {}}
           wizardState={{}}
+          stepNumberInTitle
         />);
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
@@ -210,6 +235,7 @@ describe("WizardStep", () => {
           percentComplete={0.25}
           setWizardState={() => {}}
           wizardState={{}}
+          stepNumberInTitle
         />);
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
@@ -233,6 +259,7 @@ describe("WizardStep", () => {
           percentComplete={0.5}
           setWizardState={() => {}}
           wizardState={{}}
+          stepNumberInTitle
         />);
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
