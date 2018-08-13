@@ -142,6 +142,7 @@ export default class WizardExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      stepNumberInTitle: true,
       seekable: false,
       showHelp: false,
       sticky: false,
@@ -212,6 +213,16 @@ export default class WizardExample extends React.Component {
       <fieldset>
         <legend>Wizard controls</legend>
         <ul style={{listStyleType: "none"}}>
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                checked={this.state.stepNumberInTitle}
+                onChange={(e) => this.setState({stepNumberInTitle: e.target.checked})}
+              />
+              Show step number in title?
+            </label>
+          </li>
           <li>
             <label>
               <input
@@ -296,6 +307,7 @@ export default class WizardExample extends React.Component {
           </div>
         )}
         seekable={this.state.seekable}
+        stepNumberInTitle={this.state.stepNumberInTitle}
         hideProgressBar={this.state.hideProgressBar}
         style={{height: 700}}
       />
