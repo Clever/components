@@ -2,7 +2,6 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import _ from "lodash";
-import { relativeTimeThreshold } from "../../node_modules/moment";
 
 require("./TextInput.less");
 
@@ -63,9 +62,7 @@ export class TextInput extends React.Component {
     // placeholder shown with caps
     if (!this.props.value && this.props.placeholder && this.props.placeholderCaps) {
       wrapperClass += " TextInput--placeholder-shown";
-    }
-
-    else if(!this.props.value && this.props.placeholder) {
+    } else if (!this.props.value && this.props.placeholder) {
       wrapperClass += " TextInput--placeholder-shown-no-caps";
     }
 
