@@ -2,10 +2,15 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import _ from "lodash";
+import { relativeTimeThreshold } from "../../node_modules/moment";
 
 require("./TextInput.less");
 
 export class TextInput extends React.Component {
+  static defaultProps = {
+    placeholderCaps: true,
+  }
+
   constructor(props) {
     super(props);
     this.state = {inFocus: false, hidden: true};
@@ -55,9 +60,13 @@ export class TextInput extends React.Component {
       wrapperClass += " TextInput--inFocus";
     }
 
-    // placeholder shown
-    if (!this.props.value && this.props.placeholder) {
+    // placeholder shown with caps
+    if (!this.props.value && this.props.placeholder && this.props.placeholderCaps) {
       wrapperClass += " TextInput--placeholder-shown";
+    }
+
+    else if(!this.props.value && this.props.placeholder) {
+      wrapperClass += " TextInput--placeholder-shown-no-caps";
     }
 
     // note on the upper right corner
@@ -123,6 +132,7 @@ TextInput.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   placeholder: PropTypes.node,
+  placeholderCaps: PropTypes.bool,
   readOnly: PropTypes.bool,
   required: PropTypes.bool,
   type: PropTypes.string,

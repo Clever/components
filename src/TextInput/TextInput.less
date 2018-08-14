@@ -65,6 +65,17 @@
     }
   }
 
+  &.TextInput--placeholder-shown-no-caps {
+    label { opacity: 0 !important; }
+    .TextInput--input {
+      .text--small;
+      .padding--top--xs;
+      line-height: @size_2xl;
+      min-height: @size_2xl;
+      color: @neutral_dark_gray;
+    }
+  }
+
   &.TextInput--hasError {
     box-shadow: inset @size_2xs 0 @alert_red;
     transition: box-shadow .25s ease-out;
