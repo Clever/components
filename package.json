@@ -49,7 +49,7 @@
     "@types/lodash": "^4.14.74",
     "@types/node": "^8.0.28",
     "@types/prop-types": "^15.5.1",
-    "@types/react": "Clever/minimal-react-typings#v2.0.3",
+    "@types/react": "Clever/minimal-react-typings#v3.1.1",
     "autoprefixer": "^6.5.3",
     "awesome-typescript-loader": "^3.2.3",
     "babel-cli": "~6.0.0",
