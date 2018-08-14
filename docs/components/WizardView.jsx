@@ -103,6 +103,13 @@ export default class WizardView extends PureComponent {
               optional: true,
             },
             {
+              name: "stepNumberInTitle",
+              type: "Boolean",
+              description: "Whether or not to prefix step X's title with 'Step X'",
+              defaultValue: "True",
+              optional: true,
+            },
+            {
               name: "seekable",
               type: "Boolean",
               description: "Whether or not you can skip to other steps before completing the current one",
