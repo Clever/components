@@ -19,6 +19,7 @@ export default class TextInputView extends Component {
       inputValue: "",
       obscured: false,
       required: false,
+      placeholderCaps: true,
     };
   }
 
@@ -44,6 +45,7 @@ export default class TextInputView extends Component {
                 label="TextInput Label"
                 name="TextInputName"
                 placeholder="TextInput Placeholder"
+                placeholderCaps={this.state.placeholderCaps}
                 onChange={e => this.setState({inputValue: e.target.value})}
                 value={this.state.inputValue}
                 onMouseOver={e => {console.log("mouseover!", e);}}
@@ -94,6 +96,15 @@ export default class TextInputView extends Component {
             />
             {" "}
             Obscured
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.placeholderCaps}
+              onChange={({target}) => this.setState({placeholderCaps: target.checked})}
+            />
+            {" "}
+            Placeholder Caps
           </label>
         </Example>
 
@@ -165,6 +176,13 @@ export default class TextInputView extends Component {
               name: "placeholder",
               type: "Node",
               description: "Placeholder node for input",
+              optional: true,
+            },
+            {
+              name: "placeholderCaps",
+              type: "Bool",
+              description: "Determines if placeholder value is capitalized or not",
+              defaultValue: "true",
               optional: true,
             },
             {
