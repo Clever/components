@@ -55,9 +55,22 @@
 
   &.TextInput--placeholder-shown {
     label { opacity: 0 !important; }
+
     .TextInput--input {
       .text--small;
       .text--caps;
+      .padding--top--xs;
+      line-height: @size_2xl;
+      min-height: @size_2xl;
+      color: @neutral_dark_gray;
+    }
+  }
+
+  &.TextInput--placeholder-shown-no-caps {
+    label { opacity: 0 !important; }
+
+    .TextInput--input {
+      .text--small;
       .padding--top--xs;
       line-height: @size_2xl;
       min-height: @size_2xl;
