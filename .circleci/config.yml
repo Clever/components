@@ -19,6 +19,7 @@ jobs:
     - run:
         command: npm install
         name: npm install
+    - run: make build
     - run: make test
     - run:
         command: |-
