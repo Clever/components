@@ -18,6 +18,7 @@ export default class InfoPanelView extends React.Component {
       inputValue: "",
       collapsible: false,
       footer: false,
+      hideTitle: false,
     };
   }
 
@@ -39,7 +40,7 @@ export default class InfoPanelView extends React.Component {
 
   render() {
     const {cssClass} = InfoPanelView;
-    const {collapsible, footer} = this.state;
+    const {collapsible, footer, hideTitle} = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="InfoPanel">
@@ -48,6 +49,7 @@ export default class InfoPanelView extends React.Component {
           <InfoPanel title="Info Panel Title"
             collapsible={collapsible}
             footer={footer ? "footer content" : null}
+            hideTitle={hideTitle}
           >
             <InfoPanelColumn>
               <p>column 1 content</p>
@@ -60,6 +62,7 @@ export default class InfoPanelView extends React.Component {
           <FlexBox className={cssClass.CONFIG_CONTAINER}>
             {this._renderCheckbox("collapsible")}
             {this._renderCheckbox("footer")}
+            {this._renderCheckbox("hideTitle")}
           </FlexBox>
          </Example>
 
@@ -86,6 +89,13 @@ export default class InfoPanelView extends React.Component {
               name: "title",
               type: "String",
               description: "The InfoPanel title",
+              optional: true,
+            },
+            {
+              name: "hideTitle",
+              type: "Boolean",
+              description: "Determines if the title header should be hidden. No effect if collapsible is true",
+              optional: true,
             },
             {
               name: "collapsible",

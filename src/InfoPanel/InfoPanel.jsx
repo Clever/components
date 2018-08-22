@@ -22,19 +22,18 @@ export default class InfoPanel extends Component {
   }
 
   render() {
-    const {children, className, title, footer, collapsible, defaultOpen} = this.props;
+    const {children, className, hideTitle, title, footer, collapsible, defaultOpen} = this.props;
     const {isCollapsed} = this.state;
     let {collapseArrow} = this.state;
     const {cssClass} = InfoPanel;
-
     if (!collapsible) {
       return (
         <div className={classnames(cssClass.CONTAINER, className)}>
-          <div className={cssClass.HEADER}>
+          {!hideTitle && <div className={cssClass.HEADER}>
             <h4 className={cssClass.TITLE}>
               {title}
             </h4>
-          </div>
+          </div>}
           <div className={cssClass.CONTENT}>
             {children}
           </div>
@@ -83,7 +82,8 @@ export default class InfoPanel extends Component {
 InfoPanel.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  title: PropTypes.node.isRequired,
+  title: PropTypes.node,
+  hideTitle: PropTypes.bool,
   footer: PropTypes.node,
   collapsible: PropTypes.bool,
   defaultOpen: PropTypes.bool,
