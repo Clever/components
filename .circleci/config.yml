@@ -21,5 +21,14 @@ jobs:
         name: npm install
     - run: make build
     - run: make test
+    - run:
+        command: |-
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            cd /tmp/ && wget https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
+            sudo apt-get install python-dev
+            sudo pip install --upgrade awscli && aws --version
+            pip install --upgrade --user awscli
+          fi;
+        name: Install awscli for s3 asset upload
     - run: if [ "${CIRCLE_BRANCH}" == "master" ]; then $HOME/ci-scripts/circleci/npm-publish $NPM_TOKEN .; fi;
     - run: if [ "${CIRCLE_BRANCH}" == "master" ]; then $HOME/ci-scripts/circleci/s3-upload dist/css/ s3://assets.clever.com/design/; fi;
