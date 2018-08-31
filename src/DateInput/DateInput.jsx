@@ -101,6 +101,7 @@ export default class DateInput extends React.Component {
             ref="input"
             required={this.props.required}
             selected={this.props.value}
+            popperClassName="DatePicker--Popper"
           />
         }
       </div>

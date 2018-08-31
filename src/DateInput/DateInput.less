@@ -4,6 +4,7 @@
 @import (reference) "../less/type-size";
 @import (reference) "../less/type-utilities";
 @import (reference) "../less/spacing";
+@import (reference) "../less/z-index";
 @import "~react-datetime/css/react-datetime.css";
 
 .DateInput {
@@ -97,4 +98,8 @@
     color: @neutral_black;
     background: transparent;
   }
+}
+
+.DatePicker--Popper.react-datepicker-popper {
+  .zIndex--3;
 }
