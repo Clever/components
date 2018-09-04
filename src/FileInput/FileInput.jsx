@@ -61,7 +61,7 @@ function renderLabel(text) {
 function renderMessage(text, selected) {
   const classes = {
     ["FileInput--Text"]: true,
-    ["FileInput--Text--selected"]: selected
+    ["FileInput--Text--selected"]: selected,
   };
 
   return (
@@ -73,7 +73,7 @@ function renderMessage(text, selected) {
 
 export class FileInput extends React.Component {
   static defaultProps = {
-    displayLabels: true
+    displayLabels: true,
   }
 
   constructor(props) {
@@ -116,8 +116,8 @@ export class FileInput extends React.Component {
   }
 
   render() {
-    const { displayLabels, label } = this.props;
-    const dropzoneStyle = displayLabels ? {} : { display: "inline-block" };
+    const {displayLabels, label} = this.props;
+    const dropzoneStyle = displayLabels ? {} : {display: "inline-block"};
 
     return (<Dropzone
       accept={this.props.accept}
