@@ -11,7 +11,7 @@ function isError() {
   return false;
 }
 
-function storeFn(_file, { progress, success }) {
+function storeFn(_file, {progress, success}) {
   let currentProgress = 0;
   progress(currentProgress);
 
@@ -102,7 +102,7 @@ export default function FileInputView() {
             name: "label",
             type: "String",
             description: "Sets the label of the file input",
-            optional: true
+            optional: true,
           },
           {
             name: "store",
@@ -115,8 +115,8 @@ export default function FileInputView() {
             type: "Boolean",
             description: "Display text labels inside of the component",
             defaultValue: "true",
-            optional: true
-          }
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
         title="FileInput"
