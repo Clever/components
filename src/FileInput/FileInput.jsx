@@ -54,7 +54,28 @@ UploadingIcon.propTypes = {
   percent: PropTypes.number.isRequired,
 };
 
+function renderLabel(text) {
+  return <label className="FileInput--Label">{text}</label>;
+}
+
+function renderMessage(text, selected) {
+  const classes = {
+    ["FileInput--Text"]: true,
+    ["FileInput--Text--selected"]: selected
+  };
+
+  return (
+    <FlexItem className={classnames(classes)} grow>
+      {text}
+    </FlexItem>
+  );
+}
+
 export class FileInput extends React.Component {
+  static defaultProps = {
+    displayLabels: true
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -95,9 +116,12 @@ export class FileInput extends React.Component {
   }
 
   render() {
+    const { displayLabels, label } = this.props;
+    const dropzoneStyle = displayLabels ? {} : { display: "inline-block" };
+
     return (<Dropzone
       accept={this.props.accept}
-      style={{}}
+      style={dropzoneStyle}
       multiple={false}
       onDropAccepted={this.onDropAccepted}
       onDropRejected={this.onDropRejected}
@@ -121,11 +145,9 @@ export class FileInput extends React.Component {
         message = this.state.filename;
         selected = true;
       }
-      return (<FlexBox className={classnames("FileInput", this.props.className)} grow>
-        {selected && <label className="FileInput--Label">{this.props.label}</label>}
-        <FlexItem className={`FileInput--Text ${selected ? "FileInput--Text--selected" : ""}`} grow>
-          {message}
-        </FlexItem>
+      return (<FlexBox className={classnames("FileInput", this.props.className)}>
+        {displayLabels && selected && renderLabel(label)}
+        {displayLabels && renderMessage(message, selected)}
         {icon}
       </FlexBox>);
     }}
@@ -135,7 +157,8 @@ export class FileInput extends React.Component {
 
 FileInput.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  displayLabels: PropTypes.bool,
+  label: PropTypes.string,
   store: PropTypes.func.isRequired,
   accept: PropTypes.string,
 };

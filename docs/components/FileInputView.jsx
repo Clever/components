@@ -5,6 +5,28 @@ import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {FileInput} from "src";
 
+import "./FileInputView.less";
+
+function isError() {
+  return false;
+}
+
+function storeFn(_file, { progress, success }) {
+  let currentProgress = 0;
+  progress(currentProgress);
+
+  const interval = setInterval(() => {
+    currentProgress += 2;
+
+    if (currentProgress < 100) {
+      progress(currentProgress);
+    } else {
+      clearInterval(interval);
+      success();
+    }
+  }, 32);
+}
+
 export default function FileInputView() {
   const {cssClass} = FileInputView;
 
@@ -25,7 +47,7 @@ export default function FileInputView() {
                   if (progressPercent !== 100) {
                     progressPercent += 5;
                     progress(progressPercent);
-                  } else if (this.state.error) {
+                  } else if (isError()) {
                     error("An error occurred");
                     clearInterval(intervalID);
                   } else {
@@ -44,6 +66,21 @@ export default function FileInputView() {
             <li><code>progress</code> - Called during upload with a number between 0-100 representing the % completed</li>
           </ul>
         </div>
+      </Example>
+
+      <Example>
+        <p>
+          To display a <code>FileInput</code> component without any text labels
+          pass in the <code>displayLabels=&#123;false&#125;</code> option.
+        </p>
+
+        <ExampleCode className="ExampleCode">
+          <FileInput
+            className="FileInputView--icon-only"
+            displayLabels={false}
+            store={storeFn}
+          />
+        </ExampleCode>
       </Example>
 
       <PropDocumentation
@@ -65,6 +102,7 @@ export default function FileInputView() {
             name: "label",
             type: "String",
             description: "Sets the label of the file input",
+            optional: true
           },
           {
             name: "store",
@@ -72,6 +110,13 @@ export default function FileInputView() {
             description: "Function to be called when the user has seleceted a file to be uploaded",
             defaultValue: "False",
           },
+          {
+            name: "displayLabels",
+            type: "Boolean",
+            description: "Display text labels inside of the component",
+            defaultValue: "true",
+            optional: true
+          }
         ]}
         className={cssClass.PROPS}
         title="FileInput"
