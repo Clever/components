@@ -71,7 +71,7 @@ export default class NewComponentView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({multiOption1: value})}
+            onSelect={value => this.setState({height: value})}
             options={[
               {content: "Small", value: "small"},
               {content: "Medium", value: "medium"},
