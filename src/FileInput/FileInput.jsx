@@ -73,7 +73,7 @@ function renderMessage(text, selected) {
 
 export class FileInput extends React.Component {
   static defaultProps = {
-    displayLabels: true,
+    iconOnly: false,
   }
 
   constructor(props) {
@@ -116,8 +116,8 @@ export class FileInput extends React.Component {
   }
 
   render() {
-    const {displayLabels, label} = this.props;
-    const dropzoneStyle = displayLabels ? {} : {display: "inline-block"};
+    const {iconOnly, label} = this.props;
+    const dropzoneStyle = iconOnly ? {display: "inline-block"} : {};
 
     return (<Dropzone
       accept={this.props.accept}
@@ -146,8 +146,8 @@ export class FileInput extends React.Component {
         selected = true;
       }
       return (<FlexBox className={classnames("FileInput", this.props.className)}>
-        {displayLabels && selected && renderLabel(label)}
-        {displayLabels && renderMessage(message, selected)}
+        {!iconOnly && selected && renderLabel(label)}
+        {!iconOnly && renderMessage(message, selected)}
         {icon}
       </FlexBox>);
     }}
@@ -157,7 +157,7 @@ export class FileInput extends React.Component {
 
 FileInput.propTypes = {
   className: PropTypes.string,
-  displayLabels: PropTypes.bool,
+  iconOnly: PropTypes.bool,
   label: PropTypes.string,
   store: PropTypes.func.isRequired,
   accept: PropTypes.string,
