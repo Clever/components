@@ -73,7 +73,8 @@ export class MultiplePanelModals extends React.Component {
       secondButtonOnClick = overrideOnClickButton2;
     }
 
-    return (<div className={classNames(Classes.CONTAINER, className)}>
+    return (
+      <div className={classNames(Classes.CONTAINER, className)}>
         <Modal
           className={panelClassName}
           focusLocked={focusLocked}
