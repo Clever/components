@@ -6,9 +6,9 @@ import {Button} from "../Button/Button";
 import {Modal} from "../Modal/Modal";
 
 export const Classes = {
-  CONTAINER: "goals--MultiplePanelModals",
-  FIRST_BUTTON: "goals--MultiplePanelModals--later",
-  SECOND_BUTTON: "goals--MultiplePanelModals--next",
+  CONTAINER: "MultiplePanelModals",
+  FIRST_BUTTON: "MultiplePanelModals--later",
+  SECOND_BUTTON: "MultiplePanelModals--next",
 };
 
 export class MultiplePanelModals extends React.Component {
