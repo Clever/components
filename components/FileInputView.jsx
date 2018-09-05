@@ -71,14 +71,14 @@ export default function FileInputView() {
       <Example>
         <p>
           To display a <code>FileInput</code> component without any text labels
-          pass in the <code>displayLabels=&#123;false&#125;</code> option.
+          pass in the <code>iconOnly</code> option.
         </p>
 
         <ExampleCode className="ExampleCode">
           <FileInput
             className="FileInputView--icon-only"
-            displayLabels={false}
             store={storeFn}
+            iconOnly
           />
         </ExampleCode>
       </Example>
@@ -111,10 +111,10 @@ export default function FileInputView() {
             defaultValue: "False",
           },
           {
-            name: "displayLabels",
+            name: "iconOnly",
             type: "Boolean",
-            description: "Display text labels inside of the component",
-            defaultValue: "true",
+            description: "Render a FileInput component with only an icon",
+            defaultValue: "false",
             optional: true,
           },
         ]}
