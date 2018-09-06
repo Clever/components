@@ -87,6 +87,7 @@ export default class DateInput extends React.Component {
             }}
           /> :
           <ReactDatePicker
+            fixedHeight
             calendarClassName="DatePicker"
             className="DateInput--input"
             disabled={this.props.disabled || this.props.readOnly}
