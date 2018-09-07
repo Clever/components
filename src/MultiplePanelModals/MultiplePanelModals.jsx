@@ -22,8 +22,8 @@ export class MultiplePanelModals extends React.Component {
       closeModal,
       componentArray,
       className,
-      defaultOnClickButton1,
-      defaultOnClickButton2,
+      defaultOnClickLeftButton,
+      defaultOnClickRightButton,
       height,
     } = this.props;
     const isFirstPanel = this.state.currentPanel === 0;
@@ -39,38 +39,38 @@ export class MultiplePanelModals extends React.Component {
       title,
       width,
       panel,
-      firstButtonName,
-      overrideOnClickButton1,
-      secondButtonName,
-      overrideOnClickButton2,
+      leftButtonName,
+      overrideOnClickLeftButton,
+      rightButtonName,
+      overrideOnClickRightButton,
     } = componentArray[this.state.currentPanel];
 
-    let firstButtonValue;
-    if (firstButtonName) {
-      firstButtonValue = firstButtonName;
+    let leftButtonValue;
+    if (leftButtonName) {
+      leftButtonValue = leftButtonName;
     } else if (isFirstPanel) {
-      firstButtonValue = "Remind me later";
+      leftButtonValue = "Remind me later";
     } else {
-      firstButtonValue = "Back";
+      leftButtonValue = "Back";
     }
 
-    let secondButtonValue;
-    if (secondButtonName) {
-      secondButtonValue = firstButtonName;
+    let rightButtonValue;
+    if (rightButtonName) {
+      rightButtonValue = leftButtonName;
     } else if (isLastPanel) {
-      secondButtonValue = "Done";
+      rightButtonValue = "Done";
     } else {
-      secondButtonValue = "Next";
+      rightButtonValue = "Next";
     }
 
-    let firstButtonOnClick = defaultOnClickButton1;
-    if (overrideOnClickButton1) {
-      firstButtonOnClick = overrideOnClickButton1;
+    let leftButtonOnClick = defaultOnClickLeftButton;
+    if (overrideOnClickLeftButton) {
+      leftButtonOnClick = overrideOnClickLeftButton;
     }
 
-    let secondButtonOnClick = defaultOnClickButton2;
-    if (overrideOnClickButton2) {
-      secondButtonOnClick = overrideOnClickButton2;
+    let rightButtonOnClick = defaultOnClickRightButton;
+    if (overrideOnClickRightButton) {
+      rightButtonOnClick = overrideOnClickRightButton;
     }
 
     return (
@@ -85,22 +85,22 @@ export class MultiplePanelModals extends React.Component {
           <div style={{height}}>{panel}</div>
           <footer>
             <Button
-              value={firstButtonValue}
+              value={leftButtonValue}
               className={Classes.FIRST_BUTTON}
               type="link"
               onClick={() => {
                 if (!isFirstPanel) {
                   this.setState({currentPanel: this.state.currentPanel - 1});
                 }
-                firstButtonOnClick();
+                leftButtonOnClick();
               }}
             />
             <Button
-              value={secondButtonValue}
+              value={rightButtonValue}
               className={Classes.SECOND_BUTTON}
               type="primary"
               onClick={() => {
-                secondButtonOnClick();
+                rightButtonOnClick();
                 if (isLastPanel) {
                   closeModal();
                 }
@@ -117,14 +117,14 @@ MultiplePanelModals.propTypes = {
   className: PropTypes.string,
   componentArray: PropTypes.array.isRequired,
   closeModal: PropTypes.func.isRequired,
-  defaultOnClickButton1: PropTypes.func,
-  defaultOnClickButton2: PropTypes.func,
+  defaultOnClickLeftButton: PropTypes.func,
+  defaultOnClickRightButton: PropTypes.func,
   height: PropTypes.string,
   startingPanel: PropTypes.number,
 };
 
 MultiplePanelModals.defaultProps = {
   startingPanel: 0,
-  defaultOnClickButton1: () => {},
-  defaultOnClickButton2: () => {},
+  defaultOnClickLeftButton: () => {},
+  defaultOnClickRightButton: () => {},
 };

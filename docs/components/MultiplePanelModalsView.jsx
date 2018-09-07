@@ -46,11 +46,19 @@ export default class MultiplePanelModalsView extends React.PureComponent {
         sourcePath="src/MultiplePanelModals/MultiplePanelModals.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>Modals with multiple pages. You can choose the starting location and height.</p>
-            <p>By default, the first panel buttons will say "Remind me later" and "Next".
-              Middle panels will say "Back" and "Next". Last panel buttons will say "Back" and "Done".</p>
-            <p>All buttons and functions for the buttons can be overridden; functions that override the default will
-              replace them.</p>
+          <p>
+            This component wraps content and displays it in a modal with multiple pages, or panels.
+          </p>
+          <p>
+            By default, the first panel buttons will say "Remind me later" and "Next". The middle panels will say "Back"
+            and "Next". The last panel buttons will say "Back" and "Done". You can override these default names by
+            adding button names for specific panels.
+          </p>
+          <p>
+            You can optionally add a default onClick function for each button that will trigger for every panel. If you
+            want more granularity, you can add an onClick function for a specific panel. The onClick function for the
+            panel will overwrite the default onClick function.
+          </p>
           <CodeSample>
             {`
               import {MultiplePanelModals} from "clever-components";
@@ -75,22 +83,22 @@ export default class MultiplePanelModalsView extends React.PureComponent {
                   panel: panel1,
                   title: "Page1",
                   panelClassName: "FirstClass",
-                  overrideOnClickButton1: () => this.setState({isModalOpen: false}),
+                  overrideOnClickLeftButton: () => this.setState({isModalOpen: false}),
                 },
                 {
                   panel: panel2,
                   title: "Page2",
                   panelClassName: "secondClass",
-                  firstButtonName: "override the name back",
-                  overrideOnClickButton2: () => console.log("new action after clicking button 2 on the second page"),
+                  leftButtonName: "override the name back",
+                  overrideOnClickRightButton: () => console.log("new action after clicking button 2 on the second page"),
                 },
                 {
                   panel: panel3,
                   title: "Page3",
                 },
               ]}
-              defaultOnClickButton1={() => console.log("GoingBackwards")}
-              defaultOnClickButton2={() => console.log("clicked button 2")}
+              defaultOnClickLeftButton={() => console.log("GoingBackwards")}
+              defaultOnClickRightButton={() => console.log("clicked button 2")}
               height={height}
               startingPanel={parseInt(startingPanel, 10)}
             />)}
@@ -127,9 +135,9 @@ export default class MultiplePanelModalsView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             onSelect={value => this.setState({startingPanel: value})}
             options={[
-              {content: "page 1", value: "0"},
-              {content: "page 2", value: "1"},
-              {content: "page 3", value: "2"},
+              {content: "Page 1", value: "0"},
+              {content: "Page 2", value: "1"},
+              {content: "Page 3", value: "2"},
             ]}
             value={startingPanel}
           />
@@ -147,12 +155,13 @@ export default class MultiplePanelModalsView extends React.PureComponent {
             {
               name: "componentArray",
               type: "Array of objects",
-              description: "An array of MultiplePanelModals's content. Object information is included below.",
+              description: "An array of MultiplePanelModals's content. Each item of the array corresponds to one " +
+              "panel. Object information is included below.",
             },
             {
               name: "closeModal",
               type: "Function",
-              description: "Handler function to close the modal. Called upon clicking the second button on the last " +
+              description: "Handler function to close the modal. Called upon clicking the right button on the last " +
               "page, outside the modal, or the x.",
             },
             {
@@ -162,27 +171,29 @@ export default class MultiplePanelModalsView extends React.PureComponent {
               optional: true,
             },
             {
-              name: "defaultOnClickButton1",
+              name: "defaultOnClickLeftButton",
               type: "Function",
-              description: "Default handler function for the first (left) button.",
+              description: "Default handler function for the left button. It triggers on every left button click " +
+              "unless there is a left-button override in the panel.",
               optional: true,
             },
             {
-              name: "defaultOnClickButton2",
+              name: "defaultOnClickRightButton",
               type: "Function",
-              description: "Default handler function for the second (right) button.",
+              description: "Default handler function for the right button. It triggers on every right button click " +
+              "unless there is a right-button override in the panel.",
               optional: true,
             },
             {
               name: "height",
               type: "String",
-              description: "Standard height for all modals. If not provided, height is auto-generated",
+              description: "Standard height for all panels. If not provided, height is auto-generated",
               optional: true,
             },
             {
               name: "startingPanel",
               type: "Number",
-              description: "index of componentArray that indicates the first panel that should show up.",
+              description: "Index of componentArray that indicates the first panel that should show up.",
               optional: true,
               defaultValue: "0",
             },
@@ -223,27 +234,30 @@ export default class MultiplePanelModalsView extends React.PureComponent {
               description: "Content of the panel.",
             },
             {
-              name: "firstButtonName",
+              name: "leftButtonName",
               type: "String",
-              description: "If this is provided, it will replace the default first (left) button name for this panel.",
+              description: "If this is provided, it will replace the default left button's name for this panel.",
               optional: true,
             },
             {
-              name: "overrideOnClickButton1",
+              name: "overrideOnClickLeftButton",
               type: "Function",
-              description: "If this is provided, it will replace the defaultOnClickButton1 function for this panel.",
+              description: "If this is provided, it will be the only function called upon clicking the left button " +
+              "for this panel.",
               optional: true,
             },
             {
-              name: "secondButtonName",
+              name: "rightButtonName",
               type: "String",
-              description: "If this is provided, it will replace the default second (right) button name for this panel.",
+              description: "If this is provided, it will replace the default right button's name for this " +
+              "panel.",
               optional: true,
             },
             {
-              name: "overrideOnClickButton2",
+              name: "overrideOnClickRightButton",
               type: "Function",
-              description: "If this is provided, it will replace the defaultOnClickButton2 function for this panel.",
+              description: "If this is provided, it will be the only function called upon clicking the right button " +
+              "for this panel.",
               optional: true,
             },
           ]}
