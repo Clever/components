@@ -104,12 +104,12 @@ export class TextArea extends React.Component {
     if (this.props.placeholder) {
       // Need to add another row for autoGrow since it seems to collapse in a way that conflicts with the placeholder
       // margin
-      rows++;
+      rows = this.props.rows + 1;
     }
 
     let textarea = <textarea {...textAreaProps} rows={rows} />;
     if (this.props.autoResize) {
-      rows++;
+      rows = this.props.rows + 1;
       textarea = <TextareaAutosize {...textAreaProps} rows={rows} />;
     }
 
