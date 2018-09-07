@@ -82,7 +82,7 @@ export class TextArea extends React.Component {
       inputNote = <span className="TextArea--error">{this.props.error}</span>;
     }
 
-    const props = {
+    const textAreaProps = {
       className: "TextArea--input",
       disabled: this.props.disabled,
       maxLength: this.props.maxLength,
@@ -97,7 +97,7 @@ export class TextArea extends React.Component {
       required: this.props.required,
       spellCheck: this.props.spellCheck,
       value: this.props.value,
-      rows: this.props.rows || 1,
+      rows: this.props.rows,
     };
 
     let rows = this.props.rows;
@@ -107,10 +107,10 @@ export class TextArea extends React.Component {
       rows = this.props.rows + 1;
     }
 
-    let textarea = <textarea {...props} rows={rows} />;
+    let textarea = <textarea {...textAreaProps} rows={rows} />;
     if (this.props.autoResize) {
-      rows++;
-      textarea = <TextareaAutosize {...props} rows={rows} />;
+      rows = this.props.rows + 1;
+      textarea = <TextareaAutosize {...textAreaProps} rows={rows} />;
     }
 
     return (
@@ -144,4 +144,8 @@ TextArea.propTypes = {
   className: PropTypes.string,
   autoResize: PropTypes.bool,
   rows: PropTypes.number,
+};
+
+TextArea.defaultProps = {
+  rows: 1,
 };
