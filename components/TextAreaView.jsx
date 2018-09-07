@@ -229,6 +229,7 @@ export default class TextAreaView extends React.Component {
               type: "number",
               description: "The number of rows to start the textarea with",
               optional: true,
+              defaultValue: 1,
             },
           ]}
         />
