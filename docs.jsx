@@ -30,6 +30,7 @@ import LogoView from "./components/LogoView";
 import MenuView from "./components/MenuView";
 import ModalButtonView from "./components/ModalButtonView";
 import ModalView from "./components/ModalView";
+import MultiplePanelModalsView from "./components/MultiplePanelModalsView";
 import NumberView from "./components/NumberView";
 import PageLayoutView from "./components/PageLayoutView";
 import ProgressBarView from "./components/ProgressBarView";
@@ -87,6 +88,7 @@ render((
         <Route path="menu(/*)" component={MenuView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
+        <Route path="multiple-panel-modals(/*)" component={MultiplePanelModalsView} />
         <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
         <Route path="rich-text(/*)" component={RichTextView} />
