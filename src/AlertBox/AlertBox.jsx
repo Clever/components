@@ -32,7 +32,11 @@ export default class AlertBox extends PureComponent {
   }
 
   closeBox() {
+    const {onClose} = this.props;
     this.setState({isOpen: false});
+    if (onClose) {
+      onClose();
+    }
   }
 
   render() {
