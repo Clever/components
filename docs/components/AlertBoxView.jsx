@@ -83,6 +83,13 @@ export default class AlertBoxView extends PureComponent {
               optional: true,
             },
             {
+              name: "onClose",
+              type: "Function",
+              description: "Called when user closes AlertBox",
+              defaultValue: "None",
+              optional: true,
+            },
+            {
               name: "children",
               type: "node",
               description: "Body",
