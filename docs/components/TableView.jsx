@@ -19,6 +19,7 @@ export default class TableView extends PureComponent {
       enableDynamicCellClass: false,
       enableRowClick: true,
       tableFilter: "",
+      bodyScroll: false,
     };
   }
 
@@ -48,7 +49,7 @@ export default class TableView extends PureComponent {
 
   render() {
     const {cssClass} = TableView;
-    const {enableDynamicCellClass, enableRowClick, tableData} = this.state;
+    const {enableDynamicCellClass, enableRowClick, bodyScroll, tableData} = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Table">
@@ -80,6 +81,7 @@ export default class TableView extends PureComponent {
           <div style={{marginTop: "20px"}}>
             <ExampleCode>
               <Table
+                bodyScroll={this.state.bodyScroll}
                 data={tableData}
                 filter={rowData => !this.state.tableFilter || _.includes(
                   [rowData.name.first, rowData.name.last].join(" "),
@@ -113,6 +115,7 @@ export default class TableView extends PureComponent {
                     </ModalButton>
                   )}}
                   noWrap
+                  width="15%"
                 />
 
                 <Table.Column
@@ -124,7 +127,7 @@ export default class TableView extends PureComponent {
                   }}
                   sortable
                   sortValueFn={r => [r.name.first, r.name.last].join(" ")}
-                  width="25%"
+                  width="15%"
                 />
 
                 <Table.Column
@@ -133,6 +136,7 @@ export default class TableView extends PureComponent {
                   cell={{renderer: r => r.age}}
                   sortable
                   sortValueFn={r => r.age}
+                  width="10%"
                 />
 
                 <Table.Column
@@ -147,13 +151,14 @@ export default class TableView extends PureComponent {
                   }}
                   sortable
                   sortValueFn={r => r.status}
+                  width="10%"
                 />
 
                 <Table.Column
                   id="notes"
                   header={{content: "Notes"}}
                   cell={{renderer: r => r.notes}}
-                  width="100%"
+                  width="50%"
                 />
               </Table>
             </ExampleCode>
@@ -176,10 +181,29 @@ export default class TableView extends PureComponent {
             {" "}
             Dynamic cell class names
           </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={bodyScroll}
+              onChange={({target}) => this.setState({bodyScroll: target.checked})}
+            />
+            {" "}
+            Body Scroll
+          </label>
         </Example>
 
         <PropDocumentation
           availableProps={[
+            {
+              name: "bodyScroll",
+              type: "Boolean",
+              description: "Adds a scroll bar to the table's body. The body's height is set to 80vh, so that the whole"
+                + " table will fit on one page. Since the header and body are spaced independently, you must specify"
+                + " column width percentages for each column. If you fail to do this, an error will appear in the"
+                + " console.",
+              defaultValue: "False",
+              optional: true,
+            },
             {
               name: "data",
               type: "Array",

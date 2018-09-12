@@ -39,6 +39,13 @@ export class Table extends Component {
         }
       }
     }
+    if (props.bodyScroll) {
+      for (const child of props.children) {
+        if (!child.props.width) {
+          console.error("Not setting width for all columns when bodyScroll is true will cause alignment issues.");
+        }
+      }
+    }
 
     this.state = {
       currentPage: props.initialPage || 1,
@@ -263,6 +270,7 @@ export class Table extends Component {
 
   render() {
     const {
+      bodyScroll,
       children,
       className,
       fixed,
@@ -287,11 +295,11 @@ export class Table extends Component {
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
     return (
-      <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-        <Header disableSort={disableSort} onSortChange={columnID => this._toggleSort(columnID)} sortState={sortState}>
+      <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className, bodyScroll && cssClass.BODY_SCROLL)} >
+        <Header disableSort={disableSort} onSortChange={columnID => this._toggleSort(columnID)} sortState={sortState} bodyScroll={bodyScroll}>
           {columns}
         </Header>
-        <tbody className={cssClass.BODY}>
+        <tbody className={cssClass.BODY} >
           {displayedData.length === 0 ? (
             <tr className={cssClass.ROW}>
               <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
@@ -309,7 +317,7 @@ export class Table extends Component {
               onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
             >
               {columns.map(({props: col}) => (
-                <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
+                <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap} width={col.width}>
                   {col.cell.renderer(rowData)}
                 </Cell>
               ))}
@@ -343,6 +351,7 @@ function getCellClassName(columnProps, rowData) {
 }
 
 Table.propTypes = {
+  bodyScroll: PropTypes.bool,
   children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
   className: PropTypes.string,
   data: PropTypes.array,
@@ -378,6 +387,7 @@ Table.cssClass = {
   NO_DATA: "Table--no_data_cell",
   ROW: "Table--row",
   TABLE: "Table",
+  BODY_SCROLL: "Table--body_scroll",
 };
 
 Table.Column = Column;
