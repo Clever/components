@@ -301,8 +301,8 @@ export default class SelectView extends Component {
             },
             {
               name: "value",
-              type: "String",
-              description: "Selected value. Must be updated by caller in the onChange",
+              type: "{label: string; value: string}",
+              description: "Selected option. Must be updated by caller in the onChange",
               optional: true,
             },
           ]}
