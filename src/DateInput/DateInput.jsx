@@ -103,6 +103,7 @@ export default class DateInput extends React.Component {
             required={this.props.required}
             selected={this.props.value}
             popperClassName="DatePicker--Popper"
+            popperPlacement={this.props.popperPlacement}
           />
         }
       </div>
@@ -132,4 +133,5 @@ DateInput.propTypes = {
   min: dateType,
   max: dateType,
   useTime: PropTypes.bool,
+  popperPlacement: PropTypes.string,
 };
