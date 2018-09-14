@@ -7,7 +7,24 @@ import ReactDateTime from "react-datetime";
 
 import "./DateInput.less";
 
+const popperPlacementPositions = {
+  BOTTOM: "bottom",
+  BOTTOM_END: "bottom-end",
+  BOTTOM_START: "bottom-start",
+  LEFT: "left",
+  LEFT_END: "left-end",
+  LEFT_START: "left-start",
+  RIGHT: "right",
+  RIGHT_END: "right-end",
+  RIGHT_START: "right-start",
+  TOP: "top",
+  TOP_END: "top-end",
+  TOP_START: "top-start",
+};
+
 export default class DateInput extends React.Component {
+  static popperPlacementPositions = popperPlacementPositions;
+
   constructor(props) {
     super(props);
     this.state = {inFocus: false};
@@ -133,5 +150,5 @@ DateInput.propTypes = {
   min: dateType,
   max: dateType,
   useTime: PropTypes.bool,
-  popperPlacement: PropTypes.string,
+  popperPlacement: PropTypes.oneOf(Object.values(popperPlacementPositions)),
 };
