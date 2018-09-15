@@ -177,6 +177,12 @@ export default class DateInputView extends Component {
               description: "Flag to switch to date time picker input",
               optional: true,
             },
+            {
+              name: "popperPlacement",
+              type: "string",
+              description: "Position of the pop-up calendar relative to the input.",
+              optional: true,
+            },
           ]}
         />
       </View>
