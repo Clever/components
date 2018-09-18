@@ -69,3 +69,6 @@ export {TopBar};
 
 import TextTruncate from "./TextTruncate";
 export {TextTruncate};
+
+import CopyContainer from "./CopyContainer";
+export {CopyContainer};
