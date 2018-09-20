@@ -28,7 +28,7 @@ export default class CopyContainerView extends React.PureComponent {
         sourcePath="src/CopyContainer/CopyContainer.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>This component is useful when you want to make some text copyable.</p>
+          <p>This component is useful when you want to make some text copyable with a "copy" button.</p>
           <CodeSample>
             {`
               import {CopyContainer} from "clever-components";
@@ -40,8 +40,22 @@ export default class CopyContainerView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <CopyContainer className="my--custom--class" copyText="Text to copy">
-              Content to display
+            <CopyContainer className="my--custom--class">
+              Click the button to copy me.
+            </CopyContainer>
+          </ExampleCode>
+        </Example>
+        <Example title="Specify the text to copy:">
+          <ExampleCode>
+            <CopyContainer className="my--custom--class" copyText="text to copy">
+              This button will copy "text to copy" to the clipboard.
+            </CopyContainer>
+          </ExampleCode>
+        </Example>
+        <Example title="Customize the button label:">
+          <ExampleCode>
+            <CopyContainer className="my--custom--class" buttonLabel="I'm a custom button!">
+              Click the button to copy me.
             </CopyContainer>
           </ExampleCode>
         </Example>
@@ -71,6 +85,11 @@ export default class CopyContainerView extends React.PureComponent {
             name: "copyText",
             type: "string",
             description: "The text that should be copied to the clipboard.",
+          },
+          {
+            name: "buttonLabel",
+            type: "string",
+            description: "The text that appears on the copy button.",
           },
         ]}
         className={cssClass.PROPS}
