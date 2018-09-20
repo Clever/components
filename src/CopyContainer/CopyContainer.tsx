@@ -12,6 +12,7 @@ import "./CopyContainer.less";
 const propTypes = {
   children: PropTypes.node,
   copyText: PropTypes.string,
+  buttonLabel: PropTypes.string,
   className: PropTypes.string,
 };
 
@@ -38,10 +39,10 @@ export default class CopyContainer extends React.PureComponent {
   }
 
   render() {
-    const {children, copyText, className} = this.props;
+    const {children, copyText, buttonLabel, className} = this.props;
     const {copied} = this.state;
 
-    const copyLabel = !copied ? "Copy" : "Copied!";
+    const copyLabel = !copied ? (buttonLabel || "Copy") : "Copied!";
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={classnames(cssClass.CONTAINER, className)}>

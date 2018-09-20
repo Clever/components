@@ -14,9 +14,10 @@ describe("CopyContainer", () => {
     );
 
     expect(copyContainer.props().className).toMatch(cssClass.CONTAINER);
-    expect(copyContainer.find(CopyToClipboard).length).toBe(1);
-    expect(copyContainer.find(Button).length).toBe(1);
-    expect(copyContainer.html()).toContain("Text to display")
+    expect(copyContainer.html()).toContain("Text to display");
+
+    const button = copyContainer.find(Button);
+    expect(button.props().value).toBe("Copy");
 
     const copyToClipboard = copyContainer.find(CopyToClipboard);
     expect(copyToClipboard.props().text).toBe("Text to copy");
@@ -31,5 +32,13 @@ describe("CopyContainer", () => {
 
     expect(myComponent.props().className).toMatch(cssClass.CONTAINER);
     expect(myComponent.props().className).toMatch("my--custom--class");
+  });
+
+  it("supports customizing the button label", () => {
+    const copyContainer = shallow(
+      <CopyContainer copyText="Text to copy" buttonLabel="Custom button label">Text to display</CopyContainer>,
+    );
+    const button = copyContainer.find(Button);
+    expect(button.props().value).toBe("Custom button label");
   });
 });
