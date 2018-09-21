@@ -56,7 +56,7 @@ export class MultiplePanelModals extends React.Component {
 
     let rightButtonValue;
     if (rightButtonName) {
-      rightButtonValue = leftButtonName;
+      rightButtonValue = rightButtonName;
     } else if (isLastPanel) {
       rightButtonValue = "Done";
     } else {
