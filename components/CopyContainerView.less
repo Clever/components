@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.CopyContainerView--intro {
+  .margin--bottom--xl;
+}
+
+.CopyContainerView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.CopyContainerView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.CopyContainerView--config {
+  cursor: pointer;
+}
+
+.CopyContainerView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.CopyContainerView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.CopyContainerView--props {
+  .margin--top--l;
+}
+
