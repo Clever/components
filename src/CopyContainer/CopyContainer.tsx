@@ -29,8 +29,12 @@ export default class CopyContainer extends React.PureComponent {
   static propTypes = propTypes;
   static cssClass = cssClass;
 
-  state = {
-    copied: false,
+  constructor(props) {
+    super(props);
+    this._onCopy = this._onCopy.bind(this);
+    this.state = {
+      copied: false,
+    };
   }
 
   _onCopy() {
@@ -48,7 +52,7 @@ export default class CopyContainer extends React.PureComponent {
       <FlexBox alignItems={ItemAlign.CENTER} className={classnames(cssClass.CONTAINER, className)}>
         {children}
         <FlexBox alignItems={ItemAlign.START} grow>
-          <CopyToClipboard text={copyText || children || ""} onCopy={() => this._onCopy()}>
+          <CopyToClipboard text={copyText || children || ""} onCopy={this._onCopy}>
             <Button className={cssClass.BUTTON} type="linkPlain" value={copyLabel} />
           </CopyToClipboard>
         </FlexBox>
