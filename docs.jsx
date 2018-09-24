@@ -6,6 +6,7 @@ import AlertBoxView from "./components/AlertBoxView";
 import ButtonView from "./components/ButtonView";
 import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
+import CopyContainerView from "./components/CopyContainerView";
 import CopyableInputView from "./components/CopyableInputView";
 import CountView from "./components/CountView";
 import DateInputView from "./components/DateInputView";
@@ -69,6 +70,7 @@ render((
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
+        <Route path="copy-container(/*)" component={CopyContainerView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
         <Route path="count(/*)" component={CountView} />
         <Route path="date-input(/*)" component={DateInputView} />
