@@ -68,6 +68,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/alert-box", "AlertBox")}
           {this._renderLink("/components/button", "Button")}
           {this._renderLink("/components/confirmation-button", "ConfirmationButton")}
+          {this._renderLink("/components/copy-container", "CopyContainer")}
           {this._renderLink("/components/copyable-input", "CopyableInput")}
           {this._renderLink("/components/count", "Count")}
           {this._renderLink("/components/date-input", "DateInput")}
