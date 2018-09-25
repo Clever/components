@@ -102,11 +102,10 @@ export class MultiplePanelModals extends React.Component {
               onClick={() => {
                 rightButtonOnClick();
                 if (isLastPanel) {
-                  if (!overrideOnClickRightButton) {
-                    closeModal();
-                  } else {
+                  if (overrideOnClickRightButton) {
                     return;
                   }
+                  closeModal();
                 }
                 this.setState({currentPanel: this.state.currentPanel + 1});
               }}
