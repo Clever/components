@@ -12,14 +12,14 @@ const propTypes = {
   showLessLabel: PropTypes.string,
   lines: PropTypes.number,
   maxCharsShown: PropTypes.number,
-  richText: PropTypes.bool,
+  useRichText: PropTypes.bool,
 };
 
 const defaultProps = {
   maxCharsShown: 300,
   showMoreLabel: "Show more",
   showLessLabel: "Show less",
-  richText: false,
+  useRichText: false,
 };
 
 const cssClass = {
@@ -50,40 +50,20 @@ export default class TextTruncate extends React.PureComponent {
   }
 
   render() {
-    const {className, text, showMoreLabel, showLessLabel, maxCharsShown, richText} = this.props;
+    const {className, text, showMoreLabel, showLessLabel, maxCharsShown, useRichText} = this.props;
     const {truncated} = this.state;
 
     if (text.length < maxCharsShown) {
       return (<div className={classnames(cssClass.CONTAINER, className)}>
-        {richText ? <RichText text={text} /> : text}
+        {useRichText ? <RichText text={text} /> : text}
       </div>);
     }
 
-    if (richText) {
-      return (
-        <div>
-          {truncated ?
-            <div className={classnames(cssClass.CONTAINER, className)}>
-              <RichText text={`${this.truncate(text)}…`} /> <Button type="linkPlain" onClick={this.toggleTruncation} value={showMoreLabel} />
-            </div> :
-            <div className={classnames(cssClass.CONTAINER, className)}>
-              <RichText text={text} /> <Button type="linkPlain" onClick={(e) => this.toggleTruncation(e)} value={showLessLabel} />
-            </div>
-          }
-        </div>
-      );
-    }
-    return (
-      <div>
-        {truncated ?
-          <div className={classnames(cssClass.CONTAINER, className)}>
-            {this.truncate(text)}… <Button type="linkPlain" onClick={this.toggleTruncation} value={showMoreLabel} />
-          </div> :
-          <div className={classnames(cssClass.CONTAINER, className)}>
-            {text} <Button type="linkPlain" onClick={(e) => this.toggleTruncation(e)} value={showLessLabel} />
-          </div>
-        }
-      </div>
-    );
+    const displayText = truncated ? `${this.truncate(text)}…` : text;
+    return (<div className={classnames(cssClass.CONTAINER, className)}>
+      { useRichText ? <RichText text={displayText} /> : displayText }
+      {" "}
+      <Button type="linkPlain" onClick={this.toggleTruncation} value={truncated ? showMoreLabel : showLessLabel} />
+    </div>);
   }
 }

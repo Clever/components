@@ -29,7 +29,7 @@ export default class TextTruncateView extends React.PureComponent {
     showMoreLabel: "Show more",
     showLessLabel: "Show less",
     showLongText: true,
-    richText: false,
+    useRichText: false,
   };
 
   constructor(props) {
@@ -40,7 +40,7 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   render() {
-    const {maxCharsShown, showMoreLabel, showLessLabel, showLongText, richText} = this.state;
+    const {maxCharsShown, showMoreLabel, showLessLabel, showLongText, useRichText} = this.state;
 
     return (
       <View
@@ -66,7 +66,7 @@ export default class TextTruncateView extends React.PureComponent {
               maxCharsShown={maxCharsShown}
               showMoreLabel={showMoreLabel}
               showLessLabel={showLessLabel}
-              richText={richText}
+              useRichText={useRichText}
               text={showLongText ? this.longText : this.shortText}
             />
           </ExampleCode>
@@ -79,7 +79,7 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {showLongText, maxCharsShown, showMoreLabel, showLessLabel, richText} = this.state;
+    const {showLongText, maxCharsShown, showMoreLabel, showLessLabel, useRichText} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -99,12 +99,12 @@ export default class TextTruncateView extends React.PureComponent {
           Rich text:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({richText: value === "rich"})}
+            onSelect={value => this.setState({useRichText: value === "rich"})}
             options={[
               {content: "Rich", value: "rich"},
               {content: "Normal", value: "normal"},
             ]}
-            value={richText ? "rich" : "normal"}
+            value={useRichText ? "rich" : "normal"}
           />
         </div>
         <div className={cssClass.CONFIG}>
@@ -182,7 +182,7 @@ export default class TextTruncateView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "richText",
+            name: "useRichText",
             type: "boolean",
             description: "Whether to render the text via the RichText component",
             defaultValue: "false",
