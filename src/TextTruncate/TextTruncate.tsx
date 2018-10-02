@@ -72,19 +72,18 @@ export default class TextTruncate extends React.PureComponent {
           }
         </div>
       );
-    } else {
-      return (
-        <div>
-          {truncated ?
-            <div className={classnames(cssClass.CONTAINER, className)}>
-              {this.truncate(text)}… <Button type="linkPlain" onClick={this.toggleTruncation} value={showMoreLabel} />
-            </div> :
-            <div className={classnames(cssClass.CONTAINER, className)}>
-              {text} <Button type="linkPlain" onClick={(e) => this.toggleTruncation(e)} value={showLessLabel} />
-            </div>
-          }
-        </div>
-      );
     }
+    return (
+      <div>
+        {truncated ?
+          <div className={classnames(cssClass.CONTAINER, className)}>
+            {this.truncate(text)}… <Button type="linkPlain" onClick={this.toggleTruncation} value={showMoreLabel} />
+          </div> :
+          <div className={classnames(cssClass.CONTAINER, className)}>
+            {text} <Button type="linkPlain" onClick={(e) => this.toggleTruncation(e)} value={showLessLabel} />
+          </div>
+        }
+      </div>
+    );
   }
 }
