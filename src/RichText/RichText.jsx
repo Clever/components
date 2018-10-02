@@ -3,8 +3,13 @@ import * as PropTypes from "prop-types";
 import Linkify from "react-linkify";
 
 export default function RichText(props) {
+  const lines = props.text.split("\n");
+
   return (<Linkify properties={{target: "_blank"}}>
-    {props.text.split("\n").map((item, key) => <span key={key}>{item}<br /></span>)}
+    {lines.map((item, index) => <span key={index}>
+      {item}
+      {(index < lines.length - 1) && <br />}
+    </span>)}
   </Linkify>);
 }
 

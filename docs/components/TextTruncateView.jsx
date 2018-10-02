@@ -29,17 +29,18 @@ export default class TextTruncateView extends React.PureComponent {
     showMoreLabel: "Show more",
     showLessLabel: "Show less",
     showLongText: true,
+    useRichText: false,
   };
 
   constructor(props) {
     super(props);
 
     this.shortText = loremIpsum({count: 7, units: "words"});
-    this.longText = loremIpsum({count: 25, units: "sentences"});
+    this.longText = loremIpsum({count: 4, units: "paragraphs"});
   }
 
   render() {
-    const {maxCharsShown, showMoreLabel, showLessLabel, showLongText} = this.state;
+    const {maxCharsShown, showMoreLabel, showLessLabel, showLongText, useRichText} = this.state;
 
     return (
       <View
@@ -65,6 +66,7 @@ export default class TextTruncateView extends React.PureComponent {
               maxCharsShown={maxCharsShown}
               showMoreLabel={showMoreLabel}
               showLessLabel={showLessLabel}
+              useRichText={useRichText}
               text={showLongText ? this.longText : this.shortText}
             />
           </ExampleCode>
@@ -77,7 +79,7 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {showLongText, maxCharsShown, showMoreLabel, showLessLabel} = this.state;
+    const {showLongText, maxCharsShown, showMoreLabel, showLessLabel, useRichText} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -91,6 +93,18 @@ export default class TextTruncateView extends React.PureComponent {
               {content: "Long", value: "long"},
             ]}
             value={showLongText ? "long" : "short"}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          Rich text:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={value => this.setState({useRichText: value === "rich"})}
+            options={[
+              {content: "Rich", value: "rich"},
+              {content: "Normal", value: "normal"},
+            ]}
+            value={useRichText ? "rich" : "normal"}
           />
         </div>
         <div className={cssClass.CONFIG}>
@@ -165,6 +179,13 @@ export default class TextTruncateView extends React.PureComponent {
             type: "number",
             description: "Number of characters to show before truncation",
             defaultValue: 300,
+            optional: true,
+          },
+          {
+            name: "useRichText",
+            type: "boolean",
+            description: "Whether to render the text via the RichText component",
+            defaultValue: "false",
             optional: true,
           },
         ]}
