@@ -1,7 +1,7 @@
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as CopyToClipboard from "react-copy-to-clipboard";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 import {Button} from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
