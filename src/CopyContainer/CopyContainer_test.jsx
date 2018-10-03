@@ -1,7 +1,7 @@
 import * as React from "react";
 import {shallow} from "enzyme";
 
-import * as CopyToClipboard from "react-copy-to-clipboard";
+import CopyToClipboard from "react-copy-to-clipboard";
 import CopyContainer from "./CopyContainer";
 import {Button} from "../Button/Button";
 
