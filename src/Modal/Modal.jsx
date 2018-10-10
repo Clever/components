@@ -2,6 +2,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import FocusTrap from "focus-trap-react";
+import reactDom from "react-dom";
 
 require("./Modal.less");
 
@@ -64,6 +65,9 @@ export class Modal extends React.Component {
       modal = <FocusTrap>{modalContent}</FocusTrap>;
     } else {
       modal = modalContent;
+    }
+    if (reactDom.createPortal) {
+      return reactDom.createPortal(modal, document.body);
     }
     return modal;
   }
