@@ -122,7 +122,7 @@ export class FileInput extends React.Component {
 
     return (<Dropzone
       accept={this.props.accept}
-      className={this.props.className}
+      className={this.props.dropzoneClass}
       style={dropzoneStyle}
       multiple={false}
       onDropAccepted={this.onDropAccepted}
@@ -162,7 +162,8 @@ export class FileInput extends React.Component {
 
 FileInput.propTypes = {
   className: PropTypes.string,
-  customIcon: PropTypes.object,
+  customIcon: PropTypes.node,
+  dropzoneClass: PropTypes.string,
   iconOnly: PropTypes.bool,
   label: PropTypes.string,
   store: PropTypes.func.isRequired,
