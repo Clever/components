@@ -162,7 +162,7 @@ export class FileInput extends React.Component {
 
 FileInput.propTypes = {
   className: PropTypes.string,
-  customIcon: PropTypes.func,
+  customIcon: PropTypes.object,
   iconOnly: PropTypes.bool,
   label: PropTypes.string,
   store: PropTypes.func.isRequired,
