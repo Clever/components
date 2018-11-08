@@ -72,3 +72,6 @@ export {TextTruncate};
 
 import CopyContainer from "./CopyContainer";
 export {CopyContainer};
+
+import EditableInfoPanel from "./EditableInfoPanel";
+export {EditableInfoPanel};
