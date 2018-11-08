@@ -13,6 +13,7 @@ import DateInputView from "./components/DateInputView";
 import DatePickerView from "./components/DatePickerView";
 import DollarAmountView from "./components/DollarAmountView";
 import DropdownButtonView from "./components/DropdownButtonView";
+import EditableInfoPanelView from "./components/EditableInfoPanelView";
 import FileInputView from "./components/FileInputView";
 import FlexBoxView from "./components/FlexBoxView";
 import GettingStartedView from "./components/GettingStartedView";
@@ -77,6 +78,7 @@ render((
         <Route path="date-picker(/*)" component={DatePickerView} />
         <Route path="dollar-amount(/*)" component={DollarAmountView} />
         <Route path="dropdown-button(/*)" component={DropdownButtonView} />
+        <Route path="editable-info-panel(/*)" component={EditableInfoPanelView} />
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="goals-logo(/*)" component={GoalsLogoView} />
