@@ -1,0 +1,58 @@
+@import (reference) "~src/less/utilities";
+
+.EditableInfoPanelView--intro {
+  .margin--bottom--xl;
+}
+
+.EditableInfoPanelView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.EditableInfoPanelView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.EditableInfoPanelView--config {
+  cursor: pointer;
+}
+
+.EditableInfoPanelView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.EditableInfoPanelView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.EditableInfoPanelView--props {
+  .margin--top--l;
+}
+
+.EditableInfoPanel--column {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+
+  &:nth-child(even) {
+    padding-left: @size_m;
+  }
+
+  &:not(:nth-last-child(-n+2)) {
+    margin-bottom: @size_m;
+  }
+}
