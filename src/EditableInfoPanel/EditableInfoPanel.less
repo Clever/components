@@ -1,0 +1,20 @@
+@import (reference) "../less/utilities";
+
+.EditableInfoPanel {
+  .borderRadius--m;
+  .border--s(@neutral_silver);
+  background-color: @neutral_white;
+  .flexbox();
+  .flexDirection(column);
+}
+
+.EditableInfoPanel--header {
+  .cardHeader();
+  .border--bottom--s(@neutral_silver);
+  .alignItems(center);
+}
+
+.EditableInfoPanel--content {
+  padding: @size_m;
+  .flex--auto;
+}
