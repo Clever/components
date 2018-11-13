@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "0.34.0",
+  "version": "0.35.0",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -17,8 +17,9 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "core-js": "^2.4.1",
+    "fix": "0.0.6",
     "focus-trap-react": "^3.0.4",
-    "less": "^2.6.1",
+    "less": "^3.8.1",
     "lodash": "^4.14.1",
     "moment": "^2.18.1",
     "numeral": "^2.0.4",
@@ -52,8 +53,8 @@
     "@types/react": "Clever/minimal-react-typings#v3.1.1",
     "autoprefixer": "^6.5.3",
     "awesome-typescript-loader": "^3.2.3",
-    "babel-cli": "~6.0.0",
-    "babel-core": "~6.7.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^6.0.2",
     "babel-jest": "^21.0.2",
     "babel-loader": "^6.2.4",
@@ -66,7 +67,7 @@
     "babel-preset-es2015": "~6.6.0",
     "babel-preset-react": "~6.5.0",
     "babel-preset-stage-3": "^6.22.0",
-    "babel-register": "~6.7.2",
+    "babel-register": "^6.26.0",
     "css-loader": "^0.23.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15.4": "^1.0.5",
@@ -84,7 +85,7 @@
     "jsx-loader": "^0.13.2",
     "less-loader": "^2.2.3",
     "lorem-ipsum": "^1.0.3",
-    "mocha": "^2.4.5",
+    "mocha": "^5.2.0",
     "postcss-loader": "^1.1.1",
     "prismjs": "^1.5.1",
     "react": "~15.3.0",
@@ -96,9 +97,9 @@
     "stylelint": "^7.12.0",
     "ts-node": "^3.3.0",
     "typescript": "^2.5.2",
-    "url-loader": "^0.5.7",
+    "url-loader": "^1.1.2",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
     "dev-server": "node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 5010 --content-base docs/ --inline --watch"
