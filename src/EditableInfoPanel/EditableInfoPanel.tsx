@@ -10,7 +10,7 @@ import "./EditableInfoPanel.less";
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.node,
   onClick: PropTypes.func.isRequired,
 };
 

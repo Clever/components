@@ -3,7 +3,7 @@ import * as React from "react";
 import Example, {CodeSample, ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {EditableInfoPanel, FlexBox, FlexItem, Modal, TextInput} from "src";
+import {Icon, EditableInfoPanel, FlexBox, FlexItem, ItemAlign, Modal, TextInput} from "src";
 
 import "./EditableInfoPanelView.less";
 
@@ -15,6 +15,7 @@ const cssClass = {
   CONTAINER: "EditableInfoPanelView",
   INTRO: "EditableInfoPanelView--intro",
   PROPS: "EditableInfoPanelView--props",
+  TITLE_TEXT: "EditableInfoPanelView--titleText",
 };
 
 export default class EditableInfoPanelView extends React.PureComponent {
@@ -52,8 +53,9 @@ export default class EditableInfoPanelView extends React.PureComponent {
             <EditableInfoPanel
               className="my--custom--class"
               title={
-                <FlexBox>
-                  <FlexItem>
+                <FlexBox alignItems={ItemAlign.CENTER}>
+                  <Icon size={Icon.sizes.MEDIUM} name={Icon.names.CHAT} />
+                  <FlexItem className={cssClass.TITLE_TEXT}>
                     <p>Editable Info Panel Title</p>
                   </FlexItem>
                 </FlexBox>
@@ -103,7 +105,6 @@ export default class EditableInfoPanelView extends React.PureComponent {
     );
   }
 
-  // TODO: Update prop documentation.
   _renderProps() {
     return (
       <PropDocumentation
@@ -127,7 +128,7 @@ export default class EditableInfoPanelView extends React.PureComponent {
           },
           {
             name: "title",
-            type: "string",
+            type: "node",
             description: "The EditableInfoPanel title",
           },
         ]}
