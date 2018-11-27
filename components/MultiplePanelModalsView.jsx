@@ -37,7 +37,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
   };
 
   render() {
-    const {height, startingPanel} = this.state;
+    const {rightButtonDisabled, height, startingPanel} = this.state;
 
     return (
       <View
@@ -99,6 +99,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
               ]}
               defaultOnClickLeftButton={() => console.log("GoingBackwards")}
               defaultOnClickRightButton={() => console.log("clicked button 2")}
+              rightButtonDisabled={rightButtonDisabled}
               height={height}
               startingPanel={parseInt(startingPanel, 10)}
             />)}
@@ -112,7 +113,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {height, startingPanel} = this.state;
+    const {rightButtonDisabled, height, startingPanel} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -130,7 +131,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
           />
         </div>
         <div className={cssClass.CONFIG}>
-          Starting Panel:
+          Starting panel:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             onSelect={value => this.setState({startingPanel: value})}
@@ -140,6 +141,18 @@ export default class MultiplePanelModalsView extends React.PureComponent {
               {content: "Page 3", value: "2"},
             ]}
             value={startingPanel}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          Disabled right button:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={value => this.setState({rightButtonDisabled: value})}
+            options={[
+              {content: "True", value: true},
+              {content: "False", value: false},
+            ]}
+            value={rightButtonDisabled}
           />
         </div>
       </FlexBox>
@@ -259,6 +272,13 @@ export default class MultiplePanelModalsView extends React.PureComponent {
               description: "If this is provided, it will be the only function called upon clicking the right button " +
               "for this panel.",
               optional: true,
+            },
+            {
+              name: "rightButtonDisabled",
+              type: "Boolean",
+              description: "Whether the right button is disabled. The parent component should manage any state required to derive this value.",
+              optional: true,
+              defaultValue: false,
             },
           ]}
         />
