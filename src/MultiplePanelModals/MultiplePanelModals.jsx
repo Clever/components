@@ -25,6 +25,7 @@ export class MultiplePanelModals extends React.Component {
       defaultOnClickLeftButton,
       defaultOnClickRightButton,
       height,
+      rightButtonDisabled,
     } = this.props;
     const isFirstPanel = this.state.currentPanel === 0;
     const isLastPanel = this.state.currentPanel + 1 === componentArray.length;
@@ -109,6 +110,7 @@ export class MultiplePanelModals extends React.Component {
                 }
                 this.setState({currentPanel: this.state.currentPanel + 1});
               }}
+              disabled={rightButtonDisabled}
             />
           </footer>
         </Modal>
@@ -123,11 +125,13 @@ MultiplePanelModals.propTypes = {
   defaultOnClickLeftButton: PropTypes.func,
   defaultOnClickRightButton: PropTypes.func,
   height: PropTypes.string,
+  rightButtonDisabled: PropTypes.bool,
   startingPanel: PropTypes.number,
 };
 
 MultiplePanelModals.defaultProps = {
   startingPanel: 0,
+  rightButtonDisabled: false,
   defaultOnClickLeftButton: () => {},
   defaultOnClickRightButton: () => {},
 };
