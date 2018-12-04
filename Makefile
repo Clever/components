@@ -8,9 +8,9 @@ TS_FILES := $(shell find . -regex ".*\.tsx*" -not -path "./node_modules/*")
 LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./stylelint.config.js
-TESTS := $(TESTS_JS) $(TESTS_TS)
 TESTS_JS := $(shell find . -regex ".*_test\.jsx*" -not -path "./node_modules/*")
 TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" -not -path "./bin/*")
+TESTS := $(TESTS_JS) $(TESTS_TS)
 WEBPACK := node_modules/webpack/bin/webpack.js
 
 .PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles gen-sizing-styles

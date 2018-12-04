@@ -22,6 +22,7 @@ import GridView from "./components/GridView";
 import IconView from "./components/IconView";
 import InfoPanelView from "./components/InfoPanelView";
 import IntroView from "./components/IntroView";
+import WithKeyboardNavView from "./components/WithKeyboardNavView";
 import LabelView from "./components/LabelView";
 import Layout from "./components/Layout";
 import LayoutCompoundForm from "./components/LayoutCompoundForm";
@@ -90,8 +91,8 @@ render((
         <Route path="list(/*)" component={ListView} />
         <Route path="logo(/*)" component={LogoView} />
         <Route path="menu(/*)" component={MenuView} />
-        <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
+        <Route path="modal(/*)" component={ModalView} />
         <Route path="multiple-panel-modals(/*)" component={MultiplePanelModalsView} />
         <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
@@ -105,6 +106,7 @@ render((
         <Route path="text-truncate(/*)" component={TextTruncateView} />
         <Route path="tooltip" component={TooltipView} />
         <Route path="top-bar(/*)" component={TopBarView} />
+        <Route path="with-keyboard-nav(/*)" component={WithKeyboardNavView} />
         <Route path="wizard(/*)" component={WizardView} />
       </Route>
       <Route path="LESS">

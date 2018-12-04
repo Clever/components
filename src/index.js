@@ -75,3 +75,6 @@ export {CopyContainer};
 
 import EditableInfoPanel from "./EditableInfoPanel";
 export {EditableInfoPanel};
+
+import WithKeyboardNav from "./WithKeyboardNav";
+export {WithKeyboardNav};
