@@ -1,0 +1,69 @@
+@import (reference) "~src/less/utilities";
+
+.WithKeyboardNavView--intro {
+  .margin--bottom--xl;
+}
+
+.WithKeyboardNavView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.WithKeyboardNavView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.WithKeyboardNavView--config {
+  cursor: pointer;
+}
+
+.WithKeyboardNavView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.WithKeyboardNavView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.WithKeyboardNavView--props {
+  .margin--top--l;
+}
+
+.WithKeyboardNavView--option {
+  .border--s(@neutral_white);
+  .padding--m;
+  .text--large;
+  color: @neutral_dark_gray;
+  transition: all @timingQuickly ease-out;
+
+  &:not(:first-child) {
+    .margin--top--m;
+  }
+
+  &.WithKeyboardNavView--focused {
+    .border--s(@neutral_silver);
+    box-shadow: 0 @size_xs @size_xs fade(@neutral_dark_gray, 20%);
+    color: @neutral_black;
+  }
+
+  &.WithKeyboardNavView--disabled {
+    background-color: @neutral_off_white;
+    color: @neutral_gray;
+    cursor: not-allowed;
+  }
+}
+
