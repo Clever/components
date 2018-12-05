@@ -58,8 +58,9 @@ export {Tooltip};
 import GoalsLogo from "./GoalsLogo";
 export {GoalsLogo};
 
-import Logo from "./Logo";
+import Logo, {BetaTag} from "./Logo";
 export {Logo};
+export {BetaTag};
 
 import Menu from "./Menu";
 export {Menu};
