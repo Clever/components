@@ -55,12 +55,12 @@ export default class WithKeyboardNav extends React.PureComponent {
       return;
     }
 
-    if (new Set(forwardKeys).has(event.key)) {
+    if (_.includes(forwardKeys, event.key)) {
       this._move(1, event);
       return;
     }
 
-    if (new Set(backKeys).has(event.key)) {
+    if (_.includes(backKeys, event.key)) {
       this._move(-1, event);
       return;
     }
