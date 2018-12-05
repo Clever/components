@@ -79,3 +79,6 @@ export {EditableInfoPanel};
 
 import WithKeyboardNav from "./WithKeyboardNav";
 export {WithKeyboardNav};
+
+import RadioGroup from "./RadioGroup";
+export {RadioGroup};
