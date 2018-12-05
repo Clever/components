@@ -159,6 +159,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
             optional: true,
           },
           {name: "children", type: "React.Node", description: "The element to be wrapped."},
+          {name: "currentID", type: "string", description: "ID of the currently focused item."},
           {
             name: "forceTabKey",
             type: "bool",
@@ -172,7 +173,13 @@ export default class WithKeyboardNavView extends React.PureComponent {
             default: "[KeyCode.ARROW_RIGHT, KeyCode.ARROW_DOWN]",
             optional: true,
           },
-          {name: "itemIDs", type: "string[]", description: "List of IDs to cycle through"},
+          {name: "itemIDs", type: "string[]", description: "List of IDs to cycle through."},
+          {
+            name: "noWrap",
+            type: "bool",
+            description:
+              "When true, prevents navigation from wrapping when tabbing past the end of the list.",
+          },
           {
             name: "onChange",
             type: "Function",
