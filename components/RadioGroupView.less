@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.RadioGroupView--intro {
+  .margin--bottom--xl;
+}
+
+.RadioGroupView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.RadioGroupView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.RadioGroupView--config {
+  cursor: pointer;
+}
+
+.RadioGroupView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.RadioGroupView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.RadioGroupView--props {
+  .margin--top--l;
+}
+

@@ -37,6 +37,7 @@ import MultiplePanelModalsView from "./components/MultiplePanelModalsView";
 import NumberView from "./components/NumberView";
 import PageLayoutView from "./components/PageLayoutView";
 import ProgressBarView from "./components/ProgressBarView";
+import RadioGroupView from "./components/RadioGroupView";
 import RichTextView from "./components/RichTextView";
 import SegmentedControlView from "./components/SegmentedControlView";
 import SelectView from "./components/SelectView";
@@ -96,6 +97,7 @@ render((
         <Route path="multiple-panel-modals(/*)" component={MultiplePanelModalsView} />
         <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
+        <Route path="radio-group(/*)" component={RadioGroupView} />
         <Route path="rich-text(/*)" component={RichTextView} />
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
