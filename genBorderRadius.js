@@ -4,6 +4,7 @@ const fs = require("fs");
 
 const FILEPATH = "src/less/";
 const FILENAME = "border_radius.less";
+
 const borderRadii = {
   0: 0,
   s: 0.125, // 2px
@@ -12,6 +13,14 @@ const borderRadii = {
   xl: 0.5, // 8px
   "10percent": "10%",
 };
+
+const CIRCLE_MIXIN = `
+.circle(@width) {
+  border-radius: 50%;
+  height: @width;
+  width: @width;
+}
+`;
 
 const constants = [];
 let classes = [];
@@ -71,6 +80,7 @@ const contents = [
     "/**",
     " * Border radius classes.",
     " */",
+    CIRCLE_MIXIN,
   ],
   classes,
   ""

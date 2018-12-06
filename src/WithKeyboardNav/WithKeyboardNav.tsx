@@ -25,8 +25,13 @@ export default class WithKeyboardNav extends React.PureComponent {
   static propTypes = propTypes;
 
   static defaultProps = {
-    backKeys: [KeyCode.ARROW_LEFT, KeyCode.ARROW_UP],
-    forwardKeys: [KeyCode.ARROW_RIGHT, KeyCode.ARROW_DOWN],
+    backKeys: [KeyCode.ARROW_LEFT_IE, KeyCode.ARROW_LEFT, KeyCode.ARROW_UP_IE, KeyCode.ARROW_UP],
+    forwardKeys: [
+      KeyCode.ARROW_DOWN_IE,
+      KeyCode.ARROW_DOWN,
+      KeyCode.ARROW_RIGHT_IE,
+      KeyCode.ARROW_RIGHT,
+    ],
   };
 
   _element = null;
