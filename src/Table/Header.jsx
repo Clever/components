@@ -7,7 +7,7 @@ import HeaderCell from "./HeaderCell";
 import MorePropTypes from "../utils/MorePropTypes";
 
 
-export default function Header({children, disableSort, onSortChange, sortState}) {
+export default function Header({bodyScroll, children, disableSort, onSortChange, sortState}) {
   const {cssClass} = Header;
 
   return (
@@ -22,15 +22,17 @@ export default function Header({children, disableSort, onSortChange, sortState})
             sortable={column.sortable && !disableSort}
             width={column.width}
           >
-            {column.header && column.header.content}
+            {column.header && column.header.content || (bodyScroll ? "\u00a0" : null) /* &nbsp; */ }
           </HeaderCell>
         ))}
+        { bodyScroll ? <td style={{minWidth: "13px", maxWidth: "13px"}}>&nbsp;</td> : null }
       </tr>
     </thead>
   );
 }
 
 Header.propTypes = {
+  bodyScroll: PropTypes.bool,
   children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
   disableSort: PropTypes.bool,
   onSortChange: PropTypes.func,
