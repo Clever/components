@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.FormErrorView--intro {
+  .margin--bottom--xl;
+}
+
+.FormErrorView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.FormErrorView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.FormErrorView--config {
+  cursor: pointer;
+}
+
+.FormErrorView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.FormErrorView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.FormErrorView--props {
+  .margin--top--l;
+}
+

@@ -82,3 +82,6 @@ export {WithKeyboardNav};
 
 import RadioGroup from "./RadioGroup";
 export {RadioGroup};
+
+import FormError from "./FormError";
+export {FormError};
