@@ -24,11 +24,12 @@ export default class RadioGroupView extends React.PureComponent {
     disableAll: false,
     selectedCity: null,
     selectedFood: null,
+    showError: false,
     requireSelection: false,
   };
 
   render() {
-    const {disableAll, requireSelection, selectedCity, selectedFood} = this.state;
+    const {disableAll, requireSelection, selectedCity, selectedFood, showError} = this.state;
 
     return (
       <View
@@ -87,6 +88,7 @@ export default class RadioGroupView extends React.PureComponent {
 
             <RadioGroup
               label="Favourite Food:"
+              error={showError ? "You have questionable taste." : undefined}
               onChange={id => this.setState({selectedFood: id})}
               options={[
                 {id: "pies", label: "Pies", disabled: disableAll},
@@ -106,7 +108,7 @@ export default class RadioGroupView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {disableAll, requireSelection} = this.state;
+    const {disableAll, requireSelection, showError} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -127,6 +129,15 @@ export default class RadioGroupView extends React.PureComponent {
             onChange={({target: {checked}}) => this.setState({disableAll: checked})}
           />{" "}
           Disable All
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={showError}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={({target: {checked}}) => this.setState({showError: checked})}
+          />{" "}
+          Show Error
         </label>
       </FlexBox>
     );
@@ -149,8 +160,6 @@ export default class RadioGroupView extends React.PureComponent {
             description: (
               <p>
                 Error text to display, if any.
-                <br />
-                NOTE: Not yet implemented.
               </p>
             ),
             optional: true,
