@@ -16,13 +16,13 @@ import DropdownButtonView from "./components/DropdownButtonView";
 import EditableInfoPanelView from "./components/EditableInfoPanelView";
 import FileInputView from "./components/FileInputView";
 import FlexBoxView from "./components/FlexBoxView";
+import FormErrorView from "./components/FormErrorView";
 import GettingStartedView from "./components/GettingStartedView";
 import GoalsLogoView from "./components/GoalsLogoView";
 import GridView from "./components/GridView";
 import IconView from "./components/IconView";
 import InfoPanelView from "./components/InfoPanelView";
 import IntroView from "./components/IntroView";
-import WithKeyboardNavView from "./components/WithKeyboardNavView";
 import LabelView from "./components/LabelView";
 import Layout from "./components/Layout";
 import LayoutCompoundForm from "./components/LayoutCompoundForm";
@@ -52,6 +52,7 @@ import TooltipView from "./components/TooltipView";
 import TopBarView from "./components/TopBarView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
+import WithKeyboardNavView from "./components/WithKeyboardNavView";
 import WizardView from "./components/WizardView";
 
 
@@ -83,6 +84,7 @@ render((
         <Route path="editable-info-panel(/*)" component={EditableInfoPanelView} />
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
+        <Route path="form-error(/*)" component={FormErrorView} />
         <Route path="goals-logo(/*)" component={GoalsLogoView} />
         <Route path="grid(/*)" component={GridView} />
         <Route path="icon(/*)" component={IconView} />
@@ -92,8 +94,8 @@ render((
         <Route path="list(/*)" component={ListView} />
         <Route path="logo(/*)" component={LogoView} />
         <Route path="menu(/*)" component={MenuView} />
-        <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="modal(/*)" component={ModalView} />
+        <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="multiple-panel-modals(/*)" component={MultiplePanelModalsView} />
         <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />

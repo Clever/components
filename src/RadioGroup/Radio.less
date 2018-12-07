@@ -4,6 +4,7 @@
 @radioInnerBorderWidth: 0.0938rem; // 1.5px
 @radioOuterBorderWidth: 0.125rem; // 2px
 @radioTransition: all @timingQuickly ease-out;
+@radioFocusShadowThickness: @size_2xs; // 4px
 
 .Radio {
   .button--reset;
@@ -47,14 +48,16 @@
   }
 }
 
-.Radio:focus,
+.Radio:focus {
+  .Radio--outer {
+    border-color: @primary_blue;
+    box-shadow: 0 0 0 @radioFocusShadowThickness fade(@primary_blue_tint_2, 50%);
+  }
+}
+
 .Radio:hover {
   .Radio--outer {
     border-color: @primary_blue;
-  }
-
-  .Radio--label {
-    color: @primary_blue;
   }
 }
 

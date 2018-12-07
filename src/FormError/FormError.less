@@ -1,0 +1,31 @@
+@import (reference) "../less/utilities";
+
+@formErrorColor: @alert_red_shade_2;
+
+.FormError {
+  .text--medium;
+  .text--semi-bold;
+  .text--line-height-3; // 1.25
+
+  &:not(:first-child) {
+    .margin--top--s;
+  }
+
+  &:not(:last-child) {
+    .margin--bottom--s;
+  }
+}
+
+.FormError--icon {
+  height: 1.25em; // Match font line height to center with first line of text.
+  width: 0.875em; // Match font size at a ratio of 14px:16px.
+}
+
+.FormError--ErrorIcon--path {
+  fill: @formErrorColor;
+}
+
+.FormError--message {
+  margin-left: 0.375rem; // 6px
+  color: @formErrorColor;
+}

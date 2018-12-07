@@ -3,6 +3,7 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
+import FormError from "../FormError";
 import Radio from "./Radio";
 import WithKeyboardNav from "../WithKeyboardNav";
 
@@ -45,11 +46,10 @@ export default class RadioGroup extends React.PureComponent {
   _optionRefsByID = {};
 
   render() {
-    const {className, label, onChange, options, selectedID} = this.props;
+    const {className, error, label, onChange, options, selectedID} = this.props;
 
     const focusableOptionID = this._getFocusableOptionID(options);
 
-    // TODO: Render error string if specified.
     return (
       <WithKeyboardNav
         currentID={focusableOptionID}
@@ -64,6 +64,7 @@ export default class RadioGroup extends React.PureComponent {
           <div className={cssClass.LABEL} id={this._labelID}>
             {label}
           </div>
+          {error && <FormError>{error}</FormError>}
           {_.map(options, o => (
             <Radio
               checked={o.id === selectedID}
