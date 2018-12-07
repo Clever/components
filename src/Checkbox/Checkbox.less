@@ -1,0 +1,120 @@
+@import (reference) "../less/utilities";
+
+@checkboxWidth: 1.125rem; // 18px
+@checkboxBorderWidth: @size_3xs;
+@checkboxBorderRadius: 0;
+@checkboxFocusShadowThickness: @size_2xs;
+@checkMarkPadding: @size_4xs;
+@partialMarkPadding: @size_3xs;
+@checkboxTransition: all @timingQuickly ease-out;
+
+.Checkbox {
+  .button--reset;
+  .flexbox;
+  .font--ProximaNova;
+  .items--center;
+  cursor: pointer;
+  transition: @checkboxTransition;
+}
+
+.Checkbox--outer {
+  background-color: @neutral_white;
+  border-radius: @checkboxBorderRadius;
+  border: @checkboxBorderWidth solid @primary_blue_tint_2;
+  box-sizing: border-box;
+  height: @checkboxWidth;
+  transition: @checkboxTransition;
+  width: @checkboxWidth;
+}
+
+.Checkbox--inner {
+  .flexbox;
+  .items--center;
+  .justify--center;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: @checkboxTransition;
+}
+
+.Checkbox--checkMark,
+.Checkbox--partialMark {
+  width: 100%;
+  .padding--x--3xs;
+}
+
+.Checkbox--label {
+  .margin--left--xs;
+  .text--medium;
+  .text--regular;
+  color: @neutral_black;
+}
+
+.Checkbox--checked {
+  .Checkbox--outer {
+    border-color: @primary_blue;
+    background-color: @primary_blue;
+  }
+
+  .Checkbox--inner {
+    opacity: 1;
+  }
+}
+
+.Checkbox:focus {
+  .Checkbox--outer {
+    border-color: @primary_blue;
+    box-shadow: 0 0 0 @checkboxFocusShadowThickness fade(@primary_blue_tint_2, 50%);
+  }
+}
+
+.Checkbox:hover {
+  .Checkbox--outer {
+    border-color: @primary_blue;
+  }
+}
+
+.Checkbox:active {
+  .Checkbox--outer {
+    border-color: @primary_blue;
+    background-color: @primary_blue_tint_2;
+  }
+}
+
+.Checkbox.Checkbox--disabled {
+  cursor: not-allowed;
+
+  .Checkbox--outer {
+    background-color: @neutral_silver;
+    border-color: @neutral_gray;
+  }
+
+  .Checkbox--inner {
+    background-color: @neutral_gray;
+    opacity: 0;
+  }
+
+  .Checkbox--label {
+    color: @neutral_gray;
+  }
+
+  &.Checkbox--checked {
+    .Checkbox--outer {
+      background-color: @neutral_gray;
+    }
+
+    .Checkbox--inner {
+      opacity: 1;
+    }
+  }
+
+  &.Checkbox--partial {
+    .Checkbox--outer {
+      background-color: @neutral_gray;
+    }
+
+    .Checkbox--inner {
+      opacity: 1;
+    }
+  }
+}
