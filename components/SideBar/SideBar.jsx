@@ -78,6 +78,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/editable-info-panel", "EditableInfoPanel")}
           {this._renderLink("/components/file-input", "FileInput")}
           {this._renderLink("/components/flex-box", "FlexBox")}
+          {this._renderLink("/components/form-error", "FormError")}
           {this._renderLink("/components/goals-logo", "GoalsLogo")}
           {this._renderLink("/components/grid", "Grid")}
           {this._renderLink("/components/icon", "Icon")}
@@ -87,8 +88,8 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/list", "List")}
           {this._renderLink("/components/logo", "Logo")}
           {this._renderLink("/components/menu", "Menu")}
-          {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/modal", "Modal")}
+          {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/multiple-panel-modals", "MultiplePanelModals")}
           {this._renderLink("/components/number", "Number")}
           {this._renderLink("/components/progress-bar", "ProgressBar")}
