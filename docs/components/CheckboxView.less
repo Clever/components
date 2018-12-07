@@ -1,0 +1,51 @@
+@import (reference) "~src/less/utilities";
+
+.CheckboxView--intro {
+  .margin--bottom--xl;
+}
+
+.CheckboxView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.CheckboxView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.CheckboxView--config {
+  cursor: pointer;
+}
+
+.CheckboxView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.CheckboxView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.CheckboxView--props {
+  .margin--top--l;
+}
+
+.CheckboxView--checkbox {
+  &:not(:first-child) {
+    .margin--top--m;
+  }
+}
+

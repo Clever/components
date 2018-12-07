@@ -4,6 +4,8 @@ import {IndexRedirect, Route, Router, hashHistory} from "react-router";
 
 import AlertBoxView from "./components/AlertBoxView";
 import ButtonView from "./components/ButtonView";
+import CheckboxGroupView from "./components/CheckboxGroupView";
+import CheckboxView from "./components/CheckboxView";
 import ColorsView from "./components/ColorsView";
 import ConfirmationButtonView from "./components/ConfirmationButtonView";
 import CopyContainerView from "./components/CopyContainerView";
@@ -73,6 +75,8 @@ render((
       <Route path="components">
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="button(/*)" component={ButtonView} />
+        <Route path="checkbox(/*)" component={CheckboxView} />
+        <Route path="checkbox-group(/*)" component={CheckboxGroupView} />
         <Route path="confirmation-button(/*)" component={ConfirmationButtonView} />
         <Route path="copy-container(/*)" component={CopyContainerView} />
         <Route path="copyable-input(/*)" component={CopyableInputView} />
