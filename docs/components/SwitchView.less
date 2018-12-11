@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.SwitchView--intro {
+  .margin--bottom--xl;
+}
+
+.SwitchView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.SwitchView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.SwitchView--config {
+  cursor: pointer;
+}
+
+.SwitchView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.SwitchView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.SwitchView--props {
+  .margin--top--l;
+}
+

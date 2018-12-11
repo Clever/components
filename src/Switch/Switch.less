@@ -1,0 +1,133 @@
+@import (reference) "../less/utilities";
+
+@grey: #71738A;
+@grey-light: #D6D7DE;
+@grey-dark: #474C5E;
+@green: #49D2A2;
+@green-dark: #018657;
+@transition-time: 0.25s;
+
+.transition-stroke-fill {
+  -webkit-transition: stroke @transition-time;
+  -moz-transition: stroke @transition-time;
+  transition: stroke @transition-time;
+  -webkit-transition: fill @transition-time;
+  -moz-transition: fill @transition-time;
+  transition: fill @transition-time;
+}
+
+.pathColor(@color) {
+  path {
+    stroke: transparent;
+    fill: @color;
+  }
+}
+
+.Switch {
+  position: relative;
+  display: inline-block;
+  touch-action: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Switch--bg {
+  background-color: @grey;
+  border: 0.125em solid @grey;
+  width: 3.75em;
+  height: 1.75em;
+  position: relative;
+  border-radius: 0.250em;
+  cursor: pointer;
+  -webkit-transition: background-color @transition-time;
+  -moz-transition: background-color @transition-time;
+  transition: background-color @transition-time;
+}
+
+.Switch--bg.Switch--checked {
+  background-color: @green;
+  border: 0.125em solid @green;
+}
+
+.Switch--checkedIcon {
+  .transition-stroke-fill;
+  .pathColor(@green-dark);
+  width: 0.875em;
+  height: 0.688em;
+  pointer-events: none;
+  position: relative;
+  left: 0.375em;
+  overflow: visible;
+}
+
+.Switch--uncheckedIcon {
+  .transition-stroke-fill;
+  .pathColor(@grey-dark);
+  width: 0.625em;
+  height: 0.625em;
+  pointer-events: none;
+  position: relative;
+  right: 0.438em;
+  overflow: visible;
+}
+
+.Switch--bg.Switch--disabled {
+  cursor: default;
+  background-color: @grey-light;
+  border: 0.125em solid @grey-light;
+
+  .Switch--checkedIcon {
+    .pathColor(@grey);
+  }
+
+  .Switch--uncheckedIcon {
+    .pathColor(@grey);
+  }
+}
+
+.Switch--handle {
+  .border--s(@neutral_silver);
+  width: 1.813em;
+  height: 1.375em;
+  transform: translateX(.25em);
+  background-color: transparent;
+  outline: none;
+  background-color: @neutral_white;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 0.125em;
+  position: absolute;
+  top: 0.3em;
+  outline: 0;
+  border: 0;
+  -webkit-transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
+  -moz-transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
+  transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
+}
+
+.Switch--handle.Switch--checked {
+  transform: translateX(2em);
+}
+
+.Switch--handle.Switch--disabled {
+  cursor: default;
+}
+
+.Switch--handleGripLeft {
+  margin-left: 0.5em;
+  margin-top: 0.32em;
+  width: 0.32em;
+  height: 0.75em;
+  display: inline-block;
+  border-left: 0.063em solid #D6D7DE;
+  border-right: 0.063em solid #D6D7DE;
+}
+
+.Switch--handleGripRight {
+  width: 0.32em;
+  height: 0.75em;
+  display: inline-block;
+  border-right: 0.063em solid #D6D7DE;
+}

@@ -14,6 +14,7 @@ export default class CheckMark extends React.PureComponent {
         className={classnames(cssClass.CONTAINER, className)}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 12 10"
+        focusable="false"
       >
         <path
           fill="#FAFCFC"
