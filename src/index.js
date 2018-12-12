@@ -85,3 +85,9 @@ export {RadioGroup};
 
 import FormError from "./FormError";
 export {FormError};
+
+import Checkbox from "./Checkbox";
+export {Checkbox};
+
+import CheckboxGroup from "./CheckboxGroup";
+export {CheckboxGroup};

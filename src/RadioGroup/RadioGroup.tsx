@@ -18,6 +18,7 @@ const OPTION_PROP_TYPE = PropTypes.shape({
 
 const propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   error: PropTypes.node,
   label: PropTypes.node,
   onChange: PropTypes.func.isRequired,
@@ -46,7 +47,7 @@ export default class RadioGroup extends React.PureComponent {
   _optionRefsByID = {};
 
   render() {
-    const {className, error, label, onChange, options, selectedID} = this.props;
+    const {className, disabled, error, label, onChange, options, selectedID} = this.props;
 
     const focusableOptionID = this._getFocusableOptionID(options);
 
@@ -69,7 +70,7 @@ export default class RadioGroup extends React.PureComponent {
             <Radio
               checked={o.id === selectedID}
               className={cssClass.RADIO}
-              disabled={!!o.disabled}
+              disabled={!!disabled || !!o.disabled}
               id={o.id}
               key={o.id}
               onSelect={onChange}
