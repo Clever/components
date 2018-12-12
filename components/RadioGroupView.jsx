@@ -17,6 +17,13 @@ const cssClass = {
   PROPS: "RadioGroupView--props",
 };
 
+const OPTION_TYPE = `{
+  id: string,
+  disabled?: boolean,
+  label: string,
+  value?: any,
+}`;
+
 export default class RadioGroupView extends React.PureComponent {
   static cssClass = cssClass;
 
@@ -155,6 +162,12 @@ export default class RadioGroupView extends React.PureComponent {
             optional: true,
           },
           {
+            name: "disabled",
+            type: "bool",
+            description: "Whether or not to disable all radio buttons in the group.",
+            optional: true,
+          },
+          {
             name: "error",
             type: "React.Node",
             description: (
@@ -172,7 +185,7 @@ export default class RadioGroupView extends React.PureComponent {
           },
           {
             name: "onChange",
-            type: "Function",
+            type: "Function(radioID, value)",
             description: (
               <p>
                 Option change event handler, called with the ID and value (if available) of the
@@ -182,7 +195,11 @@ export default class RadioGroupView extends React.PureComponent {
           },
           {
             name: "options",
-            type: "Array<{id: string, disabled?: boolean, label: string, value?: any}>",
+            type: (
+              <code>
+                <pre>{`Array<${OPTION_TYPE}>`}</pre>
+              </code>
+            ),
             description: (
               <p>
                 Array of option items to display in the radio group.
