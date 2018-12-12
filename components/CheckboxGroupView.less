@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.CheckboxGroupView--intro {
+  .margin--bottom--xl;
+}
+
+.CheckboxGroupView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.CheckboxGroupView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.CheckboxGroupView--config {
+  cursor: pointer;
+}
+
+.CheckboxGroupView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.CheckboxGroupView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.CheckboxGroupView--props {
+  .margin--top--l;
+}
+
