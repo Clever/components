@@ -29,7 +29,7 @@ describe("Button", () => {
   it("throws an error for small, destructive buttons", () => {
     assert.throws(() => {
       shallow(<Button size="small" type="destructive" value="A bad button" />);
-    }, "Small destructive buttons are not supported");
+    }, {message: "Small destructive buttons are not supported"});
   });
 
   it("renders a <button> element with [type=button]", () => {
@@ -56,7 +56,7 @@ describe("Button", () => {
   it("throws an error if href and submit are both set", () => {
     assert.throws(() => {
       shallow(<Button value="A bad button" href="http://clever.com" submit />);
-    }, "Buttons with href do not support the submit option");
+    }, {message: "Buttons with href do not support the submit option"});
   });
 
   it("calls the onClick handler when clicked", () => {
