@@ -58,6 +58,8 @@ export default class PropDocumentation extends PureComponent {
             header={{content: "Required"}}
             cell={{renderer: p => (p.optional ? "False" : "True")}}
             noWrap
+            sortable
+            sortValueFn={p => p.optional}
           />
         </Table>
       </div>
