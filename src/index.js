@@ -91,3 +91,5 @@ export {Checkbox};
 
 import CheckboxGroup from "./CheckboxGroup";
 export {CheckboxGroup};
+import Card from "./Card";
+export {Card};

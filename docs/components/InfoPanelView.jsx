@@ -142,4 +142,3 @@ InfoPanelView.cssClass = {
   CONFIG: "TextAreaView--configContainer",
   CONFIG_CONTAINER: "TextAreaView--config",
 };
-

@@ -1,0 +1,48 @@
+@import (reference) "~src/less/utilities";
+
+.CardView--intro {
+  .margin--bottom--xl;
+}
+
+.CardView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.CardView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.CardView--config {
+  cursor: pointer;
+}
+
+.CardView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.CardView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.CardView--props {
+  .margin--top--l;
+}
+
+.CardView--card {
+  max-width: 20rem;
+}

@@ -1,0 +1,50 @@
+@import (reference) "../less/utilities";
+
+.Card {
+  .border--s(@neutral_silver);
+  .borderRadius--l();
+  background-color: @neutral_white;
+  box-sizing: content-box;
+  font-family: "Proxima Nova", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  transition: all @timingPromptly ease-out;
+}
+
+.Card--inline {
+  display: inline-block;
+}
+
+.Card--raised {
+  box-shadow: 0 @size_4xs @size_2xs fade(@neutral_black, 10%);
+}
+
+.Card--header {
+  .border--bottom--s(@neutral_silver);
+  .padding--x--m();
+  .padding--y--s();
+  background-color: tint(@neutral_off_white, 30%);
+}
+
+.Card--header--title {
+  .text--semi-bold();
+}
+
+.Card--body {
+  .padding--x--m();
+  .padding--y--s();
+}
+
+.Card--body--noPadding {
+  .padding--none();
+}
+
+.Card--footer {
+  .border--top--s(@neutral_silver);
+   background-color: tint(@neutral_off_white, 30%);
+  .padding--x--m();
+  .padding--y--xs();
+}
+
+.Card--footer--noPadding {
+  .padding--none();
+}
