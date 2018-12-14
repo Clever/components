@@ -86,5 +86,4 @@ PropDocumentation.cssClass = {
   CONTAINER: "PropDocumentation",
   TABLE: "PropDocumentation--table",
   TITLE: "PropDocumentation--title",
-  CODE: "PropDocumentation--code",
 };
