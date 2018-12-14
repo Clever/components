@@ -59,14 +59,14 @@ export default class ConfirmationButtonView extends Component {
             {
               name: "confirmButtonType",
               type: "String",
-              description: "One of primary, secondary, destructive, link, linkPlain, plain",
+              description: <div>One of <code>primary</code>, <code>secondary</code>, <code>destructive</code>, <code>link</code>, <code>linkPlain</code>, <code>plain</code></div>,
               defaultValue: "primary",
               optional: true,
             },
             {
               name: "confirmButtonSize",
               type: "String",
-              description: "One of large, regular, small",
+              description: <div>One of <code>large</code>, <code>regular</code>, <code>small</code></div>,
               defaultValue: "regular",
               optional: true,
             },
@@ -104,7 +104,7 @@ export default class ConfirmationButtonView extends Component {
             {
               name: "confirmButtonTarget",
               type: "String",
-              description: "For links, either _self or _blank",
+              description: <div>For links, either <code>_self</code> or <code>_blank</code></div>,
               defaultValue: "_blank",
               optional: true,
             },
