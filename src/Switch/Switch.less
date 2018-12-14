@@ -2,9 +2,6 @@
 
 @grey: #71738A;
 @grey-light: #D6D7DE;
-@grey-dark: #474C5E;
-@green: #49D2A2;
-@green-dark: #018657;
 @transition-time: 0.25s;
 
 .transition-stroke-fill {
@@ -35,11 +32,11 @@
 
 .Switch--bg {
   background-color: @grey;
-  border: 0.125em solid @grey;
+  border: @size_3xs solid @grey;
   width: 3.75em;
   height: 1.75em;
   position: relative;
-  border-radius: 0.250em;
+  border-radius: @size_2xs;
   cursor: pointer;
   -webkit-transition: background-color @transition-time;
   -moz-transition: background-color @transition-time;
@@ -47,13 +44,13 @@
 }
 
 .Switch--bg.Switch--checked {
-  background-color: @green;
-  border: 0.125em solid @green;
+  background-color: @alert_green_tint_2;
+  border: @size_3xs solid @alert_green_tint_2;
 }
 
 .Switch--checkedIcon {
   .transition-stroke-fill;
-  .pathColor(@green-dark);
+  .pathColor(@alert_green_shade_2);
   width: 0.875em;
   height: 0.688em;
   pointer-events: none;
@@ -64,7 +61,7 @@
 
 .Switch--uncheckedIcon {
   .transition-stroke-fill;
-  .pathColor(@grey-dark);
+  .pathColor(@neutral_dark_gray);
   width: 0.625em;
   height: 0.625em;
   pointer-events: none;
@@ -76,7 +73,7 @@
 .Switch--bg.Switch--disabled {
   cursor: default;
   background-color: @grey-light;
-  border: 0.125em solid @grey-light;
+  border: @size_3xs solid @grey-light;
 
   .Switch--checkedIcon {
     .pathColor(@grey);
@@ -91,13 +88,13 @@
   .border--s(@neutral_silver);
   width: 1.813em;
   height: 1.375em;
-  transform: translateX(.25em);
+  transform: translateX(@size_2xs);
   background-color: transparent;
   outline: none;
   background-color: @neutral_white;
   cursor: pointer;
   display: inline-block;
-  border-radius: 0.125em;
+  border-radius: @size_3xs;
   position: absolute;
   top: 0.3em;
   outline: 0;
@@ -108,7 +105,7 @@
 }
 
 .Switch--handle.Switch--checked {
-  transform: translateX(2em);
+  transform: translateX(@size_xl);
 }
 
 .Switch--handle.Switch--disabled {
@@ -116,18 +113,18 @@
 }
 
 .Switch--handleGripLeft {
-  margin-left: 0.5em;
+  margin-left: @size_xs;
   margin-top: 0.32em;
   width: 0.32em;
-  height: 0.75em;
+  height: @size_s;
   display: inline-block;
-  border-left: 0.063em solid #D6D7DE;
-  border-right: 0.063em solid #D6D7DE;
+  border-left: @size_4xs solid #D6D7DE;
+  border-right: @size_4xs solid #D6D7DE;
 }
 
 .Switch--handleGripRight {
   width: 0.32em;
-  height: 0.75em;
+  height: @size_s;
   display: inline-block;
-  border-right: 0.063em solid #D6D7DE;
+  border-right: @size_4xs solid #D6D7DE;
 }
