@@ -31,10 +31,11 @@ export default class PropDocumentation extends PureComponent {
           <Column
             id="name"
             header={{content: "Prop Name"}}
-            cell={{renderer: p => p.name}}
+            cell={{renderer: p => <code>{p.name}</code>}}
             noWrap
             sortable
             sortValueFn={p => p.name.trim().toLowerCase()}
+            className={cssClass.CODE}
           />
           <Column
             id="type"
@@ -50,7 +51,7 @@ export default class PropDocumentation extends PureComponent {
           <Column
             id="defaultValue"
             header={{content: "Default Value"}}
-            cell={{renderer: p => p.defaultValue || "None"}}
+            cell={{renderer: p => (p.defaultValue ? <code>{p.defaultValue}</code> : "None")}}
             noWrap
           />
           <Column
@@ -87,4 +88,5 @@ PropDocumentation.cssClass = {
   CONTAINER: "PropDocumentation",
   TABLE: "PropDocumentation--table",
   TITLE: "PropDocumentation--title",
+  CODE: "PropDocumentation--code",
 };
