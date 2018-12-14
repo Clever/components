@@ -33,6 +33,8 @@ const cssClass = {
   HANDLE_GRIP_LEFT: "Switch--handleGripLeft",
   HANDLE_GRIP_RIGHT: "Switch--handleGripRight",
   UNCHECKED_ICON: "Switch--uncheckedIcon",
+  OUTLINE: "Switch--outline",
+  HOVER: "Switch--hover",
 };
 
 /**
@@ -62,40 +64,27 @@ export default class Switch extends React.PureComponent {
       disabled,
     } = this.props;
 
-    const {hasOutline, hover} = this.state;
-
-    let bgStyle: any = {};
-
-    if (hasOutline) {
-      bgStyle = {
-        boxShadow: "0 0 0 6px rgba(128, 157, 255, 0.5)",
-      };
-    }
-    if (hover && !disabled) {
-      if (checked) {
-        bgStyle = {
-          ...bgStyle,
-          border: "2px solid #2DBE8B",
-          borderRadius: "4px",
-        };
-      } else {
-        bgStyle = {
-          ...bgStyle,
-          border: "2px solid #474C5E",
-          borderRadius: "4px",
-        };
-      }
-    }
+    const {hasOutline} = this.state;
 
     return (
-      <div className={classnames(cssClass.CONTAINER, className)}>
+      <button
+        aria-checked={checked}
+        aria-disabled={disabled}
+        aria-labelledby={ariaLabelledby}
+        aria-label={ariaLabel}
+        className={classnames(cssClass.CONTAINER, className)}
+        onMouseDown={() => this._onMouseDown()}
+        onMouseUp={() => this._onMouseUp()}
+        onFocus={this._onFocus}
+        onBlur={this._onBlur}
+        role="checkbox"
+      >
         <FlexBox
-          className={classnames(cssClass.BG, checked && cssClass.CHECKED, disabled && cssClass.DISABLED)}
-          style={bgStyle}
-          onMouseEnter={() => this.setState({hover: true})}
-          onMouseLeave={() => this.setState({hover: false})}
-          onMouseDown={() => this._onMouseDown()}
-          onMouseUp={() => this._onMouseUp()}
+          className={classnames(cssClass.BG,
+            checked && cssClass.CHECKED,
+            disabled && cssClass.DISABLED,
+            hasOutline && cssClass.OUTLINE,
+          )}
         >
           <FlexBox justify={Justify.BETWEEN} grow>
             <FlexBox column justify={Justify.CENTER}><Checkmark className={cssClass.CHECKED_ICON} /></FlexBox>
@@ -103,28 +92,17 @@ export default class Switch extends React.PureComponent {
           </FlexBox>
         </FlexBox>
         <div
-          aria-checked={checked}
-          aria-disabled={disabled}
-          aria-labelledby={ariaLabelledby}
-          aria-label={ariaLabel}
           className={classnames(cssClass.HANDLE, checked && cssClass.CHECKED, disabled && cssClass.DISABLED)}
-          onFocus={this._onFocus}
-          onBlur={this._onBlur}
-          onMouseEnter={() => this.setState({hover: true})}
-          onMouseDown={this._onMouseDown}
-          onMouseUp={this._onMouseUp}
-          role="checkbox"
-          tabIndex={disabled ? null : 0}
         >
           <div className={cssClass.HANDLE_GRIP_LEFT}></div>
           <div className={cssClass.HANDLE_GRIP_RIGHT}></div>
         </div>
-      </div>
+      </button>
     );
   }
 
   _onFocus = () => {
-    if (!this.state.mouseDown) {
+    if (!this.state.mouseDown && !this.props.disabled) {
       this.setState({hasOutline: true});
     }
   }

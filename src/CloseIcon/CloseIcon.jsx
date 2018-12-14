@@ -15,8 +15,9 @@ export function CloseIcon(props) {
   const {className} = props;
   return (
     <svg
-      focusable="false"
       className={classnames(cssClass.CONTAINER, className)}
+      // Prevent IE11 from focusing on the element.
+      focusable="false"
       viewBox="0 0 10 10"
       xmlns="http://www.w3.org/2000/svg"
     >

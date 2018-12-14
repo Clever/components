@@ -1,16 +1,8 @@
 @import (reference) "../less/utilities";
 
-@grey: #71738A;
-@grey-light: #D6D7DE;
-@transition-time: 0.25s;
-
 .transition-stroke-fill {
-  -webkit-transition: stroke @transition-time;
-  -moz-transition: stroke @transition-time;
-  transition: stroke @transition-time;
-  -webkit-transition: fill @transition-time;
-  -moz-transition: fill @transition-time;
-  transition: fill @transition-time;
+  transition: stroke @timingPromptly;
+  transition: fill @timingPromptly;
 }
 
 .pathColor(@color) {
@@ -28,19 +20,23 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  outline: none;
+  font-size: initial;
+  display: block;
+  border: none;
+  padding: 0;
+  text-align: justify;
 }
 
 .Switch--bg {
-  background-color: @grey;
-  border: @size_3xs solid @grey;
-  width: 3.75em;
-  height: 1.75em;
+  background-color: @neutral_gray;
+  border: @size_3xs solid @neutral_gray;
+  width: 3.75rem;
+  height: 1.75rem;
   position: relative;
   border-radius: @size_2xs;
   cursor: pointer;
-  -webkit-transition: background-color @transition-time;
-  -moz-transition: background-color @transition-time;
-  transition: background-color @transition-time;
+  transition: background-color @timingPromptly;
 }
 
 .Switch--bg.Switch--checked {
@@ -48,74 +44,83 @@
   border: @size_3xs solid @alert_green_tint_2;
 }
 
+.Switch:hover {
+  :not(.Switch--disabled).Switch--bg.Switch--checked {
+    border: @size_3xs solid @alert_green_shade_1;
+  }
+
+  :not(.Switch--disabled).Switch--bg {
+    border: @size_3xs solid @neutral_dark_gray;
+  }
+}
+
+.Switch--outline {
+  box-shadow: 0 0 0 0.375rem rgba(128, 157, 255, 0.5),
+}
+
 .Switch--checkedIcon {
   .transition-stroke-fill;
   .pathColor(@alert_green_shade_2);
-  width: 0.875em;
-  height: 0.688em;
+  width: 0.875rem;
+  height: 0.688rem;
   pointer-events: none;
   position: relative;
-  left: 0.375em;
+  left: 0.375rem;
   overflow: visible;
 }
 
 .Switch--uncheckedIcon {
   .transition-stroke-fill;
   .pathColor(@neutral_dark_gray);
-  width: 0.625em;
-  height: 0.625em;
+  width: 0.625rem;
+  height: 0.625rem;
   pointer-events: none;
   position: relative;
-  right: 0.438em;
+  right: 0.438rem;
   overflow: visible;
 }
 
 .Switch--bg.Switch--disabled {
-  cursor: default;
-  background-color: @grey-light;
-  border: @size_3xs solid @grey-light;
+  cursor: not-allowed;
+  background-color: @neutral_silver;
+  border: @size_3xs solid @neutral_silver;
 
   .Switch--checkedIcon {
-    .pathColor(@grey);
+    .pathColor(@neutral_gray;);
   }
 
   .Switch--uncheckedIcon {
-    .pathColor(@grey);
+    .pathColor(@neutral_gray;);
   }
 }
 
 .Switch--handle {
-  .border--s(@neutral_silver);
-  width: 1.813em;
-  height: 1.375em;
+  outline: none;
+  width: 1.813rem;
+  height: 1.375rem;
   transform: translateX(@size_2xs);
   background-color: transparent;
-  outline: none;
   background-color: @neutral_white;
   cursor: pointer;
   display: inline-block;
   border-radius: @size_3xs;
   position: absolute;
-  top: 0.3em;
-  outline: 0;
-  border: 0;
-  -webkit-transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
-  -moz-transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
+  top: 0.313rem;
   transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
 }
 
 .Switch--handle.Switch--checked {
-  transform: translateX(@size_xl);
+  transform: translateX(1.94em);
 }
 
 .Switch--handle.Switch--disabled {
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .Switch--handleGripLeft {
   margin-left: @size_xs;
-  margin-top: 0.32em;
-  width: 0.32em;
+  margin-top: 0.32rem;
+  width: 0.32rem;
   height: @size_s;
   display: inline-block;
   border-left: @size_4xs solid #D6D7DE;
@@ -123,7 +128,7 @@
 }
 
 .Switch--handleGripRight {
-  width: 0.32em;
+  width: 0.32rem;
   height: @size_s;
   display: inline-block;
   border-right: @size_4xs solid #D6D7DE;
