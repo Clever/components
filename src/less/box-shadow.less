@@ -1,0 +1,37 @@
+@import (reference) "./colors";
+@import (reference) "./sizing";
+
+// Opinionated defaults for box shadows
+
+@boxShadowDefaultXOffset: 0;
+@boxShadowDefaultYOffset: @size_4xs;
+
+@boxShadowLightBlack: fade(@neutral_black, 25%);
+@boxShadowMediumBlack: fade(@neutral_black, 50%);
+@boxShadowHeavyBlack: fade(@neutral_black, 75%);
+
+@boxShadowBlurRadiusS: @size_xs;
+@boxShadowBlurRadiusM: @size_s;
+@boxShadowBlurRadiusL: @size_m;
+
+.boxShadow(@blurRadius, @color) {
+  box-shadow:
+    @boxShadowDefaultXOffset
+    @boxShadowDefaultYOffset
+    @blurRadius
+    @color;
+}
+
+// Convenience mixins
+
+.boxShadow--light {
+  .boxShadow(@boxShadowBlurRadiusS, @boxShadowLightBlack);
+}
+
+.boxShadow--medium {
+  .boxShadow(@boxShadowBlurRadiusM, @boxShadowMediumBlack);
+}
+
+.boxShadow--heavy {
+  .boxShadow(@boxShadowBlurRadiusL, @boxShadowHeavyBlack);
+}
