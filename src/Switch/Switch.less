@@ -1,0 +1,135 @@
+@import (reference) "../less/utilities";
+
+.transition-stroke-fill {
+  transition: stroke @timingPromptly;
+  transition: fill @timingPromptly;
+}
+
+.pathColor(@color) {
+  path {
+    stroke: transparent;
+    fill: @color;
+  }
+}
+
+.Switch {
+  position: relative;
+  display: inline-block;
+  touch-action: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  font-size: initial;
+  display: block;
+  border: none;
+  padding: 0;
+  text-align: justify;
+}
+
+.Switch--bg {
+  background-color: @neutral_gray;
+  border: @size_3xs solid @neutral_gray;
+  width: 3.75rem;
+  height: 1.75rem;
+  position: relative;
+  border-radius: @size_2xs;
+  cursor: pointer;
+  transition: background-color @timingPromptly;
+}
+
+.Switch--bg.Switch--checked {
+  background-color: @alert_green_tint_2;
+  border: @size_3xs solid @alert_green_tint_2;
+}
+
+.Switch:hover {
+  :not(.Switch--disabled).Switch--bg.Switch--checked {
+    border: @size_3xs solid @alert_green_shade_1;
+  }
+
+  :not(.Switch--disabled).Switch--bg {
+    border: @size_3xs solid @neutral_dark_gray;
+  }
+}
+
+.Switch--outline {
+  box-shadow: 0 0 0 0.375rem rgba(128, 157, 255, 0.5),
+}
+
+.Switch--checkedIcon {
+  .transition-stroke-fill;
+  .pathColor(@alert_green_shade_2);
+  width: 0.875rem;
+  height: 0.688rem;
+  pointer-events: none;
+  position: relative;
+  left: 0.375rem;
+  overflow: visible;
+}
+
+.Switch--uncheckedIcon {
+  .transition-stroke-fill;
+  .pathColor(@neutral_dark_gray);
+  width: 0.625rem;
+  height: 0.625rem;
+  pointer-events: none;
+  position: relative;
+  right: 0.438rem;
+  overflow: visible;
+}
+
+.Switch--bg.Switch--disabled {
+  cursor: not-allowed;
+  background-color: @neutral_silver;
+  border: @size_3xs solid @neutral_silver;
+
+  .Switch--checkedIcon {
+    .pathColor(@neutral_gray;);
+  }
+
+  .Switch--uncheckedIcon {
+    .pathColor(@neutral_gray;);
+  }
+}
+
+.Switch--handle {
+  outline: none;
+  width: 1.813rem;
+  height: 1.375rem;
+  transform: translateX(@size_2xs);
+  background-color: transparent;
+  background-color: @neutral_white;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: @size_3xs;
+  position: absolute;
+  top: 0.313rem;
+  transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
+}
+
+.Switch--handle.Switch--checked {
+  transform: translateX(1.94em);
+}
+
+.Switch--handle.Switch--disabled {
+  cursor: not-allowed;
+}
+
+.Switch--handleGripLeft {
+  margin-left: @size_xs;
+  margin-top: 0.32rem;
+  width: 0.32rem;
+  height: @size_s;
+  display: inline-block;
+  border-left: @size_4xs solid #D6D7DE;
+  border-right: @size_4xs solid #D6D7DE;
+}
+
+.Switch--handleGripRight {
+  width: 0.32rem;
+  height: @size_s;
+  display: inline-block;
+  border-right: @size_4xs solid #D6D7DE;
+}

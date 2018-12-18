@@ -45,6 +45,7 @@ import SegmentedControlView from "./components/SegmentedControlView";
 import SelectView from "./components/SelectView";
 import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
+import SwitchView from "./components/SwitchView";
 import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
@@ -107,6 +108,7 @@ render((
         <Route path="rich-text(/*)" component={RichTextView} />
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
+        <Route path="switch(/*)" component={SwitchView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
         <Route path="table(/*)" component={TableView} />
         <Route path="text-area(/*)" component={TextAreaView} />

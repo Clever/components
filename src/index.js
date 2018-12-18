@@ -24,6 +24,8 @@ export {TextArea} from "./TextArea/TextArea";
 export {Label} from "./Label";
 export {FileInput} from "./FileInput/FileInput";
 export * from "./InfoPanel";
+export {CloseIcon} from "./CloseIcon/CloseIcon";
+
 
 import AlertBox from "./AlertBox/AlertBox";
 export {AlertBox};
@@ -91,3 +93,6 @@ export {Checkbox};
 
 import CheckboxGroup from "./CheckboxGroup";
 export {CheckboxGroup};
+
+import Switch from "./Switch";
+export {Switch};
