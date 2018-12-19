@@ -27,7 +27,7 @@ const Colors = {
     NEUTRAL_DARK_GRAY: "#474C5E",
     NEUTRAL_GRAY: "#A8AEBA",
     NEUTRAL_SILVER: "#e3e6eb",
-    NEUTRAL_OFF_WHITE: "#FBFAFC",
+    NEUTRAL_OFF_WHITE: "#FAFBFC",
     NEUTRAL_WHITE: "#fff",
   },
 
