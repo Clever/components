@@ -49,12 +49,6 @@ export default class Switch extends React.PureComponent {
   static cssClass = cssClass;
   static defaultProps = defaultProps;
 
-  state = {
-    hasOutline: false,
-    hover: false,
-    mouseDown: false,
-  };
-
   render() {
     const {
       ariaLabelledby,
@@ -64,32 +58,22 @@ export default class Switch extends React.PureComponent {
       disabled,
     } = this.props;
 
-    const {hasOutline} = this.state;
-
     return (
       <button
         aria-checked={checked}
         aria-disabled={disabled}
         aria-labelledby={ariaLabelledby}
         aria-label={ariaLabel}
-        className={classnames(cssClass.CONTAINER, className)}
-        onMouseDown={() => this._onMouseDown()}
-        onMouseUp={() => this._onMouseUp()}
-        onFocus={this._onFocus}
-        onBlur={this._onBlur}
+        className={classnames(cssClass.CONTAINER, className, "flexbox", cssClass.BG,
+          checked && cssClass.CHECKED,
+          disabled && cssClass.DISABLED,
+        )}
         role="checkbox"
+        onClick={this._onClick}
       >
-        <FlexBox
-          className={classnames(cssClass.BG,
-            checked && cssClass.CHECKED,
-            disabled && cssClass.DISABLED,
-            hasOutline && cssClass.OUTLINE,
-          )}
-        >
-          <FlexBox justify={Justify.BETWEEN} grow>
-            <FlexBox column justify={Justify.CENTER}><Checkmark className={cssClass.CHECKED_ICON} /></FlexBox>
-            <FlexBox column justify={Justify.CENTER}><CloseIcon className={cssClass.UNCHECKED_ICON} /></FlexBox>
-          </FlexBox>
+        <FlexBox justify={Justify.BETWEEN} grow>
+          <FlexBox column justify={Justify.CENTER}><Checkmark className={cssClass.CHECKED_ICON} /></FlexBox>
+          <FlexBox column justify={Justify.CENTER}><CloseIcon className={cssClass.UNCHECKED_ICON} /></FlexBox>
         </FlexBox>
         <div
           className={classnames(cssClass.HANDLE, checked && cssClass.CHECKED, disabled && cssClass.DISABLED)}
@@ -101,21 +85,7 @@ export default class Switch extends React.PureComponent {
     );
   }
 
-  _onFocus = () => {
-    if (!this.state.mouseDown && !this.props.disabled) {
-      this.setState({hasOutline: true});
-    }
-  }
-
-  _onBlur = () => {
-    this.setState({hasOutline: false});
-  }
-
-  _onMouseDown = () => {
-    this.setState({mouseDown: true});
-  }
-
-  _onMouseUp = () => {
+  _onClick = () => {
     const {onChange, checked, disabled} = this.props;
     this.setState({mouseDown: false});
     if (!disabled) {

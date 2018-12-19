@@ -14,7 +14,8 @@
 
 .Switch {
   position: relative;
-  display: inline-block;
+  width: 4rem;
+  height: 2rem;
   touch-action: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -22,40 +23,32 @@
   user-select: none;
   outline: none;
   font-size: initial;
-  display: block;
-  border: none;
   padding: 0;
   text-align: justify;
-}
-
-.Switch--bg {
   background-color: @neutral_gray;
   border: @size_3xs solid @neutral_gray;
-  width: 3.75rem;
-  height: 1.75rem;
-  position: relative;
   border-radius: @size_2xs;
   cursor: pointer;
   transition: background-color @timingPromptly;
+  transition: box-shadow @timingPromptly;
 }
 
-.Switch--bg.Switch--checked {
+.Switch:focus {
+  box-shadow: 0 0 0 0.375rem rgba(128, 157, 255, 0.5);
+}
+
+
+.Switch.Switch--checked {
   background-color: @alert_green_tint_2;
   border: @size_3xs solid @alert_green_tint_2;
 }
 
-.Switch:hover {
-  :not(.Switch--disabled).Switch--bg.Switch--checked {
-    border: @size_3xs solid @alert_green_shade_1;
-  }
-
-  :not(.Switch--disabled).Switch--bg {
-    border: @size_3xs solid @neutral_dark_gray;
-  }
+.Switch:hover:not(.Switch--disabled).Switch--checked {
+  border: @size_3xs solid @alert_green_shade_1;
 }
 
-.Switch--outline {
-  box-shadow: 0 0 0 0.375rem rgba(128, 157, 255, 0.5),
+.Switch:hover:not(.Switch--disabled) {
+  border: @size_3xs solid @neutral_dark_gray;
 }
 
 .Switch--checkedIcon {
@@ -80,7 +73,7 @@
   overflow: visible;
 }
 
-.Switch--bg.Switch--disabled {
+.Switch.Switch--disabled {
   cursor: not-allowed;
   background-color: @neutral_silver;
   border: @size_3xs solid @neutral_silver;
@@ -98,19 +91,19 @@
   outline: none;
   width: 1.813rem;
   height: 1.375rem;
-  transform: translateX(@size_2xs);
+  transform: translateX(@size_3xs);
   background-color: transparent;
   background-color: @neutral_white;
   cursor: pointer;
   display: inline-block;
   border-radius: @size_3xs;
   position: absolute;
-  top: 0.313rem;
+  top: 0.188em;
   transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
 }
 
 .Switch--handle.Switch--checked {
-  transform: translateX(1.94em);
+  transform: translateX(1.813em);
 }
 
 .Switch--handle.Switch--disabled {
