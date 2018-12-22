@@ -1,0 +1,205 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+@stepIconWidth: 1.75rem; // 28px
+@iconBorderWidth: @size_4xs; // 1px
+@iconFocusShadowThickness: @size_2xs; // 4px
+@titleFontSize: 1.25rem; // 20px
+@alertSize: 0.375rem; // 6px
+
+.Step {
+  .flexbox();
+  .alignItems(flex-start);
+  width: 100%;
+  .padding--y--2xs;
+}
+
+.Step--button.Button {
+  .padding--none;
+  text-align: left;
+  .text--line-height-3;
+}
+
+.Step--title {
+  display: block;
+  overflow: hidden;
+  color: @neutral_gray;
+  font-size: @titleFontSize;
+  .text--semi-bold;
+  .margin--top--2xs;
+  -ms-flex: 0 1 auto;
+}
+
+.Step--description {
+  color: @neutral_gray;
+  .text--medium;
+  .text--regular;
+}
+
+.Step--message--optional {
+  display: block;
+  overflow: hidden;
+  color: @neutral_gray;
+  .text--medium;
+  .text--italic;
+  .margin--bottom--xs;
+}
+
+.Step--message--warning {
+  display: block;
+  overflow: hidden;
+  color: @alert_red;
+  .text--medium;
+  .text--semi-bold;
+  .margin--bottom--xs;
+}
+
+.Step--icon {
+  display: inline-block;
+  .flexShrink(0);
+  .flexbox();
+  .alignItems(center);
+  .justifyContent(center);
+  .circle(@stepIconWidth);
+  background-color: @neutral_white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: @iconBorderWidth solid @neutral_gray;
+  .text--medium;
+  .text--regular;
+  .margin--right--s;
+  color: @neutral_gray;
+  box-shadow: 0 0 0 @iconFocusShadowThickness transparent;
+}
+
+.Step--success {
+  .Step--icon {
+    background-color: @neutral_dark_gray;
+    border: @iconBorderWidth solid @neutral_dark_gray;
+    color: transparent;
+  }
+}
+
+.Step--warning {
+  .Step--icon {
+    background-color: @alert_red;
+    border: @iconBorderWidth solid @alert_red;
+    color: transparent;
+  }
+}
+
+.Step--current {
+  .Step--icon {
+    background-color: @primary_blue;
+    border: @iconBorderWidth solid @primary_blue;
+    color: @neutral_white;
+  }
+
+  .Step--title, .Step--description, .Step--message--optional {
+    color: @neutral_dark_gray;
+  }
+}
+
+.Step--success:not(.Step--current) {
+  .Step--icon {
+    background-image: url("../../assets/images/check.svg");
+    background-size: @size_s;
+  }
+}
+
+.Step--warning:not(.Step--current) {
+  .Step--icon {
+    background-image: url("../../assets/images/exclamation.svg");
+    background-size: @size_2xs;
+  }
+}
+
+.Step:focus.Step--seekable, .Step:hover.Step--seekable {
+  .Step--icon {
+    border: @iconBorderWidth solid @neutral_black;
+    color: @neutral_dark_gray;
+  }
+
+  .Step--description, .Step--message--optional {
+    color: @neutral_dark_gray;
+  }
+}
+
+.Step:active.Step--seekable {
+  .Step--icon {
+    background-color: @primary_blue;
+    background-image: none;
+    border: @iconBorderWidth solid @primary_blue;
+    color: @neutral_white;
+  }
+
+  .Step--title {
+    color: @neutral_dark_gray;
+  }
+
+  .Step--description, .Step--message--optional {
+    color: @neutral_dark_gray;
+  }
+}
+
+.Step:focus.Step--seekable, .Step:focus.Step--seekable.Step--success,
+.Step:focus.Step--seekable.Step--warning, .Step:focus.Step--seekable.Step--current {
+  .Step--icon {
+    box-shadow: 0 0 0 @iconFocusShadowThickness fade(@primary_blue_tint_2, 50%);
+  }
+}
+
+.Step:focus.Step--seekable.Step--success:not(:active) {
+  .Step--icon {
+    background-color: @neutral_dark_gray;
+    border: @iconBorderWidth solid @neutral_dark_gray;
+    color: transparent;
+  }
+}
+
+.Step:focus.Step--seekable.Step--warning:not(:active) {
+  .Step--icon {
+    background-color: @alert_red_shade_2;
+    border: @iconBorderWidth solid @alert_red_shade_2;
+    color: transparent;
+  }
+}
+
+.Step:focus.Step--seekable.Step--current:not(:active) {
+  .Step--icon {
+    background-color: @primary_blue;
+    border: @iconBorderWidth solid @primary_blue;
+    color: @neutral_white;
+  }
+}
+
+.Step:hover.Step--seekable.Step--success:not(:active) {
+  .Step--icon {
+    background-color: @neutral_black;
+    border: @iconBorderWidth solid @neutral_black;
+    color: transparent;
+  }
+}
+
+.Step:hover.Step--seekable.Step--warning:not(:active) {
+  .Step--icon {
+    background-color: @alert_red_shade_2;
+    border: @iconBorderWidth solid @alert_red_shade_2;
+    color: transparent;
+  }
+}
+
+.Step:hover.Step--seekable.Step--current:not(:active) {
+  .Step--icon {
+    background-color: @primary_blue_shade_2;
+    border: @iconBorderWidth solid @primary_blue_shade_2;
+    color: @neutral_white;
+  }
+}
+
+.Step:focus.Step--seekable:not(.Step--current), .Step:hover.Step--seekable:not(.Step--current) {
+  .Step--title {
+    color: @primary_blue;
+  }
+}
