@@ -320,6 +320,27 @@ export default class StepperView extends PureComponent {
               description: "Description of the step",
             },
             {
+              name: "showTitle",
+              type: "Boolean",
+              description: "Whether or not to show the step title",
+              defaultValue: "True",
+              optional: true,
+            },
+            {
+              name: "showMessage",
+              type: "Boolean",
+              description: "Whether or not to show the step message (if it exists)",
+              defaultValue: "True",
+              optional: true,
+            },
+            {
+              name: "showDescription",
+              type: "Boolean",
+              description: "Whether or not to show the step description",
+              defaultValue: "True",
+              optional: true,
+            },
+            {
               name: "success",
               type: "Boolean",
               description: "Whether or not the step has been completed",
