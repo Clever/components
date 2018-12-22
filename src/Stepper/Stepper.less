@@ -1,0 +1,25 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+.Stepper {
+  .flexbox();
+}
+
+.Stepper--sidebar {
+  .flex(0, 0, 18rem);
+  max-width: 18rem;
+  .padding--l;
+}
+
+.Stepper--stepsDisplay {
+  list-style-type: none;
+  .padding--none;
+
+  li {
+    &:not(:last-child)::after {
+      display: block;
+      content: "";
+      height: @size_l;
+    }
+  }
+}
