@@ -96,3 +96,6 @@ export {CheckboxGroup};
 
 import Switch from "./Switch";
 export {Switch};
+
+import Stepper from "./Stepper";
+export {Stepper};

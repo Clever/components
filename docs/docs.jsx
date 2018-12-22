@@ -56,6 +56,7 @@ import TopBarView from "./components/TopBarView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WithKeyboardNavView from "./components/WithKeyboardNavView";
+import StepperView from "./components/StepperView";
 import WizardView from "./components/WizardView";
 
 
@@ -108,6 +109,7 @@ render((
         <Route path="rich-text(/*)" component={RichTextView} />
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
+        <Route path="stepper(/*)" component={StepperView} />
         <Route path="switch(/*)" component={SwitchView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
         <Route path="table(/*)" component={TableView} />
