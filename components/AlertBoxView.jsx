@@ -5,13 +5,9 @@ import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 
 export default class AlertBoxView extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      type: "warning",
-    };
-  }
+  state = {
+    type: "warning",
+  };
 
   render() {
     const {AlertBoxOptions} = AlertBoxView;
@@ -44,8 +40,7 @@ export default class AlertBoxView extends PureComponent {
             <AlertBox type="info" title="Closable info box" isClosable>
               <p>
                 This is the box body. It can be any node. <a href="/#/components/alert-box">look a link</a>!
-              </p>
-              <p>
+                <br />
                 Notice that this box is closable
               </p>
             </AlertBox>
