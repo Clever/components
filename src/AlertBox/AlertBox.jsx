@@ -4,7 +4,7 @@ import React, {PureComponent} from "react";
 import * as PropTypes from "prop-types";
 
 import {CloseIcon, WarningIcon, SuccessIcon, ErrorIcon, InfoIcon} from "./icons";
-import {FlexBox, FlexItem, ItemAlign} from "../flex";
+import {FlexBox, FlexItem} from "../flex";
 
 import "./AlertBox.less";
 
@@ -15,9 +15,11 @@ const ICONS = {
   info: InfoIcon,
 };
 
-const CLASSNAMES = {
+const cssClass = {
   CONTAINER: "AlertBox--container",
   HEADER: "AlertBox--header",
+  ICON_CONTAINER: "AlertBox--Icon--container",
+  ICON: "AlertBox--Icon",
   TITLE: "AlertBox--title",
   CLOSE: "AlertBox--close",
 };
@@ -44,17 +46,21 @@ export default class AlertBox extends PureComponent {
       return null;
     }
     return (
-      <div className={classnames(`AlertBox--${type}`, CLASSNAMES.CONTAINER, className)}>
-        <FlexBox className={CLASSNAMES.HEADER} alignItems={ItemAlign.CENTER}>
-          <Icon />
-          <FlexItem className={CLASSNAMES.TITLE} grow>{title}</FlexItem>
-          {isClosable && (
-            <button className={CLASSNAMES.CLOSE} onClick={() => this.closeBox()}>
-              <CloseIcon />
-            </button>
-          )}
+      <div className={classnames(`AlertBox--${type}`, cssClass.CONTAINER, className)}>
+        <FlexBox className={cssClass.HEADER}>
+          <FlexItem className={cssClass.ICON_CONTAINER}><Icon className={cssClass.ICON} /></FlexItem>
+          <FlexItem>
+            <div className={cssClass.TITLE}>{title}</div>
+            {children}
+          </FlexItem>
+          <FlexItem grow>
+            {isClosable && (
+              <button className={cssClass.CLOSE} onClick={() => this.closeBox()}>
+                <CloseIcon />
+              </button>
+            )}
+          </FlexItem>
         </FlexBox>
-        {children}
       </div>
     );
   }
