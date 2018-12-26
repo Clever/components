@@ -26,10 +26,7 @@ const CLASSNAMES = {
  * AlertBox is a closable, highlighted box
 */
 export default class AlertBox extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {isOpen: true};
-  }
+  state = {isOpen: true};
 
   closeBox() {
     const {onClose} = this.props;
