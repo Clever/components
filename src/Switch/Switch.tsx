@@ -64,11 +64,11 @@ export default class Switch extends React.PureComponent {
         aria-disabled={disabled}
         aria-labelledby={ariaLabelledby}
         aria-label={ariaLabel}
-        className={classnames(cssClass.CONTAINER, className, "flexbox", cssClass.BG,
+        className={classnames(cssClass.CONTAINER, className, cssClass.BG,
           checked && cssClass.CHECKED,
-          disabled && cssClass.DISABLED,
         )}
-        role="checkbox"
+        disabled={disabled}
+        role="switch"
         onClick={this._onClick}
       >
         <FlexBox justify={Justify.BETWEEN} grow>
