@@ -13,6 +13,7 @@
 }
 
 .Switch {
+  .flexbox;
   position: relative;
   width: 4rem;
   height: 2rem;
@@ -43,11 +44,11 @@
   border: @size_3xs solid @alert_green_tint_2;
 }
 
-.Switch:hover:not(.Switch--disabled).Switch--checked {
+.Switch:hover:not([disabled]).Switch--checked {
   border: @size_3xs solid @alert_green_shade_1;
 }
 
-.Switch:hover:not(.Switch--disabled) {
+.Switch:hover:not([disabled]) {
   border: @size_3xs solid @neutral_dark_gray;
 }
 
@@ -73,7 +74,7 @@
   overflow: visible;
 }
 
-.Switch.Switch--disabled {
+.Switch[disabled] {
   cursor: not-allowed;
   background-color: @neutral_silver;
   border: @size_3xs solid @neutral_silver;
