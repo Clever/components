@@ -1,0 +1,134 @@
+@import (reference) "../less/index";
+
+.ProgressBar--Progress {
+  .borderRadius--xl();
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.ProgressBar--Progress--none {
+  background-color: transparent;
+}
+
+.ProgressBar--Progress--none--thin {
+  .border--s(@alert_red);
+}
+
+.ProgressBar--Progress--none--medium {
+  .border--m(@alert_red);
+}
+
+.ProgressBar--Progress--none--thick {
+  .border--l(@alert_red);
+}
+
+.ProgressBar--Progress--red {
+  background-color: @alert_red;
+}
+
+.ProgressBar--Progress--red--thin {
+  .border--s(@alert_red_shade_2);
+}
+
+.ProgressBar--Progress--red--medium {
+  .border--m(@alert_red_shade_2);
+}
+
+.ProgressBar--Progress--red--thick {
+  .border--l(@alert_red_shade_2);
+}
+
+.ProgressBar--Progress--orange {
+  background-color: @alert_orange;
+}
+
+.ProgressBar--Progress--orange--thin {
+  .border--s(@alert_orange_shade_2);
+}
+
+.ProgressBar--Progress--orange--medium {
+  .border--m(@alert_orange_shade_2);
+}
+
+.ProgressBar--Progress--orange--thick {
+  .border--l(@alert_orange_shade_2);
+}
+
+.ProgressBar--Progress--blue {
+  background-color: @primary_blue;
+}
+
+.ProgressBar--Progress--blue--thin {
+  .border--s(@primary_blue_shade_2);
+}
+
+.ProgressBar--Progress--blue--medium {
+  .border--m(@primary_blue_shade_2);
+}
+
+.ProgressBar--Progress--blue--thick {
+  .border--l(@primary_blue_shade_2);
+}
+
+.ProgressBar--Progress--green {
+  background-color: @alert_green;
+}
+
+.ProgressBar--Progress--green--thin {
+  .border--s(@alert_green_shade_2);
+}
+
+.ProgressBar--Progress--green--medium {
+  .border--m(@alert_green_shade_2);
+}
+
+.ProgressBar--Progress--green--thick {
+  .border--l(@alert_green_shade_2);
+}
+
+.ProgressBar--Progress--purple {
+  background-color: @accent_purple;
+}
+
+.ProgressBar--Progress--purple--thin {
+  .border--s(@accent_purple_shade_2);
+}
+
+.ProgressBar--Progress--purple--medium {
+  .border--m(@accent_purple_shade_2);
+}
+
+.ProgressBar--Progress--purple--thick {
+  .border--l(@accent_purple_shade_2);
+}
+
+.ProgressBar--Progress--teal {
+  background-color: @accent_teal;
+}
+
+.ProgressBar--Progress--teal--thin {
+  .border--s(@accent_teal_shade_2);
+}
+
+.ProgressBar--Progress--teal--medium {
+  .border--m(@accent_teal_shade_2);
+}
+
+.ProgressBar--Progress--teal--thick {
+  .border--l(@accent_teal_shade_2);
+}
+
+.ProgressBar--Progress--striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: @size_m @size_m;
+}

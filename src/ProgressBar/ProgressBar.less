@@ -1,60 +1,71 @@
-@import "../less/fonts.less";
+/* stylelint-disable unit-whitelist */
 @import (reference) "../less/index";
 
-.ProgressBar {
+.ProgressBar--boxContainer--thin {
+  min-width: 80px;
+}
+
+.ProgressBar--boxContainer--medium {
+  min-width: 120px;
+}
+
+.ProgressBar--boxContainer--thick {
+  min-width: 160px;
+}
+
+.ProgressBar--bar--container {
+  .margin--bottom--2xs;
+  box-sizing: content-box;
   position: relative;
-  font-family: "Proxima Nova";
-  .border--s(@neutral_gray);
-  @shade(border-color, @neutral_gray, 2);
-  .borderRadius--m;
-  .text--medium;
-  background: @neutral_off_white;
+  transition: none;
+  background-color: transparent;
 }
 
-.ProgressBar--up, .ProgressBar--down {
-  width: @size_2xs;
+.ProgressBar--bar--container--thin {
+  min-width: 80px;
+}
+
+.ProgressBar--bar--container--medium {
+  min-width: 120px;
+}
+
+.ProgressBar--bar--container--thick {
+  min-width: 160px;
+}
+
+.ProgressBar--bar--border {
+  .borderRadius--xl();
   height: 100%;
-  .ProgressBar--filledIn {
-    transition: height 0.25s ease-out;
-    width: 100%;
-    left: 0;
-  }
-}
-
-.ProgressBar--up {
-  .ProgressBar--filledIn {
-    bottom: 0;
-  }
-}
-
-.ProgressBar--down {
-  .ProgressBar--filledIn {
-    top: 0;
-  }
-}
-
-.ProgressBar--right, .ProgressBar--left {
-  height: @size_2xs;
-  .ProgressBar--filledIn {
-    transition: width 0.25s ease-out;
-    height: 100%;
-    top: 0;
-  }
-}
-
-.ProgressBar--right {
-  .ProgressBar--filledIn {
-    left: 0;
-  }
-}
-
-.ProgressBar--left {
-  .ProgressBar--filledIn {
-    right: 0;
-  }
-}
-
-.ProgressBar--filledIn {
+  width: 100%;  
+  background-color: @neutral_off_white;
   position: absolute;
-  background: @primary_blue;
+}
+
+.ProgressBar--bar--border--thick {
+  .border--l(@neutral_silver);
+}
+
+.ProgressBar--bar--border--medium {
+  .border--m(@neutral_silver);
+}
+
+.ProgressBar--bar--border--thin {
+  .border--s(@neutral_silver);
+}
+
+.ProgressBar--bar--inactive {
+  opacity: 0.5;
+}
+
+.ProgressBar--label--top-left, .ProgressBar--label--bottom-left {
+  .margin--left--xs;
+  .alignSelf(flex-start);
+}
+
+.ProgressBar--label--top-middle, .ProgressBar--label--bottom-middle {
+  .alignSelf(center);
+}
+
+.ProgressBar--label--top-right, .ProgressBar--label--bottom-right {
+  .alignSelf(flex-end);
 }
