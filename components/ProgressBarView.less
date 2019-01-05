@@ -19,15 +19,37 @@
   }
 }
 
-.ProgressBarView--progressControl {
-  .text--large;
-  .text--regular;
-  color: @neutral_dark_gray;
-  margin: 0 0 @size_l;
+.ProgressBarView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
 }
 
-.ProgressBarView--progressInput {
-  .text--medium;
-  padding: @size_xs;
-  padding-right: 0;
+.ProgressBarView--intro {
+  .margin--bottom--xl;
+}
+
+.ProgressBarView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+.ProgressBarView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.ProgressBarView--dropdown--color {
+  width: 12rem;
+}
+
+.ProgressBarView--dropdown--showLabel {
+  width: 12rem;
 }
