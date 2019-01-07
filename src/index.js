@@ -19,7 +19,6 @@ export {Grid} from "./Grid/Grid";
 export {Icon} from "./Icon/Icon";
 export {LeftNav} from "./LeftNav/LeftNav";
 export {Wizard} from "./Wizard/Wizard";
-export {ProgressBar} from "./ProgressBar/ProgressBar";
 export {TextArea} from "./TextArea/TextArea";
 export {Label} from "./Label";
 export {FileInput} from "./FileInput/FileInput";
@@ -96,3 +95,6 @@ export {CheckboxGroup};
 
 import Switch from "./Switch";
 export {Switch};
+
+import ProgressBar from "./ProgressBar";
+export {ProgressBar};
