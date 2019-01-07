@@ -53,6 +53,12 @@ const cssClass = {
 };
 
 export default class ProgressBar extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {fillPercentage: props.fill};
+  }
+
   static propTypes = propTypes;
   static cssClass = cssClass;
   static defaultProps = {
@@ -63,8 +69,24 @@ export default class ProgressBar extends React.PureComponent {
     labelType: "percentage",
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.fill !== nextProps.fill) {
+      const fill = nextProps.fill;
+      if (!isNaN(fill)) {
+        if (fill > 100) {
+          this.setState({fillPercentage: 100});
+        } else if (fill < 0) {
+          this.setState({fillPercentage: 0});
+        } else {
+          this.setState({fillPercentage: fill});
+        }
+      }
+    }
+  }
+
   render() {
-    const {className, style, color, fill, width, size, striped, inactive} = this.props;
+    const {className, style, color, width, size, striped, inactive} = this.props;
+    const {fillPercentage} = this.state;
     const sizePX = SizePX[size];
     const topLabel = this._maybeTopLabel();
     const bottomLabel = this._maybeBottomLabel();
@@ -99,7 +121,7 @@ export default class ProgressBar extends React.PureComponent {
               }}
             >
               <div className={classnames(cssClass.BAR_BORDER, cssClass.borderSize(size))}></div>
-              <Progress fill={fill > 100 ? 100 : fill} color={color} size={size} striped={striped} />
+              <Progress fill={fillPercentage} color={color} size={size} striped={striped} />
             </div>
           </FlexItem>
           {bottomLabel}
@@ -109,14 +131,15 @@ export default class ProgressBar extends React.PureComponent {
   }
 
   _maybeTopLabel = () => {
-    const {showLabel, fill, labelType} = this.props;
+    const {showLabel, labelType} = this.props;
+    const {fillPercentage} = this.state;
     switch (showLabel) {
       case ShowLabel.TOP_LEFT:
       case ShowLabel.TOP_MIDDLE:
       case ShowLabel.TOP_RIGHT:
         return (
           <FlexItem className={cssClass.label(showLabel)} grow>
-            {labelType === "percentage" ? `${fill}%` : labelType}
+            {labelType === "percentage" ? `${fillPercentage}%` : labelType}
           </FlexItem>
         );
       default:
@@ -125,14 +148,15 @@ export default class ProgressBar extends React.PureComponent {
   }
 
   _maybeBottomLabel = () => {
-    const {showLabel, fill, labelType} = this.props;
+    const {showLabel, labelType} = this.props;
+    const {fillPercentage} = this.state;
     switch (showLabel) {
       case ShowLabel.BOTTOM_LEFT:
       case ShowLabel.BOTTOM_MIDDLE:
       case ShowLabel.BOTTOM_RIGHT:
         return (
           <FlexItem className={cssClass.label(showLabel)} grow>
-            {labelType === "percentage" ? `${fill}%` : labelType}
+            {labelType === "percentage" ? `${fillPercentage}%` : labelType}
           </FlexItem>
         );
       default:
