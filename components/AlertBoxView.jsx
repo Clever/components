@@ -16,7 +16,10 @@ export default class AlertBoxView extends PureComponent {
     return (
       <View title="AlertBox" sourcePath="src/AlertBox/AlertBox.jsx">
         <p>
-          A set of alert boxes.
+          This is a container for prominent page-level messaging. Alerts should communicate a
+          single informational message and may contain a text link if there are related actions.
+          Temporary messages that are a direct result of a user interaction should display via
+          Toast, rather than Alert box.
         </p>
 
         <Example title="AlertBox options:">
