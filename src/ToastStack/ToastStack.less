@@ -2,12 +2,14 @@
 
 .ToastStack {
   .zIndex--9;
+  max-width: 40rem;
   position: fixed;
   width: 100%;
 }
 
 .ToastStack--notificationWrapper {
   .margin--bottom--xs;
+  .margin--x--xs;
   max-height: 10rem;
 }
 
@@ -27,12 +29,12 @@
 .ToastStack--animation-leave.ToastStack--animation-leave-active {
   opacity: 0;
   transform: translateY(-100%);
-  .margin--none;
+  margin-bottom: 0;
   max-height: 0;
   transition:
     opacity @timingPromptly ease-out,
     transform @timingPromptly ease-out,
-    margin @timingPromptly ease-out @timingPromptly,
+    margin-bottom @timingPromptly ease-out @timingPromptly,
     max-height @timingPromptly ease-out @timingPromptly;
 }
 
