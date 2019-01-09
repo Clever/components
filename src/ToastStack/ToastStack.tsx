@@ -11,6 +11,7 @@ import "./ToastStack.less";
 
 const propTypes = {
   className: PropTypes.string,
+  clearNotification: PropTypes.func.isRequired,
   defaultNotificationDurationMS: PropTypes.number,
   notificationClassName: PropTypes.string,
   notifications: PropTypes.arrayOf(PropTypes.shape({
@@ -21,7 +22,6 @@ const propTypes = {
     showCloseButton: PropTypes.bool,
     type: PropTypes.oneOf(Object.values(ToastType)).isRequired,
   })),
-  setNotifications: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -52,14 +52,8 @@ export class ToastStack extends React.PureComponent {
     return defaultNotificationDurationMS !== Infinity;
   }
 
-  _clearNotification(id) {
-    const {notifications, setNotifications} = this.props;
-
-    setNotifications(notifications.filter(n => n.id !== id));
-  }
-
   componentDidUpdate(prevProps) {
-    const {defaultNotificationDurationMS} = this.props;
+    const {clearNotification, defaultNotificationDurationMS} = this.props;
     const prevNotifications = prevProps.notifications || [];
     const newNotifications = this.props.notifications || [];
 
@@ -69,7 +63,7 @@ export class ToastStack extends React.PureComponent {
       const newNotification = newNotifications[newNotifications.length - 1];
       if (this._finiteDuration(newNotification)) {
         window.setTimeout(
-          () => this._clearNotification(newNotification.id),
+          () => clearNotification(newNotification.id),
           newNotification.durationMS || defaultNotificationDurationMS,
         );
       }
@@ -79,6 +73,7 @@ export class ToastStack extends React.PureComponent {
   render() {
     const {
       className,
+      clearNotification,
       notificationClassName,
       notifications,
     } = this.props;
@@ -88,7 +83,7 @@ export class ToastStack extends React.PureComponent {
         <ToastNotification
           action={n.action}
           className={notificationClassName}
-          onClose={() => this._clearNotification(n.id)}
+          onClose={() => clearNotification(n.id)}
           showCloseButton={n.showCloseButton}
           type={n.type}
         >
