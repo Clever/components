@@ -44,6 +44,12 @@ export default class ToastStackView extends React.PureComponent {
     toastType: ToastType.SUCCESS,
   };
 
+  _clearNotification = (id) => {
+    const {notifications} = this.state;
+
+    this.setState({notifications: notifications.filter(n => n.id !== id)});
+  }
+
   render() {
     const {
       durationOverride,
@@ -76,7 +82,10 @@ export default class ToastStackView extends React.PureComponent {
             <ToastStack
               className={cssClass.TOAST_STACK}
               notifications={notifications}
-              setNotifications={ns => this.setState({notifications: ns})}
+              clearNotification={
+                // Internally, `this._clearNotification` performs:
+                // this.setState({notifications: notifications.filter(n => n.id !== id)});
+                this._clearNotification}
               defaultNotificationDurationMS={5000}
             />
             <Button
@@ -184,6 +193,13 @@ export default class ToastStackView extends React.PureComponent {
             optional: true,
           },
           {
+            name: "clearNotification",
+            type: "(id: number) => void",
+            description: "A function that clears the specified notification. Important gotcha: " +
+              "This function may be run with a timer, so make sure that the function doesn't " +
+              "use references that could go stale.",
+          },
+          {
             name: "defaultNotificationDurationMS",
             type: "number",
             description: "The default duration for notifications in milliseconds. Can be set to " +
@@ -202,12 +218,6 @@ export default class ToastStackView extends React.PureComponent {
             type: "Array<Notification>",
             description: "The notifications to be rendered. See the table below for the fields " +
               "in a `Notification` object.",
-          },
-          {
-            name: "setNotifications",
-            type: "(notifications: Array<Notification>) => void",
-            description: "A function that allows the <ToastStack> to update its `notifications` " +
-              "prop.",
           },
         ]}
         className={cssClass.PROPS}
@@ -229,7 +239,7 @@ export default class ToastStackView extends React.PureComponent {
           {
             name: "content",
             type: "Node",
-            description: "The notification content",
+            description: "The notification content.",
           },
           {
             name: "durationMS",
