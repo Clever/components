@@ -195,9 +195,18 @@ export default class ToastStackView extends React.PureComponent {
           {
             name: "clearNotification",
             type: "(id: number) => void",
-            description: "A function that clears the specified notification. Important gotcha: " +
-              "This function may be run with a timer, so make sure that the function doesn't " +
-              "use references that could go stale.",
+            description: <p>
+              A function that clears the specified notification.
+              <br />
+              <b>Heavy-handed guideline</b>:
+              Do NOT inline this function! Inlining isn't inherently bad but can result in bugs if
+              not done properly.
+              <br />
+              <b>Nuanced guideline</b>:
+              Because we delay the execution of clearNotification to handle notification
+              expiration, <i>clearNotification should reference notification state as it exists at
+              function call time, not function creation time</i>.
+            </p>,
           },
           {
             name: "defaultNotificationDurationMS",
