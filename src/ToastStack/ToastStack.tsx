@@ -1,6 +1,7 @@
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
+import * as _ from "lodash";
 import {CSSTransitionGroup} from "react-transition-group";
 import {ToastNotification} from "./ToastNotification";
 
@@ -55,19 +56,23 @@ export class ToastStack extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {clearNotification, defaultNotificationDurationMS} = this.props;
     const prevNotifications = prevProps.notifications || [];
-    const newNotifications = this.props.notifications || [];
+    const currNotifications = this.props.notifications || [];
 
-    // If a notification was just added to the stack and it has a finite duration, set up a timer
-    // to clear it
-    if (prevNotifications.length < newNotifications.length) {
-      const newNotification = newNotifications[newNotifications.length - 1];
-      if (this._finiteDuration(newNotification)) {
+    const newNotificationIDs = _.difference(
+      currNotifications.map(n => n.id),
+      prevNotifications.map(n => n.id),
+    );
+
+    // If a notification was just added to the stack and has a finite duration, set up a timer to
+    // clear it
+    currNotifications.forEach(n => {
+      if (newNotificationIDs.includes(n.id) && this._finiteDuration(n)) {
         window.setTimeout(
-          () => clearNotification(newNotification.id),
-          newNotification.durationMS || defaultNotificationDurationMS,
+          () => clearNotification(n.id),
+          n.durationMS || defaultNotificationDurationMS,
         );
       }
-    }
+    });
   }
 
   render() {
