@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 
 import "./Step.less";
 import CheckMark from "./CheckMark";
-import { FlexBox } from "src/flex";
+import {FlexBox} from "../flex";
 import Exclamation from "./Exclamation";
 
 const propTypes = {
@@ -55,16 +55,16 @@ export default class Step extends React.PureComponent {
   _onClick = () => this.props.onClick(this.props.index);
 
   _iconContent = () => {
-    const {index, success, current, warning } = this.props;
+    const {index, success, current, warning} = this.props;
     const stepNumber = index + 1;
     if (current) return stepNumber.toString();
     if (success) return (<CheckMark />);
     if (warning) return (<Exclamation />);
     return stepNumber.toString();
-   }
+  }
 
   render() {
-    const {className, title, description, success, current, warning, optional, seekable } = this.props;
+    const {className, title, description, success, current, warning, optional, seekable} = this.props;
     const stepClassName = classnames(
       className,
       cssClass.CONTAINER,
