@@ -37,8 +37,8 @@ export default class ToastStackView extends React.PureComponent {
 
   state = {
     durationOverride: "No override",
-    id: 0,
     includeAction: false,
+    nextNotificationID: 0,
     notifications: [],
     showCloseButton: true,
     toastType: ToastType.SUCCESS,
@@ -53,8 +53,8 @@ export default class ToastStackView extends React.PureComponent {
   render() {
     const {
       durationOverride,
-      id,
       includeAction,
+      nextNotificationID,
       notifications,
       showCloseButton,
       toastType,
@@ -91,9 +91,8 @@ export default class ToastStackView extends React.PureComponent {
             <Button
               value="Create notification"
               onClick={() => this.setState({
-                id: id + 1,
                 notifications: [...notifications, {
-                  id,
+                  id: nextNotificationID,
                   type: toastType,
                   content: <span>Your toast is {messageMap[toastType]}</span>,
                   action: includeAction ? {
@@ -103,6 +102,7 @@ export default class ToastStackView extends React.PureComponent {
                   showCloseButton,
                   durationMS: durationOverride === "No override" ? undefined : durationOverride,
                 }],
+                nextNotificationID: nextNotificationID + 1,
               })}
             />
             {" "}
@@ -167,7 +167,7 @@ export default class ToastStackView extends React.PureComponent {
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             options={[
-              {content: "500", value: 500},
+              {content: "1000", value: 1000},
               {content: "5000", value: 5000},
               {content: "Infinity", value: Infinity},
               {content: "No override", value: "No override"},
