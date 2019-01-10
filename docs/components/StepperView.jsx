@@ -26,9 +26,6 @@ export default class StepperView extends PureComponent {
   state = {
     step1Title: "Step title",
     step1Description: "Step description",
-    step1ShowTitle: true,
-    step1ShowMessage: true,
-    step1ShowDescription: true,
     step1Success: false,
     step1Warning: false,
     step1Optional: false,
@@ -45,15 +42,12 @@ export default class StepperView extends PureComponent {
 
   render() {
     const {Col, Row} = Grid;
-    const {step1Title, step1Description, step1ShowTitle, step1ShowMessage, step1ShowDescription,
-      step1Success, step1Warning, step1Optional, seekable, sticky, currentStep} = this.state;
+    const {step1Title, step1Description, step1Success, step1Warning, step1Optional, seekable,
+      sticky, currentStep} = this.state;
     const steps = [
       {
         title: step1Title,
         description: step1Description,
-        showTitle: step1ShowTitle,
-        showMessage: step1ShowMessage,
-        showDescription: step1ShowDescription,
         success: step1Success,
         warning: step1Warning,
         optional: step1Optional,
@@ -172,8 +166,7 @@ export default class StepperView extends PureComponent {
   }
 
   _renderCheckboxes() {
-    const {seekable, sticky, step1ShowTitle, step1ShowMessage,
-      step1ShowDescription, step1Success, step1Warning, step1Optional} = this.state;
+    const {seekable, sticky, step1Success, step1Warning, step1Optional} = this.state;
 
     return (
       <div className={cssClass.CHECKBOX_GROUP}>
@@ -194,33 +187,6 @@ export default class StepperView extends PureComponent {
             onChange={e => this.setState({sticky: e.target.checked})}
           />{" "}
           sticky sidebar
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={step1ShowTitle}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({step1ShowTitle: e.target.checked})}
-          />{" "}
-          Step 1 - show title
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={step1ShowMessage}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({step1ShowMessage: e.target.checked})}
-          />{" "}
-          Step 1 - show message
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={step1ShowDescription}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({step1ShowDescription: e.target.checked})}
-          />{" "}
-          Step 1 - show description
         </label>
         <label className={cssClass.CONFIG}>
           <input
@@ -318,27 +284,6 @@ export default class StepperView extends PureComponent {
               name: "description",
               type: "String",
               description: "Description of the step",
-            },
-            {
-              name: "showTitle",
-              type: "Boolean",
-              description: "Whether or not to show the step title",
-              defaultValue: "True",
-              optional: true,
-            },
-            {
-              name: "showMessage",
-              type: "Boolean",
-              description: "Whether or not to show the step message (if it exists)",
-              defaultValue: "True",
-              optional: true,
-            },
-            {
-              name: "showDescription",
-              type: "Boolean",
-              description: "Whether or not to show the step description",
-              defaultValue: "True",
-              optional: true,
             },
             {
               name: "success",

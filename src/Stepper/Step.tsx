@@ -1,9 +1,6 @@
 import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as _ from "lodash";
-
-import {Button} from "../Button/Button";
 
 import "./Step.less";
 import CheckMark from "./CheckMark";
@@ -13,11 +10,11 @@ import Exclamation from "./Exclamation";
 const propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  description: PropTypes.oneOfType([PropTypes.node]),
   showTitle: PropTypes.bool,
   showMessage: PropTypes.bool,
   showDescription: PropTypes.bool,
-  index: PropTypes.number,
+  id: PropTypes.number,
   seekable: PropTypes.bool,
   success: PropTypes.bool,
   current: PropTypes.bool,
@@ -55,9 +52,19 @@ export default class Step extends React.PureComponent {
   static defaultProps = defaultProps;
   static cssClass = cssClass;
 
+  _onClick = () => this.props.onClick(this.props.index);
+
+  _iconContent = () => {
+    const {index, success, current, warning } = this.props;
+    const stepNumber = index + 1;
+    if (current) return stepNumber.toString();
+    if (success) return (<CheckMark />);
+    if (warning) return (<Exclamation />);
+    return stepNumber.toString();
+   }
+
   render() {
-    const {className, title, description, showTitle, showMessage, showDescription,
-      index, success, current, warning, optional, seekable, onClick} = this.props;
+    const {className, title, description, success, current, warning, optional, seekable } = this.props;
     const stepClassName = classnames(
       className,
       cssClass.CONTAINER,
@@ -66,52 +73,39 @@ export default class Step extends React.PureComponent {
       warning && cssClass.WARNING,
       seekable && cssClass.SEEKABLE,
     );
-    const stepNumber = index + 1;
 
     const listValue = (
       <div className={stepClassName}>
-        <FlexBox className={cssClass.ICON}>
-          { success && !current && <CheckMark /> }
-          { warning && !current && <Exclamation /> }
-          { current && !warning && stepNumber.toString()}
-        </FlexBox>
+        <FlexBox className={cssClass.ICON}>{this._iconContent()}</FlexBox>
         <div>
-          {showTitle && (
-            <span className={cssClass.TITLE}>
+          {title && (
+            <div className={cssClass.TITLE}>
               {title}
-            </span>
+            </div>
           )}
-          {showMessage && warning && (
-            <span className={cssClass.MESSAGE_WARNING}>
+          {warning && (
+            <div className={cssClass.MESSAGE_WARNING}>
             We ran into an error on this step
-            </span>
+            </div>
           )}
-          {showMessage && optional && (
-            <span className={cssClass.MESSAGE_OPTIONAL}>
+          {optional && (
+            <div className={cssClass.MESSAGE_OPTIONAL}>
             Optional
-            </span>
+            </div>
           )}
-          {showDescription && (
-          _.isString(description)
-            ? <p className={cssClass.DESCRIPTION}>
-              {description}
-            </p>
-            : <div className={cssClass.DESCRIPTION}>
+          {description && (
+            <div className={cssClass.DESCRIPTION}>
               {description}
             </div>
           )}
         </div>
       </div>
     );
-    return (
-      seekable
-        ? <Button
-          className={cssClass.BUTTON}
-          type="linkPlain"
-          onClick={() => onClick(index)}
-          value={listValue}
-        />
-        : listValue
-    );
+    if (seekable) {
+      return (
+        <button className={cssClass.BUTTON} onClick={this._onClick}>{listValue}</button>
+      );
+    }
+    return listValue;
   }
 }

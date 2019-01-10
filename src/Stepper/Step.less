@@ -14,39 +14,40 @@
   .padding--y--2xs;
 }
 
-.Step--button.Button {
+.Step--button {
+  .button--reset();
   .padding--none;
   text-align: left;
   .text--line-height-3;
 }
 
 .Step--title {
-  display: block;
   overflow: hidden;
   color: @neutral_gray;
   font-size: @titleFontSize;
   .text--semi-bold;
   .margin--top--2xs;
   -ms-flex: 0 1 auto;
+  transition: color @timingQuickly ease-out;
 }
 
 .Step--description {
   color: @neutral_gray;
   .text--medium;
   .text--regular;
+  transition: color @timingQuickly ease-out;
 }
 
 .Step--message--optional {
-  display: block;
   overflow: hidden;
   color: @neutral_gray;
   .text--medium;
   .text--italic;
   .margin--bottom--xs;
+  transition: color @timingQuickly ease-out;
 }
 
 .Step--message--warning {
-  display: block;
   overflow: hidden;
   color: @alert_red;
   .text--medium;
@@ -62,15 +63,13 @@
   .justifyContent(center);
   .circle(@stepIconWidth);
   background-color: @neutral_white;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
   border: @iconBorderWidth solid @neutral_gray;
   .text--medium;
   .text--regular;
   .margin--right--s;
   color: @neutral_gray;
   box-shadow: 0 0 0 @iconFocusShadowThickness transparent;
+  transition: background-color @timingQuickly ease-out, border-color @timingQuickly ease-out;
 }
 
 .Step--success {
@@ -101,13 +100,6 @@
   }
 }
 
-// .Step--success:not(.Step--current) {
-//   .Step--icon {
-//     background-image: url("../../assets/images/check.svg");
-//     background-size: @size_s;
-//   }
-// }
-
 .Stepper--CheckMark {
   width: .75em;
 }
@@ -118,12 +110,6 @@
   transform: translate(4px,-2px);
 }
 
-// .Step--warning:not(.Step--current) {
-//   .Step--icon {
-//     background-image: url("../../assets/images/exclamation.svg");
-//     background-size: @size_2xs;
-//   }
-// }
 
 .Step:focus.Step--seekable, .Step:hover.Step--seekable {
   .Step--icon {

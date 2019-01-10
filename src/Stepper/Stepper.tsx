@@ -13,9 +13,6 @@ const propTypes = {
   steps: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    showTitle: PropTypes.bool,
-    showMessage: PropTypes.bool,
-    showDescription: PropTypes.bool,
     success: PropTypes.bool,
     warning: PropTypes.bool,
     optional: PropTypes.bool,
@@ -53,9 +50,6 @@ export default class Stepper extends React.PureComponent {
                 className={className}
                 title={step.title}
                 description={step.description}
-                showTitle={step.showTitle}
-                showMessage={step.showMessage}
-                showDescription={step.showDescription}
                 index={idx}
                 success={step.success}
                 current={idx === currentStep}
