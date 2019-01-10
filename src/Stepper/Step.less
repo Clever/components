@@ -101,19 +101,29 @@
   }
 }
 
-.Step--success:not(.Step--current) {
-  .Step--icon {
-    background-image: url("../../assets/images/check.svg");
-    background-size: @size_s;
-  }
+// .Step--success:not(.Step--current) {
+//   .Step--icon {
+//     background-image: url("../../assets/images/check.svg");
+//     background-size: @size_s;
+//   }
+// }
+
+.Stepper--CheckMark {
+  width: .75em;
 }
 
-.Step--warning:not(.Step--current) {
-  .Step--icon {
-    background-image: url("../../assets/images/exclamation.svg");
-    background-size: @size_2xs;
-  }
+.Stepper--Exclamation {
+  width: .75em;
+  height: 1.2em;
+  transform: translate(4px,-2px);
 }
+
+// .Step--warning:not(.Step--current) {
+//   .Step--icon {
+//     background-image: url("../../assets/images/exclamation.svg");
+//     background-size: @size_2xs;
+//   }
+// }
 
 .Step:focus.Step--seekable, .Step:hover.Step--seekable {
   .Step--icon {

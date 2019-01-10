@@ -6,6 +6,9 @@ import * as _ from "lodash";
 import {Button} from "../Button/Button";
 
 import "./Step.less";
+import CheckMark from "./CheckMark";
+import { FlexBox } from "src/flex";
+import Exclamation from "./Exclamation";
 
 const propTypes = {
   className: PropTypes.string,
@@ -67,9 +70,11 @@ export default class Step extends React.PureComponent {
 
     const listValue = (
       <div className={stepClassName}>
-        <div className={cssClass.ICON}>
-          {stepNumber.toString()}
-        </div>
+        <FlexBox className={cssClass.ICON}>
+          { success && !current && <CheckMark /> }
+          { warning && !current && <Exclamation /> }
+          { current && !warning && stepNumber.toString()}
+        </FlexBox>
         <div>
           {showTitle && (
             <span className={cssClass.TITLE}>
