@@ -100,6 +100,69 @@
   }
 }
 
+.Step:focus {
+  .Step--icon {
+    box-shadow: 0 0 0 @iconFocusShadowThickness fade(@primary_blue_tint_2, 50%);
+  }
+}
+
+.Step:focus, .Step:hover.Step--seekable {
+  .Step--icon {
+    border: @iconBorderWidth solid @neutral_black;
+    color: @neutral_dark_gray;
+  }
+
+  .Step--description, .Step--message--optional {
+    color: @neutral_dark_gray;
+  }
+}
+
+.Step:disabled {
+  cursor: default;
+}
+
+.Step:focus.Step--warning {
+  .Step--icon {
+    background-color: @alert_red_shade_2;
+    border: @iconBorderWidth solid @alert_red_shade_2;
+  }
+}
+
+.Step:focus.Step--current {
+  .Step--icon {
+    border: @iconBorderWidth solid @primary_blue;
+    color: @neutral_white;
+  }
+}
+
+.Step:hover.Step--seekable.Step--success {
+  .Step--icon {
+    background-color: @neutral_black;
+    border: @iconBorderWidth solid @neutral_black;
+  }
+}
+
+.Step:hover.Step--seekable.Step--warning {
+  .Step--icon {
+    background-color: @alert_red_shade_2;
+    border: @iconBorderWidth solid @alert_red_shade_2;
+  }
+}
+
+.Step:hover.Step--seekable.Step--current {
+  .Step--icon {
+    background-color: @primary_blue_shade_2;
+    border: @iconBorderWidth solid @primary_blue_shade_2;
+    color: @neutral_white;
+  }
+}
+
+.Step:focus:not(.Step--current), .Step:hover.Step--seekable:not(.Step--current) {
+  .Step--title {
+    color: @primary_blue;
+  }
+}
+
 .Stepper--CheckMark {
   width: .75em;
 }
@@ -108,94 +171,4 @@
   width: .75em;
   height: 1.2em;
   transform: translate(@size_2xs,-@size_3xs);
-}
-
-
-.Step:focus.Step--seekable, .Step:hover.Step--seekable {
-  .Step--icon {
-    border: @iconBorderWidth solid @neutral_black;
-    color: @neutral_dark_gray;
-  }
-
-  .Step--description, .Step--message--optional {
-    color: @neutral_dark_gray;
-  }
-}
-
-.Step:active.Step--seekable {
-  .Step--icon {
-    background-color: @primary_blue;
-    background-image: none;
-    border: @iconBorderWidth solid @primary_blue;
-    color: @neutral_white;
-  }
-
-  .Step--title {
-    color: @neutral_dark_gray;
-  }
-
-  .Step--description, .Step--message--optional {
-    color: @neutral_dark_gray;
-  }
-}
-
-.Step:focus.Step--seekable, .Step:focus.Step--seekable.Step--success,
-.Step:focus.Step--seekable.Step--warning, .Step:focus.Step--seekable.Step--current {
-  .Step--icon {
-    box-shadow: 0 0 0 @iconFocusShadowThickness fade(@primary_blue_tint_2, 50%);
-  }
-}
-
-.Step:focus.Step--seekable.Step--success:not(:active) {
-  .Step--icon {
-    background-color: @neutral_dark_gray;
-    border: @iconBorderWidth solid @neutral_dark_gray;
-    color: transparent;
-  }
-}
-
-.Step:focus.Step--seekable.Step--warning:not(:active) {
-  .Step--icon {
-    background-color: @alert_red_shade_2;
-    border: @iconBorderWidth solid @alert_red_shade_2;
-    color: transparent;
-  }
-}
-
-.Step:focus.Step--seekable.Step--current:not(:active) {
-  .Step--icon {
-    background-color: @primary_blue;
-    border: @iconBorderWidth solid @primary_blue;
-    color: @neutral_white;
-  }
-}
-
-.Step:hover.Step--seekable.Step--success:not(:active) {
-  .Step--icon {
-    background-color: @neutral_black;
-    border: @iconBorderWidth solid @neutral_black;
-    color: transparent;
-  }
-}
-
-.Step:hover.Step--seekable.Step--warning:not(:active) {
-  .Step--icon {
-    background-color: @alert_red_shade_2;
-    border: @iconBorderWidth solid @alert_red_shade_2;
-    color: transparent;
-  }
-}
-
-.Step:hover.Step--seekable.Step--current:not(:active) {
-  .Step--icon {
-    background-color: @primary_blue_shade_2;
-    border: @iconBorderWidth solid @primary_blue_shade_2;
-    color: @neutral_white;
-  }
-}
-
-.Step:focus.Step--seekable:not(.Step--current), .Step:hover.Step--seekable:not(.Step--current) {
-  .Step--title {
-    color: @primary_blue;
-  }
 }

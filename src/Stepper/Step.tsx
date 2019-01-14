@@ -68,14 +68,20 @@ export default class Step extends React.PureComponent {
     const stepClassName = classnames(
       className,
       cssClass.CONTAINER,
+      cssClass.BUTTON,
       success && cssClass.SUCCESS,
       current && cssClass.CURRENT,
       warning && cssClass.WARNING,
       seekable && cssClass.SEEKABLE,
     );
 
-    const listValue = (
-      <div className={stepClassName}>
+    return (
+      <button
+        disabled={!seekable && !current}
+        tabIndex={seekable || current ? 0 : -1}
+        className={stepClassName}
+        onClick={this._onClick}
+      >
         <FlexBox className={cssClass.ICON}>{this._iconContent()}</FlexBox>
         <div>
           {title && (
@@ -99,13 +105,7 @@ export default class Step extends React.PureComponent {
             </div>
           )}
         </div>
-      </div>
+      </button>
     );
-    if (seekable) {
-      return (
-        <button className={cssClass.BUTTON} onClick={this._onClick}>{listValue}</button>
-      );
-    }
-    return listValue;
   }
 }
