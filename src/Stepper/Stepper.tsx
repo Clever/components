@@ -12,19 +12,18 @@ const propTypes = {
   style: PropTypes.object,
   steps: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    description: PropTypes.node,
     success: PropTypes.bool,
-    warning: PropTypes.bool,
+    warning: PropTypes.string,
     optional: PropTypes.bool,
   })).isRequired,
-  currentStep: PropTypes.number,
-  seekable: PropTypes.bool,
+  currentStep: PropTypes.string,
   stickySidebar: PropTypes.bool,
   onStepClick: PropTypes.func,
 };
 
 const defaultProps = {
-  currentStep: 0,
+  currentStep: "0",
 };
 
 const cssClass = {
@@ -39,29 +38,27 @@ export default class Stepper extends React.PureComponent {
   static cssClass = cssClass;
 
   _renderSidebar(style) {
-    const {currentStep, steps, seekable, onStepClick, className} = this.props;
+    const {currentStep, steps, onStepClick, className} = this.props;
 
     return (
-      <div style={style}>
-        <ul className={cssClass.STEPS_DISPLAY}>
-          {steps.map((step, idx) =>
-            <li key={idx}>
-              <Step
-                className={className}
-                title={step.title}
-                description={step.description}
-                index={idx}
-                success={step.success}
-                current={idx === currentStep}
-                warning={step.warning}
-                optional={step.optional}
-                seekable={seekable}
-                onClick={onStepClick}
-              />
-            </li>
-          )}
-        </ul>
-      </div>
+      <ul style={style} className={cssClass.STEPS_DISPLAY}>
+        {steps.map(step =>
+          <li key={step.id}>
+            <Step
+              className={className}
+              title={step.title}
+              description={step.description}
+              label={step.label}
+              id={step.id}
+              state={step.state}
+              current={step.id === currentStep}
+              warning={step.warning}
+              optional={step.optional}
+              onClick={onStepClick}
+            />
+          </li>
+        )}
+      </ul>
     );
   }
 

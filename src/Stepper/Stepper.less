@@ -12,13 +12,12 @@
 }
 
 .Stepper--stepsDisplay {
-  list-style-type: none;
+  .list-reset;
   .padding--none;
 
   li {
-    &:not(:last-child)::after {
-      display: block;
-      height: @size_l;
+    &:not(:last-child) {
+      margin-bottom: @size_l;
     }
   }
 }

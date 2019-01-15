@@ -10,15 +10,12 @@ import Exclamation from "./Exclamation";
 const propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
-  description: PropTypes.oneOfType([PropTypes.node]),
-  showTitle: PropTypes.bool,
-  showMessage: PropTypes.bool,
-  showDescription: PropTypes.bool,
-  id: PropTypes.number,
-  seekable: PropTypes.bool,
-  success: PropTypes.bool,
+  description: PropTypes.node,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  label: PropTypes.string,
+  warning: PropTypes.string,
+  state: PropTypes.oneOf(["INCOMPLETE", "SUCCESS", "WARNING"]),
   current: PropTypes.bool,
-  warning: PropTypes.bool,
   optional: PropTypes.bool,
   onClick: PropTypes.func,
 };
@@ -38,9 +35,8 @@ const cssClass = {
 };
 
 const defaultProps = {
-  showTitle: true,
-  showMessage: true,
-  showDescription: true,
+  state: "INCOMPLETE",
+  warning: "We ran into an error on this step",
 };
 
 /**
@@ -49,49 +45,47 @@ const defaultProps = {
  */
 export default class Step extends React.PureComponent {
   static propTypes = propTypes;
-  static defaultProps = defaultProps;
   static cssClass = cssClass;
+  static defaultProps = defaultProps;
 
-  _onClick = () => this.props.onClick(this.props.index);
+  _onClick = () => this.props.onClick(this.props.id);
 
   _iconContent = () => {
-    const {index, success, current, warning} = this.props;
-    const stepNumber = index + 1;
-    if (current) return stepNumber.toString();
-    if (success) return (<CheckMark />);
-    if (warning) return (<Exclamation />);
-    return stepNumber.toString();
+    const {label, current, state} = this.props;
+    const iconMap = {
+      SUCCESS:  (<CheckMark />),
+      WARNING: (<Exclamation />),
+      INCOMPLETE: label,
+    };
+    if (current) {
+      return label;
+    }
+    return iconMap[state];
   }
 
   render() {
-    const {className, title, description, success, current, warning, optional, seekable} = this.props;
+    const {className, title, description, state, current, warning, optional, onClick} = this.props;
     const stepClassName = classnames(
       className,
       cssClass.CONTAINER,
       cssClass.BUTTON,
-      success && cssClass.SUCCESS,
+      state === "SUCCESS" && cssClass.SUCCESS,
       current && cssClass.CURRENT,
-      warning && cssClass.WARNING,
-      seekable && cssClass.SEEKABLE,
+      state === "WARNING" && cssClass.WARNING,
+      onClick && cssClass.SEEKABLE,
     );
 
-    return (
-      <button
-        disabled={!seekable && !current}
-        tabIndex={seekable || current ? 0 : -1}
-        className={stepClassName}
-        onClick={this._onClick}
-      >
-        <FlexBox className={cssClass.ICON}>{this._iconContent()}</FlexBox>
-        <div>
+    const icon = (<FlexBox className={cssClass.ICON}>{this._iconContent()}</FlexBox>);
+    const content = (
+      <div>
           {title && (
             <div className={cssClass.TITLE}>
               {title}
             </div>
           )}
-          {warning && (
+          {state === "WARNING" && (
             <div className={cssClass.MESSAGE_WARNING}>
-            We ran into an error on this step
+              {warning}
             </div>
           )}
           {optional && (
@@ -105,7 +99,25 @@ export default class Step extends React.PureComponent {
             </div>
           )}
         </div>
-      </button>
+    );
+
+    if (onClick) {
+      return (
+      <button
+        tabIndex={0}
+        className={classnames(stepClassName, cssClass.BUTTON)}
+        onClick={this._onClick}
+      >
+        {icon}
+        {content}
+      </button>);
+    }
+
+    return (
+      <div className={stepClassName}>
+        {icon}
+        {content}
+      </div>
     );
   }
 }

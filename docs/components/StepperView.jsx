@@ -26,50 +26,61 @@ export default class StepperView extends PureComponent {
   state = {
     step1Title: "Step title",
     step1Description: "Step description",
-    step1Success: false,
-    step1Warning: false,
+    step1State: "INCOMPLETE",
     step1Optional: false,
     seekable: true,
     sticky: false,
-    currentStep: 2,
+    currentStep: "step3",
   };
 
-  jumpToStep(idx) {
+  jumpToStep(id) {
     this.setState({
-      currentStep: idx,
+      currentStep: id,
     });
   }
 
   render() {
     const {Col, Row} = Grid;
-    const {step1Title, step1Description, step1Success, step1Warning, step1Optional, seekable,
+    const {step1Title, step1Description, step1State, step1Optional, seekable,
       sticky, currentStep} = this.state;
     const steps = [
       {
         title: step1Title,
         description: step1Description,
-        success: step1Success,
-        warning: step1Warning,
+        state: step1State,
         optional: step1Optional,
+        id: "step1",
+        label: "1",
       },
       {
         title: "Add applications",
         description: "Select all the apps your district uses so students and teachers have secure single sign-on access",
-        success: true,
+        state: "SUCCESS",
+        id: "step2",
+        label: "2",
       },
       {
         title: "Configure applications",
         description: "Select when your application should launch and who should have access to them",
+        id: "step3",
+        state: "INCOMPLETE",
+        label: "3",
       },
       {
         title: "Get the most out of your investments",
         description: "Learn more about using your edtech investments in the most effective way",
-        warning: true,
+        state: "WARNING",
+        warning: "This step needs attention",
+        id: "step4",
+        label: "4",
       },
       {
         title: "Complete remaining semester rollover actions",
         description: "Complete our checklist to ensure students and teachers have a smooth transition after the holiday season",
         optional: true,
+        state: "INCOMPLETE",
+        id: "step5",
+        label: "5",
       },
     ];
 
@@ -106,8 +117,7 @@ export default class StepperView extends PureComponent {
                     currentStep={currentStep}
                     stickySidebar={sticky}
                     steps={steps}
-                    seekable={seekable}
-                    onStepClick={(id) => this.jumpToStep(id)}
+                    onStepClick={seekable ? (id) => this.jumpToStep(id) : null }
                   />
                 </Col>
                 <Col span={8}>
@@ -166,7 +176,7 @@ export default class StepperView extends PureComponent {
   }
 
   _renderCheckboxes() {
-    const {seekable, sticky, step1Success, step1Warning, step1Optional} = this.state;
+    const {seekable, sticky, step1State, step1Optional} = this.state;
 
     return (
       <div className={cssClass.CHECKBOX_GROUP}>
@@ -191,18 +201,27 @@ export default class StepperView extends PureComponent {
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={step1Success}
+            checked={step1State === "INCOMPLETE"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({step1Success: e.target.checked})}
+            onChange={() => this.setState({step1State: "INCOMPLETE"})}
+          />{" "}
+          Step 1 - incomplete
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={step1State === "SUCCESS"}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={() => this.setState({step1State: "SUCCESS"})}
           />{" "}
           Step 1 - success
         </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={step1Warning}
+            checked={step1State === "WARNING"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({step1Warning: e.target.checked})}
+            onChange={() => this.setState({step1State: "WARNING"})}
           />{" "}
           Step 1 - warning
         </label>
@@ -237,8 +256,8 @@ export default class StepperView extends PureComponent {
             },
             {
               name: "currentStep",
-              type: "Number",
-              description: "The index of the current step",
+              type: "Number or String",
+              description: "The id of the current step",
               defaultValue: 0,
               optional: true,
             },
@@ -286,17 +305,17 @@ export default class StepperView extends PureComponent {
               description: "Description of the step",
             },
             {
-              name: "success",
-              type: "Boolean",
-              description: "Whether or not the step has been completed",
-              defaultValue: "False",
-              optional: true,
+              name: "state",
+              type: "enum",
+              description: "One of INCOMPLETE, SUCCESS, WARNING",
+              defaultValue: "INCOMPLETE",
+              optional: false,
             },
             {
               name: "warning",
-              type: "Boolean",
-              description: "Whether or not the step should show a warning",
-              defaultValue: "False",
+              type: "string",
+              description: "warning text",
+              defaultValue: "We ran into an error on this step",
               optional: true,
             },
             {

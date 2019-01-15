@@ -99,6 +99,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/rich-text", "RichText")}
           {this._renderLink("/components/segmented-control", "SegmentedControl")}
           {this._renderLink("/components/select", "Select")}
+          {this._renderLink("/components/stepper", "Stepper")}
           {this._renderLink("/components/switch", "Switch")}
           {this._renderLink("/components/tab-bar", "TabBar")}
           {this._renderLink("/components/table", "Table")}
@@ -109,7 +110,6 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/top-bar", "TopBar")}
           {this._renderLink("/components/with-keyboard-nav", "WithKeyboardNav")}
           {this._renderLink("/components/wizard", "Wizard")}
-          {this._renderLink("/components/wizard-stepper", "Stepper")}
         </NavGroup>
         <NavGroup id="less" label="LESS" icon={faIcon("css3")}>
           {this._renderLink("/less/less-style-guide", "Style Guide")}
