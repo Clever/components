@@ -1,7 +1,6 @@
-import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import {Sticky, StickyContainer} from "react-sticky";
+
 
 import Step from "./Step";
 
@@ -18,7 +17,6 @@ const propTypes = {
     optional: PropTypes.bool,
   })).isRequired,
   currentStep: PropTypes.string,
-  stickySidebar: PropTypes.bool,
   onStepClick: PropTypes.func,
 };
 
@@ -27,8 +25,6 @@ const defaultProps = {
 };
 
 const cssClass = {
-  CONTAINER: "Stepper",
-  SIDEBAR: "Stepper--sidebar",
   STEPS_DISPLAY: "Stepper--stepsDisplay",
 };
 
@@ -37,8 +33,8 @@ export default class Stepper extends React.PureComponent {
   static defaultProps = defaultProps;
   static cssClass = cssClass;
 
-  _renderSidebar(style) {
-    const {currentStep, steps, onStepClick, className} = this.props;
+  render() {
+    const {currentStep, style, steps, onStepClick, className} = this.props;
 
     return (
       <ul style={style} className={cssClass.STEPS_DISPLAY}>
@@ -59,21 +55,6 @@ export default class Stepper extends React.PureComponent {
           </li>
         )}
       </ul>
-    );
-  }
-
-  render() {
-    const {className, style, stickySidebar} = this.props;
-
-    return (
-      <StickyContainer className={classnames(cssClass.CONTAINER, className)} style={style}>
-        <div className={cssClass.SIDEBAR}>
-          {!stickySidebar ? this._renderSidebar(style) :
-            <Sticky topOffset={24}>
-              {({style: sidebarStyle}) => this._renderSidebar(sidebarStyle)}
-            </Sticky>}
-        </div>
-      </StickyContainer>
     );
   }
 }
