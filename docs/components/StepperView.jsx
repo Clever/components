@@ -3,7 +3,7 @@ import React, {PureComponent} from "react";
 import Example, {CodeSample, ExampleCode} from "./Example";
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
-import {Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea} from "src";
+import {Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea, sidebar} from "src";
 
 import "./StepperView.less";
 
@@ -84,6 +84,13 @@ export default class StepperView extends PureComponent {
       },
     ];
 
+    const StickyStepper = sidebar(sticky, <Stepper
+      className="ExampleStepper"
+      currentStep={currentStep}
+      steps={steps}
+      onStepClick={seekable ? (id) => this.jumpToStep(id) : null }
+    />);
+
     return (
       <View className={cssClass.CONTAINER} title="Stepper" sourcePath="src/Stepper/Stepper.tsx">
         <header className={cssClass.INTRO}>
@@ -112,13 +119,7 @@ export default class StepperView extends PureComponent {
             <Grid>
               <Row grow>
                 <Col span={4}>
-                  <Stepper
-                    className="ExampleStepper"
-                    currentStep={currentStep}
-                    stickySidebar={sticky}
-                    steps={steps}
-                    onStepClick={seekable ? (id) => this.jumpToStep(id) : null }
-                  />
+                  <StickyStepper />
                 </Col>
                 <Col span={8}>
                   <span className={cssClass.TITLE}>
