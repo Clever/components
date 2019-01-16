@@ -99,6 +99,3 @@ export {Switch};
 
 import Stepper from "./Stepper";
 export {Stepper};
-
-import sidebar from "./Sidebar";
-export {sidebar};
