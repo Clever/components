@@ -12,7 +12,7 @@ const propTypes = {
   title: PropTypes.string,
   description: PropTypes.node,
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  label: PropTypes.string,
+  label: PropTypes.number,
   warning: PropTypes.string,
   state: PropTypes.oneOf(["INCOMPLETE", "SUCCESS", "WARNING"]),
   current: PropTypes.bool,
@@ -22,7 +22,6 @@ const propTypes = {
 
 const cssClass = {
   CURRENT: "Step--current",
-  BUTTON: "Step--button",
   CONTAINER: "Step",
   DESCRIPTION: "Step--description",
   ICON: "Step--icon",
@@ -36,7 +35,6 @@ const cssClass = {
 
 const defaultProps = {
   state: "INCOMPLETE",
-  warning: "We ran into an error on this step",
 };
 
 /**
@@ -53,7 +51,7 @@ export default class Step extends React.PureComponent {
   _iconContent = () => {
     const {label, current, state} = this.props;
     const iconMap = {
-      SUCCESS:  (<CheckMark />),
+      SUCCESS: (<CheckMark />),
       WARNING: (<Exclamation />),
       INCOMPLETE: label,
     };
@@ -68,7 +66,6 @@ export default class Step extends React.PureComponent {
     const stepClassName = classnames(
       className,
       cssClass.CONTAINER,
-      cssClass.BUTTON,
       state === "SUCCESS" && cssClass.SUCCESS,
       current && cssClass.CURRENT,
       state === "WARNING" && cssClass.WARNING,
@@ -78,39 +75,38 @@ export default class Step extends React.PureComponent {
     const icon = (<FlexBox className={cssClass.ICON}>{this._iconContent()}</FlexBox>);
     const content = (
       <div>
-          {title && (
-            <div className={cssClass.TITLE}>
-              {title}
-            </div>
-          )}
-          {state === "WARNING" && (
-            <div className={cssClass.MESSAGE_WARNING}>
-              {warning}
-            </div>
-          )}
-          {optional && (
-            <div className={cssClass.MESSAGE_OPTIONAL}>
+        {title && (
+          <div className={cssClass.TITLE}>
+            {title}
+          </div>
+        )}
+        {warning && (
+          <div className={cssClass.MESSAGE_WARNING}>
+            {warning}
+          </div>
+        )}
+        {optional && (
+          <div className={cssClass.MESSAGE_OPTIONAL}>
             Optional
             </div>
-          )}
-          {description && (
-            <div className={cssClass.DESCRIPTION}>
-              {description}
-            </div>
-          )}
-        </div>
+        )}
+        {description && (
+          <div className={cssClass.DESCRIPTION}>
+            {description}
+          </div>
+        )}
+      </div>
     );
 
     if (onClick) {
       return (
-      <button
-        tabIndex={0}
-        className={classnames(stepClassName, cssClass.BUTTON)}
-        onClick={this._onClick}
-      >
-        {icon}
-        {content}
-      </button>);
+        <button
+          className={classnames(stepClassName)}
+          onClick={this._onClick}
+        >
+          {icon}
+          {content}
+        </button>);
     }
 
     return (

@@ -3,7 +3,7 @@ import React, {PureComponent} from "react";
 import Example, {CodeSample, ExampleCode} from "./Example";
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
-import {Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea, sidebar} from "src";
+import {Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea} from "src";
 
 import "./StepperView.less";
 
@@ -30,25 +30,26 @@ export default class StepperView extends PureComponent {
     step1Optional: false,
     seekable: true,
     sticky: false,
-    currentStep: "step3",
+    currentStepID: "step3",
   };
 
   jumpToStep(id) {
     this.setState({
-      currentStep: id,
+      currentStepID: id,
     });
   }
 
   render() {
     const {Col, Row} = Grid;
-    const {step1Title, step1Description, step1State, step1Optional, seekable,
-      sticky, currentStep} = this.state;
+    const {step1Title, step1Description, step1State, step1Warning, step1Optional, seekable,
+      sticky, currentStepID} = this.state;
     const steps = [
       {
         title: step1Title,
         description: step1Description,
         state: step1State,
         optional: step1Optional,
+        warning: step1Warning,
         id: "step1",
         label: "1",
       },
@@ -84,13 +85,6 @@ export default class StepperView extends PureComponent {
       },
     ];
 
-    const StickyStepper = sidebar(sticky, <Stepper
-      className="ExampleStepper"
-      currentStep={currentStep}
-      steps={steps}
-      onStepClick={seekable ? (id) => this.jumpToStep(id) : null }
-    />);
-
     return (
       <View className={cssClass.CONTAINER} title="Stepper" sourcePath="src/Stepper/Stepper.tsx">
         <header className={cssClass.INTRO}>
@@ -119,11 +113,17 @@ export default class StepperView extends PureComponent {
             <Grid>
               <Row grow>
                 <Col span={4}>
-                  <StickyStepper />
+                <Stepper
+                  className="ExampleStepper"
+                  currentStepID={currentStepID}
+                  steps={steps}
+                  sticky={sticky}
+                  onStepClick={seekable ? (id) => this.jumpToStep(id) : null }
+                />
                 </Col>
                 <Col span={8}>
                   <span className={cssClass.TITLE}>
-                    Current Step: {steps[currentStep] && steps[currentStep].title}
+                    Current Step: {steps.find(s => s.id === currentStepID) && steps.find(s => s.id === currentStepID).title}
                   </span>
                   {this._renderConfig()}
                 </Col>
@@ -204,7 +204,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1State === "INCOMPLETE"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={() => this.setState({step1State: "INCOMPLETE"})}
+            onChange={() => this.setState({step1State: "INCOMPLETE", step1Warning: null})}
           />{" "}
           Step 1 - incomplete
         </label>
@@ -213,7 +213,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1State === "SUCCESS"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={() => this.setState({step1State: "SUCCESS"})}
+            onChange={() => this.setState({step1State: "SUCCESS", step1Warning: null})}
           />{" "}
           Step 1 - success
         </label>
@@ -222,7 +222,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1State === "WARNING"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={() => this.setState({step1State: "WARNING"})}
+            onChange={() => this.setState({step1State: "WARNING", step1Warning: "something went wrong"})}
           />{" "}
           Step 1 - warning
         </label>
@@ -256,27 +256,14 @@ export default class StepperView extends PureComponent {
               optional: true,
             },
             {
-              name: "currentStep",
-              type: "Number or String",
+              name: "currentStepID",
+              type: "String",
               description: "The id of the current step",
               defaultValue: 0,
               optional: true,
             },
             {
-              name: "seekable",
-              type: "Boolean",
-              description: "Whether or not you can skip to other steps before completing the current one",
-              defaultValue: "False",
-              optional: true,
-            },
-            {
-              name: "style",
-              type: "Object",
-              description: "Add custom styles to the stepper",
-              optional: true,
-            },
-            {
-              name: "stickySidebar",
+              name: "sticky",
               type: "boolean",
               description: "Whether the sidebar should be fixed vertically",
               defaultValue: "false",

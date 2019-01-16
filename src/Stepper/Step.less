@@ -12,13 +12,13 @@
   .padding--y--2xs;
   .text--medium;
   .text--regular;
-}
-
-.Step--button {
-  .button--reset();
   .padding--none;
   text-align: left;
   .text--line-height-3;
+}
+
+button.Step {
+  .button--reset();
 }
 
 .Step--title {
@@ -97,7 +97,7 @@
   }
 }
 
-.Step:focus, .Step:hover.Step--seekable {
+.Step:focus, .Step--seekable:hover {
   .Step--icon {
     .border--s(@neutral_black);
     color: @neutral_dark_gray;
@@ -108,45 +108,45 @@
   }
 }
 
-.Step:not(.Step--current):not(.Step--seekable) {
+.Step:disabled {
   cursor: not-allowed;
 }
 
-.Step:focus.Step--warning {
+.Step--warning:focus {
   .Step--icon {
     background-color: @alert_red_shade_2;
     .border--s(@alert_red_shade_2);
   }
 }
 
-.Step.Step--current.Step--warning {
+.Step--current.Step--warning {
   .Step--icon {
     background-color: @primary_blue;
   }
 }
 
-.Step:focus.Step--current {
+.Step--current:focus {
   .Step--icon {
     .border--s(@primary_blue);
     color: @neutral_white;
   }
 }
 
-.Step:hover.Step--seekable.Step--success {
+.Step--seekable.Step--success:hover {
   .Step--icon {
     background-color: @neutral_black;
     .border--s(@neutral_black);
   }
 }
 
-.Step:hover.Step--seekable.Step--warning {
+.Step--seekable.Step--warning:hover {
   .Step--icon {
     background-color: @alert_red_shade_2;
     .border--s(@alert_red_shade_2);
   }
 }
 
-.Step:hover.Step--seekable.Step--current {
+.Step--seekable.Step--current:hover {
   .Step--icon {
     background-color: @primary_blue_shade_2;
     .border--s(@primary_blue_shade_2);

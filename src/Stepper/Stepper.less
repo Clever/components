@@ -1,6 +1,15 @@
 @import "../less/fonts.less";
 @import (reference) "../less/index";
 
+.Stepper--stickyContainer {
+  .flexbox();
+}
+
+.Stepper--stickyContent {
+  .flex(0, 1, 18rem);
+  max-width: 18rem;
+}
+
 .Stepper--stepsDisplay {
   .list-reset;
   .padding--l;
