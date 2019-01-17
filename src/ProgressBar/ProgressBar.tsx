@@ -74,6 +74,7 @@ export default class ProgressBar extends React.PureComponent {
         className={classnames(
           cssClass.CONTAINER,
           inactive && cssClass.INACTIVE,
+          className,
         )}
       >
         <FlexBox
@@ -91,7 +92,6 @@ export default class ProgressBar extends React.PureComponent {
               className={classnames(
                 cssClass.BAR_CONTAINER,
                 cssClass.containerSize(size),
-                className,
               )}
               style={{
                 ...style,
