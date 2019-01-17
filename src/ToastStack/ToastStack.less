@@ -1,0 +1,43 @@
+@import (reference) "../less/utilities";
+
+.ToastStack {
+  .zIndex--9;
+  max-width: 40rem;
+  position: fixed;
+  width: 100%;
+}
+
+.ToastStack--notificationWrapper {
+  .margin--bottom--xs;
+  .margin--x--xs;
+  // We need to set an explicit initial value for the leave animation to work properly. No
+  // notifications should actually hit this limit.
+  max-height: 10rem;
+}
+
+// BEGIN react-transition-group styles
+
+.ToastStack--animation-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.ToastStack--animation-enter.ToastStack--animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all @timingPromptly ease-out;
+}
+
+.ToastStack--animation-leave.ToastStack--animation-leave-active {
+  opacity: 0;
+  transform: translateY(-100%);
+  margin-bottom: 0;
+  max-height: 0;
+  transition:
+    opacity @timingPromptly ease-out,
+    transform @timingPromptly ease-out,
+    margin-bottom @timingPromptly ease-out @timingPromptly,
+    max-height @timingPromptly ease-out @timingPromptly;
+}
+
+// END react-transition-group styles

@@ -50,6 +50,7 @@ import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
+import ToastStackView from "./components/ToastStackView";
 import TextTruncateView from "./components/TextTruncateView";
 import TooltipView from "./components/TooltipView";
 import TopBarView from "./components/TopBarView";
@@ -114,6 +115,7 @@ render((
         <Route path="text-area(/*)" component={TextAreaView} />
         <Route path="text-input(/*)" component={TextInputView} />
         <Route path="text-truncate(/*)" component={TextTruncateView} />
+        <Route path="toast-stack(/*)" component={ToastStackView} />
         <Route path="tooltip" component={TooltipView} />
         <Route path="top-bar(/*)" component={TopBarView} />
         <Route path="with-keyboard-nav(/*)" component={WithKeyboardNavView} />
