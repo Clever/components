@@ -1,0 +1,115 @@
+@import (reference) "../less/index";
+
+// Copied from Bootstrap, slightly modified
+.popover{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1060;
+  display:none;
+  max-width:276px;
+  background-color:@neutral_white;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+  border:1px solid #ccc;
+  border:1px solid @neutral_silver;
+  border-radius: @size_3xs;
+  -webkit-box-shadow:0 4px 6px @neutral_silver;
+  box-shadow:0 2px 2px @neutral_silver;
+  line-break:auto
+}
+.popover.top{
+  margin-top:-10px
+}
+.popover.right{
+  margin-left:10px
+}
+.popover.bottom{
+  margin-top:10px
+}
+.popover.left{
+  margin-left:-10px
+}
+.popover-title{
+  padding:8px 14px;
+  margin:0;
+  font-size:14px;
+  background-color:#f7f7f7;
+  border-bottom:1px solid #ebebeb;
+  border-radius:@size_3xs @size_3xs 0 0
+}
+.popover-content{
+  padding:9px 14px
+}
+.popover>.arrow,.popover>.arrow:after{
+  position:absolute;
+  display:block;
+  width:0;
+  height:0;
+  border-color:transparent;
+  border-style:solid
+}
+.popover>.arrow{
+  border-width:11px
+}
+.popover>.arrow:after{
+  content:"";
+  border-width:10px
+}
+.popover.top>.arrow{
+  bottom:-11px;
+  left:50%;
+  margin-left:-11px;
+  border-top-color:@neutral_gray;
+  border-top-color:@neutral_silver;
+  border-bottom-width:0
+}
+.popover.top>.arrow:after{
+  bottom:1px;
+  margin-left:-10px;
+  content:" ";
+  border-top-color:@neutral_white;
+  border-bottom-width:0
+}
+.popover.right>.arrow{
+  top:50%;
+  left:-11px;
+  margin-top:-11px;
+  border-right-color:@neutral_silver;
+  border-left-width:0
+}
+.popover.right>.arrow:after{
+  bottom:-10px;
+  left:1px;
+  content:" ";
+  border-right-color:@neutral_white;
+  border-left-width:0
+}
+.popover.bottom>.arrow{
+  top:-11px;
+  left:50%;
+  margin-left:-11px;
+  border-top-width:0;
+  border-bottom-color:@neutral_silver;
+}
+.popover.bottom>.arrow:after{
+  top:1px;
+  margin-left:-10px;
+  content:" ";
+  border-top-width:0;
+  border-bottom-color:@neutral_white
+}
+.popover.left>.arrow{
+  top:50%;
+  right:-11px;
+  margin-top:-11px;
+  border-right-width:0;
+  border-left-color:@neutral_silver
+}
+.popover.left>.arrow:after{
+  right:1px;
+  bottom:-10px;
+  content:" ";
+  border-right-width:0;
+  border-left-color:@neutral_white
+}

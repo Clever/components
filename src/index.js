@@ -101,3 +101,6 @@ export {ProgressBar};
 
 import {ToastStack, ToastType} from "./ToastStack";
 export {ToastStack, ToastType};
+
+import Popover from "./Popover";
+export {Popover};

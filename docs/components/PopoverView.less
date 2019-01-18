@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.PopoverView--intro {
+  .margin--bottom--xl;
+}
+
+.PopoverView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.PopoverView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.PopoverView--config {
+  cursor: pointer;
+}
+
+.PopoverView--configOptions {
+  .margin--top--xl;
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.PopoverView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.PopoverView--props {
+  .margin--top--l;
+}

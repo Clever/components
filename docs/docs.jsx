@@ -38,6 +38,7 @@ import ModalView from "./components/ModalView";
 import MultiplePanelModalsView from "./components/MultiplePanelModalsView";
 import NumberView from "./components/NumberView";
 import PageLayoutView from "./components/PageLayoutView";
+import PopoverView from "./components/PopoverView";
 import ProgressBarView from "./components/ProgressBarView";
 import RadioGroupView from "./components/RadioGroupView";
 import RichTextView from "./components/RichTextView";
@@ -50,8 +51,8 @@ import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
-import ToastStackView from "./components/ToastStackView";
 import TextTruncateView from "./components/TextTruncateView";
+import ToastStackView from "./components/ToastStackView";
 import TooltipView from "./components/TooltipView";
 import TopBarView from "./components/TopBarView";
 import TypographyView from "./components/TypographyView";
@@ -104,6 +105,7 @@ render((
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="multiple-panel-modals(/*)" component={MultiplePanelModalsView} />
         <Route path="number(/*)" component={NumberView} />
+        <Route path="popover(/*)" component={PopoverView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
         <Route path="radio-group(/*)" component={RadioGroupView} />
         <Route path="rich-text(/*)" component={RichTextView} />
