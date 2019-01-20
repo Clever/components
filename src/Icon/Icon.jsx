@@ -68,6 +68,7 @@ Icon.names = {
   PLAY_BUTTON:        "play",
   PORTAL_OPEN:        "portal-open",
   PRESENT_GIFT:       "present-gift",
+  PRESENT_GIFT_DARK:  "present-gift-dark",
   PRESENTATION:       "presentation",
   PRINTER:            "printer",
   QR:                 "qr",

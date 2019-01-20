@@ -41,6 +41,7 @@ import Pickax from "./Pickax";
 import Play from "./Play";
 import PortalOpen from "./PortalOpen";
 import PresentGift from "./PresentGift";
+import PresentGiftDark from "./PresentGiftDark";
 import Presentation from "./Presentation";
 import Printer from "./Printer";
 import QR from "./QR";
@@ -110,6 +111,7 @@ export default {
   play: Play,
   "portal-open": PortalOpen,
   "present-gift": PresentGift,
+  "present-gift-dark": PresentGiftDark,
   presentation: Presentation,
   printer: Printer,
   qr: QR,
