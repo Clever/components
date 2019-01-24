@@ -99,6 +99,10 @@
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"
   },
+  "peer-dependencies": {
+    "react": ">=16.0.0 <17.0.0",
+    "react-dom": ">=16.0.0 <17.0.0"
+  },
   "scripts": {
     "dev-server": "node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 5010 --content-base docs/ --inline --watch"
   }
