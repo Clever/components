@@ -4,6 +4,8 @@ import Example, {CodeSample, ExampleCode} from "./Example";
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
 import {Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea} from "src";
+import {Sticky, StickyContainer} from "react-sticky";
+import classnames from "classnames";
 
 import "./StepperView.less";
 
@@ -18,6 +20,8 @@ const cssClass = {
   INTRO: "StepperView--intro",
   PROPS: "StepperView--props",
   TITLE: "StepperView--title",
+  STICKY_CONTAINER: "StepperView--stickyContainer",
+  STICKY_CONTENT: "StepperView--stickyContent",
 };
 
 export default class StepperView extends PureComponent {
@@ -85,6 +89,15 @@ export default class StepperView extends PureComponent {
       },
     ];
 
+    const sidebar = style => <Stepper
+      style={style}
+      className="ExampleStepper"
+      currentStepID={currentStepID}
+      steps={steps}
+      sticky={sticky}
+      onStepClick={seekable ? (id) => this.jumpToStep(id) : null}
+    />;
+
     return (
       <View className={cssClass.CONTAINER} title="Stepper" sourcePath="src/Stepper/Stepper.tsx">
         <header className={cssClass.INTRO}>
@@ -113,13 +126,14 @@ export default class StepperView extends PureComponent {
             <Grid>
               <Row grow>
                 <Col span={4}>
-                <Stepper
-                  className="ExampleStepper"
-                  currentStepID={currentStepID}
-                  steps={steps}
-                  sticky={sticky}
-                  onStepClick={seekable ? (id) => this.jumpToStep(id) : null }
-                />
+                <StickyContainer className={classnames(cssClass.STICKY_CONTAINER)}>
+                  <div className={cssClass.STICKY_CONTENT}>
+                    {!sticky ? sidebar(null) :
+                      <Sticky>
+                        {({style}) => sidebar(style)}
+                      </Sticky>}
+                  </div>
+                </StickyContainer>
                 </Col>
                 <Col span={8}>
                   <span className={cssClass.TITLE}>
