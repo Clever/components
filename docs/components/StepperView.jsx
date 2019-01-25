@@ -4,8 +4,6 @@ import Example, {CodeSample, ExampleCode} from "./Example";
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
 import {Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea} from "src";
-import {Sticky, StickyContainer} from "react-sticky";
-import classnames from "classnames";
 
 import "./StepperView.less";
 
@@ -20,8 +18,6 @@ const cssClass = {
   INTRO: "StepperView--intro",
   PROPS: "StepperView--props",
   TITLE: "StepperView--title",
-  STICKY_CONTAINER: "StepperView--stickyContainer",
-  STICKY_CONTENT: "StepperView--stickyContent",
 };
 
 export default class StepperView extends PureComponent {
@@ -33,7 +29,6 @@ export default class StepperView extends PureComponent {
     step1State: "INCOMPLETE",
     step1Optional: false,
     seekable: true,
-    sticky: false,
     currentStepID: "step3",
   };
 
@@ -44,9 +39,9 @@ export default class StepperView extends PureComponent {
   }
 
   render() {
-    const {Col, Row} = Grid;
+    const {Col} = Grid;
     const {step1Title, step1Description, step1State, step1Warning, step1Optional, seekable,
-      sticky, currentStepID} = this.state;
+      currentStepID} = this.state;
     const steps = [
       {
         title: step1Title,
@@ -89,15 +84,6 @@ export default class StepperView extends PureComponent {
       },
     ];
 
-    const sidebar = style => <Stepper
-      style={style}
-      className="ExampleStepper"
-      currentStepID={currentStepID}
-      steps={steps}
-      sticky={sticky}
-      onStepClick={seekable ? (id) => this.jumpToStep(id) : null}
-    />;
-
     return (
       <View className={cssClass.CONTAINER} title="Stepper" sourcePath="src/Stepper/Stepper.tsx">
         <header className={cssClass.INTRO}>
@@ -123,75 +109,67 @@ export default class StepperView extends PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <Grid>
-              <Row grow>
-                <Col span={4}>
-                <StickyContainer className={classnames(cssClass.STICKY_CONTAINER)}>
-                  <div className={cssClass.STICKY_CONTENT}>
-                    {!sticky ? sidebar(null) :
-                      <Sticky>
-                        {({style}) => sidebar(style)}
-                      </Sticky>}
-                  </div>
-                </StickyContainer>
-                </Col>
-                <Col span={8}>
-                  <span className={cssClass.TITLE}>
-                    Current Step: {steps.find(s => s.id === currentStepID) && steps.find(s => s.id === currentStepID).title}
-                  </span>
-                  {this._renderConfig()}
-                </Col>
-              </Row>
-            </Grid>
+            <FlexBox>
+              <Col span={4}>
+                <Stepper
+                  className="ExampleStepper"
+                  currentStepID={currentStepID}
+                  steps={steps}
+                  onStepClick={seekable ? (id) => this.jumpToStep(id) : null}
+                />
+              </Col>
+              <Col span={8}>
+                <span className={cssClass.TITLE}>
+                  Current Step: {steps.find(s => s.id === currentStepID) && steps.find(s => s.id === currentStepID).title}
+                </span>
+              </Col>
+            </FlexBox>
           </ExampleCode>
         </Example>
+        {this._renderConfig()}
         {this._renderProps()}
       </View>
     );
   }
 
   _renderConfig() {
-    const {Col, Row} = Grid;
+    const {Col} = Grid;
     const {step1Title, step1Description} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
-        <Grid>
-          <Row grow>
-            <Col span={6}>
-              <div className={cssClass.CONFIG}>
-                <TextInput
-                  className={cssClass.CONFIG_OPTIONS}
-                  onChange={e => this.setState({step1Title: e.target.value})}
-                  label="Step 1 Title"
-                  name="StepperView--title"
-                  placeholder="Step 1 Title"
-                  value={step1Title}
-                />
-              </div>
-              <div className={cssClass.CONFIG}>
-                <TextArea
-                  className={cssClass.CONFIG_OPTIONS}
-                  onChange={e => this.setState({step1Description: e.target.value})}
-                  label="Step 1 Description"
-                  name="StepperView--description"
-                  placeholder="Step 1 Description"
-                  value={step1Description}
-                  autoResize
-                />
-              </div>
-            </Col>
-            <Col span={6}>
-              {this._renderCheckboxes()}
-            </Col>
-          </Row>
-        </Grid>
+          <Col span={6}>
+            <div className={cssClass.CONFIG}>
+              <TextInput
+                className={cssClass.CONFIG_OPTIONS}
+                onChange={e => this.setState({step1Title: e.target.value})}
+                label="Step 1 Title"
+                name="StepperView--title"
+                placeholder="Step 1 Title"
+                value={step1Title}
+              />
+            </div>
+            <div className={cssClass.CONFIG}>
+              <TextArea
+                className={cssClass.CONFIG_OPTIONS}
+                onChange={e => this.setState({step1Description: e.target.value})}
+                label="Step 1 Description"
+                name="StepperView--description"
+                placeholder="Step 1 Description"
+                value={step1Description}
+                autoResize
+              />
+            </div>
+          </Col>
+          <Col span={6}>
+            {this._renderCheckboxes()}
+          </Col>
       </FlexBox>
     );
   }
 
   _renderCheckboxes() {
-    const {seekable, sticky, step1State, step1Optional} = this.state;
+    const {seekable, step1State, step1Optional} = this.state;
 
     return (
       <div className={cssClass.CHECKBOX_GROUP}>
@@ -203,15 +181,6 @@ export default class StepperView extends PureComponent {
             onChange={e => this.setState({seekable: e.target.checked})}
           />{" "}
           seekable
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={sticky}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({sticky: e.target.checked})}
-          />{" "}
-          sticky sidebar
         </label>
         <label className={cssClass.CONFIG}>
           <input
@@ -274,13 +243,6 @@ export default class StepperView extends PureComponent {
               type: "String",
               description: "The id of the current step",
               defaultValue: 0,
-              optional: true,
-            },
-            {
-              name: "sticky",
-              type: "boolean",
-              description: "Whether the sidebar should be fixed vertically",
-              defaultValue: "false",
               optional: true,
             },
             {

@@ -20,7 +20,6 @@ const propTypes = {
   })).isRequired,
   currentStepID: PropTypes.string.isRequired,
   onStepClick: PropTypes.func,
-  style: PropTypes.object,
 };
 
 const cssClass = {
@@ -32,9 +31,9 @@ export default class Stepper extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const {currentStepID, steps, style, onStepClick, className} = this.props;
+    const {currentStepID, steps, onStepClick, className} = this.props;
     return (
-      <ul style={style} className={cssClass.STEPS_DISPLAY}>
+      <ul className={cssClass.STEPS_DISPLAY}>
         {steps.map((step, idx) =>
           <li key={step.id}>
             <Step
