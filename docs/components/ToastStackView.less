@@ -1,0 +1,48 @@
+@import (reference) "~src/less/utilities";
+
+.ToastStackView--intro {
+  .margin--bottom--xl;
+}
+
+.ToastStackView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.ToastStackView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.ToastStackView--config {
+  cursor: pointer;
+}
+
+.ToastStackView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.ToastStackView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.ToastStackView--props {
+  .margin--top--l;
+}
+
+.ToastStackView--toastStack {
+  top: 5rem;
+}

@@ -1,25 +1,28 @@
 @import (reference) "../less/index";
 
 .AlertBox--container {
-  .margin--y--m;
-  .padding--s;
+  .margin--y--m();
+  .padding--s();
   .border--s(transparent);
-  border-left-width: @size_xs;
 }
 
 .AlertBox--title {
-  .margin--left--xs;
-  .text--semi-bold;
-  .text--large;
+  .text--semi-bold();
+  .text--large();
+  .margin--bottom--s();
 }
 
 .AlertBox--header {
-  .padding--bottom--xs;
+  .padding--bottom--xs();
+}
+
+.AlertBox--Icon--container {
+  .margin--left--s();
+  .margin--right--m();
 }
 
 .AlertBox--Icon {
-  height: @size_l;
-  width: @size_l;
+  margin-top: 0.4rem;
 }
 
 .AlertBox--warning {

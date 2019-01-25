@@ -5,13 +5,9 @@ import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 
 export default class AlertBoxView extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      type: "warning",
-    };
-  }
+  state = {
+    type: "warning",
+  };
 
   render() {
     const {AlertBoxOptions} = AlertBoxView;
@@ -20,7 +16,10 @@ export default class AlertBoxView extends PureComponent {
     return (
       <View title="AlertBox" sourcePath="src/AlertBox/AlertBox.jsx">
         <p>
-          A set of alert boxes.
+          This is a container for prominent page-level messaging. Alerts should communicate a
+          single informational message and may contain a text link if there are related actions.
+          Temporary messages that are a direct result of a user interaction should display via
+          Toast, rather than Alert box.
         </p>
 
         <Example title="AlertBox options:">
@@ -44,8 +43,7 @@ export default class AlertBoxView extends PureComponent {
             <AlertBox type="info" title="Closable info box" isClosable>
               <p>
                 This is the box body. It can be any node. <a href="/#/components/alert-box">look a link</a>!
-              </p>
-              <p>
+                <br />
                 Notice that this box is closable
               </p>
             </AlertBox>

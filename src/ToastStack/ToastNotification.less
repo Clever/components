@@ -1,0 +1,107 @@
+@import (reference) "../less/utilities";
+
+.ToastNotification {
+  .borderRadius--m;
+  .boxShadow--light;
+  .padding--x--m;
+  .padding--y--xs;
+  color: @neutral_white;
+}
+
+.ToastNotification--content {
+  .margin--left--s;
+  .margin--y--xs;
+}
+
+.ToastNotification--error {
+  background-color: @alert_red;
+}
+
+.ToastNotification--info {
+  background-color: @primary_blue;
+}
+
+.ToastNotification--processing {
+  background-color: @neutral_gray;
+}
+
+.ToastNotification--success {
+  background-color: @alert_green;
+}
+
+.ToastNotification--warning {
+  background-color: @alert_orange;
+}
+
+button.ToastNotification--action {
+  .margin--left--s;
+  .padding--xs;
+  border: none;
+  color: @neutral_white;
+
+  &:active, &:focus, &:hover {
+    color: @neutral_white;
+  }
+}
+
+.ToastNotification--error button.ToastNotification--action {
+  background-color: @alert_red_shade_1;
+}
+
+.ToastNotification--info button.ToastNotification--action {
+  background-color: @primary_blue_shade_1;
+}
+
+.ToastNotification--processing button.ToastNotification--action {
+  background-color: @neutral_dark_gray;
+  opacity: 0.75;
+}
+
+.ToastNotification--success button.ToastNotification--action {
+  background-color: @alert_green_shade_1;
+}
+
+.ToastNotification--warning button.ToastNotification--action {
+  background-color: @alert_orange_shade_1;
+}
+
+.ToastNotification--error button.ToastNotification--action:active,
+.ToastNotification--error button.ToastNotification--action:focus,
+.ToastNotification--error button.ToastNotification--action:hover {
+  background-color: @alert_red_shade_2;
+}
+
+.ToastNotification--info button.ToastNotification--action:active,
+.ToastNotification--info button.ToastNotification--action:focus,
+.ToastNotification--info button.ToastNotification--action:hover {
+  background-color: @primary_blue_shade_2;
+}
+
+.ToastNotification--processing button.ToastNotification--action:active,
+.ToastNotification--processing button.ToastNotification--action:focus,
+.ToastNotification--processing button.ToastNotification--action:hover {
+  background-color: @neutral_dark_gray;
+  opacity: 1;
+}
+
+.ToastNotification--success button.ToastNotification--action:active,
+.ToastNotification--success button.ToastNotification--action:focus,
+.ToastNotification--success button.ToastNotification--action:hover {
+  background-color: @alert_green_shade_2;
+}
+
+.ToastNotification--warning button.ToastNotification--action:active,
+.ToastNotification--warning button.ToastNotification--action:focus,
+.ToastNotification--warning button.ToastNotification--action:hover {
+  background-color: @alert_orange_shade_2;
+}
+
+button.ToastNotification--closeButton {
+  .margin--left--s;
+  color: @neutral_white;
+
+  &:active, &:focus, &:hover {
+    color: @neutral_white;
+    opacity: 0.75;
+  }
+}

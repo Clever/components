@@ -55,10 +55,15 @@ export class Table extends Component {
     this._epoch = 0;
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    this._isMounted = true;
     if (this.props.lazy) {
       this._fetchLazy(0);
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   /**
@@ -111,6 +116,10 @@ export class Table extends Component {
       }
 
       const pageData = await getData(query);
+      // Check if we should bail out to prevent updating state on an unmounted component.
+      if (!this._isMounted) {
+        return;
+      }
       newPages.push(pageData);
     }
 
