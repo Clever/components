@@ -1,0 +1,172 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+@stepIconWidth: 1.75rem; // 28px
+@iconFocusShadowThickness: @size_2xs; // 4px
+@titleFontSize: 1.25rem; // 20px
+@alertSize: 0.375rem; // 6px
+
+.Step {
+  .flexbox();
+  .alignItems(flex-start);
+  .padding--y--2xs;
+  .text--medium;
+  .text--regular;
+  .padding--none;
+  text-align: left;
+  .text--line-height-3;
+}
+
+button.Step {
+  .button--reset();
+  .Step();
+}
+
+.Step--title {
+  color: @neutral_gray;
+  font-size: @titleFontSize;
+  .text--semi-bold;
+  .margin--top--3xs;
+  .flexShrink(0);
+  transition: all @timingQuickly ease-out;
+}
+
+.Step--description {
+  color: @neutral_gray;
+  transition: all @timingQuickly ease-out;
+}
+
+.Step--message--optional {
+  color: @neutral_gray;
+  .text--italic;
+  .margin--bottom--xs;
+  transition: all @timingQuickly ease-out;
+}
+
+.Step--message--warning {
+  color: @alert_red;
+  .text--semi-bold;
+  .margin--bottom--xs;
+}
+
+.Step--icon {
+  display: inline-block;
+  .flexShrink(0);
+  .flexbox();
+  .alignItems(center);
+  .justifyContent(center);
+  .circle(@stepIconWidth);
+  background-color: @neutral_white;
+  .border--s(@neutral_gray);
+  .margin--right--s;
+  color: @neutral_gray;
+  box-shadow: 0 0 0 @iconFocusShadowThickness transparent;
+  transition: all @timingQuickly ease-out;
+}
+
+.Step--success {
+  .Step--icon {
+    background-color: @neutral_dark_gray;
+    .border--s(@neutral_dark_gray);
+    color: transparent;
+  }
+}
+
+.Step--warning {
+  .Step--icon {
+    background-color: @alert_red;
+    .border--s(@alert_red);
+    color: transparent;
+  }
+}
+
+.Step--current {
+  .Step--icon {
+    background-color: @primary_blue;
+    .border--s(@primary_blue);
+    color: @neutral_white;
+  }
+
+  .Step--title, .Step--description, .Step--message--optional {
+    color: @neutral_dark_gray;
+  }
+}
+
+.Step:focus {
+  .Step--icon {
+    box-shadow: 0 0 0 @iconFocusShadowThickness fade(@primary_blue_tint_2, 50%);
+  }
+}
+
+.Step:focus, .Step--seekable:hover {
+  .Step--icon {
+    .border--s(@neutral_black);
+    color: @neutral_dark_gray;
+  }
+
+  .Step--description, .Step--message--optional {
+    color: @neutral_dark_gray;
+  }
+}
+
+.Step:disabled {
+  cursor: not-allowed;
+}
+
+.Step--warning:focus {
+  .Step--icon {
+    background-color: @alert_red_shade_2;
+    .border--s(@alert_red_shade_2);
+  }
+}
+
+.Step--current.Step--warning {
+  .Step--icon {
+    background-color: @primary_blue;
+  }
+}
+
+.Step--current:focus {
+  .Step--icon {
+    .border--s(@primary_blue);
+    color: @neutral_white;
+  }
+}
+
+.Step--seekable.Step--success:hover {
+  .Step--icon {
+    background-color: @neutral_black;
+    .border--s(@neutral_black);
+  }
+}
+
+.Step--seekable.Step--warning:hover {
+  .Step--icon {
+    background-color: @alert_red_shade_2;
+    .border--s(@alert_red_shade_2);
+  }
+}
+
+.Step--seekable.Step--current:hover {
+  .Step--icon {
+    background-color: @primary_blue_shade_2;
+    .border--s(@primary_blue_shade_2);
+    color: @neutral_white;
+  }
+}
+
+.Step:focus:not(.Step--current), .Step:hover.Step--seekable:not(.Step--current) {
+  .Step--title {
+    color: @primary_blue;
+  }
+}
+
+.Stepper--CheckMark {
+  width: @size_s;
+}
+
+.Stepper--Exclamation {
+  width: @size_s;
+  height: 1.2em;
+  transform: translate(@size_2xs,-@size_3xs);
+}

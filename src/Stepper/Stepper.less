@@ -1,0 +1,13 @@
+@import "../less/fonts.less";
+@import (reference) "../less/index";
+
+.Stepper--stepsDisplay {
+  .list-reset;
+  .padding--l;
+
+  li {
+    &:not(:last-child) {
+      margin-bottom: @size_l;
+    }
+  }
+}
