@@ -1,6 +1,6 @@
 import assert from "assert";
 import React from "react";
-import {mount} from "enzyme";
+import {mount, shallow} from "enzyme";
 
 import Number from "../src/Number";
 
@@ -32,7 +32,8 @@ describe("Number", () => {
   });
 
   it("throws for non-numeric input", () => {
-    assert.throws(() => mount(<Number>nope</Number>));
+    // shallow render to avoid a console warning due to the new error handling of mounted components in react 16.
+    assert.throws(() => shallow(<Number>nope</Number>));
     assert.throws(() => Number.format("nope", true));
   });
 });

@@ -5,6 +5,7 @@
     "/.*\/bin/",
     "/.*\/node_modules/"
   ],
+  "testURL": "http://localhost",
   "moduleFileExtensions": [
     "js",
     "json",
