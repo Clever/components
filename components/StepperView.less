@@ -1,0 +1,68 @@
+@import (reference) "~src/less/utilities";
+
+.Stepper--sidebar {
+  // the Demo component already adds padding
+  .padding--top--none;
+  .padding--left--none;
+}
+
+.StepperView--intro {
+  .margin--bottom--xl;
+}
+
+.StepperView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--l;
+  .padding--top--l;
+}
+
+.StepperView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .margin--right--m;
+  .text--caps;
+  .text--small;
+}
+
+label.StepperView--config {
+  cursor: pointer;
+}
+
+.StepperView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.StepperView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.StepperView--props {
+  .margin--top--l;
+}
+
+.StepperView--title {
+  font-size: @size_xl;
+  color: @neutral_black;
+  .text--regular;
+}
+
+.StepperView--checkbox {
+  &:not(:first-child) {
+    .margin--top--m;
+  }
+}
+
+.StepperView--stickyContainer {
+  .flexbox();
+}
+
+.StepperView--stickyContent {
+  .flex(0, 1, 18rem);
+  max-width: 18rem;
+}
