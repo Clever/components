@@ -21,13 +21,13 @@ export default class HeadingView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    multiOption1: "small",
+    level: 1,
     optionToggle1: false,
     optionToggle2: true,
   };
 
   render() {
-    const {optionToggle1} = this.state;
+    const {level} = this.state;
 
     return (
       <View
@@ -49,8 +49,8 @@ export default class HeadingView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <Heading className="my--custom--class" onPerformAction={console.log}>
-              {optionToggle1 ? "Something changed 🤔" : "My custom content."}
+            <Heading level={level} className="my--custom--class">
+              My heading.
             </Heading>
           </ExampleCode>
           {this._renderConfig()}
@@ -63,21 +63,23 @@ export default class HeadingView extends React.PureComponent {
 
   // TODO: Update or remove config options.
   _renderConfig() {
-    const {multiOption1, optionToggle1, optionToggle2} = this.state;
+    const {level, optionToggle1, optionToggle2} = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
         <div className={cssClass.CONFIG}>
-          Size:
+          Level:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({multiOption1: value})}
+            onSelect={value => this.setState({level: value})}
             options={[
-              {content: "Small", value: "small"},
-              {content: "Medium", value: "medium"},
-              {content: "Large", value: "large"},
+              {content: "1", value: 1},
+              {content: "2", value: 2},
+              {content: "3", value: 3},
+              {content: "4", value: 4},
+              {content: "5", value: 5},
             ]}
-            value={multiOption1}
+            value={level}
           />
         </div>
         <label className={cssClass.CONFIG}>
