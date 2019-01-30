@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="85.8163761%" y2="83.2355983%" id="linearGradient-1">
+            <stop stop-color="#FDFDFE" offset="0%"></stop>
+            <stop stop-color="#EAEAED" offset="100%"></stop>
+        </linearGradient>
+        <path d="M21,42 C9.40202025,42 0,32.5979797 0,21 C0,9.40202025 9.40202025,0 21,0 C32.5979797,0 42,9.40202025 42,21 C42,32.5979797 32.5979797,42 21,42 Z M20.5,33 C27.4035594,33 33,27.4035594 33,20.5 C33,13.5964406 27.4035594,8 20.5,8 C13.5964406,8 8,13.5964406 8,20.5 C8,27.4035594 13.5964406,33 20.5,33 Z" id="path-2"></path>
+        <filter x="-4.8%" y="-2.4%" width="109.5%" height="109.5%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.65882355   0 0 0 0 0.68235296   0 0 0 0 0.729411781  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(1.000000, 0.000000)">
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <g id="Combined-Shape" fill-rule="nonzero">
+                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+            </g>
+            <g id="Group" mask="url(#mask-3)" fill="#E02B3A" fill-rule="nonzero">
+                <g transform="translate(19.872483, 21.849645) rotate(16.000000) translate(-19.872483, -21.849645) translate(-7.627517, -1.650355)">
+                    <polygon id="Rectangle" transform="translate(16.853557, 15.488333) rotate(16.000000) translate(-16.853557, -15.488333) " points="5.13388437 3.99211744 30.9917171 18.9297331 2.71539638 26.9845488"></polygon>
+                    <polygon id="Rectangle-Copy" transform="translate(39.804419, 15.425522) scale(-1, 1) rotate(16.000000) translate(-39.804419, -15.425522) " points="27.6596087 2.87222891 51.949229 19.2498141 28.8003053 27.978816"></polygon>
+                    <polygon id="Rectangle-Copy-2" transform="translate(29.896952, 34.136996) scale(-1, 1) rotate(-91.000000) translate(-29.896952, -34.136996) " points="18.6780501 20.3415192 41.5974559 34.9663938 18.1964482 47.9324735"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
