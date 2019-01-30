@@ -1,12 +1,15 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
+import classnames from "classnames";
 
 import "./Heading.less";
 
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  // TODO: add prop types
 };
+
 
 /**
  * TODO: Add short description.
@@ -15,12 +18,17 @@ export default class Heading extends React.PureComponent {
   static propTypes = propTypes;
 
   render() {
-    const {children, className} = this.props;
+    const {level, children, className} = this.props;
+    const HeadingTag : any = `h${level}`;
+    const classes = classnames(
+      `Heading--h${level}`,
+      className
+    );
 
     return (
-      <h1 className={className}>
+      <HeadingTag className={classes}>
         {children}
-      </h1>
+      </HeadingTag>
     );
   }
 }

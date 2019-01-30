@@ -1,15 +1,41 @@
 @import (reference) "../less/utilities";
 
-.Heading {
-  .border--s(@neutral_silver);
-  .borderRadius--m;
-  .padding--m;
-  background-color: @neutral_off_white;
+.Heading--h1 {
+  font-size: 3.75rem;
+  line-height: 4.5rem;
+  letter-spacing: -.03125rem;
+  .text--light;
+  color: @neutral_black;
 }
 
-.Heading--subElement {
-  .border--s(@neutral_silver);
-  .padding--s;
-  background-color: @neutral_white;
-  text-align: right;
+.Heading--h2 {
+  font-size: @size_2xl;
+  line-height: 3rem;
+  letter-spacing: -.03125rem;
+  .text--semi-bold;
+  color: @neutral_black;
+}
+
+.Heading--h3 {
+  font-size: @size_xl;
+  line-height: 2.375rem;
+  letter-spacing: -.0125rem;
+  .text--semi-bold;
+  color: @neutral_black;
+}
+
+.Heading--h4 {
+  font-size: @size_l;
+  line-height: 1.875rem;
+  letter-spacing: -.0125rem;
+  .text--semi-bold;
+  color: @neutral_dark_gray;
+}
+
+.Heading--h5 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  letter-spacing: -.00625rem;
+  .text--semi-bold;
+  color: @neutral_dark_gray;
 }
