@@ -105,3 +105,6 @@ export {ToastStack, ToastType};
 
 import Stepper from "./Stepper";
 export {Stepper};
+
+import WizardLayout from "./WizardLayout";
+export {WizardLayout};

@@ -58,6 +58,7 @@ import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WithKeyboardNavView from "./components/WithKeyboardNavView";
 import StepperView from "./components/StepperView";
+import WizardLayoutView from "./components/WizardLayoutView";
 import WizardView from "./components/WizardView";
 
 
@@ -122,6 +123,7 @@ render((
         <Route path="top-bar(/*)" component={TopBarView} />
         <Route path="with-keyboard-nav(/*)" component={WithKeyboardNavView} />
         <Route path="wizard(/*)" component={WizardView} />
+        <Route path="wizard-layout(/*)" component={WizardLayoutView} />
       </Route>
       <Route path="LESS">
         <Route path="less-style-guide(/*)" component={LessStyleGuideView} />
