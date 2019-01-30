@@ -22,6 +22,7 @@ import FormErrorView from "./components/FormErrorView";
 import GettingStartedView from "./components/GettingStartedView";
 import GoalsLogoView from "./components/GoalsLogoView";
 import GridView from "./components/GridView";
+import HeadingView from "./components/HeadingView";
 import IconView from "./components/IconView";
 import InfoPanelView from "./components/InfoPanelView";
 import IntroView from "./components/IntroView";
@@ -45,19 +46,19 @@ import SegmentedControlView from "./components/SegmentedControlView";
 import SelectView from "./components/SelectView";
 import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
+import StepperView from "./components/StepperView";
 import SwitchView from "./components/SwitchView";
 import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
-import ToastStackView from "./components/ToastStackView";
 import TextTruncateView from "./components/TextTruncateView";
+import ToastStackView from "./components/ToastStackView";
 import TooltipView from "./components/TooltipView";
 import TopBarView from "./components/TopBarView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WithKeyboardNavView from "./components/WithKeyboardNavView";
-import StepperView from "./components/StepperView";
 import WizardView from "./components/WizardView";
 
 
@@ -94,6 +95,7 @@ render((
         <Route path="form-error(/*)" component={FormErrorView} />
         <Route path="goals-logo(/*)" component={GoalsLogoView} />
         <Route path="grid(/*)" component={GridView} />
+        <Route path="heading(/*)" component={HeadingView} />
         <Route path="icon(/*)" component={IconView} />
         <Route path="info-panel" component={InfoPanelView} />
         <Route path="label(/*)" component={LabelView} />

@@ -1,0 +1,45 @@
+@import (reference) "~src/less/utilities";
+
+.HeadingView--intro {
+  .margin--bottom--xl;
+}
+
+.HeadingView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.HeadingView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.HeadingView--config {
+  cursor: pointer;
+}
+
+.HeadingView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.HeadingView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.HeadingView--props {
+  .margin--top--l;
+}
+

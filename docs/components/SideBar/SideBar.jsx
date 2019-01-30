@@ -83,6 +83,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/form-error", "FormError")}
           {this._renderLink("/components/goals-logo", "GoalsLogo")}
           {this._renderLink("/components/grid", "Grid")}
+          {this._renderLink("/components/heading", "Heading")}
           {this._renderLink("/components/icon", "Icon")}
           {this._renderLink("/components/info-panel", "InfoPanel")}
           {this._renderLink("/components/label", "Label")}

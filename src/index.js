@@ -104,3 +104,6 @@ export {ToastStack, ToastType};
 
 import Stepper from "./Stepper";
 export {Stepper};
+
+import Heading from "./Heading";
+export {Heading};
