@@ -87,7 +87,7 @@ export default class WizardLayoutView extends React.PureComponent {
     const _onPrevStep = () => {
       if (WizardLayoutContent[this.state.currentStep].prevStep) {
         const completionStatus = this.state;
-        completionStatus[this.state.currentStep] = true;
+        completionStatus[this.state.currentStep] = false;
         this.setState({currentStep: WizardLayoutContent[this.state.currentStep].prevStep, completionStatus});
       }
     };

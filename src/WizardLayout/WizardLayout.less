@@ -1,7 +1,7 @@
 @import (reference) "../less/utilities";
 
 .WizardLayout {
-  .borderRadius--m;
+  .borderRadius--m();
   background-color: @neutral_off_white;
   width: 100%;
 }
@@ -9,17 +9,17 @@
 .WizardLayout--header {
   position: sticky;
   background-color: @neutral_white;
-  .margin--bottom--none;
-  .padding--l;
+  .margin--bottom--none();
+  .padding--l();
   box-shadow: @size_3xs @size_3xs @size_m @size_none rgba(168,174,186,0.3);
-  .zIndex--1;
+  .zIndex--1();
   .flexShrink(0);
 }
 
 .WizardLayout--headerImg {
   height: 4rem;
-  .self--center;
-  .margin--right--m;
+  .self--center();
+  .margin--right--m();
 
   img {
     width: unset;
@@ -27,12 +27,12 @@
 }
 
 .WizardLayout--headerTitle {
-  .text--huge;
-  .margin--bottom--none;
+  .text--huge();
+  .margin--bottom--none();
 }
 
 .WizardLayout--headerSubtitle {
-  .text--medium;
+  .text--medium();
 }
 
 .WizardLayout--body {
@@ -40,13 +40,13 @@
 }
 
 .WizardLayout--helpContainer {
-  .padding--m;
-  .text--small;
-  .margin--y--m;
+  .padding--m();
+  .text--small();
+  .margin--y--m();
 }
 
 .WizardLayout--helpImg {
-  .margin--right--xs;
+  .margin--right--xs();
   height: @size_xl;
   width: @size_xl;
   .flexShrink(0);
@@ -55,51 +55,51 @@
 .WizardLayout--stepperContainer {
   max-width: 22rem;
   overflow-y: scroll;
-  .padding--bottom--m;
+  .padding--bottom--m();
   .flexShrink(0);
 }
 
 .WizardLayout--contentContainer {
-  .padding--m;
+  .padding--m();
   overflow-y: scroll;
 }
 
 .WizardLayout--contentElem {
-  .padding--l;
+  .padding--l();
   background-color: @neutral_white;
-  .borderRadius--l;
+  .borderRadius--l();
   .border--s(@neutral_silver);
-  .margin--bottom--l;
+  .margin--bottom--l();
   .flexShrink(0);
   max-width: 64rem;
 }
 
 .WizardLayout--contentTitle {
-  .text--large;
-  .text--semi-bold;
-  .margin--bottom--none;
+  .text--large();
+  .text--semi-bold();
+  .margin--bottom--none();
   width: 100%;
   color: @neutral_dark_gray;
 }
 
 .WizardLayout--contentSubtitle {
-  .text--medium;
+  .text--medium();
   max-width: unset;
   width: 100%;
-  .padding--bottom--xs;
+  .padding--bottom--xs();
   .border--bottom--s(@neutral_gray);
-  .margin--bottom--l;
+  .margin--bottom--l();
 }
 
 .WizardLayout--footer {
   background-color: @neutral_white;
-  .padding--l;
+  .padding--l();
   box-shadow: @size_3xs @size_3xs @size_m @size_none rgba(168,174,186,0.3);
   position: sticky;
   .flexShrink(0);
-  .zIndex--1;
+  .zIndex--1();
 }
 
 .WizardLayout--previousButton {
-  .margin--right--l !important;
+  .margin--right--l() !important;
 }

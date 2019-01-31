@@ -87,15 +87,12 @@ export default class WizardLayout extends React.PureComponent {
           <FlexBox column className={cssClass.STEPPER_CONTAINER}>
             {stepper}
             <FlexBox grow />
-            <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.HELP_CONTAINER}>
-              <img className={cssClass.HELP_IMG} src="./assets/img/life-float.svg" />
-                { helpContent || (
-                  <FlexBox column>
-                    Need a hand?
-                    <a href={"https://support.clever.com/hc/en-us"}>Contact Customer Support</a>
-                  </FlexBox>
-                )}
-            </FlexBox>
+            { helpContent &&
+              <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.HELP_CONTAINER}>
+                <img className={cssClass.HELP_IMG} src="./assets/img/life-float.svg" />
+                { helpContent }
+              </FlexBox>
+            }
           </FlexBox>
           <FlexBox column grow className={cssClass.CONTENT_CONTAINER}>
             {contentElements.map((elem, i) => (
