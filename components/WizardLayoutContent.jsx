@@ -168,9 +168,9 @@ const portalURL = (
 );
 
 const setAccessHelp = (
-  <FlexBox column>
+  <span>
     If you can't figure out what settings to use, remember applications provide recommended settings to try out!
-      </FlexBox>
+  </span>
 );
 
 // Clever SSO Content
@@ -208,9 +208,9 @@ const cleverSSO = (
 );
 
 const singleSignOnHelp = (
-  <FlexBox column>
+  <span>
     If you're interested in learning more, click the button to fill out our form! Otherwise, you can just hit "Next step."
-      </FlexBox>
+  </span>
 );
 
 // CLEVER GOALS CONTENT
@@ -240,9 +240,9 @@ const cleverGoals = (
 );
 
 const goalsHelp = (
-  <FlexBox column>
-    If you're interested in receiveing a Goals demo, click the button to fill out our form! Otherwise, you can just hit "Next step."
-      </FlexBox>
+  <span>
+    If you're interested in receiving a Goals demo, click the button to fill out our form! Otherwise, you can just hit "Next step."
+  </span>
 );
 
 
