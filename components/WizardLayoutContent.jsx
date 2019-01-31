@@ -290,6 +290,7 @@ export const WizardLayoutContent = {
         children: cleverGoals,
       },
     ],
+    nextStepButtonText: "Done",
     helpContent: goalsHelp,
   },
 };
