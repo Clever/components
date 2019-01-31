@@ -117,9 +117,11 @@ export default class WizardLayoutView extends React.PureComponent {
               contentElements={WizardLayoutContent[this.state.currentStep].contentElems}
               headerImg={showHeaderImg ? "./assets/img/deweyFox.svg" : null}
               helpContent={customHelpContent ? WizardLayoutContent[this.state.currentStep].helpContent : null}
+              nextStepButtonText={WizardLayoutContent[this.state.currentStep].nextStepButtonText || null}
               onNextStep={_onNextStep}
               onPrevStep={_onPrevStep}
               onSaveAndExit={_onSaveAndExit}
+              prevStepButtonText={WizardLayoutContent[this.state.currentStep].prevStepButtonText || null}
               stepper={stepper}
               subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
               title="Back to school guide"
@@ -188,6 +190,11 @@ export default class WizardLayoutView extends React.PureComponent {
             optional: true,
           },
           {
+            name: "nextStepButtonText",
+            type: "String",
+            description: "Optional next button text, 'Next step' by default",
+          },
+          {
             name: "onNextStep",
             type: "Function",
             description: "Called when user clicks on 'Next step' button.",
@@ -201,6 +208,11 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "onSaveAndExit",
             type: "Function",
             description: "Called when user clicks on 'Save & exit' button.",
+          },
+          {
+            name: "prevStepButtonText",
+            type: "String",
+            description: "Optional previous button text, 'Previous step' by default",
           },
           {
             name: "stepper",
