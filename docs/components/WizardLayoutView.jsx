@@ -111,7 +111,7 @@ export default class WizardLayoutView extends React.PureComponent {
         </header>
 
         <Example title="Basic Usage:">
-          <ExampleCode style={{display: "flex", maxHeight: "35rem"}}>
+          <ExampleCode style={{display: "flex", height: "35rem"}}>
             <WizardLayout
               className="Dewey--WizardLayout"
               contentElements={WizardLayoutContent[this.state.currentStep].contentElems}

@@ -3,7 +3,7 @@
 .WizardLayout {
   .borderRadius--m;
   background-color: @neutral_off_white;
-
+  width: 100%;
 }
 
 .WizardLayout--header {
@@ -12,8 +12,8 @@
   .margin--bottom--none;
   .padding--l;
   box-shadow: @size_3xs @size_3xs @size_m @size_none rgba(168,174,186,0.3);
-  z-index: 1;
-  flex-shrink: 0;
+  .zIndex--1;
+  .flexShrink(0);
 }
 
 .WizardLayout--headerImg {
@@ -42,7 +42,6 @@
 .WizardLayout--helpContainer {
   .padding--m;
   .text--small;
-  // min-width: 12rem;
   .margin--y--m;
 }
 
@@ -50,12 +49,14 @@
   .margin--right--xs;
   height: @size_xl;
   width: @size_xl;
+  .flexShrink(0);
 }
 
 .WizardLayout--stepperContainer {
   max-width: 22rem;
   overflow-y: scroll;
   .padding--bottom--m;
+  .flexShrink(0);
 }
 
 .WizardLayout--contentContainer {
@@ -69,7 +70,7 @@
   .borderRadius--l;
   .border--s(@neutral_silver);
   .margin--bottom--l;
-  flex-shrink: 0;
+  .flexShrink(0);
   max-width: 64rem;
 }
 
@@ -95,8 +96,8 @@
   .padding--l;
   box-shadow: @size_3xs @size_3xs @size_m @size_none rgba(168,174,186,0.3);
   position: sticky;
-  flex-shrink: 0;
-  z-index: 1;
+  .flexShrink(0);
+  .zIndex--1;
 }
 
 .WizardLayout--previousButton {
