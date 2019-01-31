@@ -19,9 +19,11 @@ const propTypes = {
   contentElements: PropTypes.arrayOf(CONTENT_ELEM_PROP_TYPE).isRequired,
   headerImg: PropTypes.string,
   helpContent: PropTypes.node,
+  nextStepButtonText: PropTypes.string,
   onNextStep: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
   onSaveAndExit: PropTypes.func.isRequired,
+  prevStepButtonText: PropTypes.string,
   stepper: PropTypes.node.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -58,9 +60,11 @@ export default class WizardLayout extends React.PureComponent {
       contentElements,
       headerImg,
       helpContent,
+      nextStepButtonText,
       onNextStep,
       onPrevStep,
       onSaveAndExit,
+      prevStepButtonText,
       stepper,
       subtitle,
       title,
@@ -113,13 +117,13 @@ export default class WizardLayout extends React.PureComponent {
           <FlexBox grow />
           <Button
             type="link"
-            value="Previous step"
+            value={prevStepButtonText || "Previous step"}
             className={cssClass.PREVIOUS_BUTTON}
             onClick={() => onPrevStep()}
           />
           <Button
             type="primary"
-            value="Next step"
+            value={nextStepButtonText || "Next step"}
             onClick={() => onNextStep()}
           />
         </FlexBox>
