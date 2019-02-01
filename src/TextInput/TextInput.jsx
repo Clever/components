@@ -3,11 +3,15 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import _ from "lodash";
 
-require("./TextInput.less");
+import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+
+import "./TextInput.less";
+import "../less/forms.less";
 
 export class TextInput extends React.Component {
   static defaultProps = {
     placeholderCaps: true,
+    size: FormElementSize.UNBOUNDED,
   }
 
   constructor(props) {
@@ -85,7 +89,13 @@ export class TextInput extends React.Component {
     const additionalProps = _.omit(this.props, Object.keys(TextInput.propTypes));
 
     return (
-      <div className={classnames(wrapperClass, this.props.className)}>
+      <div
+        className={classnames(
+          wrapperClass,
+          formElementSizeClassName(this.props.size),
+          this.props.className,
+        )}
+      >
         <div className="TextInput--infoRow">
           <label className="TextInput--label" htmlFor={this.props.name}>{this.props.label}</label>
           {inputNote}
@@ -118,6 +128,7 @@ export class TextInput extends React.Component {
 }
 
 TextInput.propTypes = {
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   disableAutocomplete: PropTypes.bool,
   enableShow: PropTypes.bool,
@@ -132,7 +143,8 @@ TextInput.propTypes = {
   placeholderCaps: PropTypes.bool,
   readOnly: PropTypes.bool,
   required: PropTypes.bool,
+  // Object.values isn't properly polyfilled in jsx files
+  size: PropTypes.oneOf(Object.keys(FormElementSize).map((key) => FormElementSize[key])),
   type: PropTypes.string,
   value: PropTypes.node,
-  className: PropTypes.string,
 };

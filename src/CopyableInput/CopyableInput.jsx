@@ -3,9 +3,11 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import CopyToClipboard from "react-copy-to-clipboard";
 
+import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
 import {TextInput} from "../TextInput/TextInput";
 
 import "./CopyableInput.less";
+import "../less/forms.less";
 
 /**
  * This is a text input that takes optional props
@@ -33,7 +35,13 @@ export class CopyableInput extends React.Component {
     const type = this.props.type === "password" && this.state.hidden ? "password" : "text";
     const wrapperClass = "CopyableInput";
     return (
-      <div className={classnames(wrapperClass, this.props.className)}>
+      <div
+        className={classnames(
+          wrapperClass,
+          formElementSizeClassName(this.props.size),
+          this.props.className,
+        )}
+      >
         <TextInput
           type={type}
           value={this.props.value}
@@ -42,6 +50,8 @@ export class CopyableInput extends React.Component {
           readOnly={this.props.readOnly}
           label={this.props.label}
           onChange={this.props.onChange}
+          size={FormElementSize.UNBOUNDED /* Rely on the fact that we're bounding the parent
+            container */}
         />
         <div className="CopyableInput--links">
           {this.props.enableShow &&
@@ -70,6 +80,7 @@ CopyableInput.propTypes = Object.assign({},
   }
 );
 
-CopyableInput.defaultPropTypes = {
+CopyableInput.defaultProps = {
   enableCopy: true,
+  size: FormElementSize.UNBOUNDED,
 };

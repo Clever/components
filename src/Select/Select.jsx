@@ -3,8 +3,11 @@ import * as PropTypes from "prop-types";
 import ReactSelect from "react-select";
 import classnames from "classnames";
 
+import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+
 import "react-select/dist/react-select.css";
 import "./Select.less";
+import "../less/forms.less";
 
 function isLabelHidden(placeholder, value) {
   if (!placeholder) {
@@ -46,6 +49,7 @@ export function Select({
   value,
   className,
   error,
+  size,
 }) {
   const {cssClass} = Select;
 
@@ -100,7 +104,13 @@ export function Select({
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
   return (
-    <div className={classnames(cssClass.CONTAINER, wrapperClass)}>
+    <div
+      className={classnames(
+        cssClass.CONTAINER,
+        formElementSizeClassName(size),
+        wrapperClass,
+      )}
+    >
       <div id={id}>
         <SelectComponent
           className={reactSelectClasses}
@@ -171,6 +181,8 @@ Select.propTypes = {
   ]),
   className: PropTypes.string,
   error: PropTypes.string,
+  // Object.values isn't properly polyfilled in jsx files
+  size: PropTypes.oneOf(Object.keys(FormElementSize).map((key) => FormElementSize[key])),
 };
 
 Select.defaultProps = {
@@ -178,4 +190,5 @@ Select.defaultProps = {
   placeholder: "",
   searchable: false,
   creatable: false,
+  size: FormElementSize.UNBOUNDED,
 };

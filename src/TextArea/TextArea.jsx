@@ -3,7 +3,10 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import TextareaAutosize from "react-autosize-textarea";
 
+import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+
 import "./TextArea.less";
+import "../less/forms.less";
 
 export class TextArea extends React.Component {
   static validateProps(props) {
@@ -114,7 +117,13 @@ export class TextArea extends React.Component {
     }
 
     return (
-      <div className={classnames(wrapperClass, this.props.className)}>
+      <div
+        className={classnames(
+          wrapperClass,
+          formElementSizeClassName(this.props.size),
+          this.props.className,
+        )}
+      >
         <div className="TextArea--infoRow">
           <label className="TextArea--label" htmlFor={this.props.name}>{this.props.label}</label>
           {inputNote}
@@ -144,8 +153,11 @@ TextArea.propTypes = {
   className: PropTypes.string,
   autoResize: PropTypes.bool,
   rows: PropTypes.number,
+  // Object.values isn't properly polyfilled in jsx files
+  size: PropTypes.oneOf(Object.keys(FormElementSize).map((key) => FormElementSize[key])),
 };
 
 TextArea.defaultProps = {
   rows: 1,
+  size: FormElementSize.UNBOUNDED,
 };
