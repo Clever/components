@@ -1,9 +1,7 @@
 @import (reference) "~less/index";
 
-
-.SelectView--inputContainer {
-  max-width: 25rem;
-  min-width: 15rem;
+.SelectView--input {
+  .zIndex--1();
 }
 
 .SelectView--config {
@@ -13,4 +11,9 @@
   margin: @size_xs;
   margin-left: 0;
   text-transform: uppercase;
+}
+
+.SelectView--configOptions {
+  .margin--left--2xs();
+  display: inline-block;
 }
