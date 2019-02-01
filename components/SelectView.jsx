@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Select, TextInput} from "src";
+import {FormElementSize, SegmentedControl, Select, TextInput} from "src";
 
 import "./SelectView.less";
 
@@ -24,6 +24,7 @@ export default class SelectView extends Component {
       selectValue: null,
       required: false,
       error: "",
+      size: FormElementSize.MEDIUM,
     };
   }
 
@@ -42,10 +43,11 @@ export default class SelectView extends Component {
         </p>
 
         <Example>
-          <div className={cssClass.INPUT_CONTAINER}>
+          <div>
             <ExampleCode>
               <Select
                 id="select"
+                className={cssClass.INPUT}
                 label="Select Label"
                 disabled={this.state.disabled}
                 clearable={this.state.clearable}
@@ -71,6 +73,7 @@ export default class SelectView extends Component {
                 }
                 placeholder="Select Placeholder"
                 value={this.state.selectValue}
+                size={this.state.size}
               />
             </ExampleCode>
           </div>
@@ -162,6 +165,20 @@ export default class SelectView extends Component {
               name="InputError"
               onChange={e => this.setState({error: e.target.value})}
               value={this.state.error}
+            />
+          </div>
+          <div className={cssClass.CONFIG}>
+            Size:
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              options={[
+                {content: "small", value: FormElementSize.SMALL},
+                {content: "medium", value: FormElementSize.MEDIUM},
+                {content: "large", value: FormElementSize.LARGE},
+                {content: "unbounded", value: FormElementSize.UNBOUNDED},
+              ]}
+              value={this.state.size}
+              onSelect={value => this.setState({size: value})}
             />
           </div>
         </Example>
@@ -305,6 +322,17 @@ export default class SelectView extends Component {
               description: "Selected option. Must be updated by caller in the onChange",
               optional: true,
             },
+            {
+              name: "size",
+              type: "string",
+              description: <p>
+                The size of the input. One of:<br />
+                {Object.keys(FormElementSize).map(size =>
+                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
+              </p>,
+              optional: true,
+              defaultValue: <code>FormElementSize.UNBOUNDED</code>,
+            },
           ]}
           className={cssClass.PROPS}
           title="Select"
@@ -315,7 +343,8 @@ export default class SelectView extends Component {
 }
 
 SelectView.cssClass = {
-  CONFIG: "SelectView--config",
   CONTAINER: "SelectView",
-  INPUT_CONTAINER: "SelectView--inputContainer",
+  INPUT: "SelectView--input",
+  CONFIG: "SelectView--config",
+  CONFIG_OPTIONS: "SelectView--configOptions",
 };

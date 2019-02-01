@@ -1,24 +1,15 @@
 @import (reference) "~less/index";
 
-.TextAreaView--inputContainer {
-  max-width: 25rem;
-  min-width: 15rem;
-}
-
-.TextAreaView--configContainer {
-  display: inline-block;
-  .margin--right--xl;
-  .margin--top--l;
-}
-
 .TextAreaView--config {
-  .border--top--l(@neutral_silver);
-  .margin--top--l;
-  .margin--right--xl;
+  .margin--xs();
+  .margin--left--none();
+  .text--caps();
+  .text--small();
   cursor: pointer;
-  display: block;
+  display: inline-block;
+}
 
-  &:not(:last-child) {
-    .margin--bottom--s;
-  }
+.TextAreaView--configOptions {
+  .margin--left--2xs();
+  display: inline-block;
 }

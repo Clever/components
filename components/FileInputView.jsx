@@ -3,7 +3,7 @@ import React from "react";
 import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {FileInput} from "src";
+import {FileInput, FormElementSize, SegmentedControl} from "src";
 
 import "./FileInputView.less";
 
@@ -27,11 +27,19 @@ function storeFn(_file, {progress, success}) {
   }, 32);
 }
 
-export default function FileInputView() {
-  const {cssClass} = FileInputView;
+const cssClass = {
+  CONTAINER: "FileInputView",
+  CONFIG: "FileInputView--config",
+  CONFIG_OPTIONS: "FileInputView--configOptions",
+};
 
-  return (
-    <View className={cssClass.CONTAINER} title="FileInput">
+export default class FileInputView extends React.PureComponent {
+  state = {
+    size: FormElementSize.MEDIUM,
+  };
+
+  render() {
+    return (<View className={cssClass.CONTAINER} title="FileInput">
       <p>An input component that allows users to drag and drop (or click and select) files.</p>
       <Example>
         <div>
@@ -56,6 +64,7 @@ export default function FileInputView() {
                   }
                 }, 100);
               }}
+              size={this.state.size}
             />
           </ExampleCode>
           <p>Takes a <code>store</code> function which is called when the user has selected a file that should be uploaded.
@@ -65,6 +74,20 @@ export default function FileInputView() {
             <li><code>error</code> - Called if the upload failed for unexpected reasons with an optional error message</li>
             <li><code>progress</code> - Called during upload with a number between 0-100 representing the % completed</li>
           </ul>
+          <div className={cssClass.CONFIG}>
+            Size:
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              options={[
+                {content: "small", value: FormElementSize.SMALL},
+                {content: "medium", value: FormElementSize.MEDIUM},
+                {content: "large", value: FormElementSize.LARGE},
+                {content: "unbounded", value: FormElementSize.UNBOUNDED},
+              ]}
+              value={this.state.size}
+              onSelect={value => this.setState({size: value})}
+            />
+          </div>
         </div>
       </Example>
 
@@ -117,14 +140,21 @@ export default function FileInputView() {
             defaultValue: "false",
             optional: true,
           },
+          {
+            name: "size",
+            type: "string",
+            description: <p>
+              The size of the input. One of:<br />
+              {Object.keys(FormElementSize).map(size =>
+                <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
+            </p>,
+            optional: true,
+            defaultValue: <code>FormElementSize.UNBOUNDED</code>,
+          },
         ]}
         className={cssClass.PROPS}
         title="FileInput"
       />
-    </View>
-  );
+    </View>);
+  }
 }
-
-FileInputView.cssClass = {
-  CONTAINER: "FileInputView",
-};
