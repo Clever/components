@@ -92,6 +92,8 @@ export default class WizardLayoutView extends React.PureComponent {
       }
     };
 
+    const headerImg = <img className="WizardLayoutView--headerImg" src="./assets/img/deweyFox.svg" />;
+
     return (
       <View
         className={cssClass.CONTAINER}
@@ -114,13 +116,14 @@ export default class WizardLayoutView extends React.PureComponent {
           <ExampleCode style={{display: "flex", height: "35rem"}}>
             <WizardLayout
               className="Dewey--WizardLayout"
-              contentElements={WizardLayoutContent[this.state.currentStep].contentElems}
-              headerImg={showHeaderImg ? "./assets/img/deweyFox.svg" : null}
+              sections={WizardLayoutContent[this.state.currentStep].sections}
+              headerImg={showHeaderImg ? headerImg : null}
               helpContent={customHelpContent ? WizardLayoutContent[this.state.currentStep].helpContent : null}
               nextStepButtonText={WizardLayoutContent[this.state.currentStep].nextStepButtonText || null}
               onNextStep={_onNextStep}
               onPrevStep={_onPrevStep}
               onSaveAndExit={_onSaveAndExit}
+              prevStepButtonDisabled={!WizardLayoutContent[this.state.currentStep].prevStep}
               prevStepButtonText={WizardLayoutContent[this.state.currentStep].prevStepButtonText || null}
               stepper={stepper}
               subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
