@@ -250,21 +250,21 @@ export const WizardLayoutContent = {
   firstStep: "setAccess",
   setAccess: {
     nextStep: "singleSignOn",
-    contentElems: [
+    sections: [
       {
         title: "Set application launch date",
         subtitle: "Once launched, your students and teachers will be able to see their new applications on the portal.",
-        children: <FlexBox style={{maxWidth: "15rem"}} column><p>Launch date</p><DatePicker /></FlexBox>,
+        content: <FlexBox style={{maxWidth: "15rem"}} column><p>Launch date</p><DatePicker /></FlexBox>,
       },
       {
         title: "Set application access",
         subtitle: "Define who should have access to the applications below.",
-        children: appAccess,
+        content: appAccess,
       },
       {
         title: "Set your Clever Portal URL",
         subtitle: "Students and teachers will log in at this URL.",
-        children: portalURL,
+        content: portalURL,
       },
     ],
     helpContent: setAccessHelp,
@@ -272,22 +272,22 @@ export const WizardLayoutContent = {
   singleSignOn: {
     nextStep: "goals",
     prevStep: "setAccess",
-    contentElems: [
+    sections: [
       {
         title: "Clever SSO",
         subtitle: "Find out how to start saving hours of classroom time.",
-        children: cleverSSO,
+        content: cleverSSO,
       },
     ],
     helpContent: singleSignOnHelp,
   },
   goals: {
     prevStep: "singleSignOn",
-    contentElems: [
+    sections: [
       {
         title: "Clever Goals",
         subtitle: "Is your district leadership asking whether these programs are being used effectively?",
-        children: cleverGoals,
+        content: cleverGoals,
       },
     ],
     nextStepButtonText: "Done",

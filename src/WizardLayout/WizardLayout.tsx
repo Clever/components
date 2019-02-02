@@ -1,4 +1,4 @@
-import classnames from "classnames";
+import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
@@ -6,23 +6,26 @@ import * as React from "react";
 import {Button} from "../Button/Button";
 import {FlexBox, ItemAlign} from "../flex";
 
+import LifeFloat from "./LifeFloat";
 import "./WizardLayout.less";
 
-const CONTENT_ELEM_PROP_TYPE = PropTypes.shape({
+const SECTION_PROP_TYPE = PropTypes.shape({
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  content: PropTypes.node.isRequired,
 });
 
 const propTypes = {
   className: PropTypes.string,
-  contentElements: PropTypes.arrayOf(CONTENT_ELEM_PROP_TYPE).isRequired,
-  headerImg: PropTypes.string,
+  sections: PropTypes.arrayOf(SECTION_PROP_TYPE).isRequired,
+  headerImg: PropTypes.element,
   helpContent: PropTypes.node,
+  nextStepButtonDisabled: PropTypes.bool,
   nextStepButtonText: PropTypes.string,
   onNextStep: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
   onSaveAndExit: PropTypes.func.isRequired,
+  prevStepButtonDisabled: PropTypes.bool,
   prevStepButtonText: PropTypes.string,
   stepper: PropTypes.node.isRequired,
   subtitle: PropTypes.string.isRequired,
@@ -32,10 +35,10 @@ const propTypes = {
 const cssClass = {
   BODY: "WizardLayout--body",
   CONTAINER: "WizardLayout",
-  CONTENT_CONTAINER: "WizardLayout--contentContainer",
-  CONTENT_ELEM: "WizardLayout--contentElem",
-  CONTENT_TITLE: "WizardLayout--contentTitle",
-  CONTENT_SUBTITLE: "WizardLayout--contentSubtitle",
+  SECTION_CONTAINER: "WizardLayout--sectionContainer",
+  SECTION: "WizardLayout--section",
+  SECTION_TITLE: "WizardLayout--sectionTitle",
+  SECTION_SUBTITLE: "WizardLayout--sectionSubtitle",
   FOOTER: "WizardLayout--footer",
   HEADER: "WizardLayout--header",
   HEADER_IMG: "WizardLayout--headerImg",
@@ -57,13 +60,13 @@ export default class WizardLayout extends React.PureComponent {
   render() {
     const {
       className,
-      contentElements,
+      sections,
       headerImg,
       helpContent,
+      nextStepButtonDisabled,
       nextStepButtonText,
-      onNextStep,
-      onPrevStep,
       onSaveAndExit,
+      prevStepButtonDisabled,
       prevStepButtonText,
       stepper,
       subtitle,
@@ -74,14 +77,14 @@ export default class WizardLayout extends React.PureComponent {
       <FlexBox column grow className={classnames(cssClass.CONTAINER, className)}>
         <FlexBox className={cssClass.HEADER}>
           { headerImg &&
-            <FlexBox className={cssClass.HEADER_IMG}>
-              <img src={headerImg} />
-            </FlexBox>
+            <div className={cssClass.HEADER_IMG}>
+              {headerImg}
+            </div>
           }
-          <FlexBox column>
+          <div>
             <p className={cssClass.HEADER_TITLE}>{title}</p>
             <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>
-          </FlexBox>
+          </div>
         </FlexBox>
         <FlexBox className={cssClass.BODY}>
           <FlexBox column className={cssClass.STEPPER_CONTAINER}>
@@ -89,18 +92,18 @@ export default class WizardLayout extends React.PureComponent {
             <FlexBox grow />
             { helpContent &&
               <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.HELP_CONTAINER}>
-                <img className={cssClass.HELP_IMG} src="./assets/img/life-float.svg" />
+              <LifeFloat className={cssClass.HELP_IMG} />
                 { helpContent }
               </FlexBox>
             }
           </FlexBox>
-          <FlexBox column grow className={cssClass.CONTENT_CONTAINER}>
-            {contentElements.map((elem, i) => (
-              <FlexBox className={cssClass.CONTENT_ELEM} column grow key={i}>
-                <p className={cssClass.CONTENT_TITLE}>{elem.title}</p>
-                <p className={cssClass.CONTENT_SUBTITLE}>{elem.subtitle}</p>
-                {elem.children}
-              </FlexBox>
+          <FlexBox column grow className={cssClass.SECTION_CONTAINER}>
+            {sections.map((elem, i) => (
+              <div className={cssClass.SECTION} column grow key={i}>
+                <p className={cssClass.SECTION_TITLE}>{elem.title}</p>
+                <p className={cssClass.SECTION_SUBTITLE}>{elem.subtitle}</p>
+                {elem.content}
+              </div>
             ))}
           </FlexBox>
         </FlexBox>
@@ -116,15 +119,25 @@ export default class WizardLayout extends React.PureComponent {
             type="link"
             value={prevStepButtonText || "Previous step"}
             className={cssClass.PREVIOUS_BUTTON}
-            onClick={() => onPrevStep()}
+            onClick={this._onPrevStep}
+            disabled={prevStepButtonDisabled}
           />
           <Button
             type="primary"
             value={nextStepButtonText || "Next step"}
-            onClick={() => onNextStep()}
+            onClick={this._onNextStep}
+            disabled={nextStepButtonDisabled}
           />
         </FlexBox>
       </FlexBox>
     );
+  }
+
+  _onPrevStep = () => {
+    this.props.onPrevStep();
+  }
+
+  _onNextStep = () => {
+    this.props.onNextStep();
   }
 }
