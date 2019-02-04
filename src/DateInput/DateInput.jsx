@@ -5,7 +5,10 @@ import classnames from "classnames";
 import ReactDatePicker from "react-datepicker";
 import ReactDateTime from "react-datetime";
 
+import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+
 import "./DateInput.less";
+import "../less/forms.less";
 
 const popperPlacementPositions = {
   BOTTOM: "bottom",
@@ -24,6 +27,10 @@ const popperPlacementPositions = {
 
 export default class DateInput extends React.Component {
   static popperPlacementPositions = popperPlacementPositions;
+
+  static defaultProps = {
+    size: FormElementSize.FULL_WIDTH,
+  }
 
   constructor(props) {
     super(props);
@@ -82,7 +89,13 @@ export default class DateInput extends React.Component {
 
 
     return (
-      <div className={classnames(classes, this.props.className)}>
+      <div
+        className={classnames(
+          classes,
+          formElementSizeClassName(this.props.size),
+          this.props.className,
+        )}
+      >
         <div className="DateInput--infoRow">
           <label className="DateInput--label" htmlFor={this.props.name}>{this.props.label}</label>
           {inputNote}
@@ -151,4 +164,5 @@ DateInput.propTypes = {
   max: dateType,
   useTime: PropTypes.bool,
   popperPlacement: PropTypes.oneOf(Object.values(popperPlacementPositions)),
+  size: PropTypes.oneOf(Object.values(FormElementSize)),
 };

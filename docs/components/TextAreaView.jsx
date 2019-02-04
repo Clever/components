@@ -2,7 +2,7 @@ import React from "react";
 
 import Example, {ExampleCode} from "./Example";
 import View from "./View";
-import {TextArea} from "src";
+import {FormElementSize, SegmentedControl, TextArea} from "src";
 import PropDocumentation from "./PropDocumentation";
 
 import "./TextAreaView.less";
@@ -18,6 +18,7 @@ export default class TextAreaView extends React.Component {
       inputValue: "",
       autoResize: true,
       placeholder: true,
+      size: FormElementSize.MEDIUM,
     };
   }
 
@@ -44,6 +45,7 @@ export default class TextAreaView extends React.Component {
               placeholder={this.state.placeholder ? "TextArea Placeholder" : ""}
               onChange={e => this.setState({inputValue: e.target.value})}
               value={this.state.inputValue}
+              size={this.state.size}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -111,6 +113,20 @@ export default class TextAreaView extends React.Component {
             {" "}
             Show Placeholder
           </label>
+          <div className={cssClass.CONFIG}>
+            Size:
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              options={[
+                {content: "small", value: FormElementSize.SMALL},
+                {content: "medium", value: FormElementSize.MEDIUM},
+                {content: "large", value: FormElementSize.LARGE},
+                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+              ]}
+              value={this.state.size}
+              onSelect={value => this.setState({size: value})}
+            />
+          </div>
         </Example>
 
         <PropDocumentation
@@ -231,15 +247,26 @@ export default class TextAreaView extends React.Component {
               optional: true,
               defaultValue: 1,
             },
+            {
+              name: "size",
+              type: "string",
+              description: <p>
+                The size of the input. One of:<br />
+                {Object.keys(FormElementSize).map(size =>
+                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
+              </p>,
+              optional: true,
+              defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
+            },
           ]}
         />
       </View>
     );
   }
-
 }
 
 TextAreaView.cssClass = {
-  CONFIG: "TextAreaView--config",
   CONTAINER: "TextAreaView",
+  CONFIG: "TextAreaView--config",
+  CONFIG_OPTIONS: "TextAreaView--configOptions",
 };

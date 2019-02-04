@@ -1,10 +1,13 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import Dropzone from "react-dropzone";
-import {FlexBox, FlexItem} from "../flex";
 import classnames from "classnames";
 
-require("./FileInput.less");
+import {FlexBox, FlexItem} from "../flex";
+import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+
+import "./FileInput.less";
+import "../less/forms.less";
 
 function DefaultIcon() {
   return (<svg className="FileInput--Icon" width="42px" height="24px" viewBox="0 0 42 24">
@@ -75,6 +78,7 @@ export class FileInput extends React.Component {
   static defaultProps = {
     iconOnly: false,
     className: "",
+    formElementSize: FormElementSize.FULL_WIDTH,
   }
 
   constructor(props) {
@@ -150,7 +154,12 @@ export class FileInput extends React.Component {
       if (this.props.customIcon) {
         icon = this.props.customIcon;
       }
-      return (<FlexBox className={classnames("FileInput", this.props.className)}>
+      return (<FlexBox className={classnames(
+        "FileInput",
+        formElementSizeClassName(this.props.size),
+        this.props.className,
+      )}
+      >
         {!iconOnly && selected && renderLabel(label)}
         {!iconOnly && renderMessage(message, selected)}
         {icon}
@@ -168,4 +177,5 @@ FileInput.propTypes = {
   label: PropTypes.string,
   store: PropTypes.func.isRequired,
   accept: PropTypes.string,
+  size: PropTypes.string,
 };

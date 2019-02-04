@@ -1,16 +1,15 @@
 @import (reference) "~less/index";
 
-
-.TextInputView--inputContainer {
-  max-width: 25rem;
-  min-width: 15rem;
-}
-
 .TextInputView--config {
-  .text--small;
+  .margin--xs();
+  .margin--left--none();
+  .text--caps();
+  .text--small();
   cursor: pointer;
   display: inline-block;
-  margin: @size_xs;
-  margin-left: 0;
-  text-transform: uppercase;
+}
+
+.TextInputView--configOptions {
+  .margin--left--2xs();
+  display: inline-block;
 }

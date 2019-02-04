@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {TextInput} from "src";
+import {FormElementSize, SegmentedControl, TextInput} from "src";
 
 import "./TextInputView.less";
 
@@ -20,6 +20,7 @@ export default class TextInputView extends Component {
       obscured: false,
       required: false,
       placeholderCaps: true,
+      size: FormElementSize.MEDIUM,
     };
   }
 
@@ -33,7 +34,7 @@ export default class TextInputView extends Component {
         </p>
 
         <Example>
-          <div className={cssClass.INPUT_CONTAINER}>
+          <div>
             <ExampleCode>
               <TextInput
                 disabled={this.state.disabled}
@@ -49,6 +50,7 @@ export default class TextInputView extends Component {
                 onChange={e => this.setState({inputValue: e.target.value})}
                 value={this.state.inputValue}
                 onMouseOver={e => {console.log("mouseover!", e);}}
+                size={this.state.size}
               />
             </ExampleCode>
           </div>
@@ -106,6 +108,20 @@ export default class TextInputView extends Component {
             {" "}
             Placeholder Caps
           </label>
+          <div className={cssClass.CONFIG}>
+            Size:
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              options={[
+                {content: "small", value: FormElementSize.SMALL},
+                {content: "medium", value: FormElementSize.MEDIUM},
+                {content: "large", value: FormElementSize.LARGE},
+                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+              ]}
+              value={this.state.size}
+              onSelect={value => this.setState({size: value})}
+            />
+          </div>
         </Example>
 
         <PropDocumentation
@@ -198,6 +214,17 @@ export default class TextInputView extends Component {
               optional: true,
             },
             {
+              name: "size",
+              type: "string",
+              description: <p>
+                The size of the input. One of:<br />
+                {Object.keys(FormElementSize).map(size =>
+                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
+              </p>,
+              optional: true,
+              defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
+            },
+            {
               name: "type",
               type: "String",
               description: "The type of control to display, tested 'number' and 'text'",
@@ -219,7 +246,7 @@ export default class TextInputView extends Component {
 }
 
 TextInputView.cssClass = {
-  CONFIG: "TextInputView--config",
   CONTAINER: "TextInputView",
-  INPUT_CONTAINER: "TextInputView--inputContainer",
+  CONFIG: "TextInputView--config",
+  CONFIG_OPTIONS: "TextInputView--configOptions",
 };

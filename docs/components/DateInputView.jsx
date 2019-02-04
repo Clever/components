@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {DateInput} from "src";
+import {DateInput, FormElementSize, SegmentedControl} from "src";
 
 import "./DateInputView.less";
 
@@ -18,6 +18,7 @@ export default class DateInputView extends Component {
       required: false,
       useTime: false,
       value: null,
+      size: FormElementSize.MEDIUM,
     };
   }
 
@@ -42,6 +43,7 @@ export default class DateInputView extends Component {
               required={this.state.required}
               value={this.state.value}
               useTime={this.state.useTime}
+              size={this.state.size}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -89,6 +91,20 @@ export default class DateInputView extends Component {
             {" "}
             Use Time
           </label>
+          <div className={cssClass.CONFIG}>
+            Size:
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              options={[
+                {content: "small", value: FormElementSize.SMALL},
+                {content: "medium", value: FormElementSize.MEDIUM},
+                {content: "large", value: FormElementSize.LARGE},
+                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+              ]}
+              value={this.state.size}
+              onSelect={value => this.setState({size: value})}
+            />
+          </div>
         </Example>
 
         <PropDocumentation
@@ -183,6 +199,17 @@ export default class DateInputView extends Component {
               description: "Position of the pop-up calendar relative to the input.",
               optional: true,
             },
+            {
+              name: "size",
+              type: "string",
+              description: <p>
+                The size of the input. One of:<br />
+                {Object.keys(FormElementSize).map(size =>
+                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
+              </p>,
+              optional: true,
+              defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
+            },
           ]}
         />
       </View>
@@ -191,7 +218,7 @@ export default class DateInputView extends Component {
 }
 
 DateInputView.cssClass = {
-  CONFIG: "DateInputView--config",
   CONTAINER: "DateInputView",
-  INPUT_CONTAINER: "DateInputView--inputContainer",
+  CONFIG: "DateInputView--config",
+  CONFIG_OPTIONS: "DateInputView--configOptions",
 };

@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import Example, {ExampleCode} from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {CopyableInput} from "src";
+import {CopyableInput, FormElementSize, SegmentedControl} from "src";
 
 import "./CopyableInputView.less";
 
@@ -19,6 +19,7 @@ export default class CopyableInputView extends Component {
       inputValue: "🙈 🙉 🙊",
       obscured: true,
       required: false,
+      size: FormElementSize.MEDIUM,
     };
   }
 
@@ -33,7 +34,7 @@ export default class CopyableInputView extends Component {
         </p>
 
         <Example>
-          <div className={cssClass.INPUT_CONTAINER}>
+          <div>
             <ExampleCode>
               <CopyableInput
                 enableCopy
@@ -48,6 +49,7 @@ export default class CopyableInputView extends Component {
                 placeholder="CopyableInput Placeholder"
                 onChange={e => this.setState({inputValue: e.target.value})}
                 value={this.state.inputValue}
+                size={this.state.size}
               />
             </ExampleCode>
           </div>
@@ -96,6 +98,20 @@ export default class CopyableInputView extends Component {
             {" "}
             Obscured
           </label>
+          <div className={cssClass.CONFIG}>
+            Size:
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              options={[
+                {content: "small", value: FormElementSize.SMALL},
+                {content: "medium", value: FormElementSize.MEDIUM},
+                {content: "large", value: FormElementSize.LARGE},
+                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+              ]}
+              value={this.state.size}
+              onSelect={value => this.setState({size: value})}
+            />
+          </div>
         </Example>
 
         <PropDocumentation
@@ -200,6 +216,17 @@ export default class CopyableInputView extends Component {
               description: "Value of input",
               optional: true,
             },
+            {
+              name: "size",
+              type: "string",
+              description: <p>
+                The size of the input. One of:<br />
+                {Object.keys(FormElementSize).map(size =>
+                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
+              </p>,
+              optional: true,
+              defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
+            },
           ]}
           className={cssClass.PROPS}
         />
@@ -209,7 +236,7 @@ export default class CopyableInputView extends Component {
 }
 
 CopyableInputView.cssClass = {
-  CONFIG: "CopyableInputView--config",
   CONTAINER: "CopyableInputView",
-  INPUT_CONTAINER: "CopyableInputView--inputContainer",
+  CONFIG: "CopyableInputView--config",
+  CONFIG_OPTIONS: "CopyableInputView--configOptions",
 };
