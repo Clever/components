@@ -176,7 +176,7 @@ export default class WizardLayoutView extends React.PureComponent {
             description: "Custom CSS class to be added to the component.",
           },
           {
-            name: "contentElements",
+            name: "sections",
             type: "Object",
             description: "Array of objects with a title, subtitle, and content (React.Node to be displayed).",
           },
@@ -188,8 +188,14 @@ export default class WizardLayoutView extends React.PureComponent {
           },
           {
             name: "helpContent",
-            type: "React.Node",
-            description: "Optional React.Node to display helpful tips or links to the Help Center.",
+            type: "React.Element",
+            description: "Optional React.Element to display helpful tips or links to the Help Center.",
+            optional: true,
+          },
+          {
+            name: "nextStepButtonDisabled",
+            type: "Boolean",
+            description: "Optional boolean determining if the next button is enabled",
             optional: true,
           },
           {
@@ -211,6 +217,12 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "onSaveAndExit",
             type: "Function",
             description: "Called when user clicks on 'Save & exit' button.",
+          },
+          {
+            name: "prevStepButtonDisabled",
+            type: "Boolean",
+            description: "Optional boolean determining if the previous button is enabled",
+            optional: true,
           },
           {
             name: "prevStepButtonText",
