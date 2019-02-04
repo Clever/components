@@ -29,7 +29,7 @@ export default class DateInput extends React.Component {
   static popperPlacementPositions = popperPlacementPositions;
 
   static defaultProps = {
-    size: FormElementSize.UNBOUNDED,
+    size: FormElementSize.FULL_WIDTH,
   }
 
   constructor(props) {

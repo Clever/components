@@ -190,5 +190,5 @@ Select.defaultProps = {
   placeholder: "",
   searchable: false,
   creatable: false,
-  size: FormElementSize.UNBOUNDED,
+  size: FormElementSize.FULL_WIDTH,
 };

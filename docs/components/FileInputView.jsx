@@ -82,7 +82,7 @@ export default class FileInputView extends React.PureComponent {
                 {content: "small", value: FormElementSize.SMALL},
                 {content: "medium", value: FormElementSize.MEDIUM},
                 {content: "large", value: FormElementSize.LARGE},
-                {content: "unbounded", value: FormElementSize.UNBOUNDED},
+                {content: "full-width", value: FormElementSize.FULL_WIDTH},
               ]}
               value={this.state.size}
               onSelect={value => this.setState({size: value})}
@@ -149,7 +149,7 @@ export default class FileInputView extends React.PureComponent {
                 <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
             </p>,
             optional: true,
-            defaultValue: <code>FormElementSize.UNBOUNDED</code>,
+            defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
           },
         ]}
         className={cssClass.PROPS}

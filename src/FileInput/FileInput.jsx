@@ -78,7 +78,7 @@ export class FileInput extends React.Component {
   static defaultProps = {
     iconOnly: false,
     className: "",
-    formElementSize: FormElementSize.UNBOUNDED,
+    formElementSize: FormElementSize.FULL_WIDTH,
   }
 
   constructor(props) {

@@ -4,7 +4,7 @@ export const FormElementSize = {
   SMALL: "small",
   MEDIUM: "medium",
   LARGE: "large",
-  UNBOUNDED: "unbounded",
+  FULL_WIDTH: "fullWidth",
 };
 
 export function formElementSizeClassName(size: string): string {

@@ -50,7 +50,7 @@ export class CopyableInput extends React.Component {
           readOnly={this.props.readOnly}
           label={this.props.label}
           onChange={this.props.onChange}
-          size={FormElementSize.UNBOUNDED /* Rely on the fact that we're bounding the parent
+          size={FormElementSize.FULL_WIDTH /* Rely on the fact that we're bounding the parent
             container */}
         />
         <div className="CopyableInput--links">
@@ -82,5 +82,5 @@ CopyableInput.propTypes = Object.assign({},
 
 CopyableInput.defaultProps = {
   enableCopy: true,
-  size: FormElementSize.UNBOUNDED,
+  size: FormElementSize.FULL_WIDTH,
 };

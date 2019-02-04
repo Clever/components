@@ -159,5 +159,5 @@ TextArea.propTypes = {
 
 TextArea.defaultProps = {
   rows: 1,
-  size: FormElementSize.UNBOUNDED,
+  size: FormElementSize.FULL_WIDTH,
 };
