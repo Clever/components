@@ -1,0 +1,49 @@
+@import (reference) "~src/less/utilities";
+
+.WizardLayoutView--intro {
+  .margin--bottom--xl;
+}
+
+.WizardLayoutView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.WizardLayoutView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.WizardLayoutView--config {
+  cursor: pointer;
+}
+
+.WizardLayoutView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.WizardLayoutView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.WizardLayoutView--props {
+  .margin--top--l;
+}
+
+.WizardLayoutView--headerImg {
+  width: unset;
+}
+
