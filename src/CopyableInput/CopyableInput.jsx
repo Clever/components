@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import CopyToClipboard from "react-copy-to-clipboard";
@@ -14,62 +14,55 @@ import "../less/forms.less";
  * enableShow and enableCopy that allow the user
  * to show/hide and copy the value of the input.
  */
-export class CopyableInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {hidden: true};
+export const CopyableInput = (props) => {
+  const [hidden, toggleHidden] = useToggle(true);
+  const [copied, setCopied] = useState(false);
+  const onCopy = () => setCopied(true);
 
-    this.toggleHidden = this.toggleHidden.bind(this);
-    this.copyPassword = this.copyPassword.bind(this);
-  }
+  const type = props.type === "password" && hidden ? "password" : "text";
+  const wrapperClass = "CopyableInput";
 
-  toggleHidden() {
-    this.setState({hidden: !this.state.hidden});
-  }
-
-  copyPassword() {
-    this.setState({copied: true});
-  }
-
-  render() {
-    const type = this.props.type === "password" && this.state.hidden ? "password" : "text";
-    const wrapperClass = "CopyableInput";
-    return (
-      <div
-        className={classnames(
-          wrapperClass,
-          formElementSizeClassName(this.props.size),
-          this.props.className,
-        )}
-      >
-        <TextInput
-          type={type}
-          value={this.props.value}
-          name={this.props.name}
-          placeholder={this.props.placeholder}
-          readOnly={this.props.readOnly}
-          label={this.props.label}
-          onChange={this.props.onChange}
-          size={FormElementSize.FULL_WIDTH /* Rely on the fact that we're bounding the parent
-            container */}
-        />
-        <div className="CopyableInput--links">
-          {this.props.enableShow &&
-            <button type="button" className="CopyableInput--link" onClick={this.toggleHidden}>
-              {this.state.hidden ? "Show" : "Hide"}
-            </button>
-          }
-          {this.props.enableCopy &&
-             <CopyToClipboard text={this.props.value || ""} onCopy={this.copyPassword}>
-               <button type="button" className="CopyableInput--link">
-                 {this.state.copied ? "Copied!" : "Copy"}
-               </button>
-             </CopyToClipboard>
-          }
-        </div>
+  return (
+    <div
+      className={classnames(
+        wrapperClass,
+        formElementSizeClassName(props.size),
+        props.className,
+      )}
+    >
+      <TextInput
+        type={type}
+        value={props.value}
+        name={props.name}
+        placeholder={props.placeholder}
+        readOnly={props.readOnly}
+        label={props.label}
+        onChange={props.onChange}
+        size={FormElementSize.FULL_WIDTH /* Rely on the fact that we're bounding the parent
+          container */}
+      />
+      <div className="CopyableInput--links">
+        {props.enableShow &&
+          <button type="button" className="CopyableInput--link" onClick={toggleHidden}>
+            {hidden ? "Show" : "Hide"}
+          </button>
+        }
+        {props.enableCopy &&
+            <CopyToClipboard text={props.value || ""} onCopy={onCopy}>
+              <button type="button" className="CopyableInput--link">
+                {copied ? "Copied!" : "Copy"}
+              </button>
+            </CopyToClipboard>
+        }
       </div>
-    );
-  }
+      </div>
+  );
+};
+
+function useToggle(initialValue) {
+  const [value, setValue] = useState(initialValue);
+  const toggle = () => setValue(!value);
+  return [value, toggle];
 }
 
 CopyableInput.propTypes = Object.assign({},

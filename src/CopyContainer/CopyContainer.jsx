@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import * as PropTypes from "prop-types";
-import * as React from "react";
+import React, {useState} from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 import {Button} from "../Button/Button";
@@ -25,38 +25,29 @@ const cssClass = {
  * This component is useful when you want to make some text copyable.
  * It wraps the CopyToClipboard component.
  */
-export default class CopyContainer extends React.PureComponent {
-  static propTypes = propTypes;
-  static cssClass = cssClass;
+const CopyContainer = (props) => {
+  const {children, copyText, buttonLabel, className} = props;
+  const [copied, setCopied] = useState(false);
+  const copyLabel = !copied ? (buttonLabel || "Copy") : "Copied!";
 
-  constructor(props) {
-    super(props);
-    this._onCopy = this._onCopy.bind(this);
-    this.state = {
-      copied: false,
-    };
-  }
+  const onCopy = () => {
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2 * 1000);
+  };
 
-  _onCopy() {
-    this.setState({copied: true});
-    window.setTimeout(() => this.setState({copied: false}), 2 * 1000);
-  }
-
-  render() {
-    const {children, copyText, buttonLabel, className} = this.props;
-    const {copied} = this.state;
-
-    const copyLabel = !copied ? (buttonLabel || "Copy") : "Copied!";
-
-    return (
-      <FlexBox alignItems={ItemAlign.CENTER} className={classnames(cssClass.CONTAINER, className)}>
-        {children}
-        <FlexBox alignItems={ItemAlign.START} grow>
-          <CopyToClipboard text={copyText || children || ""} onCopy={this._onCopy}>
-            <Button className={cssClass.BUTTON} type="linkPlain" value={copyLabel} />
-          </CopyToClipboard>
-        </FlexBox>
+  return (
+    <FlexBox alignItems={ItemAlign.CENTER} className={classnames(cssClass.CONTAINER, className)}>
+      {children}
+      <FlexBox alignItems={ItemAlign.START} grow>
+        <CopyToClipboard text={copyText || children || ""} onCopy={onCopy}>
+          <Button className={cssClass.BUTTON} type="linkPlain" value={copyLabel} />
+        </CopyToClipboard>
       </FlexBox>
-    );
-  }
-}
+    </FlexBox>
+  );
+};
+
+CopyContainer.cssClass = cssClass;
+CopyContainer.propTypes = propTypes;
+
+export default CopyContainer;
