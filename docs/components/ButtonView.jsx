@@ -44,13 +44,21 @@ export default function ButtonView() {
           <Button disabled type="link" href="http://clever.com" value="Disabled Link" />
           <Button type="linkPlain" href="http://google.com" value="Plain Link" />
         </ExampleCode>
+        <br />
         <p>
-          Here is a <Button type="linkPlain" href="//google.com" value="plain link" /> with no
+          Here is a <Button type="linkPlain" href="//google.com" value="plain link" />. By default it has no
           margin/padding.
-          <br />
-          Better suited for inline links than the
+        </p>
+        <p>
+          <span className={cssClass.LARGE_FONT_LINK_PLAIN_CONTAINER}>
+            Another attribute of <Button type="linkPlain" href="//google.com" value="plain links" /> is that they match
+            the font size of the DOM element they are contained in.
+          </span>
+        </p>
+        <p>
+          This makes plain links ideal for inline links, unlike the
           regular <Button type="link" href="http://google.com" value="link button" />, which doesn't
-          automatically match the text around it.
+          automatically match the text around it and has padding.
         </p>
       </Example>
 
@@ -200,4 +208,5 @@ export default function ButtonView() {
 
 ButtonView.cssClass = {
   CONTAINER: "ButtonView",
+  LARGE_FONT_LINK_PLAIN_CONTAINER: "ButtonView--largeFontLinkPlainContainer",
 };
