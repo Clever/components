@@ -174,6 +174,7 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "className",
             type: "String",
             description: "Custom CSS class to be added to the component.",
+            optional: true,
           },
           {
             name: "sections",
@@ -197,11 +198,14 @@ export default class WizardLayoutView extends React.PureComponent {
             type: "Boolean",
             description: "Optional boolean determining if the next button is enabled",
             optional: true,
+            defaultValue: "false",
           },
           {
             name: "nextStepButtonText",
             type: "String",
             description: "Optional next button text, 'Next step' by default",
+            defaultValue: "Next step",
+            optional: true,
           },
           {
             name: "onNextStep",
@@ -223,11 +227,14 @@ export default class WizardLayoutView extends React.PureComponent {
             type: "Boolean",
             description: "Optional boolean determining if the previous button is enabled",
             optional: true,
+            defaultValue: "false",
           },
           {
             name: "prevStepButtonText",
             type: "String",
             description: "Optional previous button text, 'Previous step' by default",
+            optional: true,
+            defaultValue: "Previous Step",
           },
           {
             name: "stepper",
