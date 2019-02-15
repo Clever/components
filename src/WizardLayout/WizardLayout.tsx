@@ -99,7 +99,7 @@ export default class WizardLayout extends React.PureComponent {
           </FlexBox>
           <FlexBox column grow className={cssClass.SECTION_CONTAINER}>
             {sections.map((elem, i) => (
-              <div className={cssClass.SECTION} column grow key={i}>
+              <div className={cssClass.SECTION} key={i}>
                 <p className={cssClass.SECTION_TITLE}>{elem.title}</p>
                 <p className={cssClass.SECTION_SUBTITLE}>{elem.subtitle}</p>
                 {elem.content}
