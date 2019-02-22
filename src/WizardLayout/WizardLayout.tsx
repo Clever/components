@@ -48,6 +48,7 @@ const cssClass = {
   HELP_IMG: "WizardLayout--helpImg",
   PREVIOUS_BUTTON: "WizardLayout--previousButton",
   STEPPER_CONTAINER: "WizardLayout--stepperContainer",
+  SECTION_DIVIDER: "WizardLayout--sectionDivider",
 };
 
 /**
@@ -102,6 +103,7 @@ export default class WizardLayout extends React.PureComponent {
               <div className={cssClass.SECTION} key={i}>
                 { elem.title && <p className={cssClass.SECTION_TITLE}>{elem.title}</p>}
                 { elem.subtitle && <p className={cssClass.SECTION_SUBTITLE}>{elem.subtitle}</p>}
+                { (elem.subtitle || elem.title) && <div className={cssClass.SECTION_DIVIDER} /> }
                 {elem.content}
               </div>
             ))}
