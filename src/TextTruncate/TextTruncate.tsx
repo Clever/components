@@ -61,7 +61,7 @@ export default class TextTruncate extends React.PureComponent {
 
     const displayText = truncated ? `${this.truncate(text)}…` : text;
     return (<div className={classnames(cssClass.CONTAINER, className)}>
-      { useRichText ? <RichText text={displayText} /> : displayText }
+      {useRichText ? <RichText text={displayText} /> : displayText}
       {" "}
       <Button type="linkPlain" onClick={this.toggleTruncation} value={truncated ? showMoreLabel : showLessLabel} />
     </div>);

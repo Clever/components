@@ -56,3 +56,7 @@ rules:
     - 2
     - classes: false
       functions: false
+
+  react/jsx-curly-spacing:
+    - 2
+    - "never"
