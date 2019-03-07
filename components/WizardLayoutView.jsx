@@ -221,6 +221,7 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "onSaveAndExit",
             type: "Function",
             description: "Called when user clicks on 'Save & exit' button.",
+            optional: true,
           },
           {
             name: "prevStepButtonDisabled",
