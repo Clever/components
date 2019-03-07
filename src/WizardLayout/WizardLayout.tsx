@@ -77,7 +77,7 @@ export default class WizardLayout extends React.PureComponent {
     return (
       <FlexBox column grow className={classnames(cssClass.CONTAINER, className)}>
         <FlexBox className={cssClass.HEADER}>
-          { headerImg &&
+          {headerImg &&
             <div className={cssClass.HEADER_IMG}>
               {headerImg}
             </div>
@@ -91,30 +91,30 @@ export default class WizardLayout extends React.PureComponent {
           <FlexBox column className={cssClass.STEPPER_CONTAINER}>
             {stepper}
             <FlexBox grow />
-            { helpContent &&
+            {helpContent &&
               <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.HELP_CONTAINER}>
               <LifeFloat className={cssClass.HELP_IMG} />
-                { helpContent }
+                {helpContent}
               </FlexBox>
             }
           </FlexBox>
           <FlexBox column grow className={cssClass.SECTION_CONTAINER}>
             {sections.map((elem, i) => (
               <div className={cssClass.SECTION} key={i}>
-                { elem.title && <p className={cssClass.SECTION_TITLE}>{elem.title}</p>}
-                { elem.subtitle && <p className={cssClass.SECTION_SUBTITLE}>{elem.subtitle}</p>}
-                { (elem.subtitle || elem.title) && <div className={cssClass.SECTION_DIVIDER} /> }
+                {elem.title && <p className={cssClass.SECTION_TITLE}>{elem.title}</p>}
+                {elem.subtitle && <p className={cssClass.SECTION_SUBTITLE}>{elem.subtitle}</p>}
+                {(elem.subtitle || elem.title) && <div className={cssClass.SECTION_DIVIDER} />}
                 {elem.content}
               </div>
             ))}
           </FlexBox>
         </FlexBox>
         <FlexBox className={cssClass.FOOTER}>
-          { onSaveAndExit && <Button
+          {onSaveAndExit && <Button
             type="link"
             value={"Save & exit"}
             onClick={() => onSaveAndExit()}
-          /> }
+          />}
           {/* spacer for the buttons */}
           <FlexBox grow />
           <Button
