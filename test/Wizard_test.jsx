@@ -7,8 +7,7 @@ import _ from "lodash";
 import { Wizard } from "../src";
 import WizardStep from "../src/Wizard/WizardStep";
 
-class TestComponent extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
+class TestComponent extends React.PureComponent {
   render() {
     return <div />;
   }
