@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "files": "*",
+      "options": {
+        "trailingComma": "all",
+        "printWidth": 100
+      }
+    }
+  ]
+}
