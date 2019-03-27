@@ -2,14 +2,14 @@ import classnames from "classnames";
 import React from "react";
 import * as PropTypes from "prop-types";
 
-import {FlexItem, Logo} from "src";
+import { FlexItem, Logo } from "src";
 import Colors from "src/utils/Colors";
-import BaseTopBar, {TopBarButton} from "src/TopBar";
+import BaseTopBar, { TopBarButton } from "src/TopBar";
 
 import "./TopBar.less";
 
-export default function TopBar({className, onToggleMenu}) {
-  const {cssClass} = TopBar;
+export default function TopBar({ className, onToggleMenu }) {
+  const { cssClass } = TopBar;
 
   return (
     <BaseTopBar
@@ -23,7 +23,11 @@ export default function TopBar({className, onToggleMenu}) {
       title="Design System"
     >
       <FlexItem grow />
-      <TopBarButton className={cssClass.GITHUB_LINK} href="//github.com/clever/components" target="_blank">
+      <TopBarButton
+        className={cssClass.GITHUB_LINK}
+        href="//github.com/clever/components"
+        target="_blank"
+      >
         <span className="fa fa-github" />
       </TopBarButton>
     </BaseTopBar>

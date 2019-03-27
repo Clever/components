@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {CopyContainer} from "src";
+import { CopyContainer } from "src";
 
 import "./CopyContainerView.less";
 
@@ -28,7 +28,9 @@ export default class CopyContainerView extends React.PureComponent {
         sourcePath="src/CopyContainer/CopyContainer.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>This component is useful when you want to make some text copyable with a "copy" button.</p>
+          <p>
+            This component is useful when you want to make some text copyable with a "copy" button.
+          </p>
           <CodeSample>
             {`
               import {CopyContainer} from "clever-components";

@@ -2,10 +2,10 @@ import classnames from "classnames";
 import * as React from "react";
 
 import Colors from "src/utils/Colors";
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Logo, FlexBox, ItemAlign, Select} from "src";
+import { Logo, FlexBox, ItemAlign, Select } from "src";
 
 import "./LogoView.less";
 
@@ -32,7 +32,7 @@ export default class LogoView extends React.PureComponent {
   };
 
   render() {
-    const {beta, color, fontSize} = this.state;
+    const { beta, color, fontSize } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Logo" sourcePath="src/Logo/Logo.tsx">
@@ -49,7 +49,7 @@ export default class LogoView extends React.PureComponent {
         <Example title="Basic Usage:">
           <div className={cssClass.DEMO}>
             <ExampleCode>
-              <Logo beta={beta} className="my--custom--class" color={color} style={{fontSize}} />
+              <Logo beta={beta} className="my--custom--class" color={color} style={{ fontSize }} />
             </ExampleCode>
           </div>
           {this._renderConfig()}
@@ -61,7 +61,7 @@ export default class LogoView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {beta, color, fontSize} = this.state;
+    const { beta, color, fontSize } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -71,7 +71,7 @@ export default class LogoView extends React.PureComponent {
             id={cssClass.DROPDOWN_COLOR}
             label="Color"
             name={cssClass.DROPDOWN_COLOR}
-            onChange={({value}) => this.setState({color: value})}
+            onChange={({ value }) => this.setState({ color: value })}
             options={Object.keys(Colors)
               .sort()
               .map(key => ({
@@ -87,7 +87,7 @@ export default class LogoView extends React.PureComponent {
             id={cssClass.DROPDOWN_FONT_SIZE}
             label="Font Size"
             name={cssClass.DROPDOWN_FONT_SIZE}
-            onChange={({value}) => this.setState({fontSize: value})}
+            onChange={({ value }) => this.setState({ fontSize: value })}
             options={["0.5rem", "0.75rem", "1rem", "1.5rem", "2rem", "3rem", "4rem"].map(h => ({
               label: h,
               value: h,
@@ -100,7 +100,7 @@ export default class LogoView extends React.PureComponent {
             type="checkbox"
             checked={beta}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({beta: e.target.checked})}
+            onChange={e => this.setState({ beta: e.target.checked })}
           />{" "}
           Beta
         </label>

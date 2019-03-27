@@ -1,12 +1,11 @@
 import classnames from "classnames";
 import React from "react";
 import * as PropTypes from "prop-types";
-import {Link as ReactRouterLink, routerShape} from "react-router";
+import { Link as ReactRouterLink, routerShape } from "react-router";
 
-import {Icon, LeftNav} from "../../../src";
+import { Icon, LeftNav } from "../../../src";
 
 import "./SideBar.less";
-
 
 export default class SideBar extends React.Component {
   constructor(props) {
@@ -18,12 +17,12 @@ export default class SideBar extends React.Component {
   }
 
   toggle() {
-    this.setState({collapsed: !this.state.collapsed});
+    this.setState({ collapsed: !this.state.collapsed });
   }
 
   _renderLink(path, label, icon = null) {
-    const {NavLink} = LeftNav;
-    const {router} = this.context;
+    const { NavLink } = LeftNav;
+    const { router } = this.context;
 
     return (
       <NavLink
@@ -37,10 +36,10 @@ export default class SideBar extends React.Component {
   }
 
   render() {
-    const {NavGroup} = LeftNav;
-    const {cssClass} = SideBar;
-    const {className} = this.props;
-    const {collapsed} = this.state;
+    const { NavGroup } = LeftNav;
+    const { cssClass } = SideBar;
+    const { className } = this.props;
+    const { collapsed } = this.state;
 
     const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
     const faIcon = name => <span className={classnames(cssClass.FA_ICON, `fa fa-${name}`)} />;
@@ -125,7 +124,6 @@ export default class SideBar extends React.Component {
 SideBar.contextTypes = {
   router: routerShape,
 };
-
 
 SideBar.propTypes = {
   className: PropTypes.string,

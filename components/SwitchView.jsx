@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Switch, FlexBox, ItemAlign} from "src";
+import { Switch, FlexBox, ItemAlign } from "src";
 
 import "./SwitchView.less";
 
@@ -26,17 +26,16 @@ export default class SwitchView extends React.PureComponent {
   };
 
   render() {
-    const {checked, disabled} = this.state;
+    const { checked, disabled } = this.state;
 
     return (
-      <View
-        className={cssClass.CONTAINER}
-        title="Switch"
-        sourcePath="src/Switch/Switch.tsx"
-      >
+      <View className={cssClass.CONTAINER} title="Switch" sourcePath="src/Switch/Switch.tsx">
         <header className={cssClass.INTRO}>
           <p>Switch toggles a single setting on or off with an immediate effect.</p>
-          <p>Common useses are for preferences, settings, or features which may be enabled or disabled with switches.</p>
+          <p>
+            Common useses are for preferences, settings, or features which may be enabled or
+            disabled with switches.
+          </p>
           <CodeSample>
             {`
               import {Switch} from "clever-components";
@@ -63,12 +62,12 @@ export default class SwitchView extends React.PureComponent {
     );
   }
 
-  _handleChange = (checked) => {
-    this.setState({checked});
-  }
+  _handleChange = checked => {
+    this.setState({ checked });
+  };
 
   _renderConfig() {
-    const {checked, disabled} = this.state;
+    const { checked, disabled } = this.state;
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
         <label className={cssClass.CONFIG}>
@@ -76,7 +75,7 @@ export default class SwitchView extends React.PureComponent {
             type="checkbox"
             checked={checked}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({checked: e.target.checked})}
+            onChange={e => this.setState({ checked: e.target.checked })}
           />{" "}
           Checked
         </label>
@@ -85,7 +84,7 @@ export default class SwitchView extends React.PureComponent {
             type="checkbox"
             checked={disabled}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({disabled: e.target.checked})}
+            onChange={e => this.setState({ disabled: e.target.checked })}
           />{" "}
           Disabled
         </label>

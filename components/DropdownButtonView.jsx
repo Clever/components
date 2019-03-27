@@ -1,16 +1,15 @@
 import _ from "lodash";
 import Fade from "react-bootstrap/lib/Fade";
-import React, {Component} from "react";
-import {Link} from "react-router";
+import React, { Component } from "react";
+import { Link } from "react-router";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import Hello from "./DropdownButtonViewData";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Button, DropdownButton, FlexBox, ItemAlign, SegmentedControl} from "src";
+import { Button, DropdownButton, FlexBox, ItemAlign, SegmentedControl } from "src";
 
 import "./DropdownButtonView.less";
-
 
 export default class DropdownButtonView extends Component {
   constructor(props) {
@@ -33,23 +32,23 @@ export default class DropdownButtonView extends Component {
   }
 
   moreSamples() {
-    this.setState({samples: _.sampleSize(Hello, 5)});
+    this.setState({ samples: _.sampleSize(Hello, 5) });
   }
 
   say(hello) {
-    this.setState({hello, goodbye: false});
+    this.setState({ hello, goodbye: false });
     this.bye();
   }
 
   bye() {
     window.clearTimeout(this.byeTimerID);
-    this.byeTimerID = window.setTimeout(() => this.setState({goodbye: true}), 1500);
+    this.byeTimerID = window.setTimeout(() => this.setState({ goodbye: true }), 1500);
   }
 
   renderConfig() {
-    const {Size, Type} = DropdownButton;
-    const {cssClass} = DropdownButtonView;
-    const {disabled, size, type} = this.state;
+    const { Size, Type } = DropdownButton;
+    const { cssClass } = DropdownButtonView;
+    const { disabled, size, type } = this.state;
 
     return (
       <FlexBox className={cssClass.CONFIG_CONTAINER}>
@@ -57,7 +56,7 @@ export default class DropdownButtonView extends Component {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({size: value})}
+            onSelect={value => this.setState({ size: value })}
             options={_.values(DropdownButton.Size).map(s => ({
               content: s,
               value: s,
@@ -70,7 +69,7 @@ export default class DropdownButtonView extends Component {
           Type:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({type: value})}
+            onSelect={value => this.setState({ type: value })}
             options={_.values(DropdownButton.Type).map(t => ({
               content: t,
               value: t,
@@ -83,11 +82,8 @@ export default class DropdownButtonView extends Component {
           Disabled:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({disabled: value})}
-            options={[
-              {content: "false", value: "0"},
-              {content: "true", value: "1"},
-            ]}
+            onSelect={value => this.setState({ disabled: value })}
+            options={[{ content: "false", value: "0" }, { content: "true", value: "1" }]}
             value={disabled}
           />
         </div>
@@ -96,9 +92,9 @@ export default class DropdownButtonView extends Component {
   }
 
   render() {
-    const {Option} = DropdownButton;
-    const {cssClass} = DropdownButtonView;
-    const {goodbye, hello, samples, size, type} = this.state;
+    const { Option } = DropdownButton;
+    const { cssClass } = DropdownButtonView;
+    const { goodbye, hello, samples, size, type } = this.state;
     const disabled = this.state.disabled === "1";
     const emptyArray = [];
 
@@ -114,8 +110,8 @@ export default class DropdownButtonView extends Component {
             displaying a menu of secondary actions.
           </p>
           <p>
-            Builds on the <Link to="/components/button">Button</Link> component and
-            supports a subset of the configuration thereof, including size and color options.
+            Builds on the <Link to="/components/button">Button</Link> component and supports a
+            subset of the configuration thereof, including size and color options.
           </p>
           <CodeSample>
             {`
@@ -183,7 +179,9 @@ export default class DropdownButtonView extends Component {
               type={type}
             >
               <Option href="http://www.centerdigitaled.com">Converge</Option>
-              <Option href="http://www.example.com" disabled>Disabled Option</Option>
+              <Option href="http://www.example.com" disabled>
+                Disabled Option
+              </Option>
               <Option href="http://www.edsurge.com">EdSurge</Option>
               <Option href="http://www.edtechmagazine.com">EdTech Magazine</Option>
               <Option href="http://www.techlearning.com">Tech & Learning</Option>
@@ -227,8 +225,8 @@ export default class DropdownButtonView extends Component {
               name: "href",
               type: "string",
               description:
-                "Optional URL for the main action button. The button is rendered as an anchor "
-                  + "element if `href`` is specified.",
+                "Optional URL for the main action button. The button is rendered as an anchor " +
+                "element if `href`` is specified.",
             },
             {
               name: "label",
@@ -252,7 +250,9 @@ export default class DropdownButtonView extends Component {
               description: (
                 <div>
                   <p>The window target for the link button, if `href` is specified.</p>
-                  <p>Supports <code>_self</code> and <code>_blank</code>.</p>
+                  <p>
+                    Supports <code>_self</code> and <code>_blank</code>.
+                  </p>
                 </div>
               ),
               defaultValue: "_blank",
@@ -290,8 +290,8 @@ export default class DropdownButtonView extends Component {
               name: "href",
               type: "string",
               description:
-                "Optional URL for the main action button. The button is rendered as an anchor "
-                  + "element if `href`` is specified.",
+                "Optional URL for the main action button. The button is rendered as an anchor " +
+                "element if `href`` is specified.",
             },
             {
               name: "onClick",
@@ -310,7 +310,9 @@ export default class DropdownButtonView extends Component {
               description: (
                 <div>
                   <p>The window target for the link button, if `href` is specified.</p>
-                  <p>Supports <code>_self</code> and <code>_blank</code>.</p>
+                  <p>
+                    Supports <code>_self</code> and <code>_blank</code>.
+                  </p>
                 </div>
               ),
               defaultValue: "_blank",

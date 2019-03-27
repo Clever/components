@@ -1,10 +1,10 @@
 import classnames from "classnames";
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {FlexBox, ItemAlign, ProgressBar, SegmentedControl, Select, TextInput} from "src";
+import { FlexBox, ItemAlign, ProgressBar, SegmentedControl, Select, TextInput } from "src";
 
 import "./ProgressBarView.less";
 
@@ -52,10 +52,14 @@ export default class ProgressBarView extends React.PureComponent {
   };
 
   render() {
-    const {color, fill, size, width, striped, inactive, showLabel, labelType} = this.state;
+    const { color, fill, size, width, striped, inactive, showLabel, labelType } = this.state;
 
     return (
-      <View className={cssClass.CONTAINER} title="ProgressBar" sourcePath="src/ProgressBar/ProgressBar.tsx">
+      <View
+        className={cssClass.CONTAINER}
+        title="ProgressBar"
+        sourcePath="src/ProgressBar/ProgressBar.tsx"
+      >
         <header className={cssClass.INTRO}>
           <p>This is a progress bar.</p>
           <CodeSample>
@@ -102,7 +106,8 @@ export default class ProgressBarView extends React.PureComponent {
             {
               name: "width",
               type: "Number",
-              description: "Width of the progres bar in percentage. There is a minimum allowed width (in px) for each size.",
+              description:
+                "Width of the progres bar in percentage. There is a minimum allowed width (in px) for each size.",
               defaultValue: "100",
               optional: true,
             },
@@ -116,7 +121,8 @@ export default class ProgressBarView extends React.PureComponent {
             {
               name: "size",
               type: "String",
-              description: "The size (thickness) of the progress bar. Any of thin, medium, or thick.",
+              description:
+                "The size (thickness) of the progress bar. Any of thin, medium, or thick.",
               defaultValue: "medium",
               optional: true,
             },
@@ -143,13 +149,15 @@ export default class ProgressBarView extends React.PureComponent {
             {
               name: "showLabel",
               type: "Object",
-              description: "Whether to add a label to the progress bar. Any of top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right.",
+              description:
+                "Whether to add a label to the progress bar. Any of top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right.",
               optional: true,
             },
             {
               name: "labelType",
               type: "Object",
-              description: "The label type to show. Only applicable if showLabel is set. A value of `percentage` will render the percentage. Any other value will be shown as is.",
+              description:
+                "The label type to show. Only applicable if showLabel is set. A value of `percentage` will render the percentage. Any other value will be shown as is.",
               defaultValue: "percentage",
               optional: true,
             },
@@ -162,7 +170,7 @@ export default class ProgressBarView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {color, fill, size, width, striped, inactive, showLabel, labelType} = this.state;
+    const { color, fill, size, width, striped, inactive, showLabel, labelType } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -172,12 +180,11 @@ export default class ProgressBarView extends React.PureComponent {
             id={cssClass.DROPDOWN_COLOR}
             label="Color"
             name={cssClass.DROPDOWN_COLOR}
-            onChange={({value}) => this.setState({color: value})}
-            options={Object.keys(Color)
-              .map(key => ({
-                label: key,
-                value: Color[key],
-              }))}
+            onChange={({ value }) => this.setState({ color: value })}
+            options={Object.keys(Color).map(key => ({
+              label: key,
+              value: Color[key],
+            }))}
             value={color}
           />
         </div>
@@ -185,18 +192,17 @@ export default class ProgressBarView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({size: value})}
+            onSelect={value => this.setState({ size: value })}
             options={[
-              {content: "Thin", value: "thin"},
-              {content: "Medium", value: "medium"},
-              {content: "Thick", value: "thick"},
+              { content: "Thin", value: "thin" },
+              { content: "Medium", value: "medium" },
+              { content: "Thick", value: "thick" },
             ]}
             value={size}
           />
         </div>
         <div className={cssClass.CONFIG}>
-          Fill:
-          {" "}
+          Fill:{" "}
           <input
             className={cssClass.CONFIG_OPTIONS}
             type="number"
@@ -204,12 +210,11 @@ export default class ProgressBarView extends React.PureComponent {
             min={0}
             step={1}
             value={fill}
-            onChange={({target}) => this.setState({fill: parseFloat(target.value)})}
+            onChange={({ target }) => this.setState({ fill: parseFloat(target.value) })}
           />
         </div>
         <div className={cssClass.CONFIG}>
-          Width:
-          {" "}
+          Width:{" "}
           <input
             className={cssClass.CONFIG_OPTIONS}
             type="number"
@@ -217,7 +222,7 @@ export default class ProgressBarView extends React.PureComponent {
             min={0}
             step={1}
             value={width}
-            onChange={({target}) => this.setState({width: parseFloat(target.value)})}
+            onChange={({ target }) => this.setState({ width: parseFloat(target.value) })}
           />
         </div>
         <div className={cssClass.CONFIG}>
@@ -226,19 +231,18 @@ export default class ProgressBarView extends React.PureComponent {
             id={cssClass.DROPDOWN_LABEL}
             label="Label"
             name={cssClass.DROPDOWN_LABEL}
-            onChange={({value}) => this.setState({showLabel: value})}
-            options={Object.keys(ShowLabel)
-              .map(key => ({
-                label: key,
-                value: ShowLabel[key],
-              }))}
+            onChange={({ value }) => this.setState({ showLabel: value })}
+            options={Object.keys(ShowLabel).map(key => ({
+              label: key,
+              value: ShowLabel[key],
+            }))}
             value={showLabel}
           />
         </div>
         <div className={cssClass.CONFIG}>
           <TextInput
             className={cssClass.CONFIG_OPTIONS}
-            onChange={e => this.setState({labelType: e.target.value})}
+            onChange={e => this.setState({ labelType: e.target.value })}
             label="Label Type"
             name="ProgressBarView--label--type"
             placeholder="Label Type"
@@ -250,7 +254,7 @@ export default class ProgressBarView extends React.PureComponent {
             type="checkbox"
             checked={striped}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({striped: e.target.checked})}
+            onChange={e => this.setState({ striped: e.target.checked })}
           />{" "}
           Striped
         </label>
@@ -259,7 +263,7 @@ export default class ProgressBarView extends React.PureComponent {
             type="checkbox"
             checked={inactive}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({inactive: e.target.checked})}
+            onChange={e => this.setState({ inactive: e.target.checked })}
           />{" "}
           Inactive
         </label>

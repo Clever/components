@@ -4,15 +4,10 @@ import * as PropTypes from "prop-types";
 
 import "./Demo.less";
 
+export default function Demo({ children, className }) {
+  const { cssClass } = Demo;
 
-export default function Demo({children, className}) {
-  const {cssClass} = Demo;
-
-  return (
-    <div className={classnames(cssClass.CONTAINER, className)}>
-      {children}
-    </div>
-  );
+  return <div className={classnames(cssClass.CONTAINER, className)}>{children}</div>;
 }
 
 Demo.propTypes = {

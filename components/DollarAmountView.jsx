@@ -1,13 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {SegmentedControl} from "src";
-import {DollarAmount} from "src";
+import { SegmentedControl } from "src";
+import { DollarAmount } from "src";
 
 import "./DollarAmountView.less";
-
 
 export default class DollarAmountView extends Component {
   constructor(props) {
@@ -21,8 +20,8 @@ export default class DollarAmountView extends Component {
   }
 
   renderConfig() {
-    const {cssClass, NumberOptions} = DollarAmountView;
-    const {number, alwaysShowCents, zeroIsFree} = this.state;
+    const { cssClass, NumberOptions } = DollarAmountView;
+    const { number, alwaysShowCents, zeroIsFree } = this.state;
 
     return (
       <div className={cssClass.CONFIG_CONTAINER}>
@@ -30,8 +29,8 @@ export default class DollarAmountView extends Component {
           Amount:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({number: value})}
-            options={Object.keys(NumberOptions).map(n => ({content: n, value: NumberOptions[n]}))}
+            onSelect={value => this.setState({ number: value })}
+            options={Object.keys(NumberOptions).map(n => ({ content: n, value: NumberOptions[n] }))}
             value={number}
           />
         </div>
@@ -39,19 +38,19 @@ export default class DollarAmountView extends Component {
           Dollar Format:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({alwaysShowCents: value})}
+            onSelect={value => this.setState({ alwaysShowCents: value })}
             options={[
-              {content: "Regular", value: "no"},
-              {content: "Always Show Cents", value: "yes"},
+              { content: "Regular", value: "no" },
+              { content: "Always Show Cents", value: "yes" },
             ]}
             value={alwaysShowCents}
           />
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({zeroIsFree: value})}
+            onSelect={value => this.setState({ zeroIsFree: value })}
             options={[
-              {content: "Regular", value: "no"},
-              {content: "Zero is 'Free'", value: "yes"},
+              { content: "Regular", value: "no" },
+              { content: "Zero is 'Free'", value: "yes" },
             ]}
             value={zeroIsFree}
           />
@@ -61,14 +60,18 @@ export default class DollarAmountView extends Component {
   }
 
   render() {
-    const {cssClass} = DollarAmountView;
-    let {number, alwaysShowCents, zeroIsFree} = this.state;
+    const { cssClass } = DollarAmountView;
+    let { number, alwaysShowCents, zeroIsFree } = this.state;
 
     alwaysShowCents = alwaysShowCents === "yes";
     zeroIsFree = zeroIsFree === "yes";
 
     return (
-      <View className={cssClass.CONTAINER} title="DollarAmount" sourcePath="src/DollarAmount/DollarAmount.jsx">
+      <View
+        className={cssClass.CONTAINER}
+        title="DollarAmount"
+        sourcePath="src/DollarAmount/DollarAmount.jsx"
+      >
         <div className={cssClass.INTRO}>
           <p>Provides a convenient wrapper for displaying dollar values.</p>
           <CodeSample>
@@ -78,12 +81,20 @@ export default class DollarAmountView extends Component {
           </CodeSample>
         </div>
 
-        <Example
-          title="Defaults to not showing cents if the value is an integer, but showing cents if value is a float"
-        >
+        <Example title="Defaults to not showing cents if the value is an integer, but showing cents if value is a float">
           <ExampleCode>
-            <p>Base Value: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number}</DollarAmount></p>
-            <p>Plus a smidge: <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>{number + 0.3333}</DollarAmount></p>
+            <p>
+              Base Value:{" "}
+              <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>
+                {number}
+              </DollarAmount>
+            </p>
+            <p>
+              Plus a smidge:{" "}
+              <DollarAmount alwaysShowCents={alwaysShowCents} zeroIsFree={zeroIsFree}>
+                {number + 0.3333}
+              </DollarAmount>
+            </p>
           </ExampleCode>
           {this.renderConfig()}
         </Example>
