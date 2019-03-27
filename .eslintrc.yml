@@ -60,3 +60,5 @@ rules:
   react/jsx-curly-spacing:
     - 2
     - "never"
+
+  prefer-const: ["error", { "destructuring": "all" }]
