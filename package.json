@@ -86,6 +86,7 @@
     "lorem-ipsum": "^1.0.3",
     "mocha": "^2.4.5",
     "postcss-loader": "^1.1.1",
+    "prettier": "1.16.4",
     "prismjs": "^1.5.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
