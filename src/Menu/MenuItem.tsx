@@ -66,6 +66,20 @@ export default class MenuItem extends React.PureComponent {
       MenuButton = href ? "a" : "button";
     }
 
+    // Safari fires focusout events on button mousedown events - it basically removes and returns
+    // focus between mousedown and mouseup. Yes, that is quite weird.
+    //
+    // To avoid closing the menu before the user is done clicking a button menu item, we trigger
+    // onClick on mousedown instead.
+    //
+    // This only needs to be done for buttons, not anchors.
+    let safariSafeOnClick = onClick;
+    let onMouseDown;
+    if (MenuButton === "button") {
+      safariSafeOnClick = undefined;
+      onMouseDown = onClick;
+    }
+
     return (
       <MenuButton
         {...additionalProps}
@@ -78,7 +92,8 @@ export default class MenuItem extends React.PureComponent {
         )}
         href={href}
         onBlur={onBlur}
-        onClick={onClick}
+        onClick={safariSafeOnClick}
+        onMouseDown={onMouseDown}
         role="menuitem"
         tabIndex={-1}
         target={target}
@@ -87,11 +102,6 @@ export default class MenuItem extends React.PureComponent {
       </MenuButton>
     );
   }
-
-  _handleClick = () => {
-    this.props.onClick();
-    this.props.onBlur();
-  };
 
   _updateFocus(props) {
     if (props.focused) {
