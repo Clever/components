@@ -2,10 +2,10 @@ import * as React from "react";
 import classNames from "classnames";
 import loremIpsum from "lorem-ipsum";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {TextTruncate, FlexBox, ItemAlign, SegmentedControl, TextInput} from "src";
+import { TextTruncate, FlexBox, ItemAlign, SegmentedControl, TextInput } from "src";
 
 import "./TextTruncateView.less";
 
@@ -35,12 +35,12 @@ export default class TextTruncateView extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.shortText = loremIpsum({count: 7, units: "words"});
-    this.longText = loremIpsum({count: 4, units: "paragraphs"});
+    this.shortText = loremIpsum({ count: 7, units: "words" });
+    this.longText = loremIpsum({ count: 4, units: "paragraphs" });
   }
 
   render() {
-    const {maxCharsShown, showMoreLabel, showLessLabel, showLongText, useRichText} = this.state;
+    const { maxCharsShown, showMoreLabel, showLessLabel, showLongText, useRichText } = this.state;
 
     return (
       <View
@@ -79,7 +79,7 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {showLongText, maxCharsShown, showMoreLabel, showLessLabel, useRichText} = this.state;
+    const { showLongText, maxCharsShown, showMoreLabel, showLessLabel, useRichText } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -87,11 +87,8 @@ export default class TextTruncateView extends React.PureComponent {
           Text length:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({showLongText: value === "long"})}
-            options={[
-              {content: "Short", value: "short"},
-              {content: "Long", value: "long"},
-            ]}
+            onSelect={value => this.setState({ showLongText: value === "long" })}
+            options={[{ content: "Short", value: "short" }, { content: "Long", value: "long" }]}
             value={showLongText ? "long" : "short"}
           />
         </div>
@@ -99,11 +96,8 @@ export default class TextTruncateView extends React.PureComponent {
           Rich text:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({useRichText: value === "rich"})}
-            options={[
-              {content: "Rich", value: "rich"},
-              {content: "Normal", value: "normal"},
-            ]}
+            onSelect={value => this.setState({ useRichText: value === "rich" })}
+            options={[{ content: "Rich", value: "rich" }, { content: "Normal", value: "normal" }]}
             value={useRichText ? "rich" : "normal"}
           />
         </div>
@@ -111,11 +105,11 @@ export default class TextTruncateView extends React.PureComponent {
           Character limit for truncation:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({maxCharsShown: parseInt(value, 10)})}
+            onSelect={value => this.setState({ maxCharsShown: parseInt(value, 10) })}
             options={[
-              {content: "0", value: "0"},
-              {content: "300", value: "300"},
-              {content: "1000", value: "1000"},
+              { content: "0", value: "0" },
+              { content: "300", value: "300" },
+              { content: "1000", value: "1000" },
             ]}
             value={`${maxCharsShown}`}
           />
@@ -126,7 +120,7 @@ export default class TextTruncateView extends React.PureComponent {
             id={cssClass.CONFIG_INPUT_MORE}
             label="'Show more' label"
             name={cssClass.CONFIG_INPUT_MORE}
-            onChange={e => this.setState({showMoreLabel: e.target.value})}
+            onChange={e => this.setState({ showMoreLabel: e.target.value })}
             value={showMoreLabel}
           />
         </div>
@@ -136,7 +130,7 @@ export default class TextTruncateView extends React.PureComponent {
             id={cssClass.CONFIG_INPUT_LESS}
             label="'Show less' label"
             name={cssClass.CONFIG_INPUT_LESS}
-            onChange={e => this.setState({showLessLabel: e.target.value})}
+            onChange={e => this.setState({ showLessLabel: e.target.value })}
             value={showLessLabel}
           />
         </div>

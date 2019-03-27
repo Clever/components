@@ -2,12 +2,11 @@ import React from "react";
 
 import Example from "./Example";
 import View from "./View";
-import {Grid} from "src";
-
+import { Grid } from "src";
 
 export default function LessStyleGuideView() {
-  const {cssClass} = LessStyleGuideView;
-  const {Col, Row} = Grid;
+  const { cssClass } = LessStyleGuideView;
+  const { Col, Row } = Grid;
 
   return (
     <View className={cssClass.CONTAINER} title="Less Style Guide">
@@ -15,9 +14,12 @@ export default function LessStyleGuideView() {
         <Row grow className="margin--bottom--xl">
           <Col span={6} className="self--start padding--right--l">
             <h2>Naming Conventions</h2>
-            <p>Dewey uses a mix of BEM and Atomic CSS for naming conventions. It is influenced by&nbsp;
-            <a href="http://basscss.com/">Basscss</a> for utility classes, while components are
-            written with a BEM notation.</p>
+            <p>
+              Dewey uses a mix of BEM and Atomic CSS for naming conventions. It is influenced
+              by&nbsp;
+              <a href="http://basscss.com/">Basscss</a> for utility classes, while components are
+              written with a BEM notation.
+            </p>
 
             <Example
               title="Variables"
@@ -25,8 +27,9 @@ export default function LessStyleGuideView() {
                   @zIndex--1: 100;
               `}
             >
-              Variables are the most atomic building blocks of Dewey. Each variable defines a single value for a
-              specific attribute. Variables are camelCase with a double dash <code>--</code> for modifiers.
+              Variables are the most atomic building blocks of Dewey. Each variable defines a single
+              value for a specific attribute. Variables are camelCase with a double dash{" "}
+              <code>--</code> for modifiers.
             </Example>
 
             <Example
@@ -38,9 +41,9 @@ export default function LessStyleGuideView() {
                 }
               `}
             >
-              Mixins are the next layer of Dewey, they assemble attributes into meaningfully grouped elements
-              that are readable and composable. Mixins are camelCase with a double dash <code>--</code> between
-              modifiers.
+              Mixins are the next layer of Dewey, they assemble attributes into meaningfully grouped
+              elements that are readable and composable. Mixins are camelCase with a double dash{" "}
+              <code>--</code> between modifiers.
             </Example>
 
             <Example
@@ -52,8 +55,9 @@ export default function LessStyleGuideView() {
                 }
               `}
             >
-              We use mixin functions for more complex attribute collections that should be similarly reusable and
-              composable. Mixin functions are camelCase with a double dash <code>--</code> between modifiers.
+              We use mixin functions for more complex attribute collections that should be similarly
+              reusable and composable. Mixin functions are camelCase with a double dash{" "}
+              <code>--</code> between modifiers.
             </Example>
 
             <Example
@@ -68,27 +72,38 @@ export default function LessStyleGuideView() {
                 }
               `}
             >
-              Components are composed of variables and mixins to define interactions for specific elements and UI
-              patterns. Components use PascalCase with a double dash <code>--</code> between modifiers and descendants.
+              Components are composed of variables and mixins to define interactions for specific
+              elements and UI patterns. Components use PascalCase with a double dash <code>--</code>{" "}
+              between modifiers and descendants.
             </Example>
 
             <h3>IDs vs. Classes</h3>
-            <p>You should almost never need to use IDs. Broken behavior due to ID collisions are hard to track
-            down and annoying.</p>
+            <p>
+              You should almost never need to use IDs. Broken behavior due to ID collisions are hard
+              to track down and annoying.
+            </p>
 
             <h2>Attributes and Units</h2>
-            <p>Dewey is designed to be a scalable and maintainable LESS system. We do this by using relying
-            heavily on mixins and variables to declare attributes and their values so that if something
-            changes at the base level with a variable or mixin, that change cascades correctly throughout
-            the system.</p>
+            <p>
+              Dewey is designed to be a scalable and maintainable LESS system. We do this by using
+              relying heavily on mixins and variables to declare attributes and their values so that
+              if something changes at the base level with a variable or mixin, that change cascades
+              correctly throughout the system.
+            </p>
 
-            <p>Size variables are set in REM units to ensure that all scale respectively across media queries
-            and text-resizing for accessibility. Where a sizing variable doesn't exist to fit your needs use
-            REM units, or in rare cases EM units. REM units are relative to the size of the HTML (root)
-            element, while EM units are relative sized to their parent elements font-size.</p>
+            <p>
+              Size variables are set in REM units to ensure that all scale respectively across media
+              queries and text-resizing for accessibility. Where a sizing variable doesn't exist to
+              fit your needs use REM units, or in rare cases EM units. REM units are relative to the
+              size of the HTML (root) element, while EM units are relative sized to their parent
+              elements font-size.
+            </p>
 
-            <p>All of the colors are encoded into a set of variables which should be referenced as variables.
-            There are also a set of shade and tint mixin functions for variations on the core colors.</p>
+            <p>
+              All of the colors are encoded into a set of variables which should be referenced as
+              variables. There are also a set of shade and tint mixin functions for variations on
+              the core colors.
+            </p>
 
             <Example
               code={`
@@ -102,8 +117,10 @@ export default function LessStyleGuideView() {
               `}
             >
               <strong>Incorrect usage</strong>
-              <p>The hardcoded values on attributes in this example make the styling for this element
-              difficult to maintain as the overall design system changes and evolves.</p>
+              <p>
+                The hardcoded values on attributes in this example make the styling for this element
+                difficult to maintain as the overall design system changes and evolves.
+              </p>
             </Example>
 
             <Example
@@ -119,13 +136,19 @@ export default function LessStyleGuideView() {
               `}
             >
               <strong>Correct usage</strong>
-              <p>Mixins are primarily used, while variables are used in cases that don't have a mixin.
-              This styling will automatically adjust based on updates to the core variables and styles.</p>
+              <p>
+                Mixins are primarily used, while variables are used in cases that don't have a
+                mixin. This styling will automatically adjust based on updates to the core variables
+                and styles.
+              </p>
             </Example>
 
             <h2>Nesting</h2>
-            <p>Nesting should be avoided except in the specific case where you are using state selectors,
-            e.g. <code>:focus</code>, or pseudo-selectors, e.g. <code>::first-leter</code></p>
+            <p>
+              Nesting should be avoided except in the specific case where you are using state
+              selectors, e.g. <code>:focus</code>, or pseudo-selectors, e.g.{" "}
+              <code>::first-leter</code>
+            </p>
 
             <Example
               code={`
@@ -179,9 +202,11 @@ export default function LessStyleGuideView() {
             </Example>
 
             <h2>Specificity</h2>
-            <p>To encourage a maintainable and scalable LESS architecture, avoid specificity beyond one
-            selector in 99% of cases. Over specificity reduces performance, makes debugging more difficult,
-            and diverges from the goals of the design system.</p>
+            <p>
+              To encourage a maintainable and scalable LESS architecture, avoid specificity beyond
+              one selector in 99% of cases. Over specificity reduces performance, makes debugging
+              more difficult, and diverges from the goals of the design system.
+            </p>
 
             <Example
               code={`
@@ -208,15 +233,20 @@ export default function LessStyleGuideView() {
                 }
               `}
             >
-              <p><strong>Correct specificity</strong></p>
-              <p>Create a specific class to override the colors of a Tab that you want
-              to have an Alert state and apply it where needed.</p>
+              <p>
+                <strong>Correct specificity</strong>
+              </p>
+              <p>
+                Create a specific class to override the colors of a Tab that you want to have an
+                Alert state and apply it where needed.
+              </p>
             </Example>
 
             <h2>Formatting</h2>
-            <p>Following the rest of our guidelines for code, please use spaces for indention. An indent
-            should be 2 spaces.</p>
-
+            <p>
+              Following the rest of our guidelines for code, please use spaces for indention. An
+              indent should be 2 spaces.
+            </p>
           </Col>
         </Row>
       </Grid>

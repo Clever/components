@@ -1,12 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Number, SegmentedControl} from "src";
+import { Number, SegmentedControl } from "src";
 
 import "./NumberView.less";
-
 
 export default class NumberView extends Component {
   constructor(props) {
@@ -18,8 +17,8 @@ export default class NumberView extends Component {
   }
 
   render() {
-    const {cssClass} = NumberView;
-    const {format} = this.state;
+    const { cssClass } = NumberView;
+    const { format } = this.state;
 
     const shouldShorten = format === "short";
     const arrow = <span className="fa fa-long-arrow-right" />;
@@ -47,10 +46,10 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={value => this.setState({format: value})}
+                onSelect={value => this.setState({ format: value })}
                 options={[
-                  {content: "Regular", value: "regular"},
-                  {content: "Short", value: "short"},
+                  { content: "Regular", value: "regular" },
+                  { content: "Short", value: "short" },
                 ]}
               />
             </div>
@@ -79,19 +78,17 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={value => this.setState({format: value})}
+                onSelect={value => this.setState({ format: value })}
                 options={[
-                  {content: "Regular", value: "regular"},
-                  {content: "Short", value: "short"},
+                  { content: "Regular", value: "regular" },
+                  { content: "Short", value: "short" },
                 ]}
               />
             </div>
           </div>
         </Example>
 
-        <Example
-          title="Numbers can be specified as text, as long as they can be parsed as integers:"
-        >
+        <Example title="Numbers can be specified as text, as long as they can be parsed as integers:">
           <div className={cssClass.DEMO_CONTAINER}>
             <ExampleCode>
               <div className={cssClass.EXAMPLE}>
@@ -110,19 +107,17 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={value => this.setState({format: value})}
+                onSelect={value => this.setState({ format: value })}
                 options={[
-                  {content: "Regular", value: "regular"},
-                  {content: "Short", value: "short"},
+                  { content: "Regular", value: "regular" },
+                  { content: "Short", value: "short" },
                 ]}
               />
             </div>
           </div>
         </Example>
 
-        <Example
-          title="Formatting can be done directly, without rendering the component:"
-        >
+        <Example title="Formatting can be done directly, without rendering the component:">
           <div className={cssClass.DEMO_CONTAINER}>
             <ExampleCode>
               <div className={cssClass.EXAMPLE}>
@@ -131,8 +126,8 @@ export default class NumberView extends Component {
                 </p>
               </div>
             </ExampleCode>
-            This may be useful in cases where a plain string is needed (e.g. when assigning a
-            prop that requires a string value).
+            This may be useful in cases where a plain string is needed (e.g. when assigning a prop
+            that requires a string value).
           </div>
           <div className={cssClass.CONFIG_CONTAINER}>
             <div className={cssClass.CONFIG}>
@@ -140,10 +135,10 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={value => this.setState({format: value})}
+                onSelect={value => this.setState({ format: value })}
                 options={[
-                  {content: "Regular", value: "regular"},
-                  {content: "Short", value: "short"},
+                  { content: "Regular", value: "regular" },
+                  { content: "Short", value: "short" },
                 ]}
               />
             </div>

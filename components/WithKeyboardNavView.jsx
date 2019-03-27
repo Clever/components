@@ -1,10 +1,10 @@
 import classnames from "classnames";
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {WithKeyboardNav, FlexBox, ItemAlign} from "src";
+import { WithKeyboardNav, FlexBox, ItemAlign } from "src";
 
 import "./WithKeyboardNavView.less";
 import KeyCode from "src/utils/KeyCode";
@@ -33,7 +33,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
   };
 
   render() {
-    const {currentVehicle, noWrap, useCustomKeys} = this.state;
+    const { currentVehicle, noWrap, useCustomKeys } = this.state;
 
     return (
       <View
@@ -73,17 +73,17 @@ export default class WithKeyboardNavView extends React.PureComponent {
                 "wingsuit",
               ]}
               noWrap={noWrap}
-              onChange={id => this.setState({currentVehicle: id})}
+              onChange={id => this.setState({ currentVehicle: id })}
               forwardKeys={useCustomKeys ? [KeyCode.K] : undefined}
               backKeys={useCustomKeys ? [KeyCode.J] : undefined}
             >
               <div tabIndex={0}>
                 {[
-                  {id: "airplane", label: "Airplane", focused: currentVehicle === "airplane"},
-                  {id: "canoe", label: "Canoe", focused: currentVehicle === "canoe"},
-                  {id: "car", label: "Car", focused: currentVehicle === "car", disabled: true},
-                  {id: "scooter", label: "Scooter", focused: currentVehicle === "scooter"},
-                  {id: "wingsuit", label: "Wing Suit", focused: currentVehicle === "wingsuit"},
+                  { id: "airplane", label: "Airplane", focused: currentVehicle === "airplane" },
+                  { id: "canoe", label: "Canoe", focused: currentVehicle === "canoe" },
+                  { id: "car", label: "Car", focused: currentVehicle === "car", disabled: true },
+                  { id: "scooter", label: "Scooter", focused: currentVehicle === "scooter" },
+                  { id: "wingsuit", label: "Wing Suit", focused: currentVehicle === "wingsuit" },
                 ].map(o => (
                   <div
                     className={classnames(
@@ -116,7 +116,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {useCustomKeys, noWrap} = this.state;
+    const { useCustomKeys, noWrap } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -125,7 +125,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
             type="checkbox"
             checked={useCustomKeys}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({useCustomKeys: e.target.checked})}
+            onChange={e => this.setState({ useCustomKeys: e.target.checked })}
           />{" "}
           Use custom keys (
           <span>
@@ -138,7 +138,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
             type="checkbox"
             checked={noWrap}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({noWrap: e.target.checked})}
+            onChange={e => this.setState({ noWrap: e.target.checked })}
           />{" "}
           Disable wrapping
         </label>
@@ -158,8 +158,8 @@ export default class WithKeyboardNavView extends React.PureComponent {
             default: "[KeyCode.ARROW_RIGHT, KeyCode.ARROW_UP]",
             optional: true,
           },
-          {name: "children", type: "React.Node", description: "The element to be wrapped."},
-          {name: "currentID", type: "string", description: "ID of the currently focused item."},
+          { name: "children", type: "React.Node", description: "The element to be wrapped." },
+          { name: "currentID", type: "string", description: "ID of the currently focused item." },
           {
             name: "forceTabKey",
             type: "bool",
@@ -173,7 +173,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
             default: "[KeyCode.ARROW_RIGHT, KeyCode.ARROW_DOWN]",
             optional: true,
           },
-          {name: "itemIDs", type: "string[]", description: "List of IDs to cycle through."},
+          { name: "itemIDs", type: "string[]", description: "List of IDs to cycle through." },
           {
             name: "noWrap",
             type: "bool",

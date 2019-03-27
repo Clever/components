@@ -1,10 +1,10 @@
 import * as _ from "lodash";
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {FormError, TextInput} from "src";
+import { FormError, TextInput } from "src";
 
 import "./FormErrorView.less";
 

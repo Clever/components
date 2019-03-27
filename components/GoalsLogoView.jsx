@@ -1,10 +1,10 @@
 import * as React from "react";
 import classnames from "classnames";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {GoalsLogo, FlexBox, ItemAlign, SegmentedControl} from "src";
+import { GoalsLogo, FlexBox, ItemAlign, SegmentedControl } from "src";
 
 import "./GoalsLogoView.less";
 
@@ -28,7 +28,7 @@ export default class GoalsLogoView extends React.PureComponent {
   };
 
   render() {
-    const {size} = this.state;
+    const { size } = this.state;
 
     return (
       <View
@@ -71,7 +71,7 @@ export default class GoalsLogoView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {size} = this.state;
+    const { size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -79,11 +79,11 @@ export default class GoalsLogoView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({size: value})}
+            onSelect={value => this.setState({ size: value })}
             options={[
-              {content: "Small", value: "small"},
-              {content: "Medium", value: "medium"},
-              {content: "Large", value: "large"},
+              { content: "Small", value: "small" },
+              { content: "Medium", value: "medium" },
+              { content: "Large", value: "large" },
             ]}
             value={size}
           />

@@ -1,8 +1,8 @@
 import _ from "lodash";
 import classnames from "classnames";
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import {FlexBox, ItemAlign, Justify, SegmentedControl, Tab, TabBar} from "../src";
+import { FlexBox, ItemAlign, Justify, SegmentedControl, Tab, TabBar } from "../src";
 
 import "../src/less/spacing.less";
 import "../src/less/type-utilities.less";
@@ -38,14 +38,7 @@ const ALIGNMENTS = {
   },
 };
 
-const MOUNTAINS = [
-  "Everest",
-  "K2",
-  "Fiji",
-  "Blanc",
-  "Afadja",
-];
-
+const MOUNTAINS = ["Everest", "K2", "Fiji", "Blanc", "Afadja"];
 
 export default class TabBarExample extends Component {
   constructor(props) {
@@ -59,13 +52,11 @@ export default class TabBarExample extends Component {
     };
   }
 
-  renderCode() {
-
-  }
+  renderCode() {}
 
   render() {
-    const {cssClass} = TabBarExample;
-    const {alignment, enabled, mountain, size} = this.state;
+    const { cssClass } = TabBarExample;
+    const { alignment, enabled, mountain, size } = this.state;
     const alignmentConfig = ALIGNMENTS[alignment];
 
     return (
@@ -74,11 +65,11 @@ export default class TabBarExample extends Component {
           <FlexBox className={cssClass.CONFIG_LINE} alignItems={ItemAlign.CENTER}>
             <h4 className={cssClass.CONFIG_LABEL}>Size:</h4>
             <SegmentedControl
-              onSelect={s => this.setState({size: s})}
+              onSelect={s => this.setState({ size: s })}
               options={[
-                {content: "Small", value: TabBar.Size.SMALL},
-                {content: "Medium [Default]", value: TabBar.Size.MEDIUM},
-                {content: "Large", value: TabBar.Size.LARGE},
+                { content: "Small", value: TabBar.Size.SMALL },
+                { content: "Medium [Default]", value: TabBar.Size.MEDIUM },
+                { content: "Large", value: TabBar.Size.LARGE },
               ]}
               value={size}
             />
@@ -87,8 +78,8 @@ export default class TabBarExample extends Component {
           <FlexBox className={cssClass.CONFIG_LINE} alignItems={ItemAlign.CENTER}>
             <h4 className={cssClass.CONFIG_LABEL}>Justify:</h4>
             <SegmentedControl
-              onSelect={a => this.setState({alignment: a})}
-              options={_.map(ALIGNMENTS, ({label}, value) => ({content: label, value}))}
+              onSelect={a => this.setState({ alignment: a })}
+              options={_.map(ALIGNMENTS, ({ label }, value) => ({ content: label, value }))}
               value={alignment}
             />
           </FlexBox>
@@ -96,10 +87,10 @@ export default class TabBarExample extends Component {
           <FlexBox className={cssClass.CONFIG_LINE} alignItems={ItemAlign.CENTER}>
             <h4 className={cssClass.CONFIG_LABEL}>Tab State:</h4>
             <SegmentedControl
-              onSelect={s => this.setState({enabled: s})}
+              onSelect={s => this.setState({ enabled: s })}
               options={[
-                {content: "Enabled [Default]", value: true},
-                {content: "Disabled", value: false},
+                { content: "Enabled [Default]", value: true },
+                { content: "Disabled", value: false },
               ]}
               value={enabled}
             />
@@ -119,7 +110,7 @@ export default class TabBarExample extends Component {
                 disabled={!enabled}
                 id={name}
                 key={name}
-                onSelect={() => this.setState({mountain: name})}
+                onSelect={() => this.setState({ mountain: name })}
                 selected={name === mountain}
               >
                 {name}
@@ -132,7 +123,7 @@ export default class TabBarExample extends Component {
           <h2 className={classnames(cssClass.HEADING, alignmentConfig.titleClassName)}>
             HREF Tabs
             <br />
-            <code>{"<TabBar><Tab href=\"http://url/path\" /></TabBar>"}</code>
+            <code>{'<TabBar><Tab href="http://url/path" /></TabBar>'}</code>
           </h2>
           <TabBar className={cssClass.TAB_BAR} justify={alignment} size={size}>
             {_.map(MOUNTAINS, name => (
@@ -142,7 +133,7 @@ export default class TabBarExample extends Component {
                 href={`${window.location.pathname}#tabbar?mount=${name}`}
                 id={name}
                 key={name}
-                onSelect={() => this.setState({mountain: name})}
+                onSelect={() => this.setState({ mountain: name })}
                 selected={name === mountain}
               >
                 {name}

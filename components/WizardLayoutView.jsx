@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {WizardLayout, FlexBox, ItemAlign, Stepper} from "src";
-import {WizardLayoutContent} from "./WizardLayoutContent";
+import { WizardLayout, FlexBox, ItemAlign, Stepper } from "src";
+import { WizardLayoutContent } from "./WizardLayoutContent";
 
 import "./WizardLayoutView.less";
 
@@ -33,12 +33,13 @@ export default class WizardLayoutView extends React.PureComponent {
   };
 
   render() {
-    const {showHeaderImg, customHelpContent} = this.state;
+    const { showHeaderImg, customHelpContent } = this.state;
 
     const stepperSteps = [
       {
         id: "setAccess",
-        description: "Select when your application should launch and who should have access to them",
+        description:
+          "Select when your application should launch and who should have access to them",
         state: this.state.completionStatus.setAccess ? "SUCCESS" : "INCOMPLETE",
         title: "Configure applications",
       },
@@ -58,7 +59,7 @@ export default class WizardLayoutView extends React.PureComponent {
 
     const stepper = (
       <Stepper
-        onStepClick={(id) => this.setState({currentStep: id})}
+        onStepClick={id => this.setState({ currentStep: id })}
         steps={stepperSteps}
         currentStepID={this.state.currentStep}
       />
@@ -71,14 +72,17 @@ export default class WizardLayoutView extends React.PureComponent {
         goals: false,
       };
 
-      this.setState({currentStep: WizardLayoutContent.firstStep, completionStatus});
+      this.setState({ currentStep: WizardLayoutContent.firstStep, completionStatus });
     };
 
     const _onNextStep = () => {
       if (WizardLayoutContent[this.state.currentStep].nextStep) {
         const completionStatus = this.state;
         completionStatus[this.state.currentStep] = true;
-        this.setState({currentStep: WizardLayoutContent[this.state.currentStep].nextStep, completionStatus});
+        this.setState({
+          currentStep: WizardLayoutContent[this.state.currentStep].nextStep,
+          completionStatus,
+        });
       } else {
         _onSaveAndExit();
       }
@@ -88,11 +92,16 @@ export default class WizardLayoutView extends React.PureComponent {
       if (WizardLayoutContent[this.state.currentStep].prevStep) {
         const completionStatus = this.state;
         completionStatus[this.state.currentStep] = false;
-        this.setState({currentStep: WizardLayoutContent[this.state.currentStep].prevStep, completionStatus});
+        this.setState({
+          currentStep: WizardLayoutContent[this.state.currentStep].prevStep,
+          completionStatus,
+        });
       }
     };
 
-    const headerImg = <img className="WizardLayoutView--headerImg" src="./assets/img/deweyFox.svg" />;
+    const headerImg = (
+      <img className="WizardLayoutView--headerImg" src="./assets/img/deweyFox.svg" />
+    );
 
     return (
       <View
@@ -101,8 +110,13 @@ export default class WizardLayoutView extends React.PureComponent {
         sourcePath="src/WizardLayout/WizardLayout.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>This component's main purpose is to provide guidelines for implementing a guided wizard.</p>
-          <p>This should be used instead of the old Wizard component because this version leaves logic in the hands of consumer.</p>
+          <p>
+            This component's main purpose is to provide guidelines for implementing a guided wizard.
+          </p>
+          <p>
+            This should be used instead of the old Wizard component because this version leaves
+            logic in the hands of consumer.
+          </p>
           <CodeSample>
             {`
               import {WizardLayout} from "clever-components";
@@ -113,18 +127,24 @@ export default class WizardLayoutView extends React.PureComponent {
         </header>
 
         <Example title="Basic Usage:">
-          <ExampleCode style={{display: "flex", height: "35rem"}}>
+          <ExampleCode style={{ display: "flex", height: "35rem" }}>
             <WizardLayout
               className="Dewey--WizardLayout"
               sections={WizardLayoutContent[this.state.currentStep].sections}
               headerImg={showHeaderImg ? headerImg : null}
-              helpContent={customHelpContent ? WizardLayoutContent[this.state.currentStep].helpContent : null}
-              nextStepButtonText={WizardLayoutContent[this.state.currentStep].nextStepButtonText || null}
+              helpContent={
+                customHelpContent ? WizardLayoutContent[this.state.currentStep].helpContent : null
+              }
+              nextStepButtonText={
+                WizardLayoutContent[this.state.currentStep].nextStepButtonText || null
+              }
               onNextStep={_onNextStep}
               onPrevStep={_onPrevStep}
               onSaveAndExit={_onSaveAndExit}
               prevStepButtonDisabled={!WizardLayoutContent[this.state.currentStep].prevStep}
-              prevStepButtonText={WizardLayoutContent[this.state.currentStep].prevStepButtonText || null}
+              prevStepButtonText={
+                WizardLayoutContent[this.state.currentStep].prevStepButtonText || null
+              }
               stepper={stepper}
               subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
               title="Back to school guide"
@@ -139,7 +159,7 @@ export default class WizardLayoutView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {showHeaderImg, customHelpContent} = this.state;
+    const { showHeaderImg, customHelpContent } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -148,7 +168,7 @@ export default class WizardLayoutView extends React.PureComponent {
             type="checkbox"
             checked={showHeaderImg}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({showHeaderImg: e.target.checked})}
+            onChange={e => this.setState({ showHeaderImg: e.target.checked })}
           />{" "}
           Header image
         </label>
@@ -157,7 +177,7 @@ export default class WizardLayoutView extends React.PureComponent {
             type="checkbox"
             checked={customHelpContent}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({customHelpContent: e.target.checked})}
+            onChange={e => this.setState({ customHelpContent: e.target.checked })}
           />{" "}
           Custom help content
         </label>
@@ -179,7 +199,8 @@ export default class WizardLayoutView extends React.PureComponent {
           {
             name: "sections",
             type: "Object",
-            description: "Array of objects with a title, subtitle, and content (React.Node to be displayed).",
+            description:
+              "Array of objects with a title, subtitle, and content (React.Node to be displayed).",
           },
           {
             name: "headerImg",
@@ -190,7 +211,8 @@ export default class WizardLayoutView extends React.PureComponent {
           {
             name: "helpContent",
             type: "React.Element",
-            description: "Optional React.Element to display helpful tips or links to the Help Center.",
+            description:
+              "Optional React.Element to display helpful tips or links to the Help Center.",
             optional: true,
           },
           {

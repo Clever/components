@@ -1,9 +1,9 @@
 import React from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {FlexBox, InfoPanel, InfoPanelColumn} from "src";
+import { FlexBox, InfoPanel, InfoPanelColumn } from "src";
 
 import "./TextAreaView.less";
 
@@ -23,14 +23,14 @@ export default class InfoPanelView extends React.Component {
   }
 
   _renderCheckbox(id) {
-    const {cssClass} = InfoPanelView;
+    const { cssClass } = InfoPanelView;
 
     return (
       <label className={cssClass.CONFIG}>
         <input
           checked={this.state[id]}
           type="checkbox"
-          onChange={e => this.setState({[id]: e.target.checked})}
+          onChange={e => this.setState({ [id]: e.target.checked })}
         />
         &nbsp;
         {id}
@@ -39,24 +39,25 @@ export default class InfoPanelView extends React.Component {
   }
 
   render() {
-    const {cssClass} = InfoPanelView;
-    const {collapsible, footer, hideTitle} = this.state;
+    const { cssClass } = InfoPanelView;
+    const { collapsible, footer, hideTitle } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="InfoPanel">
         <Example>
           <ExampleCode>
-          <InfoPanel title="Info Panel Title"
-            collapsible={collapsible}
-            footer={footer ? "footer content" : null}
-            hideTitle={hideTitle}
-          >
-            <InfoPanelColumn>
-              <p>column 1 content</p>
-            </InfoPanelColumn>
-            <InfoPanelColumn>
-              <p>column 2 content</p>
-            </InfoPanelColumn>
+            <InfoPanel
+              title="Info Panel Title"
+              collapsible={collapsible}
+              footer={footer ? "footer content" : null}
+              hideTitle={hideTitle}
+            >
+              <InfoPanelColumn>
+                <p>column 1 content</p>
+              </InfoPanelColumn>
+              <InfoPanelColumn>
+                <p>column 2 content</p>
+              </InfoPanelColumn>
             </InfoPanel>
           </ExampleCode>
           <FlexBox className={cssClass.CONFIG_CONTAINER}>
@@ -64,7 +65,7 @@ export default class InfoPanelView extends React.Component {
             {this._renderCheckbox("footer")}
             {this._renderCheckbox("hideTitle")}
           </FlexBox>
-         </Example>
+        </Example>
 
         <PropDocumentation
           availableProps={[
@@ -94,7 +95,8 @@ export default class InfoPanelView extends React.Component {
             {
               name: "hideTitle",
               type: "Boolean",
-              description: "Determines if the title header should be hidden. No effect if collapsible is true",
+              description:
+                "Determines if the title header should be hidden. No effect if collapsible is true",
               optional: true,
             },
             {
@@ -106,7 +108,8 @@ export default class InfoPanelView extends React.Component {
             {
               name: "defaultOpen",
               type: "Boolean",
-              description: "Used in conjunction with collapsible. True if the InfoPanel should be open on loading",
+              description:
+                "Used in conjunction with collapsible. True if the InfoPanel should be open on loading",
               optional: true,
             },
           ]}
@@ -134,7 +137,6 @@ export default class InfoPanelView extends React.Component {
       </View>
     );
   }
-
 }
 
 InfoPanelView.cssClass = {
@@ -142,4 +144,3 @@ InfoPanelView.cssClass = {
   CONFIG: "TextAreaView--configContainer",
   CONFIG_CONTAINER: "TextAreaView--config",
 };
-

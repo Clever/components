@@ -2,15 +2,14 @@
 import _ from "lodash";
 import classnames from "classnames";
 import loremIpsum from "lorem-ipsum";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Button, ModalButton, Table, TextInput} from "src";
+import { Button, ModalButton, Table, TextInput } from "src";
 
 import "./TableView.less";
-
 
 export default class TableView extends PureComponent {
   constructor(props) {
@@ -32,29 +31,29 @@ export default class TableView extends PureComponent {
       tableData.push({
         id: i,
         name: {
-          first: loremIpsum({count: 1, units: "words"}),
-          last: loremIpsum({count: 2, units: "words"}),
+          first: loremIpsum({ count: 1, units: "words" }),
+          last: loremIpsum({ count: 2, units: "words" }),
         },
         age: Math.round(Math.random() * 100),
-        status: loremIpsum({count: 1, units: "words"}),
-        notes: loremIpsum({count: 2, units: "sentences"}),
+        status: loremIpsum({ count: 1, units: "words" }),
+        notes: loremIpsum({ count: 2, units: "sentences" }),
       });
     }
-    this.setState({tableData});
+    this.setState({ tableData });
     if (this._lazyTable) {
       this._lazyTable.lazyReset();
     }
   }
 
   render() {
-    const {cssClass} = TableView;
-    const {enableDynamicCellClass, enableRowClick, tableData} = this.state;
+    const { cssClass } = TableView;
+    const { enableDynamicCellClass, enableRowClick, tableData } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Table">
         <p>
-          This table component supports sorting, filtering, and pagination. There is also a lazy loading
-          table available for very large sets of data.
+          This table component supports sorting, filtering, and pagination. There is also a lazy
+          loading table available for very large sets of data.
         </p>
         <Example>
           <Button
@@ -65,34 +64,38 @@ export default class TableView extends PureComponent {
             type="secondary"
             value="Reload random data"
           />
-          <div style={{width: "300px", marginTop: "20px"}}>
+          <div style={{ width: "300px", marginTop: "20px" }}>
             <TextInput
               label="Filter by name"
               name="tableFilter"
               placeholder="Filter by name"
               onChange={e => {
-                this.setState({tableFilter: e.target.value});
+                this.setState({ tableFilter: e.target.value });
                 this.refs.table.setCurrentPage(1);
               }}
               value={this.state.tableFilter}
             />
           </div>
-          <div style={{marginTop: "20px"}}>
+          <div style={{ marginTop: "20px" }}>
             <ExampleCode>
               <Table
                 data={tableData}
-                filter={rowData => !this.state.tableFilter || _.includes(
-                  [rowData.name.first, rowData.name.last].join(" "),
-                  this.state.tableFilter.trim().toLowerCase()
-                )}
+                filter={rowData =>
+                  !this.state.tableFilter ||
+                  _.includes(
+                    [rowData.name.first, rowData.name.last].join(" "),
+                    this.state.tableFilter.trim().toLowerCase(),
+                  )
+                }
                 initialPage={24}
-                initialSortState={{columnID: "name", direction: Table.sortDirection.ASCENDING}}
+                initialSortState={{ columnID: "name", direction: Table.sortDirection.ASCENDING }}
                 ref="table"
                 onPageChange={page => console.log("Table page changed:", page)}
                 onSortChange={sortState => console.log("Table sort changed:", sortState)}
-                onRowClick={enableRowClick
-                  ? (e, rowID, rowData) => console.log("Table row clicked:", {rowID, rowData})
-                  : undefined
+                onRowClick={
+                  enableRowClick
+                    ? (e, rowID, rowData) => console.log("Table row clicked:", { rowID, rowData })
+                    : undefined
                 }
                 onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
                 paginated
@@ -102,22 +105,24 @@ export default class TableView extends PureComponent {
               >
                 <Table.Column
                   id="details"
-                  cell={{renderer: r => (
-                    <ModalButton
-                      type="link"
-                      size="small"
-                      value={"\u2630 Details"}
-                      modalTitle="Details"
-                    >
-                      <p style={{whiteSpace: "normal"}}>{r.notes}</p>
-                    </ModalButton>
-                  )}}
+                  cell={{
+                    renderer: r => (
+                      <ModalButton
+                        type="link"
+                        size="small"
+                        value={"\u2630 Details"}
+                        modalTitle="Details"
+                      >
+                        <p style={{ whiteSpace: "normal" }}>{r.notes}</p>
+                      </ModalButton>
+                    ),
+                  }}
                   noWrap
                 />
 
                 <Table.Column
                   id="name"
-                  header={{content: "Name"}}
+                  header={{ content: "Name" }}
                   cell={{
                     className: "capitalize",
                     renderer: r => [r.name.first, r.name.last].join(" "),
@@ -129,20 +134,23 @@ export default class TableView extends PureComponent {
 
                 <Table.Column
                   id="age"
-                  header={{content: "Age"}}
-                  cell={{renderer: r => r.age}}
+                  header={{ content: "Age" }}
+                  cell={{ renderer: r => r.age }}
                   sortable
                   sortValueFn={r => r.age}
                 />
 
                 <Table.Column
                   id="status"
-                  header={{content: "Status"}}
+                  header={{ content: "Status" }}
                   cell={{
-                    className: r => classnames(
-                      "TableView--status",
-                      enableDynamicCellClass && r.status.includes("e") && "TableView--status--red"
-                    ),
+                    className: r =>
+                      classnames(
+                        "TableView--status",
+                        enableDynamicCellClass &&
+                          r.status.includes("e") &&
+                          "TableView--status--red",
+                      ),
                     renderer: r => r.status,
                   }}
                   sortable
@@ -151,8 +159,8 @@ export default class TableView extends PureComponent {
 
                 <Table.Column
                   id="notes"
-                  header={{content: "Notes"}}
-                  cell={{renderer: r => r.notes}}
+                  header={{ content: "Notes" }}
+                  cell={{ renderer: r => r.notes }}
                   width="100%"
                 />
               </Table>
@@ -162,18 +170,16 @@ export default class TableView extends PureComponent {
             <input
               type="checkbox"
               checked={enableRowClick}
-              onChange={({target}) => this.setState({enableRowClick: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ enableRowClick: target.checked })}
+            />{" "}
             Clickable rows (see console)
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={enableDynamicCellClass}
-              onChange={({target}) => this.setState({enableDynamicCellClass: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ enableDynamicCellClass: target.checked })}
+            />{" "}
             Dynamic cell class names
           </label>
         </Example>
@@ -183,12 +189,14 @@ export default class TableView extends PureComponent {
             {
               name: "data",
               type: "Array",
-              description: "The array of data items, each corresponding to a single potential table row",
+              description:
+                "The array of data items, each corresponding to a single potential table row",
             },
             {
               name: "rowIDFn",
               type: "Function",
-              description: "Called with data for a single row. Should return the unique ID for that row",
+              description:
+                "Called with data for a single row. Should return the unique ID for that row",
             },
             {
               name: "className",
@@ -199,8 +207,9 @@ export default class TableView extends PureComponent {
             {
               name: "filter",
               type: "Function",
-              description: "Called with data for a single row. Should return false if the row should be filtered out"
-              + " or true otherwise.",
+              description:
+                "Called with data for a single row. Should return false if the row should be filtered out" +
+                " or true otherwise.",
               optional: true,
             },
             {
@@ -257,14 +266,16 @@ export default class TableView extends PureComponent {
             {
               name: "rowClassNameFn",
               type: "Function",
-              description: "Called with data with a single row. Returns an additional className for the row",
+              description:
+                "Called with data with a single row. Returns an additional className for the row",
               optional: true,
             },
             {
               name: "lazy",
               type: "boolean",
-              description: "Puts the table in \"lazy\" mode - data is fetched " +
-                "from the getData function rather than needing the whole \"data\" " +
+              description:
+                'Puts the table in "lazy" mode - data is fetched ' +
+                'from the getData function rather than needing the whole "data" ' +
                 "array up front.",
               defaultValue: "false",
               optional: true,
@@ -272,13 +283,15 @@ export default class TableView extends PureComponent {
             {
               name: "getData",
               type: "({startingAfter?: string, pageSize: number}) => Object[]",
-              description: "If `lazy`, this function is called to retrieve new " +
+              description:
+                "If `lazy`, this function is called to retrieve new " +
                 "data. Cannot be provided if not `lazy`.",
             },
             {
               name: "numRows",
               type: "number",
-              description: "If `lazy`, this gives the total count of rows so that " +
+              description:
+                "If `lazy`, this gives the total count of rows so that " +
                 "the number of pages is known up front. Cannot be provided if not " +
                 "`lazy`.",
               optional: true,
@@ -287,11 +300,14 @@ export default class TableView extends PureComponent {
           title="Table"
         />
 
-        <p><strong>API</strong></p>
         <p>
-          <code>setCurrentPage(page:Number)</code> – Explicitly sets the displayed page on the Table with the specified 1-based
-          page. Useful for reacting to data or filter changes that warrant resetting the current page. <strong>Note:</strong> The
-          current page is automatically reset to the first page on every sort state change.
+          <strong>API</strong>
+        </p>
+        <p>
+          <code>setCurrentPage(page:Number)</code> – Explicitly sets the displayed page on the Table
+          with the specified 1-based page. Useful for reacting to data or filter changes that
+          warrant resetting the current page. <strong>Note:</strong> The current page is
+          automatically reset to the first page on every sort state change.
         </p>
 
         <PropDocumentation
@@ -303,12 +319,12 @@ export default class TableView extends PureComponent {
                 <div>
                   <p>Configuration for the table body cell for this column.</p>
                   <p>
-                    <code>renderer</code> will be called with data for a single row and should return content that can
-                    be rendered by the React DOM renderer.
+                    <code>renderer</code> will be called with data for a single row and should
+                    return content that can be rendered by the React DOM renderer.
                   </p>
                   <p>
-                    If <code>className</code> is a function, it will also be called with row data and should return a
-                    render-compatible value.
+                    If <code>className</code> is a function, it will also be called with row data
+                    and should return a render-compatible value.
                   </p>
                 </div>
               ),
@@ -316,7 +332,8 @@ export default class TableView extends PureComponent {
             {
               name: "id",
               type: "String",
-              description: "Unique identifier for the column. Can be used in referencing columns for sorting",
+              description:
+                "Unique identifier for the column. Can be used in referencing columns for sorting",
             },
             {
               name: "header",
@@ -333,8 +350,9 @@ export default class TableView extends PureComponent {
             {
               name: "noWrap",
               type: "Boolean",
-              description: "Prevents the column conten from wrapping. In the non-fixed mode, the table column will "
-              + "automatically expand to fit all content in the column on a single line.",
+              description:
+                "Prevents the column conten from wrapping. In the non-fixed mode, the table column will " +
+                "automatically expand to fit all content in the column on a single line.",
               defaultValue: "False",
               optional: true,
             },
@@ -348,7 +366,8 @@ export default class TableView extends PureComponent {
             {
               name: "sortValueFn",
               type: "Function",
-              description: "Called with data for a single row. Should return a sortable value for row",
+              description:
+                "Called with data for a single row. Should return a sortable value for row",
               optional: true,
             },
           ]}
@@ -357,9 +376,11 @@ export default class TableView extends PureComponent {
 
         <Example title="Lazy Table">
           <Table
-            ref={t => {this._lazyTable = t;}}
+            ref={t => {
+              this._lazyTable = t;
+            }}
             lazy
-            getData={async ({startingAfter, pageSize}) => {
+            getData={async ({ startingAfter, pageSize }) => {
               let start = 0;
               if (startingAfter != null) {
                 start = _.findIndex(tableData, r => r.id === startingAfter) + 1;
@@ -378,22 +399,24 @@ export default class TableView extends PureComponent {
           >
             <Table.Column
               id="details"
-              cell={{renderer: r => (
-                <ModalButton
-                  type="link"
-                  size="small"
-                  value={"\u2630 Details"}
-                  modalTitle="Details"
-                >
-                  <p style={{whiteSpace: "normal"}}>{r.notes}</p>
-                </ModalButton>
-              )}}
+              cell={{
+                renderer: r => (
+                  <ModalButton
+                    type="link"
+                    size="small"
+                    value={"\u2630 Details"}
+                    modalTitle="Details"
+                  >
+                    <p style={{ whiteSpace: "normal" }}>{r.notes}</p>
+                  </ModalButton>
+                ),
+              }}
               noWrap
             />
 
             <Table.Column
               id="name"
-              header={{content: "Name"}}
+              header={{ content: "Name" }}
               cell={{
                 className: "capitalize",
                 renderer: r => [r.name.first, r.name.last].join(" "),
@@ -401,22 +424,18 @@ export default class TableView extends PureComponent {
               width="25%"
             />
 
-            <Table.Column
-              id="age"
-              header={{content: "Age"}}
-              cell={{renderer: r => r.age}}
-            />
+            <Table.Column id="age" header={{ content: "Age" }} cell={{ renderer: r => r.age }} />
 
             <Table.Column
               id="status"
-              header={{content: "Status"}}
-              cell={{renderer: r => r.status}}
+              header={{ content: "Status" }}
+              cell={{ renderer: r => r.status }}
             />
 
             <Table.Column
               id="notes"
-              header={{content: "Notes"}}
-              cell={{renderer: r => r.notes}}
+              header={{ content: "Notes" }}
+              cell={{ renderer: r => r.notes }}
               width="100%"
             />
           </Table>

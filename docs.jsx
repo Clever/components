@@ -1,6 +1,6 @@
 import React from "react";
-import {render} from "react-dom";
-import {IndexRedirect, Route, Router, hashHistory} from "react-router";
+import { render } from "react-dom";
+import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import AlertBoxView from "./components/AlertBoxView";
 import ButtonView from "./components/ButtonView";
@@ -61,8 +61,7 @@ import StepperView from "./components/StepperView";
 import WizardLayoutView from "./components/WizardLayoutView";
 import WizardView from "./components/WizardView";
 
-
-render((
+render(
   <Router history={hashHistory}>
     <Route path="/" component={Layout}>
       <IndexRedirect to="/intro" />
@@ -130,5 +129,6 @@ render((
         <Route path="spacing(/*)" component={SpacingView} />
       </Route>
     </Route>
-  </Router>
-), document.getElementById("__MAIN__"));
+  </Router>,
+  document.getElementById("__MAIN__"),
+);
