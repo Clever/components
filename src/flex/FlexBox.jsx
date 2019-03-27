@@ -22,7 +22,7 @@ export default function FlexBox({
   inline = false,
   justify = "",
   wrap = false,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = FlexBox;
 

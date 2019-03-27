@@ -14,7 +14,7 @@ export function Grid({
   className,
   children,
   wrapperComponent: Wrapper,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = Grid;
 

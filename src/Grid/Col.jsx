@@ -13,7 +13,7 @@ export default function Col({
   className,
   span,
   wrapperComponent: Wrapper,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = Col;
   let colSpanClasses;

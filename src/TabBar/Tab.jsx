@@ -14,7 +14,7 @@ export default function Tab({
   id,
   onSelect,
   selected,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = Tab;
 

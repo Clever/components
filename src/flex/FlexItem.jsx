@@ -16,7 +16,7 @@ export default function FlexItem({
   className = "",
   component: Wrapper = "div",
   grow = false,
-  ...additionalProps,
+  ...additionalProps
 }) {
   const {cssClass} = FlexItem;
 
