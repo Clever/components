@@ -1,12 +1,12 @@
 import classnames from "classnames";
 import React from "react";
 import * as PropTypes from "prop-types";
-import {Sticky, StickyContainer} from "react-sticky";
+import { Sticky, StickyContainer } from "react-sticky";
 import _ from "lodash";
 
 import WizardStep from "./WizardStep";
-import {Button, ProgressBar} from "../";
-import {classNameFor} from "../utils";
+import { Button, ProgressBar } from "../";
+import { classNameFor } from "../utils";
 
 import "./Wizard.less";
 
@@ -41,7 +41,7 @@ export class Wizard extends React.Component {
   }
 
   reset() {
-    this.setState(Object.assign({}, getInitialState(), {data: {}}));
+    this.setState(Object.assign({}, getInitialState(), { data: {} }));
   }
 
   jumpToStep(idx) {
@@ -53,7 +53,7 @@ export class Wizard extends React.Component {
   }
 
   prevStepHandler() {
-    const {steps} = this.props;
+    const { steps } = this.props;
 
     let prevStep = Math.max(0, this.state.currentStep - 1);
     if (steps[prevStep].shouldSkipStep && steps[prevStep].shouldSkipStep(this.state.data)) {
@@ -63,8 +63,8 @@ export class Wizard extends React.Component {
   }
 
   nextStepHandler() {
-    const {steps} = this.props;
-    const {currentStep, data} = this.state;
+    const { steps } = this.props;
+    const { currentStep, data } = this.state;
 
     // If an onStepComplete handler is provided for the current step, we will only proceed to the
     // next step if the promise returned by the handler resolves to a truthy value.
@@ -76,11 +76,15 @@ export class Wizard extends React.Component {
   }
 
   goToNextStep() {
-    const {onComplete, steps} = this.props;
-    const {currentStep, data} = this.state;
+    const { onComplete, steps } = this.props;
+    const { currentStep, data } = this.state;
 
     let nextStep = currentStep + 1;
-    while ((nextStep < steps.length) && steps[nextStep].shouldSkipStep && steps[nextStep].shouldSkipStep(this.state.data)) {
+    while (
+      nextStep < steps.length &&
+      steps[nextStep].shouldSkipStep &&
+      steps[nextStep].shouldSkipStep(this.state.data)
+    ) {
       nextStep++;
     }
     if (nextStep === steps.length) {
@@ -97,21 +101,24 @@ export class Wizard extends React.Component {
 
   _renderSidebar(style) {
     const {
-      title, description, wizardButtons, steps, seekable, hideProgressBar, className,
+      title,
+      description,
+      wizardButtons,
+      steps,
+      seekable,
+      hideProgressBar,
+      className,
     } = this.props;
     const baseClasses = ["Wizard", className];
     return (
       <div style={style} className={classNameFor(baseClasses, "sidebarContent")}>
         <h2>{title}</h2>
-        {_.isString(description)
-          ? <p className={classNameFor(baseClasses, "description")}>
-            {description}
-          </p>
-          : <div className={classNameFor(baseClasses, "description")}>
-            {description}
-          </div>}
-        {!hideProgressBar &&
-          <ProgressBar percentage={this.state.percentComplete} />}
+        {_.isString(description) ? (
+          <p className={classNameFor(baseClasses, "description")}>{description}</p>
+        ) : (
+          <div className={classNameFor(baseClasses, "description")}>{description}</div>
+        )}
+        {!hideProgressBar && <ProgressBar percentage={this.state.percentComplete} />}
         <ul className={classNameFor(baseClasses, "stepsDisplay")}>
           {steps.map((step, idx) => {
             const stepValid = step.validate(this.state.data);
@@ -119,64 +126,61 @@ export class Wizard extends React.Component {
             const stepClassName = classnames(
               classNameFor(baseClasses, ["stepsDisplay", "step"]),
               idx === this.state.currentStep &&
-              classNameFor(baseClasses, ["stepsDisplay", "currentStep"]),
+                classNameFor(baseClasses, ["stepsDisplay", "currentStep"]),
               stepValid && classNameFor(baseClasses, ["stepsDisplay", "valid"]),
-              stepVisited &&
-              classNameFor(baseClasses, ["stepsDisplay", "visited"]),
-              seekable && classNameFor(baseClasses, ["stepsDisplay", "stepLink"])
+              stepVisited && classNameFor(baseClasses, ["stepsDisplay", "visited"]),
+              seekable && classNameFor(baseClasses, ["stepsDisplay", "stepLink"]),
             );
             const listValue = (
               <span className={stepClassName}>
-                <span
-                  className={classNameFor(baseClasses, ["stepsDisplay", "icon"])}
-                />
-                <span
-                  className={classNameFor(
-                    baseClasses,
-                    ["stepsDisplay", "stepTitle"]
-                  )}
-                >
+                <span className={classNameFor(baseClasses, ["stepsDisplay", "icon"])} />
+                <span className={classNameFor(baseClasses, ["stepsDisplay", "stepTitle"])}>
                   {step.title}
                 </span>
               </span>
             );
             return (
               <li key={idx}>
-                {seekable
-                  ? <Button
-                    className={classNameFor(
-                      baseClasses,
-                      ["stepsDisplay", "stepButton"],
-                    )}
+                {seekable ? (
+                  <Button
+                    className={classNameFor(baseClasses, ["stepsDisplay", "stepButton"])}
                     type="link"
                     onClick={() => this.jumpToStep(idx)}
                     value={listValue}
                   />
-                  : listValue}
+                ) : (
+                  listValue
+                )}
               </li>
             );
           })}
         </ul>
-        {wizardButtons &&
+        {wizardButtons && (
           <div className={classNameFor(baseClasses, "controls")}>
-            {wizardButtons.map((btnSpec, idx) =>
+            {wizardButtons.map((btnSpec, idx) => (
               <Button
                 key={idx}
-                onClick={() =>
-                  btnSpec.handler(this.state.data, {resetWizard: this.reset})}
+                onClick={() => btnSpec.handler(this.state.data, { resetWizard: this.reset })}
                 value={btnSpec.buttonValue}
                 className={classNameFor(baseClasses, ["controls", "control"])}
               />
-            )}
-          </div>}
+            ))}
+          </div>
+        )}
       </div>
     );
   }
 
   render() {
     const {
-      className, style, help, steps, nextButtonValue,
-      prevButtonValue, stickySidebar, stepNumberInTitle,
+      className,
+      style,
+      help,
+      steps,
+      nextButtonValue,
+      prevButtonValue,
+      stickySidebar,
+      stepNumberInTitle,
     } = this.props;
 
     const baseClasses = ["Wizard", className].filter(c => !!c);
@@ -189,17 +193,22 @@ export class Wizard extends React.Component {
     if (curStep.canContinue != null) {
       nextDisabled = !curStep.canContinue(this.state.data);
     } else {
-      nextDisabled = this.state.currentStep === steps.length - 1 ?
-        validSteps.length !== steps.length : !curStep.validate(this.state.data);
+      nextDisabled =
+        this.state.currentStep === steps.length - 1
+          ? validSteps.length !== steps.length
+          : !curStep.validate(this.state.data);
     }
 
     return (
       <StickyContainer className={classnames(baseClasses)} style={style}>
         <div className={classNameFor(baseClasses, "sidebar")}>
-          {!stickySidebar ? this._renderSidebar() :
+          {!stickySidebar ? (
+            this._renderSidebar()
+          ) : (
             <Sticky topOffset={24}>
-              {({style: sidebarStyle}) => this._renderSidebar(sidebarStyle)}
-            </Sticky>}
+              {({ style: sidebarStyle }) => this._renderSidebar(sidebarStyle)}
+            </Sticky>
+          )}
         </div>
 
         <div className={classNameFor(baseClasses, "step")}>
@@ -211,14 +220,15 @@ export class Wizard extends React.Component {
             stepNumberInTitle={stepNumberInTitle}
             setWizardState={changes => {
               const newState = Object.assign(this.state.data, changes);
-              this.setState({data: newState});
+              this.setState({ data: newState });
               return newState;
             }}
             wizardState={this.state.data}
             updatePercentComplete={wizardState =>
               this.setState({
                 percentComplete: this.calculatePercentComplete(wizardState),
-              })}
+              })
+            }
             calculatePercentComplete={this.calculatePercentComplete}
             percentComplete={this.state.percentComplete}
             totalSteps={steps.length}
@@ -232,26 +242,27 @@ export class Wizard extends React.Component {
           <div
             className={classnames(
               classNameFor(baseClasses, "contentGroup"),
-              classNameFor(baseClasses, "navButtons")
+              classNameFor(baseClasses, "navButtons"),
             )}
           >
-            {this.state.currentStep !== 0 &&
+            {this.state.currentStep !== 0 && (
               <Button
                 className={classNameFor(baseClasses, "prevButton")}
                 type="link"
                 onClick={this.prevStepHandler}
                 value={curStep.prevButtonValue || prevButtonValue || "Back"}
-              />}
+              />
+            )}
 
             <Button
               className={classNameFor(baseClasses, "nextButton")}
               onClick={this.nextStepHandler}
-              disabled={nextDisabled} type="primary"
+              disabled={nextDisabled}
+              type="primary"
               value={
-                typeof curStep.nextButtonValue === "function" ?
-                curStep.nextButtonValue(this.state.data) : curStep.nextButtonValue ||
-                nextButtonValue ||
-                "Next"
+                typeof curStep.nextButtonValue === "function"
+                  ? curStep.nextButtonValue(this.state.data)
+                  : curStep.nextButtonValue || nextButtonValue || "Next"
               }
             />
           </div>
@@ -267,27 +278,29 @@ Wizard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  wizardButtons: PropTypes.arrayOf(PropTypes.shape({
-    handler: PropTypes.func.isRequired,
-    buttonValue: PropTypes.node.isRequired,
-    buttonClassName: PropTypes.string,
-  })),
+  wizardButtons: PropTypes.arrayOf(
+    PropTypes.shape({
+      handler: PropTypes.func.isRequired,
+      buttonValue: PropTypes.node.isRequired,
+      buttonClassName: PropTypes.string,
+    }),
+  ),
   initialWizardData: PropTypes.object,
   onComplete: PropTypes.func.isRequired,
-  steps: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    component: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.instanceOf(React.Component),
-    ]).isRequired,
-    nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
-    validate: PropTypes.func.isRequired,
-    canContinue: PropTypes.func,
-    help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    props: PropTypes.object,
-    onStepComplete: PropTypes.func,
-  })).isRequired,
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+      component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)])
+        .isRequired,
+      nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
+      validate: PropTypes.func.isRequired,
+      canContinue: PropTypes.func,
+      help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+      props: PropTypes.object,
+      onStepComplete: PropTypes.func,
+    }),
+  ).isRequired,
   initialStep: PropTypes.number,
   nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),

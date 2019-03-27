@@ -3,15 +3,19 @@ import React from "react";
 import Example from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {RichText} from "src";
+import { RichText } from "src";
 
 export default function DateInputView() {
   return (
     <View title="RichText" sourcePath="src/RichText/RichText.jsx">
       <p>
-        RichText is a view that improves rendering of raw text - Specifically by linkifying urls and not discarding linebreaks.
+        RichText is a view that improves rendering of raw text - Specifically by linkifying urls and
+        not discarding linebreaks.
       </p>
-      <i>Note - Rendering large blobs of text with urls isn't the best from an accessibility perspective, when possible links should have readable titles, instead of just a url.</i>
+      <i>
+        Note - Rendering large blobs of text with urls isn't the best from an accessibility
+        perspective, when possible links should have readable titles, instead of just a url.
+      </i>
       <h2>Without using RichText</h2>
       <Example>
         <p>{`

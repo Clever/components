@@ -4,4 +4,4 @@ import FlexItem from "./FlexItem";
 import ItemAlign from "./ItemAlign";
 import Justify from "./Justify";
 
-export {ContentAlign, FlexBox, FlexItem, ItemAlign, Justify};
+export { ContentAlign, FlexBox, FlexItem, ItemAlign, Justify };

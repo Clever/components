@@ -21,7 +21,7 @@ export default class MenuToggle extends React.PureComponent {
   static propTypes = propTypes;
 
   render() {
-    const {className, onClick} = this.props;
+    const { className, onClick } = this.props;
 
     return (
       <Tooltip content="Menu" placement="right">

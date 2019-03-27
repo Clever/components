@@ -89,11 +89,11 @@
  * @initial {0}
  */
 .flexGrow(@value: 1) {
- -moz-box-flex-grow: @value;
- -ms-flex-positive: @value;
- -webkit-box-flex-grow: @value;
- -webkit-flex-grow: @value;
- flex-grow: @value;
+  -moz-box-flex-grow: @value;
+  -ms-flex-positive: @value;
+  -webkit-box-flex-grow: @value;
+  -webkit-flex-grow: @value;
+  flex-grow: @value;
 }
 
 /**
@@ -105,11 +105,11 @@
  * @initial {1}
  */
 .flexShrink(@value: 1) {
- -moz-box-flex-shrink: @value;
- -ms-flex-negative: @value;
- -webkit-box-flex-shrink: @value;
- -webkit-flex-shrink: @value;
- flex-shrink: @value;
+  -moz-box-flex-shrink: @value;
+  -ms-flex-negative: @value;
+  -webkit-box-flex-shrink: @value;
+  -webkit-flex-shrink: @value;
+  flex-shrink: @value;
 }
 
 /**
@@ -119,11 +119,11 @@
  * @initial {auto}
  */
 .flexBasis(@value: 1) {
- -moz-box-flex-basis: @value;
- -ms-flex-preferred-size: @value;
- -webkit-box-flex-basis: @value;
- -webkit-flex-basis: @value;
- flex-basis: @value;
+  -moz-box-flex-basis: @value;
+  -ms-flex-preferred-size: @value;
+  -webkit-box-flex-basis: @value;
+  -webkit-flex-basis: @value;
+  flex-basis: @value;
 }
 
 /**
@@ -247,77 +247,136 @@
   order: @value;
 }
 
-
 /*
  * Convenience classes.
  */
 
-.flexbox { .flexbox() }
+.flexbox {
+  .flexbox();
+}
 
 /* Enable flex for specific layout breakpoints. */
-.breakpointS({ .flexbox--s { .flexbox } });
+.breakpointS({.flexbox--s {.flexbox}});
 
-.breakpointM({ .flexbox--m { .flexbox } });
+.breakpointM({.flexbox--m {.flexbox}});
 
-.breakpointL({ .flexbox--l { .flexbox } });
+.breakpointL({.flexbox--l {.flexbox}});
 
-.flexbox--inline { .inlineFlexbox() }
+.flexbox--inline {
+  .inlineFlexbox();
+}
 
-.flex--direction--column { .flexDirection(column) }
+.flex--direction--column {
+  .flexDirection(column);
+}
 
-.flex--direction--row { .flexDirection(row) }
+.flex--direction--row {
+  .flexDirection(row);
+}
 
-.flex--wrap { .flexWrap(wrap) }
+.flex--wrap {
+  .flexWrap(wrap);
+}
 
-.flex--nowrap { .flexWrap(nowrap) }
+.flex--nowrap {
+  .flexWrap(nowrap);
+}
 
-.flex--grow { .flexGrow(1) }
+.flex--grow {
+  .flexGrow(1);
+}
 
-.flex--none { .flexNone() }
+.flex--none {
+  .flexNone();
+}
 
-.flex--shrink { .flexShrink(1) }
+.flex--shrink {
+  .flexShrink(1);
+}
 
-.items--baseline { .alignItems(baseline) }
+.items--baseline {
+  .alignItems(baseline);
+}
 
-.items--center { .alignItems(center) }
+.items--center {
+  .alignItems(center);
+}
 
-.items--end { .alignItems(flex-end) }
+.items--end {
+  .alignItems(flex-end);
+}
 
-.items--start { .alignItems(flex-start) }
+.items--start {
+  .alignItems(flex-start);
+}
 
-.items--stretch { .alignItems(stretch) }
+.items--stretch {
+  .alignItems(stretch);
+}
 
-.self--baseline { .alignSelf(baseline) }
+.self--baseline {
+  .alignSelf(baseline);
+}
 
-.self--center { .alignSelf(center) }
+.self--center {
+  .alignSelf(center);
+}
 
-.self--end { .alignSelf(flex-end) }
+.self--end {
+  .alignSelf(flex-end);
+}
 
-.self--start { .alignSelf(flex-start) }
+.self--start {
+  .alignSelf(flex-start);
+}
 
-.self--stretch { .alignSelf(stretch) }
+.self--stretch {
+  .alignSelf(stretch);
+}
 
-.justify--around { .justifyContent(space-around) }
+.justify--around {
+  .justifyContent(space-around);
+}
 
-.justify--between { .justifyContent(space-between) }
+.justify--between {
+  .justifyContent(space-between);
+}
 
-.justify--center { .justifyContent(center) }
+.justify--center {
+  .justifyContent(center);
+}
 
-.justify--end { .justifyContent(flex-end) }
+.justify--end {
+  .justifyContent(flex-end);
+}
 
-.justify--start { .justifyContent(flex-start) }
+.justify--start {
+  .justifyContent(flex-start);
+}
 
-.content--around { .alignContent(space-around) }
+.content--around {
+  .alignContent(space-around);
+}
 
-.content--between { .alignContent(space-between) }
+.content--between {
+  .alignContent(space-between);
+}
 
-.content--center { .alignContent(center) }
+.content--center {
+  .alignContent(center);
+}
 
-.content--end { .alignContent(flex-end) }
+.content--end {
+  .alignContent(flex-end);
+}
 
-.content--start { .alignContent(flex-start) }
+.content--start {
+  .alignContent(flex-start);
+}
 
-.content--stretch { .alignContent(stretch) }
+.content--stretch {
+  .alignContent(stretch);
+}
 
 /* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
 .flex--auto {
@@ -326,12 +385,22 @@
   min-height: 0; /* 1 */
 }
 
-.order--0 { .order(0) }
+.order--0 {
+  .order(0);
+}
 
-.order--1 { .order(1) }
+.order--1 {
+  .order(1);
+}
 
-.order--2 { .order(2) }
+.order--2 {
+  .order(2);
+}
 
-.order--3 { .order(3) }
+.order--3 {
+  .order(3);
+}
 
-.order--last { .order(99999) }
+.order--last {
+  .order(99999);
+}

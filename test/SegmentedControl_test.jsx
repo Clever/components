@@ -1,26 +1,28 @@
 import assert from "assert";
 import React from "react";
 import sinon from "sinon";
-import {shallow} from "enzyme";
-import {SegmentedControl} from "../src";
+import { shallow } from "enzyme";
+import { SegmentedControl } from "../src";
 
 const testOptions = [
   {
     value: "one",
     content: "Option 1",
-  }, {
+  },
+  {
     value: "two",
     content: "Option 2",
-  }, {
+  },
+  {
     value: "three",
     content: "Option 3",
-  }, {
+  },
+  {
     value: "html",
     content: <span>HTML Option</span>,
   },
 ];
-const {cssClass} = SegmentedControl;
-
+const { cssClass } = SegmentedControl;
 
 describe("SegmentedControl", () => {
   it("renders all selectable items", () => {
@@ -30,16 +32,16 @@ describe("SegmentedControl", () => {
     assert.equal(
       options.length,
       testOptions.length,
-      `Expected ${testOptions.length} options. Found ${options.length}`
+      `Expected ${testOptions.length} options. Found ${options.length}`,
     );
 
     const selected = control.find(`.${cssClass.SELECTED}`);
     assert(!selected.exists(), "There should not be any initially selected items.");
 
-    testOptions.forEach(({content}, i) => {
+    testOptions.forEach(({ content }, i) => {
       assert(
         options.at(i).contains(content),
-        `Expected option ${i} to contain ${content}; found ${options.at(i).text()}`
+        `Expected option ${i} to contain ${content}; found ${options.at(i).text()}`,
       );
     });
   });
@@ -47,14 +49,14 @@ describe("SegmentedControl", () => {
   it("initalizes selected when defaultValue is set", () => {
     const expected = testOptions[2];
     const control = shallow(
-      <SegmentedControl options={testOptions} defaultValue={expected.value} />
+      <SegmentedControl options={testOptions} defaultValue={expected.value} />,
     );
 
     const selected = control.find(`.${cssClass.SELECTED}`);
     assert.equal(selected.length, 1, `Expected 1 selected item. Found ${selected.length}.`);
     assert(
       selected.contains(expected.content),
-      `Expected selected to contain "${expected.content}"; found "${selected.first().text()}"`
+      `Expected selected to contain "${expected.content}"; found "${selected.first().text()}"`,
     );
   });
 
@@ -70,7 +72,7 @@ describe("SegmentedControl", () => {
 
       assert(
         selected.contains(option.text()),
-        `Expected "${option.text()}" to be selected. Found "${selected.first().text()}"`
+        `Expected "${option.text()}" to be selected. Found "${selected.first().text()}"`,
       );
     });
   });
@@ -91,11 +93,7 @@ describe("SegmentedControl", () => {
     const controlledValue = testOptions[1];
 
     const control = shallow(
-      <SegmentedControl
-        options={testOptions}
-        onSelect={onSelect}
-        value={controlledValue.value}
-      />
+      <SegmentedControl options={testOptions} onSelect={onSelect} value={controlledValue.value} />,
     );
 
     assert.equal(control.instance().getValue(), controlledValue.value);
@@ -120,14 +118,14 @@ describe("SegmentedControl", () => {
   it("throws error on conflicting controlled/uncontrolled mode", () => {
     assert.throws(
       () => shallow(<SegmentedControl defaultValue="one" options={testOptions} value="two" />),
-      /controlled or uncontrolled/
+      /controlled or uncontrolled/,
     );
   });
 
   it("throws error on missing `onSelect` prop in controlled mode", () => {
     assert.throws(
       () => shallow(<SegmentedControl options={testOptions} value="two" />),
-      /`onSelect` prop required/
+      /`onSelect` prop required/,
     );
   });
 
@@ -150,7 +148,8 @@ describe("SegmentedControl", () => {
       {
         value: "enabled",
         content: "Enabled Option",
-      }, {
+      },
+      {
         value: "disabled",
         content: "Disabled Option",
         disabled: true,
@@ -164,7 +163,7 @@ describe("SegmentedControl", () => {
     let selected = control.find(`.${cssClass.SELECTED}`);
     assert(
       selected.contains(options.at(0).text()),
-      `Expected "${options.at(0).text()}" to be selected. Found "${selected.first().text()}"`
+      `Expected "${options.at(0).text()}" to be selected. Found "${selected.first().text()}"`,
     );
     sinon.assert.calledWith(stub, controlOptions[0].value);
 
@@ -174,7 +173,7 @@ describe("SegmentedControl", () => {
     selected = control.find(`.${cssClass.SELECTED}`);
     assert(
       selected.contains(options.at(0).text()),
-      `Expected "${options.at(0).text()}" to be selected. Found "${selected.first().text()}"`
+      `Expected "${options.at(0).text()}" to be selected. Found "${selected.first().text()}"`,
     );
     sinon.assert.notCalled(stub);
   });

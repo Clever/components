@@ -7,7 +7,6 @@ import ItemAlign from "./ItemAlign";
 
 import "../less/flex.less";
 
-
 let TYPE_ANY;
 
 export default function FlexItem({
@@ -18,14 +17,14 @@ export default function FlexItem({
   grow = false,
   ...additionalProps
 }) {
-  const {cssClass} = FlexItem;
+  const { cssClass } = FlexItem;
 
   return (
     <Wrapper
       className={classnames(
         alignSelf && cssClass.alignSelf(alignSelf),
         grow && cssClass.GROW,
-        className
+        className,
       )}
       {...additionalProps}
     >

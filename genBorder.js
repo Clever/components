@@ -3,7 +3,6 @@
 const _ = require("lodash");
 const fs = require("fs");
 
-
 const FILEPATH = "src/less/";
 const FILENAME = "border.less";
 const borderWidths = {
@@ -52,20 +51,11 @@ const contents = [
   " */",
   "",
 ].concat(
-  [
-    "/**",
-    " * Border width constants.",
-    " */",
-  ],
+  ["/**", " * Border width constants.", " */"],
   constants,
   "",
-  [
-    "",
-    "/**",
-    " * Border mixins.",
-    " */",
-  ],
+  ["", "/**", " * Border mixins.", " */"],
   mixins,
-  ""
+  "",
 );
 fs.writeFileSync(`${FILEPATH}${FILENAME}`, contents.join("\n"));

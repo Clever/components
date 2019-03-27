@@ -4,16 +4,15 @@ import * as React from "react";
 import classnames from "classnames";
 
 import MorePropTypes from "../utils/MorePropTypes";
-import {NavLink} from "./NavLink";
+import { NavLink } from "./NavLink";
 
 import "./NavGroup.less";
-
 
 // NavGroup doesn't render its children because LeftNav will render them in
 // a drawer if the NavGroup is open.
 export class NavGroup extends React.PureComponent {
   render() {
-    const {cssClass} = NavGroup;
+    const { cssClass } = NavGroup;
     const {
       _collapsed,
       _onClick,

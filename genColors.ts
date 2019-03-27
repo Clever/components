@@ -3,8 +3,7 @@ import * as fs from "fs";
 const FILENAME_JS = "src/utils/Colors.ts";
 const FILENAME_LESS = "src/less/colors.less";
 
-const FILE_HEADER =
-`/**
+const FILE_HEADER = `/**
  * ====  NOTE: Auto-generated file. Do NOT edit directly! ====
  * ====  Edit genColors.ts instead and run make generate. ====
  *
@@ -116,8 +115,7 @@ const jsContents = [
 ];
 fs.writeFileSync(`${FILENAME_JS}`, jsContents.join("\n"));
 
-const DEPRECATED_LESS_HELPERS =
-`// DEPRECATED: Use pre-defined tints and shades above instead.
+const DEPRECATED_LESS_HELPERS = `// DEPRECATED: Use pre-defined tints and shades above instead.
 @shadeStepAmount: 15%;
 .shade(@property, @color, @steps: 1) {
   @{property}: shade(@color, @shadeStepAmount * @steps);
@@ -126,12 +124,5 @@ const DEPRECATED_LESS_HELPERS =
   @{property}: tint(@color, @shadeStepAmount * @steps);
 }`;
 
-const lessContents = [
-  FILE_HEADER,
-  "",
-  ...lessColors,
-  "",
-  DEPRECATED_LESS_HELPERS,
-  "",
-];
+const lessContents = [FILE_HEADER, "", ...lessColors, "", DEPRECATED_LESS_HELPERS, ""];
 fs.writeFileSync(`${FILENAME_LESS}`, lessContents.join("\n"));

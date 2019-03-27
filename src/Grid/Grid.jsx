@@ -9,14 +9,8 @@ import Size from "./Size";
 
 require("../less/grid.less");
 
-
-export function Grid({
-  className,
-  children,
-  wrapperComponent: Wrapper,
-  ...additionalProps
-}) {
-  const {cssClass} = Grid;
+export function Grid({ className, children, wrapperComponent: Wrapper, ...additionalProps }) {
+  const { cssClass } = Grid;
 
   return (
     <Wrapper className={classnames(cssClass.GRID, className)} {...additionalProps}>

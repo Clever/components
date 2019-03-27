@@ -1,13 +1,12 @@
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import ContentAlign from "../../src/flex/ContentAlign";
 import Justify from "../../src/flex/Justify";
 import FlexBox from "../../src/flex/FlexBox";
 import FlexItem from "../../src/flex/FlexItem";
 import ItemAlign from "../../src/flex/ItemAlign";
-
 
 describe("FlexBox", () => {
   it("applies flexbox classname", () => {
@@ -30,7 +29,7 @@ describe("FlexBox", () => {
     const flexBox = shallow(<FlexBox column />);
     assert(
       flexBox.hasClass("flex--direction--column"),
-      "flex--direction--column class name should be applied."
+      "flex--direction--column class name should be applied.",
     );
   });
 
@@ -57,10 +56,7 @@ describe("FlexBox", () => {
   });
 
   it("renders child items", () => {
-    const items = [
-      <div key="0" />,
-      <span key="1" />,
-    ];
+    const items = [<div key="0" />, <span key="1" />];
 
     const flexBox = shallow(<FlexBox>{items}</FlexBox>);
 

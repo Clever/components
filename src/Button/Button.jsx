@@ -5,7 +5,6 @@ import * as PropTypes from "prop-types";
 
 import "./Button.less";
 
-
 export class Button extends React.PureComponent {
   _buttonRef;
 
@@ -22,7 +21,7 @@ export class Button extends React.PureComponent {
   }
 
   render() {
-    const {Size, Type} = Button;
+    const { Size, Type } = Button;
     const {
       className,
       disabled,
@@ -45,11 +44,7 @@ export class Button extends React.PureComponent {
       throw new Error("Buttons with href do not support the submit option");
     }
 
-    const classes = classnames(
-      `Button Button--${type}`,
-      `Button--${size}`,
-      className
-    );
+    const classes = classnames(`Button Button--${type}`, `Button--${size}`, className);
 
     if (href == null || disabled) {
       // use <button>s for all disabled links and things with no href prop (buttons)
@@ -59,10 +54,12 @@ export class Button extends React.PureComponent {
           className={classes}
           disabled={disabled}
           onClick={onClick}
-          ref={ref => { this._buttonRef = ref; }}
+          ref={ref => {
+            this._buttonRef = ref;
+          }}
           style={style}
           type={submit ? "submit" : "button"}
-          aria-label={(typeof value === "string") ? value : null}
+          aria-label={typeof value === "string" ? value : null}
         >
           {value}
         </button>
@@ -74,10 +71,12 @@ export class Button extends React.PureComponent {
         className={classes}
         href={href}
         onClick={onClick}
-        ref={ref => { this._buttonRef = ref; }}
+        ref={ref => {
+          this._buttonRef = ref;
+        }}
         style={style}
         target={target}
-        aria-label={(typeof value === "string") ? value : null}
+        aria-label={typeof value === "string" ? value : null}
       >
         {value}
       </a>

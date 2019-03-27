@@ -1,11 +1,11 @@
 import * as React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import NewComponent from "./NewComponent";
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 
 describe("NewComponent", () => {
-  const {cssClass} = NewComponent;
+  const { cssClass } = NewComponent;
 
   const onPerformActionMock = jest.fn();
 
@@ -39,9 +39,7 @@ describe("NewComponent", () => {
   // TODO: Test any relevant state changes/event handling/prop-driven rendering.
   it("propagates event", () => {
     const myComponent = shallow(
-      <NewComponent onPerformAction={onPerformActionMock}>
-        Test Content
-      </NewComponent>,
+      <NewComponent onPerformAction={onPerformActionMock}>Test Content</NewComponent>,
     );
 
     myComponent.find(Button).simulate("click");

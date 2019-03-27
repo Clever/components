@@ -15,34 +15,12 @@ export default function Graph(props) {
       <title>line-chart</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="line-chart" strokeWidth={2} stroke="#4FA97B">
           <g id="Group-2" transform="translate(1.000000, 3.000000)">
             <g id="business-48px-outline_stock">
-              <rect
-                id="Rectangle-path"
-                fill="#85EBB6"
-                x={0}
-                y={0}
-                width={30}
-                height={40}
-                rx={2}
-              />
-              <rect
-                id="Rectangle-path"
-                fill="#FFFFFF"
-                x={30}
-                y={0}
-                width={14}
-                height={40}
-                rx={2}
-              />
+              <rect id="Rectangle-path" fill="#85EBB6" x={0} y={0} width={30} height={40} rx={2} />
+              <rect id="Rectangle-path" fill="#FFFFFF" x={30} y={0} width={14} height={40} rx={2} />
               <g id="Group">
                 <polyline
                   id="Shape"

@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
@@ -6,7 +6,7 @@ import WizardExample from "../WizardExample";
 
 export default class WizardView extends PureComponent {
   render() {
-    const {cssClass} = WizardView;
+    const { cssClass } = WizardView;
 
     return (
       <View className={cssClass.CONTAINER} title="Wizard">
@@ -19,12 +19,18 @@ export default class WizardView extends PureComponent {
           The <code>Component</code> gets two props:
         </p>
         <ul>
-          <li><code>setWizardState</code>: setWizardState allows each step to add data to the wizardState</li>
-          <li><code>wizardState</code>: wizardState contains any data that has been set by any step before</li>
+          <li>
+            <code>setWizardState</code>: setWizardState allows each step to add data to the
+            wizardState
+          </li>
+          <li>
+            <code>wizardState</code>: wizardState contains any data that has been set by any step
+            before
+          </li>
         </ul>
         <p>
-          The validate function receives this shared state as an argument, allowing each step to define
-          the conditions under which their inputs are considered valid.
+          The validate function receives this shared state as an argument, allowing each step to
+          define the conditions under which their inputs are considered valid.
         </p>
 
         <WizardExample />
@@ -39,8 +45,9 @@ export default class WizardView extends PureComponent {
             {
               name: "onComplete",
               type: "Function",
-              description: "Defines what happens when all steps are valid, and the user clicks the next"
-              + "button past final step",
+              description:
+                "Defines what happens when all steps are valid, and the user clicks the next" +
+                "button past final step",
             },
             {
               name: "steps",
@@ -62,7 +69,8 @@ export default class WizardView extends PureComponent {
             {
               name: "help",
               type: "String or React Node",
-              description: "Global help text to display next to form. Can be overridden by a step that has its own help property",
+              description:
+                "Global help text to display next to form. Can be overridden by a step that has its own help property",
               optional: true,
             },
             {
@@ -82,23 +90,26 @@ export default class WizardView extends PureComponent {
             {
               name: "initialWizardData",
               type: "Object",
-              description: "Initial data to seed wizardState. Useful for saving the state of a form for later",
+              description:
+                "Initial data to seed wizardState. Useful for saving the state of a form for later",
               defaultValue: "{}",
               optional: true,
             },
             {
               name: "nextButtonValue",
               type: "String or React Node",
-              description: "Global text to display on next buttons in form. Can be overridden by a step that has its own"
-              + " nextButtonValue property.",
+              description:
+                "Global text to display on next buttons in form. Can be overridden by a step that has its own" +
+                " nextButtonValue property.",
               defaultValue: "Next",
               optional: true,
             },
             {
               name: "prevButtonValue",
               type: "String or React Node",
-              description: "Global text to display on prev buttons in form. Can be overridden by a step that has its own"
-              + " prevButtonValue property.",
+              description:
+                "Global text to display on prev buttons in form. Can be overridden by a step that has its own" +
+                " prevButtonValue property.",
               defaultValue: "Prev",
               optional: true,
             },
@@ -112,7 +123,8 @@ export default class WizardView extends PureComponent {
             {
               name: "seekable",
               type: "Boolean",
-              description: "Whether or not you can skip to other steps before completing the current one",
+              description:
+                "Whether or not you can skip to other steps before completing the current one",
               defaultValue: "False",
               optional: true,
             },
@@ -146,8 +158,9 @@ export default class WizardView extends PureComponent {
             {
               name: "component",
               type: "React Node",
-              description: "Components to display for this step. Provided with wizardState and setWizardState props,"
-              + " allowing to get and set the data inputted into the wizard",
+              description:
+                "Components to display for this step. Provided with wizardState and setWizardState props," +
+                " allowing to get and set the data inputted into the wizard",
             },
             {
               name: "description",
@@ -162,13 +175,15 @@ export default class WizardView extends PureComponent {
             {
               name: "validate",
               type: "Function",
-              description: "Validates if the current step is complete. Provided wizardState as an argument, which this"
-              + " function is expected to examine for validity",
+              description:
+                "Validates if the current step is complete. Provided wizardState as an argument, which this" +
+                " function is expected to examine for validity",
             },
             {
               name: "canContinue",
               type: "(wizardData: any) => bool",
-              description: "If defined, used to determine whether the 'Next' " +
+              description:
+                "If defined, used to determine whether the 'Next' " +
                 "button is clickable. Otherwise, `validate` is used.",
               optional: true,
             },
@@ -187,30 +202,34 @@ export default class WizardView extends PureComponent {
             {
               name: "onStepComplete",
               type: "Function",
-              description: "A custom action to be performed before navigating to the next step in the Wizard. The function"
-              + " provided wizardState as an argument and should return a promise. The wizard will only proceed to the next"
-              + " step if the returned promise resolves to a truthy value.",
+              description:
+                "A custom action to be performed before navigating to the next step in the Wizard. The function" +
+                " provided wizardState as an argument and should return a promise. The wizard will only proceed to the next" +
+                " step if the returned promise resolves to a truthy value.",
               optional: true,
             },
             {
               name: "props",
               type: "Object",
-              description: "Props to provide to the component. If present, wizardState and setWizardState props are filtered out.",
+              description:
+                "Props to provide to the component. If present, wizardState and setWizardState props are filtered out.",
               defaultValue: "{}",
               optional: true,
             },
             {
               name: "shouldSkipStep",
               type: "Function",
-              description: "A function to check if this step should be immediately skipped when navigating "
-              + "backwards/fowards through the wizard.",
+              description:
+                "A function to check if this step should be immediately skipped when navigating " +
+                "backwards/fowards through the wizard.",
               optional: true,
             },
             {
               name: "nextButtonValue",
               type: "String, React Node, or Function",
-              description: "Text to display on next buttons in form. Function can be used to dynamically change "
-              + "the button text based on wizardstate",
+              description:
+                "Text to display on next buttons in form. Function can be used to dynamically change " +
+                "the button text based on wizardstate",
               defaultValue: "Next",
               optional: true,
             },
@@ -229,8 +248,9 @@ export default class WizardView extends PureComponent {
             {
               name: "handler",
               type: "Function",
-              description: "Action to occur when button is clicked. Passed the wizardState and an object of utility methods that"
-              + " affect the wizard's state",
+              description:
+                "Action to occur when button is clicked. Passed the wizardState and an object of utility methods that" +
+                " affect the wizard's state",
             },
             {
               name: "buttonClassName",
@@ -242,11 +262,12 @@ export default class WizardView extends PureComponent {
           title="wizardButton"
         />
 
-        <p><strong>wizardButton handler utility methods</strong></p>
+        <p>
+          <strong>wizardButton handler utility methods</strong>
+        </p>
         <p>
           <code>resetWizard</code>: Clears and re-initializes the state of the wizard.
         </p>
-
       </View>
     );
   }

@@ -3,7 +3,7 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {FlexBox, FlexItem} from "../flex";
+import { FlexBox, FlexItem } from "../flex";
 import TopBarButton from "./TopBarButton";
 import Menu from "../Menu";
 
@@ -33,7 +33,7 @@ export default class TopBarMenu extends React.PureComponent {
   static Placement = Menu.Placement;
 
   render() {
-    const {children, className, dropdownPlacement, label} = this.props;
+    const { children, className, dropdownPlacement, label } = this.props;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
 
     return (
@@ -58,7 +58,7 @@ export default class TopBarMenu extends React.PureComponent {
   }
 
   _getWrapperComponent() {
-    const {component, href} = this.props;
+    const { component, href } = this.props;
 
     if (component) {
       return component;

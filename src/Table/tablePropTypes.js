@@ -2,10 +2,7 @@ import * as PropTypes from "prop-types";
 
 import sortDir from "./sortDirection";
 
-export const sortDirection = PropTypes.oneOf([
-  sortDir.ASCENDING,
-  sortDir.DESCENDING,
-]);
+export const sortDirection = PropTypes.oneOf([sortDir.ASCENDING, sortDir.DESCENDING]);
 
 export const sortState = PropTypes.shape({
   columnID: PropTypes.string,
@@ -21,7 +18,7 @@ export const pageNumber = (props, propName, componentName) => {
 
   if (typeof value !== "number" || value < 1) {
     return new Error(
-      `Invalid prop \`${propName}\` supplied to ${componentName}. Must be a 1-based page index.`
+      `Invalid prop \`${propName}\` supplied to ${componentName}. Must be a 1-based page index.`,
     );
   }
 

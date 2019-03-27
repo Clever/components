@@ -54,7 +54,7 @@ export default class WithKeyboardNav extends React.PureComponent {
   }
 
   _handleKeyDown = event => {
-    const {backKeys, forwardKeys, forceTabKey} = this.props;
+    const { backKeys, forwardKeys, forceTabKey } = this.props;
 
     if (!_.isString(event.key)) {
       return;
@@ -77,7 +77,7 @@ export default class WithKeyboardNav extends React.PureComponent {
   };
 
   _move(amount, event) {
-    const {currentID, noWrap, onChange} = this.props;
+    const { currentID, noWrap, onChange } = this.props;
 
     const itemIDs = _.compact(this.props.itemIDs);
     const currentIndex = itemIDs.indexOf(currentID);

@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 
 import "./Step.less";
 import CheckMark from "./CheckMark";
-import {FlexBox} from "../flex";
+import { FlexBox } from "../flex";
 import Exclamation from "./Exclamation";
 
 const propTypes = {
@@ -49,20 +49,29 @@ export default class Step extends React.PureComponent {
   _onClick = () => this.props.onClick(this.props.id);
 
   _iconContent = () => {
-    const {label, current, state} = this.props;
+    const { label, current, state } = this.props;
     const iconMap = {
-      SUCCESS: (<CheckMark />),
-      WARNING: (<Exclamation />),
+      SUCCESS: <CheckMark />,
+      WARNING: <Exclamation />,
       INCOMPLETE: label,
     };
     if (current) {
       return label;
     }
     return iconMap[state];
-  }
+  };
 
   render() {
-    const {className, title, description, state, current, warning, optional, onClick} = this.props;
+    const {
+      className,
+      title,
+      description,
+      state,
+      current,
+      warning,
+      optional,
+      onClick,
+    } = this.props;
     const stepClassName = classnames(
       className,
       cssClass.CONTAINER,
@@ -72,41 +81,23 @@ export default class Step extends React.PureComponent {
       onClick && cssClass.SEEKABLE,
     );
 
-    const icon = (<FlexBox className={cssClass.ICON}>{this._iconContent()}</FlexBox>);
+    const icon = <FlexBox className={cssClass.ICON}>{this._iconContent()}</FlexBox>;
     const content = (
       <div>
-        {title && (
-          <div className={cssClass.TITLE}>
-            {title}
-          </div>
-        )}
-        {warning && (
-          <div className={cssClass.MESSAGE_WARNING}>
-            {warning}
-          </div>
-        )}
-        {optional && (
-          <div className={cssClass.MESSAGE_OPTIONAL}>
-            Optional
-            </div>
-        )}
-        {description && (
-          <div className={cssClass.DESCRIPTION}>
-            {description}
-          </div>
-        )}
+        {title && <div className={cssClass.TITLE}>{title}</div>}
+        {warning && <div className={cssClass.MESSAGE_WARNING}>{warning}</div>}
+        {optional && <div className={cssClass.MESSAGE_OPTIONAL}>Optional</div>}
+        {description && <div className={cssClass.DESCRIPTION}>{description}</div>}
       </div>
     );
 
     if (onClick) {
       return (
-        <button
-          className={classnames(stepClassName)}
-          onClick={this._onClick}
-        >
+        <button className={classnames(stepClassName)} onClick={this._onClick}>
           {icon}
           {content}
-        </button>);
+        </button>
+      );
     }
 
     return (

@@ -1,8 +1,8 @@
 import React from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import View from "./View";
-import {FormElementSize, SegmentedControl, TextArea} from "src";
+import { FormElementSize, SegmentedControl, TextArea } from "src";
 import PropDocumentation from "./PropDocumentation";
 
 import "./TextAreaView.less";
@@ -23,7 +23,7 @@ export default class TextAreaView extends React.Component {
   }
 
   render() {
-    const {cssClass} = TextAreaView;
+    const { cssClass } = TextAreaView;
 
     return (
       <View className={cssClass.CONTAINER} title="TextArea">
@@ -43,7 +43,7 @@ export default class TextAreaView extends React.Component {
               optional={this.state.optional}
               spellCheck={this.state.spellCheck}
               placeholder={this.state.placeholder ? "TextArea Placeholder" : ""}
-              onChange={e => this.setState({inputValue: e.target.value})}
+              onChange={e => this.setState({ inputValue: e.target.value })}
               value={this.state.inputValue}
               size={this.state.size}
             />
@@ -52,65 +52,58 @@ export default class TextAreaView extends React.Component {
             <input
               type="checkbox"
               checked={this.state.disabled}
-              onChange={({target}) => this.setState({disabled: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ disabled: target.checked })}
+            />{" "}
             Disabled
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.readOnly}
-              onChange={({target}) => this.setState({readOnly: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ readOnly: target.checked })}
+            />{" "}
             Read Only
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.optional}
-              onChange={({target}) => this.setState({optional: target.checked})}
+              onChange={({ target }) => this.setState({ optional: target.checked })}
               disabled={this.state.required}
-            />
-            {" "}
+            />{" "}
             Optional
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.required}
-              onChange={({target}) => this.setState({required: target.checked})}
+              onChange={({ target }) => this.setState({ required: target.checked })}
               disabled={this.state.optional}
-            />
-            {" "}
+            />{" "}
             Required
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.spellCheck}
-              onChange={({target}) => this.setState({spellCheck: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ spellCheck: target.checked })}
+            />{" "}
             Spell Check
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.autoResize}
-              onChange={({target}) => this.setState({autoResize: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ autoResize: target.checked })}
+            />{" "}
             Auto Resize
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.placeholder}
-              onChange={({target}) => this.setState({placeholder: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ placeholder: target.checked })}
+            />{" "}
             Show Placeholder
           </label>
           <div className={cssClass.CONFIG}>
@@ -118,13 +111,13 @@ export default class TextAreaView extends React.Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               options={[
-                {content: "small", value: FormElementSize.SMALL},
-                {content: "medium", value: FormElementSize.MEDIUM},
-                {content: "large", value: FormElementSize.LARGE},
-                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+                { content: "small", value: FormElementSize.SMALL },
+                { content: "medium", value: FormElementSize.MEDIUM },
+                { content: "large", value: FormElementSize.LARGE },
+                { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={value => this.setState({size: value})}
+              onSelect={value => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -250,11 +243,18 @@ export default class TextAreaView extends React.Component {
             {
               name: "size",
               type: "string",
-              description: <p>
-                The size of the input. One of:<br />
-                {Object.keys(FormElementSize).map(size =>
-                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
-              </p>,
+              description: (
+                <p>
+                  The size of the input. One of:
+                  <br />
+                  {Object.keys(FormElementSize).map(size => (
+                    <span key={size}>
+                      <code>FormElementSize.{size}</code>
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              ),
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },

@@ -15,13 +15,7 @@ export default function ChatHeart(props) {
       <title>chat-heart</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="chat-heart" strokeWidth={2}>
           <g
             id="ui-48px-outline-2_chat-round"

@@ -15,35 +15,12 @@ export default function WebsiteHTML(props) {
       <title>window-dev</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="window-dev">
-          <g
-            id="design-48px-outline_window-dev"
-            transform="translate(1.000000, 3.000000)"
-          >
+          <g id="design-48px-outline_window-dev" transform="translate(1.000000, 3.000000)">
             <g id="Group">
-              <rect
-                id="Rectangle"
-                fill="#D8D8D8"
-                x={1}
-                y={1}
-                width={42}
-                height={10}
-              />
-              <rect
-                id="Rectangle-Copy"
-                fill="#FFFFFF"
-                x={1}
-                y={13}
-                width={42}
-                height={28}
-              />
+              <rect id="Rectangle" fill="#D8D8D8" x={1} y={1} width={42} height={10} />
+              <rect id="Rectangle-Copy" fill="#FFFFFF" x={1} y={13} width={42} height={28} />
               <polyline
                 id="Shape"
                 stroke="#62748C"

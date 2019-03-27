@@ -111,9 +111,7 @@ export function createNewComponentDemo(componentName) {
 
   const routesRegex = /<Route path="components">\n((\n?\s+<Route.+\/>)+)\n\s+<\/Route>/;
   const routes = new Set(routerFileContents.match(routesRegex)[1].split("\n"));
-  routes.add(
-    `        <Route path="${componentRoutePath}(/*)" component={${componentName}View} />`,
-  );
+  routes.add(`        <Route path="${componentRoutePath}(/*)" component={${componentName}View} />`);
 
   const updatedRouterFileContents = routerFileContents
     .replace(
@@ -134,8 +132,7 @@ export function createNewComponentDemo(componentName) {
   const sidebarFilePath = getAbsoluteFilePath("docs/components/SideBar/SideBar.jsx");
   const sidebarFileContents = readFileContents(sidebarFilePath);
 
-  const linksRegex =
-    /(<NavGroup id="components".+>)\n((\n?\s+{this._renderLink.+})+)\n\s+<\/NavGroup>/;
+  const linksRegex = /(<NavGroup id="components".+>)\n((\n?\s+{this._renderLink.+})+)\n\s+<\/NavGroup>/;
   const links = new Set(sidebarFileContents.match(linksRegex)[2].split("\n"));
   links.add(
     `          {this._renderLink("/components/${componentRoutePath}", "${componentName}")}`,

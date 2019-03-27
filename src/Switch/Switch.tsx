@@ -1,11 +1,11 @@
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import {CloseIcon} from "../CloseIcon/CloseIcon";
+import { CloseIcon } from "../CloseIcon/CloseIcon";
 import Checkmark from "../Checkbox/CheckMark";
 
 import "./Switch.less";
-import {FlexBox, Justify} from "../flex";
+import { FlexBox, Justify } from "../flex";
 
 const propTypes = {
   ariaLabelledby: PropTypes.string,
@@ -24,7 +24,7 @@ const defaultProps = {
 };
 
 const cssClass = {
-  BG:  "Switch--bg",
+  BG: "Switch--bg",
   CHECKED: "Switch--checked",
   CHECKED_ICON: "Switch--checkedIcon",
   CONTAINER: "Switch",
@@ -50,13 +50,7 @@ export default class Switch extends React.PureComponent {
   static defaultProps = defaultProps;
 
   render() {
-    const {
-      ariaLabelledby,
-      ariaLabel,
-      className,
-      checked,
-      disabled,
-    } = this.props;
+    const { ariaLabelledby, ariaLabel, className, checked, disabled } = this.props;
 
     return (
       <button
@@ -64,7 +58,10 @@ export default class Switch extends React.PureComponent {
         aria-disabled={disabled}
         aria-labelledby={ariaLabelledby}
         aria-label={ariaLabel}
-        className={classnames(cssClass.CONTAINER, className, cssClass.BG,
+        className={classnames(
+          cssClass.CONTAINER,
+          className,
+          cssClass.BG,
           checked && cssClass.CHECKED,
         )}
         disabled={disabled}
@@ -72,24 +69,32 @@ export default class Switch extends React.PureComponent {
         onClick={this._onClick}
       >
         <FlexBox justify={Justify.BETWEEN} grow>
-          <FlexBox column justify={Justify.CENTER}><Checkmark className={cssClass.CHECKED_ICON} /></FlexBox>
-          <FlexBox column justify={Justify.CENTER}><CloseIcon className={cssClass.UNCHECKED_ICON} /></FlexBox>
+          <FlexBox column justify={Justify.CENTER}>
+            <Checkmark className={cssClass.CHECKED_ICON} />
+          </FlexBox>
+          <FlexBox column justify={Justify.CENTER}>
+            <CloseIcon className={cssClass.UNCHECKED_ICON} />
+          </FlexBox>
         </FlexBox>
         <div
-          className={classnames(cssClass.HANDLE, checked && cssClass.CHECKED, disabled && cssClass.DISABLED)}
+          className={classnames(
+            cssClass.HANDLE,
+            checked && cssClass.CHECKED,
+            disabled && cssClass.DISABLED,
+          )}
         >
-          <div className={cssClass.HANDLE_GRIP_LEFT}></div>
-          <div className={cssClass.HANDLE_GRIP_RIGHT}></div>
+          <div className={cssClass.HANDLE_GRIP_LEFT} />
+          <div className={cssClass.HANDLE_GRIP_RIGHT} />
         </div>
       </button>
     );
   }
 
   _onClick = () => {
-    const {onChange, checked, disabled} = this.props;
-    this.setState({mouseDown: false});
+    const { onChange, checked, disabled } = this.props;
+    this.setState({ mouseDown: false });
     if (!disabled) {
       onChange(!checked);
     }
-  }
+  };
 }

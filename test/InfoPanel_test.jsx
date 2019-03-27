@@ -1,11 +1,10 @@
 import assert from "assert";
 import React from "react";
-import {shallow, render} from "enzyme";
-import {InfoPanel} from "../src";
-
+import { shallow, render } from "enzyme";
+import { InfoPanel } from "../src";
 
 describe("InfoPanel", () => {
-  const {cssClass} = InfoPanel;
+  const { cssClass } = InfoPanel;
 
   it("adds custom className if specified", () => {
     const panel = shallow(<InfoPanel className="custom" title="Panel Title" />);
@@ -25,13 +24,21 @@ describe("InfoPanel", () => {
 
   it("hides collapsible content when defaultOpen is false", () => {
     const content = <div>Panel Content</div>;
-    const panel = render(<InfoPanel title="Panel Title" collapsible defaultOpen={false}>{content}</InfoPanel>);
+    const panel = render(
+      <InfoPanel title="Panel Title" collapsible defaultOpen={false}>
+        {content}
+      </InfoPanel>,
+    );
     assert(panel.find(".accordion__body").hasClass("accordion__body--hidden"));
   });
 
   it("shows collapsible content when defaultOpen is true", () => {
     const content = <div>Panel Content</div>;
-    const panel = render(<InfoPanel title="Panel Title" collapsible defaultOpen>{content}</InfoPanel>);
+    const panel = render(
+      <InfoPanel title="Panel Title" collapsible defaultOpen>
+        {content}
+      </InfoPanel>,
+    );
     assert(!panel.find(".accordion__body").hasClass("accordion__body--hidden"));
   });
 });

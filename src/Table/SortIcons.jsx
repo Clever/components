@@ -8,9 +8,8 @@ import sortDirection from "./sortDirection";
 const WIDTH = 7;
 const HEIGHT = 12;
 
-
-export default function SortIcons({direction, className, scale}) {
-  const {cssClass} = SortIcons;
+export default function SortIcons({ direction, className, scale }) {
+  const { cssClass } = SortIcons;
 
   return (
     <svg
@@ -23,7 +22,7 @@ export default function SortIcons({direction, className, scale}) {
         className={classnames(
           cssClass.DIRECTION,
           cssClass.ASCENDING,
-          direction === sortDirection.ASCENDING && cssClass.ACTIVE
+          direction === sortDirection.ASCENDING && cssClass.ACTIVE,
         )}
         points="3.5 0 7 5 0 5"
       />
@@ -31,7 +30,7 @@ export default function SortIcons({direction, className, scale}) {
         className={classnames(
           cssClass.DIRECTION,
           cssClass.DESCENDING,
-          direction === sortDirection.DESCENDING && cssClass.ACTIVE
+          direction === sortDirection.DESCENDING && cssClass.ACTIVE,
         )}
         points="3.5 12 7 7 0 7"
       />

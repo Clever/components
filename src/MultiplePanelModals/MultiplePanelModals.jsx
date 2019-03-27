@@ -2,8 +2,8 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classNames from "classnames";
 
-import {Button} from "../Button/Button";
-import {Modal} from "../Modal/Modal";
+import { Button } from "../Button/Button";
+import { Modal } from "../Modal/Modal";
 
 export const Classes = {
   CONTAINER: "MultiplePanelModals",
@@ -14,7 +14,7 @@ export const Classes = {
 export class MultiplePanelModals extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentPanel: this.props.startingPanel};
+    this.state = { currentPanel: this.props.startingPanel };
   }
 
   render() {
@@ -83,7 +83,7 @@ export class MultiplePanelModals extends React.Component {
           closeModal={closeModal}
           width={width}
         >
-          <div style={{height}}>{panel}</div>
+          <div style={{ height }}>{panel}</div>
           <footer>
             <Button
               value={leftButtonValue}
@@ -91,7 +91,7 @@ export class MultiplePanelModals extends React.Component {
               type="link"
               onClick={() => {
                 if (!isFirstPanel) {
-                  this.setState({currentPanel: this.state.currentPanel - 1});
+                  this.setState({ currentPanel: this.state.currentPanel - 1 });
                 }
                 leftButtonOnClick();
               }}
@@ -108,13 +108,14 @@ export class MultiplePanelModals extends React.Component {
                   }
                   closeModal();
                 }
-                this.setState({currentPanel: this.state.currentPanel + 1});
+                this.setState({ currentPanel: this.state.currentPanel + 1 });
               }}
               disabled={rightButtonDisabled}
             />
           </footer>
         </Modal>
-      </div>);
+      </div>
+    );
   }
 }
 

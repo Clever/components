@@ -1,16 +1,16 @@
 import _ from "lodash";
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
-import {AlertBox} from "../src";
+import { shallow } from "enzyme";
+import { AlertBox } from "../src";
 
 describe("AlertBox", () => {
-  _.forEach(["warning", "info", "error", "success"], (type) => {
+  _.forEach(["warning", "info", "error", "success"], type => {
     it(`renders a <AlertBox> element with class AlertBox--${type}`, () => {
       const alertBox = shallow(
         <AlertBox type={type} title="title">
           <p> child </p>
-        </AlertBox>
+        </AlertBox>,
       );
       assert.equal(alertBox.find(`.AlertBox--${type}`).length, 1);
     });
@@ -20,7 +20,7 @@ describe("AlertBox", () => {
     const alertBox = shallow(
       <AlertBox type="warning" title="title" isClosable>
         <p> child </p>
-      </AlertBox>
+      </AlertBox>,
     );
     assert.equal(alertBox.find(".AlertBox--warning").length, 1);
     alertBox.find(".AlertBox--close").simulate("click");
@@ -31,7 +31,7 @@ describe("AlertBox", () => {
     const alertBox = shallow(
       <AlertBox type="warning" title="title" className="custom">
         <p> child </p>
-      </AlertBox>
+      </AlertBox>,
     );
     assert.equal(alertBox.find(".custom").length, 1);
   });

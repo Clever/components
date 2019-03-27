@@ -47,11 +47,22 @@ export default class List extends React.PureComponent {
   static RowType = RowType;
 
   render() {
-    const {children, className, itemsClassName, emptyMessage, noBorder, rowType, title} = this.props;
+    const {
+      children,
+      className,
+      itemsClassName,
+      emptyMessage,
+      noBorder,
+      rowType,
+      title,
+    } = this.props;
 
-    const items = _.compact(React.Children.toArray(children)).length === 0
-      ? <Item>{emptyMessage}</Item>
-      : children;
+    const items =
+      _.compact(React.Children.toArray(children)).length === 0 ? (
+        <Item>{emptyMessage}</Item>
+      ) : (
+        children
+      );
 
     return (
       <div className={classnames(cssClass.CONTAINER, noBorder && cssClass.NO_BORDER, className)}>

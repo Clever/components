@@ -1,12 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {FormElementSize, SegmentedControl, TextInput} from "src";
+import { FormElementSize, SegmentedControl, TextInput } from "src";
 
 import "./TextInputView.less";
-
 
 export default class TextInputView extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ export default class TextInputView extends Component {
   }
 
   render() {
-    const {cssClass} = TextInputView;
+    const { cssClass } = TextInputView;
 
     return (
       <View className={cssClass.CONTAINER} title="TextInput">
@@ -47,9 +46,11 @@ export default class TextInputView extends Component {
                 name="TextInputName"
                 placeholder="TextInput Placeholder"
                 placeholderCaps={this.state.placeholderCaps}
-                onChange={e => this.setState({inputValue: e.target.value})}
+                onChange={e => this.setState({ inputValue: e.target.value })}
                 value={this.state.inputValue}
-                onMouseOver={e => {console.log("mouseover!", e);}}
+                onMouseOver={e => {
+                  console.log("mouseover!", e);
+                }}
                 size={this.state.size}
               />
             </ExampleCode>
@@ -58,54 +59,48 @@ export default class TextInputView extends Component {
             <input
               type="checkbox"
               checked={this.state.disabled}
-              onChange={({target}) => this.setState({disabled: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ disabled: target.checked })}
+            />{" "}
             Disabled
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.readOnly}
-              onChange={({target}) => this.setState({readOnly: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ readOnly: target.checked })}
+            />{" "}
             Read Only
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.required}
-              onChange={({target}) => this.setState({required: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ required: target.checked })}
+            />{" "}
             Required
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.hasError}
-              onChange={({target}) => this.setState({hasError: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ hasError: target.checked })}
+            />{" "}
             Error
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.obscured}
-              onChange={({target}) => this.setState({obscured: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ obscured: target.checked })}
+            />{" "}
             Obscured
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.placeholderCaps}
-              onChange={({target}) => this.setState({placeholderCaps: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ placeholderCaps: target.checked })}
+            />{" "}
             Placeholder Caps
           </label>
           <div className={cssClass.CONFIG}>
@@ -113,13 +108,13 @@ export default class TextInputView extends Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               options={[
-                {content: "small", value: FormElementSize.SMALL},
-                {content: "medium", value: FormElementSize.MEDIUM},
-                {content: "large", value: FormElementSize.LARGE},
-                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+                { content: "small", value: FormElementSize.SMALL },
+                { content: "medium", value: FormElementSize.MEDIUM },
+                { content: "large", value: FormElementSize.LARGE },
+                { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={value => this.setState({size: value})}
+              onSelect={value => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -136,7 +131,8 @@ export default class TextInputView extends Component {
             {
               name: "disableAutocomplete",
               type: "Bool",
-              description: "Sets autocomplete='off' on the input element to disable default browser autocomplete",
+              description:
+                "Sets autocomplete='off' on the input element to disable default browser autocomplete",
               defaultValue: "false",
               optional: true,
             },
@@ -216,11 +212,18 @@ export default class TextInputView extends Component {
             {
               name: "size",
               type: "string",
-              description: <p>
-                The size of the input. One of:<br />
-                {Object.keys(FormElementSize).map(size =>
-                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
-              </p>,
+              description: (
+                <p>
+                  The size of the input. One of:
+                  <br />
+                  {Object.keys(FormElementSize).map(size => (
+                    <span key={size}>
+                      <code>FormElementSize.{size}</code>
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              ),
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },

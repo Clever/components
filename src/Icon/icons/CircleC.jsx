@@ -29,13 +29,7 @@ export default function CircleC(props) {
           <use xlinkHref="#path-1" />
         </mask>
       </defs>
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="clever-circle">
           <g id="clever-brand">
             <use

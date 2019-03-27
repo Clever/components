@@ -15,13 +15,7 @@ export default function Blocks(props) {
       <title>blocks</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="blocks" strokeWidth={2}>
           <g id="Step3_v1" transform="translate(1.000000, 1.000000)">
             <rect

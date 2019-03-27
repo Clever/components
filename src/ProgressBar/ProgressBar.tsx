@@ -2,7 +2,7 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {FlexBox, FlexItem} from "../flex";
+import { FlexBox, FlexItem } from "../flex";
 import Progress from "./Progress";
 
 import "./ProgressBar.less";
@@ -46,10 +46,10 @@ const cssClass = {
   BAR_BORDER: "ProgressBar--bar--border",
   TRACKER: "ProgressBar--bar--tracker",
   INACTIVE: "ProgressBar--bar--inactive",
-  boxContainer: (s) => `ProgressBar--boxContainer--${s}`,
-  borderSize: (s) => `ProgressBar--bar--border--${s}`,
-  containerSize: (s) => `ProgressBar--bar--container--${s}`,
-  label: (p) => `ProgressBar--label--${p}`,
+  boxContainer: s => `ProgressBar--boxContainer--${s}`,
+  borderSize: s => `ProgressBar--bar--border--${s}`,
+  containerSize: s => `ProgressBar--bar--container--${s}`,
+  label: p => `ProgressBar--label--${p}`,
 };
 
 export default class ProgressBar extends React.PureComponent {
@@ -64,23 +64,15 @@ export default class ProgressBar extends React.PureComponent {
   };
 
   render() {
-    const {className, style, color, fill, width, size, striped, inactive} = this.props;
+    const { className, style, color, fill, width, size, striped, inactive } = this.props;
     const sizePX = SizePX[size];
     const topLabel = this._maybeTopLabel();
     const bottomLabel = this._maybeBottomLabel();
 
     return (
-      <div
-        className={classnames(
-          cssClass.CONTAINER,
-          inactive && cssClass.INACTIVE,
-          className,
-        )}
-      >
+      <div className={classnames(cssClass.CONTAINER, inactive && cssClass.INACTIVE, className)}>
         <FlexBox
-          className={classnames(
-            cssClass.boxContainer(size),
-          )}
+          className={classnames(cssClass.boxContainer(size))}
           column
           style={{
             width: `${width}%`,
@@ -89,17 +81,19 @@ export default class ProgressBar extends React.PureComponent {
           {topLabel}
           <FlexItem grow>
             <div
-              className={classnames(
-                cssClass.BAR_CONTAINER,
-                cssClass.containerSize(size),
-              )}
+              className={classnames(cssClass.BAR_CONTAINER, cssClass.containerSize(size))}
               style={{
                 ...style,
                 height: `${sizePX}px`,
               }}
             >
-              <div className={classnames(cssClass.BAR_BORDER, cssClass.borderSize(size))}></div>
-              <Progress fill={fill > 100 ? 100 : fill} color={color} size={size} striped={striped} />
+              <div className={classnames(cssClass.BAR_BORDER, cssClass.borderSize(size))} />
+              <Progress
+                fill={fill > 100 ? 100 : fill}
+                color={color}
+                size={size}
+                striped={striped}
+              />
             </div>
           </FlexItem>
           {bottomLabel}
@@ -109,7 +103,7 @@ export default class ProgressBar extends React.PureComponent {
   }
 
   _maybeTopLabel = () => {
-    const {showLabel, fill, labelType} = this.props;
+    const { showLabel, fill, labelType } = this.props;
     switch (showLabel) {
       case ShowLabel.TOP_LEFT:
       case ShowLabel.TOP_MIDDLE:
@@ -122,10 +116,10 @@ export default class ProgressBar extends React.PureComponent {
       default:
         return null;
     }
-  }
+  };
 
   _maybeBottomLabel = () => {
-    const {showLabel, fill, labelType} = this.props;
+    const { showLabel, fill, labelType } = this.props;
     switch (showLabel) {
       case ShowLabel.BOTTOM_LEFT:
       case ShowLabel.BOTTOM_MIDDLE:
@@ -138,5 +132,5 @@ export default class ProgressBar extends React.PureComponent {
       default:
         return null;
     }
-  }
+  };
 }

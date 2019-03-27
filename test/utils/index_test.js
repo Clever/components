@@ -1,5 +1,5 @@
 import assert from "assert";
-import {classNameFor} from "../../src/utils";
+import { classNameFor } from "../../src/utils";
 
 describe("utils", () => {
   describe("classNameFor", () => {
@@ -18,13 +18,7 @@ describe("utils", () => {
     });
 
     it("handles empty prefix input gracefully", () => {
-      const testCases = [
-        [],
-        [undefined],
-        [""],
-        [null],
-        [undefined, null, ""],
-      ];
+      const testCases = [[], [undefined], [""], [null], [undefined, null, ""]];
       testCases.forEach(testCase => {
         assert.equal(classNameFor(testCase), "");
         assert.equal(classNameFor(testCase, "a"), "a");

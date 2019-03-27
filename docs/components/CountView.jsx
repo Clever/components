@@ -1,13 +1,12 @@
-import React, {Component} from "react";
-import {Link} from "react-router";
+import React, { Component } from "react";
+import { Link } from "react-router";
 
-import Example, {ExampleCode, CodeSample} from "./Example";
+import Example, { ExampleCode, CodeSample } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Count, SegmentedControl} from "src";
+import { Count, SegmentedControl } from "src";
 
 import "./CountView.less";
-
 
 export default class CountView extends Component {
   constructor(props) {
@@ -20,8 +19,8 @@ export default class CountView extends Component {
   }
 
   renderConfig() {
-    const {cssClass, NumberOptions} = CountView;
-    const {number, numberFormat} = this.state;
+    const { cssClass, NumberOptions } = CountView;
+    const { number, numberFormat } = this.state;
 
     return (
       <div className={cssClass.CONFIG_CONTAINER}>
@@ -29,8 +28,8 @@ export default class CountView extends Component {
           Number:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({number: value})}
-            options={Object.keys(NumberOptions).map(n => ({content: n, value: NumberOptions[n]}))}
+            onSelect={value => this.setState({ number: value })}
+            options={Object.keys(NumberOptions).map(n => ({ content: n, value: NumberOptions[n] }))}
             value={number}
           />
         </div>
@@ -38,10 +37,10 @@ export default class CountView extends Component {
           Number Format:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({numberFormat: value})}
+            onSelect={value => this.setState({ numberFormat: value })}
             options={[
-              {content: "Regular", value: "regular"},
-              {content: "Short", value: "short"},
+              { content: "Regular", value: "regular" },
+              { content: "Short", value: "short" },
             ]}
             value={numberFormat}
           />
@@ -51,8 +50,8 @@ export default class CountView extends Component {
   }
 
   render() {
-    const {cssClass} = CountView;
-    const {number, numberFormat} = this.state;
+    const { cssClass } = CountView;
+    const { number, numberFormat } = this.state;
 
     const shouldShorten = numberFormat === "short";
 
@@ -61,8 +60,8 @@ export default class CountView extends Component {
         <div className={cssClass.INTRO}>
           <p>Provides a convenient wrapper for displaying counts of things.</p>
           <p>
-            Renders a span containing a formatted number, using
-            the <Link to={{pathname: "/components/number"}}>Number</Link> component, followed by the
+            Renders a span containing a formatted number, using the{" "}
+            <Link to={{ pathname: "/components/number" }}>Number</Link> component, followed by the
             given singular or plural form of the subject, depending on the number.
           </p>
           <CodeSample>
@@ -72,36 +71,30 @@ export default class CountView extends Component {
           </CodeSample>
         </div>
 
-        <Example
-          title="Defaults to the singular form with an appended 's' if no plural is given:"
-        >
+        <Example title="Defaults to the singular form with an appended 's' if no plural is given:">
           <ExampleCode>
-            🐝 <Count short={shouldShorten} singular="bee">{number}</Count>
+            🐝{" "}
+            <Count short={shouldShorten} singular="bee">
+              {number}
+            </Count>
           </ExampleCode>
           {this.renderConfig()}
         </Example>
 
-        <Example
-          title="A custom plural form can be specified:"
-        >
+        <Example title="A custom plural form can be specified:">
           <ExampleCode>
-            🐝 <Count short={shouldShorten} singular="bee. 😐" plural="BEES!! 😱">{number}</Count>
+            🐝{" "}
+            <Count short={shouldShorten} singular="bee. 😐" plural="BEES!! 😱">
+              {number}
+            </Count>
           </ExampleCode>
           {this.renderConfig()}
         </Example>
 
-        <Example
-          title="Specify `zeroOverride` to modify the text in the 0 case:"
-        >
+        <Example title="Specify `zeroOverride` to modify the text in the 0 case:">
           <ExampleCode>
-            🐝
-            {" "}
-            <Count
-              short={shouldShorten}
-              singular="bee. 😐"
-              plural="BEES!! 😱"
-              zeroOverride="🚫😌"
-            >
+            🐝{" "}
+            <Count short={shouldShorten} singular="bee. 😐" plural="BEES!! 😱" zeroOverride="🚫😌">
               {number}
             </Count>
           </ExampleCode>

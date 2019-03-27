@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import lodash from "lodash";
-import React, {Component} from "react";
+import React, { Component } from "react";
 import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";
@@ -15,7 +15,6 @@ require("./Table.less");
 
 const DEFAULT_PAGE_SIZE = 10;
 
-
 export class Table extends Component {
   constructor(props) {
     super(props);
@@ -27,11 +26,11 @@ export class Table extends Component {
         }
       }
       if (!props.getData) {
-        console.error("Table: prop \"getData\" must be set if \"lazy\"");
+        console.error('Table: prop "getData" must be set if "lazy"');
       }
     } else {
       if (!props.data) {
-        console.error("Table: prop \"data\" must be set if not \"lazy\"");
+        console.error('Table: prop "data" must be set if not "lazy"');
       }
       for (const p of ["getData", "numRows"]) {
         if (props[p]) {
@@ -70,8 +69,8 @@ export class Table extends Component {
    * @param {number} page - 1-based index of the page to select.
    */
   async setCurrentPage(page) {
-    const {onPageChange, onViewChange, lazy} = this.props;
-    const {currentPage, pageLoading} = this.state;
+    const { onPageChange, onViewChange, lazy } = this.props;
+    const { currentPage, pageLoading } = this.state;
 
     if (page === currentPage || pageLoading) {
       return;
@@ -82,18 +81,18 @@ export class Table extends Component {
       await this._fetchLazy(pageIdx);
     }
 
-    this.setState({currentPage: page}, () => {
+    this.setState({ currentPage: page }, () => {
       onPageChange(page);
       if (onViewChange) {
-        const {displayedData} = this._getDisplayedData();
+        const { displayedData } = this._getDisplayedData();
         onViewChange(displayedData);
       }
     });
   }
 
   async _fetchLazy(pageIdx) {
-    const {pageSize, getData, rowIDFn} = this.props;
-    const {lazyPages} = this.state;
+    const { pageSize, getData, rowIDFn } = this.props;
+    const { lazyPages } = this.state;
 
     // if we've already fetched the page, no need to do anything here -- it's
     // cached
@@ -103,11 +102,11 @@ export class Table extends Component {
 
     const startEpoch = this._epoch;
 
-    this.setState({pageLoading: true});
+    this.setState({ pageLoading: true });
 
     const newPages = lazyPages.slice(0);
     for (let idx = lazyPages.length; idx <= pageIdx; idx++) {
-      const query = {pageSize};
+      const query = { pageSize };
 
       // the first page shouldn't have a startingAfter parameter
       if (idx !== 0) {
@@ -130,7 +129,7 @@ export class Table extends Component {
     }
 
     if (newPages[newPages.length - 1].length < pageSize) {
-      this.setState({allLoaded: true});
+      this.setState({ allLoaded: true });
       if (newPages[newPages.length - 1].length === 0) {
         // remove the last page if it's empty (this happens if the number of
         // rows is divisible by the page size)
@@ -138,7 +137,7 @@ export class Table extends Component {
       }
     }
 
-    this.setState({lazyPages: newPages, pageLoading: false});
+    this.setState({ lazyPages: newPages, pageLoading: false });
   }
 
   /**
@@ -149,7 +148,7 @@ export class Table extends Component {
     if (this.props.lazy) {
       this._epoch++;
       this.setCurrentPage(1);
-      this.setState({lazyPages: [], allLoaded: false}, () => {
+      this.setState({ lazyPages: [], allLoaded: false }, () => {
         this._fetchLazy(0);
       });
     }
@@ -171,17 +170,18 @@ export class Table extends Component {
     };
 
     if (oldSortState && oldSortState.columnID === columnID) {
-      newSortState.direction = oldSortState.direction === sortDirection.ASCENDING
-        ? sortDirection.DESCENDING
-        : sortDirection.ASCENDING;
+      newSortState.direction =
+        oldSortState.direction === sortDirection.ASCENDING
+          ? sortDirection.DESCENDING
+          : sortDirection.ASCENDING;
     }
 
     // Reset to 1st page since table sort has changed.
     this.setCurrentPage(1);
-    this.setState({sortState: newSortState}, () => {
+    this.setState({ sortState: newSortState }, () => {
       this.props.onSortChange(this.state.sortState);
       if (this.props.onViewChange) {
-        const {displayedData} = this._getDisplayedData();
+        const { displayedData } = this._getDisplayedData();
         this.props.onViewChange(displayedData);
       }
     });
@@ -189,13 +189,8 @@ export class Table extends Component {
   }
 
   _getSynchronousData() {
-    const {
-      data,
-      filter,
-      pageSize,
-      paginated,
-    } = this.props;
-    const {currentPage, sortState} = this.state;
+    const { data, filter, pageSize, paginated } = this.props;
+    const { currentPage, sortState } = this.state;
 
     let displayedData = lodash(data);
     if (filter) {
@@ -237,12 +232,12 @@ export class Table extends Component {
 
     const numPages = pages.length;
     const idx = Math.min(currentPage, numPages) - 1;
-    return {displayedData: pages[idx], numPages};
+    return { displayedData: pages[idx], numPages };
   }
 
   _getLazyData() {
-    const {numRows, pageSize} = this.props;
-    const {currentPage, lazyPages} = this.state;
+    const { numRows, pageSize } = this.props;
+    const { currentPage, lazyPages } = this.state;
 
     let numPages;
     if (numRows != null) {
@@ -258,9 +253,9 @@ export class Table extends Component {
     const idx = Math.min(currentPage, numPages) - 1;
 
     if (idx < lazyPages.length) {
-      return {displayedData: lazyPages[idx], numPages};
+      return { displayedData: lazyPages[idx], numPages };
     }
-    return {displayedData: [], numPages};
+    return { displayedData: [], numPages };
   }
 
   _getDisplayedData() {
@@ -280,24 +275,28 @@ export class Table extends Component {
       rowClassNameFn,
       onRowClick,
     } = this.props;
-    const {cssClass} = Table;
-    const {lazy, numRows} = this.props;
-    const {currentPage, sortState, pageLoading, allLoaded} = this.state;
+    const { cssClass } = Table;
+    const { lazy, numRows } = this.props;
+    const { currentPage, sortState, pageLoading, allLoaded } = this.state;
 
     const columns = lodash.compact(React.Children.toArray(children));
     if (columns.length < 2 && process.env.NODE_ENV !== "production") {
       console.error(
-        "Table requires at least 2 columns. Consider using the List component instead."
+        "Table requires at least 2 columns. Consider using the List component instead.",
       );
     }
 
-    const {displayedData, numPages} = this._getDisplayedData();
+    const { displayedData, numPages } = this._getDisplayedData();
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-        <Header disableSort={disableSort} onSortChange={columnID => this._toggleSort(columnID)} sortState={sortState}>
+        <Header
+          disableSort={disableSort}
+          onSortChange={columnID => this._toggleSort(columnID)}
+          sortState={sortState}
+        >
           {columns}
         </Header>
         <tbody className={cssClass.BODY}>
@@ -307,22 +306,24 @@ export class Table extends Component {
                 {!pageLoading && "NO DATA"}
               </Cell>
             </tr>
-          ) : displayedData.map(rowData =>
-            <tr
-              className={classnames(
-                cssClass.ROW,
-                onRowClick && cssClass.CLICKABLE_ROW,
-                rowClassNameFn && rowClassNameFn(rowData)
-              )}
-              key={rowIDFn(rowData)}
-              onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
-            >
-              {columns.map(({props: col}) => (
-                <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
-                  {col.cell.renderer(rowData)}
-                </Cell>
-              ))}
-            </tr>
+          ) : (
+            displayedData.map(rowData => (
+              <tr
+                className={classnames(
+                  cssClass.ROW,
+                  onRowClick && cssClass.CLICKABLE_ROW,
+                  rowClassNameFn && rowClassNameFn(rowData),
+                )}
+                key={rowIDFn(rowData)}
+                onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+              >
+                {columns.map(({ props: col }) => (
+                  <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
+                    {col.cell.renderer(rowData)}
+                  </Cell>
+                ))}
+              </tr>
+            ))
           )}
         </tbody>
         {paginated && (
@@ -342,7 +343,7 @@ export class Table extends Component {
 }
 
 function getCellClassName(columnProps, rowData) {
-  const {className} = columnProps.cell;
+  const { className } = columnProps.cell;
 
   if (typeof className === "function") {
     return className(rowData);

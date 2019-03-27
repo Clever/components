@@ -15,18 +15,9 @@ export default function Microscope(props) {
       <title>microscope</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="microscope">
-          <g
-            id="education-48px-outline_microscope"
-            transform="translate(7.000000, 1.000000)"
-          >
+          <g id="education-48px-outline_microscope" transform="translate(7.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M8.6,9.8 C3.5,12.5 0,17.8 0,24 L0,26"

@@ -27,7 +27,7 @@ export default class BetaTag extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const {className, color, style} = this.props;
+    const { className, color, style } = this.props;
 
     return (
       <svg

@@ -10,7 +10,6 @@ import Justify from "./Justify";
 
 import "../less/flex.less";
 
-
 let TYPE_ANY;
 
 export default function FlexBox({
@@ -24,7 +23,7 @@ export default function FlexBox({
   wrap = false,
   ...additionalProps
 }) {
-  const {cssClass} = FlexBox;
+  const { cssClass } = FlexBox;
 
   return (
     <FlexItem
@@ -35,7 +34,7 @@ export default function FlexBox({
         alignItems && cssClass.alignItems(alignItems),
         justify && cssClass.justify(justify),
         wrap && cssClass.WRAP,
-        className
+        className,
       )}
       {...additionalProps}
     >

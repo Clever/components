@@ -6,11 +6,10 @@ import * as React from "react";
 
 import "./Arrow.less";
 
-
 export default class Arrow extends React.PureComponent {
   render() {
-    const {cssClass} = Arrow;
-    const {className} = this.props;
+    const { cssClass } = Arrow;
+    const { className } = this.props;
 
     return (
       <svg className={classnames(cssClass.CONTAINER, className)} viewBox="0 0 1792 1792">

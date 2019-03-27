@@ -15,18 +15,9 @@ export default function MagnifyC(props) {
       <title>clever-search</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="clever-search">
-          <g
-            id="users-48px-outline-2_search"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="users-48px-outline-2_search" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M34.142,34.142 L44,44"

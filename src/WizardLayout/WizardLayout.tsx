@@ -2,9 +2,8 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-
-import {Button} from "../Button/Button";
-import {FlexBox, ItemAlign} from "../flex";
+import { Button } from "../Button/Button";
+import { FlexBox, ItemAlign } from "../flex";
 
 import LifeFloat from "./LifeFloat";
 import "./WizardLayout.less";
@@ -78,11 +77,7 @@ export default class WizardLayout extends React.PureComponent {
     return (
       <FlexBox column grow className={classnames(cssClass.CONTAINER, className)}>
         <FlexBox className={cssClass.HEADER}>
-          {headerImg &&
-            <div className={cssClass.HEADER_IMG}>
-              {headerImg}
-            </div>
-          }
+          {headerImg && <div className={cssClass.HEADER_IMG}>{headerImg}</div>}
           <div>
             <p className={cssClass.HEADER_TITLE}>{title}</p>
             <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>
@@ -92,12 +87,12 @@ export default class WizardLayout extends React.PureComponent {
           <FlexBox column className={cssClass.STEPPER_CONTAINER}>
             {stepper}
             <FlexBox grow />
-            {helpContent &&
+            {helpContent && (
               <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.HELP_CONTAINER}>
-              <LifeFloat className={cssClass.HELP_IMG} />
+                <LifeFloat className={cssClass.HELP_IMG} />
                 {helpContent}
               </FlexBox>
-            }
+            )}
           </FlexBox>
           <FlexBox column grow className={cssClass.SECTION_CONTAINER}>
             {sections.map((elem, i) => (
@@ -111,11 +106,9 @@ export default class WizardLayout extends React.PureComponent {
           </FlexBox>
         </FlexBox>
         <FlexBox className={cssClass.FOOTER}>
-          {onSaveAndExit && <Button
-            type="link"
-            value={"Save & exit"}
-            onClick={() => onSaveAndExit()}
-          />}
+          {onSaveAndExit && (
+            <Button type="link" value={"Save & exit"} onClick={() => onSaveAndExit()} />
+          )}
           {/* spacer for the buttons */}
           <FlexBox grow />
           <Button
@@ -139,9 +132,9 @@ export default class WizardLayout extends React.PureComponent {
 
   _onPrevStep = () => {
     this.props.onPrevStep();
-  }
+  };
 
   _onNextStep = () => {
     this.props.onNextStep();
-  }
+  };
 }

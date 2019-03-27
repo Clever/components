@@ -47,7 +47,7 @@ export default class RadioGroup extends React.PureComponent {
   _optionRefsByID = {};
 
   render() {
-    const {className, disabled, error, label, onChange, options, selectedID} = this.props;
+    const { className, disabled, error, label, onChange, options, selectedID } = this.props;
 
     const focusableOptionID = this._getFocusableOptionID(options);
 
@@ -109,7 +109,7 @@ export default class RadioGroup extends React.PureComponent {
    * or the first non-disabled one in the list.
    */
   _getFocusableOptionID(options) {
-    const {selectedID} = this.props;
+    const { selectedID } = this.props;
 
     let focusableOptionID = null;
     _.forEach(options, option => {

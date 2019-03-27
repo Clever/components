@@ -110,8 +110,8 @@ export default class Menu extends React.PureComponent {
   };
 
   render() {
-    const {className, maxHeight, maxWidth, minWidth, placement, trigger, wrapItems} = this.props;
-    const {open} = this.state;
+    const { className, maxHeight, maxWidth, minWidth, placement, trigger, wrapItems } = this.props;
+    const { open } = this.state;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
 
     return (
@@ -141,7 +141,7 @@ export default class Menu extends React.PureComponent {
             )}
             id={this.IDs.DROPDOWN}
             role="menu"
-            style={{maxHeight, maxWidth, minWidth}}
+            style={{ maxHeight, maxWidth, minWidth }}
           >
             {this._getMenuItems().map((menuItem, i) => (
               <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
@@ -162,7 +162,7 @@ export default class Menu extends React.PureComponent {
   };
 
   _handleTriggerClick = e => {
-    const {trigger} = this.props;
+    const { trigger } = this.props;
 
     this._toggleDropdown();
 
@@ -172,7 +172,7 @@ export default class Menu extends React.PureComponent {
   };
 
   _handleItemClick = (menuItem, e) => {
-    const {stayOpenOnSelect} = this.props;
+    const { stayOpenOnSelect } = this.props;
 
     if (!stayOpenOnSelect) {
       this._setDropdownOpen(false, () => setTimeout(this._refocusTrigger));
@@ -211,7 +211,7 @@ export default class Menu extends React.PureComponent {
   };
 
   _handleArrowKeyDown = e => {
-    const {focusIndex, open} = this.state;
+    const { focusIndex, open } = this.state;
 
     const menuItems = this._getMenuItems();
     if (menuItems.length === 0) {
@@ -229,7 +229,7 @@ export default class Menu extends React.PureComponent {
     if (nextFocusIndex < 0) {
       nextFocusIndex = menuItems.length - 1;
     }
-    this.setState({focusIndex: nextFocusIndex, open: true});
+    this.setState({ focusIndex: nextFocusIndex, open: true });
     this.props.onOpenChange(true);
 
     e.preventDefault();
@@ -237,7 +237,7 @@ export default class Menu extends React.PureComponent {
   };
 
   _handleKeyUp = e => {
-    const {open} = this.state;
+    const { open } = this.state;
 
     const menuItems = this._getMenuItems();
     if (menuItems.length === 0) {
@@ -253,7 +253,7 @@ export default class Menu extends React.PureComponent {
           return;
         }
 
-        this.setState({focusIndex: 0});
+        this.setState({ focusIndex: 0 });
 
         e.preventDefault();
         e.stopPropagation();
@@ -264,7 +264,7 @@ export default class Menu extends React.PureComponent {
           return;
         }
 
-        this.setState({focusIndex: menuItems.length - 1});
+        this.setState({ focusIndex: menuItems.length - 1 });
 
         e.preventDefault();
         e.stopPropagation();
@@ -298,7 +298,7 @@ export default class Menu extends React.PureComponent {
       focusIndex = 0;
     }
 
-    this.setState({focusIndex, open}, cb);
+    this.setState({ focusIndex, open }, cb);
     this.props.onOpenChange(open);
   };
 
@@ -307,7 +307,7 @@ export default class Menu extends React.PureComponent {
   }
 
   _isFocused(menuItem, itemIndex) {
-    const {focusIndex} = this.state;
+    const { focusIndex } = this.state;
 
     if (focusIndex === null) {
       return !!menuItem.props.selected;

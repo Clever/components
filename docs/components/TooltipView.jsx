@@ -1,15 +1,14 @@
 import _ from "lodash";
 import classnames from "classnames";
 import loremIpsum from "lorem-ipsum";
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Button, SegmentedControl, Tooltip} from "src";
+import { Button, SegmentedControl, Tooltip } from "src";
 
 import "./TooltipView.less";
-
 
 export default class TooltipView extends Component {
   constructor(props) {
@@ -22,8 +21,8 @@ export default class TooltipView extends Component {
   }
 
   render() {
-    const {cssClass} = TooltipView;
-    const {placement, textAlign} = this.state;
+    const { cssClass } = TooltipView;
+    const { placement, textAlign } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Tooltip">
@@ -31,8 +30,7 @@ export default class TooltipView extends Component {
           <div className={cssClass.DEMO_CONTAINER}>
             <ExampleCode>
               <div className={cssClass.EXAMPLE}>
-                Simple
-                {" "}
+                Simple{" "}
                 <Tooltip
                   content="Here is a simple tooltip."
                   placement={placement}
@@ -42,15 +40,14 @@ export default class TooltipView extends Component {
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
-                HTML + long text
-                {" "}
+                HTML + long text{" "}
                 <Tooltip
                   content={
                     <div>
                       Here is a tooltip with long text to demonstrate wrapping and HTML formatting.
                       <br />
                       <br />
-                      {loremIpsum({count: 3, units: "sentences"})}
+                      {loremIpsum({ count: 3, units: "sentences" })}
                     </div>
                   }
                   placement={placement}
@@ -60,8 +57,7 @@ export default class TooltipView extends Component {
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
-                With focusable trigger
-                {" "}
+                With focusable trigger{" "}
                 <Tooltip
                   content="Tooltips can be triggered by focus as well."
                   placement={placement}
@@ -81,8 +77,8 @@ export default class TooltipView extends Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               defaultValue={placement}
-              onSelect={value => this.setState({placement: value})}
-              options={_.map(Tooltip.Placement, p => ({content: p, value: p}))}
+              onSelect={value => this.setState({ placement: value })}
+              options={_.map(Tooltip.Placement, p => ({ content: p, value: p }))}
             />
           </div>
           <div className={cssClass.CONFIG}>
@@ -90,8 +86,8 @@ export default class TooltipView extends Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               defaultValue={textAlign}
-              onSelect={value => this.setState({textAlign: value})}
-              options={_.map(Tooltip.Align, p => ({content: p, value: p}))}
+              onSelect={value => this.setState({ textAlign: value })}
+              options={_.map(Tooltip.Align, p => ({ content: p, value: p }))}
             />
           </div>
           <div className={cssClass.FOCUS_CONTROL}>

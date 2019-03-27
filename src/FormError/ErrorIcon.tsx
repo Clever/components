@@ -10,7 +10,7 @@ const cssClass = {
 
 export default class ErrorIcon extends React.PureComponent {
   render() {
-    const {className} = this.props;
+    const { className } = this.props;
 
     return (
       <svg

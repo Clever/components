@@ -25,10 +25,7 @@ export default function MagnifyUser(props) {
         strokeLinejoin="round"
       >
         <g id="user-search" strokeWidth={2} stroke="#62748C">
-          <g
-            id="users-48px-outline-2_search"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="users-48px-outline-2_search" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <path d="M34.142,34.142 L44,44" id="Shape" />
               <circle id="Oval" fill="#FFFFFF" cx={20} cy={20} r={20} />

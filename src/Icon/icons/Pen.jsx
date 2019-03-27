@@ -25,10 +25,7 @@ export default function Pen(props) {
         strokeLinejoin="round"
       >
         <g id="signature" stroke="#62748C">
-          <g
-            id="business-48px-outline_signature"
-            transform="translate(6.000000, 2.000000)"
-          >
+          <g id="business-48px-outline_signature" transform="translate(6.000000, 2.000000)">
             <g id="Group">
               <polyline
                 id="Shape"

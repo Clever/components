@@ -3,11 +3,10 @@ import _ from "lodash";
 import classnames from "classnames";
 import BootstrapTooltip from "react-bootstrap/lib/Tooltip";
 import OverlayTrigger from "react-bootstrap/lib/OverlayTrigger";
-import React, {Component} from "react";
+import React, { Component } from "react";
 import * as PropTypes from "prop-types";
 
 import "./Tooltip.less";
-
 
 /**
  * Standardized tooltip component with fade-in/out transition and customizable positioning.
@@ -21,8 +20,17 @@ export default class Tooltip extends Component {
   }
 
   render() {
-    const {cssClass} = Tooltip;
-    const {children, className, content, delayMs, hide, placement, textAlign, delayHideMs} = this.props;
+    const { cssClass } = Tooltip;
+    const {
+      children,
+      className,
+      content,
+      delayMs,
+      hide,
+      placement,
+      textAlign,
+      delayHideMs,
+    } = this.props;
 
     const tooltip = (
       <BootstrapTooltip id={this.id}>

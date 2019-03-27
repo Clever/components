@@ -1,10 +1,10 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import classnames from "classnames";
 
 import Colors from "src/utils/Colors";
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {
@@ -61,7 +61,7 @@ export default class TopBarView extends React.PureComponent {
   };
 
   render() {
-    const {location} = this.props;
+    const { location } = this.props;
     const {
       addArbitraryContent,
       betaLogo,
@@ -144,7 +144,7 @@ export default class TopBarView extends React.PureComponent {
                   dropdownPlacement={TopBar.Menu.Placement.RIGHT}
                   label={
                     <FlexBox alignItems="center">
-                      <span className="fa fa-user" style={{marginRight: "0.25rem"}} />
+                      <span className="fa fa-user" style={{ marginRight: "0.25rem" }} />
                       <span className={cssClass.USER_NAME}>K. Stark</span>
                     </FlexBox>
                   }
@@ -196,7 +196,7 @@ export default class TopBarView extends React.PureComponent {
             id={cssClass.DROPDOWN_COLOR}
             label="Color"
             name={cssClass.DROPDOWN_COLOR}
-            onChange={({value}) => this.setState({color: value})}
+            onChange={({ value }) => this.setState({ color: value })}
             options={Object.keys(TopBar.Color)
               .sort()
               .map(key => ({
@@ -211,7 +211,7 @@ export default class TopBarView extends React.PureComponent {
             type="checkbox"
             checked={showMenuToggle}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({showMenuToggle: e.target.checked})}
+            onChange={e => this.setState({ showMenuToggle: e.target.checked })}
           />{" "}
           Menu Toggle
         </label>
@@ -220,7 +220,7 @@ export default class TopBarView extends React.PureComponent {
             type="checkbox"
             checked={betaLogo}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({betaLogo: e.target.checked})}
+            onChange={e => this.setState({ betaLogo: e.target.checked })}
           />{" "}
           Beta Logo
         </label>
@@ -229,7 +229,7 @@ export default class TopBarView extends React.PureComponent {
             type="checkbox"
             checked={showHeart}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({showHeart: e.target.checked})}
+            onChange={e => this.setState({ showHeart: e.target.checked })}
           />{" "}
           Heart
         </label>
@@ -239,7 +239,7 @@ export default class TopBarView extends React.PureComponent {
             id={cssClass.INPUT_TITLE}
             label="Title"
             name={cssClass.INPUT_TITLE}
-            onChange={e => this.setState({title: e.target.value})}
+            onChange={e => this.setState({ title: e.target.value })}
             value={title}
           />
         </div>
@@ -247,7 +247,7 @@ export default class TopBarView extends React.PureComponent {
           Link Marker:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({markerShape: value})}
+            onSelect={value => this.setState({ markerShape: value })}
             options={Object.keys(TopBar.Button.MarkerShape).map(key => ({
               content: key,
               value: TopBar.Button.MarkerShape[key],
@@ -260,7 +260,7 @@ export default class TopBarView extends React.PureComponent {
             type="checkbox"
             checked={titleWrap}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({titleWrap: e.target.checked})}
+            onChange={e => this.setState({ titleWrap: e.target.checked })}
           />{" "}
           Title Wrap
         </label>
@@ -269,7 +269,7 @@ export default class TopBarView extends React.PureComponent {
             type="checkbox"
             checked={addArbitraryContent}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({addArbitraryContent: e.target.checked})}
+            onChange={e => this.setState({ addArbitraryContent: e.target.checked })}
           />{" "}
           Arbitrary Content
         </label>

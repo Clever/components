@@ -25,10 +25,7 @@ export default function Juggler(props) {
         strokeLinejoin="round"
       >
         <g id="meeting" strokeWidth={2} stroke="#62748C">
-          <g
-            id="users-48px-outline_network"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="users-48px-outline_network" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <circle id="Oval" fill="#B6C8F9" cx={22} cy={4} r={4} />
               <circle id="Oval" fill="#B6C8F9" cx={40} cy={14} r={4} />

@@ -2,7 +2,7 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 
 import "./NewComponent.less";
 
@@ -31,7 +31,7 @@ export default class NewComponent extends React.PureComponent {
   // };
 
   render() {
-    const {children, className} = this.props;
+    const { children, className } = this.props;
 
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>

@@ -1,7 +1,6 @@
 const _ = require("lodash");
 const fs = require("fs");
 
-
 const FILEPATH = "src/less/";
 const FILENAME = "border_radius.less";
 
@@ -68,21 +67,11 @@ const contents = [
   " */",
   "",
 ].concat(
-  [
-    "/**",
-    " * Border radius constants.",
-    " */",
-  ],
+  ["/**", " * Border radius constants.", " */"],
   constants,
   "",
-  [
-    "",
-    "/**",
-    " * Border radius classes.",
-    " */",
-    CIRCLE_MIXIN,
-  ],
+  ["", "/**", " * Border radius classes.", " */", CIRCLE_MIXIN],
   classes,
-  ""
+  "",
 );
 fs.writeFileSync(`${FILEPATH}${FILENAME}`, contents.join("\n"));

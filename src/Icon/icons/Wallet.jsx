@@ -25,10 +25,7 @@ export default function Wallet(props) {
         strokeLinejoin="round"
       >
         <g id="wallet" strokeWidth={2}>
-          <g
-            id="business-48px-outline_wallet-44"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="business-48px-outline_wallet-44" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M30,8 L30,0 L4,0 C1.8,0 0,1.8 0,4 L0,4 C0,6.2 1.8,8 4,8"

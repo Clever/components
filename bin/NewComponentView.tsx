@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {NewComponent, FlexBox, ItemAlign, SegmentedControl} from "src";
+import { NewComponent, FlexBox, ItemAlign, SegmentedControl } from "src";
 
 import "./NewComponentView.less";
 
@@ -27,7 +27,7 @@ export default class NewComponentView extends React.PureComponent {
   };
 
   render() {
-    const {optionToggle1} = this.state;
+    const { optionToggle1 } = this.state;
 
     return (
       <View
@@ -63,7 +63,7 @@ export default class NewComponentView extends React.PureComponent {
 
   // TODO: Update or remove config options.
   _renderConfig() {
-    const {multiOption1, optionToggle1, optionToggle2} = this.state;
+    const { multiOption1, optionToggle1, optionToggle2 } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -71,11 +71,11 @@ export default class NewComponentView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({multiOption1: value})}
+            onSelect={value => this.setState({ multiOption1: value })}
             options={[
-              {content: "Small", value: "small"},
-              {content: "Medium", value: "medium"},
-              {content: "Large", value: "large"},
+              { content: "Small", value: "small" },
+              { content: "Medium", value: "medium" },
+              { content: "Large", value: "large" },
             ]}
             value={multiOption1}
           />
@@ -85,7 +85,7 @@ export default class NewComponentView extends React.PureComponent {
             type="checkbox"
             checked={optionToggle1}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({optionToggle1: e.target.checked})}
+            onChange={e => this.setState({ optionToggle1: e.target.checked })}
           />{" "}
           Option Toggle 1
         </label>
@@ -94,7 +94,7 @@ export default class NewComponentView extends React.PureComponent {
             type="checkbox"
             checked={optionToggle2}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({optionToggle2: e.target.checked})}
+            onChange={e => this.setState({ optionToggle2: e.target.checked })}
           />{" "}
           Option Toggle 2
         </label>

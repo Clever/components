@@ -25,10 +25,7 @@ export default function User(props) {
         strokeLinejoin="bevel"
       >
         <g id="user" strokeWidth={2} stroke="#62748C">
-          <g
-            id="users-48px-outline_single-01"
-            transform="translate(3.000000, 1.000000)"
-          >
+          <g id="users-48px-outline_single-01" transform="translate(3.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M20,22 L20,22 C14.477,22 10,17.523 10,12 L10,10 C10,4.477 14.477,0 20,0 L20,0 C25.523,0 30,4.477 30,10 L30,12 C30,17.523 25.523,22 20,22 L20,22 Z"

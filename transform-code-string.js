@@ -4,7 +4,6 @@
  * an ancestor <ExampleCode> element, the code of that element is used instead.
  */
 
-
 /**
  * getInnerCode returns the code inside the JSX element referred to by path.
  */
@@ -23,10 +22,10 @@ module.exports = function TransformCodeString(babel) {
    */
   var exampleCodeRetriever = {
     JSXElement(path, state) {
-      if (!t.isJSXIdentifier(path.node.openingElement.name, {name: "ExampleCode"})) {
+      if (!t.isJSXIdentifier(path.node.openingElement.name, { name: "ExampleCode" })) {
         return;
       }
-      if (t.isJSXIdentifier(path.node.openingElement.name, {name: "Example"})) {
+      if (t.isJSXIdentifier(path.node.openingElement.name, { name: "Example" })) {
         /*
          * If we encounter a nested <Example> element, stop the search. In
          * (contrived) cases like
@@ -52,7 +51,7 @@ module.exports = function TransformCodeString(babel) {
    */
   function hasCodeAttr(path) {
     function isCodeAttr(a) {
-      return t.isJSXIdentifier(a.name, {name: "code"});
+      return t.isJSXIdentifier(a.name, { name: "code" });
     }
     return path.node.openingElement.attributes.some(isCodeAttr);
   }
@@ -61,7 +60,7 @@ module.exports = function TransformCodeString(babel) {
     inherits: require("babel-plugin-syntax-jsx"),
     visitor: {
       JSXElement(path) {
-        if (!t.isJSXIdentifier(path.node.openingElement.name, {name: "Example"})) {
+        if (!t.isJSXIdentifier(path.node.openingElement.name, { name: "Example" })) {
           return;
         }
         if (hasCodeAttr(path)) {
@@ -79,10 +78,7 @@ module.exports = function TransformCodeString(babel) {
         }
 
         path.node.openingElement.attributes.push(
-          t.jSXAttribute(
-            t.jSXIdentifier("code"),
-            t.jSXExpressionContainer(t.stringLiteral(code))
-          )
+          t.jSXAttribute(t.jSXIdentifier("code"), t.jSXExpressionContainer(t.stringLiteral(code))),
         );
       },
     },

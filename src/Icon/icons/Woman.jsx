@@ -49,16 +49,8 @@ export default function Woman(props) {
                 fill="#FFFFFF"
               />
               <path d="M22,14 L22,28" id="Shape" stroke="#62748C" />
-              <polyline
-                id="Shape"
-                stroke="#62748C"
-                points="22 14 14 18 14 12"
-              />
-              <polyline
-                id="Shape"
-                stroke="#62748C"
-                points="22 14 30 18 30 12"
-              />
+              <polyline id="Shape" stroke="#62748C" points="22 14 14 18 14 12" />
+              <polyline id="Shape" stroke="#62748C" points="22 14 30 18 30 12" />
             </g>
           </g>
           <path

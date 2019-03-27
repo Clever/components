@@ -3,7 +3,7 @@ import * as PropTypes from "prop-types";
 import ReactSelect from "react-select";
 import classnames from "classnames";
 
-import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 
 import "react-select/dist/react-select.css";
 import "./Select.less";
@@ -16,7 +16,7 @@ function isLabelHidden(placeholder, value) {
   if (!value) {
     return true;
   }
-  if (Array.isArray(value) && (value.length === 0)) {
+  if (Array.isArray(value) && value.length === 0) {
     return true;
   }
   return false;
@@ -51,21 +51,21 @@ export function Select({
   error,
   size,
 }) {
-  const {cssClass} = Select;
+  const { cssClass } = Select;
 
   if (!lazy) {
     if (!options) {
-      console.warn("Select: prop \"options\" must be set if not \"lazy\"");
+      console.warn('Select: prop "options" must be set if not "lazy"');
     }
     if (loadOptions) {
-      console.warn("Select: prop \"loadOptions\" may not be set if not \"lazy\"");
+      console.warn('Select: prop "loadOptions" may not be set if not "lazy"');
     }
   } else {
     if (options) {
-      console.warn("Select: prop \"options\" may not be set if not \"lazy\"");
+      console.warn('Select: prop "options" may not be set if not "lazy"');
     }
     if (!loadOptions) {
-      console.warn("Select: prop \"loadOptions\" must be set if not \"lazy\"");
+      console.warn('Select: prop "loadOptions" must be set if not "lazy"');
     }
   }
 
@@ -80,7 +80,8 @@ export function Select({
   }
 
   let wrapperClass = className;
-  if (error) { // error should overwrite required
+  if (error) {
+    // error should overwrite required
     inputNote = <span className="Select--error">{error}</span>;
     wrapperClass += " Select--hasError";
   }
@@ -99,18 +100,12 @@ export function Select({
     SelectComponent = ReactSelect.Async;
   }
 
-  const overrideProps = (lazy && !filterOptions) ? {filterOptions: (results) => results} : {};
+  const overrideProps = lazy && !filterOptions ? { filterOptions: results => results } : {};
 
   // The label container must be returned after the ReactSelect otherwise it does not get displayed
   // in the browser.
   return (
-    <div
-      className={classnames(
-        cssClass.CONTAINER,
-        formElementSizeClassName(size),
-        wrapperClass,
-      )}
-    >
+    <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), wrapperClass)}>
       <div id={id}>
         <SelectComponent
           className={reactSelectClasses}
@@ -132,7 +127,9 @@ export function Select({
         />
       </div>
       <div className={cssClass.LABEL_CONTAINER}>
-        <label className={labelClasses} htmlFor={id}>{label}</label>
+        <label className={labelClasses} htmlFor={id}>
+          {label}
+        </label>
         {inputNote}
       </div>
     </div>
@@ -182,7 +179,7 @@ Select.propTypes = {
   className: PropTypes.string,
   error: PropTypes.string,
   // Object.values isn't properly polyfilled in jsx files
-  size: PropTypes.oneOf(Object.keys(FormElementSize).map((key) => FormElementSize[key])),
+  size: PropTypes.oneOf(Object.keys(FormElementSize).map(key => FormElementSize[key])),
 };
 
 Select.defaultProps = {

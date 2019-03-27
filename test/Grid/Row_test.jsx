@@ -1,10 +1,9 @@
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import Col from "../../src/Grid/Col";
 import Row from "../../src/Grid/Row";
-
 
 describe("Row", () => {
   it("applies Row classname", () => {
@@ -24,17 +23,11 @@ describe("Row", () => {
 
   it("sets flex-grow factor if `grow` prop is specified", () => {
     const row = shallow(<Row grow />);
-    assert(
-      row.hasClass("flex--grow"),
-      "`flex--grow` class not found on row."
-    );
+    assert(row.hasClass("flex--grow"), "`flex--grow` class not found on row.");
   });
 
   it("renders child Cols", () => {
-    const cols = [
-      <Col key="0" />,
-      <Col key="1" />,
-    ];
+    const cols = [<Col key="0" />, <Col key="1" />];
 
     const grid = shallow(<Row>{cols}</Row>);
 

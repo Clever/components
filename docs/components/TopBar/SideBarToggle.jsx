@@ -4,11 +4,10 @@ import * as React from "react";
 
 import "./SideBarToggle.less";
 
-
 export default class SideBarToggle extends React.PureComponent {
   render() {
-    const {cssClass} = SideBarToggle;
-    const {className, onClick} = this.props;
+    const { cssClass } = SideBarToggle;
+    const { className, onClick } = this.props;
 
     return (
       <button
@@ -17,7 +16,9 @@ export default class SideBarToggle extends React.PureComponent {
           this._buttonRef.blur();
           onClick();
         }}
-        ref={ref => {this._buttonRef = ref; }}
+        ref={ref => {
+          this._buttonRef = ref;
+        }}
       >
         <span className="fa fa-bars" />
       </button>

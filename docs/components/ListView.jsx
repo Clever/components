@@ -1,11 +1,11 @@
 import * as _ from "lodash";
 import * as React from "react";
-import {Link} from "react-router";
+import { Link } from "react-router";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {List, FlexBox, ItemAlign, SegmentedControl} from "src";
+import { List, FlexBox, ItemAlign, SegmentedControl } from "src";
 
 import "./ListView.less";
 
@@ -45,8 +45,15 @@ export default class ListView extends React.PureComponent {
   };
 
   renderConfig() {
-    const {cssClass} = ListView;
-    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle, showOnClick} = this.state;
+    const { cssClass } = ListView;
+    const {
+      itemsKey,
+      rowType,
+      showBorder,
+      showCustomEmptyMessage,
+      showTitle,
+      showOnClick,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -54,8 +61,8 @@ export default class ListView extends React.PureComponent {
           Row Type:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({rowType: value})}
-            options={_.map(List.RowType, type => ({content: type, value: type}))}
+            onSelect={value => this.setState({ rowType: value })}
+            options={_.map(List.RowType, type => ({ content: type, value: type }))}
             value={rowType}
           />
         </div>
@@ -63,10 +70,10 @@ export default class ListView extends React.PureComponent {
           Items:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({itemsKey: value})}
+            onSelect={value => this.setState({ itemsKey: value })}
             options={[
-              {content: "Non-Empty", value: "nonEmpty"},
-              {content: "Empty", value: "empty"},
+              { content: "Non-Empty", value: "nonEmpty" },
+              { content: "Empty", value: "empty" },
             ]}
             value={itemsKey}
           />
@@ -75,36 +82,32 @@ export default class ListView extends React.PureComponent {
           <input
             type="checkbox"
             checked={showBorder}
-            onChange={e => this.setState({showBorder: e.target.checked})}
-          />
-          {" "}
+            onChange={e => this.setState({ showBorder: e.target.checked })}
+          />{" "}
           Show Border
         </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
             checked={showTitle}
-            onChange={e => this.setState({showTitle: e.target.checked})}
-          />
-          {" "}
+            onChange={e => this.setState({ showTitle: e.target.checked })}
+          />{" "}
           Show Title
         </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
             checked={showCustomEmptyMessage}
-            onChange={e => this.setState({showCustomEmptyMessage: e.target.checked})}
-          />
-          {" "}
+            onChange={e => this.setState({ showCustomEmptyMessage: e.target.checked })}
+          />{" "}
           Custom Empty Message
         </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
             checked={showOnClick}
-            onChange={e => this.setState({showOnClick: e.target.checked})}
-          />
-          {" "}
+            onChange={e => this.setState({ showOnClick: e.target.checked })}
+          />{" "}
           On Click Handler
         </label>
       </FlexBox>
@@ -112,17 +115,20 @@ export default class ListView extends React.PureComponent {
   }
 
   render() {
-    const {Item} = List;
-    const {cssClass} = ListView;
-    const {itemsKey, rowType, showBorder, showCustomEmptyMessage, showTitle, showOnClick} = this.state;
+    const { Item } = List;
+    const { cssClass } = ListView;
+    const {
+      itemsKey,
+      rowType,
+      showBorder,
+      showCustomEmptyMessage,
+      showTitle,
+      showOnClick,
+    } = this.state;
     const items = Items[itemsKey];
 
     return (
-      <View
-        className={cssClass.CONTAINER}
-        title="List"
-        sourcePath="src/List/List.jsx"
-      >
+      <View className={cssClass.CONTAINER} title="List" sourcePath="src/List/List.jsx">
         <div className={cssClass.INTRO}>
           <p>
             Provides a simple view for a list of items with various display configuration options.
@@ -186,7 +192,8 @@ export default class ListView extends React.PureComponent {
             {
               name: "itemsClassName",
               type: "string",
-              description: "Optional additional CSS class name to apply to the list items container.",
+              description:
+                "Optional additional CSS class name to apply to the list items container.",
               optional: true,
             },
             {
@@ -200,8 +207,8 @@ export default class ListView extends React.PureComponent {
               name: "noBorder",
               type: "boolean",
               description:
-                "Removes the default outermost surrounding border. Borders between rows are "
-                + "unaffected",
+                "Removes the default outermost surrounding border. Borders between rows are " +
+                "unaffected",
               optional: true,
             },
             {

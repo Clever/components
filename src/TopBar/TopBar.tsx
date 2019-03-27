@@ -2,7 +2,7 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {FlexBox} from "../flex";
+import { FlexBox } from "../flex";
 import Heart from "./Heart";
 import MenuToggle from "./MenuToggle";
 import TopBarButton from "./TopBarButton";
@@ -95,7 +95,7 @@ export default class TopBar extends React.PureComponent {
   }
 
   _renderLogo() {
-    const {logoLinkHref, logoLinkTarget, logo} = this.props;
+    const { logoLinkHref, logoLinkTarget, logo } = this.props;
 
     if (!logo) {
       return null;

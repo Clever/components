@@ -40,16 +40,8 @@ export default function Glasses(props) {
                 d="M19,29 C19,27.344 20.342,26 22,26 C23.654,26 25,27.344 25,29"
                 id="Stroke-5"
               />
-              <path
-                d="M0,30 L0,3 C0,1.345 1.342,0 3,0"
-                id="Stroke-7"
-                strokeLinecap="round"
-              />
-              <path
-                d="M44,30 L44,3 C44,1.345 42.654,0 41,0"
-                id="Stroke-9"
-                strokeLinecap="round"
-              />
+              <path d="M0,30 L0,3 C0,1.345 1.342,0 3,0" id="Stroke-7" strokeLinecap="round" />
+              <path d="M44,30 L44,3 C44,1.345 42.654,0 41,0" id="Stroke-9" strokeLinecap="round" />
             </g>
           </g>
         </g>

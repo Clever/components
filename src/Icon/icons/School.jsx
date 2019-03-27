@@ -15,13 +15,7 @@ export default function School(props) {
       <title>school</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="school">
           <g
             id="education-48px-outline_school"
@@ -31,11 +25,7 @@ export default function School(props) {
             strokeLinejoin="round"
           >
             <g id="Group">
-              <polyline
-                id="Shape"
-                stroke="#C9081A"
-                points="20 12 20 0 28 0 28 6 20 6"
-              />
+              <polyline id="Shape" stroke="#C9081A" points="20 12 20 0 28 0 28 6 20 6" />
               <polygon
                 id="Shape"
                 stroke="#62748C"
@@ -53,14 +43,7 @@ export default function School(props) {
               <path d="M30,36 L34,36" id="Shape" stroke="#62748C" />
             </g>
           </g>
-          <rect
-            id="Rectangle-8"
-            fill="#FD8874"
-            x={24}
-            y={2}
-            width={6}
-            height={4}
-          />
+          <rect id="Rectangle-8" fill="#FD8874" x={24} y={2} width={6} height={4} />
         </g>
       </g>
     </svg>

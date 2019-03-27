@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {RadioGroup, FlexBox, ItemAlign} from "src";
+import { RadioGroup, FlexBox, ItemAlign } from "src";
 
 import "./RadioGroupView.less";
 
@@ -36,7 +36,7 @@ export default class RadioGroupView extends React.PureComponent {
   };
 
   render() {
-    const {disableAll, requireSelection, selectedCity, selectedFood, showError} = this.state;
+    const { disableAll, requireSelection, selectedCity, selectedFood, showError } = this.state;
 
     return (
       <View
@@ -83,12 +83,16 @@ export default class RadioGroupView extends React.PureComponent {
           <ExampleCode>
             <RadioGroup
               label="Favourite City"
-              onChange={id => this.setState({selectedCity: id})}
+              onChange={id => this.setState({ selectedCity: id })}
               options={[
-                {id: "london", label: "London", disabled: disableAll},
-                {id: "paris", label: "Paris", disabled: disableAll},
-                {id: "sanFrancisco", label: "San Francisco", disabled: disableAll},
-                {id: "none", label: "None of the above", disabled: requireSelection || disableAll},
+                { id: "london", label: "London", disabled: disableAll },
+                { id: "paris", label: "Paris", disabled: disableAll },
+                { id: "sanFrancisco", label: "San Francisco", disabled: disableAll },
+                {
+                  id: "none",
+                  label: "None of the above",
+                  disabled: requireSelection || disableAll,
+                },
               ]}
               selectedID={selectedCity}
             />
@@ -96,12 +100,16 @@ export default class RadioGroupView extends React.PureComponent {
             <RadioGroup
               label="Favourite Food:"
               error={showError ? "You have questionable taste." : undefined}
-              onChange={id => this.setState({selectedFood: id})}
+              onChange={id => this.setState({ selectedFood: id })}
               options={[
-                {id: "pies", label: "Pies", disabled: disableAll},
-                {id: "crepes", label: "Crepes", disabled: disableAll},
-                {id: "waffles", label: "Waffles", disabled: disableAll},
-                {id: "none", label: "None of the above", disabled: requireSelection || disableAll},
+                { id: "pies", label: "Pies", disabled: disableAll },
+                { id: "crepes", label: "Crepes", disabled: disableAll },
+                { id: "waffles", label: "Waffles", disabled: disableAll },
+                {
+                  id: "none",
+                  label: "None of the above",
+                  disabled: requireSelection || disableAll,
+                },
               ]}
               selectedID={selectedFood}
             />
@@ -115,7 +123,7 @@ export default class RadioGroupView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {disableAll, requireSelection, showError} = this.state;
+    const { disableAll, requireSelection, showError } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -124,7 +132,7 @@ export default class RadioGroupView extends React.PureComponent {
             type="checkbox"
             checked={requireSelection}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={({target: {checked}}) => this.setState({requireSelection: checked})}
+            onChange={({ target: { checked } }) => this.setState({ requireSelection: checked })}
           />{" "}
           Disable "None" option
         </label>
@@ -133,7 +141,7 @@ export default class RadioGroupView extends React.PureComponent {
             type="checkbox"
             checked={disableAll}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={({target: {checked}}) => this.setState({disableAll: checked})}
+            onChange={({ target: { checked } }) => this.setState({ disableAll: checked })}
           />{" "}
           Disable All
         </label>
@@ -142,7 +150,7 @@ export default class RadioGroupView extends React.PureComponent {
             type="checkbox"
             checked={showError}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={({target: {checked}}) => this.setState({showError: checked})}
+            onChange={({ target: { checked } }) => this.setState({ showError: checked })}
           />{" "}
           Show Error
         </label>
@@ -170,11 +178,7 @@ export default class RadioGroupView extends React.PureComponent {
           {
             name: "error",
             type: "React.Node",
-            description: (
-              <p>
-                Error text to display, if any.
-              </p>
-            ),
+            description: <p>Error text to display, if any.</p>,
             optional: true,
           },
           {

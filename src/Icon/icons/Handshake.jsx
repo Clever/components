@@ -15,18 +15,9 @@ export default function Handshake(props) {
       <title>partner</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="partner" fill="#F8DFB2">
-          <g
-            id="business-48px-outline_handshake"
-            transform="translate(2.000000, 1.000000)"
-          >
+          <g id="business-48px-outline_handshake" transform="translate(2.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M31.88,27.4065217 C33,28.5326087 34.76,28.5326087 35.88,27.4065217 L35.96,27.326087 C37,26.2804348 37.08,24.5108696 36.04,23.3847826 L36.04,12 L9,4 L1,13.6521739 L22.6,37.7826087"

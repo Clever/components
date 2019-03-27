@@ -24,7 +24,7 @@ export default class Progress extends React.PureComponent {
   static propTypes = propTypes;
 
   render() {
-    const {className, style, color, size, fill, striped} = this.props;
+    const { className, style, color, size, fill, striped } = this.props;
     let colorStyle = cssClass.color(color);
     let colorBorderStyle = cssClass.border(color, size);
 
@@ -59,8 +59,7 @@ export default class Progress extends React.PureComponent {
           ...style,
           width: `${fill === 0 ? 100 : fill}%`,
         }}
-      >
-      </div>
+      />
     );
   }
 }

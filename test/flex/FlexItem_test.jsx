@@ -1,10 +1,9 @@
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import FlexItem from "../../src/flex/FlexItem";
 import ItemAlign from "../../src/flex/ItemAlign";
-
 
 describe("FlexBox", () => {
   it("applies custom classname", () => {
@@ -28,10 +27,7 @@ describe("FlexBox", () => {
   });
 
   it("renders child items", () => {
-    const items = [
-      <div key="0" />,
-      <span key="1" />,
-    ];
+    const items = [<div key="0" />, <span key="1" />];
 
     const flexItem = shallow(<FlexItem>{items}</FlexItem>);
 

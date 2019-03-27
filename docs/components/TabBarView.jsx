@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
@@ -6,7 +6,7 @@ import TabBarExample from "../TabBarExample";
 
 export default class TabBarView extends PureComponent {
   render() {
-    const {cssClass} = TabBarView;
+    const { cssClass } = TabBarView;
 
     return (
       <View className={cssClass.CONTAINER} title="TabBar">
@@ -87,37 +87,42 @@ export default class TabBarView extends PureComponent {
             {
               name: "component",
               type: "Any",
-              description: "Tagname of class for the wrapper component. Tab renders as a <button> by default (or "
-              + "a <a> if the href prop is specified). It can be made to render as a different component by specifying "
-              + "the component tagname or class. e.g. <Tab component={ReactRouter.Link} />",
+              description:
+                "Tagname of class for the wrapper component. Tab renders as a <button> by default (or " +
+                "a <a> if the href prop is specified). It can be made to render as a different component by specifying " +
+                "the component tagname or class. e.g. <Tab component={ReactRouter.Link} />",
               defaultValue: "button or a if href available",
               optional: true,
             },
             {
               name: "disabled",
               type: "Boolean",
-              description: "Whether or not the tab is disabled. Disabled tabs will not emit onSelect events",
+              description:
+                "Whether or not the tab is disabled. Disabled tabs will not emit onSelect events",
               defaultValue: "False",
               optional: true,
             },
             {
               name: "href",
               type: "String",
-              description: "Causes the Tab to be rendered as an anchor element with the given href. Additional anchor "
-              + "props, such as target, will be passed through to the anchor if specified",
+              description:
+                "Causes the Tab to be rendered as an anchor element with the given href. Additional anchor " +
+                "props, such as target, will be passed through to the anchor if specified",
               optional: true,
             },
             {
               name: "onSelect",
               type: "Function",
-              description: "The select event handler for the tab, invoked with the id of the tab when it is clicked",
+              description:
+                "The select event handler for the tab, invoked with the id of the tab when it is clicked",
               defaultValue: "False",
               optional: true,
             },
             {
               name: "selected",
               type: "Boolean",
-              description: "Whether or not the tab is currently selected. Note: Selected tabs will emit onSelect events",
+              description:
+                "Whether or not the tab is currently selected. Note: Selected tabs will emit onSelect events",
               defaultValue: "False",
               optional: true,
             },

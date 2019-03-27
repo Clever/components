@@ -15,18 +15,9 @@ export default function SmileyFace(props) {
       <title>smile-face</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="smile-face" strokeWidth={2} stroke="#A6A05A">
-          <g
-            id="emoticons-48px-outline_quite-happy"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="emoticons-48px-outline_quite-happy" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <circle id="Oval" fill="#FFF49A" cx={22} cy={22} r={22} />
               <path

@@ -5,13 +5,12 @@ import * as PropTypes from "prop-types";
 
 import MorePropTypes from "../utils/MorePropTypes";
 import Tab from "./Tab";
-import {FlexBox, Justify} from "../flex";
+import { FlexBox, Justify } from "../flex";
 
 import "./TabBar.less";
 
-
-export default function TabBar({children, className, justify, size}) {
-  const {cssClass} = TabBar;
+export default function TabBar({ children, className, justify, size }) {
+  const { cssClass } = TabBar;
 
   return (
     <FlexBox

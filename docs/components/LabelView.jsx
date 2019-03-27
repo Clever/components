@@ -1,14 +1,13 @@
 import _ from "lodash";
 import loremIpsum from "lorem-ipsum";
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Button, Label, SegmentedControl, Tooltip} from "src";
+import { Button, Label, SegmentedControl, Tooltip } from "src";
 
 import "./LabelView.less";
-
 
 export default class LabelView extends Component {
   constructor(props) {
@@ -23,14 +22,12 @@ export default class LabelView extends Component {
   }
 
   render() {
-    const {cssClass} = LabelView;
-    const {color, size, tooltipPlacement, tooltipTextAlign} = this.state;
+    const { cssClass } = LabelView;
+    const { color, size, tooltipPlacement, tooltipTextAlign } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Label">
-        <p>
-          Labels can be used as easily recognizable indicators of a type, state or status.
-        </p>
+        <p>Labels can be used as easily recognizable indicators of a type, state or status.</p>
         <p>
           They can be particularly useful when displaying a list or table of information as a visual
           aid for a user scanning through the information.
@@ -62,7 +59,7 @@ export default class LabelView extends Component {
                       This label has a tooltip. It has a lot to say.
                       <br />
                       <br />
-                      {loremIpsum({count: 3, units: "sentences"})}
+                      {loremIpsum({ count: 3, units: "sentences" })}
                     </div>
                   }
                   tooltipPlacement={tooltipPlacement}
@@ -79,8 +76,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={size}
-                onSelect={value => this.setState({size: value})}
-                options={_.map(Label.Size, s => ({content: s, value: s}))}
+                onSelect={value => this.setState({ size: value })}
+                options={_.map(Label.Size, s => ({ content: s, value: s }))}
               />
             </div>
             <div className={cssClass.CONFIG}>
@@ -88,8 +85,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={color}
-                onSelect={value => this.setState({color: value})}
-                options={_.map(Label.Color, c => ({content: c, value: c}))}
+                onSelect={value => this.setState({ color: value })}
+                options={_.map(Label.Color, c => ({ content: c, value: c }))}
               />
             </div>
             <div className={cssClass.CONFIG}>
@@ -97,8 +94,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={tooltipPlacement}
-                onSelect={value => this.setState({tooltipPlacement: value})}
-                options={_.map(Tooltip.Placement, p => ({content: p, value: p}))}
+                onSelect={value => this.setState({ tooltipPlacement: value })}
+                options={_.map(Tooltip.Placement, p => ({ content: p, value: p }))}
               />
             </div>
             <div className={cssClass.CONFIG}>
@@ -106,8 +103,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={tooltipTextAlign}
-                onSelect={value => this.setState({tooltipTextAlign: value})}
-                options={_.map(Tooltip.Align, p => ({content: p, value: p}))}
+                onSelect={value => this.setState({ tooltipTextAlign: value })}
+                options={_.map(Tooltip.Align, p => ({ content: p, value: p }))}
               />
             </div>
             <div className={cssClass.FOCUS_CONTROL}>

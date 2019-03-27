@@ -1,9 +1,9 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
-import {Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea} from "src";
+import { Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea } from "src";
 
 import "./StepperView.less";
 
@@ -39,9 +39,16 @@ export default class StepperView extends PureComponent {
   }
 
   render() {
-    const {Col} = Grid;
-    const {step1Title, step1Description, step1State, step1Warning, step1Optional, seekable,
-      currentStepID} = this.state;
+    const { Col } = Grid;
+    const {
+      step1Title,
+      step1Description,
+      step1State,
+      step1Warning,
+      step1Optional,
+      seekable,
+      currentStepID,
+    } = this.state;
     const steps = [
       {
         title: step1Title,
@@ -54,14 +61,16 @@ export default class StepperView extends PureComponent {
       },
       {
         title: "Add applications",
-        description: "Select all the apps your district uses so students and teachers have secure single sign-on access",
+        description:
+          "Select all the apps your district uses so students and teachers have secure single sign-on access",
         state: "SUCCESS",
         id: "step2",
         label: "2",
       },
       {
         title: "Configure applications",
-        description: "Select when your application should launch and who should have access to them",
+        description:
+          "Select when your application should launch and who should have access to them",
         id: "step3",
         state: "INCOMPLETE",
         label: "3",
@@ -76,7 +85,8 @@ export default class StepperView extends PureComponent {
       },
       {
         title: "Complete remaining semester rollover actions",
-        description: "Complete our checklist to ensure students and teachers have a smooth transition after the holiday season",
+        description:
+          "Complete our checklist to ensure students and teachers have a smooth transition after the holiday season",
         optional: true,
         state: "INCOMPLETE",
         id: "step5",
@@ -88,12 +98,12 @@ export default class StepperView extends PureComponent {
       <View className={cssClass.CONTAINER} title="Stepper" sourcePath="src/Stepper/Stepper.tsx">
         <header className={cssClass.INTRO}>
           <p>
-            The Stepper component displays progress through a sequence of steps. Each step consists of a state-managed graphic, title,
-            description, and (for specific states) message.
+            The Stepper component displays progress through a sequence of steps. Each step consists
+            of a state-managed graphic, title, description, and (for specific states) message.
           </p>
           <p>
-            Steps can have the following states:
-            success, current (active), default (inactive), warning, and optional.
+            Steps can have the following states: success, current (active), default (inactive),
+            warning, and optional.
           </p>
           <p>
             <b>Common use: </b>Use stepper as part of the wizard layout component.
@@ -115,12 +125,14 @@ export default class StepperView extends PureComponent {
                   className="ExampleStepper"
                   currentStepID={currentStepID}
                   steps={steps}
-                  onStepClick={seekable ? (id) => this.jumpToStep(id) : null}
+                  onStepClick={seekable ? id => this.jumpToStep(id) : null}
                 />
               </Col>
               <Col span={8}>
                 <span className={cssClass.TITLE}>
-                  Current Step: {steps.find(s => s.id === currentStepID) && steps.find(s => s.id === currentStepID).title}
+                  Current Step:{" "}
+                  {steps.find(s => s.id === currentStepID) &&
+                    steps.find(s => s.id === currentStepID).title}
                 </span>
               </Col>
             </FlexBox>
@@ -133,43 +145,41 @@ export default class StepperView extends PureComponent {
   }
 
   _renderConfig() {
-    const {Col} = Grid;
-    const {step1Title, step1Description} = this.state;
+    const { Col } = Grid;
+    const { step1Title, step1Description } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
-          <Col span={6}>
-            <div className={cssClass.CONFIG}>
-              <TextInput
-                className={cssClass.CONFIG_OPTIONS}
-                onChange={e => this.setState({step1Title: e.target.value})}
-                label="Step 1 Title"
-                name="StepperView--title"
-                placeholder="Step 1 Title"
-                value={step1Title}
-              />
-            </div>
-            <div className={cssClass.CONFIG}>
-              <TextArea
-                className={cssClass.CONFIG_OPTIONS}
-                onChange={e => this.setState({step1Description: e.target.value})}
-                label="Step 1 Description"
-                name="StepperView--description"
-                placeholder="Step 1 Description"
-                value={step1Description}
-                autoResize
-              />
-            </div>
-          </Col>
-          <Col span={6}>
-            {this._renderCheckboxes()}
-          </Col>
+        <Col span={6}>
+          <div className={cssClass.CONFIG}>
+            <TextInput
+              className={cssClass.CONFIG_OPTIONS}
+              onChange={e => this.setState({ step1Title: e.target.value })}
+              label="Step 1 Title"
+              name="StepperView--title"
+              placeholder="Step 1 Title"
+              value={step1Title}
+            />
+          </div>
+          <div className={cssClass.CONFIG}>
+            <TextArea
+              className={cssClass.CONFIG_OPTIONS}
+              onChange={e => this.setState({ step1Description: e.target.value })}
+              label="Step 1 Description"
+              name="StepperView--description"
+              placeholder="Step 1 Description"
+              value={step1Description}
+              autoResize
+            />
+          </div>
+        </Col>
+        <Col span={6}>{this._renderCheckboxes()}</Col>
       </FlexBox>
     );
   }
 
   _renderCheckboxes() {
-    const {seekable, step1State, step1Optional} = this.state;
+    const { seekable, step1State, step1Optional } = this.state;
 
     return (
       <div className={cssClass.CHECKBOX_GROUP}>
@@ -178,7 +188,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={seekable}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({seekable: e.target.checked})}
+            onChange={e => this.setState({ seekable: e.target.checked })}
           />{" "}
           seekable
         </label>
@@ -187,7 +197,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1State === "INCOMPLETE"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={() => this.setState({step1State: "INCOMPLETE", step1Warning: null})}
+            onChange={() => this.setState({ step1State: "INCOMPLETE", step1Warning: null })}
           />{" "}
           Step 1 - incomplete
         </label>
@@ -196,7 +206,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1State === "SUCCESS"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={() => this.setState({step1State: "SUCCESS", step1Warning: null})}
+            onChange={() => this.setState({ step1State: "SUCCESS", step1Warning: null })}
           />{" "}
           Step 1 - success
         </label>
@@ -205,7 +215,9 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1State === "WARNING"}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={() => this.setState({step1State: "WARNING", step1Warning: "something went wrong"})}
+            onChange={() =>
+              this.setState({ step1State: "WARNING", step1Warning: "something went wrong" })
+            }
           />{" "}
           Step 1 - warning
         </label>
@@ -214,7 +226,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1Optional}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({step1Optional: e.target.checked})}
+            onChange={e => this.setState({ step1Optional: e.target.checked })}
           />{" "}
           Step 1 - optional
         </label>
@@ -248,8 +260,9 @@ export default class StepperView extends PureComponent {
             {
               name: "onStepClick",
               type: "Function",
-              description: "Action to occur when a step is clicked. Passes an object of utility methods that"
-              + " affect the Stepper's state",
+              description:
+                "Action to occur when a step is clicked. Passes an object of utility methods that" +
+                " affect the Stepper's state",
             },
           ]}
           className={cssClass.PROPS}

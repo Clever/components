@@ -51,7 +51,7 @@ export default class Radio extends React.PureComponent {
   }
 
   render() {
-    const {checked, children, className, disabled, tabIndex} = this.props;
+    const { checked, children, className, disabled, tabIndex } = this.props;
 
     return (
       <button
@@ -72,13 +72,15 @@ export default class Radio extends React.PureComponent {
         <div className={cssClass.OUTER}>
           <div className={cssClass.INNER} />
         </div>
-        <span className={cssClass.LABEL} id={this._labelID}>{children}</span>
+        <span className={cssClass.LABEL} id={this._labelID}>
+          {children}
+        </span>
       </button>
     );
   }
 
   _onClick = () => {
-    const {disabled, id, onSelect, value} = this.props;
+    const { disabled, id, onSelect, value } = this.props;
 
     if (disabled) {
       return;

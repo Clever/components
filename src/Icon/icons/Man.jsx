@@ -15,13 +15,7 @@ export default function Man(props) {
       <title>business-man</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="business-man" strokeWidth={2}>
           <g
             id="business-48px-outline_business-contact-86"
@@ -36,19 +30,10 @@ export default function Man(props) {
                 id="Shape"
                 fill="#B6C8F9"
               />
-              <polyline
-                id="Shape"
-                fill="#FFFFFF"
-                points="27.7 0.5 24 8 20 8 16.3 0.5"
-              />
+              <polyline id="Shape" fill="#FFFFFF" points="27.7 0.5 24 8 20 8 16.3 0.5" />
             </g>
           </g>
-          <polygon
-            id="Path-9"
-            stroke="#62748C"
-            fill="#FFFFFF"
-            points="25 37 29 45 17 45 21 37"
-          />
+          <polygon id="Path-9" stroke="#62748C" fill="#FFFFFF" points="25 37 29 45 17 45 21 37" />
           <g
             id="Page-1"
             transform="translate(11.000000, 1.000000)"

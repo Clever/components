@@ -6,14 +6,13 @@ import Column from "./Column";
 import HeaderCell from "./HeaderCell";
 import MorePropTypes from "../utils/MorePropTypes";
 
-
-export default function Header({children, disableSort, onSortChange, sortState}) {
-  const {cssClass} = Header;
+export default function Header({ children, disableSort, onSortChange, sortState }) {
+  const { cssClass } = Header;
 
   return (
     <thead className={cssClass.CONTAINER}>
       <tr className={cssClass.ROW}>
-        {children.map(({props: column}) => (
+        {children.map(({ props: column }) => (
           <HeaderCell
             activeSortDirection={sortState.columnID === column.id ? sortState.direction : null}
             className={column.header && column.header.className}

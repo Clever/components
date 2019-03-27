@@ -5,7 +5,7 @@ import classnames from "classnames";
 import ReactDatePicker from "react-datepicker";
 import ReactDateTime from "react-datetime";
 
-import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 
 import "./DateInput.less";
 import "../less/forms.less";
@@ -30,11 +30,11 @@ export default class DateInput extends React.Component {
 
   static defaultProps = {
     size: FormElementSize.FULL_WIDTH,
-  }
+  };
 
   constructor(props) {
     super(props);
-    this.state = {inFocus: false};
+    this.state = { inFocus: false };
 
     this.isValidDate = this.isValidDate.bind(this);
   }
@@ -87,7 +87,6 @@ export default class DateInput extends React.Component {
       inputNote = <span className="DateInput--error">{this.props.error}</span>;
     }
 
-
     return (
       <div
         className={classnames(
@@ -97,16 +96,18 @@ export default class DateInput extends React.Component {
         )}
       >
         <div className="DateInput--infoRow">
-          <label className="DateInput--label" htmlFor={this.props.name}>{this.props.label}</label>
+          <label className="DateInput--label" htmlFor={this.props.name}>
+            {this.props.label}
+          </label>
           {inputNote}
         </div>
-        {this.props.useTime ?
+        {this.props.useTime ? (
           <ReactDateTime
             className="DateTimePicker"
             onChange={this.props.onChange}
             value={this.props.value}
-            onBlur={() => this.setState({inFocus: false})}
-            onFocus={() => this.setState({inFocus: true})}
+            onBlur={() => this.setState({ inFocus: false })}
+            onFocus={() => this.setState({ inFocus: true })}
             isValidDate={this.isValidDate}
             inputProps={{
               className: "DateInput--input",
@@ -115,7 +116,8 @@ export default class DateInput extends React.Component {
               disabled: this.props.disabled || this.props.readOnly,
               required: this.props.required,
             }}
-          /> :
+          />
+        ) : (
           <ReactDatePicker
             fixedHeight
             calendarClassName="DatePicker"
@@ -124,8 +126,8 @@ export default class DateInput extends React.Component {
             maxDate={this.props.max}
             minDate={this.props.min}
             name={this.props.name}
-            onBlur={() => this.setState({inFocus: false})}
-            onFocus={() => this.setState({inFocus: true})}
+            onBlur={() => this.setState({ inFocus: false })}
+            onFocus={() => this.setState({ inFocus: true })}
             onSelect={this.props.onChange}
             placeholderText={this.props.placeholder}
             readOnly={this.props.readOnly}
@@ -135,16 +137,13 @@ export default class DateInput extends React.Component {
             popperClassName="DatePicker--Popper"
             popperPlacement={this.props.popperPlacement}
           />
-        }
+        )}
       </div>
     );
   }
 }
 
-const dateType = PropTypes.oneOfType([
-  PropTypes.instanceOf(Date),
-  PropTypes.instanceOf(moment),
-]);
+const dateType = PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.instanceOf(moment)]);
 
 DateInput.propTypes = {
   disabled: PropTypes.bool,

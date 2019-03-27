@@ -15,18 +15,9 @@ export default function Target(props) {
       <title>target</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="target" strokeWidth={2} stroke="#CA091B">
-          <g
-            id="ui-48px-outline-2_target"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="ui-48px-outline-2_target" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <circle id="Oval" fill="#FD8874" cx={22} cy={22} r={22} />
               <circle id="Oval" fill="#FFFFFF" cx={22} cy={22} r={14} />

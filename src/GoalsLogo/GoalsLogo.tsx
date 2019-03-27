@@ -45,7 +45,7 @@ export default class GoalsLogo extends React.PureComponent {
   };
 
   render() {
-    const {className, size, withClever} = this.props;
+    const { className, size, withClever } = this.props;
 
     const LogoImage: any = withClever ? GoalsLogoWithClever : GoalsLogoWithoutClever;
 

@@ -1,10 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import Example from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {SegmentedControl} from "src";
-
+import { SegmentedControl } from "src";
 
 export default class SegmentedControlView extends Component {
   constructor(props) {
@@ -14,18 +13,18 @@ export default class SegmentedControlView extends Component {
   }
 
   render() {
-    const {cssClass} = SegmentedControlView;
+    const { cssClass } = SegmentedControlView;
 
     return (
       <View className={cssClass.CONTAINER} title="SegmentedControl">
         <p>
-          This component is a <code>segmented control</code>. It functions as a variation on radiobuttons for
-          when a user needs to select one of a handful of options.
+          This component is a <code>segmented control</code>. It functions as a variation on
+          radiobuttons for when a user needs to select one of a handful of options.
         </p>
 
         <Example title="Basic">
           <SegmentedControl
-            onSelect={(option) => console.log(`Option ${option} selected`)}
+            onSelect={option => console.log(`Option ${option} selected`)}
             options={[
               {
                 content: (
@@ -53,7 +52,7 @@ export default class SegmentedControlView extends Component {
         <Example title="With Disabled Option">
           <SegmentedControl
             defaultValue="two"
-            onSelect={(option) => console.log(`Option ${option} selected`)}
+            onSelect={option => console.log(`Option ${option} selected`)}
             options={[
               {
                 content: "Option 1",
@@ -75,7 +74,7 @@ export default class SegmentedControlView extends Component {
           <SegmentedControl
             defaultValue="two"
             disabled
-            onSelect={(option) => console.log(`Option ${option} selected`)}
+            onSelect={option => console.log(`Option ${option} selected`)}
             options={[
               {
                 content: "1 - Control Disabled",
@@ -124,7 +123,8 @@ export default class SegmentedControlView extends Component {
             {
               name: "options",
               type: "Object",
-              description: "Array of objects with a value (unique ID), content (what to render), and disabled (optional)",
+              description:
+                "Array of objects with a value (unique ID), content (what to render), and disabled (optional)",
             },
           ]}
           className={cssClass.PROPS}

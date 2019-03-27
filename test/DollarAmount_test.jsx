@@ -1,9 +1,8 @@
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import DollarAmount from "../src/DollarAmount";
-
 
 describe("DollarAmount", () => {
   it("handles small integer amounts", () => {

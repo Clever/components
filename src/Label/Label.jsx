@@ -1,12 +1,11 @@
 import _ from "lodash";
 import classnames from "classnames";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
 
 import Tooltip from "../Tooltip";
 
 import "./Label.less";
-
 
 export default class Label extends PureComponent {
   focus() {
@@ -16,7 +15,7 @@ export default class Label extends PureComponent {
   }
 
   render() {
-    const {cssClass} = Label;
+    const { cssClass } = Label;
     const {
       children,
       className,
@@ -34,7 +33,7 @@ export default class Label extends PureComponent {
           color && cssClass.color(color),
           size && cssClass.size(size),
           tooltip && cssClass.WITH_TOOLTIP,
-          className
+          className,
         )}
         ref="label"
         tabIndex={tooltip ? 0 : undefined}

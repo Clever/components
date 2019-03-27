@@ -1,10 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import Example from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {ConfirmationButton} from "src";
-
+import { ConfirmationButton } from "src";
 
 export default class ConfirmationButtonView extends Component {
   constructor(props) {
@@ -14,13 +13,13 @@ export default class ConfirmationButtonView extends Component {
   }
 
   render() {
-    const {cssClass} = ConfirmationButtonView;
+    const { cssClass } = ConfirmationButtonView;
 
     return (
       <View className={cssClass.CONTAINER} title="ConfirmationButton">
         <p>
-          This component is a <code>Button</code> that triggers the appearance of a modal with "Confirm" and "Cancel"
-          buttons when clicked.
+          This component is a <code>Button</code> that triggers the appearance of a modal with
+          "Confirm" and "Cancel" buttons when clicked.
         </p>
 
         <Example>
@@ -28,7 +27,7 @@ export default class ConfirmationButtonView extends Component {
             type="primary"
             confirmButtonType="destructive"
             modalTitle="Are you sure?"
-            onClick={(e) => console.log("ConfirmationButton: modal opened with events param!", e)}
+            onClick={e => console.log("ConfirmationButton: modal opened with events param!", e)}
             onClose={() => console.log("ConfirmationButton: modal closed!")}
             onConfirm={() => console.log("ConfirmationButton: confirmed!")}
             value="Submit for confirmation"
@@ -59,14 +58,23 @@ export default class ConfirmationButtonView extends Component {
             {
               name: "confirmButtonType",
               type: "String",
-              description: <div>One of <code>primary</code>, <code>secondary</code>, <code>destructive</code>, <code>link</code>, <code>linkPlain</code>, <code>plain</code></div>,
+              description: (
+                <div>
+                  One of <code>primary</code>, <code>secondary</code>, <code>destructive</code>,{" "}
+                  <code>link</code>, <code>linkPlain</code>, <code>plain</code>
+                </div>
+              ),
               defaultValue: "primary",
               optional: true,
             },
             {
               name: "confirmButtonSize",
               type: "String",
-              description: <div>One of <code>large</code>, <code>regular</code>, <code>small</code></div>,
+              description: (
+                <div>
+                  One of <code>large</code>, <code>regular</code>, <code>small</code>
+                </div>
+              ),
               defaultValue: "regular",
               optional: true,
             },
@@ -104,7 +112,11 @@ export default class ConfirmationButtonView extends Component {
             {
               name: "confirmButtonTarget",
               type: "String",
-              description: <div>For links, either <code>_self</code> or <code>_blank</code></div>,
+              description: (
+                <div>
+                  For links, either <code>_self</code> or <code>_blank</code>
+                </div>
+              ),
               defaultValue: "_blank",
               optional: true,
             },
@@ -137,7 +149,6 @@ export default class ConfirmationButtonView extends Component {
           ]}
           className={cssClass.PROPS}
         />
-
       </View>
     );
   }

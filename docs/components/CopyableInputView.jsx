@@ -1,12 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {CopyableInput, FormElementSize, SegmentedControl} from "src";
+import { CopyableInput, FormElementSize, SegmentedControl } from "src";
 
 import "./CopyableInputView.less";
-
 
 export default class CopyableInputView extends Component {
   constructor(props) {
@@ -24,13 +23,13 @@ export default class CopyableInputView extends Component {
   }
 
   render() {
-    const {cssClass} = CopyableInputView;
+    const { cssClass } = CopyableInputView;
 
     return (
       <View className={cssClass.CONTAINER} title="CopyableInput">
         <p>
-          This is a special TextInput that allows the user to show/hide the value of the input and copy to
-          clipboard. Ideal for passwords and other secret keys.
+          This is a special TextInput that allows the user to show/hide the value of the input and
+          copy to clipboard. Ideal for passwords and other secret keys.
         </p>
 
         <Example>
@@ -47,7 +46,7 @@ export default class CopyableInputView extends Component {
                 label="CopyableInput Label"
                 name="CopyableInputName"
                 placeholder="CopyableInput Placeholder"
-                onChange={e => this.setState({inputValue: e.target.value})}
+                onChange={e => this.setState({ inputValue: e.target.value })}
                 value={this.state.inputValue}
                 size={this.state.size}
               />
@@ -57,45 +56,40 @@ export default class CopyableInputView extends Component {
             <input
               type="checkbox"
               checked={this.state.disabled}
-              onChange={({target}) => this.setState({disabled: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ disabled: target.checked })}
+            />{" "}
             Disabled
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.readOnly}
-              onChange={({target}) => this.setState({readOnly: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ readOnly: target.checked })}
+            />{" "}
             Read Only
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.required}
-              onChange={({target}) => this.setState({required: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ required: target.checked })}
+            />{" "}
             Required
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.hasError}
-              onChange={({target}) => this.setState({hasError: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ hasError: target.checked })}
+            />{" "}
             Error
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.obscured}
-              onChange={({target}) => this.setState({obscured: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ obscured: target.checked })}
+            />{" "}
             Obscured
           </label>
           <div className={cssClass.CONFIG}>
@@ -103,13 +97,13 @@ export default class CopyableInputView extends Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               options={[
-                {content: "small", value: FormElementSize.SMALL},
-                {content: "medium", value: FormElementSize.MEDIUM},
-                {content: "large", value: FormElementSize.LARGE},
-                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+                { content: "small", value: FormElementSize.SMALL },
+                { content: "medium", value: FormElementSize.MEDIUM },
+                { content: "large", value: FormElementSize.LARGE },
+                { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={value => this.setState({size: value})}
+              onSelect={value => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -126,7 +120,8 @@ export default class CopyableInputView extends Component {
             {
               name: "disableAutocomplete",
               type: "Bool",
-              description: "Sets autocomplete='off' on the input element to disable default browser autocomplete",
+              description:
+                "Sets autocomplete='off' on the input element to disable default browser autocomplete",
               defaultValue: "false",
               optional: true,
             },
@@ -219,11 +214,18 @@ export default class CopyableInputView extends Component {
             {
               name: "size",
               type: "string",
-              description: <p>
-                The size of the input. One of:<br />
-                {Object.keys(FormElementSize).map(size =>
-                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
-              </p>,
+              description: (
+                <p>
+                  The size of the input. One of:
+                  <br />
+                  {Object.keys(FormElementSize).map(size => (
+                    <span key={size}>
+                      <code>FormElementSize.{size}</code>
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              ),
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },

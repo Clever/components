@@ -1,15 +1,14 @@
 import classnames from "classnames";
 import React from "react";
 
-import {Button} from "../src/Button/Button";
-import {FlexBox, FlexItem, ItemAlign, Justify} from "../src/flex";
+import { Button } from "../src/Button/Button";
+import { FlexBox, FlexItem, ItemAlign, Justify } from "../src/flex";
 
 import "./FlexExample.less";
 import "../src/less/spacing.less";
 
-
 export default function FlexExample() {
-  const {cssClass} = FlexExample;
+  const { cssClass } = FlexExample;
 
   return (
     <div className={cssClass.CONTAINER}>
@@ -19,14 +18,14 @@ export default function FlexExample() {
         <div className={cssClass.ITEM}>
           <span className={classnames(cssClass.fa("exclamation-triangle"), cssClass.ALERT)} />
         </div>
-        <div className={cssClass.ITEM}>
-          You have received a notification!
-        </div>
+        <div className={cssClass.ITEM}>You have received a notification!</div>
         <Button className={cssClass.ITEM} type="linkPlain" value="Got it" />
       </FlexBox>
 
       <h2>With grow-enabled item</h2>
-      <p>FlexItem children with <code>grow={"{true}"}</code> will fill any available space.</p>
+      <p>
+        FlexItem children with <code>grow={"{true}"}</code> will fill any available space.
+      </p>
       <FlexBox className={classnames(cssClass.BOX, cssClass.BOX_MIN_WIDTH)}>
         <div className={cssClass.ITEM}>
           <span className={classnames(cssClass.fa("exclamation-triangle"), cssClass.ALERT)} />
@@ -39,8 +38,8 @@ export default function FlexExample() {
 
       <h2>FlexBox as FlexItem</h2>
       <p>
-        FlexBoxes can be nested as any other elements.
-        FlexItem properties, such as <code>grow</code> can also be applied for FlexItem behavior.
+        FlexBoxes can be nested as any other elements. FlexItem properties, such as{" "}
+        <code>grow</code> can also be applied for FlexItem behavior.
       </p>
       <FlexBox className={classnames(cssClass.BOX, cssClass.BOX_MIN_WIDTH)}>
         <FlexBox className={cssClass.ITEM} alignItems={ItemAlign.CENTER}>
@@ -70,8 +69,8 @@ export default function FlexExample() {
       </p>
       <p>
         FlexBox and FlexItem are divs by default but can be rendered as any element or component.
-        Here, the FlexBox is rendered as a <code>{"<ul>"}</code> and the FlexItems
-        as <code>{"<li>"}</code>s.
+        Here, the FlexBox is rendered as a <code>{"<ul>"}</code> and the FlexItems as{" "}
+        <code>{"<li>"}</code>s.
       </p>
       <FlexBox
         className={classnames(cssClass.BOX, cssClass.BOX_TINY, cssClass.RESIZABLE_X)}

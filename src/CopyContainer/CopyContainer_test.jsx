@@ -1,12 +1,12 @@
 import * as React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import CopyToClipboard from "react-copy-to-clipboard";
 import CopyContainer from "./CopyContainer";
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 
 describe("CopyContainer", () => {
-  const {cssClass} = CopyContainer;
+  const { cssClass } = CopyContainer;
 
   it("renders", () => {
     const copyContainer = shallow(
@@ -25,9 +25,7 @@ describe("CopyContainer", () => {
 
   it("supports additional class names", () => {
     const myComponent = shallow(
-      <CopyContainer className="my--custom--class">
-        Test Content
-      </CopyContainer>,
+      <CopyContainer className="my--custom--class">Test Content</CopyContainer>,
     );
 
     expect(myComponent.props().className).toMatch(cssClass.CONTAINER);
@@ -36,7 +34,9 @@ describe("CopyContainer", () => {
 
   it("supports customizing the button label", () => {
     const copyContainer = shallow(
-      <CopyContainer copyText="Text to copy" buttonLabel="Custom button label">Text to display</CopyContainer>,
+      <CopyContainer copyText="Text to copy" buttonLabel="Custom button label">
+        Text to display
+      </CopyContainer>,
     );
     const button = copyContainer.find(Button);
     expect(button.props().value).toBe("Custom button label");

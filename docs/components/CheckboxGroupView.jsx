@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {CheckboxGroup, FlexBox, ItemAlign} from "src";
+import { CheckboxGroup, FlexBox, ItemAlign } from "src";
 
 import "./CheckboxGroupView.less";
 
@@ -31,22 +31,22 @@ export default class CheckboxGroupView extends React.PureComponent {
   state = {
     disableAll: false,
     emails: [
-      {id: "marketing", label: "Marketing emails", checked: false},
-      {id: "sales", label: "Sales emails", checked: false},
-      {id: "releases", label: "Product release emails", checked: false},
-      {id: "blogs", label: "Blog post emails", checked: false},
+      { id: "marketing", label: "Marketing emails", checked: false },
+      { id: "sales", label: "Sales emails", checked: false },
+      { id: "releases", label: "Product release emails", checked: false },
+      { id: "blogs", label: "Blog post emails", checked: false },
     ],
     showTitles: true,
     subjects: [
-      {id: "maths", label: "Maths", checked: false},
-      {id: "science", label: "Science", checked: false},
-      {id: "socialStudies", label: "Social Studies", checked: false},
-      {id: "macarena", label: "The Macarena", checked: true},
+      { id: "maths", label: "Maths", checked: false },
+      { id: "science", label: "Science", checked: false },
+      { id: "socialStudies", label: "Social Studies", checked: false },
+      { id: "macarena", label: "The Macarena", checked: true },
     ],
   };
 
   render() {
-    const {disableAll, emails, showTitles, subjects} = this.state;
+    const { disableAll, emails, showTitles, subjects } = this.state;
     const noEmailsSelected = emails.every(e => !e.checked);
     const noSubjectsSelected = subjects.every(e => !e.checked);
 
@@ -94,7 +94,7 @@ export default class CheckboxGroupView extends React.PureComponent {
               label="I teach all the things"
               disabled={disableAll}
               error={noSubjectsSelected ? "Pick one - always a teacher!" : undefined}
-              onChange={newSubjects => this.setState({subjects: newSubjects})}
+              onChange={newSubjects => this.setState({ subjects: newSubjects })}
               options={subjects}
             />
 
@@ -103,7 +103,7 @@ export default class CheckboxGroupView extends React.PureComponent {
               label="Send me all emails"
               disabled={disableAll}
               error={noEmailsSelected ? "Select at least one email type!" : undefined}
-              onChange={newEmails => this.setState({emails: newEmails})}
+              onChange={newEmails => this.setState({ emails: newEmails })}
               options={emails}
             />
           </ExampleCode>
@@ -116,7 +116,7 @@ export default class CheckboxGroupView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {disableAll, showTitles} = this.state;
+    const { disableAll, showTitles } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -125,7 +125,7 @@ export default class CheckboxGroupView extends React.PureComponent {
             type="checkbox"
             checked={showTitles}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={({target: {checked}}) => this.setState({showTitles: checked})}
+            onChange={({ target: { checked } }) => this.setState({ showTitles: checked })}
           />{" "}
           With Titles
         </label>
@@ -134,7 +134,7 @@ export default class CheckboxGroupView extends React.PureComponent {
             type="checkbox"
             checked={disableAll}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={({target: {checked}}) => this.setState({disableAll: checked})}
+            onChange={({ target: { checked } }) => this.setState({ disableAll: checked })}
           />{" "}
           Disable All
         </label>

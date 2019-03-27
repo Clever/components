@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Checkbox, FlexBox, ItemAlign, TextInput} from "src";
+import { Checkbox, FlexBox, ItemAlign, TextInput } from "src";
 
 import "./CheckboxView.less";
 
@@ -31,7 +31,7 @@ export default class CheckboxView extends React.PureComponent {
   };
 
   render() {
-    const {box1Checked, box1Label, box1Partial, box2Checked, box2Partial, disabled} = this.state;
+    const { box1Checked, box1Label, box1Partial, box2Checked, box2Partial, disabled } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Checkbox" sourcePath="src/Checkbox/Checkbox.tsx">
@@ -71,7 +71,7 @@ export default class CheckboxView extends React.PureComponent {
               className={cssClass.CHECKBOX}
               disabled={disabled}
               onChange={newState =>
-                this.setState({box1Checked: newState.checked, box1Partial: false})
+                this.setState({ box1Checked: newState.checked, box1Partial: false })
               }
               partial={box1Partial}
             >
@@ -82,7 +82,7 @@ export default class CheckboxView extends React.PureComponent {
               className={cssClass.CHECKBOX}
               disabled={disabled}
               onChange={newState =>
-                this.setState({box2Checked: newState.checked, box2Partial: false})
+                this.setState({ box2Checked: newState.checked, box2Partial: false })
               }
               partial={box2Partial}
             >
@@ -98,14 +98,14 @@ export default class CheckboxView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {disabled, box1Label, box1Partial, box2Partial} = this.state;
+    const { disabled, box1Label, box1Partial, box2Partial } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
         <div className={cssClass.CONFIG}>
           <TextInput
             className={cssClass.CONFIG_OPTIONS}
-            onChange={e => this.setState({box1Label: e.target.value})}
+            onChange={e => this.setState({ box1Label: e.target.value })}
             label="Box 1 Label"
             name="CheckboxView--label--input"
             placeholder="Box 1 Label"
@@ -117,7 +117,7 @@ export default class CheckboxView extends React.PureComponent {
             type="checkbox"
             checked={disabled}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({disabled: e.target.checked})}
+            onChange={e => this.setState({ disabled: e.target.checked })}
           />{" "}
           Disabled
         </label>
@@ -126,7 +126,7 @@ export default class CheckboxView extends React.PureComponent {
             type="checkbox"
             checked={box1Partial}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({box1Partial: e.target.checked})}
+            onChange={e => this.setState({ box1Partial: e.target.checked })}
           />{" "}
           Box 1 - Partial
         </label>
@@ -135,7 +135,7 @@ export default class CheckboxView extends React.PureComponent {
             type="checkbox"
             checked={box2Partial}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({box2Partial: e.target.checked})}
+            onChange={e => this.setState({ box2Partial: e.target.checked })}
           />{" "}
           Box 2 - Partial
         </label>

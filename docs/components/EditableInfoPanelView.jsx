@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, {CodeSample, ExampleCode} from "./Example";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Icon, EditableInfoPanel, FlexBox, FlexItem, ItemAlign, Modal, TextInput} from "src";
+import { Icon, EditableInfoPanel, FlexBox, FlexItem, ItemAlign, Modal, TextInput } from "src";
 
 import "./EditableInfoPanelView.less";
 
@@ -37,7 +37,8 @@ export default class EditableInfoPanelView extends React.PureComponent {
       >
         <header className={cssClass.INTRO}>
           <p>
-            EditableInfoPanel is an extension of the InfoPanel component that allows for editing of panel content
+            EditableInfoPanel is an extension of the InfoPanel component that allows for editing of
+            panel content
           </p>
           <CodeSample>
             {`
@@ -60,43 +61,34 @@ export default class EditableInfoPanelView extends React.PureComponent {
                   </FlexItem>
                 </FlexBox>
               }
-              onClick={() => this.setState({modalOpen: true})}
+              onClick={() => this.setState({ modalOpen: true })}
             >
-              <div className="EditableInfoPanel--column">
-                {this.state.column1Content}
-              </div>
-              <div className="EditableInfoPanel--column">
-                {this.state.column2Content}
-              </div>
-              <div>
-                {this.state.normalContent}
-              </div>
+              <div className="EditableInfoPanel--column">{this.state.column1Content}</div>
+              <div className="EditableInfoPanel--column">{this.state.column2Content}</div>
+              <div>{this.state.normalContent}</div>
             </EditableInfoPanel>
-            {this.state.modalOpen &&
-              (<Modal
-                title="Edit Content"
-                closeModal={() => this.setState({modalOpen: false})}
-              >
+            {this.state.modalOpen && (
+              <Modal title="Edit Content" closeModal={() => this.setState({ modalOpen: false })}>
                 <TextInput
                   label="Column 1 Content"
                   placeholder={this.state.column1Content}
-                  onChange={e => this.setState({column1Content: e.target.value})}
+                  onChange={e => this.setState({ column1Content: e.target.value })}
                   value={this.state.column1Content}
                 />
                 <TextInput
                   label="Column 2 Content"
                   placeholder={this.state.column2Content}
-                  onChange={e => this.setState({column2Content: e.target.value})}
+                  onChange={e => this.setState({ column2Content: e.target.value })}
                   value={this.state.column2Content}
                 />
                 <TextInput
                   label="Normal Content"
                   placeholder={this.state.normalContent}
-                  onChange={e => this.setState({normalContent: e.target.value})}
+                  onChange={e => this.setState({ normalContent: e.target.value })}
                   value={this.state.normalContent}
                 />
-              </Modal>)
-            }
+              </Modal>
+            )}
           </ExampleCode>
         </Example>
 

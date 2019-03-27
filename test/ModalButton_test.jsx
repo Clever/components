@@ -3,8 +3,8 @@
 import assert from "assert";
 import React from "react";
 import sinon from "sinon";
-import {mount, shallow} from "enzyme";
-import {Button, Modal, ModalButton} from "../src";
+import { mount, shallow } from "enzyme";
+import { Button, Modal, ModalButton } from "../src";
 
 describe("ModalButton", () => {
   const sizes = ["small", "regular", "large"];
@@ -14,21 +14,21 @@ describe("ModalButton", () => {
     const modalButton = shallow(
       <ModalButton value="A modal button" modalTitle="A title">
         <p>Hello</p>
-      </ModalButton>
+      </ModalButton>,
     );
     assert.equal(modalButton.find(Button).length, 1);
     assert.equal(modalButton.find(Button).props().value, "A modal button");
   });
 
-  sizes.forEach((size) => {
-    types.forEach((type) => {
+  sizes.forEach(size => {
+    types.forEach(type => {
       if (size === "small" && type === "destructive") return;
 
       it(`renders a ${size}, ${type} button with the correct classes`, () => {
         const modalButton = shallow(
           <ModalButton size={size} type={type} value="A button" modalTitle="A title">
             <p>Hello</p>
-          </ModalButton>
+          </ModalButton>,
         );
         assert(modalButton.hasClass("ModalButton"));
         assert.equal(modalButton.find(Button).props().size, size);
@@ -37,12 +37,11 @@ describe("ModalButton", () => {
     });
   });
 
-
   it("shows the modal when clicked", () => {
     const modalButton = shallow(
       <ModalButton value="A modal button" modalTitle="A title">
         <p>Hello</p>
-      </ModalButton>
+      </ModalButton>,
     );
     assert(!modalButton.state("showingModal"));
     modalButton.find(Button).simulate("click");
@@ -54,7 +53,7 @@ describe("ModalButton", () => {
     const modalButton = shallow(
       <ModalButton value="A modal button" modalTitle="A title" onClick={onClickSpy}>
         <p>Hello</p>
-      </ModalButton>
+      </ModalButton>,
     );
     assert(!modalButton.state("showingModal"));
     modalButton.find(Button).simulate("click");
@@ -63,29 +62,35 @@ describe("ModalButton", () => {
   });
 
   it("hides the modal when X is clicked", () => {
-    const modalButton = mount(<ModalButton
-      value="A modal button" modalTitle="A title"
-    >
-      <p>Hello</p>
-    </ModalButton>);
+    const modalButton = mount(
+      <ModalButton value="A modal button" modalTitle="A title">
+        <p>Hello</p>
+      </ModalButton>,
+    );
     assert(!modalButton.state("showingModal"));
     modalButton.find(Button).simulate("click");
     assert(modalButton.state("showingModal"));
-    modalButton.find(Modal).find(".Modal--close").simulate("click");
+    modalButton
+      .find(Modal)
+      .find(".Modal--close")
+      .simulate("click");
     assert(!modalButton.state("showingModal"));
   });
 
   it("hides the modal and, if present, calls the onClose handler when X is clicked", () => {
     const onCloseSpy = sinon.spy();
-    const modalButton = mount(<ModalButton
-      value="A modal button" modalTitle="A title" onClose={onCloseSpy}
-    >
-      <p>Hello</p>
-    </ModalButton>);
+    const modalButton = mount(
+      <ModalButton value="A modal button" modalTitle="A title" onClose={onCloseSpy}>
+        <p>Hello</p>
+      </ModalButton>,
+    );
     assert(!modalButton.state("showingModal"));
     modalButton.find(Button).simulate("click");
     assert(modalButton.state("showingModal"));
-    modalButton.find(Modal).find(".Modal--close").simulate("click");
+    modalButton
+      .find(Modal)
+      .find(".Modal--close")
+      .simulate("click");
     assert(!modalButton.state("showingModal"));
     assert(onCloseSpy.calledOnce);
   });
