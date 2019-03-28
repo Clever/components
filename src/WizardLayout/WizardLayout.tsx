@@ -49,6 +49,7 @@ const cssClass = {
   PREVIOUS_BUTTON: "WizardLayout--previousButton",
   STEPPER_CONTAINER: "WizardLayout--stepperContainer",
   SECTION_DIVIDER: "WizardLayout--sectionDivider",
+  NEXT_BUTTON: "WizardLayout--nextButton",
 };
 
 /**
@@ -127,6 +128,7 @@ export default class WizardLayout extends React.PureComponent {
           <Button
             type="primary"
             value={nextStepButtonText || "Next step"}
+            className={cssClass.NEXT_BUTTON}
             onClick={this._onNextStep}
             disabled={nextStepButtonDisabled}
           />
