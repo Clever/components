@@ -197,7 +197,7 @@ export default class MenuView extends React.PureComponent {
               <Menu.Item
                 className={cssClass.CUSTOM_ITEM}
                 customStyles
-                onClick={this._goToPageTwo}
+                onClick={this._goToPageThree}
                 selected={page === "three"}
               >
                 Button With Custom Styling
@@ -351,4 +351,6 @@ export default class MenuView extends React.PureComponent {
   _goToPageOne = () => ReactRouter.hashHistory.push("/components/menu?page=one");
 
   _goToPageTwo = () => ReactRouter.hashHistory.push("/components/menu?page=two");
+
+  _goToPageThree = () => ReactRouter.hashHistory.push("/components/menu?page=three");
 }
