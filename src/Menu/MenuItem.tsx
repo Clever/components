@@ -73,10 +73,8 @@ export default class MenuItem extends React.PureComponent {
     // onClick on mousedown instead.
     //
     // This only needs to be done for buttons, not anchors.
-    let safariSafeOnClick = onClick;
     let onMouseDown;
     if (MenuButton === "button") {
-      safariSafeOnClick = undefined;
       onMouseDown = onClick;
     }
 
@@ -92,7 +90,7 @@ export default class MenuItem extends React.PureComponent {
         )}
         href={href}
         onBlur={onBlur}
-        onClick={safariSafeOnClick}
+        onClick={onClick}
         onMouseDown={onMouseDown}
         role="menuitem"
         tabIndex={-1}
