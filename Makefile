@@ -1,4 +1,8 @@
+include node.mk
+
 SHELL = /bin/bash
+NODE_VERSION := "v10"
+$(eval $(call node-version-check,$(NODE_VERSION)))
 
 BABEL := node_modules/babel-cli/bin/babel.js
 JEST := ./node_modules/.bin/jest --maxWorkers=1 --config ./jestconfig.json
