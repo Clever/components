@@ -3,8 +3,8 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import CopyToClipboard from "react-copy-to-clipboard";
 
-import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
-import {TextInput} from "../TextInput/TextInput";
+import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { TextInput } from "../TextInput/TextInput";
 
 import "./CopyableInput.less";
 import "../less/forms.less";
@@ -17,18 +17,18 @@ import "../less/forms.less";
 export class CopyableInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {hidden: true};
+    this.state = { hidden: true };
 
     this.toggleHidden = this.toggleHidden.bind(this);
     this.copyPassword = this.copyPassword.bind(this);
   }
 
   toggleHidden() {
-    this.setState({hidden: !this.state.hidden});
+    this.setState({ hidden: !this.state.hidden });
   }
 
   copyPassword() {
-    this.setState({copied: true});
+    this.setState({ copied: true });
   }
 
   render() {
@@ -50,35 +50,34 @@ export class CopyableInput extends React.Component {
           readOnly={this.props.readOnly}
           label={this.props.label}
           onChange={this.props.onChange}
-          size={FormElementSize.FULL_WIDTH /* Rely on the fact that we're bounding the parent
-            container */}
+          size={
+            FormElementSize.FULL_WIDTH /* Rely on the fact that we're bounding the parent
+            container */
+          }
         />
         <div className="CopyableInput--links">
-          {this.props.enableShow &&
+          {this.props.enableShow && (
             <button type="button" className="CopyableInput--link" onClick={this.toggleHidden}>
               {this.state.hidden ? "Show" : "Hide"}
             </button>
-          }
-          {this.props.enableCopy &&
-             <CopyToClipboard text={this.props.value || ""} onCopy={this.copyPassword}>
-               <button type="button" className="CopyableInput--link">
-                 {this.state.copied ? "Copied!" : "Copy"}
-               </button>
-             </CopyToClipboard>
-          }
+          )}
+          {this.props.enableCopy && (
+            <CopyToClipboard text={this.props.value || ""} onCopy={this.copyPassword}>
+              <button type="button" className="CopyableInput--link">
+                {this.state.copied ? "Copied!" : "Copy"}
+              </button>
+            </CopyToClipboard>
+          )}
         </div>
       </div>
     );
   }
 }
 
-CopyableInput.propTypes = Object.assign({},
-  TextInput.propTypes,
-  {
-    className: PropTypes.string,
-    enableCopy: PropTypes.bool,
-  }
-);
+CopyableInput.propTypes = Object.assign({}, TextInput.propTypes, {
+  className: PropTypes.string,
+  enableCopy: PropTypes.bool,
+});
 
 CopyableInput.defaultProps = {
   enableCopy: true,

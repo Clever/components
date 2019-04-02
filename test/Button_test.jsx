@@ -3,20 +3,20 @@
 import assert from "assert";
 import React from "react";
 import sinon from "sinon";
-import {shallow} from "enzyme";
-import {Button} from "../src";
+import { shallow } from "enzyme";
+import { Button } from "../src";
 
 describe("Button", () => {
   const sizes = ["small", "regular", "large"];
   const types = ["primary", "secondary", "destructive", "link", "linkPlain"];
 
-  sizes.forEach((size) => {
-    types.forEach((type) => {
+  sizes.forEach(size => {
+    types.forEach(type => {
       if (size === "small" && type === "destructive") return;
 
       it(`renders a ${size}, ${type} button with the correct classes`, () => {
         const button = shallow(
-          <Button size={size} type={type} value="A button" className="customClass" />
+          <Button size={size} type={type} value="A button" className="customClass" />,
         );
         assert(button.hasClass("Button"));
         assert(button.hasClass(`Button--${size}`));

@@ -7,17 +7,19 @@ import "./Stepper.less";
 
 const propTypes = {
   className: PropTypes.string,
-  steps: PropTypes.arrayOf(PropTypes.shape({
-    className: PropTypes.string,
-    title: PropTypes.string,
-    description: PropTypes.node,
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    warning: PropTypes.string,
-    state: PropTypes.oneOf(["INCOMPLETE", "SUCCESS", "WARNING"]),
-    current: PropTypes.bool,
-    optional: PropTypes.bool,
-    onClick: PropTypes.func,
-  })).isRequired,
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      className: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.node,
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      warning: PropTypes.string,
+      state: PropTypes.oneOf(["INCOMPLETE", "SUCCESS", "WARNING"]),
+      current: PropTypes.bool,
+      optional: PropTypes.bool,
+      onClick: PropTypes.func,
+    }),
+  ).isRequired,
   currentStepID: PropTypes.string.isRequired,
   onStepClick: PropTypes.func,
 };
@@ -31,10 +33,10 @@ export default class Stepper extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const {currentStepID, steps, onStepClick, className} = this.props;
+    const { currentStepID, steps, onStepClick, className } = this.props;
     return (
       <ul className={cssClass.STEPS_DISPLAY}>
-        {steps.map((step, idx) =>
+        {steps.map((step, idx) => (
           <li key={step.id}>
             <Step
               className={className}
@@ -49,7 +51,7 @@ export default class Stepper extends React.PureComponent {
               onClick={onStepClick}
             />
           </li>
-        )}
+        ))}
       </ul>
     );
   }

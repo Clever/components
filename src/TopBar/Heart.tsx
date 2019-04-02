@@ -17,7 +17,7 @@ export default class Heart extends React.PureComponent {
   static propTypes = propTypes;
 
   render() {
-    const {className} = this.props;
+    const { className } = this.props;
 
     return (
       <svg

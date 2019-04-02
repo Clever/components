@@ -1,6 +1,5 @@
 @import (reference) "../less/utilities";
 
-
 @paneBorderWidth: @borderWidthS;
 
 @linkPaddingLeft: @size_m;
@@ -11,16 +10,9 @@
 @linkArrowWidth: @size_m;
 @linkArrowMarginRight: @size_xs;
 @linkPaddingRight: 0;
-@paneWidth:
-  @linkPaddingLeft
-  + @linkIconWidth
-  + @linkIconMarginRight
-  + @linkLabelWidth
-  + @linkArrowMarginLeft
-  + @linkArrowWidth
-  + @linkArrowMarginRight
-  + @linkPaddingRight
-  + @paneBorderWidth;
+@paneWidth: @linkPaddingLeft + @linkIconWidth + @linkIconMarginRight + @linkLabelWidth +
+  @linkArrowMarginLeft + @linkArrowWidth + @linkArrowMarginRight + @linkPaddingRight +
+  @paneBorderWidth;
 
 @linkLabelWidthNoArrow: @linkLabelWidth + @linkArrowMarginLeft + @linkArrowWidth;
 
@@ -32,13 +24,7 @@
 @linkArrowWidthCollapsed: @size_m;
 @linkArrowMarginRightCollapsed: 0;
 @linkPaddingRightCollapsed: 0;
-@paneWidthCollapsed:
-  @linkPaddingLeftCollapsed
-  + @linkIconWidthCollapsed
-  + @linkIconMarginRightCollapsed
-  + @linkLabelWidthCollapsed
-  + @linkArrowMarginLeftCollapsed
-  + @linkArrowWidthCollapsed
-  + @linkArrowMarginRightCollapsed
-  + @linkPaddingRightCollapsed
-  + @paneBorderWidth;
+@paneWidthCollapsed: @linkPaddingLeftCollapsed + @linkIconWidthCollapsed +
+  @linkIconMarginRightCollapsed + @linkLabelWidthCollapsed + @linkArrowMarginLeftCollapsed +
+  @linkArrowWidthCollapsed + @linkArrowMarginRightCollapsed + @linkPaddingRightCollapsed +
+  @paneBorderWidth;

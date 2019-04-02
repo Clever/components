@@ -1,13 +1,13 @@
 import assert from "assert";
 import React from "react";
 import sinon from "sinon";
-import {shallow, mount} from "enzyme";
+import { shallow, mount } from "enzyme";
 import _ from "lodash";
 
-import {Wizard} from "../src";
+import { Wizard } from "../src";
 import WizardStep from "../src/Wizard/WizardStep";
 
-class TestComponent extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class TestComponent extends React.PureComponent {
   render() {
     return <div />;
   }
@@ -34,21 +34,23 @@ describe("WizardStep", () => {
       },
     ];
 
-    testCases.forEach(({title, description, selector}) => {
+    testCases.forEach(({ title, description, selector }) => {
       it(`displays ${title} descriptions`, () => {
-        const renderedStep = mount(<WizardStep
-          title="title"
-          description={description}
-          Component={() => <div />}
-          currentStep={0}
-          totalSteps={1}
-          updatePercentComplete={() => {}}
-          calculatePercentComplete={() => {}}
-          percentComplete={0}
-          setWizardState={() => {}}
-          wizardState={{}}
-          stepNumberInTitle
-        />);
+        const renderedStep = mount(
+          <WizardStep
+            title="title"
+            description={description}
+            Component={() => <div />}
+            currentStep={0}
+            totalSteps={1}
+            updatePercentComplete={() => {}}
+            calculatePercentComplete={() => {}}
+            percentComplete={0}
+            setWizardState={() => {}}
+            wizardState={{}}
+            stepNumberInTitle
+          />,
+        );
 
         const descriptionMatches = renderedStep.find(selector);
         assert.equal(descriptionMatches.length, description === null ? 0 : 1);
@@ -79,21 +81,23 @@ describe("WizardStep", () => {
       },
     ];
 
-    testCases.forEach(({title, help, selector}) => {
+    testCases.forEach(({ title, help, selector }) => {
       it(`displays ${title} help`, () => {
-        const renderedStep = mount(<WizardStep
-          title="title"
-          help={help}
-          Component={() => <div />}
-          currentStep={0}
-          totalSteps={1}
-          updatePercentComplete={() => {}}
-          calculatePercentComplete={() => {}}
-          percentComplete={0}
-          setWizardState={() => {}}
-          wizardState={{}}
-          stepNumberInTitle
-        />);
+        const renderedStep = mount(
+          <WizardStep
+            title="title"
+            help={help}
+            Component={() => <div />}
+            currentStep={0}
+            totalSteps={1}
+            updatePercentComplete={() => {}}
+            calculatePercentComplete={() => {}}
+            percentComplete={0}
+            setWizardState={() => {}}
+            wizardState={{}}
+            stepNumberInTitle
+          />,
+        );
 
         const helpMatches = renderedStep.find(selector);
         assert.equal(helpMatches.length, help === null ? 0 : 1);
@@ -109,18 +113,20 @@ describe("WizardStep", () => {
       const totalSteps = 10;
       const title = "My super cool title";
       for (let curStep = 0; curStep < totalSteps; ++curStep) {
-        const renderedStep = mount(<WizardStep
-          title={title}
-          Component={() => <div />}
-          currentStep={curStep}
-          totalSteps={totalSteps}
-          updatePercentComplete={() => {}}
-          calculatePercentComplete={() => {}}
-          percentComplete={0}
-          setWizardState={() => {}}
-          wizardState={{}}
-          stepNumberInTitle
-        />);
+        const renderedStep = mount(
+          <WizardStep
+            title={title}
+            Component={() => <div />}
+            currentStep={curStep}
+            totalSteps={totalSteps}
+            updatePercentComplete={() => {}}
+            calculatePercentComplete={() => {}}
+            percentComplete={0}
+            setWizardState={() => {}}
+            wizardState={{}}
+            stepNumberInTitle
+          />,
+        );
         const headingMatch = renderedStep.find("h1");
         assert.equal(headingMatch.length, 1);
         assert.equal(headingMatch.text(), `Step ${curStep + 1}: ${title}`);
@@ -129,39 +135,43 @@ describe("WizardStep", () => {
 
     it("omits step title prefix if stepNumberInTitle is set to false", () => {
       const title = "My super cool title";
-      const renderedStep = mount(<WizardStep
-        title={title}
-        Component={() => <div />}
-        currentStep={3}
-        totalSteps={7}
-        updatePercentComplete={() => {}}
-        calculatePercentComplete={() => {}}
-        percentComplete={0}
-        setWizardState={() => {}}
-        wizardState={{}}
-        stepNumberInTitle={false}
-      />);
+      const renderedStep = mount(
+        <WizardStep
+          title={title}
+          Component={() => <div />}
+          currentStep={3}
+          totalSteps={7}
+          updatePercentComplete={() => {}}
+          calculatePercentComplete={() => {}}
+          percentComplete={0}
+          setWizardState={() => {}}
+          wizardState={{}}
+          stepNumberInTitle={false}
+        />,
+      );
       const headingMatch = renderedStep.find("h1");
       assert.equal(headingMatch.length, 1);
       assert.equal(headingMatch.text(), title);
     });
 
     it("renders the component with setWizardState and wizardState", () => {
-      const testState = {test: "data"};
-      const testModification = {newTest: "newData"};
+      const testState = { test: "data" };
+      const testModification = { newTest: "newData" };
       const spySetWizardState = sinon.spy();
-      const renderedStep = mount(<WizardStep
-        title="title"
-        Component={TestComponent}
-        currentStep={0}
-        totalSteps={2}
-        updatePercentComplete={() => {}}
-        calculatePercentComplete={() => {}}
-        percentComplete={0}
-        setWizardState={spySetWizardState}
-        wizardState={testState}
-        stepNumberInTitle
-      />);
+      const renderedStep = mount(
+        <WizardStep
+          title="title"
+          Component={TestComponent}
+          currentStep={0}
+          totalSteps={2}
+          updatePercentComplete={() => {}}
+          calculatePercentComplete={() => {}}
+          percentComplete={0}
+          setWizardState={spySetWizardState}
+          wizardState={testState}
+          stepNumberInTitle
+        />,
+      );
       const componentMatch = renderedStep.find(TestComponent);
       assert.equal(componentMatch.length, 1);
       assert(componentMatch.prop("setWizardState"));
@@ -177,18 +187,20 @@ describe("WizardStep", () => {
     it("is modified if the current step is the last one", () => {
       for (let totalSteps = 1; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = mount(<WizardStep
-          title="title"
-          Component={TestComponent}
-          currentStep={totalSteps - 1}
-          totalSteps={totalSteps}
-          updatePercentComplete={spyUpdatePercentComplete}
-          calculatePercentComplete={() => 0}
-          percentComplete={0}
-          setWizardState={() => {}}
-          wizardState={{}}
-          stepNumberInTitle
-        />);
+        const renderedStep = mount(
+          <WizardStep
+            title="title"
+            Component={TestComponent}
+            currentStep={totalSteps - 1}
+            totalSteps={totalSteps}
+            updatePercentComplete={spyUpdatePercentComplete}
+            calculatePercentComplete={() => 0}
+            percentComplete={0}
+            setWizardState={() => {}}
+            wizardState={{}}
+            stepNumberInTitle
+          />,
+        );
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
         assert(componentMatch.prop("setWizardState"));
@@ -201,18 +213,20 @@ describe("WizardStep", () => {
     it("is modified if the new percentage decreases", () => {
       for (let totalSteps = 2; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = mount(<WizardStep
-          title="title"
-          Component={TestComponent}
-          currentStep={totalSteps - 2}
-          totalSteps={totalSteps}
-          updatePercentComplete={spyUpdatePercentComplete}
-          calculatePercentComplete={() => 0}
-          percentComplete={0.5}
-          setWizardState={() => {}}
-          wizardState={{}}
-          stepNumberInTitle
-        />);
+        const renderedStep = mount(
+          <WizardStep
+            title="title"
+            Component={TestComponent}
+            currentStep={totalSteps - 2}
+            totalSteps={totalSteps}
+            updatePercentComplete={spyUpdatePercentComplete}
+            calculatePercentComplete={() => 0}
+            percentComplete={0.5}
+            setWizardState={() => {}}
+            wizardState={{}}
+            stepNumberInTitle
+          />,
+        );
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
         assert(componentMatch.prop("setWizardState"));
@@ -225,18 +239,20 @@ describe("WizardStep", () => {
     it("is not modified if the percentage increases and it is not the last step", () => {
       for (let totalSteps = 2; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = mount(<WizardStep
-          title="title"
-          Component={TestComponent}
-          currentStep={totalSteps - 2}
-          totalSteps={totalSteps}
-          updatePercentComplete={spyUpdatePercentComplete}
-          calculatePercentComplete={() => 0.5}
-          percentComplete={0.25}
-          setWizardState={() => {}}
-          wizardState={{}}
-          stepNumberInTitle
-        />);
+        const renderedStep = mount(
+          <WizardStep
+            title="title"
+            Component={TestComponent}
+            currentStep={totalSteps - 2}
+            totalSteps={totalSteps}
+            updatePercentComplete={spyUpdatePercentComplete}
+            calculatePercentComplete={() => 0.5}
+            percentComplete={0.25}
+            setWizardState={() => {}}
+            wizardState={{}}
+            stepNumberInTitle
+          />,
+        );
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
         assert(componentMatch.prop("setWizardState"));
@@ -249,18 +265,20 @@ describe("WizardStep", () => {
     it("is not modified if the percentage stays the same and it is not the last step", () => {
       for (let totalSteps = 2; totalSteps < 10; ++totalSteps) {
         const spyUpdatePercentComplete = sinon.spy();
-        const renderedStep = mount(<WizardStep
-          title="title"
-          Component={TestComponent}
-          currentStep={totalSteps - 2}
-          totalSteps={totalSteps}
-          updatePercentComplete={spyUpdatePercentComplete}
-          calculatePercentComplete={() => 0.5}
-          percentComplete={0.5}
-          setWizardState={() => {}}
-          wizardState={{}}
-          stepNumberInTitle
-        />);
+        const renderedStep = mount(
+          <WizardStep
+            title="title"
+            Component={TestComponent}
+            currentStep={totalSteps - 2}
+            totalSteps={totalSteps}
+            updatePercentComplete={spyUpdatePercentComplete}
+            calculatePercentComplete={() => 0.5}
+            percentComplete={0.5}
+            setWizardState={() => {}}
+            wizardState={{}}
+            stepNumberInTitle
+          />,
+        );
         const componentMatch = renderedStep.find(TestComponent);
         assert.equal(componentMatch.length, 1);
         assert(componentMatch.prop("setWizardState"));
@@ -288,14 +306,16 @@ describe("Wizard", () => {
       },
     ];
 
-    testCases.forEach(({title, description, selector}) => {
+    testCases.forEach(({ title, description, selector }) => {
       it(`displays ${title} descriptions`, () => {
-        const renderedWizard = shallow(<Wizard
-          title="title"
-          description={description}
-          onComplete={() => {}}
-          steps={[{title: "step", validate: () => {}, component: TestComponent}]}
-        />);
+        const renderedWizard = shallow(
+          <Wizard
+            title="title"
+            description={description}
+            onComplete={() => {}}
+            steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          />,
+        );
 
         const descriptionMatches = renderedWizard.find(selector);
         assert.equal(descriptionMatches.length, 1);
@@ -306,15 +326,17 @@ describe("Wizard", () => {
 
   describe("navigation", () => {
     it("updates the displayed step upon next button click", () => {
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[
-          {title: "step1", validate: () => true, component: TestComponent},
-          {title: "step2", validate: () => true, component: TestComponent},
-        ]}
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[
+            { title: "step1", validate: () => true, component: TestComponent },
+            { title: "step2", validate: () => true, component: TestComponent },
+          ]}
+        />,
+      );
       const nextBtnMatch = renderedWizard.find(".Wizard--nextButton");
       assert.equal(nextBtnMatch.length, 1);
       assert.strictEqual(nextBtnMatch.prop("disabled"), false);
@@ -324,25 +346,29 @@ describe("Wizard", () => {
     });
 
     it("doesn't show the prev button if first step", () => {
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[{title: "step", validate: () => {}, component: TestComponent}]}
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+        />,
+      );
       assert.equal(renderedWizard.find(".Wizard--prevButton").length, 0);
     });
 
     it("updates the displayed step upon prev button click", () => {
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[
-          {title: "step1", validate: () => true, component: TestComponent},
-          {title: "step2", validate: () => true, component: TestComponent},
-        ]}
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[
+            { title: "step1", validate: () => true, component: TestComponent },
+            { title: "step2", validate: () => true, component: TestComponent },
+          ]}
+        />,
+      );
       const nextBtnMatch = renderedWizard.find(".Wizard--nextButton");
       assert.equal(nextBtnMatch.length, 1);
 
@@ -360,16 +386,23 @@ describe("Wizard", () => {
     });
 
     it("handles skipping steps", () => {
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[
-          {title: "step1", validate: () => false, component: TestComponent},
-          {title: "step2", validate: () => false, shouldSkipStep: () => true, component: TestComponent},
-          {title: "step3", validate: () => false, component: TestComponent},
-        ]}
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[
+            { title: "step1", validate: () => false, component: TestComponent },
+            {
+              title: "step2",
+              validate: () => false,
+              shouldSkipStep: () => true,
+              component: TestComponent,
+            },
+            { title: "step3", validate: () => false, component: TestComponent },
+          ]}
+        />,
+      );
       const nextBtnMatch = renderedWizard.find(".Wizard--nextButton");
       assert.equal(nextBtnMatch.length, 1);
 
@@ -386,15 +419,16 @@ describe("Wizard", () => {
       assert.equal(newPrevBtnMatch.length, 0);
     });
 
-
     it("doesn't update the displayed step upon next button click if last step, calls onComplete", () => {
       const onCompleteSpy = sinon.spy();
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={onCompleteSpy}
-        steps={[{title: "step", validate: () => true, component: TestComponent}]}
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={onCompleteSpy}
+          steps={[{ title: "step", validate: () => true, component: TestComponent }]}
+        />,
+      );
       const nextBtnMatch = renderedWizard.find(".Wizard--nextButton");
       assert.equal(nextBtnMatch.length, 1);
       assert(!onCompleteSpy.called);
@@ -405,15 +439,17 @@ describe("Wizard", () => {
 
     it("updates the percentage complete upon navigation", () => {
       let valid = false;
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[
-          {title: "step1", validate: () => valid, component: TestComponent},
-          {title: "step2", validate: () => false, component: TestComponent},
-        ]}
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[
+            { title: "step1", validate: () => valid, component: TestComponent },
+            { title: "step2", validate: () => false, component: TestComponent },
+          ]}
+        />,
+      );
 
       assert.strictEqual(renderedWizard.state("percentComplete"), 0);
       valid = true;
@@ -430,17 +466,14 @@ describe("Wizard", () => {
   describe("sidebar", () => {
     it("displays all steps in the sidebar", () => {
       const steps = [
-        {title: "step1", validate: () => false, component: TestComponent},
-        {title: "step2", validate: () => false, component: TestComponent},
-        {title: "step3", validate: () => false, component: TestComponent},
-        {title: "step4", validate: () => false, component: TestComponent},
+        { title: "step1", validate: () => false, component: TestComponent },
+        { title: "step2", validate: () => false, component: TestComponent },
+        { title: "step3", validate: () => false, component: TestComponent },
+        { title: "step4", validate: () => false, component: TestComponent },
       ];
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={steps}
-      />);
+      const renderedWizard = shallow(
+        <Wizard title="title" description="description" onComplete={() => {}} steps={steps} />,
+      );
 
       const stepMatches = renderedWizard.find(".Wizard--stepsDisplay li");
       assert.equal(stepMatches.length, steps.length);
@@ -451,17 +484,14 @@ describe("Wizard", () => {
 
     it("displays whether or not steps are valid in the sidebar", () => {
       const steps = [
-        {title: "step1", validate: () => false, component: TestComponent},
-        {title: "step2", validate: () => true, component: TestComponent},
-        {title: "step3", validate: () => true, component: TestComponent},
-        {title: "step4", validate: () => false, component: TestComponent},
+        { title: "step1", validate: () => false, component: TestComponent },
+        { title: "step2", validate: () => true, component: TestComponent },
+        { title: "step3", validate: () => true, component: TestComponent },
+        { title: "step4", validate: () => false, component: TestComponent },
       ];
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={steps}
-      />);
+      const renderedWizard = shallow(
+        <Wizard title="title" description="description" onComplete={() => {}} steps={steps} />,
+      );
 
       const stepMatches = renderedWizard.find(".Wizard--stepsDisplay li");
       assert.equal(stepMatches.length, steps.length);
@@ -477,26 +507,29 @@ describe("Wizard", () => {
 
     it("displays the current step in the sidebar", () => {
       const steps = [
-        {title: "step1", validate: () => false, component: TestComponent},
-        {title: "step2", validate: () => true, component: TestComponent},
-        {title: "step3", validate: () => true, component: TestComponent},
-        {title: "step4", validate: () => false, component: TestComponent},
+        { title: "step1", validate: () => false, component: TestComponent },
+        { title: "step2", validate: () => true, component: TestComponent },
+        { title: "step3", validate: () => true, component: TestComponent },
+        { title: "step4", validate: () => false, component: TestComponent },
       ];
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={steps}
-      />);
+      const renderedWizard = shallow(
+        <Wizard title="title" description="description" onComplete={() => {}} steps={steps} />,
+      );
 
       for (let curStep = 0; curStep < steps.length; ++curStep) {
         const stepMatches = renderedWizard.find(".Wizard--stepsDisplay li");
         assert.strictEqual(stepMatches.length, steps.length);
         assert.strictEqual(renderedWizard.find(".Wizard--stepsDisplay--currentStep").length, 1);
         assert.strictEqual(
-          renderedWizard.find(".Wizard--stepsDisplay--step")
-          .not(".Wizard--stepsDisplay--currentStep").length, 3);
-        assert.strictEqual(stepMatches.at(curStep).find(".Wizard--stepsDisplay--currentStep").length, 1);
+          renderedWizard
+            .find(".Wizard--stepsDisplay--step")
+            .not(".Wizard--stepsDisplay--currentStep").length,
+          3,
+        );
+        assert.strictEqual(
+          stepMatches.at(curStep).find(".Wizard--stepsDisplay--currentStep").length,
+          1,
+        );
 
         const nextButton = renderedWizard.find(".Wizard--nextButton");
         assert.strictEqual(nextButton.length, 1);
@@ -508,9 +541,15 @@ describe("Wizard", () => {
         assert.strictEqual(stepMatches.length, steps.length);
         assert.strictEqual(renderedWizard.find(".Wizard--stepsDisplay--currentStep").length, 1);
         assert.strictEqual(
-          renderedWizard.find(".Wizard--stepsDisplay--step")
-          .not(".Wizard--stepsDisplay--currentStep").length, 3);
-        assert.strictEqual(stepMatches.at(curStep).find(".Wizard--stepsDisplay--currentStep").length, 1);
+          renderedWizard
+            .find(".Wizard--stepsDisplay--step")
+            .not(".Wizard--stepsDisplay--currentStep").length,
+          3,
+        );
+        assert.strictEqual(
+          stepMatches.at(curStep).find(".Wizard--stepsDisplay--currentStep").length,
+          1,
+        );
 
         if (curStep !== 0) {
           const prevButton = renderedWizard.find(".Wizard--prevButton");
@@ -522,21 +561,23 @@ describe("Wizard", () => {
 
     it("makes sidebar steps clickable if the seekable flag is present", () => {
       const steps = [
-        {title: "step1", validate: () => false, component: TestComponent},
-        {title: "step2", validate: () => true, component: TestComponent},
-        {title: "step3", validate: () => true, component: TestComponent},
-        {title: "step4", validate: () => false, component: TestComponent},
+        { title: "step1", validate: () => false, component: TestComponent },
+        { title: "step2", validate: () => true, component: TestComponent },
+        { title: "step3", validate: () => true, component: TestComponent },
+        { title: "step4", validate: () => false, component: TestComponent },
       ];
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={steps}
-        seekable
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={steps}
+          seekable
+        />,
+      );
 
       const stepMatches = renderedWizard.find(
-        ".Wizard--stepsDisplay li Button.Wizard--stepsDisplay--stepButton"
+        ".Wizard--stepsDisplay li Button.Wizard--stepsDisplay--stepButton",
       );
       assert.equal(stepMatches.length, steps.length);
       for (let i = 0; i < steps.length; ++i) {
@@ -558,14 +599,16 @@ describe("Wizard", () => {
           buttonValue: "btn2",
         },
       ];
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[{title: "step", validate: () => {}, component: TestComponent}]}
-        wizardButtons={wizardButtons}
-        seekable
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          wizardButtons={wizardButtons}
+          seekable
+        />,
+      );
 
       const controlsMatched = renderedWizard.find(".Wizard--controls Button");
       assert.strictEqual(controlsMatched.length, wizardButtons.length);
@@ -576,13 +619,15 @@ describe("Wizard", () => {
     });
 
     it("doesn't display wizardButtons if not present", () => {
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[{title: "step", validate: () => {}, component: TestComponent}]}
-        seekable
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          seekable
+        />,
+      );
 
       const controlsMatched = renderedWizard.find(".Wizard--controls Button");
       assert.strictEqual(controlsMatched.length, 0);
@@ -599,14 +644,16 @@ describe("Wizard", () => {
           buttonValue: "btn2",
         },
       ];
-      const renderedWizard = shallow(<Wizard
-        title="title"
-        description="description"
-        onComplete={() => {}}
-        steps={[{title: "step", validate: () => {}, component: TestComponent}]}
-        wizardButtons={wizardButtons}
-        seekable
-      />);
+      const renderedWizard = shallow(
+        <Wizard
+          title="title"
+          description="description"
+          onComplete={() => {}}
+          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          wizardButtons={wizardButtons}
+          seekable
+        />,
+      );
 
       const controlsMatched = renderedWizard.find(".Wizard--controls Button");
       assert.strictEqual(controlsMatched.length, wizardButtons.length);

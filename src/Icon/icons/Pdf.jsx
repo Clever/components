@@ -15,18 +15,9 @@ export default function Pdf(props) {
       <title>pdf</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="pdf">
-          <g
-            id="files-48px-outline-3_pdf"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="files-48px-outline-3_pdf" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M39,21 L39,12 L27,0 L6.991155,0 C5.89147046,0 5,0.90234375 5,1.99456145 L5,21"
@@ -54,14 +45,7 @@ export default function Pdf(props) {
                 strokeLinejoin="round"
                 fill="#FFFFFF"
               />
-              <rect
-                id="Rectangle-5"
-                fill="#FD8874"
-                x={1}
-                y={22}
-                width={42}
-                height={16}
-              />
+              <rect id="Rectangle-5" fill="#FD8874" x={1} y={22} width={42} height={16} />
               <path
                 d="M5,16 L1.41942501,19.580575 C0.635498224,20.3645018 0,21.8926228 0,22.9950893 L0,37.0049107 C0,38.1067681 0.898855112,39 2.00492334,39 L41.9950767,39 C43.1023652,39 44,38.1073772 44,37.0049107 L44,22.9950893 C44,21.8932319 43.3667465,20.3667465 42.580575,19.580575 L39,16"
                 id="Shape"

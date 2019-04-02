@@ -1,7 +1,6 @@
 const _ = require("lodash");
 const fs = require("fs");
 
-
 const FILEPATH = "src/less/";
 const SIZING_FILENAME = "sizing.less";
 const SPACING_FILENAME = "spacing.less";

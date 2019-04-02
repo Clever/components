@@ -1,18 +1,17 @@
 import _ from "lodash";
 import classnames from "classnames";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
 import Example from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Grid} from "src";
+import { Grid } from "src";
 
 import "./GridView.less";
 
-
 export default class GridView extends PureComponent {
   renderCol(spans, className) {
-    const {Col, Size} = Grid;
+    const { Col, Size } = Grid;
     let content;
     if (typeof spans === "number") {
       content = `${Size.DEFAULT}: ${spans}`;
@@ -30,34 +29,41 @@ export default class GridView extends PureComponent {
   }
 
   render() {
-    const {Col, Row, Size} = Grid;
-    const {cssClass} = GridView;
+    const { Col, Row, Size } = Grid;
+    const { cssClass } = GridView;
 
     return (
       <View className={cssClass.CONTAINER} title="Grid" subtitle="Flexible, 12-Column Grid Layout">
+        <p>12-column grid component for consistent, simple and flexible layouts.</p>
         <p>
-          12-column grid component for consistent, simple and flexible layouts.
+          The <code>Grid</code> is a single column of any number of <code>Grid.Rows</code>, which
+          contain any number of <code>Grid.Cols</code>.
         </p>
         <p>
-          The <code>Grid</code> is a single column of any number of <code>Grid.Rows</code>, which contain
-          any number of <code>Grid.Cols</code>.
+          <code>Grid.Cols</code> can have varying sizes, determined by the values of their span
+          prop. A single <code>Grid.Col</code> can have different span lengths for different
+          viewport sizes to enable layouts that update dynamically based on available space in the
+          viewport.
         </p>
         <p>
-          <code>Grid.Cols</code> can have varying sizes, determined by the values of their span prop. A
-          single <code>Grid.Col</code> can have different span lengths for different viewport sizes to
-          enable layouts that update dynamically based on available space in the viewport.
-        </p>
-        <p>
-          <strong>NOTE:</strong> A row of <code>Grid.Cols</code> is guaranteed to fit on a single line only
-          if the sum of the spans add up to 12 in the current viewport. Any additional <code>Grid.Cols</code>
+          <strong>NOTE:</strong> A row of <code>Grid.Cols</code> is guaranteed to fit on a single
+          line only if the sum of the spans add up to 12 in the current viewport. Any additional{" "}
+          <code>Grid.Cols</code>
           will wrap onto the following line.
         </p>
 
         <Example title="Single Layout">
           <Grid className="outlined resizable">
-            <Row grow>{this.renderCol(2)}{this.renderCol(7)}{this.renderCol(3)}</Row>
             <Row grow>
-              {this.renderCol(2)}{this.renderCol(2)}{this.renderCol(5)}{this.renderCol(3)}
+              {this.renderCol(2)}
+              {this.renderCol(7)}
+              {this.renderCol(3)}
+            </Row>
+            <Row grow>
+              {this.renderCol(2)}
+              {this.renderCol(2)}
+              {this.renderCol(5)}
+              {this.renderCol(3)}
             </Row>
             <Row grow>{this.renderCol(12)}</Row>
           </Grid>
@@ -108,25 +114,41 @@ export default class GridView extends PureComponent {
                 [Size.L]: 3,
               })}
             </Row>
-            <Row grow>{this.renderCol(6)}{this.renderCol(6)}</Row>
+            <Row grow>
+              {this.renderCol(6)}
+              {this.renderCol(6)}
+            </Row>
             <Row>{this.renderCol(12)}</Row>
           </Grid>
         </Example>
 
         <Example title="Nested Grids">
-          <Grid className="items--center outlined resizable" style={{height: "400px", minWidth: "550px"}}>
-            <Row className="shaded outlined" style={{marginBottom: "1rem"}}>
+          <Grid
+            className="items--center outlined resizable"
+            style={{ height: "400px", minWidth: "550px" }}
+          >
+            <Row className="shaded outlined" style={{ marginBottom: "1rem" }}>
               <Col span={12} className="flexbox justify--center">
-                <Grid style={{padding: 0, maxWidth: "700px"}}>
-                  <Row>{this.renderCol(2)}{this.renderCol(7)}{this.renderCol(3)}</Row>
+                <Grid style={{ padding: 0, maxWidth: "700px" }}>
+                  <Row>
+                    {this.renderCol(2)}
+                    {this.renderCol(7)}
+                    {this.renderCol(3)}
+                  </Row>
                 </Grid>
               </Col>
             </Row>
             <Row className="shaded outlined" grow>
               <Col span={12} className="flexbox justify--center self--stretch">
-                <Grid style={{padding: 0, maxWidth: "700px"}} className="self--stretch">
-                  <Row>{this.renderCol(3)}{this.renderCol(9)}</Row>
-                  <Row grow>{this.renderCol(3, "flexbox")}{this.renderCol(9, "flexbox")}</Row>
+                <Grid style={{ padding: 0, maxWidth: "700px" }} className="self--stretch">
+                  <Row>
+                    {this.renderCol(3)}
+                    {this.renderCol(9)}
+                  </Row>
+                  <Row grow>
+                    {this.renderCol(3, "flexbox")}
+                    {this.renderCol(9, "flexbox")}
+                  </Row>
                   <Row>{this.renderCol(12)}</Row>
                 </Grid>
               </Col>
@@ -160,7 +182,8 @@ export default class GridView extends PureComponent {
             {
               name: "wrapperComponent",
               type: "Any",
-              description: "The tagname or component class for the wrapper component to render for the grid",
+              description:
+                "The tagname or component class for the wrapper component to render for the grid",
               defaultValue: "div",
               optional: true,
             },
@@ -186,15 +209,17 @@ export default class GridView extends PureComponent {
             {
               name: "grow",
               type: "Boolean",
-              description: "Fluidly grow the row to fill any available verical space. The parent Grid should have an"
-              + " have an explicit height set for this to work.",
+              description:
+                "Fluidly grow the row to fill any available verical space. The parent Grid should have an" +
+                " have an explicit height set for this to work.",
               defaultValue: "div",
               optional: true,
             },
             {
               name: "wrapperComponent",
               type: "Any",
-              description: "The tagname or component class for the wrapper component to render for the row",
+              description:
+                "The tagname or component class for the wrapper component to render for the row",
               defaultValue: "div",
               optional: true,
             },
@@ -220,15 +245,17 @@ export default class GridView extends PureComponent {
             {
               name: "span",
               type: "Number or Map<Grid.Size,Number>",
-              description: "The number of columns (1-12) that this column spans. Can optionally as a map of viewport "
-              + "size to column span in order to dynamically update the grid based on the user's viewport width.",
+              description:
+                "The number of columns (1-12) that this column spans. Can optionally as a map of viewport " +
+                "size to column span in order to dynamically update the grid based on the user's viewport width.",
               defaultValue: "1",
               optional: true,
             },
             {
               name: "wrapperComponent",
               type: "Any",
-              description: "The tagname or component class for the wrapper component to render for the column",
+              description:
+                "The tagname or component class for the wrapper component to render for the column",
               defaultValue: "div",
               optional: true,
             },

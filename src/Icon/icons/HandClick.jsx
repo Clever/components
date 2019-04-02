@@ -25,10 +25,7 @@ export default function HandClick(props) {
         strokeLinejoin="round"
       >
         <g id="hand-click" strokeWidth={2} stroke="#62748C">
-          <g
-            id="design-48px-outline-2_cursor-pointer"
-            transform="translate(5.000000, 1.000000)"
-          >
+          <g id="design-48px-outline-2_cursor-pointer" transform="translate(5.000000, 1.000000)">
             <g id="Group">
               <path d="M7,20 L7,26" id="Shape" />
               <path

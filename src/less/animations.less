@@ -10,11 +10,11 @@
 @timingSlowly: 400ms;
 
 // timing function variables
-@motionBounce: cubic-bezier(0.710, -0.360, 0.225, 1.375);
-@motionSmooth: cubic-bezier(0.785, 0.135, 0.150, 0.860);
-@motionSnappy: cubic-bezier(0.770, 0.000, 0.175, 1.000);
-@motionLinear: cubic-bezier(0.250, 0.250, 0.750, 0.750);
-@motionWindUp: cubic-bezier(1.000, -0.530, 0.405, 1.425);
+@motionBounce: cubic-bezier(0.71, -0.36, 0.225, 1.375);
+@motionSmooth: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+@motionSnappy: cubic-bezier(0.77, 0, 0.175, 1);
+@motionLinear: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+@motionWindUp: cubic-bezier(1, -0.53, 0.405, 1.425);
 
 .timingInstantly {
   transition-duration: @timingInstantly;
@@ -33,7 +33,7 @@
 }
 
 .timingSlowly {
-  transition-duration: @timingSlowly
+  transition-duration: @timingSlowly;
 }
 
 .delayNone {
@@ -48,7 +48,7 @@
   transition-delay: @timingQuickly;
 }
 
-.delayMedium{
+.delayMedium {
   transition-delay: @timingPromptly;
 }
 

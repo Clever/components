@@ -7,7 +7,7 @@ const cssClass = {
 
 export default class CheckMark extends React.PureComponent {
   render() {
-    const {className} = this.props;
+    const { className } = this.props;
 
     return (
       <svg

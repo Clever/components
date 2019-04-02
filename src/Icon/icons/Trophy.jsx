@@ -25,10 +25,7 @@ export default function Trophy(props) {
         strokeLinejoin="round"
       >
         <g id="trophy" stroke="#A6A05A" strokeWidth={2} fill="#FFF49A">
-          <g
-            id="sport-48px-outline_trophy"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="sport-48px-outline_trophy" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M8.5799513,20 L8.5799427,20 C3.8413711,20 0,16.1586285 0,11.4200573 L0,4 L8,4"

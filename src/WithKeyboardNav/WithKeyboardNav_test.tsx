@@ -1,5 +1,5 @@
 import * as React from "react";
-import {mount} from "enzyme";
+import { mount } from "enzyme";
 
 import KeyCode from "../utils/KeyCode";
 import WithKeyboardNav from "./WithKeyboardNav";
@@ -33,7 +33,7 @@ describe("WithKeyboardNav", () => {
 
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_RIGHT});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_RIGHT });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[2]);
   });
 
@@ -46,7 +46,7 @@ describe("WithKeyboardNav", () => {
 
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_DOWN});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_DOWN });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[2]);
   });
 
@@ -59,7 +59,7 @@ describe("WithKeyboardNav", () => {
 
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_LEFT});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_LEFT });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[0]);
   });
 
@@ -72,7 +72,7 @@ describe("WithKeyboardNav", () => {
 
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_UP});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_UP });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[0]);
   });
 
@@ -83,10 +83,10 @@ describe("WithKeyboardNav", () => {
       </WithKeyboardNav>,
     );
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.TAB});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.TAB });
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.TAB, shiftKey: true});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.TAB, shiftKey: true });
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
@@ -104,7 +104,7 @@ describe("WithKeyboardNav", () => {
 
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.TAB});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.TAB });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[2]);
   });
 
@@ -122,7 +122,7 @@ describe("WithKeyboardNav", () => {
 
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.TAB, shiftKey: true});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.TAB, shiftKey: true });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[0]);
   });
 
@@ -133,7 +133,7 @@ describe("WithKeyboardNav", () => {
       </WithKeyboardNav>,
     );
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_RIGHT});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_RIGHT });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[0]);
   });
 
@@ -144,7 +144,7 @@ describe("WithKeyboardNav", () => {
       </WithKeyboardNav>,
     );
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_LEFT});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_LEFT });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[2]);
   });
 
@@ -161,23 +161,23 @@ describe("WithKeyboardNav", () => {
       </WithKeyboardNav>,
     );
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_RIGHT});
-    simulateKeyDownEvent(wrapper, {key: KeyCode.ARROW_LEFT});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_RIGHT });
+    simulateKeyDownEvent(wrapper, { key: KeyCode.ARROW_LEFT });
     expect(onChangeMock).not.toHaveBeenCalled();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.J});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.J });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[0]);
 
     onChangeMock.mockReset();
 
-    simulateKeyDownEvent(wrapper, {key: KeyCode.K});
+    simulateKeyDownEvent(wrapper, { key: KeyCode.K });
     expect(onChangeMock).toHaveBeenCalledWith(ITEM_IDS[2]);
   });
 });
 
-function simulateKeyDownEvent(wrapper, {key, shiftKey = false}) {
+function simulateKeyDownEvent(wrapper, { key, shiftKey = false }) {
   wrapper
     .find("div")
     .getDOMNode()
-    .dispatchEvent(new KeyboardEvent("keydown", {key, shiftKey}));
+    .dispatchEvent(new KeyboardEvent("keydown", { key, shiftKey }));
 }

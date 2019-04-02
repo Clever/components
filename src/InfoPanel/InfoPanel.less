@@ -16,7 +16,7 @@
       padding-left: @size_m;
     }
 
-    &:not(:nth-last-child(-n+2)) {
+    &:not(:nth-last-child(-n + 2)) {
       margin-bottom: @size_m;
     }
   }
@@ -64,17 +64,15 @@
   display: inline-block;
 }
 
-
 // classes picked up by react-accessible-accordion to show
 // and hide content
 .accordion__body {
-    display: block;
-    animation: fadein .35s ease-in;
+  display: block;
+  animation: fadein 0.35s ease-in;
 }
 
 .accordion__body--hidden {
-    display: none;
-    opacity: 0;
-    animation: fadein .35s ease-in;
+  display: none;
+  opacity: 0;
+  animation: fadein 0.35s ease-in;
 }
-

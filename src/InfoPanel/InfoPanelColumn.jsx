@@ -2,15 +2,10 @@ import classnames from "classnames";
 import React from "react";
 import * as PropTypes from "prop-types";
 
+export default function InfoPanelColumn({ children, className }) {
+  const { cssClass } = InfoPanelColumn;
 
-export default function InfoPanelColumn({children, className}) {
-  const {cssClass} = InfoPanelColumn;
-
-  return (
-    <div className={classnames(cssClass.CONTAINER, className)}>
-      {children}
-    </div>
-  );
+  return <div className={classnames(cssClass.CONTAINER, className)}>{children}</div>;
 }
 
 InfoPanelColumn.propTypes = {

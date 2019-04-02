@@ -74,12 +74,12 @@
 
 &.TextArea--hasError {
   box-shadow: inset @size_2xs 0 @alert_red;
-  transition: box-shadow .25s ease-out;
+  transition: box-shadow 0.25s ease-out;
 }
 
 &.TextArea--inFocus {
   box-shadow: inset @size_2xs 0 @primary_blue;
-  transition: box-shadow .25s ease-out;
+  transition: box-shadow 0.25s ease-out;
 }
 
 &.TextArea--disabled {
@@ -95,6 +95,7 @@
 }
 
 // Hides the IE copy and clear buttons
-input::-ms-reveal, input::-ms-clear {
+input::-ms-reveal,
+input::-ms-clear {
   display: none;
 }

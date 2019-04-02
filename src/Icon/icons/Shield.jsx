@@ -15,18 +15,9 @@ export default function Shield(props) {
       <title>shield</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="shield">
-          <g
-            id="ui-48px-outline-3_security"
-            transform="translate(3.000000, 3.000000)"
-          >
+          <g id="ui-48px-outline-3_security" transform="translate(3.000000, 3.000000)">
             <g id="Group">
               <path
                 d="M20,0 C14,4 6,6 0,6 C0,20 6,34 20,40 C34,34 40,20 40,6 C34,6 26,4 20,0 L20,0 Z"

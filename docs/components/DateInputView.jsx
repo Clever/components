@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {DateInput, FormElementSize, SegmentedControl} from "src";
+import { DateInput, FormElementSize, SegmentedControl } from "src";
 
 import "./DateInputView.less";
 
@@ -23,20 +23,18 @@ export default class DateInputView extends Component {
   }
 
   render() {
-    const {cssClass} = DateInputView;
+    const { cssClass } = DateInputView;
 
     return (
       <View title="DateInput" sourcePath="src/DateInput/DateInput.jsx">
-        <p>
-          DateInput is an input that allows the user to select dates from a DatePicker.
-        </p>
+        <p>DateInput is an input that allows the user to select dates from a DatePicker.</p>
         <Example>
           <ExampleCode>
             <DateInput
               disabled={this.state.disabled}
               error={this.state.hasError ? "Invalid date" : null}
               label="label"
-              onChange={(value) => this.setState({value})}
+              onChange={value => this.setState({ value })}
               placeholder="Placeholder"
               name="name"
               readOnly={this.state.readOnly}
@@ -50,45 +48,40 @@ export default class DateInputView extends Component {
             <input
               type="checkbox"
               checked={this.state.disabled}
-              onChange={({target}) => this.setState({disabled: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ disabled: target.checked })}
+            />{" "}
             Disabled
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.readOnly}
-              onChange={({target}) => this.setState({readOnly: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ readOnly: target.checked })}
+            />{" "}
             Read Only
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.required}
-              onChange={({target}) => this.setState({required: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ required: target.checked })}
+            />{" "}
             Required
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.hasError}
-              onChange={({target}) => this.setState({hasError: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ hasError: target.checked })}
+            />{" "}
             Error
           </label>
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
               checked={this.state.useTime}
-              onChange={({target}) => this.setState({useTime: target.checked})}
-            />
-            {" "}
+              onChange={({ target }) => this.setState({ useTime: target.checked })}
+            />{" "}
             Use Time
           </label>
           <div className={cssClass.CONFIG}>
@@ -96,13 +89,13 @@ export default class DateInputView extends Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               options={[
-                {content: "small", value: FormElementSize.SMALL},
-                {content: "medium", value: FormElementSize.MEDIUM},
-                {content: "large", value: FormElementSize.LARGE},
-                {content: "full-width", value: FormElementSize.FULL_WIDTH},
+                { content: "small", value: FormElementSize.SMALL },
+                { content: "medium", value: FormElementSize.MEDIUM },
+                { content: "large", value: FormElementSize.LARGE },
+                { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={value => this.setState({size: value})}
+              onSelect={value => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -202,11 +195,18 @@ export default class DateInputView extends Component {
             {
               name: "size",
               type: "string",
-              description: <p>
-                The size of the input. One of:<br />
-                {Object.keys(FormElementSize).map(size =>
-                  <span key={size}><code>FormElementSize.{size}</code><br /></span>)}
-              </p>,
+              description: (
+                <p>
+                  The size of the input. One of:
+                  <br />
+                  {Object.keys(FormElementSize).map(size => (
+                    <span key={size}>
+                      <code>FormElementSize.{size}</code>
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              ),
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },

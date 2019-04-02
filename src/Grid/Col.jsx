@@ -7,15 +7,14 @@ import Size from "./Size";
 
 require("../less/grid.less");
 
-
 export default function Col({
   children,
   className,
   span,
   wrapperComponent: Wrapper,
-  ...additionalProps,
+  ...additionalProps
 }) {
-  const {cssClass} = Col;
+  const { cssClass } = Col;
   let colSpanClasses;
   if (typeof span === "number") {
     colSpanClasses = `${cssClass.COL}--${Size.DEFAULT}--${span}`;
@@ -39,10 +38,7 @@ _.forEach(Size, size => {
 Col.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  span: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape(Col.colSpanPropShape),
-  ]),
+  span: PropTypes.oneOfType([PropTypes.number, PropTypes.shape(Col.colSpanPropShape)]),
   wrapperComponent: PropTypes.any,
 };
 

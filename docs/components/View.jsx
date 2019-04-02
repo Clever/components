@@ -1,11 +1,10 @@
 import classnames from "classnames";
-import React, {Component} from "react";
+import React, { Component } from "react";
 import * as PropTypes from "prop-types";
 
-import {Button} from "src";
+import { Button } from "src";
 
 import "./View.less";
-
 
 export default class View extends Component {
   componentWillMount() {
@@ -13,8 +12,8 @@ export default class View extends Component {
   }
 
   render() {
-    const {cssClass} = View;
-    const {children, className, sourcePath, subtitle, title} = this.props;
+    const { cssClass } = View;
+    const { children, className, sourcePath, subtitle, title } = this.props;
 
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>
@@ -33,9 +32,7 @@ export default class View extends Component {
           </h1>
           {subtitle && <h3 className={cssClass.SUBTITLE}>{subtitle}</h3>}
         </div>
-        <div className={cssClass.CONTENT}>
-          {children}
-        </div>
+        <div className={cssClass.CONTENT}>{children}</div>
       </div>
     );
   }

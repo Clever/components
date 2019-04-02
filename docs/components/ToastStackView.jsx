@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import {Button, FlexBox, ItemAlign, SegmentedControl, ToastStack, ToastType} from "src";
-import Example, {CodeSample, ExampleCode} from "./Example";
+import { Button, FlexBox, ItemAlign, SegmentedControl, ToastStack, ToastType } from "src";
+import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 
@@ -44,11 +44,11 @@ export default class ToastStackView extends React.PureComponent {
     toastType: ToastType.SUCCESS,
   };
 
-  _clearNotification = (id) => {
-    const {notifications} = this.state;
+  _clearNotification = id => {
+    const { notifications } = this.state;
 
-    this.setState({notifications: notifications.filter(n => n.id !== id)});
-  }
+    this.setState({ notifications: notifications.filter(n => n.id !== id) });
+  };
 
   render() {
     const {
@@ -85,30 +85,37 @@ export default class ToastStackView extends React.PureComponent {
               clearNotification={
                 // Internally, `this._clearNotification` performs:
                 // this.setState({notifications: notifications.filter(n => n.id !== id)});
-                this._clearNotification}
+                this._clearNotification
+              }
               defaultNotificationDurationMS={5000}
             />
             <Button
               value="Create notification"
-              onClick={() => this.setState({
-                notifications: [...notifications, {
-                  id: nextNotificationID,
-                  type: toastType,
-                  content: <span>Your toast is {messageMap[toastType]}</span>,
-                  action: includeAction ? {
-                    text: "Butter it",
-                    onClick: () => console.log("Buttering"),
-                  } : undefined,
-                  showCloseButton,
-                  durationMS: durationOverride === "No override" ? undefined : durationOverride,
-                }],
-                nextNotificationID: nextNotificationID + 1,
-              })}
-            />
-            {" "}
+              onClick={() =>
+                this.setState({
+                  notifications: [
+                    ...notifications,
+                    {
+                      id: nextNotificationID,
+                      type: toastType,
+                      content: <span>Your toast is {messageMap[toastType]}</span>,
+                      action: includeAction
+                        ? {
+                            text: "Butter it",
+                            onClick: () => console.log("Buttering"),
+                          }
+                        : undefined,
+                      showCloseButton,
+                      durationMS: durationOverride === "No override" ? undefined : durationOverride,
+                    },
+                  ],
+                  nextNotificationID: nextNotificationID + 1,
+                })
+              }
+            />{" "}
             <Button
               value="Clear all notifications"
-              onClick={() => this.setState({notifications: []})}
+              onClick={() => this.setState({ notifications: [] })}
             />
           </ExampleCode>
           {this._renderConfig()}
@@ -121,12 +128,7 @@ export default class ToastStackView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {
-      durationOverride,
-      includeAction,
-      showCloseButton,
-      toastType,
-    } = this.state;
+    const { durationOverride, includeAction, showCloseButton, toastType } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -135,14 +137,14 @@ export default class ToastStackView extends React.PureComponent {
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             options={[
-              {content: "error", value: ToastType.ERROR},
-              {content: "info", value: ToastType.INFO},
-              {content: "processing", value: ToastType.PROCESSING},
-              {content: "success", value: ToastType.SUCCESS},
-              {content: "warning", value: ToastType.WARNING},
+              { content: "error", value: ToastType.ERROR },
+              { content: "info", value: ToastType.INFO },
+              { content: "processing", value: ToastType.PROCESSING },
+              { content: "success", value: ToastType.SUCCESS },
+              { content: "warning", value: ToastType.WARNING },
             ]}
             value={toastType}
-            onSelect={value => this.setState({toastType: value})}
+            onSelect={value => this.setState({ toastType: value })}
           />
         </div>
         <label className={cssClass.CONFIG}>
@@ -150,32 +152,34 @@ export default class ToastStackView extends React.PureComponent {
             className={cssClass.CONFIG_TOGGLE}
             type="checkbox"
             checked={includeAction}
-            onChange={e => this.setState({includeAction: e.target.checked})}
-          />{" "}Include action
+            onChange={e => this.setState({ includeAction: e.target.checked })}
+          />{" "}
+          Include action
         </label>
         <label className={cssClass.CONFIG}>
           <input
             className={cssClass.CONFIG_TOGGLE}
             type="checkbox"
             checked={showCloseButton}
-            onChange={e => this.setState({showCloseButton: e.target.checked})}
-          />{" "}Show close button
+            onChange={e => this.setState({ showCloseButton: e.target.checked })}
+          />{" "}
+          Show close button
         </label>
         <div>
-        <div className={cssClass.CONFIG}>
-          Toast duration override (milliseconds):
-          <SegmentedControl
-            className={cssClass.CONFIG_OPTIONS}
-            options={[
-              {content: "1000", value: 1000},
-              {content: "5000", value: 5000},
-              {content: "Infinity", value: Infinity},
-              {content: "No override", value: "No override"},
-            ]}
-            value={durationOverride}
-            onSelect={value => this.setState({durationOverride: value})}
-          />
-        </div>
+          <div className={cssClass.CONFIG}>
+            Toast duration override (milliseconds):
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              options={[
+                { content: "1000", value: 1000 },
+                { content: "5000", value: 5000 },
+                { content: "Infinity", value: Infinity },
+                { content: "No override", value: "No override" },
+              ]}
+              value={durationOverride}
+              onSelect={value => this.setState({ durationOverride: value })}
+            />
+          </div>
         </div>
       </FlexBox>
     );
@@ -195,23 +199,28 @@ export default class ToastStackView extends React.PureComponent {
           {
             name: "clearNotification",
             type: "(id: number) => void",
-            description: <p>
-              A function that clears the specified notification.
-              <br />
-              <b>Heavy-handed guideline</b>:
-              Do NOT inline this function! Inlining isn't inherently bad but can result in bugs if
-              not done properly.
-              <br />
-              <b>Nuanced guideline</b>:
-              Because we delay the execution of clearNotification to handle notification
-              expiration, <i>clearNotification should reference notification state as it exists at
-              function call time, not function creation time</i>.
-            </p>,
+            description: (
+              <p>
+                A function that clears the specified notification.
+                <br />
+                <b>Heavy-handed guideline</b>: Do NOT inline this function! Inlining isn't
+                inherently bad but can result in bugs if not done properly.
+                <br />
+                <b>Nuanced guideline</b>: Because we delay the execution of clearNotification to
+                handle notification expiration,{" "}
+                <i>
+                  clearNotification should reference notification state as it exists at function
+                  call time, not function creation time
+                </i>
+                .
+              </p>
+            ),
           },
           {
             name: "defaultNotificationDurationMS",
             type: "number",
-            description: "The default duration for notifications in milliseconds. Can be set to " +
+            description:
+              "The default duration for notifications in milliseconds. Can be set to " +
               "`Infinity`.",
             optional: true,
             defaultValue: "5000",
@@ -225,7 +234,8 @@ export default class ToastStackView extends React.PureComponent {
           {
             name: "notifications",
             type: "Array<Notification>",
-            description: "The notifications to be rendered. See the table below for the fields " +
+            description:
+              "The notifications to be rendered. See the table below for the fields " +
               "in a `Notification` object.",
           },
         ]}
@@ -241,7 +251,11 @@ export default class ToastStackView extends React.PureComponent {
         availableProps={[
           {
             name: "action",
-            type: <code><pre>{actionType}</pre></code>,
+            type: (
+              <code>
+                <pre>{actionType}</pre>
+              </code>
+            ),
             description: "If present, the notification will include an action button.",
             optional: true,
           },
@@ -253,7 +267,8 @@ export default class ToastStackView extends React.PureComponent {
           {
             name: "durationMS",
             type: "number",
-            description: "An override of the <ToastStack>'s `defaultNotificationDurationMS`. " +
+            description:
+              "An override of the <ToastStack>'s `defaultNotificationDurationMS`. " +
               "Can be set to `Infinity`.",
             optional: true,
           },
@@ -272,11 +287,18 @@ export default class ToastStackView extends React.PureComponent {
           {
             name: "type",
             type: "string",
-            description: <p>
-              The type of the notification. One of:<br />
-              {Object.keys(ToastType).map(type =>
-                <span key={type}><code>ToastType.{type}</code><br /></span>)}
-            </p>,
+            description: (
+              <p>
+                The type of the notification. One of:
+                <br />
+                {Object.keys(ToastType).map(type => (
+                  <span key={type}>
+                    <code>ToastType.{type}</code>
+                    <br />
+                  </span>
+                ))}
+              </p>
+            ),
           },
         ]}
         className={cssClass.PROPS}

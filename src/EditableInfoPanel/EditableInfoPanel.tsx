@@ -1,7 +1,7 @@
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import FlexItem from "../flex/FlexItem";
 
@@ -25,23 +25,17 @@ export default class EditableInfoPanel extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const {title, children, className, onClick} = this.props;
+    const { title, children, className, onClick } = this.props;
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>
         <FlexBox className={cssClass.HEADER}>
-            {title}
-            <FlexItem grow />
-            <FlexItem>
-              <Button
-                value="Edit"
-                size="small"
-                onClick={onClick}
-              />
-            </FlexItem>
+          {title}
+          <FlexItem grow />
+          <FlexItem>
+            <Button value="Edit" size="small" onClick={onClick} />
+          </FlexItem>
         </FlexBox>
-        <div className={cssClass.CONTENT}>
-          {children}
-        </div>
+        <div className={cssClass.CONTENT}>{children}</div>
       </div>
     );
   }

@@ -15,13 +15,7 @@ export default function Camera(props) {
       <title>camera</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="camera">
           <g id="Step2" transform="translate(1.000000, 3.000000)">
             <g id="Group">
@@ -50,14 +44,7 @@ export default function Camera(props) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <rect
-                id="Rectangle-10"
-                fill="#FD8874"
-                x={1}
-                y={16}
-                width={42}
-                height={14}
-              />
+              <rect id="Rectangle-10" fill="#FD8874" x={1} y={16} width={42} height={14} />
               <circle
                 id="Oval"
                 stroke="#62748C"

@@ -2,7 +2,7 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 import RichText from "../RichText/RichText";
 
 const propTypes = {
@@ -39,31 +39,45 @@ export default class TextTruncate extends React.PureComponent {
     truncated: true,
   };
 
-  toggleTruncation = (event) => {
+  toggleTruncation = event => {
     event.preventDefault();
 
-    this.setState({truncated: !this.state.truncated});
-  }
+    this.setState({ truncated: !this.state.truncated });
+  };
 
   truncate(text) {
     return text.substring(0, this.props.maxCharsShown);
   }
 
   render() {
-    const {className, text, showMoreLabel, showLessLabel, maxCharsShown, useRichText} = this.props;
-    const {truncated} = this.state;
+    const {
+      className,
+      text,
+      showMoreLabel,
+      showLessLabel,
+      maxCharsShown,
+      useRichText,
+    } = this.props;
+    const { truncated } = this.state;
 
     if (text.length < maxCharsShown) {
-      return (<div className={classnames(cssClass.CONTAINER, className)}>
-        {useRichText ? <RichText text={text} /> : text}
-      </div>);
+      return (
+        <div className={classnames(cssClass.CONTAINER, className)}>
+          {useRichText ? <RichText text={text} /> : text}
+        </div>
+      );
     }
 
     const displayText = truncated ? `${this.truncate(text)}…` : text;
-    return (<div className={classnames(cssClass.CONTAINER, className)}>
-      {useRichText ? <RichText text={displayText} /> : displayText}
-      {" "}
-      <Button type="linkPlain" onClick={this.toggleTruncation} value={truncated ? showMoreLabel : showLessLabel} />
-    </div>);
+    return (
+      <div className={classnames(cssClass.CONTAINER, className)}>
+        {useRichText ? <RichText text={displayText} /> : displayText}{" "}
+        <Button
+          type="linkPlain"
+          onClick={this.toggleTruncation}
+          value={truncated ? showMoreLabel : showLessLabel}
+        />
+      </div>
+    );
   }
 }

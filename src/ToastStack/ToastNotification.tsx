@@ -3,9 +3,9 @@ import * as FontAwesome from "react-fontawesome";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {Button} from "../Button/Button";
-import {FlexBox, ItemAlign} from "../flex";
-import {ToastType} from "./ToastType";
+import { Button } from "../Button/Button";
+import { FlexBox, ItemAlign } from "../flex";
+import { ToastType } from "./ToastType";
 
 import "./ToastNotification.less";
 
@@ -56,26 +56,17 @@ export class ToastNotification extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const {
-      action,
-      children,
-      className,
-      onClose,
-      showCloseButton,
-      type,
-    } = this.props;
+    const { action, children, className, onClose, showCloseButton, type } = this.props;
 
     return (
       <FlexBox
         className={classnames(cssClass.CONTAINER, typeCssClass(type), className)}
         alignItems={ItemAlign.CENTER}
       >
-        <FontAwesome
-          name={iconMap[type]}
-          size="lg"
-          spin={type === ToastType.PROCESSING}
-        />
-        <FlexBox className={cssClass.CONTENT} grow>{children}</FlexBox>
+        <FontAwesome name={iconMap[type]} size="lg" spin={type === ToastType.PROCESSING} />
+        <FlexBox className={cssClass.CONTENT} grow>
+          {children}
+        </FlexBox>
         {action && (
           <Button
             className={cssClass.ACTION}

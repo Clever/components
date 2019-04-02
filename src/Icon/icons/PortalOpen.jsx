@@ -15,13 +15,7 @@ export default function PortalOpen(props) {
       <title>shutter</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="shutter" stroke="#62748C" strokeWidth={2}>
           <g id="Page-1" transform="translate(1.000000, 1.000000)">
             <path

@@ -25,10 +25,7 @@ export default function QR(props) {
         strokeLinejoin="round"
       >
         <g id="qr-code" strokeWidth={2} stroke="#62748C">
-          <g
-            id="shopping-48px-outline_bardcode-qr"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="shopping-48px-outline_bardcode-qr" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <polygon id="Shape" points="16 16 0 16 0 0 16 0 16 0" />
               <polyline id="Shape" points="44 36 44 28 34 28 34 25" />

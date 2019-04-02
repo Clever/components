@@ -1,9 +1,8 @@
 import classnames from "classnames";
 import numeral from "numeral";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
 import shortNumber from "short-number";
-
 
 /**
  * Provides consistent number formatting for long numbers (e.g. 4123456 -> 4,123,456), with optional
@@ -17,28 +16,21 @@ export default class Number extends PureComponent {
       throw new Error("A number is required.");
     }
 
-    return short
-      ? shortNumber(rawNumber)
-      : numeral(rawNumber).format("0,0");
+    return short ? shortNumber(rawNumber) : numeral(rawNumber).format("0,0");
   }
 
   render() {
-    const {cssClass, format} = Number;
-    const {children, className, short} = this.props;
+    const { cssClass, format } = Number;
+    const { children, className, short } = this.props;
 
     return (
-      <span className={classnames(cssClass.CONTAINER, className)}>
-        {format(children, short)}
-      </span>
+      <span className={classnames(cssClass.CONTAINER, className)}>{format(children, short)}</span>
     );
   }
 }
 
 Number.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   className: PropTypes.string,
   short: PropTypes.bool,
 };

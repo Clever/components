@@ -1,28 +1,19 @@
 import assert from "assert";
 import React from "react";
 import sinon from "sinon";
-import {shallow} from "enzyme";
-import {TextInput} from "../src";
+import { shallow } from "enzyme";
+import { TextInput } from "../src";
 
 describe("TextInput", () => {
   it("renders a <TextInput> element properly with name and default type", () => {
-    const textInput = shallow(
-      <TextInput
-        name="TextInputName"
-      />
-    );
+    const textInput = shallow(<TextInput name="TextInputName" />);
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[name='TextInputName']").length, 1);
     assert(textInput.hasClass("TextInput"));
   });
 
   it("renders a <TextInput> element with different passed type", () => {
-    const textInput = shallow(
-      <TextInput
-        name="TextInputName"
-        type="password"
-      />
-    );
+    const textInput = shallow(<TextInput name="TextInputName" type="password" />);
     assert.equal(textInput.find("input[type='password']").length, 1);
     assert.equal(textInput.find("input[name='TextInputName']").length, 1);
     assert(textInput.hasClass("TextInput"));
@@ -30,11 +21,7 @@ describe("TextInput", () => {
 
   it("renders a <TextInput> element with passed value and label", () => {
     const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        value="TextInputValue"
-        label="TextInputLabel"
-      />
+      <TextInput name="TextInputPlaceholder" value="TextInputValue" label="TextInputLabel" />,
     );
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[value='TextInputValue']").length, 1);
@@ -44,11 +31,7 @@ describe("TextInput", () => {
 
   it("renders a <TextInput> element with placeholder if it is passed", () => {
     const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        placeholder="PlaceholderText"
-        value=""
-      />
+      <TextInput name="TextInputPlaceholder" placeholder="PlaceholderText" value="" />,
     );
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[name='TextInputPlaceholder']").length, 1);
@@ -57,10 +40,7 @@ describe("TextInput", () => {
 
     // make sure it also works when value is not passed
     const textInput2 = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        placeholder="PlaceholderText"
-      />
+      <TextInput name="TextInputPlaceholder" placeholder="PlaceholderText" />,
     );
     assert.equal(textInput2.find("input[type='text']").length, 1);
     assert.equal(textInput2.find("input[name='TextInputPlaceholder']").length, 1);
@@ -70,11 +50,7 @@ describe("TextInput", () => {
 
   it("properly renders a <TextInput> with an error", () => {
     const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        value="TextInputValue"
-        error="This is an error"
-      />
+      <TextInput name="TextInputPlaceholder" value="TextInputValue" error="This is an error" />,
     );
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[value='TextInputValue']").length, 1);
@@ -88,11 +64,7 @@ describe("TextInput", () => {
 
   it("properly renders a <TextInput> with a required flag", () => {
     const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        value="TextInputValue"
-        required
-      />
+      <TextInput name="TextInputPlaceholder" value="TextInputValue" required />,
     );
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[value='TextInputValue']").length, 1);
@@ -105,11 +77,7 @@ describe("TextInput", () => {
 
   it("properly renders a <TextInput> as readonly", () => {
     const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        value="TextInputValue"
-        readOnly
-      />
+      <TextInput name="TextInputPlaceholder" value="TextInputValue" readOnly />,
     );
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[value='TextInputValue']").length, 1);
@@ -118,49 +86,28 @@ describe("TextInput", () => {
 
   it("properly renders a <TextInput> as disabled", () => {
     const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        value="TextInputValue"
-        disabled
-      />
+      <TextInput name="TextInputPlaceholder" value="TextInputValue" disabled />,
     );
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[value='TextInputValue']").length, 1);
     assert(textInput.hasClass("TextInput--disabled"));
   });
 
-
   it("properly calls onChange when <TextInput> value changes", () => {
     const onChangeSpy = sinon.spy();
-    const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        onChange={onChangeSpy}
-      />
-    );
+    const textInput = shallow(<TextInput name="TextInputPlaceholder" onChange={onChangeSpy} />);
     textInput.find("input").simulate("change");
     assert(onChangeSpy.calledOnce);
   });
 
-
   it("properly adds focus styles when <TextInput> is in focus", () => {
-    const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-      />
-    );
+    const textInput = shallow(<TextInput name="TextInputPlaceholder" />);
     textInput.find("input").simulate("focus");
     assert(textInput.hasClass("TextInput--inFocus"));
   });
 
   it("toggles between type 'password' and 'text' when Show is clicked", () => {
-    const textInput = shallow(
-      <TextInput
-        name="TextInputPlaceholder"
-        type="password"
-        enableShow
-      />
-    );
+    const textInput = shallow(<TextInput name="TextInputPlaceholder" type="password" enableShow />);
     assert.equal(textInput.find("input[type='password']").length, 1);
     assert.equal(textInput.find("input[type='text']").length, 0);
     textInput.find("button.TextInput--link").simulate("click");

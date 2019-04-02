@@ -15,35 +15,12 @@ export default function WebsiteDashboard(props) {
       <title>window-web</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="window-web">
-          <g
-            id="design-48px-outline_window-paragraph"
-            transform="translate(1.000000, 3.000000)"
-          >
+          <g id="design-48px-outline_window-paragraph" transform="translate(1.000000, 3.000000)">
             <g id="Group">
-              <rect
-                id="Rectangle"
-                fill="#D8D8D8"
-                x={1}
-                y={1}
-                width={42}
-                height={10}
-              />
-              <rect
-                id="Rectangle-Copy"
-                fill="#FFFFFF"
-                x={1}
-                y={13}
-                width={42}
-                height={26}
-              />
+              <rect id="Rectangle" fill="#D8D8D8" x={1} y={1} width={42} height={10} />
+              <rect id="Rectangle-Copy" fill="#FFFFFF" x={1} y={13} width={42} height={26} />
               <rect
                 id="Rectangle-path"
                 stroke="#62748C"
@@ -107,12 +84,7 @@ export default function WebsiteDashboard(props) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <path
-                d="M0,12 L44,12"
-                id="Shape"
-                stroke="#62748C"
-                strokeWidth={2}
-              />
+              <path d="M0,12 L44,12" id="Shape" stroke="#62748C" strokeWidth={2} />
             </g>
           </g>
         </g>

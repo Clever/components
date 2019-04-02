@@ -8,15 +8,14 @@ import MorePropTypes from "../utils/MorePropTypes";
 require("../less/flex.less");
 require("../less/grid.less");
 
-
 export default function Row({
   children,
   className,
   grow,
   wrapperComponent: Wrapper,
-  ...additionalProps,
+  ...additionalProps
 }) {
-  const {cssClass} = Row;
+  const { cssClass } = Row;
 
   return (
     <Wrapper

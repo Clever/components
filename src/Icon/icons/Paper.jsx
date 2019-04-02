@@ -25,10 +25,7 @@ export default function Paper(props) {
         strokeLinejoin="round"
       >
         <g id="copy" strokeWidth={2}>
-          <g
-            id="files-48px-outline_single-copy-04"
-            transform="translate(4.000000, 1.000000)"
-          >
+          <g id="files-48px-outline_single-copy-04" transform="translate(4.000000, 1.000000)">
             <g id="Group">
               <rect
                 id="Rectangle-path"

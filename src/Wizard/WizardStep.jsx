@@ -2,7 +2,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import _ from "lodash";
 import classnames from "classnames";
-import {classNameFor} from "../utils";
+import { classNameFor } from "../utils";
 
 // 58.25 rem = width of sidebar + width of left column
 const COLLAPSE_BREAKPOINT_WIDTH_REM = 63.25;
@@ -41,50 +41,62 @@ export default class WizardStep extends React.Component {
 
   render() {
     const {
-      title, description, Component, setWizardState, currentStep, wizardState, help,
-      percentComplete, calculatePercentComplete, updatePercentComplete, totalSteps,
-      componentProps, className, stepNumberInTitle,
+      title,
+      description,
+      Component,
+      setWizardState,
+      currentStep,
+      wizardState,
+      help,
+      percentComplete,
+      calculatePercentComplete,
+      updatePercentComplete,
+      totalSteps,
+      componentProps,
+      className,
+      stepNumberInTitle,
     } = this.props;
     const props = _.omit(componentProps || {}, ["wizardState", "setWizardState"]);
-    const baseClasses = ["Wizard", className].filter(c => !!c).map(c =>
-      classNameFor(c, "WizardStep")
-    );
+    const baseClasses = ["Wizard", className]
+      .filter(c => !!c)
+      .map(c => classNameFor(c, "WizardStep"));
     const contentGroupClass = classNameFor(["Wizard", className], "contentGroup");
     return (
-      <div className={classnames(baseClasses)} ref={e => { this.component = e; }}>
+      <div
+        className={classnames(baseClasses)}
+        ref={e => {
+          this.component = e;
+        }}
+      >
         <div className={classNameFor(baseClasses, "title")}>
-          <h1>{stepNumberInTitle && `Step ${currentStep + 1}: `}{title}</h1>
+          <h1>
+            {stepNumberInTitle && `Step ${currentStep + 1}: `}
+            {title}
+          </h1>
         </div>
 
         <div className={classNameFor(baseClasses, "topInfo")}>
-          {description &&
+          {description && (
             <div
-              className={classnames(
-                contentGroupClass,
-                classNameFor(baseClasses, "description")
-              )}
+              className={classnames(contentGroupClass, classNameFor(baseClasses, "description"))}
             >
               {_.isString(description) ? <p>{description}</p> : description}
-            </div>}
-          {help &&
+            </div>
+          )}
+          {help && (
             <div
               className={classnames(
                 contentGroupClass,
                 classNameFor(baseClasses, "help"),
-                this.state.helpTextCollapsed &&
-                classNameFor(baseClasses, "helpCollapsed")
+                this.state.helpTextCollapsed && classNameFor(baseClasses, "helpCollapsed"),
               )}
             >
               {_.isString(help) ? <p>{help}</p> : help}
-            </div>}
+            </div>
+          )}
         </div>
 
-        <div
-          className={classnames(
-            contentGroupClass,
-            classNameFor(baseClasses, "component")
-          )}
-        >
+        <div className={classnames(contentGroupClass, classNameFor(baseClasses, "component"))}>
           <Component
             {...props}
             setWizardState={modifications => {
@@ -98,7 +110,10 @@ export default class WizardStep extends React.Component {
               // upon input rather than solely upon navigation.
               // b) pages immediately update the progress bar if they become invalid, so that the
               // incompleteness of the form is reflected in the UI immediately.
-              if (currentStep === totalSteps - 1 || calculatePercentComplete(newState) < percentComplete) {
+              if (
+                currentStep === totalSteps - 1 ||
+                calculatePercentComplete(newState) < percentComplete
+              ) {
                 updatePercentComplete(newState);
               }
             }}
@@ -116,7 +131,8 @@ WizardStep.propTypes = {
   stepNumberInTitle: PropTypes.bool.isRequired,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)]).isRequired,
+  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)])
+    .isRequired,
   componentProps: PropTypes.object,
 
   // internal facing

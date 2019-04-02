@@ -25,10 +25,7 @@ export default function Tie(props) {
         strokeLinejoin="round"
       >
         <g id="tie" stroke="#B4883D" strokeWidth={2} fill="#FEBD54">
-          <g
-            id="business-48px-outline_tie-01"
-            transform="translate(14.000000, 3.000000)"
-          >
+          <g id="business-48px-outline_tie-01" transform="translate(14.000000, 3.000000)">
             <g id="Group">
               <polyline id="Shape" points="6 8 0 30 10 40 20 30 14 8" />
               <polygon id="Shape" points="14 8 6 8 2 0 18 0" />

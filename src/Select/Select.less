@@ -42,7 +42,7 @@
   &.is-focused:not(.is-open) > .Select-control {
     border-color: @neutral_silver;
     box-shadow: inset @size_2xs 0 @primary_blue;
-    transition: box-shadow .25s ease-out;
+    transition: box-shadow 0.25s ease-out;
   }
 
   &.is-disabled {
@@ -136,7 +136,7 @@
   // overrides styles from the exact same selector in react-select's CSS
   .has-value.Select--single > .Select-control .Select-value .Select-value-label,
   .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
-    color: @neutral_black
+    color: @neutral_black;
   }
 
   .Select-menu-outer {

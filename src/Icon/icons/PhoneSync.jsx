@@ -15,13 +15,7 @@ export default function PhoneSync(props) {
       <title>sync</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="sync">
           <g
             id="tech-48px-outline_sync"
@@ -46,32 +40,12 @@ export default function PhoneSync(props) {
               />
               <path d="M26,36 L44,36" id="Shape" />
               <path d="M26,24 L44,24" id="Shape" />
-              <path
-                d="M26,0 L26,0 C31.523,0 36,4.477 36,10 L36,10"
-                id="Shape"
-              />
-              <path
-                d="M8,34 L8,34 C8,39.523 12.477,44 18,44 L18,44"
-                id="Shape"
-              />
+              <path d="M26,0 L26,0 C31.523,0 36,4.477 36,10 L36,10" id="Shape" />
+              <path d="M8,34 L8,34 C8,39.523 12.477,44 18,44 L18,44" id="Shape" />
             </g>
           </g>
-          <rect
-            id="Rectangle-6"
-            fill="#B6C8F9"
-            x={28}
-            y={26}
-            width={16}
-            height={10}
-          />
-          <rect
-            id="Rectangle"
-            fill="#B6C8F9"
-            x={2}
-            y={8}
-            width={16}
-            height={10}
-          />
+          <rect id="Rectangle-6" fill="#B6C8F9" x={28} y={26} width={16} height={10} />
+          <rect id="Rectangle" fill="#B6C8F9" x={2} y={8} width={16} height={10} />
         </g>
       </g>
     </svg>

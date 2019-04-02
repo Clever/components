@@ -1,8 +1,13 @@
 import classnames from "classnames";
-import React, {Component} from "react";
+import React, { Component } from "react";
 import * as PropTypes from "prop-types";
 import FontAwesome from "react-fontawesome";
-import {Accordion, AccordionItem, AccordionItemTitle, AccordionItemBody} from "react-accessible-accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemTitle,
+  AccordionItemBody,
+} from "react-accessible-accordion";
 import "./InfoPanel.less";
 
 /**
@@ -13,35 +18,29 @@ export default class InfoPanel extends Component {
     super(props);
     this.state = {
       isCollapsed: !props.defaultOpen,
-      collapseArrow: (props.defaultOpen ? "caret-down" : "caret-right"),
+      collapseArrow: props.defaultOpen ? "caret-down" : "caret-right",
     };
   }
 
   toggleArrow(keys) {
-    this.setState({isCollapsed: !(typeof keys !== "undefined")});
+    this.setState({ isCollapsed: !(typeof keys !== "undefined") });
   }
 
   render() {
-    const {children, className, hideTitle, title, footer, collapsible, defaultOpen} = this.props;
-    const {isCollapsed} = this.state;
-    let {collapseArrow} = this.state;
-    const {cssClass} = InfoPanel;
+    const { children, className, hideTitle, title, footer, collapsible, defaultOpen } = this.props;
+    const { isCollapsed } = this.state;
+    let { collapseArrow } = this.state;
+    const { cssClass } = InfoPanel;
     if (!collapsible) {
       return (
         <div className={classnames(cssClass.CONTAINER, className)}>
-          {!hideTitle && <div className={cssClass.HEADER}>
-            <h4 className={cssClass.TITLE}>
-              {title}
-            </h4>
-          </div>}
-          <div className={cssClass.CONTENT}>
-            {children}
-          </div>
-          {footer && (
-            <div className={cssClass.FOOTER}>
-              {footer}
+          {!hideTitle && (
+            <div className={cssClass.HEADER}>
+              <h4 className={cssClass.TITLE}>{title}</h4>
             </div>
           )}
+          <div className={cssClass.CONTENT}>{children}</div>
+          {footer && <div className={cssClass.FOOTER}>{footer}</div>}
         </div>
       );
     }
@@ -58,19 +57,15 @@ export default class InfoPanel extends Component {
           <AccordionItem expanded={defaultOpen}>
             <AccordionItemTitle className={cssClass.COLLAPSIBLE_HEADER}>
               <div>
-                <div className={cssClass.COLLAPSE_ARROW}><FontAwesome name={collapseArrow} /></div>
+                <div className={cssClass.COLLAPSE_ARROW}>
+                  <FontAwesome name={collapseArrow} />
+                </div>
                 <div className={cssClass.COLLAPSIBLE_TITLE}>{title}</div>
               </div>
             </AccordionItemTitle>
             <AccordionItemBody>
-              <div className={cssClass.CONTENT}>
-                {children}
-              </div>
-              {footer && (
-                <div className={cssClass.FOOTER}>
-                  {footer}
-                </div>
-              )}
+              <div className={cssClass.CONTENT}>{children}</div>
+              {footer && <div className={cssClass.FOOTER}>{footer}</div>}
             </AccordionItemBody>
           </AccordionItem>
         </Accordion>

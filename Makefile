@@ -15,12 +15,25 @@ STYLELINT := ./node_modules/.bin/stylelint --config ./stylelint.config.js
 TESTS_JS := $(shell find . -regex ".*_test\.jsx*" -not -path "./node_modules/*")
 TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" -not -path "./bin/*")
 TESTS := $(TESTS_JS) $(TESTS_TS)
+FORMATTED_FILES := $(JS_FILES) $(JSX_FILES) $(TS_FILES) $(TSX_FILES) $(LESS_FILES)
+MODIFIED_FILES := $(shell git diff --name-only master $(FORMATTED_FILES))
 WEBPACK := node_modules/webpack/bin/webpack.js
 
-.PHONY: dev-server test lint clean es5 docs build new $(TESTS) styles gen-sizing-styles
+.PHONY: dev-server test lint format-check clean es5 docs build new $(TESTS) styles gen-sizing-styles
 .PHONY: gen-border-styles gen-border-radius-styles deploy-docs generate gen-colors
 
 GREEN_CHECK_MARK := " \033[0;32m✓\033[0m"
+
+format-all:
+	@./node_modules/.bin/prettier --write $(FORMATTED_FILES)
+
+format:
+	@./node_modules/.bin/prettier --write $(MODIFIED_FILES)
+
+format-check:
+	@./node_modules/.bin/prettier -l $(FORMATTED_FILES) || \
+	(echo "\033[0;31m**** Prettier errors in the above files! Run 'make format-all' to fix! ****\033[0m" && false)
+
 clean:
 	@echo -n 'Cleaning out dist directory...'
 	@rm -rf dist
@@ -74,7 +87,7 @@ gen-border-radius-styles:
 	@echo "Generating border-radius style definitions..."
 	@node genBorderRadius.js
 
-LINT_MAX_LESS_PROBLEMS := 92
+LINT_MAX_LESS_PROBLEMS := 94
 lint:
 	@echo "Linting files..."
 	@$(LINT) $(JS_FILES) $(JSX_FILES) $(TS_FILES)

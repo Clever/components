@@ -1,8 +1,7 @@
 import classnames from "classnames";
 import numeral from "numeral";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
-
 
 /**
  * Provides consistent dollar value formatting (e.g. 4123456 -> $4,123,456)
@@ -24,8 +23,8 @@ export default class DollarAmount extends PureComponent {
   }
 
   render() {
-    const {cssClass, format} = DollarAmount;
-    const {children, className, zeroIsFree, alwaysShowCents} = this.props;
+    const { cssClass, format } = DollarAmount;
+    const { children, className, zeroIsFree, alwaysShowCents } = this.props;
 
     return (
       <span className={classnames(cssClass.CONTAINER, className)}>
@@ -36,10 +35,7 @@ export default class DollarAmount extends PureComponent {
 }
 
 DollarAmount.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   className: PropTypes.string,
   zeroIsFree: PropTypes.bool,
   alwaysShowCents: PropTypes.bool,

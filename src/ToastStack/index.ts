@@ -1,5 +1,5 @@
-import {ToastStack} from "./ToastStack";
-import {ToastType} from "./ToastType";
+import { ToastStack } from "./ToastStack";
+import { ToastType } from "./ToastType";
 
-export {ToastStack, ToastType};
+export { ToastStack, ToastType };
 export default ToastStack;

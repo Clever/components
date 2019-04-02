@@ -25,10 +25,7 @@ export default function Funnel(props) {
         strokeLinejoin="round"
       >
         <g id="funnel" strokeWidth={2} stroke="#62748C">
-          <g
-            id="ui-48px-outline-3_funnel-41"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="ui-48px-outline-3_funnel-41" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <polyline
                 id="Shape"

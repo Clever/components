@@ -1,9 +1,8 @@
 import assert from "assert";
 import React from "react";
-import {mount, shallow} from "enzyme";
+import { mount, shallow } from "enzyme";
 
 import Number from "../src/Number";
-
 
 describe("Number", () => {
   it("leaves short numbers unchanged", () => {

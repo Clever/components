@@ -25,10 +25,7 @@ export default function Chart(props) {
         strokeLinejoin="round"
       >
         <g id="bar-chart" strokeWidth={2}>
-          <g
-            id="ui-48px-outline-3_chart-bars"
-            transform="translate(2.000000, 5.000000)"
-          >
+          <g id="ui-48px-outline-3_chart-bars" transform="translate(2.000000, 5.000000)">
             <g id="Group">
               <path d="M0,36 L42,36" id="Shape" stroke="#64768E" />
               <rect

@@ -1,22 +1,21 @@
 import _ from "lodash";
 import classnames from "classnames";
 import MorePropTypes from "../utils/MorePropTypes";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
 
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import Option from "./Option";
 import Type from "./Type";
 
 import "./Menu.less";
 
-
 export default class Menu extends PureComponent {
   _renderOption(option) {
-    const {cssClass} = Menu;
-    const {onHide, size, type} = this.props;
-    const {children, className, disabled, href, onClick, target} = option.props;
+    const { cssClass } = Menu;
+    const { onHide, size, type } = this.props;
+    const { children, className, disabled, href, onClick, target } = option.props;
 
     return (
       <Button
@@ -39,8 +38,8 @@ export default class Menu extends PureComponent {
   }
 
   render() {
-    const {cssClass} = Menu;
-    const {children, className} = this.props;
+    const { cssClass } = Menu;
+    const { children, className } = this.props;
 
     return (
       <FlexBox className={classnames(cssClass.CONTAINER, className)} column>

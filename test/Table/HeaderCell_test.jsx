@@ -1,30 +1,25 @@
 import assert from "assert";
 import React from "react";
 import sinon from "sinon";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import HeaderCell from "../../src/Table/HeaderCell";
 import SortIcons from "../../src/Table/SortIcons";
 import sortDirection from "../../src/Table/sortDirection";
 
-
 describe("Table -- HeaderCell", () => {
-  const {cssClass} = HeaderCell;
+  const { cssClass } = HeaderCell;
   const CONTENT = "Header Cell Content";
 
-  const newHeaderCell = props => shallow(
-    <HeaderCell {...props}>
-      {CONTENT}
-    </HeaderCell>
-  );
+  const newHeaderCell = props => shallow(<HeaderCell {...props}>{CONTENT}</HeaderCell>);
 
   it("sets custom class name", () => {
-    const cell = newHeaderCell({className: "custom"});
+    const cell = newHeaderCell({ className: "custom" });
     assert(cell.find(".custom").exists(), `Expected ${cell.debug()} to have "custom" class.`);
   });
 
   it("sets column width on Cell", () => {
-    const cell = newHeaderCell({width: "20%"});
+    const cell = newHeaderCell({ width: "20%" });
     assert.equal(cell.props().width, "20%");
   });
 
@@ -34,18 +29,29 @@ describe("Table -- HeaderCell", () => {
   });
 
   it("renders sort control for sortable columns", () => {
-    assert(!newHeaderCell().find(SortIcons).exists(), "SortIcons rendered for unsortable column.");
+    assert(
+      !newHeaderCell()
+        .find(SortIcons)
+        .exists(),
+      "SortIcons rendered for unsortable column.",
+    );
 
-    const sortControl =
-      newHeaderCell({sortable: true, activeSortDirection: sortDirection.DESCENDING}).find(SortIcons);
+    const sortControl = newHeaderCell({
+      sortable: true,
+      activeSortDirection: sortDirection.DESCENDING,
+    }).find(SortIcons);
     assert(sortControl.exists(), "SortIcons not found in sortable column.");
-    assert.equal(sortControl.props().direction, sortDirection.DESCENDING, "Incorrect SortIcons direction set.");
+    assert.equal(
+      sortControl.props().direction,
+      sortDirection.DESCENDING,
+      "Incorrect SortIcons direction set.",
+    );
   });
 
   it("emits sort change event for sortable cell on click", () => {
     const onSortChange = sinon.stub();
 
-    const cell = newHeaderCell({onSortChange, sortable: true});
+    const cell = newHeaderCell({ onSortChange, sortable: true });
     cell.simulate("click");
 
     sinon.assert.called(onSortChange);
@@ -54,7 +60,7 @@ describe("Table -- HeaderCell", () => {
   it("doesn't emit sort change event for unsortable cell on click", () => {
     const onSortChange = sinon.stub();
 
-    const cell = newHeaderCell({onSortChange});
+    const cell = newHeaderCell({ onSortChange });
     cell.simulate("click");
 
     sinon.assert.notCalled(onSortChange);

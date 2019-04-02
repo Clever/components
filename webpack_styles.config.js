@@ -19,7 +19,7 @@ entries[filename] = "./src/less/index.less";
 module.exports = {
   entry: entries,
   output: {
-    path:     "dist/css",
+    path: "dist/css",
     filename: "[name]",
   },
   resolve: {

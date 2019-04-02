@@ -35,9 +35,7 @@ module.exports = {
         loader: "awesome-typescript-loader",
         query: {
           configFileName: "./tsconfig.docs.json",
-          ignoreDiagnostics: [
-            2307,
-          ],
+          ignoreDiagnostics: [2307],
         },
       },
       {
@@ -47,5 +45,5 @@ module.exports = {
       },
     ],
   },
-  postcss: [autoprefixer({browsers: "> 1% in US, last 3 versions, ie > 9"})],
+  postcss: [autoprefixer({ browsers: "> 1% in US, last 3 versions, ie > 9" })],
 };

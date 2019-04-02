@@ -1,8 +1,8 @@
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 import lodash from "lodash";
-import {Icon} from "../src";
+import { Icon } from "../src";
 
 describe("Icon", () => {
   const names = lodash.values(Icon.names);
@@ -13,9 +13,7 @@ describe("Icon", () => {
       // We're currently missing three icons
       if (
         size === "large" &&
-        (name === "microphone" ||
-          name === "mobile-apps" ||
-          name === "typewriter")
+        (name === "microphone" || name === "mobile-apps" || name === "typewriter")
       ) {
         return;
       }

@@ -4,17 +4,24 @@ import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 
 require("./Footer.less");
-
 
 /**
  * Pagination footer for the Table component.
  * Only rendered if there are at least 2 pages of data available.
  */
-export default function Footer({currentPage, numColumns, numPages, onPageChange, showLastPage, isLoading, lengthUnknown}) {
-  const {cssClass, VISIBLE_PAGE_RANGE_SIZE} = Footer;
+export default function Footer({
+  currentPage,
+  numColumns,
+  numPages,
+  onPageChange,
+  showLastPage,
+  isLoading,
+  lengthUnknown,
+}) {
+  const { cssClass, VISIBLE_PAGE_RANGE_SIZE } = Footer;
 
   const renderEllipsis = () => <span className={cssClass.ELLIPSIS}>&hellip;</span>;
 
@@ -33,7 +40,7 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
   // Find the widest possible number range <= `VISIBLE_PAGE_RANGE_SIZE`.
   const pageNumberPadding = (VISIBLE_PAGE_RANGE_SIZE - 1) / 2;
   let pageNumStart;
-  if ((currentPage + pageNumberPadding) >= numPages) {
+  if (currentPage + pageNumberPadding >= numPages) {
     pageNumStart = Math.max(numPages - (VISIBLE_PAGE_RANGE_SIZE - 1), 1);
   } else {
     pageNumStart = Math.max(currentPage - pageNumberPadding, 1);
@@ -48,10 +55,7 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
   return (
     <tfoot className={cssClass.CONTAINER}>
       <tr className={cssClass.ROW}>
-        <Cell
-          className={cssClass.CELL}
-          colSpan={numColumns}
-        >
+        <Cell className={cssClass.CELL} colSpan={numColumns}>
           {isLoading && (
             <div className={cssClass.LOADING_CONTAINER}>
               <div className={cssClass.LOADING_PILL}>Loading...</div>
@@ -79,15 +83,15 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
                 />
               )}
               {/*
-                * Show ellipsis if there's at least one omitted page number between 1 and the start of
-                * the visible rnage.
-                */}
+               * Show ellipsis if there's at least one omitted page number between 1 and the start of
+               * the visible rnage.
+               */}
               {visibleRange[0] > 2 && renderEllipsis()}
               {visibleRange.map(pageNumber => (
                 <Button
                   className={classnames(
                     cssClass.BUTTON_PAGE,
-                    pageNumber === currentPage && cssClass.BUTTON_PAGE_SELECTED
+                    pageNumber === currentPage && cssClass.BUTTON_PAGE_SELECTED,
                   )}
                   key={pageNumber}
                   onClick={() => selectPage(pageNumber)}
@@ -97,9 +101,9 @@ export default function Footer({currentPage, numColumns, numPages, onPageChange,
                 />
               ))}
               {/*
-                * Show ellipsis if there's at least one omitted page number between the end of the
-                * visible range and the last page number.
-                */}
+               * Show ellipsis if there's at least one omitted page number between the end of the
+               * visible range and the last page number.
+               */}
               {(visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 || lengthUnknown) &&
                 renderEllipsis()}
               {/* Make sure the last page is always visible. */}

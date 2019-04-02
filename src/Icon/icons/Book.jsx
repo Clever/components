@@ -25,10 +25,7 @@ export default function Book(props) {
         strokeLinejoin="round"
       >
         <g id="book" strokeWidth={2} stroke="#64768E">
-          <g
-            id="design-48px-outline_book-bookmark"
-            transform="translate(4.000000, 1.000000)"
-          >
+          <g id="design-48px-outline_book-bookmark" transform="translate(4.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M0.944487245,32 L1,40 C1,42.209 2.791,44 5,44 L33,44 C35.209,44 37,42.209 37,40 L37,36 L37,32"
@@ -40,11 +37,7 @@ export default function Book(props) {
                 id="Shape"
                 fill="#BCCEFF"
               />
-              <polyline
-                id="Shape"
-                fill="#FFFFFF"
-                points="29 1 29 16 23 12 17 16 17 1"
-              />
+              <polyline id="Shape" fill="#FFFFFF" points="29 1 29 16 23 12 17 16 17 1" />
             </g>
           </g>
         </g>

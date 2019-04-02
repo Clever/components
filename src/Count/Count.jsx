@@ -1,9 +1,8 @@
 import classnames from "classnames";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
 
 import Number from "../Number";
-
 
 /**
  * Provides a convenient wrapper for displaying counts of things.
@@ -19,7 +18,7 @@ import Number from "../Number";
  *   <span>3 things</span>
  */
 export default class Count extends PureComponent {
-  static format({number, plural, short, singular, zeroOverride}) {
+  static format({ number, plural, short, singular, zeroOverride }) {
     const displayNumber = Number.format(number, short);
     const rawNumber = parseInt(number || 0, 10);
 
@@ -36,22 +35,19 @@ export default class Count extends PureComponent {
   }
 
   render() {
-    const {cssClass, format} = Count;
-    const {children, className, plural, short, singular, zeroOverride} = this.props;
+    const { cssClass, format } = Count;
+    const { children, className, plural, short, singular, zeroOverride } = this.props;
 
     return (
       <span className={classnames(cssClass.CONTAINER, className)}>
-        {format({number: children, plural, short, singular, zeroOverride})}
+        {format({ number: children, plural, short, singular, zeroOverride })}
       </span>
     );
   }
 }
 
 Count.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   className: PropTypes.string,
   plural: PropTypes.string,
   singular: PropTypes.string.isRequired,

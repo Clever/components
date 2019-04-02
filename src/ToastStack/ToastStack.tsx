@@ -2,11 +2,11 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as _ from "lodash";
-import {CSSTransitionGroup} from "react-transition-group";
-import {ToastNotification} from "./ToastNotification";
+import { CSSTransitionGroup } from "react-transition-group";
+import { ToastNotification } from "./ToastNotification";
 
-import {actionPropType} from "./ToastNotification";
-import {ToastType} from "./ToastType";
+import { actionPropType } from "./ToastNotification";
+import { ToastType } from "./ToastType";
 
 import "./ToastStack.less";
 
@@ -15,14 +15,16 @@ const propTypes = {
   clearNotification: PropTypes.func.isRequired,
   defaultNotificationDurationMS: PropTypes.number,
   notificationClassName: PropTypes.string,
-  notifications: PropTypes.arrayOf(PropTypes.shape({
-    action: actionPropType,
-    content: PropTypes.node.isRequired,
-    durationMS: PropTypes.number,
-    id: PropTypes.number.isRequired,
-    showCloseButton: PropTypes.bool,
-    type: PropTypes.oneOf(Object.values(ToastType)).isRequired,
-  })),
+  notifications: PropTypes.arrayOf(
+    PropTypes.shape({
+      action: actionPropType,
+      content: PropTypes.node.isRequired,
+      durationMS: PropTypes.number,
+      id: PropTypes.number.isRequired,
+      showCloseButton: PropTypes.bool,
+      type: PropTypes.oneOf(Object.values(ToastType)).isRequired,
+    }),
+  ),
 };
 
 const defaultProps = {
@@ -45,7 +47,7 @@ export class ToastStack extends React.PureComponent {
   static cssClass = cssClass;
 
   _finiteDuration(notification) {
-    const {defaultNotificationDurationMS} = this.props;
+    const { defaultNotificationDurationMS } = this.props;
 
     if (notification.durationMS) {
       return notification.durationMS !== Infinity;
@@ -54,7 +56,7 @@ export class ToastStack extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {clearNotification, defaultNotificationDurationMS} = this.props;
+    const { clearNotification, defaultNotificationDurationMS } = this.props;
     const prevNotifications = prevProps.notifications || [];
     const currNotifications = this.props.notifications || [];
 
@@ -76,12 +78,7 @@ export class ToastStack extends React.PureComponent {
   }
 
   render() {
-    const {
-      className,
-      clearNotification,
-      notificationClassName,
-      notifications,
-    } = this.props;
+    const { className, clearNotification, notificationClassName, notifications } = this.props;
 
     const toasts = notifications.map(n => (
       <div className={cssClass.NOTIFICATION_WRAPPER} key={n.id}>

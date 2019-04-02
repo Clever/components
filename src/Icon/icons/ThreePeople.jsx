@@ -25,10 +25,7 @@ export default function ThreePeople(props) {
         strokeLinejoin="round"
       >
         <g id="users-2" strokeWidth={2} stroke="#62748C">
-          <g
-            id="users-48px-outline_multiple-11"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="users-48px-outline_multiple-11" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M7,11 L7,11 C4.791,11 3,9.209 3,7 L3,7 C3,4.791 4.791,3 7,3 L7,3 C9.209,3 11,4.791 11,7 L11,7 C11,9.209 9.209,11 7,11 L7,11 Z"

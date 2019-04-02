@@ -24,8 +24,8 @@ export default class MorePropTypes {
 
       if (value.type !== componentClass) {
         return new Error(
-          `Invalid prop \`${propName}\` supplied to ${parentComponentName}. `
-          + `Must be of type ${componentClass}.`
+          `Invalid prop \`${propName}\` supplied to ${parentComponentName}. ` +
+            `Must be of type ${componentClass}.`,
         );
       }
 
@@ -34,9 +34,6 @@ export default class MorePropTypes {
   }
 
   static oneOrManyOf(propType) {
-    return PropTypes.oneOfType([
-      propType,
-      PropTypes.arrayOf(propType),
-    ]);
+    return PropTypes.oneOfType([propType, PropTypes.arrayOf(propType)]);
   }
 }

@@ -1,4 +1,4 @@
-import {createNewComponent} from "./componentUtils";
+import { createNewComponent } from "./componentUtils";
 
 const [, , componentName] = process.argv;
 try {

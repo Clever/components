@@ -1,11 +1,10 @@
 import loremIpsum from "lorem-ipsum";
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import Example from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {ModalButton} from "src";
-
+import { ModalButton } from "src";
 
 export default class ModalButtonView extends Component {
   constructor(props) {
@@ -15,12 +14,13 @@ export default class ModalButtonView extends Component {
   }
 
   render() {
-    const {cssClass} = ModalButtonView;
+    const { cssClass } = ModalButtonView;
 
     return (
       <View className={cssClass.CONTAINER} title="ModalButton">
         <p>
-          This component is a <code>Button</code> that triggers the appearance of a modal when clicked.
+          This component is a <code>Button</code> that triggers the appearance of a modal when
+          clicked.
         </p>
 
         <Example>
@@ -31,8 +31,8 @@ export default class ModalButtonView extends Component {
             onClose={() => console.log("ModalButton: modal closed!")}
             value="More info"
           >
-            <p>{loremIpsum({count: 1, units: "paragraphs"})}</p>
-            <p>{loremIpsum({count: 1, units: "paragraphs"})}</p>
+            <p>{loremIpsum({ count: 1, units: "paragraphs" })}</p>
+            <p>{loremIpsum({ count: 1, units: "paragraphs" })}</p>
           </ModalButton>
         </Example>
 

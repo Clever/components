@@ -20,8 +20,8 @@ export default class Item extends React.PureComponent {
   };
 
   render() {
-    const {cssClass} = Item;
-    const {children, className, onClick} = this.props;
+    const { cssClass } = Item;
+    const { children, className, onClick } = this.props;
 
     let Wrapper = "div";
     if (onClick) {

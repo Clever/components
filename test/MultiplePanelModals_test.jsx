@@ -1,8 +1,8 @@
 // import assert from "assert";
 import React from "react";
 // import sinon from "sinon";
-import {shallow} from "enzyme";
-import {MultiplePanelModals, Button} from "../src";
+import { shallow } from "enzyme";
+import { MultiplePanelModals, Button } from "../src";
 
 describe("MultiplePanelModals", () => {
   const panel1 = "Content of page 1";
@@ -12,7 +12,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[{title: "page1", panel: panel1}]}
+        componentArray={[{ title: "page1", panel: panel1 }]}
       />,
     );
 
@@ -25,7 +25,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[{title: "page1", panel: panel1}, {title: "page2", panel: panel2}]}
+        componentArray={[{ title: "page1", panel: panel1 }, { title: "page2", panel: panel2 }]}
       />,
     );
     expect(myComponent.props().children.props.title).toMatch("page1");
@@ -35,7 +35,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[{title: "page1", panel: panel1}, {title: "page2", panel: panel1}]}
+        componentArray={[{ title: "page1", panel: panel1 }, { title: "page2", panel: panel1 }]}
         startingPanel={1}
       />,
     );
@@ -47,7 +47,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[{title: "page1", panel: panel1}]}
+        componentArray={[{ title: "page1", panel: panel1 }]}
         className="my--custom--class"
       />,
     );
@@ -56,12 +56,7 @@ describe("MultiplePanelModals", () => {
   });
 
   it("doesn't render an empty array", () => {
-    const myComponent = shallow(
-      <MultiplePanelModals
-        closeModal={() => {}}
-        componentArray={[]}
-      />,
-    );
+    const myComponent = shallow(<MultiplePanelModals closeModal={() => {}} componentArray={[]} />);
 
     expect(myComponent).not.toIncludeText("<Modal />");
   });
@@ -70,7 +65,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[{title: "page1", panel: panel1}]}
+        componentArray={[{ title: "page1", panel: panel1 }]}
         startingPanel={2}
       />,
     );
@@ -82,7 +77,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[{title: "page1", panel: panel1}]}
+        componentArray={[{ title: "page1", panel: panel1 }]}
       />,
     );
 
@@ -100,7 +95,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[{title: "page1", panel: panel1}, {title: "page2", panel: panel2}]}
+        componentArray={[{ title: "page1", panel: panel1 }, { title: "page2", panel: panel2 }]}
       />,
     );
     expect(myComponent.props().children.props.title).toMatch("page1");

@@ -1,28 +1,23 @@
 import React from "react";
-import {Link} from "react-router";
+import { Link } from "react-router";
 
-import Example, {ExampleCode} from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {Button} from "src";
+import { Button } from "src";
 
 import "./ButtonView.less";
-
 
 let _focusExampleRef;
 
 export default function ButtonView() {
-  const {cssClass} = ButtonView;
+  const { cssClass } = ButtonView;
 
   return (
     <View className={cssClass.CONTAINER} title="Button" sourcePath="src/Button/Button.jsx">
+      <p>This is a set of button components with various sizes and types.</p>
       <p>
-        This is a set of button components with various sizes and types.
-      </p>
-      <p>
-        See also:
-        {" "}
-        <Link to="/components/confirmation-button">Confirmation Button</Link>
+        See also: <Link to="/components/confirmation-button">Confirmation Button</Link>
         {" | "}
         <Link to="/components/dropdown-button">Dropdown Button</Link>
         {" | "}
@@ -48,8 +43,8 @@ export default function ButtonView() {
           Here is a <Button type="linkPlain" href="//google.com" value="plain link" /> with no
           margin/padding.
           <br />
-          Better suited for inline links than the
-          regular <Button type="link" href="http://google.com" value="link button" />, which doesn't
+          Better suited for inline links than the regular{" "}
+          <Button type="link" href="http://google.com" value="link button" />, which doesn't
           automatically match the text around it.
         </p>
       </Example>
@@ -65,49 +60,45 @@ export default function ButtonView() {
         <Button type="primary" value={<span className="fa fa-search" />} />
         <Button
           type="destructive"
-          value={(
+          value={
             <div>
-              <span className="fa fa-trash" />
-              {" "}
-              Remove
+              <span className="fa fa-trash" /> Remove
             </div>
-          )}
+          }
         />
         <Button
           disabled
-          value={(
+          value={
             <div>
-              <span className="fa fa-spin fa-spinner" />
-              {" "}
-              Saving...
+              <span className="fa fa-spin fa-spinner" /> Saving...
             </div>
-          )}
+          }
         />
         <Button
           href="http://wikipedia.org"
           type="link"
-          value={(
+          value={
             <span>
-              <span className="fa fa-external-link" />
-              {" "}
-              Learn more
+              <span className="fa fa-external-link" /> Learn more
             </span>
-          )}
+          }
         />
       </Example>
 
       <h3>API:</h3>
 
       <Example
-        title={(
+        title={
           <span>
             <code>focus()</code>/<code>blur()</code>
           </span>
-        )}
+        }
       >
         <ExampleCode>
           <Button
-            ref={ref => { _focusExampleRef = ref; }}
+            ref={ref => {
+              _focusExampleRef = ref;
+            }}
             type="destructive"
             value="Focus on me!"
           />
@@ -119,11 +110,14 @@ export default function ButtonView() {
             }}
             size={Button.Size.S}
             type="link"
-            value={<span><code>focus()</code> ...but just for a second</span>}
+            value={
+              <span>
+                <code>focus()</code> ...but just for a second
+              </span>
+            }
           />
         </ExampleCode>
       </Example>
-
 
       <PropDocumentation
         availableProps={[

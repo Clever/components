@@ -25,10 +25,7 @@ export default function Phone(props) {
         strokeLinejoin="round"
       >
         <g id="phone" strokeWidth={2} stroke="#4FA97B">
-          <g
-            id="ui-48px-outline-3_phone-call"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="ui-48px-outline-3_phone-call" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M32,28 L26,34 L10,18 L16,12 L6,2 L0,8 C0,27.882 16.118,44 36,44 L42,38 L32,28 L32,28 Z"

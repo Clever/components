@@ -42,22 +42,11 @@ export default function Glue(props) {
           <use xlinkHref="#path-3" />
         </mask>
       </defs>
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="glue">
           <g id="Page-1-Copy-3" transform="translate(9.000000, 1.000000)">
             <g id="Group-7" stroke="#62748C" fill="#FFFFFF">
-              <use
-                id="Rectangle-24"
-                mask="url(#mask-2)"
-                strokeWidth={4}
-                xlinkHref="#path-1"
-              />
+              <use id="Rectangle-24" mask="url(#mask-2)" strokeWidth={4} xlinkHref="#path-1" />
               <polygon
                 id="Stroke-3"
                 strokeWidth={2}
@@ -65,11 +54,7 @@ export default function Glue(props) {
                 points="19 15 9 15 14 0"
               />
             </g>
-            <polygon
-              id="Fill-8"
-              fill="#B6C8F9"
-              points="23 38 6 38 6 27 23 27"
-            />
+            <polygon id="Fill-8" fill="#B6C8F9" points="23 38 6 38 6 27 23 27" />
             <polygon
               id="Stroke-9"
               stroke="#62748C"

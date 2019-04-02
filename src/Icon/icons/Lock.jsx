@@ -15,18 +15,9 @@ export default function Lock(props) {
       <title>lock</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="lock" strokeWidth={2}>
-          <g
-            id="ui-48px-outline-1_lock"
-            transform="translate(7.000000, 1.000000)"
-          >
+          <g id="ui-48px-outline-1_lock" transform="translate(7.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M16,0 L16,0 C10.5,0 6,4.5 6,10 L6,16 L26,16 L26,10 C26,4.5 21.5,0 16,0 L16,0 Z"
@@ -43,14 +34,7 @@ export default function Lock(props) {
                 height={28}
                 rx={2}
               />
-              <circle
-                id="Oval"
-                stroke="#A6A05A"
-                fill="#FFFFFF"
-                cx={16}
-                cy={28}
-                r={4}
-              />
+              <circle id="Oval" stroke="#A6A05A" fill="#FFFFFF" cx={16} cy={28} r={4} />
               <path
                 d="M16,32 L16,36"
                 id="Shape"

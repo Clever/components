@@ -5,10 +5,9 @@ import * as PropTypes from "prop-types";
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
 import SortIcons from "./SortIcons";
-import {FlexBox, ItemAlign} from "../flex";
+import { FlexBox, ItemAlign } from "../flex";
 
 require("./HeaderCell.less");
-
 
 export default function HeaderCell({
   children,
@@ -18,22 +17,16 @@ export default function HeaderCell({
   activeSortDirection,
   width,
 }) {
-  const {cssClass} = HeaderCell;
+  const { cssClass } = HeaderCell;
 
   return (
     <Cell
-      className={classnames(
-        cssClass.HEADER_CELL,
-        sortable && cssClass.SORTABLE,
-        className
-      )}
+      className={classnames(cssClass.HEADER_CELL, sortable && cssClass.SORTABLE, className)}
       onClick={() => sortable && onSortChange()}
       width={width}
     >
       <FlexBox alignItems={ItemAlign.CENTER}>
-        <div className={cssClass.LABEL}>
-          {children}
-        </div>
+        <div className={cssClass.LABEL}>{children}</div>
         {sortable && (
           <div>
             <SortIcons direction={activeSortDirection} className={cssClass.SORT} />

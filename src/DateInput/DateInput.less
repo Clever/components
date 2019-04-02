@@ -61,7 +61,9 @@
   }
 
   &.DateInput--placeholder-shown {
-    label { opacity: 0 !important; }
+    label {
+      opacity: 0 !important;
+    }
 
     .DateInput--input {
       .text--small;
@@ -75,12 +77,12 @@
 
   &.DateInput--hasError {
     box-shadow: inset @size_2xs 0 @alert_red;
-    transition: box-shadow .25s ease-out;
+    transition: box-shadow 0.25s ease-out;
   }
 
   &.DateInput--inFocus {
     box-shadow: inset @size_2xs 0 @primary_blue;
-    transition: box-shadow .25s ease-out;
+    transition: box-shadow 0.25s ease-out;
   }
 
   &.DateInput--disabled {

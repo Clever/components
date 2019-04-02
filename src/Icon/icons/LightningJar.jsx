@@ -15,18 +15,9 @@ export default function LightningJar(props) {
       <title>lightning-jar</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="lightning-jar" strokeWidth={2}>
-          <g
-            id="sport-48px-outline_energy-supplement"
-            transform="translate(3.000000, 1.000000)"
-          >
+          <g id="sport-48px-outline_energy-supplement" transform="translate(3.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M32,8 L20,8 L8,8 C8,12.5 0,13 0,19.7415771 L0,40 C0,42.2091408 1.7908611,44 4,44 L20,44 L36,44 C38.2091408,44 40,42.2091408 40,40 L40,19.7415771 C40,13 32,12.5 32,8 L32,8 Z"

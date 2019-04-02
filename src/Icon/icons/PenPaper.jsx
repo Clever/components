@@ -68,13 +68,7 @@ export default function PenPaper(props) {
           <use xlinkHref="#path-7" />
         </mask>
       </defs>
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="pen-paper">
           <g id="Page-1" transform="translate(7.000000, 1.000000)">
             <path
@@ -95,22 +89,8 @@ export default function PenPaper(props) {
               strokeLinejoin="round"
               fill="#B6C8F9"
             />
-            <rect
-              id="Rectangle"
-              fill="#B6C8F9"
-              x={33}
-              y={10}
-              width={4}
-              height={15}
-            />
-            <rect
-              id="Rectangle-Copy"
-              fill="#B6C8F9"
-              x={33}
-              y={40}
-              width={4}
-              height={3}
-            />
+            <rect id="Rectangle" fill="#B6C8F9" x={33} y={10} width={4} height={15} />
+            <rect id="Rectangle-Copy" fill="#B6C8F9" x={33} y={40} width={4} height={3} />
             <path
               d="M32,40 L38,40"
               id="Stroke-11"

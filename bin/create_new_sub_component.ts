@@ -1,4 +1,4 @@
-import {createNewSubComponent} from "./componentUtils";
+import { createNewSubComponent } from "./componentUtils";
 
 const [, , componentName, directoryPath] = process.argv;
 try {
@@ -6,4 +6,3 @@ try {
 } catch (e) {
   console.error("\n❌  Unable to create new sub-component:", e);
 }
-

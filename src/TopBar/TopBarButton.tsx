@@ -67,9 +67,8 @@ export default class TopBarButton extends React.PureComponent {
   }
 
   render() {
-    const {active, children, className, href, markerShape, onClick, target} = this.props;
+    const { active, children, className, href, markerShape, onClick, target } = this.props;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
-
 
     const Wrapper = this._getWrapperComponent();
 
@@ -90,10 +89,10 @@ export default class TopBarButton extends React.PureComponent {
 
   _handleContainerRef = ref => {
     this._containerRef = ref;
-  }
+  };
 
   _getWrapperComponent() {
-    const {component, href} = this.props;
+    const { component, href } = this.props;
 
     if (component) {
       return component;

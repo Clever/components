@@ -63,7 +63,7 @@ export default class Checkbox extends React.PureComponent {
   }
 
   render() {
-    const {checked, children, className, disabled, partial, tabIndex} = this.props;
+    const { checked, children, className, disabled, partial, tabIndex } = this.props;
 
     let ariaCheckedState;
     ariaCheckedState = !!checked;
@@ -104,7 +104,7 @@ export default class Checkbox extends React.PureComponent {
   }
 
   _onClick = () => {
-    const {disabled, id, onChange, checked, partial, value} = this.props;
+    const { disabled, id, onChange, checked, partial, value } = this.props;
 
     if (disabled) {
       return;
@@ -118,7 +118,7 @@ export default class Checkbox extends React.PureComponent {
     }
 
     if (onChange) {
-      onChange({id, checked: newCheckedState, value});
+      onChange({ id, checked: newCheckedState, value });
     }
   };
 }

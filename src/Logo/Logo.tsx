@@ -31,7 +31,7 @@ export default class Logo extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const {beta, className, color, style} = this.props;
+    const { beta, className, color, style } = this.props;
 
     return (
       <div className={classnames(cssClass.CONTAINER, className)} style={style}>

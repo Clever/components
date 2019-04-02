@@ -22,7 +22,8 @@
   width: 100%;
 }
 
-.FileInput--Text, .FileInput--Icon {
+.FileInput--Text,
+.FileInput--Icon {
   .alignSelf(center);
 }
 
@@ -36,7 +37,7 @@
 }
 
 // Overwrite the inlined styles on the hidden file input for accessibility
-.FileInput + input[type=file] {
+.FileInput + input[type="file"] {
   display: inline !important;
   margin-left: -10000rem;
   position: fixed;

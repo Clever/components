@@ -4,18 +4,13 @@ import * as PropTypes from "prop-types";
 
 require("./Cell.less");
 
-
-export default function Cell({children, className, noWrap, width, ...additionalProps}) {
-  const {cssClass} = Cell;
+export default function Cell({ children, className, noWrap, width, ...additionalProps }) {
+  const { cssClass } = Cell;
 
   return (
     <td
-      className={classnames(
-        cssClass.CELL,
-        noWrap && cssClass.NO_WRAP,
-        className
-      )}
-      style={{width}}
+      className={classnames(cssClass.CELL, noWrap && cssClass.NO_WRAP, className)}
+      style={{ width }}
       {...additionalProps}
     >
       {children}

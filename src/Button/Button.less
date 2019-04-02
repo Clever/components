@@ -1,7 +1,6 @@
 @import "../less/fonts.less";
 @import (reference) "../less/index";
 
-
 .buttonColor(@backgroundColor: @primary_blue, @disabled: false) {
   background-color: @backgroundColor;
   border-color: @backgroundColor;
@@ -18,7 +17,8 @@
   }
 }
 
-a, button {
+a,
+button {
   &.Button {
     .button--reset;
     .border--s(transparent);
@@ -37,8 +37,7 @@ a, button {
 
     &[disabled],
     &[disabled]:hover,
-    &[disabled]:focus
-    &[disabled]:active {
+    &[disabled]:focus &[disabled]:active {
       background-color: @neutral_silver;
       border-color: @neutral_silver;
       border-bottom-color: @neutral_silver;
@@ -60,7 +59,7 @@ a, button {
 
     &:hover,
     &:focus,
-    &:active{
+    &:active {
       outline: 0;
     }
   }
@@ -132,8 +131,7 @@ a, button {
     }
   }
 
-  &.Button--linkPlain
-  {
+  &.Button--linkPlain {
     color: @primary_blue;
 
     &:hover,
@@ -161,7 +159,7 @@ a, button {
   &.Button--linkPlain,
   &.Button--plain {
     border: none;
-    font-size: 1em;  /* Match surrounding text. */
+    font-size: 1em; /* Match surrounding text. */
     margin: 0;
     padding: 0;
   }

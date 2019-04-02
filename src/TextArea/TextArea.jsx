@@ -3,7 +3,7 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import TextareaAutosize from "react-autosize-textarea";
 
-import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 
 import "./TextArea.less";
 import "../less/forms.less";
@@ -14,8 +14,10 @@ export class TextArea extends React.Component {
       throw new Error("You cannot pass both `required` and `optional` on a TextArea.");
     }
 
-    if (["readOnly", "disabled", "inFocus"].filter((x) => props[x]).length > 1) {
-      throw new Error("The readOnly, disabled, and inFocus props on a TextArea are mutually exclusive.");
+    if (["readOnly", "disabled", "inFocus"].filter(x => props[x]).length > 1) {
+      throw new Error(
+        "The readOnly, disabled, and inFocus props on a TextArea are mutually exclusive.",
+      );
     }
 
     return props;
@@ -24,7 +26,7 @@ export class TextArea extends React.Component {
   constructor(props) {
     super(TextArea.validateProps(props));
 
-    this.state = {inFocus: false};
+    this.state = { inFocus: false };
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
   }
@@ -33,18 +35,18 @@ export class TextArea extends React.Component {
      event handlers, and helper methods here */
 
   onFocus() {
-    const {onFocus} = this.props;
+    const { onFocus } = this.props;
 
-    this.setState({inFocus: true});
+    this.setState({ inFocus: true });
     if (onFocus) {
       onFocus();
     }
   }
 
   onBlur() {
-    const {onBlur} = this.props;
+    const { onBlur } = this.props;
 
-    this.setState({inFocus: false});
+    this.setState({ inFocus: false });
     if (onBlur) {
       onBlur();
     }
@@ -125,7 +127,9 @@ export class TextArea extends React.Component {
         )}
       >
         <div className="TextArea--infoRow">
-          <label className="TextArea--label" htmlFor={this.props.name}>{this.props.label}</label>
+          <label className="TextArea--label" htmlFor={this.props.name}>
+            {this.props.label}
+          </label>
           {inputNote}
         </div>
         {textarea}
@@ -154,7 +158,7 @@ TextArea.propTypes = {
   autoResize: PropTypes.bool,
   rows: PropTypes.number,
   // Object.values isn't properly polyfilled in jsx files
-  size: PropTypes.oneOf(Object.keys(FormElementSize).map((key) => FormElementSize[key])),
+  size: PropTypes.oneOf(Object.keys(FormElementSize).map(key => FormElementSize[key])),
 };
 
 TextArea.defaultProps = {

@@ -2,9 +2,9 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 
-import {Button} from "../Button/Button";
-import {ModalButton} from "../ModalButton/ModalButton";
-import {propsFor, prefixKeys, unprefixKeys} from "../utils";
+import { Button } from "../Button/Button";
+import { ModalButton } from "../ModalButton/ModalButton";
+import { propsFor, prefixKeys, unprefixKeys } from "../utils";
 
 require("./ConfirmationButton.less");
 
@@ -32,17 +32,20 @@ export class ConfirmationButton extends React.Component {
     const confirmButtonProps = propsFor(Button, unprefixKeys(this.props, propPrefix));
     const wrapperClass = "ConfirmationButton--dialog-buttons";
 
-    return (<ModalButton {...modalButtonProps} ref="modalButton">
-      {this.props.children}
-      <div className={classnames(wrapperClass, this.props.className)}>
-        <Button type="link" value="Cancel" onClick={this.handleCancel} />
-        <Button {...confirmButtonProps} onClick={this.handleConfirm} />
-      </div>
-    </ModalButton>);
+    return (
+      <ModalButton {...modalButtonProps} ref="modalButton">
+        {this.props.children}
+        <div className={classnames(wrapperClass, this.props.className)}>
+          <Button type="link" value="Cancel" onClick={this.handleCancel} />
+          <Button {...confirmButtonProps} onClick={this.handleConfirm} />
+        </div>
+      </ModalButton>
+    );
   }
 }
 
-ConfirmationButton.propTypes = Object.assign({},
+ConfirmationButton.propTypes = Object.assign(
+  {},
   prefixKeys(Button.propTypes, propPrefix),
   ModalButton.propTypes,
   {
@@ -51,11 +54,12 @@ ConfirmationButton.propTypes = Object.assign({},
   },
 );
 
-ConfirmationButton.defaultProps = Object.assign({},
+ConfirmationButton.defaultProps = Object.assign(
+  {},
   prefixKeys(Button.defaultProps, propPrefix),
   ModalButton.defaultProps,
   {
     confirmButtonType: "primary",
     confirmButtonValue: "Confirm",
-  }
+  },
 );

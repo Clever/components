@@ -4,7 +4,6 @@ import * as PropTypes from "prop-types";
 
 import "./Tab.less";
 
-
 export default function Tab({
   children,
   className,
@@ -14,9 +13,9 @@ export default function Tab({
   id,
   onSelect,
   selected,
-  ...additionalProps,
+  ...additionalProps
 }) {
-  const {cssClass} = Tab;
+  const { cssClass } = Tab;
 
   let Wrapper = component;
   if (!Wrapper) {
@@ -29,7 +28,7 @@ export default function Tab({
         cssClass.CONTAINER,
         disabled && cssClass.DISABLED,
         selected && cssClass.SELECTED,
-        className
+        className,
       )}
       disabled={disabled}
       href={href}

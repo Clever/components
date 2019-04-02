@@ -36,9 +36,6 @@ rules:
     - "smart"
 
   quotes: [2, "double", "avoid-escape"]
-  object-curly-spacing:
-    - 2
-    - "never"
   new-cap:
     - 2
     - newIsCapExceptions: ["kayvee.logger"]
@@ -60,3 +57,8 @@ rules:
   react/jsx-curly-spacing:
     - 2
     - "never"
+
+  prefer-const: ["error", { "destructuring": "all" }]
+
+  indent:
+    - off

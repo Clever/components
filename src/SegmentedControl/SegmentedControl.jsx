@@ -10,22 +10,22 @@ import "./SegmentedControl.less";
  */
 export class SegmentedControl extends React.Component {
   static validateProps(props) {
-    const {defaultValue, onSelect, value} = props;
+    const { defaultValue, onSelect, value } = props;
 
     if (value && defaultValue) {
       throw new Error(
-        "SegmentedControl must either be controlled or uncontrolled "
-        + "(specify either the `value` prop, or the `defaultValue` prop, but not both).\n"
-        + "More info: https://fb.me/react-controlled-components"
+        "SegmentedControl must either be controlled or uncontrolled " +
+          "(specify either the `value` prop, or the `defaultValue` prop, but not both).\n" +
+          "More info: https://fb.me/react-controlled-components",
       );
     }
 
     if (value && !onSelect) {
       throw new Error(
-        "`onSelect` prop required when using SegmentedControl as a controlled component. "
-        + "Either provide the `onSelect` prop, or replace `value` with `defaultValue` for an "
-        + "uncontrolled SegmentedControl.\n"
-        + "More info: https://fb.me/react-controlled-components"
+        "`onSelect` prop required when using SegmentedControl as a controlled component. " +
+          "Either provide the `onSelect` prop, or replace `value` with `defaultValue` for an " +
+          "uncontrolled SegmentedControl.\n" +
+          "More info: https://fb.me/react-controlled-components",
       );
     }
 
@@ -35,23 +35,19 @@ export class SegmentedControl extends React.Component {
   constructor(props) {
     super(SegmentedControl.validateProps(props));
 
-    this.state = {selected: props.defaultValue || null};
+    this.state = { selected: props.defaultValue || null };
   }
 
-  onSelect({disabled, value}) {
+  onSelect({ disabled, value }) {
     // TODO: We need to do an audit for SegmentedControl usage and figure out if we can safely get
     // rid of the uncontrolled mode (and stop tracking state internally) so we avoid this complexity
     // (or just make a breaking change).
     const previousValue = this.props.value || this.state.selected;
-    if (
-      disabled
-      || this.props.disabled
-      || value === previousValue
-    ) {
+    if (disabled || this.props.disabled || value === previousValue) {
       return;
     }
 
-    this.setState({selected: value});
+    this.setState({ selected: value });
     if (this.props.onSelect) {
       this.props.onSelect(value);
     }
@@ -62,7 +58,7 @@ export class SegmentedControl extends React.Component {
   }
 
   render() {
-    const {className, disabled, options, value} = this.props;
+    const { className, disabled, options, value } = this.props;
     const selected = value || this.state.selected;
     const cssClass = SegmentedControl.cssClass;
 
@@ -90,11 +86,7 @@ export class SegmentedControl extends React.Component {
       );
     });
 
-    return (
-      <div className={[cssClass.CONTAINER, className].join(" ")}>
-        {selectableItems}
-      </div>
-    );
+    return <div className={[cssClass.CONTAINER, className].join(" ")}>{selectableItems}</div>;
   }
 }
 
@@ -102,11 +94,13 @@ SegmentedControl.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    content: PropTypes.node.isRequired,
-    disabled: PropTypes.bool,
-    value: PropTypes.any.isRequired,
-  })).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.node.isRequired,
+      disabled: PropTypes.bool,
+      value: PropTypes.any.isRequired,
+    }),
+  ).isRequired,
   onSelect: PropTypes.func,
   value: PropTypes.any,
 };

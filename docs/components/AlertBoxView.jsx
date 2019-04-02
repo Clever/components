@@ -1,7 +1,7 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import View from "./View";
-import {AlertBox, SegmentedControl} from "src";
-import Example, {ExampleCode} from "./Example";
+import { AlertBox, SegmentedControl } from "src";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 
 export default class AlertBoxView extends PureComponent {
@@ -10,29 +10,33 @@ export default class AlertBoxView extends PureComponent {
   };
 
   render() {
-    const {AlertBoxOptions} = AlertBoxView;
-    const {type} = this.state;
+    const { AlertBoxOptions } = AlertBoxView;
+    const { type } = this.state;
 
     return (
       <View title="AlertBox" sourcePath="src/AlertBox/AlertBox.jsx">
         <p>
-          This is a container for prominent page-level messaging. Alerts should communicate a
-          single informational message and may contain a text link if there are related actions.
-          Temporary messages that are a direct result of a user interaction should display via
-          Toast, rather than Alert box.
+          This is a container for prominent page-level messaging. Alerts should communicate a single
+          informational message and may contain a text link if there are related actions. Temporary
+          messages that are a direct result of a user interaction should display via Toast, rather
+          than Alert box.
         </p>
 
         <Example title="AlertBox options:">
           <SegmentedControl
-            onSelect={value => this.setState({type: value})}
-            options={Object.keys(AlertBoxOptions).map(n => ({content: n, value: AlertBoxOptions[n]}))}
+            onSelect={value => this.setState({ type: value })}
+            options={Object.keys(AlertBoxOptions).map(n => ({
+              content: n,
+              value: AlertBoxOptions[n],
+            }))}
             value={type}
           />
 
           <ExampleCode>
             <AlertBox type={type} title={`${type} box`}>
               <p>
-                This is the box body. It can be any node. <a href="/#/components/alert-box">look a link</a>!
+                This is the box body. It can be any node.{" "}
+                <a href="/#/components/alert-box">look a link</a>!
               </p>
             </AlertBox>
           </ExampleCode>
@@ -42,7 +46,8 @@ export default class AlertBoxView extends PureComponent {
           <ExampleCode>
             <AlertBox type="info" title="Closable info box" isClosable>
               <p>
-                This is the box body. It can be any node. <a href="/#/components/alert-box">look a link</a>!
+                This is the box body. It can be any node.{" "}
+                <a href="/#/components/alert-box">look a link</a>!
                 <br />
                 Notice that this box is closable
               </p>

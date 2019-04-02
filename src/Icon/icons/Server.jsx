@@ -15,39 +15,12 @@ export default function Server(props) {
       <title>servers</title>
       <desc>Created with Sketch.</desc>
       <defs />
-      <g
-        id="Artboards"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Artboards" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="servers">
           <g id="Page-1" transform="translate(2.000000, 0.000000)">
-            <rect
-              id="Rectangle-20"
-              fill="#85EBB6"
-              x={0}
-              y={0}
-              width={14}
-              height={46}
-            />
-            <rect
-              id="Rectangle-20-Copy"
-              fill="#B6C8F9"
-              x={14}
-              y={0}
-              width={14}
-              height={46}
-            />
-            <rect
-              id="Rectangle-20-Copy-2"
-              fill="#FD8874"
-              x={28}
-              y={0}
-              width={14}
-              height={46}
-            />
+            <rect id="Rectangle-20" fill="#85EBB6" x={0} y={0} width={14} height={46} />
+            <rect id="Rectangle-20-Copy" fill="#B6C8F9" x={14} y={0} width={14} height={46} />
+            <rect id="Rectangle-20-Copy-2" fill="#FD8874" x={28} y={0} width={14} height={46} />
             <polygon
               id="Stroke-1"
               stroke="#62748C"

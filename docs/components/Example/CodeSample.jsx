@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import Prism from "prismjs";
-import React, {Component} from "react";
+import React, { Component } from "react";
 import * as PropTypes from "prop-types";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-less";
@@ -8,7 +8,6 @@ import "prismjs/components/prism-less";
 import "prismjs/themes/prism-solarizedlight.css";
 
 import "./CodeSample.less";
-
 
 export default class CodeSample extends Component {
   static stripIndentation(code) {
@@ -30,8 +29,8 @@ export default class CodeSample extends Component {
   }
 
   render() {
-    const {cssClass} = CodeSample;
-    const {className, type} = this.props;
+    const { cssClass } = CodeSample;
+    const { className, type } = this.props;
 
     return (
       <code className={cssClass.CONTAINER}>

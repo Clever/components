@@ -25,10 +25,7 @@ export default function Leader(props) {
         strokeLinejoin="round"
       >
         <g id="leader" strokeWidth={2} stroke="#62748C">
-          <g
-            id="users-48px-outline_single-position"
-            transform="translate(3.000000, 1.000000)"
-          >
+          <g id="users-48px-outline_single-position" transform="translate(3.000000, 1.000000)">
             <g id="Group">
               <path
                 d="M31,32.988 C36.422,34.061 40,35.905 40,38 C40,41.314 31.046,44 20,44 C8.954,44 0,41.314 0,38 C0,35.913 3.552,34.075 8.941,33"

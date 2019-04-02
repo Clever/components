@@ -7,10 +7,9 @@ import Arrow from "./Arrow";
 
 import "./NavLink.less";
 
-
 export class NavLink extends React.PureComponent {
   render() {
-    const {cssClass} = NavLink;
+    const { cssClass } = NavLink;
     const {
       _collapsed,
       _withArrow,
@@ -22,7 +21,7 @@ export class NavLink extends React.PureComponent {
       label,
       onClick,
       selected,
-      ...additionalProps,
+      ...additionalProps
     } = this.props;
 
     let Component = "button";
@@ -54,7 +53,9 @@ export class NavLink extends React.PureComponent {
             </div>
           )}
           <div className={cssClass.LABEL_CONTAINER}>
-            <div className={cssClass.LABEL} title={label}>{label}</div>
+            <div className={cssClass.LABEL} title={label}>
+              {label}
+            </div>
           </div>
           {_withArrow && (
             <div className={cssClass.ARROW_CONTAINER}>

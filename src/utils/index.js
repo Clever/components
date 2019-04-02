@@ -31,9 +31,7 @@ export function omitKeys(obj, ...toOmit) {
  */
 export function prefixKeys(obj, prefix, capitalizeFirst = true) {
   return Object.keys(obj).reduce((prev, key) => {
-    const suffix = capitalizeFirst
-      ? key.charAt(0).toUpperCase() + key.slice(1)
-      : key;
+    const suffix = capitalizeFirst ? key.charAt(0).toUpperCase() + key.slice(1) : key;
     prev[prefix + suffix] = obj[key];
     return prev;
   }, {});
@@ -76,7 +74,7 @@ export function classNameFor(prefixes, classSegments) {
   if (!classSegments) {
     classSegmentList = [];
   } else {
-    classSegmentList = (classSegments instanceof Array ? classSegments : [classSegments]);
+    classSegmentList = classSegments instanceof Array ? classSegments : [classSegments];
   }
 
   if (prefixList.length === 0) {

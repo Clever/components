@@ -2,7 +2,7 @@ import _ from "lodash";
 import classnames from "classnames";
 import MorePropTypes from "../utils/MorePropTypes";
 import Overlay from "react-bootstrap/lib/Overlay";
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import * as PropTypes from "prop-types";
 
 import FlexBox from "../flex/FlexBox";
@@ -10,11 +10,10 @@ import FlexItem from "../flex/FlexItem";
 import Menu from "./Menu";
 import Option from "./Option";
 import Type from "./Type";
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 
 import "./Caret.less";
 import "./DropdownButton.less";
-
 
 export default class DropdownButton extends PureComponent {
   constructor(props) {
@@ -26,8 +25,8 @@ export default class DropdownButton extends PureComponent {
   }
 
   _renderMainButton() {
-    const {cssClass} = DropdownButton;
-    const {disabled, href, label, onClick, size, target, type} = this.props;
+    const { cssClass } = DropdownButton;
+    const { disabled, href, label, onClick, size, target, type } = this.props;
 
     return (
       <FlexItem
@@ -46,10 +45,10 @@ export default class DropdownButton extends PureComponent {
   }
 
   render() {
-    const {cssClass, propTypes} = DropdownButton;
-    const {children, className, disabled, size, type} = this.props;
+    const { cssClass, propTypes } = DropdownButton;
+    const { children, className, disabled, size, type } = this.props;
     const passthroughProps = _.omit(this.props, Object.keys(propTypes));
-    const {expanded} = this.state;
+    const { expanded } = this.state;
 
     if (React.Children.count(children) === 0) {
       return (
@@ -66,25 +65,25 @@ export default class DropdownButton extends PureComponent {
           <Button
             className={classnames(cssClass.SECTION, cssClass.TOGGLE)}
             disabled={disabled}
-            onClick={() => this.setState({expanded: !expanded})}
+            onClick={() => this.setState({ expanded: !expanded })}
             size={size}
             type={type}
-            value={(
+            value={
               <span className={cssClass.CARET_CONTAINER}>
                 <span className={cssClass.CARET} />
               </span>
-            )}
+            }
           />
         </FlexBox>
         <Overlay
           className={cssClass.POPUP}
           container={this}
-          onHide={() => this.setState({expanded: false})}
+          onHide={() => this.setState({ expanded: false })}
           placement="bottom"
           rootClose
           show={!disabled && expanded}
         >
-          <Menu onHide={() => this.setState({expanded: false})} size={size} type={type}>
+          <Menu onHide={() => this.setState({ expanded: false })} size={size} type={type}>
             {children}
           </Menu>
         </Overlay>

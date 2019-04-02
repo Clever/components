@@ -1,10 +1,9 @@
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import Row from "../../src/Grid/Row";
-import {Grid} from "../../src/Grid/Grid";
-
+import { Grid } from "../../src/Grid/Grid";
 
 describe("Grid", () => {
   it("applies grid classname", () => {
@@ -23,10 +22,7 @@ describe("Grid", () => {
   });
 
   it("renders child Rows", () => {
-    const rows = [
-      <Row key="0" />,
-      <Row key="1" />,
-    ];
+    const rows = [<Row key="0" />, <Row key="1" />];
 
     const grid = shallow(<Grid>{rows}</Grid>);
 

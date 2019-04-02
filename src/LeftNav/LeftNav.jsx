@@ -2,15 +2,14 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import _ from "lodash";
 import classnames from "classnames";
-import {CSSTransitionGroup} from "react-transition-group";
+import { CSSTransitionGroup } from "react-transition-group";
 import RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import MorePropTypes from "../utils/MorePropTypes";
-import {NavLink} from "./NavLink";
-import {NavGroup} from "./NavGroup";
+import { NavLink } from "./NavLink";
+import { NavGroup } from "./NavGroup";
 
 import "./LeftNav.less";
-
 
 /** NOTE: Corresponds to the `@timingSlowly` LESS constant in src/less/animations.less. */
 const WIDTH_TRANSITION_DURATION_MS = 400;
@@ -21,11 +20,13 @@ export class LeftNav extends React.PureComponent {
 
     // If a NavLink in a NavGroup is marked as selected on initialization, we
     // should open the drawer to show it. Otherwise, don't start with the drawer open.
-    const selectedNavGroup = _.find(this._getNonEmptyChildren(props.children), child =>
-      child.type === NavGroup &&
-        this._getNonEmptyChildren(child.props.children).some(navLink => navLink.props.selected)
+    const selectedNavGroup = _.find(
+      this._getNonEmptyChildren(props.children),
+      child =>
+        child.type === NavGroup &&
+        this._getNonEmptyChildren(child.props.children).some(navLink => navLink.props.selected),
     );
-    this.state = {openNavGroup: selectedNavGroup ? selectedNavGroup.props.id : null};
+    this.state = { openNavGroup: selectedNavGroup ? selectedNavGroup.props.id : null };
   }
 
   _getNonEmptyChildren(children) {
@@ -33,7 +34,7 @@ export class LeftNav extends React.PureComponent {
   }
 
   render() {
-    const {cssClass} = LeftNav;
+    const { cssClass } = LeftNav;
     const {
       children,
       className,
@@ -42,7 +43,7 @@ export class LeftNav extends React.PureComponent {
       withActiveNavGroups,
       withTooltips,
     } = this.props;
-    const {openNavGroup} = this.state;
+    const { openNavGroup } = this.state;
     const _collapsed = collapsed || (collapseOnSubNavOpen && !!openNavGroup);
 
     // Clone all of the children so that we can attach our own click handlers
@@ -53,7 +54,7 @@ export class LeftNav extends React.PureComponent {
           _collapsed,
           _withTooltips: withTooltips,
           onClick: () => {
-            this.setState({openNavGroup: null});
+            this.setState({ openNavGroup: null });
             if (child.props.onClick) {
               child.props.onClick();
             }
@@ -69,7 +70,7 @@ export class LeftNav extends React.PureComponent {
           _open: open,
           _withActiveNavGroups: withActiveNavGroups,
           _withTooltips: withTooltips,
-          _onClick: () => this.setState({openNavGroup: open ? null : child.props.id}),
+          _onClick: () => this.setState({ openNavGroup: open ? null : child.props.id }),
         });
       }
 
@@ -86,7 +87,8 @@ export class LeftNav extends React.PureComponent {
             cssClass.CONTAINER,
             _collapsed && cssClass.COLLAPSED,
             openChild && cssClass.WITH_SUBNAV_OPEN,
-            className)}
+            className,
+          )}
         >
           <div className={classnames(cssClass.TOPNAV, _collapsed && cssClass.TOPNAV_COLLAPSED)}>
             {navItems}
@@ -98,11 +100,7 @@ export class LeftNav extends React.PureComponent {
             component="div"
             transitionName={cssClass.SUBNAV_CONTENT_ANIM}
           >
-            {openChild && (
-              <div className={cssClass.SUBNAV_CONTENT}>
-                {openChild.props.children}
-              </div>
-            )}
+            {openChild && <div className={cssClass.SUBNAV_CONTENT}>{openChild.props.children}</div>}
           </CSSTransitionGroup>
         </nav>
       </RootCloseWrapper>
@@ -110,13 +108,13 @@ export class LeftNav extends React.PureComponent {
   }
 
   _onRootClose() {
-    const {closeSubNavOnBlur} = this.props;
+    const { closeSubNavOnBlur } = this.props;
 
     if (!closeSubNavOnBlur) {
       return;
     }
 
-    this.setState({openNavGroup: null});
+    this.setState({ openNavGroup: null });
   }
 }
 
@@ -124,10 +122,12 @@ LeftNav.NavLink = NavLink;
 LeftNav.NavGroup = NavGroup;
 
 LeftNav.propTypes = {
-  children: MorePropTypes.oneOrManyOf(PropTypes.oneOfType([
-    MorePropTypes.instanceOfComponent(NavLink),
-    MorePropTypes.instanceOfComponent(NavGroup),
-  ])),
+  children: MorePropTypes.oneOrManyOf(
+    PropTypes.oneOfType([
+      MorePropTypes.instanceOfComponent(NavLink),
+      MorePropTypes.instanceOfComponent(NavGroup),
+    ]),
+  ),
   className: PropTypes.string,
   closeSubNavOnBlur: PropTypes.bool,
   collapseOnSubNavOpen: PropTypes.bool,

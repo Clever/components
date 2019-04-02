@@ -7,7 +7,7 @@ const cssClass = {
 
 export default class CheckMark extends React.PureComponent {
   render() {
-    const {className} = this.props;
+    const { className } = this.props;
 
     return (
       <svg
@@ -16,15 +16,7 @@ export default class CheckMark extends React.PureComponent {
         version="1"
         viewBox="0 0 10 4"
       >
-        <rect
-          width="10"
-          height="4"
-          x="0"
-          y="0"
-          fill="#FFF"
-          fillRule="evenodd"
-          rx="1"
-        />
+        <rect width="10" height="4" x="0" y="0" fill="#FFF" fillRule="evenodd" rx="1" />
       </svg>
     );
   }

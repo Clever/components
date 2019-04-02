@@ -5,106 +5,105 @@ import "core-js"; // Provides es5 polyfills not included by the typescript compi
 
 export * from "./flex";
 export * from "./TabBar";
-export {FormElementSize} from "./utils/Forms";
-export {Modal} from "./Modal/Modal";
-export {Button} from "./Button/Button";
-export {ModalButton} from "./ModalButton/ModalButton";
-export {MultiplePanelModals} from "./MultiplePanelModals/MultiplePanelModals";
-export {ConfirmationButton} from "./ConfirmationButton/ConfirmationButton";
-export {TextInput} from "./TextInput/TextInput";
-export {CopyableInput} from "./CopyableInput/CopyableInput";
-export {SegmentedControl} from "./SegmentedControl/SegmentedControl";
-export {Select} from "./Select/Select";
-export {Table} from "./Table/Table";
-export {Grid} from "./Grid/Grid";
-export {Icon} from "./Icon/Icon";
-export {LeftNav} from "./LeftNav/LeftNav";
-export {Wizard} from "./Wizard/Wizard";
-export {TextArea} from "./TextArea/TextArea";
-export {Label} from "./Label";
-export {FileInput} from "./FileInput/FileInput";
+export { FormElementSize } from "./utils/Forms";
+export { Modal } from "./Modal/Modal";
+export { Button } from "./Button/Button";
+export { ModalButton } from "./ModalButton/ModalButton";
+export { MultiplePanelModals } from "./MultiplePanelModals/MultiplePanelModals";
+export { ConfirmationButton } from "./ConfirmationButton/ConfirmationButton";
+export { TextInput } from "./TextInput/TextInput";
+export { CopyableInput } from "./CopyableInput/CopyableInput";
+export { SegmentedControl } from "./SegmentedControl/SegmentedControl";
+export { Select } from "./Select/Select";
+export { Table } from "./Table/Table";
+export { Grid } from "./Grid/Grid";
+export { Icon } from "./Icon/Icon";
+export { LeftNav } from "./LeftNav/LeftNav";
+export { Wizard } from "./Wizard/Wizard";
+export { TextArea } from "./TextArea/TextArea";
+export { Label } from "./Label";
+export { FileInput } from "./FileInput/FileInput";
 export * from "./InfoPanel";
-export {CloseIcon} from "./CloseIcon/CloseIcon";
-
+export { CloseIcon } from "./CloseIcon/CloseIcon";
 
 import AlertBox from "./AlertBox/AlertBox";
-export {AlertBox};
+export { AlertBox };
 
 import Count from "./Count";
-export {Count};
+export { Count };
 
 import DateInput from "./DateInput/DateInput";
-export {DateInput};
+export { DateInput };
 
 import RichText from "./RichText/RichText";
-export {RichText};
+export { RichText };
 
 import DatePicker from "./DatePicker";
-export {DatePicker};
+export { DatePicker };
 
 import DollarAmount from "./DollarAmount";
-export {DollarAmount};
+export { DollarAmount };
 
 import DropdownButton from "./DropdownButton";
-export {DropdownButton};
+export { DropdownButton };
 
 import List from "./List";
-export {List};
+export { List };
 
 import Number from "./Number";
-export {Number};
+export { Number };
 
 import Tooltip from "./Tooltip";
-export {Tooltip};
+export { Tooltip };
 
 import GoalsLogo from "./GoalsLogo";
-export {GoalsLogo};
+export { GoalsLogo };
 
-import Logo, {BetaTag} from "./Logo";
-export {Logo};
-export {BetaTag};
+import Logo, { BetaTag } from "./Logo";
+export { Logo };
+export { BetaTag };
 
 import Menu from "./Menu";
-export {Menu};
+export { Menu };
 
 import TopBar from "./TopBar";
-export {TopBar};
+export { TopBar };
 
 import TextTruncate from "./TextTruncate";
-export {TextTruncate};
+export { TextTruncate };
 
 import CopyContainer from "./CopyContainer";
-export {CopyContainer};
+export { CopyContainer };
 
 import EditableInfoPanel from "./EditableInfoPanel";
-export {EditableInfoPanel};
+export { EditableInfoPanel };
 
 import WithKeyboardNav from "./WithKeyboardNav";
-export {WithKeyboardNav};
+export { WithKeyboardNav };
 
 import RadioGroup from "./RadioGroup";
-export {RadioGroup};
+export { RadioGroup };
 
 import FormError from "./FormError";
-export {FormError};
+export { FormError };
 
 import Checkbox from "./Checkbox";
-export {Checkbox};
+export { Checkbox };
 
 import CheckboxGroup from "./CheckboxGroup";
-export {CheckboxGroup};
+export { CheckboxGroup };
 
 import Switch from "./Switch";
-export {Switch};
+export { Switch };
 
 import ProgressBar from "./ProgressBar";
-export {ProgressBar};
+export { ProgressBar };
 
-import {ToastStack, ToastType} from "./ToastStack";
-export {ToastStack, ToastType};
+import { ToastStack, ToastType } from "./ToastStack";
+export { ToastStack, ToastType };
 
 import Stepper from "./Stepper";
-export {Stepper};
+export { Stepper };
 
 import WizardLayout from "./WizardLayout";
-export {WizardLayout};
+export { WizardLayout };

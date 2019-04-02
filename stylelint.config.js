@@ -7,10 +7,7 @@ module.exports = {
     "declaration-empty-line-before": "never",
     "declaration-property-value-whitelist": [
       {
-        "/color/": [
-          "/@.+/",
-          "transparent",
-        ],
+        "/color/": ["/@.+/", "transparent"],
       },
     ],
     "max-empty-lines": 2,

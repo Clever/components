@@ -25,10 +25,7 @@ export default function Share(props) {
         strokeLinejoin="round"
       >
         <g id="share" strokeWidth={2} stroke="#62748C">
-          <g
-            id="arrows-48px-outline-1_share-91"
-            transform="translate(3.000000, 2.000000)"
-          >
+          <g id="arrows-48px-outline-1_share-91" transform="translate(3.000000, 2.000000)">
             <g id="Group">
               <polyline id="Shape" points="38 27 38 41 0 41 0 9 6 9" />
               <path

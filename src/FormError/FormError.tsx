@@ -2,7 +2,7 @@ import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import {FlexBox, FlexItem} from "../flex";
+import { FlexBox, FlexItem } from "../flex";
 import ErrorIcon from "./ErrorIcon";
 
 import "./FormError.less";
@@ -28,7 +28,7 @@ export default class FormError extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const {children, className} = this.props;
+    const { children, className } = this.props;
 
     return (
       <FlexBox alignItems="start" className={classnames(cssClass.CONTAINER, className)}>

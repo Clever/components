@@ -87,7 +87,9 @@ button.Step {
     color: @neutral_white;
   }
 
-  .Step--title, .Step--description, .Step--message--optional {
+  .Step--title,
+  .Step--description,
+  .Step--message--optional {
     color: @neutral_dark_gray;
   }
 }
@@ -98,13 +100,15 @@ button.Step {
   }
 }
 
-.Step:focus, .Step--seekable:hover {
+.Step:focus,
+.Step--seekable:hover {
   .Step--icon {
     .border--s(@neutral_black);
     color: @neutral_dark_gray;
   }
 
-  .Step--description, .Step--message--optional {
+  .Step--description,
+  .Step--message--optional {
     color: @neutral_dark_gray;
   }
 }
@@ -155,7 +159,8 @@ button.Step {
   }
 }
 
-.Step:focus:not(.Step--current), .Step:hover.Step--seekable:not(.Step--current) {
+.Step:focus:not(.Step--current),
+.Step:hover.Step--seekable:not(.Step--current) {
   .Step--title {
     color: @primary_blue;
   }
@@ -168,5 +173,5 @@ button.Step {
 .Stepper--Exclamation {
   width: @size_s;
   height: 1.2em;
-  transform: translate(@size_2xs,-@size_3xs);
+  transform: translate(@size_2xs, -@size_3xs);
 }

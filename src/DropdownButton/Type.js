@@ -1,5 +1,4 @@
-import {Button} from "../Button/Button";
-
+import { Button } from "../Button/Button";
 
 const Type = {
   PRIMARY: Button.Type.PRIMARY,

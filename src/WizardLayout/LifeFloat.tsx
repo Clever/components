@@ -2,22 +2,31 @@ import * as React from "react";
 
 export default function LifeFloat(props) {
   return (
-    <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" {...props}>
+    <svg
+      width="32"
+      height="32"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
+    >
       <defs>
         <linearGradient x1="50%" y1="0%" x2="85.816%" y2="83.236%" id="a">
           <stop stopColor="#FDFDFE" offset="0%" />
           <stop stopColor="#EAEAED" offset="100%" />
         </linearGradient>
-        <path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm-.381-6.857a9.524 9.524 0 1 0 0-19.048 9.524 9.524 0 0 0 0 19.048z"
+        <path
+          d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm-.381-6.857a9.524 9.524 0 1 0 0-19.048 9.524 9.524 0 0 0 0 19.048z"
           id="b"
         />
       </defs>
       <g fill="none" fillRule="evenodd">
         <g fillRule="nonzero">
-          <path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm-.381-6.857a9.524 9.524 0 1 0 0-19.048 9.524 9.524 0 0 0 0 19.048z"
+          <path
+            d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm-.381-6.857a9.524 9.524 0 1 0 0-19.048 9.524 9.524 0 0 0 0 19.048z"
             fill="#000"
           />
-          <path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm-.381-6.857a9.524 9.524 0 1 0 0-19.048 9.524 9.524 0 0 0 0 19.048z"
+          <path
+            d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm-.381-6.857a9.524 9.524 0 1 0 0-19.048 9.524 9.524 0 0 0 0 19.048z"
             fill="url(#a)"
           />
         </g>

@@ -40,27 +40,15 @@ export default function Typewriter(props) {
             <path d="M22,38 L24,38" id="Stroke-17" />
             <path d="M28,38 L30,38" id="Stroke-19" />
             <path d="M34,38 L36,38" id="Stroke-21" />
-            <polygon
-              id="Stroke-23"
-              fill="#B6C8F9"
-              points="39.5 28 44 28 44 20 2 20 2 28 6.5 28"
-            />
+            <polygon id="Stroke-23" fill="#B6C8F9" points="39.5 28 44 28 44 20 2 20 2 28 6.5 28" />
             <path d="M2,18 L2,30" id="Stroke-25" />
             <path d="M44,18 L44,30" id="Stroke-27" />
             <path d="M0,24 L2,24" id="Stroke-29" />
             <path d="M44,24 L46,24" id="Stroke-31" />
-            <polygon
-              id="Stroke-33"
-              fill="#FFFFFF"
-              points="32 0 10 0 10 20 36 20 36 4"
-            />
+            <polygon id="Stroke-33" fill="#FFFFFF" points="32 0 10 0 10 20 36 20 36 4" />
           </g>
           <path d="M4,44 L42,44" id="Stroke-1" />
-          <polygon
-            id="Stroke-35"
-            fill="#FFFFFF"
-            points="26 32 20 32 18 28 28 28"
-          />
+          <polygon id="Stroke-35" fill="#FFFFFF" points="26 32 20 32 18 28 28 28" />
         </g>
       </g>
     </svg>

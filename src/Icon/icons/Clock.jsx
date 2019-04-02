@@ -24,10 +24,7 @@ export default function Clock(props) {
         strokeLinecap="round"
       >
         <g id="clock" strokeWidth={2} stroke="#62748C">
-          <g
-            id="ui-48px-outline-2_time"
-            transform="translate(1.000000, 1.000000)"
-          >
+          <g id="ui-48px-outline-2_time" transform="translate(1.000000, 1.000000)">
             <g id="Group">
               <circle id="Oval" fill="#BCCEFF" cx={22} cy={22} r={22} />
               <polyline id="Shape" points="22 10 22 22 34 22" />

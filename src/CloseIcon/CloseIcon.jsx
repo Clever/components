@@ -2,7 +2,6 @@ import * as React from "react";
 import classnames from "classnames";
 import * as PropTypes from "prop-types";
 
-
 const cssClass = {
   CONTAINER: "CloseIcon--container",
 };
@@ -12,7 +11,7 @@ CloseIcon.propTypes = {
 };
 
 export function CloseIcon(props) {
-  const {className} = props;
+  const { className } = props;
   return (
     <svg
       className={classnames(cssClass.CONTAINER, className)}

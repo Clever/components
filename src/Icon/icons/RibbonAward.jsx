@@ -25,10 +25,7 @@ export default function RibbonAward(props) {
         strokeLinejoin="round"
       >
         <g id="award" strokeWidth={2}>
-          <g
-            id="shopping-48px-outline_award"
-            transform="translate(8.000000, 2.000000)"
-          >
+          <g id="shopping-48px-outline_award" transform="translate(8.000000, 2.000000)">
             <g id="Group">
               <polyline
                 id="Shape"
@@ -36,22 +33,8 @@ export default function RibbonAward(props) {
                 fill="#FD8874"
                 points="23 27.69 23 42 15 38 7 42 7 27.69"
               />
-              <circle
-                id="Oval"
-                stroke="#A6A05A"
-                fill="#FFF49A"
-                cx={15}
-                cy={15}
-                r={15}
-              />
-              <circle
-                id="Oval"
-                stroke="#A6A05A"
-                fill="#FFFFFF"
-                cx={15}
-                cy={15}
-                r={5}
-              />
+              <circle id="Oval" stroke="#A6A05A" fill="#FFF49A" cx={15} cy={15} r={15} />
+              <circle id="Oval" stroke="#A6A05A" fill="#FFFFFF" cx={15} cy={15} r={5} />
             </g>
           </g>
         </g>

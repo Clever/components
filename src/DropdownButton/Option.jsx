@@ -1,6 +1,5 @@
-import {PureComponent} from "react";
+import { PureComponent } from "react";
 import * as PropTypes from "prop-types";
-
 
 export default class Option extends PureComponent {
   render() {

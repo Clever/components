@@ -1,10 +1,9 @@
 import assert from "assert";
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 
 import Col from "../../src/Grid/Col";
 import Size from "../../src/Grid/Size";
-
 
 describe("Col", () => {
   it("sets all relevant screen-size-specific classes", () => {
@@ -16,17 +15,14 @@ describe("Col", () => {
           [Size.M]: 4,
           [Size.L]: 3,
         }}
-      />
+      />,
     );
 
-    [
-      "Grid--Col--dflt--12",
-      "Grid--Col--s--6",
-      "Grid--Col--m--4",
-      "Grid--Col--l--3",
-    ].forEach(className => {
-      assert(col.hasClass(className), `${className} class not found on Col.`);
-    });
+    ["Grid--Col--dflt--12", "Grid--Col--s--6", "Grid--Col--m--4", "Grid--Col--l--3"].forEach(
+      className => {
+        assert(col.hasClass(className), `${className} class not found on Col.`);
+      },
+    );
   });
 
   it("applies custom classname", () => {

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Example, {ExampleCode} from "./components/Example";
-import {FlexBox, FlexItem, Button, LeftNav, Icon} from "../src/";
+import Example, { ExampleCode } from "./components/Example";
+import { FlexBox, FlexItem, Button, LeftNav, Icon } from "../src/";
 
 import "./LeftNavExample.less";
 
@@ -20,14 +20,14 @@ export default class LeftNavExample extends React.Component {
   }
 
   _renderCheckbox(id) {
-    const {cssClass} = LeftNavExample;
+    const { cssClass } = LeftNavExample;
 
     return (
       <label className={cssClass.CONFIG}>
         <input
           checked={this.state[id]}
           type="checkbox"
-          onChange={e => this.setState({[id]: e.target.checked})}
+          onChange={e => this.setState({ [id]: e.target.checked })}
         />
         &nbsp;
         {id}
@@ -36,8 +36,8 @@ export default class LeftNavExample extends React.Component {
   }
 
   render() {
-    const {cssClass} = LeftNavExample;
-    const {NavLink, NavGroup} = LeftNav;
+    const { cssClass } = LeftNavExample;
+    const { NavLink, NavGroup } = LeftNav;
     const {
       closeSubNavOnBlur,
       collapseOnSubNavOpen,
@@ -48,13 +48,14 @@ export default class LeftNavExample extends React.Component {
     } = this.state;
 
     const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
-    const link = (label, iconNode) =>
+    const link = (label, iconNode) => (
       <NavLink
         label={label}
         icon={iconNode}
         selected={selected === label}
-        onClick={() => this.setState({selected: label})}
-      />;
+        onClick={() => this.setState({ selected: label })}
+      />
+    );
 
     return (
       <Example>
@@ -63,7 +64,7 @@ export default class LeftNavExample extends React.Component {
             className={cssClass.COLLAPSE}
             type="primary"
             value={<span className="fa fa-bars" />}
-            onClick={() => this.setState({collapsed: !collapsed})}
+            onClick={() => this.setState({ collapsed: !collapsed })}
           />
           <FlexBox className={cssClass.CONTAINER}>
             <LeftNav
@@ -76,7 +77,7 @@ export default class LeftNavExample extends React.Component {
               <NavLink
                 label="Menu"
                 icon={icon(Icon.names.MENU)}
-                onClick={() => this.setState({collapsed: !collapsed})}
+                onClick={() => this.setState({ collapsed: !collapsed })}
               />
               {link("Home", icon(Icon.names.SCHOOL))}
               <NavGroup label="Tools" id="Tools" icon={icon(Icon.names.GEAR)}>

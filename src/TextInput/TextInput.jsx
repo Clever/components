@@ -3,7 +3,7 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import _ from "lodash";
 
-import {FormElementSize, formElementSizeClassName} from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 
 import "./TextInput.less";
 import "../less/forms.less";
@@ -12,29 +12,29 @@ export class TextInput extends React.Component {
   static defaultProps = {
     placeholderCaps: true,
     size: FormElementSize.FULL_WIDTH,
-  }
+  };
 
   constructor(props) {
     super(props);
-    this.state = {inFocus: false, hidden: true};
+    this.state = { inFocus: false, hidden: true };
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.toggleHidden = this.toggleHidden.bind(this);
   }
 
   onFocus() {
-    const {onFocus} = this.props;
+    const { onFocus } = this.props;
 
-    this.setState({inFocus: true});
+    this.setState({ inFocus: true });
     if (onFocus) {
       onFocus();
     }
   }
 
   onBlur() {
-    const {onBlur} = this.props;
+    const { onBlur } = this.props;
 
-    this.setState({inFocus: false});
+    this.setState({ inFocus: false });
     if (onBlur) {
       onBlur();
     }
@@ -45,7 +45,7 @@ export class TextInput extends React.Component {
   }
 
   toggleHidden() {
-    this.setState({hidden: !this.state.hidden});
+    this.setState({ hidden: !this.state.hidden });
   }
 
   render() {
@@ -97,7 +97,9 @@ export class TextInput extends React.Component {
         )}
       >
         <div className="TextInput--infoRow">
-          <label className="TextInput--label" htmlFor={this.props.name}>{this.props.label}</label>
+          <label className="TextInput--label" htmlFor={this.props.name}>
+            {this.props.label}
+          </label>
           {inputNote}
         </div>
         <input
@@ -117,11 +119,11 @@ export class TextInput extends React.Component {
           type={type}
           value={this.props.value}
         />
-        {this.props.enableShow &&
+        {this.props.enableShow && (
           <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
             {this.state.hidden ? "Show" : "Hide"}
           </button>
-        }
+        )}
       </div>
     );
   }
@@ -144,7 +146,7 @@ TextInput.propTypes = {
   readOnly: PropTypes.bool,
   required: PropTypes.bool,
   // Object.values isn't properly polyfilled in jsx files
-  size: PropTypes.oneOf(Object.keys(FormElementSize).map((key) => FormElementSize[key])),
+  size: PropTypes.oneOf(Object.keys(FormElementSize).map(key => FormElementSize[key])),
   type: PropTypes.string,
   value: PropTypes.node,
 };
