@@ -18,7 +18,6 @@ export default class InfoPanel extends Component {
     super(props);
     this.state = {
       isCollapsed: !props.defaultOpen,
-      collapseArrow: props.defaultOpen ? "caret-down" : "caret-right",
     };
   }
 
@@ -27,9 +26,8 @@ export default class InfoPanel extends Component {
   }
 
   render() {
-    const { children, className, hideTitle, title, footer, collapsible, defaultOpen } = this.props;
+    const { children, className, hideTitle, title, footer, collapsible } = this.props;
     const { isCollapsed } = this.state;
-    let { collapseArrow } = this.state;
     const { cssClass } = InfoPanel;
     if (!collapsible) {
       return (
@@ -45,6 +43,7 @@ export default class InfoPanel extends Component {
       );
     }
 
+    let collapseArrow;
     if (isCollapsed) {
       collapseArrow = "caret-right";
     } else {
@@ -54,7 +53,7 @@ export default class InfoPanel extends Component {
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>
         <Accordion onChange={keys => this.toggleArrow(keys)}>
-          <AccordionItem expanded={defaultOpen}>
+          <AccordionItem expanded={!isCollapsed}>
             <AccordionItemTitle className={cssClass.COLLAPSIBLE_HEADER}>
               <div>
                 <div className={cssClass.COLLAPSE_ARROW}>
