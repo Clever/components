@@ -66,7 +66,7 @@ export default class RadioGroup extends React.PureComponent {
             {label}
           </div>
           {error && <FormError>{error}</FormError>}
-          {_.map(options, o => (
+          {_.map(options, (o: any) => (
             <Radio
               checked={o.id === selectedID}
               className={cssClass.RADIO}
