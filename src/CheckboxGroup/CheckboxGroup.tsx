@@ -82,7 +82,7 @@ export default class CheckboxGroup extends React.PureComponent {
           {label}
         </Checkbox>
         <div className={cssClass.SUB_OPTIONS}>
-          {_.map(options, o => (
+          {_.map(options, (o: any) => (
             <Checkbox
               checked={o.checked}
               className={cssClass.CHECKBOX}
@@ -110,7 +110,7 @@ export default class CheckboxGroup extends React.PureComponent {
     const { onChange, options } = this.props;
 
     onChange(
-      _.map(options, o => ({
+      _.map(options, (o: any) => ({
         ...o,
         checked: o.id === id ? checked : o.checked,
       })),

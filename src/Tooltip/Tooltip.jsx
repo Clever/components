@@ -27,13 +27,15 @@ export default class Tooltip extends Component {
       content,
       delayMs,
       hide,
+      clickTrigger,
+      tooltipClassName,
       placement,
       textAlign,
       delayHideMs,
     } = this.props;
 
     const tooltip = (
-      <BootstrapTooltip id={this.id}>
+      <BootstrapTooltip id={this.id} className={tooltipClassName}>
         <div className={classnames(cssClass.CONTENT, cssClass.align(textAlign), className)}>
           {content}
         </div>
@@ -47,7 +49,7 @@ export default class Tooltip extends Component {
         overlay={tooltip}
         placement={placement}
         rootClose
-        trigger={hide ? [] : ["focus", "hover"]}
+        trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
       >
         {children}
       </OverlayTrigger>
@@ -77,9 +79,11 @@ Tooltip.propTypes = {
   delayMs: PropTypes.number,
   delayHideMs: PropTypes.number,
   hide: PropTypes.bool,
+  clickTrigger: PropTypes.bool,
   placement: PropTypes.oneOf(_.values(Tooltip.Placement)),
   textAlign: PropTypes.oneOf(_.values(Tooltip.Align)),
   className: PropTypes.string,
+  tooltipClassName: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
