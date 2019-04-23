@@ -70,6 +70,19 @@ export default class TooltipView extends Component {
                   />
                 </Tooltip>
               </div>
+              <div className={cssClass.EXAMPLE}>
+                With clickable trigger{" "}
+                <Tooltip
+                  content="Tooltips triggered by clicks stay open."
+                  placement={placement}
+                  textAlign={textAlign}
+                  clickTrigger
+                >
+                  <span
+                    className={classnames("fa fa-question-circle", cssClass.TRIGGER)}
+                  />
+                </Tooltip>
+              </div>
             </ExampleCode>
           </div>
           <div className={cssClass.CONFIG}>
@@ -100,6 +113,18 @@ export default class TooltipView extends Component {
         </Example>
         <PropDocumentation
           availableProps={[
+            {
+              name: "className",
+              type: "String",
+              description: "Additional classname to apply to the InfoPanel",
+              optional: true,
+            },
+            {
+              name: "tooltipClassName",
+              type: "String",
+              description: "Additional classname to apply to the tooltip",
+              optional: true,
+            },
             {
               name: "children",
               type: "Node",
@@ -135,6 +160,18 @@ export default class TooltipView extends Component {
               type: "number",
               description: "Number of ms to wait before hiding the tooltip",
               defaultValue: 0,
+            },
+            {
+              name: "hide",
+              type: "boolean",
+              description: "Disable the tooltip",
+              defaultValue: false,
+            },
+            {
+              name: "clickTrigger",
+              type: "boolean",
+              description: "Click to open the tooltip",
+              defaultValue: false,
             },
           ]}
           className={cssClass.PROPS}
