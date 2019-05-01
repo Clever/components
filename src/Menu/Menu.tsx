@@ -2,7 +2,6 @@ import * as _ from "lodash";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 import MenuItem from "./MenuItem";
 import MorePropTypes from "../utils/MorePropTypes";
@@ -91,19 +90,6 @@ export default class Menu extends React.PureComponent {
   _containerEl;
   _triggerRef;
 
-  componentDidMount() {
-    this._containerEl = ReactDOM.findDOMNode(this);
-    if (this._containerEl) {
-      this._containerEl.addEventListener("focusout", this._handleFocusOut);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this._containerEl) {
-      this._containerEl.removeEventListener("focusout", this._handleFocusOut);
-    }
-  }
-
   state = {
     focusIndex: 0,
     open: false,
@@ -120,6 +106,7 @@ export default class Menu extends React.PureComponent {
         className={classnames(cssClass.CONTAINER, className)}
         onKeyDown={this._handleKeyDown}
         onKeyUp={this._handleKeyUp}
+        onBlur={this._handleFocusOut}
       >
         {UntypedReact.cloneElement(trigger, {
           "aria-controls": this.IDs.DROPDOWN,
@@ -183,14 +170,15 @@ export default class Menu extends React.PureComponent {
 
   _handleFocusOut = e => {
     const nextElement = e.relatedTarget;
-    if (
-      nextElement &&
+    if (!nextElement) {
+      return;
+    } else if (
       nextElement.classList.contains(MenuItem.cssClass.CONTAINER) &&
       nextElement.parentNode.parentNode.id === this.IDs.DROPDOWN
     ) {
       return;
     }
-    if (nextElement && nextElement.id === this.IDs.TRIGGER) {
+    if (nextElement.id === this.IDs.TRIGGER) {
       return;
     }
 
