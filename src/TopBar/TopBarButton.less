@@ -18,13 +18,6 @@
   text-align: center;
 }
 
-.TopBarButton:focus,
-.TopBarButton:hover {
-  /* stylelint-disable-next-line declaration-property-value-whitelist */
-  background-color: rgba(0, 0, 0, 0.15);
-  color: @neutral_white;
-}
-
 .TopBarButton--activeIndicator {
   opacity: 0.8;
   background-image: linear-gradient(270deg, #44d7d2 0%, #7fe5e2 100%);
@@ -39,4 +32,22 @@
   display: block;
   left: @size_s;
   right: @size_s;
+}
+
+.TopBarButton--rounded {
+  width: 2.5rem;
+  height: 2.5rem;
+  .padding--none;
+  border-radius: 50%;
+
+  .TopBarButton--activeIndicator {
+    display: none;
+  }
+}
+
+.TopBarButton:focus,
+.TopBarButton:hover {
+  /* stylelint-disable-next-line declaration-property-value-whitelist */
+  background-color: rgba(0, 0, 0, 0.15);
+  color: @neutral_white;
 }

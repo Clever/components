@@ -5,7 +5,6 @@ import * as React from "react";
 import Logo from "../Logo";
 import { FlexBox, Justify } from "../flex";
 import { TopBarButton } from "./TopBarButton";
-import { TopBarMenu } from "./TopBarMenu";
 
 import "./index.less";
 
@@ -23,7 +22,6 @@ export class TopBar extends React.PureComponent {
   static propTypes = propTypes;
 
   static Button = TopBarButton;
-  static Menu = TopBarMenu;
 
   render() {
     const { children, className, title } = this.props;

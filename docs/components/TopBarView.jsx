@@ -2,17 +2,14 @@ import { Link } from "react-router";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import classnames from "classnames";
+import FontAwesome from "react-fontawesome";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {
-  FlexBox,
-  FlexItem,
-  ItemAlign,
-  TextInput,
-} from "src";
+import { FlexBox, FlexItem, ItemAlign, TextInput } from "src";
 import { TopBar } from "src/TopBar";
+import Menu from "src/Menu";
 
 import "./TopBarView.less";
 
@@ -43,8 +40,8 @@ export default class TopBarView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    addArbitraryContent: false,
-    title: "Clever Unified School District",
+    addArbitraryContent: true,
+    title: "Welcome back to Clever",
   };
 
   render() {
@@ -97,15 +94,28 @@ export default class TopBarView extends React.PureComponent {
                   Goals
                 </TopBar.Button>
                 {addArbitraryContent && <SearchBox />}
-                <TopBar.Menu icon="question-circle">
-                  <TopBar.Menu.Item>Help Center</TopBar.Menu.Item>
-                  <TopBar.Menu.Item>Give Feedback</TopBar.Menu.Item>
-                </TopBar.Menu>
-                <TopBar.Menu icon="user">
-                  <TopBar.Menu.Item>Profile Settings</TopBar.Menu.Item>
-                  <TopBar.Menu.Item>Email Settings</TopBar.Menu.Item>
-                  <TopBar.Menu.Item>Logout</TopBar.Menu.Item>
-                </TopBar.Menu>
+                <Menu
+                  trigger={
+                    <TopBar.Button round>
+                      <FontAwesome name="question-circle" />
+                    </TopBar.Button>
+                  }
+                >
+                  <Menu.Item>Help Center</Menu.Item>
+                  <Menu.Item>Give Feedback</Menu.Item>
+                </Menu>
+                <Menu
+                  placement={Menu.Placement.RIGHT}
+                  trigger={
+                    <TopBar.Button round>
+                      <FontAwesome name="user" />
+                    </TopBar.Button>
+                  }
+                >
+                  <Menu.Item>Profile Settings</Menu.Item>
+                  <Menu.Item>Email Settings</Menu.Item>
+                  <Menu.Item>Logout</Menu.Item>
+                </Menu>
               </TopBar>
             </ExampleCode>
           </div>
@@ -157,36 +167,91 @@ export default class TopBarView extends React.PureComponent {
 
   _renderProps() {
     return (
-      <PropDocumentation
-        title="<TopBar /> Props"
-        availableProps={[
-          {
-            name: "children",
-            type: <code>React.Node</code>,
-            description: "TopBar contents.",
-            optional: true,
-          },
-          {
-            name: "className",
-            type: <code>string</code>,
-            description: "Optional additional CSS class name to apply to the container.",
-            optional: true,
-          },
-          {
-            name: "logoHref",
-            type: <code>React.Node</code>,
-            description: "Optional link URL for the logo.",
-            optional: true,
-          },
-          {
-            name: "title",
-            type: <code>React.Node</code>,
-            description: "Title text to show after the Clever logo, if applicable.",
-            optional: true,
-          },
-        ]}
-        className={cssClass.PROPS}
-      />
+      <React.Fragment>
+        <PropDocumentation
+          title="<TopBar /> Props"
+          availableProps={[
+            {
+              name: "children",
+              type: <code>React.Node</code>,
+              description: "TopBar contents.",
+              optional: true,
+            },
+            {
+              name: "className",
+              type: <code>string</code>,
+              description: "Optional additional CSS class name to apply to the container.",
+              optional: true,
+            },
+            {
+              name: "logoHref",
+              type: <code>string</code>,
+              description: "URL to use for the Clever logo link.",
+              optional: false,
+            },
+            {
+              name: "title",
+              type: <code>React.Node</code>,
+              description: "Title text to show after the Clever logo, if applicable.",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+        <PropDocumentation
+          title="<TopBar.Button /> Props"
+          availableProps={[
+            {
+              name: "children",
+              type: <code>React.Node</code>,
+              description: "Content of the button.",
+              optional: false,
+            },
+            {
+              name: "className",
+              type: <code>string</code>,
+              description: "Optional additional CSS class name to apply to the button.",
+              optional: true,
+            },
+            {
+              name: "active",
+              type: <code>bool</code>,
+              description: "Is the button currently active/selected?",
+              optional: true,
+            },
+            {
+              name: "round",
+              type: <code>bool</code>,
+              description:
+                "Should we use the round button style vs the square one? Often used in conjection with icons as content",
+              optional: true,
+            },
+            {
+              name: "onClick",
+              type: <code>function</code>,
+              description: "Optional onClick event handler for the button.",
+              optional: true,
+            },
+            {
+              name: "href",
+              type: <code>string</code>,
+              description: "If provided, cause the button to behave as a link",
+              optional: true,
+            },
+            {
+              name: "component",
+              type: "Any",
+              description:
+                "Tagname of class for the wrapper component. Tab renders as a <button> by default (or " +
+                "a <a> if the href prop is specified). It can be made to render as a different component by specifying " +
+                "the component tagname or class. e.g. <Tab component={ReactRouter.Link} />",
+              defaultValue: "button or a if href available",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      </React.Fragment>
     );
   }
 }

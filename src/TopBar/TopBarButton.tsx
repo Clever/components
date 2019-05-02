@@ -7,12 +7,12 @@ import "./TopBarButton.less";
 
 const propTypes = {
   active: PropTypes.bool,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
   component: PropTypes.any,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  target: PropTypes.string,
+  round: PropTypes.bool,
 };
 
 export class TopBarButton extends React.PureComponent {
@@ -27,7 +27,7 @@ export class TopBarButton extends React.PureComponent {
   }
 
   render() {
-    const { active, children, className, href, onClick, target } = this.props;
+    const { active, children, className, href, onClick } = this.props;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
 
     const Wrapper = this._getWrapperComponent();
@@ -35,21 +35,22 @@ export class TopBarButton extends React.PureComponent {
     return (
       <Wrapper
         {...additionalProps}
-        className={classnames("TopBarButton", className)}
+        className={classnames(
+          "TopBarButton",
+          className,
+          this.props.round ? "TopBarButton--rounded" : null,
+        )}
         href={href}
         onClick={onClick}
-        ref={this._handleContainerRef}
-        target={target}
+        ref={ref => {
+          this._containerRef = ref;
+        }}
       >
         {children}
         {active && <div className="TopBarButton--activeIndicator" />}
       </Wrapper>
     );
   }
-
-  _handleContainerRef = ref => {
-    this._containerRef = ref;
-  };
 
   _getWrapperComponent() {
     const { component, href } = this.props;
