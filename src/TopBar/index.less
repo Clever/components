@@ -5,13 +5,16 @@
   height: @topBarHeight;
   min-width: 0;
   transition: all @timingPromptly ease-out;
-  .padding--left--2xs;
-  .padding--right--s;
+  .padding--x--2xs;
   background-image: linear-gradient(90deg, #3980e6 0%, #3965e6 50%, #394de5 100%);
 
   /* stylelint-disable unit-whitelist */
   box-shadow: 0 1px 6px 2px rgba(33, 70, 189, 0.25);
   /* stylelint-enable unit-whitelist */
+
+  &.dewey--TopBar--rightPadding {
+    .padding--right--s;
+  }
 }
 
 .dewey--TopBar--logo {

@@ -7,9 +7,8 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { FlexBox, FlexItem, ItemAlign, TextInput } from "src";
+import { FlexBox, FlexItem, ItemAlign, TextInput, Menu } from "src";
 import { TopBar } from "src/TopBar";
-import Menu from "src/Menu";
 
 import "./TopBarView.less";
 
