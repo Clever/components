@@ -61,32 +61,36 @@ label.TopBarView--config {
 }
 
 .TopBarView--searchBox {
-  .border--s(@neutral_silver);
+  border: none;
   .borderRadius--l();
-  .margin--x--xs();
-  background: @neutral_white;
+  background: rgba(255, 255, 255, 0.25);
   max-width: 12rem;
   min-width: 6rem;
   overflow: hidden;
+  color: @neutral_white;
+  .margin--x--s;
 }
 
 .TopBarView--searchIcon {
   .padding--s();
   display: block;
+  color: @neutral_white;
 }
 
 .TopBarView--searchInput {
+  color: @neutral_white;
+  background: none;
   border: 0;
   font-family: inherit;
   font-size: inherit;
   height: 100%;
   width: 100%;
 
+  &::placeholder {
+    color: @neutral_white;
+  }
+
   &:focus {
     outline: none;
   }
-}
-
-.TopBarView--userName {
-  white-space: nowrap;
 }

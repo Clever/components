@@ -49,7 +49,9 @@ export default class LogoView extends React.PureComponent {
         <Example title="Basic Usage:">
           <div className={cssClass.DEMO}>
             <ExampleCode>
-              <Logo beta={beta} className="my--custom--class" color={color} style={{ fontSize }} />
+              Hello world{" "}
+              <Logo beta={beta} className="my--custom--class" color={color} style={{ fontSize }} />{" "}
+              Sup
             </ExampleCode>
           </div>
           {this._renderConfig()}

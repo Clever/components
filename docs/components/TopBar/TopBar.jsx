@@ -2,41 +2,34 @@ import classnames from "classnames";
 import React from "react";
 import * as PropTypes from "prop-types";
 
-import { FlexItem, Logo } from "src";
-import Colors from "src/utils/Colors";
-import BaseTopBar, { TopBarButton } from "src/TopBar";
+import { FlexItem } from "src";
+import BaseTopBar from "src/TopBar";
 
 import "./TopBar.less";
 
-export default function TopBar({ className, onToggleMenu }) {
+export default function TopBar({ className }) {
   const { cssClass } = TopBar;
 
   return (
     <BaseTopBar
       className={classnames(cssClass.CONTAINER, className)}
-      logo={<Logo className={cssClass.LOGO} color={Colors.PRIMARY_BLUE} />}
-      logoLinkHref="//clever.com"
-      logoLinkTarget="_blank"
-      onToggleMenu={onToggleMenu}
-      showHeart
-      showMenuToggle
+      logoHref="//clever.com"
       title="Design System"
     >
       <FlexItem grow />
-      <TopBarButton
+      <BaseTopBar.Button
         className={cssClass.GITHUB_LINK}
         href="//github.com/clever/components"
         target="_blank"
       >
         <span className="fa fa-github" />
-      </TopBarButton>
+      </BaseTopBar.Button>
     </BaseTopBar>
   );
 }
 
 TopBar.propTypes = {
   className: PropTypes.string,
-  onToggleMenu: PropTypes.func.isRequired,
 };
 
 TopBar.cssClass = {
