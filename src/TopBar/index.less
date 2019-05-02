@@ -1,0 +1,35 @@
+@import (reference) "../less/utilities";
+@import (reference) "./common";
+
+.dewey--TopBar {
+  height: @topBarHeight;
+  min-width: 0;
+  transition: all @timingPromptly ease-out;
+  .padding--left--2xs;
+  .padding--right--s;
+  background-image: linear-gradient(90deg, #3980e6 0%, #3965e6 50%, #394de5 100%);
+
+  /* stylelint-disable unit-whitelist */
+  box-shadow: 0 1px 6px 2px rgba(33, 70, 189, 0.25);
+  /* stylelint-enable unit-whitelist */
+}
+
+.dewey--TopBar--logo {
+  .flexShrink(0);
+  font-size: 1.75rem;
+}
+
+.dewey--TopBar--logoLink {
+  .padding--x--m;
+}
+
+.dewey--TopBar--title {
+  .padding--none;
+  .margin--y--none;
+  .margin--x--xs;
+  .text--medium;
+  .text--regular;
+  .text--truncate;
+  color: @neutral_white;
+  font-style: italic;
+}
