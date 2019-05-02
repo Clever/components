@@ -12,7 +12,7 @@ import {
   ItemAlign,
   TextInput,
 } from "src";
-import TopBar from "src/TopBar";
+import { TopBar } from "src/TopBar";
 
 import "./TopBarView.less";
 
@@ -63,7 +63,7 @@ export default class TopBarView extends React.PureComponent {
             {`
               import {TopBar} from "clever-components";
               // OR
-              import TopBar from "clever-components/dist/TopBar"; // Avoids importing all of clever-components.
+              import { TopBar } from "clever-components/dist/TopBar"; // Avoids importing all of clever-components.
             `}
           </CodeSample>
         </header>

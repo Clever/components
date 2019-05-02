@@ -15,7 +15,7 @@ const propTypes = {
   target: PropTypes.string,
 };
 
-export default class TopBarButton extends React.PureComponent {
+export class TopBarButton extends React.PureComponent {
   static propTypes = propTypes;
 
   _containerRef;

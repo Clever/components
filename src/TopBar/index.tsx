@@ -4,8 +4,8 @@ import * as React from "react";
 
 import Logo from "../Logo";
 import { FlexBox, Justify } from "../flex";
-import TopBarButton from "./TopBarButton";
-import TopBarMenu from "./TopBarMenu";
+import { TopBarButton } from "./TopBarButton";
+import { TopBarMenu } from "./TopBarMenu";
 
 import "./index.less";
 
@@ -19,7 +19,7 @@ const propTypes = {
 /**
  * Global page-level header component.
  */
-export default class TopBar extends React.PureComponent {
+export class TopBar extends React.PureComponent {
   static propTypes = propTypes;
 
   static Button = TopBarButton;

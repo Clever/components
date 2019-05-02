@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
-import TopBarButton from "./TopBarButton";
+import { TopBarButton } from "./TopBarButton";
 import Menu from "../Menu";
 
 import "./TopBarMenu.less";
@@ -15,7 +15,7 @@ const propTypes = {
   icon: PropTypes.string.isRequired,
 };
 
-export default class TopBarMenu extends React.PureComponent {
+export class TopBarMenu extends React.PureComponent {
   static propTypes = propTypes;
 
   static Item = Menu.Item;

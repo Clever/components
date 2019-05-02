@@ -3,7 +3,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 
 import { FlexItem } from "src";
-import BaseTopBar from "src/TopBar";
+import { TopBar as BaseTopBar } from "src/TopBar";
 
 import "./TopBar.less";
 
