@@ -7,6 +7,7 @@ import { FlexBox, Justify } from "../flex";
 import { TopBarButton } from "./TopBarButton";
 
 import "./index.less";
+import Menu from "../Menu";
 
 const propTypes = {
   children: PropTypes.node,
@@ -26,8 +27,27 @@ export class TopBar extends React.PureComponent {
   render() {
     const { children, className, title } = this.props;
 
+    // If the last element is a "rounded" TopBarButton we need to add some additional padding to the right side.
+    // To determine this we need to inspect the children;
+    let needsRightPadding = false;
+    const childrenArray = React.Children.toArray(children);
+    if (childrenArray.length) {
+      const lastItem = childrenArray[childrenArray.length - 1];
+      const lastTrigger = lastItem.type === Menu ? lastItem.props.trigger : lastItem;
+      if (lastTrigger && lastTrigger.type === TopBarButton && lastTrigger.props.round) {
+        needsRightPadding = true;
+      }
+    }
+
     return (
-      <FlexBox alignItems="center" className={classnames("dewey--TopBar", className)}>
+      <FlexBox
+        alignItems="center"
+        className={classnames(
+          "dewey--TopBar",
+          className,
+          needsRightPadding && "dewey--TopBar--rightPadding",
+        )}
+      >
         <TopBarButton href={this.props.logoHref} className="dewey-TopBar--logoLink">
           <Logo className="dewey--TopBar--logo" />
         </TopBarButton>
