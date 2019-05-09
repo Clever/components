@@ -137,6 +137,7 @@ export default class Menu extends React.PureComponent {
                   {UntypedReact.cloneElement(menuItem, {
                     focused: this._isFocused(menuItem, i),
                     onClick: e => this._handleItemClick(menuItem, e),
+                    onMouseEnter: e => this._handleItemMouseEnter(menuItem, i, e),
                   })}
                 </li>
               ))}
@@ -169,6 +170,12 @@ export default class Menu extends React.PureComponent {
     }
 
     menuItem.props.onClick(e);
+  };
+
+  _handleItemMouseEnter = (menuItem, i, e) => {
+    this.setState({ focusIndex: i });
+
+    menuItem.props.onMouseEnter(e);
   };
 
   _handleFocusOut = e => {
