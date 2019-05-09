@@ -4,30 +4,39 @@
 // Opinionated defaults for box shadows
 
 @boxShadowDefaultXOffset: 0;
-@boxShadowDefaultYOffset: @size_4xs;
 
-@boxShadowLightBlack: fade(@neutral_black, 40%);
-@boxShadowMediumBlack: fade(@neutral_black, 50%);
-@boxShadowHeavyBlack: fade(@neutral_black, 70%);
+@boxShadowYOffsetS: @size_4xs;
+@boxShadowYOffsetM: 0.1875rem;
+@boxShadowYOffsetL: 0.3125rem;
 
-@boxShadowBlurRadiusS: @size_xs;
-@boxShadowBlurRadiusM: @size_s;
-@boxShadowBlurRadiusL: @size_m;
+@boxShadowBlurRadiusS: 0.1875rem;
+@boxShadowBlurRadiusM: 0.375rem;
+@boxShadowBlurRadiusL: @size_s;
 
-.boxShadow(@blurRadius, @color) {
-  box-shadow: @boxShadowDefaultXOffset @boxShadowDefaultYOffset @blurRadius @color;
-}
+@boxShadowDefaultSpread: @size_4xs;
+
+@boxShadowDefaultColor: rgba(71, 76, 94, 0.2);
 
 // Convenience mixins
 
 .boxShadow--light {
-  .boxShadow(@boxShadowBlurRadiusS, @boxShadowLightBlack);
+  box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetS @boxShadowBlurRadiusS @boxShadowDefaultSpread @boxShadowDefaultColor
 }
 
 .boxShadow--medium {
-  .boxShadow(@boxShadowBlurRadiusM, @boxShadowMediumBlack);
+  box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetM @boxShadowBlurRadiusM @boxShadowDefaultSpread @boxShadowDefaultColor
 }
 
 .boxShadow--heavy {
-  .boxShadow(@boxShadowBlurRadiusL, @boxShadowHeavyBlack);
+  box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetL @boxShadowBlurRadiusL @boxShadowDefaultSpread @boxShadowDefaultColor
 }
+
+// DEPRECATED - remove once there are no usages of these
+@boxShadowLightBlack: fade(@neutral_black, 40%);
+@boxShadowMediumBlack: fade(@neutral_black, 50%);
+@boxShadowHeavyBlack: fade(@neutral_black, 70%);
+
+.boxShadow(@blurRadius, @color) {
+  box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetM @blurRadius @color;
+}
+// DEPRECATED
