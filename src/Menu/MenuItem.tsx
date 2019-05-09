@@ -16,12 +16,14 @@ const propTypes = {
   href: PropTypes.string,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
   selected: PropTypes.bool,
   target: PropTypes.string,
 };
 
 const defaultProps = {
   onClick: _.noop,
+  onMouseEnter: _.noop,
 };
 
 const cssClass = {
@@ -56,6 +58,7 @@ export default class MenuItem extends React.PureComponent {
       href,
       onBlur,
       onClick,
+      onMouseEnter,
       selected,
       target,
     } = this.props;
@@ -92,6 +95,7 @@ export default class MenuItem extends React.PureComponent {
         onBlur={onBlur}
         onClick={onClick}
         onMouseDown={onMouseDown}
+        onMouseEnter={onMouseEnter}
         role="menuitem"
         tabIndex={-1}
         target={target}
