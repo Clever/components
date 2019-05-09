@@ -5,15 +5,15 @@
 
 @boxShadowDefaultXOffset: 0;
 
-@boxShadowYOffsetS: @size_4xs;
+@boxShadowYOffsetS: 0.0625rem;
 @boxShadowYOffsetM: 0.1875rem;
 @boxShadowYOffsetL: 0.3125rem;
 
 @boxShadowBlurRadiusS: 0.1875rem;
 @boxShadowBlurRadiusM: 0.375rem;
-@boxShadowBlurRadiusL: @size_s;
+@boxShadowBlurRadiusL: 0.75rem;
 
-@boxShadowDefaultSpread: @size_4xs;
+@boxShadowDefaultSpread: 0.0625rem;
 
 @boxShadowDefaultColor: rgba(71, 76, 94, 0.2);
 
@@ -34,12 +34,13 @@
     @boxShadowDefaultSpread @boxShadowDefaultColor;
 }
 
+.boxShadow(@blurRadius, @color) {
+  box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetM @blurRadius
+    @boxShadowDefaultSpread @color;
+}
+
 // DEPRECATED - remove once there are no usages of these
 @boxShadowLightBlack: fade(@neutral_black, 40%);
 @boxShadowMediumBlack: fade(@neutral_black, 50%);
 @boxShadowHeavyBlack: fade(@neutral_black, 70%);
-
-.boxShadow(@blurRadius, @color) {
-  box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetM @blurRadius @color;
-}
 // DEPRECATED
