@@ -1,12 +1,13 @@
 extends: "airbnb"
 env:
-    mocha: true
-    jest: true
-parser: "babel-eslint"
+  mocha: true
+  jest: true
+parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaVersion: 6
 plugins:
   - "react"
+  - "@typescript-eslint"
 settings:
   import/resolver: webpack
 rules:
@@ -61,4 +62,8 @@ rules:
   prefer-const: ["error", { "destructuring": "all" }]
 
   indent:
+    - off
+
+  # This is handled by the "@typescript-eslint/parser"
+  no-unused-vars:
     - off
