@@ -47,12 +47,13 @@ export default class ProgressBarView extends React.PureComponent {
     width: 100,
     showLabel: "top-left",
     labelType: "percentage",
+    label: "",
     striped: false,
     inactive: false,
   };
 
   render() {
-    const { color, fill, size, width, striped, inactive, showLabel, labelType } = this.state;
+    const { color, fill, size, width, striped, inactive, showLabel, label, labelType } = this.state;
 
     return (
       <View
@@ -83,6 +84,7 @@ export default class ProgressBarView extends React.PureComponent {
               inactive={inactive}
               showLabel={showLabel}
               labelType={labelType}
+              label={label}
             />
           </ExampleCode>
           {this._renderConfig()}
@@ -161,6 +163,13 @@ export default class ProgressBarView extends React.PureComponent {
               defaultValue: "percentage",
               optional: true,
             },
+            {
+              name: "label",
+              type: "String",
+              description: "The label type to show. Only applicable if showLabel is set.",
+              defaultValue: "",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="ProgressBar"
@@ -170,7 +179,7 @@ export default class ProgressBarView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { color, fill, size, width, striped, inactive, showLabel, labelType } = this.state;
+    const { color, fill, size, width, striped, inactive, showLabel, label, labelType } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -247,6 +256,15 @@ export default class ProgressBarView extends React.PureComponent {
             name="ProgressBarView--label--type"
             placeholder="Label Type"
             value={labelType}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          <TextInput
+            className={cssClass.CONFIG_OPTIONS}
+            label="label"
+            name="label"
+            value={label}
+            onChange={({ target }) => this.setState({ label: target.value })}
           />
         </div>
         <label className={cssClass.CONFIG}>
