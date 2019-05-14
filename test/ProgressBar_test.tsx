@@ -19,4 +19,13 @@ describe("ProgressBar Component", () => {
       expect(component.html()).toMatch("23%");
     });
   });
+
+  describe("Given a label type and a label attribute", () => {
+    it("prefers the label attribute", () => {
+      const component = mount(
+        <ProgressBar labelType="Label Type" label="My Label" showLabel="top-left" />,
+      );
+      expect(component.html()).toMatch("My Label");
+    });
+  });
 });

@@ -7,6 +7,10 @@ import Progress from "./Progress";
 
 import "./ProgressBar.less";
 
+enum LabelType {
+  Percentage = "percentage",
+}
+
 const Size = {
   THIN: "thin",
   MEDIUM: "medium",
@@ -33,6 +37,7 @@ const propTypes = {
   style: PropTypes.object,
   fill: PropTypes.number,
   color: PropTypes.string,
+  label: PropTypes.string,
   width: PropTypes.number,
   striped: PropTypes.bool,
   inactive: PropTypes.bool,
@@ -103,14 +108,16 @@ export default class ProgressBar extends React.PureComponent {
   }
 
   _maybeTopLabel = () => {
-    const { showLabel, fill, labelType } = this.props;
+    const { showLabel } = this.props;
+    const label = this._getLabel();
+
     switch (showLabel) {
       case ShowLabel.TOP_LEFT:
       case ShowLabel.TOP_MIDDLE:
       case ShowLabel.TOP_RIGHT:
         return (
           <FlexItem className={cssClass.label(showLabel)} grow>
-            {labelType === "percentage" ? `${fill}%` : labelType}
+            {label}
           </FlexItem>
         );
       default:
@@ -119,18 +126,34 @@ export default class ProgressBar extends React.PureComponent {
   };
 
   _maybeBottomLabel = () => {
-    const { showLabel, fill, labelType } = this.props;
+    const { showLabel } = this.props;
+    const label = this._getLabel();
+
     switch (showLabel) {
       case ShowLabel.BOTTOM_LEFT:
       case ShowLabel.BOTTOM_MIDDLE:
       case ShowLabel.BOTTOM_RIGHT:
         return (
           <FlexItem className={cssClass.label(showLabel)} grow>
-            {labelType === "percentage" ? `${fill}%` : labelType}
+            {label}
           </FlexItem>
         );
       default:
         return null;
     }
+  };
+
+  _getLabel = (): string => {
+    const { fill, label, labelType } = this.props;
+
+    if (labelType === LabelType.Percentage) {
+      return `${fill}%`;
+    }
+
+    if (label) {
+      return label;
+    }
+
+    return labelType;
   };
 }
