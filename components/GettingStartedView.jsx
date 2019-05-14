@@ -7,6 +7,7 @@ import { Grid } from "src";
 export default function GettingStartedView() {
   const { cssClass } = GettingStartedView;
   const { Col, Row } = Grid;
+  const devServerUrl = "http://localhost:5010/";
 
   return (
     <View className={cssClass.CONTAINER} title="Getting Started">
@@ -96,8 +97,8 @@ export default function GettingStartedView() {
               </li>
               <li>Use Example and Demo to document your component in /docs</li>
               <li>
-                To run locally, run <code className="text--small">make dev-server</code> and open
-                http://localhost:5010/
+                To run locally, run <code className="text--small">make dev-server</code> and open{" "}
+                {devServerUrl}
               </li>
               <li>
                 Use <code className="text--small">make test</code> to run tests locally
