@@ -24,7 +24,7 @@ export default class WizardView extends PureComponent {
             wizardState
           </li>
           <li>
-            <code>wizardState</code>: wizardState contains any data that has been set by any step
+            <code>wizardState</code>: wizardState contains any data that has been set by any step
             before
           </li>
         </ul>
