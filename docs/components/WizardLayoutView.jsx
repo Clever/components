@@ -30,10 +30,11 @@ export default class WizardLayoutView extends React.PureComponent {
       singleSignOn: false,
       goals: false,
     },
+    hideSaveAndExit: false,
   };
 
   render() {
-    const { showHeaderImg, customHelpContent } = this.state;
+    const { currentStep, showHeaderImg, customHelpContent, hideSaveAndExit } = this.state;
 
     const stepperSteps = [
       {
@@ -61,7 +62,7 @@ export default class WizardLayoutView extends React.PureComponent {
       <Stepper
         onStepClick={id => this.setState({ currentStep: id })}
         steps={stepperSteps}
-        currentStepID={this.state.currentStep}
+        currentStepID={currentStep}
       />
     );
 
@@ -76,11 +77,11 @@ export default class WizardLayoutView extends React.PureComponent {
     };
 
     const _onNextStep = () => {
-      if (WizardLayoutContent[this.state.currentStep].nextStep) {
+      if (WizardLayoutContent[currentStep].nextStep) {
         const completionStatus = this.state;
-        completionStatus[this.state.currentStep] = true;
+        completionStatus[currentStep] = true;
         this.setState({
-          currentStep: WizardLayoutContent[this.state.currentStep].nextStep,
+          currentStep: WizardLayoutContent[currentStep].nextStep,
           completionStatus,
         });
       } else {
@@ -89,11 +90,11 @@ export default class WizardLayoutView extends React.PureComponent {
     };
 
     const _onPrevStep = () => {
-      if (WizardLayoutContent[this.state.currentStep].prevStep) {
+      if (WizardLayoutContent[currentStep].prevStep) {
         const completionStatus = this.state;
-        completionStatus[this.state.currentStep] = false;
+        completionStatus[currentStep] = false;
         this.setState({
-          currentStep: WizardLayoutContent[this.state.currentStep].prevStep,
+          currentStep: WizardLayoutContent[currentStep].prevStep,
           completionStatus,
         });
       }
@@ -130,20 +131,21 @@ export default class WizardLayoutView extends React.PureComponent {
           <ExampleCode style={{ display: "flex", height: "35rem" }}>
             <WizardLayout
               className="Dewey--WizardLayout"
-              sections={WizardLayoutContent[this.state.currentStep].sections}
+              sections={WizardLayoutContent[currentStep].sections}
               headerImg={showHeaderImg ? headerImg : null}
               helpContent={
-                customHelpContent ? WizardLayoutContent[this.state.currentStep].helpContent : null
+                customHelpContent ? WizardLayoutContent[currentStep].helpContent : null
               }
+              hideSaveAndExit={hideSaveAndExit}
               nextStepButtonText={
-                WizardLayoutContent[this.state.currentStep].nextStepButtonText || null
+                WizardLayoutContent[currentStep].nextStepButtonText || null
               }
               onNextStep={_onNextStep}
               onPrevStep={_onPrevStep}
               onSaveAndExit={_onSaveAndExit}
-              prevStepButtonDisabled={!WizardLayoutContent[this.state.currentStep].prevStep}
+              prevStepButtonDisabled={!WizardLayoutContent[currentStep].prevStep}
               prevStepButtonText={
-                WizardLayoutContent[this.state.currentStep].prevStepButtonText || null
+                WizardLayoutContent[currentStep].prevStepButtonText || null
               }
               stepper={stepper}
               subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
@@ -159,7 +161,7 @@ export default class WizardLayoutView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { showHeaderImg, customHelpContent } = this.state;
+    const { showHeaderImg, customHelpContent, hideSaveAndExit } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -181,6 +183,15 @@ export default class WizardLayoutView extends React.PureComponent {
           />{" "}
           Custom help content
         </label>
+       <label className={cssClass.CONFIG}>
+        <input
+          type="checkbox"
+          checked={hideSaveAndExit}
+          className={cssClass.CONFIG_TOGGLE}
+          onChange={e => this.setState({ hideSaveAndExit: e.target.checked })}
+        />{" "}
+        Hide save & exit button
+      </label>
       </FlexBox>
     );
   }
@@ -238,6 +249,13 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "onPrevStep",
             type: "Function",
             description: "Called when user clicks on 'Previous step' button.",
+          },
+          {
+            name: "hideOnSaveAndExit",
+            type: "Boolean",
+            description: "Optional boolean determining if the save & exit button is hidden",
+            optional: true,
+            defaultValue: "false",
           },
           {
             name: "onSaveAndExit",

@@ -21,11 +21,12 @@ const propTypes = {
   helpContent: PropTypes.node,
   nextStepButtonDisabled: PropTypes.bool,
   nextStepButtonText: PropTypes.string,
+  prevStepButtonDisabled: PropTypes.bool,
+  prevStepButtonText: PropTypes.string,
+  hideSaveAndExit: PropTypes.bool,
   onNextStep: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
   onSaveAndExit: PropTypes.func,
-  prevStepButtonDisabled: PropTypes.bool,
-  prevStepButtonText: PropTypes.string,
   stepper: PropTypes.node.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -66,6 +67,7 @@ export default class WizardLayout extends React.PureComponent {
       helpContent,
       nextStepButtonDisabled,
       nextStepButtonText,
+      hideSaveAndExit,
       onSaveAndExit,
       prevStepButtonDisabled,
       prevStepButtonText,
@@ -106,7 +108,7 @@ export default class WizardLayout extends React.PureComponent {
           </FlexBox>
         </FlexBox>
         <FlexBox className={cssClass.FOOTER}>
-          {onSaveAndExit && (
+          {!hideSaveAndExit && onSaveAndExit && (
             <Button type="link" value={"Save & exit"} onClick={() => onSaveAndExit()} />
           )}
           {/* spacer for the buttons */}

@@ -2,53 +2,52 @@
 @import (reference) "./common";
 
 .TopBarButton {
-  .button--reset();
-
-  .flexbox();
+  .text--semi-bold;
+  .button--reset;
+  .flexbox;
   .flexDirection(column);
   .flexShrink(0);
-  .items--stretch();
-  .justify--center();
-  .padding--x--s();
-  .text--semi-bold();
-  background-color: fade(@primary_blue_tint_2, 0%);
+  .items--stretch;
+  .justify--center;
+  .borderRadius--m;
   box-sizing: border-box;
-  color: @primary_blue;
-  height: @topBarHeight;
+  color: @neutral_white;
+  height: @topBarHeight - @size_xs;
+  .padding--x--m;
   position: relative;
   text-align: center;
 }
 
-.TopBarButton--marker {
-  bottom: 0;
-  left: 0;
+.TopBarButton--activeIndicator {
+  opacity: 0.8;
+  background-image: linear-gradient(270deg, #44d7d2 0%, #7fe5e2 100%);
+  /* stylelint-disable-next-line unit-whitelist */
+  box-shadow: 0 1px 6px 2px rgba(33, 70, 189, 0.25);
+  border-radius: @size_3xs;
+  /* stylelint-disable-next-line unit-whitelist */
+  height: 3px;
   position: absolute;
-  right: 0;
-  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  left: @size_s;
+  right: @size_s;
+  bottom: @size_s;
 }
 
-.TopBarButton--marker--shape {
-  transition: all @timingPromptly ease-out;
-}
+.TopBarButton--rounded {
+  width: 2.5rem;
+  height: 2.5rem;
+  .padding--none;
+  border-radius: 50%;
 
-.TopBarButton--marker--circle {
-  bottom: @topBarBorderWidth / 2;
-  height: 0.875rem;
-  transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.TopBarButton--marker--triangle {
-  height: @size_s;
+  .TopBarButton--activeIndicator {
+    display: none;
+  }
 }
 
 .TopBarButton:focus,
 .TopBarButton:hover {
-  background-color: fade(@primary_blue_tint_2, 10%);
-  color: @primary_blue_shade_1;
-}
-
-.TopBarButton:active {
-  background-color: fade(@primary_blue_tint_2, 20%);
-  color: @primary_blue_shade_2;
+  /* stylelint-disable-next-line declaration-property-value-whitelist */
+  background-color: rgba(0, 0, 0, 0.15);
+  color: @neutral_white;
 }

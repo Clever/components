@@ -66,7 +66,7 @@ export { BetaTag };
 import Menu from "./Menu";
 export { Menu };
 
-import TopBar from "./TopBar";
+import { TopBar } from "./TopBar";
 export { TopBar };
 
 import TextTruncate from "./TextTruncate";

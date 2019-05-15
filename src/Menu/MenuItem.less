@@ -19,9 +19,9 @@ button.Menu--MenuItem--default {
   display: block;
   transition: all @timingPromptly ease-out;
   width: 100%;
+  text-decoration: none;
 
-  &:focus,
-  &:hover {
+  &:focus {
     background-color: fade(@primary_blue_tint_2, 10%);
     box-shadow: inset @borderWidthL 0 fade(@primary_blue_tint_2, 50%);
     // box-shadow: inset @borderWidthL 0 @primary_blue_tint_2;
@@ -40,8 +40,7 @@ button.Menu--MenuItem--default {
   box-shadow: inset @borderWidthL 0 @primary_blue;
   color: @primary_blue_shade_2;
 
-  &:focus,
-  &:hover {
+  &:focus {
     box-shadow: inset @borderWidthL 0 @primary_blue;
     color: @primary_blue_shade_2;
   }

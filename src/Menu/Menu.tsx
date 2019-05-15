@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import MenuItem from "./MenuItem";
 import MorePropTypes from "../utils/MorePropTypes";
@@ -91,19 +91,6 @@ export default class Menu extends React.PureComponent {
   _containerEl;
   _triggerRef;
 
-  componentDidMount() {
-    this._containerEl = ReactDOM.findDOMNode(this);
-    if (this._containerEl) {
-      this._containerEl.addEventListener("focusout", this._handleFocusOut);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this._containerEl) {
-      this._containerEl.removeEventListener("focusout", this._handleFocusOut);
-    }
-  }
-
   state = {
     focusIndex: 0,
     open: false,
@@ -115,45 +102,49 @@ export default class Menu extends React.PureComponent {
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
 
     return (
-      <div
-        {...additionalProps}
-        className={classnames(cssClass.CONTAINER, className)}
-        onKeyDown={this._handleKeyDown}
-        onKeyUp={this._handleKeyUp}
-      >
-        {UntypedReact.cloneElement(trigger, {
-          "aria-controls": this.IDs.DROPDOWN,
-          "aria-expanded": open,
-          "aria-haspopup": true,
-          className: classnames(cssClass.TRIGGER, trigger.props.className),
-          id: this.IDs.TRIGGER,
-          onClick: this._handleTriggerClick,
-          ref: this._handleTriggerRef,
-          role: "button",
-        })}
-        {open && (
-          <ul
-            aria-labelled-by={this.IDs.TRIGGER}
-            className={classnames(
-              cssClass.DROPDOWN,
-              cssClass.placement(placement),
-              wrapItems && cssClass.WRAP,
-            )}
-            id={this.IDs.DROPDOWN}
-            role="menu"
-            style={{ maxHeight, maxWidth, minWidth }}
-          >
-            {this._getMenuItems().map((menuItem, i) => (
-              <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
-                {UntypedReact.cloneElement(menuItem, {
-                  focused: this._isFocused(menuItem, i),
-                  onClick: e => this._handleItemClick(menuItem, e),
-                })}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <RootCloseWrapper onRootClose={() => this._setDropdownOpen(false)}>
+        <div
+          {...additionalProps}
+          className={classnames(cssClass.CONTAINER, className)}
+          onKeyDown={this._handleKeyDown}
+          onKeyUp={this._handleKeyUp}
+          onBlur={this._handleFocusOut}
+        >
+          {UntypedReact.cloneElement(trigger, {
+            "aria-controls": this.IDs.DROPDOWN,
+            "aria-expanded": open,
+            "aria-haspopup": true,
+            className: classnames(cssClass.TRIGGER, trigger.props.className),
+            id: this.IDs.TRIGGER,
+            onClick: this._handleTriggerClick,
+            ref: this._handleTriggerRef,
+            role: "button",
+          })}
+          {open && (
+            <ul
+              aria-labelled-by={this.IDs.TRIGGER}
+              className={classnames(
+                cssClass.DROPDOWN,
+                cssClass.placement(placement),
+                wrapItems && cssClass.WRAP,
+              )}
+              id={this.IDs.DROPDOWN}
+              role="menu"
+              style={{ maxHeight, maxWidth, minWidth }}
+            >
+              {this._getMenuItems().map((menuItem, i) => (
+                <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
+                  {UntypedReact.cloneElement(menuItem, {
+                    focused: this._isFocused(menuItem, i),
+                    onClick: e => this._handleItemClick(menuItem, e),
+                    onMouseEnter: e => this._handleItemMouseEnter(menuItem, i, e),
+                  })}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </RootCloseWrapper>
     );
   }
 
@@ -181,16 +172,23 @@ export default class Menu extends React.PureComponent {
     menuItem.props.onClick(e);
   };
 
+  _handleItemMouseEnter = (menuItem, i, e) => {
+    this.setState({ focusIndex: i });
+
+    menuItem.props.onMouseEnter(e);
+  };
+
   _handleFocusOut = e => {
     const nextElement = e.relatedTarget;
-    if (
-      nextElement &&
+    if (!nextElement) {
+      return;
+    } else if (
       nextElement.classList.contains(MenuItem.cssClass.CONTAINER) &&
       nextElement.parentNode.parentNode.id === this.IDs.DROPDOWN
     ) {
       return;
     }
-    if (nextElement && nextElement.id === this.IDs.TRIGGER) {
+    if (nextElement.id === this.IDs.TRIGGER) {
       return;
     }
 
