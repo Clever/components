@@ -2,22 +2,13 @@ import { Link } from "react-router";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import classnames from "classnames";
+import FontAwesome from "react-fontawesome";
 
-import Colors from "src/utils/Colors";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {
-  FlexBox,
-  FlexItem,
-  GoalsLogo,
-  ItemAlign,
-  Logo,
-  SegmentedControl,
-  Select,
-  TextInput,
-} from "src";
-import TopBar from "src/TopBar";
+import { FlexBox, FlexItem, ItemAlign, TextInput, Menu } from "src";
+import { TopBar } from "src/TopBar";
 
 import "./TopBarView.less";
 
@@ -27,7 +18,6 @@ const cssClass = {
   CONFIG: "TopBarView--config",
   CONFIG_TOGGLE: "TopBarView--configToggle",
   CONTAINER: "TopBarView",
-  DROPDOWN_COLOR: "TopBarView--dropdown--color",
   INPUT_TITLE: "TopBarView--input--title",
   INTRO: "TopBarView--intro",
   PROPS: "TopBarView--props",
@@ -35,7 +25,6 @@ const cssClass = {
   SEARCH_ICON: "TopBarView--searchIcon",
   SEARCH_INPUT: "TopBarView--searchInput",
   TOP_BAR: "TopBarView--topBar",
-  USER_NAME: "TopBarView--userName",
   WINDOW: "TopBarView--window",
 };
 
@@ -50,28 +39,13 @@ export default class TopBarView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    addArbitraryContent: false,
-    betaLogo: false,
-    color: TopBar.defaultProps.color,
-    markerShape: TopBar.Button.defaultProps.markerShape,
-    showHeart: true,
-    showMenuToggle: true,
-    title: "Clever Unified School District",
-    titleWrap: false,
+    addArbitraryContent: true,
+    title: "Welcome back to Clever",
   };
 
   render() {
     const { location } = this.props;
-    const {
-      addArbitraryContent,
-      betaLogo,
-      color,
-      markerShape,
-      showHeart,
-      showMenuToggle,
-      title,
-      titleWrap,
-    } = this.state;
+    const { addArbitraryContent, title } = this.state;
 
     const page = location.query.page || "portal";
 
@@ -85,7 +59,7 @@ export default class TopBarView extends React.PureComponent {
             {`
               import {TopBar} from "clever-components";
               // OR
-              import TopBar from "clever-components/dist/TopBar"; // Avoids importing all of clever-components.
+              import { TopBar } from "clever-components/dist/TopBar"; // Avoids importing all of clever-components.
             `}
           </CodeSample>
         </header>
@@ -93,30 +67,10 @@ export default class TopBarView extends React.PureComponent {
         <Example title="Basic Usage:">
           <div className={cssClass.WINDOW}>
             <ExampleCode>
-              <TopBar
-                className={cssClass.TOP_BAR}
-                color={color}
-                logo={
-                  page === "goals" ? (
-                    <GoalsLogo color={Colors.PRIMARY_BLUE} size="custom" withClever />
-                  ) : (
-                    <Logo beta={betaLogo} color={Colors.PRIMARY_BLUE} />
-                  )
-                }
-                logoLinkHref="//clever.com"
-                logoLinkTarget="_blank"
-                onToggleMenu={this._logMenuToggleClicked}
-                showHeart={showHeart}
-                showMenuToggle={showMenuToggle}
-                title={title}
-                titleWrap={titleWrap}
-              >
-                <FlexItem grow />
-                {addArbitraryContent && <SearchBox />}
+              <TopBar className={cssClass.TOP_BAR} logoHref="//clever.com" title={title}>
                 <TopBar.Button
                   active={page === "dashboard"}
                   component={Link}
-                  markerShape={markerShape}
                   onClick={this._logDashboardButtonClick}
                   to="/components/top-bar?page=dashboard"
                 >
@@ -125,7 +79,6 @@ export default class TopBarView extends React.PureComponent {
                 <TopBar.Button
                   active={page === "portal"}
                   component={Link}
-                  markerShape={markerShape}
                   onClick={this._logPortalButtonClick}
                   to="/components/top-bar?page=portal"
                 >
@@ -134,27 +87,34 @@ export default class TopBarView extends React.PureComponent {
                 <TopBar.Button
                   active={page === "goals"}
                   component={Link}
-                  markerShape={markerShape}
                   onClick={this._logGoalsButtonClick}
                   to="/components/top-bar?page=goals"
                 >
                   Goals
                 </TopBar.Button>
-                <TopBar.Menu
-                  dropdownPlacement={TopBar.Menu.Placement.RIGHT}
-                  label={
-                    <FlexBox alignItems="center">
-                      <span className="fa fa-user" style={{ marginRight: "0.25rem" }} />
-                      <span className={cssClass.USER_NAME}>K. Stark</span>
-                    </FlexBox>
+                {addArbitraryContent && <SearchBox />}
+                <Menu
+                  trigger={
+                    <TopBar.Button round>
+                      <FontAwesome name="question-circle" />
+                    </TopBar.Button>
                   }
-                  maxWidth="20rem"
-                  minWidth="7rem"
                 >
-                  <TopBar.Menu.Item>Profile Settings</TopBar.Menu.Item>
-                  <TopBar.Menu.Item>Email Settings</TopBar.Menu.Item>
-                  <TopBar.Menu.Item>Logout</TopBar.Menu.Item>
-                </TopBar.Menu>
+                  <Menu.Item>Help Center</Menu.Item>
+                  <Menu.Item>Give Feedback</Menu.Item>
+                </Menu>
+                <Menu
+                  placement={Menu.Placement.RIGHT}
+                  trigger={
+                    <TopBar.Button round>
+                      <FontAwesome name="user" />
+                    </TopBar.Button>
+                  }
+                >
+                  <Menu.Item>Profile Settings</Menu.Item>
+                  <Menu.Item>Email Settings</Menu.Item>
+                  <Menu.Item>Logout</Menu.Item>
+                </Menu>
               </TopBar>
             </ExampleCode>
           </div>
@@ -177,62 +137,10 @@ export default class TopBarView extends React.PureComponent {
   _logUserMenuButtonClick = () => console.log("user menu button clicked");
 
   _renderConfig() {
-    const {
-      addArbitraryContent,
-      betaLogo,
-      color,
-      markerShape,
-      showHeart,
-      showMenuToggle,
-      title,
-      titleWrap,
-    } = this.state;
+    const { addArbitraryContent, title } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
-        <div className={cssClass.CONFIG}>
-          <Select
-            className={classnames(cssClass.CONFIG_OPTIONS, cssClass.DROPDOWN_COLOR)}
-            id={cssClass.DROPDOWN_COLOR}
-            label="Color"
-            name={cssClass.DROPDOWN_COLOR}
-            onChange={({ value }) => this.setState({ color: value })}
-            options={Object.keys(TopBar.Color)
-              .sort()
-              .map(key => ({
-                label: key,
-                value: TopBar.Color[key],
-              }))}
-            value={color}
-          />
-        </div>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={showMenuToggle}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ showMenuToggle: e.target.checked })}
-          />{" "}
-          Menu Toggle
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={betaLogo}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ betaLogo: e.target.checked })}
-          />{" "}
-          Beta Logo
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={showHeart}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ showHeart: e.target.checked })}
-          />{" "}
-          Heart
-        </label>
         <div className={cssClass.CONFIG}>
           <TextInput
             className={classnames(cssClass.CONFIG_OPTIONS, cssClass.INPUT_TITLE)}
@@ -243,27 +151,6 @@ export default class TopBarView extends React.PureComponent {
             value={title}
           />
         </div>
-        <div className={cssClass.CONFIG}>
-          Link Marker:
-          <SegmentedControl
-            className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ markerShape: value })}
-            options={Object.keys(TopBar.Button.MarkerShape).map(key => ({
-              content: key,
-              value: TopBar.Button.MarkerShape[key],
-            }))}
-            value={markerShape}
-          />
-        </div>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={titleWrap}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ titleWrap: e.target.checked })}
-          />{" "}
-          Title Wrap
-        </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
@@ -279,85 +166,91 @@ export default class TopBarView extends React.PureComponent {
 
   _renderProps() {
     return (
-      <PropDocumentation
-        title="<TopBar /> Props"
-        availableProps={[
-          {
-            name: "children",
-            type: <code>React.Node</code>,
-            description: "TopBar contents.",
-            optional: true,
-          },
-          {
-            name: "className",
-            type: <code>string</code>,
-            description: "Optional additional CSS class name to apply to the container.",
-            optional: true,
-          },
-          {
-            name: "color",
-            type: <code>TopBar.Color</code>,
-            description: "Accent color for the bottom border.",
-            optional: true,
-            defaultValue: <code>TopBar.Color.BLUE</code>,
-          },
-          {
-            name: "logo",
-            type: <code>React.Node</code>,
-            description: "The element to render as the logo.",
-            optional: true,
-          },
-          {
-            name: "logoLinkHref",
-            type: <code>React.Node</code>,
-            description: "Optional link URL for the logo.",
-            optional: true,
-          },
-          {
-            name: "logoLinkTarget",
-            type: <code>React.Node</code>,
-            description: "Optional window target for the logo link, if applicable.",
-            optional: true,
-          },
-          {
-            name: "onToggleMenu",
-            type: <code>Function</code>,
-            description: "Event handler called when the menu button is clicked.",
-            optional: true,
-          },
-          {
-            name: "showHeart",
-            type: <code>boolean</code>,
-            description: "Whether or not to show the Clever heart after the logo.",
-            optional: true,
-          },
-          {
-            name: "showMenuToggle",
-            type: <code>boolean</code>,
-            description: "Whether or not to show the left nav menu toggle.",
-            optional: true,
-          },
-          {
-            name: "title",
-            type: <code>React.Node</code>,
-            description: "Title text to show after the Clever logo, if applicable.",
-            optional: true,
-          },
-          {
-            name: "titleWrap",
-            type: <code>boolean</code>,
-            description: (
-              <p>
-                Whether or not the title text should be wrapped if longer than the available space.
-                If not specified, the title text will be truncated with an ellipsis.,
-              </p>
-            ),
-            optional: true,
-            default: <code>false</code>,
-          },
-        ]}
-        className={cssClass.PROPS}
-      />
+      <React.Fragment>
+        <PropDocumentation
+          title="<TopBar /> Props"
+          availableProps={[
+            {
+              name: "children",
+              type: <code>React.Node</code>,
+              description: "TopBar contents.",
+              optional: true,
+            },
+            {
+              name: "className",
+              type: <code>string</code>,
+              description: "Optional additional CSS class name to apply to the container.",
+              optional: true,
+            },
+            {
+              name: "logoHref",
+              type: <code>string</code>,
+              description: "URL to use for the Clever logo link.",
+              optional: false,
+            },
+            {
+              name: "title",
+              type: <code>React.Node</code>,
+              description: "Title text to show after the Clever logo, if applicable.",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+        <PropDocumentation
+          title="<TopBar.Button /> Props"
+          availableProps={[
+            {
+              name: "children",
+              type: <code>React.Node</code>,
+              description: "Content of the button.",
+              optional: false,
+            },
+            {
+              name: "className",
+              type: <code>string</code>,
+              description: "Optional additional CSS class name to apply to the button.",
+              optional: true,
+            },
+            {
+              name: "active",
+              type: <code>bool</code>,
+              description: "Is the button currently active/selected?",
+              optional: true,
+            },
+            {
+              name: "round",
+              type: <code>bool</code>,
+              description:
+                "Should we use the round button style vs the square one? Often used in conjection with icons as content",
+              optional: true,
+            },
+            {
+              name: "onClick",
+              type: <code>function</code>,
+              description: "Optional onClick event handler for the button.",
+              optional: true,
+            },
+            {
+              name: "href",
+              type: <code>string</code>,
+              description: "If provided, cause the button to behave as a link",
+              optional: true,
+            },
+            {
+              name: "component",
+              type: "Any",
+              description:
+                "Tagname of class for the wrapper component. Tab renders as a <button> by default (or " +
+                "a <a> if the href prop is specified). It can be made to render as a different component by specifying " +
+                "the component tagname or class. e.g. <Tab component={ReactRouter.Link} />",
+              defaultValue: "button or a if href available",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      </React.Fragment>
     );
   }
 }
