@@ -304,7 +304,7 @@ export default class TableView extends PureComponent {
           <strong>API</strong>
         </p>
         <p>
-          <code>setCurrentPage(page:Number)</code> – Explicitly sets the displayed page on the Table
+          <code>setCurrentPage(page:Number)</code> – Explicitly sets the displayed page on the Table
           with the specified 1-based page. Useful for reacting to data or filter changes that
           warrant resetting the current page. <strong>Note:</strong> The current page is
           automatically reset to the first page on every sort state change.
