@@ -46,7 +46,7 @@ function DivWrapper(props) {
 }
 
 DivWrapper.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 function ButtonWrapper(props) {
@@ -54,5 +54,5 @@ function ButtonWrapper(props) {
 }
 
 ButtonWrapper.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
 };
