@@ -42,19 +42,17 @@ export default class Item extends React.PureComponent {
 }
 
 function DivWrapper(props) {
-  const { children } = props;
-  return <div>{children}</div>;
+  return <div {...props}></div>;
 }
 
 DivWrapper.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 function ButtonWrapper(props) {
-  const { children } = props;
-  return <button>{children}</button>;
+  return <button {...props}></button>;
 }
 
 ButtonWrapper.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
 };
