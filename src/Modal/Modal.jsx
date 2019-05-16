@@ -44,9 +44,11 @@ export class Modal extends React.Component {
   }
 
   render() {
+    // Width should be responsive with window size
+    const width = Math.min(window.innerWidth, this.props.width);
     const windowStyle = {
-      width: `${this.props.width}px`,
-      marginLeft: `-${this.props.width / 2}px`,
+      width: `${width}px`,
+      marginLeft: `-${width / 2}px`,
     };
     // The content is max 90% of the window height less 60px (height of the header)
     const contentStyle = { maxHeight: this.state.windowHeight * 0.9 - 60 };
