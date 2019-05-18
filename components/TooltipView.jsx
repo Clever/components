@@ -78,9 +78,7 @@ export default class TooltipView extends Component {
                   textAlign={textAlign}
                   clickTrigger
                 >
-                  <span
-                    className={classnames("fa fa-question-circle", cssClass.TRIGGER)}
-                  />
+                  <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
                 </Tooltip>
               </div>
             </ExampleCode>
