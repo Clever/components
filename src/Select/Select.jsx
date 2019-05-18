@@ -26,117 +26,131 @@ function isLabelHidden(placeholder, value) {
  * Component to allow selecting options from a list. It can fetch those options
  * synchronously or asynchronously by specifying the `lazy` parameter.
  */
-export function Select({
-  id,
-  name,
-  clearable,
-  disabled,
-  label,
-  multi,
-  onChange,
-  optionRenderer,
-  options,
-  lazy,
-  loadOptions,
-  filterOptions,
-  placeholder = "",
-  readOnly,
-  required,
-  searchable,
-  noResultsText,
-  creatable,
-  creatablePromptFn,
-  value,
-  className,
-  error,
-  size,
-}) {
-  const { cssClass } = Select;
+export class Select extends React.Component {
+  static cssClass = cssClass;
 
-  if (!lazy) {
-    if (!options) {
-      console.warn('Select: prop "options" must be set if not "lazy"');
+  constructor(props) {
+    super(props);
+    this.state = { hasBeenFocused: false };
+  }
+
+  render() {
+    const {
+      id,
+      name,
+      clearable,
+      disabled,
+      label,
+      multi,
+      onChange,
+      optionRenderer,
+      options,
+      lazy,
+      loadOptions,
+      filterOptions,
+      placeholder = "",
+      readOnly,
+      required,
+      searchable,
+      noResultsText,
+      creatable,
+      creatablePromptFn,
+      value,
+      className,
+      error,
+      size,
+    } = this.props;
+    if (!lazy) {
+      if (!options) {
+        console.warn('Select: prop "options" must be set if not "lazy"');
+      }
+      if (loadOptions) {
+        console.warn('Select: prop "loadOptions" may not be set if not "lazy"');
+      }
+    } else {
+      if (options) {
+        console.warn('Select: prop "options" may not be set if not "lazy"');
+      }
+      if (!loadOptions) {
+        console.warn('Select: prop "loadOptions" must be set if not "lazy"');
+      }
     }
-    if (loadOptions) {
-      console.warn('Select: prop "loadOptions" may not be set if not "lazy"');
+
+    let labelClasses = cssClass.LABEL;
+    if (isLabelHidden(placeholder, value)) {
+      labelClasses += ` ${cssClass.LABEL_HIDDEN}`;
     }
-  } else {
-    if (options) {
-      console.warn('Select: prop "options" may not be set if not "lazy"');
+
+    let inputNote;
+    if (required) {
+      inputNote = <span className="Select--required">required</span>;
     }
-    if (!loadOptions) {
-      console.warn('Select: prop "loadOptions" must be set if not "lazy"');
+
+    let wrapperClass = className;
+    if (required && this.state.hasBeenFocused && !value) {
+      // error should overwrite required
+      inputNote = <span className="Select--error">required</span>;
+      wrapperClass += " Select--hasError";
     }
-  }
+    if (error) {
+      // error should overwrite required
+      inputNote = <span className="Select--error">{error}</span>;
+      wrapperClass += " Select--hasError";
+    }
 
-  let labelClasses = cssClass.LABEL;
-  if (isLabelHidden(placeholder, value)) {
-    labelClasses += ` ${cssClass.LABEL_HIDDEN}`;
-  }
+    let reactSelectClasses = cssClass.REACT_SELECT;
+    if (readOnly) {
+      reactSelectClasses += ` ${cssClass.READ_ONLY}`;
+    }
 
-  let inputNote;
-  if (required) {
-    inputNote = <span className="Select--required">required</span>;
-  }
+    let SelectComponent = ReactSelect;
+    if (creatable && lazy) {
+      SelectComponent = ReactSelect.AsyncCreatable;
+    } else if (creatable) {
+      SelectComponent = ReactSelect.Creatable;
+    } else if (lazy) {
+      SelectComponent = ReactSelect.Async;
+    }
 
-  let wrapperClass = className;
-  if (error) {
-    // error should overwrite required
-    inputNote = <span className="Select--error">{error}</span>;
-    wrapperClass += " Select--hasError";
-  }
+    const overrideProps = lazy && !filterOptions ? { filterOptions: results => results } : {};
 
-  let reactSelectClasses = cssClass.REACT_SELECT;
-  if (readOnly) {
-    reactSelectClasses += ` ${cssClass.READ_ONLY}`;
-  }
-
-  let SelectComponent = ReactSelect;
-  if (creatable && lazy) {
-    SelectComponent = ReactSelect.AsyncCreatable;
-  } else if (creatable) {
-    SelectComponent = ReactSelect.Creatable;
-  } else if (lazy) {
-    SelectComponent = ReactSelect.Async;
-  }
-
-  const overrideProps = lazy && !filterOptions ? { filterOptions: results => results } : {};
-
-  // The label container must be returned after the ReactSelect otherwise it does not get displayed
-  // in the browser.
-  return (
-    <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), wrapperClass)}>
-      <div id={id}>
-        <SelectComponent
-          className={reactSelectClasses}
-          clearable={clearable}
-          promptTextCreator={creatablePromptFn}
-          disabled={disabled || readOnly}
-          multi={multi}
-          name={name}
-          onChange={onChange}
-          optionRenderer={optionRenderer}
-          options={options}
-          loadOptions={loadOptions}
-          filterOptions={filterOptions}
-          placeholder={placeholder}
-          searchable={searchable}
-          noResultsText={noResultsText}
-          value={value}
-          {...overrideProps}
-        />
+    // The label container must be returned after the ReactSelect otherwise it does not get displayed
+    // in the browser.
+    return (
+      <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), wrapperClass)}>
+        <div id={id}>
+          <SelectComponent
+            className={reactSelectClasses}
+            clearable={clearable}
+            promptTextCreator={creatablePromptFn}
+            disabled={disabled || readOnly}
+            multi={multi}
+            name={name}
+            onBlur={() => this.setState({ hasBeenFocused: true })}
+            onChange={onChange}
+            optionRenderer={optionRenderer}
+            options={options}
+            loadOptions={loadOptions}
+            filterOptions={filterOptions}
+            placeholder={placeholder}
+            searchable={searchable}
+            noResultsText={noResultsText}
+            value={value}
+            {...overrideProps}
+          />
+        </div>
+        <div className={cssClass.LABEL_CONTAINER}>
+          <label className={labelClasses} htmlFor={id}>
+            {label}
+          </label>
+          {inputNote}
+        </div>
       </div>
-      <div className={cssClass.LABEL_CONTAINER}>
-        <label className={labelClasses} htmlFor={id}>
-          {label}
-        </label>
-        {inputNote}
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
-Select.cssClass = {
+const cssClass = {
   CONTAINER: "Select--container",
   LABEL: "Select--label",
   LABEL_CONTAINER: "Select--labelContainer",

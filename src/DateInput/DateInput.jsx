@@ -34,7 +34,7 @@ export default class DateInput extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { inFocus: false };
+    this.state = { inFocus: false, hasBeenFocused: false };
 
     this.isValidDate = this.isValidDate.bind(this);
   }
@@ -57,6 +57,7 @@ export default class DateInput extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const classes = ["DateInput"];
 
     // add additional wrapper classes
@@ -81,7 +82,15 @@ export default class DateInput extends React.Component {
     // note on the upper right corner
     let inputNote;
     if (this.props.required) {
-      inputNote = <span className="DateInput--required">required</span>;
+      inputNote = (
+        <span
+          className={`DateInput--${
+            this.state.hasBeenFocused && !this.props.value ? "error" : "required"
+          }`}
+        >
+          required
+        </span>
+      );
     }
     if (this.props.error) {
       inputNote = <span className="DateInput--error">{this.props.error}</span>;
@@ -106,7 +115,7 @@ export default class DateInput extends React.Component {
             className="DateTimePicker"
             onChange={this.props.onChange}
             value={this.props.value}
-            onBlur={() => this.setState({ inFocus: false })}
+            onBlur={() => this.setState({ inFocus: false, hasBeenFocused: true })}
             onFocus={() => this.setState({ inFocus: true })}
             isValidDate={this.isValidDate}
             inputProps={{
@@ -126,7 +135,7 @@ export default class DateInput extends React.Component {
             maxDate={this.props.max}
             minDate={this.props.min}
             name={this.props.name}
-            onBlur={() => this.setState({ inFocus: false })}
+            onBlur={() => this.setState({ inFocus: false, hasBeenFocused: true })}
             onFocus={() => this.setState({ inFocus: true })}
             onSelect={this.props.onChange}
             placeholderText={this.props.placeholder}

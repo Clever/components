@@ -16,7 +16,7 @@ export class TextInput extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { inFocus: false, hidden: true };
+    this.state = { inFocus: false, hasBeenFocused: false, hidden: true };
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.toggleHidden = this.toggleHidden.bind(this);
@@ -34,7 +34,7 @@ export class TextInput extends React.Component {
   onBlur() {
     const { onBlur } = this.props;
 
-    this.setState({ inFocus: false });
+    this.setState({ inFocus: false, hasBeenFocused: true });
     if (onBlur) {
       onBlur();
     }
@@ -73,7 +73,15 @@ export class TextInput extends React.Component {
     // note on the upper right corner
     let inputNote;
     if (this.props.required) {
-      inputNote = <span className="TextInput--required">required</span>;
+      inputNote = (
+        <span
+          className={`TextInput--${
+            this.state.hasBeenFocused && !this.props.value ? "error" : "required"
+          }`}
+        >
+          required
+        </span>
+      );
     }
     if (this.props.error) {
       inputNote = <span className="TextInput--error">{this.props.error}</span>;

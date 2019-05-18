@@ -50,6 +50,7 @@ export class CopyableInput extends React.Component {
           readOnly={this.props.readOnly}
           label={this.props.label}
           onChange={this.props.onChange}
+          required={this.props.required}
           size={
             FormElementSize.FULL_WIDTH /* Rely on the fact that we're bounding the parent
             container */
