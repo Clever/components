@@ -26,7 +26,7 @@ export class TextArea extends React.Component {
   constructor(props) {
     super(TextArea.validateProps(props));
 
-    this.state = { inFocus: false };
+    this.state = { inFocus: false, hasBeenFocused: false };
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
   }
@@ -46,7 +46,7 @@ export class TextArea extends React.Component {
   onBlur() {
     const { onBlur } = this.props;
 
-    this.setState({ inFocus: false });
+    this.setState({ inFocus: false, hasBeenFocused: true });
     if (onBlur) {
       onBlur();
     }
@@ -77,7 +77,15 @@ export class TextArea extends React.Component {
     // note on the upper right corner
     let inputNote;
     if (this.props.required) {
-      inputNote = <span className="TextArea--required">required</span>;
+      inputNote = (
+        <span
+          className={`TextArea--${
+            this.state.hasBeenFocused && !this.props.value ? "error" : "required"
+          }`}
+        >
+          required
+        </span>
+      );
     }
     if (this.props.optional) {
       inputNote = <span className="TextArea--optional">optional</span>;

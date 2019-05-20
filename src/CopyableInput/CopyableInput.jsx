@@ -50,6 +50,7 @@ export class CopyableInput extends React.Component {
           readOnly={this.props.readOnly}
           label={this.props.label}
           onChange={this.props.onChange}
+          required={this.props.required}
           size={
             FormElementSize.FULL_WIDTH /* Rely on the fact that we're bounding the parent
             container */
@@ -77,9 +78,11 @@ export class CopyableInput extends React.Component {
 CopyableInput.propTypes = Object.assign({}, TextInput.propTypes, {
   className: PropTypes.string,
   enableCopy: PropTypes.bool,
+  required: PropTypes.bool,
 });
 
 CopyableInput.defaultProps = {
   enableCopy: true,
+  required: false,
   size: FormElementSize.FULL_WIDTH,
 };

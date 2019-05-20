@@ -133,20 +133,14 @@ export default class WizardLayoutView extends React.PureComponent {
               className="Dewey--WizardLayout"
               sections={WizardLayoutContent[currentStep].sections}
               headerImg={showHeaderImg ? headerImg : null}
-              helpContent={
-                customHelpContent ? WizardLayoutContent[currentStep].helpContent : null
-              }
+              helpContent={customHelpContent ? WizardLayoutContent[currentStep].helpContent : null}
               hideSaveAndExit={hideSaveAndExit}
-              nextStepButtonText={
-                WizardLayoutContent[currentStep].nextStepButtonText || null
-              }
+              nextStepButtonText={WizardLayoutContent[currentStep].nextStepButtonText || null}
               onNextStep={_onNextStep}
               onPrevStep={_onPrevStep}
               onSaveAndExit={_onSaveAndExit}
               prevStepButtonDisabled={!WizardLayoutContent[currentStep].prevStep}
-              prevStepButtonText={
-                WizardLayoutContent[currentStep].prevStepButtonText || null
-              }
+              prevStepButtonText={WizardLayoutContent[currentStep].prevStepButtonText || null}
               stepper={stepper}
               subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
               title="Back to school guide"
@@ -183,15 +177,15 @@ export default class WizardLayoutView extends React.PureComponent {
           />{" "}
           Custom help content
         </label>
-       <label className={cssClass.CONFIG}>
-        <input
-          type="checkbox"
-          checked={hideSaveAndExit}
-          className={cssClass.CONFIG_TOGGLE}
-          onChange={e => this.setState({ hideSaveAndExit: e.target.checked })}
-        />{" "}
-        Hide save & exit button
-      </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={hideSaveAndExit}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={e => this.setState({ hideSaveAndExit: e.target.checked })}
+          />{" "}
+          Hide save & exit button
+        </label>
       </FlexBox>
     );
   }

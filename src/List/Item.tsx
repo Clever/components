@@ -42,7 +42,7 @@ export default class Item extends React.PureComponent {
 }
 
 function DivWrapper(props) {
-  return <div {...props}></div>;
+  return <div {...props} />;
 }
 
 DivWrapper.propTypes = {
@@ -50,7 +50,7 @@ DivWrapper.propTypes = {
 };
 
 function ButtonWrapper(props) {
-  return <button {...props}></button>;
+  return <button {...props} />;
 }
 
 ButtonWrapper.propTypes = {
