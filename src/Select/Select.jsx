@@ -9,6 +9,15 @@ import "react-select/dist/react-select.css";
 import "./Select.less";
 import "../less/forms.less";
 
+const cssClass = {
+  CONTAINER: "Select--container",
+  LABEL: "Select--label",
+  LABEL_CONTAINER: "Select--labelContainer",
+  LABEL_HIDDEN: "Select--labelHidden",
+  REACT_SELECT: "Select--ReactSelect",
+  READ_ONLY: "Select--readOnly",
+};
+
 function isLabelHidden(placeholder, value) {
   if (!placeholder) {
     return false;
@@ -149,15 +158,6 @@ export class Select extends React.Component {
     );
   }
 }
-
-const cssClass = {
-  CONTAINER: "Select--container",
-  LABEL: "Select--label",
-  LABEL_CONTAINER: "Select--labelContainer",
-  LABEL_HIDDEN: "Select--labelHidden",
-  REACT_SELECT: "Select--ReactSelect",
-  READ_ONLY: "Select--readOnly",
-};
 
 const selectValuePropType = PropTypes.shape({
   label: PropTypes.string.isRequired,
