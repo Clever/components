@@ -57,7 +57,6 @@ export default class DateInput extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const classes = ["DateInput"];
 
     // add additional wrapper classes
