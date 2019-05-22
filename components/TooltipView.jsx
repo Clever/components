@@ -2,6 +2,7 @@ import _ from "lodash";
 import classnames from "classnames";
 import loremIpsum from "lorem-ipsum";
 import React, { Component } from "react";
+import FontAwesome from "react-fontawesome";
 
 import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
@@ -36,7 +37,7 @@ export default class TooltipView extends Component {
                   placement={placement}
                   textAlign={textAlign}
                 >
-                  <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
+                  <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
@@ -53,7 +54,7 @@ export default class TooltipView extends Component {
                   placement={placement}
                   textAlign={textAlign}
                 >
-                  <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
+                  <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
@@ -63,8 +64,9 @@ export default class TooltipView extends Component {
                   placement={placement}
                   textAlign={textAlign}
                 >
-                  <span
-                    className={classnames("fa fa-question-circle", cssClass.TRIGGER)}
+                  <FontAwesome
+                    className={cssClass.TRIGGER}
+                    name="question-circle"
                     ref="focusableTrigger"
                     tabIndex={0}
                   />
@@ -78,7 +80,7 @@ export default class TooltipView extends Component {
                   textAlign={textAlign}
                   clickTrigger
                 >
-                  <span className={classnames("fa fa-question-circle", cssClass.TRIGGER)} />
+                  <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
                 </Tooltip>
               </div>
             </ExampleCode>
