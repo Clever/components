@@ -13,6 +13,7 @@ const cssClass = {
 
   propStyle: prop => `FloatingButton--${prop}`,
 
+  BUTTON: "FloatingButton--button",
   CONTAINER: "FloatingButton--container",
   SUB_ELEMENT: "FloatingButton--subElement",
 };
@@ -23,6 +24,7 @@ const propTypes = {
   additionalButtons: PropTypes.array,
 
   bgColor: PropTypes.string,
+  className: PropTypes.string,
   label: PropTypes.node,
 
   onClick: PropTypes.func,
@@ -103,8 +105,8 @@ export default class FloatingButton extends React.PureComponent {
       additionalButtons,
       animate,
       bgColor,
-      label,
       className,
+      label,
       positionX,
       positionY,
       size,
@@ -117,6 +119,7 @@ export default class FloatingButton extends React.PureComponent {
           cssClass.CONTAINER,
           cssClass.propStyle(positionX),
           cssClass.propStyle(positionY),
+          className,
         )}
         style={{
           ...this.horizontalStyle(),
@@ -125,6 +128,7 @@ export default class FloatingButton extends React.PureComponent {
       >
         <div className={classnames(cssClass.SUB_ELEMENT, className)}>
           <Button
+            className={cssClass.BUTTON}
             onClick={this.mainButtonHandler}
             value={
               active ? (
@@ -165,6 +169,7 @@ export default class FloatingButton extends React.PureComponent {
               key={i}
             >
               <Button
+                className={cssClass.BUTTON}
                 onClick={button.onClick}
                 value={button.label}
                 size={size || "regular"}
