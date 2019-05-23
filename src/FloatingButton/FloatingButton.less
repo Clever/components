@@ -1,0 +1,49 @@
+@import (reference) "../less/utilities";
+
+.FloatingButton--container {
+  position: fixed;
+}
+
+.FloatingButton--left {
+  align-items: flex-start;
+}
+
+.FloatingButton--center {
+  align-items: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.FloatingButton--right {
+  align-items: flex-end;
+}
+
+.FloatingButton--bottom {
+  flex-direction: column-reverse;
+}
+
+.FloatingButton--top {
+  flex-direction: column;
+}
+
+.FloatingButton--subElement {
+  // .border--s(@neutral_silver);
+  .margin--2xs();
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  color: @alert_green;
+  // text-align: right;
+}
+
+.FloatingButton--inactive--bottom {
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+.FloatingButton--inactive--top {
+  transform: translateY(-40px);
+  opacity: 0;
+}
+
+.FloatingButton--unique {
+  color: white;
+}

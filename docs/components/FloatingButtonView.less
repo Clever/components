@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.FloatingButtonView--intro {
+  .margin--bottom--xl;
+}
+
+.FloatingButtonView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.FloatingButtonView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.FloatingButtonView--config {
+  cursor: pointer;
+}
+
+.FloatingButtonView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.FloatingButtonView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.FloatingButtonView--props {
+  .margin--top--l;
+}
