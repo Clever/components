@@ -25,6 +25,7 @@ const propTypes = {
 
   bgColor: PropTypes.string,
   className: PropTypes.string,
+  closeLabel: PropTypes.node,
   label: PropTypes.node,
 
   onClick: PropTypes.func,
@@ -106,6 +107,7 @@ export default class FloatingButton extends React.PureComponent {
       animate,
       bgColor,
       className,
+      closeLabel,
       label,
       positionX,
       positionY,
@@ -131,13 +133,13 @@ export default class FloatingButton extends React.PureComponent {
             className={cssClass.BUTTON}
             onClick={this.mainButtonHandler}
             value={
-              active ? (
-                <div>
-                  <span className="fa fa-times" /> Close
-                </div>
-              ) : (
-                label
-              )
+              active
+                ? closeLabel || (
+                    <div>
+                      <span className="fa fa-times" /> Close
+                    </div>
+                  )
+                : label
             }
             size={size || "regular"}
             style={{

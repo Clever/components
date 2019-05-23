@@ -201,6 +201,12 @@ export default class FloatingButtonView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "closeLabel",
+              type: "React.Node",
+              description: "Main button label when menu buttons active",
+              optional: true,
+            },
+            {
               name: "label",
               type: "React.Node",
               description: "Main button label",
