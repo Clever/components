@@ -18,6 +18,7 @@ import DropdownButtonView from "./components/DropdownButtonView";
 import EditableInfoPanelView from "./components/EditableInfoPanelView";
 import FileInputView from "./components/FileInputView";
 import FlexBoxView from "./components/FlexBoxView";
+import FloatingButtonView from "./components/FloatingButtonView";
 import FormErrorView from "./components/FormErrorView";
 import GettingStartedView from "./components/GettingStartedView";
 import GoalsLogoView from "./components/GoalsLogoView";
@@ -45,19 +46,19 @@ import SegmentedControlView from "./components/SegmentedControlView";
 import SelectView from "./components/SelectView";
 import SizingView from "./components/SizingView";
 import SpacingView from "./components/SpacingView";
+import StepperView from "./components/StepperView";
 import SwitchView from "./components/SwitchView";
 import TabBarView from "./components/TabBarView";
 import TableView from "./components/TableView";
 import TextAreaView from "./components/TextAreaView";
 import TextInputView from "./components/TextInputView";
-import ToastStackView from "./components/ToastStackView";
 import TextTruncateView from "./components/TextTruncateView";
+import ToastStackView from "./components/ToastStackView";
 import TooltipView from "./components/TooltipView";
 import TopBarView from "./components/TopBarView";
 import TypographyView from "./components/TypographyView";
 import UITextView from "./components/UITextView";
 import WithKeyboardNavView from "./components/WithKeyboardNavView";
-import StepperView from "./components/StepperView";
 import WizardLayoutView from "./components/WizardLayoutView";
 import WizardView from "./components/WizardView";
 
@@ -91,6 +92,7 @@ render(
         <Route path="editable-info-panel(/*)" component={EditableInfoPanelView} />
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
+        <Route path="floating-button(/*)" component={FloatingButtonView} />
         <Route path="form-error(/*)" component={FormErrorView} />
         <Route path="goals-logo(/*)" component={GoalsLogoView} />
         <Route path="grid(/*)" component={GridView} />
