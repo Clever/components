@@ -135,7 +135,7 @@ export default class FloatingButton extends React.PureComponent {
                 label
               )
             }
-            size={size ? size : "regular"}
+            size={size || "regular"}
             style={{
               borderRadius: "500px",
               ...(bgColor
@@ -167,7 +167,7 @@ export default class FloatingButton extends React.PureComponent {
               <Button
                 onClick={button.onClick}
                 value={button.label}
-                size={size ? size : "regular"}
+                size={size || "regular"}
                 style={{
                   borderRadius: "500px",
                   ...(bgColor
