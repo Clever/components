@@ -61,6 +61,7 @@ export default class FloatingButton extends React.PureComponent {
 
   horizontalStyle() {
     const { offsetX, positionX } = this.props;
+    if (positionX === "center") return {};
     return positionX === "left"
       ? {
           left: `${offsetX}px`,
