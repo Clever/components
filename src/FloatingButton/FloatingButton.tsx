@@ -99,7 +99,7 @@ export default class FloatingButton extends React.PureComponent {
         this.setState({ active: true, display: true });
       }
     }
-    if (onClick && !active) {
+    if (onClick) {
       onClick();
     }
   };
