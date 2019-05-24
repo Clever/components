@@ -144,7 +144,6 @@ export default class WizardLayoutView extends React.PureComponent {
               stepper={stepper}
               subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
               title="Back to school guide"
-              fullscreen={false}
             />
           </ExampleCode>
           {this._renderConfig()}
