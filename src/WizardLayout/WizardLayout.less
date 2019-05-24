@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.WizardLayout--fullscreen {
+  height: 1vh;
+}
+
 .WizardLayout--header {
   background-color: @neutral_white;
   .margin--bottom--none();
@@ -32,6 +36,12 @@
 
 .WizardLayout--body {
   overflow: auto;
+}
+
+.WizardLayout--body--fullscreen {
+  overflow: unset;
+  height: 1vh;
+  flex: 1;
 }
 
 .WizardLayout--helpContainer {
@@ -101,4 +111,11 @@
 
 .Button.WizardLayout--previousButton {
   .margin--right--l();
+}
+
+.WizardLayout--footer--fullscreen {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
