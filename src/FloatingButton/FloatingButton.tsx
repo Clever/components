@@ -173,7 +173,7 @@ export default class FloatingButton extends React.PureComponent {
               key={i}
             >
               <Button
-                className={cssClass.BUTTON}
+                className={classnames(cssClass.BUTTON, !(active || display) ? cssClass.REMOVE : "")}
                 onClick={button.onClick}
                 value={button.label}
                 size={size || "regular"}
@@ -185,10 +185,6 @@ export default class FloatingButton extends React.PureComponent {
                         borderColor: bgColor,
                       }
                     : {}),
-
-                  // With mutliple clicks within transition window, we may reach active=true, display=false edge case.
-                  // We should only remove from DOM when inactive and not persisting display for transition out.
-                  display: active || display ? "inline" : "none",
                 }}
               />
             </div>
