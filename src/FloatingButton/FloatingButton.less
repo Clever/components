@@ -2,34 +2,34 @@
 
 .FloatingButton--container {
   position: fixed;
-  z-index: 1000;
+  .zIndex--9();
 }
 
 .FloatingButton--left {
-  align-items: flex-start;
+  .items--start();
 }
 
 .FloatingButton--center {
-  align-items: center;
+  .items--center();
   left: 50%;
   transform: translate(-50%, 0);
 }
 
 .FloatingButton--right {
-  align-items: flex-end;
+  .items--end();
 }
 
 .FloatingButton--bottom {
-  flex-direction: column-reverse;
+  .flex--direction--columnReverse();
 }
 
 .FloatingButton--top {
-  flex-direction: column;
+  .flex--direction--column();
 }
 
 .FloatingButton--subElement {
   .margin--2xs();
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity @timingPromptly @motionSmooth, transform @timingPromptly @motionSmooth;
 }
 
 .FloatingButton--button {
@@ -44,4 +44,8 @@
 .FloatingButton--inactive--top {
   transform: translateY(-2.5rem);
   opacity: 0;
+}
+
+.FloatingButton--remove {
+  display: none;
 }

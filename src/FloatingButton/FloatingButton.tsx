@@ -15,6 +15,7 @@ const cssClass = {
 
   BUTTON: "FloatingButton--button",
   CONTAINER: "FloatingButton--container",
+  REMOVE: "FloatingButton--remove",
   SUB_ELEMENT: "FloatingButton--subElement",
 };
 
