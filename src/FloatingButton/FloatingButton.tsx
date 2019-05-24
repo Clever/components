@@ -1,6 +1,7 @@
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
+import * as FontAwesome from "react-fontawesome";
 
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
@@ -130,7 +131,7 @@ export default class FloatingButton extends React.PureComponent {
           ...this.verticalStyle(),
         }}
       >
-        <div className={classnames(cssClass.SUB_ELEMENT, className)}>
+        <div className={classnames(cssClass.SUB_ELEMENT)}>
           <Button
             className={cssClass.BUTTON}
             onClick={this.mainButtonHandler}
@@ -138,7 +139,7 @@ export default class FloatingButton extends React.PureComponent {
               active
                 ? closeLabel || (
                     <div>
-                      <span className="fa fa-times" /> Close
+                      <FontAwesome name="times" /> Close
                     </div>
                   )
                 : label
