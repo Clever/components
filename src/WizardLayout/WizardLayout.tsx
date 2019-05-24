@@ -16,7 +16,7 @@ const SECTION_PROP_TYPE = PropTypes.shape({
 
 const propTypes = {
   className: PropTypes.string,
-  sections: PropTypes.arrayOf(SECTION_PROP_TYPE).isRequired,
+  fullscreen: PropTypes.bool,
   headerImg: PropTypes.element,
   helpContent: PropTypes.node,
   nextStepButtonDisabled: PropTypes.bool,
@@ -27,6 +27,7 @@ const propTypes = {
   onNextStep: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
   onSaveAndExit: PropTypes.func,
+  sections: PropTypes.arrayOf(SECTION_PROP_TYPE).isRequired,
   stepper: PropTypes.node.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -50,6 +51,10 @@ const cssClass = {
   STEPPER_CONTAINER: "WizardLayout--stepperContainer",
   SECTION_DIVIDER: "WizardLayout--sectionDivider",
   NEXT_BUTTON: "WizardLayout--nextButton",
+
+  CONTAINER_FULLSCREEN: "WizardLayout--fullscreen",
+  BODY_FULLSCREEN: "WizardLayout--body--fullscreen",
+  FOOTER_FULLSCREEN: "WizardLayout--footer--fullscreen",
 };
 
 /**
@@ -74,10 +79,11 @@ export default class WizardLayout extends React.PureComponent {
       stepper,
       subtitle,
       title,
+      fullscreen,
     } = this.props;
 
     return (
-      <FlexBox column grow className={classnames(cssClass.CONTAINER, className)}>
+      <FlexBox column grow className={classnames(cssClass.CONTAINER, className, fullscreen && cssClass.CONTAINER_FULLSCREEN)}>
         <FlexBox className={cssClass.HEADER}>
           {headerImg && <div className={cssClass.HEADER_IMG}>{headerImg}</div>}
           <div>
@@ -85,7 +91,7 @@ export default class WizardLayout extends React.PureComponent {
             <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>
           </div>
         </FlexBox>
-        <FlexBox className={cssClass.BODY}>
+        <FlexBox className={classnames(cssClass.BODY, fullscreen && cssClass.BODY_FULLSCREEN)}>
           <FlexBox column className={cssClass.STEPPER_CONTAINER}>
             {stepper}
             <FlexBox grow />
@@ -107,7 +113,7 @@ export default class WizardLayout extends React.PureComponent {
             ))}
           </FlexBox>
         </FlexBox>
-        <FlexBox className={cssClass.FOOTER}>
+        <FlexBox className={classnames(cssClass.FOOTER, fullscreen && cssClass.FOOTER_FULLSCREEN)}>
           {!hideSaveAndExit && onSaveAndExit && (
             <Button type="link" value={"Save & exit"} onClick={() => onSaveAndExit()} />
           )}
