@@ -3,6 +3,7 @@
 .FloatingButton--container {
   position: fixed;
   .zIndex--9();
+  pointer-events: none;
 }
 
 .FloatingButton--left {
@@ -30,24 +31,24 @@
 .FloatingButton--subElement {
   .margin--2xs();
   transition: opacity @timingPromptly @motionSmooth, transform @timingPromptly @motionSmooth;
+  pointer-events: auto;
 }
 
-.FloatingButton--button {
+button.FloatingButton--button {
   .boxShadow--heavy();
+  border-radius: 500rem;
 }
 
 .FloatingButton--inactive--bottom {
   transform: translateY(2.5rem);
   opacity: 0;
+  pointer-events: none;
 }
 
 .FloatingButton--inactive--top {
   transform: translateY(-2.5rem);
   opacity: 0;
-}
-
-button.FloatingButton--remove {
-  display: none;
+  pointer-events: none;
 }
 
 button.FloatingButton--green {
@@ -60,5 +61,18 @@ button.FloatingButton--green {
   &:active {
     background-color: @alert_green_tint_1;
     border-color: @alert_green_tint_1;
+  }
+}
+
+button.FloatingButton--gray {
+  background-color: @neutral_dark_gray;
+  border-color: @neutral_dark_gray;
+  color: @neutral_white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @neutral_dark_gray;
+    border-color: @neutral_dark_gray;
   }
 }

@@ -16,7 +16,6 @@ const cssClass = {
 
   BUTTON: "FloatingButton--button",
   CONTAINER: "FloatingButton--container",
-  REMOVE: "FloatingButton--remove",
   SUB_ELEMENT: "FloatingButton--subElement",
 };
 
@@ -57,7 +56,6 @@ export default class FloatingButton extends React.PureComponent {
     super(props);
     this.state = {
       active: false,
-      display: false,
     };
   }
 
@@ -87,17 +85,11 @@ export default class FloatingButton extends React.PureComponent {
   }
 
   mainButtonHandler = () => {
-    const { additionalButtons, animate, onClick } = this.props;
+    const { additionalButtons, onClick } = this.props;
     const { active } = this.state;
     if (additionalButtons && additionalButtons.length) {
       // main button activates additional buttons
-      if (active) {
-        // stop displaying when transition to inactive state complete
-        this.setState({ active: false, display: true });
-        setTimeout(() => this.setState({ display: false }), animate ? 200 : 0);
-      } else {
-        this.setState({ active: true, display: true });
-      }
+      this.setState({ active: !active });
     }
     if (onClick) {
       onClick();
@@ -116,7 +108,7 @@ export default class FloatingButton extends React.PureComponent {
       positionY,
       size,
     } = this.props;
-    const { active, display } = this.state;
+    const { active } = this.state;
 
     return (
       <FlexBox
@@ -133,7 +125,7 @@ export default class FloatingButton extends React.PureComponent {
       >
         <div className={classnames(cssClass.SUB_ELEMENT)}>
           <Button
-            className={classnames(cssClass.BUTTON, bgColor ? cssClass.propStyle(bgColor) : "")}
+            className={classnames(cssClass.BUTTON, bgColor ? cssClass.propStyle(bgColor) : "", active ? cssClass.propStyle("gray") : "")}
             onClick={this.mainButtonHandler}
             value={
               active
@@ -145,16 +137,6 @@ export default class FloatingButton extends React.PureComponent {
                 : label
             }
             size={size || "regular"}
-            style={{
-              borderRadius: "500px",
-              ...(active
-                ? {
-                    backgroundColor: "#474c5e", // @neutral_dark_gray
-                    borderColor: "#474c5e",
-                    color: "white",
-                  }
-                : {}),
-            }}
           />
         </div>
         {additionalButtons &&
@@ -168,13 +150,10 @@ export default class FloatingButton extends React.PureComponent {
               key={i}
             >
               <Button
-                className={classnames(cssClass.BUTTON, !(active || display) ? cssClass.REMOVE : "", bgColor ? cssClass.propStyle(bgColor) : "")}
+                className={classnames(cssClass.BUTTON, bgColor ? cssClass.propStyle(bgColor) : "")}
                 onClick={button.onClick}
                 value={button.label}
                 size={size || "regular"}
-                style={{
-                  borderRadius: "500px",
-                }}
               />
             </div>
           ))}
