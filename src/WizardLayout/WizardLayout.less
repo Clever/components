@@ -39,7 +39,7 @@
 }
 
 .WizardLayout--body--fullscreen {
-  overflow: unset;
+  overflow: visible;
   height: 1vh;
   flex: 1;
   margin-bottom: 5.5rem;
@@ -119,4 +119,12 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+// Hack for IE only styles
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  .WizardLayout--fullscreen {
+    min-height: 100vh;
+  }
 }
