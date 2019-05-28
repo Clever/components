@@ -78,9 +78,7 @@ export default class FloatingButtonView extends React.PureComponent {
                       },
                       {
                         className: "my--custom--class",
-                        label: (
-                          <div>longer button</div>
-                        ),
+                        label: <div>longer button</div>,
                         onClick: () => console.log("longer button clicked"),
                       },
                     ]

@@ -30,8 +30,11 @@
 
 .FloatingButton--subElement {
   .margin--2xs();
-  transition: opacity @timingPromptly @motionSmooth, transform @timingPromptly @motionSmooth;
   pointer-events: auto;
+}
+
+.FloatingButton--animate {
+  transition: opacity @timingPromptly @motionSmooth, transform @timingPromptly @motionSmooth;
 }
 
 button.FloatingButton--button {

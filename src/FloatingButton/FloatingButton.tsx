@@ -10,6 +10,7 @@ import "./FloatingButton.less";
 
 const cssClass = {
   ACTIVE: "FloatingButton--active",
+  ANIMATE: "FloatingButton--animate",
   inactive: positionY => `FloatingButton--inactive--${positionY}`,
 
   propStyle: prop => `FloatingButton--${prop}`,
@@ -125,7 +126,11 @@ export default class FloatingButton extends React.PureComponent {
       >
         <div className={classnames(cssClass.SUB_ELEMENT)}>
           <Button
-            className={classnames(cssClass.BUTTON, bgColor ? cssClass.propStyle(bgColor) : "", active ? cssClass.propStyle("gray") : "")}
+            className={classnames(
+              cssClass.BUTTON,
+              bgColor ? cssClass.propStyle(bgColor) : "",
+              active ? cssClass.propStyle("gray") : "",
+            )}
             onClick={this.mainButtonHandler}
             value={
               active
@@ -144,7 +149,8 @@ export default class FloatingButton extends React.PureComponent {
             <div
               className={classnames(
                 cssClass.SUB_ELEMENT,
-                !active && animate ? cssClass.inactive(positionY) : "",
+                !active ? cssClass.inactive(positionY) : "",
+                animate ? cssClass.ANIMATE : "",
                 button.className,
               )}
               key={i}
