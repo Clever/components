@@ -25,7 +25,7 @@ const propTypes = {
 
   additionalButtons: PropTypes.array,
 
-  bgColor: PropTypes.string,
+  bgColor: PropTypes.oneOf(["green"]),
   className: PropTypes.string,
   closeLabel: PropTypes.node,
   label: PropTypes.node,
@@ -133,7 +133,7 @@ export default class FloatingButton extends React.PureComponent {
       >
         <div className={classnames(cssClass.SUB_ELEMENT)}>
           <Button
-            className={cssClass.BUTTON}
+            className={classnames(cssClass.BUTTON, bgColor ? cssClass.propStyle(bgColor) : "")}
             onClick={this.mainButtonHandler}
             value={
               active
@@ -147,12 +147,6 @@ export default class FloatingButton extends React.PureComponent {
             size={size || "regular"}
             style={{
               borderRadius: "500px",
-              ...(bgColor
-                ? {
-                    backgroundColor: bgColor,
-                    borderColor: bgColor,
-                  }
-                : {}),
               ...(active
                 ? {
                     backgroundColor: "#474c5e", // @neutral_dark_gray
@@ -174,18 +168,12 @@ export default class FloatingButton extends React.PureComponent {
               key={i}
             >
               <Button
-                className={classnames(cssClass.BUTTON, !(active || display) ? cssClass.REMOVE : "")}
+                className={classnames(cssClass.BUTTON, !(active || display) ? cssClass.REMOVE : "", bgColor ? cssClass.propStyle(bgColor) : "")}
                 onClick={button.onClick}
                 value={button.label}
                 size={size || "regular"}
                 style={{
                   borderRadius: "500px",
-                  ...(bgColor
-                    ? {
-                        backgroundColor: bgColor,
-                        borderColor: bgColor,
-                      }
-                    : {}),
                 }}
               />
             </div>
