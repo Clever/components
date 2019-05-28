@@ -57,7 +57,7 @@ export default class FloatingButtonView extends React.PureComponent {
             <FloatingButton
               className="my--custom--class"
               label={<div style={showBGColor ? { color: "white" } : {}}>label</div>}
-              bgColor={showBGColor ? "#2DBE8B" : null}
+              bgColor={showBGColor ? "green" : null}
               animate={animate}
               positionX={positionX}
               size={size}
@@ -68,18 +68,18 @@ export default class FloatingButtonView extends React.PureComponent {
                   ? [
                       {
                         className: "my--custom--class",
-                        label: <div style={showBGColor ? { color: "white" } : {}}>button 1</div>,
+                        label: <div>button 1</div>,
                         onClick: () => console.log("button 1 clicked"),
                       },
                       {
                         className: "my--custom--class",
-                        label: <div style={showBGColor ? { color: "white" } : {}}>button 2</div>,
+                        label: <div>button 2</div>,
                         onClick: () => console.log("button 2 clicked"),
                       },
                       {
                         className: "my--custom--class",
                         label: (
-                          <div style={showBGColor ? { color: "white" } : {}}>longer button</div>
+                          <div>longer button</div>
                         ),
                         onClick: () => console.log("longer button clicked"),
                       },
@@ -197,7 +197,7 @@ export default class FloatingButtonView extends React.PureComponent {
             {
               name: "bgColor",
               type: "string",
-              description: "Button background color",
+              description: "Button background color. Supported values: 'green'",
               optional: true,
             },
             {
