@@ -56,7 +56,7 @@ export default class FloatingButtonView extends React.PureComponent {
           <ExampleCode>
             <FloatingButton
               className="my--custom--class"
-              label={<div style={showBGColor ? { color: "white" } : {}}>label</div>}
+              label="label"
               bgColor={showBGColor ? "green" : null}
               animate={animate}
               positionX={positionX}
@@ -68,17 +68,17 @@ export default class FloatingButtonView extends React.PureComponent {
                   ? [
                       {
                         className: "my--custom--class",
-                        label: <div>button 1</div>,
+                        label: "button 1",
                         onClick: () => console.log("button 1 clicked"),
                       },
                       {
                         className: "my--custom--class",
-                        label: <div>button 2</div>,
+                        label: "button 2",
                         onClick: () => console.log("button 2 clicked"),
                       },
                       {
                         className: "my--custom--class",
-                        label: <div>longer button</div>,
+                        label: "longer button",
                         onClick: () => console.log("longer button clicked"),
                       },
                     ]
