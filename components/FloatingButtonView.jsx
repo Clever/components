@@ -3,7 +3,16 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { FloatingButton, FlexBox, ItemAlign, SegmentedControl } from "src";
+import {
+  Button,
+  ColorGroup,
+  FloatingButton,
+  FlexBox,
+  ItemAlign,
+  PositionX,
+  PositionY,
+  SegmentedControl,
+} from "src";
 
 import "./FloatingButtonView.less";
 
@@ -22,11 +31,11 @@ export default class FloatingButtonView extends React.PureComponent {
 
   state = {
     animate: true,
-    positionX: "right",
-    positionY: "bottom",
+    positionX: PositionX.RIGHT,
+    positionY: PositionY.BOTTOM,
     showAdditionalButtons: true,
     showBGColor: false,
-    size: "regular",
+    size: Button.Size.M,
   };
 
   render() {
@@ -57,7 +66,7 @@ export default class FloatingButtonView extends React.PureComponent {
             <FloatingButton
               className="my--custom--class"
               label="label"
-              bgColor={showBGColor ? "green" : null}
+              bgColor={showBGColor ? ColorGroup.GREEN : null}
               animate={animate}
               positionX={positionX}
               size={size}
@@ -115,9 +124,9 @@ export default class FloatingButtonView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             onSelect={value => this.setState({ positionX: value })}
             options={[
-              { content: "Left", value: "left" },
-              { content: "Center", value: "center" },
-              { content: "Right", value: "right" },
+              { content: "Left", value: PositionX.LEFT },
+              { content: "Center", value: PositionX.CENTER },
+              { content: "Right", value: PositionX.RIGHT },
             ]}
             value={positionX}
           />
@@ -128,9 +137,9 @@ export default class FloatingButtonView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             onSelect={value => this.setState({ size: value })}
             options={[
-              { content: "Small", value: "small" },
-              { content: "Regular", value: "regular" },
-              { content: "Large", value: "large" },
+              { content: "Small", value: Button.Size.S },
+              { content: "Regular", value: Button.Size.M },
+              { content: "Large", value: Button.Size.L },
             ]}
             value={size}
           />
@@ -140,7 +149,10 @@ export default class FloatingButtonView extends React.PureComponent {
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             onSelect={value => this.setState({ positionY: value })}
-            options={[{ content: "Top", value: "top" }, { content: "Bottom", value: "bottom" }]}
+            options={[
+              { content: "Top", value: PositionY.TOP },
+              { content: "Bottom", value: PositionY.BOTTOM },
+            ]}
             value={positionY}
           />
         </div>
@@ -195,7 +207,18 @@ export default class FloatingButtonView extends React.PureComponent {
             {
               name: "bgColor",
               type: "string",
-              description: "Button background color. Supported values: 'green'",
+              description: (
+                <p>
+                  Button background color. One of:
+                  <br />
+                  {Object.keys(ColorGroup).map(c => (
+                    <span key={c}>
+                      <code>ColorGroup.{c}</code>
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              ),
               optional: true,
             },
             {
