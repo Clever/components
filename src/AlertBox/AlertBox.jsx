@@ -57,7 +57,7 @@ export default class AlertBox extends PureComponent {
           </FlexItem>
           <FlexItem grow>
             {isClosable && (
-              <button className={cssClass.CLOSE} onClick={() => this.closeBox()}>
+              <button aria-label="Close" className={cssClass.CLOSE} onClick={() => this.closeBox()}>
                 <CloseIcon />
               </button>
             )}
