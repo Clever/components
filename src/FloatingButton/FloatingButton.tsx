@@ -20,19 +20,19 @@ const cssClass = {
   SUB_ELEMENT: "FloatingButton--subElement",
 };
 
-export const PositionX = {
+const PositionX = {
   LEFT: "left",
   CENTER: "center",
   RIGHT: "right",
 };
 
-export const PositionY = {
+const PositionY = {
   BOTTOM: "bottom",
   TOP: "top",
 };
 
 // TODO: Move to <Button /> component
-export const ColorGroup = {
+const ColorGroup = {
   GREEN: "green",
 };
 
@@ -41,7 +41,7 @@ const propTypes = {
 
   additionalButtons: PropTypes.array,
 
-  bgColor: PropTypes.oneOf(Object.values(ColorGroup)),
+  colorGroup: PropTypes.oneOf(Object.values(ColorGroup)),
   className: PropTypes.string,
   closeLabel: PropTypes.node,
   label: PropTypes.node,
@@ -77,6 +77,10 @@ export default class FloatingButton extends React.PureComponent {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
   static cssClass = cssClass;
+
+  static ColorGroup = ColorGroup;
+  static PositionX = PositionX;
+  static PositionY = PositionY;
 
   constructor(props) {
     super(props);
@@ -126,7 +130,7 @@ export default class FloatingButton extends React.PureComponent {
     const {
       additionalButtons,
       animate,
-      bgColor,
+      colorGroup,
       className,
       closeLabel,
       label,
@@ -153,7 +157,7 @@ export default class FloatingButton extends React.PureComponent {
           <Button
             className={classnames(
               cssClass.BUTTON,
-              bgColor && cssClass.propStyle(bgColor),
+              colorGroup && cssClass.propStyle(colorGroup),
               active && cssClass.propStyle("gray"),
             )}
             onClick={this.mainButtonHandler}
@@ -181,7 +185,10 @@ export default class FloatingButton extends React.PureComponent {
               key={i}
             >
               <Button
-                className={classnames(cssClass.BUTTON, bgColor && cssClass.propStyle(bgColor))}
+                className={classnames(
+                  cssClass.BUTTON,
+                  colorGroup && cssClass.propStyle(colorGroup),
+                )}
                 onClick={button.onClick}
                 value={button.label}
                 size={size || Button.Size.M}

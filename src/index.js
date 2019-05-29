@@ -109,5 +109,4 @@ import WizardLayout from "./WizardLayout";
 export { WizardLayout };
 
 import FloatingButton from "./FloatingButton";
-import { ColorGroup, PositionX, PositionY } from "./FloatingButton";
-export { ColorGroup, FloatingButton, PositionX, PositionY };
+export { FloatingButton };
