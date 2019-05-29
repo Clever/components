@@ -3,16 +3,7 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {
-  Button,
-  ColorGroup,
-  FloatingButton,
-  FlexBox,
-  ItemAlign,
-  PositionX,
-  PositionY,
-  SegmentedControl,
-} from "src";
+import { Button, FloatingButton, FlexBox, ItemAlign, SegmentedControl } from "src";
 
 import "./FloatingButtonView.less";
 
@@ -31,15 +22,22 @@ export default class FloatingButtonView extends React.PureComponent {
 
   state = {
     animate: true,
-    positionX: PositionX.RIGHT,
-    positionY: PositionY.BOTTOM,
+    positionX: FloatingButton.PositionX.RIGHT,
+    positionY: FloatingButton.PositionY.BOTTOM,
     showAdditionalButtons: true,
-    showBGColor: false,
+    showColorGroup: false,
     size: Button.Size.M,
   };
 
   render() {
-    const { animate, positionX, positionY, showAdditionalButtons, showBGColor, size } = this.state;
+    const {
+      animate,
+      positionX,
+      positionY,
+      showAdditionalButtons,
+      showColorGroup,
+      size,
+    } = this.state;
 
     return (
       <View
@@ -66,7 +64,7 @@ export default class FloatingButtonView extends React.PureComponent {
             <FloatingButton
               className="my--custom--class"
               label="label"
-              bgColor={showBGColor ? ColorGroup.GREEN : null}
+              colorGroup={showColorGroup ? FloatingButton.ColorGroup.GREEN : null}
               animate={animate}
               positionX={positionX}
               size={size}
@@ -105,7 +103,14 @@ export default class FloatingButtonView extends React.PureComponent {
 
   // TODO: Update or remove config options.
   _renderConfig() {
-    const { animate, positionX, positionY, showAdditionalButtons, showBGColor, size } = this.state;
+    const {
+      animate,
+      positionX,
+      positionY,
+      showAdditionalButtons,
+      showColorGroup,
+      size,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -124,9 +129,9 @@ export default class FloatingButtonView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             onSelect={value => this.setState({ positionX: value })}
             options={[
-              { content: "Left", value: PositionX.LEFT },
-              { content: "Center", value: PositionX.CENTER },
-              { content: "Right", value: PositionX.RIGHT },
+              { content: "Left", value: FloatingButton.PositionX.LEFT },
+              { content: "Center", value: FloatingButton.PositionX.CENTER },
+              { content: "Right", value: FloatingButton.PositionX.RIGHT },
             ]}
             value={positionX}
           />
@@ -150,8 +155,8 @@ export default class FloatingButtonView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             onSelect={value => this.setState({ positionY: value })}
             options={[
-              { content: "Top", value: PositionY.TOP },
-              { content: "Bottom", value: PositionY.BOTTOM },
+              { content: "Top", value: FloatingButton.PositionY.TOP },
+              { content: "Bottom", value: FloatingButton.PositionY.BOTTOM },
             ]}
             value={positionY}
           />
@@ -168,11 +173,11 @@ export default class FloatingButtonView extends React.PureComponent {
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={showBGColor}
+            checked={showColorGroup}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ showBGColor: e.target.checked })}
+            onChange={e => this.setState({ showColorGroup: e.target.checked })}
           />{" "}
-          Show Custom Background
+          Show Custom Color Group
         </label>
       </FlexBox>
     );
@@ -205,15 +210,15 @@ export default class FloatingButtonView extends React.PureComponent {
               optional: true,
             },
             {
-              name: "bgColor",
+              name: "colorGroup",
               type: "string",
               description: (
                 <p>
                   Button background color. One of:
                   <br />
-                  {Object.keys(ColorGroup).map(c => (
+                  {Object.keys(FloatingButton.ColorGroup).map(c => (
                     <span key={c}>
-                      <code>ColorGroup.{c}</code>
+                      <code>FloatingButton.ColorGroup.{c}</code>
                       <br />
                     </span>
                   ))}
