@@ -66,10 +66,11 @@ const defaultProps = {
 
 // add 'rem' if input is a number
 function addSizeUnit(input: string) {
+  var result = input;
   if (!isNaN(+input)) {
-    input = `${input}rem`;
+    result = `${input}rem`;
   }
-  return input;
+  return result;
 }
 
 export default class FloatingButton extends React.PureComponent {
