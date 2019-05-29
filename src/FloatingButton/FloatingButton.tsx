@@ -20,33 +20,57 @@ const cssClass = {
   SUB_ELEMENT: "FloatingButton--subElement",
 };
 
+export const PositionX = {
+  LEFT: "left",
+  CENTER: "center",
+  RIGHT: "right",
+};
+
+export const PositionY = {
+  BOTTOM: "bottom",
+  TOP: "top",
+};
+
+// TODO: Move to <Button /> component
+export const ColorGroup = {
+  GREEN: "green",
+};
+
 const propTypes = {
   animate: PropTypes.bool,
 
   additionalButtons: PropTypes.array,
 
-  bgColor: PropTypes.oneOf(["green"]),
+  bgColor: PropTypes.oneOf(Object.values(ColorGroup)),
   className: PropTypes.string,
   closeLabel: PropTypes.node,
   label: PropTypes.node,
 
   onClick: PropTypes.func,
 
-  offsetX: PropTypes.number,
-  offsetY: PropTypes.number,
-  positionX: PropTypes.oneOf(["left", "center", "right"]),
-  positionY: PropTypes.oneOf(["bottom", "top"]),
-  size: PropTypes.string,
+  offsetX: PropTypes.string,
+  offsetY: PropTypes.string,
+  positionX: PropTypes.oneOf(Object.values(PositionX)),
+  positionY: PropTypes.oneOf(Object.values(PositionY)),
+  size: PropTypes.oneOf(Object.values(Button.Size)),
 };
 
 const defaultProps = {
   animate: true,
   label: "+",
-  offsetX: 30,
-  offsetY: 30,
-  positionX: "right",
-  positionY: "bottom",
+  offsetX: "2",
+  offsetY: "2",
+  positionX: PositionX.RIGHT,
+  positionY: PositionY.BOTTOM,
 };
+
+// add 'rem' if input is a number
+function addSizeUnit(input: string) {
+  if (!isNaN(+input)) {
+    input = `${input}rem`;
+  }
+  return input;
+}
 
 export default class FloatingButton extends React.PureComponent {
   static propTypes = propTypes;
@@ -62,26 +86,26 @@ export default class FloatingButton extends React.PureComponent {
 
   horizontalStyle() {
     const { offsetX, positionX } = this.props;
-    if (positionX === "center") return {};
-    return positionX === "left"
+    if (positionX === PositionX.CENTER) return {};
+    return positionX === PositionX.LEFT
       ? {
-          left: `${offsetX}px`,
+          left: addSizeUnit(offsetX),
         }
       : {
           // default to right if a bad positionX input provided
-          right: `${offsetX}px`,
+          right: addSizeUnit(offsetX),
         };
   }
 
   verticalStyle() {
     const { offsetY, positionY } = this.props;
-    return positionY === "top"
+    return positionY === PositionY.TOP
       ? {
-          top: `${offsetY}px`,
+          top: addSizeUnit(offsetY),
         }
       : {
           // default to bottom orientation
-          bottom: `${offsetY}px`,
+          bottom: addSizeUnit(offsetY),
         };
   }
 
@@ -128,8 +152,8 @@ export default class FloatingButton extends React.PureComponent {
           <Button
             className={classnames(
               cssClass.BUTTON,
-              bgColor ? cssClass.propStyle(bgColor) : "",
-              active ? cssClass.propStyle("gray") : "",
+              bgColor && cssClass.propStyle(bgColor),
+              active && cssClass.propStyle("gray"),
             )}
             onClick={this.mainButtonHandler}
             value={
@@ -141,7 +165,7 @@ export default class FloatingButton extends React.PureComponent {
                   )
                 : label
             }
-            size={size || "regular"}
+            size={size || Button.Size.M}
           />
         </div>
         {additionalButtons &&
@@ -149,17 +173,17 @@ export default class FloatingButton extends React.PureComponent {
             <div
               className={classnames(
                 cssClass.SUB_ELEMENT,
-                !active ? cssClass.inactive(positionY) : "",
-                animate ? cssClass.ANIMATE : "",
+                !active && cssClass.inactive(positionY),
+                animate && cssClass.ANIMATE,
                 button.className,
               )}
               key={i}
             >
               <Button
-                className={classnames(cssClass.BUTTON, bgColor ? cssClass.propStyle(bgColor) : "")}
+                className={classnames(cssClass.BUTTON, bgColor && cssClass.propStyle(bgColor))}
                 onClick={button.onClick}
                 value={button.label}
-                size={size || "regular"}
+                size={size || Button.Size.M}
               />
             </div>
           ))}
