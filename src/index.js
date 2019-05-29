@@ -107,3 +107,6 @@ export { Stepper };
 
 import WizardLayout from "./WizardLayout";
 export { WizardLayout };
+
+import FloatingButton from "./FloatingButton";
+export { FloatingButton };
