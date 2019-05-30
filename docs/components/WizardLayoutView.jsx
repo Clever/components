@@ -286,6 +286,12 @@ export default class WizardLayoutView extends React.PureComponent {
             type: "String",
             description: "Title string to be displayed in the header.",
           },
+          {
+            name: "fullscreen",
+            type: "Boolean",
+            description: "Applies styles needed for fullscreen display.",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
