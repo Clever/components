@@ -3,6 +3,8 @@ import classnames from "classnames";
 import loremIpsum from "lorem-ipsum";
 import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
@@ -37,7 +39,7 @@ export default class TooltipView extends Component {
                   placement={placement}
                   textAlign={textAlign}
                 >
-                  <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
+                  <FontAwesomeIcon className={cssClass.TRIGGER} icon={faQuestionCircle} />
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
