@@ -1,3 +1,4 @@
+import FontAwesome from "react-fontawesome";
 import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
@@ -48,11 +49,48 @@ export class TextInput extends React.Component {
     this.setState({ hidden: !this.state.hidden });
   }
 
+  currentErrorMessage() {
+    const { error, value } = this.props;
+    const { hasBeenFocused } = this.state;
+
+    let errorMessage = "";
+
+    if (hasBeenFocused && !value) {
+      errorMessage = "required";
+    }
+
+    if (error) {
+      errorMessage = error;
+    }
+
+    return errorMessage;
+  }
+
+  renderNote(errorMessage) {
+    const { required } = this.props;
+    let inputNote;
+
+    if (required) {
+      inputNote = <span className="TextInput--required">required</span>;
+    }
+
+    if (errorMessage) {
+      inputNote = (
+        <span className="TextInput--error">
+          <FontAwesome name="exclamation-triangle" /> {errorMessage}
+        </span>
+      );
+    }
+
+    return inputNote;
+  }
+
   render() {
     let wrapperClass = "TextInput";
+    const errorMessage = this.currentErrorMessage();
 
     // add additional wrapper classes
-    if (this.props.error) wrapperClass += " TextInput--hasError";
+    if (errorMessage) wrapperClass += " TextInput--hasError";
 
     // TODO:  throw error for mutually exclusive states
     if (this.props.readOnly) {
@@ -71,21 +109,7 @@ export class TextInput extends React.Component {
     }
 
     // note on the upper right corner
-    let inputNote;
-    if (this.props.required) {
-      inputNote = (
-        <span
-          className={`TextInput--${
-            this.state.hasBeenFocused && !this.props.value ? "error" : "required"
-          }`}
-        >
-          required
-        </span>
-      );
-    }
-    if (this.props.error) {
-      inputNote = <span className="TextInput--error">{this.props.error}</span>;
-    }
+    const inputNote = this.renderNote(errorMessage);
 
     let type;
     if (this.props.type === "password") {
