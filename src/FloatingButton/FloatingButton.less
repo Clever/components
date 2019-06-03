@@ -1,0 +1,81 @@
+@import (reference) "../less/utilities";
+
+.FloatingButton--container {
+  position: fixed;
+  .zIndex--9();
+  pointer-events: none;
+}
+
+.FloatingButton--left {
+  .items--start();
+}
+
+.FloatingButton--center {
+  .items--center();
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.FloatingButton--right {
+  .items--end();
+}
+
+.FloatingButton--bottom {
+  .flex--direction--columnReverse();
+}
+
+.FloatingButton--top {
+  .flex--direction--column();
+}
+
+.FloatingButton--subElement {
+  .margin--2xs();
+  pointer-events: auto;
+}
+
+.FloatingButton--animate {
+  transition: opacity @timingPromptly @motionSmooth, transform @timingPromptly @motionSmooth;
+}
+
+button.FloatingButton--button {
+  .boxShadow--heavy();
+  border-radius: 500rem;
+}
+
+.FloatingButton--inactive--bottom {
+  transform: translateY(2.5rem); // used for animation
+  opacity: 0;
+  pointer-events: none;
+}
+
+.FloatingButton--inactive--top {
+  transform: translateY(-2.5rem); // used for animation
+  opacity: 0;
+  pointer-events: none;
+}
+
+button.FloatingButton--green {
+  background-color: @alert_green_tint_1;
+  border-color: @alert_green_tint_1;
+  color: @neutral_white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @alert_green_tint_1;
+    border-color: @alert_green_tint_1;
+  }
+}
+
+button.FloatingButton--gray {
+  background-color: @neutral_dark_gray;
+  border-color: @neutral_dark_gray;
+  color: @neutral_white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @neutral_dark_gray;
+    border-color: @neutral_dark_gray;
+  }
+}
