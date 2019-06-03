@@ -58,7 +58,7 @@ describe("TextInput", () => {
 
     // check the span element with error message
     assert.equal(textInput.find("span").length, 1);
-    assert.equal(textInput.find("span").text(), "This is an error");
+    assert.equal(textInput.find("span").text(), "<FontAwesome /> This is an error");
     assert(textInput.find("span").hasClass("TextInput--error"));
   });
 
