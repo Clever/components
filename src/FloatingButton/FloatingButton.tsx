@@ -141,6 +141,12 @@ export default class FloatingButton extends React.PureComponent {
     } = this.props;
     const { active } = this.state;
 
+    const iconSizes = {
+      [Button.Size.S]: Icon.sizes.XXS,
+      [Button.Size.M]: Icon.sizes.XS,
+      [Button.Size.L]: Icon.sizes.XS,
+    };
+
     return (
       <FlexBox
         className={classnames(
@@ -168,7 +174,7 @@ export default class FloatingButton extends React.PureComponent {
                     <FlexBox alignItems="center">
                       <Icon
                         className={cssClass.ICON}
-                        size={Icon.sizes.XS}
+                        size={iconSizes[size]}
                         name={Icon.names.CLOSE_FLOATING_BUTTON}
                       />{" "}
                       Close
