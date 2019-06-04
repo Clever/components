@@ -29,6 +29,7 @@ Icon.names = {
   CHECKMARK: "checkmark",
   CIRCLE_C: "circle-c",
   CLOCK: "clock",
+  CLOSE_FLOATING_BUTTON: "close-floating-button",
   DIPLOMA: "diploma",
   FUNNEL: "funnel",
   GEAR: "gear",
@@ -89,6 +90,8 @@ Icon.names = {
 };
 
 Icon.sizes = {
+  XXS: "2xs",
+  XS: "xs",
   SMALL: "small",
   MEDIUM: "medium",
   LARGE: "large",

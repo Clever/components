@@ -8,6 +8,7 @@ import Chat from "./Chat";
 import Checkmark from "./Checkmark";
 import CircleC from "./CircleC";
 import Clock from "./Clock";
+import CloseFloatingButton from "./CloseFloatingButton";
 import Diploma from "./Diploma";
 import Funnel from "./Funnel";
 import Gear from "./Gear";
@@ -77,6 +78,7 @@ export default {
   checkmark: Checkmark,
   "circle-c": CircleC,
   clock: Clock,
+  "close-floating-button": CloseFloatingButton,
   diploma: Diploma,
   funnel: Funnel,
   gear: Gear,
