@@ -1,10 +1,10 @@
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as FontAwesome from "react-fontawesome";
 
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
+import { Icon } from "../Icon/Icon";
 
 import "./FloatingButton.less";
 
@@ -17,6 +17,7 @@ const cssClass = {
 
   BUTTON: "FloatingButton--button",
   CONTAINER: "FloatingButton--container",
+  ICON: "FloatingButton--icon",
   SUB_ELEMENT: "FloatingButton--subElement",
 };
 
@@ -164,9 +165,14 @@ export default class FloatingButton extends React.PureComponent {
             value={
               active
                 ? closeLabel || (
-                    <div>
-                      <FontAwesome name="times" /> Close
-                    </div>
+                    <FlexBox alignItems="center">
+                      <Icon
+                        className={cssClass.ICON}
+                        size={Icon.sizes.XS}
+                        name={Icon.names.CLOSE_FLOATING_BUTTON}
+                      />{" "}
+                      Close
+                    </FlexBox>
                   )
                 : label
             }
