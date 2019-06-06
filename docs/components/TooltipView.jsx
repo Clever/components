@@ -64,12 +64,12 @@ export default class TooltipView extends Component {
                   placement={placement}
                   textAlign={textAlign}
                 >
-                  <FontAwesome
-                    className={cssClass.TRIGGER}
-                    name="question-circle"
-                    ref="focusableTrigger"
-                    tabIndex={0}
-                  />
+                  <span ref="focusableTrigger" tabIndex={0}>
+                    <FontAwesome
+                      className={cssClass.TRIGGER}
+                      name="question-circle"
+                    />
+                  </span>
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
