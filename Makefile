@@ -54,16 +54,13 @@ es5: log
 	@# Compile ts[x] first, since it may compile js[x] dependencies that we'll want to overwrite with
 	@# the babel-compiled versions.
 	@echo -n 'Converting .ts[x] to ES5...'
+	find dist -regex ".*\.tsx*" | xargs -n1 rm
 	@./node_modules/.bin/tsc --project ./tsconfig.build.json
 	@echo -e $(GREEN_CHECK_MARK)
 
 	@echo -n 'Converting .js[x] files to ES5...'
+	find dist -regex ".*\.jsx" | xargs -n1 rm
 	@$(BABEL) src --out-dir dist > log/babel.log
-	@echo -e $(GREEN_CHECK_MARK)
-
-	@echo -n 'Removing .js[x] & .ts[x] files...'
-	@find ./dist -regex ".*\.[jt]sx" | xargs -n1 rm
-	@find ./dist -regex ".*\.ts" | xargs -n1 rm
 	@echo -e $(GREEN_CHECK_MARK)
 
 log:
