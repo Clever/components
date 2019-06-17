@@ -8,7 +8,7 @@ BABEL := node_modules/babel-cli/bin/babel.js
 JEST := ./node_modules/.bin/jest --maxWorkers=1 --config ./jestconfig.json
 JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js")
 JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*")
-TS_FILES := $(shell find . -regex ".*\.tsx*" -not -path "./node_modules/*")
+TS_FILES := $(shell find bin/ src/ test/ -regex ".*\.tsx*")
 LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./stylelint.config.js
