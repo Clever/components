@@ -1,10 +1,7 @@
 {
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "types": [
-      "prop-types",
-      "react"
-    ]
+    "types": ["prop-types", "react"]
   },
   "exclude": [
     "./assets",
@@ -17,7 +14,5 @@
     "**/*_test.ts",
     "**/*_test.tsx"
   ],
-  "include": [
-    "docs/**/*"
-  ]
+  "include": ["docs/**/*"]
 }
