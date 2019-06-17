@@ -34,12 +34,19 @@ format-check:
 	@./node_modules/.bin/prettier -l $(FORMATTED_FILES) || \
 	(echo "\033[0;31m**** Prettier errors in the above files! Run 'make format-all' to fix! ****\033[0m" && false)
 
+# Reset the entire repository to a freshly cloned state
+.PHONY: clobber
+clobber: clean
+	rm -rf log
+
+# Clean up build artifacts
 clean:
 	@echo -n 'Cleaning out dist directory...'
 	@rm -rf dist
+	rm -rf log/*
 	@echo -e $(GREEN_CHECK_MARK)
 
-es5:
+es5: log
 	@echo -n 'Copying /src to /dist...'
 	@cp -r src dist
 	@echo -e $(GREEN_CHECK_MARK)
@@ -51,13 +58,16 @@ es5:
 	@echo -e $(GREEN_CHECK_MARK)
 
 	@echo -n 'Converting .js[x] files to ES5...'
-	@$(BABEL) src -d dist > ._babel_tmp && rm ._babel_tmp
+	@$(BABEL) src --out-dir dist > log/babel.log
 	@echo -e $(GREEN_CHECK_MARK)
 
 	@echo -n 'Removing .js[x] & .ts[x] files...'
 	@find ./dist -regex ".*\.[jt]sx" | xargs -n1 rm
 	@find ./dist -regex ".*\.ts" | xargs -n1 rm
 	@echo -e $(GREEN_CHECK_MARK)
+
+log:
+	mkdir log
 
 docs:
 	@echo '✓ Rebuild docs'
