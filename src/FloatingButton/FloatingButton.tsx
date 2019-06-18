@@ -127,6 +127,11 @@ export default class FloatingButton extends React.PureComponent {
     }
   };
 
+  additionalButtonHandler(button) {
+    this.setState({ active: false });
+    button.onClick();
+  }
+
   render() {
     const {
       additionalButtons,
@@ -201,7 +206,7 @@ export default class FloatingButton extends React.PureComponent {
                   cssClass.BUTTON,
                   colorGroup && cssClass.propStyle(colorGroup),
                 )}
-                onClick={button.onClick}
+                onClick={() => this.additionalButtonHandler(button)}
                 value={button.label}
                 size={size || Button.Size.M}
               />
