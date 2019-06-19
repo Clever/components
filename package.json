@@ -1,12 +1,13 @@
 {
   "name": "clever-components",
-  "version": "1.15.5",
+  "version": "1.16.0",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Clever/components.git"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/Clever/components/issues"
   },

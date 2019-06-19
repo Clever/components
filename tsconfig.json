@@ -1,19 +1,12 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "baseUrl": "./",
     "jsx": "react",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "module": "commonjs",
     "noUnusedLocals": true,
     "noImplicitAny": false,
     "target": "es5"
   },
-  "exclude": [
-    "./dist",
-    "./node_modules"
-  ]
+  "exclude": ["./dist", "./node_modules"]
 }
