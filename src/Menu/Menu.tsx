@@ -122,7 +122,7 @@ export default class Menu extends React.PureComponent {
           })}
           {open && (
             <ul
-              aria-labelled-by={this.IDs.TRIGGER}
+              aria-labelledby={this.IDs.TRIGGER}
               className={classnames(
                 cssClass.DROPDOWN,
                 cssClass.placement(placement),
