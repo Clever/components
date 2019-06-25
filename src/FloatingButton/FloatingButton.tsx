@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
@@ -145,6 +146,7 @@ export default class FloatingButton extends React.PureComponent {
       size,
     } = this.props;
     const { active } = this.state;
+    const additionalProps = _.omit(this.props, Object.keys(propTypes));
 
     const iconSizes = {
       [Button.Size.S]: Icon.sizes.XXS,
@@ -154,6 +156,7 @@ export default class FloatingButton extends React.PureComponent {
 
     return (
       <FlexBox
+        {...additionalProps}
         className={classnames(
           cssClass.CONTAINER,
           cssClass.propStyle(positionX),
