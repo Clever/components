@@ -194,6 +194,12 @@ export default class TopBarView extends React.PureComponent {
               description: "Title text to show after the Clever logo, if applicable.",
               optional: true,
             },
+            {
+              name: "onLogoClick",
+              type: <code>function</code>,
+              description: "Optional onClick event handler for the Clever logo.",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
         />

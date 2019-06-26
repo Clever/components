@@ -14,6 +14,7 @@ const propTypes = {
   className: PropTypes.string,
   logoHref: PropTypes.string.isRequired,
   title: PropTypes.node,
+  onLogoClick: PropTypes.func,
 };
 
 /**
@@ -48,7 +49,7 @@ export class TopBar extends React.PureComponent {
           needsRightPadding && "dewey--TopBar--rightPadding",
         )}
       >
-        <TopBarButton href={this.props.logoHref} className="dewey-TopBar--logoLink">
+        <TopBarButton href={this.props.logoHref} onClick={this.props.onLogoClick} className="dewey-TopBar--logoLink">
           <Logo className="dewey--TopBar--logo" />
         </TopBarButton>
         {title && (
