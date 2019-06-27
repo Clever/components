@@ -36,13 +36,12 @@
   overflow: hidden;
 }
 
-.LeftNav--topnav,
-.LeftNav--subnav--content {
-}
-
 .LeftNav--topnav {
   .animateWidth;
   .flexShrink(0);
+  // Only show scrollbar if necessary (looks pretty ugly in the cramped space otherwise)
+  // This prevents using iOS momentum scrolling but that's a worthwhile compromise
+  overflow: auto;
   max-width: @paneWidth;
   width: @paneWidth;
 }
@@ -68,6 +67,8 @@
   .flex--grow;
   height: auto;
   width: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .LeftNav--subnav--open {
