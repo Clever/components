@@ -18,7 +18,7 @@ export default class TextInputView extends Component {
       inputValue: "",
       obscured: false,
       required: false,
-      placeholderCaps: true,
+      placeholderCaps: false,
       size: FormElementSize.MEDIUM,
     };
   }
@@ -194,7 +194,7 @@ export default class TextInputView extends Component {
               name: "placeholderCaps",
               type: "Bool",
               description: "Determines if placeholder value is capitalized or not",
-              defaultValue: "true",
+              defaultValue: "false",
               optional: true,
             },
             {
