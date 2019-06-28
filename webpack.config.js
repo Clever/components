@@ -46,4 +46,15 @@ module.exports = {
     ],
   },
   postcss: [autoprefixer({ browsers: "> 1% in US, last 3 versions, ie > 9" })],
+  devServer: {
+    host: "0.0.0.0",
+    port: "5010",
+    contentBase: "docs/",
+    inline: true,
+    watch: true,
+    // The following property is HIGHLY DISCOURAGED in general but can be useful
+    // for viewing the frontend from another device (i.e a phone) by navigating
+    // to <laptop-ip>:<port> from the device.
+    // disableHostCheck: true
+  },
 };
