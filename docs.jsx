@@ -76,7 +76,22 @@ render(
         <Route path="compound-form(/*)" component={LayoutCompoundForm} />
         <Route path="ui-text(/*)" component={UITextView} />
       </Route>
-      <Route path="components">
+      <Route
+        path="components"
+        onChange={(prevState, nextState) => {
+          // If the component being rendered has changed, scroll to the top of the view container
+          if (prevState.location.pathname !== nextState.location.pathname) {
+            // HACK: Ideally we find a better way to target the main content view container,
+            // but this is the best approach I could find
+            const viewContainerList = document.getElementsByClassName(
+              prevState.components[0].cssClass.VIEW_CONTAINER,
+            );
+            if (viewContainerList && viewContainerList[0]) {
+              viewContainerList[0].scrollTo(0, 0);
+            }
+          }
+        }}
+      >
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="checkbox(/*)" component={CheckboxView} />
