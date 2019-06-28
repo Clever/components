@@ -36,7 +36,7 @@ describe("TextInput", () => {
     assert.equal(textInput.find("input[type='text']").length, 1);
     assert.equal(textInput.find("input[name='TextInputPlaceholder']").length, 1);
     assert.equal(textInput.find("input[placeholder='PlaceholderText']").length, 1);
-    assert(textInput.hasClass("TextInput--placeholder-shown"));
+    assert(textInput.hasClass("TextInput--placeholder-shown-no-caps"));
 
     // make sure it also works when value is not passed
     const textInput2 = shallow(
@@ -45,7 +45,7 @@ describe("TextInput", () => {
     assert.equal(textInput2.find("input[type='text']").length, 1);
     assert.equal(textInput2.find("input[name='TextInputPlaceholder']").length, 1);
     assert.equal(textInput2.find("input[placeholder='PlaceholderText']").length, 1);
-    assert(textInput2.hasClass("TextInput--placeholder-shown"));
+    assert(textInput2.hasClass("TextInput--placeholder-shown-no-caps"));
   });
 
   it("properly renders a <TextInput> with an error", () => {
