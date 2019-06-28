@@ -11,7 +11,7 @@ import "../less/forms.less";
 
 export class TextInput extends React.Component {
   static defaultProps = {
-    placeholderCaps: true,
+    placeholderCaps: false,
     size: FormElementSize.FULL_WIDTH,
   };
 
