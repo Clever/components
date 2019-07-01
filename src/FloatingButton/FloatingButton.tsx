@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
+import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
@@ -128,6 +129,10 @@ export default class FloatingButton extends React.PureComponent {
     }
   };
 
+  onRootClose = () => {
+    this.setState({ active: false });
+  };
+
   additionalButtonHandler(button) {
     this.setState({ active: false });
     button.onClick();
@@ -155,67 +160,69 @@ export default class FloatingButton extends React.PureComponent {
     };
 
     return (
-      <FlexBox
-        {...additionalProps}
-        className={classnames(
-          cssClass.CONTAINER,
-          cssClass.propStyle(positionX),
-          cssClass.propStyle(positionY),
-          className,
-        )}
-        style={{
-          ...this.horizontalStyle(),
-          ...this.verticalStyle(),
-        }}
-      >
-        <div className={classnames(cssClass.SUB_ELEMENT)}>
-          <Button
-            className={classnames(
-              cssClass.BUTTON,
-              colorGroup && cssClass.propStyle(colorGroup),
-              active && cssClass.propStyle("gray"),
-            )}
-            onClick={this.mainButtonHandler}
-            value={
-              active
-                ? closeLabel || (
-                    <FlexBox alignItems="center">
-                      <Icon
-                        className={cssClass.ICON}
-                        size={iconSizes[size]}
-                        name={Icon.names.CLOSE_FLOATING_BUTTON}
-                      />{" "}
-                      Close
-                    </FlexBox>
-                  )
-                : label
-            }
-            size={size || Button.Size.M}
-          />
-        </div>
-        {additionalButtons &&
-          additionalButtons.map((button, i) => (
-            <div
+      <RootCloseWrapper onRootClose={this.onRootClose}>
+        <FlexBox
+          {...additionalProps}
+          className={classnames(
+            cssClass.CONTAINER,
+            cssClass.propStyle(positionX),
+            cssClass.propStyle(positionY),
+            className,
+          )}
+          style={{
+            ...this.horizontalStyle(),
+            ...this.verticalStyle(),
+          }}
+        >
+          <div className={classnames(cssClass.SUB_ELEMENT)}>
+            <Button
               className={classnames(
-                cssClass.SUB_ELEMENT,
-                !active && cssClass.inactive(positionY),
-                animate && cssClass.ANIMATE,
-                button.className,
+                cssClass.BUTTON,
+                colorGroup && cssClass.propStyle(colorGroup),
+                active && cssClass.propStyle("gray"),
               )}
-              key={i}
-            >
-              <Button
+              onClick={this.mainButtonHandler}
+              value={
+                active
+                  ? closeLabel || (
+                      <FlexBox alignItems="center">
+                        <Icon
+                          className={cssClass.ICON}
+                          size={iconSizes[size]}
+                          name={Icon.names.CLOSE_FLOATING_BUTTON}
+                        />{" "}
+                        Close
+                      </FlexBox>
+                    )
+                  : label
+              }
+              size={size || Button.Size.M}
+            />
+          </div>
+          {additionalButtons &&
+            additionalButtons.map((button, i) => (
+              <div
                 className={classnames(
-                  cssClass.BUTTON,
-                  colorGroup && cssClass.propStyle(colorGroup),
+                  cssClass.SUB_ELEMENT,
+                  !active && cssClass.inactive(positionY),
+                  animate && cssClass.ANIMATE,
+                  button.className,
                 )}
-                onClick={() => this.additionalButtonHandler(button)}
-                value={button.label}
-                size={size || Button.Size.M}
-              />
-            </div>
-          ))}
-      </FlexBox>
+                key={i}
+              >
+                <Button
+                  className={classnames(
+                    cssClass.BUTTON,
+                    colorGroup && cssClass.propStyle(colorGroup),
+                  )}
+                  onClick={() => this.additionalButtonHandler(button)}
+                  value={button.label}
+                  size={size || Button.Size.M}
+                />
+              </div>
+            ))}
+        </FlexBox>
+      </RootCloseWrapper>
     );
   }
 }
