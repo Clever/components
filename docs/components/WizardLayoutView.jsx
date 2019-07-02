@@ -1,10 +1,11 @@
 import * as React from "react";
+import { Link } from "react-router";
 import * as PropTypes from "prop-types";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { WizardLayout, FlexBox, ItemAlign, Stepper } from "src";
+import { Button, WizardLayout, FlexBox, ItemAlign, Stepper } from "src";
 import { WizardLayoutContent } from "./WizardLayoutContent";
 
 import "./WizardLayoutView.less";
@@ -167,6 +168,13 @@ export default class WizardLayoutView extends React.PureComponent {
             {WizardLayoutToRender}
           </ExampleCode>
           {this._renderConfig()}
+          <Button
+            type="secondary"
+            size="regular"
+            // Intentionally not using Button's href prop because this link is internal and should
+            // be handled by react-router's <Link />, not an <a />
+            value={<Link to="/fullscreen-wizard-layout">View fullscreen (separate page)</Link>}
+          />
         </Example>
 
         {this._renderProps()}
