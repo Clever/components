@@ -64,6 +64,7 @@ import WizardView from "./components/WizardView";
 
 render(
   <Router history={hashHistory}>
+    <Route path="/fullscreen-wizard-layout" component={() => <WizardLayoutView fullscreen />} />
     <Route path="/" component={Layout}>
       <IndexRedirect to="/intro" />
       <Route path="intro(/*)" component={IntroView} />
