@@ -41,7 +41,6 @@ export default class WizardLayoutView extends React.PureComponent {
       goals: false,
     },
     hideSaveAndExit: false,
-    fullscreen: false,
   };
 
   render() {
@@ -176,7 +175,7 @@ export default class WizardLayoutView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { showHeaderImg, customHelpContent, hideSaveAndExit, fullscreen } = this.state;
+    const { showHeaderImg, customHelpContent, hideSaveAndExit } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
