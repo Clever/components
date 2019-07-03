@@ -5,6 +5,12 @@ import { shallow } from "enzyme";
 import { TextInput } from "../src";
 
 describe("TextInput", () => {
+  let required;
+
+  beforeEach(() => {
+    required = false;
+  });
+
   it("renders a <TextInput> element properly with name and default type", () => {
     const textInput = shallow(<TextInput name="TextInputName" />);
     assert.equal(textInput.find("input[type='text']").length, 1);
@@ -114,4 +120,72 @@ describe("TextInput", () => {
     assert.equal(textInput.find("input[type='password']").length, 0);
     assert.equal(textInput.find("input[type='text']").length, 1);
   });
+
+  describe("When the input is filled out", () => {
+    it("does not display an error message", () => {
+      const component = shallowComponent();
+      setValue(component, "jish");
+      const errors = component.find(".TextInput--error");
+
+      assert.equal(errors.length, 0, "There is no error");
+    });
+  });
+
+  describe("When the input is left blank", () => {
+    it("does not display an error message", () => {
+      const component = shallowComponent();
+      setValue(component, "");
+      const errors = component.find(".TextInput--error");
+
+      assert.equal(errors.length, 0, "There is no error");
+    });
+  });
+
+  describe("Given the TextInput is required", () => {
+    beforeEach(() => {
+      required = true;
+    });
+
+    it("displays a required note", () => {
+      const component = shallowComponent();
+      const requiredNote = component.find(".TextInput--required");
+
+      assert.equal(requiredNote.length, 1, "It displays a required note");
+      assert.equal(requiredNote.text(), "required");
+    });
+
+    describe("When the input is filled out", () => {
+      it("does not display an error message", () => {
+        const component = shallowComponent();
+        setValue(component, "jish");
+        const errors = component.find(".TextInput--error");
+
+        assert.equal(errors.length, 0, "There is no error");
+      });
+    });
+
+    describe("When the input is left blank", () => {
+      it("displays an error message", () => {
+        const component = shallowComponent();
+        setValue(component, "");
+        const errors = component.find(".TextInput--error");
+
+        assert.equal(errors.length, 1, "There is an error");
+      });
+    });
+  });
+
+  function setValue(component, newValue) {
+    const input = component.find("input");
+
+    input.simulate("focus");
+    component.setProps({ value: newValue });
+    input.simulate("blur");
+
+    return component;
+  }
+
+  function shallowComponent() {
+    return shallow(<TextInput name="username" required={required} />);
+  }
 });

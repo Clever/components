@@ -50,12 +50,12 @@ export class TextInput extends React.Component {
   }
 
   currentErrorMessage() {
-    const { error, value } = this.props;
+    const { error, value, required } = this.props;
     const { hasBeenFocused } = this.state;
 
     let errorMessage = "";
 
-    if (hasBeenFocused && !value) {
+    if (required && hasBeenFocused && !value) {
       errorMessage = "required";
     }
 
