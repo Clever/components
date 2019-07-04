@@ -41,6 +41,7 @@
     "tether": "^1.4.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^8.0.4",
     "@types/classnames": "^2.2.3",
     "@types/jasmine": "^2.6.0",
     "@types/jasmine-enzyme": "^3.6.0",

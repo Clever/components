@@ -66,7 +66,10 @@ export default class AlertBox extends React.PureComponent<Props> {
       return null;
     }
     return (
-      <div className={classnames(`AlertBox--${type}`, cssClass.CONTAINER, className)}>
+      <div
+        data-testid="AlertBoxType"
+        className={classnames(`AlertBox--${type}`, cssClass.CONTAINER, className)}
+      >
         <FlexBox className={cssClass.HEADER}>
           <FlexItem className={cssClass.ICON_CONTAINER}>
             <Icon className={cssClass.ICON} />

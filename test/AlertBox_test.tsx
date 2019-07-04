@@ -1,38 +1,40 @@
 import * as _ from "lodash";
 import * as assert from "assert";
 import * as React from "react";
-import { shallow } from "enzyme";
+import { render, cleanup } from "@testing-library/react";
 import { AlertBox } from "../src";
+
+afterEach(cleanup);
 
 describe("AlertBox", () => {
   _.forEach(["warning", "info", "error", "success"], type => {
     it(`renders a <AlertBox> element with class AlertBox--${type}`, () => {
-      const alertBox = shallow(
+      const { getByTestId } = render(
         <AlertBox type={type as any} title="title">
           <p> child </p>
         </AlertBox>,
       );
-      assert.equal(alertBox.find(`.AlertBox--${type}`).length, 1);
+      assert.ok(getByTestId("AlertBoxType").classList.contains(`AlertBox--${type}`));
     });
   });
 
   it("renders a closable box if isClosable and closes on click", () => {
-    const alertBox = shallow(
+    const { getByLabelText, container } = render(
       <AlertBox type="warning" title="title" isClosable>
         <p> child </p>
       </AlertBox>,
     );
-    assert.equal(alertBox.find(".AlertBox--warning").length, 1);
-    alertBox.find(".AlertBox--close").simulate("click");
-    assert.equal(alertBox.find(".AlertBox--warning").length, 0);
+    assert.ok(container.firstChild);
+    getByLabelText("Close").click();
+    assert.ok(container.firstChild == null);
   });
 
   it("applies custom classname", () => {
-    const alertBox = shallow(
+    const { container } = render(
       <AlertBox type="warning" title="title" className="custom">
         <p> child </p>
       </AlertBox>,
     );
-    assert.equal(alertBox.find(".custom").length, 1);
+    assert.ok(container.firstChild && container.firstChild.classList.contains("custom"));
   });
 });
