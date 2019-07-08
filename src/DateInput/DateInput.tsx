@@ -17,8 +17,6 @@ export interface Props {
   label?: string;
   name: string;
   onChange?: (...args: any[]) => void;
-  onFocus?: Function;
-  onBlur?: Function;
   placeholder?: string;
   readOnly?: boolean;
   required?: boolean;
@@ -63,8 +61,6 @@ const propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
   placeholder: PropTypes.node,
   readOnly: PropTypes.bool,
   required: PropTypes.bool,
