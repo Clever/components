@@ -78,6 +78,7 @@ export class Modal extends React.Component<Props, State> {
     const width = Math.min(window.innerWidth, this.props.width);
     const windowStyle = {
       width: `${width}px`,
+      /* stylelint-disable-next-line unit-whitelist */
       marginLeft: `-${width / 2}px`,
     };
     // The content is max 90% of the window height less 60px (height of the header)
