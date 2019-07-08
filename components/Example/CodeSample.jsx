@@ -39,7 +39,6 @@ export default class CodeSample extends Component {
           dangerouslySetInnerHTML={{
             __html: Prism.highlight(this.getCodeSample(), Prism.languages[type]),
           }}
-          ref="code"
         />
       </code>
     );
