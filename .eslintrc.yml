@@ -67,3 +67,6 @@ rules:
   # This is handled by the "@typescript-eslint/parser"
   no-unused-vars:
     - off
+
+  space-before-function-paren:
+    - off
