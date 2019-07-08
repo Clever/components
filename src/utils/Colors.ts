@@ -57,6 +57,6 @@ const Colors = {
 
   // DEPRECATED COLORS:
   ACCENT_AQUA: "#29C6C1",
-};
+} as const;
 
 export default Colors;

@@ -108,7 +108,7 @@ const jsContents = [
   "",
   "const Colors = {",
   ...jsColors,
-  "};",
+  "} as const;",
   "",
   "export default Colors;",
   "",
