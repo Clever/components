@@ -1,9 +1,11 @@
 import * as React from "react";
+import { Link } from "react-router";
+import * as PropTypes from "prop-types";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { WizardLayout, FlexBox, ItemAlign, Stepper } from "src";
+import { Button, WizardLayout, FlexBox, ItemAlign, Stepper } from "src";
 import { WizardLayoutContent } from "./WizardLayoutContent";
 
 import "./WizardLayoutView.less";
@@ -18,7 +20,16 @@ const cssClass = {
   PROPS: "WizardLayoutView--props",
 };
 
+const propTypes = {
+  fullscreen: PropTypes.bool,
+};
+const defaultProps = {
+  fullscreen: false,
+};
+
 export default class WizardLayoutView extends React.PureComponent {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
   static cssClass = cssClass;
 
   state = {
@@ -34,6 +45,7 @@ export default class WizardLayoutView extends React.PureComponent {
   };
 
   render() {
+    const { fullscreen } = this.props;
     const { currentStep, showHeaderImg, customHelpContent, hideSaveAndExit } = this.state;
 
     const stepperSteps = [
@@ -104,6 +116,30 @@ export default class WizardLayoutView extends React.PureComponent {
       <img className="WizardLayoutView--headerImg" src="./assets/img/deweyFox.svg" />
     );
 
+    const WizardLayoutToRender = (
+      <WizardLayout
+        className="Dewey--WizardLayout"
+        fullscreen={fullscreen}
+        sections={WizardLayoutContent[currentStep].sections}
+        headerImg={showHeaderImg ? headerImg : null}
+        helpContent={customHelpContent ? WizardLayoutContent[currentStep].helpContent : null}
+        hideSaveAndExit={hideSaveAndExit}
+        nextStepButtonText={WizardLayoutContent[currentStep].nextStepButtonText || null}
+        onNextStep={_onNextStep}
+        onPrevStep={_onPrevStep}
+        onSaveAndExit={_onSaveAndExit}
+        prevStepButtonDisabled={!WizardLayoutContent[currentStep].prevStep}
+        prevStepButtonText={WizardLayoutContent[currentStep].prevStepButtonText || null}
+        stepper={stepper}
+        subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
+        title="Back to school guide"
+      />
+    );
+
+    if (fullscreen) {
+      return WizardLayoutToRender;
+    }
+
     return (
       <View
         className={cssClass.CONTAINER}
@@ -129,24 +165,16 @@ export default class WizardLayoutView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode style={{ display: "flex", height: "35rem" }}>
-            <WizardLayout
-              className="Dewey--WizardLayout"
-              sections={WizardLayoutContent[currentStep].sections}
-              headerImg={showHeaderImg ? headerImg : null}
-              helpContent={customHelpContent ? WizardLayoutContent[currentStep].helpContent : null}
-              hideSaveAndExit={hideSaveAndExit}
-              nextStepButtonText={WizardLayoutContent[currentStep].nextStepButtonText || null}
-              onNextStep={_onNextStep}
-              onPrevStep={_onPrevStep}
-              onSaveAndExit={_onSaveAndExit}
-              prevStepButtonDisabled={!WizardLayoutContent[currentStep].prevStep}
-              prevStepButtonText={WizardLayoutContent[currentStep].prevStepButtonText || null}
-              stepper={stepper}
-              subtitle="Ensure a smooth upcoming school year by following a few easy steps below."
-              title="Back to school guide"
-            />
+            {WizardLayoutToRender}
           </ExampleCode>
           {this._renderConfig()}
+          <Button
+            type="secondary"
+            size="regular"
+            // Intentionally not using Button's href prop because this link is internal and should
+            // be handled by react-router's <Link />, not an <a />
+            value={<Link to="/fullscreen-wizard-layout">View fullscreen (separate page)</Link>}
+          />
         </Example>
 
         {this._renderProps()}
