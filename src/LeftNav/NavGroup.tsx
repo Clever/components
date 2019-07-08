@@ -4,7 +4,7 @@ import * as React from "react";
 import * as classnames from "classnames";
 
 import MorePropTypes from "../utils/MorePropTypes";
-import { NavLink } from "./NavLink";
+import { NavLink, Props as NavLinkProps } from "./NavLink";
 import { OneOrMany } from "../utils/types";
 
 import "./NavGroup.less";
@@ -62,7 +62,10 @@ export class NavGroup extends React.PureComponent<Props> {
       label,
     } = this.props;
 
-    const childSelected = !!_.find(React.Children.toArray(children), item => item.props.selected);
+    const childSelected = !!_.find(
+      React.Children.toArray(children as React.ReactElement<NavLinkProps>),
+      item => item.props.selected,
+    );
 
     return (
       <NavLink

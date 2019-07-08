@@ -98,7 +98,10 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
 
   render() {
     const { children, className, disabled, size, type } = this.props;
-    const passthroughProps = _.omit(this.props, Object.keys(propTypes));
+    const passthroughProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
+
     const { expanded } = this.state;
 
     if (React.Children.count(children) === 0) {

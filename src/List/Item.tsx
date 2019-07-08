@@ -28,9 +28,9 @@ export default class Item extends React.PureComponent<Props> {
   render() {
     const { children, className, onClick } = this.props;
 
-    let Wrapper = DivWrapper;
+    let Wrapper: Extract<keyof JSX.IntrinsicElements, "div" | "button"> = "div";
     if (onClick) {
-      Wrapper = ButtonWrapper;
+      Wrapper = "button";
     }
 
     return (
@@ -45,19 +45,3 @@ export default class Item extends React.PureComponent<Props> {
     );
   }
 }
-
-function DivWrapper(props) {
-  return <div {...props} />;
-}
-
-DivWrapper.propTypes = {
-  children: PropTypes.any.isRequired,
-};
-
-function ButtonWrapper(props) {
-  return <button {...props} />;
-}
-
-ButtonWrapper.propTypes = {
-  children: PropTypes.any.isRequired,
-};

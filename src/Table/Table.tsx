@@ -148,6 +148,10 @@ export class Table extends React.Component<Props, State> {
     this._isMounted = false;
   }
 
+  // eslint-disable-next-line react/sort-comp
+  private _epoch: number;
+  private _isMounted: boolean;
+
   /**
    * @param {number} page - 1-based index of the page to select.
    */
@@ -189,7 +193,7 @@ export class Table extends React.Component<Props, State> {
 
     const newPages = lazyPages.slice(0);
     for (let idx = lazyPages.length; idx <= pageIdx; idx++) {
-      const query = { pageSize };
+      const query: { pageSize: number; startingAfter?: any } = { pageSize };
 
       // the first page shouldn't have a startingAfter parameter
       if (idx !== 0) {
@@ -239,7 +243,7 @@ export class Table extends React.Component<Props, State> {
 
   _getColumn(columnID) {
     return _.find(
-      React.Children.toArray(this.props.children),
+      React.Children.toArray(this.props.children as React.ReactElement),
       column => column.props.id === columnID,
     );
   }
@@ -247,7 +251,7 @@ export class Table extends React.Component<Props, State> {
   _toggleSort(columnID) {
     const oldSortState = this.state.sortState;
 
-    const newSortState = {
+    const newSortState: SortState = {
       columnID,
       direction: sortDirection.ASCENDING,
     };
@@ -275,7 +279,7 @@ export class Table extends React.Component<Props, State> {
     const { data, filter, pageSize, paginated } = this.props;
     const { currentPage, sortState } = this.state;
 
-    let displayedData = _(data);
+    let displayedData: any = _(data);
     if (filter) {
       displayedData = displayedData.filter(filter);
     }
@@ -399,7 +403,7 @@ export class Table extends React.Component<Props, State> {
                 key={rowIDFn(rowData)}
                 onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
               >
-                {columns.map(({ props: col }) => (
+                {columns.map(({ props: col }: { props: any }) => (
                   <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
                     {col.cell.renderer(rowData)}
                   </Cell>

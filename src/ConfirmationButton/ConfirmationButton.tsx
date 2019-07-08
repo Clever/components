@@ -2,7 +2,7 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
 
-import { Button } from "../Button/Button";
+import { Button, Props as ButtonProps } from "../Button/Button";
 import { ModalButton, Props as ModalButtonProps } from "../ModalButton/ModalButton";
 import { propsFor, prefixKeys, unprefixKeys } from "../utils";
 
@@ -69,11 +69,11 @@ export class ConfirmationButton extends React.Component<Props> {
     const wrapperClass = "ConfirmationButton--dialog-buttons";
 
     return (
-      <ModalButton {...modalButtonProps} ref={this.modalButton}>
+      <ModalButton {...modalButtonProps as ModalButtonProps} ref={this.modalButton}>
         {this.props.children}
         <div className={classnames(wrapperClass, this.props.className)}>
           <Button type="link" value="Cancel" onClick={this.handleCancel} />
-          <Button {...confirmButtonProps} onClick={this.handleConfirm} />
+          <Button {...confirmButtonProps as ButtonProps} onClick={this.handleConfirm} />
         </div>
       </ModalButton>
     );

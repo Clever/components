@@ -52,7 +52,10 @@ const popperPlacementPositions = {
   TOP_START: "top-start",
 } as const;
 
-const dateType = PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.instanceOf(moment)]);
+const dateType = PropTypes.oneOfType([
+  PropTypes.instanceOf(Date),
+  PropTypes.instanceOf(moment as any),
+]);
 
 const propTypes = {
   disabled: PropTypes.bool,

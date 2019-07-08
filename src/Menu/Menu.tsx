@@ -114,7 +114,10 @@ export default class Menu extends React.PureComponent<Props> {
   render() {
     const { className, maxHeight, maxWidth, minWidth, placement, trigger, wrapItems } = this.props;
     const { open } = this.state;
-    const additionalProps = _.omit(this.props, Object.keys(propTypes));
+
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     return (
       <RootCloseWrapper onRootClose={() => this._setDropdownOpen(false)}>

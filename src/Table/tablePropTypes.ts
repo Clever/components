@@ -2,7 +2,10 @@ import * as PropTypes from "prop-types";
 
 import sortDir from "./sortDirection";
 
-export const sortDirection = PropTypes.oneOf([sortDir.ASCENDING, sortDir.DESCENDING]);
+export const sortDirection = PropTypes.oneOf<"asc" | "desc">([
+  sortDir.ASCENDING,
+  sortDir.DESCENDING,
+]);
 
 export const sortState = PropTypes.shape({
   columnID: PropTypes.string,

@@ -174,7 +174,9 @@ export class TextInput extends React.Component<Props, State> {
       type = this.props.type || "text";
     }
 
-    const additionalProps = _.omit(this.props, Object.keys(TextInput.propTypes));
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     return (
       <div
@@ -205,7 +207,7 @@ export class TextInput extends React.Component<Props, State> {
           ref={this.input}
           required={this.props.required}
           type={type}
-          value={this.props.value}
+          value={this.props.value as any}
         />
         {this.props.enableShow && (
           <button type="button" className="TextInput--link" onClick={this.toggleHidden}>

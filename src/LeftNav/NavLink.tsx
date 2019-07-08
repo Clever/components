@@ -71,7 +71,7 @@ export class NavLink extends React.PureComponent<Props> {
       ...additionalProps
     } = this.props;
 
-    let Component = "button";
+    let Component: any = "button";
     if (component) {
       Component = component;
     } else if (href) {
@@ -100,7 +100,7 @@ export class NavLink extends React.PureComponent<Props> {
             </div>
           )}
           <div className={cssClass.LABEL_CONTAINER}>
-            <div className={cssClass.LABEL} title={label}>
+            <div className={cssClass.LABEL} title={label as any}>
               {label}
             </div>
           </div>

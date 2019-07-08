@@ -21,7 +21,7 @@ const propTypes = {
 
 export default class Option extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  render() {
+  render(): never {
     throw new Error("Configuration component only. Cannot be rendered outside of DropdownButton.");
   }
 }

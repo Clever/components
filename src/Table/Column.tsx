@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types";
 
 export interface Props {
-  cell?: {
+  cell: {
     className?: Function | string;
     renderer: Function;
   };
@@ -24,7 +24,7 @@ Column.propTypes = {
   cell: PropTypes.shape({
     className: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     renderer: PropTypes.func.isRequired,
-  }),
+  }).isRequired as any,
   id: PropTypes.string.isRequired,
   header: PropTypes.shape({
     className: PropTypes.string,
