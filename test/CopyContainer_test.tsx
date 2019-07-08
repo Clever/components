@@ -2,8 +2,8 @@ import * as React from "react";
 import { shallow } from "enzyme";
 
 import * as CopyToClipboard from "react-copy-to-clipboard";
-import CopyContainer, { cssClass } from "./CopyContainer";
-import { Button } from "../Button/Button";
+import CopyContainer, { cssClass } from "../src/CopyContainer/CopyContainer";
+import { Button } from "../src/Button/Button";
 
 describe("CopyContainer", () => {
   it("renders", () => {
