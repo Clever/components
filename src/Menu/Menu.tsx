@@ -77,10 +77,6 @@ const ArrowScrollDirection = {
   [KeyCode.ARROW_UP]: -1,
 } as const;
 
-// TODO: Just use the official React typings to avoid this mess.
-let UntypedReact = null;
-UntypedReact = React;
-
 let nextID = 0;
 
 /**
@@ -128,7 +124,7 @@ export default class Menu extends React.PureComponent<Props> {
           onKeyUp={this._handleKeyUp}
           onBlur={this._handleFocusOut}
         >
-          {UntypedReact.cloneElement(trigger, {
+          {React.cloneElement(trigger, {
             "aria-controls": this.IDs.DROPDOWN,
             "aria-expanded": open,
             "aria-haspopup": true,
@@ -152,7 +148,7 @@ export default class Menu extends React.PureComponent<Props> {
             >
               {this._getMenuItems().map((menuItem, i) => (
                 <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
-                  {UntypedReact.cloneElement(menuItem, {
+                  {React.cloneElement(menuItem, {
                     focused: this._isFocused(menuItem, i),
                     onClick: e => this._handleItemClick(menuItem, e),
                     onMouseEnter: e => this._handleItemMouseEnter(menuItem, i, e),
