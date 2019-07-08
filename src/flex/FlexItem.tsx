@@ -19,8 +19,6 @@ export interface Props {
   grow?: boolean;
 }
 
-let TYPE_ANY;
-
 export const cssClass = {
   GROW: "flex--grow",
 
@@ -29,7 +27,7 @@ export const cssClass = {
 
 export default function FlexItem({
   alignSelf,
-  children = TYPE_ANY,
+  children,
   className,
   component: Wrapper = "div",
   grow = false,

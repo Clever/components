@@ -23,8 +23,6 @@ export interface Props extends FlexItemProps {
   wrap?: boolean;
 }
 
-let TYPE_ANY;
-
 export const cssClass = {
   FLEXBOX: "flexbox",
   COLUMN: "flex--direction--column",
@@ -39,7 +37,7 @@ export const cssClass = {
 export default function FlexBox({
   alignContent,
   alignItems,
-  children = TYPE_ANY,
+  children,
   className,
   column = false,
   inline = false,
