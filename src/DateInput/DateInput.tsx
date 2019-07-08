@@ -182,7 +182,6 @@ export default class DateInput extends React.Component<Props, State> {
             name={this.props.name}
             onBlur={() => this.setState({ inFocus: false, hasBeenFocused: true })}
             onFocus={() => this.setState({ inFocus: true })}
-            onSelect={this.props.onChange}
             placeholderText={this.props.placeholder}
             readOnly={this.props.readOnly}
             required={this.props.required}
