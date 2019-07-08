@@ -26,7 +26,7 @@ describe("ModalButton", () => {
 
       it(`renders a ${size}, ${type} button with the correct classes`, () => {
         const modalButton = shallow(
-          <ModalButton size={size} type={type} value="A button" modalTitle="A title">
+          <ModalButton size={size as any} type={type as any} value="A button" modalTitle="A title">
             <p>Hello</p>
           </ModalButton>,
         );

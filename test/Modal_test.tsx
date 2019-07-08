@@ -28,7 +28,7 @@ describe("Modal", () => {
   it("calls closeModal when the background is clicked", () => {
     const stub = sinon.stub();
     const modal = shallow(
-      <Modal title="Title" content={<p>Content</p>} closeModal={stub}>
+      <Modal title="Title" closeModal={stub}>
         <p>Hi</p>
       </Modal>,
     );

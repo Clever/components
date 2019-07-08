@@ -57,7 +57,7 @@ describe("Table", () => {
     />
   );
 
-  const newTable = props =>
+  const newTable = (props = {}) =>
     shallow(
       <Table data={DATA} rowIDFn={r => r.id} {...props}>
         {nameColumn}

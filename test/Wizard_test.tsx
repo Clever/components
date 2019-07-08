@@ -313,7 +313,7 @@ describe("Wizard", () => {
             title="title"
             description={description}
             onComplete={() => {}}
-            steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+            steps={[{ title: "step", validate: () => true, component: TestComponent }]}
           />,
         );
 
@@ -351,7 +351,7 @@ describe("Wizard", () => {
           title="title"
           description="description"
           onComplete={() => {}}
-          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          steps={[{ title: "step", validate: () => true, component: TestComponent }]}
         />,
       );
       assert.equal(renderedWizard.find(".Wizard--prevButton").length, 0);
@@ -604,7 +604,7 @@ describe("Wizard", () => {
           title="title"
           description="description"
           onComplete={() => {}}
-          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          steps={[{ title: "step", validate: () => true, component: TestComponent }]}
           wizardButtons={wizardButtons}
           seekable
         />,
@@ -624,7 +624,7 @@ describe("Wizard", () => {
           title="title"
           description="description"
           onComplete={() => {}}
-          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          steps={[{ title: "step", validate: () => true, component: TestComponent }]}
           seekable
         />,
       );
@@ -649,7 +649,7 @@ describe("Wizard", () => {
           title="title"
           description="description"
           onComplete={() => {}}
-          steps={[{ title: "step", validate: () => {}, component: TestComponent }]}
+          steps={[{ title: "step", validate: () => true, component: TestComponent }]}
           wizardButtons={wizardButtons}
           seekable
         />,

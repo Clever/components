@@ -7,7 +7,7 @@ import Cell from "../../src/Table/Cell";
 import Footer, { cssClass, VISIBLE_PAGE_RANGE_SIZE } from "../../src/Table/Footer";
 
 describe("Footer", () => {
-  const newFooter = props =>
+  const newFooter = (props = {}) =>
     shallow(<Footer currentPage={1} numColumns={3} numPages={3} {...props} />);
 
   it("is empty for numPages < 2", () => {

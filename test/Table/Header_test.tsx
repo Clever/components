@@ -36,7 +36,7 @@ describe("Table -- Header", () => {
 
   const emptyHeaderColumn = <Column id="no_header_column" cell={{ renderer: () => "dud" }} />;
 
-  const newHeader = props =>
+  const newHeader = (props = {}) =>
     shallow(
       <Header {...props}>
         {nameColumn}

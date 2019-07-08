@@ -16,7 +16,7 @@ describe("Button", () => {
 
       it(`renders a ${size}, ${type} button with the correct classes`, () => {
         const button = shallow(
-          <Button size={size} type={type} value="A button" className="customClass" />,
+          <Button size={size as any} type={type as any} value="A button" className="customClass" />,
         );
         assert(button.hasClass("Button"));
         assert(button.hasClass(`Button--${size}`));

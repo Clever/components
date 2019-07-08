@@ -1,8 +1,8 @@
-// import * as assert from "assert";
 import * as React from "react";
-// import sinon from "sinon";
 import { shallow } from "enzyme";
 import { MultiplePanelModals, Button } from "../src";
+// hack to include the jest-enzyme type defintitions;
+import "jest-enzyme";
 
 describe("MultiplePanelModals", () => {
   const panel1 = "Content of page 1";

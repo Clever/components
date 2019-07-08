@@ -10,7 +10,7 @@ import sortDirection from "../../src/Table/sortDirection";
 describe("Table -- HeaderCell", () => {
   const CONTENT = "Header Cell Content";
 
-  const newHeaderCell = props => shallow(<HeaderCell {...props}>{CONTENT}</HeaderCell>);
+  const newHeaderCell = (props = {}) => shallow(<HeaderCell {...props}>{CONTENT}</HeaderCell>);
 
   it("sets custom class name", () => {
     const cell = newHeaderCell({ className: "custom" });

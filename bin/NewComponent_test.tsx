@@ -21,8 +21,8 @@ describe("NewComponent", () => {
     // TODO: Verify basic structure/contents.
     expect(myComponent.props().className).toMatch(cssClass.CONTAINER);
     expect(myComponent).toIncludeText("Test Content");
-    expect(myComponent.find(`.${cssClass.SUB_ELEMENT}`)).toBePresent();
-    expect(myComponent.find(Button)).toBePresent();
+    expect(myComponent.find(`.${cssClass.SUB_ELEMENT}`)).toExist();
+    expect(myComponent.find(Button)).toExist();
   });
 
   it("supports additional class names", () => {

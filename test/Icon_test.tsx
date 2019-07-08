@@ -19,7 +19,7 @@ describe("Icon", () => {
       }
 
       it(`renders the ${name} icon in size ${size} with correct classes`, () => {
-        const icon = shallow(<Icon name={name} size={size} />);
+        const icon = shallow(<Icon name={name} size={size as any} />);
         assert(icon.hasClass("Icon"));
         assert(icon.hasClass(`Icon--${size}`));
         const svg = icon.find("svg");

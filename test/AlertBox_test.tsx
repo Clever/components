@@ -8,7 +8,7 @@ describe("AlertBox", () => {
   _.forEach(["warning", "info", "error", "success"], type => {
     it(`renders a <AlertBox> element with class AlertBox--${type}`, () => {
       const alertBox = shallow(
-        <AlertBox type={type} title="title">
+        <AlertBox type={type as any} title="title">
           <p> child </p>
         </AlertBox>,
       );

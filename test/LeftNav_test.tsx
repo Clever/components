@@ -14,7 +14,7 @@ describe("LeftNav", function LeftNavTest() {
   const subNavLinkSpy = sinon.spy();
   const mockEvent = {};
 
-  const renderLeftNav = props =>
+  const renderLeftNav = (props = {}) =>
     shallow(
       <LeftNav {...props}>
         <NavLink label="topLink1" icon={fakeIcon} onClick={topNavLinkSpy} />

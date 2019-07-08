@@ -68,9 +68,9 @@ export function unprefixKeys(obj, prefixToRemove, lowercaseFirst = true) {
  * @param {string | Array<string>} prefixes Prefixes to prepend to resulting classname
  * @param {string | Array<string>} classSegments Class names to kabob together
  */
-export function classNameFor(prefixes, classSegments) {
+export function classNameFor(prefixes: string | string[], classSegments?: string | string[]) {
   const prefixList = (prefixes instanceof Array ? prefixes : [prefixes]).filter(p => !!p);
-  let classSegmentList;
+  let classSegmentList: string[];
   if (!classSegments) {
     classSegmentList = [];
   } else {
