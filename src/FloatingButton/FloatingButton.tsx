@@ -7,8 +7,28 @@ import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import { Icon } from "../Icon/Icon";
+import { Values } from "../utils/types";
 
 import "./FloatingButton.less";
+
+export interface Props {
+  additionalButtons?: any[];
+  animate?: boolean;
+  className?: string;
+  closeLabel?: React.ReactNode;
+  colorGroup?: Values<typeof ColorGroup>;
+  offsetX: string;
+  offsetY: string;
+  label?: React.ReactNode;
+  onClick?: () => void;
+  positionX: string;
+  positionY: string;
+  size?: Values<typeof Button.Size>;
+}
+
+interface State {
+  active: boolean;
+}
 
 const cssClass = {
   ACTIVE: "FloatingButton--active",
@@ -27,17 +47,17 @@ const PositionX = {
   LEFT: "left",
   CENTER: "center",
   RIGHT: "right",
-};
+} as const;
 
 const PositionY = {
   BOTTOM: "bottom",
   TOP: "top",
-};
+} as const;
 
 // TODO: Move to <Button /> component
 const ColorGroup = {
   GREEN: "green",
-};
+} as const;
 
 const propTypes = {
   animate: PropTypes.bool,
@@ -67,6 +87,12 @@ const defaultProps = {
   positionY: PositionY.BOTTOM,
 };
 
+const iconSizes = {
+  [Button.Size.S]: Icon.sizes.XXS,
+  [Button.Size.M]: Icon.sizes.XS,
+  [Button.Size.L]: Icon.sizes.XS,
+} as const;
+
 // add 'rem' if input is a number
 function addSizeUnit(input: string) {
   var result = input;
@@ -76,16 +102,15 @@ function addSizeUnit(input: string) {
   return result;
 }
 
-export default class FloatingButton extends React.PureComponent {
+export default class FloatingButton extends React.PureComponent<Props, State> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
-  static cssClass = cssClass;
 
   static ColorGroup = ColorGroup;
   static PositionX = PositionX;
   static PositionY = PositionY;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       active: false,
@@ -152,12 +177,6 @@ export default class FloatingButton extends React.PureComponent {
     } = this.props;
     const { active } = this.state;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
-
-    const iconSizes = {
-      [Button.Size.S]: Icon.sizes.XXS,
-      [Button.Size.M]: Icon.sizes.XS,
-      [Button.Size.L]: Icon.sizes.XS,
-    };
 
     return (
       <RootCloseWrapper onRootClose={this.onRootClose}>

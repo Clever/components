@@ -47,13 +47,8 @@ rules:
     - 2
     - mode: "minimum"
 
-  # Allow functions and classes to be declared after they are referenced.
-  # This enables us to define more important public functions/classes toward the top of a file and
-  # less relevant private helpers below.
   no-use-before-define:
-    - 2
-    - classes: false
-      functions: false
+    - off
 
   react/jsx-curly-spacing:
     - 2
@@ -67,3 +62,7 @@ rules:
   # This is handled by the "@typescript-eslint/parser"
   no-unused-vars:
     - off
+
+  space-before-function-paren:
+    - off
+

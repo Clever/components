@@ -1,18 +1,24 @@
 import * as classnames from "classnames";
-import * as PropTypes from "prop-types";
 import * as React from "react";
 
 import { Button } from "../Button/Button";
 
 import "./NewComponent.less";
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  onPerformAction: PropTypes.func.isRequired,
-};
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  onPerformAction: (arg?: string) => any
+}
 
-const cssClass = {
+// TODO: Uncomment if this component is stateful, and pass State to PureComponent. Remove otherwise.
+// interface State {
+//   sampleState1: boolean;
+//   sampleState2: string;
+// }
+
+
+export const cssClass = {
   CONTAINER: "NewComponent",
   SUB_ELEMENT: "NewComponent--subElement",
 };
@@ -20,10 +26,7 @@ const cssClass = {
 /**
  * TODO: Add short description.
  */
-export default class NewComponent extends React.PureComponent {
-  static propTypes = propTypes;
-  static cssClass = cssClass;
-
+export default class NewComponent extends React.PureComponent<Props> {
   // TODO: Uncomment if this component is stateful. Remove otherwise.
   // state = {
   //   sampleState1: false,

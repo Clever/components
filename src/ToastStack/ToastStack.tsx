@@ -5,10 +5,25 @@ import * as _ from "lodash";
 import { CSSTransitionGroup } from "react-transition-group";
 import { ToastNotification } from "./ToastNotification";
 
-import { actionPropType } from "./ToastNotification";
-import { ToastType } from "./ToastType";
+import { actionPropType, ActionProps } from "./ToastNotification";
+import { ToastNotificationType, ToastType } from "./ToastType";
 
 import "./ToastStack.less";
+
+export interface Props {
+  className?: string;
+  clearNotification: (id: number) => void;
+  defaultNotificationDurationMS?: number;
+  notificationClassName?: string;
+  notifications?: {
+    action?: ActionProps;
+    content: React.ReactNode;
+    durationMS?: number;
+    id: number;
+    showCloseButton?: boolean;
+    type: ToastNotificationType;
+  }[];
+}
 
 const propTypes = {
   className: PropTypes.string,
@@ -41,10 +56,9 @@ const cssClass = {
  * Toast notifications can be used to provide feedback in response to user interaction. The
  * <ToastStack> renders toast notifications and handles their enter/leave animations.
  */
-export class ToastStack extends React.PureComponent {
+export class ToastStack extends React.PureComponent<Props> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
-  static cssClass = cssClass;
 
   _finiteDuration(notification) {
     const { defaultNotificationDurationMS } = this.props;

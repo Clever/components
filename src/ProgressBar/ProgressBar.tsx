@@ -7,8 +7,21 @@ import Progress from "./Progress";
 
 import "./ProgressBar.less";
 
-enum LabelType {
-  Percentage = "percentage",
+export interface Props {
+  // props passed to Progress
+  color?: string;
+  fill?: number;
+  size?: string;
+  striped?: boolean;
+
+  className?: string;
+  inactive?: boolean;
+  label?: string;
+  labelType?: React.ReactNode;
+  percentage?: number;
+  showLabel?: string;
+  style?: React.CSSProperties;
+  width?: string | number;
 }
 
 const Size = {
@@ -57,9 +70,8 @@ const cssClass = {
   label: p => `ProgressBar--label--${p}`,
 };
 
-export default class ProgressBar extends React.PureComponent {
+export default class ProgressBar extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
   static defaultProps = {
     size: Size.MEDIUM,
     color: "blue",
@@ -143,10 +155,10 @@ export default class ProgressBar extends React.PureComponent {
     }
   };
 
-  _getLabel = (): string => {
+  _getLabel = () => {
     const { fill, label, labelType } = this.props;
 
-    if (labelType === LabelType.Percentage) {
+    if (labelType === "percentage") {
       return `${fill}%`;
     }
 

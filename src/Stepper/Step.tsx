@@ -7,6 +7,21 @@ import CheckMark from "./CheckMark";
 import { FlexBox } from "../flex";
 import Exclamation from "./Exclamation";
 
+type StepState = "INCOMPLETE" | "SUCCESS" | "WARNING";
+
+export interface Props {
+  className?: string;
+  title?: string;
+  description?: React.ReactNode;
+  id: string;
+  label?: React.ReactNode;
+  warning?: string;
+  state?: StepState;
+  current?: boolean;
+  optional?: boolean;
+  onClick?: (id: string) => void;
+}
+
 const propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
@@ -14,7 +29,7 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.node,
   warning: PropTypes.string,
-  state: PropTypes.oneOf(["INCOMPLETE", "SUCCESS", "WARNING"]),
+  state: PropTypes.oneOf<StepState>(["INCOMPLETE", "SUCCESS", "WARNING"]),
   current: PropTypes.bool,
   optional: PropTypes.bool,
   onClick: PropTypes.func,
@@ -41,9 +56,8 @@ const defaultProps = {
  * Single icon and caption denoting a step.
  * Usually used in a Stepper for providing a list of steps to the user.
  */
-export default class Step extends React.PureComponent {
+export default class Step extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
   static defaultProps = defaultProps;
 
   _onClick = () => this.props.onClick(this.props.id);

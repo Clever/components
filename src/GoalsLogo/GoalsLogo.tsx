@@ -4,6 +4,15 @@ import * as React from "react";
 
 import "./GoalsLogo.less";
 
+export interface BaseProps {
+  className?: string;
+}
+
+interface ExtendedProps extends BaseProps {
+  size?: "small" | "medium" | "large" | "custom";
+  withClever?: boolean;
+}
+
 const Size = {
   S: "small",
   M: "medium",
@@ -35,9 +44,8 @@ const cssClass = {
 /**
  * Brand logo for the Clever Goals product.
  */
-export default class GoalsLogo extends React.PureComponent {
+export default class GoalsLogo extends React.PureComponent<ExtendedProps> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
   static Size = Size;
 
   static defaultProps = {
@@ -57,7 +65,7 @@ export default class GoalsLogo extends React.PureComponent {
   }
 }
 
-class GoalsLogoWithoutClever extends React.PureComponent {
+class GoalsLogoWithoutClever extends React.PureComponent<BaseProps> {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -81,7 +89,7 @@ class GoalsLogoWithoutClever extends React.PureComponent {
   );
 }
 
-class GoalsLogoWithClever extends React.PureComponent {
+class GoalsLogoWithClever extends React.PureComponent<BaseProps> {
   static propTypes = {
     className: PropTypes.string,
   };

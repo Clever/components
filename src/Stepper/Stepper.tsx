@@ -1,9 +1,16 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-import Step from "./Step";
+import Step, { Props as StepProps } from "./Step";
 
 import "./Stepper.less";
+
+export interface Props {
+  className?: string;
+  steps: StepProps[];
+  currentStepID: string;
+  onStepClick?: StepProps["onClick"];
+}
 
 const propTypes = {
   className: PropTypes.string,
@@ -28,9 +35,8 @@ const cssClass = {
   STEPS_DISPLAY: "Stepper--stepsDisplay",
 };
 
-export default class Stepper extends React.PureComponent {
+export default class Stepper extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   render() {
     const { currentStepID, steps, onStepClick, className } = this.props;

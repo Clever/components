@@ -4,6 +4,15 @@ import * as React from "react";
 
 import "./Progress.less";
 
+export interface Props {
+  className?: string;
+  style?: React.CSSProperties;
+  color?: string;
+  striped?: boolean;
+  size?: string;
+  fill?: number;
+}
+
 const propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
@@ -20,7 +29,7 @@ const cssClass = {
   border: (c, s) => `ProgressBar--Progress--${c}--${s}`,
 };
 
-export default class Progress extends React.PureComponent {
+export default class Progress extends React.PureComponent<Props> {
   static propTypes = propTypes;
 
   render() {

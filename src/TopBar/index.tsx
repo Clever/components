@@ -9,6 +9,14 @@ import { TopBarButton } from "./TopBarButton";
 import "./index.less";
 import Menu from "../Menu";
 
+export interface Props {
+  children?: React.ReactNode;
+  className?: string;
+  logoHref: string;
+  title: React.ReactNode;
+  onLogoClick?: Function;
+}
+
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -20,7 +28,7 @@ const propTypes = {
 /**
  * Global page-level header component.
  */
-export class TopBar extends React.PureComponent {
+export class TopBar extends React.PureComponent<Props> {
   static propTypes = propTypes;
 
   static Button = TopBarButton;
@@ -31,7 +39,7 @@ export class TopBar extends React.PureComponent {
     // If the last element is a "rounded" TopBarButton we need to add some additional padding to the right side.
     // To determine this we need to inspect the children;
     let needsRightPadding = false;
-    const childrenArray = React.Children.toArray(children);
+    const childrenArray = React.Children.toArray(children as any);
     if (childrenArray.length) {
       const lastItem = childrenArray[childrenArray.length - 1];
       const lastTrigger = lastItem.type === Menu ? lastItem.props.trigger : lastItem;
@@ -53,7 +61,7 @@ export class TopBar extends React.PureComponent {
           <Logo className="dewey--TopBar--logo" />
         </TopBarButton>
         {title && (
-          <h1 className="dewey--TopBar--title" title={title}>
+          <h1 className="dewey--TopBar--title" title={title as any}>
             {title}
           </h1>
         )}

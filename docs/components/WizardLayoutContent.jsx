@@ -258,7 +258,11 @@ export const WizardLayoutContent = {
         content: (
           <FlexBox style={{ maxWidth: "15rem" }} column>
             <p>Launch date</p>
-            <DatePicker />
+            <DatePicker
+              onChange={() => {
+                /* noop */
+              }}
+            />
           </FlexBox>
         ),
       },

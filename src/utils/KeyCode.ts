@@ -14,6 +14,6 @@ const KeyCode = {
   J: "j",
   K: "k",
   TAB: "Tab",
-};
+} as const;
 
 export default KeyCode;

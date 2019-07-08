@@ -4,15 +4,31 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
-import MenuItem from "./MenuItem";
+import MenuItem, { cssClass as menuItemCss } from "./MenuItem";
 import MorePropTypes from "../utils/MorePropTypes";
+import { Values } from "../utils/types";
 
 import "./Menu.less";
+
+export interface Props {
+  // TODO: fiigure out how to type this.
+  children?: any;
+  className?: string;
+  maxHeight?: string | number;
+  maxWidth?: string | number;
+  minWidth?: string | number;
+  onOpenChange?: (isOpen: boolean) => void;
+  onSelect?: Function;
+  placement?: Values<typeof Placement>;
+  stayOpenOnSelect?: boolean;
+  trigger: React.ReactElement;
+  wrapItems?: boolean;
+}
 
 const Placement = {
   LEFT: "left",
   RIGHT: "right",
-};
+} as const;
 
 const propTypes = {
   children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(MenuItem)),
@@ -54,16 +70,12 @@ const KeyCode = {
   END: 35,
   ESCAPE: 27,
   HOME: 36,
-};
+} as const;
 
 const ArrowScrollDirection = {
   [KeyCode.ARROW_DOWN]: 1,
   [KeyCode.ARROW_UP]: -1,
-};
-
-// TODO: Just use the official React typings to avoid this mess.
-let UntypedReact = null;
-UntypedReact = React;
+} as const;
 
 let nextID = 0;
 
@@ -73,10 +85,9 @@ let nextID = 0;
  * Follows recommendations from w3.org:
  * https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/examples/menu-button/menu-button-links.html
  */
-export default class Menu extends React.PureComponent {
+export default class Menu extends React.PureComponent<Props> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
-  static cssClass = cssClass;
 
   static Item = MenuItem;
   static Placement = Placement;
@@ -99,7 +110,10 @@ export default class Menu extends React.PureComponent {
   render() {
     const { className, maxHeight, maxWidth, minWidth, placement, trigger, wrapItems } = this.props;
     const { open } = this.state;
-    const additionalProps = _.omit(this.props, Object.keys(propTypes));
+
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     return (
       <RootCloseWrapper onRootClose={() => this._setDropdownOpen(false)}>
@@ -110,7 +124,7 @@ export default class Menu extends React.PureComponent {
           onKeyUp={this._handleKeyUp}
           onBlur={this._handleFocusOut}
         >
-          {UntypedReact.cloneElement(trigger, {
+          {React.cloneElement(trigger, {
             "aria-controls": this.IDs.DROPDOWN,
             "aria-expanded": open,
             "aria-haspopup": true,
@@ -134,7 +148,7 @@ export default class Menu extends React.PureComponent {
             >
               {this._getMenuItems().map((menuItem, i) => (
                 <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
-                  {UntypedReact.cloneElement(menuItem, {
+                  {React.cloneElement(menuItem, {
                     focused: this._isFocused(menuItem, i),
                     onClick: e => this._handleItemClick(menuItem, e),
                     onMouseEnter: e => this._handleItemMouseEnter(menuItem, i, e),
@@ -183,7 +197,7 @@ export default class Menu extends React.PureComponent {
     if (!nextElement) {
       return;
     } else if (
-      nextElement.classList.contains(MenuItem.cssClass.CONTAINER) &&
+      nextElement.classList.contains(menuItemCss.CONTAINER) &&
       nextElement.parentNode.parentNode.id === this.IDs.DROPDOWN
     ) {
       return;

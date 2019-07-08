@@ -8,6 +8,25 @@ import { FlexBox, ItemAlign } from "../flex";
 import LifeFloat from "./LifeFloat";
 import "./WizardLayout.less";
 
+export interface Props {
+  className?: string;
+  sections: any[];
+  fullscreen?: boolean;
+  headerImg?: any;
+  helpContent?: React.ReactNode;
+  hideSaveAndExit?: boolean;
+  nextStepButtonDisabled?: boolean;
+  nextStepButtonText?: string;
+  onNextStep: () => void;
+  onPrevStep: () => void;
+  onSaveAndExit?: () => void;
+  prevStepButtonDisabled?: boolean;
+  prevStepButtonText?: string;
+  stepper: React.ReactNode;
+  subtitle: string;
+  title: string;
+}
+
 const SECTION_PROP_TYPE = PropTypes.shape({
   title: PropTypes.string,
   subtitle: PropTypes.string,
@@ -60,9 +79,8 @@ const cssClass = {
 /**
  * Layout to provide guidelines on how to implement a Wizard.
  */
-export default class WizardLayout extends React.PureComponent {
+export default class WizardLayout extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   render() {
     const {

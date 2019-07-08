@@ -1,11 +1,15 @@
 import * as classnames from "classnames";
 import * as React from "react";
 
+export interface Props {
+  className?: string;
+}
+
 const cssClass = {
   CONTAINER: "Stepper--CheckMark",
 };
 
-export default class CheckMark extends React.PureComponent {
+export default class CheckMark extends React.PureComponent<Props> {
   render() {
     const { className } = this.props;
     return (

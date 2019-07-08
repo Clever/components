@@ -4,7 +4,6 @@ SHELL = /bin/bash
 NODE_VERSION := "v10"
 $(eval $(call node-version-check,$(NODE_VERSION)))
 
-BABEL := node_modules/babel-cli/bin/babel.js
 JEST := ./node_modules/.bin/jest --maxWorkers=1 --config ./jestconfig.json
 JS_FILES := $(shell find . -name "*.js" -not -path "./node_modules/*" -not -path "./dist/*" -not -name "bundle.js")
 JSX_FILES := $(shell find . -name "*.jsx" -not -path "./node_modules/*" -not -path "./dist/*")
@@ -12,14 +11,13 @@ TS_FILES := $(shell find bin/ src/ test/ -regex ".*\.tsx*")
 LESS_FILES := $(shell find . -name "*.less" -not -path "./node_modules/*" -not -path "./dist/*")
 LINT := ./node_modules/.bin/eslint
 STYLELINT := ./node_modules/.bin/stylelint --config ./stylelint.config.js
-TESTS_JS := $(shell find . -regex ".*_test\.jsx*" -not -path "./node_modules/*")
 TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" -not -path "./bin/*")
-TESTS := $(TESTS_JS) $(TESTS_TS)
+TESTS := $(TESTS_TS)
 FORMATTED_FILES := $(JS_FILES) $(JSX_FILES) $(TS_FILES) $(TSX_FILES) $(LESS_FILES)
 MODIFIED_FILES := $(shell git diff --name-only master $(FORMATTED_FILES))
 WEBPACK := node_modules/webpack/bin/webpack.js
 
-.PHONY: dev-server test lint format-check clean es5 docs build new $(TESTS) styles gen-sizing-styles
+.PHONY: dev-server test lint format-check clean compile docs build new $(TESTS) styles gen-sizing-styles
 .PHONY: gen-border-styles gen-border-radius-styles deploy-docs generate gen-colors
 
 GREEN_CHECK_MARK := " \033[0;32m✓\033[0m"
@@ -34,43 +32,27 @@ format-check:
 	@./node_modules/.bin/prettier -l $(FORMATTED_FILES) || \
 	(echo "\033[0;31m**** Prettier errors in the above files! Run 'make format-all' to fix! ****\033[0m" && false)
 
-# Reset the entire repository to a freshly cloned state
-.PHONY: clobber
-clobber: clean
-	rm -rf log
-
 # Clean up build artifacts
 clean:
 	@echo -n 'Cleaning out dist directory...'
 	@rm -rf dist
-	rm -rf log/*
 	@echo -e $(GREEN_CHECK_MARK)
 
-es5: log
+compile:
 	@echo -n 'Copying /src to /dist...'
 	@cp -r src dist
 	@echo -e $(GREEN_CHECK_MARK)
 
-	@# Compile ts[x] first, since it may compile js[x] dependencies that we'll want to overwrite with
-	@# the babel-compiled versions.
-	@echo -n 'Converting .ts[x] to ES5...'
-	find dist -regex ".*\.tsx*" | xargs -n1 rm
+	@echo -n 'Compiling TypeScript to JavaScript...'
+	@find dist -regex ".*\.tsx*" | xargs -n1 rm
 	@./node_modules/.bin/tsc --project ./tsconfig.build.json
 	@echo -e $(GREEN_CHECK_MARK)
-
-	@echo -n 'Converting .js[x] files to ES5...'
-	find dist -regex ".*\.jsx" | xargs -n1 rm
-	@$(BABEL) src --out-dir dist > log/babel.log
-	@echo -e $(GREEN_CHECK_MARK)
-
-log:
-	mkdir log
 
 docs:
 	@echo '✓ Rebuild docs'
 	@$(WEBPACK)
 
-build: clean es5 styles
+build: clean compile styles
 
 styles:
 	@echo "Building stylesheet"

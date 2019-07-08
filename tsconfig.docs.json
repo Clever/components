@@ -3,7 +3,6 @@
   "compilerOptions": {
     "allowJs": true,
     "declaration": false,
-    "types": ["prop-types", "react"]
   },
   "exclude": [
     "./assets",
