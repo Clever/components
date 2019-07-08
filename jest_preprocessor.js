@@ -1,4 +1,3 @@
-var babelJest = require("babel-jest");
 var tsc = require("typescript");
 var tsConfig = require("./tsconfig.json");
 
@@ -11,12 +10,6 @@ module.exports = {
     }
 
     let processedSrc = src;
-
-    if (filename.match(/\.jsx?$/)) {
-      // Keep compiling js[x] with babel for now until we move everything over to
-      // typescript-compatible syntax.
-      return babelJest.process(processedSrc, filename);
-    }
 
     // Convert to ES5.
     processedSrc = tsc.transpileModule(processedSrc, {
