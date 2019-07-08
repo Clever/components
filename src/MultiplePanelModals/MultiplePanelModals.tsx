@@ -111,7 +111,7 @@ export class MultiplePanelModals extends React.Component<Props, State> {
     }
 
     return (
-      <div className={classNames(Classes.CONTAINER, className)}>
+      <div className={classnames(Classes.CONTAINER, className)}>
         <Modal
           className={panelClassName}
           focusLocked={focusLocked}

@@ -303,7 +303,6 @@ export class Wizard extends React.Component<Props, State> {
             className={className}
             Component={steps[this.state.currentStep].component}
             componentProps={steps[this.state.currentStep].props}
-            stepNumber={this.state.currentStep}
             stepNumberInTitle={stepNumberInTitle}
             setWizardState={changes => {
               const newState = Object.assign(this.state.data, changes);

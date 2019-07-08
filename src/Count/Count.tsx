@@ -51,7 +51,7 @@ export default class Count extends React.PureComponent<Props> {
 
   static format({ number, plural, short, singular, zeroOverride }: FormatOptions) {
     const displayNumber = Number.format(number, short);
-    const rawNumber = parseInt(number || 0, 10);
+    const rawNumber = parseInt(`${number}` || "0", 10);
 
     if (rawNumber === 1) {
       return `${displayNumber} ${singular}`;

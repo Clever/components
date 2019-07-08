@@ -144,7 +144,7 @@ export default function Footer({
             <Button
               className={cssClass.BUTTON_SCROLL}
               disabled={currentPage === numPages && !lengthUnknown}
-              onClick={() => selectPage(currentPage + 1, numPages)}
+              onClick={() => selectPage(currentPage + 1)}
               type="link"
               size="small"
               value="Next"

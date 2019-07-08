@@ -83,8 +83,10 @@ export default class WizardStep extends React.Component<Props, State> {
     window.removeEventListener("resize", this.updateDimensions);
   }
 
+  private component = React.createRef<HTMLDivElement>();
+
   updateDimensions() {
-    const renderedStepWidth = this.component.offsetWidth;
+    const renderedStepWidth = this.component.current.offsetWidth;
     this.setState({
       helpTextCollapsed: this.state.collapseBreakpointWidth > renderedStepWidth,
     });
@@ -113,12 +115,7 @@ export default class WizardStep extends React.Component<Props, State> {
       .map(c => classNameFor(c, "WizardStep"));
     const contentGroupClass = classNameFor(["Wizard", className], "contentGroup");
     return (
-      <div
-        className={classnames(baseClasses)}
-        ref={e => {
-          this.component = e;
-        }}
-      >
+      <div className={classnames(baseClasses)} ref={this.component}>
         <div className={classNameFor(baseClasses, "title")}>
           <h1>
             {stepNumberInTitle && `Step ${currentStep + 1}: `}

@@ -42,15 +42,15 @@ export default function Col({
 }
 
 // Define the shape of the `span` prop as a map from viewport `Size` to the associated span length.
-Col.colSpanPropShape = {};
+const colSpanPropShape = {};
 _.forEach(Size, size => {
-  Col.colSpanPropShape[size] = PropTypes.number;
+  colSpanPropShape[size] = PropTypes.number;
 });
 
 Col.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  span: PropTypes.oneOfType([PropTypes.number, PropTypes.shape(Col.colSpanPropShape)]),
+  span: PropTypes.oneOfType([PropTypes.number, PropTypes.shape(colSpanPropShape)]),
   wrapperComponent: PropTypes.any,
 };
 
