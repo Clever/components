@@ -17,13 +17,15 @@ export class ConfirmationButton extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
   }
 
+  private modalButton = React.createRef<ModalButton>();
+
   handleConfirm() {
-    this.refs.modalButton.hideModal();
+    this.modalButton.current.hideModal();
     if (this.props.onConfirm) this.props.onConfirm();
   }
 
   handleCancel() {
-    this.refs.modalButton.hideModal();
+    this.modalButton.current.hideModal();
     if (this.props.onClose) this.props.onClose();
   }
 
@@ -33,7 +35,7 @@ export class ConfirmationButton extends React.Component {
     const wrapperClass = "ConfirmationButton--dialog-buttons";
 
     return (
-      <ModalButton {...modalButtonProps} ref="modalButton">
+      <ModalButton {...modalButtonProps} ref={this.modalButton}>
         {this.props.children}
         <div className={classnames(wrapperClass, this.props.className)}>
           <Button type="link" value="Cancel" onClick={this.handleCancel} />

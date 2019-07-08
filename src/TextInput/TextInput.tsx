@@ -23,6 +23,9 @@ export class TextInput extends React.Component {
     this.toggleHidden = this.toggleHidden.bind(this);
   }
 
+  // eslint-disable-next-line react/sort-comp
+  private input = React.createRef<HTMLInputElement>();
+
   onFocus() {
     const { onFocus } = this.props;
 
@@ -42,7 +45,7 @@ export class TextInput extends React.Component {
   }
 
   focus() {
-    this.refs.input.focus();
+    this.input.current.focus();
   }
 
   toggleHidden() {
@@ -146,7 +149,7 @@ export class TextInput extends React.Component {
           onFocus={this.onFocus}
           placeholder={this.props.placeholder}
           readOnly={this.props.readOnly}
-          ref="input"
+          ref={this.input}
           required={this.props.required}
           type={type}
           value={this.props.value}

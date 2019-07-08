@@ -31,6 +31,9 @@ export class TextArea extends React.Component {
     this.onBlur = this.onBlur.bind(this);
   }
 
+  // eslint-disable-next-line react/sort-comp
+  private textAreaEl = React.createRef<HTMLTextAreaElement>();
+
   /* Insert any additional lifecycle methods,
      event handlers, and helper methods here */
 
@@ -53,7 +56,7 @@ export class TextArea extends React.Component {
   }
 
   focus() {
-    this.refs.input.focus();
+    this.textAreaEl.current.focus();
   }
 
   render() {
@@ -106,7 +109,7 @@ export class TextArea extends React.Component {
       onFocus: this.onFocus,
       placeholder: this.props.placeholder,
       readOnly: this.props.readOnly,
-      ref: "input",
+      ref: this.textAreaEl,
       required: this.props.required,
       spellCheck: this.props.spellCheck,
       value: this.props.value,

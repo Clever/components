@@ -8,10 +8,10 @@ import Tooltip from "../Tooltip";
 import "./Label.less";
 
 export default class Label extends React.PureComponent {
+  private label = React.createRef<HTMLSpanElement>();
+
   focus() {
-    if (this.refs.label) {
-      this.refs.label.focus();
-    }
+    this.label.current.focus();
   }
 
   render() {
@@ -35,7 +35,7 @@ export default class Label extends React.PureComponent {
           tooltip && cssClass.WITH_TOOLTIP,
           className,
         )}
-        ref="label"
+        ref={this.label}
         tabIndex={tooltip ? 0 : undefined}
       >
         {children}
