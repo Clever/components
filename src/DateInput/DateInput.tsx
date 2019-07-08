@@ -39,11 +39,6 @@ export default class DateInput extends React.Component {
     this.isValidDate = this.isValidDate.bind(this);
   }
 
-  onChange(v) {
-    this.input.blur();
-    this.props.onChange(v);
-  }
-
   isValidDate(current) {
     let afterMin = true;
     let beforeMax = true;
