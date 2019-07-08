@@ -7,6 +7,13 @@ import FlexItem from "../flex/FlexItem";
 
 import "./EditableInfoPanel.less";
 
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  title?: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
@@ -20,9 +27,8 @@ const cssClass = {
   CONTENT: "EditableInfoPanel--content",
 };
 
-export default class EditableInfoPanel extends React.PureComponent {
+export default class EditableInfoPanel extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   render() {
     const { title, children, className, onClick } = this.props;

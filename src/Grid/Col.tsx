@@ -7,14 +7,26 @@ import Size from "./Size";
 
 import "../less/grid.less";
 
+export interface Props {
+  children?: React.ReactNode;
+  className?: string;
+  span?: number | { dflt?: number; s?: number; m?: number; l?: number };
+  wrapperComponent?: any;
+  // TODO: It's theoretically possible to make this component generic and type these extra props, but it's a pain
+  [additionalProp: string]: any;
+}
+
+export const cssClass = {
+  COL: "Grid--Col",
+};
+
 export default function Col({
   children,
   className,
   span,
   wrapperComponent: Wrapper,
   ...additionalProps
-}) {
-  const { cssClass } = Col;
+}: Props) {
   let colSpanClasses;
   if (typeof span === "number") {
     colSpanClasses = `${cssClass.COL}--${Size.DEFAULT}--${span}`;
@@ -45,8 +57,4 @@ Col.propTypes = {
 Col.defaultProps = {
   span: 1,
   wrapperComponent: "div",
-};
-
-Col.cssClass = {
-  COL: "Grid--Col",
 };

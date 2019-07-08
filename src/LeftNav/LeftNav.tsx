@@ -8,14 +8,61 @@ import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 import MorePropTypes from "../utils/MorePropTypes";
 import { NavLink } from "./NavLink";
 import { NavGroup } from "./NavGroup";
+import { ChildrenOf } from "../utils/types";
 
 import "./LeftNav.less";
+
+export interface Props {
+  children?: ChildrenOf<typeof NavLink | typeof NavGroup>;
+  className?: string;
+  closeSubNavOnBlur?: boolean;
+  collapseOnSubNavOpen?: boolean;
+  collapsed?: boolean;
+  withActiveNavGroups?: boolean;
+  withTooltips?: boolean;
+}
+
+interface State {
+  openNavGroup: string;
+}
+
+const propTypes = {
+  children: MorePropTypes.oneOrManyOf(
+    PropTypes.oneOfType([
+      MorePropTypes.instanceOfComponent(NavLink),
+      MorePropTypes.instanceOfComponent(NavGroup),
+    ]),
+  ),
+  className: PropTypes.string,
+  closeSubNavOnBlur: PropTypes.bool,
+  collapseOnSubNavOpen: PropTypes.bool,
+  collapsed: PropTypes.bool,
+  withActiveNavGroups: PropTypes.bool,
+  withTooltips: PropTypes.bool,
+};
+
+export const cssClass = {
+  COLLAPSED: "LeftNav--collapsed",
+  CONTAINER: "LeftNav",
+  SUBNAV_CONTENT_ANIM: "LeftNav--subnav--content--anim",
+  SUBNAV_CONTENT: "LeftNav--subnav--content",
+  SUBNAV_OPEN: "LeftNav--subnav--open",
+  SUBNAV: "LeftNav--subnav",
+  TOPNAV_COLLAPSED: "LeftNav--topnav--collapsed",
+  TOPNAV: "LeftNav--topnav",
+  WITH_SUBNAV_OPEN: "LeftNav--withSubnavOpen",
+};
 
 /** NOTE: Corresponds to the `@timingSlowly` LESS constant in src/less/animations.less. */
 const WIDTH_TRANSITION_DURATION_MS = 400;
 
-export class LeftNav extends React.PureComponent {
-  constructor(props) {
+export class LeftNav extends React.PureComponent<Props, State> {
+  static propTypes = propTypes;
+
+  static NavLink = NavLink;
+  static NavGroup = NavGroup;
+
+  constructor(props: Props) {
     super(props);
 
     // If a NavLink in a NavGroup is marked as selected on initialization, we
@@ -34,7 +81,6 @@ export class LeftNav extends React.PureComponent {
   }
 
   render() {
-    const { cssClass } = LeftNav;
     const {
       children,
       className,
@@ -117,33 +163,3 @@ export class LeftNav extends React.PureComponent {
     this.setState({ openNavGroup: null });
   }
 }
-
-LeftNav.NavLink = NavLink;
-LeftNav.NavGroup = NavGroup;
-
-LeftNav.propTypes = {
-  children: MorePropTypes.oneOrManyOf(
-    PropTypes.oneOfType([
-      MorePropTypes.instanceOfComponent(NavLink),
-      MorePropTypes.instanceOfComponent(NavGroup),
-    ]),
-  ),
-  className: PropTypes.string,
-  closeSubNavOnBlur: PropTypes.bool,
-  collapseOnSubNavOpen: PropTypes.bool,
-  collapsed: PropTypes.bool,
-  withActiveNavGroups: PropTypes.bool,
-  withTooltips: PropTypes.bool,
-};
-
-LeftNav.cssClass = {
-  COLLAPSED: "LeftNav--collapsed",
-  CONTAINER: "LeftNav",
-  SUBNAV_CONTENT_ANIM: "LeftNav--subnav--content--anim",
-  SUBNAV_CONTENT: "LeftNav--subnav--content",
-  SUBNAV_OPEN: "LeftNav--subnav--open",
-  SUBNAV: "LeftNav--subnav",
-  TOPNAV_COLLAPSED: "LeftNav--topnav--collapsed",
-  TOPNAV: "LeftNav--topnav",
-  WITH_SUBNAV_OPEN: "LeftNav--withSubnavOpen",
-};

@@ -5,6 +5,17 @@ import * as ReactDOM from "react-dom";
 
 import "./Radio.less";
 
+export interface Props {
+  checked?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  id: string;
+  onSelect?: (id: string, value: any) => void;
+  tabIndex?: number;
+  value?: any;
+}
+
 const propTypes = {
   checked: PropTypes.bool,
   children: PropTypes.node.isRequired,
@@ -33,9 +44,8 @@ const getNextLabelID = () => `${LABEL_ID_PREFIX}--${nextLabelIDSuffix++}`;
  * Single radio button input.
  * Usually used in a RadioGroup for providing a list of mutually-exclusive options to the user.
  */
-export default class Radio extends React.PureComponent {
+export default class Radio extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   _element = null;
   _labelID = getNextLabelID();

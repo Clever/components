@@ -4,11 +4,54 @@ import * as _ from "lodash";
 
 import "./SegmentedControl.less";
 
+export interface Option {
+  content: React.ReactNode;
+  disabled?: boolean;
+  value: any;
+}
+
+export interface Props {
+  className?: string;
+  defaultValue?: string;
+  disabled?: boolean;
+  options: Option[];
+  onSelect?: (value: any) => void;
+  value?: any;
+}
+
+interface State {
+  selected: any;
+}
+
+const propTypes = {
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.node.isRequired,
+      disabled: PropTypes.bool,
+      value: PropTypes.any.isRequired,
+    }),
+  ).isRequired,
+  onSelect: PropTypes.func,
+  value: PropTypes.any,
+};
+
+export const cssClass = {
+  CONTAINER: "segmented_control",
+  DISABLED: "segmented_control--selectable-item--disabled",
+  OPTION: "segmented_control--selectable-item",
+  SELECTED: "segmented_control--selectable-item--selected",
+};
+
 /**
  * SegmentedControl selection. Shows several options as defined in the props and
  * allows the user to select one of those options.
  */
-export class SegmentedControl extends React.Component {
+export class SegmentedControl extends React.Component<Props, State> {
+  static propTypes = propTypes;
+
   static validateProps(props) {
     const { defaultValue, onSelect, value } = props;
 
@@ -32,13 +75,13 @@ export class SegmentedControl extends React.Component {
     return props;
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(SegmentedControl.validateProps(props));
 
     this.state = { selected: props.defaultValue || null };
   }
 
-  onSelect({ disabled, value }) {
+  onSelect({ disabled, value }: Option) {
     // TODO: We need to do an audit for SegmentedControl usage and figure out if we can safely get
     // rid of the uncontrolled mode (and stop tracking state internally) so we avoid this complexity
     // (or just make a breaking change).
@@ -60,7 +103,6 @@ export class SegmentedControl extends React.Component {
   render() {
     const { className, disabled, options, value } = this.props;
     const selected = value || this.state.selected;
-    const cssClass = SegmentedControl.cssClass;
 
     let idx = -1;
     const selectableItems = _.map(options, option => {
@@ -89,25 +131,3 @@ export class SegmentedControl extends React.Component {
     return <div className={[cssClass.CONTAINER, className].join(" ")}>{selectableItems}</div>;
   }
 }
-
-SegmentedControl.propTypes = {
-  className: PropTypes.string,
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      content: PropTypes.node.isRequired,
-      disabled: PropTypes.bool,
-      value: PropTypes.any.isRequired,
-    }),
-  ).isRequired,
-  onSelect: PropTypes.func,
-  value: PropTypes.any,
-};
-
-SegmentedControl.cssClass = {
-  CONTAINER: "segmented_control",
-  DISABLED: "segmented_control--selectable-item--disabled",
-  OPTION: "segmented_control--selectable-item",
-  SELECTED: "segmented_control--selectable-item--selected",
-};

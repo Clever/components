@@ -4,10 +4,27 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 
 import FormError from "../FormError";
-import Radio from "./Radio";
+import Radio, { Props as RadioProps } from "./Radio";
 import WithKeyboardNav from "../WithKeyboardNav";
 
 import "./RadioGroup.less";
+
+interface Option {
+  id: string;
+  disabled?: boolean;
+  label: React.ReactNode;
+  value?: any;
+}
+
+export interface Props {
+  className?: string;
+  disabled?: boolean;
+  error?: React.ReactNode;
+  label?: React.ReactNode;
+  onChange: RadioProps["onSelect"];
+  options: Option[];
+  selectedID?: string;
+}
 
 const OPTION_PROP_TYPE = PropTypes.shape({
   id: PropTypes.string.isRequired,
@@ -39,9 +56,8 @@ const getNextLabelID = () => `${LABEL_ID_PREFIX}--${nextLabelIDSuffix++}`;
 /**
  * Form element that allows for a single, required selection from a small set of 2 or more options.
  */
-export default class RadioGroup extends React.PureComponent {
+export default class RadioGroup extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   _labelID = getNextLabelID();
   _optionRefsByID = {};

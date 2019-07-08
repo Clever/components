@@ -9,6 +9,14 @@ import { TopBarButton } from "./TopBarButton";
 import "./index.less";
 import Menu from "../Menu";
 
+export interface Props {
+  children?: React.ReactNode;
+  className?: string;
+  logoHref: string;
+  title: React.ReactNode;
+  onLogoClick?: Function;
+}
+
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -20,7 +28,7 @@ const propTypes = {
 /**
  * Global page-level header component.
  */
-export class TopBar extends React.PureComponent {
+export class TopBar extends React.PureComponent<Props> {
   static propTypes = propTypes;
 
   static Button = TopBarButton;

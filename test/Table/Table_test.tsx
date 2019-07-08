@@ -9,7 +9,7 @@ import Column from "../../src/Table/Column";
 import Footer from "../../src/Table/Footer";
 import Header from "../../src/Table/Header";
 import sortDirection from "../../src/Table/sortDirection";
-import { Table } from "../../src/Table/Table";
+import { Table, cssClass } from "../../src/Table/Table";
 
 const DATA = [
   {
@@ -30,8 +30,6 @@ const DATA = [
 ];
 
 describe("Table", () => {
-  const { cssClass } = Table;
-
   const nameColumn = (
     <Column
       id="name"

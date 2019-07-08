@@ -9,11 +9,35 @@ import FlexBox from "../flex/FlexBox";
 import Option from "./Option";
 import Type from "./Type";
 
+import { Values } from "../utils/types";
+
 import "./Menu.less";
 
-export default class Menu extends React.PureComponent {
+export interface Props {
+  children?: React.ReactNode;
+  className?: string;
+  onHide: () => void;
+  size?: Values<typeof Button.Size>;
+  type?: Values<typeof Type>;
+}
+
+const propTypes = {
+  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Option)),
+  className: PropTypes.string,
+  onHide: PropTypes.func.isRequired,
+  size: PropTypes.oneOf(_.values(Button.Size)),
+  type: PropTypes.oneOf(_.values(Type)),
+};
+
+export const cssClass = {
+  CONTAINER: "DropdownButton--Menu",
+  OPTION: "DropdownButton--Option",
+};
+
+export default class Menu extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
   _renderOption(option) {
-    const { cssClass } = Menu;
     const { onHide, size, type } = this.props;
     const { children, className, disabled, href, onClick, target } = option.props;
 
@@ -38,7 +62,6 @@ export default class Menu extends React.PureComponent {
   }
 
   render() {
-    const { cssClass } = Menu;
     const { children, className } = this.props;
 
     return (
@@ -48,16 +71,3 @@ export default class Menu extends React.PureComponent {
     );
   }
 }
-
-Menu.propTypes = {
-  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Option)),
-  className: PropTypes.string,
-  onHide: PropTypes.func.isRequired,
-  size: PropTypes.oneOf(_.values(Button.Size)),
-  type: PropTypes.oneOf(_.values(Type)),
-};
-
-Menu.cssClass = {
-  CONTAINER: "DropdownButton--Menu",
-  OPTION: "DropdownButton--Option",
-};

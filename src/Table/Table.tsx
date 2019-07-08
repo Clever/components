@@ -10,13 +10,96 @@ import Footer from "./Footer";
 import Header from "./Header";
 import MorePropTypes from "../utils/MorePropTypes";
 import sortDirection from "./sortDirection";
+import { ChildrenOf } from "../utils/types";
 
 import "./Table.less";
 
+export interface SortState {
+  columnID?: string;
+  direction?: "asc" | "desc";
+}
+
+export interface Props {
+  children?: ChildrenOf<typeof Column>;
+  className?: string;
+  data?: any[];
+  filter?: Function;
+  fixed?: boolean;
+  initialPage?: number;
+  initialSortState?: SortState;
+  onPageChange?: Function;
+  onRowClick?: Function;
+  onSortChange?: Function;
+  onViewChange?: Function;
+  pageSize?: number;
+  paginated?: boolean;
+  rowIDFn: Function;
+  rowClassNameFn?: Function;
+
+  // These must be all set together. TODO: enforce that
+  lazy?: boolean;
+  getData?: Function;
+  numRows?: number;
+}
+
+interface State {
+  currentPage: number;
+  sortState: SortState;
+
+  // lazy table state
+  lazyPages: any[];
+  pageLoading: boolean;
+  allLoaded: boolean;
+}
+
 const DEFAULT_PAGE_SIZE = 10;
 
-export class Table extends React.Component {
-  constructor(props) {
+const propTypes = {
+  children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
+  className: PropTypes.string,
+  data: PropTypes.array,
+  filter: PropTypes.func,
+  fixed: PropTypes.bool,
+  initialPage: tablePropTypes.pageNumber,
+  initialSortState: tablePropTypes.sortState,
+  onPageChange: PropTypes.func,
+  onRowClick: PropTypes.func,
+  onSortChange: PropTypes.func,
+  onViewChange: PropTypes.func,
+  pageSize: PropTypes.number,
+  paginated: PropTypes.bool,
+  rowIDFn: PropTypes.func.isRequired,
+  rowClassNameFn: PropTypes.func,
+
+  // these must all be set together
+  lazy: PropTypes.bool,
+  getData: PropTypes.func,
+  numRows: PropTypes.number,
+};
+
+const defaultProps = {
+  onPageChange: () => {},
+  onSortChange: () => {},
+  pageSize: DEFAULT_PAGE_SIZE,
+};
+
+export const cssClass = {
+  BODY: "Table--body",
+  CLICKABLE_ROW: "Table--clickable_row",
+  FIXED: "Table--fixed",
+  NO_DATA: "Table--no_data_cell",
+  ROW: "Table--row",
+  TABLE: "Table",
+};
+
+export class Table extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  static Column = Column;
+  static sortDirection = sortDirection;
+
+  constructor(props: Props) {
     super(props);
 
     if (props.lazy) {
@@ -275,7 +358,6 @@ export class Table extends React.Component {
       rowClassNameFn,
       onRowClick,
     } = this.props;
-    const { cssClass } = Table;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
 
@@ -351,45 +433,3 @@ function getCellClassName(columnProps, rowData) {
 
   return className;
 }
-
-Table.propTypes = {
-  children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
-  className: PropTypes.string,
-  data: PropTypes.array,
-  filter: PropTypes.func,
-  fixed: PropTypes.bool,
-  initialPage: tablePropTypes.pageNumber,
-  initialSortState: tablePropTypes.sortState,
-  onPageChange: PropTypes.func,
-  onRowClick: PropTypes.func,
-  onSortChange: PropTypes.func,
-  onViewChange: PropTypes.func,
-  pageSize: PropTypes.number,
-  paginated: PropTypes.bool,
-  rowIDFn: PropTypes.func.isRequired,
-  rowClassNameFn: PropTypes.func,
-
-  // these must all be set together
-  lazy: PropTypes.bool,
-  getData: PropTypes.func,
-  numRows: PropTypes.number,
-};
-
-Table.defaultProps = {
-  onPageChange: () => {},
-  onSortChange: () => {},
-  pageSize: DEFAULT_PAGE_SIZE,
-};
-
-Table.cssClass = {
-  BODY: "Table--body",
-  CLICKABLE_ROW: "Table--clickable_row",
-  FIXED: "Table--fixed",
-  NO_DATA: "Table--no_data_cell",
-  ROW: "Table--row",
-  TABLE: "Table",
-};
-
-Table.Column = Column;
-
-Table.sortDirection = sortDirection;

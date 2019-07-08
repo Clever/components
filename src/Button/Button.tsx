@@ -3,9 +3,68 @@ import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
+import { Values } from "../utils/types";
+
 import "./Button.less";
 
-export class Button extends React.PureComponent {
+export interface Props {
+  className?: string;
+  type?: ButtonType;
+  size?: ButtonSize;
+  value: React.ReactNode;
+  href?: string;
+  target?: "_self" | "_blank";
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  submit?: boolean;
+  style?: React.CSSProperties;
+  [additionalProp: string]: any;
+}
+
+type ButtonType = Values<typeof Type>;
+type ButtonSize = Values<typeof Size>;
+
+const Size = {
+  S: "small",
+  M: "regular",
+  L: "large",
+} as const;
+
+const Type = {
+  PRIMARY: "primary",
+  SECONDARY: "secondary",
+  DESTRUCTIVE: "destructive",
+  LINK: "link",
+  LINK_PLAIN: "linkPlain",
+  PLAIN: "plain",
+} as const;
+
+const propTypes = {
+  className: PropTypes.string,
+  type: PropTypes.oneOf(_.values(Type)),
+  size: PropTypes.oneOf(_.values(Size)),
+  value: PropTypes.node.isRequired,
+  href: PropTypes.string,
+  target: PropTypes.oneOf(["_self", "_blank"]),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  submit: PropTypes.bool,
+  style: PropTypes.object,
+};
+
+const defaultProps = {
+  type: Type.SECONDARY,
+  size: Size.M,
+  target: "_blank",
+};
+
+export class Button extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  static Size = Size;
+  static Type = Type;
+
   _buttonRef;
 
   focus() {
@@ -21,7 +80,6 @@ export class Button extends React.PureComponent {
   }
 
   render() {
-    const { Size, Type } = Button;
     const {
       className,
       disabled,
@@ -59,7 +117,7 @@ export class Button extends React.PureComponent {
           }}
           style={style}
           type={submit ? "submit" : "button"}
-          aria-label={typeof value === "string" ? value : null}
+          aria-label={typeof value === "string" ? (value as string) : null}
         >
           {value}
         </button>
@@ -76,44 +134,10 @@ export class Button extends React.PureComponent {
         }}
         style={style}
         target={target}
-        aria-label={typeof value === "string" ? value : null}
+        aria-label={typeof value === "string" ? (value as string) : null}
       >
         {value}
       </a>
     );
   }
 }
-
-Button.Size = {
-  S: "small",
-  M: "regular",
-  L: "large",
-};
-
-Button.Type = {
-  PRIMARY: "primary",
-  SECONDARY: "secondary",
-  DESTRUCTIVE: "destructive",
-  LINK: "link",
-  LINK_PLAIN: "linkPlain",
-  PLAIN: "plain",
-};
-
-Button.defaultProps = {
-  type: Button.Type.SECONDARY,
-  size: Button.Size.M,
-  target: "_blank",
-};
-
-Button.propTypes = {
-  className: PropTypes.string,
-  type: PropTypes.oneOf(_.values(Button.Type)),
-  size: PropTypes.oneOf(_.values(Button.Size)),
-  value: PropTypes.node.isRequired,
-  href: PropTypes.string,
-  target: PropTypes.oneOf(["_self", "_blank"]),
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  submit: PropTypes.bool,
-  style: PropTypes.object,
-};

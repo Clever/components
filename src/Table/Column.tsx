@@ -1,8 +1,24 @@
 import * as PropTypes from "prop-types";
 
-export default function Column() {
-  throw new Error("Configuration component - not meant to be rendered.");
+export interface Props {
+  cell?: {
+    className?: Function | string;
+    renderer: Function;
+  };
+  id: string;
+  header?: {
+    className?: string;
+    content?: React.ReactNode;
+  };
+  noWrap?: boolean;
+  sortable?: boolean;
+  sortValueFn?: Function;
+  width?: string; // Not included in propTypes but appears to work and is commonly used.
 }
+
+export const Column: React.FunctionComponent<Props> = function Column() {
+  throw new Error("Configuration component - not meant to be rendered.");
+};
 
 Column.propTypes = {
   cell: PropTypes.shape({
@@ -18,3 +34,5 @@ Column.propTypes = {
   sortable: PropTypes.bool,
   sortValueFn: PropTypes.func,
 };
+
+export default Column;

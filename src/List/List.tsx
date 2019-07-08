@@ -5,8 +5,19 @@ import * as React from "react";
 
 import Item from "./Item";
 import MorePropTypes from "../utils/MorePropTypes";
+import { ChildrenOf } from "../utils/types";
 
 import "./List.less";
+
+export interface Props {
+  children?: ChildrenOf<typeof Item>;
+  className?: string;
+  itemsClassName?: string;
+  emptyMessage?: React.ReactNode;
+  noBorder?: boolean;
+  rowType?: "plain" | "bordered" | "zebra";
+  title?: React.ReactNode;
+}
 
 const RowType = {
   PLAIN: "plain",
@@ -24,7 +35,7 @@ const cssClass = {
   rowType: type => `List--items--${type}`,
 };
 
-export default class List extends React.PureComponent {
+export default class List extends React.PureComponent<Props> {
   static propTypes = {
     children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Item)),
     className: PropTypes.string,
@@ -39,8 +50,6 @@ export default class List extends React.PureComponent {
     rowType: RowType.PLAIN,
     emptyMessage: <span className={cssClass.EMPTY}>NO DATA</span>,
   };
-
-  static cssClass = cssClass;
 
   static Item = Item;
 

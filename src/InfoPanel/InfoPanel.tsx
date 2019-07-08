@@ -10,11 +10,48 @@ import {
 } from "react-accessible-accordion";
 import "./InfoPanel.less";
 
+export interface Props {
+  children?: React.ReactNode;
+  className?: string;
+  title?: React.ReactNode;
+  hideTitle?: boolean;
+  footer?: React.ReactNode;
+  collapsible?: boolean;
+  defaultOpen?: boolean;
+}
+
+interface State {
+  isCollapsed: boolean;
+}
+
+const propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  title: PropTypes.node,
+  hideTitle: PropTypes.bool,
+  footer: PropTypes.node,
+  collapsible: PropTypes.bool,
+  defaultOpen: PropTypes.bool,
+};
+
+export const cssClass = {
+  CONTAINER: "InfoPanel",
+  FOOTER: "InfoPanel--footer",
+  TITLE: "InfoPanel--title",
+  HEADER: "InfoPanel--header",
+  CONTENT: "InfoPanel--content",
+  COLLAPSE_ARROW: "InfoPanel--collapseArrow",
+  COLLAPSIBLE_TITLE: "InfoPanel--collapsibleTitle",
+  COLLAPSIBLE_HEADER: "InfoPanel--collapsibleHeader",
+};
+
 /**
  * Base presentational component for the displaying information in paneled format.
  */
-export default class InfoPanel extends React.Component {
-  constructor(props) {
+export default class InfoPanel extends React.Component<Props, State> {
+  static propTypes = propTypes;
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       isCollapsed: !props.defaultOpen,
@@ -28,7 +65,6 @@ export default class InfoPanel extends React.Component {
   render() {
     const { children, className, hideTitle, title, footer, collapsible } = this.props;
     const { isCollapsed } = this.state;
-    const { cssClass } = InfoPanel;
     if (!collapsible) {
       return (
         <div className={classnames(cssClass.CONTAINER, className)}>
@@ -72,24 +108,3 @@ export default class InfoPanel extends React.Component {
     );
   }
 }
-
-InfoPanel.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  title: PropTypes.node,
-  hideTitle: PropTypes.bool,
-  footer: PropTypes.node,
-  collapsible: PropTypes.bool,
-  defaultOpen: PropTypes.bool,
-};
-
-InfoPanel.cssClass = {
-  CONTAINER: "InfoPanel",
-  FOOTER: "InfoPanel--footer",
-  TITLE: "InfoPanel--title",
-  HEADER: "InfoPanel--header",
-  CONTENT: "InfoPanel--content",
-  COLLAPSE_ARROW: "InfoPanel--collapseArrow",
-  COLLAPSIBLE_TITLE: "InfoPanel--collapsibleTitle",
-  COLLAPSIBLE_HEADER: "InfoPanel--collapsibleHeader",
-};

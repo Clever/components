@@ -5,6 +5,16 @@ import * as React from "react";
 
 import "./TopBarButton.less";
 
+export interface Props {
+  active?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  component?: any;
+  href?: string;
+  onClick?: Function;
+  round?: boolean;
+}
+
 const propTypes = {
   active: PropTypes.bool,
   children: PropTypes.node.isRequired,
@@ -15,7 +25,7 @@ const propTypes = {
   round: PropTypes.bool,
 };
 
-export class TopBarButton extends React.PureComponent {
+export class TopBarButton extends React.PureComponent<Props> {
   static propTypes = propTypes;
 
   _containerRef;

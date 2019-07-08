@@ -6,6 +6,21 @@ import * as ReactDOM from "react-dom";
 
 import "./MenuItem.less";
 
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  component?: any;
+  customStyles?: boolean;
+  disabled?: boolean;
+  focused?: boolean;
+  href?: string;
+  onBlur?: Function;
+  onClick?: Function;
+  onMouseEnter?: Function;
+  selected?: boolean;
+  target?: string;
+}
+
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
@@ -26,17 +41,16 @@ const defaultProps = {
   onMouseEnter: _.noop,
 };
 
-const cssClass = {
+export const cssClass = {
   CONTAINER: "Menu--MenuItem",
   DEFAULT_STYLES: "Menu--MenuItem--default",
 
   selected: baseClass => (baseClass ? `${baseClass}--selected` : ""),
 };
 
-export default class MenuItem extends React.PureComponent {
+export default class MenuItem extends React.PureComponent<Props> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
-  static cssClass = cssClass;
 
   _containerEl;
 

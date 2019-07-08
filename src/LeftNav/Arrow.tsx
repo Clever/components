@@ -6,9 +6,22 @@ import * as React from "react";
 
 import "./Arrow.less";
 
-export default class Arrow extends React.PureComponent {
+export interface Props {
+  className?: string;
+}
+
+const propTypes = {
+  className: PropTypes.string,
+};
+
+export const cssClass = {
+  CONTAINER: "LeftNav--NavLink--Arrow",
+};
+
+export default class Arrow extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
   render() {
-    const { cssClass } = Arrow;
     const { className } = this.props;
 
     return (
@@ -18,11 +31,3 @@ export default class Arrow extends React.PureComponent {
     );
   }
 }
-
-Arrow.propTypes = {
-  className: PropTypes.string,
-};
-
-Arrow.cssClass = {
-  CONTAINER: "LeftNav--NavLink--Arrow",
-};

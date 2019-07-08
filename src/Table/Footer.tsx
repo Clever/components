@@ -8,6 +8,31 @@ import { Button } from "../Button/Button";
 
 import "./Footer.less";
 
+export interface Props {
+  currentPage: number;
+  onPageChange?: Function;
+  numColumns: number;
+  numPages: number;
+  showLastPage?: boolean;
+  isLoading?: boolean;
+  lengthUnknown?: boolean;
+}
+
+export const VISIBLE_PAGE_RANGE_SIZE = 5;
+
+export const cssClass = {
+  BUTTON_PAGE: "Table--footer--button--page",
+  BUTTON_PAGE_SELECTED: "Table--footer--button--page--selected",
+  BUTTON_SCROLL: "Table--footer--button--scroll",
+  CELL: "Table--footer--cell",
+  CONTAINER: "Table--footer",
+  ELLIPSIS: "Table--footer--ellipsis",
+  PAGE_NUMBERS: "Table--footer--page_numbers",
+  ROW: "Table--footer--row",
+  LOADING_CONTAINER: "Table--footer--loadingContainer",
+  LOADING_PILL: "Table--footer--loadingPill",
+};
+
 /**
  * Pagination footer for the Table component.
  * Only rendered if there are at least 2 pages of data available.
@@ -20,9 +45,7 @@ export default function Footer({
   showLastPage,
   isLoading,
   lengthUnknown,
-}) {
-  const { cssClass, VISIBLE_PAGE_RANGE_SIZE } = Footer;
-
+}: Props) {
   const renderEllipsis = () => <span className={cssClass.ELLIPSIS}>&hellip;</span>;
 
   const selectPage = page => {
@@ -147,18 +170,3 @@ Footer.defaultProps = {
   onPageChange: () => {},
   showLastPage: true,
 };
-
-Footer.cssClass = {
-  BUTTON_PAGE: "Table--footer--button--page",
-  BUTTON_PAGE_SELECTED: "Table--footer--button--page--selected",
-  BUTTON_SCROLL: "Table--footer--button--scroll",
-  CELL: "Table--footer--cell",
-  CONTAINER: "Table--footer",
-  ELLIPSIS: "Table--footer--ellipsis",
-  PAGE_NUMBERS: "Table--footer--page_numbers",
-  ROW: "Table--footer--row",
-  LOADING_CONTAINER: "Table--footer--loadingContainer",
-  LOADING_PILL: "Table--footer--loadingPill",
-};
-
-Footer.VISIBLE_PAGE_RANGE_SIZE = 5;

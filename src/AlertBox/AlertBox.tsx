@@ -1,4 +1,3 @@
-import * as _ from "lodash";
 import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
@@ -7,6 +6,17 @@ import { CloseIcon, WarningIcon, SuccessIcon, ErrorIcon, InfoIcon } from "./icon
 import { FlexBox, FlexItem } from "../flex";
 
 import "./AlertBox.less";
+
+type AlertBoxType = "warning" | "success" | "error" | "info";
+
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  title: string;
+  type?: AlertBoxType;
+  isClosable?: boolean;
+  onClose?: () => void;
+}
 
 const ICONS = {
   warning: WarningIcon,
@@ -24,10 +34,20 @@ const cssClass = {
   CLOSE: "AlertBox--close",
 };
 
+const propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.oneOf<AlertBoxType>(["warning", "success", "error", "info"]),
+  isClosable: PropTypes.bool,
+};
+
 /*
  * AlertBox is a closable, highlighted box
  */
-export default class AlertBox extends React.PureComponent {
+export default class AlertBox extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
   state = { isOpen: true };
 
   closeBox() {
@@ -67,18 +87,3 @@ export default class AlertBox extends React.PureComponent {
     );
   }
 }
-
-const TYPES = {
-  WARNING: "warning",
-  SUCCESS: "success",
-  ERROR: "error",
-  INFO: "info",
-};
-
-AlertBox.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(_.values(TYPES)),
-  isClosable: PropTypes.bool,
-};

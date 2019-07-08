@@ -6,12 +6,29 @@ import * as PropTypes from "prop-types";
 import MorePropTypes from "../utils/MorePropTypes";
 import Tab from "./Tab";
 import { FlexBox, Justify } from "../flex";
+import { ChildrenOf, Values } from "../utils/types";
 
 import "./TabBar.less";
 
-export default function TabBar({ children, className, justify, size }) {
-  const { cssClass } = TabBar;
+export interface Props {
+  children?: ChildrenOf<typeof Tab>;
+  className?: string;
+  justify?: Values<typeof Justify>;
+  size?: Values<typeof TabBar.Size>;
+}
 
+interface TabBarComponent extends React.FunctionComponent<Props> {
+  Size: typeof Size;
+  Tab: typeof Tab;
+}
+
+export const cssClass = {
+  CONTAINER: "TabBar",
+
+  size: s => `TabBar--${s}`,
+};
+
+const TabBar: TabBarComponent = function TabBar({ children, className, justify, size }) {
   return (
     <FlexBox
       className={classnames(cssClass.CONTAINER, cssClass.size(size), className)}
@@ -20,15 +37,16 @@ export default function TabBar({ children, className, justify, size }) {
       {children}
     </FlexBox>
   );
-}
+};
 
-TabBar.Tab = Tab;
-
-TabBar.Size = {
+const Size = {
   SMALL: "small",
   MEDIUM: "medium",
   LARGE: "large",
-};
+} as const;
+
+TabBar.Size = Size;
+TabBar.Tab = Tab;
 
 TabBar.propTypes = {
   children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Tab)),
@@ -42,8 +60,4 @@ TabBar.defaultProps = {
   size: TabBar.Size.MEDIUM,
 };
 
-TabBar.cssClass = {
-  CONTAINER: "TabBar",
-
-  size: s => `TabBar--${s}`,
-};
+export default TabBar;

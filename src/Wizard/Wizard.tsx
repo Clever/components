@@ -10,6 +10,48 @@ import { classNameFor } from "../utils";
 
 import "./Wizard.less";
 
+export interface Props {
+  className?: string;
+  style?: React.CSSProperties;
+  title: string;
+  description: React.ReactNode;
+  help?: React.ReactNode;
+  wizardButtons?: {
+    handler: Function;
+    buttonValue: React.ReactNode;
+    buttonClassName?: string;
+  }[];
+  initialWizardData?: any;
+  onComplete: Function;
+  steps: {
+    title: string;
+    description?: React.ReactNode;
+    component: React.ComponentType<any>; // TODO: what props does it get?
+    nextButtonValue?: React.ReactNode;
+    prevButtonValue?: React.ReactNode;
+    validate: (state: any) => boolean;
+    canContinue?: (state: any) => boolean;
+    help?: React.ReactNode;
+    props?: any;
+    onStepComplete?: Function;
+    shouldSkipStep?: (data: any) => boolean;
+  }[];
+  initialStep?: number;
+  nextButtonValue?: React.ReactNode;
+  prevButtonValue?: React.ReactNode;
+  seekable?: boolean;
+  hideProgressBar?: boolean;
+  stickySidebar?: boolean;
+  stepNumberInTitle?: boolean;
+}
+
+interface State {
+  currentStep: number;
+  data: any;
+  percentComplete: number;
+  stepsVisited: number[];
+}
+
 // this is a function so that we get a new array each time
 const getInitialState = () => ({
   currentStep: 0,
@@ -17,8 +59,53 @@ const getInitialState = () => ({
   stepsVisited: [0],
 });
 
-export class Wizard extends React.Component {
-  constructor(props) {
+const propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  wizardButtons: PropTypes.arrayOf(
+    PropTypes.shape({
+      handler: PropTypes.func.isRequired,
+      buttonValue: PropTypes.node.isRequired,
+      buttonClassName: PropTypes.string,
+    }),
+  ),
+  initialWizardData: PropTypes.object,
+  onComplete: PropTypes.func.isRequired,
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+      component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)])
+        .isRequired,
+      nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
+      validate: PropTypes.func.isRequired,
+      canContinue: PropTypes.func,
+      help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+      props: PropTypes.object,
+      onStepComplete: PropTypes.func,
+    }),
+  ).isRequired,
+  initialStep: PropTypes.number,
+  nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  seekable: PropTypes.bool,
+  hideProgressBar: PropTypes.bool,
+  stickySidebar: PropTypes.bool,
+  stepNumberInTitle: PropTypes.bool,
+};
+
+const defaultProps = {
+  stepNumberInTitle: true,
+};
+
+export class Wizard extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  constructor(props: Props) {
     super(props);
     this.state = Object.assign({}, getInitialState(), {
       data: props.initialWizardData || {},
@@ -99,7 +186,7 @@ export class Wizard extends React.Component {
     return validSteps.length / this.props.steps.length;
   }
 
-  _renderSidebar(style) {
+  _renderSidebar(style?: React.CSSProperties) {
     const {
       title,
       description,
@@ -271,45 +358,3 @@ export class Wizard extends React.Component {
     );
   }
 }
-
-Wizard.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  wizardButtons: PropTypes.arrayOf(
-    PropTypes.shape({
-      handler: PropTypes.func.isRequired,
-      buttonValue: PropTypes.node.isRequired,
-      buttonClassName: PropTypes.string,
-    }),
-  ),
-  initialWizardData: PropTypes.object,
-  onComplete: PropTypes.func.isRequired,
-  steps: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)])
-        .isRequired,
-      nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
-      validate: PropTypes.func.isRequired,
-      canContinue: PropTypes.func,
-      help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-      props: PropTypes.object,
-      onStepComplete: PropTypes.func,
-    }),
-  ).isRequired,
-  initialStep: PropTypes.number,
-  nextButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  prevButtonValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  seekable: PropTypes.bool,
-  hideProgressBar: PropTypes.bool,
-  stickySidebar: PropTypes.bool,
-  stepNumberInTitle: PropTypes.bool,
-};
-
-Wizard.defaultProps = {
-  stepNumberInTitle: true,
-};

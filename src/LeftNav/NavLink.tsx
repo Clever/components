@@ -7,9 +7,56 @@ import Arrow from "./Arrow";
 
 import "./NavLink.less";
 
-export class NavLink extends React.PureComponent {
+export interface Props {
+  className?: string;
+  component?: any;
+  // TODO: It's theoretically possible to make this component generic and type these extra props, but it's a pain
+  [additionalProp: string]: any;
+  href?: string;
+  icon?: React.ReactElement;
+  label?: React.ReactNode;
+  onClick?: React.MouseEventHandler;
+  selected?: boolean;
+
+  // Internal use only: (TODO: Remove?)
+  _collapsed?: boolean;
+  _withArrow?: boolean;
+  _withTooltips?: boolean;
+}
+
+const propTypes = {
+  className: PropTypes.string,
+  component: PropTypes.any,
+  href: PropTypes.string,
+  icon: PropTypes.element,
+  label: PropTypes.node,
+  onClick: PropTypes.func,
+  selected: PropTypes.bool,
+
+  // Internal use only:
+  _collapsed: PropTypes.bool,
+  _withArrow: PropTypes.bool,
+  _withTooltips: PropTypes.bool,
+};
+
+export const cssClass = {
+  ARROW_CONTAINER: "NavLink--arrow--container",
+  ARROW_ICON: "NavLink--arrow",
+  COLLAPSED: "NavLink--collapsed",
+  CONTAINER: "NavLink",
+  CONTENTS: "NavLink--contents",
+  ICON: "NavLink--icon",
+  ICON_CONTAINER: "NavLink--icon--container",
+  LABEL: "NavLink--label",
+  LABEL_CONTAINER: "NavLink--label--container",
+  SELECTED: "NavLink--selected",
+  WITH_ARROW: "NavLink--withArrow",
+};
+
+export class NavLink extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
   render() {
-    const { cssClass } = NavLink;
     const {
       _collapsed,
       _withArrow,
@@ -77,32 +124,3 @@ export class NavLink extends React.PureComponent {
     );
   }
 }
-
-NavLink.propTypes = {
-  className: PropTypes.string,
-  component: PropTypes.any,
-  href: PropTypes.string,
-  icon: PropTypes.node,
-  label: PropTypes.node,
-  onClick: PropTypes.func,
-  selected: PropTypes.bool,
-
-  // Internal use only:
-  _collapsed: PropTypes.bool,
-  _withArrow: PropTypes.bool,
-  _withTooltips: PropTypes.bool,
-};
-
-NavLink.cssClass = {
-  ARROW_CONTAINER: "NavLink--arrow--container",
-  ARROW_ICON: "NavLink--arrow",
-  COLLAPSED: "NavLink--collapsed",
-  CONTAINER: "NavLink",
-  CONTENTS: "NavLink--contents",
-  ICON: "NavLink--icon",
-  ICON_CONTAINER: "NavLink--icon--container",
-  LABEL: "NavLink--label",
-  LABEL_CONTAINER: "NavLink--label--container",
-  SELECTED: "NavLink--selected",
-  WITH_ARROW: "NavLink--withArrow",
-};

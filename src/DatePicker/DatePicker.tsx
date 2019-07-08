@@ -2,11 +2,13 @@ import * as moment from "moment";
 import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import ReactDatePicker from "react-datepicker";
+import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker";
 
 import "./DatePicker.less";
 
-export default function DatePicker(props) {
+export interface Props extends ReactDatePickerProps {}
+
+export default function DatePicker(props: Props) {
   return (
     <ReactDatePicker
       {...props}

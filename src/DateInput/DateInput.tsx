@@ -5,10 +5,37 @@ import * as classnames from "classnames";
 import ReactDatePicker from "react-datepicker";
 import * as ReactDateTime from "react-datetime";
 
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms";
+import { Values } from "../utils/types";
 
 import "./DateInput.less";
 import "../less/forms.less";
+
+export interface Props {
+  disabled?: boolean;
+  error?: string;
+  label?: string;
+  name: string;
+  onChange?: (...args: any[]) => void;
+  onFocus?: Function;
+  onBlur?: Function;
+  placeholder?: string;
+  readOnly?: boolean;
+  required?: boolean;
+  type?: string;
+  value?: moment.Moment;
+  className?: string;
+  min?: moment.Moment;
+  max?: moment.Moment;
+  useTime?: boolean;
+  popperPlacement?: Values<typeof popperPlacementPositions>;
+  size?: Size;
+}
+
+interface State {
+  hasBeenFocused: boolean;
+  inFocus: boolean;
+}
 
 const popperPlacementPositions = {
   BOTTOM: "bottom",
@@ -23,16 +50,40 @@ const popperPlacementPositions = {
   TOP: "top",
   TOP_END: "top-end",
   TOP_START: "top-start",
+} as const;
+
+const dateType = PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.instanceOf(moment)]);
+
+const propTypes = {
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.node,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  type: PropTypes.string,
+  value: dateType,
+  className: PropTypes.string,
+  min: dateType,
+  max: dateType,
+  useTime: PropTypes.bool,
+  popperPlacement: PropTypes.oneOf(Object.values(popperPlacementPositions)),
+  size: PropTypes.oneOf(Object.values(FormElementSize)),
 };
 
-export default class DateInput extends React.Component {
+export default class DateInput extends React.Component<Props, State> {
+  static propTypes = propTypes;
   static popperPlacementPositions = popperPlacementPositions;
 
   static defaultProps = {
     size: FormElementSize.FULL_WIDTH,
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = { inFocus: false, hasBeenFocused: false };
 
@@ -144,26 +195,3 @@ export default class DateInput extends React.Component {
     );
   }
 }
-
-const dateType = PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.instanceOf(moment)]);
-
-DateInput.propTypes = {
-  disabled: PropTypes.bool,
-  error: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  placeholder: PropTypes.node,
-  readOnly: PropTypes.bool,
-  required: PropTypes.bool,
-  type: PropTypes.string,
-  value: dateType,
-  className: PropTypes.string,
-  min: dateType,
-  max: dateType,
-  useTime: PropTypes.bool,
-  popperPlacement: PropTypes.oneOf(Object.values(popperPlacementPositions)),
-  size: PropTypes.oneOf(Object.values(FormElementSize)),
-};

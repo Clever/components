@@ -7,6 +7,15 @@ import Checkmark from "../Checkbox/CheckMark";
 import "./Switch.less";
 import { FlexBox, Justify } from "../flex";
 
+export interface Props {
+  className?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  onChange: (checked: boolean) => void;
+  ariaLabel?: string;
+  ariaLabelledby?: string;
+}
+
 const propTypes = {
   ariaLabelledby: PropTypes.string,
   ariaLabel: PropTypes.string,
@@ -44,9 +53,8 @@ const cssClass = {
  *
  * W3C spec: https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox
  */
-export default class Switch extends React.PureComponent {
+export default class Switch extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
   static defaultProps = defaultProps;
 
   render() {

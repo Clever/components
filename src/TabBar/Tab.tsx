@@ -4,6 +4,25 @@ import * as PropTypes from "prop-types";
 
 import "./Tab.less";
 
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  component?: any;
+  // TODO: It's theoretically possible to make this component generic and type these extra props, but it's a pain
+  [additionalProp: string]: any;
+  disabled?: boolean;
+  href?: string;
+  id: any;
+  onSelect?: (id: any) => void;
+  selected?: boolean;
+}
+
+export const cssClass = {
+  CONTAINER: "TabBar--Tab",
+  DISABLED: "TabBar--Tab--disabled",
+  SELECTED: "TabBar--Tab--selected",
+};
+
 export default function Tab({
   children,
   className,
@@ -14,9 +33,7 @@ export default function Tab({
   onSelect,
   selected,
   ...additionalProps
-}) {
-  const { cssClass } = Tab;
-
+}: Props) {
   let Wrapper = component;
   if (!Wrapper) {
     Wrapper = href ? "a" : "button";
@@ -59,10 +76,4 @@ Tab.propTypes = {
 
 Tab.defaultProps = {
   onSelect: () => {},
-};
-
-Tab.cssClass = {
-  CONTAINER: "TabBar--Tab",
-  DISABLED: "TabBar--Tab--disabled",
-  SELECTED: "TabBar--Tab--selected",
 };

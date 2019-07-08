@@ -8,6 +8,24 @@ import FormError from "../FormError";
 
 import "./CheckboxGroup.less";
 
+interface Option {
+  id: string;
+  checked?: boolean;
+  disabled?: boolean;
+  label: React.ReactNode;
+  value?: any;
+}
+
+export interface Props {
+  className?: string;
+  disabled?: boolean;
+  error?: React.ReactNode;
+  label: React.ReactNode;
+  onChange: (options: Option[]) => void;
+  options: Option[];
+  title?: React.ReactNode;
+}
+
 const OPTION_PROP_TYPE = PropTypes.shape({
   id: PropTypes.string.isRequired,
   checked: PropTypes.bool,
@@ -48,9 +66,8 @@ const getNextLabelID = () => `${LABEL_ID_PREFIX}--${nextLabelIDSuffix++}`;
  *
  * W3C spec: https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox
  */
-export default class CheckboxGroup extends React.PureComponent {
+export default class CheckboxGroup extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   _labelID = getNextLabelID();
   _optionRefsByID = {};

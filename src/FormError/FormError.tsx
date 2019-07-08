@@ -7,6 +7,11 @@ import ErrorIcon from "./ErrorIcon";
 
 import "./FormError.less";
 
+export interface Props {
+  className?: string;
+  children: React.ReactNode;
+}
+
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
@@ -23,9 +28,8 @@ const cssClass = {
  * TODO: This is a v0 created for use with the RadioGroup and CheckboxGroup components and probably
  * needs to be fleshed out a little more.
  */
-export default class FormError extends React.PureComponent {
+export default class FormError extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   render() {
     const { children, className } = this.props;

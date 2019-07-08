@@ -4,6 +4,6 @@ const Justify = {
   CENTER: "center",
   END: "end",
   START: "start",
-};
+} as const;
 
 export default Justify;

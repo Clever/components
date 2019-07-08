@@ -5,12 +5,24 @@ import * as PropTypes from "prop-types";
 import * as tablePropTypes from "./tablePropTypes";
 import sortDirection from "./sortDirection";
 
+export interface Props {
+  className?: string;
+  direction?: "asc" | "desc";
+  scale?: number;
+}
+
 const WIDTH = 7;
 const HEIGHT = 12;
 
-export default function SortIcons({ direction, className, scale }) {
-  const { cssClass } = SortIcons;
+export const cssClass = {
+  ACTIVE: "Table--sort_icons--direction--active",
+  ASCENDING: "Table--sort_icons--direction--ascending",
+  CONTAINER: "Table--sort_icons",
+  DESCENDING: "Table--sort_icons--direction--descending",
+  DIRECTION: "Table--sort_icons--direction",
+};
 
+export default function SortIcons({ direction, className, scale }: Props) {
   return (
     <svg
       className={classnames(cssClass.CONTAINER, className)}
@@ -46,12 +58,4 @@ SortIcons.propTypes = {
 
 SortIcons.defaultProps = {
   scale: 1,
-};
-
-SortIcons.cssClass = {
-  ACTIVE: "Table--sort_icons--direction--active",
-  ASCENDING: "Table--sort_icons--direction--ascending",
-  CONTAINER: "Table--sort_icons",
-  DESCENDING: "Table--sort_icons--direction--descending",
-  DIRECTION: "Table--sort_icons--direction",
 };

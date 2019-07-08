@@ -5,14 +5,51 @@ import * as classnames from "classnames";
 
 import MorePropTypes from "../utils/MorePropTypes";
 import { NavLink } from "./NavLink";
+import { OneOrMany } from "../utils/types";
 
 import "./NavGroup.less";
 
+export interface Props {
+  children: OneOrMany<React.ReactElement<NavLink>>;
+  className?: string;
+  icon: React.ReactElement;
+  id: string;
+  label: React.ReactNode;
+
+  // Internal use only: (TODO: Remove?)
+  _collapsed?: boolean;
+  _onClick?: React.MouseEventHandler;
+  _open?: boolean;
+  _withActiveNavGroups?: boolean;
+  _withTooltips?: boolean;
+}
+
+const propTypes = {
+  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(NavLink)).isRequired,
+  className: PropTypes.string,
+  icon: PropTypes.element.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
+
+  // Internal use only:
+  _collapsed: PropTypes.bool,
+  _onClick: PropTypes.func,
+  _open: PropTypes.bool,
+  _withActiveNavGroups: PropTypes.bool,
+  _withTooltips: PropTypes.bool,
+};
+
+export const cssClass = {
+  CONTAINER: "NavGroup",
+  OPEN: "NavGroup--open",
+};
+
 // NavGroup doesn't render its children because LeftNav will render them in
 // a drawer if the NavGroup is open.
-export class NavGroup extends React.PureComponent {
+export class NavGroup extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
   render() {
-    const { cssClass } = NavGroup;
     const {
       _collapsed,
       _onClick,
@@ -41,23 +78,3 @@ export class NavGroup extends React.PureComponent {
     );
   }
 }
-
-NavGroup.propTypes = {
-  children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(NavLink)).isRequired,
-  className: PropTypes.string,
-  icon: PropTypes.node.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.node.isRequired,
-
-  // Internal use only:
-  _collapsed: PropTypes.bool,
-  _onClick: PropTypes.func,
-  _open: PropTypes.bool,
-  _withActiveNavGroups: PropTypes.bool,
-  _withTooltips: PropTypes.bool,
-};
-
-NavGroup.cssClass = {
-  CONTAINER: "NavGroup",
-  OPEN: "NavGroup--open",
-};

@@ -4,15 +4,31 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
-import MenuItem from "./MenuItem";
+import MenuItem, { cssClass as menuItemCss } from "./MenuItem";
 import MorePropTypes from "../utils/MorePropTypes";
+import { Values } from "../utils/types";
 
 import "./Menu.less";
+
+export interface Props {
+  // TODO: fiigure out how to type this.
+  children?: any;
+  className?: string;
+  maxHeight?: string | number;
+  maxWidth?: string | number;
+  minWidth?: string | number;
+  onOpenChange?: (isOpen: boolean) => void;
+  onSelect?: Function;
+  placement?: Values<typeof Placement>;
+  stayOpenOnSelect?: boolean;
+  trigger: React.ReactElement;
+  wrapItems?: boolean;
+}
 
 const Placement = {
   LEFT: "left",
   RIGHT: "right",
-};
+} as const;
 
 const propTypes = {
   children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(MenuItem)),
@@ -54,12 +70,12 @@ const KeyCode = {
   END: 35,
   ESCAPE: 27,
   HOME: 36,
-};
+} as const;
 
 const ArrowScrollDirection = {
   [KeyCode.ARROW_DOWN]: 1,
   [KeyCode.ARROW_UP]: -1,
-};
+} as const;
 
 // TODO: Just use the official React typings to avoid this mess.
 let UntypedReact = null;
@@ -73,10 +89,9 @@ let nextID = 0;
  * Follows recommendations from w3.org:
  * https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/examples/menu-button/menu-button-links.html
  */
-export default class Menu extends React.PureComponent {
+export default class Menu extends React.PureComponent<Props> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
-  static cssClass = cssClass;
 
   static Item = MenuItem;
   static Placement = Placement;
@@ -183,7 +198,7 @@ export default class Menu extends React.PureComponent {
     if (!nextElement) {
       return;
     } else if (
-      nextElement.classList.contains(MenuItem.cssClass.CONTAINER) &&
+      nextElement.classList.contains(menuItemCss.CONTAINER) &&
       nextElement.parentNode.parentNode.id === this.IDs.DROPDOWN
     ) {
       return;

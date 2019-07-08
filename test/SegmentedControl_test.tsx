@@ -2,7 +2,7 @@ import * as assert from "assert";
 import * as React from "react";
 import * as sinon from "sinon";
 import { shallow } from "enzyme";
-import { SegmentedControl } from "../src";
+import { SegmentedControl, cssClass } from "../src/SegmentedControl/SegmentedControl";
 
 const testOptions = [
   {
@@ -22,7 +22,6 @@ const testOptions = [
     content: <span>HTML Option</span>,
   },
 ];
-const { cssClass } = SegmentedControl;
 
 describe("SegmentedControl", () => {
   it("renders all selectable items", () => {

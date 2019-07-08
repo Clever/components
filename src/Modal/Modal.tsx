@@ -6,6 +6,19 @@ import * as reactDom from "react-dom";
 
 import "./Modal.less";
 
+export interface Props {
+  className?: string;
+  width?: number;
+  title: React.ReactNode; // PropTypes says this can only be a string
+  closeModal: () => void;
+  children: React.ReactNode;
+  focusLocked?: boolean;
+}
+
+interface State {
+  windowHeight: number;
+}
+
 const DEFAULT_WIDTH = 400;
 const ESC = 27;
 const closeIcon = (
@@ -14,8 +27,25 @@ const closeIcon = (
   </svg>
 );
 
-export class Modal extends React.Component {
-  constructor(props) {
+const propTypes = {
+  className: PropTypes.string,
+  width: PropTypes.number,
+  title: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  focusLocked: PropTypes.bool,
+};
+
+const defaultProps = {
+  width: DEFAULT_WIDTH,
+  focusLocked: true,
+};
+
+export class Modal extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  constructor(props: Props) {
     super(props);
     this.state = { windowHeight: window.innerHeight };
     this.handleKeyUp = this.handleKeyUp.bind(this);
@@ -85,17 +115,3 @@ export class Modal extends React.Component {
     return modal;
   }
 }
-
-Modal.propTypes = {
-  className: PropTypes.string,
-  width: PropTypes.number,
-  title: PropTypes.string.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  focusLocked: PropTypes.bool,
-};
-
-Modal.defaultProps = {
-  width: DEFAULT_WIDTH,
-  focusLocked: true,
-};

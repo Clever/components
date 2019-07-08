@@ -8,6 +8,18 @@ import PartialMark from "./PartialMark";
 
 import "./Checkbox.less";
 
+export interface Props {
+  checked?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  id?: string;
+  onChange?: ({ id: string, checked: boolean, value: any }) => void;
+  partial?: boolean;
+  tabIndex?: number;
+  value?: any;
+}
+
 const propTypes = {
   checked: PropTypes.bool,
   children: PropTypes.node.isRequired,
@@ -45,9 +57,8 @@ const getNextLabelID = () => `${LABEL_ID_PREFIX}--${nextLabelIDSuffix++}`;
  *
  * W3C spec: https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox
  */
-export default class Checkbox extends React.PureComponent {
+export default class Checkbox extends React.PureComponent<Props> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
   _element = null;
   _labelID = getNextLabelID();

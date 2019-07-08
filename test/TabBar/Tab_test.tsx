@@ -3,11 +3,9 @@ import * as React from "react";
 import * as sinon from "sinon";
 import { shallow } from "enzyme";
 
-import Tab from "../../src/TabBar/Tab";
+import Tab, { cssClass } from "../../src/TabBar/Tab";
 
 describe("FlexBox", () => {
-  const { cssClass } = Tab;
-
   const TAB_LABEL = <span>Test Tab Label</span>;
   const TAB_VALUE = 1;
 

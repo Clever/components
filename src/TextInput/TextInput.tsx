@@ -5,17 +5,70 @@ import * as classnames from "classnames";
 import * as _ from "lodash";
 
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { Values } from "../utils/types";
 
 import "./TextInput.less";
 import "../less/forms.less";
 
-export class TextInput extends React.Component {
-  static defaultProps = {
-    placeholderCaps: false,
-    size: FormElementSize.FULL_WIDTH,
-  };
+export interface Props {
+  disabled?: boolean;
+  disableAutocomplete?: boolean;
+  enableShow?: boolean;
+  error?: string;
+  label?: string;
+  name: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  placeholder?: string;
+  placeholderCaps?: boolean;
+  readOnly?: boolean;
+  required?: boolean;
+  size?: Values<typeof FormElementSize>;
+  type?: string;
+  value?: React.ReactNode;
+  className?: string;
+  [additionalProp: string]: any;
+}
 
-  constructor(props) {
+interface State {
+  hasBeenFocused: boolean;
+  hidden: boolean;
+  inFocus: boolean;
+}
+
+const propTypes = {
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  disableAutocomplete: PropTypes.bool,
+  enableShow: PropTypes.bool,
+  error: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.string,
+  placeholderCaps: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  size: PropTypes.oneOf(Object.values(FormElementSize)),
+  type: PropTypes.string,
+  value: PropTypes.node,
+};
+
+const defaultProps = {
+  placeholderCaps: false,
+  size: FormElementSize.FULL_WIDTH,
+};
+
+export class TextInput extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  constructor(props: Props) {
     super(props);
     this.state = { inFocus: false, hasBeenFocused: false, hidden: true };
     this.onFocus = this.onFocus.bind(this);
@@ -163,25 +216,3 @@ export class TextInput extends React.Component {
     );
   }
 }
-
-TextInput.propTypes = {
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  disableAutocomplete: PropTypes.bool,
-  enableShow: PropTypes.bool,
-  error: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  placeholder: PropTypes.node,
-  placeholderCaps: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  required: PropTypes.bool,
-  // Object.values isn't properly polyfilled in jsx files
-  size: PropTypes.oneOf(Object.keys(FormElementSize).map(key => FormElementSize[key])),
-  type: PropTypes.string,
-  value: PropTypes.node,
-};

@@ -5,6 +5,6 @@ const ContentAlign = {
   END: "end",
   START: "start",
   STRETCH: "stretch",
-};
+} as const;
 
 export default ContentAlign;

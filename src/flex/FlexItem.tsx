@@ -3,22 +3,38 @@ import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
+import { Values } from "../utils/types";
+
 import ItemAlign from "./ItemAlign";
 
 import "../less/flex.less";
 
+export interface Props {
+  alignSelf?: Values<typeof ItemAlign>;
+  children?: React.ReactNode;
+  className?: string;
+  component?: any;
+  // TODO: It's theoretically possible to make this component generic and type these extra props, but it's a pain
+  [additionalProp: string]: any;
+  grow?: boolean;
+}
+
 let TYPE_ANY;
 
+export const cssClass = {
+  GROW: "flex--grow",
+
+  alignSelf: (value: string) => `self--${value}`,
+};
+
 export default function FlexItem({
-  alignSelf = "",
+  alignSelf,
   children = TYPE_ANY,
-  className = "",
+  className,
   component: Wrapper = "div",
   grow = false,
   ...additionalProps
-}) {
-  const { cssClass } = FlexItem;
-
+}: Props) {
   return (
     <Wrapper
       className={classnames(
@@ -43,10 +59,4 @@ FlexItem.propTypes = {
 
 FlexItem.defaultProps = {
   component: "div",
-};
-
-FlexItem.cssClass = {
-  GROW: "flex--grow",
-
-  alignSelf: value => `self--${value}`,
 };

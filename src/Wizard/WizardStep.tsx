@@ -4,11 +4,61 @@ import * as _ from "lodash";
 import * as classnames from "classnames";
 import { classNameFor } from "../utils";
 
+export interface Props {
+  // external facing
+  title: string;
+  stepNumberInTitle: boolean;
+  description?: React.ReactNode;
+  help?: React.ReactNode;
+  Component: React.ComponentType<any>;
+  componentProps?: any;
+
+  // internal facing
+  className?: string;
+  currentStep: number;
+  totalSteps: number;
+  updatePercentComplete: Function;
+  calculatePercentComplete: Function;
+  percentComplete: number;
+  setWizardState: Function;
+  validate?: (data: any) => boolean;
+  wizardState: any;
+}
+
+interface State {
+  collapseBreakpointWidth: number;
+  helpTextCollapsed: boolean;
+  renderedStepWidth: number;
+}
+
 // 58.25 rem = width of sidebar + width of left column
 const COLLAPSE_BREAKPOINT_WIDTH_REM = 63.25;
 
-export default class WizardStep extends React.Component {
-  constructor(props) {
+const propTypes = {
+  // external facing
+  title: PropTypes.string.isRequired,
+  stepNumberInTitle: PropTypes.bool.isRequired,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)])
+    .isRequired,
+  componentProps: PropTypes.object,
+
+  // internal facing
+  className: PropTypes.string,
+  currentStep: PropTypes.number.isRequired,
+  totalSteps: PropTypes.number.isRequired,
+  updatePercentComplete: PropTypes.func.isRequired,
+  calculatePercentComplete: PropTypes.func.isRequired,
+  percentComplete: PropTypes.number.isRequired,
+  setWizardState: PropTypes.func.isRequired,
+  wizardState: PropTypes.object.isRequired,
+};
+
+export default class WizardStep extends React.Component<Props, State> {
+  static propTypes = propTypes;
+
+  constructor(props: Props) {
     super(props);
 
     // NOTE: if a webpage explicitly changes the font size on the html element, this may be
@@ -19,6 +69,7 @@ export default class WizardStep extends React.Component {
     this.state = {
       renderedStepWidth: null,
       collapseBreakpointWidth: COLLAPSE_BREAKPOINT_WIDTH_REM * parseFloat(fontSize),
+      helpTextCollapsed: false,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
   }
@@ -124,24 +175,3 @@ export default class WizardStep extends React.Component {
     );
   }
 }
-
-WizardStep.propTypes = {
-  // external facing
-  title: PropTypes.string.isRequired,
-  stepNumberInTitle: PropTypes.bool.isRequired,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  help: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(React.Component)])
-    .isRequired,
-  componentProps: PropTypes.object,
-
-  // internal facing
-  className: PropTypes.string,
-  currentStep: PropTypes.number.isRequired,
-  totalSteps: PropTypes.number.isRequired,
-  updatePercentComplete: PropTypes.func.isRequired,
-  calculatePercentComplete: PropTypes.func.isRequired,
-  percentComplete: PropTypes.number.isRequired,
-  setWizardState: PropTypes.func.isRequired,
-  wizardState: PropTypes.object.isRequired,
-};

@@ -2,15 +2,15 @@ import * as React from "react";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 
+export interface Props {
+  className?: string;
+}
+
 const cssClass = {
   CONTAINER: "CloseIcon--container",
 };
 
-CloseIcon.propTypes = {
-  className: PropTypes.string,
-};
-
-export function CloseIcon(props) {
+export const CloseIcon: React.FunctionComponent<Props> = function CloseIcon(props) {
   const { className } = props;
   return (
     <svg
@@ -27,4 +27,8 @@ export function CloseIcon(props) {
       />
     </svg>
   );
-}
+};
+
+CloseIcon.propTypes = {
+  className: PropTypes.string,
+};

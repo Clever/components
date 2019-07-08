@@ -4,6 +4,18 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import KeyCode from "../utils/KeyCode";
+import { Values } from "../utils/types";
+
+export interface Props {
+  backKeys?: Values<typeof KeyCode>[];
+  children?: React.ReactNode;
+  currentID?: string;
+  forceTabKey?: boolean;
+  forwardKeys?: Values<typeof KeyCode>[];
+  itemIDs: string[];
+  noWrap?: boolean;
+  onChange: (itemIDs: string) => void;
+}
 
 const propTypes = {
   backKeys: PropTypes.arrayOf(PropTypes.oneOf(Object.values(KeyCode))),
@@ -21,7 +33,7 @@ const propTypes = {
  * Emits navigation events with the ID of the next item to focus on - it's up to the client to move
  * focus as needed and update the currentID prop accordingly.
  */
-export default class WithKeyboardNav extends React.PureComponent {
+export default class WithKeyboardNav extends React.PureComponent<Props> {
   static propTypes = propTypes;
 
   static defaultProps = {

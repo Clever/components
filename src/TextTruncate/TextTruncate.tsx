@@ -5,6 +5,16 @@ import * as React from "react";
 import { Button } from "../Button/Button";
 import RichText from "../RichText/RichText";
 
+export interface Props {
+  className?: string;
+  text: string;
+  showMoreLabel?: string;
+  showLessLabel?: string;
+  lines?: number;
+  maxCharsShown?: number;
+  useRichText?: boolean;
+}
+
 const propTypes = {
   className: PropTypes.string,
   text: PropTypes.string.isRequired,
@@ -30,10 +40,9 @@ const cssClass = {
  * Truncate long text
  * Comes with read more/less toggle
  */
-export default class TextTruncate extends React.PureComponent {
+export default class TextTruncate extends React.PureComponent<Props> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
-  static cssClass = cssClass;
 
   state = {
     truncated: true,

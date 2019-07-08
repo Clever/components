@@ -3,28 +3,50 @@ import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
+import { Values } from "../utils/types";
+
 import ContentAlign from "./ContentAlign";
-import FlexItem from "./FlexItem";
+import FlexItem, { Props as FlexItemProps } from "./FlexItem";
 import ItemAlign from "./ItemAlign";
 import Justify from "./Justify";
 
 import "../less/flex.less";
 
+export interface Props extends FlexItemProps {
+  alignContent?: "around" | "between" | "center" | "end" | "start" | "stretch";
+  alignItems?: Values<typeof ItemAlign>;
+  children?: React.ReactNode;
+  className?: string;
+  column?: boolean;
+  inline?: boolean;
+  justify?: Values<typeof Justify>;
+  wrap?: boolean;
+}
+
 let TYPE_ANY;
 
+export const cssClass = {
+  FLEXBOX: "flexbox",
+  COLUMN: "flex--direction--column",
+  FLEXBOX_INLINE: "flexbox--inline",
+  WRAP: "flex--wrap",
+
+  alignContent: value => `content--${value}`,
+  alignItems: value => `items--${value}`,
+  justify: value => `justify--${value}`,
+};
+
 export default function FlexBox({
-  alignContent = "",
-  alignItems = "",
+  alignContent,
+  alignItems,
   children = TYPE_ANY,
-  className = "",
+  className,
   column = false,
   inline = false,
-  justify = "",
+  justify,
   wrap = false,
   ...additionalProps
-}) {
-  const { cssClass } = FlexBox;
-
+}: Props) {
   return (
     <FlexItem
       className={classnames(
@@ -57,15 +79,4 @@ FlexBox.propTypes = {
 
 FlexBox.defaultProps = {
   component: "div",
-};
-
-FlexBox.cssClass = {
-  FLEXBOX: "flexbox",
-  COLUMN: "flex--direction--column",
-  FLEXBOX_INLINE: "flexbox--inline",
-  WRAP: "flex--wrap",
-
-  alignContent: value => `content--${value}`,
-  alignItems: value => `items--${value}`,
-  justify: value => `justify--${value}`,
 };

@@ -4,6 +4,35 @@ import * as PropTypes from "prop-types";
 
 import Number from "../Number";
 
+interface BaseProps {
+  plural?: string;
+  short?: boolean;
+  singular?: string;
+  zeroOverride?: string;
+}
+
+interface FormatOptions extends BaseProps {
+  number: string | number;
+}
+
+export interface Props extends BaseProps {
+  children?: FormatOptions["number"];
+  className?: string;
+}
+
+const propTypes = {
+  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  className: PropTypes.string,
+  plural: PropTypes.string,
+  singular: PropTypes.string.isRequired,
+  short: PropTypes.bool,
+  zeroOverride: PropTypes.string,
+};
+
+export const cssClass = {
+  CONTAINER: "Count",
+};
+
 /**
  * Provides a convenient wrapper for displaying counts of things.
  * Renders a span containing a formatted number, using the `Number` component, followed by the given
@@ -17,8 +46,10 @@ import Number from "../Number";
  *   // results in:
  *   <span>3 things</span>
  */
-export default class Count extends React.PureComponent {
-  static format({ number, plural, short, singular, zeroOverride }) {
+export default class Count extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
+  static format({ number, plural, short, singular, zeroOverride }: FormatOptions) {
     const displayNumber = Number.format(number, short);
     const rawNumber = parseInt(number || 0, 10);
 
@@ -35,7 +66,7 @@ export default class Count extends React.PureComponent {
   }
 
   render() {
-    const { cssClass, format } = Count;
+    const { format } = Count;
     const { children, className, plural, short, singular, zeroOverride } = this.props;
 
     return (
@@ -45,16 +76,3 @@ export default class Count extends React.PureComponent {
     );
   }
 }
-
-Count.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  className: PropTypes.string,
-  plural: PropTypes.string,
-  singular: PropTypes.string.isRequired,
-  short: PropTypes.bool,
-  zeroOverride: PropTypes.string,
-};
-
-Count.cssClass = {
-  CONTAINER: "Count",
-};

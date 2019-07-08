@@ -3,12 +3,69 @@ import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
 import TextareaAutosize from "react-autosize-textarea";
 
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms";
 
 import "./TextArea.less";
 import "../less/forms.less";
 
-export class TextArea extends React.Component {
+export interface Props {
+  disabled?: boolean;
+  error?: string;
+  label?: string;
+  maxLength?: number;
+  minLength?: number;
+  name: string;
+  onBlur?: () => void;
+  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+  onFocus?: () => void;
+  optional?: boolean;
+  placeholder?: string;
+  readOnly?: boolean;
+  required?: boolean;
+  spellCheck?: boolean;
+  value?: string | string[] | number;
+  className?: string;
+  autoResize?: boolean;
+  rows?: number;
+  size?: Size;
+}
+
+interface State {
+  hasBeenFocused: boolean;
+  inFocus: boolean;
+}
+
+const propTypes = {
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  label: PropTypes.string,
+  maxLength: PropTypes.number,
+  minLength: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  optional: PropTypes.bool,
+  placeholder: PropTypes.node,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  spellCheck: PropTypes.bool,
+  value: PropTypes.node,
+  className: PropTypes.string,
+  autoResize: PropTypes.bool,
+  rows: PropTypes.number,
+  size: PropTypes.oneOf(Object.values(FormElementSize)),
+};
+
+const defaultProps = {
+  rows: 1,
+  size: FormElementSize.FULL_WIDTH,
+};
+
+export class TextArea extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
   static validateProps(props) {
     if (props.required && props.optional) {
       throw new Error("You cannot pass both `required` and `optional` on a TextArea.");
@@ -23,7 +80,7 @@ export class TextArea extends React.Component {
     return props;
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(TextArea.validateProps(props));
 
     this.state = { inFocus: false, hasBeenFocused: false };
@@ -148,31 +205,3 @@ export class TextArea extends React.Component {
     );
   }
 }
-
-TextArea.propTypes = {
-  disabled: PropTypes.bool,
-  error: PropTypes.string,
-  label: PropTypes.string,
-  maxLength: PropTypes.number,
-  minLength: PropTypes.number,
-  name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  onFocus: PropTypes.func,
-  optional: PropTypes.bool,
-  placeholder: PropTypes.node,
-  readOnly: PropTypes.bool,
-  required: PropTypes.bool,
-  spellCheck: PropTypes.bool,
-  value: PropTypes.node,
-  className: PropTypes.string,
-  autoResize: PropTypes.bool,
-  rows: PropTypes.number,
-  // Object.values isn't properly polyfilled in jsx files
-  size: PropTypes.oneOf(Object.keys(FormElementSize).map(key => FormElementSize[key])),
-};
-
-TextArea.defaultProps = {
-  rows: 1,
-  size: FormElementSize.FULL_WIDTH,
-};

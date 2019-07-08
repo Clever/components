@@ -3,13 +3,92 @@ import * as PropTypes from "prop-types";
 import ReactSelect from "react-select";
 import * as classnames from "classnames";
 
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms";
 
 import "react-select/dist/react-select.css";
 import "./Select.less";
 import "../less/forms.less";
 
-const cssClass = {
+interface SelectValueType {
+  label: string;
+  value: string;
+}
+
+export interface Props {
+  id: string;
+  name: string;
+  clearable?: boolean;
+  disabled?: boolean;
+  label?: string;
+  multi?: boolean;
+  onChange?: Function;
+  optionRenderer?: Function;
+  options?: SelectValueType[];
+  lazy?: boolean;
+  loadOptions?: Function;
+  filterOptions?: Function;
+  placeholder?: string;
+  readOnly?: boolean;
+  searchable?: boolean;
+  creatable?: boolean;
+  creatablePromptFn?: Function;
+  noResultsText?: React.ReactNode;
+  required?: boolean;
+  value?: string | SelectValueType | string[] | SelectValueType[];
+  className?: string;
+  error?: string;
+  size?: Size;
+}
+
+interface State {
+  hasBeenFocused: boolean;
+}
+
+const selectValuePropType = PropTypes.shape({
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+});
+
+const propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  clearable: PropTypes.bool,
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+  multi: PropTypes.bool,
+  onChange: PropTypes.func,
+  optionRenderer: PropTypes.func,
+  options: PropTypes.arrayOf(selectValuePropType),
+  lazy: PropTypes.bool,
+  loadOptions: PropTypes.func,
+  filterOptions: PropTypes.func,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  searchable: PropTypes.bool,
+  creatable: PropTypes.bool,
+  creatablePromptFn: PropTypes.func,
+  noResultsText: PropTypes.node,
+  required: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    selectValuePropType,
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(selectValuePropType),
+  ]),
+  className: PropTypes.string,
+  error: PropTypes.string,
+  size: PropTypes.oneOf(Object.values(FormElementSize)),
+};
+
+const defaultProps = {
+  clearable: false,
+  placeholder: "",
+  searchable: false,
+  creatable: false,
+  size: FormElementSize.FULL_WIDTH,
+};
+
+export const cssClass = {
   CONTAINER: "Select--container",
   LABEL: "Select--label",
   LABEL_CONTAINER: "Select--labelContainer",
@@ -35,10 +114,11 @@ function isLabelHidden(placeholder, value) {
  * Component to allow selecting options from a list. It can fetch those options
  * synchronously or asynchronously by specifying the `lazy` parameter.
  */
-export class Select extends React.Component {
-  static cssClass = cssClass;
+export class Select extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = { hasBeenFocused: false };
   }
@@ -158,48 +238,3 @@ export class Select extends React.Component {
     );
   }
 }
-
-const selectValuePropType = PropTypes.shape({
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-});
-
-Select.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  clearable: PropTypes.bool,
-  disabled: PropTypes.bool,
-  label: PropTypes.string,
-  multi: PropTypes.bool,
-  onChange: PropTypes.func,
-  optionRenderer: PropTypes.func,
-  options: PropTypes.arrayOf(selectValuePropType),
-  lazy: PropTypes.bool,
-  loadOptions: PropTypes.func,
-  filterOptions: PropTypes.func,
-  placeholder: PropTypes.string,
-  readOnly: PropTypes.bool,
-  searchable: PropTypes.bool,
-  creatable: PropTypes.bool,
-  creatablePromptFn: PropTypes.func,
-  noResultsText: PropTypes.node,
-  required: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    selectValuePropType,
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.arrayOf(selectValuePropType),
-  ]),
-  className: PropTypes.string,
-  error: PropTypes.string,
-  // Object.values isn't properly polyfilled in jsx files
-  size: PropTypes.oneOf(Object.keys(FormElementSize).map(key => FormElementSize[key])),
-};
-
-Select.defaultProps = {
-  clearable: false,
-  placeholder: "",
-  searchable: false,
-  creatable: false,
-  size: FormElementSize.FULL_WIDTH,
-};

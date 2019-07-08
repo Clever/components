@@ -4,23 +4,28 @@ import * as PropTypes from "prop-types";
 
 import "./Item.less";
 
-export default class Item extends React.PureComponent {
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
+}
+
+const cssClass = {
+  CONTAINER: "List--Item",
+  CONTENT_WRAPPER: "List--Item--ContentWrapper",
+  CONTENT_ONCLICK: "List--Item--ContentWrapperClickable",
+
+  type: type => `List--Item--${type}`,
+};
+
+export default class Item extends React.PureComponent<Props> {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     onClick: PropTypes.func,
   };
 
-  static cssClass = {
-    CONTAINER: "List--Item",
-    CONTENT_WRAPPER: "List--Item--ContentWrapper",
-    CONTENT_ONCLICK: "List--Item--ContentWrapperClickable",
-
-    type: type => `List--Item--${type}`,
-  };
-
   render() {
-    const { cssClass } = Item;
     const { children, className, onClick } = this.props;
 
     let Wrapper = DivWrapper;

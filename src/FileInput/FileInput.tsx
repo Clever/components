@@ -4,10 +4,29 @@ import * as Dropzone from "react-dropzone";
 import * as classnames from "classnames";
 
 import { FlexBox, FlexItem } from "../flex";
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms";
 
 import "./FileInput.less";
 import "../less/forms.less";
+
+export interface Props {
+  className?: string;
+  customIcon?: JSX.Element;
+  dropzoneClass?: string;
+  iconOnly?: boolean;
+  label?: string;
+  store: Function;
+  accept?: string;
+  size?: Size;
+}
+
+interface State {
+  fileKey: number;
+  filename: string;
+  error: string;
+  progress: number;
+  success: boolean;
+}
 
 function DefaultIcon() {
   return (
@@ -82,16 +101,31 @@ function renderMessage(text, selected) {
   );
 }
 
-export class FileInput extends React.Component {
-  static defaultProps = {
-    iconOnly: false,
-    className: "",
-    formElementSize: FormElementSize.FULL_WIDTH,
-  };
+const propTypes = {
+  className: PropTypes.string,
+  customIcon: PropTypes.node,
+  dropzoneClass: PropTypes.string,
+  iconOnly: PropTypes.bool,
+  label: PropTypes.string,
+  store: PropTypes.func.isRequired,
+  accept: PropTypes.string,
+  size: PropTypes.string,
+};
 
-  constructor(props) {
+const defaultProps = {
+  iconOnly: false,
+  className: "",
+  formElementSize: FormElementSize.FULL_WIDTH,
+};
+
+export class FileInput extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  constructor(props: Props) {
     super(props);
     this.state = {
+      fileKey: null,
       filename: null,
       error: null,
       progress: null,
@@ -182,14 +216,3 @@ export class FileInput extends React.Component {
     );
   }
 }
-
-FileInput.propTypes = {
-  className: PropTypes.string,
-  customIcon: PropTypes.node,
-  dropzoneClass: PropTypes.string,
-  iconOnly: PropTypes.bool,
-  label: PropTypes.string,
-  store: PropTypes.func.isRequired,
-  accept: PropTypes.string,
-  size: PropTypes.string,
-};

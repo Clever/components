@@ -4,10 +4,74 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import Tooltip from "../Tooltip";
+import { Values } from "../utils/types";
 
 import "./Label.less";
 
-export default class Label extends React.PureComponent {
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  color?: Values<typeof Color>;
+  tooltip?: React.ReactNode;
+  tooltipPlacement?: Values<typeof Tooltip.Placement>;
+  tooltipTextAlign?: Values<typeof Tooltip.Align>;
+  size?: Values<typeof Size>;
+}
+
+const Color = {
+  // Primary:
+  BLUE: "blue",
+
+  // Neutrals:
+  GRAY: "gray",
+
+  // Alerts:
+  ERROR: "error",
+  SUCCESS: "success",
+  WARNING: "warning",
+
+  // Accents:
+  AQUA: "aqua",
+  PINK: "pink",
+  PURPLE: "purple",
+} as const;
+
+const Size = {
+  S: "s",
+  M: "m",
+  L: "l",
+} as const;
+
+const propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  color: PropTypes.oneOf(_.values(Color)),
+  tooltip: PropTypes.node,
+  tooltipPlacement: Tooltip.propTypes.placement,
+  tooltipTextAlign: Tooltip.propTypes.textAlign,
+  size: PropTypes.oneOf(_.values(Size)),
+};
+
+const defaultProps = {
+  color: Color.GRAY,
+  size: Size.M,
+};
+
+export const cssClass = {
+  CONTAINER: "Label",
+  WITH_TOOLTIP: "Label--withTooltip",
+
+  color: c => `Label--${c}`,
+  size: s => `Label--${s}`,
+};
+
+export default class Label extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  static Color = Color;
+  static Size = Size;
+
   private label = React.createRef<HTMLSpanElement>();
 
   focus() {
@@ -15,7 +79,6 @@ export default class Label extends React.PureComponent {
   }
 
   render() {
-    const { cssClass } = Label;
     const {
       children,
       className,
@@ -53,50 +116,3 @@ export default class Label extends React.PureComponent {
     );
   }
 }
-
-Label.Color = {
-  // Primary:
-  BLUE: "blue",
-
-  // Neutrals:
-  GRAY: "gray",
-
-  // Alerts:
-  ERROR: "error",
-  SUCCESS: "success",
-  WARNING: "warning",
-
-  // Accents:
-  AQUA: "aqua",
-  PINK: "pink",
-  PURPLE: "purple",
-};
-
-Label.Size = {
-  S: "s",
-  M: "m",
-  L: "l",
-};
-
-Label.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  color: PropTypes.oneOf(_.values(Label.Color)),
-  tooltip: PropTypes.node,
-  tooltipPlacement: Tooltip.propTypes.placement,
-  tooltipTextAlign: Tooltip.propTypes.textAlign,
-  size: PropTypes.oneOf(_.values(Label.Size)),
-};
-
-Label.defaultProps = {
-  color: Label.Color.GRAY,
-  size: Label.Size.M,
-};
-
-Label.cssClass = {
-  CONTAINER: "Label",
-  WITH_TOOLTIP: "Label--withTooltip",
-
-  color: c => `Label--${c}`,
-  size: s => `Label--${s}`,
-};

@@ -4,11 +4,9 @@ import { shallow } from "enzyme";
 
 import FlexBox from "../../src/flex/FlexBox";
 import Tab from "../../src/TabBar/Tab";
-import TabBar from "../../src/TabBar/TabBar";
+import TabBar, { cssClass } from "../../src/TabBar/TabBar";
 
 describe("FlexBox", () => {
-  const { cssClass } = TabBar;
-
   const TABS = [
     <Tab id="id_1" key="key_1" value={1}>
       Tab 1

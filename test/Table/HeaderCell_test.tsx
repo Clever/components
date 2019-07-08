@@ -3,12 +3,11 @@ import * as React from "react";
 import * as sinon from "sinon";
 import { shallow } from "enzyme";
 
-import HeaderCell from "../../src/Table/HeaderCell";
+import HeaderCell, { cssClass } from "../../src/Table/HeaderCell";
 import SortIcons from "../../src/Table/SortIcons";
 import sortDirection from "../../src/Table/sortDirection";
 
 describe("Table -- HeaderCell", () => {
-  const { cssClass } = HeaderCell;
   const CONTENT = "Header Cell Content";
 
   const newHeaderCell = props => shallow(<HeaderCell {...props}>{CONTENT}</HeaderCell>);

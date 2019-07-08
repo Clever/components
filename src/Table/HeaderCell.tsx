@@ -9,6 +9,23 @@ import { FlexBox, ItemAlign } from "../flex";
 
 import "./HeaderCell.less";
 
+export interface Props {
+  className?: string;
+  children?: React.ReactNode;
+  onSortChange?: Function;
+  sortable?: boolean;
+  activeSortDirection?: "asc" | "desc";
+  width?: string;
+}
+
+export const cssClass = {
+  CONTENT: "Table--header--cell--content",
+  HEADER_CELL: "Table--header--cell",
+  LABEL: "Table--header--cell--label",
+  SORTABLE: "Table--header--cell--sortable",
+  SORT: "Table--header--cell--sort_icons",
+};
+
 export default function HeaderCell({
   children,
   className,
@@ -16,9 +33,7 @@ export default function HeaderCell({
   sortable,
   activeSortDirection,
   width,
-}) {
-  const { cssClass } = HeaderCell;
-
+}: Props) {
   return (
     <Cell
       className={classnames(cssClass.HEADER_CELL, sortable && cssClass.SORTABLE, className)}
@@ -44,12 +59,4 @@ HeaderCell.propTypes = {
   sortable: PropTypes.bool,
   activeSortDirection: tablePropTypes.sortDirection,
   width: PropTypes.string,
-};
-
-HeaderCell.cssClass = {
-  CONTENT: "Table--header--cell--content",
-  HEADER_CELL: "Table--header--cell",
-  LABEL: "Table--header--cell--label",
-  SORTABLE: "Table--header--cell--sortable",
-  SORT: "Table--header--cell--sort_icons",
 };

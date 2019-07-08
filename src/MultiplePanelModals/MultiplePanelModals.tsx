@@ -3,7 +3,40 @@ import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
 
 import { Button } from "../Button/Button";
-import { Modal } from "../Modal/Modal";
+import { Modal, Props as ModalProps } from "../Modal/Modal";
+
+export interface Props {
+  className?: string;
+  componentArray: any[];
+  closeModal: ModalProps["closeModal"];
+  defaultOnClickLeftButton?: Function;
+  defaultOnClickRightButton?: Function;
+  height?: string | number;
+  rightButtonDisabled?: boolean;
+  startingPanel?: number;
+}
+
+interface State {
+  currentPanel: number;
+}
+
+const propTypes = {
+  className: PropTypes.string,
+  componentArray: PropTypes.array.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  defaultOnClickLeftButton: PropTypes.func,
+  defaultOnClickRightButton: PropTypes.func,
+  height: PropTypes.string,
+  rightButtonDisabled: PropTypes.bool,
+  startingPanel: PropTypes.number,
+};
+
+const defaultProps = {
+  startingPanel: 0,
+  rightButtonDisabled: false,
+  defaultOnClickLeftButton: () => {},
+  defaultOnClickRightButton: () => {},
+};
 
 export const Classes = {
   CONTAINER: "MultiplePanelModals",
@@ -11,8 +44,11 @@ export const Classes = {
   SECOND_BUTTON: "MultiplePanelModals--next",
 };
 
-export class MultiplePanelModals extends React.Component {
-  constructor(props) {
+export class MultiplePanelModals extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  constructor(props: Props) {
     super(props);
     this.state = { currentPanel: this.props.startingPanel };
   }
@@ -118,21 +154,3 @@ export class MultiplePanelModals extends React.Component {
     );
   }
 }
-
-MultiplePanelModals.propTypes = {
-  className: PropTypes.string,
-  componentArray: PropTypes.array.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  defaultOnClickLeftButton: PropTypes.func,
-  defaultOnClickRightButton: PropTypes.func,
-  height: PropTypes.string,
-  rightButtonDisabled: PropTypes.bool,
-  startingPanel: PropTypes.number,
-};
-
-MultiplePanelModals.defaultProps = {
-  startingPanel: 0,
-  rightButtonDisabled: false,
-  defaultOnClickLeftButton: () => {},
-  defaultOnClickRightButton: () => {},
-};

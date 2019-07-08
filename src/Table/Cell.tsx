@@ -4,9 +4,20 @@ import * as PropTypes from "prop-types";
 
 import "./Cell.less";
 
-export default function Cell({ children, className, noWrap, width, ...additionalProps }) {
-  const { cssClass } = Cell;
+export interface Props {
+  children: React.ReactNode;
+  className?: string;
+  noWrap?: boolean;
+  width?: string;
+  [additionalProp: string]: any;
+}
 
+export const cssClass = {
+  CELL: "Table--cell",
+  NO_WRAP: "Table--cell--no_wrap",
+};
+
+export default function Cell({ children, className, noWrap, width, ...additionalProps }: Props) {
   return (
     <td
       className={classnames(cssClass.CELL, noWrap && cssClass.NO_WRAP, className)}
@@ -23,9 +34,4 @@ Cell.propTypes = {
   children: PropTypes.node,
   noWrap: PropTypes.bool,
   width: PropTypes.string,
-};
-
-Cell.cssClass = {
-  CELL: "Table--cell",
-  NO_WRAP: "Table--cell--no_wrap",
 };

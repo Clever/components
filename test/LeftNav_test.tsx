@@ -2,12 +2,11 @@ import * as assert from "assert";
 import * as React from "react";
 import * as sinon from "sinon";
 import { shallow } from "enzyme";
-import { LeftNav } from "../src";
+import { LeftNav, cssClass as navCss } from "../src/LeftNav/LeftNav";
+import { NavLink, cssClass as linkCss } from "../src/LeftNav/NavLink";
 
 describe("LeftNav", function LeftNavTest() {
-  const { NavLink, NavGroup } = LeftNav;
-  const { cssClass: navCss } = LeftNav;
-  const { cssClass: linkCss } = NavLink;
+  const { NavGroup } = LeftNav;
 
   const fakeIcon = <img className="fakeIcon" src="iconSrc" />;
 

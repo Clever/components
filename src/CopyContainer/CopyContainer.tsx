@@ -9,6 +9,17 @@ import ItemAlign from "../flex/ItemAlign";
 
 import "./CopyContainer.less";
 
+export interface Props {
+  children?: React.ReactNode;
+  copyText?: string;
+  buttonLabel?: string;
+  className?: string;
+}
+
+interface State {
+  copied: boolean;
+}
+
 const propTypes = {
   children: PropTypes.node,
   copyText: PropTypes.string,
@@ -16,7 +27,7 @@ const propTypes = {
   className: PropTypes.string,
 };
 
-const cssClass = {
+export const cssClass = {
   CONTAINER: "CopyContainer",
   BUTTON: "CopyContainer--button",
 };
@@ -25,11 +36,10 @@ const cssClass = {
  * This component is useful when you want to make some text copyable.
  * It wraps the CopyToClipboard component.
  */
-export default class CopyContainer extends React.PureComponent {
+export default class CopyContainer extends React.PureComponent<Props, State> {
   static propTypes = propTypes;
-  static cssClass = cssClass;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this._onCopy = this._onCopy.bind(this);
     this.state = {

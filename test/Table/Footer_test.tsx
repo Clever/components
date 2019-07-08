@@ -4,11 +4,9 @@ import * as sinon from "sinon";
 import { shallow } from "enzyme";
 
 import Cell from "../../src/Table/Cell";
-import Footer from "../../src/Table/Footer";
+import Footer, { cssClass, VISIBLE_PAGE_RANGE_SIZE } from "../../src/Table/Footer";
 
 describe("Footer", () => {
-  const { cssClass, VISIBLE_PAGE_RANGE_SIZE } = Footer;
-
   const newFooter = props =>
     shallow(<Footer currentPage={1} numColumns={3} numPages={3} {...props} />);
 

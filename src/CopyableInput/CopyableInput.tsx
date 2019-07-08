@@ -4,20 +4,47 @@ import * as classnames from "classnames";
 import * as CopyToClipboard from "react-copy-to-clipboard";
 
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
-import { TextInput } from "../TextInput/TextInput";
+import { TextInput, Props as TextInputProps } from "../TextInput/TextInput";
 
 import "./CopyableInput.less";
 import "../less/forms.less";
+
+export interface Props extends TextInputProps {
+  className?: string;
+  enableCopy?: boolean;
+}
+
+interface State {
+  copied: boolean;
+  hidden: boolean;
+}
+
+const propTypes = {
+  ...TextInput.propTypes,
+  className: PropTypes.string,
+  enableCopy: PropTypes.bool,
+  required: PropTypes.bool,
+  size: PropTypes.string,
+};
+
+const defaultProps = {
+  enableCopy: true,
+  required: false,
+  size: FormElementSize.FULL_WIDTH,
+};
 
 /**
  * This is a text input that takes optional props
  * enableShow and enableCopy that allow the user
  * to show/hide and copy the value of the input.
  */
-export class CopyableInput extends React.Component {
-  constructor(props) {
+export class CopyableInput extends React.Component<Props, State> {
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  constructor(props: Props) {
     super(props);
-    this.state = { hidden: true };
+    this.state = { copied: false, hidden: true };
 
     this.toggleHidden = this.toggleHidden.bind(this);
     this.copyPassword = this.copyPassword.bind(this);
@@ -74,15 +101,3 @@ export class CopyableInput extends React.Component {
     );
   }
 }
-
-CopyableInput.propTypes = Object.assign({}, TextInput.propTypes, {
-  className: PropTypes.string,
-  enableCopy: PropTypes.bool,
-  required: PropTypes.bool,
-});
-
-CopyableInput.defaultProps = {
-  enableCopy: true,
-  required: false,
-  size: FormElementSize.FULL_WIDTH,
-};

@@ -4,9 +4,23 @@ import * as React from "react";
 
 import Col from "./Col";
 import MorePropTypes from "../utils/MorePropTypes";
+import { ChildrenOf } from "../utils/types";
 
 import "../less/flex.less";
 import "../less/grid.less";
+
+export interface Props {
+  children?: ChildrenOf<typeof Col>;
+  className?: string;
+  grow?: boolean;
+  wrapperComponent?: any;
+  [additionalProp: string]: any;
+}
+
+export const cssClass = {
+  GROW: "flex--grow",
+  ROW: "Grid--Row",
+};
 
 export default function Row({
   children,
@@ -14,9 +28,7 @@ export default function Row({
   grow,
   wrapperComponent: Wrapper,
   ...additionalProps
-}) {
-  const { cssClass } = Row;
-
+}: Props) {
   return (
     <Wrapper
       className={classnames(cssClass.ROW, grow && cssClass.GROW, className)}
@@ -36,9 +48,4 @@ Row.propTypes = {
 
 Row.defaultProps = {
   wrapperComponent: "div",
-};
-
-Row.cssClass = {
-  GROW: "flex--grow",
-  ROW: "Grid--Row",
 };

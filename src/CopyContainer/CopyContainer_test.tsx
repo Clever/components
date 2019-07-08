@@ -2,12 +2,10 @@ import * as React from "react";
 import { shallow } from "enzyme";
 
 import * as CopyToClipboard from "react-copy-to-clipboard";
-import CopyContainer from "./CopyContainer";
+import CopyContainer, { cssClass } from "./CopyContainer";
 import { Button } from "../Button/Button";
 
 describe("CopyContainer", () => {
-  const { cssClass } = CopyContainer;
-
   it("renders", () => {
     const copyContainer = shallow(
       <CopyContainer copyText="Text to copy">Text to display</CopyContainer>,

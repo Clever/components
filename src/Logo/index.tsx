@@ -3,15 +3,21 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 
 import Colors from "../utils/Colors";
+import { Values } from "../utils/types";
 
 import "./index.less";
+
+export interface Props {
+  className?: string;
+  color?: Values<typeof Colors>;
+}
 
 const propTypes = {
   className: PropTypes.string,
   color: PropTypes.oneOf(Object.values(Colors)),
 };
 
-export default class Logo extends React.PureComponent {
+export default class Logo extends React.PureComponent<Props> {
   static propTypes = propTypes;
 
   static defaultProps = {

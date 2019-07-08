@@ -3,22 +3,37 @@ import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
 import * as _ from "lodash";
 
+import icons from "./icons";
+import { Values } from "../utils/types";
+
 import "./Icon.less";
 
-import icons from "./icons";
+export interface Props {
+  name: Values<typeof Icon.names>;
+  size?: Values<typeof Icon.sizes>;
+  className?: string;
+}
 
-export function Icon(props) {
-  const { cssClass } = Icon;
+interface IconComponent extends React.FunctionComponent<Props> {
+  names: typeof names;
+  sizes: typeof sizes;
+}
 
+export const cssClass = {
+  CONTAINER: "Icon",
+  size: size => `Icon--${size}`,
+};
+
+export const Icon: IconComponent = function Icon(props) {
   const IconImage = icons[props.name];
   return (
     <span className={classnames(cssClass.CONTAINER, cssClass.size(props.size), props.className)}>
       <IconImage />
     </span>
   );
-}
+};
 
-Icon.names = {
+const names = {
   BLOCKS: "blocks",
   BOOK: "book",
   BULLSEYE: "bullseye",
@@ -87,15 +102,19 @@ Icon.names = {
   WEBSITE_DASHBOARD: "website-dashboard",
   WEBSITE_HTML: "website-html",
   WOMAN: "woman",
-};
+} as const;
 
-Icon.sizes = {
+Icon.names = names;
+
+const sizes = {
   XXS: "2xs",
   XS: "xs",
   SMALL: "small",
   MEDIUM: "medium",
   LARGE: "large",
-};
+} as const;
+
+Icon.sizes = sizes;
 
 Icon.defaultProps = {
   size: "medium",
@@ -105,9 +124,4 @@ Icon.propTypes = {
   name: PropTypes.oneOf(_.values(Icon.names)).isRequired,
   size: PropTypes.oneOf(_.values(Icon.sizes)),
   className: PropTypes.string,
-};
-
-Icon.cssClass = {
-  CONTAINER: "Icon",
-  size: size => `Icon--${size}`,
 };

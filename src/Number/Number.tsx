@@ -4,11 +4,29 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 import * as shortNumber from "short-number";
 
+export interface Props {
+  children?: number | string;
+  className?: string;
+  short?: boolean;
+}
+
+const propTypes = {
+  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  className: PropTypes.string,
+  short: PropTypes.bool,
+};
+
+export const cssClass = {
+  CONTAINER: "Number",
+};
+
 /**
  * Provides consistent number formatting for long numbers (e.g. 4123456 -> 4,123,456), with optional
  * shortening (e.g. 4123456 -> 4.1M).
  */
-export default class Number extends React.PureComponent {
+export default class Number extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
   static format(number, short = false) {
     const rawNumber = parseInt(number || 0, 10);
 
@@ -20,7 +38,7 @@ export default class Number extends React.PureComponent {
   }
 
   render() {
-    const { cssClass, format } = Number;
+    const { format } = Number;
     const { children, className, short } = this.props;
 
     return (
@@ -28,13 +46,3 @@ export default class Number extends React.PureComponent {
     );
   }
 }
-
-Number.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  className: PropTypes.string,
-  short: PropTypes.bool,
-};
-
-Number.cssClass = {
-  CONTAINER: "Number",
-};

@@ -1,11 +1,9 @@
 import * as assert from "assert";
 import * as React from "react";
 import { shallow, render } from "enzyme";
-import { InfoPanel } from "../src";
+import InfoPanel, { cssClass } from "../src/InfoPanel/InfoPanel";
 
 describe("InfoPanel", () => {
-  const { cssClass } = InfoPanel;
-
   it("adds custom className if specified", () => {
     const panel = shallow(<InfoPanel className="custom" title="Panel Title" />);
     assert(panel.hasClass("custom"));

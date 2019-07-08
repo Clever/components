@@ -1,6 +1,8 @@
 import * as React from "react";
 
-export default function LifeFloat(props) {
+export interface Props extends React.SVGProps<SVGSVGElement> {}
+
+export default function(props: Props) {
   return (
     <svg
       width="32"

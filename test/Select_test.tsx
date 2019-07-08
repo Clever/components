@@ -5,7 +5,7 @@ import * as React from "react";
 import ReactSelect from "react-select";
 import * as sinon from "sinon";
 
-import { Select } from "../src";
+import { Select, cssClass } from "../src/Select/Select";
 
 describe("Select", () => {
   const testOptions = [
@@ -23,15 +23,15 @@ describe("Select", () => {
 
   it("sets htmlFor for label to point to provided id", () => {
     const select = shallow(<Select id="testid" name="testname" label="test label" options={[]} />);
-    const label = select.find(`label.${Select.cssClass.LABEL}`);
-    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+    const label = select.find(`label.${cssClass.LABEL}`);
+    assert.equal(label.hasClass(cssClass.LABEL_HIDDEN), false);
     assert.equal(label.prop("htmlFor"), "testid");
   });
 
   it("renders the label when no placeholder is provided", () => {
     const select = shallow(<Select id="testid" name="testname" label="test label" options={[]} />);
-    const label = select.find(`.${Select.cssClass.LABEL}`);
-    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+    const label = select.find(`.${cssClass.LABEL}`);
+    assert.equal(label.hasClass(cssClass.LABEL_HIDDEN), false);
   });
 
   it("renders the label when a value is selected", () => {
@@ -45,8 +45,8 @@ describe("Select", () => {
         value={testOptions[2]}
       />,
     );
-    const label = select.find(`.${Select.cssClass.LABEL}`);
-    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+    const label = select.find(`.${cssClass.LABEL}`);
+    assert.equal(label.hasClass(cssClass.LABEL_HIDDEN), false);
   });
 
   it("hides the label when a placeholder is provided but no value is selected", () => {
@@ -59,8 +59,8 @@ describe("Select", () => {
         options={[]}
       />,
     );
-    const label = select.find(`.${Select.cssClass.LABEL}`);
-    assert(label.hasClass(Select.cssClass.LABEL_HIDDEN));
+    const label = select.find(`.${cssClass.LABEL}`);
+    assert(label.hasClass(cssClass.LABEL_HIDDEN));
   });
 
   it("renders the label when multiple values are selected", () => {
@@ -74,8 +74,8 @@ describe("Select", () => {
         value={[testOptions[2], testOptions[0]]}
       />,
     );
-    const label = select.find(`.${Select.cssClass.LABEL}`);
-    assert.equal(label.hasClass(Select.cssClass.LABEL_HIDDEN), false);
+    const label = select.find(`.${cssClass.LABEL}`);
+    assert.equal(label.hasClass(cssClass.LABEL_HIDDEN), false);
   });
 
   it("hides the label when a placeholder is provided and value is an empty array", () => {
@@ -89,8 +89,8 @@ describe("Select", () => {
         options={[]}
       />,
     );
-    const label = select.find(`.${Select.cssClass.LABEL}`);
-    assert(label.hasClass(Select.cssClass.LABEL_HIDDEN));
+    const label = select.find(`.${cssClass.LABEL}`);
+    assert(label.hasClass(cssClass.LABEL_HIDDEN));
   });
 
   it("correctly sets the appropriate props on ReactSelect", () => {
@@ -107,7 +107,7 @@ describe("Select", () => {
       />,
     );
     const expectedPropValues = {
-      className: Select.cssClass.REACT_SELECT,
+      className: cssClass.REACT_SELECT,
       clearable: false,
       disabled: false,
       multi: false,

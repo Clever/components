@@ -3,10 +3,30 @@ import * as numeral from "numeral";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
+export interface Props {
+  children?: number | string;
+  className?: string;
+  zeroIsFree?: boolean;
+  alwaysShowCents?: boolean;
+}
+
+const propTypes = {
+  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  className: PropTypes.string,
+  zeroIsFree: PropTypes.bool,
+  alwaysShowCents: PropTypes.bool,
+};
+
+export const cssClass = {
+  CONTAINER: "DollarAmount",
+};
+
 /**
  * Provides consistent dollar value formatting (e.g. 4123456 -> $4,123,456)
  */
-export default class DollarAmount extends React.PureComponent {
+export default class DollarAmount extends React.PureComponent<Props> {
+  static propTypes = propTypes;
+
   static format(number, zeroIsFree = false, alwaysShowCents = false) {
     const rawNumber = parseFloat(number || 0);
 
@@ -23,7 +43,7 @@ export default class DollarAmount extends React.PureComponent {
   }
 
   render() {
-    const { cssClass, format } = DollarAmount;
+    const { format } = DollarAmount;
     const { children, className, zeroIsFree, alwaysShowCents } = this.props;
 
     return (
@@ -33,14 +53,3 @@ export default class DollarAmount extends React.PureComponent {
     );
   }
 }
-
-DollarAmount.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  className: PropTypes.string,
-  zeroIsFree: PropTypes.bool,
-  alwaysShowCents: PropTypes.bool,
-};
-
-DollarAmount.cssClass = {
-  CONTAINER: "DollarAmount",
-};

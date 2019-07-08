@@ -3,11 +3,26 @@ import * as FontAwesome from "react-fontawesome";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-import { Button } from "../Button/Button";
+import { Button, Props as ButtonProps } from "../Button/Button";
 import { FlexBox, ItemAlign } from "../flex";
-import { ToastType } from "./ToastType";
+import { ToastNotificationType, ToastType } from "./ToastType";
 
 import "./ToastNotification.less";
+
+export interface ActionProps {
+  href?: string;
+  onClick?: ButtonProps["onClick"];
+  text: string;
+}
+
+export interface Props {
+  action: ActionProps;
+  children: React.ReactNode;
+  className?: string;
+  onClose: ButtonProps["onClick"];
+  showCloseButton?: boolean;
+  type: ToastNotificationType;
+}
 
 export const actionPropType = PropTypes.shape({
   href: PropTypes.string,
@@ -50,10 +65,9 @@ const iconMap = {
 /**
  * A building block for the <ToastStack>. Renders an individual toast notification.
  */
-export class ToastNotification extends React.PureComponent {
+export class ToastNotification extends React.PureComponent<Props> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
-  static cssClass = cssClass;
 
   render() {
     const { action, children, className, onClose, showCloseButton, type } = this.props;

@@ -6,9 +6,26 @@ import Column from "./Column";
 import HeaderCell from "./HeaderCell";
 import MorePropTypes from "../utils/MorePropTypes";
 
-export default function Header({ children, disableSort, onSortChange, sortState }) {
-  const { cssClass } = Header;
+interface SortState {
+  columnID?: string;
+  direction?: "asc" | "desc";
+}
 
+export interface Props {
+  // TODO: figure out how to properly type this.
+  children: any;
+  disableSort?: boolean;
+  onSortChange?: Function;
+  sortState?: SortState;
+}
+
+export const cssClass = {
+  CONTAINER: "Table--header",
+  ROW: "Table--header--row",
+  SORTABLE: "Table--header--cell--sortable",
+};
+
+export default function Header({ children, disableSort, onSortChange, sortState }: Props) {
   return (
     <thead className={cssClass.CONTAINER}>
       <tr className={cssClass.ROW}>
@@ -38,10 +55,4 @@ Header.propTypes = {
 
 Header.defaultProps = {
   sortState: {},
-};
-
-Header.cssClass = {
-  CONTAINER: "Table--header",
-  ROW: "Table--header--row",
-  SORTABLE: "Table--header--cell--sortable",
 };

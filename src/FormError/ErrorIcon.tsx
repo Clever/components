@@ -3,12 +3,16 @@ import * as React from "react";
 
 import "./ErrorIcon.less";
 
+export interface Props {
+  className?: string;
+}
+
 const cssClass = {
   CONTAINER: "FormError--ErrorIcon",
   PATH: "FormError--ErrorIcon--path",
 };
 
-export default class ErrorIcon extends React.PureComponent {
+export default class ErrorIcon extends React.PureComponent<Props> {
   render() {
     const { className } = this.props;
 
