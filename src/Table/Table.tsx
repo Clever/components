@@ -1,5 +1,5 @@
 import * as classnames from "classnames";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
@@ -155,7 +155,7 @@ export class Table extends React.Component {
   }
 
   _getColumn(columnID) {
-    return lodash.find(
+    return _.find(
       React.Children.toArray(this.props.children),
       column => column.props.id === columnID,
     );
@@ -192,7 +192,7 @@ export class Table extends React.Component {
     const { data, filter, pageSize, paginated } = this.props;
     const { currentPage, sortState } = this.state;
 
-    let displayedData = lodash(data);
+    let displayedData = _(data);
     if (filter) {
       displayedData = displayedData.filter(filter);
     }
@@ -221,7 +221,7 @@ export class Table extends React.Component {
 
     let pages = [displayedData];
     if (paginated) {
-      pages = lodash.chunk(displayedData, pageSize);
+      pages = _.chunk(displayedData, pageSize);
     }
 
     if (pages.length === 0) {
@@ -279,7 +279,7 @@ export class Table extends React.Component {
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
 
-    const columns = lodash.compact(React.Children.toArray(children));
+    const columns = _.compact(React.Children.toArray(children));
     if (columns.length < 2 && process.env.NODE_ENV !== "production") {
       console.error(
         "Table requires at least 2 columns. Consider using the List component instead.",

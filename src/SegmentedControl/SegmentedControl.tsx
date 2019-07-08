@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 
 import "./SegmentedControl.less";
 
@@ -63,7 +63,7 @@ export class SegmentedControl extends React.Component {
     const cssClass = SegmentedControl.cssClass;
 
     let idx = -1;
-    const selectableItems = lodash.map(options, option => {
+    const selectableItems = _.map(options, option => {
       const isSelected = option.value === selected;
       const classes = [cssClass.OPTION];
       if (isSelected) {

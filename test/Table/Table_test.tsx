@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 import * as React from "react";
 import * as sinon from "sinon";
 import { shallow } from "enzyme";
@@ -148,7 +148,7 @@ describe("Table", () => {
         .first();
 
       assert(
-        lodash.includes(nameCell.props().className, nameColumn.props.cell.className),
+        _.includes(nameCell.props().className, nameColumn.props.cell.className),
         `Expected ${nameCell.props().className} to contain ${nameColumn.props.cell.className}`,
       );
     });

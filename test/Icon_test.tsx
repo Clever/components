@@ -1,11 +1,11 @@
 import * as assert from "assert";
 import * as React from "react";
 import { shallow } from "enzyme";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 import { Icon } from "../src";
 
 describe("Icon", () => {
-  const names = lodash.values(Icon.names);
+  const names = _.values(Icon.names);
   const sizes = ["small", "medium", "large"];
 
   names.forEach(name => {

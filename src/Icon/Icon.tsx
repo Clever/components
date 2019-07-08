@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 
 import "./Icon.less";
 
@@ -102,8 +102,8 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(lodash.values(Icon.names)).isRequired,
-  size: PropTypes.oneOf(lodash.values(Icon.sizes)),
+  name: PropTypes.oneOf(_.values(Icon.names)).isRequired,
+  size: PropTypes.oneOf(_.values(Icon.sizes)),
   className: PropTypes.string,
 };
 
