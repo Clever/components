@@ -1,9 +1,9 @@
-import _ from "lodash";
-import assert from "assert";
+import * as _ from "lodash";
+import * as assert from "assert";
 import { shallow } from "enzyme";
-import React from "react";
+import * as React from "react";
 import ReactSelect from "react-select";
-import sinon from "sinon";
+import * as sinon from "sinon";
 
 import { Select } from "../src";
 

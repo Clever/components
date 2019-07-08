@@ -1,6 +1,6 @@
-import _ from "lodash";
-import classnames from "classnames";
-import React from "react";
+import * as _ from "lodash";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import MorePropTypes from "../utils/MorePropTypes";

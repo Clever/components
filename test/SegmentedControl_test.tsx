@@ -1,6 +1,6 @@
-import assert from "assert";
-import React from "react";
-import sinon from "sinon";
+import * as assert from "assert";
+import * as React from "react";
+import * as sinon from "sinon";
 import { shallow } from "enzyme";
 import { SegmentedControl } from "../src";
 

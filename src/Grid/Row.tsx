@@ -1,12 +1,12 @@
-import classnames from "classnames";
+import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
-import React from "react";
+import * as React from "react";
 
 import Col from "./Col";
 import MorePropTypes from "../utils/MorePropTypes";
 
-require("../less/flex.less");
-require("../less/grid.less");
+import "../less/flex.less";
+import "../less/grid.less";
 
 export default function Row({
   children,

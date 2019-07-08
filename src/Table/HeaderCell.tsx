@@ -1,5 +1,5 @@
-import classnames from "classnames";
-import React from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";
@@ -7,7 +7,7 @@ import Cell from "./Cell";
 import SortIcons from "./SortIcons";
 import { FlexBox, ItemAlign } from "../flex";
 
-require("./HeaderCell.less");
+import "./HeaderCell.less";
 
 export default function HeaderCell({
   children,

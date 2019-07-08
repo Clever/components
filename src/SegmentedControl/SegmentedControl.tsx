@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import lodash from "lodash";
+import * as lodash from "lodash";
 
 import "./SegmentedControl.less";
 

@@ -1,8 +1,8 @@
-import classnames from "classnames";
-import React from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 import { Sticky, StickyContainer } from "react-sticky";
-import _ from "lodash";
+import * as _ from "lodash";
 
 import WizardStep from "./WizardStep";
 import { Button, ProgressBar } from "../";

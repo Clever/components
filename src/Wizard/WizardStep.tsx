@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import _ from "lodash";
-import classnames from "classnames";
+import * as _ from "lodash";
+import * as classnames from "classnames";
 import { classNameFor } from "../utils";
 
 // 58.25 rem = width of sidebar + width of left column

@@ -1,7 +1,7 @@
-import _ from "lodash";
-import classnames from "classnames";
+import * as _ from "lodash";
+import * as classnames from "classnames";
 import MorePropTypes from "../utils/MorePropTypes";
-import React, { PureComponent } from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import { Button } from "../Button/Button";
@@ -11,7 +11,7 @@ import Type from "./Type";
 
 import "./Menu.less";
 
-export default class Menu extends PureComponent {
+export default class Menu extends React.PureComponent {
   _renderOption(option) {
     const { cssClass } = Menu;
     const { onHide, size, type } = this.props;

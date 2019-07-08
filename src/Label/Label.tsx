@@ -1,13 +1,13 @@
-import _ from "lodash";
-import classnames from "classnames";
-import React, { PureComponent } from "react";
+import * as _ from "lodash";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import Tooltip from "../Tooltip";
 
 import "./Label.less";
 
-export default class Label extends PureComponent {
+export default class Label extends React.PureComponent {
   focus() {
     if (this.refs.label) {
       this.refs.label.focus();

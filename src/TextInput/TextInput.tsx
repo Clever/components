@@ -1,8 +1,8 @@
-import FontAwesome from "react-fontawesome";
-import React from "react";
+import * as FontAwesome from "react-fontawesome";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import classnames from "classnames";
-import _ from "lodash";
+import * as classnames from "classnames";
+import * as _ from "lodash";
 
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 

@@ -1,12 +1,12 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import classnames from "classnames";
+import * as classnames from "classnames";
 
 import { Button } from "../Button/Button";
 import { ModalButton } from "../ModalButton/ModalButton";
 import { propsFor, prefixKeys, unprefixKeys } from "../utils";
 
-require("./ConfirmationButton.less");
+import "./ConfirmationButton.less";
 
 const propPrefix = "confirmButton";
 

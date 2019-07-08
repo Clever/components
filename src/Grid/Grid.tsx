@@ -1,5 +1,5 @@
-import classnames from "classnames";
-import React from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import Col from "./Col";
@@ -7,7 +7,7 @@ import MorePropTypes from "../utils/MorePropTypes";
 import Row from "./Row";
 import Size from "./Size";
 
-require("../less/grid.less");
+import "../less/grid.less";
 
 export function Grid({ className, children, wrapperComponent: Wrapper, ...additionalProps }) {
   const { cssClass } = Grid;

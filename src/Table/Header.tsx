@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";

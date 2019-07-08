@@ -1,5 +1,5 @@
-// import assert from "assert";
-import React from "react";
+// import * as assert from "assert";
+import * as React from "react";
 // import sinon from "sinon";
 import { shallow } from "enzyme";
 import { MultiplePanelModals, Button } from "../src";

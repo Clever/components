@@ -1,7 +1,7 @@
-import assert from "assert";
-import lodash from "lodash";
-import React from "react";
-import sinon from "sinon";
+import * as assert from "assert";
+import * as lodash from "lodash";
+import * as React from "react";
+import * as sinon from "sinon";
 import { shallow } from "enzyme";
 
 import Cell from "../../src/Table/Cell";

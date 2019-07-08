@@ -1,5 +1,5 @@
-import assert from "assert";
-import React from "react";
+import * as assert from "assert";
+import * as React from "react";
 import { mount, shallow } from "enzyme";
 
 import Number from "../src/Number";

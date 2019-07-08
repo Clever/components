@@ -1,8 +1,8 @@
 /* eslint func-names: "off" */
 
-import assert from "assert";
-import React from "react";
-import sinon from "sinon";
+import * as assert from "assert";
+import * as React from "react";
+import * as sinon from "sinon";
 import { mount } from "enzyme";
 import { ModalButton, ConfirmationButton } from "../src";
 

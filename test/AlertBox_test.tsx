@@ -1,6 +1,6 @@
-import _ from "lodash";
-import assert from "assert";
-import React from "react";
+import * as _ from "lodash";
+import * as assert from "assert";
+import * as React from "react";
 import { shallow } from "enzyme";
 import { AlertBox } from "../src";
 

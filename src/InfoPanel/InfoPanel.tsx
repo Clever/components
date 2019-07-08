@@ -1,7 +1,7 @@
-import classnames from "classnames";
-import React, { Component } from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import FontAwesome from "react-fontawesome";
+import * as FontAwesome from "react-fontawesome";
 import {
   Accordion,
   AccordionItem,
@@ -13,7 +13,7 @@ import "./InfoPanel.less";
 /**
  * Base presentational component for the displaying information in paneled format.
  */
-export default class InfoPanel extends Component {
+export default class InfoPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

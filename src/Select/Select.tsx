@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 import ReactSelect from "react-select";
-import classnames from "classnames";
+import * as classnames from "classnames";
 
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 

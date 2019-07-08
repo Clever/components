@@ -1,9 +1,9 @@
-import moment from "moment";
-import React from "react";
+import * as moment from "moment";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import classnames from "classnames";
+import * as classnames from "classnames";
 import ReactDatePicker from "react-datepicker";
-import ReactDateTime from "react-datetime";
+import * as ReactDateTime from "react-datetime";
 
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 

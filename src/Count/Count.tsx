@@ -1,5 +1,5 @@
-import classnames from "classnames";
-import React, { PureComponent } from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import Number from "../Number";
@@ -17,7 +17,7 @@ import Number from "../Number";
  *   // results in:
  *   <span>3 things</span>
  */
-export default class Count extends PureComponent {
+export default class Count extends React.PureComponent {
   static format({ number, plural, short, singular, zeroOverride }) {
     const displayNumber = Number.format(number, short);
     const rawNumber = parseInt(number || 0, 10);

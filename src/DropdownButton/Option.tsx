@@ -1,7 +1,7 @@
-import { PureComponent } from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
-export default class Option extends PureComponent {
+export default class Option extends React.PureComponent {
   render() {
     throw new Error("Configuration component only. Cannot be rendered outside of DropdownButton.");
   }

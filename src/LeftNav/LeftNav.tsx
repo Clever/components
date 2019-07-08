@@ -1,9 +1,9 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import _ from "lodash";
-import classnames from "classnames";
+import * as _ from "lodash";
+import * as classnames from "classnames";
 import { CSSTransitionGroup } from "react-transition-group";
-import RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
+import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import MorePropTypes from "../utils/MorePropTypes";
 import { NavLink } from "./NavLink";

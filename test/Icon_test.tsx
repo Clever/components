@@ -1,7 +1,7 @@
-import assert from "assert";
-import React from "react";
+import * as assert from "assert";
+import * as React from "react";
 import { shallow } from "enzyme";
-import lodash from "lodash";
+import * as lodash from "lodash";
 import { Icon } from "../src";
 
 describe("Icon", () => {

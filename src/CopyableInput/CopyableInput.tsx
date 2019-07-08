@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import classnames from "classnames";
-import CopyToClipboard from "react-copy-to-clipboard";
+import * as classnames from "classnames";
+import * as CopyToClipboard from "react-copy-to-clipboard";
 
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 import { TextInput } from "../TextInput/TextInput";

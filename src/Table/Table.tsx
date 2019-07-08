@@ -1,6 +1,6 @@
-import classnames from "classnames";
-import lodash from "lodash";
-import React, { Component } from "react";
+import * as classnames from "classnames";
+import * as lodash from "lodash";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";
@@ -11,11 +11,11 @@ import Header from "./Header";
 import MorePropTypes from "../utils/MorePropTypes";
 import sortDirection from "./sortDirection";
 
-require("./Table.less");
+import "./Table.less";
 
 const DEFAULT_PAGE_SIZE = 10;
 
-export class Table extends Component {
+export class Table extends React.Component {
   constructor(props) {
     super(props);
 

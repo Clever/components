@@ -1,9 +1,9 @@
-import _ from "lodash";
+import * as _ from "lodash";
 
-import classnames from "classnames";
-import BootstrapTooltip from "react-bootstrap/lib/Tooltip";
-import OverlayTrigger from "react-bootstrap/lib/OverlayTrigger";
-import React, { Component } from "react";
+import * as classnames from "classnames";
+import * as BootstrapTooltip from "react-bootstrap/lib/Tooltip";
+import * as OverlayTrigger from "react-bootstrap/lib/OverlayTrigger";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import "./Tooltip.less";
@@ -11,7 +11,7 @@ import "./Tooltip.less";
 /**
  * Standardized tooltip component with fade-in/out transition and customizable positioning.
  */
-export default class Tooltip extends Component {
+export default class Tooltip extends React.Component {
   constructor(props) {
     super(props);
 

@@ -1,8 +1,8 @@
-import _ from "lodash";
-import classnames from "classnames";
+import * as _ from "lodash";
+import * as classnames from "classnames";
 import MorePropTypes from "../utils/MorePropTypes";
-import Overlay from "react-bootstrap/lib/Overlay";
-import React, { PureComponent } from "react";
+import * as Overlay from "react-bootstrap/lib/Overlay";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import FlexBox from "../flex/FlexBox";
@@ -15,7 +15,7 @@ import { Button } from "../Button/Button";
 import "./Caret.less";
 import "./DropdownButton.less";
 
-export default class DropdownButton extends PureComponent {
+export default class DropdownButton extends React.PureComponent {
   constructor(props) {
     super(props);
 

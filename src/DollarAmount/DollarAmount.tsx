@@ -1,12 +1,12 @@
-import classnames from "classnames";
-import numeral from "numeral";
-import React, { PureComponent } from "react";
+import * as classnames from "classnames";
+import * as numeral from "numeral";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 /**
  * Provides consistent dollar value formatting (e.g. 4123456 -> $4,123,456)
  */
-export default class DollarAmount extends PureComponent {
+export default class DollarAmount extends React.PureComponent {
   static format(number, zeroIsFree = false, alwaysShowCents = false) {
     const rawNumber = parseFloat(number || 0);
 

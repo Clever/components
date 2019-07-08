@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import classnames from "classnames";
-import lodash from "lodash";
+import * as classnames from "classnames";
+import * as lodash from "lodash";
 
 import "./Icon.less";
 

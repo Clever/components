@@ -1,6 +1,6 @@
-import _ from "lodash";
-import classnames from "classnames";
-import React, { PureComponent } from "react";
+import * as _ from "lodash";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import { CloseIcon, WarningIcon, SuccessIcon, ErrorIcon, InfoIcon } from "./icons";
@@ -27,7 +27,7 @@ const cssClass = {
 /*
  * AlertBox is a closable, highlighted box
  */
-export default class AlertBox extends PureComponent {
+export default class AlertBox extends React.PureComponent {
   state = { isOpen: true };
 
   closeBox() {

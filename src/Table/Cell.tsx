@@ -1,8 +1,8 @@
-import classnames from "classnames";
-import React from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
-require("./Cell.less");
+import "./Cell.less";
 
 export default function Cell({ children, className, noWrap, width, ...additionalProps }) {
   const { cssClass } = Cell;

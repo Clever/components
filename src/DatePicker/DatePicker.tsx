@@ -1,6 +1,6 @@
-import moment from "moment";
-import classnames from "classnames";
-import React from "react";
+import * as moment from "moment";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 import ReactDatePicker from "react-datepicker";
 

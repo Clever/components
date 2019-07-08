@@ -1,12 +1,12 @@
-import classnames from "classnames";
-import React from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
 import { Button } from "../Button/Button";
 
-require("./Footer.less");
+import "./Footer.less";
 
 /**
  * Pagination footer for the Table component.

@@ -1,8 +1,8 @@
-import assert from "assert";
-import React from "react";
-import sinon from "sinon";
+import * as assert from "assert";
+import * as React from "react";
+import * as sinon from "sinon";
 import { shallow, mount } from "enzyme";
-import _ from "lodash";
+import * as _ from "lodash";
 
 import { Wizard } from "../src";
 import WizardStep from "../src/Wizard/WizardStep";

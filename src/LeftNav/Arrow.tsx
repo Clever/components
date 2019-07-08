@@ -1,6 +1,6 @@
 /** eslint-disable max-len */
 
-import classnames from "classnames";
+import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 

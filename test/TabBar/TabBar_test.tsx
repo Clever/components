@@ -1,5 +1,5 @@
-import assert from "assert";
-import React from "react";
+import * as assert from "assert";
+import * as React from "react";
 import { shallow } from "enzyme";
 
 import FlexBox from "../../src/flex/FlexBox";

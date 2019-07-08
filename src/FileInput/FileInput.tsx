@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import Dropzone from "react-dropzone";
-import classnames from "classnames";
+import * as Dropzone from "react-dropzone";
+import * as classnames from "classnames";
 
 import { FlexBox, FlexItem } from "../flex";
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";

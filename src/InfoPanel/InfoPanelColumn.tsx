@@ -1,5 +1,5 @@
-import classnames from "classnames";
-import React from "react";
+import * as classnames from "classnames";
+import * as React from "react";
 import * as PropTypes from "prop-types";
 
 export default function InfoPanelColumn({ children, className }) {

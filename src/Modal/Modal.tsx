@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import classnames from "classnames";
-import FocusTrap from "focus-trap-react";
-import reactDom from "react-dom";
+import * as classnames from "classnames";
+import * as FocusTrap from "focus-trap-react";
+import * as reactDom from "react-dom";
 
-require("./Modal.less");
+import "./Modal.less";
 
 const DEFAULT_WIDTH = 400;
 const ESC = 27;

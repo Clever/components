@@ -1,14 +1,14 @@
-import classnames from "classnames";
-import numeral from "numeral";
-import React, { PureComponent } from "react";
+import * as classnames from "classnames";
+import * as numeral from "numeral";
+import * as React from "react";
 import * as PropTypes from "prop-types";
-import shortNumber from "short-number";
+import * as shortNumber from "short-number";
 
 /**
  * Provides consistent number formatting for long numbers (e.g. 4123456 -> 4,123,456), with optional
  * shortening (e.g. 4123456 -> 4.1M).
  */
-export default class Number extends PureComponent {
+export default class Number extends React.PureComponent {
   static format(number, short = false) {
     const rawNumber = parseInt(number || 0, 10);
 
