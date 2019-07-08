@@ -1,5 +1,4 @@
 import * as classnames from "classnames";
-import * as PropTypes from "prop-types";
 import * as React from "react";
 
 import { Button } from "../Button/Button";
@@ -18,11 +17,6 @@ export interface Props {
 //   sampleState2: string;
 // }
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  onPerformAction: PropTypes.func.isRequired,
-};
 
 export const cssClass = {
   CONTAINER: "NewComponent",
@@ -33,9 +27,6 @@ export const cssClass = {
  * TODO: Add short description.
  */
 export default class NewComponent extends React.PureComponent<Props> {
-  static propTypes = propTypes;
-  static cssClass = cssClass;
-
   // TODO: Uncomment if this component is stateful. Remove otherwise.
   // state = {
   //   sampleState1: false,
