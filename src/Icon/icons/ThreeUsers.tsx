@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function ThreeUsers(props) {
+export default function ThreeUsers(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

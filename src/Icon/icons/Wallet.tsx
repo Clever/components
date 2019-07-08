@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Wallet(props) {
+export default function Wallet(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

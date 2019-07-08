@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function MagnifyUser(props) {
+export default function MagnifyUser(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

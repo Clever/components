@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Menu(props) {
+export default function Menu(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

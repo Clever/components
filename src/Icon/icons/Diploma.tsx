@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Diploma(props) {
+export default function Diploma(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

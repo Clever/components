@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Printer(props) {
+export default function Printer(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

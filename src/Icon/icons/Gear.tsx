@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Gear(props) {
+export default function Gear(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

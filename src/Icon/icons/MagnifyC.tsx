@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function MagnifyC(props) {
+export default function MagnifyC(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

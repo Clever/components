@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function QR(props) {
+export default function QR(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

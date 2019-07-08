@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Shield(props) {
+export default function Shield(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

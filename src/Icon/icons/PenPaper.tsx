@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function PenPaper(props) {
+export default function PenPaper(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

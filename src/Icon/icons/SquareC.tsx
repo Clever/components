@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function SquareC(props) {
+export default function SquareC(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

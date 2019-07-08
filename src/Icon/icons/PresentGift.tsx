@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function PresentGift(props) {
+export default function PresentGift(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

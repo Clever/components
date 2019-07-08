@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Handshake(props) {
+export default function Handshake(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

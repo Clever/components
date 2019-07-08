@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function CloseFloatingButton(props) {
+export default function CloseFloatingButton(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="14px"

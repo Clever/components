@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Funnel(props) {
+export default function Funnel(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

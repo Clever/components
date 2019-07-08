@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Pickax(props) {
+export default function Pickax(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

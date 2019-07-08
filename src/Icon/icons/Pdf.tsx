@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Pdf(props) {
+export default function Pdf(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

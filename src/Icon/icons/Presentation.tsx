@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Presentation(props) {
+export default function Presentation(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Tablet(props) {
+export default function Tablet(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

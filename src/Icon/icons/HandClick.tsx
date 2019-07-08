@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function HandClick(props) {
+export default function HandClick(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function MagicLamp(props) {
+export default function MagicLamp(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

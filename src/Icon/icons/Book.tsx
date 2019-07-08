@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Book(props) {
+export default function Book(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

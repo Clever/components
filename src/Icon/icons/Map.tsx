@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Map(props) {
+export default function Map(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

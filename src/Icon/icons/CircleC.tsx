@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function CircleC(props) {
+export default function CircleC(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

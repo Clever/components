@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function RibbonAward(props) {
+export default function RibbonAward(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

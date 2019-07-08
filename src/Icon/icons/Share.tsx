@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Share(props) {
+export default function Share(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

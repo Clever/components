@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Juggler(props) {
+export default function Juggler(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

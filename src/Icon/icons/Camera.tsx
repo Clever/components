@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Camera(props) {
+export default function Camera(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

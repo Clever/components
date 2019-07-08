@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Play(props) {
+export default function Play(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

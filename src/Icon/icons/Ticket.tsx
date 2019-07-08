@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Ticket(props) {
+export default function Ticket(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

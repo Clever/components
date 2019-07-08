@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function NoEntry(props) {
+export default function NoEntry(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

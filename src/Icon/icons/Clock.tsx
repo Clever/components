@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Clock(props) {
+export default function Clock(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

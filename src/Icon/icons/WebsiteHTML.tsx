@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function WebsiteHTML(props) {
+export default function WebsiteHTML(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

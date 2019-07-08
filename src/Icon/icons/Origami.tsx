@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Origami(props) {
+export default function Origami(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

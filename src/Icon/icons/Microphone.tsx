@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Microphone(props) {
+export default function Microphone(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

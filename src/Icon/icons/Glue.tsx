@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Glue(props) {
+export default function Glue(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

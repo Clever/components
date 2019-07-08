@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Chart(props) {
+export default function Chart(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

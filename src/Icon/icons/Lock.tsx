@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Lock(props) {
+export default function Lock(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

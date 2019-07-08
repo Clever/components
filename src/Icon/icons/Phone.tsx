@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Phone(props) {
+export default function Phone(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

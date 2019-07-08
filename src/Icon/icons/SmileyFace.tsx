@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function SmileyFace(props) {
+export default function SmileyFace(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

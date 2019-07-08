@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Chat(props) {
+export default function Chat(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"

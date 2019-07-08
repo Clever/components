@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function School(props) {
+export default function School(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="46px"
