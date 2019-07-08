@@ -134,7 +134,6 @@ export default class DateInput extends React.Component {
             onSelect={this.props.onChange}
             placeholderText={this.props.placeholder}
             readOnly={this.props.readOnly}
-            ref="input"
             required={this.props.required}
             selected={this.props.value}
             popperClassName="DatePicker--Popper"
