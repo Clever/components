@@ -173,8 +173,9 @@ export class TextArea extends React.Component<Props, State> {
       rows: this.props.rows,
     };
 
+    // Don't increment rows in readOnly so that there is no extra spacing.
     let rows = this.props.rows;
-    if (this.props.placeholder) {
+    if ((this.props.placeholder || this.props.autoResize) && !this.props.readOnly) {
       // Need to add another row for autoGrow since it seems to collapse in a way that conflicts with the placeholder
       // margin
       rows = this.props.rows + 1;
@@ -182,7 +183,6 @@ export class TextArea extends React.Component<Props, State> {
 
     let textarea = <textarea {...textAreaProps} rows={rows} />;
     if (this.props.autoResize) {
-      rows = this.props.rows + 1;
       textarea = <TextareaAutosize {...textAreaProps} rows={rows} />;
     }
 
