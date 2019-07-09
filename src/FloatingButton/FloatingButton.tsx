@@ -24,6 +24,7 @@ export interface Props {
   positionX: string;
   positionY: string;
   size?: Values<typeof Button.Size>;
+  [additionalProp: string]: any;
 }
 
 interface State {
@@ -176,7 +177,9 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
       size,
     } = this.props;
     const { active } = this.state;
-    const additionalProps = _.omit(this.props, Object.keys(propTypes));
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     return (
       <RootCloseWrapper onRootClose={this.onRootClose}>
