@@ -17,12 +17,12 @@ export interface Props {
   className?: string;
   closeLabel?: React.ReactNode;
   colorGroup?: Values<typeof ColorGroup>;
-  offsetX: string;
-  offsetY: string;
+  offsetX?: string;
+  offsetY?: string;
   label?: React.ReactNode;
   onClick?: () => void;
-  positionX: string;
-  positionY: string;
+  positionX?: string;
+  positionY?: string;
   size?: Values<typeof Button.Size>;
   [additionalProp: string]: any;
 }
