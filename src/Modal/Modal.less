@@ -73,7 +73,8 @@
 
 .Modal--window--content {
   position: relative;
-  .padding--l;
+  .padding--top--l;
+  .padding--x--l;
   background-color: @neutral_white;
   box-sizing: border-box;
   overflow-y: auto;
@@ -81,6 +82,11 @@
   p {
     .margin--bottom--m;
     .margin--top--none;
+  }
+
+  .Modal--padding--div {
+    //workaround for https://github.com/w3c/csswg-drafts/issues/129
+    height: @size_l;
   }
 }
 
