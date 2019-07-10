@@ -128,7 +128,7 @@ export default class ListView extends React.PureComponent {
     const items = Items[itemsKey];
 
     return (
-      <View className={cssClass.CONTAINER} title="List" sourcePath="src/List/List.jsx">
+      <View className={cssClass.CONTAINER} title="List" sourcePath="src/List/List.tsx">
         <div className={cssClass.INTRO}>
           <p>
             Provides a simple view for a list of items with various display configuration options.

@@ -102,7 +102,7 @@ export default class DropdownButtonView extends Component {
       <View
         className={cssClass.CONTAINER}
         title="DropdownButton"
-        sourcePath="src/DropdownButton/DropdownButton.jsx"
+        sourcePath="src/DropdownButton/DropdownButton.tsx"
       >
         <div className={cssClass.INTRO}>
           <p>

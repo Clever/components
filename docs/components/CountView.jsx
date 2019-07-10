@@ -56,7 +56,7 @@ export default class CountView extends Component {
     const shouldShorten = numberFormat === "short";
 
     return (
-      <View className={cssClass.CONTAINER} title="Count" sourcePath="src/Count/Count.jsx">
+      <View className={cssClass.CONTAINER} title="Count" sourcePath="src/Count/Count.tsx">
         <div className={cssClass.INTRO}>
           <p>Provides a convenient wrapper for displaying counts of things.</p>
           <p>

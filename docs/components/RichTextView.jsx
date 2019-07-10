@@ -7,7 +7,7 @@ import { RichText } from "src";
 
 export default function DateInputView() {
   return (
-    <View title="RichText" sourcePath="src/RichText/RichText.jsx">
+    <View title="RichText" sourcePath="src/RichText/RichText.tsx">
       <p>
         RichText is a view that improves rendering of raw text - Specifically by linkifying urls and
         not discarding linebreaks.
