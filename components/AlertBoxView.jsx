@@ -14,7 +14,7 @@ export default class AlertBoxView extends PureComponent {
     const { type } = this.state;
 
     return (
-      <View title="AlertBox" sourcePath="src/AlertBox/AlertBox.jsx">
+      <View title="AlertBox" sourcePath="src/AlertBox/AlertBox.tsx">
         <p>
           This is a container for prominent page-level messaging. Alerts should communicate a single
           informational message and may contain a text link if there are related actions. Temporary

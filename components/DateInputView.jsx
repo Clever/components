@@ -26,7 +26,7 @@ export default class DateInputView extends Component {
     const { cssClass } = DateInputView;
 
     return (
-      <View title="DateInput" sourcePath="src/DateInput/DateInput.jsx">
+      <View title="DateInput" sourcePath="src/DateInput/DateInput.tsx">
         <p>DateInput is an input that allows the user to select dates from a DatePicker.</p>
         <Example>
           <ExampleCode>
