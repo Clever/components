@@ -1,5 +1,4 @@
 import * as classnames from "classnames";
-import * as PropTypes from "prop-types";
 import * as React from "react";
 
 import Logo from "../Logo";
@@ -13,24 +12,14 @@ export interface Props {
   children?: React.ReactNode;
   className?: string;
   logoHref: string;
-  title: React.ReactNode;
+  title?: React.ReactNode;
   onLogoClick?: Function;
 }
-
-const propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  logoHref: PropTypes.string.isRequired,
-  title: PropTypes.node,
-  onLogoClick: PropTypes.func,
-};
 
 /**
  * Global page-level header component.
  */
 export class TopBar extends React.PureComponent<Props> {
-  static propTypes = propTypes;
-
   static Button = TopBarButton;
 
   render() {
