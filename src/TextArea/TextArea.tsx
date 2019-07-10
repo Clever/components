@@ -1,3 +1,4 @@
+import * as FontAwesome from "react-fontawesome";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
@@ -116,10 +117,50 @@ export class TextArea extends React.Component<Props, State> {
     this.textAreaEl.current.focus();
   }
 
+  currentErrorMessage() {
+    const { error, value, required } = this.props;
+    const { hasBeenFocused } = this.state;
+
+    let errorMessage = "";
+
+    if (required && hasBeenFocused && !value) {
+      errorMessage = "required";
+    }
+
+    if (error) {
+      errorMessage = error;
+    }
+
+    return errorMessage;
+  }
+
+  renderNote(errorMessage) {
+    const { required, optional } = this.props;
+    let inputNote;
+
+    if (required) {
+      inputNote = <span className="TextArea--required">required</span>;
+    }
+    if (optional) {
+      inputNote = <span className="TextArea--optional">optional</span>;
+    }
+
+    if (errorMessage) {
+      inputNote = (
+        <span className="TextArea--error">
+          <FontAwesome name="exclamation-triangle" /> {errorMessage}
+        </span>
+      );
+    }
+
+    return inputNote;
+  }
+
   render() {
     let wrapperClass = "TextArea";
+    const errorMessage = this.currentErrorMessage();
 
-    if (this.props.error) wrapperClass += " TextArea--hasError";
+    if (errorMessage) wrapperClass += " TextArea--hasError";
 
     if (this.props.readOnly) {
       wrapperClass += " TextArea--readonly";
@@ -135,25 +176,7 @@ export class TextArea extends React.Component<Props, State> {
     }
 
     // note on the upper right corner
-    let inputNote;
-    if (this.props.required) {
-      inputNote = (
-        <span
-          className={`TextArea--${
-            this.state.hasBeenFocused && !this.props.value ? "error" : "required"
-          }`}
-        >
-          required
-        </span>
-      );
-    }
-    if (this.props.optional) {
-      inputNote = <span className="TextArea--optional">optional</span>;
-    }
-
-    if (this.props.error) {
-      inputNote = <span className="TextArea--error">{this.props.error}</span>;
-    }
+    const inputNote = this.renderNote(errorMessage);
 
     const textAreaProps = {
       className: "TextArea--input",

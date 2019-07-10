@@ -18,6 +18,7 @@ export default class TextInputView extends Component {
       inputValue: "",
       obscured: false,
       required: false,
+      optional: false,
       placeholderCaps: false,
       size: FormElementSize.MEDIUM,
     };
@@ -39,6 +40,7 @@ export default class TextInputView extends Component {
                 disabled={this.state.disabled}
                 readOnly={this.state.readOnly}
                 required={this.state.required}
+                optional={this.state.optional}
                 enableShow={this.state.obscured}
                 error={this.state.hasError ? "Invalid password" : null}
                 type={this.state.obscured ? "password" : "text"}
@@ -74,8 +76,18 @@ export default class TextInputView extends Component {
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
+              checked={this.state.optional}
+              onChange={({ target }) => this.setState({ optional: target.checked })}
+              disabled={this.state.required}
+            />{" "}
+            Optional
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
               checked={this.state.required}
               onChange={({ target }) => this.setState({ required: target.checked })}
+              disabled={this.state.optional}
             />{" "}
             Required
           </label>
