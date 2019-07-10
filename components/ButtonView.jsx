@@ -14,7 +14,7 @@ export default function ButtonView() {
   const { cssClass } = ButtonView;
 
   return (
-    <View className={cssClass.CONTAINER} title="Button" sourcePath="src/Button/Button.jsx">
+    <View className={cssClass.CONTAINER} title="Button" sourcePath="src/Button/Button.tsx">
       <p>This is a set of button components with various sizes and types.</p>
       <p>
         See also: <Link to="/components/confirmation-button">Confirmation Button</Link>

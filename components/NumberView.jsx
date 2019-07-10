@@ -24,7 +24,7 @@ export default class NumberView extends Component {
     const arrow = <span className="fa fa-long-arrow-right" />;
 
     return (
-      <View className={cssClass.CONTAINER} title="Number" sourcePath="src/Number/Number.jsx">
+      <View className={cssClass.CONTAINER} title="Number" sourcePath="src/Number/Number.tsx">
         <p>Provides consistent number formatting for long numbers, with optional shortening.</p>
 
         <Example title="Short numbers are left unchanged:">

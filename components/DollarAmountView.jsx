@@ -70,7 +70,7 @@ export default class DollarAmountView extends Component {
       <View
         className={cssClass.CONTAINER}
         title="DollarAmount"
-        sourcePath="src/DollarAmount/DollarAmount.jsx"
+        sourcePath="src/DollarAmount/DollarAmount.tsx"
       >
         <div className={cssClass.INTRO}>
           <p>Provides a convenient wrapper for displaying dollar values.</p>

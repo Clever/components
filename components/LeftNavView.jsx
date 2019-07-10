@@ -9,7 +9,7 @@ export default class LeftNavView extends PureComponent {
     const { cssClass } = LeftNavView;
 
     return (
-      <View className={cssClass.CONTAINER} title="LeftNav" sourcePath="src/LeftNav/LeftNav.jsx">
+      <View className={cssClass.CONTAINER} title="LeftNav" sourcePath="src/LeftNav/LeftNav.tsx">
         <p>
           <code>LeftNav</code> is a navigation sidebar component designed to be anchored to the left
           side of the page. It takes as its children a list consisting of top-level links (
