@@ -28,7 +28,7 @@ export default class Number extends React.PureComponent<Props> {
   static propTypes = propTypes;
 
   static format(num: number | string, short = false) {
-    const rawNumber = parseInt(`${num}` || "0", 10);
+    const rawNumber = parseInt(`${num || 0}`, 10);
 
     if (isNaN(rawNumber)) {
       throw new Error("A number is required.");
