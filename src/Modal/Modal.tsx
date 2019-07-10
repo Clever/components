@@ -100,6 +100,7 @@ export class Modal extends React.Component<Props, State> {
           </header>
           <div style={contentStyle} className="Modal--window--content">
             {this.props.children}
+            <div className="Modal--padding--div" />
           </div>
         </div>
       </div>
