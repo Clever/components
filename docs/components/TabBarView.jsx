@@ -9,7 +9,7 @@ export default class TabBarView extends PureComponent {
     const { cssClass } = TabBarView;
 
     return (
-      <View className={cssClass.CONTAINER} title="TabBar">
+      <View className={cssClass.CONTAINER} title="TabBar" sourcePath="src/TabBar/TabBar.tsx">
         <p>
           <code>TabBar</code> provides a simple horizontal flex-enabled tab bar supporting various
           alignment and sizing options. It requires <code>Tab</code> components as children.

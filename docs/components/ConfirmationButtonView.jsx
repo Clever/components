@@ -16,7 +16,11 @@ export default class ConfirmationButtonView extends Component {
     const { cssClass } = ConfirmationButtonView;
 
     return (
-      <View className={cssClass.CONTAINER} title="ConfirmationButton">
+      <View
+        className={cssClass.CONTAINER}
+        title="ConfirmationButton"
+        sourcePath="src/ConfirmationButton/ConfirmationButton.tsx"
+      >
         <p>
           This component is a <code>Button</code> that triggers the appearance of a modal with
           "Confirm" and "Cancel" buttons when clicked.

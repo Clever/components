@@ -27,7 +27,11 @@ export default class TextInputView extends Component {
     const { cssClass } = TextInputView;
 
     return (
-      <View className={cssClass.CONTAINER} title="TextInput">
+      <View
+        className={cssClass.CONTAINER}
+        title="TextInput"
+        sourcePath="src/TextInput/TextInput.tsx"
+      >
         <p>
           This is your standard <code>input type="text"</code> component.
         </p>
