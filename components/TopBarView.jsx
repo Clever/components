@@ -50,7 +50,7 @@ export default class TopBarView extends React.PureComponent {
     const page = location.query.page || "portal";
 
     return (
-      <View className={cssClass.CONTAINER} title="TopBar" sourcePath="src/TopBar/TopBar.tsx">
+      <View className={cssClass.CONTAINER} title="TopBar" sourcePath="src/TopBar/index.tsx">
         <header className={cssClass.INTRO}>
           <p>
             Global page-level header component with support for navigation buttons, links and menus.

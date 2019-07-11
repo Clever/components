@@ -17,7 +17,7 @@ export default class ModalView extends Component {
     const { cssClass } = ModalView;
 
     return (
-      <View className={cssClass.CONTAINER} title="Modal">
+      <View className={cssClass.CONTAINER} title="Modal" sourcePath="src/Modal/Modal.tsx">
         <p>
           This component wraps your content and displays it in a modal and obscures the underlying
           content.

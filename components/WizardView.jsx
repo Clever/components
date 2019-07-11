@@ -9,7 +9,7 @@ export default class WizardView extends PureComponent {
     const { cssClass } = WizardView;
 
     return (
-      <View className={cssClass.CONTAINER} title="Wizard">
+      <View className={cssClass.CONTAINER} title="Wizard" sourcePath="src/Wizard/Wizard.tsx">
         <p>
           <code>Wizard</code> provides an interface for making guided wizards. A <code>Wizard</code>
           is provided several steps that consist of a <code>Component</code> to render, a validate

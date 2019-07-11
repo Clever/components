@@ -35,7 +35,7 @@ export default class SelectView extends Component {
     const { cssClass } = SelectView;
 
     return (
-      <View className={cssClass.CONTAINER} title="Select">
+      <View className={cssClass.CONTAINER} title="Select" sourcePath="src/Select/Select.tsx">
         <p>
           This component replaces the <code>select</code> input and allows users to select options
           from a list.

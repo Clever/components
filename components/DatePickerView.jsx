@@ -13,7 +13,7 @@ export default class DatePickerView extends Component {
 
   render() {
     return (
-      <View title="DatePicker" sourcePath="src/DatePicker/DatePicker.jsx">
+      <View title="DatePicker" sourcePath="src/DatePicker/DatePicker.tsx">
         <p>
           DatePickers are cards that can be used to select a date. They're thin wrappers around{" "}
           <a href="https://hacker0x01.github.io/react-datepicker" target="blank">

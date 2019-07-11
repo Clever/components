@@ -43,7 +43,11 @@ export default class InfoPanelView extends React.Component {
     const { collapsible, footer, hideTitle } = this.state;
 
     return (
-      <View className={cssClass.CONTAINER} title="InfoPanel">
+      <View
+        className={cssClass.CONTAINER}
+        title="InfoPanel"
+        sourcePath="src/InfoPanel/InfoPanel.tsx"
+      >
         <Example>
           <ExampleCode>
             <InfoPanel
