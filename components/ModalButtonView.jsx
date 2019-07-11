@@ -17,7 +17,7 @@ export default class ModalButtonView extends Component {
     const { cssClass } = ModalButtonView;
 
     return (
-      <View className={cssClass.CONTAINER} title="ModalButton">
+      <View className={cssClass.CONTAINER} title="ModalButton" sourcePath="src/ModalButton/ModalButton.tsx">
         <p>
           This component is a <code>Button</code> that triggers the appearance of a modal when
           clicked.

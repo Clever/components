@@ -33,7 +33,7 @@ export default class GridView extends PureComponent {
     const { cssClass } = GridView;
 
     return (
-      <View className={cssClass.CONTAINER} title="Grid" subtitle="Flexible, 12-Column Grid Layout">
+      <View className={cssClass.CONTAINER} title="Grid" subtitle="Flexible, 12-Column Grid Layout" sourcePath="src/Grid/Grid.tsx">
         <p>12-column grid component for consistent, simple and flexible layouts.</p>
         <p>
           The <code>Grid</code> is a single column of any number of <code>Grid.Rows</code>, which
