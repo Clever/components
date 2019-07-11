@@ -40,7 +40,11 @@ export default class FileInputView extends React.PureComponent {
 
   render() {
     return (
-      <View className={cssClass.CONTAINER} title="FileInput" sourcePath="src/FileInput/FileInput.tsx">
+      <View
+        className={cssClass.CONTAINER}
+        title="FileInput"
+        sourcePath="src/FileInput/FileInput.tsx"
+      >
         <p>An input component that allows users to drag and drop (or click and select) files.</p>
         <Example>
           <div>
