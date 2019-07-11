@@ -26,7 +26,7 @@ export default class LabelView extends Component {
     const { color, size, tooltipPlacement, tooltipTextAlign } = this.state;
 
     return (
-      <View className={cssClass.CONTAINER} title="Label">
+      <View className={cssClass.CONTAINER} title="Label" sourcePath="src/Label/Label.tsx">
         <p>Labels can be used as easily recognizable indicators of a type, state or status.</p>
         <p>
           They can be particularly useful when displaying a list or table of information as a visual
