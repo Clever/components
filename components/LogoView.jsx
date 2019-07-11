@@ -35,7 +35,7 @@ export default class LogoView extends React.PureComponent {
     const { beta, color, fontSize } = this.state;
 
     return (
-      <View className={cssClass.CONTAINER} title="Logo" sourcePath="src/Logo/Logo.tsx">
+      <View className={cssClass.CONTAINER} title="Logo" sourcePath="src/Logo/index.tsx">
         <header className={cssClass.INTRO}>
           <CodeSample>
             {`
