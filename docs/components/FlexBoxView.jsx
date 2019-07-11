@@ -9,7 +9,7 @@ export default class FlexBoxView extends PureComponent {
     const { cssClass } = FlexBoxView;
 
     return (
-      <View className={cssClass.CONTAINER} title="FlexBox">
+      <View className={cssClass.CONTAINER} title="FlexBox" sourcePath="src/flex/FlexBox.tsx">
         <p>
           <code>FlexBox</code> provides a flex-enabled container as a convenience wrapper around the
           clever-components flex CSS classes. A <code>FlexBox</code> may contain any other

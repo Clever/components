@@ -50,7 +50,7 @@ export default class TableView extends PureComponent {
     const { enableDynamicCellClass, enableRowClick, tableData } = this.state;
 
     return (
-      <View className={cssClass.CONTAINER} title="Table">
+      <View className={cssClass.CONTAINER} title="Table" sourcePath="src/Table/Table.tsx">
         <p>
           This table component supports sorting, filtering, and pagination. There is also a lazy
           loading table available for very large sets of data.

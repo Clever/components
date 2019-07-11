@@ -26,7 +26,7 @@ export default class TooltipView extends Component {
     const { placement, textAlign } = this.state;
 
     return (
-      <View className={cssClass.CONTAINER} title="Tooltip">
+      <View className={cssClass.CONTAINER} title="Tooltip" sourcePath="src/Tooltip/Tooltip.tsx">
         <Example>
           <div className={cssClass.DEMO_CONTAINER}>
             <ExampleCode>
