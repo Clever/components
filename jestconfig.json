@@ -1,6 +1,6 @@
 {
   "automock": false,
-  "testRegex": ".+_test\\.(j|t)sx?$",
+  "testRegex": ".+_test\\.tsx?$",
   "testPathIgnorePatterns": [
     "/.*\/bin/",
     "/.*\/node_modules/"
@@ -21,7 +21,7 @@
   ],
   "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
   "transform": {
-    ".*(js|jsx|ts|tsx)$": "./jest_preprocessor.js"
+    ".*tsx?$": "./jest_preprocessor.js"
   },
   "verbose": true
 }
