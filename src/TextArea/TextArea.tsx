@@ -72,9 +72,9 @@ export class TextArea extends React.Component<Props, State> {
       throw new Error("You cannot pass both `required` and `optional` on a TextArea.");
     }
 
-    if (["readOnly", "disabled", "inFocus"].filter(x => props[x]).length > 1) {
-      throw new Error(
-        "The readOnly, disabled, and inFocus props on a TextArea are mutually exclusive.",
+    if (props.readOnly && props.disabled) {
+      console.warn(
+        "The readOnly, disabled props on a TextArea are mutually exclusive. If both are passed readOnly is used",
       );
     }
 
