@@ -21,6 +21,7 @@ export interface Props {
   onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
   onFocus?: () => void;
   onBlur?: () => void;
+  optional?: boolean;
   placeholder?: string;
   placeholderCaps?: boolean;
   readOnly?: boolean;
@@ -50,6 +51,7 @@ const propTypes = {
   onKeyPress: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  optional: PropTypes.bool,
   placeholder: PropTypes.string,
   placeholderCaps: PropTypes.bool,
   readOnly: PropTypes.bool,
@@ -68,8 +70,22 @@ export class TextInput extends React.Component<Props, State> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;
 
+  static validateProps(props) {
+    if (props.required && props.optional) {
+      console.warn("You should not pass both `required` and `optional` on a TextInput.");
+    }
+
+    if (props.readOnly && props.disabled) {
+      console.warn(
+        "The readOnly, disabled props on a TextArea are mutually exclusive. If both are passed readOnly is used",
+      );
+    }
+
+    return props;
+  }
+
   constructor(props: Props) {
-    super(props);
+    super(TextInput.validateProps(props));
     this.state = { inFocus: false, hasBeenFocused: false, hidden: true };
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
@@ -123,11 +139,14 @@ export class TextInput extends React.Component<Props, State> {
   }
 
   renderNote(errorMessage) {
-    const { required } = this.props;
+    const { required, optional } = this.props;
     let inputNote;
 
     if (required) {
       inputNote = <span className="TextInput--required">required</span>;
+    }
+    if (optional) {
+      inputNote = <span className="TextInput--optional">optional</span>;
     }
 
     if (errorMessage) {
@@ -148,7 +167,6 @@ export class TextInput extends React.Component<Props, State> {
     // add additional wrapper classes
     if (errorMessage) wrapperClass += " TextInput--hasError";
 
-    // TODO:  throw error for mutually exclusive states
     if (this.props.readOnly) {
       wrapperClass += " TextInput--readonly";
     } else if (this.props.disabled) {
