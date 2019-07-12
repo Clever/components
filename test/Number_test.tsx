@@ -35,4 +35,13 @@ describe("Number", () => {
     assert.throws(() => shallow(<Number>nope</Number>));
     assert.throws(() => Number.format("nope", true));
   });
+
+  it.only("renders 0 when children is falsy", () => {
+    assert.equal("0", mount(<Number />).text());
+    assert.equal("0", mount(<Number>{}</Number>).text());
+    assert.equal("0", mount(<Number>{""}</Number>).text());
+    assert.equal("0", mount(<Number>0</Number>).text());
+    assert.equal("0", mount(<Number>{null}</Number>).text());
+    assert.equal("0", mount(<Number>{undefined}</Number>).text());
+  });
 });
