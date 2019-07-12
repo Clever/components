@@ -15,6 +15,7 @@ export default class TextAreaView extends React.Component {
       disabled: false,
       readOnly: false,
       required: false,
+      optional: false,
       inputValue: "",
       autoResize: true,
       placeholder: true,
