@@ -69,7 +69,7 @@ export class TextArea extends React.Component<Props, State> {
 
   static validateProps(props) {
     if (props.required && props.optional) {
-      throw new Error("You cannot pass both `required` and `optional` on a TextArea.");
+      console.warn("You should not pass both `required` and `optional` on a TextArea.");
     }
 
     if (props.readOnly && props.disabled) {
