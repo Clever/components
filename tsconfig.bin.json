@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "jsx": "react",
     "lib": ["es2017", "dom"],
     "module": "commonjs",
     "noUnusedLocals": true,
     "noImplicitAny": false,
-    "target": "es5",
-    "types": ["jest"]
+    "target": "es6",
+    "types": ["jest", "node"]
   },
-  "exclude": ["./dist", "./node_modules"]
+  "include": ["bin/*.ts"]
 }
