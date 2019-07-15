@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Clever/components.git"
   },
+  "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bugs": {
