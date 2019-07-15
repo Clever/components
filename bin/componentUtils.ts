@@ -29,21 +29,19 @@ export function createNewComponent(componentName) {
   fs.writeFileSync(
     componentIndexFilePath,
     [
-      `import ${componentName} from "./${componentName}";`,
-      `export default ${componentName};`,
+      `export { ${componentName} } from "./${componentName}";`,
       "",
     ].join("\n"),
   );
 
-  process.stdout.write("Updating src/index.js...");
+  process.stdout.write("Updating src/index.ts...");
 
-  const srcIndexFilePath = getAbsoluteFilePath("src/index.js");
+  const srcIndexFilePath = getAbsoluteFilePath("src/index.ts");
   let indexFileContents = readFileContents(srcIndexFilePath);
-  if (!indexFileContents.includes(`export {${componentName}}`)) {
+  if (!indexFileContents.includes(`export { ${componentName} }`)) {
     indexFileContents = [
       indexFileContents,
-      `import ${componentName} from "./${componentName}";`,
-      `export {${componentName}};`,
+      `export { ${componentName} } from "./${componentName}";`,
       "",
     ].join("\n");
 
@@ -109,8 +107,10 @@ export function createNewComponentDemo(componentName) {
   const imports = new Set(routerFileContents.match(importsRegex)[1].split("\n"));
   imports.add(`import ${componentName}View from "./components/${componentName}View";`);
 
-  const routesRegex = /<Route path="components">\n((\n?\s+<Route.+\/>)+)\n\s+<\/Route>/;
-  const routes = new Set(routerFileContents.match(routesRegex)[1].split("\n"));
+  const routesRegex = /(<Route\s*path="components"[\s\S]*\}\}\n\s*>\n)((\n?\s+<Route.+\/>)+)\n\s+<\/Route>/;
+  const routesMatches = routerFileContents.match(routesRegex);
+  const routeParent = routesMatches[1];
+  const routes = new Set(routesMatches[2].split("\n"));
   routes.add(`        <Route path="${componentRoutePath}(/*)" component={${componentName}View} />`);
 
   const updatedRouterFileContents = routerFileContents
@@ -122,7 +122,7 @@ export function createNewComponentDemo(componentName) {
     )
     .replace(
       routesRegex,
-      `<Route path="components">\n${Array.from(routes)
+      `${routeParent}${Array.from(routes)
         .sort()
         .join("\n")}\n      </Route>`,
     );
