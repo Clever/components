@@ -26,7 +26,7 @@ export const cssClass = {
 /**
  * TODO: Add short description.
  */
-export default class NewComponent extends React.PureComponent<Props> {
+export class NewComponent extends React.PureComponent<Props> {
   // TODO: Uncomment if this component is stateful. Remove otherwise.
   // state = {
   //   sampleState1: false,
