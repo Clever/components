@@ -228,7 +228,16 @@ export class TextInput extends React.Component<Props, State> {
           value={this.props.value as any}
         />
         {this.props.enableShow && (
-          <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
+          <button
+            type="button"
+            className="TextInput--link"
+            onClick={this.toggleHidden}
+            onMouseDown={() => {
+              // fixes accessibility bug
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+          >
             {this.state.hidden ? "Show" : "Hide"}
           </button>
         )}
