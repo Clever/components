@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import AlertBoxView from "./components/AlertBoxView";
+import AutosuggestView from "./components/AutosuggestView";
 import ButtonView from "./components/ButtonView";
 import CheckboxGroupView from "./components/CheckboxGroupView";
 import CheckboxView from "./components/CheckboxView";
@@ -94,6 +95,7 @@ render(
         }}
       >
         <Route path="alert-box(/*)" component={AlertBoxView} />
+        <Route path="autosuggest(/*)" component={AutosuggestView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="checkbox(/*)" component={CheckboxView} />
         <Route path="checkbox-group(/*)" component={CheckboxGroupView} />

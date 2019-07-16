@@ -1,0 +1,62 @@
+@import (reference) "../less/utilities";
+
+.Autosuggest ul {
+  .margin--none();
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.Autosuggest--suggestion {
+  .padding--xs();
+  background: @neutral_white;
+}
+
+.Autosuggest--suggestion--highlighted {
+  box-shadow: inset @size_2xs 0 @primary_blue;
+  background: @neutral_off_white;
+}
+
+.Autosuggest--suggestionsContainerWrapper {
+  position: relative;
+}
+
+.Autosuggest--suggestionsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  .border--x--s(@neutral_silver);
+  .border--bottom--s(@neutral_silver);
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
+.Autosuggest--suggestionsContainer--small {
+  width: calc(@formElementSizeSmall + 1.5rem);
+}
+.Autosuggest--suggestionsContainer--medium {
+  width: calc(@formElementSizeMedium + 1.5rem);
+}
+.Autosuggest--suggestionsContainer--large {
+  width: calc(@formElementSizeLarge + 1.5rem);
+}
+
+.Autosuggest--textInput {
+  .border--s(@neutral_silver);
+  .padding--top--s();
+  .padding--x--s();
+  display: block;
+  width: 100%;
+  .text--medium();
+  line-height: @size_2xl;
+  min-height: @size_2xl;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+}
+
+.Autosuggest--textInput--focusable:focus {
+  box-shadow: inset @size_2xs 0 @primary_blue;
+  transition: box-shadow 0.25s ease-out;
+}

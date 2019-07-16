@@ -109,3 +109,5 @@ export { WizardLayout };
 
 import FloatingButton from "./FloatingButton";
 export { FloatingButton };
+
+export { Autosuggest } from "./Autosuggest";

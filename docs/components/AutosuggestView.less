@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.AutosuggestView--intro {
+  .margin--bottom--xl;
+}
+
+.AutosuggestView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.AutosuggestView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.AutosuggestView--config {
+  cursor: pointer;
+}
+
+.AutosuggestView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.AutosuggestView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.AutosuggestView--props {
+  .margin--top--l;
+}
