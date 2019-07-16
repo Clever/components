@@ -228,7 +228,17 @@ export class TextInput extends React.Component<Props, State> {
           value={this.props.value as any}
         />
         {this.props.enableShow && (
-          <button type="button" className="TextInput--link" onClick={this.toggleHidden}>
+          <button
+            type="button"
+            className="TextInput--link"
+            onClick={this.toggleHidden}
+            onMouseDown={event => {
+              // This prevents focus from jumping to the address bar or
+              // the first element on voiceover-enabled iOS devices
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+          >
             {this.state.hidden ? "Show" : "Hide"}
           </button>
         )}
