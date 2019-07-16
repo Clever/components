@@ -232,8 +232,9 @@ export class TextInput extends React.Component<Props, State> {
             type="button"
             className="TextInput--link"
             onClick={this.toggleHidden}
-            onMouseDown={() => {
-              // fixes accessibility bug
+            onMouseDown={event => {
+              // This prevents focus from jumping to the address bar or
+              // the first element on voiceover-enabled iOS devices
               event.preventDefault();
               event.stopPropagation();
             }}
