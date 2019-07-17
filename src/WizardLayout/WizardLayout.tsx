@@ -10,6 +10,7 @@ import "./WizardLayout.less";
 
 export interface Props {
   className?: string;
+  exitButtonText?: string;
   sections: any[];
   fullscreen?: boolean;
   headerImg?: any;
@@ -35,6 +36,7 @@ const SECTION_PROP_TYPE = PropTypes.shape({
 
 const propTypes = {
   className: PropTypes.string,
+  exitButtonText: PropTypes.string,
   fullscreen: PropTypes.bool,
   headerImg: PropTypes.element,
   helpContent: PropTypes.node,
@@ -85,6 +87,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
   render() {
     const {
       className,
+      exitButtonText,
       sections,
       headerImg,
       helpContent,
@@ -133,7 +136,11 @@ export default class WizardLayout extends React.PureComponent<Props> {
         </FlexBox>
         <FlexBox className={classnames(cssClass.FOOTER, fullscreen && cssClass.FOOTER_FULLSCREEN)}>
           {!hideSaveAndExit && onSaveAndExit && (
-            <Button type="link" value={"Save & exit"} onClick={() => onSaveAndExit()} />
+            <Button
+              type="link"
+              value={exitButtonText || "Save & exit"}
+              onClick={() => onSaveAndExit()}
+            />
           )}
           {/* spacer for the buttons */}
           <FlexBox grow />
