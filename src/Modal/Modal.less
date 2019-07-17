@@ -1,7 +1,8 @@
 @import (reference) "../less/index.less";
 
 .Modal {
-  .zIndex--3;
+  // make modal z-index greater than z-index used by pendo.
+  z-index: 10000000000;
   position: fixed;
 }
 
