@@ -119,6 +119,7 @@ export default class WizardLayoutView extends React.PureComponent {
     const WizardLayoutToRender = (
       <WizardLayout
         className="Dewey--WizardLayout"
+        exitButtonText={WizardLayoutContent[currentStep].exitButtonText || null}
         fullscreen={fullscreen}
         sections={WizardLayoutContent[currentStep].sections}
         headerImg={showHeaderImg ? headerImg : null}
@@ -227,6 +228,13 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "className",
             type: "String",
             description: "Custom CSS class to be added to the component.",
+            optional: true,
+          },
+          {
+            name: "exitButtonText",
+            type: "String",
+            description: "Optional exit button text",
+            defaultValue: "Save & exit",
             optional: true,
           },
           {
