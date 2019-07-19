@@ -15,6 +15,7 @@ export interface Props {
   fullscreen?: boolean;
   headerImg?: any;
   helpContent?: React.ReactNode;
+  hidePreviousStepButton?: boolean;
   hideSaveAndExit?: boolean;
   nextStepButtonDisabled?: boolean;
   nextStepButtonText?: string;
@@ -40,6 +41,7 @@ const propTypes = {
   fullscreen: PropTypes.bool,
   headerImg: PropTypes.element,
   helpContent: PropTypes.node,
+  hidePreviousStepButton: PropTypes.bool,
   nextStepButtonDisabled: PropTypes.bool,
   nextStepButtonText: PropTypes.string,
   prevStepButtonDisabled: PropTypes.bool,
@@ -93,6 +95,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
       helpContent,
       nextStepButtonDisabled,
       nextStepButtonText,
+      hidePreviousStepButton,
       hideSaveAndExit,
       onSaveAndExit,
       prevStepButtonDisabled,
@@ -144,13 +147,15 @@ export default class WizardLayout extends React.PureComponent<Props> {
           )}
           {/* spacer for the buttons */}
           <FlexBox grow />
-          <Button
-            type="link"
-            value={prevStepButtonText || "Previous step"}
-            className={cssClass.PREVIOUS_BUTTON}
-            onClick={this._onPrevStep}
-            disabled={prevStepButtonDisabled}
-          />
+          {!hidePreviousStepButton && (
+            <Button
+              type="link"
+              value={prevStepButtonText || "Previous step"}
+              className={cssClass.PREVIOUS_BUTTON}
+              onClick={this._onPrevStep}
+              disabled={prevStepButtonDisabled}
+            />
+          )}
           <Button
             type="primary"
             value={nextStepButtonText || "Next step"}
