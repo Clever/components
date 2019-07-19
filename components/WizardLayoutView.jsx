@@ -41,12 +41,19 @@ export default class WizardLayoutView extends React.PureComponent {
       singleSignOn: false,
       goals: false,
     },
+    hidePreviousStepButton: false,
     hideSaveAndExit: false,
   };
 
   render() {
     const { fullscreen } = this.props;
-    const { currentStep, showHeaderImg, customHelpContent, hideSaveAndExit } = this.state;
+    const {
+      currentStep,
+      showHeaderImg,
+      customHelpContent,
+      hidePreviousStepButton,
+      hideSaveAndExit,
+    } = this.state;
 
     const stepperSteps = [
       {
@@ -124,6 +131,7 @@ export default class WizardLayoutView extends React.PureComponent {
         sections={WizardLayoutContent[currentStep].sections}
         headerImg={showHeaderImg ? headerImg : null}
         helpContent={customHelpContent ? WizardLayoutContent[currentStep].helpContent : null}
+        hidePreviousStepButton={hidePreviousStepButton}
         hideSaveAndExit={hideSaveAndExit}
         nextStepButtonText={WizardLayoutContent[currentStep].nextStepButtonText || null}
         onNextStep={_onNextStep}
@@ -184,7 +192,12 @@ export default class WizardLayoutView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { showHeaderImg, customHelpContent, hideSaveAndExit } = this.state;
+    const {
+      showHeaderImg,
+      customHelpContent,
+      hidePreviousStepButton,
+      hideSaveAndExit,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -205,6 +218,15 @@ export default class WizardLayoutView extends React.PureComponent {
             onChange={e => this.setState({ customHelpContent: e.target.checked })}
           />{" "}
           Custom help content
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={hidePreviousStepButton}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={e => this.setState({ hidePreviousStepButton: e.target.checked })}
+          />{" "}
+          Hide previous step button
         </label>
         <label className={cssClass.CONFIG}>
           <input
@@ -279,6 +301,12 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "onPrevStep",
             type: "Function",
             description: "Called when user clicks on 'Previous step' button.",
+          },
+          {
+            name: "hidePreviousStepButton",
+            type: "Boolean",
+            description: "Optional boolean determining if the previous step button is hidden",
+            optional: true,
           },
           {
             name: "hideOnSaveAndExit",
