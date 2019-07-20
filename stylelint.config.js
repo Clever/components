@@ -11,7 +11,6 @@ module.exports = {
       },
     ],
     "max-empty-lines": 2,
-    "max-line-length": 100,
     "max-nesting-depth": [
       2,
       {
