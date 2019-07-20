@@ -46,7 +46,11 @@ export class TopBar extends React.PureComponent<Props> {
           needsRightPadding && "dewey--TopBar--rightPadding",
         )}
       >
-        <TopBarButton href={this.props.logoHref} onClick={this.props.onLogoClick} className="dewey-TopBar--logoLink">
+        <TopBarButton
+          href={this.props.logoHref}
+          onClick={this.props.onLogoClick}
+          className="dewey-TopBar--logoLink"
+        >
           <Logo className="dewey--TopBar--logo" />
         </TopBarButton>
         {title && (

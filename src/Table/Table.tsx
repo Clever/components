@@ -22,8 +22,8 @@ export interface SortState {
 // Webpack will inject process.env in so declare it here so we can use it to decide to log or not
 declare var process: {
   env: {
-      NODE_ENV: string
-  }
+    NODE_ENV: string;
+  };
 };
 
 export interface Props {
