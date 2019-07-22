@@ -28,10 +28,7 @@ export function createNewComponent(componentName) {
   const componentIndexFilePath = `${srcDirPath}/index.ts`;
   fs.writeFileSync(
     componentIndexFilePath,
-    [
-      `export { ${componentName} } from "./${componentName}";`,
-      "",
-    ].join("\n"),
+    [`export { ${componentName} } from "./${componentName}";`, ""].join("\n"),
   );
 
   process.stdout.write("Updating src/index.ts...");

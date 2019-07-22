@@ -21,6 +21,10 @@ WEBPACK := node_modules/webpack/bin/webpack.js
 .PHONY: gen-border-styles gen-border-radius-styles deploy-docs generate gen-colors
 
 GREEN_CHECK_MARK := " \033[0;32m✓\033[0m"
+RED_CROSS_MARK := "❌"
+
+RED := "\033[0;31m"
+ENDCOLOR := "\033[0m"
 
 format-all:
 	@./node_modules/.bin/prettier --write $(FORMATTED_FILES)
@@ -30,7 +34,7 @@ format:
 
 format-check:
 	@./node_modules/.bin/prettier -l $(FORMATTED_FILES) || \
-	(echo "\033[0;31m**** Prettier errors in the above files! Run 'make format-all' to fix! ****\033[0m" && false)
+	(echo -e $(RED_CROSS_MARK) $(RED) Prettier diffs in the above files! Run 'make format' to fix! $(ENDCOLOR) && false)
 
 # Clean up build artifacts
 clean:
@@ -92,7 +96,9 @@ lint:
 		echo -e "\033[0;32m✓ No new lint errors found.\033[0m\n"; \
 	fi
 
-test: lint
+test: format-check lint unit-test
+
+unit-test:
 	@echo "Running unit tests..."
 	NODE_ENV=test $(JEST)
 

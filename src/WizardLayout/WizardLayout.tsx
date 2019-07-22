@@ -107,7 +107,15 @@ export default class WizardLayout extends React.PureComponent<Props> {
     } = this.props;
 
     return (
-      <FlexBox column grow className={classnames(cssClass.CONTAINER, className, fullscreen && cssClass.CONTAINER_FULLSCREEN)}>
+      <FlexBox
+        column
+        grow
+        className={classnames(
+          cssClass.CONTAINER,
+          className,
+          fullscreen && cssClass.CONTAINER_FULLSCREEN,
+        )}
+      >
         <FlexBox className={cssClass.HEADER}>
           {headerImg && <div className={cssClass.HEADER_IMG}>{headerImg}</div>}
           <div>

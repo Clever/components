@@ -8,7 +8,7 @@ import "./NewComponent.less";
 export interface Props {
   children: React.ReactNode;
   className?: string;
-  onPerformAction: (arg?: string) => any
+  onPerformAction: (arg?: string) => any;
 }
 
 // TODO: Uncomment if this component is stateful, and pass State to PureComponent. Remove otherwise.
@@ -16,7 +16,6 @@ export interface Props {
 //   sampleState1: boolean;
 //   sampleState2: string;
 // }
-
 
 export const cssClass = {
   CONTAINER: "NewComponent",
