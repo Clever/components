@@ -22,6 +22,7 @@ export class NavLink extends React.PureComponent {
       label,
       onClick,
       selected,
+      title,
       ...additionalProps,
     } = this.props;
 
@@ -54,7 +55,7 @@ export class NavLink extends React.PureComponent {
             </div>
           )}
           <div className={cssClass.LABEL_CONTAINER}>
-            <div className={cssClass.LABEL} title={label}>{label}</div>
+            <div className={cssClass.LABEL} title={title ? title : label}>{label}</div>
           </div>
           {_withArrow && (
             <div className={cssClass.ARROW_CONTAINER}>
