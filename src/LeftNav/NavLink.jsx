@@ -55,7 +55,7 @@ export class NavLink extends React.PureComponent {
             </div>
           )}
           <div className={cssClass.LABEL_CONTAINER}>
-            <div className={cssClass.LABEL} title={title}>{label}</div>
+            <div className={cssClass.LABEL} title={title? title : JSON.stringify(label)}>{label}</div>
           </div>
           {_withArrow && (
             <div className={cssClass.ARROW_CONTAINER}>
