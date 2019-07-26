@@ -16,6 +16,7 @@
 @boxShadowDefaultSpread: 0.0625rem;
 
 @boxShadowDefaultColor: rgba(71, 76, 94, 0.2);
+@boxShadowDarkColor: rgba(71, 76, 94, 0.5);
 
 // Convenience mixins
 
@@ -32,6 +33,11 @@
 .boxShadow--heavy {
   box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetL @boxShadowBlurRadiusL
     @boxShadowDefaultSpread @boxShadowDefaultColor;
+}
+
+.boxShadow--heavyDark {
+  box-shadow: @boxShadowDefaultXOffset @boxShadowYOffsetL @boxShadowBlurRadiusL
+    @boxShadowDefaultSpread @boxShadowDarkColor;
 }
 
 .boxShadow(@blurRadius, @color) {
