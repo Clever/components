@@ -15,6 +15,7 @@ export interface Props {
   href?: string;
   icon?: React.ReactElement;
   label?: React.ReactNode;
+  title?: string;
   onClick?: React.MouseEventHandler;
   selected?: boolean;
 
@@ -30,6 +31,7 @@ const propTypes = {
   href: PropTypes.string,
   icon: PropTypes.element,
   label: PropTypes.node,
+  title: PropTypes.string,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
 
@@ -66,6 +68,7 @@ export class NavLink extends React.PureComponent<Props> {
       href,
       icon,
       label,
+      title,
       onClick,
       selected,
       ...additionalProps
@@ -100,7 +103,7 @@ export class NavLink extends React.PureComponent<Props> {
             </div>
           )}
           <div className={cssClass.LABEL_CONTAINER}>
-            <div className={cssClass.LABEL} title={label as any}>
+            <div className={cssClass.LABEL} title={(title || label) as any}>
               {label}
             </div>
           </div>

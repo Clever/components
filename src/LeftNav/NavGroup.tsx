@@ -15,6 +15,7 @@ export interface Props {
   icon: React.ReactElement;
   id: string;
   label: React.ReactNode;
+  title?: string;
 
   // Internal use only: (TODO: Remove?)
   _collapsed?: boolean;
@@ -30,6 +31,7 @@ const propTypes = {
   icon: PropTypes.element.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.node.isRequired,
+  title: PropTypes.string,
 
   // Internal use only:
   _collapsed: PropTypes.bool,
@@ -60,6 +62,7 @@ export class NavGroup extends React.PureComponent<Props> {
       className,
       icon,
       label,
+      title,
     } = this.props;
 
     const childSelected = !!_.find(
@@ -72,6 +75,7 @@ export class NavGroup extends React.PureComponent<Props> {
         className={classnames(cssClass.CONTAINER, _open && cssClass.OPEN, className)}
         icon={icon}
         label={label}
+        title={(title || label) as string}
         onClick={_onClick}
         selected={_withActiveNavGroups && childSelected}
         _collapsed={_collapsed}
