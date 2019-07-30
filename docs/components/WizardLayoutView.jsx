@@ -309,7 +309,7 @@ export default class WizardLayoutView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "hideOnSaveAndExit",
+            name: "hideSaveAndExit",
             type: "Boolean",
             description: "Optional boolean determining if the save & exit button is hidden",
             optional: true,
