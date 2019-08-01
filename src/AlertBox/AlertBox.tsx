@@ -72,7 +72,9 @@ export default class AlertBox extends React.PureComponent<Props> {
             <Icon className={cssClass.ICON} />
           </FlexItem>
           <FlexItem>
-            <div className={cssClass.TITLE}>{title}</div>
+            {/* Use an <h3> for accessibility. Visual headings must be marked as such. The US Gov
+              design system also uses <h3>s for their alert box titles */}
+            <h3 className={cssClass.TITLE}>{title}</h3>
             {children}
           </FlexItem>
           <FlexItem grow>
