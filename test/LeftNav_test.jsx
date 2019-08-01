@@ -24,8 +24,8 @@ describe("LeftNav", function LeftNavTest() {
       </NavGroup>
       <NavLink label="topLink2" icon={fakeIcon} />
       <NavGroup label="group2" id="group2" icon={fakeIcon}>
-        <NavLink label="subLink21" />
-        <NavLink label="subLink22" />
+        <NavLink label="subLink21" title="subLink21" />
+        <NavLink label="subLink22" title="sb22" />
       </NavGroup>
     </LeftNav>
   );
@@ -67,6 +67,7 @@ describe("LeftNav", function LeftNavTest() {
       const link = group.get(0);
       assert.equal(group.type(), NavLink);
       assert.equal(link.props.label, "group1");
+      assert.equal(link.props.title, "group1");
       assert.equal(link.props.icon, fakeIcon);
       assert(!group.children().find(NavLink).exists());
     });
@@ -86,7 +87,9 @@ describe("LeftNav", function LeftNavTest() {
       assert(subnav.exists());
       assert.equal(subnav.children().length, 2);
       assert.equal(subnav.childAt(0).prop("label"), "subLink11");
+      assert.equal(subnav.childAt(0).prop("title"), "subLink11");
       assert.equal(subnav.childAt(1).prop("label"), "subLink12");
+      assert.equal(subnav.childAt(0).prop("title"), "subLink12");
     });
   });
 
@@ -133,7 +136,9 @@ describe("LeftNav", function LeftNavTest() {
       assert(subnav.exists());
       assert.equal(subnav.children().length, 2);
       assert.equal(subnav.childAt(0).prop("label"), "subLink21");
+      assert.equal(subnav.childAt(0).prop("title"), "subLink21");
       assert.equal(subnav.childAt(1).prop("label"), "subLink22");
+      assert.equal(subnav.childAt(1).prop("title"), "sb22");
     });
   });
 
@@ -170,6 +175,7 @@ describe("LeftNav", function LeftNavTest() {
       assert(subnav.exists());
       assert.equal(subnav.children().length, 1);
       assert.equal(subnav.childAt(0).prop("label"), "subLink11");
+      assert.equal(subnav.childAt(0).prop("title"), "subLink11");
     });
 
     it("renders the NavLink with the 'selected' class", () => {
@@ -186,6 +192,7 @@ describe("LeftNav", function LeftNavTest() {
       assert(subnav.exists());
       assert.equal(subnav.children().length, 1);
       assert.equal(subnav.childAt(0).prop("label"), "subLink21");
+      assert.equal(subnav.childAt(0).prop("title"), "subLink21");
     });
   });
 

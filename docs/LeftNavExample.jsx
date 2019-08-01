@@ -48,9 +48,10 @@ export default class LeftNavExample extends React.Component {
     } = this.state;
 
     const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
-    const link = (label, iconNode) =>
+    const link = (label, title, iconNode) =>
       <NavLink
         label={label}
+        title={title}
         icon={iconNode}
         selected={selected === label}
         onClick={() => this.setState({selected: label})}
@@ -75,6 +76,7 @@ export default class LeftNavExample extends React.Component {
             >
               <NavLink
                 label="Menu"
+                title="Menu"
                 icon={icon(Icon.names.MENU)}
                 onClick={() => this.setState({collapsed: !collapsed})}
               />
@@ -84,13 +86,18 @@ export default class LeftNavExample extends React.Component {
                 {link("Screwdriver")}
                 {link("Measuring Tape")}
               </NavGroup>
-              <NavGroup label="Juggling Props" id="Juggling Props" icon={icon(Icon.names.JUGGLER)}>
+              <NavGroup label="Juggling Props"
+                title="JugglingProps"
+                id="Juggling Props"
+                icon={icon(Icon.names.JUGGLER)}
+              >
                 {link("Balls")}
                 {link("Clubs")}
                 {link("Rings")}
               </NavGroup>
               <NavGroup
                 label="Really really ridiculously long label"
+                title="Really long title"
                 id="verbose"
                 icon={icon(Icon.names.PEN)}
               >

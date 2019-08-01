@@ -55,7 +55,7 @@ export class NavLink extends React.PureComponent {
             </div>
           )}
           <div className={cssClass.LABEL_CONTAINER}>
-            <div className={cssClass.LABEL} title={title? title : JSON.stringify(label)}>{label}</div>
+            <div className={cssClass.LABEL} title={"bla" || title}>{label}</div>
           </div>
           {_withArrow && (
             <div className={cssClass.ARROW_CONTAINER}>
@@ -86,6 +86,7 @@ NavLink.propTypes = {
   label: PropTypes.node,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
+  title: PropTypes.string,
 
   // Internal use only:
   _collapsed: PropTypes.bool,

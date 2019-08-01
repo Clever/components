@@ -100,6 +100,11 @@ export default class LeftNavView extends PureComponent {
               type: "String",
               description: "The label to render as the link text",
             },
+            {
+              name: "title",
+              type: "String",
+              description: "The string to render as the link title",
+            },
           ]}
           className={cssClass.PROPS}
           title="NavGroup"
@@ -123,6 +128,11 @@ export default class LeftNavView extends PureComponent {
               name: "label",
               type: "String",
               description: "The label to render as the link text",
+            },
+            {
+              name: "title",
+              type: "String",
+              description: "The string to render as the link title",
             },
             {
               name: "onClick",

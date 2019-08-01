@@ -113,7 +113,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/wizard", "Wizard")}
           {this._renderLink("/components/wizard-layout", "WizardLayout")}
         </NavGroup>
-        <NavGroup id="less" label="LESS" icon={faIcon("css3")}>
+        <NavGroup id="less" label="LESS" title="LESS" icon={faIcon("css3")}>
           {this._renderLink("/less/less-style-guide", "Style Guide")}
           {this._renderLink("/less/spacing", "Spacing")}
         </NavGroup>

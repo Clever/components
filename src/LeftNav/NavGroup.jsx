@@ -24,6 +24,7 @@ export class NavGroup extends React.PureComponent {
       className,
       icon,
       label,
+      title,
     } = this.props;
 
     const childSelected = !!_.find(React.Children.toArray(children), item => item.props.selected);
@@ -33,6 +34,7 @@ export class NavGroup extends React.PureComponent {
         className={classnames(cssClass.CONTAINER, _open && cssClass.OPEN, className)}
         icon={icon}
         label={label}
+        title={title}
         onClick={_onClick}
         selected={_withActiveNavGroups && childSelected}
         _collapsed={_collapsed}
@@ -49,6 +51,7 @@ NavGroup.propTypes = {
   icon: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.node.isRequired,
+  title: PropTypes.string,
 
   // Internal use only:
   _collapsed: PropTypes.bool,
