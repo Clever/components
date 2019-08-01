@@ -63,9 +63,11 @@ describe("TextInput", () => {
     assert(textInput.hasClass("TextInput--hasError"));
 
     // check the span element with error message
-    assert.equal(textInput.find("span").length, 1);
-    assert.equal(textInput.find("span").text(), "<FontAwesome /> This is an error");
-    assert(textInput.find("span").hasClass("TextInput--error"));
+    assert.equal(textInput.find("span.TextInput--error").length, 1);
+    assert.equal(
+      textInput.find('span[aria-live="polite"]').text(),
+      "<FontAwesome /> This is an error",
+    );
   });
 
   it("properly renders a <TextInput> with a required flag", () => {
@@ -76,9 +78,8 @@ describe("TextInput", () => {
     assert.equal(textInput.find("input[value='TextInputValue']").length, 1);
 
     // check the span element with required indicator
-    assert.equal(textInput.find("span").length, 1);
-    assert.equal(textInput.find("span").text(), "required");
-    assert(textInput.find("span").hasClass("TextInput--required"));
+    assert.equal(textInput.find("span.TextInput--required").length, 1, textInput.html());
+    assert.equal(textInput.find('span[aria-live="polite"]').text(), "required");
   });
 
   it("properly renders a <TextInput> as readonly", () => {
