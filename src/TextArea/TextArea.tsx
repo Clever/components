@@ -159,7 +159,6 @@ export class TextArea extends React.Component<Props, State> {
   render() {
     let wrapperClass = "TextArea";
     const errorMessage = this.currentErrorMessage();
-    const valid = errorMessage === "";
 
     if (errorMessage) wrapperClass += " TextArea--hasError";
 
@@ -180,7 +179,6 @@ export class TextArea extends React.Component<Props, State> {
     const inputNote = this.renderNote(errorMessage);
 
     const textAreaProps = {
-      ["aria-invalid"]: !valid,
       className: "TextArea--input",
       disabled: this.props.disabled,
       maxLength: this.props.maxLength,
@@ -223,7 +221,7 @@ export class TextArea extends React.Component<Props, State> {
           <label className="TextArea--label" htmlFor={this.props.name}>
             {this.props.label}
           </label>
-          <span aria-live="polite">{inputNote}</span>
+          {inputNote}
         </div>
         {textarea}
       </div>

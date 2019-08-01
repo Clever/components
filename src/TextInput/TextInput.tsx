@@ -163,7 +163,6 @@ export class TextInput extends React.Component<Props, State> {
   render() {
     let wrapperClass = "TextInput";
     const errorMessage = this.currentErrorMessage();
-    const valid = errorMessage === "";
 
     // add additional wrapper classes
     if (errorMessage) wrapperClass += " TextInput--hasError";
@@ -209,7 +208,7 @@ export class TextInput extends React.Component<Props, State> {
           <label className="TextInput--label" htmlFor={this.props.name}>
             {this.props.label}
           </label>
-          <span aria-live="polite">{inputNote}</span>
+          {inputNote}
         </div>
         <input
           {...additionalProps}
@@ -227,7 +226,6 @@ export class TextInput extends React.Component<Props, State> {
           required={this.props.required}
           type={type}
           value={this.props.value as any}
-          aria-invalid={!valid}
         />
         {this.props.enableShow && (
           <button
