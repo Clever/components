@@ -117,7 +117,7 @@ export class TextArea extends React.Component<Props, State> {
     this.textAreaEl.current.focus();
   }
 
-  currentErrorMessage() {
+  currentErrorMessage(): string {
     const { error, value, required } = this.props;
     const { hasBeenFocused } = this.state;
 

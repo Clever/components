@@ -121,7 +121,7 @@ export class TextInput extends React.Component<Props, State> {
     this.setState({ hidden: !this.state.hidden });
   }
 
-  currentErrorMessage() {
+  currentErrorMessage(): string {
     const { error, value, required } = this.props;
     const { hasBeenFocused } = this.state;
 
