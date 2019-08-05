@@ -61,6 +61,13 @@ export class Autosuggest extends React.PureComponent<Props, State> {
     suggestions: [],
   };
 
+  onSuggestionHighlighted = ({ suggestion }) => {
+    const highlightedElement = document.getElementById("#react-autowhatever-1--item-6");
+    if (highlightedElement) {
+      highlightedElement.scrollIntoView(true);
+    }
+  };
+
   // Called every time suggestions need to be updated.
   onSuggestionsFetchRequested = async ({ value }) => {
     const { onSuggestionsFetchRequested } = this.props;
