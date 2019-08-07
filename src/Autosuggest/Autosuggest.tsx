@@ -38,7 +38,6 @@ export const cssClass = {
   SUGGESTION: "Autosuggest--suggestion",
   SUGGESTION_HIGHLIGHTED: "Autosuggest--suggestion--highlighted",
   SUGGESTIONS_CONTAINER: "Autosuggest--suggestionsContainer",
-  SUGGESTIONS_CONTAINER_WRAPPER: "Autosuggest--suggestionsContainerWrapper",
   TEXT_INPUT: "Autosuggest--textInput",
   TEXT_INPUT_FOCUSABLE: "Autosuggest--textInput--focusable",
 };
@@ -56,16 +55,19 @@ const defaultProps = {
  * Suitable for the student experience due to the underlying component being accesible.
  */
 export class Autosuggest extends React.PureComponent<Props, State> {
+  static cssClass = cssClass;
   static defaultProps = defaultProps;
   state = {
     suggestions: [],
   };
 
   onSuggestionHighlighted = ({ suggestion }) => {
-    const highlightedElement = document.getElementById("#react-autowhatever-1--item-6");
+    /*
+    const highlightedElement = document.getElementById("react-autowhatever-1--item-6");
     if (highlightedElement) {
       highlightedElement.scrollIntoView(true);
     }
+    */
   };
 
   // Called every time suggestions need to be updated.
@@ -96,10 +98,12 @@ export class Autosuggest extends React.PureComponent<Props, State> {
   renderSuggestion = (suggestion: Suggestion, { query, isHighlighted }) => {
     const { renderSuggestion } = this.props;
     return (
-      <div className={classnames(
-        cssClass.SUGGESTION,
-        isHighlighted && cssClass.SUGGESTION_HIGHLIGHTED,
-      )}>
+      <div
+        className={classnames(
+          cssClass.SUGGESTION,
+          isHighlighted && cssClass.SUGGESTION_HIGHLIGHTED,
+        )}
+      >
         {renderSuggestion ? renderSuggestion(suggestion, { query, isHighlighted }) : suggestion.label}
       </div>
     );
@@ -108,22 +112,15 @@ export class Autosuggest extends React.PureComponent<Props, State> {
   // Renders to container around all sections.
   renderSuggestionsContainer = ({ containerProps, children, query }) => {
     const { size } = this.props;
-    const { suggestions } = this.state;
-    const suggestionsVisible = suggestions.length > 0;
 
     return (
-      <div {...containerProps} className={cssClass.SUGGESTIONS_CONTAINER_WRAPPER}>
-        {/*
-          * Autosuggest requires that the above wrapper div exist and it have containerProps.
-          * Nested divs are further necessary since the inner div is position: absolute and requires
-          * a parent div that is position: relative.
-         */}
-        <div className={classnames(
-          suggestionsVisible && cssClass.SUGGESTIONS_CONTAINER,
+      <div {...containerProps}
+        className={classnames(
+          cssClass.SUGGESTIONS_CONTAINER,
           suggestionsContainerClassName(size),
-        )}>
-          {children}
-        </div>
+        )}
+      >
+        {children}
       </div>
     );
   }

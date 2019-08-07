@@ -174,6 +174,7 @@ export default class AutosuggestView extends React.PureComponent {
             name: "placeholder",
             type: "string",
             description: "Placeholder text of the input",
+            optional: true,
           },
           {
             name: "renderSuggestion",
