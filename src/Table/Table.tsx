@@ -42,6 +42,7 @@ export interface Props {
   paginated?: boolean;
   rowIDFn: Function;
   rowClassNameFn?: Function;
+  noDataContent?: React.ReactNode;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -77,6 +78,7 @@ const propTypes = {
   paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
   rowClassNameFn: PropTypes.func,
+  noDataContent: PropTypes.node,
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -368,6 +370,7 @@ export class Table extends React.Component<Props, State> {
       rowIDFn,
       rowClassNameFn,
       onRowClick,
+      noDataContent,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -384,53 +387,60 @@ export class Table extends React.Component<Props, State> {
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
     return (
-      <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-        <Header
-          disableSort={disableSort}
-          onSortChange={columnID => this._toggleSort(columnID)}
-          sortState={sortState}
-        >
-          {columns}
-        </Header>
-        <tbody className={cssClass.BODY}>
-          {displayedData.length === 0 ? (
-            <tr className={cssClass.ROW}>
-              <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
-                {!pageLoading && "NO DATA"}
-              </Cell>
-            </tr>
-          ) : (
-            displayedData.map(rowData => (
-              <tr
-                className={classnames(
-                  cssClass.ROW,
-                  onRowClick && cssClass.CLICKABLE_ROW,
-                  rowClassNameFn && rowClassNameFn(rowData),
-                )}
-                key={rowIDFn(rowData)}
-                onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
-              >
-                {columns.map(({ props: col }: { props: any }) => (
-                  <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
-                    {col.cell.renderer(rowData)}
-                  </Cell>
-                ))}
+      <>
+        <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
+          <Header
+            disableSort={disableSort}
+            onSortChange={columnID => this._toggleSort(columnID)}
+            sortState={sortState}
+          >
+            {columns}
+          </Header>
+          <tbody className={cssClass.BODY}>
+            {displayedData.length === 0 && !noDataContent ? (
+              <tr className={cssClass.ROW}>
+                <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
+                  {!pageLoading && "NO DATA"}
+                </Cell>
               </tr>
-            ))
+            ) : (
+              displayedData.map(rowData => (
+                <tr
+                  className={classnames(
+                    cssClass.ROW,
+                    onRowClick && cssClass.CLICKABLE_ROW,
+                    rowClassNameFn && rowClassNameFn(rowData),
+                  )}
+                  key={rowIDFn(rowData)}
+                  onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+                >
+                  {columns.map(({ props: col }: { props: any }) => (
+                    <Cell
+                      className={getCellClassName(col, rowData)}
+                      key={col.id}
+                      noWrap={col.noWrap}
+                    >
+                      {col.cell.renderer(rowData)}
+                    </Cell>
+                  ))}
+                </tr>
+              ))
+            )}
+          </tbody>
+          {paginated && (
+            <Footer
+              currentPage={displayedPage}
+              onPageChange={newPage => this.setCurrentPage(newPage)}
+              numColumns={columns.length}
+              numPages={numPages}
+              showLastPage={!lazy}
+              isLoading={pageLoading}
+              lengthUnknown={lazy && numRows == null && !allLoaded}
+            />
           )}
-        </tbody>
-        {paginated && (
-          <Footer
-            currentPage={displayedPage}
-            onPageChange={newPage => this.setCurrentPage(newPage)}
-            numColumns={columns.length}
-            numPages={numPages}
-            showLastPage={!lazy}
-            isLoading={pageLoading}
-            lengthUnknown={lazy && numRows == null && !allLoaded}
-          />
-        )}
-      </table>
+        </table>
+        {displayedData.length === 0 && noDataContent}
+      </>
     );
   }
 }

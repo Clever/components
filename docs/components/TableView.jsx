@@ -296,6 +296,14 @@ export default class TableView extends PureComponent {
                 "`lazy`.",
               optional: true,
             },
+            {
+              name: "noDataContent",
+              type: "React Node",
+              description:
+                "If `data` is empty then we render noDataContent below the table body. " +
+                'If noDataContent is not passed we add a row spaning all columns that says "NO DATA"',
+              optional: true,
+            },
           ]}
           title="Table"
         />
