@@ -387,60 +387,59 @@ export class Table extends React.Component<Props, State> {
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
     return (
-      <>
-        <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-          <Header
-            disableSort={disableSort}
-            onSortChange={columnID => this._toggleSort(columnID)}
-            sortState={sortState}
-          >
-            {columns}
-          </Header>
-          <tbody className={cssClass.BODY}>
-            {displayedData.length === 0 && !noDataContent ? (
-              <tr className={cssClass.ROW}>
+      <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
+        <Header
+          disableSort={disableSort}
+          onSortChange={columnID => this._toggleSort(columnID)}
+          sortState={sortState}
+        >
+          {columns}
+        </Header>
+        <tbody className={cssClass.BODY}>
+          {displayedData.length === 0 ? (
+            <tr className={cssClass.ROW}>
+              {noDataContent ? (
+                <Cell colSpan={columns.length} noWrap>
+                  {noDataContent}
+                </Cell>
+              ) : (
                 <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
                   {!pageLoading && "NO DATA"}
                 </Cell>
+              )}
+            </tr>
+          ) : (
+            displayedData.map(rowData => (
+              <tr
+                className={classnames(
+                  cssClass.ROW,
+                  onRowClick && cssClass.CLICKABLE_ROW,
+                  rowClassNameFn && rowClassNameFn(rowData),
+                )}
+                key={rowIDFn(rowData)}
+                onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+              >
+                {columns.map(({ props: col }: { props: any }) => (
+                  <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
+                    {col.cell.renderer(rowData)}
+                  </Cell>
+                ))}
               </tr>
-            ) : (
-              displayedData.map(rowData => (
-                <tr
-                  className={classnames(
-                    cssClass.ROW,
-                    onRowClick && cssClass.CLICKABLE_ROW,
-                    rowClassNameFn && rowClassNameFn(rowData),
-                  )}
-                  key={rowIDFn(rowData)}
-                  onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
-                >
-                  {columns.map(({ props: col }: { props: any }) => (
-                    <Cell
-                      className={getCellClassName(col, rowData)}
-                      key={col.id}
-                      noWrap={col.noWrap}
-                    >
-                      {col.cell.renderer(rowData)}
-                    </Cell>
-                  ))}
-                </tr>
-              ))
-            )}
-          </tbody>
-          {paginated && (
-            <Footer
-              currentPage={displayedPage}
-              onPageChange={newPage => this.setCurrentPage(newPage)}
-              numColumns={columns.length}
-              numPages={numPages}
-              showLastPage={!lazy}
-              isLoading={pageLoading}
-              lengthUnknown={lazy && numRows == null && !allLoaded}
-            />
+            ))
           )}
-        </table>
-        {displayedData.length === 0 && noDataContent}
-      </>
+        </tbody>
+        {paginated && (
+          <Footer
+            currentPage={displayedPage}
+            onPageChange={newPage => this.setCurrentPage(newPage)}
+            numColumns={columns.length}
+            numPages={numPages}
+            showLastPage={!lazy}
+            isLoading={pageLoading}
+            lengthUnknown={lazy && numRows == null && !allLoaded}
+          />
+        )}
+      </table>
     );
   }
 }
