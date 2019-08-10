@@ -42,6 +42,7 @@ export interface Props {
   paginated?: boolean;
   rowIDFn: Function;
   rowClassNameFn?: Function;
+  noDataContent?: React.ReactNode;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -77,6 +78,7 @@ const propTypes = {
   paginated: PropTypes.bool,
   rowIDFn: PropTypes.func.isRequired,
   rowClassNameFn: PropTypes.func,
+  noDataContent: PropTypes.node,
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -368,6 +370,7 @@ export class Table extends React.Component<Props, State> {
       rowIDFn,
       rowClassNameFn,
       onRowClick,
+      noDataContent,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -395,9 +398,15 @@ export class Table extends React.Component<Props, State> {
         <tbody className={cssClass.BODY}>
           {displayedData.length === 0 ? (
             <tr className={cssClass.ROW}>
-              <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
-                {!pageLoading && "NO DATA"}
-              </Cell>
+              {noDataContent ? (
+                <Cell colSpan={columns.length} noWrap>
+                  {noDataContent}
+                </Cell>
+              ) : (
+                <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
+                  {!pageLoading && "NO DATA"}
+                </Cell>
+              )}
             </tr>
           ) : (
             displayedData.map(rowData => (
