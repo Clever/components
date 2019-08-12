@@ -97,6 +97,7 @@ export const cssClass = {
   CLICKABLE_ROW: "Table--clickable_row",
   FIXED: "Table--fixed",
   NO_DATA: "Table--no_data_cell",
+  NO_DATA_CONTENT: "Table--no_data_cell_with_content",
   ROW: "Table--row",
   TABLE: "Table",
 };
@@ -399,7 +400,7 @@ export class Table extends React.Component<Props, State> {
           {displayedData.length === 0 ? (
             <tr className={cssClass.ROW}>
               {noDataContent ? (
-                <Cell colSpan={columns.length} noWrap>
+                <Cell className={cssClass.NO_DATA_CONTENT} colSpan={columns.length} noWrap>
                   {noDataContent}
                 </Cell>
               ) : (
