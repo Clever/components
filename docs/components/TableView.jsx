@@ -100,7 +100,8 @@ export default class TableView extends PureComponent {
                 }
                 onRowMouseOver={
                   enableRowMouseOver
-                    ? (e, rowID, rowData) => console.log("Table row moused over:", { rowID, rowData })
+                    ? (e, rowID, rowData) =>
+                        console.log("Table row moused over:", { rowID, rowData })
                     : undefined
                 }
                 onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
