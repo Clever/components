@@ -36,6 +36,7 @@ export interface Props {
   initialSortState?: SortState;
   onPageChange?: Function;
   onRowClick?: Function;
+  onRowMouseOver?: Function;
   onSortChange?: Function;
   onViewChange?: Function;
   pageSize?: number;
@@ -72,6 +73,7 @@ const propTypes = {
   initialSortState: tablePropTypes.sortState,
   onPageChange: PropTypes.func,
   onRowClick: PropTypes.func,
+  onRowMouseOver: PropTypes.func,
   onSortChange: PropTypes.func,
   onViewChange: PropTypes.func,
   pageSize: PropTypes.number,
@@ -371,6 +373,7 @@ export class Table extends React.Component<Props, State> {
       rowIDFn,
       rowClassNameFn,
       onRowClick,
+      onRowMouseOver,
       noDataContent,
     } = this.props;
     const { lazy, numRows } = this.props;
@@ -419,6 +422,7 @@ export class Table extends React.Component<Props, State> {
                 )}
                 key={rowIDFn(rowData)}
                 onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+                onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
               >
                 {columns.map(({ props: col }: { props: any }) => (
                   <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>

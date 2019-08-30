@@ -17,6 +17,7 @@ export default class TableView extends PureComponent {
     this.state = {
       enableDynamicCellClass: false,
       enableRowClick: true,
+      enableRowMouseOver: false,
       tableFilter: "",
     };
   }
@@ -47,7 +48,7 @@ export default class TableView extends PureComponent {
 
   render() {
     const { cssClass } = TableView;
-    const { enableDynamicCellClass, enableRowClick, tableData } = this.state;
+    const { enableDynamicCellClass, enableRowClick, enableRowMouseOver, tableData } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Table" sourcePath="src/Table/Table.tsx">
@@ -95,6 +96,11 @@ export default class TableView extends PureComponent {
                 onRowClick={
                   enableRowClick
                     ? (e, rowID, rowData) => console.log("Table row clicked:", { rowID, rowData })
+                    : undefined
+                }
+                onRowMouseOver={
+                  enableRowMouseOver
+                    ? (e, rowID, rowData) => console.log("Table row moused over:", { rowID, rowData })
                     : undefined
                 }
                 onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
@@ -177,6 +183,14 @@ export default class TableView extends PureComponent {
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
+              checked={enableRowMouseOver}
+              onChange={({ target }) => this.setState({ enableRowMouseOver: target.checked })}
+            />{" "}
+            mouseover rows (see console)
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
               checked={enableDynamicCellClass}
               onChange={({ target }) => this.setState({ enableDynamicCellClass: target.checked })}
             />{" "}
@@ -241,6 +255,12 @@ export default class TableView extends PureComponent {
               name: "onRowClick",
               type: "Function",
               description: "Callback function for when a table row is clicked",
+              optional: true,
+            },
+            {
+              name: "onRowMouseOver",
+              type: "Function",
+              description: "Callback function for when a table row is moused over",
               optional: true,
             },
             {
