@@ -36,7 +36,7 @@ export interface Props {
   initialSortState?: SortState;
   onPageChange?: Function;
   onRowClick?: Function;
-  onRowMouseOver?: Function;
+  onRowMouseOver?: (e: any, rowID: any, rowData: any) => void;
   onSortChange?: Function;
   onViewChange?: Function;
   pageSize?: number;
