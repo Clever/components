@@ -77,8 +77,10 @@ export class MultiplePanelModals extends React.Component<Props, State> {
       width,
       panel,
       leftButtonName,
+      leftButtonType,
       overrideOnClickLeftButton,
       rightButtonName,
+      rightButtonType,
       overrideOnClickRightButton,
     } = componentArray[this.state.currentPanel];
 
@@ -124,7 +126,7 @@ export class MultiplePanelModals extends React.Component<Props, State> {
             <Button
               value={leftButtonValue}
               className={Classes.FIRST_BUTTON}
-              type="link"
+              type={leftButtonType || "link"}
               onClick={() => {
                 if (!isFirstPanel) {
                   this.setState({ currentPanel: this.state.currentPanel - 1 });
@@ -135,7 +137,7 @@ export class MultiplePanelModals extends React.Component<Props, State> {
             <Button
               value={rightButtonValue}
               className={Classes.SECOND_BUTTON}
-              type="primary"
+              type={rightButtonType || "primary"}
               onClick={() => {
                 rightButtonOnClick();
                 if (isLastPanel) {
