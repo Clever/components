@@ -7,7 +7,7 @@ import React, { PureComponent } from "react";
 import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { Button, ModalButton, Table, TextInput } from "src";
+import { Button, ModalButton, Table, TextInput, SegmentedControl } from "src";
 
 import "./TableView.less";
 
@@ -19,6 +19,7 @@ export default class TableView extends PureComponent {
       enableRowClick: true,
       enableRowMouseOver: false,
       tableFilter: "",
+      firstSortDirection: Table.sortDirection.ASCENDING,
     };
   }
 
@@ -48,7 +49,13 @@ export default class TableView extends PureComponent {
 
   render() {
     const { cssClass } = TableView;
-    const { enableDynamicCellClass, enableRowClick, enableRowMouseOver, tableData } = this.state;
+    const {
+      enableDynamicCellClass,
+      enableRowClick,
+      enableRowMouseOver,
+      tableData,
+      firstSortDirection,
+    } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Table" sourcePath="src/Table/Table.tsx">
@@ -90,6 +97,7 @@ export default class TableView extends PureComponent {
                 }
                 initialPage={24}
                 initialSortState={{ columnID: "name", direction: Table.sortDirection.ASCENDING }}
+                firstSortDirection={firstSortDirection}
                 ref="table"
                 onPageChange={page => console.log("Table page changed:", page)}
                 onSortChange={sortState => console.log("Table sort changed:", sortState)}
@@ -197,6 +205,18 @@ export default class TableView extends PureComponent {
             />{" "}
             Dynamic cell class names
           </label>
+          <label className={cssClass.CONFIG}>
+            First Sort Direction:
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              defaultValue={firstSortDirection}
+              onSelect={value => this.setState({ firstSortDirection: value })}
+              options={[
+                { content: "ASCENDING", value: Table.sortDirection.ASCENDING },
+                { content: "DESCENDING", value: Table.sortDirection.DESCENDING },
+              ]}
+            />
+          </label>
         </Example>
 
         <PropDocumentation
@@ -244,6 +264,12 @@ export default class TableView extends PureComponent {
               name: "initialSortState",
               type: "{columnID: String, direction: Table.sortDirection}",
               description: "The initial sort state of the table",
+              optional: true,
+            },
+            {
+              name: "firstSortDirection",
+              type: "Table.sortDirection",
+              description: "Direction to sort table on initial click",
               optional: true,
             },
             {
@@ -417,6 +443,7 @@ export default class TableView extends PureComponent {
               await new Promise(resolve => setTimeout(resolve, 1000));
               return tableData.slice(start, start + pageSize);
             }}
+            firstSortDirection={Table.sortDirection.DESCENDING}
             numRows={tableData.length}
             onPageChange={page => console.log("Table page changed:", page)}
             onSortChange={sortState => console.log("Table sort changed:", sortState)}
@@ -476,5 +503,6 @@ export default class TableView extends PureComponent {
 
 TableView.cssClass = {
   CONFIG: "TableView--config",
+  CONFIG_OPTIONS: "TableView--configOptions",
   CONTAINER: "TableView",
 };
