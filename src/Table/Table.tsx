@@ -14,9 +14,11 @@ import { ChildrenOf } from "../utils/types";
 
 import "./Table.less";
 
+export type SortDirection = "asc" | "desc";
+
 export interface SortState {
   columnID?: string;
-  direction?: "asc" | "desc";
+  direction?: SortDirection;
 }
 
 // Webpack will inject process.env in so declare it here so we can use it to decide to log or not
@@ -34,6 +36,7 @@ export interface Props {
   fixed?: boolean;
   initialPage?: number;
   initialSortState?: SortState;
+  firstSortDirection?: SortDirection;
   onPageChange?: Function;
   onRowClick?: Function;
   onRowMouseOver?: (e: any, rowID: any, rowData: any) => void;
@@ -71,6 +74,7 @@ const propTypes = {
   fixed: PropTypes.bool,
   initialPage: tablePropTypes.pageNumber,
   initialSortState: tablePropTypes.sortState,
+  firstSortDirection: tablePropTypes.sortDirection,
   onPageChange: PropTypes.func,
   onRowClick: PropTypes.func,
   onRowMouseOver: PropTypes.func,
@@ -92,6 +96,7 @@ const defaultProps = {
   onPageChange: () => {},
   onSortChange: () => {},
   pageSize: DEFAULT_PAGE_SIZE,
+  firstSortDirection: sortDirection.ASCENDING,
 };
 
 export const cssClass = {
@@ -265,7 +270,7 @@ export class Table extends React.Component<Props, State> {
 
     const newSortState: SortState = {
       columnID,
-      direction: sortDirection.ASCENDING,
+      direction: this.props.firstSortDirection,
     };
 
     if (oldSortState && oldSortState.columnID === columnID) {
