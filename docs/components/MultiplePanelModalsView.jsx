@@ -91,6 +91,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
                     title: "Page2",
                     panelClassName: "secondClass",
                     leftButtonName: "override the name back",
+                    rightButtonType: "destructive",
                     overrideOnClickRightButton: () =>
                       console.log("new action after clicking button 2 on the second page"),
                   },
