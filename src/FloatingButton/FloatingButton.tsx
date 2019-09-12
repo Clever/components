@@ -7,6 +7,7 @@ import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import { Icon } from "../Icon/Icon";
+import { isMobileDevice } from "../utils";
 import { Values } from "../utils/types";
 
 import "./FloatingButton.less";
@@ -120,7 +121,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
 
   horizontalStyle() {
     const { offsetX, positionX } = this.props;
-    if (positionX === PositionX.CENTER) return {};
+    if (positionX === PositionX.CENTER || isMobileDevice()) return {};
     return positionX === PositionX.LEFT
       ? {
           left: addSizeUnit(offsetX),
@@ -187,7 +188,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
           {...additionalProps}
           className={classnames(
             cssClass.CONTAINER,
-            cssClass.propStyle(positionX),
+            cssClass.propStyle(isMobileDevice() ? PositionX.CENTER : positionX),
             cssClass.propStyle(positionY),
             className,
           )}

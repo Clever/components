@@ -83,3 +83,11 @@ export function classNameFor(prefixes: string | string[], classSegments?: string
 
   return classnames(prefixList.map(p => [p].concat(classSegmentList).join("--")));
 }
+
+/**
+ * Returns whether the client's device is mobile by detecting whether the device orientation property is present.
+ * https://coderwall.com/p/i817wa/one-line-function-to-detect-mobile-devices-with-javascript
+ */
+export function isMobileDevice() {
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
