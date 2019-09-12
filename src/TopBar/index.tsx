@@ -51,7 +51,7 @@ export class TopBar extends React.PureComponent<Props> {
           onClick={this.props.onLogoClick}
           className="dewey-TopBar--logoLink"
         >
-          <Logo className="dewey--TopBar--logo" />
+          <Logo className="dewey--TopBar--logo" svgClassName="dewey--TopBar--logo--mobile" />
         </TopBarButton>
         {title && (
           <h1 className="dewey--TopBar--title" title={title as any}>
