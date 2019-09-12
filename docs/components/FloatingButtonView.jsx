@@ -262,7 +262,11 @@ export default class FloatingButtonView extends React.PureComponent {
             {
               name: "positionX",
               type: "String",
-              description: <p>One of left, center, right. <code>center</code> forced on mobile</p>,
+              description: (
+                <p>
+                  One of left, center, right. <code>center</code> forced on mobile
+                </p>
+              ),
               optional: true,
               defaultValue: "right",
             },
