@@ -128,6 +128,12 @@ export default class LogoView extends React.PureComponent {
             optional: true,
             defaultValue: <code>utils.Colors.NEUTRAL_WHITE</code>,
           },
+          {
+            name: "svgClassName",
+            type: "string",
+            description: "Optional additional CSS class name to apply directly to the svg tag.",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
