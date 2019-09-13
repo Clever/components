@@ -130,7 +130,6 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
   }
 
   positionX() {
-    console.log(window.innerWidth);
     return window.innerWidth <= breakpointS ? PositionX.CENTER : this.props.positionX;
   }
 
