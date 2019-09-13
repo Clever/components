@@ -7,6 +7,7 @@ import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import { Icon } from "../Icon/Icon";
+import { breakpointS } from "../utils/Constants";
 import { Values } from "../utils/types";
 
 import "./FloatingButton.less";
@@ -29,6 +30,7 @@ export interface Props {
 
 interface State {
   active: boolean;
+  positionX: string;
 }
 
 const cssClass = {
@@ -115,11 +117,25 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
     super(props);
     this.state = {
       active: false,
+      positionX: this.positionX(),
     };
   }
 
+  onWindowResize = _.throttle(() => {
+    this.setState({ positionX: this.positionX() });
+  }, 1000);
+
+  componentDidMount() {
+    window.addEventListener("resize", this.onWindowResize);
+  }
+
+  positionX() {
+    return window.innerWidth <= breakpointS ? PositionX.CENTER : this.props.positionX;
+  }
+
   horizontalStyle() {
-    const { offsetX, positionX } = this.props;
+    const { offsetX } = this.props;
+    const { positionX } = this.state;
     if (positionX === PositionX.CENTER) return {};
     return positionX === PositionX.LEFT
       ? {
@@ -172,11 +188,10 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
       className,
       closeLabel,
       label,
-      positionX,
       positionY,
       size,
     } = this.props;
-    const { active } = this.state;
+    const { active, positionX } = this.state;
     const additionalProps = _.omit(this.props, Object.keys(
       propTypes,
     ) as (keyof typeof propTypes)[]);
