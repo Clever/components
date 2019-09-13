@@ -248,7 +248,7 @@ export default class FloatingButtonView extends React.PureComponent {
             {
               name: "offsetX",
               type: "number",
-              description: "x-axis offset from edge of screen. Unused on mobile",
+              description: "x-axis offset from edge of screen. Unused on small screens",
               optional: true,
               defaultValue: 30,
             },
@@ -264,7 +264,7 @@ export default class FloatingButtonView extends React.PureComponent {
               type: "String",
               description: (
                 <p>
-                  One of left, center, right. <code>center</code> forced on mobile
+                  One of left, center, right. <code>center</code> forced on small screens
                 </p>
               ),
               optional: true,
