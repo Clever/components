@@ -21,6 +21,7 @@ export interface Props extends FlexItemProps {
   inline?: boolean;
   justify?: Values<typeof Justify>;
   wrap?: boolean;
+  [additionalProp: string]: any;
 }
 
 export const cssClass = {
