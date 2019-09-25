@@ -23,6 +23,7 @@ export interface Props {
   stayOpenOnSelect?: boolean;
   trigger: React.ReactElement;
   wrapItems?: boolean;
+  [additionalProp: string]: any;
 }
 
 const Placement = {

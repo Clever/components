@@ -13,6 +13,7 @@ export interface Props {
   href?: string;
   onClick?: Function;
   round?: boolean;
+  [additionalProp: string]: any;
 }
 
 const propTypes = {

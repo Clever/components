@@ -19,6 +19,7 @@ export interface Props {
   onMouseEnter?: Function;
   selected?: boolean;
   target?: string;
+  [additionalProp: string]: any;
 }
 
 const propTypes = {
