@@ -12,6 +12,7 @@ import "../less/forms.less";
 export interface Props extends TextInputProps {
   className?: string;
   enableCopy?: boolean;
+  onClickCopy?: Function;
 }
 
 interface State {
