@@ -46,9 +46,6 @@ const defaultProps = {
   size: Size.M,
 };
 
-/**
- * Element displays
- */
 export class Badge extends React.PureComponent<Props> {
   static propTypes = propTypes;
   static defaultProps = defaultProps;

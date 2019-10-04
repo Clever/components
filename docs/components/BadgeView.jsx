@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import Example, { CodeSample, ExampleCode } from "./Example";
+import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { Badge, FlexBox, ItemAlign, SegmentedControl } from "src";
+import { Badge } from "src";
 
 import "./BadgeView.less";
 
@@ -70,7 +70,6 @@ export default class BadgeView extends React.PureComponent {
     );
   }
 
-  // TODO: Update prop documentation.
   _renderProps() {
     return (
       <PropDocumentation
