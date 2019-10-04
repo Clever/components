@@ -233,6 +233,12 @@ export default class CopyableInputView extends Component {
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },
+            {
+              name: "onClickCopy",
+              type: "Function",
+              description: "Called when the user clicks the copy button",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
         />
