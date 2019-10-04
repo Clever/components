@@ -1,7 +1,7 @@
 import * as classnames from "classnames";
 import * as React from "react";
 
-import { Values } from "src/utils/types";
+import { Values } from "../utils/types";
 
 import "./Badge.less";
 
