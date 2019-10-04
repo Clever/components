@@ -1,7 +1,5 @@
 import * as classnames from "classnames";
-import * as PropTypes from "prop-types";
 import * as React from "react";
-import _ = require("lodash");
 
 import { Values } from "src/utils/types";
 
@@ -34,20 +32,12 @@ const Color = {
   GRAY: "gray",
 };
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  color: PropTypes.oneOf(_.values(Color)),
-  size: PropTypes.oneOf(_.values(Size)),
-};
-
 const defaultProps = {
   color: Color.BLUE,
   size: Size.M,
 };
 
 export class Badge extends React.PureComponent<Props> {
-  static propTypes = propTypes;
   static defaultProps = defaultProps;
 
   static Color = Color;
