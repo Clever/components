@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import AlertBoxView from "./components/AlertBoxView";
+import BadgeView from "./components/BadgeView";
 import ButtonView from "./components/ButtonView";
 import CheckboxGroupView from "./components/CheckboxGroupView";
 import CheckboxView from "./components/CheckboxView";
@@ -94,6 +95,7 @@ render(
         }}
       >
         <Route path="alert-box(/*)" component={AlertBoxView} />
+        <Route path="badge(/*)" component={BadgeView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="checkbox(/*)" component={CheckboxView} />
         <Route path="checkbox-group(/*)" component={CheckboxGroupView} />
