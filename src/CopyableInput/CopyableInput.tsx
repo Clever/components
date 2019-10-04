@@ -25,6 +25,7 @@ const propTypes = {
   enableCopy: PropTypes.bool,
   required: PropTypes.bool,
   size: PropTypes.string,
+  onClickCopy: PropTypes.func,
 };
 
 const defaultProps = {
@@ -55,7 +56,13 @@ export class CopyableInput extends React.Component<Props, State> {
   }
 
   copyPassword() {
+    const { onClickCopy } = this.props;
+
     this.setState({ copied: true });
+
+    if (onClickCopy) {
+      onClickCopy();
+    }
   }
 
   render() {
