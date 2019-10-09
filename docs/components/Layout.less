@@ -86,6 +86,7 @@ a {
   color: @primary_blue;
   text-decoration: none;
   transition: color 0.25s ease-out;
+  border-bottom: 1px solid @primary_blue;
 
   &:hover,
   &:focus,
@@ -97,6 +98,7 @@ a {
   &:hover,
   &:focus {
     .shade(color, @primary_blue, 2);
+    border-bottom-color: @primary_blue_shade_2
   }
 }
 
