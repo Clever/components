@@ -45,6 +45,7 @@ button {
       color: @neutral_dark_gray;
 
       &.Button--linkPlain,
+      &.Button--linkUnderlined,
       &.Button--link,
       &.Button--plain {
         background: none;
@@ -52,7 +53,8 @@ button {
       }
 
       &.Button--linkPlain,
-      &.Button--link {
+      &.Button--link,
+      &.Button--linkUnderlined {
         color: @neutral_gray;
       }
     }
@@ -120,6 +122,19 @@ button {
     border-color: transparent;
   }
 
+  &.Button--linkPlain,
+  &.Button--plain,
+  &.Button--linkUnderlined {
+    font-size: 1em; /* Match surrounding text. */
+    margin: 0;
+    padding: 0;
+  }
+
+  &.Button--linkPlain,
+  &.Button--plain {
+    border: none;
+  }
+
   &.Button--link {
     color: @primary_blue;
 
@@ -145,6 +160,23 @@ button {
     }
   }
 
+  &.Button--linkUnderlined {
+    color: @primary_blue;
+    .border--bottom--s(@primary_blue);
+    font-weight: 600;
+
+    &:hover,
+    &:active {
+      color: @primary_blue_shade_2;
+      .border--bottom--s(@primary_blue_shade_2);
+    }
+
+    &:focus {
+      outline: @borderRadiusM solid fade(@primary_blue_tint_2, 50%);
+      transition: none;
+    }
+  }
+
   &.Button--small {
     .text--small;
     padding: @size_xs @size_s @size_2xs;
@@ -158,14 +190,6 @@ button {
     .borderRadius--xl;
     .text--large;
     padding: @size_m @size_l @size_s;
-  }
-
-  &.Button--linkPlain,
-  &.Button--plain {
-    border: none;
-    font-size: 1em; /* Match surrounding text. */
-    margin: 0;
-    padding: 0;
   }
 
   /* Match surroundings even more. */

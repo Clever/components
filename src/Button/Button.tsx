@@ -36,6 +36,7 @@ const Type = {
   DESTRUCTIVE: "destructive",
   LINK: "link",
   LINK_PLAIN: "linkPlain",
+  LINK_UNDERLINED: "linkUnderlined",
   PLAIN: "plain",
 } as const;
 
