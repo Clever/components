@@ -38,7 +38,6 @@ export default function ButtonView() {
           <Button type="link" href="http://clever.com" value="Link" />
           <Button disabled type="link" href="http://clever.com" value="Disabled Link" />
           <Button type="linkPlain" href="http://google.com" value="Plain Link" />
-          <Button type="linkUnderlined" href="http://google.com" value="Underlined Link" />
         </ExampleCode>
         <p>
           Here is a <Button type="linkPlain" href="//google.com" value="plain link" /> with no
@@ -130,8 +129,7 @@ export default function ButtonView() {
           {
             name: "type",
             type: "String",
-            description:
-              "One of primary, secondary, destructive, link, linkPlain, linkUnderlined, plain",
+            description: "One of primary, secondary, destructive, link, linkPlain, plain",
             optional: true,
             defaultValue: "secondary",
           },
@@ -184,6 +182,13 @@ export default function ButtonView() {
             name: "submit",
             type: "Bool",
             description: "Behaves as a submit button when true",
+            optional: true,
+            defaultValue: "false",
+          },
+          {
+            name: "underlined",
+            type: "Bool",
+            description: "Optional border-bottom for plain links",
             optional: true,
             defaultValue: "false",
           },
