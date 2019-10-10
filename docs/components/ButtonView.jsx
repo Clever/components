@@ -185,6 +185,13 @@ export default function ButtonView() {
             optional: true,
             defaultValue: "false",
           },
+          {
+            name: "underlined",
+            type: "Bool",
+            description: "Optional border-bottom for plain links",
+            optional: true,
+            defaultValue: "false",
+          },
         ]}
         className={cssClass.PROPS}
       />

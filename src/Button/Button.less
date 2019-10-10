@@ -45,6 +45,7 @@ button {
       color: @neutral_dark_gray;
 
       &.Button--linkPlain,
+      &.Button--linkUnderlined,
       &.Button--link,
       &.Button--plain {
         background: none;
@@ -52,7 +53,8 @@ button {
       }
 
       &.Button--linkPlain,
-      &.Button--link {
+      &.Button--link,
+      &.Button--linkUnderlined {
         color: @neutral_gray;
       }
     }
@@ -131,6 +133,23 @@ button {
     }
   }
 
+  &.Button--small {
+    .text--small;
+    padding: @size_xs @size_s @size_2xs;
+  }
+
+  &.Button--regular {
+    padding: @size_s @size_m @size_xs;
+  }
+
+  &.Button--linkPlain,
+  &.Button--plain {
+    border: none;
+    font-size: 1em; /* Match surrounding text. */
+    margin: 0;
+    padding: 0;
+  }
+
   &.Button--linkPlain {
     color: @primary_blue;
 
@@ -145,27 +164,25 @@ button {
     }
   }
 
-  &.Button--small {
-    .text--small;
-    padding: @size_xs @size_s @size_2xs;
-  }
+  &.Button--linkUnderlined {
+    .border--bottom--s(@primary_blue);
+    .borderRadius--0;
 
-  &.Button--regular {
-    padding: @size_s @size_m @size_xs;
+    &:hover,
+    &:active {
+      .border--bottom--s(@primary_blue_shade_2);
+    }
+
+    &:focus {
+      outline: none;
+      transition: none;
+    }
   }
 
   &.Button--large {
     .borderRadius--xl;
     .text--large;
     padding: @size_m @size_l @size_s;
-  }
-
-  &.Button--linkPlain,
-  &.Button--plain {
-    border: none;
-    font-size: 1em; /* Match surrounding text. */
-    margin: 0;
-    padding: 0;
   }
 
   /* Match surroundings even more. */
