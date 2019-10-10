@@ -122,19 +122,6 @@ button {
     border-color: transparent;
   }
 
-  &.Button--linkPlain,
-  &.Button--plain,
-  &.Button--linkUnderlined {
-    font-size: 1em; /* Match surrounding text. */
-    margin: 0;
-    padding: 0;
-  }
-
-  &.Button--linkPlain,
-  &.Button--plain {
-    border: none;
-  }
-
   &.Button--link {
     color: @primary_blue;
 
@@ -144,6 +131,23 @@ button {
       color: @primary_blue_shade_2;
       background-color: fade(@primary_blue, 5%);
     }
+  }
+
+  &.Button--small {
+    .text--small;
+    padding: @size_xs @size_s @size_2xs;
+  }
+
+  &.Button--regular {
+    padding: @size_s @size_m @size_xs;
+  }
+
+  &.Button--linkPlain,
+  &.Button--plain {
+    border: none;
+    font-size: 1em; /* Match surrounding text. */
+    margin: 0;
+    padding: 0;
   }
 
   &.Button--linkPlain {
@@ -161,29 +165,18 @@ button {
   }
 
   &.Button--linkUnderlined {
-    color: @primary_blue;
     .border--bottom--s(@primary_blue);
-    font-weight: 600;
+    .borderRadius--0;
 
     &:hover,
     &:active {
-      color: @primary_blue_shade_2;
       .border--bottom--s(@primary_blue_shade_2);
     }
 
     &:focus {
-      outline: @borderRadiusM solid fade(@primary_blue_tint_2, 50%);
+      outline: none;
       transition: none;
     }
-  }
-
-  &.Button--small {
-    .text--small;
-    padding: @size_xs @size_s @size_2xs;
-  }
-
-  &.Button--regular {
-    padding: @size_s @size_m @size_xs;
   }
 
   &.Button--large {

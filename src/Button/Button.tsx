@@ -18,6 +18,7 @@ export interface Props {
   onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
   submit?: boolean;
   style?: React.CSSProperties;
+  underlined?: boolean;
   [additionalProp: string]: any;
 }
 
@@ -36,7 +37,6 @@ const Type = {
   DESTRUCTIVE: "destructive",
   LINK: "link",
   LINK_PLAIN: "linkPlain",
-  LINK_UNDERLINED: "linkUnderlined",
   PLAIN: "plain",
 } as const;
 
@@ -51,6 +51,7 @@ const propTypes = {
   onClick: PropTypes.func,
   submit: PropTypes.bool,
   style: PropTypes.object,
+  underlined: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -92,6 +93,7 @@ export class Button extends React.PureComponent<Props> {
       target,
       type,
       value,
+      underlined,
     } = this.props;
     const additionalProps = _.omit(this.props, Object.keys(
       propTypes,
@@ -105,7 +107,16 @@ export class Button extends React.PureComponent<Props> {
       throw new Error("Buttons with href do not support the submit option");
     }
 
-    const classes = classnames(`Button Button--${type}`, `Button--${size}`, className);
+    if (type !== Type.LINK_PLAIN && underlined) {
+      throw new Error(`Underlined ${type} button not supported`);
+    }
+
+    const classes = classnames(
+      `Button Button--${type}`,
+      `Button--${size}`,
+      className,
+      underlined ? "Button--linkUnderlined" : "",
+    );
 
     if (href == null || disabled) {
       // use <button>s for all disabled links and things with no href prop (buttons)
