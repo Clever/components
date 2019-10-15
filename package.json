@@ -108,6 +108,7 @@
     "react-dom": ">=16.0.0 <17.0.0"
   },
   "scripts": {
-    "dev-server": "node_modules/.bin/webpack-dev-server"
+    "dev-server": "node_modules/.bin/webpack-dev-server",
+    "postinstall": "make build"
   }
 }
