@@ -68,7 +68,7 @@ export default class RadioGroupView extends React.PureComponent {
           </p>
           <CodeSample>
             {`
-              import {Radio, RadioGroup} from "clever-components";
+              import { RadioGroup } from "clever-components";
               // OR
               import RadioGroup from "clever-components/dist/RadioGroup"; // Avoids importing all of clever-components.
             `}
