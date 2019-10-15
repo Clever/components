@@ -81,7 +81,8 @@ import WithKeyboardNav from "./WithKeyboardNav";
 export { WithKeyboardNav };
 
 import RadioGroup from "./RadioGroup";
-export { RadioGroup };
+import Radio from "./RadioGroup/Radio";
+export { RadioGroup, Radio };
 
 import FormError from "./FormError";
 export { FormError };
