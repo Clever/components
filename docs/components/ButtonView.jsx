@@ -59,31 +59,21 @@ export default function ButtonView() {
 
       <Example title="Button with HTML content">
         <Button type="primary" value={<span className="fa fa-search" />} />
-        <Button
-          type="destructive"
-          value={
-            <div>
-              <span className="fa fa-trash" /> Remove
-            </div>
-          }
-        />
-        <Button
-          disabled
-          value={
-            <div>
-              <span className="fa fa-spin fa-spinner" /> Saving...
-            </div>
-          }
-        />
-        <Button
-          href="http://wikipedia.org"
-          type="link"
-          value={
-            <span>
-              <span className="fa fa-external-link" /> Learn more
-            </span>
-          }
-        />
+        <Button type="destructive">
+          <div>
+            <span className="fa fa-trash" /> Remove
+          </div>
+        </Button>
+        <Button disabled>
+          <div>
+            <span className="fa fa-spin fa-spinner" /> Saving...
+          </div>
+        </Button>
+        <Button href="http://wikipedia.org" type="link">
+          <span>
+            <span className="fa fa-external-link" /> Learn more
+          </span>
+        </Button>
       </Example>
 
       <h3>API:</h3>
@@ -101,8 +91,9 @@ export default function ButtonView() {
               _focusExampleRef = ref;
             }}
             type="destructive"
-            value="Focus on me!"
-          />
+          >
+            Focus on me!
+          </Button>
 
           <Button
             onClick={() => {
@@ -111,12 +102,11 @@ export default function ButtonView() {
             }}
             size={Button.Size.S}
             type="link"
-            value={
-              <span>
-                <code>focus()</code> ...but just for a second
-              </span>
-            }
-          />
+          >
+            <span>
+              <code>focus()</code> ...but just for a second
+            </span>
+          </Button>
         </ExampleCode>
       </Example>
 
