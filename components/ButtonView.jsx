@@ -123,9 +123,18 @@ export default function ButtonView() {
       <PropDocumentation
         availableProps={[
           {
+            name: "children",
+            type: "ReactNode",
+            optional: true,
+            description:
+              "The content that appears in the button, and takes precedence over 'value'",
+          },
+          {
             name: "value",
-            type: "string",
-            description: "The text that appears on the button",
+            type: "ReactNode",
+            optional: true,
+            description:
+              "(Deprecated, use children instead) The content that appears in the button if children are not specified",
           },
           {
             name: "type",
