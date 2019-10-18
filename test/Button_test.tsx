@@ -1,5 +1,3 @@
-/* eslint func-names: "off" */
-
 import * as assert from "assert";
 import * as React from "react";
 import * as sinon from "sinon";
