@@ -8,10 +8,11 @@ import { Values } from "../utils/types";
 import "./Button.less";
 
 export interface Props {
+  children?: React.ReactNode;
   className?: string;
   type?: ButtonType;
   size?: ButtonSize;
-  value: React.ReactNode;
+  value?: React.ReactNode;
   href?: string;
   target?: "_self" | "_blank";
   disabled?: boolean;
@@ -43,10 +44,11 @@ const Type = {
 } as const;
 
 const propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
   type: PropTypes.oneOf(_.values(Type)),
   size: PropTypes.oneOf(_.values(Size)),
-  value: PropTypes.node.isRequired,
+  value: PropTypes.node,
   href: PropTypes.string,
   target: PropTypes.oneOf(["_self", "_blank"]),
   disabled: PropTypes.bool,
@@ -87,6 +89,7 @@ export class Button extends React.PureComponent<Props> {
   render() {
     const {
       ariaLabel,
+      children,
       className,
       disabled,
       href,
@@ -122,7 +125,8 @@ export class Button extends React.PureComponent<Props> {
       underlined ? "Button--linkUnderlined" : "",
     );
 
-    const aria = ariaLabel || (typeof value === "string" ? (value as string) : null);
+    const content = children || value;
+    const aria = ariaLabel || (typeof content === "string" ? content : null);
 
     if (href == null || disabled) {
       // use <button>s for all disabled links and things with no href prop (buttons)
@@ -139,7 +143,7 @@ export class Button extends React.PureComponent<Props> {
           style={style}
           type={submit ? "submit" : "button"}
         >
-          {value}
+          {content}
         </button>
       );
     }
@@ -156,7 +160,7 @@ export class Button extends React.PureComponent<Props> {
         style={style}
         target={target}
       >
-        {value}
+        {content}
       </a>
     );
   }
