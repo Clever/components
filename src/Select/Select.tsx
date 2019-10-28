@@ -9,7 +9,7 @@ import "react-select/dist/react-select.css";
 import "./Select.less";
 import "../less/forms.less";
 
-interface SelectValueType {
+export interface SelectValueType {
   label: string;
   value: string;
 }
