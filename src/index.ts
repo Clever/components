@@ -14,7 +14,7 @@ export { ConfirmationButton } from "./ConfirmationButton/ConfirmationButton";
 export { TextInput } from "./TextInput/TextInput";
 export { CopyableInput } from "./CopyableInput/CopyableInput";
 export { SegmentedControl } from "./SegmentedControl/SegmentedControl";
-export { Select } from "./Select/Select";
+export { Select, SelectValueType } from "./Select/Select";
 export { Table } from "./Table/Table";
 export { Grid } from "./Grid/Grid";
 export { Icon } from "./Icon/Icon";
