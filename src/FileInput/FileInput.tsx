@@ -115,7 +115,7 @@ const propTypes = {
 const defaultProps = {
   iconOnly: false,
   className: "",
-  formElementSize: FormElementSize.FULL_WIDTH,
+  size: FormElementSize.FULL_WIDTH,
 };
 
 export class FileInput extends React.Component<Props, State> {
