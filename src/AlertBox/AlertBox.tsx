@@ -9,7 +9,7 @@ import { FlexBox, FlexItem } from "../flex";
 
 import "./AlertBox.less";
 
-type AlertBoxType = "warning" | "success" | "error" | "info";
+type AlertBoxType = "processing" | "warning" | "success" | "error" | "info";
 
 export interface Props {
   children: React.ReactNode;
@@ -33,14 +33,15 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
-  type: PropTypes.oneOf<AlertBoxType>(["warning", "success", "error", "info"]),
+  type: PropTypes.oneOf<AlertBoxType>(["processing", "warning", "success", "error", "info"]),
   isClosable: PropTypes.bool,
 };
 
 const iconMap = {
+  processing: "hourglass-half",
   warning: "exclamation-triangle",
   success: "thumbs-up",
-  error: "minus-circle",
+  error: "exclamation-circle",
   info: "bell",
 };
 
