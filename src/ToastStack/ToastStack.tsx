@@ -10,19 +10,21 @@ import { ToastNotificationType, ToastType } from "./ToastType";
 
 import "./ToastStack.less";
 
+export interface ToastNotificationData {
+  action?: ActionProps;
+  content: React.ReactNode;
+  durationMS?: number;
+  id: number;
+  showCloseButton?: boolean;
+  type: ToastNotificationType;
+}
+
 export interface Props {
   className?: string;
   clearNotification: (id: number) => void;
   defaultNotificationDurationMS?: number;
   notificationClassName?: string;
-  notifications?: {
-    action?: ActionProps;
-    content: React.ReactNode;
-    durationMS?: number;
-    id: number;
-    showCloseButton?: boolean;
-    type: ToastNotificationType;
-  }[];
+  notifications?: ToastNotificationData[];
 }
 
 const propTypes = {
