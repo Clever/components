@@ -2,7 +2,9 @@ import * as classnames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-import { CloseIcon, WarningIcon, SuccessIcon, ErrorIcon, InfoIcon } from "./icons";
+import * as FontAwesome from "react-fontawesome";
+
+import { CloseIcon } from "./icons";
 import { FlexBox, FlexItem } from "../flex";
 
 import "./AlertBox.less";
@@ -17,13 +19,6 @@ export interface Props {
   isClosable?: boolean;
   onClose?: () => void;
 }
-
-const ICONS = {
-  warning: WarningIcon,
-  success: SuccessIcon,
-  error: ErrorIcon,
-  info: InfoIcon,
-};
 
 const cssClass = {
   CONTAINER: "AlertBox--container",
@@ -40,6 +35,13 @@ const propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.oneOf<AlertBoxType>(["warning", "success", "error", "info"]),
   isClosable: PropTypes.bool,
+};
+
+const iconMap = {
+  warning: "exclamation-triangle",
+  success: "thumbs-up",
+  error: "minus-circle",
+  info: "bell",
 };
 
 /*
@@ -61,7 +63,6 @@ export default class AlertBox extends React.PureComponent<Props> {
   render() {
     const { children, className, type, title, isClosable } = this.props;
     const { isOpen } = this.state;
-    const Icon = ICONS[type];
     if (!isOpen) {
       return null;
     }
@@ -69,7 +70,12 @@ export default class AlertBox extends React.PureComponent<Props> {
       <div className={classnames(`AlertBox--${type}`, cssClass.CONTAINER, className)}>
         <FlexBox className={cssClass.HEADER}>
           <FlexItem className={cssClass.ICON_CONTAINER}>
-            <Icon className={cssClass.ICON} />
+            <FontAwesome
+              fixedWidth
+              size="lg"
+              name={iconMap[type]}
+              className={classnames(`AlertBox--Icon--${type}`, cssClass.ICON)}
+            />
           </FlexItem>
           <FlexItem>
             {/* Use an <h3> for accessibility. Visual headings must be marked as such. The US Gov
