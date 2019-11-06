@@ -98,8 +98,8 @@ export { Switch };
 import ProgressBar from "./ProgressBar";
 export { ProgressBar };
 
-import { ToastStack, ToastType } from "./ToastStack";
-export { ToastStack, ToastType };
+import { ToastStack, ToastType, ToastNotificationData } from "./ToastStack";
+export { ToastStack, ToastType, ToastNotificationData };
 
 import Stepper from "./Stepper";
 export { Stepper };
