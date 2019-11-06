@@ -58,6 +58,8 @@ const propTypes = {
   disabled: PropTypes.bool,
   label: PropTypes.string,
   multi: PropTypes.bool,
+  onFocus: PropTypes.func,
+  isLoading: PropTypes.bool,
   onChange: PropTypes.func,
   optionRenderer: PropTypes.func,
   options: PropTypes.arrayOf(selectValuePropType),
