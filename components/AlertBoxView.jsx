@@ -74,7 +74,7 @@ export default class AlertBoxView extends PureComponent {
             {
               name: "type",
               type: "string",
-              description: "One of: warning, error, info, success",
+              description: "One of: processing, warning, error, info, success",
               defaultValue: "",
               optional: false,
             },
@@ -107,6 +107,7 @@ export default class AlertBoxView extends PureComponent {
 }
 
 AlertBoxView.AlertBoxOptions = {
+  PROCESSING: "processing",
   WARNING: "warning",
   SUCCESS: "success",
   ERROR: "error",
