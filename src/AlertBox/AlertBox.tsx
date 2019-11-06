@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 
 import * as FontAwesome from "react-fontawesome";
 
-import { CloseIcon } from "./icons";
+import { CloseIcon } from "./CloseIcon";
 import { FlexBox, FlexItem } from "../flex";
 
 import "./AlertBox.less";
