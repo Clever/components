@@ -242,7 +242,8 @@ export default class SelectView extends Component {
             {
               name: "isLoading",
               type: "Boolean",
-              description: "Whether to force displaying the loading spinner. Shouldn't be used and has no effect when 'lazy' is enabled since it handles loading on its own.",
+              description:
+                "Whether to force displaying the loading spinner. Shouldn't be used and has no effect when 'lazy' is enabled since it handles loading on its own.",
               defaultValue: "False",
               optional: true,
             },
