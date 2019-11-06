@@ -21,6 +21,8 @@ export interface Props {
   disabled?: boolean;
   label?: string;
   multi?: boolean;
+  onFocus?: () => void;
+  isLoading?: boolean;
   onChange?: Function;
   optionRenderer?: Function;
   options?: SelectValueType[];
@@ -56,6 +58,8 @@ const propTypes = {
   disabled: PropTypes.bool,
   label: PropTypes.string,
   multi: PropTypes.bool,
+  onFocus: PropTypes.func,
+  isLoading: PropTypes.bool,
   onChange: PropTypes.func,
   optionRenderer: PropTypes.func,
   options: PropTypes.arrayOf(selectValuePropType),
@@ -131,6 +135,8 @@ export class Select extends React.Component<Props, State> {
       disabled,
       label,
       multi,
+      onFocus,
+      isLoading,
       onChange,
       optionRenderer,
       options,
@@ -158,10 +164,13 @@ export class Select extends React.Component<Props, State> {
       }
     } else {
       if (options) {
-        console.warn('Select: prop "options" may not be set if not "lazy"');
+        console.warn('Select: prop "options" may not be set if "lazy"');
       }
       if (!loadOptions) {
-        console.warn('Select: prop "loadOptions" must be set if not "lazy"');
+        console.warn('Select: prop "loadOptions" must be set if "lazy"');
+      }
+      if (isLoading) {
+        console.warn('Select: prop "isLoading" may not be set if "lazy"');
       }
     }
 
@@ -217,9 +226,11 @@ export class Select extends React.Component<Props, State> {
             name={name}
             onBlur={() => this.setState({ hasBeenFocused: true })}
             onChange={onChange}
+            onFocus={onFocus}
             optionRenderer={optionRenderer}
             options={options}
             loadOptions={loadOptions}
+            isLoading={isLoading}
             filterOptions={filterOptions}
             placeholder={placeholder}
             searchable={searchable}

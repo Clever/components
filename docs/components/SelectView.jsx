@@ -240,6 +240,14 @@ export default class SelectView extends Component {
               optional: true,
             },
             {
+              name: "isLoading",
+              type: "Boolean",
+              description:
+                "Whether to force displaying the loading spinner. Shouldn't be used and has no effect when 'lazy' is enabled since it handles loading on its own.",
+              defaultValue: "False",
+              optional: true,
+            },
+            {
               name: "filterOptions",
               type: "Function",
               description:
@@ -259,6 +267,12 @@ export default class SelectView extends Component {
               type: "Boolean",
               description: "Whether multiple options may be selected",
               defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "onFocus",
+              type: "() => void",
+              description: "Called when the component is focused",
               optional: true,
             },
             {
