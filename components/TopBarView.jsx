@@ -189,6 +189,12 @@ export default class TopBarView extends React.PureComponent {
               optional: false,
             },
             {
+              name: "customLogo",
+              type: <code>React.Node</code>,
+              description: "Alternate node to show instead of the Clever logo.",
+              optional: true,
+            },
+            {
               name: "title",
               type: <code>React.Node</code>,
               description: "Title text to show after the Clever logo, if applicable.",
