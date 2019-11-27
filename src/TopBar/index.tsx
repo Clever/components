@@ -13,6 +13,7 @@ export interface Props {
   className?: string;
   logoHref: string;
   title?: React.ReactNode;
+  customLogo?: React.ReactNode;
   onLogoClick?: Function;
 }
 
@@ -23,7 +24,7 @@ export class TopBar extends React.PureComponent<Props> {
   static Button = TopBarButton;
 
   render() {
-    const { children, className, title } = this.props;
+    const { children, className, title, customLogo } = this.props;
 
     // If the last element is a "rounded" TopBarButton we need to add some additional padding to the right side.
     // To determine this we need to inspect the children;
@@ -51,7 +52,9 @@ export class TopBar extends React.PureComponent<Props> {
           onClick={this.props.onLogoClick}
           className="dewey-TopBar--logoLink"
         >
-          <Logo className="dewey--TopBar--logo" svgClassName="dewey--TopBar--logo--mobile" />
+          {customLogo || (
+            <Logo className="dewey--TopBar--logo" svgClassName="dewey--TopBar--logo--mobile" />
+          )}
         </TopBarButton>
         {title && (
           <h1 className="dewey--TopBar--title" title={title as any}>
