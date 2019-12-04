@@ -2,6 +2,8 @@ import React from "react";
 import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
+import ComponentsView from "./components/ComponentsView";
+
 import AlertBoxView from "./components/AlertBoxView";
 import BadgeView from "./components/BadgeView";
 import ButtonView from "./components/ButtonView";
@@ -94,6 +96,7 @@ render(
           }
         }}
       >
+        <Route path="view-all(/*)" component={ComponentsView} />
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="badge(/*)" component={BadgeView} />
         <Route path="button(/*)" component={ButtonView} />
