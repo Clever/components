@@ -19,9 +19,9 @@ export default class ComponentBox extends React.Component {
     return (
       <Col span={4} className={cssClass.COMPONENTBOX_CONTAINER}>
         <div>
-          <p className={cssClass.COMPONENTBOX_TITLE}>
+          <h3 className={cssClass.COMPONENTBOX_TITLE}>
             <a href={`/#/components/${componentLink}`}>{componentName}</a>
-          </p>
+          </h3>
           <img
             className={cssClass.COMPONENTBOX_IMG}
             src={`./assets/img/${componentImg}`}
