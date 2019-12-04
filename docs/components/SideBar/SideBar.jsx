@@ -64,6 +64,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/design/ui-text", "UI Text")}
         </NavGroup>
         <NavGroup id="components" label="Components" icon={icon(Icon.names.WEBSITE_HTML)}>
+          {this._renderLink("/components/view-all", "View All")}
           {this._renderLink("/components/alert-box", "AlertBox")}
           {this._renderLink("/components/badge", "Badge")}
           {this._renderLink("/components/button", "Button")}
