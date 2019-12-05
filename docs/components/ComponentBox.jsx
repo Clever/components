@@ -1,4 +1,6 @@
+import * as PropTypes from "prop-types";
 import * as React from "react";
+
 import { FlexBox } from "../../src";
 
 import "./ComponentBox.less";
@@ -37,8 +39,8 @@ ComponentBox.cssClass = {
 };
 
 ComponentBox.propTypes = {
-  componentLink: String,
-  componentName: String,
-  componentImg: String,
-  componentImgAlt: String,
+  componentLink: PropTypes.string,
+  componentName: PropTypes.string,
+  componentImg: PropTypes.string,
+  componentImgAlt: PropTypes.string,
 };
