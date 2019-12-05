@@ -1,7 +1,5 @@
 import * as React from "react";
-import { Grid } from "src";
-// import { string } from "prop-types";
-// import * as PropTypes from "prop-types";
+import { FlexBox } from "../../src";
 
 import "./ComponentBox.less";
 
@@ -13,11 +11,10 @@ export default class ComponentBox extends React.Component {
 
   render() {
     const { cssClass } = ComponentBox;
-    const { Col } = Grid;
     const { componentLink, componentName, componentImg, componentImgAlt } = this.props;
 
     return (
-      <Col span={4} className={cssClass.COMPONENTBOX_CONTAINER}>
+      <FlexBox column className={cssClass.COMPONENTBOX_CONTAINER}>
         <div>
           <h3 className={cssClass.COMPONENTBOX_TITLE}>
             <a href={`/#/components/${componentLink}`}>{componentName}</a>
@@ -28,7 +25,7 @@ export default class ComponentBox extends React.Component {
             alt={componentImgAlt}
           />
         </div>
-      </Col>
+      </FlexBox>
     );
   }
 }

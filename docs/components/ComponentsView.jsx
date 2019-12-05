@@ -1,47 +1,26 @@
 import React from "react";
 
 import View from "./View";
-import { Grid } from "src";
+import { FlexBox } from "src";
 import ComponentBox from "./ComponentBox";
 
 import "./ComponentsView.less";
 
 export default function ComponentsView() {
   const { cssClass, componentsToDisplay } = ComponentsView;
-  const { Col, Row } = Grid;
 
   return (
     <View className={cssClass.CONTAINER} title="Components Portal">
-      <Grid>
-        <Row grow className={cssClass.CONTAINER_ROW}>
-          {componentsToDisplay.map(comp => (
-            <ComponentBox
-              componentLink={comp.componentLink}
-              componentImg={comp.componentImg}
-              componentName={comp.componentName}
-              componentImgAlt={comp.componentImgAlt}
-            />
-          ))}
-          {/* <Col span={4} className={cssClass.COMPONENT_CONTAINER}>
-            <div>
-              <p className={cssClass.COMPONENT_TITLE} ><a href="/#/components/alert-box">AlertBox</a></p>
-              <img className={cssClass.COMPONTENT_IMG} src="./assets/img/alert-box-warning.png" alt="" />
-            </div>
-          </Col>
-          <Col span={4} className={cssClass.COMPONENT_CONTAINER}>
-            <div>
-              <p className={cssClass.COMPONENT_TITLE} ><a href="/#/components/badge">Badge</a></p>
-              <img className={cssClass.COMPONTENT_IMG} src="./assets/img/badge-2.png" alt="" />
-            </div>
-          </Col>
-          <Col span={4} className={cssClass.COMPONENT_CONTAINER}>
-            <div>
-              <p className={cssClass.COMPONENT_TITLE} ><a href="/#/components/button">Button</a></p>
-              <img className={cssClass.COMPONTENT_IMG} src="./assets/img/button-1.png" alt="" />
-            </div>
-          </Col> */}
-        </Row>
-      </Grid>
+      <FlexBox wrap className={cssClass.CONTAINER_FLEXBOX}>
+        {componentsToDisplay.map(comp => (
+          <ComponentBox
+            componentLink={comp.componentLink}
+            componentImg={comp.componentImg}
+            componentName={comp.componentName}
+            componentImgAlt={comp.componentImgAlt}
+          />
+        ))}
+      </FlexBox>
     </View>
   );
 }
@@ -346,4 +325,5 @@ ComponentsView.componentsToDisplay = [
 ComponentsView.cssClass = {
   CONTAINER: "ComponentsView",
   CONTAINER_ROW: "ComponentsView--Row",
+  CONTAINER_FLEXBOX: "ComponentsView--FlexBox",
 };
