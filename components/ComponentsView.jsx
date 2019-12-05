@@ -1,8 +1,8 @@
 import React from "react";
 
 import View from "./View";
-import { FlexBox } from "src";
 import ComponentBox from "./ComponentBox";
+import { FlexBox } from "src";
 
 import "./ComponentsView.less";
 
@@ -14,6 +14,7 @@ export default function ComponentsView() {
       <FlexBox wrap className={cssClass.CONTAINER_FLEXBOX}>
         {componentsToDisplay.map(comp => (
           <ComponentBox
+            key={comp.componentLink}
             componentLink={comp.componentLink}
             componentImg={comp.componentImg}
             componentName={comp.componentName}
