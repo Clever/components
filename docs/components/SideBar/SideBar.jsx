@@ -35,6 +35,12 @@ export default class SideBar extends React.Component {
     );
   }
 
+  _handle_components_click = () => {
+    if (!window.location.hash.includes("#/components/")) {
+      window.location.hash = "#/components/view-all";
+    }
+  };
+
   render() {
     const { NavGroup } = LeftNav;
     const { cssClass } = SideBar;
@@ -63,7 +69,12 @@ export default class SideBar extends React.Component {
           {this._renderLink("/design/compound-form", "Compound Form")}
           {this._renderLink("/design/ui-text", "UI Text")}
         </NavGroup>
-        <NavGroup id="components" label="Components" icon={icon(Icon.names.WEBSITE_HTML)}>
+        <NavGroup
+          id="components"
+          label="Components"
+          icon={icon(Icon.names.WEBSITE_HTML)}
+          _onClick={this._handle_components_click}
+        >
           {this._renderLink("/components/view-all", "View All")}
           {this._renderLink("/components/alert-box", "AlertBox")}
           {this._renderLink("/components/badge", "Badge")}
