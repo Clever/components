@@ -69,7 +69,8 @@ render(
   <Router history={hashHistory}>
     <Route path="/fullscreen-wizard-layout" component={() => <WizardLayoutView fullscreen />} />
     <Route path="/" component={Layout}>
-      <IndexRedirect to="/components/view-all" />
+      <IndexRedirect to="component-list(/*)" />
+      <Route path="component-list(/*)" component={ComponentsView} />
       <Route path="intro(/*)" component={IntroView} />
       <Route path="getting-started(/*)" component={GettingStartedView} />
       <Route path="design">
@@ -96,7 +97,6 @@ render(
           }
         }}
       >
-        <Route path="view-all(/*)" component={ComponentsView} />
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="badge(/*)" component={BadgeView} />
         <Route path="button(/*)" component={ButtonView} />
