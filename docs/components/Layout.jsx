@@ -15,7 +15,6 @@ export default class Layout extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     const { location } = this.props;
-    const { cssClass } = Layout;
     const view_container = this.myRef.current;
 
     if (view_container && location.pathname !== prevProps.location.pathname) {
