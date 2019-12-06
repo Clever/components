@@ -50,6 +50,13 @@ export default class LeftNavView extends PureComponent {
               optional: true,
             },
             {
+              name: "narrow",
+              type: "Boolean",
+              description: "Decreases the space between NavLink tabs.",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
               name: "withActiveNavGroups",
               type: "Boolean",
               description:
