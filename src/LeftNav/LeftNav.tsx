@@ -116,12 +116,7 @@ export class LeftNav extends React.PureComponent<Props, State> {
           _open: open,
           _withActiveNavGroups: withActiveNavGroups,
           _withTooltips: withTooltips,
-          _onClick: () => {
-            this.setState({ openNavGroup: open ? null : child.props.id });
-            if (child.props._onClick) {
-              setTimeout(() => child.props._onClick(), 500);
-            }
-          },
+          _onClick: () => this.setState({ openNavGroup: open ? null : child.props.id }),
         });
       }
 
