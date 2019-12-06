@@ -11,12 +11,15 @@ import "./Layout.less";
  * Global layout for the Design System docs.
  */
 export default class Layout extends React.PureComponent {
+  myRef = React.createRef();
+
   componentDidUpdate(prevProps) {
     const { location } = this.props;
     const { cssClass } = Layout;
+    const view_container = this.myRef.current;
 
-    if (location.pathname !== prevProps.location.pathname) {
-      document.getElementsByClassName(cssClass.VIEW_CONTAINER)[0].scrollTo(0, 0);
+    if (view_container && location.pathname !== prevProps.location.pathname) {
+      view_container.scrollTo(0, 0);
     }
   }
 
@@ -29,9 +32,9 @@ export default class Layout extends React.PureComponent {
         <TopBar />
         <FlexBox className={cssClass.MAIN} grow>
           <SideBar className={cssClass.SIDE_BAR} />
-          <FlexItem className={cssClass.VIEW_CONTAINER} grow>
+          <div className={cssClass.VIEW_CONTAINER} ref={this.myRef}>
             {children}
-          </FlexItem>
+          </div>
         </FlexBox>
       </FlexBox>
     );
