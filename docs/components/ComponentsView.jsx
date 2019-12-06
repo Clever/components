@@ -94,10 +94,10 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A DatePicker component",
   },
   {
-    componentLink: "dollar-value",
-    componentImg: "dollar-value-1.png",
-    componentName: "DollarValue",
-    componentImgAlt: "A DollarValue component",
+    componentLink: "dollar-amount",
+    componentImg: "dollar-amount-1.png",
+    componentName: "DollarAmount",
+    componentImgAlt: "A DollarAmount component",
   },
   {
     componentLink: "dropdown-button",
