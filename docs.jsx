@@ -69,7 +69,7 @@ render(
   <Router history={hashHistory}>
     <Route path="/fullscreen-wizard-layout" component={() => <WizardLayoutView fullscreen />} />
     <Route path="/" component={Layout}>
-      <IndexRedirect to="/intro" />
+      <IndexRedirect to="/components/view-all" />
       <Route path="intro(/*)" component={IntroView} />
       <Route path="getting-started(/*)" component={GettingStartedView} />
       <Route path="design">

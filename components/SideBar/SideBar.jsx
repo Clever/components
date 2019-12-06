@@ -59,6 +59,7 @@ export default class SideBar extends React.Component {
         withActiveNavGroups
         withTooltips
       >
+        {this._renderLink("/components/view-all", "View All", icon(Icon.names.PORTAL_OPEN))}
         {this._renderLink("/intro", "Introduction", icon(Icon.names.PRESENTATION))}
         {this._renderLink("/getting-started", "Getting Started", icon(Icon.names.BLOCKS))}
         <NavGroup id="design" label="Design" icon={icon(Icon.names.ORIGAMI)}>
@@ -75,7 +76,7 @@ export default class SideBar extends React.Component {
           icon={icon(Icon.names.WEBSITE_HTML)}
           _onClick={this._handle_components_click}
         >
-          {this._renderLink("/components/view-all", "View All")}
+          {/* {this._renderLink("/components/view-all", "View All")} */}
           {this._renderLink("/components/alert-box", "AlertBox")}
           {this._renderLink("/components/badge", "Badge")}
           {this._renderLink("/components/button", "Button")}
