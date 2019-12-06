@@ -56,6 +56,7 @@ export default class SideBar extends React.Component {
         closeSubNavOnBlur
         collapseOnSubNavOpen
         collapsed={collapsed}
+        narrow
         withActiveNavGroups
         withTooltips
       >

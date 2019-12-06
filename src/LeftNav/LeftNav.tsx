@@ -18,6 +18,7 @@ export interface Props {
   closeSubNavOnBlur?: boolean;
   collapseOnSubNavOpen?: boolean;
   collapsed?: boolean;
+  narrow?: boolean;
   withActiveNavGroups?: boolean;
   withTooltips?: boolean;
 }
@@ -37,6 +38,7 @@ const propTypes = {
   closeSubNavOnBlur: PropTypes.bool,
   collapseOnSubNavOpen: PropTypes.bool,
   collapsed: PropTypes.bool,
+  narrow: PropTypes.bool,
   withActiveNavGroups: PropTypes.bool,
   withTooltips: PropTypes.bool,
 };
@@ -44,6 +46,7 @@ const propTypes = {
 export const cssClass = {
   COLLAPSED: "LeftNav--collapsed",
   CONTAINER: "LeftNav",
+  NARROW: "LeftNav--narrow",
   SUBNAV_CONTENT_ANIM: "LeftNav--subnav--content--anim",
   SUBNAV_CONTENT: "LeftNav--subnav--content",
   SUBNAV_OPEN: "LeftNav--subnav--open",
@@ -86,6 +89,7 @@ export class LeftNav extends React.PureComponent<Props, State> {
       className,
       collapseOnSubNavOpen,
       collapsed,
+      narrow,
       withActiveNavGroups,
       withTooltips,
     } = this.props;
@@ -132,6 +136,7 @@ export class LeftNav extends React.PureComponent<Props, State> {
           className={classnames(
             cssClass.CONTAINER,
             _collapsed && cssClass.COLLAPSED,
+            narrow && cssClass.NARROW,
             openChild && cssClass.WITH_SUBNAV_OPEN,
             className,
           )}
