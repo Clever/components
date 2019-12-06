@@ -4,8 +4,6 @@ import View from "./View";
 import ComponentBox from "./ComponentBox";
 import { FlexBox } from "src";
 
-import "./ComponentsView.less";
-
 export default function ComponentsView() {
   const { cssClass, componentsToDisplay } = ComponentsView;
 
