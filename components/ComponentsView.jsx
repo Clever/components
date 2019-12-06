@@ -10,7 +10,7 @@ export default function ComponentsView() {
   const { cssClass, componentsToDisplay } = ComponentsView;
 
   return (
-    <View className={cssClass.CONTAINER} title="Components Portal">
+    <View className={cssClass.CONTAINER} title="Component List">
       <FlexBox wrap className={cssClass.CONTAINER_FLEXBOX}>
         {componentsToDisplay.map(comp => (
           <ComponentBox
