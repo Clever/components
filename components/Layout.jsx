@@ -11,6 +11,15 @@ import "./Layout.less";
  * Global layout for the Design System docs.
  */
 export default class Layout extends React.PureComponent {
+  componentDidUpdate(prevProps) {
+    const { location } = this.props;
+    const { cssClass } = Layout;
+
+    if (location.pathname !== prevProps.location.pathname) {
+      document.getElementsByClassName(cssClass.VIEW_CONTAINER)[0].scrollTo(0, 0);
+    }
+  }
+
   render() {
     const { cssClass } = Layout;
     const { children } = this.props;
