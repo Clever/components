@@ -19,7 +19,7 @@ export default class ComponentBox extends React.Component {
       <FlexBox column className={cssClass.COMPONENTBOX_CONTAINER}>
         <div>
           <h3 className={cssClass.COMPONENTBOX_TITLE}>
-            <a href={`/#/components/${componentLink}`}>{componentName}</a>
+            <a href={`#/components/${componentLink}`}>{componentName}</a>
           </h3>
           <img
             className={cssClass.COMPONENTBOX_IMG}
