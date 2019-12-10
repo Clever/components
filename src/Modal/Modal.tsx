@@ -73,6 +73,14 @@ export class Modal extends React.Component<Props, State> {
     this.setState({ windowHeight: window.innerHeight });
   }
 
+  fallbackFocus() {
+    const el = document.activeElement;
+    if (el instanceof HTMLElement) {
+      return el;
+    }
+    return document.body;
+  }
+
   render() {
     // Width should be responsive with window size
     const width = Math.min(window.innerWidth, this.props.width);
@@ -83,6 +91,7 @@ export class Modal extends React.Component<Props, State> {
     };
     // The content is max 90% of the window height less 60px (height of the header)
     const contentStyle = { maxHeight: this.state.windowHeight * 0.9 - 60 };
+    const focusTrapOptions = { fallbackFocus: this.fallbackFocus };
     const modalContent = (
       <div className={classnames("Modal", this.props.className)}>
         <div className="Modal--background" onClick={this.props.closeModal} aria-hidden="true" />
@@ -107,7 +116,7 @@ export class Modal extends React.Component<Props, State> {
     );
     let modal;
     if (this.props.focusLocked) {
-      modal = <FocusTrap>{modalContent}</FocusTrap>;
+      modal = <FocusTrap focusTrapOptions={focusTrapOptions}>{modalContent}</FocusTrap>;
     } else {
       modal = modalContent;
     }
