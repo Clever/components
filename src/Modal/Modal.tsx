@@ -73,12 +73,11 @@ export class Modal extends React.Component<Props, State> {
     this.setState({ windowHeight: window.innerHeight });
   }
 
-  fallbackFocus() {
-    const el = document.activeElement;
-    if (el instanceof HTMLElement) {
-      return el;
+  componentDidCatch(error) {
+    if (error && error.message.includes("You can't have a focus-trap without at least one focusable element")) {
+      return;
     }
-    return document.body;
+    throw error;
   }
 
   render() {
@@ -91,7 +90,6 @@ export class Modal extends React.Component<Props, State> {
     };
     // The content is max 90% of the window height less 60px (height of the header)
     const contentStyle = { maxHeight: this.state.windowHeight * 0.9 - 60 };
-    const focusTrapOptions = { fallbackFocus: this.fallbackFocus };
     const modalContent = (
       <div className={classnames("Modal", this.props.className)}>
         <div className="Modal--background" onClick={this.props.closeModal} aria-hidden="true" />
@@ -116,7 +114,7 @@ export class Modal extends React.Component<Props, State> {
     );
     let modal;
     if (this.props.focusLocked) {
-      modal = <FocusTrap focusTrapOptions={focusTrapOptions}>{modalContent}</FocusTrap>;
+      modal = <FocusTrap>{modalContent}</FocusTrap>;
     } else {
       modal = modalContent;
     }
