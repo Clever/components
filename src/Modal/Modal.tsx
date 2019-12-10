@@ -74,7 +74,10 @@ export class Modal extends React.Component<Props, State> {
   }
 
   componentDidCatch(error) {
-    if (error && error.message.includes("You can't have a focus-trap without at least one focusable element")) {
+    if (
+      error &&
+      error.message.includes("You can't have a focus-trap without at least one focusable element")
+    ) {
       return;
     }
     throw error;
