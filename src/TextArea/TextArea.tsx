@@ -16,9 +16,9 @@ export interface Props {
   maxLength?: number;
   minLength?: number;
   name: string;
-  onBlur?: () => void;
+  onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
-  onFocus?: () => void;
+  onFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
   optional?: boolean;
   placeholder?: string;
   readOnly?: boolean;
@@ -85,8 +85,6 @@ export class TextArea extends React.Component<Props, State> {
     super(TextArea.validateProps(props));
 
     this.state = { inFocus: false, hasBeenFocused: false };
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
   }
 
   // eslint-disable-next-line react/sort-comp
@@ -95,23 +93,23 @@ export class TextArea extends React.Component<Props, State> {
   /* Insert any additional lifecycle methods,
      event handlers, and helper methods here */
 
-  onFocus() {
+  onFocus: React.FocusEventHandler<HTMLTextAreaElement> = e => {
     const { onFocus } = this.props;
 
     this.setState({ inFocus: true });
     if (onFocus) {
-      onFocus();
+      onFocus(e);
     }
-  }
+  };
 
-  onBlur() {
+  onBlur: React.FocusEventHandler<HTMLTextAreaElement> = e => {
     const { onBlur } = this.props;
 
     this.setState({ inFocus: false, hasBeenFocused: true });
     if (onBlur) {
-      onBlur();
+      onBlur(e);
     }
-  }
+  };
 
   focus() {
     this.textAreaEl.current.focus();

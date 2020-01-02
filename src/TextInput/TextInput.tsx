@@ -19,8 +19,8 @@ export interface Props {
   name: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
   optional?: boolean;
   placeholder?: string;
   placeholderCaps?: boolean;
@@ -87,39 +87,36 @@ export class TextInput extends React.Component<Props, State> {
   constructor(props: Props) {
     super(TextInput.validateProps(props));
     this.state = { inFocus: false, hasBeenFocused: false, hidden: true };
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
-    this.toggleHidden = this.toggleHidden.bind(this);
   }
 
   // eslint-disable-next-line react/sort-comp
   private input = React.createRef<HTMLInputElement>();
 
-  onFocus() {
+  onFocus: React.FocusEventHandler<HTMLInputElement> = e => {
     const { onFocus } = this.props;
 
     this.setState({ inFocus: true });
     if (onFocus) {
-      onFocus();
+      onFocus(e);
     }
-  }
+  };
 
-  onBlur() {
+  onBlur: React.FocusEventHandler<HTMLInputElement> = e => {
     const { onBlur } = this.props;
 
     this.setState({ inFocus: false, hasBeenFocused: true });
     if (onBlur) {
-      onBlur();
+      onBlur(e);
     }
-  }
+  };
 
   focus() {
     this.input.current.focus();
   }
 
-  toggleHidden() {
+  toggleHidden = () => {
     this.setState({ hidden: !this.state.hidden });
-  }
+  };
 
   currentErrorMessage(): string {
     const { error, value, required } = this.props;
