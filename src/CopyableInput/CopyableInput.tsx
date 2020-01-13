@@ -93,13 +93,18 @@ export class CopyableInput extends React.Component<Props, State> {
         />
         <div className="CopyableInput--links">
           {this.props.enableShow && (
-            <button type="button" className="CopyableInput--link" onClick={this.toggleHidden}>
+            <button
+              type="button"
+              className="CopyableInput--link"
+              onClick={this.toggleHidden}
+              aria-live="polite"
+            >
               {this.state.hidden ? "Show" : "Hide"}
             </button>
           )}
           {this.props.enableCopy && (
             <CopyToClipboard text={this.props.value || ""} onCopy={this.copyPassword}>
-              <button type="button" className="CopyableInput--link">
+              <button type="button" className="CopyableInput--link" aria-live="polite">
                 {this.state.copied ? "Copied!" : "Copy"}
               </button>
             </CopyToClipboard>
