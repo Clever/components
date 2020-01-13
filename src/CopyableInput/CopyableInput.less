@@ -9,6 +9,7 @@
   .flexbox();
   background: @neutral_white;
   width: 100%;
+  position: relative;
 
   .TextInput {
     border: none;
@@ -17,10 +18,13 @@
 }
 
 .CopyableInput--links {
-  margin: auto @size_s;
+  margin: auto @size_xs;
   white-space: nowrap;
   background: white;
   .flexShrink(0);
+  position: absolute;
+  right: 0;
+  top: 40%;
 
   .CopyableInput--link {
     border: 0;
