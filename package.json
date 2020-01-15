@@ -48,7 +48,7 @@
   "devDependencies": {
     "@types/jest": "^20.0.8",
     "@types/jest-matchers": "^20.0.0",
-    "@types/node": "^10.14.12",
+    "@types/node": "^12.12.24",
     "@types/react": "^16.8.6",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",

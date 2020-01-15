@@ -1,7 +1,7 @@
 include node.mk
 
 SHELL = /bin/bash
-NODE_VERSION := "v10"
+NODE_VERSION := "v12"
 $(eval $(call node-version-check,$(NODE_VERSION)))
 
 JEST := ./node_modules/.bin/jest --maxWorkers=1 --config ./jestconfig.json
