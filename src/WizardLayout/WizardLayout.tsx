@@ -11,9 +11,9 @@ import "./WizardLayout.less";
 export interface Props {
   className?: string;
   exitButtonText?: string;
-  sections: any[];
+  sections: Section[];
   fullscreen?: boolean;
-  headerImg?: any;
+  headerImg?: React.ReactNode;
   helpContent?: React.ReactNode;
   hidePreviousStepButton?: boolean;
   hideSaveAndExit?: boolean;
@@ -27,6 +27,12 @@ export interface Props {
   stepper: React.ReactNode;
   subtitle: string;
   title: string;
+}
+
+interface Section {
+  title?: string;
+  subtitle?: string;
+  content: React.ReactNode;
 }
 
 const SECTION_PROP_TYPE = PropTypes.shape({
