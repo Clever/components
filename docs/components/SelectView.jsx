@@ -16,6 +16,7 @@ export default class SelectView extends Component {
       clearable: false,
       disabled: false,
       multi: false,
+      closeMenuOnSelect: true,
       readOnly: false,
       searchable: false,
       creatable: false,
@@ -55,6 +56,7 @@ export default class SelectView extends Component {
                 lazy={this.state.lazy}
                 creatablePromptFn={label => `Add new option: ${label}`}
                 multi={this.state.multi}
+                closeMenuOnSelect={this.state.closeMenuOnSelect}
                 readOnly={this.state.readOnly}
                 required={this.state.required}
                 error={this.state.error}
@@ -141,6 +143,14 @@ export default class SelectView extends Component {
               }}
             />{" "}
             Multi
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={this.state.closeMenuOnSelect}
+              onChange={({ target }) => this.setState({ closeMenuOnSelect: target.checked })}
+            />{" "}
+            closeMenuOnSelect
           </label>
           <label className={cssClass.CONFIG}>
             <input
@@ -267,6 +277,13 @@ export default class SelectView extends Component {
               type: "Boolean",
               description: "Whether multiple options may be selected",
               defaultValue: "False",
+              optional: true,
+            },
+            {
+              name: "closeMenuOnSelect",
+              type: "Boolean",
+              description: "Close the select menu when the user selects an option",
+              defaultValue: "True",
               optional: true,
             },
             {
