@@ -29,7 +29,7 @@ export class TopBar extends React.PureComponent<Props> {
     // If the last element is a "rounded" TopBarButton we need to add some additional padding to the right side.
     // To determine this we need to inspect the children;
     let needsRightPadding = false;
-    const childrenArray = React.Children.toArray(children as any);
+    const childrenArray = React.Children.toArray(children) as React.ReactElement[];
     if (childrenArray.length) {
       const lastItem = childrenArray[childrenArray.length - 1];
       const lastTrigger = lastItem.type === Menu ? lastItem.props.trigger : lastItem;

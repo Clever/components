@@ -13,7 +13,7 @@ import { ChildrenOf } from "../utils/types";
 import "./LeftNav.less";
 
 export interface Props {
-  children?: ChildrenOf<typeof NavLink | typeof NavGroup>;
+  children?: LeftNavChildren;
   className?: string;
   closeSubNavOnBlur?: boolean;
   collapseOnSubNavOpen?: boolean;
@@ -26,6 +26,8 @@ export interface Props {
 interface State {
   openNavGroup: string;
 }
+
+type LeftNavChildren = ChildrenOf<typeof NavLink | typeof NavGroup>;
 
 const propTypes = {
   children: MorePropTypes.oneOrManyOf(
@@ -79,8 +81,8 @@ export class LeftNav extends React.PureComponent<Props, State> {
     this.state = { openNavGroup: selectedNavGroup ? selectedNavGroup.props.id : null };
   }
 
-  _getNonEmptyChildren(children) {
-    return _.compact(React.Children.toArray(children));
+  _getNonEmptyChildren(children: LeftNavChildren) {
+    return _.compact(React.Children.toArray(children)) as React.ReactElement[];
   }
 
   render() {
@@ -128,7 +130,7 @@ export class LeftNav extends React.PureComponent<Props, State> {
     });
 
     // Find the open NavGroup so that we can render its children NavLinks in the drawer
-    const openChild = _.find(this._getNonEmptyChildren(navItems), item => item.props._open);
+    const openChild: any = _.find(this._getNonEmptyChildren(navItems), item => item.props._open);
 
     return (
       <RootCloseWrapper onRootClose={() => this._onRootClose()}>

@@ -4,15 +4,14 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
-import MenuItem, { cssClass as menuItemCss } from "./MenuItem";
+import MenuItem, { cssClass as menuItemCss, Props as MenuItemProps } from "./MenuItem";
 import MorePropTypes from "../utils/MorePropTypes";
-import { Values } from "../utils/types";
+import { ChildrenOf, Values } from "../utils/types";
 
 import "./Menu.less";
 
 export interface Props {
-  // TODO: fiigure out how to type this.
-  children?: any;
+  children?: ChildrenOf<typeof MenuItem>;
   className?: string;
   maxHeight?: string | number;
   maxWidth?: string | number;
@@ -316,7 +315,9 @@ export default class Menu extends React.PureComponent<Props> {
   };
 
   _getMenuItems() {
-    return React.Children.toArray(this.props.children).filter(i => !!i);
+    return (React.Children.toArray(this.props.children) as React.ReactElement<
+      MenuItemProps
+    >[]).filter(i => !!i);
   }
 
   _isFocused(menuItem, itemIndex) {
