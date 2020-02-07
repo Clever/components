@@ -39,7 +39,7 @@
     "react-fontawesome": "^1.6.1",
     "react-linkify": "^0.2.1",
     "react-overlays": "^0.8.3",
-    "react-select": "^1.2.1",
+    "react-select": "~1.2.1",
     "react-sticky": "^6.0.1",
     "react-transition-group": "~1.2.0",
     "short-number": "^1.0.6",
