@@ -5,7 +5,7 @@ import * as PropTypes from "prop-types";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
-import Column from "./Column";
+import { Column, Props as ColumnProps } from "./Column";
 import Footer from "./Footer";
 import Header from "./Header";
 import MorePropTypes from "../utils/MorePropTypes";
@@ -260,7 +260,7 @@ export class Table extends React.Component<Props, State> {
 
   _getColumn(columnID) {
     return _.find(
-      React.Children.toArray(this.props.children as React.ReactElement),
+      React.Children.toArray(this.props.children) as React.ReactElement<ColumnProps>[],
       column => column.props.id === columnID,
     );
   }
