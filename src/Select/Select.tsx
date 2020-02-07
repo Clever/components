@@ -40,6 +40,7 @@ export interface Props {
   className?: string;
   error?: string;
   size?: Size;
+  closeMenuOnSelect?: boolean;
 }
 
 interface State {
@@ -82,6 +83,7 @@ const propTypes = {
   className: PropTypes.string,
   error: PropTypes.string,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
+  closeMenuOnSelect: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -89,6 +91,7 @@ const defaultProps = {
   placeholder: "",
   searchable: false,
   creatable: false,
+  closeMenuOnSelect: true,
   size: FormElementSize.FULL_WIDTH,
 };
 
@@ -154,6 +157,7 @@ export class Select extends React.Component<Props, State> {
       className,
       error,
       size,
+      closeMenuOnSelect,
     } = this.props;
     if (!lazy) {
       if (!options) {
@@ -235,6 +239,7 @@ export class Select extends React.Component<Props, State> {
             placeholder={placeholder}
             searchable={searchable}
             noResultsText={noResultsText}
+            closeOnSelect={closeMenuOnSelect}
             value={value}
             {...overrideProps}
           />
