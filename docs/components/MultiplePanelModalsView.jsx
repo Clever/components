@@ -204,6 +204,14 @@ export default class MultiplePanelModalsView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "rightButtonDisabled",
+              type: "Boolean",
+              description:
+                "Whether the right button is disabled. The parent component should manage any state required to derive this value.",
+              optional: true,
+              defaultValue: false,
+            },
+            {
               name: "height",
               type: "String",
               description:
@@ -285,14 +293,6 @@ export default class MultiplePanelModalsView extends React.PureComponent {
                 "If this is provided, it will be the only function called upon clicking the right button " +
                 "for this panel.",
               optional: true,
-            },
-            {
-              name: "rightButtonDisabled",
-              type: "Boolean",
-              description:
-                "Whether the right button is disabled. The parent component should manage any state required to derive this value.",
-              optional: true,
-              defaultValue: false,
             },
           ]}
         />
