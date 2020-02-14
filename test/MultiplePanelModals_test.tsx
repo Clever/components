@@ -16,7 +16,6 @@ describe("MultiplePanelModals", () => {
       />,
     );
 
-    expect(myComponent.props().className).toMatch("MultiplePanelModals");
     expect(myComponent).toIncludeText("<Modal />");
     expect(myComponent.props().children.props.title).toMatch("page1");
   });
@@ -51,7 +50,6 @@ describe("MultiplePanelModals", () => {
         className="my--custom--class"
       />,
     );
-    expect(myComponent.props().className).toMatch("MultiplePanelModals");
     expect(myComponent.props().className).toMatch("my--custom--class");
   });
 
