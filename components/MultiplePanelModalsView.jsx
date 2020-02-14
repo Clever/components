@@ -34,10 +34,11 @@ export default class MultiplePanelModalsView extends React.PureComponent {
     height: "150px",
     startingPanel: "0",
     isModalOpen: false,
+    showStepNumber: false,
   };
 
   render() {
-    const { rightButtonDisabled, height, startingPanel } = this.state;
+    const { rightButtonDisabled, height, startingPanel, showStepNumber } = this.state;
 
     return (
       <View
@@ -84,12 +85,14 @@ export default class MultiplePanelModalsView extends React.PureComponent {
                     panel: panel1,
                     title: "Page1",
                     panelClassName: "FirstClass",
+                    width: 500,
                     overrideOnClickLeftButton: () => this.setState({ isModalOpen: false }),
                   },
                   {
                     panel: panel2,
                     title: "Page2",
                     panelClassName: "secondClass",
+                    width: 500,
                     leftButtonName: "override the name back",
                     rightButtonType: "destructive",
                     overrideOnClickRightButton: () =>
@@ -98,6 +101,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
                   {
                     panel: panel3,
                     title: "Page3",
+                    width: 500,
                   },
                 ]}
                 defaultOnClickLeftButton={() => console.log("GoingBackwards")}
@@ -105,6 +109,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
                 rightButtonDisabled={rightButtonDisabled}
                 height={height}
                 startingPanel={parseInt(startingPanel, 10)}
+                showStepNumber={showStepNumber}
               />
             )}
           </ExampleCode>
@@ -117,7 +122,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { rightButtonDisabled, height, startingPanel } = this.state;
+    const { rightButtonDisabled, height, startingPanel, showStepNumber } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -154,6 +159,15 @@ export default class MultiplePanelModalsView extends React.PureComponent {
             onSelect={value => this.setState({ rightButtonDisabled: value })}
             options={[{ content: "True", value: true }, { content: "False", value: false }]}
             value={rightButtonDisabled}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          Show step number:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={value => this.setState({ showStepNumber: value })}
+            options={[{ content: "True", value: true }, { content: "False", value: false }]}
+            value={showStepNumber}
           />
         </div>
       </FlexBox>
