@@ -14,6 +14,7 @@ export interface Props {
   height?: string | number;
   rightButtonDisabled?: boolean;
   startingPanel?: number;
+  showStepNumber?: boolean;
 }
 
 interface State {
@@ -29,6 +30,7 @@ const propTypes = {
   height: PropTypes.string,
   rightButtonDisabled: PropTypes.bool,
   startingPanel: PropTypes.number,
+  showStepNumber: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -36,12 +38,14 @@ const defaultProps = {
   rightButtonDisabled: false,
   defaultOnClickLeftButton: () => {},
   defaultOnClickRightButton: () => {},
+  showStepNumber: false,
 };
 
 export const Classes = {
   CONTAINER: "MultiplePanelModals",
   FIRST_BUTTON: "MultiplePanelModals--later",
   SECOND_BUTTON: "MultiplePanelModals--next",
+  STEP_NUMBER: "MultiplePanelModals--stepNumber",
 };
 
 export class MultiplePanelModals extends React.Component<Props, State> {
@@ -62,9 +66,11 @@ export class MultiplePanelModals extends React.Component<Props, State> {
       defaultOnClickRightButton,
       height,
       rightButtonDisabled,
+      showStepNumber,
     } = this.props;
-    const isFirstPanel = this.state.currentPanel === 0;
-    const isLastPanel = this.state.currentPanel + 1 === componentArray.length;
+    const { currentPanel } = this.state;
+    const isFirstPanel = currentPanel === 0;
+    const isLastPanel = currentPanel + 1 === componentArray.length;
 
     if (this.state.currentPanel >= componentArray.length) {
       return <div />;
@@ -112,6 +118,8 @@ export class MultiplePanelModals extends React.Component<Props, State> {
       rightButtonOnClick = overrideOnClickRightButton;
     }
 
+    const totalPanels = componentArray.length;
+
     return (
       <div className={classnames(Classes.CONTAINER, className)}>
         <Modal
@@ -123,6 +131,10 @@ export class MultiplePanelModals extends React.Component<Props, State> {
         >
           <div style={{ height }}>{panel}</div>
           <footer>
+            {showStepNumber && (
+              <span className={Classes.STEP_NUMBER}>{`Step ${currentPanel +
+                1} of ${totalPanels}`}</span>
+            )}
             <Button
               value={leftButtonValue}
               className={Classes.FIRST_BUTTON}
