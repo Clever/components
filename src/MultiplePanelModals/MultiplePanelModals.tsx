@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as classnames from "classnames";
 
 import { Button } from "../Button/Button";
 import { Modal, Props as ModalProps } from "../Modal/Modal";
+import "./MultiplePanelModals.less";
 
 export interface Props {
   className?: string;
@@ -42,9 +42,6 @@ const defaultProps = {
 };
 
 export const Classes = {
-  CONTAINER: "MultiplePanelModals",
-  FIRST_BUTTON: "MultiplePanelModals--later",
-  SECOND_BUTTON: "MultiplePanelModals--next",
   STEP_NUMBER: "MultiplePanelModals--stepNumber",
 };
 
@@ -121,7 +118,7 @@ export class MultiplePanelModals extends React.Component<Props, State> {
     const totalPanels = componentArray.length;
 
     return (
-      <div className={classnames(Classes.CONTAINER, className)}>
+      <div className={className}>
         <Modal
           className={panelClassName}
           focusLocked={focusLocked}
@@ -137,7 +134,6 @@ export class MultiplePanelModals extends React.Component<Props, State> {
             )}
             <Button
               value={leftButtonValue}
-              className={Classes.FIRST_BUTTON}
               type={leftButtonType || "link"}
               onClick={() => {
                 if (!isFirstPanel) {
@@ -148,7 +144,6 @@ export class MultiplePanelModals extends React.Component<Props, State> {
             />
             <Button
               value={rightButtonValue}
-              className={Classes.SECOND_BUTTON}
               type={rightButtonType || "primary"}
               onClick={() => {
                 rightButtonOnClick();
