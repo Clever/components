@@ -19,6 +19,7 @@ export interface Props {
   hideSaveAndExit?: boolean;
   nextStepButtonDisabled?: boolean;
   nextStepButtonText?: string;
+  nextStepButtonType?: "primary" | "secondary" | "destructive" | "link" | "linkPlain" | "plain";
   onNextStep: () => void;
   onPrevStep: () => void;
   onSaveAndExit?: () => void;
@@ -44,6 +45,7 @@ const propTypes = {
   hidePreviousStepButton: PropTypes.bool,
   nextStepButtonDisabled: PropTypes.bool,
   nextStepButtonText: PropTypes.string,
+  nextStepButtonType: PropTypes.string,
   prevStepButtonDisabled: PropTypes.bool,
   prevStepButtonText: PropTypes.string,
   hideSaveAndExit: PropTypes.bool,
@@ -95,6 +97,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
       helpContent,
       nextStepButtonDisabled,
       nextStepButtonText,
+      nextStepButtonType,
       hidePreviousStepButton,
       hideSaveAndExit,
       onSaveAndExit,
@@ -165,7 +168,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
             />
           )}
           <Button
-            type="primary"
+            type={nextStepButtonType || "primary"}
             value={nextStepButtonText || "Next step"}
             className={cssClass.NEXT_BUTTON}
             onClick={this._onNextStep}

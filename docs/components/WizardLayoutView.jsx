@@ -293,6 +293,13 @@ export default class WizardLayoutView extends React.PureComponent {
             optional: true,
           },
           {
+            name: "nextStepButtonType",
+            type: "String",
+            description: "One of primary, secondary, destructive, link, linkPlain, plain",
+            defaultValue: "primary",
+            optional: true,
+          },
+          {
             name: "onNextStep",
             type: "Function",
             description: "Called when user clicks on 'Next step' button.",
