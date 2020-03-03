@@ -4,6 +4,7 @@
     "allowJs": false,
     "declaration": true,
     "outDir": "./dist",
+    "moduleResolution": "node"
   },
   "exclude": [
     "./assets",
