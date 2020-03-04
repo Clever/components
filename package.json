@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "2.30.1",
+  "version": "2.31.0",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -8,6 +8,11 @@
   },
   "license": "Apache-2.0",
   "main": "dist/index.js",
+  "module": "dist/es/index.js",
+  "sideEffects": [
+    "*.css",
+    "*.less"
+  ],
   "types": "dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/Clever/components/issues"

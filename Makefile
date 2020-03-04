@@ -45,11 +45,13 @@ clean:
 compile:
 	@echo -n 'Copying /src to /dist...'
 	@cp -r src dist
+	@cp -r src dist/es
 	@echo -e $(GREEN_CHECK_MARK)
 
 	@echo -n 'Compiling TypeScript to JavaScript...'
 	@find dist -regex ".*\.tsx*" | xargs -n1 rm
 	@./node_modules/.bin/tsc --project ./tsconfig.build.json
+	@./node_modules/.bin/tsc --project ./tsconfig.build.json -m es6 --outDir dist/es
 	@echo -e $(GREEN_CHECK_MARK)
 
 docs:
