@@ -1,6 +1,5 @@
 import * as _ from "lodash";
 import * as classnames from "classnames";
-import * as PropTypes from "prop-types";
 import * as React from "react";
 
 import FormError from "../FormError";
@@ -9,39 +8,22 @@ import WithKeyboardNav from "../WithKeyboardNav";
 
 import "./RadioGroup.less";
 
-interface Option {
-  id: string;
+interface Option<IDType extends string = string, ValueType = any> {
+  id: IDType;
   disabled?: boolean;
   label: React.ReactNode;
-  value?: any;
+  value?: ValueType;
 }
 
-export interface Props {
+export interface Props<OptionIDType extends string, OptionValueType> {
   className?: string;
   disabled?: boolean;
   error?: React.ReactNode;
   label?: React.ReactNode;
-  onChange: RadioProps["onSelect"];
-  options: Option[];
-  selectedID?: string;
+  onChange: RadioProps<OptionIDType, OptionValueType>["onSelect"];
+  options: Option<OptionIDType, OptionValueType>[];
+  selectedID?: OptionIDType;
 }
-
-const OPTION_PROP_TYPE = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
-  label: PropTypes.node.isRequired,
-  value: PropTypes.any,
-});
-
-const propTypes = {
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  error: PropTypes.node,
-  label: PropTypes.node,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(OPTION_PROP_TYPE).isRequired,
-  selectedID: PropTypes.string,
-};
 
 const cssClass = {
   CONTAINER: "RadioGroup",
@@ -56,9 +38,10 @@ const getNextLabelID = () => `${LABEL_ID_PREFIX}--${nextLabelIDSuffix++}`;
 /**
  * Form element that allows for a single, required selection from a small set of 2 or more options.
  */
-export default class RadioGroup extends React.PureComponent<Props> {
-  static propTypes = propTypes;
-
+export default class RadioGroup<
+  OptionIDType extends string = string,
+  OptionValueType = any
+> extends React.PureComponent<Props<OptionIDType, OptionValueType>> {
   _labelID = getNextLabelID();
   _optionRefsByID = {};
 
@@ -82,8 +65,8 @@ export default class RadioGroup extends React.PureComponent<Props> {
             {label}
           </div>
           {error && <FormError>{error}</FormError>}
-          {_.map(options, (o: any) => (
-            <Radio
+          {_.map(options, o => (
+            <Radio<OptionIDType, OptionValueType>
               checked={o.id === selectedID}
               className={cssClass.RADIO}
               disabled={!!disabled || !!o.disabled}
