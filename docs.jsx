@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import ComponentsView from "./components/ComponentsView";
+import ResourceTileView from "./components/ResourceTileView";
 
 import AlertBoxView from "./components/AlertBoxView";
 import BadgeView from "./components/BadgeView";
@@ -130,6 +131,7 @@ render(
         <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
         <Route path="radio-group(/*)" component={RadioGroupView} />
+        <Route path="resource-tile(/*)" component={ResourceTileView} />
         <Route path="rich-text(/*)" component={RichTextView} />
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
