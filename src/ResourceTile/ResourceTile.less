@@ -1,0 +1,185 @@
+@import (reference) "~clever-components/dist/less/index";
+@import (reference) "~src/ui/lib/less/animation";
+
+// The Dewey sizing mixins aren't granular enough, so we're using custom values
+@iconSizeSmall: 5rem;
+@iconSizeMedium: 6.5rem;
+@iconSizeLarge: 8rem;
+@resourceLinkPaddingSmall: 0.75rem;
+@resourceLinkPaddingMedium: 0.875rem;
+@resourceLinkPaddingLarge: 1rem;
+@fontSizeSmall: 0.75rem;
+@fontSizeMedium: 0.875rem;
+@fontSizeLarge: 1rem;
+
+.ResourceLink {
+  .borderRadius--xl;
+  .margin--right--xs;
+  .margin--bottom--xs;
+  background-color: @neutral_white;
+  position: relative;
+}
+
+a.ResourceLink--link {
+  color: @neutral_black;
+  text-decoration: none;
+}
+
+.ResourceLink--size--small .ResourceLink--iconContainer,
+.ResourceLink--size--small .ResourceLink--overlay {
+  height: @iconSizeSmall;
+  width: @iconSizeSmall;
+  margin: @resourceLinkPaddingSmall;
+}
+.ResourceLink--size--medium .ResourceLink--iconContainer,
+.ResourceLink--size--medium .ResourceLink--overlay {
+  height: @iconSizeMedium;
+  width: @iconSizeMedium;
+  margin: @resourceLinkPaddingMedium;
+}
+.ResourceLink--size--large .ResourceLink--iconContainer,
+.ResourceLink--size--large .ResourceLink--overlay {
+  height: @iconSizeLarge;
+  width: @iconSizeLarge;
+  margin: @resourceLinkPaddingLarge;
+}
+
+.ResourceLink--icon {
+  .borderRadius--10percent;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+// These styles are only necessary for when we're super zoomed out and icons are actually too small
+// to fit their containers
+.ResourceLink--icon.ResourceLink--icon--landscape {
+  width: 100%;
+}
+.ResourceLink--icon.ResourceLink--icon--portrait {
+  height: 100%;
+}
+
+.ResourceLink--overlay {
+  left: 0;
+  pointer-events: none; // Don't let overlays block clicks on resources
+  position: absolute;
+  top: 0;
+}
+
+.ResourceLink--size--small .ResourceLink--titleContainer {
+  margin: @resourceLinkPaddingSmall;
+  margin-top: 0;
+}
+.ResourceLink--size--medium .ResourceLink--titleContainer {
+  margin: @resourceLinkPaddingMedium;
+  margin-top: 0;
+}
+.ResourceLink--size--large .ResourceLink--titleContainer {
+  margin: @resourceLinkPaddingLarge;
+  margin-top: 0;
+}
+
+// For IE. Even though the parent ResourceLink has a max-width set, this child doesn't respect that
+// max on IE
+.ResourceLink--size--small .ResourceLink--titleAndNotes {
+  max-width: @iconSizeSmall;
+  font-size: @fontSizeSmall;
+}
+.ResourceLink--size--medium .ResourceLink--titleAndNotes {
+  max-width: @iconSizeMedium;
+  font-size: @fontSizeMedium;
+}
+.ResourceLink--size--large .ResourceLink--titleAndNotes {
+  max-width: @iconSizeLarge;
+  font-size: @fontSizeLarge;
+}
+
+.ResourceLink--title {
+  overflow: hidden;
+  word-wrap: break-word; // For IE
+  overflow-wrap: break-word;
+  .text--center();
+}
+
+.ResourceLink--notes {
+  .margin--left--2xs;
+}
+
+.ResourceLink--additionalInfo {
+  .margin--top--xs;
+}
+
+.ResourceLink--action {
+  cursor: pointer;
+  .text--center();
+  width: 100%;
+  border-radius: 10% ~"/" 50%;
+}
+
+button.ResourceLink--actionButton {
+  .padding--y--4xs();
+  .text--center();
+  width: 100%;
+  border-radius: 10% ~"/" 50%;
+}
+
+.ResourceLink--additionalInfo {
+  .margin--top--xs;
+}
+
+// We intentionally keep these styles outside the .mq-hover block because teachers should be able
+// to edit resources on devices even if they don't support true hover (mobile for example)
+.ResourceLink--action:last-child {
+  .margin--top--2xs;
+  .margin--bottom--2xs;
+  visibility: hidden;
+  .fadeOut(@timingPromptly);
+}
+.ResourceLink:hover .ResourceLink--action:last-child {
+  .fadeIn(@timingPromptly, @timingPromptly);
+}
+
+// Only apply the following styles if the device supports true hover
+.mq-hover {
+  .ResourceLink {
+    .boxShadowHoverAnimation(@borderRadiusXL);
+  }
+}
+
+.ResourceLink--notification {
+  .zIndex--2;
+  border-radius: 50%;
+  background-color: @alert_red_shade_1;
+  width: @size_l;
+  height: @size_l;
+  top: @size_xs;
+  right: @size_xs;
+  position: absolute;
+}
+
+.ResourceLink--size--small .ResourceLink--draggableIcon {
+  padding: @resourceLinkPaddingSmall;
+  padding-top: 0;
+}
+.ResourceLink--size--medium .ResourceLink--draggableIcon {
+  padding: @resourceLinkPaddingMedium;
+  padding-top: 0;
+}
+.ResourceLink--size--large .ResourceLink--draggableIcon {
+  padding: @resourceLinkPaddingLarge;
+  padding-top: 0;
+}
+
+.ResourceLink--draggableIcon {
+  &:hover {
+    cursor: grab;
+  }
+}
+
+.ResourceLink--size--small .ResourceLink--actionButton {
+  font-size: @fontSizeMedium;
+}
+
+.DraggableWrapper--dragging .ResourceLink--draggableIcon {
+  cursor: unset; // Avoid conflict with DraggableWrapper's `cursor: grabbing;` style
+}
