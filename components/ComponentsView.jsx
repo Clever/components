@@ -224,6 +224,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A RadioGroup component",
   },
   {
+    componentLink: "resource-tile",
+    componentImg: "resource-tile.png",
+    componentName: "ResourceTile",
+    componentImgAlt: "A ResourceTile component",
+  },
+  {
     componentLink: "rich-text",
     componentImg: "rich-text.png",
     componentName: "RichText",
