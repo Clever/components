@@ -15,19 +15,20 @@ const cssClass = {
   CONTAINER: "ResourceTileView",
   INTRO: "ResourceTileView--intro",
   PROPS: "ResourceTileView--props",
+  EXAMPLE: "ResourceTileView--example",
 };
 
 export default class ResourceTileView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    multiOption1: "small",
-    optionToggle1: false,
-    optionToggle2: true,
+    size: "small",
+    draggable: false,
+    notify: false,
   };
 
   render() {
-    const { optionToggle1 } = this.state;
+    const { size, draggable, notify } = this.state;
 
     return (
       <View
@@ -36,22 +37,42 @@ export default class ResourceTileView extends React.PureComponent {
         sourcePath="src/ResourceTile/ResourceTile.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>TODO: Describe your component/state it's purpose</p>
-          <p>TODO(optional): Describe scenarios where the component might be useful.</p>
+          <p>ResourceTile is a tile for displaying a resource, generally in a Portal.</p>
           <CodeSample>
             {`
-              import {ResourceTile} from "clever-components";
+              import { ResourceTile } from "clever-components";
               // OR
               import ResourceTile from "clever-components/dist/ResourceTile"; // Avoids importing all of clever-components.
             `}
           </CodeSample>
         </header>
 
-        <Example title="Basic Usage:">
+        <Example title="Basic Usage:" className={cssClass.EXAMPLE}>
           <ExampleCode>
-            <ResourceTile className="my--custom--class" onPerformAction={console.log}>
-              {optionToggle1 ? "Something changed 🤔" : "My custom content."}
-            </ResourceTile>
+            <FlexBox>
+              <ResourceTile
+                icon="https://assets.clever.com/resource-icons/apps/5ce8488bb85d7a0013d52f1a/icon_ae3363a.png"
+                title="Chess.com this is a very long title and stuff"
+                url="https://chess.com"
+                notes="This icon has actions so the draggable doesn't display"
+                size={size}
+                notify={notify}
+                actions={[
+                  { content: "Hello", href: "https://google.com" },
+                  { content: "World", href: "https://google.com" },
+                ]}
+                additionalInfo={"Additional Info!"}
+                overlays={["I'm an overlay"]}
+              />
+              <ResourceTile
+                icon="https://assets.clever.com/resource-icons/apps/5ce8488bb85d7a0013d52f1a/icon_ae3363a.png"
+                title="Chess.com"
+                url="https://chess.com"
+                size={size}
+                notify={notify}
+                draggable={draggable}
+              />
+            </FlexBox>
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -61,9 +82,8 @@ export default class ResourceTileView extends React.PureComponent {
     );
   }
 
-  // TODO: Update or remove config options.
   _renderConfig() {
-    const { multiOption1, optionToggle1, optionToggle2 } = this.state;
+    const { size, draggable, notify } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -71,47 +91,53 @@ export default class ResourceTileView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ multiOption1: value })}
+            onSelect={value => this.setState({ size: value })}
             options={[
               { content: "Small", value: "small" },
               { content: "Medium", value: "medium" },
               { content: "Large", value: "large" },
             ]}
-            value={multiOption1}
+            value={size}
           />
         </div>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={optionToggle1}
+            checked={draggable}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ optionToggle1: e.target.checked })}
+            onChange={e => this.setState({ draggable: e.target.checked })}
           />{" "}
-          Option Toggle 1
+          Draggable
         </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={optionToggle2}
+            checked={notify}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ optionToggle2: e.target.checked })}
+            onChange={e => this.setState({ notify: e.target.checked })}
           />{" "}
-          Option Toggle 2
+          Notify
         </label>
       </FlexBox>
     );
   }
 
-  // TODO: Update prop documentation.
   _renderProps() {
     return (
       <PropDocumentation
         title="<ResourceTile /> Props"
         availableProps={[
           {
-            name: "children",
-            type: "React.Node",
-            description: "ResourceTile content.",
+            name: "actions",
+            type: "Action[]",
+            description: "Up to two actions to display",
+            optional: true,
+          },
+          {
+            name: "additionalInfo",
+            type: "string",
+            description: "Additional info to display at the bottom",
+            optional: true,
           },
           {
             name: "className",
@@ -120,9 +146,63 @@ export default class ResourceTileView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "onPerformAction",
-            type: "Function",
-            description: "Handler function for the performAction event.",
+            name: "draggable",
+            type: "boolean",
+            description: "Whether to display the draggable icon at the bottom",
+            optional: true,
+          },
+          {
+            name: "icon",
+            type: "string",
+            description: "Src for image to display as icon",
+          },
+          {
+            name: "loadingSpinner",
+            type: "React.ReactNode",
+            description: "Loading spinner to display when icon is an empty string",
+          },
+          {
+            name: "notes",
+            type: "string",
+            description: "Notes to display in a tooltip",
+            optional: true,
+          },
+          {
+            name: "notify",
+            type: "boolean",
+            description: "Whether to display a red notify icon",
+            optional: true,
+          },
+          {
+            name: "onClick",
+            type: "(event?: React.MouseEvent) => void",
+            description: "Function to call when a click happens",
+            optional: true,
+          },
+          {
+            name: "openInSameTab",
+            type: "boolean",
+            description: "Whether to open the URL in the same tab when clicked",
+            defaultValue: "false",
+            optional: true,
+          },
+          {
+            name: "overlays",
+            type: "React.ReactNode[]",
+            description: "Overlays to display on top of the tile",
+            optional: true,
+          },
+          {
+            name: "size",
+            type: '"small" | "medium" | "large"',
+            description: "What size the tile should be.",
+            defaultValue: "large",
+            optional: true,
+          },
+          {
+            name: "url",
+            type: "string",
+            description: "URL to navigate to on click",
           },
         ]}
         className={cssClass.PROPS}
