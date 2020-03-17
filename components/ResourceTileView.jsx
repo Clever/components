@@ -43,6 +43,11 @@ export default class ResourceTileView extends React.PureComponent {
               import { ResourceTile } from "clever-components";
               // OR
               import ResourceTile from "clever-components/dist/ResourceTile"; // Avoids importing all of clever-components.
+
+              // You also need to polyfillMediaQueries for hovering to work
+              import { polyfillMediaQueries } from "clever-components";
+              // Where you application boots
+              polyfillMediaQueries();
             `}
           </CodeSample>
         </header>
