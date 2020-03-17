@@ -1,22 +1,16 @@
 import * as classnames from "classnames";
-import { Button, FlexBox, ItemAlign, Justify, Tooltip } from "clever-components";
+import { Button, FlexBox, ItemAlign, Justify, Tooltip } from "../index";
+import { DragHandleIcon } from "./DragHandleIcon";
 import * as _ from "lodash";
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
-import { onIos } from "src/ui/lib/devices";
-import { IconSize } from "src/shared/models/UserCustomizations";
-import LoadingSpinner from "src/ui/components/LoadingSpinner";
-
-import "./ResourceLinkView.less";
+import "./ResourceTile.less";
 
 const TITLE_MAX_LENGTH = 30;
 
-enum IconOrientation {
-  LANDSCAPE = "landscape",
-  PORTRAIT = "portrait",
-  UNKNOWN = "unknown",
-}
+export type IconSize = "small" | "medium" | "large";
+export type IconOrientation = "landscape" | "portrait" | "unknown";
 
 export const CssClasses = {
   ACTION: "ResourceTile--action",
@@ -36,96 +30,82 @@ export const CssClasses = {
   ADDITIONAL_INFO: "ResourceTile--additionalInfo",
 };
 
-const SizeCssClasses = {
-  [IconSize.SMALL]: "ResourceTile--size--small",
-  [IconSize.MEDIUM]: "ResourceTile--size--medium",
-  [IconSize.LARGE]: "ResourceTile--size--large",
+const SizeCssClasses: Record<IconSize, string> = {
+  small: "ResourceTile--size--small",
+  medium: "ResourceTile--size--medium",
+  large: "ResourceTile--size--large",
 };
 
-const IconOrientationCssClasses = {
-  [IconOrientation.LANDSCAPE]: "ResourceTile--icon--landscape",
-  [IconOrientation.PORTRAIT]: "ResourceTile--icon--portrait",
-  [IconOrientation.UNKNOWN]: "",
+const IconOrientationCssClasses: Record<IconOrientation, string> = {
+  landscape: "ResourceTile--icon--landscape",
+  portrait: "ResourceTile--icon--portrait",
+  unknown: "",
 };
 
-interface BasicProps {
-  icon: string;
-  title: string;
-  url: string;
+export interface Action {
+  content: React.ReactNode;
+  href?: string;
+  onClick?: () => void;
 }
 
-/**
- * These props may be passed through several component layers, for example:
- * ResourceLinkOnDistrictPage --> AppLinkOnDistrictPage --> AppLink --> ResourceLink
- */
-export interface PassThroughProps {
-  actions?: { content: React.ReactNode; href?: string; onClick?: () => void }[];
+export interface Props {
+  actions: [] | [Action] | [Action, Action];
   additionalInfo?: React.ReactNode;
   className?: string;
   draggable?: boolean;
+  icon: string;
+  loadingSpinner: React.ReactNode;
   notes?: string;
   notify?: boolean;
   onClick?: (event?: React.MouseEvent) => void;
+  openInSameTab: boolean;
   overlays?: React.ReactNode[];
-  size?: IconSize;
+  size: IconSize;
+  title: string;
+  url: string;
 }
-
-export function extractPassThroughProps(props: any): PassThroughProps {
-  return _.pick(props, [
-    "actions",
-    "additionalInfo",
-    "draggable",
-    "className",
-    "notes",
-    "notify",
-    "onClick",
-    "overlays",
-    "size",
-  ]);
-}
-
-type Props = BasicProps & PassThroughProps;
 
 interface State {
   iconOrientation: IconOrientation;
 }
 
 export class ResourceTile extends React.PureComponent<Props, State> {
-  static defaultProps = {
+  static defaultProps: Pick<Props, "actions" | "size" | "openInSameTab"> = {
     actions: [],
-    size: IconSize.LARGE,
+    size: "large",
+    openInSameTab: false,
   };
 
-  iconRef;
+  iconRef: React.RefObject<HTMLImageElement>;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.iconRef = React.createRef();
     this.state = {
-      iconOrientation: IconOrientation.UNKNOWN,
+      iconOrientation: "unknown",
     };
   }
 
   determineIconOrientation() {
     const element = this.iconRef.current;
 
-    let iconOrientation = IconOrientation.UNKNOWN;
+    let iconOrientation: IconOrientation = "unknown";
     if (element) {
       const height = element.height;
       const width = element.width;
-      iconOrientation = height > width ? IconOrientation.PORTRAIT : IconOrientation.LANDSCAPE;
+      iconOrientation = height > width ? "portrait" : "landscape";
     }
     this.setState({ iconOrientation });
   }
 
   renderIcon() {
-    const { icon, title } = this.props;
+    const { icon, title, loadingSpinner } = this.props;
     const { iconOrientation } = this.state;
     const loading = icon === "";
 
     if (loading) {
-      return <LoadingSpinner size={LoadingSpinner.Size.S} />;
+      return loadingSpinner;
     }
 
     return (
@@ -177,11 +157,8 @@ export class ResourceTile extends React.PureComponent<Props, State> {
       size,
       title,
       url,
+      openInSameTab,
     } = this.props;
-
-    // starting with iOS 13, iPads now use a macOS user agent by default so instead we check for
-    // touch capabilities + Safari user agent to decide if we should open in the same tab
-    const shouldOpenInSameTab = onIos();
 
     return (
       <FlexBox
@@ -196,7 +173,7 @@ export class ResourceTile extends React.PureComponent<Props, State> {
           component="a"
           href={url}
           onClick={onClick}
-          target={shouldOpenInSameTab ? "_self" : "_blank"}
+          target={openInSameTab ? "_self" : "_blank"}
         >
           <FlexBox
             className={CssClasses.ICON_CONTAINER}
@@ -245,10 +222,9 @@ export class ResourceTile extends React.PureComponent<Props, State> {
         </FlexBox>
         {this.renderOverlays()}
         {!!actions.length && (
-          <FlexBox column={true}>
-            {/* There should only be two actions */}
-            {actions.slice(0, 2).map((action, i) => (
-              <FlexBox className={classnames(CssClasses.ACTION)} key={`ResourceTile--${i}`}>
+          <FlexBox column>
+            {actions.map((action, i) => (
+              <FlexBox className={classnames(CssClasses.ACTION)} key={`ResourceTileAction--${i}`}>
                 <Button
                   className={CssClasses.ACTION_BUTTON}
                   value={action.content}
@@ -261,13 +237,7 @@ export class ResourceTile extends React.PureComponent<Props, State> {
             ))}
           </FlexBox>
         )}
-        {draggable && !actions.length && (
-          <img
-            className={CssClasses.DRAGGABLE_ICON}
-            src={require("./icn-drag-handle.svg")}
-            alt="draggable"
-          />
-        )}
+        {draggable && !actions.length && <DragHandleIcon className={CssClasses.DRAGGABLE_ICON} />}
       </FlexBox>
     );
   }
