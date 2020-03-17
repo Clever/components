@@ -19,32 +19,32 @@ enum IconOrientation {
 }
 
 export const CssClasses = {
-  ACTION: "ResourceLink--action",
-  ACTION_BUTTON: "ResourceLink--actionButton",
-  CONTAINER: "ResourceLink",
-  DRAGGABLE_ICON: "ResourceLink--draggableIcon",
-  LINK: "ResourceLink--link",
-  ICON_CONTAINER: "ResourceLink--iconContainer",
-  ICON: "ResourceLink--icon",
-  OVERLAYS: "ResourceLink--overlays",
-  OVERLAY: "ResourceLink--overlay",
-  TITLE_CONTAINER: "ResourceLink--titleContainer",
-  TITLE_AND_NOTES: "ResourceLink--titleAndNotes",
-  TITLE: "ResourceLink--title",
-  NOTIFICATION: "ResourceLink--notification",
-  NOTES: "ResourceLink--notes",
-  ADDITIONAL_INFO: "ResourceLink--additionalInfo",
+  ACTION: "ResourceTile--action",
+  ACTION_BUTTON: "ResourceTile--actionButton",
+  CONTAINER: "ResourceTile",
+  DRAGGABLE_ICON: "ResourceTile--draggableIcon",
+  LINK: "ResourceTile--link",
+  ICON_CONTAINER: "ResourceTile--iconContainer",
+  ICON: "ResourceTile--icon",
+  OVERLAYS: "ResourceTile--overlays",
+  OVERLAY: "ResourceTile--overlay",
+  TITLE_CONTAINER: "ResourceTile--titleContainer",
+  TITLE_AND_NOTES: "ResourceTile--titleAndNotes",
+  TITLE: "ResourceTile--title",
+  NOTIFICATION: "ResourceTile--notification",
+  NOTES: "ResourceTile--notes",
+  ADDITIONAL_INFO: "ResourceTile--additionalInfo",
 };
 
 const SizeCssClasses = {
-  [IconSize.SMALL]: "ResourceLink--size--small",
-  [IconSize.MEDIUM]: "ResourceLink--size--medium",
-  [IconSize.LARGE]: "ResourceLink--size--large",
+  [IconSize.SMALL]: "ResourceTile--size--small",
+  [IconSize.MEDIUM]: "ResourceTile--size--medium",
+  [IconSize.LARGE]: "ResourceTile--size--large",
 };
 
 const IconOrientationCssClasses = {
-  [IconOrientation.LANDSCAPE]: "ResourceLink--icon--landscape",
-  [IconOrientation.PORTRAIT]: "ResourceLink--icon--portrait",
+  [IconOrientation.LANDSCAPE]: "ResourceTile--icon--landscape",
+  [IconOrientation.PORTRAIT]: "ResourceTile--icon--portrait",
   [IconOrientation.UNKNOWN]: "",
 };
 
@@ -90,7 +90,7 @@ interface State {
   iconOrientation: IconOrientation;
 }
 
-export class ResourceLinkView extends React.PureComponent<Props, State> {
+export class ResourceTile extends React.PureComponent<Props, State> {
   static defaultProps = {
     actions: [],
     size: IconSize.LARGE,
@@ -248,7 +248,7 @@ export class ResourceLinkView extends React.PureComponent<Props, State> {
           <FlexBox column={true}>
             {/* There should only be two actions */}
             {actions.slice(0, 2).map((action, i) => (
-              <FlexBox className={classnames(CssClasses.ACTION)} key={`ResourceLinkAction--${i}`}>
+              <FlexBox className={classnames(CssClasses.ACTION)} key={`ResourceTile--${i}`}>
                 <Button
                   className={CssClasses.ACTION_BUTTON}
                   value={action.content}
