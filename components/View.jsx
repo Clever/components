@@ -2,13 +2,15 @@ import classnames from "classnames";
 import React, { Component } from "react";
 import * as PropTypes from "prop-types";
 
-import { Button } from "src";
+import { Button, polyfillMediaQueries } from "src";
 
 import "./View.less";
 
 export default class View extends Component {
   componentWillMount() {
     document.title = `${View.WINDOW_TITLE_PREFIX}${this.props.title}`;
+
+    polyfillMediaQueries();
   }
 
   render() {
