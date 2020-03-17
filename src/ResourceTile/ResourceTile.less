@@ -5,14 +5,14 @@
 @iconSizeSmall: 5rem;
 @iconSizeMedium: 6.5rem;
 @iconSizeLarge: 8rem;
-@resourceLinkPaddingSmall: 0.75rem;
-@resourceLinkPaddingMedium: 0.875rem;
-@resourceLinkPaddingLarge: 1rem;
+@resourceTilePaddingSmall: 0.75rem;
+@resourceTilePaddingMedium: 0.875rem;
+@resourceTilePaddingLarge: 1rem;
 @fontSizeSmall: 0.75rem;
 @fontSizeMedium: 0.875rem;
 @fontSizeLarge: 1rem;
 
-.ResourceLink {
+.ResourceTile {
   .borderRadius--xl;
   .margin--right--xs;
   .margin--bottom--xs;
@@ -20,31 +20,40 @@
   position: relative;
 }
 
-a.ResourceLink--link {
+a.ResourceTile--link {
   color: @neutral_black;
   text-decoration: none;
 }
 
-.ResourceLink--size--small .ResourceLink--iconContainer,
-.ResourceLink--size--small .ResourceLink--overlay {
-  height: @iconSizeSmall;
-  width: @iconSizeSmall;
-  margin: @resourceLinkPaddingSmall;
-}
-.ResourceLink--size--medium .ResourceLink--iconContainer,
-.ResourceLink--size--medium .ResourceLink--overlay {
-  height: @iconSizeMedium;
-  width: @iconSizeMedium;
-  margin: @resourceLinkPaddingMedium;
-}
-.ResourceLink--size--large .ResourceLink--iconContainer,
-.ResourceLink--size--large .ResourceLink--overlay {
-  height: @iconSizeLarge;
-  width: @iconSizeLarge;
-  margin: @resourceLinkPaddingLarge;
+.ResourceTile--overlay {
+  left: 0;
+  pointer-events: none; // Don't let overlays block clicks on resources
+  position: absolute;
+  top: 0;
 }
 
-.ResourceLink--icon {
+.ResourceTile--size--small .ResourceTile--iconContainer,
+.ResourceTile--size--small .ResourceTile--overlay {
+  height: @iconSizeSmall;
+  width: @iconSizeSmall;
+  margin: @resourceTilePaddingSmall;
+}
+
+.ResourceTile--size--medium .ResourceTile--iconContainer,
+.ResourceTile--size--medium .ResourceTile--overlay {
+  height: @iconSizeMedium;
+  width: @iconSizeMedium;
+  margin: @resourceTilePaddingMedium;
+}
+
+.ResourceTile--size--large .ResourceTile--iconContainer,
+.ResourceTile--size--large .ResourceTile--overlay {
+  height: @iconSizeLarge;
+  width: @iconSizeLarge;
+  margin: @resourceTilePaddingLarge;
+}
+
+.ResourceTile--icon {
   .borderRadius--10percent;
   max-height: 100%;
   max-width: 100%;
@@ -52,101 +61,96 @@ a.ResourceLink--link {
 
 // These styles are only necessary for when we're super zoomed out and icons are actually too small
 // to fit their containers
-.ResourceLink--icon.ResourceLink--icon--landscape {
+.ResourceTile--icon.ResourceTile--icon--landscape {
   width: 100%;
 }
-.ResourceLink--icon.ResourceLink--icon--portrait {
+
+.ResourceTile--icon.ResourceTile--icon--portrait {
   height: 100%;
 }
 
-.ResourceLink--overlay {
-  left: 0;
-  pointer-events: none; // Don't let overlays block clicks on resources
-  position: absolute;
-  top: 0;
-}
-
-.ResourceLink--size--small .ResourceLink--titleContainer {
-  margin: @resourceLinkPaddingSmall;
-  margin-top: 0;
-}
-.ResourceLink--size--medium .ResourceLink--titleContainer {
-  margin: @resourceLinkPaddingMedium;
-  margin-top: 0;
-}
-.ResourceLink--size--large .ResourceLink--titleContainer {
-  margin: @resourceLinkPaddingLarge;
+.ResourceTile--size--small .ResourceTile--titleContainer {
+  margin: @resourceTilePaddingSmall;
   margin-top: 0;
 }
 
-// For IE. Even though the parent ResourceLink has a max-width set, this child doesn't respect that
+.ResourceTile--size--medium .ResourceTile--titleContainer {
+  margin: @resourceTilePaddingMedium;
+  margin-top: 0;
+}
+
+.ResourceTile--size--large .ResourceTile--titleContainer {
+  margin: @resourceTilePaddingLarge;
+  margin-top: 0;
+}
+
+// For IE. Even though the parent ResourceTile has a max-width set, this child doesn't respect that
 // max on IE
-.ResourceLink--size--small .ResourceLink--titleAndNotes {
+.ResourceTile--size--small .ResourceTile--titleAndNotes {
   max-width: @iconSizeSmall;
   font-size: @fontSizeSmall;
 }
-.ResourceLink--size--medium .ResourceLink--titleAndNotes {
+
+.ResourceTile--size--medium .ResourceTile--titleAndNotes {
   max-width: @iconSizeMedium;
   font-size: @fontSizeMedium;
 }
-.ResourceLink--size--large .ResourceLink--titleAndNotes {
+
+.ResourceTile--size--large .ResourceTile--titleAndNotes {
   max-width: @iconSizeLarge;
   font-size: @fontSizeLarge;
 }
 
-.ResourceLink--title {
+.ResourceTile--title {
   overflow: hidden;
   word-wrap: break-word; // For IE
   overflow-wrap: break-word;
   .text--center();
 }
 
-.ResourceLink--notes {
+.ResourceTile--notes {
   .margin--left--2xs;
 }
 
-.ResourceLink--additionalInfo {
+.ResourceTile--additionalInfo {
   .margin--top--xs;
 }
 
-.ResourceLink--action {
+.ResourceTile--action {
   cursor: pointer;
   .text--center();
   width: 100%;
   border-radius: 10% ~"/" 50%;
 }
 
-button.ResourceLink--actionButton {
+button.ResourceTile--actionButton {
   .padding--y--4xs();
   .text--center();
   width: 100%;
   border-radius: 10% ~"/" 50%;
 }
 
-.ResourceLink--additionalInfo {
-  .margin--top--xs;
-}
-
 // We intentionally keep these styles outside the .mq-hover block because teachers should be able
 // to edit resources on devices even if they don't support true hover (mobile for example)
-.ResourceLink--action:last-child {
+.ResourceTile--action:last-child {
   .margin--top--2xs;
   .margin--bottom--2xs;
   visibility: hidden;
   .fadeOut(@timingPromptly);
 }
-.ResourceLink:hover .ResourceLink--action:last-child {
+
+.ResourceTile:hover .ResourceTile--action:last-child {
   .fadeIn(@timingPromptly, @timingPromptly);
 }
 
 // Only apply the following styles if the device supports true hover
 .mq-hover {
-  .ResourceLink {
+  .ResourceTile {
     .boxShadowHoverAnimation(@borderRadiusXL);
   }
 }
 
-.ResourceLink--notification {
+.ResourceTile--notification {
   .zIndex--2;
   border-radius: 50%;
   background-color: @alert_red_shade_1;
@@ -157,29 +161,31 @@ button.ResourceLink--actionButton {
   position: absolute;
 }
 
-.ResourceLink--size--small .ResourceLink--draggableIcon {
-  padding: @resourceLinkPaddingSmall;
-  padding-top: 0;
-}
-.ResourceLink--size--medium .ResourceLink--draggableIcon {
-  padding: @resourceLinkPaddingMedium;
-  padding-top: 0;
-}
-.ResourceLink--size--large .ResourceLink--draggableIcon {
-  padding: @resourceLinkPaddingLarge;
-  padding-top: 0;
-}
-
-.ResourceLink--draggableIcon {
+.ResourceTile--draggableIcon {
   &:hover {
     cursor: grab;
   }
 }
 
-.ResourceLink--size--small .ResourceLink--actionButton {
+.ResourceTile--size--small .ResourceTile--draggableIcon {
+  padding: @resourceTilePaddingSmall;
+  padding-top: 0;
+}
+
+.ResourceTile--size--medium .ResourceTile--draggableIcon {
+  padding: @resourceTilePaddingMedium;
+  padding-top: 0;
+}
+
+.ResourceTile--size--large .ResourceTile--draggableIcon {
+  padding: @resourceTilePaddingLarge;
+  padding-top: 0;
+}
+
+.ResourceTile--size--small .ResourceTile--actionButton {
   font-size: @fontSizeMedium;
 }
 
-.DraggableWrapper--dragging .ResourceLink--draggableIcon {
+.DraggableWrapper--dragging .ResourceTile--draggableIcon {
   cursor: unset; // Avoid conflict with DraggableWrapper's `cursor: grabbing;` style
 }
