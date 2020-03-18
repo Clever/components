@@ -53,8 +53,7 @@ export interface Props {
   additionalInfo?: React.ReactNode;
   className?: string;
   draggable?: boolean;
-  icon: string;
-  loadingSpinner: React.ReactNode;
+  icon: { src: string } | { node: React.ReactNode };
   notes?: string;
   notify?: boolean;
   onClick?: (event?: React.MouseEvent) => void;
@@ -100,18 +99,17 @@ export class ResourceTile extends React.PureComponent<Props, State> {
   }
 
   renderIcon() {
-    const { icon, title, loadingSpinner } = this.props;
+    const { icon, title } = this.props;
     const { iconOrientation } = this.state;
-    const loading = icon === "";
 
-    if (loading) {
-      return loadingSpinner;
+    if ("node" in icon) {
+      return icon.node;
     }
 
     return (
       <img
         className={classnames(CssClasses.ICON, IconOrientationCssClasses[iconOrientation])}
-        src={icon}
+        src={icon.src}
         alt={`${title} icon`}
         title={title}
         ref={this.iconRef}

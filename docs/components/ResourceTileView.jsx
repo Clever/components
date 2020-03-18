@@ -16,6 +16,7 @@ const cssClass = {
   INTRO: "ResourceTileView--intro",
   PROPS: "ResourceTileView--props",
   EXAMPLE: "ResourceTileView--example",
+  EXAMPLE_NODE: "ResourceTileView--exampleNode",
 };
 
 export default class ResourceTileView extends React.PureComponent {
@@ -56,7 +57,10 @@ export default class ResourceTileView extends React.PureComponent {
           <ExampleCode>
             <FlexBox>
               <ResourceTile
-                icon="https://assets.clever.com/resource-icons/apps/5ce8488bb85d7a0013d52f1a/icon_ae3363a.png"
+                icon={{
+                  src:
+                    "https://assets.clever.com/resource-icons/apps/5ce8488bb85d7a0013d52f1a/icon_ae3363a.png",
+                }}
                 title="Chess.com this is a very long title and stuff"
                 url="https://chess.com"
                 notes="This icon has actions so the draggable doesn't display"
@@ -70,7 +74,18 @@ export default class ResourceTileView extends React.PureComponent {
                 overlays={["I'm an overlay"]}
               />
               <ResourceTile
-                icon="https://assets.clever.com/resource-icons/apps/5ce8488bb85d7a0013d52f1a/icon_ae3363a.png"
+                icon={{
+                  src:
+                    "https://assets.clever.com/resource-icons/apps/5ce8488bb85d7a0013d52f1a/icon_ae3363a.png",
+                }}
+                title="Chess.com"
+                url="https://chess.com"
+                size={size}
+                notify={notify}
+                draggable={draggable}
+              />
+              <ResourceTile
+                icon={{ node: <div className={cssClass.EXAMPLE_NODE}>This is a node!</div> }}
                 title="Chess.com"
                 url="https://chess.com"
                 size={size}
@@ -158,8 +173,9 @@ export default class ResourceTileView extends React.PureComponent {
           },
           {
             name: "icon",
-            type: "string",
-            description: "Src for image to display as icon",
+            type: "{ src: string } | { node: React.ReactNode }",
+            description:
+              "Either the src for image to display as icon or a ReactNode to display as the icon",
           },
           {
             name: "loadingSpinner",
