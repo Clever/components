@@ -13,32 +13,32 @@ export type IconSize = "small" | "medium" | "large";
 export type IconOrientation = "landscape" | "portrait" | "unknown";
 
 export const CssClasses = {
-  ACTION: "ResourceTile--action",
-  ACTION_BUTTON: "ResourceTile--actionButton",
-  CONTAINER: "ResourceTile",
-  DRAGGABLE_ICON: "ResourceTile--draggableIcon",
-  LINK: "ResourceTile--link",
-  ICON_CONTAINER: "ResourceTile--iconContainer",
-  ICON: "ResourceTile--icon",
-  OVERLAYS: "ResourceTile--overlays",
-  OVERLAY: "ResourceTile--overlay",
-  TITLE_CONTAINER: "ResourceTile--titleContainer",
-  TITLE_AND_NOTES: "ResourceTile--titleAndNotes",
-  TITLE: "ResourceTile--title",
-  NOTIFICATION: "ResourceTile--notification",
-  NOTES: "ResourceTile--notes",
-  ADDITIONAL_INFO: "ResourceTile--additionalInfo",
+  ACTION: "dewey--ResourceTile--action",
+  ACTION_BUTTON: "dewey--ResourceTile--actionButton",
+  CONTAINER: "dewey--ResourceTile",
+  DRAGGABLE_ICON: "dewey--ResourceTile--draggableIcon",
+  LINK: "dewey--ResourceTile--link",
+  ICON_CONTAINER: "dewey--ResourceTile--iconContainer",
+  ICON: "dewey--ResourceTile--icon",
+  OVERLAYS: "dewey--ResourceTile--overlays",
+  OVERLAY: "dewey--ResourceTile--overlay",
+  TITLE_CONTAINER: "dewey--ResourceTile--titleContainer",
+  TITLE_AND_NOTES: "dewey--ResourceTile--titleAndNotes",
+  TITLE: "dewey--ResourceTile--title",
+  NOTIFICATION: "dewey--ResourceTile--notification",
+  NOTES: "dewey--ResourceTile--notes",
+  ADDITIONAL_INFO: "dewey--ResourceTile--additionalInfo",
 };
 
 const SizeCssClasses: Record<IconSize, string> = {
-  small: "ResourceTile--size--small",
-  medium: "ResourceTile--size--medium",
-  large: "ResourceTile--size--large",
+  small: "dewey--ResourceTile--size--small",
+  medium: "dewey--ResourceTile--size--medium",
+  large: "dewey--ResourceTile--size--large",
 };
 
 const IconOrientationCssClasses: Record<IconOrientation, string> = {
-  landscape: "ResourceTile--icon--landscape",
-  portrait: "ResourceTile--icon--portrait",
+  landscape: "dewey--ResourceTile--icon--landscape",
+  portrait: "dewey--ResourceTile--icon--portrait",
   unknown: "",
 };
 
@@ -222,7 +222,10 @@ export class ResourceTile extends React.PureComponent<Props, State> {
         {!!actions.length && (
           <FlexBox column>
             {actions.map((action, i) => (
-              <FlexBox className={classnames(CssClasses.ACTION)} key={`ResourceTileAction--${i}`}>
+              <FlexBox
+                className={classnames(CssClasses.ACTION)}
+                key={`dewey--ResourceTileAction--${i}`}
+              >
                 <Button
                   className={CssClasses.ACTION_BUTTON}
                   value={action.content}
