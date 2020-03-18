@@ -111,3 +111,7 @@ import FloatingButton from "./FloatingButton";
 export { FloatingButton };
 
 export { Badge } from "./Badge";
+
+export { ResourceTile } from "./ResourceTile";
+
+export { polyfillMediaQueries } from "./utils";

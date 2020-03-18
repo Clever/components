@@ -1,0 +1,52 @@
+@import (reference) "~src/less/utilities";
+
+.ResourceTileView--intro {
+  .margin--bottom--xl;
+}
+
+.ResourceTileView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.ResourceTileView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.ResourceTileView--config {
+  cursor: pointer;
+}
+
+.ResourceTileView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.ResourceTileView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.ResourceTileView--props {
+  .margin--top--l;
+}
+
+.ResourceTileView--example .Demo {
+  background-color: transparent;
+}
+
+.ResourceTileView--exampleNode {
+  text-align: center;
+}

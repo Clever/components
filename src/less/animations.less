@@ -59,3 +59,77 @@
 .transition-timing-function(@function) {
   transition-timing-function: @function;
 }
+
+.animation(@arguments) {
+  -moz-animation: @arguments;
+  -webkit-animation: @arguments;
+  animation: @arguments;
+}
+
+.keyframes(@name; @arguments) {
+  @-moz-keyframes @name {
+    @arguments();
+  }
+  @-webkit-keyframes @name {
+    @arguments();
+  }
+  @keyframes @name {
+    @arguments();
+  }
+}
+
+.transition(@arguments) {
+  -webkit-transition: @arguments;
+  transition: @arguments;
+}
+
+.fadeIn(@speed: @timingPromptly, @delay: @timingInstantly) {
+  visibility: visible;
+  opacity: 1;
+  .transition(opacity @speed @motionLinear @delay);
+}
+
+.fadeOut(@speed: @timingPromptly) {
+  visibility: hidden;
+  opacity: 0;
+
+  // Transition the opacity to 0.
+  // Set the visibility to hidden only once that transition is done.
+  @transition: opacity @speed @motionLinear, visibility @timingInstantly @motionLinear @speed;
+  .transition(@transition);
+}
+
+// Only certain properties can be efficiently animated. Opacity is one such property; box-shadow
+// isn't. So to animate a box-shadow, we create a hidden element the exact same size and shape as
+// the target element. We then animate the opacity of this hidden element
+.boxShadowHoverAnimation(
+  @borderRadius: @borderRadius0,
+  @targetElementZIndex: @zIndex0,
+  @boxShadowBlurRadius: @boxShadowBlurRadiusS,
+  @boxShadowColor: @boxShadowDefaultColor,
+) {
+  // So that the ::after can be absolutely positioned
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: @borderRadius;
+
+    // Place the ::after element behind the target element so that it doesn't interfere with
+    // interactions
+    z-index: @targetElementZIndex - 1;
+
+    .boxShadow(@boxShadowBlurRadius, @boxShadowColor);
+    .fadeOut();
+  }
+
+  &:hover::after,
+  &:focus::after {
+    .fadeIn();
+  }
+}

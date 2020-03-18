@@ -83,3 +83,28 @@ export function classNameFor(prefixes: string | string[], classSegments?: string
 
   return classnames(prefixList.map(p => [p].concat(classSegmentList).join("--")));
 }
+
+// This is defined as a separate function to avoid binding multiple event
+// listeners. We do not want this code to run more than once.
+function polyfillTouchAndHover() {
+  const { classList } = document.querySelector("body");
+
+  if ("ontouchstart" in window) {
+    classList.add("mq-touch-enabled");
+  } else {
+    classList.add("mq-hover");
+  }
+}
+
+/**
+ * Detect browser capabilities and apply faux media queries
+ *
+ * This will allow us to write CSS rules like:
+ *
+ *     .mq-hover .conditional-styles {
+ *       // only applied when the browser supports hover
+ *     }
+ */
+export function polyfillMediaQueries() {
+  window.addEventListener("load", polyfillTouchAndHover);
+}
