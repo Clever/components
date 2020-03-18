@@ -14,12 +14,12 @@ describe("Resource Link", () => {
   }
 
   it("displays a title", () => {
-    const title = renderComponent({ src: "zelda.png" }).find(".ResourceTile--title");
+    const title = renderComponent({ src: "zelda.png" }).find(".dewey--ResourceTile--title");
     assert.equal(title.text(), "Zelda");
   });
 
   it("displays an icon src", () => {
-    const icon = renderComponent({ src: "zelda.png" }).find(".ResourceTile--icon");
+    const icon = renderComponent({ src: "zelda.png" }).find(".dewey--ResourceTile--icon");
     assert.equal(icon.prop("src"), "zelda.png");
   });
 
