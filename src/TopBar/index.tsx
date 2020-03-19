@@ -8,6 +8,11 @@ import { TopBarButton } from "./TopBarButton";
 import "./index.less";
 import Menu from "../Menu";
 
+// Defined as an array first as a convenience to make automatic enumeration of all themes easier in
+// the demo code.
+export const TopBarThemes = ["default", "plain"] as const;
+type TopBarTheme = typeof TopBarThemes[number];
+
 export interface Props {
   children?: React.ReactNode;
   className?: string;
@@ -18,22 +23,16 @@ export interface Props {
   theme?: TopBarTheme;
 }
 
-export enum TopBarTheme {
-  DEFAULT = "default",
-  PLAIN = "plain",
-}
 
 /**
  * Global page-level header component.
  */
 export class TopBar extends React.PureComponent<Props> {
-  static defaultProps: Partial<Props> = {
-    theme: TopBarTheme.DEFAULT,
+  static defaultProps: Pick<Props, "theme"> = {
+    theme: "default",
   };
 
   static Button = TopBarButton;
-
-  static Theme = TopBarTheme;
 
   render() {
     const { children, className, title, customLogo, theme } = this.props;

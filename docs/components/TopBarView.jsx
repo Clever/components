@@ -8,7 +8,7 @@ import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import { FlexBox, FlexItem, ItemAlign, TextInput, Menu, Select } from "src";
-import { TopBar } from "src/TopBar";
+import { TopBar, TopBarThemes } from "src/TopBar";
 
 import "./TopBarView.less";
 
@@ -156,12 +156,10 @@ export default class TopBarView extends React.PureComponent {
             label="Theme"
             name={cssClass.DROPDOWN_THEME}
             onChange={o => this.setState({ theme: o && o.value })}
-            options={Object.keys(TopBar.Theme)
-              .sort()
-              .map(key => ({
-                label: key,
-                value: TopBar.Theme[key],
-              }))}
+            options={TopBarThemes.sort().map(value => ({
+              label: value,
+              value,
+            }))}
             value={theme}
           />
         </div>
@@ -220,10 +218,10 @@ export default class TopBarView extends React.PureComponent {
             },
             {
               name: "theme",
-              type: <code>TopBar.Theme</code>,
+              type: <code>"{TopBarThemes.sort().join('" | "')}"</code>,
               description: "Optional style theme to apply to the TopBar.",
               optional: true,
-              defaultValue: "TopBar.Theme.DEFAULT",
+              defaultValue: '"default"',
             },
             {
               name: "title",
