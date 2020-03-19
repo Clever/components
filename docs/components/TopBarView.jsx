@@ -7,7 +7,7 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { FlexBox, FlexItem, ItemAlign, TextInput, Menu } from "src";
+import { FlexBox, FlexItem, ItemAlign, TextInput, Menu, Select } from "src";
 import { TopBar } from "src/TopBar";
 
 import "./TopBarView.less";
@@ -18,6 +18,7 @@ const cssClass = {
   CONFIG: "TopBarView--config",
   CONFIG_TOGGLE: "TopBarView--configToggle",
   CONTAINER: "TopBarView",
+  DROPDOWN_THEME: "TopBarView--dropdown--theme",
   INPUT_TITLE: "TopBarView--input--title",
   INTRO: "TopBarView--intro",
   PROPS: "TopBarView--props",
@@ -40,12 +41,13 @@ export default class TopBarView extends React.PureComponent {
 
   state = {
     addArbitraryContent: true,
+    theme: null,
     title: "Welcome back to Clever",
   };
 
   render() {
     const { location } = this.props;
-    const { addArbitraryContent, title } = this.state;
+    const { addArbitraryContent, theme, title } = this.state;
 
     const page = location.query.page || "portal";
 
@@ -67,7 +69,12 @@ export default class TopBarView extends React.PureComponent {
         <Example title="Basic Usage:">
           <div className={cssClass.WINDOW}>
             <ExampleCode>
-              <TopBar className={cssClass.TOP_BAR} logoHref="//clever.com" title={title}>
+              <TopBar
+                className={cssClass.TOP_BAR}
+                logoHref="//clever.com"
+                theme={theme}
+                title={title}
+              >
                 <TopBar.Button
                   active={page === "dashboard"}
                   component={Link}
@@ -137,10 +144,27 @@ export default class TopBarView extends React.PureComponent {
   _logUserMenuButtonClick = () => console.log("user menu button clicked");
 
   _renderConfig() {
-    const { addArbitraryContent, title } = this.state;
+    const { addArbitraryContent, theme, title } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+        <div className={cssClass.CONFIG}>
+          <Select
+            className={classnames(cssClass.CONFIG_OPTIONS, cssClass.DROPDOWN_THEME)}
+            clearable
+            id={cssClass.DROPDOWN_THEME}
+            label="Theme"
+            name={cssClass.DROPDOWN_THEME}
+            onChange={o => this.setState({ theme: o && o.value })}
+            options={Object.keys(TopBar.Theme)
+              .sort()
+              .map(key => ({
+                label: key,
+                value: TopBar.Theme[key],
+              }))}
+            value={theme}
+          />
+        </div>
         <div className={cssClass.CONFIG}>
           <TextInput
             className={classnames(cssClass.CONFIG_OPTIONS, cssClass.INPUT_TITLE)}
@@ -193,6 +217,13 @@ export default class TopBarView extends React.PureComponent {
               type: <code>React.Node</code>,
               description: "Alternate node to show instead of the Clever logo.",
               optional: true,
+            },
+            {
+              name: "theme",
+              type: <code>TopBar.Theme</code>,
+              description: "Optional style theme to apply to the TopBar.",
+              optional: true,
+              defaultValue: "TopBar.Theme.DEFAULT",
             },
             {
               name: "title",

@@ -15,16 +15,28 @@ export interface Props {
   title?: React.ReactNode;
   customLogo?: React.ReactNode;
   onLogoClick?: Function;
+  theme?: TopBarTheme;
+}
+
+export enum TopBarTheme {
+  DEFAULT = "default",
+  PLAIN = "plain",
 }
 
 /**
  * Global page-level header component.
  */
 export class TopBar extends React.PureComponent<Props> {
+  static defaultProps: Partial<Props> = {
+    theme: TopBarTheme.PLAIN,
+  };
+
   static Button = TopBarButton;
 
+  static Theme = TopBarTheme;
+
   render() {
-    const { children, className, title, customLogo } = this.props;
+    const { children, className, title, customLogo, theme } = this.props;
 
     // If the last element is a "rounded" TopBarButton we need to add some additional padding to the right side.
     // To determine this we need to inspect the children;
@@ -45,6 +57,7 @@ export class TopBar extends React.PureComponent<Props> {
           "dewey--TopBar",
           className,
           needsRightPadding && "dewey--TopBar--rightPadding",
+          `dewey--TopBar--theme--${theme}`,
         )}
       >
         <TopBarButton
