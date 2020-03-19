@@ -41,7 +41,7 @@ export default class TopBarView extends React.PureComponent {
 
   state = {
     addArbitraryContent: true,
-    theme: null,
+    theme: undefined,
     title: "Welcome back to Clever",
   };
 

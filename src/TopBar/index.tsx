@@ -28,7 +28,7 @@ export enum TopBarTheme {
  */
 export class TopBar extends React.PureComponent<Props> {
   static defaultProps: Partial<Props> = {
-    theme: TopBarTheme.PLAIN,
+    theme: TopBarTheme.DEFAULT,
   };
 
   static Button = TopBarButton;
