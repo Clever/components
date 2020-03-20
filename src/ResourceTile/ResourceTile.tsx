@@ -61,7 +61,7 @@ export interface Props {
   overlays?: React.ReactNode[];
   size: IconSize;
   title: string;
-  url: string;
+  url?: string;
 }
 
 interface State {
