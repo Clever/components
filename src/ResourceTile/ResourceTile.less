@@ -12,10 +12,10 @@
 @fontSizeLarge: 1rem;
 
 .dewey--ResourceTile {
-  .borderRadius--xl;
-  .margin--right--xs;
-  .margin--bottom--xs;
-  background-color: @neutral_white;
+  .borderRadius--xl();
+  .margin--right--xs();
+  .margin--bottom--xs();
+  .zIndex--0();
   position: relative;
 }
 
@@ -145,7 +145,7 @@ button.dewey--ResourceTile--actionButton {
 // Only apply the following styles if the device supports true hover
 .mq-hover {
   .dewey--ResourceTile {
-    .boxShadowHoverAnimation(@borderRadiusXL);
+    .boxShadowHoverAnimation(@borderRadiusXL, @zIndex0);
   }
 }
 
