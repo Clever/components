@@ -224,6 +224,7 @@ export default class ResourceTileView extends React.PureComponent {
             name: "url",
             type: "string",
             description: "URL to navigate to on click",
+            optional: true,
           },
         ]}
         className={cssClass.PROPS}
