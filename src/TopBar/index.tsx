@@ -23,7 +23,6 @@ export interface Props {
   theme?: TopBarTheme;
 }
 
-
 /**
  * Global page-level header component.
  */
