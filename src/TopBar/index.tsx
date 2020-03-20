@@ -8,6 +8,11 @@ import { TopBarButton } from "./TopBarButton";
 import "./index.less";
 import Menu from "../Menu";
 
+// Defined as an array first as a convenience to make automatic enumeration of all themes easier in
+// the demo code.
+export const TopBarThemes = ["default", "plain"] as const;
+type TopBarTheme = typeof TopBarThemes[number];
+
 export interface Props {
   children?: React.ReactNode;
   className?: string;
@@ -15,16 +20,21 @@ export interface Props {
   title?: React.ReactNode;
   customLogo?: React.ReactNode;
   onLogoClick?: Function;
+  theme?: TopBarTheme;
 }
 
 /**
  * Global page-level header component.
  */
 export class TopBar extends React.PureComponent<Props> {
+  static defaultProps: Pick<Props, "theme"> = {
+    theme: "default",
+  };
+
   static Button = TopBarButton;
 
   render() {
-    const { children, className, title, customLogo } = this.props;
+    const { children, className, title, customLogo, theme } = this.props;
 
     // If the last element is a "rounded" TopBarButton we need to add some additional padding to the right side.
     // To determine this we need to inspect the children;
@@ -45,6 +55,7 @@ export class TopBar extends React.PureComponent<Props> {
           "dewey--TopBar",
           className,
           needsRightPadding && "dewey--TopBar--rightPadding",
+          `dewey--TopBar--theme--${theme}`,
         )}
       >
         <TopBarButton

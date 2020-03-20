@@ -42,3 +42,35 @@
   color: @neutral_white;
   font-style: italic;
 }
+
+// PLAIN theme:
+.dewey--TopBar.dewey--TopBar--theme--plain {
+  background: none;
+  box-shadow: none;
+
+  .dewey--TopBar--logoSubtext {
+    color: @primary_blue;
+  }
+
+  .dewey--TopBar--title {
+    color: @primary_blue;
+  }
+
+  .TopBarButton {
+    color: @primary_blue;
+
+    // Copied from "link" Button type:
+    &:hover,
+    &:focus,
+    &:active {
+      color: @primary_blue_shade_2;
+      background-color: fade(@primary_blue, 5%);
+    }
+  }
+
+  .dewey--TopBar--logo {
+    .dewey--Logo--text {
+      fill: @primary_blue;
+    }
+  }
+}
