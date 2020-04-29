@@ -38,12 +38,15 @@ export default class Progress extends React.PureComponent<Props> {
     let colorBorderStyle = cssClass.border(color, size);
 
     if (color === "changing") {
-      if (fill < 30) {
+      if (fill < 25) {
         colorStyle = cssClass.color("red");
         colorBorderStyle = cssClass.border("red", size);
-      } else if (fill < 90) {
+      } else if (fill < 50) {
         colorStyle = cssClass.color("orange");
-        colorBorderStyle = cssClass.border("orange", size);
+        colorBorderStyle = cssClass.border("red", size);
+      } else if (fill < 75) {
+        colorStyle = cssClass.color("blue");
+        colorBorderStyle = cssClass.border("blue", size);
       } else {
         colorStyle = cssClass.color("green");
         colorBorderStyle = cssClass.border("green", size);
