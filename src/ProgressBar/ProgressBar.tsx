@@ -85,7 +85,17 @@ export default class ProgressBar extends React.PureComponent<Props> {
   };
 
   render() {
-    const { className, style, color, fill, width, size, striped, inactive, markNumbers } = this.props;
+    const {
+      className,
+      style,
+      color,
+      fill,
+      width,
+      size,
+      striped,
+      inactive,
+      markNumbers,
+    } = this.props;
     const sizePX = SizePX[size];
     const topLabel = this._maybeTopLabel();
     const bottomLabel = this._maybeBottomLabel();
@@ -109,19 +119,23 @@ export default class ProgressBar extends React.PureComponent<Props> {
               }}
             >
               <div className={classnames(cssClass.BAR_BORDER, cssClass.borderSize(size))} />
-              {markNumbers && markNumbers.map((element, index) => (
-                element < 100 ?
-                  (<div
-                    className={classnames(
-                      cssClass.BAR_MARK,
-                      fill < element && (index === 0 || fill >= markNumbers[index - 1]) && cssClass.BAR_THICK_MARK
-                    )}
-                    style={{
-                      left: `${element}%`,
-                    }}
-                    key={element}
-                  />) : null
-              ))}
+              {markNumbers &&
+                markNumbers.map((element, index) =>
+                  element < 100 ? (
+                    <div
+                      className={classnames(
+                        cssClass.BAR_MARK,
+                        fill < element &&
+                          (index === 0 || fill >= markNumbers[index - 1]) &&
+                          cssClass.BAR_THICK_MARK,
+                      )}
+                      style={{
+                        left: `${element}%`,
+                      }}
+                      key={element}
+                    />
+                  ) : null,
+                )}
               <Progress
                 fill={fill > 100 ? 100 : fill}
                 color={color}

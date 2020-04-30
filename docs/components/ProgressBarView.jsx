@@ -54,7 +54,18 @@ export default class ProgressBarView extends React.PureComponent {
   };
 
   render() {
-    const { color, fill, size, width, striped, inactive, showLabel, label, labelType, markNumbers } = this.state;
+    const {
+      color,
+      fill,
+      size,
+      width,
+      striped,
+      inactive,
+      showLabel,
+      label,
+      labelType,
+      markNumbers,
+    } = this.state;
 
     return (
       <View
@@ -176,7 +187,8 @@ export default class ProgressBarView extends React.PureComponent {
             {
               name: "markNumbers",
               type: "Array<number>",
-              description: "Places a mark at each number in the progress bar. Numbers should be in increasing order and between 0 and 100",
+              description:
+                "Places a mark at each number in the progress bar. Numbers should be in increasing order and between 0 and 100",
               defaultValue: "[]",
               optional: true,
             },
@@ -189,7 +201,18 @@ export default class ProgressBarView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { color, fill, size, width, striped, inactive, showLabel, label, labelType, markNumbers } = this.state;
+    const {
+      color,
+      fill,
+      size,
+      width,
+      striped,
+      inactive,
+      showLabel,
+      label,
+      labelType,
+      markNumbers,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
