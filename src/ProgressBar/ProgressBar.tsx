@@ -22,6 +22,7 @@ export interface Props {
   showLabel?: string;
   style?: React.CSSProperties;
   width?: string | number;
+  markNumbers?: Array<number>;
 }
 
 const Size = {
@@ -56,6 +57,7 @@ const propTypes = {
   inactive: PropTypes.bool,
   showLabel: PropTypes.string,
   labelType: PropTypes.string,
+  markNumbers: PropTypes.array,
 };
 
 const cssClass = {
@@ -64,6 +66,8 @@ const cssClass = {
   BAR_BORDER: "ProgressBar--bar--border",
   TRACKER: "ProgressBar--bar--tracker",
   INACTIVE: "ProgressBar--bar--inactive",
+  BAR_MARK: "ProgressBar--bar--mark",
+  BAR_THICK_MARK: "ProgressBar--bar--mark--thick",
   boxContainer: s => `ProgressBar--boxContainer--${s}`,
   borderSize: s => `ProgressBar--bar--border--${s}`,
   containerSize: s => `ProgressBar--bar--container--${s}`,
@@ -81,7 +85,7 @@ export default class ProgressBar extends React.PureComponent<Props> {
   };
 
   render() {
-    const { className, style, color, fill, width, size, striped, inactive } = this.props;
+    const { className, style, color, fill, width, size, striped, inactive, markNumbers } = this.props;
     const sizePX = SizePX[size];
     const topLabel = this._maybeTopLabel();
     const bottomLabel = this._maybeBottomLabel();
@@ -105,6 +109,19 @@ export default class ProgressBar extends React.PureComponent<Props> {
               }}
             >
               <div className={classnames(cssClass.BAR_BORDER, cssClass.borderSize(size))} />
+              {markNumbers && markNumbers.map((element, index) => (
+                element < 100 ?
+                  (<div
+                    className={classnames(
+                      cssClass.BAR_MARK,
+                      fill < element && (index === 0 || fill >= markNumbers[index - 1]) && cssClass.BAR_THICK_MARK
+                    )}
+                    style={{
+                      left: `${element}%`,
+                    }}
+                    key={element}
+                  />) : null
+              ))}
               <Progress
                 fill={fill > 100 ? 100 : fill}
                 color={color}

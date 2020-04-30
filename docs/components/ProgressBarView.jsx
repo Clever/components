@@ -50,10 +50,11 @@ export default class ProgressBarView extends React.PureComponent {
     label: "",
     striped: false,
     inactive: false,
+    markNumbers: "25,50,75",
   };
 
   render() {
-    const { color, fill, size, width, striped, inactive, showLabel, label, labelType } = this.state;
+    const { color, fill, size, width, striped, inactive, showLabel, label, labelType, markNumbers } = this.state;
 
     return (
       <View
@@ -85,6 +86,8 @@ export default class ProgressBarView extends React.PureComponent {
               showLabel={showLabel}
               labelType={labelType}
               label={label}
+              markNumbers={markNumbers.split(",").map(Number)}
+              // markNumbers stored as string on this page for testing config so needs conversion
             />
           </ExampleCode>
           {this._renderConfig()}
@@ -170,6 +173,13 @@ export default class ProgressBarView extends React.PureComponent {
               defaultValue: "",
               optional: true,
             },
+            {
+              name: "markNumbers",
+              type: "Array<number>",
+              description: "Places a mark at each number in the progress bar. Numbers should be in increasing order and between 0 and 100",
+              defaultValue: "[]",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="ProgressBar"
@@ -179,7 +189,7 @@ export default class ProgressBarView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { color, fill, size, width, striped, inactive, showLabel, label, labelType } = this.state;
+    const { color, fill, size, width, striped, inactive, showLabel, label, labelType, markNumbers } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -285,6 +295,15 @@ export default class ProgressBarView extends React.PureComponent {
           />{" "}
           Inactive
         </label>
+        <div className={cssClass.CONFIG}>
+          <TextInput
+            className={cssClass.CONFIG_OPTIONS}
+            label="markNumbers"
+            name="markNumbers"
+            value={markNumbers}
+            onChange={e => this.setState({ markNumbers: e.target.value })}
+          />
+        </div>
       </FlexBox>
     );
   }
