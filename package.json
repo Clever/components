@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "2.34.2",
+  "version": "2.35.0",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -79,6 +79,7 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "5.x",
     "eslint-config-airbnb": "^6.2.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-webpack": "^0.7.0",
     "eslint-plugin-react": "^4.2.3",
     "extract-text-webpack-plugin": "^1.0.1",

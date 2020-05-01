@@ -72,3 +72,17 @@
 .ProgressBar--label--bottom-right {
   .alignSelf(flex-end);
 }
+
+.ProgressBar--bar--mark {
+  position: absolute;
+  width: @size_4xs;
+  background-color: @neutral_gray;
+  height: 100%;
+  .border--bottom--m(@neutral_gray);
+}
+
+.ProgressBar--bar--mark--thick {
+  width: @size_3xs;
+  background-color: @neutral_black;
+  .border--bottom--m(@neutral_black);
+}
