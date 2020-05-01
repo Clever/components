@@ -22,7 +22,7 @@ export interface Props {
   showLabel?: string;
   style?: React.CSSProperties;
   width?: string | number;
-  markNumbers?: Array<number>;
+  markNumbers?: number[];
 }
 
 const Size = {
@@ -100,6 +100,9 @@ export default class ProgressBar extends React.PureComponent<Props> {
     const topLabel = this._maybeTopLabel();
     const bottomLabel = this._maybeBottomLabel();
 
+    const markNumbersInRange = (markNumbers || []).filter(mark => mark < 100 && mark > 0).sort();
+    const firstAfterFill = markNumbersInRange.find(mark => mark > fill);
+
     return (
       <div className={classnames(cssClass.CONTAINER, inactive && cssClass.INACTIVE, className)}>
         <FlexBox
@@ -119,23 +122,18 @@ export default class ProgressBar extends React.PureComponent<Props> {
               }}
             >
               <div className={classnames(cssClass.BAR_BORDER, cssClass.borderSize(size))} />
-              {markNumbers &&
-                markNumbers.map((element, index) =>
-                  element < 100 ? (
-                    <div
-                      className={classnames(
-                        cssClass.BAR_MARK,
-                        fill < element &&
-                          (index === 0 || fill >= markNumbers[index - 1]) &&
-                          cssClass.BAR_THICK_MARK,
-                      )}
-                      style={{
-                        left: `${element}%`,
-                      }}
-                      key={element}
-                    />
-                  ) : null,
-                )}
+              {markNumbersInRange.map(element => (
+                <div
+                  className={classnames(
+                    cssClass.BAR_MARK,
+                    firstAfterFill === element && cssClass.BAR_THICK_MARK,
+                  )}
+                  style={{
+                    left: `${element}%`,
+                  }}
+                  key={element}
+                />
+              ))}
               <Progress
                 fill={fill > 100 ? 100 : fill}
                 color={color}
