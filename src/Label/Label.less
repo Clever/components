@@ -99,7 +99,7 @@
 }
 
 /**
- * Handle 'default' differently because gray/silver
+ * For 'default', gray/silver
  * doesn't need a fade on base color.
  * Shade on focus/hover for labels with tooltips
  * to provide contrast.
@@ -113,5 +113,18 @@
   &:focus,
   &:hover {
     background-color: shade(@color, 25%);
+  }
+}
+
+/**
+ * For 'tag', tooltip focus/hover 
+ * has white background so fade() will not do anything.
+ * Instead, fill with the stroke color.
+ */
+
+.highlight(@color, @darkenOnHover) when (@darkenOnHover = true) and (@color = @neutral_white) {
+  &:focus,
+  &:hover {
+    background-color: @neutral_gray;
   }
 }
