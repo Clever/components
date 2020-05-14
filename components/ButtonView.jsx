@@ -34,6 +34,7 @@ export default function ButtonView() {
           <Button type="primary" value="Primary" />
           <Button type="secondary" value="Secondary" />
           <Button type="destructive" value="Destructive" />
+          <Button type="secondaryDestructive" value="Secondary Destructive" />
           <Button disabled value="Disabled" />
           <Button type="link" href="http://clever.com" value="Link" />
           <Button disabled type="link" href="http://clever.com" value="Disabled Link" />
