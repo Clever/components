@@ -100,7 +100,7 @@ export class Button extends React.PureComponent<Props> {
       propTypes,
     ) as (keyof typeof propTypes)[]);
 
-    if (type === Type.DESTRUCTIVE && size === Size.S) {
+    if ((type === Type.DESTRUCTIVE || type === Type.SECONDARY_DESTRUCTIVE) && size === Size.S) {
       throw new Error("Small destructive buttons are not supported");
     }
 
