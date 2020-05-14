@@ -35,6 +35,7 @@ const Type = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
   DESTRUCTIVE: "destructive",
+  SECONDARY_DESTRUCTIVE: "secondaryDestructive",
   LINK: "link",
   LINK_PLAIN: "linkPlain",
   PLAIN: "plain",

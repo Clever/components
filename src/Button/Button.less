@@ -114,6 +114,22 @@ button {
     }
   }
 
+  &.Button--secondaryDestructive {
+    background-color: @neutral_white;
+    border-color: @alert_red_tint_2;
+    border-bottom-color: @alert_red;
+    color: @alert_red;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @alert_red_tint_2;
+      border-color: @alert_red_tint_2;
+      border-bottom-color: @alert_red_tint_1;
+      color: @neutral_white;
+    }
+  }
+
   &.Button--linkPlain,
   &.Button--link,
   &.Button--plain {
