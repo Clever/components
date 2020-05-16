@@ -38,6 +38,7 @@ const Color = {
   AQUA: "category-1",
   PURPLE: "category-1",
   PINK: "category-2",
+  GRAY: "default",
 } as const;
 
 // We are reducing the options from S/M/L to only S/L so
