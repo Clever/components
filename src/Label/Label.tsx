@@ -42,10 +42,10 @@ const Color = {
 } as const;
 
 // We are reducing the options from S/M/L to only S/L so
-// here we map M -> l for backwards compatibility.
+// here we map M -> s for backwards compatibility.
 const Size = {
   S: "s",
-  M: "l",
+  M: "s",
   L: "l",
 } as const;
 
