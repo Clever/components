@@ -4,11 +4,20 @@ import * as sinon from "sinon";
 import { shallow } from "enzyme";
 
 import Cell from "../../src/Table/Cell";
-import Footer, { cssClass, VISIBLE_PAGE_RANGE_SIZE } from "../../src/Table/Footer";
+import Footer, { cssClass } from "../../src/Table/Footer";
+import { DEFAULT_VISIBLE_PAGE_RANGE_SIZE } from "../../src/Table/Table";
 
 describe("Footer", () => {
   const newFooter = (props = {}) =>
-    shallow(<Footer currentPage={1} numColumns={3} numPages={3} {...props} />);
+    shallow(
+      <Footer
+        currentPage={1}
+        numColumns={3}
+        numPages={3}
+        visiblePageRangeSize={DEFAULT_VISIBLE_PAGE_RANGE_SIZE}
+        {...props}
+      />,
+    );
 
   it("is empty for numPages < 2", () => {
     assert(
@@ -83,9 +92,9 @@ describe("Footer", () => {
   });
 
   describe("page buttons", () => {
-    it("renders all page numbers for numPages <= `VISIBLE_PAGE_RANGE_SIZE` + 2", () => {
+    it("renders all page numbers for numPages <= `DEFAULT_VISIBLE_PAGE_RANGE_SIZE` + 2", () => {
       const expectedButtons = ["1"];
-      for (let i = 2; i <= VISIBLE_PAGE_RANGE_SIZE + 2; i++) {
+      for (let i = 2; i <= DEFAULT_VISIBLE_PAGE_RANGE_SIZE + 2; i++) {
         const midPage = Math.ceil(i / 2);
 
         const footer = newFooter({ numPages: i, currentPage: midPage });

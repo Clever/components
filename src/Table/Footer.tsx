@@ -5,6 +5,7 @@ import * as PropTypes from "prop-types";
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
 import { Button } from "../Button/Button";
+import { PageRangeSize, DEFAULT_VISIBLE_PAGE_RANGE_SIZE } from "./Table";
 
 import "./Footer.less";
 
@@ -16,9 +17,8 @@ export interface Props {
   showLastPage?: boolean;
   isLoading?: boolean;
   lengthUnknown?: boolean;
+  visiblePageRangeSize: PageRangeSize;
 }
-
-export const VISIBLE_PAGE_RANGE_SIZE = 5;
 
 export const cssClass = {
   BUTTON_PAGE: "Table--footer--button--page",
@@ -45,6 +45,7 @@ export default function Footer({
   showLastPage,
   isLoading,
   lengthUnknown,
+  visiblePageRangeSize,
 }: Props) {
   const renderEllipsis = () => <span className={cssClass.ELLIPSIS}>&hellip;</span>;
 
@@ -60,15 +61,23 @@ export default function Footer({
     return null;
   }
 
-  // Find the widest possible number range <= `VISIBLE_PAGE_RANGE_SIZE`.
-  const pageNumberPadding = (VISIBLE_PAGE_RANGE_SIZE - 1) / 2;
+  // As a safeguard for when the typescript PageSizeNumber type is not enforced (jsx files),
+  // check if the visiblePageRangeSize is a valid PageSizeNumber (1, 3, 5, 7, 9),
+  // and if not, set it to the default value.
+  let safeVisiblePageRangeSize = visiblePageRangeSize;
+  if (visiblePageRangeSize < 1 || visiblePageRangeSize > 11 || visiblePageRangeSize % 2 === 0) {
+    safeVisiblePageRangeSize = DEFAULT_VISIBLE_PAGE_RANGE_SIZE;
+  }
+
+  // Find the widest possible number range <= `safeVisiblePageRangeSize`.
+  const pageNumberPadding = (safeVisiblePageRangeSize - 1) / 2;
   let pageNumStart;
   if (currentPage + pageNumberPadding >= numPages) {
-    pageNumStart = Math.max(numPages - (VISIBLE_PAGE_RANGE_SIZE - 1), 1);
+    pageNumStart = Math.max(numPages - (safeVisiblePageRangeSize - 1), 1);
   } else {
     pageNumStart = Math.max(currentPage - pageNumberPadding, 1);
   }
-  const pageNumEnd = Math.min(pageNumStart + (VISIBLE_PAGE_RANGE_SIZE - 1), numPages);
+  const pageNumEnd = Math.min(pageNumStart + (safeVisiblePageRangeSize - 1), numPages);
 
   const visibleRange = [];
   for (let i = pageNumStart; i <= pageNumEnd; i++) {
@@ -127,10 +136,10 @@ export default function Footer({
                * Show ellipsis if there's at least one omitted page number between the end of the
                * visible range and the last page number.
                */}
-              {(visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages - 1 || lengthUnknown) &&
+              {(visibleRange[safeVisiblePageRangeSize - 1] < numPages - 1 || lengthUnknown) &&
                 renderEllipsis()}
               {/* Make sure the last page is always visible. */}
-              {visibleRange[VISIBLE_PAGE_RANGE_SIZE - 1] < numPages && showLastPage && (
+              {visibleRange[safeVisiblePageRangeSize - 1] < numPages && showLastPage && (
                 <Button
                   className={cssClass.BUTTON_PAGE}
                   key={numPages}
@@ -164,6 +173,7 @@ Footer.propTypes = {
   showLastPage: PropTypes.bool,
   isLoading: PropTypes.bool,
   lengthUnknown: PropTypes.bool,
+  visiblePageRangeSize: PropTypes.number,
 };
 
 Footer.defaultProps = {
