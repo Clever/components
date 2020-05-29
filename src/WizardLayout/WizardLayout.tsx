@@ -25,7 +25,7 @@ export interface Props {
   prevStepButtonDisabled?: boolean;
   prevStepButtonText?: React.ReactNode;
   stepper: React.ReactNode;
-  subtitle: string;
+  subtitle?: string;
   title: string;
 }
 
@@ -52,7 +52,7 @@ const propTypes = {
   onSaveAndExit: PropTypes.func,
   sections: PropTypes.arrayOf(SECTION_PROP_TYPE).isRequired,
   stepper: PropTypes.node.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
@@ -120,7 +120,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
           {headerImg && <div className={cssClass.HEADER_IMG}>{headerImg}</div>}
           <div>
             <p className={cssClass.HEADER_TITLE}>{title}</p>
-            <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>
+            {subtitle && <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>}
           </div>
         </FlexBox>
         <FlexBox className={classnames(cssClass.BODY, fullscreen && cssClass.BODY_FULLSCREEN)}>
