@@ -21,6 +21,8 @@ export interface SortState {
   direction?: SortDirection;
 }
 
+export type PageRangeSize = 1 | 3 | 5 | 7 | 9;
+
 // Webpack will inject process.env in so declare it here so we can use it to decide to log or not
 declare var process: {
   env: {
@@ -44,6 +46,7 @@ export interface Props {
   onViewChange?: Function;
   pageSize?: number;
   paginated?: boolean;
+  visiblePageRangeSize?: PageRangeSize;
   rowIDFn: Function;
   rowClassNameFn?: Function;
   noDataContent?: React.ReactNode;
@@ -65,6 +68,7 @@ interface State {
 }
 
 const DEFAULT_PAGE_SIZE = 10;
+export const DEFAULT_VISIBLE_PAGE_RANGE_SIZE = 5;
 
 const propTypes = {
   children: PropTypes.arrayOf(MorePropTypes.instanceOfComponent(Column)),
@@ -82,6 +86,7 @@ const propTypes = {
   onViewChange: PropTypes.func,
   pageSize: PropTypes.number,
   paginated: PropTypes.bool,
+  visiblePageRangeSize: PropTypes.number,
   rowIDFn: PropTypes.func.isRequired,
   rowClassNameFn: PropTypes.func,
   noDataContent: PropTypes.node,
@@ -96,6 +101,7 @@ const defaultProps = {
   onPageChange: () => {},
   onSortChange: () => {},
   pageSize: DEFAULT_PAGE_SIZE,
+  visiblePageRangeSize: DEFAULT_VISIBLE_PAGE_RANGE_SIZE,
   firstSortDirection: sortDirection.ASCENDING,
 };
 
@@ -380,6 +386,7 @@ export class Table extends React.Component<Props, State> {
       onRowClick,
       onRowMouseOver,
       noDataContent,
+      visiblePageRangeSize,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -445,6 +452,7 @@ export class Table extends React.Component<Props, State> {
             numColumns={columns.length}
             numPages={numPages}
             showLastPage={!lazy}
+            visiblePageRangeSize={visiblePageRangeSize}
             isLoading={pageLoading}
             lengthUnknown={lazy && numRows == null && !allLoaded}
           />
