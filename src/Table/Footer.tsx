@@ -62,14 +62,10 @@ export default function Footer({
   }
 
   // As a safeguard for when the typescript PageSizeNumber type is not enforced (jsx files),
-  // check if the visiblePageRangeSize is not a PageSizeNumber (even, < 1, > 11),
-  // and if so, set it to the default value.
+  // check if the visiblePageRangeSize is a valid PageSizeNumber (1, 3, 5, 7, 9),
+  // and if not, set it to the default value.
   let safeVisiblePageRangeSize = visiblePageRangeSize;
-  if (
-    safeVisiblePageRangeSize < 1 ||
-    safeVisiblePageRangeSize > 11 ||
-    safeVisiblePageRangeSize % 2 === 0
-  ) {
+  if (visiblePageRangeSize < 1 || visiblePageRangeSize > 11 || visiblePageRangeSize % 2 === 0) {
     safeVisiblePageRangeSize = DEFAULT_VISIBLE_PAGE_RANGE_SIZE;
   }
 
