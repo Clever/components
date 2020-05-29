@@ -254,7 +254,7 @@ export default class WizardLayoutView extends React.PureComponent {
           },
           {
             name: "exitButtonText",
-            type: "String",
+            type: "React.Node",
             description: "Optional exit button text",
             defaultValue: "Save & exit",
             optional: true,
@@ -287,7 +287,7 @@ export default class WizardLayoutView extends React.PureComponent {
           },
           {
             name: "nextStepButtonText",
-            type: "String",
+            type: "React.Node",
             description: "Optional next button text, 'Next step' by default",
             defaultValue: "Next step",
             optional: true,
@@ -330,7 +330,7 @@ export default class WizardLayoutView extends React.PureComponent {
           },
           {
             name: "prevStepButtonText",
-            type: "String",
+            type: "React.Node",
             description: "Optional previous button text, 'Previous step' by default",
             optional: true,
             defaultValue: "Previous Step",
