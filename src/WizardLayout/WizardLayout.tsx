@@ -10,7 +10,7 @@ import "./WizardLayout.less";
 
 export interface Props {
   className?: string;
-  exitButtonText?: string;
+  exitButtonText?: React.ReactNode;
   sections: any[];
   fullscreen?: boolean;
   headerImg?: any;
@@ -18,12 +18,12 @@ export interface Props {
   hidePreviousStepButton?: boolean;
   hideSaveAndExit?: boolean;
   nextStepButtonDisabled?: boolean;
-  nextStepButtonText?: string;
+  nextStepButtonText?: React.ReactNode;
   onNextStep: () => void;
   onPrevStep: () => void;
   onSaveAndExit?: () => void;
   prevStepButtonDisabled?: boolean;
-  prevStepButtonText?: string;
+  prevStepButtonText?: React.ReactNode;
   stepper: React.ReactNode;
   subtitle: string;
   title: string;
@@ -37,15 +37,15 @@ const SECTION_PROP_TYPE = PropTypes.shape({
 
 const propTypes = {
   className: PropTypes.string,
-  exitButtonText: PropTypes.string,
+  exitButtonText: PropTypes.node,
   fullscreen: PropTypes.bool,
   headerImg: PropTypes.element,
   helpContent: PropTypes.node,
   hidePreviousStepButton: PropTypes.bool,
   nextStepButtonDisabled: PropTypes.bool,
-  nextStepButtonText: PropTypes.string,
+  nextStepButtonText: PropTypes.node,
   prevStepButtonDisabled: PropTypes.bool,
-  prevStepButtonText: PropTypes.string,
+  prevStepButtonText: PropTypes.node,
   hideSaveAndExit: PropTypes.bool,
   onNextStep: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
