@@ -57,7 +57,7 @@ function typeCssClass(type: string): string {
 const iconMap = {
   [ToastType.ERROR]: "minus-circle",
   [ToastType.INFO]: "bell",
-  [ToastType.PROCESSING]: "hourglass",
+  [ToastType.PROCESSING]: "spinner",
   [ToastType.SUCCESS]: "thumbs-up",
   [ToastType.WARNING]: "exclamation-triangle",
 };

@@ -9,7 +9,7 @@ import { FlexBox, FlexItem } from "../flex";
 
 import "./AlertBox.less";
 
-type AlertBoxType = "processing" | "warning" | "success" | "error" | "info";
+type AlertBoxType = "processing" | "processingSpin" | "warning" | "success" | "error" | "info";
 
 export interface Props {
   children: React.ReactNode;
@@ -38,7 +38,7 @@ const propTypes = {
 };
 
 const iconMap = {
-  processing: "hourglass-half",
+  processing: "spinner",
   warning: "exclamation-triangle",
   success: "thumbs-up",
   error: "exclamation-circle",
@@ -76,6 +76,7 @@ export default class AlertBox extends React.PureComponent<Props> {
               size="lg"
               name={iconMap[type]}
               className={classnames(`AlertBox--Icon--${type}`, cssClass.ICON)}
+              spin={type === "processing"}
             />
           </FlexItem>
           <FlexItem>
