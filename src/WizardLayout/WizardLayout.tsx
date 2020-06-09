@@ -10,7 +10,7 @@ import "./WizardLayout.less";
 
 export interface Props {
   className?: string;
-  exitButtonText?: string;
+  exitButtonText?: React.ReactNode;
   sections: any[];
   fullscreen?: boolean;
   headerImg?: any;
@@ -18,14 +18,14 @@ export interface Props {
   hidePreviousStepButton?: boolean;
   hideSaveAndExit?: boolean;
   nextStepButtonDisabled?: boolean;
-  nextStepButtonText?: string;
+  nextStepButtonText?: React.ReactNode;
   onNextStep: () => void;
   onPrevStep: () => void;
   onSaveAndExit?: () => void;
   prevStepButtonDisabled?: boolean;
-  prevStepButtonText?: string;
+  prevStepButtonText?: React.ReactNode;
   stepper: React.ReactNode;
-  subtitle: string;
+  subtitle?: string;
   title: string;
 }
 
@@ -37,22 +37,22 @@ const SECTION_PROP_TYPE = PropTypes.shape({
 
 const propTypes = {
   className: PropTypes.string,
-  exitButtonText: PropTypes.string,
+  exitButtonText: PropTypes.node,
   fullscreen: PropTypes.bool,
   headerImg: PropTypes.element,
   helpContent: PropTypes.node,
   hidePreviousStepButton: PropTypes.bool,
   nextStepButtonDisabled: PropTypes.bool,
-  nextStepButtonText: PropTypes.string,
+  nextStepButtonText: PropTypes.node,
   prevStepButtonDisabled: PropTypes.bool,
-  prevStepButtonText: PropTypes.string,
+  prevStepButtonText: PropTypes.node,
   hideSaveAndExit: PropTypes.bool,
   onNextStep: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
   onSaveAndExit: PropTypes.func,
   sections: PropTypes.arrayOf(SECTION_PROP_TYPE).isRequired,
   stepper: PropTypes.node.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
@@ -120,7 +120,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
           {headerImg && <div className={cssClass.HEADER_IMG}>{headerImg}</div>}
           <div>
             <p className={cssClass.HEADER_TITLE}>{title}</p>
-            <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>
+            {subtitle && <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>}
           </div>
         </FlexBox>
         <FlexBox className={classnames(cssClass.BODY, fullscreen && cssClass.BODY_FULLSCREEN)}>

@@ -77,7 +77,7 @@ export default class LabelView extends Component {
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={size}
                 onSelect={value => this.setState({ size: value })}
-                options={_.map(Label.Size, s => ({ content: s, value: s }))}
+                options={_.map(_.uniq(Object.values(Label.Size)), s => ({ content: s, value: s }))}
               />
             </div>
             <div className={cssClass.CONFIG}>
@@ -86,7 +86,7 @@ export default class LabelView extends Component {
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={color}
                 onSelect={value => this.setState({ color: value })}
-                options={_.map(Label.Color, c => ({ content: c, value: c }))}
+                options={_.map(_.uniq(Object.values(Label.Color)), c => ({ content: c, value: c }))}
               />
             </div>
             <div className={cssClass.CONFIG}>
@@ -122,37 +122,41 @@ export default class LabelView extends Component {
               name: "children",
               type: "Node",
               description: "The text or HTML content for the label.",
+              optional: true,
             },
             {
               name: "color",
               type: "Label.Color",
-              description:
-                "The background color for the label. The font color is adjusted automatically to " +
-                "provide appropriate contrast with the background.",
-              defaultValue: "Label.Color.GRAY",
+              description: "The background color for the label.",
+              defaultValue: "Label.Color.DEFAULT",
+              optional: true,
             },
             {
               name: "size",
               type: "Label.Size",
               description: "The label size.",
-              defaultValue: "Label.Size.M",
+              defaultValue: "Label.Size.S",
+              optional: true,
             },
             {
               name: "tooltip",
               type: "Node",
               description: "The text or HTML tooltip content, if applicable.",
+              optional: true,
             },
             {
               name: "tooltipPlacement",
               type: "Tooltip.Placement",
               description: "Placement of the tooltip, relative to the label.",
               defaultValue: "Tooltip.Placement.RIGHT",
+              optional: true,
             },
             {
               name: "tooltipTextAlign",
               type: "Tooltip.Align",
               description: "Alignment of the tooltip text content.",
               defaultValue: "Tooltip.Align.LEFT",
+              optional: true,
             },
           ]}
           className={cssClass.PROPS}

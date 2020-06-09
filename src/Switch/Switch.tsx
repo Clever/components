@@ -37,6 +37,7 @@ const cssClass = {
   CHECKED: "Switch--checked",
   CHECKED_ICON: "Switch--checkedIcon",
   CONTAINER: "Switch",
+  ICON_CONTAINER: "Switch--iconContainer",
   DISABLED: "Switch--disabled",
   HANDLE: "Switch--handle",
   HANDLE_GRIP_LEFT: "Switch--handleGripLeft",
@@ -76,7 +77,7 @@ export default class Switch extends React.PureComponent<Props> {
         role="switch"
         onClick={this._onClick}
       >
-        <FlexBox justify={Justify.BETWEEN} grow>
+        <FlexBox className={cssClass.ICON_CONTAINER} justify={Justify.BETWEEN} grow>
           <FlexBox column justify={Justify.CENTER}>
             <Checkmark className={cssClass.CHECKED_ICON} />
           </FlexBox>

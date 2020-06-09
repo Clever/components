@@ -19,26 +19,33 @@ export interface Props {
 }
 
 const Color = {
-  // Primary:
-  BLUE: "blue",
-
-  // Neutrals:
-  GRAY: "gray",
+  // General:
+  DEFAULT: "default",
+  NEW_FEATURE: "new-feature",
 
   // Alerts:
-  ERROR: "error",
   SUCCESS: "success",
   WARNING: "warning",
+  ERROR: "error",
 
   // Accents:
-  AQUA: "aqua",
-  PINK: "pink",
-  PURPLE: "purple",
+  CATEGORY_1: "category-1",
+  CATEGORY_2: "category-2",
+  TAG: "tag",
+
+  // For backwards compatibility:
+  BLUE: "new-feature",
+  AQUA: "category-1",
+  PURPLE: "category-1",
+  PINK: "category-2",
+  GRAY: "default",
 } as const;
 
+// We are reducing the options from S/M/L to only S/L so
+// here we map M -> s for backwards compatibility.
 const Size = {
   S: "s",
-  M: "m",
+  M: "s",
   L: "l",
 } as const;
 
@@ -53,8 +60,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-  color: Color.GRAY,
-  size: Size.M,
+  color: Color.DEFAULT,
+  size: Size.S,
 };
 
 export const cssClass = {

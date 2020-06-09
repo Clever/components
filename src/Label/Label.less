@@ -1,17 +1,20 @@
 @import (reference) "../less/index";
 
 .Label {
-  .text--caps;
-  .text--center;
-  .text--line-height-3;
-  .text--nowrap;
-  .text--regular;
+  .text--center();
+  .text--line-height-1();
+  .text--semi-bold();
+  .text--nowrap();
+  // radius needs to be anything >= 50% the total label height for rounded corners
+  border-radius: @size_l;
+  color: @neutral_black;
   cursor: default;
+  max-width: 100%;
+  overflow: hidden;
   display: inline-block;
-  letter-spacing: 0.04em;
+  vertical-align: middle;
   transition: background-color 0.25s ease-out, color 0.25s ease-out, font-size 0.25s ease-out,
     padding 0.25s ease-out;
-  vertical-align: middle;
 
   &:active,
   &:focus {
@@ -26,53 +29,46 @@
 }
 
 .Label--s {
-  .borderRadius--s;
-  .text--tiny;
-  padding: @size_2xs @size_xs;
-}
-
-.Label--m {
-  .borderRadius--s;
-  .text--small;
-  padding: @size_xs @size_s;
+  padding: 0.3125rem @size_s;
+  font-size: 0.875rem;
 }
 
 .Label--l {
-  .borderRadius--m;
-  .text--medium;
-  padding: @size_s @size_m;
+  padding: @size_xs 1.25rem;
+  .text--medium();
 }
 
-.Label--gray {
-  .colorize(@neutral_gray);
+.Label--default {
+  .colorize(@neutral_silver);
 }
 
-.Label--blue {
-  .colorize(@primary_blue);
-}
-
-.Label--error {
-  .colorize(@alert_red);
+.Label--new-feature {
+  .colorize(@accent_teal_tint_2);
 }
 
 .Label--success {
-  .colorize(@alert_green);
+  .colorize(@alert_green_tint_2);
 }
 
 .Label--warning {
-  .colorize(@alert_orange);
+  .colorize(@alert_orange_tint_2);
 }
 
-.Label--aqua {
-  .colorize(@accent_teal);
+.Label--error {
+  .colorize(@alert_red_tint_2);
 }
 
-.Label--pink {
-  .colorize(@accent_pink);
+.Label--category-1 {
+  .colorize(@accent_purple_tint_2);
 }
 
-.Label--purple {
-  .colorize(@accent_purple);
+.Label--category-2 {
+  .colorize(@accent_pink_tint_2);
+}
+
+.Label--tag {
+  .colorize(@neutral_white);
+  .border--s(@neutral_gray);
 }
 
 .colorize(@color) {
@@ -86,24 +82,49 @@
 }
 
 /**
- * Creates text higlighting with the given background color.
- * Adjusts the text color for appropriate contrast with the given highlight color.
+ * Fade all colors 50%.
+ * Remove fade on focus/hover for labels with tooltips.
  * @param {Color} @color
  * @param {boolean} @darkenOnHover
  */
 .highlight(@color, @darkenOnHover: false) {
-  /* stylelint-disable-next-line declaration-property-value-whitelist */
-  background-color: @color;
-  color: @neutral_white;
-}
-
-.highlight(@color, @darkenOnHover: false) when (luma(@color) >= 50%) {
-  color: @neutral_black;
+  background-color: fade(@color, 50%);
 }
 
 .highlight(@color, @darkenOnHover) when (@darkenOnHover = true) {
   &:focus,
   &:hover {
-    .shade(background-color, @color, 1);
+    background-color: @color;
+  }
+}
+
+/**
+ * For 'default', gray/silver
+ * doesn't need a fade on base color.
+ * Shade on focus/hover for labels with tooltips
+ * to provide contrast.
+*/
+
+.highlight(@color, @darkenOnHover: false) when (@color = @neutral_silver) {
+  background-color: @color;
+}
+
+.highlight(@color, @darkenOnHover) when (@darkenOnHover = true) and (@color = @neutral_silver) {
+  &:focus,
+  &:hover {
+    background-color: shade(@color, 25%);
+  }
+}
+
+/**
+ * For 'tag', tooltip focus/hover 
+ * has white background so fade() will not do anything.
+ * Instead, fill with the stroke color.
+ */
+
+.highlight(@color, @darkenOnHover) when (@darkenOnHover = true) and (@color = @neutral_white) {
+  &:focus,
+  &:hover {
+    background-color: @neutral_gray;
   }
 }

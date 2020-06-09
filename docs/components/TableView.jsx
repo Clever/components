@@ -115,6 +115,7 @@ export default class TableView extends PureComponent {
                 onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
                 paginated
                 pageSize={9}
+                visiblePageRangeSize={5}
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
               >
@@ -311,6 +312,14 @@ export default class TableView extends PureComponent {
               optional: true,
             },
             {
+              name: "visiblePageRangeSize",
+              type: "1 | 3 | 5 | 7 | 9",
+              description:
+                "Range of page numbers to show in footer, centered on the current page number",
+              defaultValue: "5",
+              optional: true,
+            },
+            {
               name: "rowClassNameFn",
               type: "Function",
               description:
@@ -450,6 +459,7 @@ export default class TableView extends PureComponent {
             onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
             paginated
             pageSize={9}
+            visiblePageRangeSize={5}
             rowIDFn={r => r.id}
             rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
           >
