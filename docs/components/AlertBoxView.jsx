@@ -7,11 +7,12 @@ import PropDocumentation from "./PropDocumentation";
 export default class AlertBoxView extends PureComponent {
   state = {
     type: "warning",
+    showTitle: true,
   };
 
   render() {
     const { AlertBoxOptions } = AlertBoxView;
-    const { type } = this.state;
+    const { type, showTitle } = this.state;
 
     return (
       <View title="AlertBox" sourcePath="src/AlertBox/AlertBox.tsx">
@@ -31,9 +32,18 @@ export default class AlertBoxView extends PureComponent {
             }))}
             value={type}
           />
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              checked={this.state.showTitle}
+              onChange={({ target }) => this.setState({ showTitle: target.checked })}
+            />{" "}
+            Show Title
+          </label>
 
           <ExampleCode>
-            <AlertBox type={type} title={`${type} box`}>
+            <AlertBox type={type} title={showTitle ? `${type} box` : ""}>
               <p>
                 This is the box body. It can be any node.{" "}
                 <a href="/#/components/alert-box">look a link</a>!

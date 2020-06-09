@@ -14,7 +14,7 @@ type AlertBoxType = "processing" | "warning" | "success" | "error" | "info";
 export interface Props {
   children: React.ReactNode;
   className?: string;
-  title: string;
+  title?: string;
   type?: AlertBoxType;
   isClosable?: boolean;
   onClose?: () => void;
@@ -27,6 +27,7 @@ const cssClass = {
   ICON: "AlertBox--Icon",
   TITLE: "AlertBox--title",
   CLOSE: "AlertBox--close",
+  CHILDREN: "AlertBox--children",
 };
 
 const propTypes = {
@@ -82,8 +83,8 @@ export default class AlertBox extends React.PureComponent<Props> {
           <FlexItem>
             {/* Use an <h3> for accessibility. Visual headings must be marked as such. The US Gov
               design system also uses <h3>s for their alert box titles */}
-            <h3 className={cssClass.TITLE}>{title}</h3>
-            {children}
+            {title && <h3 className={cssClass.TITLE}>{title}</h3>}
+            <div className={cssClass.CHILDREN}>{children}</div>
           </FlexItem>
           <FlexItem grow>
             {isClosable && (
