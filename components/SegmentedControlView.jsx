@@ -105,9 +105,17 @@ export default class SegmentedControlView extends Component {
               optional: true,
             },
             {
+              name: "value",
+              type: "String",
+              description:
+                "Value to attach to the SegmentedControl to make it a controlled component",
+              optional: true,
+            },
+            {
               name: "defaultValue",
               type: "String",
-              description: "Key of the option as selected",
+              description:
+                "Key of the option as selected. May be specified instead of but not in addition to value",
               defaultValue: "Null",
               optional: true,
             },
@@ -121,7 +129,8 @@ export default class SegmentedControlView extends Component {
             {
               name: "onSelect",
               type: "Function",
-              description: "Called with the key of selected item on select",
+              description:
+                "Called with the key of selected item on select. Required if value is specified",
               optional: true,
             },
             {
