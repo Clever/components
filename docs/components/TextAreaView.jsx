@@ -182,6 +182,24 @@ export default class TextAreaView extends React.Component {
               optional: true,
             },
             {
+              name: "onKeyDown",
+              type: "function",
+              description: "Function called upon keydown in the element",
+              optional: true,
+            },
+            {
+              name: "onKeyPress",
+              type: "function",
+              description: "Function called upon keypress in the element",
+              optional: true,
+            },
+            {
+              name: "onKeyUp",
+              type: "function",
+              description: "Function called upon keyup in the element",
+              optional: true,
+            },
+            {
               name: "optional",
               type: "function",
               description: "Adds an 'Optional' label on the input. Cannot be used with 'required'.",

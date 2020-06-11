@@ -19,6 +19,9 @@ export interface Props {
   onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
   onFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>;
+  onKeyPress?: React.KeyboardEventHandler<HTMLTextAreaElement>;
+  onKeyUp?: React.KeyboardEventHandler<HTMLTextAreaElement>;
   optional?: boolean;
   placeholder?: string;
   readOnly?: boolean;
@@ -46,6 +49,9 @@ const propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  onKeyUp: PropTypes.func,
   optional: PropTypes.bool,
   placeholder: PropTypes.node,
   readOnly: PropTypes.bool,
@@ -108,6 +114,30 @@ export class TextArea extends React.Component<Props, State> {
     this.setState({ inFocus: false, hasBeenFocused: true });
     if (onBlur) {
       onBlur(e);
+    }
+  };
+
+  onKeyDown: React.KeyboardEventHandler<HTMLTextAreaElement> = e => {
+    const { onKeyDown } = this.props;
+
+    if (onKeyDown) {
+      onKeyDown(e);
+    }
+  };
+
+  onKeyPress: React.KeyboardEventHandler<HTMLTextAreaElement> = e => {
+    const { onKeyPress } = this.props;
+
+    if (onKeyPress) {
+      onKeyPress(e);
+    }
+  };
+
+  onKeyUp: React.KeyboardEventHandler<HTMLTextAreaElement> = e => {
+    const { onKeyUp } = this.props;
+
+    if (onKeyUp) {
+      onKeyUp(e);
     }
   };
 
@@ -187,6 +217,9 @@ export class TextArea extends React.Component<Props, State> {
       onBlur: this.onBlur,
       onChange: this.props.onChange,
       onFocus: this.onFocus,
+      onKeyDown: this.onKeyDown,
+      onKeyPress: this.onKeyPress,
+      onKeyUp: this.onKeyUp,
       placeholder: this.props.placeholder,
       readOnly: this.props.readOnly,
       ref: this.textAreaEl,
