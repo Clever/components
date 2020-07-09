@@ -1,0 +1,32 @@
+@import (reference) "~clever-components/dist/less/index";
+
+.MessageInput--TextField {
+  .margin--right--xs();
+  .padding--y--none();
+  min-height: 2.75rem;
+  min-width: 8rem;
+  .border--m(@neutral_silver);
+  border-radius: @size_2xs;
+
+  .TextArea--input {
+    color: @neutral_dark_gray;
+    .margin--y--xs();
+    // Fits 3 rows of text. Overflow is scrollable.
+    max-height: @size_5xl;
+    .text--line-height-4();
+  }
+
+  &.TextArea--placeholder-shown {
+    .TextArea--input {
+      color: @neutral_gray;
+      min-height: @size_l;
+      .text--medium();
+      white-space: nowrap;
+    }
+  }
+}
+
+button.MessageInput--SendButton {
+  // Sizing for this button is pretty particular
+  padding: 0.6875rem @size_l 0.6875rem;
+}

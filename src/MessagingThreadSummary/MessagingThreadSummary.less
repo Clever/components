@@ -1,0 +1,78 @@
+@import (reference) "~clever-components/dist/less/index";
+
+.ThreadSummary {
+  .padding--left--xs();
+  .padding--right--m();
+  .padding--y--s();
+  color: @neutral_dark_gray;
+}
+
+.ThreadSummary--selected {
+  background-color: #f3f5fd;
+  border-radius: 0.3125rem;
+}
+
+.ThreadSummary--off {
+  color: @neutral_gray;
+}
+
+.ThreadSummary--Icon {
+  .margin--right--s();
+}
+
+.ThreadSummary--Details--Container {
+  overflow: hidden;
+}
+
+.ThreadSummary--Name {
+  .margin--right--m();
+  .text--line-height-4();
+  .text--medium();
+  .text--truncate();
+}
+
+.ThreadSummary--Preview {
+  font-size: 0.875rem;
+  .margin--right--m();
+  .text--line-height-1();
+  .text--truncate();
+}
+
+.ThreadSummary--OffText {
+  // Padding prevents italics from being slightly
+  //  cut off by overflow=hidden
+  .padding--right--2xs();
+  .text--italic();
+  .text--truncate();
+}
+
+.ThreadSummary--Timestamp {
+  margin-left: auto;
+  .text--nowrap();
+  font-size: 0.875rem;
+  .text--line-height-1();
+  color: @neutral_gray;
+}
+
+.ThreadSummary--Timestamp--selected {
+  color: @neutral_dark_gray;
+}
+
+.ThreadSummary--UnreadText {
+  .text--semi-bold();
+}
+
+.ThreadSummary--Indicator--Container {
+  .flexShrink(0);
+  margin-left: auto;
+  // Size is fixed so that the preview text cuts off at the same
+  //  point for messages w/ or w/o drafts/new messages indicators
+  width: @size_s;
+}
+
+.ThreadSummary--UnreadOrb {
+  height: @size_xs;
+  width: @size_xs;
+  border-radius: 50%;
+  background-color: @primary_blue;
+}
