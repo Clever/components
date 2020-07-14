@@ -38,7 +38,10 @@ export default class MessagingThreadListItemView extends React.PureComponent {
         sourcePath="src/MessagingThreadListItem/MessagingThreadListItem.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>MessagingThreadListItem is used for showing a preview of a single thread in a list of them.</p>
+          <p>
+            MessagingThreadListItem is used for showing a preview of a single thread in a list of
+            them.
+          </p>
           <CodeSample>
             {`
               import {MessagingThreadListItem} from "clever-components";
@@ -177,7 +180,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             name: "title",
             type: "string",
             description: "The title of this thread",
-          }
+          },
         ]}
         className={cssClass.PROPS}
       />
