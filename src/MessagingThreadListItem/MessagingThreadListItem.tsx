@@ -31,12 +31,12 @@ type Props = {
   className?: string;
   hasDraft: boolean;
   icon: React.ReactNode;
-  isRead: boolean;
+  isRead?: boolean;
   offStatusText?: string;
   onClick?: (event: React.MouseEvent) => void;
   selected: boolean;
-  status: Status;
-  timestamp: Date;
+  status?: Status;
+  timestamp?: Date;
   title: string;
 };
 
@@ -47,12 +47,12 @@ export const MessagingThreadListItem: React.FC<
     children,
     className,
     icon,
-    isRead,
+    isRead = true,
     timestamp,
     title,
     hasDraft,
     selected,
-    status,
+    status = "active",
     offStatusText,
     onClick,
   } = props;

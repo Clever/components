@@ -124,6 +124,4 @@ export { MessagingInput } from "./MessagingInput";
 
 export { MessagingThreadHistory, MessageData } from "./MessagingThreadHistory";
 
-export { MessagingNewThread } from "./MessagingNewThread";
-
 export { MessagingThreadListItem } from "./MessagingThreadListItem";

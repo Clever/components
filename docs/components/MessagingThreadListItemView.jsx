@@ -4,7 +4,6 @@ import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import { MessagingThreadListItem, FlexBox, ItemAlign, SegmentedControl, Icon } from "src";
-import { MessagingNewThread } from "src/MessagingNewThread/MessagingNewThread";
 
 import "./MessagingThreadListItemView.less";
 
@@ -64,6 +63,12 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             >
               This is some content!
             </MessagingThreadListItem>
+            <MessagingThreadListItem
+              icon={<Icon name="smiley-face" />}
+              title="Smiley Dude"
+              hasDraft={hasDraft}
+              selected={selected}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -148,6 +153,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             name: "isRead",
             type: "boolean",
             description: "Whether this thread has been read.",
+            optional: true,
           },
           {
             name: "offStatusText",
@@ -170,11 +176,13 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             name: "status",
             type: "'active' | 'off'",
             description: "The status of this thread.",
+            optional: true,
           },
           {
             name: "timestamp",
             type: "Date",
             description: "The time to display for this thread.",
+            optional: true,
           },
           {
             name: "title",
