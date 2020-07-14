@@ -34,7 +34,10 @@ export default class MessagingInputView extends React.PureComponent {
         sourcePath="src/MessagingInput/MessagingInput.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>MessagingInputView is an input to be used for entering and submitting text for messaging.</p>
+          <p>
+            MessagingInputView is an input to be used for entering and submitting text for
+            messaging.
+          </p>
           <CodeSample>
             {`
               import {MessagingInput} from "clever-components";

@@ -2,13 +2,7 @@ import * as React from "react";
 
 export function DraftPencilIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="12"
-      height="12"
-      fill="none"
-      viewBox="0 0 12 12"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
       <title>message draft icon</title>
       <path
         fill="#A8AEBA"

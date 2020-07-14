@@ -105,7 +105,10 @@ export const MessagingThreadListItem: React.FC<
                 {offStatusText || "Messages are turned off"}
               </div>
             )}
-            <FlexBox className={cssClasses.THREADLISTITEM_INDICATOR_CONTAINER} justify={Justify.END}>
+            <FlexBox
+              className={cssClasses.THREADLISTITEM_INDICATOR_CONTAINER}
+              justify={Justify.END}
+            >
               {status === "active" && hasDraft ? (
                 <DraftPencilIcon />
               ) : (

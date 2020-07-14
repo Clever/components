@@ -11,7 +11,7 @@ const cssClasses = {
 type Props = {
   className?: string;
   text: string;
-  color?: { color: string, seed?: undefined } | { seed: string, color?: undefined };
+  color?: { color: string; seed?: undefined } | { seed: string; color?: undefined };
 };
 
 export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Props) => {
