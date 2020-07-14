@@ -9,9 +9,9 @@ import { MessageMetadata } from "./MessageMetadata";
 import "./MessagingThreadHistory.less";
 
 const cssClasses = {
-  THREADHISTORY_CONTAINER: "ThreadHistory--Container",
-  THREADHISTORY_DIVIDER: "ThreadHistory--Divider",
-  THREADHISTORY_FIRST_MESSAGE: "ThreadHistory--FirstMessage",
+  CONTAINER: "ThreadHistory--Container",
+  DIVIDER: "ThreadHistory--Divider",
+  FIRST_MESSAGE: "ThreadHistory--FirstMessage",
 };
 
 // Each instance is exactly one message exchanged in this thread.
@@ -46,7 +46,7 @@ export const MessagingThreadHistory: React.FC<Props> = ({
   }, [messages.length, threadID]);
 
   return (
-    <FlexBox grow className={classNames(cssClasses.THREADHISTORY_CONTAINER, className)}>
+    <FlexBox grow className={classNames(cssClasses.CONTAINER, className)}>
       {messagesWithDividers}
     </FlexBox>
   );
@@ -66,7 +66,7 @@ function _interleaveMessagesWithDividers(
       const messageDay = _formatDateForDivider(message.timestamp);
       if (currentDay !== messageDay) {
         messagesWithDividers.push(
-          <div key={`divider-${messageDay}`} className={cssClasses.THREADHISTORY_DIVIDER}>
+          <div key={`divider-${messageDay}`} className={cssClasses.DIVIDER}>
             {messageDay}
           </div>,
         );
@@ -82,7 +82,7 @@ function _interleaveMessagesWithDividers(
         placement={message.placement}
         timestamp={message.timestamp}
         // First message needs 'auto' top margin to have messages fill container from bottom -> top
-        className={i === 0 ? cssClasses.THREADHISTORY_FIRST_MESSAGE : undefined}
+        className={i === 0 ? cssClasses.FIRST_MESSAGE : undefined}
       >
         {message.content}
       </MessageMetadata>,

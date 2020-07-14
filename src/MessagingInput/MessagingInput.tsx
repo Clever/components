@@ -5,8 +5,8 @@ import { TextArea, Button, FlexBox, ItemAlign } from "../index";
 import "./MessagingInput.less";
 
 const cssClasses = {
-  MESSAGINGINPUT_TEXTFIELD: "MessagingInput--TextField",
-  MESSAGINGINPUT_SENDBUTTON: "MessagingInput--SendButton",
+  TEXT_FIELD: "MessagingInput--TextField",
+  SEND_BUTTON: "MessagingInput--SendButton",
 };
 
 interface Props {
@@ -29,7 +29,7 @@ export const MessagingInput: React.FC<Props & { ref?: React.Ref<TextArea> }> = R
       <FlexBox className={className} alignItems={ItemAlign.END}>
         <TextArea
           ref={ref}
-          className={cssClasses.MESSAGINGINPUT_TEXTFIELD}
+          className={cssClasses.TEXT_FIELD}
           name="newMessage"
           placeholder={`Message ${recipientName}`}
           value={value}
@@ -54,7 +54,7 @@ export const MessagingInput: React.FC<Props & { ref?: React.Ref<TextArea> }> = R
           rows={0}
         />
         <Button
-          className={cssClasses.MESSAGINGINPUT_SENDBUTTON}
+          className={cssClasses.SEND_BUTTON}
           type="primary"
           value="Send"
           // Disable the Send if nothing but whitespace is in the input field.

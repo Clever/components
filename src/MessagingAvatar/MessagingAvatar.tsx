@@ -4,8 +4,8 @@ import * as classNames from "classnames";
 import "./MessagingAvatar.less";
 
 const cssClasses = {
-  AVATAR_CIRCLE: "Avatar--Circle",
-  AVATAR_TEXT: "Avatar--Text",
+  CIRCLE: "Avatar--Circle",
+  TEXT: "Avatar--Text",
 };
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Props) => {
   return (
     <div
-      className={classNames(cssClasses.AVATAR_CIRCLE, className)}
+      className={classNames(cssClasses.CIRCLE, className)}
       // If defined, use color. Otherwise, use seed to determine color.
       // If all else fails, we can use text as the seed to determine color.
       style={{
@@ -27,7 +27,7 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Pro
             : `hsl(${_determineAvatarHue(color.seed || text)}, 80%, 85%)`,
       }}
     >
-      <div className={cssClasses.AVATAR_TEXT}>{text}</div>
+      <div className={cssClasses.TEXT}>{text}</div>
     </div>
   );
 };

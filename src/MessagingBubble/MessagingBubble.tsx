@@ -4,8 +4,8 @@ import * as classNames from "classnames";
 import "./MessagingBubble.less";
 
 const cssClasses = {
-  MESSAGINGBUBBLE_MESSAGE_OWN: "MessagingBubble--Message--Own",
-  MESSAGINGBUBBLE_MESSAGE_OTHER: "MessagingBubble--Message--Other",
+  MESSAGE_OWN: "MessagingBubble--Message--Own",
+  MESSAGE_OTHER: "MessagingBubble--Message--Other",
 };
 
 interface Props {
@@ -18,9 +18,7 @@ export const MessagingBubble: React.FC<Props> = ({ className, children, theme }:
   return (
     <div
       className={classNames(
-        theme === "ownMessage"
-          ? cssClasses.MESSAGINGBUBBLE_MESSAGE_OWN
-          : cssClasses.MESSAGINGBUBBLE_MESSAGE_OTHER,
+        theme === "ownMessage" ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
         className,
       )}
     >

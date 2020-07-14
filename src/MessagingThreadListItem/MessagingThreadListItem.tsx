@@ -8,20 +8,20 @@ import { DraftPencilIcon } from "./DraftPencilIcon";
 import "./MessagingThreadListItem.less";
 
 const cssClasses = {
-  THREADLISTITEM: "ThreadListItem",
-  THREADLISTITEM_OFF: "ThreadListItem--off",
-  THREADLISTITEM_SELECTED: "ThreadListItem--selected",
-  THREADLISTITEM_ICON: "ThreadListItem--Icon",
-  THREADLISTITEM_DETAILS_CONTAINER: "ThreadListItem--Details--Container",
-  THREADLISTITEM_NAME: "ThreadListItem--Name",
-  THREADLISTITEM_PREVIEW: "ThreadListItem--Preview",
-  THREADLISTITEM_OFF_TEXT: "ThreadListItem--OffText",
-  THREADLISTITEM_TIMESTAMP: "ThreadListItem--Timestamp",
-  THREADLISTITEM_TIMESTAMP_SELECTED: "ThreadListItem--Timestamp--selected",
-  THREADLISTITEM_INDICATOR_CONTAINER: "ThreadListItem--Indicator--Container",
-  THREADLISTITEM_DRAFT_INDICATOR: "ThreadListItem--DraftIndicator",
-  THREADLISTITEM_UNREAD_ORB: "ThreadListItem--UnreadOrb",
-  THREADLISTITEM_UNREAD_TEXT: "ThreadListItem--UnreadText",
+  CONTAINER: "ThreadListItem",
+  CONTAINER_OFF: "ThreadListItem--off",
+  CONTAINER_SELECTED: "ThreadListItem--selected",
+  ICON: "ThreadListItem--Icon",
+  DETAILS_CONTAINER: "ThreadListItem--Details--Container",
+  NAME: "ThreadListItem--Name",
+  PREVIEW: "ThreadListItem--Preview",
+  OFF_TEXT: "ThreadListItem--OffText",
+  TIMESTAMP: "ThreadListItem--Timestamp",
+  TIMESTAMP_SELECTED: "ThreadListItem--Timestamp--selected",
+  INDICATOR_CONTAINER: "ThreadListItem--Indicator--Container",
+  DRAFT_INDICATOR: "ThreadListItem--DraftIndicator",
+  UNREAD_ORB: "ThreadListItem--UnreadOrb",
+  UNREAD_TEXT: "ThreadListItem--UnreadText",
 };
 
 export type Status = "active" | "off";
@@ -60,30 +60,25 @@ export const MessagingThreadListItem: React.FC<
     <div ref={ref}>
       <FlexBox
         className={classNames(
-          cssClasses.THREADLISTITEM,
-          (selected && cssClasses.THREADLISTITEM_SELECTED) ||
-            (status === "off" && cssClasses.THREADLISTITEM_OFF),
+          cssClasses.CONTAINER,
+          (selected && cssClasses.CONTAINER_SELECTED) ||
+            (status === "off" && cssClasses.CONTAINER_OFF),
           className,
         )}
         onClick={onClick}
         alignItems={ItemAlign.CENTER}
       >
-        <div className={cssClasses.THREADLISTITEM_ICON}>{icon}</div>
-        <FlexItem grow className={cssClasses.THREADLISTITEM_DETAILS_CONTAINER}>
+        <div className={cssClasses.ICON}>{icon}</div>
+        <FlexItem grow className={cssClasses.DETAILS_CONTAINER}>
           <FlexBox alignItems={ItemAlign.CENTER}>
-            <div
-              className={classNames(
-                cssClasses.THREADLISTITEM_NAME,
-                !isRead && cssClasses.THREADLISTITEM_UNREAD_TEXT,
-              )}
-            >
+            <div className={classNames(cssClasses.NAME, !isRead && cssClasses.UNREAD_TEXT)}>
               {title}
             </div>
             {(status === "active" || !isRead) && (
               <div
                 className={classNames(
-                  cssClasses.THREADLISTITEM_TIMESTAMP,
-                  selected && cssClasses.THREADLISTITEM_TIMESTAMP_SELECTED,
+                  cssClasses.TIMESTAMP,
+                  selected && cssClasses.TIMESTAMP_SELECTED,
                 )}
               >
                 {timestamp && _formatDateForTimestamp(timestamp)}
@@ -92,27 +87,19 @@ export const MessagingThreadListItem: React.FC<
           </FlexBox>
           <FlexBox alignItems={ItemAlign.CENTER}>
             {status === "active" || !isRead ? (
-              <div
-                className={classNames(
-                  cssClasses.THREADLISTITEM_PREVIEW,
-                  !isRead && cssClasses.THREADLISTITEM_UNREAD_TEXT,
-                )}
-              >
+              <div className={classNames(cssClasses.PREVIEW, !isRead && cssClasses.UNREAD_TEXT)}>
                 {children}
               </div>
             ) : (
-              <div className={cssClasses.THREADLISTITEM_OFF_TEXT}>
+              <div className={cssClasses.OFF_TEXT}>
                 {offStatusText || "Messages are turned off"}
               </div>
             )}
-            <FlexBox
-              className={cssClasses.THREADLISTITEM_INDICATOR_CONTAINER}
-              justify={Justify.END}
-            >
+            <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
               {status === "active" && hasDraft ? (
                 <DraftPencilIcon />
               ) : (
-                !isRead && <div className={cssClasses.THREADLISTITEM_UNREAD_ORB} />
+                !isRead && <div className={cssClasses.UNREAD_ORB} />
               )}
             </FlexBox>
           </FlexBox>
