@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import { TextArea, Button, FlexBox, ItemAlign } from "clever-components";
+import { TextArea, Button, FlexBox, ItemAlign } from "../index";
 
-import "./MessageInput.less";
+import "./MessagingInput.less";
 
 const cssClasses = {
-  MESSAGEINPUT_TEXTFIELD: "MessageInput--TextField",
-  MESSAGEINPUT_SENDBUTTON: "MessageInput--SendButton",
+  MESSAGINGINPUT_TEXTFIELD: "MessagingInput--TextField",
+  MESSAGINGINPUT_SENDBUTTON: "MessagingInput--SendButton",
 };
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
   onBlur?: () => void;
 }
 
-export const MessageInput: React.FC<Props & { ref?: React.Ref<TextArea> }> = React.forwardRef(
+export const MessagingInput: React.FC<Props & { ref?: React.Ref<TextArea> }> = React.forwardRef(
   (props, ref) => {
     const { className, recipientName, value, onChange, onSubmit, onBlur } = props;
 
@@ -29,7 +29,7 @@ export const MessageInput: React.FC<Props & { ref?: React.Ref<TextArea> }> = Rea
       <FlexBox className={className} alignItems={ItemAlign.END}>
         <TextArea
           ref={ref}
-          className={cssClasses.MESSAGEINPUT_TEXTFIELD}
+          className={cssClasses.MESSAGINGINPUT_TEXTFIELD}
           name="newMessage"
           placeholder={`Message ${recipientName}`}
           value={value}
@@ -54,7 +54,7 @@ export const MessageInput: React.FC<Props & { ref?: React.Ref<TextArea> }> = Rea
           rows={0}
         />
         <Button
-          className={cssClasses.MESSAGEINPUT_SENDBUTTON}
+          className={cssClasses.MESSAGINGINPUT_SENDBUTTON}
           type="primary"
           value="Send"
           // Disable the Send if nothing but whitespace is in the input field.

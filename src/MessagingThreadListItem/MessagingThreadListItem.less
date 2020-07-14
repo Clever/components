@@ -1,44 +1,44 @@
-@import (reference) "~clever-components/dist/less/index";
+@import (reference) "../less/index";
 
-.ThreadSummary {
+.ThreadListItem {
   .padding--left--xs();
   .padding--right--m();
   .padding--y--s();
   color: @neutral_dark_gray;
 }
 
-.ThreadSummary--selected {
+.ThreadListItem--selected {
   background-color: #f3f5fd;
   border-radius: 0.3125rem;
 }
 
-.ThreadSummary--off {
+.ThreadListItem--off {
   color: @neutral_gray;
 }
 
-.ThreadSummary--Icon {
+.ThreadListItem--Icon {
   .margin--right--s();
 }
 
-.ThreadSummary--Details--Container {
+.ThreadListItem--Details--Container {
   overflow: hidden;
 }
 
-.ThreadSummary--Name {
+.ThreadListItem--Name {
   .margin--right--m();
   .text--line-height-4();
   .text--medium();
   .text--truncate();
 }
 
-.ThreadSummary--Preview {
+.ThreadListItem--Preview {
   font-size: 0.875rem;
   .margin--right--m();
   .text--line-height-1();
   .text--truncate();
 }
 
-.ThreadSummary--OffText {
+.ThreadListItem--OffText {
   // Padding prevents italics from being slightly
   //  cut off by overflow=hidden
   .padding--right--2xs();
@@ -46,7 +46,7 @@
   .text--truncate();
 }
 
-.ThreadSummary--Timestamp {
+.ThreadListItem--Timestamp {
   margin-left: auto;
   .text--nowrap();
   font-size: 0.875rem;
@@ -54,15 +54,15 @@
   color: @neutral_gray;
 }
 
-.ThreadSummary--Timestamp--selected {
+.ThreadListItem--Timestamp--selected {
   color: @neutral_dark_gray;
 }
 
-.ThreadSummary--UnreadText {
+.ThreadListItem--UnreadText {
   .text--semi-bold();
 }
 
-.ThreadSummary--Indicator--Container {
+.ThreadListItem--Indicator--Container {
   .flexShrink(0);
   margin-left: auto;
   // Size is fixed so that the preview text cuts off at the same
@@ -70,7 +70,7 @@
   width: @size_s;
 }
 
-.ThreadSummary--UnreadOrb {
+.ThreadListItem--UnreadOrb {
   height: @size_xs;
   width: @size_xs;
   border-radius: 50%;

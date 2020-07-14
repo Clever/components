@@ -2,25 +2,26 @@ import * as React from "react";
 import * as classNames from "classnames";
 import * as moment from "moment";
 
-import { FlexBox, FlexItem, ItemAlign, Justify } from "clever-components";
+import { FlexBox, FlexItem, ItemAlign, Justify } from "../index";
+import { DraftPencilIcon } from "./DraftPencilIcon";
 
-import "./MessagingThreadSummary.less";
+import "./MessagingThreadListItem.less";
 
 const cssClasses = {
-  THREADSUMMARY: "ThreadSummary",
-  THREADSUMMARY_OFF: "ThreadSummary--off",
-  THREADSUMMARY_SELECTED: "ThreadSummary--selected",
-  THREADSUMMARY_ICON: "ThreadSummary--Icon",
-  THREADSUMMARY_DETAILS_CONTAINER: "ThreadSummary--Details--Container",
-  THREADSUMMARY_NAME: "ThreadSummary--Name",
-  THREADSUMMARY_PREVIEW: "ThreadSummary--Preview",
-  THREADSUMMARY_OFF_TEXT: "ThreadSummary--OffText",
-  THREADSUMMARY_TIMESTAMP: "ThreadSummary--Timestamp",
-  THREADSUMMARY_TIMESTAMP_SELECTED: "ThreadSummary--Timestamp--selected",
-  THREADSUMMARY_INDICATOR_CONTAINER: "ThreadSummary--Indicator--Container",
-  THREADSUMMARY_DRAFT_INDICATOR: "ThreadSummary--DraftIndicator",
-  THREADSUMMARY_UNREAD_ORB: "ThreadSummary--UnreadOrb",
-  THREADSUMMARY_UNREAD_TEXT: "ThreadSummary--UnreadText",
+  THREADLISTITEM: "ThreadListItem",
+  THREADLISTITEM_OFF: "ThreadListItem--off",
+  THREADLISTITEM_SELECTED: "ThreadListItem--selected",
+  THREADLISTITEM_ICON: "ThreadListItem--Icon",
+  THREADLISTITEM_DETAILS_CONTAINER: "ThreadListItem--Details--Container",
+  THREADLISTITEM_NAME: "ThreadListItem--Name",
+  THREADLISTITEM_PREVIEW: "ThreadListItem--Preview",
+  THREADLISTITEM_OFF_TEXT: "ThreadListItem--OffText",
+  THREADLISTITEM_TIMESTAMP: "ThreadListItem--Timestamp",
+  THREADLISTITEM_TIMESTAMP_SELECTED: "ThreadListItem--Timestamp--selected",
+  THREADLISTITEM_INDICATOR_CONTAINER: "ThreadListItem--Indicator--Container",
+  THREADLISTITEM_DRAFT_INDICATOR: "ThreadListItem--DraftIndicator",
+  THREADLISTITEM_UNREAD_ORB: "ThreadListItem--UnreadOrb",
+  THREADLISTITEM_UNREAD_TEXT: "ThreadListItem--UnreadText",
 };
 
 export type Status = "active" | "off";
@@ -39,7 +40,7 @@ type Props = {
   title: string;
 };
 
-export const MessagingThreadSummary: React.FC<
+export const MessagingThreadListItem: React.FC<
   Props & { ref?: React.Ref<HTMLDivElement> }
 > = React.forwardRef((props: Props, ref: React.Ref<HTMLDivElement>) => {
   const {
@@ -59,21 +60,21 @@ export const MessagingThreadSummary: React.FC<
     <div ref={ref}>
       <FlexBox
         className={classNames(
-          cssClasses.THREADSUMMARY,
-          (selected && cssClasses.THREADSUMMARY_SELECTED) ||
-            (status === "off" && cssClasses.THREADSUMMARY_OFF),
+          cssClasses.THREADLISTITEM,
+          (selected && cssClasses.THREADLISTITEM_SELECTED) ||
+            (status === "off" && cssClasses.THREADLISTITEM_OFF),
           className,
         )}
         onClick={onClick}
         alignItems={ItemAlign.CENTER}
       >
-        <div className={cssClasses.THREADSUMMARY_ICON}>{icon}</div>
-        <FlexItem grow className={cssClasses.THREADSUMMARY_DETAILS_CONTAINER}>
+        <div className={cssClasses.THREADLISTITEM_ICON}>{icon}</div>
+        <FlexItem grow className={cssClasses.THREADLISTITEM_DETAILS_CONTAINER}>
           <FlexBox alignItems={ItemAlign.CENTER}>
             <div
               className={classNames(
-                cssClasses.THREADSUMMARY_NAME,
-                !isRead && cssClasses.THREADSUMMARY_UNREAD_TEXT,
+                cssClasses.THREADLISTITEM_NAME,
+                !isRead && cssClasses.THREADLISTITEM_UNREAD_TEXT,
               )}
             >
               {title}
@@ -81,8 +82,8 @@ export const MessagingThreadSummary: React.FC<
             {(status === "active" || !isRead) && (
               <div
                 className={classNames(
-                  cssClasses.THREADSUMMARY_TIMESTAMP,
-                  selected && cssClasses.THREADSUMMARY_TIMESTAMP_SELECTED,
+                  cssClasses.THREADLISTITEM_TIMESTAMP,
+                  selected && cssClasses.THREADLISTITEM_TIMESTAMP_SELECTED,
                 )}
               >
                 {timestamp && _formatDateForTimestamp(timestamp)}
@@ -93,22 +94,22 @@ export const MessagingThreadSummary: React.FC<
             {status === "active" || !isRead ? (
               <div
                 className={classNames(
-                  cssClasses.THREADSUMMARY_PREVIEW,
-                  !isRead && cssClasses.THREADSUMMARY_UNREAD_TEXT,
+                  cssClasses.THREADLISTITEM_PREVIEW,
+                  !isRead && cssClasses.THREADLISTITEM_UNREAD_TEXT,
                 )}
               >
                 {children}
               </div>
             ) : (
-              <div className={cssClasses.THREADSUMMARY_OFF_TEXT}>
+              <div className={cssClasses.THREADLISTITEM_OFF_TEXT}>
                 {offStatusText || "Messages are turned off"}
               </div>
             )}
-            <FlexBox className={cssClasses.THREADSUMMARY_INDICATOR_CONTAINER} justify={Justify.END}>
+            <FlexBox className={cssClasses.THREADLISTITEM_INDICATOR_CONTAINER} justify={Justify.END}>
               {status === "active" && hasDraft ? (
-                <img alt="message draft icon" src={require("./draft_pencil.svg")} />
+                <DraftPencilIcon />
               ) : (
-                !isRead && <div className={cssClasses.THREADSUMMARY_UNREAD_ORB} />
+                !isRead && <div className={cssClasses.THREADLISTITEM_UNREAD_ORB} />
               )}
             </FlexBox>
           </FlexBox>
