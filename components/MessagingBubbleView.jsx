@@ -46,7 +46,9 @@ export default class MessagingBubbleView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingBubble theme={theme} content="Hello world!"/>
+            <MessagingBubble theme={theme}>
+              Hello World!
+            </MessagingBubble>
           </ExampleCode>
           {this._renderConfig()}
         </Example>
