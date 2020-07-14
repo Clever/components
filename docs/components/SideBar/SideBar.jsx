@@ -93,6 +93,11 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/list", "List")}
           {this._renderLink("/components/logo", "Logo")}
           {this._renderLink("/components/menu", "Menu")}
+          {this._renderLink("/components/messaging-avatar", "MessagingAvatar")}
+          {this._renderLink("/components/messaging-bubble", "MessagingBubble")}
+          {this._renderLink("/components/messaging-input", "MessagingInput")}
+          {this._renderLink("/components/messaging-thread-history", "MessagingThreadHistory")}
+          {this._renderLink("/components/messaging-thread-list-item", "MessagingThreadListItem")}
           {this._renderLink("/components/modal", "Modal")}
           {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/multiple-panel-modals", "MultiplePanelModals")}

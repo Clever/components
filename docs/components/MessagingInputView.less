@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.MessagingInputView--intro {
+  .margin--bottom--xl;
+}
+
+.MessagingInputView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.MessagingInputView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.MessagingInputView--config {
+  cursor: pointer;
+}
+
+.MessagingInputView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.MessagingInputView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.MessagingInputView--props {
+  .margin--top--l;
+}
