@@ -63,6 +63,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             >
               This is some content!
             </MessagingThreadListItem>
+            <br />
             <MessagingThreadListItem
               icon={<Icon name="smiley-face" />}
               title="Smiley Dude"
