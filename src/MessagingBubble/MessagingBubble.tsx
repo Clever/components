@@ -10,11 +10,11 @@ const cssClasses = {
 
 interface Props {
   className?: string;
-  content: React.ReactNode;
+  children: React.ReactNode;
   theme: "ownMessage" | "otherMessage";
 }
 
-export const MessagingBubble: React.FC<Props> = ({ className, content, theme }: Props) => {
+export const MessagingBubble: React.FC<Props> = ({ className, children, theme }: Props) => {
   return (
     <div
       className={classNames(
@@ -24,7 +24,7 @@ export const MessagingBubble: React.FC<Props> = ({ className, content, theme }: 
         className,
       )}
     >
-      {content}
+      {children}
     </div>
   );
 };

@@ -31,10 +31,14 @@ function newMessage() {
   const placement = randomElement(["left", "right"]);
   newestTime.add(6, "hours");
   return {
-    content: <MessagingBubble content={message} theme={placement === "left" ? "ownMessage" : "otherMessage"} />,
+    content: (
+      <MessagingBubble theme={placement === "left" ? "otherMessage" : "ownMessage"}>
+        {message}
+      </MessagingBubble>
+    ),
     placement,
     timestamp: new Date(newestTime),
-  }
+  };
 }
 
 export default class MessagingThreadHistoryView extends React.PureComponent {
@@ -74,7 +78,7 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingThreadHistory threadID="abc" messages={messages}/>
+            <MessagingThreadHistory threadID="abc" messages={messages} />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -86,12 +90,12 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
 
   addMessage = () => {
     this.setState({ messages: [...this.state.messages, newMessage()] });
-  }
+  };
 
   _renderConfig() {
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
-        <Button type="primary" value="Add message" onClick={this.addMessage}/>
+        <Button type="primary" value="Add message" onClick={this.addMessage} />
       </FlexBox>
     );
   }
@@ -104,7 +108,8 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
           {
             name: "threadID",
             type: "string",
-            description: "A unique identifier for this thread. Used to update scrolling when the thread changes.",
+            description:
+              "A unique identifier for this thread. Used to update scrolling when the thread changes.",
           },
           {
             name: "messages",
