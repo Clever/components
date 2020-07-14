@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.MessagingBubbleView--intro {
+  .margin--bottom--xl;
+}
+
+.MessagingBubbleView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.MessagingBubbleView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.MessagingBubbleView--config {
+  cursor: pointer;
+}
+
+.MessagingBubbleView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.MessagingBubbleView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.MessagingBubbleView--props {
+  .margin--top--l;
+}
