@@ -34,7 +34,10 @@ export default class MessagingBubbleView extends React.PureComponent {
         sourcePath="src/MessagingBubble/MessagingBubble.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>MessagingBubble is a single bubble that would appear in a messaging thread. It can contain text or other content.</p>
+          <p>
+            MessagingBubble is a single bubble that would appear in a messaging thread. It can
+            contain text or other content.
+          </p>
           <CodeSample>
             {`
               import {MessagingBubble} from "clever-components";
@@ -46,9 +49,7 @@ export default class MessagingBubbleView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingBubble theme={theme}>
-              Hello World!
-            </MessagingBubble>
+            <MessagingBubble theme={theme}>Hello World!</MessagingBubble>
           </ExampleCode>
           {this._renderConfig()}
         </Example>

@@ -41,9 +41,15 @@ export default class MessagingAvatarView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingAvatar text={convertNameToInitials("Kristen Stark")} color={{color: Colors.PRIMARY_BLUE_TINT_2}} />
+            <MessagingAvatar
+              text={convertNameToInitials("Kristen Stark")}
+              color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+            />
             <br />
-            <MessagingAvatar text={convertNameToInitials("Kristen Stark")} color={{seed: "52c5e9d0e6ed0694212d69ed"}} />
+            <MessagingAvatar
+              text={convertNameToInitials("Kristen Stark")}
+              color={{ seed: "52c5e9d0e6ed0694212d69ed" }}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -53,9 +59,7 @@ export default class MessagingAvatarView extends React.PureComponent {
     );
   }
 
-  _renderConfig() {
-
-  }
+  _renderConfig() {}
 
   // TODO: Update prop documentation.
   _renderProps() {
@@ -77,7 +81,8 @@ export default class MessagingAvatarView extends React.PureComponent {
           {
             name: "color",
             type: "{color: string} | {seed: string}",
-            description: "An object containing either the color to use a seed for determining the color. If used, seed should be consistent for a given user.",
+            description:
+              "An object containing either the color to use a seed for determining the color. If used, seed should be consistent for a given user.",
           },
         ]}
         className={cssClass.PROPS}
