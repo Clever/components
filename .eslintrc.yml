@@ -54,6 +54,9 @@ rules:
     - 2
     - "never"
 
+  react/prop-types:
+    - off
+
   prefer-const: ["error", { "destructuring": "all" }]
 
   indent:

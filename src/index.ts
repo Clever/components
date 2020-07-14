@@ -120,7 +120,7 @@ export { MessagingAvatar, convertNameToInitials } from "./MessagingAvatar";
 
 export { MessagingBubble } from "./MessagingBubble";
 
-export { MessagingInput } from "./MessagingInput";
+export { MessagingInput, MessagingInputHandle } from "./MessagingInput";
 
 export { MessagingThreadHistory, MessageData } from "./MessagingThreadHistory";
 

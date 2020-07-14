@@ -1,1 +1,1 @@
-export { MessagingInput } from "./MessagingInput";
+export { MessagingInput, MessagingInputHandle } from "./MessagingInput";

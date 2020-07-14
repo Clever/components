@@ -21,47 +21,63 @@ interface Props {
   onBlur?: () => void;
 }
 
-export const MessagingInput: React.FC<Props & { ref?: React.Ref<TextArea> }> = React.forwardRef(
-  (props, ref) => {
-    const { className, recipientName, value, onChange, onSubmit, onBlur } = props;
+export interface MessagingInputHandle {
+  focus(): void;
+}
 
-    return (
-      <FlexBox className={className} alignItems={ItemAlign.END}>
-        <TextArea
-          ref={ref}
-          className={cssClasses.TEXT_FIELD}
-          name="newMessage"
-          placeholder={`Message ${recipientName}`}
-          value={value}
-          onChange={e => {
-            onChange(e.target.value);
-          }}
-          onKeyDown={e => {
-            // Shift+Enter is a line-break.
-            // Enter alone is an attempt to Send.
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              // If something other than whitespace is in the input area, Send the message.
-              if (value.trim() !== "") {
-                onSubmit(value.trim());
-              }
+const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInputHandle, Props> = (
+  props,
+  ref,
+) => {
+  const { className, recipientName, value, onChange, onSubmit, onBlur } = props;
+  const textAreaRef = React.useRef<TextArea>(null);
+
+  React.useImperativeHandle(ref, () => ({
+    focus: () => {
+      if (textAreaRef.current) {
+        textAreaRef.current.focus();
+      }
+    },
+  }));
+
+  return (
+    <FlexBox className={className} alignItems={ItemAlign.END}>
+      <TextArea
+        ref={textAreaRef}
+        className={cssClasses.TEXT_FIELD}
+        name="newMessage"
+        placeholder={`Message ${recipientName}`}
+        value={value}
+        onChange={e => {
+          onChange(e.target.value);
+        }}
+        onKeyDown={e => {
+          // Shift+Enter is a line-break.
+          // Enter alone is an attempt to Send.
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            // If something other than whitespace is in the input area, Send the message.
+            if (value.trim() !== "") {
+              onSubmit(value.trim());
             }
-          }}
-          onBlur={onBlur}
-          autoResize
-          // The field starts with `rows + 1` rows, so
-          //  passing in 0 gets us the desired starting height.
-          rows={0}
-        />
-        <Button
-          className={cssClasses.SEND_BUTTON}
-          type="primary"
-          value="Send"
-          // Disable the Send if nothing but whitespace is in the input field.
-          disabled={!value.trim()}
-          onClick={() => onSubmit(value.trim())}
-        />
-      </FlexBox>
-    );
-  },
-);
+          }
+        }}
+        onBlur={onBlur}
+        autoResize
+        // The field starts with `rows + 1` rows, so
+        //  passing in 0 gets us the desired starting height.
+        rows={0}
+      />
+      <Button
+        className={cssClasses.SEND_BUTTON}
+        type="primary"
+        value="Send"
+        // Disable the Send if nothing but whitespace is in the input field.
+        disabled={!value.trim()}
+        onClick={() => onSubmit(value.trim())}
+      />
+    </FlexBox>
+  );
+};
+
+export const MessagingInput = React.forwardRef(MessagingInputRenderFunction);
