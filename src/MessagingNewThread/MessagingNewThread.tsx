@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as classNames from "classnames";
 
-import { FlexBox, FlexItem } from "clever-components";
+import { FlexBox, FlexItem } from "../index";
 
 import "./MessagingNewThread.less";
+import { DraftPencilIcon } from "src/MessagingThreadListItem/DraftPencilIcon";
 
 const cssClasses = {
   NEWTHREAD: "NewThread",
@@ -41,7 +42,7 @@ export const MessagingNewThread: React.FC<
         </FlexItem>
         {hasDraft && (
           <div>
-            <img alt="message draft icon" src={require("./draft_pencil.svg")} />
+            <DraftPencilIcon />
           </div>
         )}
       </FlexBox>

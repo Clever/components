@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import * as classNames from "classnames";
 import * as moment from "moment";
 
-import { FlexBox } from "clever-components";
+import { FlexBox } from "../index";
 import { MessageMetadata } from "./MessageMetadata";
 
 import "./MessagingThreadHistory.less";
@@ -105,9 +105,9 @@ function _formatDateForDivider(date: Date): string {
 
   if (messageTimestamp.isAfter(midnightToday)) {
     return "Today";
-  } else if (messageTimestamp.isAfter(midnightYesterday)) {
-    return "Yesterday";
-  } else {
-    return messageTimestamp.format("MMM D");
   }
+  if (messageTimestamp.isAfter(midnightYesterday)) {
+    return "Yesterday";
+  }
+  return messageTimestamp.format("MMM D");
 }
