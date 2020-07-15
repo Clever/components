@@ -56,6 +56,27 @@ export const MessagingThreadListItem: React.FC<
     offStatusText,
     onClick,
   } = props;
+
+  let subContent: React.ReactNode;
+  let subContentClass: string;
+  if (status === "active" || !isRead) {
+    subContent = children;
+    subContentClass = classNames(cssClasses.PREVIEW, !isRead && cssClasses.UNREAD_TEXT);
+  } else {
+    subContent = offStatusText || "Messages are turned off";
+    subContentClass = cssClasses.OFF_TEXT;
+  }
+
+  const indicator = (
+    <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
+      {status === "active" && hasDraft ? (
+        <DraftPencilIcon />
+      ) : (
+        !isRead && <div className={cssClasses.UNREAD_ORB} />
+      )}
+    </FlexBox>
+  );
+
   return (
     <div ref={ref}>
       <FlexBox
@@ -84,25 +105,14 @@ export const MessagingThreadListItem: React.FC<
                 {timestamp && _formatDateForTimestamp(timestamp)}
               </div>
             )}
+            {!subContent && indicator}
           </FlexBox>
-          <FlexBox alignItems={ItemAlign.CENTER}>
-            {status === "active" || !isRead ? (
-              <div className={classNames(cssClasses.PREVIEW, !isRead && cssClasses.UNREAD_TEXT)}>
-                {children}
-              </div>
-            ) : (
-              <div className={cssClasses.OFF_TEXT}>
-                {offStatusText || "Messages are turned off"}
-              </div>
-            )}
-            <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
-              {status === "active" && hasDraft ? (
-                <DraftPencilIcon />
-              ) : (
-                !isRead && <div className={cssClasses.UNREAD_ORB} />
-              )}
+          {subContent && (
+            <FlexBox alignItems={ItemAlign.CENTER}>
+              <div className={subContentClass}>{subContent}</div>
+              {indicator}
             </FlexBox>
-          </FlexBox>
+          )}
         </FlexItem>
       </FlexBox>
     </div>
