@@ -3,6 +3,11 @@ import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import ComponentsView from "./components/ComponentsView";
+import MessagingAvatarView from "./components/MessagingAvatarView";
+import MessagingBubbleView from "./components/MessagingBubbleView";
+import MessagingInputView from "./components/MessagingInputView";
+import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
+import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import ResourceTileView from "./components/ResourceTileView";
 
 import AlertBoxView from "./components/AlertBoxView";
@@ -125,6 +130,11 @@ render(
         <Route path="list(/*)" component={ListView} />
         <Route path="logo(/*)" component={LogoView} />
         <Route path="menu(/*)" component={MenuView} />
+        <Route path="messaging-avatar(/*)" component={MessagingAvatarView} />
+        <Route path="messaging-bubble(/*)" component={MessagingBubbleView} />
+        <Route path="messaging-input(/*)" component={MessagingInputView} />
+        <Route path="messaging-thread-history(/*)" component={MessagingThreadHistoryView} />
+        <Route path="messaging-thread-list-item(/*)" component={MessagingThreadListItemView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="multiple-panel-modals(/*)" component={MultiplePanelModalsView} />

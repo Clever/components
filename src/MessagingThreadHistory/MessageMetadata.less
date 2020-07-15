@@ -1,0 +1,39 @@
+@import (reference) "../less/index";
+
+.MessageMetadata--Message--center {
+  .margin--y--l();
+  margin-left: auto;
+  margin-right: auto;
+  .flexbox();
+  .text--center();
+}
+
+.MessageMetadata--Message--right {
+  .margin--y--m();
+  .margin--x--xs();
+  .flexbox();
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.MessageMetadata--Message--left {
+  .margin--y--m();
+  .margin--x--xs();
+  .flexbox();
+  flex-direction: row;
+  align-items: center;
+}
+
+.MessageMetadata--Timestamp--right {
+  .margin--right--xs();
+  font-size: 0.875rem;
+  .text--line-height-1();
+  color: @neutral_gray;
+}
+
+.MessageMetadata--Timestamp--left {
+  .margin--left--xs();
+  font-size: 0.875rem;
+  .text--line-height-1();
+  color: @neutral_gray;
+}

@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.MessagingThreadHistoryView--intro {
+  .margin--bottom--xl;
+}
+
+.MessagingThreadHistoryView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.MessagingThreadHistoryView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.MessagingThreadHistoryView--config {
+  cursor: pointer;
+}
+
+.MessagingThreadHistoryView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.MessagingThreadHistoryView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.MessagingThreadHistoryView--props {
+  .margin--top--l;
+}
