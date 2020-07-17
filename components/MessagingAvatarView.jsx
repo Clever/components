@@ -50,6 +50,12 @@ export default class MessagingAvatarView extends React.PureComponent {
               text={convertNameToInitials("Kristen Stark")}
               color={{ seed: "52c5e9d0e6ed0694212d69ed" }}
             />
+            <br />
+            <MessagingAvatar
+              text={convertNameToInitials("Dewey the Fox")}
+              color={{ seed: "52c5e9d0e6ed0694212d69ed" }}
+              imageSrc="./assets/img/avatar-sample.png"
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -83,6 +89,13 @@ export default class MessagingAvatarView extends React.PureComponent {
             type: "{color: string} | {seed: string}",
             description:
               "An object containing either the color to use a seed for determining the color. If used, seed should be consistent for a given user.",
+          },
+          {
+            name: "imageSrc",
+            type: "string",
+            description:
+              "Optional image source URL. If provided, the image will be display instead of the text/color.",
+            optional: true,
           },
         ]}
         className={cssClass.PROPS}
