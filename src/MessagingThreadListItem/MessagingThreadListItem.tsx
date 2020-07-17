@@ -27,7 +27,7 @@ const cssClasses = {
 export type Status = "active" | "off";
 
 type Props = {
-  children: any;
+  children?: any;
   className?: string;
   hasDraft: boolean;
   icon: React.ReactNode;
@@ -60,7 +60,7 @@ export const MessagingThreadListItem: React.FC<
   let subContent: React.ReactNode;
   let subContentClass: string;
   if (status === "active" || !isRead) {
-    subContent = children;
+    subContent = _filterChildren(children);
     subContentClass = classNames(cssClasses.PREVIEW, !isRead && cssClasses.UNREAD_TEXT);
   } else {
     subContent = offStatusText || "Messages are turned off";
@@ -69,10 +69,10 @@ export const MessagingThreadListItem: React.FC<
 
   const indicator = (
     <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
-      {status === "active" && hasDraft ? (
-        <DraftPencilIcon />
+      {!isRead ? (
+        <div className={cssClasses.UNREAD_ORB} />
       ) : (
-        !isRead && <div className={cssClasses.UNREAD_ORB} />
+        status === "active" && hasDraft && <DraftPencilIcon />
       )}
     </FlexBox>
   );
@@ -128,4 +128,17 @@ function _formatDateForTimestamp(date: Date): string {
     return messageTimestamp.format("h:mm A");
   }
   return messageTimestamp.format("MMM D");
+}
+
+// Helper function: Filters out falsey values if multiple children,
+//  which avoids having 'blank' child elements that disrupt the styling.
+function _filterChildren(children: any) {
+  // If an array, we want to filter out the falsey elements.
+  if (children && Array.isArray(children)) {
+    const filteredChildren = children.filter(child => !!child);
+    // If now an empty array, nothing to render. Otherwise, render children!
+    return filteredChildren.length === 0 ? undefined : filteredChildren;
+  }
+  // If not an array, then there's no filtering we need to do.
+  return children;
 }
