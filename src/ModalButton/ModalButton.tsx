@@ -22,6 +22,7 @@ interface State {
 }
 
 const excludeModalProps = ["closeModal", "children"];
+const excludedButtonProps = ["children"];
 
 // inherit properties from Button and Modal except closeModal; don't prefix children,
 // but prefix the rest of Modal's keys.
@@ -60,7 +61,7 @@ export class ModalButton extends React.Component<Props, State> {
   }
 
   render() {
-    const buttonProps = propsFor(Button, this.props);
+    const buttonProps = omitKeys(propsFor(Button, this.props), ...excludedButtonProps);
     const modalProps = propsFor(Modal, unprefixKeys(this.props, "modal"));
 
     return (
