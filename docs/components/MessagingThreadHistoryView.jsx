@@ -65,8 +65,10 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
         sourcePath="src/MessagingThreadHistory/MessagingThreadHistory.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>TODO: Describe your component/state it's purpose</p>
-          <p>TODO(optional): Describe scenarios where the component might be useful.</p>
+          <p>
+            MessagingThreadHistory is a container for messages between users, in the form of
+            MessagingBubble or other data.
+          </p>
           <CodeSample>
             {`
               import {MessagingThreadHistory} from "clever-components";

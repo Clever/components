@@ -27,10 +27,7 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Pro
       // If defined, use color. Otherwise, use seed to determine color.
       // If all else fails, we can use text as the seed to determine color.
       style={{
-        backgroundColor:
-          "color" in color
-            ? color.color
-            : `hsl(${_determineAvatarHue(color.seed || text)}, 80%, 85%)`,
+        backgroundColor: color.color || `#${_determineAvatarColor(color.seed || text)}`,
       }}
     >
       <div className={cssClasses.TEXT}>{text}</div>
@@ -38,17 +35,25 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Pro
   );
 };
 
-// Helper function: Uses a string to determine the hue value for an HSL
-//  (Hue, Saturation, Lightness) color, to be used in an inline style.
-//  Unlikely to be the final method, waiting for direction from Design.
-function _determineAvatarHue(determiningString: string): number {
+// Helper function: Uses a string as the seed to fairly randomly determine
+//  the hex color for this avatar.
+function _determineAvatarColor(determiningString: string): string {
+  const colorPool = [
+    "C9F2F1",
+    "FDB9C0",
+    "FAE5B8",
+    "D9BDFD",
+    "B4EAD8",
+    "BFCEFF",
+    "FFBADE",
+    "FDBD81",
+  ];
+
   let hash = 0;
   for (let i = 0; i < determiningString.length; i++) {
     hash = determiningString.charCodeAt(i) + ((hash << 5) - hash);
     hash = hash & hash; // Converts to a 32bit int
   }
 
-  // Hue values for HSL color function are between 0 and 359,
-  //  for degrees on the color wheel.
-  return hash % 360;
+  return colorPool[Math.abs(hash % colorPool.length)];
 }
