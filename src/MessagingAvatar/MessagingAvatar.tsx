@@ -4,6 +4,7 @@ import * as classNames from "classnames";
 import "./MessagingAvatar.less";
 
 const cssClasses = {
+  IMAGE: "Avatar--Image",
   CIRCLE: "Avatar--Circle",
   TEXT: "Avatar--Text",
 };
@@ -11,16 +12,24 @@ const cssClasses = {
 type Props = {
   className?: string;
   text: string;
-  color?:
+  color:
     | { color: string; seed?: undefined }
     | {
         /** A piece of data used to select the color to be used. Should generally be a consistent piece of data about the user, usually their id. */
         seed: string;
         color?: undefined;
       };
+  imageSrc?: string;
 };
 
-export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Props) => {
+export const MessagingAvatar: React.FC<Props> = ({ className, text, color, imageSrc }: Props) => {
+  // If an imageSrc is provided, it takes precedent over displaying text
+  if (imageSrc) {
+    return (
+      <img alt="user avatar" className={classNames(cssClasses.IMAGE, className)} src={imageSrc} />
+    );
+  }
+
   return (
     <div
       className={classNames(cssClasses.CIRCLE, className)}
