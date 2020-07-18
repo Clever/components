@@ -2,6 +2,7 @@ import * as React from "react";
 import * as classNames from "classnames";
 
 import "./MessagingAvatar.less";
+import { convertNameToInitials } from "./utils";
 
 const cssClasses = {
   IMAGE: "Avatar--Image",
@@ -27,7 +28,7 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color, image
   if (imageSrc) {
     return (
       <img
-        alt={`${text} user avatar`}
+        alt={`${text}'s user avatar`}
         className={classNames(cssClasses.IMAGE, className)}
         src={imageSrc}
       />
@@ -43,7 +44,7 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color, image
         backgroundColor: color.color || `#${_determineAvatarColor(color.seed || text)}`,
       }}
     >
-      <div className={cssClasses.TEXT}>{text}</div>
+      <div className={cssClasses.TEXT}>{convertNameToInitials(text)}</div>
     </div>
   );
 };
