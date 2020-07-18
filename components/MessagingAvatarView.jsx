@@ -52,7 +52,7 @@ export default class MessagingAvatarView extends React.PureComponent {
             />
             <br />
             <MessagingAvatar
-              text={convertNameToInitials("Dewey the Fox")}
+              text={convertNameToInitials("Dewey Fox")}
               color={{ seed: "52c5e9d0e6ed0694212d69ed" }}
               imageSrc="./assets/img/avatar-sample.png"
             />
@@ -94,7 +94,7 @@ export default class MessagingAvatarView extends React.PureComponent {
             name: "imageSrc",
             type: "string",
             description:
-              "Optional image source URL. If provided, the image will be display instead of the text/color.",
+              "Optional image source URL. If provided, the image will be display instead of the text/color and the text will be the alt prop for the image.",
             optional: true,
           },
         ]}
