@@ -41,18 +41,12 @@ export default class MessagingAvatarView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingAvatar
-              text={convertNameToInitials("Kristen Stark")}
-              color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-            />
+            <MessagingAvatar text={"Kristen Stark"} color={{ color: Colors.PRIMARY_BLUE_TINT_2 }} />
+            <br />
+            <MessagingAvatar text={"Kristen Stark"} color={{ seed: "52c5e9d0e6ed0694212d69ed" }} />
             <br />
             <MessagingAvatar
-              text={convertNameToInitials("Kristen Stark")}
-              color={{ seed: "52c5e9d0e6ed0694212d69ed" }}
-            />
-            <br />
-            <MessagingAvatar
-              text={convertNameToInitials("Dewey Fox")}
+              text={"Dewey Fox"}
               color={{ seed: "52c5e9d0e6ed0694212d69ed" }}
               imageSrc="./assets/img/avatar-sample.png"
             />
@@ -76,7 +70,8 @@ export default class MessagingAvatarView extends React.PureComponent {
           {
             name: "text",
             type: "string",
-            description: "Text to display for the avatar's name",
+            description:
+              "Text that represents the user's display name. The text will be converted to initials and displayed in the avatar. If an image is provided, the text will be used for the alt tag on the image.",
           },
           {
             name: "className",
@@ -94,7 +89,7 @@ export default class MessagingAvatarView extends React.PureComponent {
             name: "imageSrc",
             type: "string",
             description:
-              "Optional image source URL. If provided, the image will be display instead of the text/color and the text will be the alt prop for the image.",
+              "Optional image source URL. If provided, the image will display instead of the text initials/color.",
             optional: true,
           },
         ]}
