@@ -133,6 +133,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             name: "children",
             type: "React.Node",
             description: "MessagingThreadListItem content.",
+            optional: true,
           },
           {
             name: "className",
