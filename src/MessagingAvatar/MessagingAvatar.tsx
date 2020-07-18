@@ -2,8 +2,10 @@ import * as React from "react";
 import * as classNames from "classnames";
 
 import "./MessagingAvatar.less";
+import { convertNameToInitials } from "./utils";
 
 const cssClasses = {
+  IMAGE: "Avatar--Image",
   CIRCLE: "Avatar--Circle",
   TEXT: "Avatar--Text",
 };
@@ -11,16 +13,28 @@ const cssClasses = {
 type Props = {
   className?: string;
   text: string;
-  color?:
+  color:
     | { color: string; seed?: undefined }
     | {
         /** A piece of data used to select the color to be used. Should generally be a consistent piece of data about the user, usually their id. */
         seed: string;
         color?: undefined;
       };
+  imageSrc?: string;
 };
 
-export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Props) => {
+export const MessagingAvatar: React.FC<Props> = ({ className, text, color, imageSrc }: Props) => {
+  // If an imageSrc is provided, it takes precedent over displaying text
+  if (imageSrc) {
+    return (
+      <img
+        alt={`${text}'s user avatar`}
+        className={classNames(cssClasses.IMAGE, className)}
+        src={imageSrc}
+      />
+    );
+  }
+
   return (
     <div
       className={classNames(cssClasses.CIRCLE, className)}
@@ -30,7 +44,7 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color }: Pro
         backgroundColor: color.color || `#${_determineAvatarColor(color.seed || text)}`,
       }}
     >
-      <div className={cssClasses.TEXT}>{text}</div>
+      <div className={cssClasses.TEXT}>{convertNameToInitials(text)}</div>
     </div>
   );
 };
