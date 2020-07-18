@@ -26,7 +26,11 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color, image
   // If an imageSrc is provided, it takes precedent over displaying text
   if (imageSrc) {
     return (
-      <img alt="user avatar" className={classNames(cssClasses.IMAGE, className)} src={imageSrc} />
+      <img
+        alt={`${text} user avatar`}
+        className={classNames(cssClasses.IMAGE, className)}
+        src={imageSrc}
+      />
     );
   }
 
