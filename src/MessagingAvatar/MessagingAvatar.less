@@ -1,6 +1,7 @@
 @import (reference) "../less/index";
 
 .Avatar--Image {
+  .flexbox();
   height: @size_xl;
   width: @size_xl;
   border-radius: 50%;
@@ -10,14 +11,13 @@
   height: @size_xl;
   width: @size_xl;
   border-radius: 50%;
-  display: table;
-  .text--center();
+  .flexbox();
+  .items--center();
+  .justify--center();
 }
 
 .Avatar--Text {
   .text--small();
   .text--semi-bold();
   color: @neutral_dark_gray;
-  display: table-cell;
-  vertical-align: middle;
 }

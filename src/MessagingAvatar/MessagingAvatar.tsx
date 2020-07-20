@@ -39,9 +39,8 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color, image
     <div
       className={classNames(cssClasses.CIRCLE, className)}
       // If defined, use color. Otherwise, use seed to determine color.
-      // If all else fails, we can use text as the seed to determine color.
       style={{
-        backgroundColor: color.color || `#${_determineAvatarColor(color.seed || text)}`,
+        backgroundColor: color.color || `#${_determineAvatarColor(color.seed)}`,
       }}
     >
       <div className={cssClasses.TEXT}>{convertNameToInitials(text)}</div>
