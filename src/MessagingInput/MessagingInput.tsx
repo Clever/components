@@ -1,13 +1,13 @@
 import * as React from "react";
+import * as cx from "classnames";
 
 import { TextArea, Button, FlexBox, ItemAlign } from "../index";
 
 import "./MessagingInput.less";
 
-const cssClasses = {
-  TEXT_FIELD: "MessagingInput--TextField",
-  SEND_BUTTON: "MessagingInput--SendButton",
-};
+function cssClass(element: string) {
+  return `MessagingInput--${element}`;
+}
 
 interface Props {
   className?: string;
@@ -41,10 +41,10 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   }));
 
   return (
-    <FlexBox className={className} alignItems={ItemAlign.END}>
+    <FlexBox className={cx(cssClass("Container"), className)} alignItems={ItemAlign.END}>
       <TextArea
         ref={textAreaRef}
-        className={cssClasses.TEXT_FIELD}
+        className={cssClass("TextField")}
         name="newMessage"
         placeholder={`Message ${recipientName}`}
         value={value}
@@ -69,9 +69,18 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
         rows={0}
       />
       <Button
-        className={cssClasses.SEND_BUTTON}
+        className={cssClass("SendButton")}
         type="primary"
-        value="Send"
+        value={
+          <>
+            <img
+              className={cssClass("SendIcon")}
+              alt="messaging settings"
+              src={require("./arrow_send.svg")}
+            />
+            <span className={cssClass("SendText")}>Send</span>
+          </>
+        }
         // Disable the Send if nothing but whitespace is in the input field.
         disabled={!value.trim()}
         onClick={() => onSubmit(value.trim())}

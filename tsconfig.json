@@ -8,7 +8,7 @@
     "noImplicitAny": false,
     "preserveConstEnums": true,
     "target": "es5",
-    "types": ["jest"]
+    "types": ["jest", "node"]
   },
   "exclude": ["./dist", "./node_modules"]
 }
