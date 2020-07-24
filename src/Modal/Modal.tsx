@@ -13,6 +13,7 @@ export interface Props {
   closeModal: () => void;
   children: React.ReactNode;
   focusLocked?: boolean;
+  createPortal?: boolean;
 }
 
 interface State {
@@ -34,11 +35,13 @@ const propTypes = {
   closeModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   focusLocked: PropTypes.bool,
+  createPortal: PropTypes.bool,
 };
 
 const defaultProps = {
   width: DEFAULT_WIDTH,
   focusLocked: true,
+  createPortal: true,
 };
 
 export class Modal extends React.Component<Props, State> {
@@ -111,7 +114,7 @@ export class Modal extends React.Component<Props, State> {
     } else {
       modal = modalContent;
     }
-    if (reactDom.createPortal) {
+    if (reactDom.createPortal && this.props.createPortal) {
       return reactDom.createPortal(modal, document.body);
     }
     return modal;
