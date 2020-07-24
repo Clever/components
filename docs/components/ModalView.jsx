@@ -86,6 +86,13 @@ export default class ModalView extends Component {
               defaultValue: "true",
               optional: true,
             },
+            {
+              name: "createPortal",
+              type: "Boolean",
+              description: "Whether or not to render the modal into document.body through react portal (if supported)",
+              defaultValue: "true",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="Modal"
