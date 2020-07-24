@@ -89,7 +89,8 @@ export default class ModalView extends Component {
             {
               name: "createPortal",
               type: "Boolean",
-              description: "Whether or not to render the modal into document.body through react portal (if supported)",
+              description:
+                "Whether or not to render the modal into document.body through react portal (if supported)",
               defaultValue: "true",
               optional: true,
             },
