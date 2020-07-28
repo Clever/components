@@ -43,3 +43,14 @@
   .text--line-height-1();
   color: @neutral_medium_gray;
 }
+
+// For mobile/tablet
+@media only screen and (max-width: @breakpointM) {
+  .MessageMetadata--Message--right {
+    .margin--y--xs();
+  }
+
+  .MessageMetadata--Message--left {
+    .margin--y--xs();
+  }
+}
