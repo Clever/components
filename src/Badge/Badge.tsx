@@ -30,7 +30,7 @@ const Color = {
   RED: "red",
   BLUE: "blue",
   GRAY: "gray",
-};
+} as const;
 
 const defaultProps = {
   color: Color.BLUE,
