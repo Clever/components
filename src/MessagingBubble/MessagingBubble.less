@@ -6,6 +6,7 @@
   border-radius: 0.3125rem;
   color: @neutral_white;
   background-color: @neutral_dark_gray;
+  font-size: 1rem;
   .text--line-height-4();
   white-space: pre-wrap;
 }
@@ -16,6 +17,20 @@
   border-radius: 0.3125rem;
   color: @neutral_black;
   background-color: #f3f5fd; /* stylelint-disable-line */
+  font-size: 1rem;
   .text--line-height-4();
   white-space: pre-wrap;
+}
+
+// For mobile/tablet
+@media only screen and (max-width: @breakpointM) {
+  .MessagingBubble--Message--Own {
+    font-size: 0.875rem;
+    line-height: 1rem;
+  }
+
+  .MessagingBubble--Message--Other {
+    font-size: 0.875rem;
+    line-height: 1rem;
+  }
 }

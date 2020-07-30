@@ -49,6 +49,12 @@ button.MessagingInput--SendButton {
     .margin--right--none();
     border-radius: @size_m;
     min-height: 2rem;
+
+    .TextArea--input {
+      // Padding to account for the inside-textarea Send button in mobile UI.
+      //  Ensures that text is to the left of the Send button.
+      padding-right: 2.5rem;
+    }
   }
 
   .MessagingInput--SendIcon {
