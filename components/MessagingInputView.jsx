@@ -52,7 +52,6 @@ export default class MessagingInputView extends React.PureComponent {
             <MessagingInput
               value={inputValue}
               onChange={newValue => this.setState({ inputValue: newValue })}
-              recipientName="Demo Viewer"
               onSubmit={message => {
                 // eslint-disable-next-line no-alert
                 alert(message);
@@ -76,11 +75,6 @@ export default class MessagingInputView extends React.PureComponent {
             name: "value",
             type: "string",
             description: "The text that's been entered in the MessagingInput.",
-          },
-          {
-            name: "recipientName",
-            type: "string",
-            description: "The name of the person that we're messaging.",
           },
           {
             name: "onChange",
