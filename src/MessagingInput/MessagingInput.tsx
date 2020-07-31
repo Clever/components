@@ -11,7 +11,6 @@ function cssClass(element: string) {
 
 interface Props {
   className?: string;
-  recipientName: string;
   value: string;
   onChange: (newValue: string) => void;
   // onSubmit accepts a value rather than submitting the current message value
@@ -29,7 +28,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   props,
   ref,
 ) => {
-  const { className, recipientName, value, onChange, onSubmit, onBlur } = props;
+  const { className, value, onChange, onSubmit, onBlur } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
   React.useImperativeHandle(ref, () => ({
@@ -46,7 +45,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
         ref={textAreaRef}
         className={cssClass("TextField")}
         name="newMessage"
-        placeholder={`Message ${recipientName}`}
+        placeholder="Message"
         value={value}
         onChange={e => {
           onChange(e.target.value);

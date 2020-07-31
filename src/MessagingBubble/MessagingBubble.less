@@ -24,13 +24,10 @@
 
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
-  .MessagingBubble--Message--Own {
-    font-size: 0.875rem;
-    line-height: 1rem;
-  }
-
+  .MessagingBubble--Message--Own,
   .MessagingBubble--Message--Other {
     font-size: 0.875rem;
     line-height: 1rem;
+    .padding--xs();
   }
 }
