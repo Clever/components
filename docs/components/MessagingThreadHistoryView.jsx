@@ -119,6 +119,12 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
             description: "The data for messages to display in the history.",
           },
           {
+            name: "ref",
+            type: "React.Ref<HTMLDivElement>",
+            description: "Allows getting a ref to the underlying div container.",
+            optional: true,
+          },
+          {
             name: "className",
             type: "string",
             description: "Optional additional CSS class name to apply to the container.",

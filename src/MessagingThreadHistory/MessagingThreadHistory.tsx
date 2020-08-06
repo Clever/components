@@ -1,10 +1,10 @@
 import * as React from "react";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import * as classNames from "classnames";
 import * as moment from "moment";
-
-import { FlexBox } from "../index";
 import { MessageMetadata } from "./MessageMetadata";
+import { cssClass as FlexBoxCSS } from "../flex/FlexBox";
+import { cssClass as FlexItemCSS } from "../flex/FlexItem";
 
 import "./MessagingThreadHistory.less";
 
@@ -19,6 +19,7 @@ export interface MessageData {
   placement: "left" | "right" | "center";
   timestamp?: Date;
   content: React.ReactNode;
+  index?: number;
 }
 
 interface Props {
@@ -27,30 +28,37 @@ interface Props {
   messages: MessageData[];
 }
 
-export const MessagingThreadHistory: React.FC<Props> = ({
-  className,
-  threadID,
-  messages,
-}: Props) => {
-  const lastMessageRef = useRef<HTMLDivElement>(null);
-  const messagesWithDividers = _interleaveMessagesWithDividers(messages, lastMessageRef);
+export const MessagingThreadHistory = React.forwardRef(
+  (
+    { className, threadID, messages }: Props,
+    containerRef: React.MutableRefObject<HTMLDivElement>,
+  ) => {
+    const lastMessageRef = useRef<HTMLDivElement>(null);
+    const messagesWithDividers = _interleaveMessagesWithDividers(messages, lastMessageRef);
 
-  // We want to scroll to the bottom if there is a new message (received in real-time, or
-  //  user just sent one themselves) or if the user switches to another thread. Cannot rely
-  //  on messages themselves (new reference each render) nor on message count alone (different
-  //  threads can have the same message count). Instead, need the threadID AND message count.
-  useEffect(() => {
-    if (messages.length > 0) {
-      lastMessageRef.current.scrollIntoView();
-    }
-  }, [messages.length, threadID]);
+    // Scroll to the bottom if the user switches to a new non-null thread
+    useLayoutEffect(() => {
+      if (lastMessageRef.current) {
+        lastMessageRef.current.scrollIntoView();
+      }
+    }, [threadID]);
 
-  return (
-    <FlexBox grow className={classNames(cssClasses.CONTAINER, className)}>
-      {messagesWithDividers}
-    </FlexBox>
-  );
-};
+    return (
+      <div
+        className={classNames(
+          cssClasses.CONTAINER,
+          FlexBoxCSS.FLEXBOX,
+          FlexBoxCSS.COLUMN,
+          FlexItemCSS.GROW,
+          className,
+        )}
+        ref={containerRef}
+      >
+        {messagesWithDividers}
+      </div>
+    );
+  },
+);
 
 function _interleaveMessagesWithDividers(
   messages: MessageData[],
@@ -76,7 +84,7 @@ function _interleaveMessagesWithDividers(
     // All content is wrapped in MessageMetadata, which handles placement and timestamps.
     messagesWithDividers.push(
       <MessageMetadata
-        key={`message-${i}`}
+        key={message.index ? `message-threadIndex-${message.index}` : `message-arrayIndex-${i}`}
         // Last message in the history gets a ref, to allow scrolling down to bottom message.
         ref={i === messages.length - 1 ? lastMessageRef : undefined}
         placement={message.placement}
