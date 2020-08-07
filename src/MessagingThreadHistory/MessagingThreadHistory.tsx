@@ -19,7 +19,7 @@ export interface MessageData {
   placement: "left" | "right" | "center";
   timestamp?: Date;
   content: React.ReactNode;
-  index?: number;
+  index: number;
 }
 
 interface Props {
@@ -28,12 +28,30 @@ interface Props {
   messages: MessageData[];
 }
 
+const SCROLL_BUFFER = 200;
+
+// Always returns true with current mobile strategy of scrolling the entire thread history
+function isScrolledToBottom(ref: React.MutableRefObject<HTMLDivElement>) {
+  return (
+    ref &&
+    ref.current &&
+    ref.current.scrollTop + SCROLL_BUFFER >= ref.current.scrollHeight - ref.current.clientHeight
+  );
+}
+
+function isOwnMessage(message: MessageData) {
+  return message.placement === "right";
+}
+
 export const MessagingThreadHistory = React.forwardRef(
   (
     { className, threadID, messages }: Props,
     containerRef: React.MutableRefObject<HTMLDivElement>,
   ) => {
     const lastMessageRef = useRef<HTMLDivElement>(null);
+    const lastMessageIndex = useRef(
+      messages.length > 0 ? messages[messages.length - 1].index : null,
+    );
     const messagesWithDividers = _interleaveMessagesWithDividers(messages, lastMessageRef);
 
     // Scroll to the bottom if the user switches to a new non-null thread
@@ -42,6 +60,20 @@ export const MessagingThreadHistory = React.forwardRef(
         lastMessageRef.current.scrollIntoView();
       }
     }, [threadID]);
+
+    // Scroll to bottom if the user sends a new message
+    //  or if they are viewing the last message when a new message comes in
+    useLayoutEffect(() => {
+      const isNewMessage =
+        messages.length > 0 && messages[messages.length - 1].index !== lastMessageIndex.current;
+      if (isNewMessage) {
+        const newMessage = messages[messages.length - 1];
+        if (isOwnMessage(newMessage) || isScrolledToBottom(containerRef)) {
+          lastMessageRef.current.scrollIntoView();
+        }
+        lastMessageIndex.current = newMessage.index;
+      }
+    }, [messages]);
 
     return (
       <div
@@ -84,7 +116,7 @@ function _interleaveMessagesWithDividers(
     // All content is wrapped in MessageMetadata, which handles placement and timestamps.
     messagesWithDividers.push(
       <MessageMetadata
-        key={message.index ? `message-threadIndex-${message.index}` : `message-arrayIndex-${i}`}
+        key={`message-${message.index}`}
         // Last message in the history gets a ref, to allow scrolling down to bottom message.
         ref={i === messages.length - 1 ? lastMessageRef : undefined}
         placement={message.placement}
