@@ -1,6 +1,6 @@
 /** A utility function that can be used with MessagingAvatar to convert a name into initials. */
 export function convertNameToInitials(name: string): string {
-  if (!name) {
+  if (!name.trim()) {
     return "";
   }
 
