@@ -43,10 +43,20 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color, image
         backgroundColor: color.color || `#${_determineAvatarColor(color.seed)}`,
       }}
     >
-      <div className={cssClasses.TEXT}>{convertNameToInitials(text)}</div>
+      <div className={cssClasses.TEXT}>{_getInitialsFromText(text)}</div>
     </div>
   );
 };
+
+// Helper function: Uses the convertNameToInitials util function to get
+//  appropriate initials from the text prop, with a precautionary fallback.
+function _getInitialsFromText(text: string): string {
+  try {
+    return convertNameToInitials(text);
+  } catch (e) {
+    return "";
+  }
+}
 
 // Helper function: Uses a string as the seed to fairly randomly determine
 //  the hex color for this avatar.
