@@ -123,6 +123,7 @@ export class Button extends React.PureComponent<Props> {
       // use <button>s for all disabled links and things with no href prop (buttons)
       return (
         <button
+          aria-label={typeof value === "string" ? (value as string) : null}
           {...additionalProps}
           className={classes}
           disabled={disabled}
@@ -132,7 +133,6 @@ export class Button extends React.PureComponent<Props> {
           }}
           style={style}
           type={submit ? "submit" : "button"}
-          aria-label={typeof value === "string" ? (value as string) : null}
         >
           {value}
         </button>
@@ -140,6 +140,7 @@ export class Button extends React.PureComponent<Props> {
     }
     return (
       <a
+        aria-label={typeof value === "string" ? (value as string) : null}
         {...additionalProps}
         className={classes}
         href={href}
@@ -149,7 +150,6 @@ export class Button extends React.PureComponent<Props> {
         }}
         style={style}
         target={target}
-        aria-label={typeof value === "string" ? (value as string) : null}
       >
         {value}
       </a>
