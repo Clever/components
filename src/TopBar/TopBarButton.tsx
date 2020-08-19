@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
+import { FlexBox } from "..";
 
 import "./TopBarButton.less";
 
@@ -44,22 +45,24 @@ export class TopBarButton extends React.PureComponent<Props> {
     const Wrapper = this._getWrapperComponent();
 
     return (
-      <Wrapper
-        {...additionalProps}
-        className={classnames(
-          "TopBarButton",
-          className,
-          this.props.round ? "TopBarButton--rounded" : null,
-        )}
-        href={href}
-        onClick={onClick}
-        ref={ref => {
-          this._containerRef = ref;
-        }}
-      >
-        {children}
+      <FlexBox className="TopBarButton--container">
+        <Wrapper
+          {...additionalProps}
+          className={classnames(
+            "TopBarButton",
+            className,
+            this.props.round ? "TopBarButton--rounded" : null,
+          )}
+          href={href}
+          onClick={onClick}
+          ref={ref => {
+            this._containerRef = ref;
+          }}
+        >
+          {children}
+        </Wrapper>
         {active && <div className="TopBarButton--activeIndicator" />}
-      </Wrapper>
+      </FlexBox>
     );
   }
 
