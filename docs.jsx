@@ -9,6 +9,7 @@ import MessagingInputView from "./components/MessagingInputView";
 import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
 import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import ResourceTileView from "./components/ResourceTileView";
+import Table2BetaView from "./components/Table2BetaView";
 
 import AlertBoxView from "./components/AlertBoxView";
 import BadgeView from "./components/BadgeView";
@@ -149,6 +150,7 @@ render(
         <Route path="switch(/*)" component={SwitchView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
         <Route path="table(/*)" component={TableView} />
+        <Route path="table-2-beta(/*)" component={Table2BetaView} />
         <Route path="text-area(/*)" component={TextAreaView} />
         <Route path="text-input(/*)" component={TextInputView} />
         <Route path="text-truncate(/*)" component={TextTruncateView} />
