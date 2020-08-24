@@ -125,3 +125,5 @@ export { MessagingInput, MessagingInputHandle } from "./MessagingInput";
 export { MessagingThreadHistory, MessageData } from "./MessagingThreadHistory";
 
 export { MessagingThreadListItem } from "./MessagingThreadListItem";
+
+export { Table2Beta } from "./Table2Beta";
