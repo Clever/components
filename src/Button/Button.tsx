@@ -19,6 +19,7 @@ export interface Props {
   submit?: boolean;
   style?: React.CSSProperties;
   underlined?: boolean;
+  ariaLabel?: string;
   [additionalProp: string]: any;
 }
 
@@ -53,6 +54,7 @@ const propTypes = {
   submit: PropTypes.bool,
   style: PropTypes.object,
   underlined: PropTypes.bool,
+  ariaLabel: PropTypes.string,
 };
 
 const defaultProps = {
@@ -84,6 +86,7 @@ export class Button extends React.PureComponent<Props> {
 
   render() {
     const {
+      ariaLabel,
       className,
       disabled,
       href,
@@ -119,12 +122,14 @@ export class Button extends React.PureComponent<Props> {
       underlined ? "Button--linkUnderlined" : "",
     );
 
+    const aria = ariaLabel || (typeof value === "string" ? (value as string) : null);
+
     if (href == null || disabled) {
       // use <button>s for all disabled links and things with no href prop (buttons)
       return (
         <button
-          aria-label={typeof value === "string" ? (value as string) : null}
           {...additionalProps}
+          aria-label={aria}
           className={classes}
           disabled={disabled}
           onClick={onClick}
@@ -140,8 +145,8 @@ export class Button extends React.PureComponent<Props> {
     }
     return (
       <a
-        aria-label={typeof value === "string" ? (value as string) : null}
         {...additionalProps}
+        aria-label={aria}
         className={classes}
         href={href}
         onClick={onClick}
