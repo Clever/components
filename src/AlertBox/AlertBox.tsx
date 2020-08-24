@@ -33,7 +33,7 @@ const cssClass = {
 const propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   type: PropTypes.oneOf<AlertBoxType>(["processing", "warning", "success", "error", "info"]),
   isClosable: PropTypes.bool,
 };
