@@ -6,7 +6,15 @@ import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import loremIpsum from "lorem-ipsum";
-import { Button, ModalButton, TextInput, Table2Beta, FlexBox, ItemAlign, SegmentedControl } from "src";
+import {
+  Button,
+  ModalButton,
+  TextInput,
+  Table2Beta,
+  FlexBox,
+  ItemAlign,
+  SegmentedControl,
+} from "src";
 
 import "./Table2BetaView.less";
 
@@ -57,9 +65,14 @@ export default class Table2BetaView extends React.PureComponent {
     } = this.state;
 
     return (
-      <View className={cssClass.CONTAINER} title="Table 2 Beta" sourcePath="src/Table2Beta/Table2Beta.tsx">
+      <View
+        className={cssClass.CONTAINER}
+        title="Table 2 Beta"
+        sourcePath="src/Table2Beta/Table2Beta.tsx"
+      >
         <p>
-          This table component extends the original Table component, but now supports selection, among other things.
+          This table component extends the original Table component, but now supports selection,
+          among other things.
         </p>
         <Example>
           <Button
@@ -94,7 +107,10 @@ export default class Table2BetaView extends React.PureComponent {
                   )
                 }
                 initialPage={24}
-                initialSortState={{ columnID: "name", direction: Table2Beta.sortDirection.ASCENDING }}
+                initialSortState={{
+                  columnID: "name",
+                  direction: Table2Beta.sortDirection.ASCENDING,
+                }}
                 firstSortDirection={firstSortDirection}
                 ref="table"
                 onPageChange={page => console.log("Table page changed:", page)}
@@ -488,7 +504,11 @@ export default class Table2BetaView extends React.PureComponent {
               width="25%"
             />
 
-            <Table2Beta.Column id="age" header={{ content: "Age" }} cell={{ renderer: r => r.age }} />
+            <Table2Beta.Column
+              id="age"
+              header={{ content: "Age" }}
+              cell={{ renderer: r => r.age }}
+            />
 
             <Table2Beta.Column
               id="status"
