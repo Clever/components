@@ -59,6 +59,7 @@ const defaultProps = {
 
 export const cssClass = {
   CONTENT: "Tooltip--content",
+  FOCUSABLE_TRIGGER: "Tooltip--focusable-trigger",
 
   align: textAlign => `Tooltip--content--${textAlign}`,
 };
@@ -113,7 +114,9 @@ export default class Tooltip extends React.Component<Props> {
         rootClose
         trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
       >
-        {children}
+        <span className={cssClass.FOCUSABLE_TRIGGER} tabIndex={0}>
+          {children}
+        </span>
       </OverlayTrigger>
     );
   }
