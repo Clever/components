@@ -13,6 +13,7 @@ export interface Props {
   lines?: number;
   maxCharsShown?: number;
   useRichText?: boolean;
+  name?: string;
 }
 
 const propTypes = {
@@ -23,6 +24,7 @@ const propTypes = {
   lines: PropTypes.number,
   maxCharsShown: PropTypes.number,
   useRichText: PropTypes.bool,
+  name: PropTypes.string,
 };
 
 const defaultProps = {
@@ -66,6 +68,7 @@ export default class TextTruncate extends React.PureComponent<Props> {
       showLessLabel,
       maxCharsShown,
       useRichText,
+      name,
     } = this.props;
     const { truncated } = this.state;
 
@@ -78,13 +81,15 @@ export default class TextTruncate extends React.PureComponent<Props> {
     }
 
     const displayText = truncated ? `${this.truncate(text)}…` : text;
+    const toggleText = truncated ? showMoreLabel : showLessLabel;
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>
         {useRichText ? <RichText text={displayText} /> : displayText}{" "}
         <Button
           type="linkPlain"
           onClick={this.toggleTruncation}
-          value={truncated ? showMoreLabel : showLessLabel}
+          value={toggleText}
+          ariaLabel={name && `${toggleText}: ${name}`}
         />
       </div>
     );
