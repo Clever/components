@@ -112,6 +112,8 @@ export const cssClass = {
   NO_DATA: "Table--no_data_cell",
   NO_DATA_CONTENT: "Table--no_data_cell_with_content",
   ROW: "Table--row",
+  ROW_ODD: "Table--rowOdd",
+  ROW_EVEN: "Table--rowEven",
   TABLE: "Table",
 };
 
@@ -425,10 +427,11 @@ export class Table2Beta extends React.Component<Props, State> {
               )}
             </tr>
           ) : (
-            displayedData.map(rowData => (
+            displayedData.map((rowData, index) => (
               <tr
                 className={classnames(
                   cssClass.ROW,
+                  index % 2 ? cssClass.ROW_ODD : cssClass.ROW_EVEN,
                   onRowClick && cssClass.CLICKABLE_ROW,
                   rowClassNameFn && rowClassNameFn(rowData),
                 )}
