@@ -21,7 +21,6 @@ const cssClass = {
 // Start with an older time so we can better display the day separators.
 // We display any dates in the future as "today".
 const newestTime = moment().subtract(1, "week");
-let currentMessageIndex = -1;
 
 function randomElement(items) {
   return items[Math.floor(Math.random() * items.length)];
@@ -31,7 +30,6 @@ function newMessage() {
   const message = randomElement(["Hello!", "Hi!", "How are you doing?"]);
   const placement = randomElement(["left", "right"]);
   newestTime.add(6, "hours");
-  currentMessageIndex++;
   return {
     content: (
       <MessagingBubble theme={placement === "left" ? "otherMessage" : "ownMessage"}>
@@ -40,7 +38,6 @@ function newMessage() {
     ),
     placement,
     timestamp: new Date(newestTime),
-    index: currentMessageIndex,
   };
 }
 
@@ -120,13 +117,6 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
             name: "messages",
             type: "MessageData[]",
             description: "The data for messages to display in the history.",
-          },
-          {
-            name: "ref",
-            type: "React.Ref<HTMLDivElement>",
-            description:
-              "Allows getting a ref to the underlying div container. Required for auto scrolling on new messages.",
-            optional: true,
           },
           {
             name: "className",
