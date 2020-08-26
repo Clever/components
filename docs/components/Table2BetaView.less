@@ -1,0 +1,25 @@
+@import (reference) "~less/index";
+
+.Table2BetaView--config {
+  .margin--y--s;
+  .margin--left--none;
+  .margin--right--l;
+  .text--small;
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.Table2BetaView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.Table2BetaView--status {
+  transition: all @timingPromptly ease-out;
+}
+
+.Table2BetaView--status--red {
+  background-color: @alert_red;
+  color: @neutral_white;
+}
