@@ -182,6 +182,12 @@ export default class TextTruncateView extends React.PureComponent {
             defaultValue: "false",
             optional: true,
           },
+          {
+            name: "name",
+            type: "string",
+            description: "Name appended to the toggle button aria label",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
