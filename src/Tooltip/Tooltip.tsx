@@ -114,7 +114,11 @@ export default class Tooltip extends React.Component<Props> {
         rootClose
         trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
       >
-        <span className={cssClass.FOCUSABLE_TRIGGER} tabIndex={0}>
+        <span
+          className={cssClass.FOCUSABLE_TRIGGER}
+          onMouseDown={e => e.preventDefault()}
+          tabIndex={0}
+        >
           {children}
         </span>
       </OverlayTrigger>
