@@ -410,6 +410,11 @@ export class Table2Beta extends React.Component<Props, State> {
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
+    let numColumns = columns.length;
+    if (selectable) {
+      numColumns++;
+    }
+
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <thead>
@@ -493,7 +498,7 @@ export class Table2Beta extends React.Component<Props, State> {
           <Footer
             currentPage={displayedPage}
             onPageChange={newPage => this.setCurrentPage(newPage)}
-            numColumns={columns.length}
+            numColumns={numColumns}
             numPages={numPages}
             showLastPage={!lazy}
             visiblePageRangeSize={visiblePageRangeSize}
