@@ -26,6 +26,7 @@ export default class Table2BetaView extends React.PureComponent {
       enableRowClick: true,
       enableRowMouseOver: false,
       tableFilter: "",
+      enableSelectable: true,
       firstSortDirection: Table2Beta.sortDirection.ASCENDING,
     };
   }
@@ -61,6 +62,7 @@ export default class Table2BetaView extends React.PureComponent {
       enableRowClick,
       enableRowMouseOver,
       tableData,
+      enableSelectable,
       firstSortDirection,
     } = this.state;
 
@@ -132,6 +134,7 @@ export default class Table2BetaView extends React.PureComponent {
                 visiblePageRangeSize={5}
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
+                selectable={enableSelectable}
               >
                 <Table2Beta.Column
                   id="details"
@@ -219,6 +222,14 @@ export default class Table2BetaView extends React.PureComponent {
               onChange={({ target }) => this.setState({ enableDynamicCellClass: target.checked })}
             />{" "}
             Dynamic cell class names
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={enableSelectable}
+              onChange={({ target }) => this.setState({ enableSelectable: target.checked })}
+            />{" "}
+            Selectable rows
           </label>
           <label className={cssClass.CONFIG}>
             First Sort Direction:
