@@ -13,7 +13,7 @@ import sortDirection from "./sortDirection";
 import { ChildrenOf } from "../utils/types";
 
 import "./Table.less";
-import Checkbox from "src/Checkbox";
+import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
 
 export type SortDirection = "asc" | "desc";
@@ -472,14 +472,6 @@ export class Table2Beta extends React.Component<Props, State> {
                 onClick={e => {
                   if (onRowClick) {
                     onRowClick(e, rowIDFn(rowData), rowData);
-                  }
-                  if (selectable) {
-                    if (selectedRows.has(rowData)) {
-                      selectedRows.delete(rowData);
-                    } else {
-                      selectedRows.add(rowData);
-                    }
-                    this.setState({ selectedRows });
                   }
                 }}
                 onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
