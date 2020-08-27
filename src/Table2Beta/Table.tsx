@@ -397,7 +397,7 @@ export class Table2Beta extends React.Component<Props, State> {
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
-    let {selectedRows} = this.state;
+    let { selectedRows } = this.state;
 
     const columns = _.compact(React.Children.toArray(children));
     if (columns.length < 2 && process.env.NODE_ENV !== "production") {
@@ -421,7 +421,7 @@ export class Table2Beta extends React.Component<Props, State> {
           <tr>
             {selectable && (
               <HeaderCell>
-                <Checkbox 
+                <Checkbox
                   checked={selectedRows.size > 0}
                   partial={selectedRows.size < displayedData.length}
                   onChange={newState => {
@@ -430,9 +430,10 @@ export class Table2Beta extends React.Component<Props, State> {
                     } else {
                       selectedRows.clear();
                     }
-                    this.setState({ selectedRows })
+                    this.setState({ selectedRows });
                   }}
-                  >{""}
+                >
+                  {""}
                 </Checkbox>
               </HeaderCell>
             )}
@@ -468,20 +469,35 @@ export class Table2Beta extends React.Component<Props, State> {
                   rowClassNameFn && rowClassNameFn(rowData),
                 )}
                 key={rowIDFn(rowData)}
-                onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+                onClick={e => {
+                  if (onRowClick) {
+                    onRowClick(e, rowIDFn(rowData), rowData);
+                  }
+                  if (selectable) {
+                    if (selectedRows.has(rowData)) {
+                      selectedRows.delete(rowData);
+                    } else {
+                      selectedRows.add(rowData);
+                    }
+                    this.setState({ selectedRows });
+                  }
+                }}
                 onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
               >
                 {selectable && (
                   <Cell>
-                    <Checkbox checked={selectedRows.has(rowData)}
-                    onChange={newState => {
-                      if (newState.checked) {
-                        selectedRows.add(rowData);
-                      } else {
-                        selectedRows.delete(rowData);
-                      }
-                      this.setState({ selectedRows })
-                    }}>{""}                   
+                    <Checkbox
+                      checked={selectedRows.has(rowData)}
+                      onChange={newState => {
+                        if (newState.checked) {
+                          selectedRows.add(rowData);
+                        } else {
+                          selectedRows.delete(rowData);
+                        }
+                        this.setState({ selectedRows });
+                      }}
+                    >
+                      {""}
                     </Checkbox>
                   </Cell>
                 )}

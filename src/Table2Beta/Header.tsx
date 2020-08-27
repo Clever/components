@@ -25,21 +25,27 @@ export const cssClass = {
   SORTABLE: "Table--header--cell--sortable",
 };
 
-export default function Header({ children, disableSort, onSortChange, sortState, selectable }: Props) {
+export default function Header({
+  children,
+  disableSort,
+  onSortChange,
+  sortState,
+  selectable,
+}: Props) {
   return (
     <>
-        {children.map(({ props: column }) => (
-          <HeaderCell
-            activeSortDirection={sortState.columnID === column.id ? sortState.direction : null}
-            className={column.header && column.header.className}
-            key={column.id}
-            onSortChange={() => onSortChange(column.id)}
-            sortable={column.sortable && !disableSort}
-            width={column.width}
-          >
-            {column.header && column.header.content}
-          </HeaderCell>
-        ))}
+      {children.map(({ props: column }) => (
+        <HeaderCell
+          activeSortDirection={sortState.columnID === column.id ? sortState.direction : null}
+          className={column.header && column.header.className}
+          key={column.id}
+          onSortChange={() => onSortChange(column.id)}
+          sortable={column.sortable && !disableSort}
+          width={column.width}
+        >
+          {column.header && column.header.content}
+        </HeaderCell>
+      ))}
     </>
   );
 }
