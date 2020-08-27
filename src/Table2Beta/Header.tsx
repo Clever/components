@@ -5,7 +5,6 @@ import * as tablePropTypes from "./tablePropTypes";
 import Column from "./Column";
 import HeaderCell from "./HeaderCell";
 import MorePropTypes from "../utils/MorePropTypes";
-import Checkbox from "src/Checkbox";
 
 interface SortState {
   columnID?: string;
@@ -22,20 +21,13 @@ export interface Props {
 }
 
 export const cssClass = {
-  CONTAINER: "Table--header",
   ROW: "Table--header--row",
   SORTABLE: "Table--header--cell--sortable",
 };
 
 export default function Header({ children, disableSort, onSortChange, sortState, selectable }: Props) {
   return (
-    <thead className={cssClass.CONTAINER}>
-      <tr className={cssClass.ROW}>
-        {selectable && (
-          <HeaderCell>
-            <Checkbox>{""}</Checkbox>
-          </HeaderCell>
-        )}
+    <>
         {children.map(({ props: column }) => (
           <HeaderCell
             activeSortDirection={sortState.columnID === column.id ? sortState.direction : null}
@@ -48,8 +40,7 @@ export default function Header({ children, disableSort, onSortChange, sortState,
             {column.header && column.header.content}
           </HeaderCell>
         ))}
-      </tr>
-    </thead>
+    </>
   );
 }
 

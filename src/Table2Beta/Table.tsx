@@ -14,6 +14,7 @@ import { ChildrenOf } from "../utils/types";
 
 import "./Table.less";
 import Checkbox from "src/Checkbox";
+import HeaderCell from "./HeaderCell";
 
 export type SortDirection = "asc" | "desc";
 
@@ -410,14 +411,23 @@ export class Table2Beta extends React.Component<Props, State> {
 
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-        <Header
-          disableSort={disableSort}
-          onSortChange={columnID => this._toggleSort(columnID)}
-          sortState={sortState}
-          selectable={selectable}
-        >
-          {columns}
-        </Header>
+        <thead>
+          <tr>
+            {selectable && (
+              <HeaderCell>
+                <Checkbox>{""}</Checkbox>
+              </HeaderCell>
+            )}
+            <Header
+              disableSort={disableSort}
+              onSortChange={columnID => this._toggleSort(columnID)}
+              sortState={sortState}
+              selectable={selectable}
+            >
+              {columns}
+            </Header>
+          </tr>
+        </thead>
         <tbody className={cssClass.BODY}>
           {displayedData.length === 0 ? (
             <tr className={cssClass.ROW}>
