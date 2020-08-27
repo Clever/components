@@ -396,7 +396,8 @@ export class Table2Beta extends React.Component<Props, State> {
       visiblePageRangeSize,
     } = this.props;
     const { lazy, numRows } = this.props;
-    const { currentPage, sortState, pageLoading, allLoaded, selectedRows } = this.state;
+    const { currentPage, sortState, pageLoading, allLoaded } = this.state;
+    let {selectedRows} = this.state;
 
     const columns = _.compact(React.Children.toArray(children));
     if (columns.length < 2 && process.env.NODE_ENV !== "production") {
@@ -415,7 +416,19 @@ export class Table2Beta extends React.Component<Props, State> {
           <tr>
             {selectable && (
               <HeaderCell>
-                <Checkbox>{""}</Checkbox>
+                <Checkbox 
+                  checked={selectedRows.size > 0}
+                  partial={selectedRows.size < displayedData.length}
+                  onChange={newState => {
+                    if (newState.checked) {
+                      selectedRows = new Set(displayedData);
+                    } else {
+                      selectedRows.clear();
+                    }
+                    this.setState({ selectedRows })
+                  }}
+                  >{""}
+                </Checkbox>
               </HeaderCell>
             )}
             <Header
