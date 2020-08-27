@@ -385,6 +385,12 @@ export default class Table2BetaView extends React.PureComponent {
                 'If noDataContent is not passed we add a row spanning all columns that says "NO DATA"',
               optional: true,
             },
+            {
+              name: "selectable",
+              type: "boolean",
+              description: "Adds selectable checkboxes to the table",
+              optional: true,
+            },
           ]}
           title="Table 2 Beta"
         />
