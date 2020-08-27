@@ -445,12 +445,14 @@ export class Table2Beta extends React.Component<Props, State> {
               >
                 {selectable && (
                   <Cell>
-                    <Checkbox onChange={newState => {
+                    <Checkbox checked={selectedRows.has(rowData)}
+                    onChange={newState => {
                       if (newState.checked) {
                         selectedRows.add(rowData);
                       } else {
                         selectedRows.delete(rowData);
                       }
+                      this.setState({ selectedRows })
                     }}>{""}                   
                     </Checkbox>
                   </Cell>
