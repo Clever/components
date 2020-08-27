@@ -27,6 +27,14 @@
   transition: background-color @timingImmediately @motionSmooth;
 }
 
+.Table--rowEven {
+  background-color: @neutral_white;
+}
+
+.Table--rowOdd {
+  background-color: @neutral_off_white;
+}
+
 &.Table--clickable_row:hover {
   .tint(background-color, @neutral_silver, 5);
   cursor: pointer;
