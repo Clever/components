@@ -17,32 +17,36 @@ export interface Props {
   disableSort?: boolean;
   onSortChange?: Function;
   sortState?: SortState;
+  selectable?: boolean;
 }
 
 export const cssClass = {
-  CONTAINER: "Table--header",
   ROW: "Table--header--row",
   SORTABLE: "Table--header--cell--sortable",
 };
 
-export default function Header({ children, disableSort, onSortChange, sortState }: Props) {
+export default function Header({
+  children,
+  disableSort,
+  onSortChange,
+  sortState,
+  selectable,
+}: Props) {
   return (
-    <thead className={cssClass.CONTAINER}>
-      <tr className={cssClass.ROW}>
-        {children.map(({ props: column }) => (
-          <HeaderCell
-            activeSortDirection={sortState.columnID === column.id ? sortState.direction : null}
-            className={column.header && column.header.className}
-            key={column.id}
-            onSortChange={() => onSortChange(column.id)}
-            sortable={column.sortable && !disableSort}
-            width={column.width}
-          >
-            {column.header && column.header.content}
-          </HeaderCell>
-        ))}
-      </tr>
-    </thead>
+    <>
+      {children.map(({ props: column }) => (
+        <HeaderCell
+          activeSortDirection={sortState.columnID === column.id ? sortState.direction : null}
+          className={column.header && column.header.className}
+          key={column.id}
+          onSortChange={() => onSortChange(column.id)}
+          sortable={column.sortable && !disableSort}
+          width={column.width}
+        >
+          {column.header && column.header.content}
+        </HeaderCell>
+      ))}
+    </>
   );
 }
 

@@ -13,6 +13,8 @@ import sortDirection from "./sortDirection";
 import { ChildrenOf } from "../utils/types";
 
 import "./Table.less";
+import Checkbox from "../Checkbox";
+import HeaderCell from "./HeaderCell";
 
 export type SortDirection = "asc" | "desc";
 
@@ -50,6 +52,7 @@ export interface Props {
   rowIDFn: Function;
   rowClassNameFn?: Function;
   noDataContent?: React.ReactNode;
+  selectable?: boolean;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -60,6 +63,7 @@ export interface Props {
 interface State {
   currentPage: number;
   sortState: SortState;
+  selectedRows: Set<any>;
 
   // lazy table state
   lazyPages: any[];
@@ -90,6 +94,7 @@ const propTypes = {
   rowIDFn: PropTypes.func.isRequired,
   rowClassNameFn: PropTypes.func,
   noDataContent: PropTypes.node,
+  selectable: PropTypes.bool,
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -150,6 +155,7 @@ export class Table2Beta extends React.Component<Props, State> {
     this.state = {
       currentPage: props.initialPage || 1,
       sortState: props.initialSortState,
+      selectedRows: new Set(),
 
       // lazy table state
       lazyPages: [],
@@ -388,10 +394,12 @@ export class Table2Beta extends React.Component<Props, State> {
       onRowClick,
       onRowMouseOver,
       noDataContent,
+      selectable,
       visiblePageRangeSize,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
+    let { selectedRows } = this.state;
 
     const columns = _.compact(React.Children.toArray(children));
     if (columns.length < 2 && process.env.NODE_ENV !== "production") {
@@ -404,15 +412,43 @@ export class Table2Beta extends React.Component<Props, State> {
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
+    let numColumns = columns.length;
+    if (selectable) {
+      numColumns++;
+    }
+
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-        <Header
-          disableSort={disableSort}
-          onSortChange={columnID => this._toggleSort(columnID)}
-          sortState={sortState}
-        >
-          {columns}
-        </Header>
+        <thead>
+          <tr>
+            {selectable && (
+              <HeaderCell>
+                <Checkbox
+                  checked={selectedRows.size > 0}
+                  partial={selectedRows.size < displayedData.length}
+                  onChange={newState => {
+                    if (newState.checked) {
+                      selectedRows = new Set(displayedData);
+                    } else {
+                      selectedRows.clear();
+                    }
+                    this.setState({ selectedRows });
+                  }}
+                >
+                  {""}
+                </Checkbox>
+              </HeaderCell>
+            )}
+            <Header
+              disableSort={disableSort}
+              onSortChange={columnID => this._toggleSort(columnID)}
+              sortState={sortState}
+              selectable={selectable}
+            >
+              {columns}
+            </Header>
+          </tr>
+        </thead>
         <tbody className={cssClass.BODY}>
           {displayedData.length === 0 ? (
             <tr className={cssClass.ROW}>
@@ -436,9 +472,30 @@ export class Table2Beta extends React.Component<Props, State> {
                   rowClassNameFn && rowClassNameFn(rowData),
                 )}
                 key={rowIDFn(rowData)}
-                onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+                onClick={e => {
+                  if (onRowClick) {
+                    onRowClick(e, rowIDFn(rowData), rowData);
+                  }
+                }}
                 onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
               >
+                {selectable && (
+                  <Cell>
+                    <Checkbox
+                      checked={selectedRows.has(rowData)}
+                      onChange={newState => {
+                        if (newState.checked) {
+                          selectedRows.add(rowData);
+                        } else {
+                          selectedRows.delete(rowData);
+                        }
+                        this.setState({ selectedRows });
+                      }}
+                    >
+                      {""}
+                    </Checkbox>
+                  </Cell>
+                )}
                 {columns.map(({ props: col }: { props: any }) => (
                   <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
                     {col.cell.renderer(rowData)}
@@ -452,7 +509,7 @@ export class Table2Beta extends React.Component<Props, State> {
           <Footer
             currentPage={displayedPage}
             onPageChange={newPage => this.setCurrentPage(newPage)}
-            numColumns={columns.length}
+            numColumns={numColumns}
             numPages={numPages}
             showLastPage={!lazy}
             visiblePageRangeSize={visiblePageRangeSize}
