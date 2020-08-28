@@ -6,6 +6,11 @@
   font-family: "Proxima Nova";
   font-size: 0.875rem;
   width: 100%;
+  max-width: 1032px;
+}
+
+.Table--header {
+  height: 56px;
 }
 
 &.Table--fixed {
@@ -25,6 +30,7 @@
 .Table--row {
   .border--bottom--s(@neutral_silver);
   transition: background-color @timingImmediately @motionSmooth;
+  min-height: 48px;
 }
 
 .Table--rowEven {

@@ -112,6 +112,7 @@ const defaultProps = {
 
 export const cssClass = {
   BODY: "Table--body",
+  HEADER: "Table--header",
   CLICKABLE_ROW: "Table--clickable_row",
   FIXED: "Table--fixed",
   NO_DATA: "Table--no_data_cell",
@@ -421,7 +422,7 @@ export class Table2Beta extends React.Component<Props, State> {
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <thead>
-          <tr>
+          <tr className={cssClass.HEADER}>
             {selectable && (
               <HeaderCell>
                 <Checkbox
