@@ -4,11 +4,12 @@ import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import Colors from "src/utils/Colors";
-import { MessagingAvatar, convertNameToInitials } from "src";
+import { MessagingAvatar, convertNameToInitials, Label } from "src";
 
 import "./MessagingAvatarView.less";
 
 const cssClass = {
+  BETA: "MessagingAvatarView--beta",
   CONFIG_CONTAINER: "MessagingAvatarView--configContainer",
   CONFIG_OPTIONS: "MessagingAvatarView--configOptions",
   CONFIG: "MessagingAvatarView--config",
@@ -29,6 +30,10 @@ export default class MessagingAvatarView extends React.PureComponent {
         sourcePath="src/MessagingAvatar/MessagingAvatar.tsx"
       >
         <header className={cssClass.INTRO}>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> MessagingAvatar is in Beta and breaking changes
+            may still be introduced.
+          </p>
           <p>MessagingAvatar is to be used for displaying a user's avatar.</p>
           <CodeSample>
             {`
