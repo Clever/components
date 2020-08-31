@@ -14,6 +14,7 @@ import {
   FlexBox,
   ItemAlign,
   SegmentedControl,
+  Label,
 } from "src";
 
 import "./Table2BetaView.less";
@@ -72,6 +73,10 @@ export default class Table2BetaView extends React.PureComponent {
         title="Table 2 Beta"
         sourcePath="src/Table2Beta/Table2Beta.tsx"
       >
+        <p className={cssClass.BETA}>
+          <Label color="new-feature">Beta</Label> Table 2 Beta is in Beta and breaking changes may
+          still be introduced.
+        </p>
         <p>
           This table component extends the original Table component, but now supports selection,
           among other things.
@@ -547,6 +552,7 @@ export default class Table2BetaView extends React.PureComponent {
 }
 
 Table2BetaView.cssClass = {
+  BETA: "Table2BetaView--beta",
   CONFIG: "Table2BetaView--config",
   CONFIG_OPTIONS: "Table2BetaView--configOptions",
   CONTAINER: "Table2BetaView",

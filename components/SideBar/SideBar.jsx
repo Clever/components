@@ -3,7 +3,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import { Link as ReactRouterLink, routerShape } from "react-router";
 
-import { Icon, LeftNav } from "../../../src";
+import { Icon, LeftNav, Label } from "../../../src";
 
 import "./SideBar.less";
 
@@ -20,15 +20,24 @@ export default class SideBar extends React.Component {
     this.setState({ collapsed: !this.state.collapsed });
   }
 
-  _renderLink(path, label, icon = null) {
+  _renderLink(path, label, options = { icon: null, beta: false }) {
     const { NavLink } = LeftNav;
     const { router } = this.context;
+
+    let betaLabel;
+    if (options.beta) {
+      betaLabel = (
+        <span>
+          {label} <Label color="new-feature">Beta</Label>
+        </span>
+      );
+    }
 
     return (
       <NavLink
         component={ReactRouterLink}
-        icon={icon}
-        label={label}
+        icon={options.icon}
+        label={options.beta ? betaLabel : label}
         selected={router.isActive(path)}
         to={path}
       />
@@ -54,9 +63,11 @@ export default class SideBar extends React.Component {
         withActiveNavGroups
         withTooltips
       >
-        {this._renderLink("/component-list", "Component List", icon(Icon.names.PORTAL_OPEN))}
-        {this._renderLink("/intro", "Introduction", icon(Icon.names.PRESENTATION))}
-        {this._renderLink("/getting-started", "Getting Started", icon(Icon.names.BLOCKS))}
+        {this._renderLink("/component-list", "Component List", {
+          icon: icon(Icon.names.PORTAL_OPEN),
+        })}
+        {this._renderLink("/intro", "Introduction", { icon: icon(Icon.names.PRESENTATION) })}
+        {this._renderLink("/getting-started", "Getting Started", { icon: icon(Icon.names.BLOCKS) })}
         <NavGroup id="design" label="Design" icon={icon(Icon.names.ORIGAMI)}>
           {this._renderLink("/design/colors", "Colors")}
           {this._renderLink("/design/typography", "Typography")}
@@ -93,11 +104,15 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/list", "List")}
           {this._renderLink("/components/logo", "Logo")}
           {this._renderLink("/components/menu", "Menu")}
-          {this._renderLink("/components/messaging-avatar", "MessagingAvatar")}
-          {this._renderLink("/components/messaging-bubble", "MessagingBubble")}
-          {this._renderLink("/components/messaging-input", "MessagingInput")}
-          {this._renderLink("/components/messaging-thread-history", "MessagingThreadHistory")}
-          {this._renderLink("/components/messaging-thread-list-item", "MessagingThreadListItem")}
+          {this._renderLink("/components/messaging-avatar", "MessagingAvatar", { beta: true })}
+          {this._renderLink("/components/messaging-bubble", "MessagingBubble", { beta: true })}
+          {this._renderLink("/components/messaging-input", "MessagingInput", { beta: true })}
+          {this._renderLink("/components/messaging-thread-history", "MessagingThreadHistory", {
+            beta: true,
+          })}
+          {this._renderLink("/components/messaging-thread-list-item", "MessagingThreadListItem", {
+            beta: true,
+          })}
           {this._renderLink("/components/modal", "Modal")}
           {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/multiple-panel-modals", "MultiplePanelModals")}
@@ -112,7 +127,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/switch", "Switch")}
           {this._renderLink("/components/tab-bar", "TabBar")}
           {this._renderLink("/components/table", "Table")}
-          {this._renderLink("/components/table-2-beta", "Table2Beta")}
+          {this._renderLink("/components/table-2-beta", "Table2Beta", { beta: true })}
           {this._renderLink("/components/text-area", "TextArea")}
           {this._renderLink("/components/text-input", "TextInput")}
           {this._renderLink("/components/text-truncate", "TextTruncate")}
