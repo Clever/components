@@ -4,11 +4,12 @@ import moment from "moment";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingThreadHistory, FlexBox, ItemAlign, Button, MessagingBubble } from "src";
+import { MessagingThreadHistory, FlexBox, ItemAlign, Button, MessagingBubble, Label } from "src";
 
 import "./MessagingThreadHistoryView.less";
 
 const cssClass = {
+  BETA: "MessagingThreadHistoryView--beta",
   CONFIG_CONTAINER: "MessagingThreadHistoryView--configContainer",
   CONFIG_OPTIONS: "MessagingThreadHistoryView--configOptions",
   CONFIG: "MessagingThreadHistoryView--config",
@@ -65,6 +66,10 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
         sourcePath="src/MessagingThreadHistory/MessagingThreadHistory.tsx"
       >
         <header className={cssClass.INTRO}>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> MessagingThreadHistory is in Beta and breaking
+            changes may still be introduced.
+          </p>
           <p>
             MessagingThreadHistory is a container for messages between users, in the form of
             MessagingBubble or other data.

@@ -3,11 +3,12 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingInput, FlexBox, ItemAlign } from "src";
+import { MessagingInput, Label } from "src";
 
 import "./MessagingInputView.less";
 
 const cssClass = {
+  BETA: "MessagingInputView--beta",
   CONFIG_CONTAINER: "MessagingInputView--configContainer",
   CONFIG_OPTIONS: "MessagingInputView--configOptions",
   CONFIG: "MessagingInputView--config",
@@ -34,9 +35,12 @@ export default class MessagingInputView extends React.PureComponent {
         sourcePath="src/MessagingInput/MessagingInput.tsx"
       >
         <header className={cssClass.INTRO}>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> MessagingInput is in Beta and breaking changes
+            may still be introduced.
+          </p>
           <p>
-            MessagingInputView is an input to be used for entering and submitting text for
-            messaging.
+            MessagingInput is an input to be used for entering and submitting text for messaging.
           </p>
           <CodeSample>
             {`

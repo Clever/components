@@ -3,11 +3,12 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingBubble, FlexBox, ItemAlign, SegmentedControl } from "src";
+import { MessagingBubble, FlexBox, ItemAlign, SegmentedControl, Label } from "src";
 
 import "./MessagingBubbleView.less";
 
 const cssClass = {
+  BETA: "MessagingBubbleView--beta",
   CONFIG_CONTAINER: "MessagingBubbleView--configContainer",
   CONFIG_OPTIONS: "MessagingBubbleView--configOptions",
   CONFIG: "MessagingBubbleView--config",
@@ -34,6 +35,10 @@ export default class MessagingBubbleView extends React.PureComponent {
         sourcePath="src/MessagingBubble/MessagingBubble.tsx"
       >
         <header className={cssClass.INTRO}>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> MessagingBubble is in Beta and breaking changes
+            may still be introduced.
+          </p>
           <p>
             MessagingBubble is a single bubble that would appear in a messaging thread. It can
             contain text or other content.

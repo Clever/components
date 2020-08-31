@@ -3,11 +3,12 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingThreadListItem, FlexBox, ItemAlign, SegmentedControl, Icon } from "src";
+import { MessagingThreadListItem, FlexBox, ItemAlign, SegmentedControl, Icon, Label } from "src";
 
 import "./MessagingThreadListItemView.less";
 
 const cssClass = {
+  BETA: "MessagingThreadListItemView--beta",
   CONFIG_CONTAINER: "MessagingThreadListItemView--configContainer",
   CONFIG_OPTIONS: "MessagingThreadListItemView--configOptions",
   CONFIG: "MessagingThreadListItemView--config",
@@ -37,6 +38,10 @@ export default class MessagingThreadListItemView extends React.PureComponent {
         sourcePath="src/MessagingThreadListItem/MessagingThreadListItem.tsx"
       >
         <header className={cssClass.INTRO}>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> MessagingThreadHistory is in Beta and breaking
+            changes may still be introduced.
+          </p>
           <p>
             MessagingThreadListItem is used for showing a preview of a single thread in a list of
             them.
