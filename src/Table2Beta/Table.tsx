@@ -119,6 +119,7 @@ export const cssClass = {
   ROW: "Table--row",
   ROW_ODD: "Table--rowOdd",
   ROW_EVEN: "Table--rowEven",
+  ROW_SELECTED: "Table--rowSelected",
   TABLE: "Table",
 };
 
@@ -470,6 +471,7 @@ export class Table2Beta extends React.Component<Props, State> {
                   index % 2 ? cssClass.ROW_ODD : cssClass.ROW_EVEN,
                   onRowClick && cssClass.CLICKABLE_ROW,
                   rowClassNameFn && rowClassNameFn(rowData),
+                  selectedRows.has(rowData) && cssClass.ROW_SELECTED,
                 )}
                 key={rowIDFn(rowData)}
                 onClick={e => {

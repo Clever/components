@@ -35,7 +35,15 @@
   background-color: @neutral_off_white;
 }
 
+.Table--rowSelected {
+  // We hope to add f3f5fd as a Dewey color one day
+  // TODO: Change this in the future when this is a Dewey color
+  background-color: #f3f5fd;
+}
+
 &.Table--clickable_row:hover {
-  .tint(background-color, @neutral_silver, 5);
+  // For whatever reason, the original Table's color style is used in Table2Beta as well.
+  // Remove this background-color styling when Table2Beta replaces Table
+  background-color: #f3f5fd;
   cursor: pointer;
 }
