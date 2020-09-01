@@ -111,16 +111,17 @@ const defaultProps = {
 };
 
 export const cssClass = {
-  BODY: "Table--body",
-  CLICKABLE_ROW: "Table--clickable_row",
-  FIXED: "Table--fixed",
-  NO_DATA: "Table--no_data_cell",
-  NO_DATA_CONTENT: "Table--no_data_cell_with_content",
-  ROW: "Table--row",
-  ROW_ODD: "Table--rowOdd",
-  ROW_EVEN: "Table--rowEven",
-  ROW_SELECTED: "Table--rowSelected",
-  TABLE: "Table",
+  BODY: "Table2Beta--body",
+  HEADER: "Table2Beta--header",
+  CLICKABLE_ROW: "Table2Beta--clickable_row",
+  FIXED: "Table2Beta--fixed",
+  NO_DATA: "Table2Beta--no_data_cell",
+  NO_DATA_CONTENT: "Table2Beta--no_data_cell_with_content",
+  ROW: "Table2Beta--row",
+  ROW_ODD: "Table2Beta--rowOdd",
+  ROW_EVEN: "Table2Beta--rowEven",
+  ROW_SELECTED: "Table2Beta--rowSelected",
+  TABLE: "Table2Beta",
 };
 
 export class Table2Beta extends React.Component<Props, State> {
@@ -421,7 +422,7 @@ export class Table2Beta extends React.Component<Props, State> {
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <thead>
-          <tr>
+          <tr className={cssClass.HEADER}>
             {selectable && (
               <HeaderCell>
                 <Checkbox

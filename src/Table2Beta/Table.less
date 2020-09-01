@@ -1,47 +1,53 @@
 @import (reference) "../less/utilities.less";
 
-.Table {
+.Table2Beta {
   border-collapse: collapse;
   color: @neutral_black;
   font-family: "Proxima Nova";
   font-size: 0.875rem;
   width: 100%;
+  max-width: 1032px;
 }
 
-&.Table--fixed {
+.Table2Beta--header {
+  height: 56px;
+}
+
+&.Table2Beta--fixed {
   table-layout: fixed;
 }
 
-.Table--no_data_cell {
+.Table2Beta--no_data_cell {
   color: @neutral_gray;
   font-size: 1rem;
   text-align: center;
 }
 
-.Table--no_data_cell_with_content {
+.Table2Beta--no_data_cell_with_content {
   padding: 0;
 }
 
-.Table--row {
+.Table2Beta--row {
   .border--bottom--s(@neutral_silver);
   transition: background-color @timingImmediately @motionSmooth;
+  min-height: 48px;
 }
 
-.Table--rowEven {
+.Table2Beta--rowEven {
   background-color: @neutral_white;
 }
 
-.Table--rowOdd {
+.Table2Beta--rowOdd {
   background-color: @neutral_off_white;
 }
 
-.Table--rowSelected {
+.Table2Beta--rowSelected {
   // We hope to add f3f5fd as a Dewey color one day
   // TODO: Change this in the future when this is a Dewey color
   background-color: #f3f5fd;
 }
 
-&.Table--clickable_row:hover {
+&.Table2Beta--clickable_row:hover {
   // For whatever reason, the original Table's color style is used in Table2Beta as well.
   // Remove this background-color styling when Table2Beta replaces Table
   background-color: #f3f5fd;
