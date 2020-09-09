@@ -15,6 +15,7 @@ import { ChildrenOf } from "../utils/types";
 import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
+import SelectedRowsHeader from "./SelectedRowsHeader";
 
 export type SortDirection = "asc" | "desc";
 
@@ -422,6 +423,7 @@ export class Table2Beta extends React.Component<Props, State> {
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <thead>
+          <SelectedRowsHeader selectedRows={selectedRows} contentType="student" />
           <tr className={cssClass.HEADER}>
             {selectable && (
               <HeaderCell>
