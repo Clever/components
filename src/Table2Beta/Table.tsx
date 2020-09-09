@@ -15,6 +15,7 @@ import { ChildrenOf } from "../utils/types";
 import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
+import { CssClasses } from "src/ResourceTile/ResourceTile";
 
 export type SortDirection = "asc" | "desc";
 
@@ -121,6 +122,7 @@ export const cssClass = {
   ROW_ODD: "Table2Beta--rowOdd",
   ROW_EVEN: "Table2Beta--rowEven",
   ROW_SELECTED: "Table2Beta--rowSelected",
+  INDIVIDUAL_ACTIONS: "Table2Beta--individualActions",
   TABLE: "Table2Beta",
 };
 
@@ -416,7 +418,8 @@ export class Table2Beta extends React.Component<Props, State> {
 
     let numColumns = columns.length;
     if (selectable) {
-      numColumns++;
+      // One column for the checkbox, and another for individual actions
+      numColumns += 2;
     }
 
     return (
@@ -449,6 +452,7 @@ export class Table2Beta extends React.Component<Props, State> {
             >
               {columns}
             </Header>
+            {selectable && <HeaderCell/>}
           </tr>
         </thead>
         <tbody className={cssClass.BODY}>
@@ -504,6 +508,13 @@ export class Table2Beta extends React.Component<Props, State> {
                     {col.cell.renderer(rowData)}
                   </Cell>
                 ))}
+                {selectable && (
+                  <Cell>
+                    <div className={cssClass.INDIVIDUAL_ACTIONS}>
+                      TEMPORARY. PUT OTHER STUFF HERE
+                    </div>
+                  </Cell>
+                )}
               </tr>
             ))
           )}
