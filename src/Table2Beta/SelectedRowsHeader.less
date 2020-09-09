@@ -14,3 +14,29 @@
 .Table2Beta--selectedRowsHeader--actionsCell {
   padding: 0.75rem;
 }
+
+.Table2Beta--selectedRowsHeader--actionsFlexbox {
+  flex-wrap: wrap;
+  margin-top: -1rem;
+  // in the future, replace wth row-gap and column-gap, currently not supported in Safari
+  // row-gap: 1rem;
+  // column-gap: 1.5rem;
+}
+
+.Table2Beta--selectedRowsHeader--action {
+  margin: 1rem 1.5rem 0 0;
+  cursor: pointer;
+}
+
+.Table2Beta--selectedRowsHeader--actionIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.3125rem;
+}
+
+.Table2Beta--selectedRowsHeader--actionTitle {
+  .text--medium;
+  .text--semi-bold;
+  font-family: "Proxima Nova";
+  white-space: nowrap;
+}

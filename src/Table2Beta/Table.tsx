@@ -15,7 +15,7 @@ import { ChildrenOf } from "../utils/types";
 import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
-import SelectedRowsHeader from "./SelectedRowsHeader";
+import SelectedRowsHeader, { ActionInput } from "./SelectedRowsHeader";
 
 export type SortDirection = "asc" | "desc";
 
@@ -420,10 +420,48 @@ export class Table2Beta extends React.Component<Props, State> {
       numColumns++;
     }
 
+    // For testing only
+    const sampleActions: Array<ActionInput> = [
+      {
+        callback: () => console.log("sampleAction 1"),
+        title: "Do this action",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+      },
+      {
+        callback: () => console.log("sampleAction 2"),
+        title: "Do another action",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+      },
+      {
+        callback: () => console.log("sampleAction 1"),
+        title: "Do this action",
+      },
+      {
+        callback: () => console.log("sampleAction 2"),
+        title: "Do another action",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+      },
+      {
+        callback: () => console.log("sampleAction 1"),
+        title: "Do this action",
+      },
+      {
+        callback: () => console.log("sampleAction 2"),
+        title: "Do another action",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+      },
+    ];
+
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <thead>
-          <SelectedRowsHeader selectedRows={selectedRows} contentType="student" />
+          {selectable && (
+            <SelectedRowsHeader
+              selectedRows={selectedRows}
+              contentType="student"
+              actions={sampleActions}
+            />
+          )}
           <tr className={cssClass.HEADER}>
             {selectable && (
               <HeaderCell>
