@@ -26,6 +26,8 @@
 .MessagingBubble--Link,
 .MessagingBubble--Link:focus,
 .MessagingBubble--Link:hover {
+  // We inherit color from the parent to have the link color match the bubble text color
+  /* stylelint-disable-next-line declaration-property-value-whitelist */
   color: inherit;
   .text--semi-bold();
   .text--underline();
