@@ -423,33 +423,38 @@ export class Table2Beta extends React.Component<Props, State> {
     // For testing only
     const sampleActions: Array<ActionInput> = [
       {
-        callback: () => console.log("sampleAction 1"),
-        title: "Do this action",
+        callback: () => {
+          // for (var row of Array.from(selectedRows.values())) {
+          //   console.log(row.name);
+          // }
+          console.log(selectedRows);
+        },
+        title: { singular: "Launch an app" },
         icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
       },
       {
         callback: () => console.log("sampleAction 2"),
-        title: "Do another action",
+        title: { singular: "Log out student", plural: "Log out students" },
         icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
       },
       {
         callback: () => console.log("sampleAction 1"),
-        title: "Do this action",
+        title: { singular: "Download badge", plural: "Download badges" },
       },
       {
         callback: () => console.log("sampleAction 2"),
-        title: "Do another action",
+        title: { singular: "Download username", plural: "Download usernames" },
         icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
       },
-      {
-        callback: () => console.log("sampleAction 1"),
-        title: "Do this action",
-      },
-      {
-        callback: () => console.log("sampleAction 2"),
-        title: "Do another action",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-      },
+      // {
+      //   callback: () => console.log("sampleAction 1"),
+      //   title: "Do this action",
+      // },
+      // {
+      //   callback: () => console.log("sampleAction 2"),
+      //   title: "Do another action",
+      //   icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+      // },
     ];
 
     return (

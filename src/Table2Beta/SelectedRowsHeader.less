@@ -2,7 +2,9 @@
 
 .Table2Beta--selectedRowsHeader {
   height: 3rem;
-  border: @size_4xs solid @neutral_silver;
+  .border--s(@neutral_silver);
+  // not working
+  .borderRadius--top--m;
   border-collapse: collapse;
   .cardHeader();
 }
@@ -29,7 +31,7 @@
 }
 
 .Table2Beta--selectedRowsHeader--actionIcon {
-  height: 1.25rem;
+  // height: 100%;
   width: 1.25rem;
   margin-right: 0.3125rem;
 }

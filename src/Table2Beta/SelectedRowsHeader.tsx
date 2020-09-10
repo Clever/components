@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import Cell from "src/Table/Cell";
+import Cell from "./Cell";
 import "./SelectedRowsHeader.less";
-import { FlexBox } from "src/flex";
+import { FlexBox } from "../../src";
 
 interface Props {
   selectedRows: Set<any>;
@@ -11,11 +11,10 @@ interface Props {
 }
 
 export interface ActionInput {
-  callback: () => void;
-  // callback(selectedRows: Set<any>): void;
-  // selectedRows?: Set<any>;
+  callback(selectedRows?: Set<any>): void;
+  selectedRows?: Set<any>;
   // Todo: Account for singular vs multiple selected
-  title: string;
+  title: { singular: string; plural?: string };
   // should icon be required?
   icon?: string;
 }
@@ -38,7 +37,7 @@ export default function SelectedRowsHeader({ selectedRows, contentType, actions 
   return (
     <>
       <tr className={cssClasses.ROW}>
-        <Cell class={cssClasses.TITLE_CELL} colspan={3}>
+        <Cell className={cssClasses.TITLE_CELL} colSpan={3}>
           {/* Figure out how to not hard code colspans */}
           {!rowsAreSelected && <div>Select {contentType || "row"}s to access tools</div>}
           {rowsAreSelected && (
@@ -48,16 +47,18 @@ export default function SelectedRowsHeader({ selectedRows, contentType, actions 
             </div>
           )}
         </Cell>
-        <Cell class={cssClasses.ACTIONS_CELL} colspan={3}>
+        <Cell className={cssClasses.ACTIONS_CELL} colSpan={3}>
           {/* Figure out how to not hard code colspans? */}
-          <FlexBox row className={cssClasses.ACTIONS_FLEXBOX}>
+          <FlexBox className={cssClasses.ACTIONS_FLEXBOX}>
             {rowsAreSelected &&
               actions.map(action => (
                 <Action
                   callback={action.callback}
-                  // selectedRows={selectedRows}
+                  selectedRows={selectedRows}
                   title={action.title}
                   icon={action.icon}
+                  // Is this necessary? Is it the ideal value?
+                  key={action.title.singular}
                 />
               ))}
           </FlexBox>
@@ -67,12 +68,18 @@ export default function SelectedRowsHeader({ selectedRows, contentType, actions 
   );
 }
 
-function Action({ callback, title, icon }: ActionInput) {
+function Action({ callback, selectedRows, title, icon }: ActionInput) {
+  const singleRowSelected = selectedRows.size === 1;
   return (
     <>
-      <a className={`${cssClasses.ACTION} flexbox items--center`} onClick={e => callback()}>
+      <a
+        className={`${cssClasses.ACTION} flexbox items--center`}
+        onClick={e => (selectedRows ? callback(selectedRows) : callback())}
+      >
         {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
-        <div className={cssClasses.ACTION_TITLE}>{title}</div>
+        <div className={cssClasses.ACTION_TITLE}>
+          {singleRowSelected || !title.plural ? title.singular : title.plural}
+        </div>
       </a>
     </>
   );
