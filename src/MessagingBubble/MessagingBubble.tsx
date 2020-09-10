@@ -1,5 +1,7 @@
 import * as React from "react";
 import * as classNames from "classnames";
+import Linkify from "react-linkify";
+import { matchDecorator, componentDecorator } from "./linkifyUtils";
 
 import "./MessagingBubble.less";
 
@@ -22,7 +24,9 @@ export const MessagingBubble: React.FC<Props> = ({ className, children, theme }:
         className,
       )}
     >
-      {children}
+      <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
+        {children}
+      </Linkify>
     </div>
   );
 };

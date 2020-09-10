@@ -9,6 +9,7 @@ import "./MessagingBubbleView.less";
 
 const cssClass = {
   BETA: "MessagingBubbleView--beta",
+  BUBBLE: "MessagingBubbleView--bubble",
   CONFIG_CONTAINER: "MessagingBubbleView--configContainer",
   CONFIG_OPTIONS: "MessagingBubbleView--configOptions",
   CONFIG: "MessagingBubbleView--config",
@@ -41,7 +42,8 @@ export default class MessagingBubbleView extends React.PureComponent {
           </p>
           <p>
             MessagingBubble is a single bubble that would appear in a messaging thread. It can
-            contain text or other content.
+            contain text or other content. By default MessagingBubble will turn any valid URLs into
+            clickable links.
           </p>
           <CodeSample>
             {`
@@ -54,7 +56,12 @@ export default class MessagingBubbleView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingBubble theme={theme}>Hello World!</MessagingBubble>
+            <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
+              Hello World!
+            </MessagingBubble>
+            <MessagingBubble theme={theme}>
+              Links like https://clever.com are clickable
+            </MessagingBubble>
           </ExampleCode>
           {this._renderConfig()}
         </Example>
