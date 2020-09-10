@@ -18,8 +18,8 @@ export const componentDecorator = (decoratedHref: string, decoratedText: string,
       className="MessagingBubble--Link"
       href={decoratedHref}
       key={key}
-      target="_blank"
       rel="noopener noreferrer"
+      target="_blank"
     >
       {decoratedText}
     </a>
