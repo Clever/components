@@ -8,6 +8,7 @@ interface Props {
   selectedRows: Set<any>;
   contentType?: { singular: string; plural?: string };
   actions: Array<ActionInput>;
+  allSelected: boolean;
 }
 
 export interface ActionInput {
@@ -27,7 +28,12 @@ const cssClasses = {
   ACTION_TITLE: "Table2Beta--selectedRowsHeader--actionTitle",
 };
 
-export default function SelectedRowsHeader({ selectedRows, contentType, actions }: Props) {
+export default function SelectedRowsHeader({
+  selectedRows,
+  contentType,
+  actions,
+  allSelected,
+}: Props) {
   const rowsAreSelected = selectedRows.size > 0;
   const singleRowSelected = selectedRows.size === 1;
 
@@ -38,12 +44,17 @@ export default function SelectedRowsHeader({ selectedRows, contentType, actions 
         <Cell className={cssClasses.TITLE_CELL} colSpan={3}>
           {/* Figure out how to not hard code colspans */}
           {!rowsAreSelected && <div>Select {contentType.plural || "rows"} to access tools</div>}
-          {rowsAreSelected && (
-            <div>
-              {selectedRows.size}{" "}
-              {singleRowSelected ? contentType.singular || "row" : contentType.plural || "rows"}{" "}
-              selected
-            </div>
+          {rowsAreSelected && !allSelected && (
+            <>
+              <div>
+                {selectedRows.size}{" "}
+                {singleRowSelected ? contentType.singular || "row" : contentType.plural || "rows"}{" "}
+                selected
+              </div>
+            </>
+          )}
+          {allSelected && (
+            <div>{`All ${contentType.plural || "rows"} selected (${selectedRows.size})`}</div>
           )}
         </Cell>
         <Cell className={cssClasses.ACTIONS_CELL} colSpan={3}>

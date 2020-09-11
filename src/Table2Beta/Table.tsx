@@ -68,6 +68,7 @@ interface State {
   currentPage: number;
   sortState: SortState;
   selectedRows: Set<any>;
+  allSelected: boolean;
 
   // lazy table state
   lazyPages: any[];
@@ -162,6 +163,7 @@ export class Table2Beta extends React.Component<Props, State> {
       currentPage: props.initialPage || 1,
       sortState: props.initialSortState,
       selectedRows: new Set(),
+      allSelected: false,
 
       // lazy table state
       lazyPages: [],
@@ -433,6 +435,7 @@ export class Table2Beta extends React.Component<Props, State> {
               selectedRows={selectedRows}
               contentType={selectedRowsHeaderContentType}
               actions={selectedRowsHeaderActions}
+              allSelected={this.state.allSelected}
             />
           )}
           <tr className={cssClass.HEADER}>
@@ -444,8 +447,10 @@ export class Table2Beta extends React.Component<Props, State> {
                   onChange={newState => {
                     if (newState.checked) {
                       selectedRows = new Set(displayedData);
+                      this.setState({ allSelected: true });
                     } else {
                       selectedRows.clear();
+                      this.setState({ allSelected: false });
                     }
                     this.setState({ selectedRows });
                   }}
