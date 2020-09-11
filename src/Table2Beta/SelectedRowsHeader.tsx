@@ -11,8 +11,7 @@ interface Props {
 }
 
 export interface ActionInput {
-  callback(selectedRows?: Set<any>): void;
-  selectedRows?: Set<any>;
+  callback(selectedRows: Set<any>): void;
   title: { singular: string; plural?: string };
   // should icon be required?
   icon?: string;
@@ -53,10 +52,12 @@ export default function SelectedRowsHeader({ selectedRows, contentType, actions 
             {rowsAreSelected &&
               actions.map(action => (
                 <Action
-                  callback={action.callback}
+                  actionInput={{
+                    callback: action.callback,
+                    title: action.title,
+                    icon: action.icon,
+                  }}
                   selectedRows={selectedRows}
-                  title={action.title}
-                  icon={action.icon}
                   // Is this necessary? Is it the ideal value?
                   key={action.title.singular}
                 />
@@ -68,13 +69,19 @@ export default function SelectedRowsHeader({ selectedRows, contentType, actions 
   );
 }
 
-function Action({ callback, selectedRows, title, icon }: ActionInput) {
+interface ActionProps {
+  actionInput: ActionInput;
+  selectedRows: Set<any>;
+}
+
+function Action({ actionInput, selectedRows }: ActionProps) {
+  const { callback, title, icon } = actionInput;
   const singleRowSelected = selectedRows.size === 1;
   return (
     <>
       <a
         className={`${cssClasses.ACTION} flexbox items--center`}
-        onClick={e => (selectedRows ? callback(selectedRows) : callback())}
+        onClick={e => callback(selectedRows)}
       >
         {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
         <div className={cssClasses.ACTION_TITLE}>

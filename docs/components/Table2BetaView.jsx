@@ -19,6 +19,42 @@ import {
 
 import "./Table2BetaView.less";
 
+const sampleActionInputs = [
+  {
+    callback: selectedRows => {
+      // for (var row of Array.from(selectedRows.values())) {
+      //   console.log(row.name);
+      // }
+      console.log(selectedRows);
+    },
+    title: { singular: "Launch an app" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Log out student", plural: "Log out students" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 1"),
+    title: { singular: "Download badge", plural: "Download badges" },
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Download username", plural: "Download usernames" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  // {
+  //   callback: () => console.log("sampleAction 1"),
+  //   title: "Do this action",
+  // },
+  // {
+  //   callback: () => console.log("sampleAction 2"),
+  //   title: "Do another action",
+  //   icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  // },
+];
+
 export default class Table2BetaView extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -140,10 +176,11 @@ export default class Table2BetaView extends React.PureComponent {
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
                 selectable={enableSelectable}
-                contentType={{
+                selectedRowsHeaderContentType={{
                   singular: this.state.tableFilter,
                   plural: `${this.state.tableFilter}s`,
                 }}
+                selectedRowsHeaderActions={sampleActionInputs}
               >
                 <Table2Beta.Column
                   id="details"

@@ -54,7 +54,9 @@ export interface Props {
   rowClassNameFn?: Function;
   noDataContent?: React.ReactNode;
   selectable?: boolean;
-  contentType?: { singular: string; plural?: string };
+  selectedRowsHeaderContentType?: { singular: string; plural?: string };
+  // should this be optional?
+  selectedRowsHeaderActions: Array<ActionInput>;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -97,10 +99,6 @@ const propTypes = {
   rowClassNameFn: PropTypes.func,
   noDataContent: PropTypes.node,
   selectable: PropTypes.bool,
-  contentType: PropTypes.shape({
-    singular: PropTypes.string,
-    plural: PropTypes.string,
-  }),
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -404,7 +402,8 @@ export class Table2Beta extends React.Component<Props, State> {
       noDataContent,
       selectable,
       visiblePageRangeSize,
-      contentType,
+      selectedRowsHeaderContentType,
+      selectedRowsHeaderActions,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -426,51 +425,14 @@ export class Table2Beta extends React.Component<Props, State> {
       numColumns++;
     }
 
-    // For testing only
-    const sampleActions: Array<ActionInput> = [
-      {
-        callback: () => {
-          // for (var row of Array.from(selectedRows.values())) {
-          //   console.log(row.name);
-          // }
-          console.log(selectedRows);
-        },
-        title: { singular: "Launch an app" },
-        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-      },
-      {
-        callback: () => console.log("sampleAction 2"),
-        title: { singular: "Log out student", plural: "Log out students" },
-        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-      },
-      {
-        callback: () => console.log("sampleAction 1"),
-        title: { singular: "Download badge", plural: "Download badges" },
-      },
-      {
-        callback: () => console.log("sampleAction 2"),
-        title: { singular: "Download username", plural: "Download usernames" },
-        icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-      },
-      // {
-      //   callback: () => console.log("sampleAction 1"),
-      //   title: "Do this action",
-      // },
-      // {
-      //   callback: () => console.log("sampleAction 2"),
-      //   title: "Do another action",
-      //   icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-      // },
-    ];
-
     return (
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <thead>
           {selectable && (
             <SelectedRowsHeader
               selectedRows={selectedRows}
-              contentType={contentType}
-              actions={sampleActions}
+              contentType={selectedRowsHeaderContentType}
+              actions={selectedRowsHeaderActions}
             />
           )}
           <tr className={cssClass.HEADER}>
