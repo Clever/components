@@ -6,14 +6,13 @@ import { FlexBox } from "../../src";
 
 interface Props {
   selectedRows: Set<any>;
-  contentType?: string;
+  contentType?: { singular: string; plural?: string };
   actions: Array<ActionInput>;
 }
 
 export interface ActionInput {
   callback(selectedRows?: Set<any>): void;
   selectedRows?: Set<any>;
-  // Todo: Account for singular vs multiple selected
   title: { singular: string; plural?: string };
   // should icon be required?
   icon?: string;
@@ -39,11 +38,12 @@ export default function SelectedRowsHeader({ selectedRows, contentType, actions 
       <tr className={cssClasses.ROW}>
         <Cell className={cssClasses.TITLE_CELL} colSpan={3}>
           {/* Figure out how to not hard code colspans */}
-          {!rowsAreSelected && <div>Select {contentType || "row"}s to access tools</div>}
+          {!rowsAreSelected && <div>Select {contentType.plural || "rows"} to access tools</div>}
           {rowsAreSelected && (
             <div>
-              {selectedRows.size} {contentType || "row"}
-              {!singleRowSelected && "s"} selected
+              {selectedRows.size}{" "}
+              {singleRowSelected ? contentType.singular || "row" : contentType.plural || "rows"}{" "}
+              selected
             </div>
           )}
         </Cell>

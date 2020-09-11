@@ -54,6 +54,7 @@ export interface Props {
   rowClassNameFn?: Function;
   noDataContent?: React.ReactNode;
   selectable?: boolean;
+  contentType?: { singular: string; plural?: string };
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -96,6 +97,10 @@ const propTypes = {
   rowClassNameFn: PropTypes.func,
   noDataContent: PropTypes.node,
   selectable: PropTypes.bool,
+  contentType: PropTypes.shape({
+    singular: PropTypes.string,
+    plural: PropTypes.string,
+  }),
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -399,6 +404,7 @@ export class Table2Beta extends React.Component<Props, State> {
       noDataContent,
       selectable,
       visiblePageRangeSize,
+      contentType,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -463,7 +469,7 @@ export class Table2Beta extends React.Component<Props, State> {
           {selectable && (
             <SelectedRowsHeader
               selectedRows={selectedRows}
-              contentType="student"
+              contentType={contentType}
               actions={sampleActions}
             />
           )}

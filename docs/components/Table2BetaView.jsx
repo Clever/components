@@ -140,6 +140,10 @@ export default class Table2BetaView extends React.PureComponent {
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
                 selectable={enableSelectable}
+                contentType={{
+                  singular: this.state.tableFilter,
+                  plural: `${this.state.tableFilter}s`,
+                }}
               >
                 <Table2Beta.Column
                   id="details"
@@ -395,6 +399,14 @@ export default class Table2BetaView extends React.PureComponent {
               type: "boolean",
               description: "Adds selectable checkboxes to the table",
               optional: true,
+            },
+            {
+              name: "contentType",
+              type: "{ singular: string; plural?: string }",
+              description:
+                'Description of the content displayed in the rows of the table. I.e. "student", "student in grade", etc.',
+              optional: true,
+              defaultValue: '{ singular: "row", plural: "rows" }',
             },
           ]}
           title="Table 2 Beta"
