@@ -37,7 +37,6 @@ export default function SelectedRowsHeader({
   const rowsAreSelected = selectedRows.size > 0;
   const singleRowSelected = selectedRows.size === 1;
 
-  // console.log(selectedRows);
   return (
     <>
       <tr className={cssClasses.ROW}>
@@ -61,6 +60,7 @@ export default function SelectedRowsHeader({
           {/* Figure out how to not hard code colspans? */}
           <FlexBox className={cssClasses.ACTIONS_FLEXBOX}>
             {rowsAreSelected &&
+              // actions &&
               actions.map(action => (
                 <Action
                   actionInput={{

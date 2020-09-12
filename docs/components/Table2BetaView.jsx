@@ -22,9 +22,6 @@ import "./Table2BetaView.less";
 const sampleActionInputs = [
   {
     callback: selectedRows => {
-      // for (var row of Array.from(selectedRows.values())) {
-      //   console.log(row.name);
-      // }
       console.log(selectedRows);
     },
     title: { singular: "Launch an app" },
@@ -44,15 +41,6 @@ const sampleActionInputs = [
     title: { singular: "Download username", plural: "Download usernames" },
     icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
   },
-  // {
-  //   callback: () => console.log("sampleAction 1"),
-  //   title: "Do this action",
-  // },
-  // {
-  //   callback: () => console.log("sampleAction 2"),
-  //   title: "Do another action",
-  //   icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-  // },
 ];
 
 export default class Table2BetaView extends React.PureComponent {
@@ -438,12 +426,20 @@ export default class Table2BetaView extends React.PureComponent {
               optional: true,
             },
             {
-              name: "contentType",
+              name: "selectedRowsHeaderContentType",
               type: "{ singular: string; plural?: string }",
               description:
-                'Description of the content displayed in the rows of the table. I.e. "student", "student in grade", etc.',
+                'Description of the content displayed in the rows of the table. I.e. "student", "student in grade", etc. This is used in the SelectedRowsHeader: "Select a <selectedRowsHeaderContentType>"',
               optional: true,
               defaultValue: '{ singular: "row", plural: "rows" }',
+            },
+            {
+              name: "selectedRowsHeaderActions",
+              type: "Array<ActionInput>",
+              description:
+                "An array of ActionInputs. These are the actions shown in SelectedRowsHeader. Each ActionInput contains a callback which takes props `(selectedRows: Set<any>)`, a title object `{ singular: string; plural?: string }`, and an icon url",
+              optional: true,
+              defaultValue: "None",
             },
           ]}
           title="Table 2 Beta"
