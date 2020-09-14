@@ -15,7 +15,8 @@ import { ChildrenOf } from "../utils/types";
 import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
-import { CssClasses } from "src/ResourceTile/ResourceTile";
+import { Button } from "src/Button/Button";
+import DropdownButton from "src/DropdownButton";
 
 export type SortDirection = "asc" | "desc";
 
@@ -54,6 +55,7 @@ export interface Props {
   rowClassNameFn?: Function;
   noDataContent?: React.ReactNode;
   selectable?: boolean;
+  singleActions?: Array<any>;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -96,6 +98,7 @@ const propTypes = {
   rowClassNameFn: PropTypes.func,
   noDataContent: PropTypes.node,
   selectable: PropTypes.bool,
+  singleActions: PropTypes.array,
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -399,6 +402,7 @@ export class Table2Beta extends React.Component<Props, State> {
       onRowMouseOver,
       noDataContent,
       selectable,
+      singleActions,
       visiblePageRangeSize,
     } = this.props;
     const { lazy, numRows } = this.props;
@@ -419,7 +423,25 @@ export class Table2Beta extends React.Component<Props, State> {
     let numColumns = columns.length;
     if (selectable) {
       // One column for the checkbox, and another for individual actions
-      numColumns += 2;
+      numColumns += 1;
+    }
+    if (singleActions.length > 0) {
+      numColumns += 1;
+    }
+
+    let singleActionsRender;
+    if (singleActions.length === 1) {
+      singleActionsRender = (
+        <Button type="secondary" value="Title" onClick={() => console.log("Hi")} />
+      );
+    } else if (singleActions.length >= 2) {
+      singleActionsRender = (
+        <DropdownButton
+          type="secondary"
+          label="Title1"
+          onClick={() => console.log("Hi")}
+        ></DropdownButton>
+      );
     }
 
     return (
@@ -452,7 +474,7 @@ export class Table2Beta extends React.Component<Props, State> {
             >
               {columns}
             </Header>
-            {selectable && <HeaderCell/>}
+            {selectable && <HeaderCell />}
           </tr>
         </thead>
         <tbody className={cssClass.BODY}>
@@ -510,9 +532,7 @@ export class Table2Beta extends React.Component<Props, State> {
                 ))}
                 {selectable && (
                   <Cell>
-                    <div className={cssClass.INDIVIDUAL_ACTIONS}>
-                      TEMPORARY. PUT OTHER STUFF HERE
-                    </div>
+                    <div className={cssClass.INDIVIDUAL_ACTIONS}>{singleActionsRender}</div>
                   </Cell>
                 )}
               </tr>
