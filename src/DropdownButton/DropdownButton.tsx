@@ -4,12 +4,13 @@ import MorePropTypes from "../utils/MorePropTypes";
 import * as Overlay from "react-bootstrap/lib/Overlay";
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as FontAwesome from "react-fontawesome";
 
 import FlexBox from "../flex/FlexBox";
 import FlexItem from "../flex/FlexItem";
 import Menu from "./Menu";
 import Option from "./Option";
-import Type from "./Type";
+import { Type, ArrowType } from "./Type";
 import { Button, Props as ButtonProps } from "../Button/Button";
 
 import { ChildrenOf, Values } from "../utils/types";
@@ -27,6 +28,7 @@ export interface Props {
   size?: ButtonProps["size"];
   target?: "_self" | "_blank";
   type?: Values<typeof Type>;
+  arrowType?: Values<typeof ArrowType>;
 }
 
 interface State {
@@ -43,11 +45,13 @@ const propTypes = {
   size: PropTypes.oneOf(_.values(Button.Size)),
   target: PropTypes.oneOf(["_self", "_blank"]),
   type: PropTypes.oneOf(_.values(Type)),
+  arrowType: PropTypes.oneOf(_.values(ArrowType)),
 };
 
 const defaultProps = {
   size: Button.Size.M,
   type: Type.SECONDARY,
+  arrowType: ArrowType.CARET,
 };
 
 export const cssClass = {
@@ -97,7 +101,7 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { children, className, disabled, size, type } = this.props;
+    const { children, className, disabled, size, type, arrowType } = this.props;
     const passthroughProps = _.omit(this.props, Object.keys(
       propTypes,
     ) as (keyof typeof propTypes)[]);
@@ -112,6 +116,21 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
       );
     }
 
+    let arrowTypeRender;
+    if (arrowType === ArrowType.CARET) {
+      arrowTypeRender = (
+        <span className={cssClass.CARET_CONTAINER}>
+          <span className={cssClass.CARET} />
+        </span>
+      );
+    } else {
+      arrowTypeRender = (
+        <span className={cssClass.CARET_CONTAINER}>
+          <FontAwesome name="ellipsis-v" />
+        </span>
+      );
+    }
+
     return (
       <div {...passthroughProps} className={classnames(cssClass.CONTAINER, className)}>
         <FlexBox className={cssClass.BUTTONS}>
@@ -122,11 +141,7 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
             onClick={() => this.setState({ expanded: !expanded })}
             size={size}
             type={type}
-            value={
-              <span className={cssClass.CARET_CONTAINER}>
-                <span className={cssClass.CARET} />
-              </span>
-            }
+            value={arrowTypeRender}
           />
         </FlexBox>
         <Overlay
