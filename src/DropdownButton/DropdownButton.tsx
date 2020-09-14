@@ -72,6 +72,7 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
   static Option = Option;
   static Size = Button.Size;
   static Type = Type;
+  static ArrowType = ArrowType;
 
   constructor(props: Props) {
     super(props);
