@@ -2,6 +2,7 @@ import * as React from "react";
 import * as cx from "classnames";
 
 import { TextArea, Button, FlexBox, ItemAlign } from "../index";
+import KeyCode from "../utils/KeyCode";
 
 import "./MessagingInput.less";
 
@@ -11,6 +12,7 @@ function cssClass(element: string) {
 
 interface Props {
   className?: string;
+  newlineOnEnter?: boolean;
   value: string;
   onChange: (newValue: string) => void;
   // onSubmit accepts a value rather than submitting the current message value
@@ -28,7 +30,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   props,
   ref,
 ) => {
-  const { className, value, onChange, onSubmit, onBlur } = props;
+  const { className, newlineOnEnter, value, onChange, onSubmit, onBlur } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
   React.useImperativeHandle(ref, () => ({
@@ -52,8 +54,9 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
         }}
         onKeyDown={e => {
           // Shift+Enter is a line-break.
-          // Enter alone is an attempt to Send.
-          if (e.key === "Enter" && !e.shiftKey) {
+          // Enter alone is an attempt to Send, unless prop is
+          //  explicitly set to have enter be a newline.
+          if (e.key === KeyCode.ENTER && !e.shiftKey && !newlineOnEnter) {
             e.preventDefault();
             // If something other than whitespace is in the input area, Send the message.
             if (value.trim() !== "") {
