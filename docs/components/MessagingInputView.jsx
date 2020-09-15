@@ -23,10 +23,11 @@ export default class MessagingInputView extends React.PureComponent {
 
   state = {
     inputValue: "",
+    newlineOnEnter: false,
   };
 
   render() {
-    const { inputValue } = this.state;
+    const { inputValue, newlineOnEnter } = this.state;
 
     return (
       <View
@@ -55,6 +56,7 @@ export default class MessagingInputView extends React.PureComponent {
           <ExampleCode>
             <MessagingInput
               value={inputValue}
+              newlineOnEnter={newlineOnEnter}
               onChange={newValue => this.setState({ inputValue: newValue })}
               onSubmit={message => {
                 // eslint-disable-next-line no-alert
@@ -63,6 +65,14 @@ export default class MessagingInputView extends React.PureComponent {
               }}
             />
           </ExampleCode>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={newlineOnEnter}
+              onChange={({ target }) => this.setState({ newlineOnEnter: target.checked })}
+            />{" "}
+            Newline on enter
+          </label>
         </Example>
 
         {this._renderProps()}
@@ -94,6 +104,13 @@ export default class MessagingInputView extends React.PureComponent {
             name: "onBlur",
             type: "() => void",
             description: "Function that's called when the input is unfocused.",
+            optional: true,
+          },
+          {
+            name: "newlineOnEnter",
+            type: "boolean",
+            description:
+              "If true, pressing enter/return will create a newline instead of sending the message.",
             optional: true,
           },
           {
