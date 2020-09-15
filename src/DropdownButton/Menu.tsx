@@ -7,7 +7,7 @@ import * as PropTypes from "prop-types";
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import Option from "./Option";
-import Type from "./Type";
+import { Type } from "./Type";
 
 import { Values } from "../utils/types";
 

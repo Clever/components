@@ -6,4 +6,9 @@ const Type = {
   DESTRUCTIVE: Button.Type.DESTRUCTIVE,
 } as const;
 
-export default Type;
+const ArrowType = {
+  CARET: "caret",
+  ELLIPSIS: "ellipsis",
+};
+
+export { Type, ArrowType };

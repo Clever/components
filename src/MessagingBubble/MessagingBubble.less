@@ -1,25 +1,37 @@
 @import (reference) "../less/index";
 
 .MessagingBubble--Message--Own {
-  .padding--xs();
-  max-width: 25rem;
+  background-color: @neutral_dark_gray;
   border-radius: 0.3125rem;
   color: @neutral_white;
-  background-color: @neutral_dark_gray;
   font-size: 1rem;
+  max-width: 25rem;
+  overflow-wrap: break-word;
+  .padding--xs();
   .text--line-height-4();
   white-space: pre-wrap;
 }
 
 .MessagingBubble--Message--Other {
-  .padding--xs();
-  max-width: 25rem;
+  background-color: #f3f5fd; /* stylelint-disable-line */
   border-radius: 0.3125rem;
   color: @neutral_black;
-  background-color: #f3f5fd; /* stylelint-disable-line */
   font-size: 1rem;
+  max-width: 25rem;
+  overflow-wrap: break-word;
+  .padding--xs();
   .text--line-height-4();
   white-space: pre-wrap;
+}
+
+.MessagingBubble--Link,
+.MessagingBubble--Link:focus,
+.MessagingBubble--Link:hover {
+  // We inherit color from the parent to have the link color match the bubble text color
+  /* stylelint-disable-next-line declaration-property-value-whitelist */
+  color: inherit;
+  .text--semi-bold();
+  .text--underline();
 }
 
 // For mobile/tablet

@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "2.52.0",
+  "version": "2.54.1",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -23,13 +23,16 @@
   },
   "dependencies": {
     "@types/classnames": "^2.2.3",
+    "@types/linkify-it": "^2.1.0",
     "@types/lodash": "^4.14.74",
     "@types/prop-types": "^15.5.1",
     "@types/react-datepicker": "^1.8.0",
+    "@types/react-linkify": "^1.0.0",
     "classnames": "^2.2.5",
     "core-js": "^2.4.1",
     "focus-trap-react": "^6.0.0",
     "less": "^3.8.1",
+    "linkify-it": "^3.0.2",
     "lodash": "^4.14.1",
     "moment": "^2.18.1",
     "numeral": "^2.0.4",
@@ -42,7 +45,7 @@
     "react-datetime": "^2.14.0",
     "react-dropzone": "^3.11.0",
     "react-fontawesome": "^1.6.1",
-    "react-linkify": "^0.2.1",
+    "react-linkify": "^1.0.0-alpha",
     "react-overlays": "^0.8.3",
     "react-select": "~1.2.1",
     "react-sticky": "^6.0.1",
