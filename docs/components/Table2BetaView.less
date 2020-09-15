@@ -27,3 +27,13 @@
   background-color: @alert_red;
   color: @neutral_white;
 }
+
+// For testing compatibility with Analytics Actions
+// Not necessary long term
+.Table2BetaView--table {
+  max-width: 64rem;
+}
+// Accounting for 2rem padding and 2px border
+.Table2Beta--selectedRowsHeader {
+  max-width: calc(62rem - 2px);
+}

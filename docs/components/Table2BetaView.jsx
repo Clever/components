@@ -35,6 +35,16 @@ const sampleActionInputs = [
   {
     callback: () => console.log("sampleAction 1"),
     title: { singular: "Download badge", plural: "Download badges" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Download username", plural: "Download usernames" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 1"),
+    title: { singular: "Download badge", plural: "Download badges" },
   },
   {
     callback: () => console.log("sampleAction 2"),
@@ -129,6 +139,7 @@ export default class Table2BetaView extends React.PureComponent {
           <div style={{ marginTop: "20px" }}>
             <ExampleCode>
               <Table2Beta
+                className={cssClass.TABLE}
                 data={tableData}
                 filter={rowData =>
                   !this.state.tableFilter ||
@@ -441,6 +452,14 @@ export default class Table2BetaView extends React.PureComponent {
               optional: true,
               defaultValue: "None",
             },
+            {
+              name: "numDisplayedActions",
+              type: "number",
+              description:
+                "Number of actions to show in SelectedRowsHeader. If there are greater than this number of actions in selectedRowsHeaderActions, they will appear in an'Ellipse' dropdown menu at the right of the actions",
+              optional: true,
+              defaultValue: "4",
+            },
           ]}
           title="Table 2 Beta"
         />
@@ -601,4 +620,5 @@ Table2BetaView.cssClass = {
   CONFIG: "Table2BetaView--config",
   CONFIG_OPTIONS: "Table2BetaView--configOptions",
   CONTAINER: "Table2BetaView",
+  TABLE: "Table2BetaView--table",
 };
