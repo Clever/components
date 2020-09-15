@@ -11,6 +11,7 @@ const KeyCode = {
   ARROW_RIGHT: "ArrowRight",
   ARROW_UP_IE: "Up",
   ARROW_UP: "ArrowUp",
+  ENTER: "Enter",
   J: "j",
   K: "k",
   TAB: "Tab",
