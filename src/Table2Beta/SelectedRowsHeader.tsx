@@ -2,9 +2,9 @@ import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
 import "./SelectedRowsHeader.less";
-import { FlexBox } from "../../src";
-import { FlexItem } from "src/flex";
-import Menu from "src/Menu";
+import { FlexBox } from "../";
+import { FlexItem } from "../flex";
+import Menu from "../Menu";
 import { ActionInput } from "./Table";
 
 interface Props {
