@@ -112,6 +112,7 @@ const defaultProps = {
   pageSize: DEFAULT_PAGE_SIZE,
   visiblePageRangeSize: DEFAULT_VISIBLE_PAGE_RANGE_SIZE,
   firstSortDirection: sortDirection.ASCENDING,
+  singleActions: [],
 };
 
 export const cssClass = {
@@ -440,6 +441,7 @@ export class Table2Beta extends React.Component<Props, State> {
           type="secondary"
           label="Title1"
           onClick={() => console.log("Hi")}
+          arrowType="ellipsis"
         ></DropdownButton>
       );
     }
