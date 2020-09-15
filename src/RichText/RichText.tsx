@@ -21,12 +21,14 @@ export default function RichText(props: Props) {
 
   return (
     <Linkify componentDecorator={componentDecorator}>
-      {lines.map((item, index) => (
-        <span key={index}>
-          {item}
-          {index < lines.length - 1 && <br />}
-        </span>
-      ))}
+      <span>
+        {lines.map((item, index) => (
+          <span key={index}>
+            {item}
+            {index < lines.length - 1 && <br />}
+          </span>
+        ))}
+      </span>
     </Linkify>
   );
 }
