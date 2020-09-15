@@ -22,6 +22,7 @@ export default class DropdownButtonView extends Component {
       samples: {},
       size: DropdownButton.Size.M,
       type: DropdownButton.Type.PRIMARY,
+      arrowType: DropdownButton.ArrowType.CARET,
     };
 
     this.byeTimerID = null;
@@ -48,7 +49,7 @@ export default class DropdownButtonView extends Component {
   renderConfig() {
     const { Size, Type } = DropdownButton;
     const { cssClass } = DropdownButtonView;
-    const { disabled, size, type } = this.state;
+    const { disabled, size, type, arrowType } = this.state;
 
     return (
       <FlexBox className={cssClass.CONFIG_CONTAINER}>
@@ -87,6 +88,18 @@ export default class DropdownButtonView extends Component {
             value={disabled}
           />
         </div>
+        <div className={cssClass.CONFIG}>
+          ArrowType:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={value => this.setState({ arrowType: value })}
+            options={_.values(DropdownButton.ArrowType).map(t => ({
+              content: t,
+              value: t,
+            }))}
+            value={arrowType}
+          />
+        </div>
       </FlexBox>
     );
   }
@@ -94,7 +107,7 @@ export default class DropdownButtonView extends Component {
   render() {
     const { Option } = DropdownButton;
     const { cssClass } = DropdownButtonView;
-    const { goodbye, hello, samples, size, type } = this.state;
+    const { goodbye, hello, samples, size, type, arrowType } = this.state;
     const disabled = this.state.disabled === "1";
     const emptyArray = [];
 
@@ -133,6 +146,7 @@ export default class DropdownButtonView extends Component {
                 onClick={() => this.say("Hello")}
                 size={size}
                 type={type}
+                arrowType={arrowType}
               >
                 {Object.keys(samples).map(countryCode => (
                   <Option key={countryCode} onClick={() => this.say(samples[countryCode].hello)}>
@@ -159,6 +173,7 @@ export default class DropdownButtonView extends Component {
               label="A really really long label"
               size={size}
               type={type}
+              arrowType={arrowType}
             >
               <Option>Another really really long label.</Option>
               <Option>
@@ -177,6 +192,7 @@ export default class DropdownButtonView extends Component {
               href="http://google.com/search?q=edtech+news"
               size={size}
               type={type}
+              arrowType={arrowType}
             >
               <Option href="http://www.centerdigitaled.com">Converge</Option>
               <Option href="http://www.example.com" disabled>
@@ -193,7 +209,13 @@ export default class DropdownButtonView extends Component {
         <Example title="With Single-Button Fallback:">
           <p>If no options are available, no toggle is rendered with the primary action.</p>
           <ExampleCode>
-            <DropdownButton disabled={disabled} label="Primary action" size={size} type={type}>
+            <DropdownButton
+              disabled={disabled}
+              label="Primary action"
+              size={size}
+              type={type}
+              arrowType={arrowType}
+            >
               {emptyArray.map(secondaryAction => (
                 <Option key={secondaryAction}>{secondaryAction}</Option>
               ))}
@@ -262,6 +284,13 @@ export default class DropdownButtonView extends Component {
               type: "DropdownButton.Type",
               description: "The button type - affects secondary action buttons as well.",
               defaultValue: "DropdownButton.Type.PRIMARY",
+            },
+            {
+              name: "arrowType",
+              type: "Dropdown.ArrowType",
+              description: "This determines the arrow type for the dropdown button",
+              defaultValue: "DropdownButton.ArrowType.CARET",
+              optional: true,
             },
           ]}
           className={cssClass.PROPS}
