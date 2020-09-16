@@ -17,6 +17,7 @@ import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
 import { Button } from "src/Button/Button";
 import DropdownButton, { Option } from "src/DropdownButton";
+import SelectedRowsHeader from "./SelectedRowsHeader";
 
 export type SortDirection = "asc" | "desc";
 
@@ -56,6 +57,9 @@ export interface Props {
   noDataContent?: React.ReactNode;
   selectable?: boolean;
   singleActions?: Array<any>;
+  selectedRowsHeaderContentType?: { singular: string; plural?: string };
+  selectedRowsHeaderActions?: Array<ActionInput>;
+  numDisplayedActions?: number;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -67,6 +71,7 @@ interface State {
   currentPage: number;
   sortState: SortState;
   selectedRows: Set<any>;
+  allSelected: boolean;
 
   // lazy table state
   lazyPages: any[];
@@ -113,6 +118,8 @@ const defaultProps = {
   visiblePageRangeSize: DEFAULT_VISIBLE_PAGE_RANGE_SIZE,
   firstSortDirection: sortDirection.ASCENDING,
   singleActions: ["hi", "bye"],
+  selectedRowsHeaderActions: [],
+  numDisplayedActions: 4,
 };
 
 export const cssClass = {
@@ -129,6 +136,13 @@ export const cssClass = {
   INDIVIDUAL_ACTIONS: "Table2Beta--individualActions",
   TABLE: "Table2Beta",
 };
+
+export interface ActionInput {
+  callback(selectedRows: Set<any>): void;
+  title: { singular: string; plural?: string };
+  // should icon be required?
+  icon?: string;
+}
 
 export class Table2Beta extends React.Component<Props, State> {
   static propTypes = propTypes;
@@ -164,6 +178,7 @@ export class Table2Beta extends React.Component<Props, State> {
       currentPage: props.initialPage || 1,
       sortState: props.initialSortState,
       selectedRows: new Set(),
+      allSelected: false,
 
       // lazy table state
       lazyPages: [],
@@ -402,9 +417,12 @@ export class Table2Beta extends React.Component<Props, State> {
       onRowClick,
       onRowMouseOver,
       noDataContent,
+      numDisplayedActions,
       selectable,
       singleActions,
       visiblePageRangeSize,
+      selectedRowsHeaderContentType,
+      selectedRowsHeaderActions,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -449,113 +467,129 @@ export class Table2Beta extends React.Component<Props, State> {
     }
 
     return (
-      <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
-        <thead>
-          <tr className={cssClass.HEADER}>
-            {selectable && (
-              <HeaderCell>
-                <Checkbox
-                  checked={selectedRows.size > 0}
-                  partial={selectedRows.size < displayedData.length}
-                  onChange={newState => {
-                    if (newState.checked) {
-                      selectedRows = new Set(displayedData);
-                    } else {
-                      selectedRows.clear();
-                    }
-                    this.setState({ selectedRows });
-                  }}
-                >
-                  {""}
-                </Checkbox>
-              </HeaderCell>
-            )}
-            <Header
-              disableSort={disableSort}
-              onSortChange={columnID => this._toggleSort(columnID)}
-              sortState={sortState}
-              selectable={selectable}
-            >
-              {columns}
-            </Header>
-            {selectable && <HeaderCell />}
-          </tr>
-        </thead>
-        <tbody className={cssClass.BODY}>
-          {displayedData.length === 0 ? (
-            <tr className={cssClass.ROW}>
-              {noDataContent ? (
-                <Cell className={cssClass.NO_DATA_CONTENT} colSpan={columns.length} noWrap>
-                  {noDataContent}
-                </Cell>
-              ) : (
-                <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
-                  {!pageLoading && "NO DATA"}
-                </Cell>
+      <>
+        {selectable && (
+          <SelectedRowsHeader
+            selectedRows={selectedRows}
+            contentType={selectedRowsHeaderContentType}
+            actions={selectedRowsHeaderActions}
+            numDisplayedActions={numDisplayedActions}
+            allSelected={this.state.allSelected}
+          />
+        )}
+        <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
+          <thead>
+            <tr className={cssClass.HEADER}>
+              {selectable && (
+                <HeaderCell>
+                  <Checkbox
+                    checked={selectedRows.size > 0}
+                    partial={selectedRows.size < displayedData.length}
+                    onChange={newState => {
+                      if (newState.checked) {
+                        selectedRows = new Set(displayedData);
+                        this.setState({ allSelected: true });
+                      } else {
+                        selectedRows.clear();
+                        this.setState({ allSelected: false });
+                      }
+                      this.setState({ selectedRows });
+                    }}
+                  >
+                    {""}
+                  </Checkbox>
+                </HeaderCell>
               )}
-            </tr>
-          ) : (
-            displayedData.map((rowData, index) => (
-              <tr
-                className={classnames(
-                  cssClass.ROW,
-                  index % 2 ? cssClass.ROW_ODD : cssClass.ROW_EVEN,
-                  onRowClick && cssClass.CLICKABLE_ROW,
-                  rowClassNameFn && rowClassNameFn(rowData),
-                  selectedRows.has(rowData) && cssClass.ROW_SELECTED,
-                )}
-                key={rowIDFn(rowData)}
-                onClick={e => {
-                  if (onRowClick) {
-                    onRowClick(e, rowIDFn(rowData), rowData);
-                  }
-                }}
-                onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
+              <Header
+                disableSort={disableSort}
+                onSortChange={columnID => this._toggleSort(columnID)}
+                sortState={sortState}
+                selectable={selectable}
               >
-                {selectable && (
-                  <Cell>
-                    <Checkbox
-                      checked={selectedRows.has(rowData)}
-                      onChange={newState => {
-                        if (newState.checked) {
-                          selectedRows.add(rowData);
-                        } else {
-                          selectedRows.delete(rowData);
-                        }
-                        this.setState({ selectedRows });
-                      }}
-                    >
-                      {""}
-                    </Checkbox>
+                {columns}
+              </Header>
+            </tr>
+          </thead>
+          <tbody className={cssClass.BODY}>
+            {displayedData.length === 0 ? (
+              <tr className={cssClass.ROW}>
+                {noDataContent ? (
+                  <Cell className={cssClass.NO_DATA_CONTENT} colSpan={columns.length} noWrap>
+                    {noDataContent}
+                  </Cell>
+                ) : (
+                  <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
+                    {!pageLoading && "NO DATA"}
                   </Cell>
                 )}
-                {columns.map(({ props: col }: { props: any }) => (
-                  <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
-                    {col.cell.renderer(rowData)}
-                  </Cell>
-                ))}
                 {selectable && (
                   <Cell>
                     <div className={cssClass.INDIVIDUAL_ACTIONS}>{singleActionsRender}</div>
                   </Cell>
                 )}
               </tr>
-            ))
+            ) : (
+              displayedData.map((rowData, index) => (
+                <tr
+                  className={classnames(
+                    cssClass.ROW,
+                    index % 2 ? cssClass.ROW_ODD : cssClass.ROW_EVEN,
+                    onRowClick && cssClass.CLICKABLE_ROW,
+                    rowClassNameFn && rowClassNameFn(rowData),
+                    selectedRows.has(rowData) && cssClass.ROW_SELECTED,
+                  )}
+                  key={rowIDFn(rowData)}
+                  onClick={e => {
+                    if (onRowClick) {
+                      onRowClick(e, rowIDFn(rowData), rowData);
+                    }
+                  }}
+                  onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
+                >
+                  {selectable && (
+                    <Cell>
+                      <Checkbox
+                        checked={selectedRows.has(rowData)}
+                        onChange={newState => {
+                          if (newState.checked) {
+                            selectedRows.add(rowData);
+                          } else {
+                            selectedRows.delete(rowData);
+                          }
+                          this.setState({ selectedRows });
+                        }}
+                      >
+                        {""}
+                      </Checkbox>
+                    </Cell>
+                  )}
+                  {columns.map(({ props: col }: { props: any }) => (
+                    <Cell
+                      className={getCellClassName(col, rowData)}
+                      key={col.id}
+                      noWrap={col.noWrap}
+                    >
+                      {col.cell.renderer(rowData)}
+                    </Cell>
+                  ))}
+                </tr>
+              ))
+            )}
+          </tbody>
+          {paginated && (
+            <Footer
+              currentPage={displayedPage}
+              onPageChange={newPage => this.setCurrentPage(newPage)}
+              numColumns={numColumns}
+              numPages={numPages}
+              showLastPage={!lazy}
+              visiblePageRangeSize={visiblePageRangeSize}
+              isLoading={pageLoading}
+              lengthUnknown={lazy && numRows == null && !allLoaded}
+            />
           )}
-        </tbody>
-        {paginated && (
-          <Footer
-            currentPage={displayedPage}
-            onPageChange={newPage => this.setCurrentPage(newPage)}
-            numColumns={numColumns}
-            numPages={numPages}
-            showLastPage={!lazy}
-            visiblePageRangeSize={visiblePageRangeSize}
-            isLoading={pageLoading}
-            lengthUnknown={lazy && numRows == null && !allLoaded}
-          />
-        )}
-      </table>
+        </table>
+      </>
     );
   }
 }
