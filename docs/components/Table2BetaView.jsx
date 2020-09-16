@@ -41,8 +41,16 @@ const sampleActionInputs = [
   {
     callback: () => console.log("sampleAction 1"),
     title: {
-      singular: [<FontAwesome name="question-circle" />, " Do action with FontAwesome"],
-      plural: [<FontAwesome name="question-circle" />, " Do actions with FontAwesome"],
+      singular: (
+        <div>
+          <FontAwesome name="question-circle" /> Do action with FontAwesome
+        </div>
+      ),
+      plural: (
+        <div>
+          <FontAwesome name="question-circle" /> Do actions with FontAwesome
+        </div>
+      ),
     },
   },
   {
@@ -452,7 +460,7 @@ export default class Table2BetaView extends React.PureComponent {
               name: "selectedRowsHeaderActions",
               type: "Array<ActionInput>",
               description:
-                "An array of ActionInputs. These are the actions shown in SelectedRowsHeader. Each ActionInput contains a callback which takes props `(selectedRows: Set<any>)`, a title object `{ singular: React.ReactNode; plural?: React.ReactNode }`, and an optional icon url. Title.singular and plural can be a string, or a single or list of React elements if you want to include FontAwesome, etc",
+                "An array of ActionInputs. These are the actions shown in SelectedRowsHeader. Each ActionInput contains a callback which takes props `(selectedRows: Set<any>)`, a title object `{ singular: React.ReactNode; plural?: React.ReactNode }`, and an optional icon url. Title.singular and plural can be a string, or a React element if you want to include FontAwesome, etc",
               optional: true,
               defaultValue: "None",
             },
