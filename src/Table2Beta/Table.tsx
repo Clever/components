@@ -16,7 +16,7 @@ import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
 import { Button } from "src/Button/Button";
-import DropdownButton from "src/DropdownButton";
+import DropdownButton, { Option } from "src/DropdownButton";
 
 export type SortDirection = "asc" | "desc";
 
@@ -112,7 +112,7 @@ const defaultProps = {
   pageSize: DEFAULT_PAGE_SIZE,
   visiblePageRangeSize: DEFAULT_VISIBLE_PAGE_RANGE_SIZE,
   firstSortDirection: sortDirection.ASCENDING,
-  singleActions: [],
+  singleActions: ["hi", "bye"],
 };
 
 export const cssClass = {
@@ -438,11 +438,13 @@ export class Table2Beta extends React.Component<Props, State> {
     } else if (singleActions.length >= 2) {
       singleActionsRender = (
         <DropdownButton
-          type="secondary"
+          type="link"
           label="Title1"
           onClick={() => console.log("Hi")}
           arrowType="ellipsis"
-        ></DropdownButton>
+        >
+          <Option onClick={() => console.log("Hoi")}>Title2</Option>
+        </DropdownButton>
       );
     }
 
