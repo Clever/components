@@ -31,7 +31,7 @@ interface Props {
 const SCROLL_BUFFER = 200;
 
 // Always returns true with current mobile strategy of scrolling the entire thread history
-function isScrolledToBottom(ref: React.MutableRefObject<HTMLDivElement>) {
+function calcIsScrolledToBottom(ref: React.MutableRefObject<HTMLDivElement>): boolean {
   return (
     ref &&
     ref.current &&
@@ -48,11 +48,21 @@ export const MessagingThreadHistory = React.forwardRef(
     { className, threadID, messages }: Props,
     containerRef: React.MutableRefObject<HTMLDivElement>,
   ) => {
+    // ----------- Scroll position references
+
+    // Reference attached to the last message's DOM element
     const lastMessageRef = useRef<HTMLDivElement>(null);
+
+    // Maintains a reference as to what the last (highest) messages index was on the last render
     const lastMessageIndex = useRef(
       messages.length > 0 ? messages[messages.length - 1].index : null,
     );
-    const messagesWithDividers = _interleaveMessagesWithDividers(messages, lastMessageRef);
+
+    // Determines whether the user was scrolled to the bottom before we potentially
+    //  insert new messages at _interleaveMessagesWithDividers()
+    const isScrolledToBottom = calcIsScrolledToBottom(containerRef);
+
+    // ----------- Scroll effects
 
     // Scroll to the bottom if the user switches to a new non-null thread
     useLayoutEffect(() => {
@@ -61,19 +71,24 @@ export const MessagingThreadHistory = React.forwardRef(
       }
     }, [threadID]);
 
-    // Scroll to bottom if the user sends a new message
-    //  or if they are viewing the last message when a new message comes in
+    // Scroll to bottom if:
+    //  1. the user sends a new message OR
+    //  2. if they are viewing the last message when a new message comes in
     useLayoutEffect(() => {
       const isNewMessage =
         messages.length > 0 && messages[messages.length - 1].index !== lastMessageIndex.current;
       if (isNewMessage) {
         const newMessage = messages[messages.length - 1];
-        if (isOwnMessage(newMessage) || isScrolledToBottom(containerRef)) {
+        if (isOwnMessage(newMessage) || isScrolledToBottom) {
           lastMessageRef.current.scrollIntoView();
         }
         lastMessageIndex.current = newMessage.index;
       }
     }, [messages]);
+
+    // ----------- Render
+
+    const messagesWithDividers = _interleaveMessagesWithDividers(messages, lastMessageRef);
 
     return (
       <div
