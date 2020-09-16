@@ -35,8 +35,7 @@ declare var process: {
 
 export interface ActionInput {
   callback(selectedRows: Set<any>): void;
-  title: { singular: string; plural?: string };
-  // should icon be required?
+  title: { singular: React.ReactNode; plural?: React.ReactNode };
   icon?: string;
 }
 
