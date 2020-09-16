@@ -1,0 +1,82 @@
+@import (reference) "../less/utilities.less";
+
+.Table2Beta--selectedRowsHeader {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  .border--s(@neutral_silver);
+  .borderRadius--top--l;
+  border-collapse: collapse;
+  .padding--x--m;
+  .padding--y--m;
+  .text--medium;
+  .text--semi-bold;
+  background-color: @neutral_off_white;
+  color: @neutral_dark_gray;
+  font-family: "Proxima Nova";
+}
+
+.Table2Beta--selectedRowsHeader--actionsFlexbox {
+  flex-wrap: wrap;
+  margin-top: -1rem;
+  // in the future, replace wth row-gap and column-gap, currently not supported in Safari
+  // row-gap: 1rem;
+  // column-gap: 1.5rem;
+}
+
+.Table2Beta--selectedRowsHeader--action {
+  margin: 0.5rem 0.5rem 0 0;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.Table2Beta--selectedRowsHeader--action:last-of-type {
+  margin-right: 0;
+}
+
+.Table2Beta--selectedRowsHeader--action:hover {
+  background-color: #f6f7fe;
+}
+
+.Table2Beta--selectedRowsHeader--actionIcon {
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.25rem;
+  margin-right: 0.3125rem;
+}
+
+.Table2Beta--selectedRowsHeader--actionTitle {
+  display: inline-block;
+  .text--medium;
+  .text--semi-bold;
+  font-family: "Proxima Nova";
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.Table2Beta--selectedRowsHeader--actionMenu {
+  margin: 0.5rem 0 0 0.5rem;
+  padding: 0.375rem 0 0.625rem 0;
+  width: 1.25rem;
+  text-align: center;
+  color: @primary_blue;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.Table2Beta--selectedRowsHeader--actionMenu:hover {
+  background-color: #f6f7fe;
+  color: #2f4ca9;
+}
+
+.Table2Beta--selectedRowsHeader--actionMenu--trigger {
+  vertical-align: middle;
+}
+
+.Table2Beta--selectedRowsHeader--actionMenu--item img {
+  vertical-align: middle;
+}
+
+.Table2Beta--selectedRowsHeader--actionMenu--item--title {
+  line-height: 1.5rem;
+}

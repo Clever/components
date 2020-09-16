@@ -18,6 +18,52 @@ import {
 } from "src";
 
 import "./Table2BetaView.less";
+import FontAwesome from "react-fontawesome";
+
+const sampleActionInputs = [
+  {
+    callback: selectedRows => {
+      console.log(selectedRows);
+    },
+    title: { singular: "Launch an app" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Log out student", plural: "Log out students" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 1"),
+    title: { singular: "Download badge", plural: "Download badges" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 1"),
+    title: {
+      singular: (
+        <div>
+          <FontAwesome name="question-circle" /> Do action with FontAwesome
+        </div>
+      ),
+      plural: (
+        <div>
+          <FontAwesome name="question-circle" /> Do actions with FontAwesome
+        </div>
+      ),
+    },
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Download username", plural: "Download usernames" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Download username", plural: "Download usernames" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+];
 
 export default class Table2BetaView extends React.PureComponent {
   constructor(props) {
@@ -105,6 +151,7 @@ export default class Table2BetaView extends React.PureComponent {
           <div style={{ marginTop: "20px" }}>
             <ExampleCode>
               <Table2Beta
+                className={cssClass.TABLE}
                 data={tableData}
                 filter={rowData =>
                   !this.state.tableFilter ||
@@ -140,6 +187,11 @@ export default class Table2BetaView extends React.PureComponent {
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
                 selectable={enableSelectable}
+                selectedRowsHeaderContentType={{
+                  singular: this.state.tableFilter || "",
+                  plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",
+                }}
+                selectedRowsHeaderActions={sampleActionInputs}
               >
                 <Table2Beta.Column
                   id="details"
@@ -396,6 +448,30 @@ export default class Table2BetaView extends React.PureComponent {
               description: "Adds selectable checkboxes to the table",
               optional: true,
             },
+            {
+              name: "selectedRowsHeaderContentType",
+              type: "{ singular: string; plural?: string }",
+              description:
+                'Description of the content displayed in the rows of the table. I.e. "student", "student in grade", etc. This is used in the SelectedRowsHeader: "Select a <selectedRowsHeaderContentType>"',
+              optional: true,
+              defaultValue: '{ singular: "row", plural: "rows" }',
+            },
+            {
+              name: "selectedRowsHeaderActions",
+              type: "Array<ActionInput>",
+              description:
+                "An array of ActionInputs. These are the actions shown in SelectedRowsHeader. Each ActionInput contains a callback which takes props `(selectedRows: Set<any>)`, a title object `{ singular: React.ReactNode; plural?: React.ReactNode }`, and an optional icon url. Title.singular and plural can be a string, or a React element if you want to include FontAwesome, etc",
+              optional: true,
+              defaultValue: "None",
+            },
+            {
+              name: "numDisplayedActions",
+              type: "number",
+              description:
+                "Number of actions to show in SelectedRowsHeader. If there are greater than this number of actions in selectedRowsHeaderActions, they will appear in an'Ellipse' dropdown menu at the right of the actions",
+              optional: true,
+              defaultValue: "4",
+            },
           ]}
           title="Table 2 Beta"
         />
@@ -556,4 +632,5 @@ Table2BetaView.cssClass = {
   CONFIG: "Table2BetaView--config",
   CONFIG_OPTIONS: "Table2BetaView--configOptions",
   CONTAINER: "Table2BetaView",
+  TABLE: "Table2BetaView--table",
 };
