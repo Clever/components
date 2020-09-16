@@ -32,6 +32,7 @@ const propTypes = {
 export const cssClass = {
   CONTAINER: "DropdownButton--Menu",
   OPTION: "DropdownButton--Option",
+  WHITE_BACKGROUND: "DropdownButton--WhiteBackground",
 };
 
 export default class Menu extends React.PureComponent<Props> {
@@ -41,9 +42,15 @@ export default class Menu extends React.PureComponent<Props> {
     const { onHide, size, type } = this.props;
     const { children, className, disabled, href, onClick, target } = option.props;
 
+    // Add the background color back in for the buttons
+    let backgroundColorClass = "";
+    if (type === Type.LINK) {
+      backgroundColorClass = cssClass.WHITE_BACKGROUND;
+    }
+
     return (
       <Button
-        className={classnames(cssClass.OPTION, className)}
+        className={classnames(cssClass.OPTION, className, backgroundColorClass)}
         disabled={disabled}
         href={href}
         onClick={e => {
