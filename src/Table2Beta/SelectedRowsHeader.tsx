@@ -17,8 +17,6 @@ interface Props {
 
 const cssClasses = {
   ROW: "Table2Beta--selectedRowsHeader",
-  TITLE_CELL: "Table2Beta--selectedRowsHeader--titleCell",
-  ACTIONS_CELL: "Table2Beta--selectedRowsHeader--actionsCell",
   ACTIONS_FLEXBOX: "Table2Beta--selectedRowsHeader--actionsFlexbox",
   ACTION: "Table2Beta--selectedRowsHeader--action",
   ACTION_ICON: "Table2Beta--selectedRowsHeader--actionIcon",
@@ -26,6 +24,7 @@ const cssClasses = {
   ACTION_MENU: "Table2Beta--selectedRowsHeader--actionMenu",
   ACTION_MENU_TRIGGER: "Table2Beta--selectedRowsHeader--actionMenu--trigger",
   ACTION_MENU_ITEM: "Table2Beta--selectedRowsHeader--actionMenu--item",
+  ACTION_MENU_ITEM_TITLE: "Table2Beta--selectedRowsHeader--actionMenu--item--title",
 };
 
 export default function SelectedRowsHeader({
@@ -50,7 +49,7 @@ export default function SelectedRowsHeader({
   return (
     <>
       <FlexBox grow className={cssClasses.ROW}>
-        <FlexItem grow className={cssClasses.TITLE_CELL}>
+        <FlexItem grow>
           {!rowsAreSelected && <div>Select {contentType.plural || "rows"} to access tools</div>}
           {rowsAreSelected && !allSelected && (
             <>
@@ -65,7 +64,7 @@ export default function SelectedRowsHeader({
             <div>{`All ${contentType.plural || "rows"} selected (${selectedRows.size})`}</div>
           )}
         </FlexItem>
-        <FlexItem className={cssClasses.ACTIONS_CELL}>
+        <FlexItem>
           <FlexBox className={cssClasses.ACTIONS_FLEXBOX}>
             {rowsAreSelected &&
               displayedActions.map(action => (
@@ -76,7 +75,6 @@ export default function SelectedRowsHeader({
                     icon: action.icon,
                   }}
                   selectedRows={selectedRows}
-                  // Is this necessary? Is it the ideal value?
                   key={action.title.singular}
                 />
               ))}
@@ -91,15 +89,20 @@ export default function SelectedRowsHeader({
                 placement={Menu.Placement.RIGHT}
               >
                 {moreActions.map(action => (
-                  <MenuAction
-                    actionInput={{
-                      callback: action.callback,
-                      title: action.title,
-                      icon: action.icon,
-                    }}
-                    selectedRows={selectedRows}
+                  <Menu.Item
+                    className={cssClasses.ACTION_MENU_ITEM}
+                    onClick={e => action.callback(selectedRows)}
                     key={action.title.singular}
-                  />
+                  >
+                    <div className={cssClasses.ACTION_MENU_ITEM_TITLE}>
+                      {action.icon && <img className={cssClasses.ACTION_ICON} src={action.icon} />}
+                      <div className={cssClasses.ACTION_TITLE}>
+                        {singleRowSelected || !action.title.plural
+                          ? action.title.singular
+                          : action.title.plural}
+                      </div>
+                    </div>
+                  </Menu.Item>
                 ))}
               </Menu>
             )}
@@ -130,24 +133,5 @@ function Action({ actionInput, selectedRows }: ActionProps) {
         </div>
       </a>
     </>
-  );
-}
-
-function MenuAction({ actionInput, selectedRows }: ActionProps) {
-  const { callback, title, icon } = actionInput;
-  const singleRowSelected = selectedRows.size === 1;
-  return (
-    <Menu.Item
-      className={cssClasses.ACTION_MENU_ITEM}
-      onClick={e => callback(selectedRows)}
-      key={title.singular}
-    >
-      <p className={"Table2Beta--selectedRowsHeader--actionMenu--item--title"}>
-        {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
-        <div className={cssClasses.ACTION_TITLE}>
-          {singleRowSelected || !title.plural ? title.singular : title.plural}
-        </div>
-      </p>
-    </Menu.Item>
   );
 }
