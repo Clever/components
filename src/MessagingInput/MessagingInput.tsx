@@ -10,6 +10,10 @@ function cssClass(element: string) {
   return `MessagingInput--${element}`;
 }
 
+// Twilio supports 32KiB messages; worst case at 4 bytes per UTF-8 char is ~8000 chars
+const MESSAGE_CHAR_LIMIT = 8000;
+const OVER_CHAR_LIMIT_MSG = "Message is over the 8000 character limit";
+
 interface Props {
   className?: string;
   newlineOnEnter?: boolean;
@@ -41,6 +45,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     },
   }));
 
+  const errorMsg = value.length > MESSAGE_CHAR_LIMIT ? OVER_CHAR_LIMIT_MSG : "";
   return (
     <FlexBox className={cx(cssClass("Container"), className)} alignItems={ItemAlign.END}>
       <TextArea
@@ -49,6 +54,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
         name="newMessage"
         placeholder="Message"
         value={value}
+        error={errorMsg}
         onChange={e => {
           onChange(e.target.value);
         }}
@@ -84,7 +90,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           </>
         }
         // Disable the Send if nothing but whitespace is in the input field.
-        disabled={!value.trim()}
+        disabled={!value.trim() || errorMsg !== ""}
         onClick={() => onSubmit(value.trim())}
       />
     </FlexBox>
