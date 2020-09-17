@@ -11,7 +11,7 @@ import { Values } from "../utils/types";
 import "./Tooltip.less";
 
 export interface Props {
-  children: React.ReactNode;
+  children: React.ReactElement;
   className?: string;
   clickTrigger?: boolean;
   content: React.ReactNode;
@@ -103,6 +103,8 @@ export default class Tooltip extends React.Component<Props> {
         </div>
       </BootstrapTooltip>
     );
+    
+    const child = React.Children.only(children);
 
     return (
       <OverlayTrigger
@@ -113,7 +115,7 @@ export default class Tooltip extends React.Component<Props> {
         rootClose
         trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
       >
-        {children}
+        {React.cloneElement(child, { tabIndex: 0, "aria-describedby": this.id , ...child.props})}
       </OverlayTrigger>
     );
   }
