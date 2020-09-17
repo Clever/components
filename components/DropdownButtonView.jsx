@@ -8,6 +8,7 @@ import Hello from "./DropdownButtonViewData";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import { Button, DropdownButton, FlexBox, ItemAlign, SegmentedControl } from "src";
+import FontAwesome from "react-fontawesome";
 
 import "./DropdownButtonView.less";
 
@@ -142,7 +143,11 @@ export default class DropdownButtonView extends Component {
             <ExampleCode>
               <DropdownButton
                 disabled={disabled}
-                label="Say Hello"
+                label={
+                  <div>
+                    <FontAwesome name="thumbs-up" /> Say hello
+                  </div>
+                }
                 onClick={() => this.say("Hello")}
                 size={size}
                 type={type}
@@ -252,7 +257,7 @@ export default class DropdownButtonView extends Component {
             },
             {
               name: "label",
-              type: "string",
+              type: "node",
               description: "Label for the main action button.",
             },
             {
