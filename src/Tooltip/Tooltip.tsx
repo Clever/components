@@ -104,7 +104,7 @@ export default class Tooltip extends React.Component<Props> {
         </div>
       </BootstrapTooltip>
     );
-    
+
     const child = React.Children.only(children);
 
     return (
@@ -116,7 +116,12 @@ export default class Tooltip extends React.Component<Props> {
         rootClose
         trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
       >
-        {React.cloneElement(child, { tabIndex: 0, "aria-describedby": this.id, className: cssClass.FOCUSABLE_TRIGGER, ...child.props})}
+        {React.cloneElement(child, {
+          tabIndex: 0,
+          "aria-describedby": this.id,
+          className: cssClass.FOCUSABLE_TRIGGER,
+          ...child.props,
+        })}
       </OverlayTrigger>
     );
   }
