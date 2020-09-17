@@ -65,6 +65,8 @@ const sampleActionInputs = [
   },
 ];
 
+let _scrollingContainer;
+
 export default class Table2BetaView extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -75,11 +77,18 @@ export default class Table2BetaView extends React.PureComponent {
       tableFilter: "",
       enableSelectable: true,
       firstSortDirection: Table2Beta.sortDirection.ASCENDING,
+      scrollingContainer: null,
     };
   }
 
   componentWillMount() {
     this._reload(5000);
+  }
+
+  componentDidMount() {
+    this._scrollingContainer = document.getElementsByClassName("Layout--viewContainer")[0];
+    console.log("scrollingContainer");
+    console.log(this._scrollingContainer);
   }
 
   _reload(numItems) {
@@ -182,7 +191,8 @@ export default class Table2BetaView extends React.PureComponent {
                 }
                 onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
                 paginated
-                pageSize={9}
+                // put this back to 9 after
+                pageSize={50}
                 visiblePageRangeSize={5}
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
@@ -192,6 +202,7 @@ export default class Table2BetaView extends React.PureComponent {
                   plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",
                 }}
                 selectedRowsHeaderActions={sampleActionInputs}
+                scrollingContainer={this._scrollingContainer}
               >
                 <Table2Beta.Column
                   id="details"

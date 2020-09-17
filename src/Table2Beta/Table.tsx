@@ -63,6 +63,7 @@ export interface Props {
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
   selectedRowsHeaderActions?: Array<ActionInput>;
   numDisplayedActions?: number;
+  scrollingContainer?: HTMLElement;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -189,6 +190,13 @@ export class Table2Beta extends React.Component<Props, State> {
     if (this.props.lazy) {
       this._fetchLazy(0);
     }
+    console.log("123", this.props.scrollingContainer);
+    if (this.props.scrollingContainer) {
+      console.log("Setting scrolling!");
+      this.props.scrollingContainer.onscroll = () => {
+        console.log("Scrolled!");
+      };
+    }
   }
 
   componentWillUnmount() {
@@ -222,6 +230,10 @@ export class Table2Beta extends React.Component<Props, State> {
         onViewChange(displayedData);
       }
     });
+  }
+
+  _handleScroll() {
+    console.log("Scrolled!");
   }
 
   async _fetchLazy(pageIdx) {
