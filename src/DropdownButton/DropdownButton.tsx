@@ -23,7 +23,7 @@ export interface Props {
   className?: string;
   disabled?: boolean;
   href?: string;
-  label: string;
+  label: React.ReactNode;
   onClick?: Function;
   size?: ButtonProps["size"];
   target?: "_self" | "_blank";
@@ -40,7 +40,7 @@ const propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   href: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(_.values(Button.Size)),
   target: PropTypes.oneOf(["_self", "_blank"]),
