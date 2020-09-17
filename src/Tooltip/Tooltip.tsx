@@ -59,6 +59,7 @@ const defaultProps = {
 
 export const cssClass = {
   CONTENT: "Tooltip--content",
+  FOCUSABLE_TRIGGER: "Tooltip--focusable-trigger",
 
   align: textAlign => `Tooltip--content--${textAlign}`,
 };
@@ -115,7 +116,7 @@ export default class Tooltip extends React.Component<Props> {
         rootClose
         trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
       >
-        {React.cloneElement(child, { tabIndex: 0, "aria-describedby": this.id , ...child.props})}
+        {React.cloneElement(child, { tabIndex: 0, "aria-describedby": this.id, className: cssClass.FOCUSABLE_TRIGGER, ...child.props})}
       </OverlayTrigger>
     );
   }
