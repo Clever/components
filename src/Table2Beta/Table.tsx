@@ -16,9 +16,9 @@ import { ChildrenOf } from "../utils/types";
 import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
-import { Button } from "src/Button/Button";
 import SelectedRowsHeader from "./SelectedRowsHeader";
-import Menu from "src/Menu";
+import Menu from "../Menu";
+import { Button } from "../Button/Button";
 
 export type SortDirection = "asc" | "desc";
 
@@ -141,12 +141,12 @@ export const cssClass = {
   ROW_EVEN: "Table2Beta--rowEven",
   ROW_SELECTED: "Table2Beta--rowSelected",
   INDIVIDUAL_ACTIONS: "Table2Beta--individualActions",
-  ACTION_ICON: "Table2Beta--actionIcon",
-  ACTION_TITLE: "Table2Beta--actionTitle",
-  ACTION_MENU: "Table2Beta--selectedRowsHeader--actionMenu",
-  ACTION_MENU_TRIGGER: "Table2Beta--selectedRowsHeader--actionMenu--trigger",
-  ACTION_MENU_ITEM: "Table2Beta--selectedRowsHeader--actionMenu--item",
-  ACTION_MENU_ITEM_TITLE: "Table2Beta--selectedRowsHeader--actionMenu--item--title",
+  ACTION_ICON: "Table2Beta--actions--icon",
+  ACTION_TITLE: "Table2Beta--actions--title",
+  ACTION_MENU: "Table2Beta--actions--menu",
+  ACTION_MENU_TRIGGER: "Table2Beta--actions--menu--trigger",
+  ACTION_MENU_ITEM: "Table2Beta--actions--menu--item",
+  ACTION_MENU_ITEM_TITLE: "Table2Beta--actions--menu--item--title",
   TABLE: "Table2Beta",
 };
 
