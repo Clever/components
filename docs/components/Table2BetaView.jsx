@@ -60,7 +60,10 @@ const sampleActionInputs = [
   },
   {
     callback: () => console.log("sampleAction 2"),
-    title: { singular: "Download username", plural: "Download usernames" },
+    title: {
+      singular: "Download something that is not a username",
+      plural: "Download something that is not usernames",
+    },
     icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
   },
 ];

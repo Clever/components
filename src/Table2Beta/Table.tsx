@@ -2,6 +2,7 @@ import * as classnames from "classnames";
 import * as _ from "lodash";
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as FontAwesome from "react-fontawesome";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
@@ -16,8 +17,8 @@ import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
 import { Button } from "src/Button/Button";
-import DropdownButton, { Option } from "src/DropdownButton";
 import SelectedRowsHeader from "./SelectedRowsHeader";
+import Menu from "src/Menu";
 
 export type SortDirection = "asc" | "desc";
 
@@ -140,6 +141,12 @@ export const cssClass = {
   ROW_EVEN: "Table2Beta--rowEven",
   ROW_SELECTED: "Table2Beta--rowSelected",
   INDIVIDUAL_ACTIONS: "Table2Beta--individualActions",
+  ACTION_ICON: "Table2Beta--actionIcon",
+  ACTION_TITLE: "Table2Beta--actionTitle",
+  ACTION_MENU: "Table2Beta--selectedRowsHeader--actionMenu",
+  ACTION_MENU_TRIGGER: "Table2Beta--selectedRowsHeader--actionMenu--trigger",
+  ACTION_MENU_ITEM: "Table2Beta--selectedRowsHeader--actionMenu--item",
+  ACTION_MENU_ITEM_TITLE: "Table2Beta--selectedRowsHeader--actionMenu--item--title",
   TABLE: "Table2Beta",
 };
 
@@ -410,30 +417,57 @@ export class Table2Beta extends React.Component<Props, State> {
     if (singleActions.length === 1) {
       return (
         <Button
-          type="secondary"
-          value={singleActions[0].title.singular}
+          type="link"
+          value={
+            <>
+              {singleActions[0].icon && (
+                <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+              )}
+              <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
+            </>
+          }
           onClick={() => singleActions[0].callback(rowData)}
           size="small"
         />
       );
     } else if (singleActions.length >= 2) {
       return (
-        <DropdownButton
-          type="link"
-          label={<>
-          {singleActions[0].icon && <img src={singleActions[0].icon} />}
-          {singleActions[0].title.singular}
-          </>}
-          onClick={() => singleActions[0].callback(rowData)}
-          arrowType="ellipsis"
-          size="small"
-        >
-          {singleActions.slice(1).map(actionInput => (
-            <Option onClick={() => actionInput.callback(rowData)}>
-              {actionInput.title.singular}
-            </Option>
-          ))}
-        </DropdownButton>
+        <>
+          <Button
+            type="link"
+            value={
+              <>
+                {singleActions[0].icon && (
+                  <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+                )}
+                <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
+              </>
+            }
+            onClick={() => singleActions[0].callback(rowData)}
+            size="small"
+          />
+          <Menu
+            className={cssClass.ACTION_MENU}
+            trigger={
+              <div>
+                <FontAwesome name="ellipsis-v" className={cssClass.ACTION_MENU_TRIGGER} />
+              </div>
+            }
+            placement={Menu.Placement.RIGHT}
+          >
+            {singleActions.slice(1).map(action => (
+              <Menu.Item
+                className={cssClass.ACTION_MENU_ITEM}
+                onClick={e => action.callback(rowData)}
+              >
+                <div className={cssClass.ACTION_MENU_ITEM_TITLE}>
+                  {action.icon && <img className={cssClass.ACTION_ICON} src={action.icon} />}
+                  <div className={cssClass.ACTION_TITLE}>{action.title.singular}</div>
+                </div>
+              </Menu.Item>
+            ))}
+          </Menu>
+        </>
       );
     }
     return <></>;
