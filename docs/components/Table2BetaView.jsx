@@ -175,6 +175,7 @@ export default class Table2BetaView extends React.PureComponent {
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
                 selectable={enableSelectable}
+                singleActions={sampleActionInputs}
                 selectedRowsHeaderContentType={{
                   singular: this.state.tableFilter || "",
                   plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",

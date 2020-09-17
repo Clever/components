@@ -56,7 +56,7 @@ export interface Props {
   rowClassNameFn?: Function;
   noDataContent?: React.ReactNode;
   selectable?: boolean;
-  singleActions?: Array<any>;
+  singleActions?: Array<ActionInput>;
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
   selectedRowsHeaderActions?: Array<ActionInput>;
   numDisplayedActions?: number;
@@ -117,7 +117,7 @@ const defaultProps = {
   pageSize: DEFAULT_PAGE_SIZE,
   visiblePageRangeSize: DEFAULT_VISIBLE_PAGE_RANGE_SIZE,
   firstSortDirection: sortDirection.ASCENDING,
-  singleActions: ["hi", "bye"],
+  singleActions: [],
   selectedRowsHeaderActions: [],
   numDisplayedActions: 4,
 };
@@ -406,6 +406,37 @@ export class Table2Beta extends React.Component<Props, State> {
     return this._getLazyData();
   }
 
+  _singleActionsRender(rowData) {
+    const { singleActions } = this.props;
+    if (singleActions.length === 1) {
+      return (
+        <Button
+          type="secondary"
+          value={singleActions[0].title.singular}
+          onClick={() => singleActions[0].callback(rowData)}
+          size="small"
+        />
+      );
+    } else if (singleActions.length >= 2) {
+      return (
+        <DropdownButton
+          type="link"
+          label={singleActions[0].title.singular}
+          onClick={() => singleActions[0].callback(rowData)}
+          arrowType="ellipsis"
+          size="small"
+        >
+          {singleActions.slice(1).map(actionInput => (
+            <Option onClick={() => actionInput.callback(rowData)}>
+              {actionInput.title.singular}
+            </Option>
+          ))}
+        </DropdownButton>
+      );
+    }
+    return <></>;
+  }
+
   render() {
     const {
       children,
@@ -440,30 +471,13 @@ export class Table2Beta extends React.Component<Props, State> {
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
     let numColumns = columns.length;
+    // Additional column for selectable checkboxes
     if (selectable) {
-      // One column for the checkbox, and another for individual actions
       numColumns += 1;
     }
+    // Additional column for individual actions
     if (singleActions.length > 0) {
       numColumns += 1;
-    }
-
-    let singleActionsRender;
-    if (singleActions.length === 1) {
-      singleActionsRender = (
-        <Button type="secondary" value="Title" onClick={() => console.log("Hi")} />
-      );
-    } else if (singleActions.length >= 2) {
-      singleActionsRender = (
-        <DropdownButton
-          type="link"
-          label="Title1"
-          onClick={() => console.log("Hi")}
-          arrowType="ellipsis"
-        >
-          <Option onClick={() => console.log("Hoi")}>Title2</Option>
-        </DropdownButton>
-      );
     }
 
     return (
@@ -508,6 +522,7 @@ export class Table2Beta extends React.Component<Props, State> {
               >
                 {columns}
               </Header>
+              {singleActions.length > 0 && <HeaderCell />}
             </tr>
           </thead>
           <tbody className={cssClass.BODY}>
@@ -520,11 +535,6 @@ export class Table2Beta extends React.Component<Props, State> {
                 ) : (
                   <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
                     {!pageLoading && "NO DATA"}
-                  </Cell>
-                )}
-                {selectable && (
-                  <Cell>
-                    <div className={cssClass.INDIVIDUAL_ACTIONS}>{singleActionsRender}</div>
                   </Cell>
                 )}
               </tr>
@@ -572,6 +582,13 @@ export class Table2Beta extends React.Component<Props, State> {
                       {col.cell.renderer(rowData)}
                     </Cell>
                   ))}
+                  {selectable && (
+                    <Cell noWrap>
+                      <div className={cssClass.INDIVIDUAL_ACTIONS}>
+                        {this._singleActionsRender(rowData)}
+                      </div>
+                    </Cell>
+                  )}
                 </tr>
               ))
             )}
