@@ -18,6 +18,52 @@ import {
 } from "src";
 
 import "./Table2BetaView.less";
+import FontAwesome from "react-fontawesome";
+
+const sampleActionInputs = [
+  {
+    callback: selectedRows => {
+      console.log(selectedRows);
+    },
+    title: { singular: "Launch an app" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Log out student", plural: "Log out students" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 1"),
+    title: { singular: "Download badge", plural: "Download badges" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 1"),
+    title: {
+      singular: (
+        <div>
+          <FontAwesome name="question-circle" /> Do action with FontAwesome
+        </div>
+      ),
+      plural: (
+        <div>
+          <FontAwesome name="question-circle" /> Do actions with FontAwesome
+        </div>
+      ),
+    },
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Download username", plural: "Download usernames" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+  {
+    callback: () => console.log("sampleAction 2"),
+    title: { singular: "Download username", plural: "Download usernames" },
+    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+  },
+];
 
 const sampleActionInputs = [
   {
@@ -449,7 +495,7 @@ export default class Table2BetaView extends React.PureComponent {
               name: "selectedRowsHeaderActions",
               type: "Array<ActionInput>",
               description:
-                "An array of ActionInputs. These are the actions shown in SelectedRowsHeader. Each ActionInput contains a callback which takes props `(selectedRows: Set<any>)`, a title object `{ singular: string; plural?: string }`, and an icon url",
+                "An array of ActionInputs. These are the actions shown in SelectedRowsHeader. Each ActionInput contains a callback which takes props `(selectedRows: Set<any>)`, a title object `{ singular: React.ReactNode; plural?: React.ReactNode }`, and an optional icon url. Title.singular and plural can be a string, or a React element if you want to include FontAwesome, etc",
               optional: true,
               defaultValue: "None",
             },

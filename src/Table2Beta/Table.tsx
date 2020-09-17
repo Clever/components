@@ -35,6 +35,12 @@ declare var process: {
   };
 };
 
+export interface ActionInput {
+  callback(selectedRows: Set<any>): void;
+  title: { singular: React.ReactNode; plural?: React.ReactNode };
+  icon?: string;
+}
+
 export interface Props {
   children?: ChildrenOf<typeof Column>;
   className?: string;
@@ -136,13 +142,6 @@ export const cssClass = {
   INDIVIDUAL_ACTIONS: "Table2Beta--individualActions",
   TABLE: "Table2Beta",
 };
-
-export interface ActionInput {
-  callback(selectedRows: Set<any>): void;
-  title: { singular: string; plural?: string };
-  // should icon be required?
-  icon?: string;
-}
 
 export class Table2Beta extends React.Component<Props, State> {
   static propTypes = propTypes;
