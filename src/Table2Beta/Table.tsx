@@ -420,7 +420,10 @@ export class Table2Beta extends React.Component<Props, State> {
       return (
         <DropdownButton
           type="link"
-          label={singleActions[0].title.singular}
+          label={<>
+          {singleActions[0].icon && <img src={singleActions[0].icon} />}
+          {singleActions[0].title.singular}
+          </>}
           onClick={() => singleActions[0].callback(rowData)}
           arrowType="ellipsis"
           size="small"

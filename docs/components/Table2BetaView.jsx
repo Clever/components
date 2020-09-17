@@ -65,40 +65,6 @@ const sampleActionInputs = [
   },
 ];
 
-const sampleActionInputs = [
-  {
-    callback: selectedRows => {
-      console.log(selectedRows);
-    },
-    title: { singular: "Launch an app" },
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-  },
-  {
-    callback: () => console.log("sampleAction 2"),
-    title: { singular: "Log out student", plural: "Log out students" },
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-  },
-  {
-    callback: () => console.log("sampleAction 1"),
-    title: { singular: "Download badge", plural: "Download badges" },
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-  },
-  {
-    callback: () => console.log("sampleAction 2"),
-    title: { singular: "Download username", plural: "Download usernames" },
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-  },
-  {
-    callback: () => console.log("sampleAction 1"),
-    title: { singular: "Download badge", plural: "Download badges" },
-  },
-  {
-    callback: () => console.log("sampleAction 2"),
-    title: { singular: "Download username", plural: "Download usernames" },
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
-  },
-];
-
 export default class Table2BetaView extends React.PureComponent {
   constructor(props) {
     super(props);
