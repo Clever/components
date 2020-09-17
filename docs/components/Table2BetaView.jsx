@@ -60,7 +60,10 @@ const sampleActionInputs = [
   },
   {
     callback: () => console.log("sampleAction 2"),
-    title: { singular: "Download username", plural: "Download usernames" },
+    title: {
+      singular: "Download something that is not a username",
+      plural: "Download something that is not usernames",
+    },
     icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
   },
 ];
@@ -187,6 +190,7 @@ export default class Table2BetaView extends React.PureComponent {
                 rowIDFn={r => r.id}
                 rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
                 selectable={enableSelectable}
+                singleActions={sampleActionInputs}
                 selectedRowsHeaderContentType={{
                   singular: this.state.tableFilter || "",
                   plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",

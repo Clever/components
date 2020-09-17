@@ -2,6 +2,7 @@ import * as classnames from "classnames";
 import * as _ from "lodash";
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as FontAwesome from "react-fontawesome";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
@@ -16,6 +17,8 @@ import "./Table.less";
 import Checkbox from "../Checkbox";
 import HeaderCell from "./HeaderCell";
 import SelectedRowsHeader from "./SelectedRowsHeader";
+import Menu from "../Menu";
+import { Button } from "../Button/Button";
 
 export type SortDirection = "asc" | "desc";
 
@@ -60,6 +63,7 @@ export interface Props {
   rowClassNameFn?: Function;
   noDataContent?: React.ReactNode;
   selectable?: boolean;
+  singleActions?: Array<ActionInput>;
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
   selectedRowsHeaderActions?: Array<ActionInput>;
   numDisplayedActions?: number;
@@ -106,6 +110,7 @@ const propTypes = {
   rowClassNameFn: PropTypes.func,
   noDataContent: PropTypes.node,
   selectable: PropTypes.bool,
+  singleActions: PropTypes.array,
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -119,6 +124,7 @@ const defaultProps = {
   pageSize: DEFAULT_PAGE_SIZE,
   visiblePageRangeSize: DEFAULT_VISIBLE_PAGE_RANGE_SIZE,
   firstSortDirection: sortDirection.ASCENDING,
+  singleActions: [],
   selectedRowsHeaderActions: [],
   numDisplayedActions: 4,
 };
@@ -134,6 +140,13 @@ export const cssClass = {
   ROW_ODD: "Table2Beta--rowOdd",
   ROW_EVEN: "Table2Beta--rowEven",
   ROW_SELECTED: "Table2Beta--rowSelected",
+  INDIVIDUAL_ACTIONS: "Table2Beta--individualActions",
+  ACTION_ICON: "Table2Beta--actions--icon",
+  ACTION_TITLE: "Table2Beta--actions--title",
+  ACTION_MENU: "Table2Beta--actions--menu",
+  ACTION_MENU_TRIGGER: "Table2Beta--actions--menu--trigger",
+  ACTION_MENU_ITEM: "Table2Beta--actions--menu--item",
+  ACTION_MENU_ITEM_TITLE: "Table2Beta--actions--menu--item--title",
   TABLE: "Table2Beta",
 };
 
@@ -399,6 +412,67 @@ export class Table2Beta extends React.Component<Props, State> {
     return this._getLazyData();
   }
 
+  _singleActionsRender(rowData) {
+    const { singleActions } = this.props;
+    if (singleActions.length === 1) {
+      return (
+        <Button
+          type="link"
+          value={
+            <>
+              {singleActions[0].icon && (
+                <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+              )}
+              <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
+            </>
+          }
+          onClick={() => singleActions[0].callback(rowData)}
+          size="small"
+        />
+      );
+    } else if (singleActions.length >= 2) {
+      return (
+        <>
+          <Button
+            type="link"
+            value={
+              <>
+                {singleActions[0].icon && (
+                  <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+                )}
+                <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
+              </>
+            }
+            onClick={() => singleActions[0].callback(rowData)}
+            size="small"
+          />
+          <Menu
+            className={cssClass.ACTION_MENU}
+            trigger={
+              <div>
+                <FontAwesome name="ellipsis-v" className={cssClass.ACTION_MENU_TRIGGER} />
+              </div>
+            }
+            placement={Menu.Placement.RIGHT}
+          >
+            {singleActions.slice(1).map(action => (
+              <Menu.Item
+                className={cssClass.ACTION_MENU_ITEM}
+                onClick={e => action.callback(rowData)}
+              >
+                <div className={cssClass.ACTION_MENU_ITEM_TITLE}>
+                  {action.icon && <img className={cssClass.ACTION_ICON} src={action.icon} />}
+                  <div className={cssClass.ACTION_TITLE}>{action.title.singular}</div>
+                </div>
+              </Menu.Item>
+            ))}
+          </Menu>
+        </>
+      );
+    }
+    return <></>;
+  }
+
   render() {
     const {
       children,
@@ -412,6 +486,7 @@ export class Table2Beta extends React.Component<Props, State> {
       noDataContent,
       numDisplayedActions,
       selectable,
+      singleActions,
       visiblePageRangeSize,
       selectedRowsHeaderContentType,
       selectedRowsHeaderActions,
@@ -432,8 +507,13 @@ export class Table2Beta extends React.Component<Props, State> {
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
     let numColumns = columns.length;
+    // Additional column for selectable checkboxes
     if (selectable) {
-      numColumns++;
+      numColumns += 1;
+    }
+    // Additional column for individual actions
+    if (singleActions.length > 0) {
+      numColumns += 1;
     }
 
     return (
@@ -478,6 +558,7 @@ export class Table2Beta extends React.Component<Props, State> {
               >
                 {columns}
               </Header>
+              {singleActions.length > 0 && <HeaderCell />}
             </tr>
           </thead>
           <tbody className={cssClass.BODY}>
@@ -537,6 +618,13 @@ export class Table2Beta extends React.Component<Props, State> {
                       {col.cell.renderer(rowData)}
                     </Cell>
                   ))}
+                  {selectable && (
+                    <Cell noWrap>
+                      <div className={cssClass.INDIVIDUAL_ACTIONS}>
+                        {this._singleActionsRender(rowData)}
+                      </div>
+                    </Cell>
+                  )}
                 </tr>
               ))
             )}

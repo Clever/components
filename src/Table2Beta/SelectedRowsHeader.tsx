@@ -19,12 +19,12 @@ const cssClasses = {
   ROW: "Table2Beta--selectedRowsHeader",
   ACTIONS_FLEXBOX: "Table2Beta--selectedRowsHeader--actionsFlexbox",
   ACTION: "Table2Beta--selectedRowsHeader--action",
-  ACTION_ICON: "Table2Beta--selectedRowsHeader--actionIcon",
-  ACTION_TITLE: "Table2Beta--selectedRowsHeader--actionTitle",
-  ACTION_MENU: "Table2Beta--selectedRowsHeader--actionMenu",
-  ACTION_MENU_TRIGGER: "Table2Beta--selectedRowsHeader--actionMenu--trigger",
-  ACTION_MENU_ITEM: "Table2Beta--selectedRowsHeader--actionMenu--item",
-  ACTION_MENU_ITEM_TITLE: "Table2Beta--selectedRowsHeader--actionMenu--item--title",
+  ACTION_ICON: "Table2Beta--actions--icon",
+  ACTION_TITLE: "Table2Beta--actions--title",
+  ACTION_MENU: "Table2Beta--actions--menu",
+  ACTION_MENU_TRIGGER: "Table2Beta--actions--menu--trigger",
+  ACTION_MENU_ITEM: "Table2Beta--actions--menu--item",
+  ACTION_MENU_ITEM_TITLE: "Table2Beta--actions--menu--item--title",
 };
 
 export default function SelectedRowsHeader({
