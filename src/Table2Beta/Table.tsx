@@ -79,6 +79,7 @@ interface State {
   sortState: SortState;
   selectedRows: Set<any>;
   allSelected: boolean;
+  allData: Set<any>;
 
   // lazy table state
   lazyPages: any[];
@@ -185,6 +186,7 @@ export class Table2Beta extends React.Component<Props, State> {
       sortState: props.initialSortState,
       selectedRows: new Set(),
       allSelected: false,
+      allData: new Set(),
 
       // lazy table state
       lazyPages: [],
@@ -379,7 +381,7 @@ export class Table2Beta extends React.Component<Props, State> {
 
     const numPages = pages.length;
     const idx = Math.min(currentPage, numPages) - 1;
-    return { displayedData: pages[idx], numPages };
+    return { displayedData: pages[idx], numPages, allRows: displayedData };
   }
 
   _getLazyData() {
@@ -405,7 +407,7 @@ export class Table2Beta extends React.Component<Props, State> {
     return { displayedData: [], numPages };
   }
 
-  _getDisplayedData() {
+  _getDisplayedData(): { displayedData: any; numPages: any; allRows?: any } {
     if (!this.props.lazy) {
       return this._getSynchronousData();
     }
@@ -502,7 +504,7 @@ export class Table2Beta extends React.Component<Props, State> {
       );
     }
 
-    const { displayedData, numPages } = this._getDisplayedData();
+    const { displayedData, numPages, allRows } = this._getDisplayedData();
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
@@ -534,10 +536,10 @@ export class Table2Beta extends React.Component<Props, State> {
                 <HeaderCell>
                   <Checkbox
                     checked={selectedRows.size > 0}
-                    partial={selectedRows.size < displayedData.length}
+                    partial={selectedRows.size < (allRows || displayedData).length}
                     onChange={newState => {
                       if (newState.checked) {
-                        selectedRows = new Set(displayedData);
+                        selectedRows = new Set(allRows || displayedData);
                         this.setState({ allSelected: true });
                       } else {
                         selectedRows.clear();
@@ -599,8 +601,12 @@ export class Table2Beta extends React.Component<Props, State> {
                         onChange={newState => {
                           if (newState.checked) {
                             selectedRows.add(rowData);
+                            if (selectedRows.size === (allRows || displayedData).length) {
+                              this.setState({ allSelected: true });
+                            }
                           } else {
                             selectedRows.delete(rowData);
+                            this.setState({ allSelected: false });
                           }
                           this.setState({ selectedRows });
                         }}
