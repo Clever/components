@@ -416,9 +416,7 @@ export default class Table2BetaView extends React.PureComponent {
               name: "lazy",
               type: "boolean",
               description:
-                'Puts the table in "lazy" mode - data is fetched ' +
-                'from the getData function rather than needing the whole "data" ' +
-                "array up front.",
+                'Puts the table in "lazy" mode - data is fetched from the getData function rather than needing the whole "data" array up front. NOTE: with lazy data loading, "Select All" checkbox only selects the current page.',
               defaultValue: "false",
               optional: true,
             },
@@ -426,8 +424,7 @@ export default class Table2BetaView extends React.PureComponent {
               name: "getData",
               type: "({startingAfter?: string, pageSize: number}) => Object[]",
               description:
-                "If `lazy`, this function is called to retrieve new " +
-                "data. Cannot be provided if not `lazy`.",
+                "If `lazy`, this function is called to retrieve new data. Cannot be provided if not `lazy`.",
             },
             {
               name: "numRows",
@@ -449,7 +446,8 @@ export default class Table2BetaView extends React.PureComponent {
             {
               name: "selectable",
               type: "boolean",
-              description: "Adds selectable checkboxes to the table",
+              description:
+                "Adds selectable checkboxes to the table. NOTE: with lazy data loading, 'Select All' checkbox only selects the current page. With data passed in in the 'data' prop, 'Select All' selects all rows.",
               optional: true,
             },
             {
