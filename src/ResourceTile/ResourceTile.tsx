@@ -110,7 +110,9 @@ export class ResourceTile extends React.PureComponent<Props, State> {
       <img
         className={classnames(CssClasses.ICON, IconOrientationCssClasses[iconOrientation])}
         src={icon.src}
-        alt={`${title} icon`}
+        // ResourceTile icons are decorative images (redundant to the displayed text) and therefore should use an empty alt tag
+        alt=""
+        role="presentation"
         title={title}
         ref={this.iconRef}
         onLoad={() => this.determineIconOrientation()}
