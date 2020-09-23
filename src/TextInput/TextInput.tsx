@@ -13,6 +13,7 @@ import "../less/forms.less";
 export interface Props {
   disabled?: boolean;
   disableAutocomplete?: boolean;
+  autoComplete?: string;
   enableShow?: boolean;
   error?: string;
   label?: string;
@@ -43,6 +44,7 @@ const propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   disableAutocomplete: PropTypes.bool,
+  autoComplete: PropTypes.string,
   enableShow: PropTypes.bool,
   error: PropTypes.string,
   label: PropTypes.string,
@@ -190,6 +192,13 @@ export class TextInput extends React.Component<Props, State> {
       type = this.props.type || "text";
     }
 
+    let autoComplete;
+    if (this.props.disableAutocomplete) {
+      autoComplete = "off";
+    } else if (this.props.autoComplete) {
+      autoComplete = this.props.autoComplete;
+    }
+
     const additionalProps = _.omit(this.props, Object.keys(
       propTypes,
     ) as (keyof typeof propTypes)[]);
@@ -210,7 +219,7 @@ export class TextInput extends React.Component<Props, State> {
         </div>
         <input
           {...additionalProps}
-          autoComplete={this.props.disableAutocomplete && "off"}
+          autoComplete={autoComplete}
           className="TextInput--input"
           disabled={this.props.disabled}
           name={this.props.name}
