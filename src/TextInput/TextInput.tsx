@@ -203,6 +203,12 @@ export class TextInput extends React.Component<Props, State> {
       propTypes,
     ) as (keyof typeof propTypes)[]);
 
+    // (a11y) The 'for' attribute of the label tag and the 'id' attribute
+    // of the input tag should match so screen readers can determine which
+    // label goes with which form element. If an 'id' isn't specified, we
+    // use 'name' instead for this purpose.
+    const id = additionalProps.id || this.props.name;
+
     return (
       <div
         className={classnames(
@@ -212,13 +218,14 @@ export class TextInput extends React.Component<Props, State> {
         )}
       >
         <div className="TextInput--infoRow">
-          <label className="TextInput--label" htmlFor={this.props.name}>
+          <label className="TextInput--label" htmlFor={id}>
             {this.props.label}
           </label>
           <span aria-live="polite">{inputNote}</span>
         </div>
         <input
           {...additionalProps}
+          id={id}
           autoComplete={autoComplete}
           className="TextInput--input"
           disabled={this.props.disabled}
