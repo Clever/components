@@ -153,6 +153,13 @@ export default class TextInputView extends Component {
               optional: true,
             },
             {
+              name: "autoComplete",
+              type: "String",
+              description:
+                "Hint for user agents (browsers and assistive technologies) when providing automated assistance in filling out form field values. The disableAutocomplete field will take precedence over this field",
+              optional: true,
+            },
+            {
               name: "enableShow",
               type: "Bool",
               description: "Displays a show/hide text link that reveals passwords",
