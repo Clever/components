@@ -205,7 +205,8 @@ export class TextInput extends React.Component<Props, State> {
 
     // (a11y) The 'for' attribute of the label tag and the 'id' attribute
     // of the input tag should match so screen readers can determine which
-    // label goes with which form element
+    // label goes with which form element. If an 'id' isn't specified, we
+    // use 'name' instead for this purpose.
     const id = additionalProps.id || this.props.name;
 
     return (
