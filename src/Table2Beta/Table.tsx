@@ -461,6 +461,7 @@ export class Table2Beta extends React.Component<Props, State> {
               <Menu.Item
                 className={cssClass.ACTION_MENU_ITEM}
                 onClick={e => action.callback(rowData)}
+                key="action.title.singular"
               >
                 <div className={cssClass.ACTION_MENU_ITEM_TITLE}>
                   {action.icon && <img className={cssClass.ACTION_ICON} src={action.icon} />}
