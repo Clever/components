@@ -219,6 +219,7 @@ export class TextInput extends React.Component<Props, State> {
         </div>
         <input
           {...additionalProps}
+          id={this.props.name}
           autoComplete={autoComplete}
           className="TextInput--input"
           disabled={this.props.disabled}
