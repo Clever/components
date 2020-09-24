@@ -1,5 +1,3 @@
-/* eslint func-names: "off" */
-
 import * as assert from "assert";
 import * as React from "react";
 import * as sinon from "sinon";
@@ -64,5 +62,15 @@ describe("Button", () => {
     const button = shallow(<Button value="A clickable button" onClick={onClickSpy} />);
     button.simulate("click");
     assert(onClickSpy.calledOnce);
+  });
+
+  it("renders a <Button> element with the provided children as its innner content", () => {
+    const button = shallow(<Button>foo</Button>);
+    assert.equal(button.text(), "foo");
+  });
+
+  it("renders a <Button> element and ignores 'value' when both 'children' and 'value' are passed in", () => {
+    const button = shallow(<Button value="bar">foo</Button>);
+    assert.equal(button.text(), "foo");
   });
 });
