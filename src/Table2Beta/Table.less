@@ -37,14 +37,14 @@
   background-color: @neutral_white;
 }
 
+// If we want a zebra pattern, we can change background-color. 
+// Disabling the zebra pattern due to accessibility concerns
 .Table2Beta--rowOdd {
-  background-color: @neutral_off_white;
+  background-color: @neutral_white;
 }
 
 .Table2Beta--rowSelected {
-  // We hope to add f3f5fd as a Dewey color one day
-  // TODO: Change this in the future when this is a Dewey color
-  background-color: #f3f5fd;
+  background-color: @neutral_off_white;
 }
 
 .Table2Beta--individualActions {
@@ -55,7 +55,7 @@
 &.Table2Beta--clickable_row:hover {
   // For whatever reason, the original Table's color style is used in Table2Beta as well.
   // Remove this background-color styling when Table2Beta replaces Table
-  background-color: #f3f5fd;
+  background-color: @neutral_off_white;
   cursor: pointer;
 
   .Table2Beta--individualActions {
