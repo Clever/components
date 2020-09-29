@@ -77,7 +77,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           <>
             <img
               className={cssClass("SendIcon")}
-              alt="messaging settings"
+              alt="Send message"
               src={require("./arrow_send.svg")}
             />
             <span className={cssClass("SendText")}>Send</span>
