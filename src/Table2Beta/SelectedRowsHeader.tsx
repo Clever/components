@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as FontAwesome from "react-fontawesome";
 
 import "./SelectedRowsHeader.less";
 import { FlexBox } from "../";
@@ -17,6 +16,7 @@ interface Props {
 
 const cssClasses = {
   ROW: "Table2Beta--selectedRowsHeader",
+  SINGLE_ACTION_TRIGGER: "Table2Beta--singleActionTrigger",
   ACTIONS_FLEXBOX: "Table2Beta--selectedRowsHeader--actionsFlexbox",
   ACTION: "Table2Beta--selectedRowsHeader--action",
   ACTION_ICON: "Table2Beta--actions--icon",
@@ -82,9 +82,10 @@ export default function SelectedRowsHeader({
               <Menu
                 className={cssClasses.ACTION_MENU}
                 trigger={
-                  <div>
-                    <FontAwesome name="ellipsis-v" className={cssClasses.ACTION_MENU_TRIGGER} />
-                  </div>
+                  <img
+                    className={cssClasses.SINGLE_ACTION_TRIGGER}
+                    src={require("./ellipsis.svg")}
+                  />
                 }
                 placement={Menu.Placement.RIGHT}
               >

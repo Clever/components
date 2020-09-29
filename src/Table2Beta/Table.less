@@ -5,8 +5,17 @@
   color: @neutral_black;
   font-family: "Proxima Nova";
   font-size: 0.875rem;
-  width: 100%;
+}
+
+.Table2Beta--container {
+  overflow-x: auto;
   max-width: 64.5rem;
+}
+
+@media screen and (max-width: @breakpointM) {
+  .Table2Beta--container {
+    width: 64.5rem;
+  }
 }
 
 .Table2Beta--header {
@@ -37,17 +46,17 @@
   background-color: @neutral_white;
 }
 
+// If we want a zebra pattern, we can change background-color.
+// Disabling the zebra pattern due to accessibility concerns
 .Table2Beta--rowOdd {
-  background-color: @neutral_off_white;
+  background-color: @neutral_white;
 }
 
 .Table2Beta--rowSelected {
-  // We hope to add f3f5fd as a Dewey color one day
-  // TODO: Change this in the future when this is a Dewey color
-  background-color: #f3f5fd;
+  background-color: @neutral_off_white;
 }
 
-.Table2Beta--individualActions {
+.Table2Beta--singleActions {
   visibility: hidden;
   align-items: center;
 }
@@ -55,12 +64,20 @@
 &.Table2Beta--clickable_row:hover {
   // For whatever reason, the original Table's color style is used in Table2Beta as well.
   // Remove this background-color styling when Table2Beta replaces Table
-  background-color: #f3f5fd;
+  background-color: @neutral_off_white;
   cursor: pointer;
 
-  .Table2Beta--individualActions {
+  .Table2Beta--singleActions {
     visibility: visible;
   }
+}
+
+.Table2Beta--singleActionTrigger {
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0;
+  vertical-align: middle;
 }
 
 .Table2Beta--actions--icon {
