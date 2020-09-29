@@ -5,8 +5,17 @@
   color: @neutral_black;
   font-family: "Proxima Nova";
   font-size: 0.875rem;
-  width: 100%;
+}
+
+.Table2Beta--container {
+  overflow-x: auto;
   max-width: 64.5rem;
+}
+
+@media screen and (max-width: @breakpointM) {
+  .Table2Beta--container {
+    width: 64.5rem;
+  }
 }
 
 .Table2Beta--header {
@@ -37,7 +46,7 @@
   background-color: @neutral_white;
 }
 
-// If we want a zebra pattern, we can change background-color. 
+// If we want a zebra pattern, we can change background-color.
 // Disabling the zebra pattern due to accessibility concerns
 .Table2Beta--rowOdd {
   background-color: @neutral_white;
