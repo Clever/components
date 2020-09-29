@@ -2,7 +2,6 @@ import * as classnames from "classnames";
 import * as _ from "lodash";
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as FontAwesome from "react-fontawesome";
 
 import * as tablePropTypes from "./tablePropTypes";
 import Cell from "./Cell";
@@ -141,7 +140,8 @@ export const cssClass = {
   ROW_ODD: "Table2Beta--rowOdd",
   ROW_EVEN: "Table2Beta--rowEven",
   ROW_SELECTED: "Table2Beta--rowSelected",
-  INDIVIDUAL_ACTIONS: "Table2Beta--individualActions",
+  SINGLE_ACTIONS: "Table2Beta--singleActions",
+  SINGLE_ACTION_TRIGGER: "Table2Beta--singleActionTrigger",
   ACTION_ICON: "Table2Beta--actions--icon",
   ACTION_TITLE: "Table2Beta--actions--title",
   ACTION_MENU: "Table2Beta--actions--menu",
@@ -451,9 +451,7 @@ export class Table2Beta extends React.Component<Props, State> {
           <Menu
             className={cssClass.ACTION_MENU}
             trigger={
-              <div>
-                <FontAwesome name="ellipsis-v" className={cssClass.ACTION_MENU_TRIGGER} />
-              </div>
+              <img className={cssClass.SINGLE_ACTION_TRIGGER} src={require("./ellipsis.svg")} />  
             }
             placement={Menu.Placement.RIGHT}
           >
@@ -514,7 +512,7 @@ export class Table2Beta extends React.Component<Props, State> {
     if (selectable) {
       numColumns += 1;
     }
-    // Additional column for individual actions
+    // Additional column for single actions
     if (singleActions.length > 0) {
       numColumns += 1;
     }
@@ -627,7 +625,7 @@ export class Table2Beta extends React.Component<Props, State> {
                   ))}
                   {selectable && (
                     <Cell noWrap>
-                      <div className={cssClass.INDIVIDUAL_ACTIONS}>
+                      <div className={cssClass.SINGLE_ACTIONS}>
                         {this._singleActionsRender(rowData)}
                       </div>
                     </Cell>

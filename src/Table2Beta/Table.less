@@ -47,7 +47,7 @@
   background-color: @neutral_off_white;
 }
 
-.Table2Beta--individualActions {
+.Table2Beta--singleActions {
   visibility: hidden;
   align-items: center;
 }
@@ -58,9 +58,17 @@
   background-color: @neutral_off_white;
   cursor: pointer;
 
-  .Table2Beta--individualActions {
+  .Table2Beta--singleActions {
     visibility: visible;
   }
+}
+
+.Table2Beta--singleActionTrigger {
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0;
+  vertical-align: middle;
 }
 
 .Table2Beta--actions--icon {
