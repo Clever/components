@@ -20,6 +20,10 @@ interface Props {
   //  the consumer would have to handle the trim themselves.
   onSubmit: (message: string) => void;
   onBlur?: () => void;
+  /** Temporarily added to allow overriding the text with a translation. */
+  sendButtonText?: string;
+  /** Temporarily added to allow overriding the text with a translation. */
+  labelText?: string;
 }
 
 export interface MessagingInputHandle {
@@ -32,7 +36,16 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   props,
   ref,
 ) => {
-  const { className, newlineOnEnter, value, onChange, onSubmit, onBlur } = props;
+  const {
+    className,
+    newlineOnEnter,
+    value,
+    onChange,
+    onSubmit,
+    onBlur,
+    sendButtonText = "Send",
+    labelText = "Send a message",
+  } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
   React.useImperativeHandle(ref, () => ({
@@ -45,7 +58,9 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
 
   return (
     <>
-      <label htmlFor={TEXT_FIELD_NAME} className={cssClass("TextFieldLabel")}>Send a message</label>
+      <label htmlFor={TEXT_FIELD_NAME} className={cssClass("TextFieldLabel")}>
+        {labelText}
+      </label>
       <FlexBox className={cx(cssClass("Container"), className)} alignItems={ItemAlign.END}>
         <TextArea
           ref={textAreaRef}
@@ -83,7 +98,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                 alt="Send message"
                 src={require("./arrow_send.svg")}
               />
-              <span className={cssClass("SendText")}>Send</span>
+              <span className={cssClass("SendText")}>{sendButtonText}</span>
             </>
           }
           // Disable the Send if nothing but whitespace is in the input field.
