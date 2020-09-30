@@ -26,6 +26,8 @@ export interface MessagingInputHandle {
   focus(): void;
 }
 
+const TEXT_FIELD_NAME = "newMessage";
+
 const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInputHandle, Props> = (
   props,
   ref,
@@ -42,52 +44,54 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   }));
 
   return (
-    <FlexBox className={cx(cssClass("Container"), className)} alignItems={ItemAlign.END}>
-      <TextArea
-        ref={textAreaRef}
-        className={cssClass("TextField")}
-        name="newMessage"
-        placeholder="Message"
-        value={value}
-        onChange={e => {
-          onChange(e.target.value);
-        }}
-        onKeyDown={e => {
-          // Shift+Enter is a line-break.
-          // Enter alone is an attempt to Send, unless prop is
-          //  explicitly set to have enter be a newline.
-          if (e.key === KeyCode.ENTER && !e.shiftKey && !newlineOnEnter) {
-            e.preventDefault();
-            // If something other than whitespace is in the input area, Send the message.
-            if (value.trim() !== "") {
-              onSubmit(value.trim());
+    <>
+      <label htmlFor={TEXT_FIELD_NAME} className={cssClass("TextFieldLabel")}>Send a message</label>
+      <FlexBox className={cx(cssClass("Container"), className)} alignItems={ItemAlign.END}>
+        <TextArea
+          ref={textAreaRef}
+          className={cssClass("TextField")}
+          name={TEXT_FIELD_NAME}
+          value={value}
+          onChange={e => {
+            onChange(e.target.value);
+          }}
+          onKeyDown={e => {
+            // Shift+Enter is a line-break.
+            // Enter alone is an attempt to Send, unless prop is
+            //  explicitly set to have enter be a newline.
+            if (e.key === KeyCode.ENTER && !e.shiftKey && !newlineOnEnter) {
+              e.preventDefault();
+              // If something other than whitespace is in the input area, Send the message.
+              if (value.trim() !== "") {
+                onSubmit(value.trim());
+              }
             }
+          }}
+          onBlur={onBlur}
+          autoResize
+          // The field starts with `rows + 1` rows, so
+          //  passing in 0 gets us the desired starting height.
+          rows={0}
+        />
+        <Button
+          className={cssClass("SendButton")}
+          type="primary"
+          value={
+            <>
+              <img
+                className={cssClass("SendIcon")}
+                alt="Send message"
+                src={require("./arrow_send.svg")}
+              />
+              <span className={cssClass("SendText")}>Send</span>
+            </>
           }
-        }}
-        onBlur={onBlur}
-        autoResize
-        // The field starts with `rows + 1` rows, so
-        //  passing in 0 gets us the desired starting height.
-        rows={0}
-      />
-      <Button
-        className={cssClass("SendButton")}
-        type="primary"
-        value={
-          <>
-            <img
-              className={cssClass("SendIcon")}
-              alt="Send message"
-              src={require("./arrow_send.svg")}
-            />
-            <span className={cssClass("SendText")}>Send</span>
-          </>
-        }
-        // Disable the Send if nothing but whitespace is in the input field.
-        disabled={!value.trim()}
-        onClick={() => onSubmit(value.trim())}
-      />
-    </FlexBox>
+          // Disable the Send if nothing but whitespace is in the input field.
+          disabled={!value.trim()}
+          onClick={() => onSubmit(value.trim())}
+        />
+      </FlexBox>
+    </>
   );
 };
 
