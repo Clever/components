@@ -123,29 +123,20 @@ function Action({ actionInput, selectedRows }: ActionProps) {
   const { callback, title, icon } = actionInput;
   const singleRowSelected = selectedRows.size === 1;
   return (
-    <Button
-          type="link"
-          value={
-            <>
-              {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
-        <div className={cssClasses.ACTION_TITLE}>
-          {singleRowSelected || !title.plural ? title.singular : title.plural}
-        </div>
-            </>
-          }
-          onClick={e => callback(selectedRows)}
-          size="small"
-        />
-    // <>
-    //   <a
-    //     className={`${cssClasses.ACTION} flexbox items--center`}
-    //     onClick={e => callback(selectedRows)}
-    //   >
-    //     {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
-    //     <div className={cssClasses.ACTION_TITLE}>
-    //       {singleRowSelected || !title.plural ? title.singular : title.plural}
-    //     </div>
-    //   </a>
-    // </>
+    <div className={cssClasses.ACTION}>
+      <Button
+        type="link"
+        value={
+          <>
+            {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
+            <div className={cssClasses.ACTION_TITLE}>
+              {singleRowSelected || !title.plural ? title.singular : title.plural}
+            </div>
+          </>
+        }
+        onClick={e => callback(selectedRows)}
+        size="small"
+      />
+    </div>
   );
 }
