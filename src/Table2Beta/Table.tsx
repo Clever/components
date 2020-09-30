@@ -133,6 +133,7 @@ export const cssClass = {
   BODY: "Table2Beta--body",
   HEADER: "Table2Beta--header",
   CLICKABLE_ROW: "Table2Beta--clickable_row",
+  SELECTABLE: "Table2Beta--selectable_row",
   FIXED: "Table2Beta--fixed",
   NO_DATA: "Table2Beta--no_data_cell",
   NO_DATA_CONTENT: "Table2Beta--no_data_cell_with_content",
@@ -582,6 +583,7 @@ export class Table2Beta extends React.Component<Props, State> {
                     cssClass.ROW,
                     index % 2 ? cssClass.ROW_ODD : cssClass.ROW_EVEN,
                     onRowClick && cssClass.CLICKABLE_ROW,
+                    selectable && cssClass.SELECTABLE,
                     rowClassNameFn && rowClassNameFn(rowData),
                     selectedRows.has(rowData) && cssClass.ROW_SELECTED,
                   )}
