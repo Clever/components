@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import ComponentsView from "./components/ComponentsView";
+import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
 import MessagingAvatarView from "./components/MessagingAvatarView";
 import MessagingBubbleView from "./components/MessagingBubbleView";
 import MessagingInputView from "./components/MessagingInputView";
@@ -118,6 +119,7 @@ render(
         <Route path="dollar-amount(/*)" component={DollarAmountView} />
         <Route path="dropdown-button(/*)" component={DropdownButtonView} />
         <Route path="editable-info-panel(/*)" component={EditableInfoPanelView} />
+        <Route path="family-portal-logo(/*)" component={FamilyPortalLogoView} />
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />
         <Route path="floating-button(/*)" component={FloatingButtonView} />

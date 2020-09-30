@@ -1,0 +1,15 @@
+@import (reference) "../less/utilities";
+
+.dewey--FamilyPortalLogo {
+  .flexbox();
+  .items--start();
+}
+
+.dewey--FamilyPortalLogo--image {
+  .flexShrink(0);
+  height: 1em;
+  transition: all @timingPromptly ease-out;
+
+  // Required to maintain aspect ratio in IE10. These are measurements from the SVG view box.
+  width: 86em / 46;
+}
