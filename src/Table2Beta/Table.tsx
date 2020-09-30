@@ -130,7 +130,6 @@ const defaultProps = {
 };
 
 export const cssClass = {
-  CONTAINER: "Table2Beta--container",
   BODY: "Table2Beta--body",
   HEADER: "Table2Beta--header",
   CLICKABLE_ROW: "Table2Beta--clickable_row",
@@ -519,7 +518,7 @@ export class Table2Beta extends React.Component<Props, State> {
     }
 
     return (
-      <div className={cssClass.CONTAINER}>
+      <>
         {selectable && (
           <SelectedRowsHeader
             selectedRows={selectedRows}
@@ -648,7 +647,7 @@ export class Table2Beta extends React.Component<Props, State> {
             />
           )}
         </table>
-      </div>
+      </>
     );
   }
 }

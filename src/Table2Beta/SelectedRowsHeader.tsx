@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import "./SelectedRowsHeader.less";
-import { FlexBox } from "../";
+import { FlexBox, Button } from "../";
 import { FlexItem } from "../flex";
 import Menu from "../Menu";
 import { ActionInput } from "./Table";
@@ -123,16 +123,29 @@ function Action({ actionInput, selectedRows }: ActionProps) {
   const { callback, title, icon } = actionInput;
   const singleRowSelected = selectedRows.size === 1;
   return (
-    <>
-      <a
-        className={`${cssClasses.ACTION} flexbox items--center`}
-        onClick={e => callback(selectedRows)}
-      >
-        {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
+    <Button
+          type="link"
+          value={
+            <>
+              {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
         <div className={cssClasses.ACTION_TITLE}>
           {singleRowSelected || !title.plural ? title.singular : title.plural}
         </div>
-      </a>
-    </>
+            </>
+          }
+          onClick={e => callback(selectedRows)}
+          size="small"
+        />
+    // <>
+    //   <a
+    //     className={`${cssClasses.ACTION} flexbox items--center`}
+    //     onClick={e => callback(selectedRows)}
+    //   >
+    //     {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
+    //     <div className={cssClasses.ACTION_TITLE}>
+    //       {singleRowSelected || !title.plural ? title.singular : title.plural}
+    //     </div>
+    //   </a>
+    // </>
   );
 }
