@@ -15,6 +15,7 @@ export interface Props {
   id: any;
   onSelect?: (id: any) => void;
   selected?: boolean;
+  tabContentID?: string;
 }
 
 export const cssClass = {
@@ -32,6 +33,7 @@ export default function Tab({
   id,
   onSelect,
   selected,
+  tabContentID,
   ...additionalProps
 }: Props) {
   let Wrapper = component;
@@ -56,6 +58,9 @@ export default function Tab({
         }
         onSelect(id);
       }}
+      role="tab"
+      aria-selected={selected}
+      aria-controls={tabContentID}
       {...additionalProps}
     >
       {children}
