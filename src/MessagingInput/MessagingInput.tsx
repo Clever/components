@@ -57,11 +57,11 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   }));
 
   return (
-    <>
+    <FlexBox className={cx(cssClass("Container"), className)} column alignItems={ItemAlign.START}>
       <label htmlFor={TEXT_FIELD_NAME} className={cssClass("TextFieldLabel")}>
         {labelText}
       </label>
-      <FlexBox className={cx(cssClass("Container"), className)} alignItems={ItemAlign.END}>
+      <FlexBox className={cssClass("InnerContainer")}>
         <TextArea
           ref={textAreaRef}
           className={cssClass("TextField")}
@@ -106,7 +106,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           onClick={() => onSubmit(value.trim())}
         />
       </FlexBox>
-    </>
+    </FlexBox>
   );
 };
 
