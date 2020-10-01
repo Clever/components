@@ -43,12 +43,12 @@ const sampleActionInputs = [
     title: {
       singular: (
         <div>
-          <FontAwesome name="question-circle" /> Do action with FontAwesome
+          <FontAwesome name="question-circle" /> Using FontAwesome
         </div>
       ),
       plural: (
         <div>
-          <FontAwesome name="question-circle" /> Do actions with FontAwesome
+          <FontAwesome name="question-circle" /> Using FontAwesome
         </div>
       ),
     },
