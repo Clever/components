@@ -72,8 +72,11 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             <MessagingThreadListItem
               icon={<Icon name="smiley-face" />}
               title="Smiley Dude"
+              status={status}
               hasDraft={hasDraft}
+              isRead={isRead}
               selected={selected}
+              timestamp={new Date()}
             />
           </ExampleCode>
           {this._renderConfig()}

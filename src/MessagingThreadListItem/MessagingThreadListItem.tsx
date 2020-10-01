@@ -19,6 +19,7 @@ const cssClasses = {
   TIMESTAMP: "ThreadListItem--Timestamp",
   TIMESTAMP_SELECTED: "ThreadListItem--Timestamp--selected",
   INDICATOR_CONTAINER: "ThreadListItem--Indicator--Container",
+  INDICATOR_CONTAINER_INLINE: "ThreadListItem--Indicator--Container--Inline",
   DRAFT_INDICATOR: "ThreadListItem--DraftIndicator",
   UNREAD_ORB: "ThreadListItem--UnreadOrb",
   UNREAD_TEXT: "ThreadListItem--UnreadText",
@@ -67,8 +68,13 @@ export const MessagingThreadListItem: React.FC<
     subContentClass = cssClasses.OFF_TEXT;
   }
 
-  const indicator = (
-    <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
+  const hasIndicator = !isRead || (status === "active" && hasDraft);
+  const indicatorClass = subContent
+    ? cssClasses.INDICATOR_CONTAINER
+    : cssClasses.INDICATOR_CONTAINER_INLINE;
+
+  const indicator = hasIndicator && (
+    <FlexBox className={indicatorClass} justify={Justify.END}>
       {!isRead ? (
         <div className={cssClasses.UNREAD_ORB} />
       ) : (
