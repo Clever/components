@@ -7,17 +7,6 @@
   font-size: 0.875rem;
 }
 
-.Table2Beta--container {
-  overflow-x: auto;
-  max-width: 64.5rem;
-}
-
-@media screen and (max-width: @breakpointM) {
-  .Table2Beta--container {
-    width: 64.5rem;
-  }
-}
-
 .Table2Beta--header {
   height: @size_4xl;
 }
@@ -61,15 +50,19 @@
   align-items: center;
 }
 
+.Table2Beta--selectable_row:hover {
+  background-color: @neutral_off_white;
+
+  .Table2Beta--singleActions {
+    visibility: visible;
+  }
+}
+
 &.Table2Beta--clickable_row:hover {
   // For whatever reason, the original Table's color style is used in Table2Beta as well.
   // Remove this background-color styling when Table2Beta replaces Table
   background-color: @neutral_off_white;
   cursor: pointer;
-
-  .Table2Beta--singleActions {
-    visibility: visible;
-  }
 }
 
 .Table2Beta--singleActionTrigger {
