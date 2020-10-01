@@ -16,6 +16,7 @@ export interface Props {
   maxLength?: number;
   minLength?: number;
   name: string;
+  id?: string;
   onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
   onFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
@@ -207,10 +208,17 @@ export class TextArea extends React.Component<Props, State> {
     // note on the upper right corner
     const inputNote = this.renderNote(errorMessage);
 
+    // (a11y) The 'for' attribute of the label tag and the 'id' attribute
+    // of the textarea tag should match so screen readers can determine which
+    // label goes with which form element. If an 'id' isn't specified, we
+    // use 'name' instead for this purpose.
+    const id = this.props.id || this.props.name;
+
     const textAreaProps = {
       ["aria-invalid"]: !valid,
       className: "TextArea--input",
       disabled: this.props.disabled,
+      id,
       maxLength: this.props.maxLength,
       minLength: this.props.minLength,
       name: this.props.name,
@@ -251,9 +259,11 @@ export class TextArea extends React.Component<Props, State> {
         )}
       >
         <div className="TextArea--infoRow">
-          <label className="TextArea--label" htmlFor={this.props.name}>
-            {this.props.label}
-          </label>
+          {this.props.label && (
+            <label className="TextArea--label" htmlFor={id}>
+              {this.props.label}
+            </label>
+          )}
           <span aria-live="polite">{inputNote}</span>
         </div>
         {textarea}

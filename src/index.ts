@@ -127,3 +127,5 @@ export { MessagingThreadHistory, MessageData } from "./MessagingThreadHistory";
 export { MessagingThreadListItem } from "./MessagingThreadListItem";
 
 export { Table2Beta } from "./Table2Beta";
+
+export { FamilyPortalLogo } from "./FamilyPortalLogo";

@@ -1,0 +1,1 @@
+export { FamilyPortalLogo } from "./FamilyPortalLogo";

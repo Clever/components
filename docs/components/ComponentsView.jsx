@@ -110,6 +110,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "An EditableInfoPanel component",
   },
   {
+    componentLink: "family-portal-logo",
+    componentImg: "family-portal-logo.png",
+    componentName: "FamilyPortalLogo",
+    componentImgAlt: "A FamilyPortalLogo component",
+  },
+  {
     componentLink: "file-input",
     componentImg: "file-input.png",
     componentName: "FileInput",
