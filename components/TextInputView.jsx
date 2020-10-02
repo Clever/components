@@ -173,6 +173,12 @@ export default class TextInputView extends Component {
               optional: true,
             },
             {
+              name: "hideButtonText",
+              type: "String",
+              description: "(Temporary) allows overriding the Hide button text with translations",
+              optional: true,
+            },
+            {
               name: "label",
               type: "String",
               description: "Label for input",
@@ -230,6 +236,12 @@ export default class TextInputView extends Component {
               name: "required",
               type: "Bool",
               description: "Marks input as required and adds indicator",
+              optional: true,
+            },
+            {
+              name: "showButtonText",
+              type: "String",
+              description: "(Temporary) allows overriding the Show button text with translations",
               optional: true,
             },
             {
