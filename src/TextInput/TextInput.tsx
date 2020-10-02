@@ -11,9 +11,10 @@ import "./TextInput.less";
 import "../less/forms.less";
 
 export interface Props {
-  disabled?: boolean;
-  disableAutocomplete?: boolean;
   autoComplete?: string;
+  disabled?: boolean;
+  className?: string;
+  disableAutocomplete?: boolean;
   enableShow?: boolean;
   error?: string;
   label?: string;
@@ -30,7 +31,6 @@ export interface Props {
   size?: Values<typeof FormElementSize>;
   type?: string;
   value?: React.ReactNode;
-  className?: string;
   [additionalProp: string]: any;
 }
 
@@ -41,10 +41,10 @@ interface State {
 }
 
 const propTypes = {
+  autoComplete: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   disableAutocomplete: PropTypes.bool,
-  autoComplete: PropTypes.string,
   enableShow: PropTypes.bool,
   error: PropTypes.string,
   label: PropTypes.string,
