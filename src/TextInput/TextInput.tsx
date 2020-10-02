@@ -17,6 +17,8 @@ export interface Props {
   disableAutocomplete?: boolean;
   enableShow?: boolean;
   error?: string;
+  /** Temporary prop to allow overriding the text with a translation. */
+  hideButtonText?: string;
   label?: string;
   name: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -28,6 +30,8 @@ export interface Props {
   placeholderCaps?: boolean;
   readOnly?: boolean;
   required?: boolean;
+  /** Temporary prop to allow overriding the text with a translation. */
+  showButtonText?: string;
   size?: Values<typeof FormElementSize>;
   type?: string;
   value?: React.ReactNode;
@@ -47,6 +51,7 @@ const propTypes = {
   disableAutocomplete: PropTypes.bool,
   enableShow: PropTypes.bool,
   error: PropTypes.string,
+  hideButtonText: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
@@ -58,6 +63,7 @@ const propTypes = {
   placeholderCaps: PropTypes.bool,
   readOnly: PropTypes.bool,
   required: PropTypes.bool,
+  showButtonText: PropTypes.string,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
   type: PropTypes.string,
   value: PropTypes.node,
@@ -209,6 +215,9 @@ export class TextInput extends React.Component<Props, State> {
     // use 'name' instead for this purpose.
     const id = additionalProps.id || this.props.name;
 
+    const hideButtonText = this.props.hideButtonText || "Hide";
+    const showButtonText = this.props.showButtonText || "Show";
+
     return (
       <div
         className={classnames(
@@ -254,7 +263,7 @@ export class TextInput extends React.Component<Props, State> {
               event.stopPropagation();
             }}
           >
-            {this.state.hidden ? "Show" : "Hide"}
+            {this.state.hidden ? showButtonText : hideButtonText}
           </button>
         )}
       </div>
