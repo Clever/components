@@ -538,7 +538,7 @@ export class Table2Beta extends React.Component<Props, State> {
                     checked={selectedRows.size > 0}
                     partial={selectedRows.size < (allRows || displayedData).length}
                     onChange={newState => {
-                      if (newState.checked) {
+                      if (selectedRows.size === 0) {
                         selectedRows = new Set(allRows || displayedData);
                         this.setState({ allSelected: true });
                       } else {
@@ -547,7 +547,7 @@ export class Table2Beta extends React.Component<Props, State> {
                       }
                       this.setState({ selectedRows });
                     }}
-                    disabled={displayedData.length > 0}
+                    disabled={displayedData.length === 0}
                   >
                     {""}
                   </Checkbox>
