@@ -547,6 +547,7 @@ export class Table2Beta extends React.Component<Props, State> {
                       }
                       this.setState({ selectedRows });
                     }}
+                    disabled={displayedData.length > 0}
                   >
                     {""}
                   </Checkbox>
