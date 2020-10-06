@@ -130,20 +130,20 @@ function Action({ actionInput, selectedRows }: ActionProps) {
   const singleRowSelected = selectedRows.size === 1;
   return (
     // <div className={cssClasses.ACTION}>
-      <Button
+    <Button
       className={cssClasses.ACTION}
-        type="link"
-        value={
-          <>
-            {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
-            <div className={cssClasses.ACTION_TITLE}>
-              {singleRowSelected || !title.plural ? title.singular : title.plural}
-            </div>
-          </>
-        }
-        onClick={e => callback(selectedRows)}
-        size="small"
-      />
+      type="link"
+      value={
+        <>
+          {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
+          <div className={cssClasses.ACTION_TITLE}>
+            {singleRowSelected || !title.plural ? title.singular : title.plural}
+          </div>
+        </>
+      }
+      onClick={e => callback(selectedRows)}
+      size="small"
+    />
     // </div>
   );
 }

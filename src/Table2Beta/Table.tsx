@@ -63,6 +63,7 @@ export interface Props {
   noDataContent?: React.ReactNode;
   selectable?: boolean;
   singleActions?: Array<ActionInput>;
+  showSingleActionsOnHover?: boolean;
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
   selectedRowsHeaderActions?: Array<ActionInput>;
   numDisplayedActions?: number;
@@ -111,6 +112,7 @@ const propTypes = {
   noDataContent: PropTypes.node,
   selectable: PropTypes.bool,
   singleActions: PropTypes.array,
+  showSingleActionsOnHover: PropTypes.bool,
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -489,6 +491,7 @@ export class Table2Beta extends React.Component<Props, State> {
       numDisplayedActions,
       selectable,
       singleActions,
+      showSingleActionsOnHover,
       visiblePageRangeSize,
       selectedRowsHeaderContentType,
       selectedRowsHeaderActions,
@@ -561,7 +564,9 @@ export class Table2Beta extends React.Component<Props, State> {
               >
                 {columns}
               </Header>
-              {singleActions.length > 0 && <HeaderCell />}
+              {singleActions.length > 0 && (
+                <HeaderCell>{!showSingleActionsOnHover && "Actions"}</HeaderCell>
+              )}
             </tr>
           </thead>
           <tbody className={cssClass.BODY}>
@@ -628,7 +633,11 @@ export class Table2Beta extends React.Component<Props, State> {
                   ))}
                   {selectable && (
                     <Cell noWrap>
-                      <div className={cssClass.SINGLE_ACTIONS}>
+                      <div
+                        className={
+                          cssClass.SINGLE_ACTIONS + (showSingleActionsOnHover ? "--hidden" : "")
+                        }
+                      >
                         {this._singleActionsRender(rowData)}
                       </div>
                     </Cell>
