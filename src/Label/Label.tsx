@@ -68,8 +68,8 @@ export const cssClass = {
   CONTAINER: "Label",
   WITH_TOOLTIP: "Label--withTooltip",
 
-  color: c => `Label--${c}`,
-  size: s => `Label--${s}`,
+  color: (c) => `Label--${c}`,
+  size: (s) => `Label--${s}`,
 };
 
 export default class Label extends React.PureComponent<Props> {

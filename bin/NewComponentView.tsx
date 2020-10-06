@@ -71,7 +71,7 @@ export default class NewComponentView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ multiOption1: value })}
+            onSelect={(value) => this.setState({ multiOption1: value })}
             options={[
               { content: "Small", value: "small" },
               { content: "Medium", value: "medium" },
@@ -85,7 +85,7 @@ export default class NewComponentView extends React.PureComponent {
             type="checkbox"
             checked={optionToggle1}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ optionToggle1: e.target.checked })}
+            onChange={(e) => this.setState({ optionToggle1: e.target.checked })}
           />{" "}
           Option Toggle 1
         </label>
@@ -94,7 +94,7 @@ export default class NewComponentView extends React.PureComponent {
             type="checkbox"
             checked={optionToggle2}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ optionToggle2: e.target.checked })}
+            onChange={(e) => this.setState({ optionToggle2: e.target.checked })}
           />{" "}
           Option Toggle 2
         </label>

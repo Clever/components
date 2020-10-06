@@ -54,27 +54,27 @@ export default class SelectView extends Component {
                 searchable={this.state.searchable}
                 creatable={this.state.creatable}
                 lazy={this.state.lazy}
-                creatablePromptFn={label => `Add new option: ${label}`}
+                creatablePromptFn={(label) => `Add new option: ${label}`}
                 multi={this.state.multi}
                 closeMenuOnSelect={this.state.closeMenuOnSelect}
                 readOnly={this.state.readOnly}
                 required={this.state.required}
                 error={this.state.error}
                 name="select"
-                onChange={value => this.setState({ selectValue: value })}
+                onChange={(value) => this.setState({ selectValue: value })}
                 options={
                   !this.state.lazy &&
-                  _.range(100).map(i => ({ label: `Option ${i + 1}`, value: `${i + 1}` }))
+                  _.range(100).map((i) => ({ label: `Option ${i + 1}`, value: `${i + 1}` }))
                 }
                 loadOptions={
                   this.state.lazy
-                    ? async input => {
-                        await new Promise(resolve => setTimeout(resolve, 1000));
-                        const allOptions = _.range(100).map(i => ({
+                    ? async (input) => {
+                        await new Promise((resolve) => setTimeout(resolve, 1000));
+                        const allOptions = _.range(100).map((i) => ({
                           label: `Option ${i + 1}`,
                           value: `${i + 1}`,
                         }));
-                        const options = allOptions.filter(x =>
+                        const options = allOptions.filter((x) =>
                           x.label.toLowerCase().startsWith(input.toLowerCase()),
                         );
                         return { options };
@@ -173,7 +173,7 @@ export default class SelectView extends Component {
               className={cssClass.CONFIG}
               label="Error"
               name="InputError"
-              onChange={e => this.setState({ error: e.target.value })}
+              onChange={(e) => this.setState({ error: e.target.value })}
               value={this.state.error}
             />
           </div>
@@ -188,7 +188,7 @@ export default class SelectView extends Component {
                 { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={value => this.setState({ size: value })}
+              onSelect={(value) => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -369,7 +369,7 @@ export default class SelectView extends Component {
                 <p>
                   The size of the input. One of:
                   <br />
-                  {Object.keys(FormElementSize).map(size => (
+                  {Object.keys(FormElementSize).map((size) => (
                     <span key={size}>
                       <code>FormElementSize.{size}</code>
                       <br />

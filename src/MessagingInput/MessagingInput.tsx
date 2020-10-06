@@ -67,10 +67,10 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           className={cssClass("TextField")}
           name={TEXT_FIELD_NAME}
           value={value}
-          onChange={e => {
+          onChange={(e) => {
             onChange(e.target.value);
           }}
-          onKeyDown={e => {
+          onKeyDown={(e) => {
             // Shift+Enter is a line-break.
             // Enter alone is an attempt to Send, unless prop is
             //  explicitly set to have enter be a newline.

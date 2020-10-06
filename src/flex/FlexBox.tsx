@@ -30,9 +30,9 @@ export const cssClass = {
   FLEXBOX_INLINE: "flexbox--inline",
   WRAP: "flex--wrap",
 
-  alignContent: value => `content--${value}`,
-  alignItems: value => `items--${value}`,
-  justify: value => `justify--${value}`,
+  alignContent: (value) => `content--${value}`,
+  alignItems: (value) => `items--${value}`,
+  justify: (value) => `justify--${value}`,
 };
 
 export default function FlexBox({

@@ -79,7 +79,7 @@ export default class GoalsLogoView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ size: value })}
+            onSelect={(value) => this.setState({ size: value })}
             options={[
               { content: "Small", value: "small" },
               { content: "Medium", value: "medium" },

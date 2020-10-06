@@ -65,7 +65,7 @@ export default class TabBarExample extends Component {
           <FlexBox className={cssClass.CONFIG_LINE} alignItems={ItemAlign.CENTER}>
             <h4 className={cssClass.CONFIG_LABEL}>Size:</h4>
             <SegmentedControl
-              onSelect={s => this.setState({ size: s })}
+              onSelect={(s) => this.setState({ size: s })}
               options={[
                 { content: "Small", value: TabBar.Size.SMALL },
                 { content: "Medium [Default]", value: TabBar.Size.MEDIUM },
@@ -78,7 +78,7 @@ export default class TabBarExample extends Component {
           <FlexBox className={cssClass.CONFIG_LINE} alignItems={ItemAlign.CENTER}>
             <h4 className={cssClass.CONFIG_LABEL}>Justify:</h4>
             <SegmentedControl
-              onSelect={a => this.setState({ alignment: a })}
+              onSelect={(a) => this.setState({ alignment: a })}
               options={_.map(ALIGNMENTS, ({ label }, value) => ({ content: label, value }))}
               value={alignment}
             />
@@ -87,7 +87,7 @@ export default class TabBarExample extends Component {
           <FlexBox className={cssClass.CONFIG_LINE} alignItems={ItemAlign.CENTER}>
             <h4 className={cssClass.CONFIG_LABEL}>Tab State:</h4>
             <SegmentedControl
-              onSelect={s => this.setState({ enabled: s })}
+              onSelect={(s) => this.setState({ enabled: s })}
               options={[
                 { content: "Enabled [Default]", value: true },
                 { content: "Disabled", value: false },
@@ -104,7 +104,7 @@ export default class TabBarExample extends Component {
             <code>{alignmentConfig.src}</code>
           </h2>
           <TabBar className={cssClass.TAB_BAR} justify={alignment} size={size}>
-            {_.map(MOUNTAINS, name => (
+            {_.map(MOUNTAINS, (name) => (
               <Tab
                 className={cssClass.TAB}
                 disabled={!enabled}
@@ -126,7 +126,7 @@ export default class TabBarExample extends Component {
             <code>{'<TabBar><Tab href="http://url/path" /></TabBar>'}</code>
           </h2>
           <TabBar className={cssClass.TAB_BAR} justify={alignment} size={size}>
-            {_.map(MOUNTAINS, name => (
+            {_.map(MOUNTAINS, (name) => (
               <Tab
                 className={cssClass.TAB}
                 disabled={!enabled}

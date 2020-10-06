@@ -69,7 +69,7 @@ export function unprefixKeys(obj, prefixToRemove, lowercaseFirst = true) {
  * @param {string | Array<string>} classSegments Class names to kabob together
  */
 export function classNameFor(prefixes: string | string[], classSegments?: string | string[]) {
-  const prefixList = (prefixes instanceof Array ? prefixes : [prefixes]).filter(p => !!p);
+  const prefixList = (prefixes instanceof Array ? prefixes : [prefixes]).filter((p) => !!p);
   let classSegmentList: string[];
   if (!classSegments) {
     classSegmentList = [];
@@ -81,7 +81,7 @@ export function classNameFor(prefixes: string | string[], classSegments?: string
     return classSegmentList.join("--");
   }
 
-  return classnames(prefixList.map(p => [p].concat(classSegmentList).join("--")));
+  return classnames(prefixList.map((p) => [p].concat(classSegmentList).join("--")));
 }
 
 // This is defined as a separate function to avoid binding multiple event

@@ -28,12 +28,7 @@ describe("Table -- HeaderCell", () => {
   });
 
   it("renders sort control for sortable columns", () => {
-    assert(
-      !newHeaderCell()
-        .find(SortIcons)
-        .exists(),
-      "SortIcons rendered for unsortable column.",
-    );
+    assert(!newHeaderCell().find(SortIcons).exists(), "SortIcons rendered for unsortable column.");
 
     const sortControl = newHeaderCell({
       sortable: true,

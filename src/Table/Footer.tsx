@@ -49,7 +49,7 @@ export default function Footer({
 }: Props) {
   const renderEllipsis = () => <span className={cssClass.ELLIPSIS}>&hellip;</span>;
 
-  const selectPage = page => {
+  const selectPage = (page) => {
     if (page === currentPage) {
       return;
     }
@@ -119,7 +119,7 @@ export default function Footer({
                * the visible rnage.
                */}
               {visibleRange[0] > 2 && renderEllipsis()}
-              {visibleRange.map(pageNumber => (
+              {visibleRange.map((pageNumber) => (
                 <Button
                   className={classnames(
                     cssClass.BUTTON_PAGE,

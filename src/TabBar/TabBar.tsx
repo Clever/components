@@ -25,7 +25,7 @@ interface TabBarComponent extends React.FunctionComponent<Props> {
 export const cssClass = {
   CONTAINER: "TabBar",
 
-  size: s => `TabBar--${s}`,
+  size: (s) => `TabBar--${s}`,
 };
 
 const TabBar: TabBarComponent = function TabBar({ children, className, justify, size }) {

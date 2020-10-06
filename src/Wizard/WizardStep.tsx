@@ -111,8 +111,8 @@ export default class WizardStep extends React.Component<Props, State> {
     } = this.props;
     const props = _.omit(componentProps || {}, ["wizardState", "setWizardState"]);
     const baseClasses = ["Wizard", className]
-      .filter(c => !!c)
-      .map(c => classNameFor(c, "WizardStep"));
+      .filter((c) => !!c)
+      .map((c) => classNameFor(c, "WizardStep"));
     const contentGroupClass = classNameFor(["Wizard", className], "contentGroup");
     return (
       <div className={classnames(baseClasses)} ref={this.component}>
@@ -147,7 +147,7 @@ export default class WizardStep extends React.Component<Props, State> {
         <div className={classnames(contentGroupClass, classNameFor(baseClasses, "component"))}>
           <Component
             {...props}
-            setWizardState={modifications => {
+            setWizardState={(modifications) => {
               const newState = setWizardState(modifications);
 
               // this conditional updates the progress bar in 2 scenarios:

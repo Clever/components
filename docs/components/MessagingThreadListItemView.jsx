@@ -93,8 +93,11 @@ export default class MessagingThreadListItemView extends React.PureComponent {
           Status:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ status: value })}
-            options={[{ content: "Active", value: "active" }, { content: "Off", value: "off" }]}
+            onSelect={(value) => this.setState({ status: value })}
+            options={[
+              { content: "Active", value: "active" },
+              { content: "Off", value: "off" },
+            ]}
             value={status}
           />
         </div>
@@ -103,7 +106,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             type="checkbox"
             checked={hasDraft}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ hasDraft: e.target.checked })}
+            onChange={(e) => this.setState({ hasDraft: e.target.checked })}
           />{" "}
           Has Draft
         </label>
@@ -112,7 +115,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             type="checkbox"
             checked={isRead}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ isRead: e.target.checked })}
+            onChange={(e) => this.setState({ isRead: e.target.checked })}
           />{" "}
           Is Read
         </label>
@@ -121,7 +124,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             type="checkbox"
             checked={selected}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ selected: e.target.checked })}
+            onChange={(e) => this.setState({ selected: e.target.checked })}
           />{" "}
           Selected
         </label>
