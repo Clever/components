@@ -62,7 +62,7 @@ export default class SwitchView extends React.PureComponent {
     );
   }
 
-  _handleChange = checked => {
+  _handleChange = (checked) => {
     this.setState({ checked });
   };
 
@@ -75,7 +75,7 @@ export default class SwitchView extends React.PureComponent {
             type="checkbox"
             checked={checked}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ checked: e.target.checked })}
+            onChange={(e) => this.setState({ checked: e.target.checked })}
           />{" "}
           Checked
         </label>
@@ -84,7 +84,7 @@ export default class SwitchView extends React.PureComponent {
             type="checkbox"
             checked={disabled}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ disabled: e.target.checked })}
+            onChange={(e) => this.setState({ disabled: e.target.checked })}
           />{" "}
           Disabled
         </label>

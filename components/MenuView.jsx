@@ -174,7 +174,7 @@ export default class MenuView extends React.PureComponent {
               className="my--custom--class"
               maxWidth="20rem"
               minWidth="10rem"
-              onOpenChange={isOpen =>
+              onOpenChange={(isOpen) =>
                 this.setState({
                   triggerLabel: isOpen ? <span>Close ▴</span> : <span>Open ▾</span>,
                 })
@@ -224,8 +224,8 @@ export default class MenuView extends React.PureComponent {
           Placement:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ placement: value })}
-            options={Object.keys(Menu.Placement).map(key => ({
+            onSelect={(value) => this.setState({ placement: value })}
+            options={Object.keys(Menu.Placement).map((key) => ({
               content: key,
               value: Menu.Placement[key],
             }))}
@@ -237,7 +237,7 @@ export default class MenuView extends React.PureComponent {
             type="checkbox"
             checked={stayOpenOnSelect}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ stayOpenOnSelect: e.target.checked })}
+            onChange={(e) => this.setState({ stayOpenOnSelect: e.target.checked })}
           />{" "}
           Stay open on select
         </label>
@@ -246,7 +246,7 @@ export default class MenuView extends React.PureComponent {
             type="checkbox"
             checked={wrapItems}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ wrapItems: e.target.checked })}
+            onChange={(e) => this.setState({ wrapItems: e.target.checked })}
           />{" "}
           Wrap items
         </label>

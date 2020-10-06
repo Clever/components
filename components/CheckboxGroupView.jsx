@@ -47,8 +47,8 @@ export default class CheckboxGroupView extends React.PureComponent {
 
   render() {
     const { disableAll, emails, showTitles, subjects } = this.state;
-    const noEmailsSelected = emails.every(e => !e.checked);
-    const noSubjectsSelected = subjects.every(e => !e.checked);
+    const noEmailsSelected = emails.every((e) => !e.checked);
+    const noSubjectsSelected = subjects.every((e) => !e.checked);
 
     return (
       <View
@@ -94,7 +94,7 @@ export default class CheckboxGroupView extends React.PureComponent {
               label="I teach all the things"
               disabled={disableAll}
               error={noSubjectsSelected ? "Pick one - always a teacher!" : undefined}
-              onChange={newSubjects => this.setState({ subjects: newSubjects })}
+              onChange={(newSubjects) => this.setState({ subjects: newSubjects })}
               options={subjects}
             />
 
@@ -103,7 +103,7 @@ export default class CheckboxGroupView extends React.PureComponent {
               label="Send me all emails"
               disabled={disableAll}
               error={noEmailsSelected ? "Select at least one email type!" : undefined}
-              onChange={newEmails => this.setState({ emails: newEmails })}
+              onChange={(newEmails) => this.setState({ emails: newEmails })}
               options={emails}
             />
           </ExampleCode>

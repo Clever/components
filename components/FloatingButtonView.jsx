@@ -119,7 +119,7 @@ export default class FloatingButtonView extends React.PureComponent {
             type="checkbox"
             checked={animate}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ animate: e.target.checked })}
+            onChange={(e) => this.setState({ animate: e.target.checked })}
           />{" "}
           animate
         </label>
@@ -127,7 +127,7 @@ export default class FloatingButtonView extends React.PureComponent {
           Horizontal Position:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ positionX: value })}
+            onSelect={(value) => this.setState({ positionX: value })}
             options={[
               { content: "Left", value: FloatingButton.PositionX.LEFT },
               { content: "Center", value: FloatingButton.PositionX.CENTER },
@@ -140,7 +140,7 @@ export default class FloatingButtonView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ size: value })}
+            onSelect={(value) => this.setState({ size: value })}
             options={[
               { content: "Small", value: Button.Size.S },
               { content: "Regular", value: Button.Size.M },
@@ -153,7 +153,7 @@ export default class FloatingButtonView extends React.PureComponent {
           Vertical Position:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ positionY: value })}
+            onSelect={(value) => this.setState({ positionY: value })}
             options={[
               { content: "Top", value: FloatingButton.PositionY.TOP },
               { content: "Bottom", value: FloatingButton.PositionY.BOTTOM },
@@ -166,7 +166,7 @@ export default class FloatingButtonView extends React.PureComponent {
             type="checkbox"
             checked={showAdditionalButtons}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ showAdditionalButtons: e.target.checked })}
+            onChange={(e) => this.setState({ showAdditionalButtons: e.target.checked })}
           />{" "}
           Show Button Menu
         </label>
@@ -175,7 +175,7 @@ export default class FloatingButtonView extends React.PureComponent {
             type="checkbox"
             checked={showColorGroup}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ showColorGroup: e.target.checked })}
+            onChange={(e) => this.setState({ showColorGroup: e.target.checked })}
           />{" "}
           Show Custom Color Group
         </label>
@@ -216,7 +216,7 @@ export default class FloatingButtonView extends React.PureComponent {
                 <p>
                   Button background color. One of:
                   <br />
-                  {Object.keys(FloatingButton.ColorGroup).map(c => (
+                  {Object.keys(FloatingButton.ColorGroup).map((c) => (
                     <span key={c}>
                       <code>FloatingButton.ColorGroup.{c}</code>
                       <br />
