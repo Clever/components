@@ -130,7 +130,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
           Height:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ height: value })}
+            onSelect={(value) => this.setState({ height: value })}
             options={[
               { content: "150px", value: "150px" },
               { content: "300px", value: "300px" },
@@ -143,7 +143,7 @@ export default class MultiplePanelModalsView extends React.PureComponent {
           Starting panel:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ startingPanel: value })}
+            onSelect={(value) => this.setState({ startingPanel: value })}
             options={[
               { content: "Page 1", value: "0" },
               { content: "Page 2", value: "1" },
@@ -156,8 +156,11 @@ export default class MultiplePanelModalsView extends React.PureComponent {
           Disabled right button:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ rightButtonDisabled: value })}
-            options={[{ content: "True", value: true }, { content: "False", value: false }]}
+            onSelect={(value) => this.setState({ rightButtonDisabled: value })}
+            options={[
+              { content: "True", value: true },
+              { content: "False", value: false },
+            ]}
             value={rightButtonDisabled}
           />
         </div>
@@ -165,8 +168,11 @@ export default class MultiplePanelModalsView extends React.PureComponent {
           Show step number:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ showStepNumber: value })}
-            options={[{ content: "True", value: true }, { content: "False", value: false }]}
+            onSelect={(value) => this.setState({ showStepNumber: value })}
+            options={[
+              { content: "True", value: true },
+              { content: "False", value: false },
+            ]}
             value={showStepNumber}
           />
         </div>

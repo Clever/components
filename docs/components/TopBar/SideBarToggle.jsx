@@ -16,7 +16,7 @@ export default class SideBarToggle extends React.PureComponent {
           this._buttonRef.blur();
           onClick();
         }}
-        ref={ref => {
+        ref={(ref) => {
           this._buttonRef = ref;
         }}
       >

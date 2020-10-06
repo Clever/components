@@ -28,8 +28,11 @@ export default class CountView extends Component {
           Number:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ number: value })}
-            options={Object.keys(NumberOptions).map(n => ({ content: n, value: NumberOptions[n] }))}
+            onSelect={(value) => this.setState({ number: value })}
+            options={Object.keys(NumberOptions).map((n) => ({
+              content: n,
+              value: NumberOptions[n],
+            }))}
             value={number}
           />
         </div>
@@ -37,7 +40,7 @@ export default class CountView extends Component {
           Number Format:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ numberFormat: value })}
+            onSelect={(value) => this.setState({ numberFormat: value })}
             options={[
               { content: "Regular", value: "regular" },
               { content: "Short", value: "short" },

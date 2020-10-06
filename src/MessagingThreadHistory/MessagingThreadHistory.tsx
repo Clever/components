@@ -153,9 +153,7 @@ function _formatDateForDivider(date: Date): string {
   const [messageTimestamp, midnightToday, midnightYesterday] = [
     moment(date),
     moment().hours(0),
-    moment()
-      .hours(0)
-      .subtract(1, "days"),
+    moment().hours(0).subtract(1, "days"),
   ];
 
   if (messageTimestamp.isAfter(midnightToday)) {

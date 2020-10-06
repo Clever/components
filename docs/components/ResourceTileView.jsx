@@ -111,7 +111,7 @@ export default class ResourceTileView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ size: value })}
+            onSelect={(value) => this.setState({ size: value })}
             options={[
               { content: "Small", value: "small" },
               { content: "Medium", value: "medium" },
@@ -125,7 +125,7 @@ export default class ResourceTileView extends React.PureComponent {
             type="checkbox"
             checked={draggable}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ draggable: e.target.checked })}
+            onChange={(e) => this.setState({ draggable: e.target.checked })}
           />{" "}
           Draggable
         </label>
@@ -134,7 +134,7 @@ export default class ResourceTileView extends React.PureComponent {
             type="checkbox"
             checked={notify}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ notify: e.target.checked })}
+            onChange={(e) => this.setState({ notify: e.target.checked })}
           />{" "}
           Notify
         </label>

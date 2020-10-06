@@ -15,7 +15,7 @@ const cssClass = {
   CONTENT_WRAPPER: "List--Item--ContentWrapper",
   CONTENT_ONCLICK: "List--Item--ContentWrapperClickable",
 
-  type: type => `List--Item--${type}`,
+  type: (type) => `List--Item--${type}`,
 };
 
 export default class Item extends React.PureComponent<Props> {

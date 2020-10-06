@@ -17,7 +17,7 @@ export default class CodeSample extends Component {
     }
 
     // Strip indentation up to the shortest indentation in the given code sample.
-    const shortestIndentLength = Math.min(...indents.map(indent => indent.length));
+    const shortestIndentLength = Math.min(...indents.map((indent) => indent.length));
     const shortestIndentRegex = new RegExp(`^[ \\t]{${shortestIndentLength}}`, "gm");
 
     return code.replace(shortestIndentRegex, "");

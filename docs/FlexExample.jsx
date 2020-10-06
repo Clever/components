@@ -121,5 +121,5 @@ FlexExample.cssClass = {
   RESIZABLE_X: "FlexExample--box--resizable--x",
   RESIZABLE_Y: "FlexExample--box--resizable--y",
 
-  fa: fontAwesomeClass => `fa fa-fw fa-${fontAwesomeClass}`,
+  fa: (fontAwesomeClass) => `fa fa-fw fa-${fontAwesomeClass}`,
 };

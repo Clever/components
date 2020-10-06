@@ -214,7 +214,7 @@ export class Select extends React.Component<Props, State> {
       SelectComponent = ReactSelect.Async;
     }
 
-    const overrideProps = lazy && !filterOptions ? { filterOptions: results => results } : {};
+    const overrideProps = lazy && !filterOptions ? { filterOptions: (results) => results } : {};
 
     // The label container must be returned after the ReactSelect otherwise it does not get displayed
     // in the browser.

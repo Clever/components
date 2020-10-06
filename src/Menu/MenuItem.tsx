@@ -46,7 +46,7 @@ export const cssClass = {
   CONTAINER: "Menu--MenuItem",
   DEFAULT_STYLES: "Menu--MenuItem--default",
 
-  selected: baseClass => (baseClass ? `${baseClass}--selected` : ""),
+  selected: (baseClass) => (baseClass ? `${baseClass}--selected` : ""),
 };
 
 export default class MenuItem extends React.PureComponent<Props> {

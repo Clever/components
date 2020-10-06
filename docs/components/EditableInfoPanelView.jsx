@@ -72,19 +72,19 @@ export default class EditableInfoPanelView extends React.PureComponent {
                 <TextInput
                   label="Column 1 Content"
                   placeholder={this.state.column1Content}
-                  onChange={e => this.setState({ column1Content: e.target.value })}
+                  onChange={(e) => this.setState({ column1Content: e.target.value })}
                   value={this.state.column1Content}
                 />
                 <TextInput
                   label="Column 2 Content"
                   placeholder={this.state.column2Content}
-                  onChange={e => this.setState({ column2Content: e.target.value })}
+                  onChange={(e) => this.setState({ column2Content: e.target.value })}
                   value={this.state.column2Content}
                 />
                 <TextInput
                   label="Normal Content"
                   placeholder={this.state.normalContent}
-                  onChange={e => this.setState({ normalContent: e.target.value })}
+                  onChange={(e) => this.setState({ normalContent: e.target.value })}
                   value={this.state.normalContent}
                 />
               </Modal>

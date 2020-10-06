@@ -28,7 +28,7 @@ export default class SegmentedControlView extends Component {
 
         <Example title="Basic">
           <SegmentedControl
-            onSelect={option => console.log(`Option ${option} selected`)}
+            onSelect={(option) => console.log(`Option ${option} selected`)}
             options={[
               {
                 content: (
@@ -56,7 +56,7 @@ export default class SegmentedControlView extends Component {
         <Example title="With Disabled Option">
           <SegmentedControl
             defaultValue="two"
-            onSelect={option => console.log(`Option ${option} selected`)}
+            onSelect={(option) => console.log(`Option ${option} selected`)}
             options={[
               {
                 content: "Option 1",
@@ -78,7 +78,7 @@ export default class SegmentedControlView extends Component {
           <SegmentedControl
             defaultValue="two"
             disabled
-            onSelect={option => console.log(`Option ${option} selected`)}
+            onSelect={(option) => console.log(`Option ${option} selected`)}
             options={[
               {
                 content: "1 - Control Disabled",

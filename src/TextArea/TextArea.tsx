@@ -100,7 +100,7 @@ export class TextArea extends React.Component<Props, State> {
   /* Insert any additional lifecycle methods,
      event handlers, and helper methods here */
 
-  onFocus: React.FocusEventHandler<HTMLTextAreaElement> = e => {
+  onFocus: React.FocusEventHandler<HTMLTextAreaElement> = (e) => {
     const { onFocus } = this.props;
 
     this.setState({ inFocus: true });
@@ -109,7 +109,7 @@ export class TextArea extends React.Component<Props, State> {
     }
   };
 
-  onBlur: React.FocusEventHandler<HTMLTextAreaElement> = e => {
+  onBlur: React.FocusEventHandler<HTMLTextAreaElement> = (e) => {
     const { onBlur } = this.props;
 
     this.setState({ inFocus: false, hasBeenFocused: true });
@@ -118,7 +118,7 @@ export class TextArea extends React.Component<Props, State> {
     }
   };
 
-  onKeyDown: React.KeyboardEventHandler<HTMLTextAreaElement> = e => {
+  onKeyDown: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     const { onKeyDown } = this.props;
 
     if (onKeyDown) {
@@ -126,7 +126,7 @@ export class TextArea extends React.Component<Props, State> {
     }
   };
 
-  onKeyPress: React.KeyboardEventHandler<HTMLTextAreaElement> = e => {
+  onKeyPress: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     const { onKeyPress } = this.props;
 
     if (onKeyPress) {
@@ -134,7 +134,7 @@ export class TextArea extends React.Component<Props, State> {
     }
   };
 
-  onKeyUp: React.KeyboardEventHandler<HTMLTextAreaElement> = e => {
+  onKeyUp: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     const { onKeyUp } = this.props;
 
     if (onKeyUp) {

@@ -53,7 +53,7 @@ export default class RadioGroup<
     return (
       <WithKeyboardNav
         currentID={focusableOptionID}
-        itemIDs={options.map(o => (o.disabled ? undefined : o.id))}
+        itemIDs={options.map((o) => (o.disabled ? undefined : o.id))}
         onChange={this._handleNavChange}
       >
         <div
@@ -65,7 +65,7 @@ export default class RadioGroup<
             {label}
           </div>
           {error && <FormError>{error}</FormError>}
-          {_.map(options, o => (
+          {_.map(options, (o) => (
             <Radio<OptionIDType, OptionValueType>
               checked={o.id === selectedID}
               className={cssClass.RADIO}
@@ -73,7 +73,7 @@ export default class RadioGroup<
               id={o.id}
               key={o.id}
               onSelect={onChange}
-              ref={ref => this._handleRadioRef(ref)}
+              ref={(ref) => this._handleRadioRef(ref)}
               tabIndex={o.id === focusableOptionID ? 0 : -1}
               value={o.value}
             >
@@ -85,13 +85,13 @@ export default class RadioGroup<
     );
   }
 
-  _handleRadioRef = ref => {
+  _handleRadioRef = (ref) => {
     if (ref) {
       this._optionRefsByID[ref.props.id] = ref;
     }
   };
 
-  _handleNavChange = selectedID => {
+  _handleNavChange = (selectedID) => {
     const selectedRadioRef = this._optionRefsByID[selectedID];
     if (!selectedRadioRef) {
       return;
@@ -111,7 +111,7 @@ export default class RadioGroup<
     const { selectedID } = this.props;
 
     let focusableOptionID = null;
-    _.forEach(options, option => {
+    _.forEach(options, (option) => {
       if (!option) {
         return;
       }
