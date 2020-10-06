@@ -34,7 +34,7 @@ _.forEach(sizes, (size, sizeName) => {
   spacingContents.push(` * ${sizeVar}`);
   spacingContents.push(" */");
 
-  ["margin", "padding"].forEach(type => {
+  ["margin", "padding"].forEach((type) => {
     const classPrefix = `${type}`;
     spacingContents = spacingContents.concat([
       `.${classPrefix}--${sizeName} { ${type}: ${sizeVar} }\n`,

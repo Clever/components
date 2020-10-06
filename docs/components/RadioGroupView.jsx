@@ -83,7 +83,7 @@ export default class RadioGroupView extends React.PureComponent {
           <ExampleCode>
             <RadioGroup
               label="Favourite City"
-              onChange={id => this.setState({ selectedCity: id })}
+              onChange={(id) => this.setState({ selectedCity: id })}
               options={[
                 { id: "london", label: "London", disabled: disableAll },
                 { id: "paris", label: "Paris", disabled: disableAll },
@@ -100,7 +100,7 @@ export default class RadioGroupView extends React.PureComponent {
             <RadioGroup
               label="Favourite Food:"
               error={showError ? "You have questionable taste." : undefined}
-              onChange={id => this.setState({ selectedFood: id })}
+              onChange={(id) => this.setState({ selectedFood: id })}
               options={[
                 { id: "pies", label: "Pies", disabled: disableAll },
                 { id: "crepes", label: "Crepes", disabled: disableAll },

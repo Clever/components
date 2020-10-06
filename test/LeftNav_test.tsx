@@ -49,10 +49,7 @@ describe("LeftNav", function LeftNavTest() {
     });
 
     it("renders topnav NavLink with label and icon", () => {
-      const link = nav
-        .find(NavLink)
-        .first()
-        .dive();
+      const link = nav.find(NavLink).first().dive();
       assert.equal(link.type(), "button");
 
       const label = link.find(`.${linkCss.LABEL}`);
@@ -65,36 +62,22 @@ describe("LeftNav", function LeftNavTest() {
     });
 
     it("renders topnav NavGroup as a NavLink, without rendering its subnav children", () => {
-      const group = nav
-        .find(NavGroup)
-        .first()
-        .dive();
+      const group = nav.find(NavGroup).first().dive();
       const link = group.get(0);
       assert.equal(group.type(), NavLink);
       assert.equal(link.props.label, "group1");
       assert.equal(link.props.icon, fakeIcon);
-      assert(
-        !group
-          .children()
-          .find(NavLink)
-          .exists(),
-      );
+      assert(!group.children().find(NavLink).exists());
     });
 
     it("calls the onClick handler when a topnav NavLink is clicked", () => {
-      const link = nav
-        .find(NavLink)
-        .first()
-        .dive();
+      const link = nav.find(NavLink).first().dive();
       link.simulate("click", mockEvent);
       assert(topNavLinkSpy.calledOnce);
     });
 
     it("opens the subnav drawer and renders the children NavLinks when a NavGroup is clicked", () => {
-      const group = nav
-        .find(NavGroup)
-        .first()
-        .dive();
+      const group = nav.find(NavGroup).first().dive();
       group.simulate("click", mockEvent);
       // Manually trigger update since enzyme doesn't detect LeftNav state change for some reason
       nav.update();
@@ -109,21 +92,14 @@ describe("LeftNav", function LeftNavTest() {
   describe("when the subnav drawer is open", () => {
     beforeEach(() => {
       this.nav = renderLeftNav();
-      const group = this.nav
-        .find(NavGroup)
-        .first()
-        .dive();
+      const group = this.nav.find(NavGroup).first().dive();
       group.simulate("click", mockEvent);
       // Manually trigger update since enzyme doesn't detect LeftNav state change for some reason
       this.nav.update();
     });
 
     it("calls the onClick handler when a subnav NavLink is clicked", () => {
-      const link = this.nav
-        .find(NavGroup)
-        .find(NavLink)
-        .first()
-        .dive();
+      const link = this.nav.find(NavGroup).find(NavLink).first().dive();
       link.simulate("click", mockEvent);
       assert(subNavLinkSpy.calledOnce);
       // And the drawer stays open
@@ -133,10 +109,7 @@ describe("LeftNav", function LeftNavTest() {
     });
 
     it("closes the subnav drawer when the open NavGroup is clicked", () => {
-      const group = this.nav
-        .find(NavGroup)
-        .first()
-        .dive();
+      const group = this.nav.find(NavGroup).first().dive();
       group.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
@@ -144,10 +117,7 @@ describe("LeftNav", function LeftNavTest() {
     });
 
     it("closes the subnav drawer when a topnav NavLink is clicked", () => {
-      const link = this.nav
-        .find(NavLink)
-        .first()
-        .dive();
+      const link = this.nav.find(NavLink).first().dive();
       link.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
@@ -155,10 +125,7 @@ describe("LeftNav", function LeftNavTest() {
     });
 
     it("rerenders the subnav drawer when a different NavGroup is clicked", () => {
-      const otherGroup = this.nav
-        .find(NavGroup)
-        .last()
-        .dive();
+      const otherGroup = this.nav.find(NavGroup).last().dive();
       otherGroup.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
@@ -177,10 +144,7 @@ describe("LeftNav", function LeftNavTest() {
     );
 
     it("renders the NavLink with the 'selected' class", () => {
-      const link = nav
-        .find(NavLink)
-        .first()
-        .dive();
+      const link = nav.find(NavLink).first().dive();
       assert(link.hasClass(linkCss.SELECTED));
     });
   });
@@ -209,18 +173,12 @@ describe("LeftNav", function LeftNavTest() {
 
     it("renders the NavLink with the 'selected' class", () => {
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
-      const link = subnav
-        .find(NavLink)
-        .first()
-        .dive();
+      const link = subnav.find(NavLink).first().dive();
       assert(link.hasClass(linkCss.SELECTED));
     });
 
     it("rerenders the subnav drawer when a different NavGroup is clicked", () => {
-      const otherGroup = this.nav
-        .find(NavGroup)
-        .last()
-        .dive();
+      const otherGroup = this.nav.find(NavGroup).last().dive();
       otherGroup.simulate("click", mockEvent);
       this.nav.update();
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
@@ -239,7 +197,7 @@ describe("LeftNav", function LeftNavTest() {
 
     it("renders all nav items with the '_collapsed' prop", () => {
       const topNavItems = nav.find(`.${navCss.TOPNAV}`).children();
-      topNavItems.forEach(item => assert(item.props()._collapsed));
+      topNavItems.forEach((item) => assert(item.props()._collapsed));
     });
   });
 });

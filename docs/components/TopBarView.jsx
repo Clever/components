@@ -155,8 +155,8 @@ export default class TopBarView extends React.PureComponent {
             id={cssClass.DROPDOWN_THEME}
             label="Theme"
             name={cssClass.DROPDOWN_THEME}
-            onChange={o => this.setState({ theme: o && o.value })}
-            options={TopBarThemes.sort().map(value => ({
+            onChange={(o) => this.setState({ theme: o && o.value })}
+            options={TopBarThemes.sort().map((value) => ({
               label: value,
               value,
             }))}
@@ -169,7 +169,7 @@ export default class TopBarView extends React.PureComponent {
             id={cssClass.INPUT_TITLE}
             label="Title"
             name={cssClass.INPUT_TITLE}
-            onChange={e => this.setState({ title: e.target.value })}
+            onChange={(e) => this.setState({ title: e.target.value })}
             value={title}
           />
         </div>
@@ -178,7 +178,7 @@ export default class TopBarView extends React.PureComponent {
             type="checkbox"
             checked={addArbitraryContent}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ addArbitraryContent: e.target.checked })}
+            onChange={(e) => this.setState({ addArbitraryContent: e.target.checked })}
           />{" "}
           Arbitrary Content
         </label>

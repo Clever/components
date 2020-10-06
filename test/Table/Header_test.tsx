@@ -18,10 +18,10 @@ describe("Table -- Header", () => {
       }}
       cell={{
         className: "name_cell",
-        renderer: r => r.name,
+        renderer: (r) => r.name,
       }}
       sortable
-      sortValueFn={r => r.name}
+      sortValueFn={(r) => r.name}
       width="50%"
     />
   );
@@ -30,7 +30,7 @@ describe("Table -- Header", () => {
     <Column
       id="description_column"
       header={{ content: "Description" }}
-      cell={{ renderer: r => r.description }}
+      cell={{ renderer: (r) => r.description }}
     />
   );
 
@@ -55,9 +55,7 @@ describe("Table -- Header", () => {
   });
 
   it("handles columns with no header conent", () => {
-    const emptyCell = newHeader()
-      .find(HeaderCell)
-      .at(2);
+    const emptyCell = newHeader().find(HeaderCell).at(2);
     assert(
       !emptyCell.children().exists(),
       `Expected header cell '${emptyCell.debug()}' to be empty.`,
@@ -65,18 +63,14 @@ describe("Table -- Header", () => {
   });
 
   it("sets custom HeaderCell class name", () => {
-    const nameCell = newHeader()
-      .find(HeaderCell)
-      .at(0);
+    const nameCell = newHeader().find(HeaderCell).at(0);
     assert.equal(nameCell.props().className, nameColumn.props.header.className);
   });
 
   it("sets active sort state", () => {
     const sortState = { columnID: "name_column", direction: sortDirection.DESCENDING };
 
-    const nameCell = newHeader({ sortState })
-      .find(HeaderCell)
-      .at(0);
+    const nameCell = newHeader({ sortState }).find(HeaderCell).at(0);
 
     assert(nameCell.props().sortable, `Expected ${nameCell.debug()} to be sortable.`);
     assert.equal(
@@ -87,9 +81,7 @@ describe("Table -- Header", () => {
   });
 
   it("disables sorting is `disableSort` prop is specified", () => {
-    const nameCell = newHeader({ disableSort: true })
-      .find(HeaderCell)
-      .at(0);
+    const nameCell = newHeader({ disableSort: true }).find(HeaderCell).at(0);
     assert(
       !nameCell.props().sortable,
       `${nameCell.debug()} should not be sortable when 'disableSort' is true.`,
@@ -97,9 +89,7 @@ describe("Table -- Header", () => {
   });
 
   it("sets custom column width", () => {
-    const nameCell = newHeader()
-      .find(HeaderCell)
-      .at(0);
+    const nameCell = newHeader().find(HeaderCell).at(0);
     assert.equal(nameCell.props().width, nameColumn.props.width);
   });
 
@@ -107,9 +97,7 @@ describe("Table -- Header", () => {
     const onSortChange = sinon.stub();
     const descriptionColumnIndex = 1;
 
-    const cell = newHeader({ onSortChange })
-      .find(HeaderCell)
-      .at(descriptionColumnIndex);
+    const cell = newHeader({ onSortChange }).find(HeaderCell).at(descriptionColumnIndex);
     cell.simulate("sortChange");
 
     sinon.assert.calledWith(onSortChange, descriptionColumn.props.id);

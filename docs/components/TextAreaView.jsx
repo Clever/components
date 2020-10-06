@@ -44,7 +44,7 @@ export default class TextAreaView extends React.Component {
               optional={this.state.optional}
               spellCheck={this.state.spellCheck}
               placeholder={this.state.placeholder ? "TextArea Placeholder" : ""}
-              onChange={e => this.setState({ inputValue: e.target.value })}
+              onChange={(e) => this.setState({ inputValue: e.target.value })}
               value={this.state.inputValue}
               size={this.state.size}
             />
@@ -118,7 +118,7 @@ export default class TextAreaView extends React.Component {
                 { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={value => this.setState({ size: value })}
+              onSelect={(value) => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -266,7 +266,7 @@ export default class TextAreaView extends React.Component {
                 <p>
                   The size of the input. One of:
                   <br />
-                  {Object.keys(FormElementSize).map(size => (
+                  {Object.keys(FormElementSize).map((size) => (
                     <span key={size}>
                       <code>FormElementSize.{size}</code>
                       <br />

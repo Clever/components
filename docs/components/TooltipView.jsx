@@ -87,8 +87,8 @@ export default class TooltipView extends Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               defaultValue={placement}
-              onSelect={value => this.setState({ placement: value })}
-              options={_.map(Tooltip.Placement, p => ({ content: p, value: p }))}
+              onSelect={(value) => this.setState({ placement: value })}
+              options={_.map(Tooltip.Placement, (p) => ({ content: p, value: p }))}
             />
           </div>
           <div className={cssClass.CONFIG}>
@@ -96,8 +96,8 @@ export default class TooltipView extends Component {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               defaultValue={textAlign}
-              onSelect={value => this.setState({ textAlign: value })}
-              options={_.map(Tooltip.Align, p => ({ content: p, value: p }))}
+              onSelect={(value) => this.setState({ textAlign: value })}
+              options={_.map(Tooltip.Align, (p) => ({ content: p, value: p }))}
             />
           </div>
           <div className={cssClass.FOCUS_CONTROL}>

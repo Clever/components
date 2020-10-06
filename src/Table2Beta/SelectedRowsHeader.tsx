@@ -128,7 +128,6 @@ function Action({ actionInput, selectedRows }: ActionProps) {
   const { callback, title, icon } = actionInput;
   const singleRowSelected = selectedRows.size === 1;
   return (
-    // <div className={cssClasses.ACTION}>
     <Button
       className={cssClasses.ACTION}
       type="link"
@@ -143,6 +142,5 @@ function Action({ actionInput, selectedRows }: ActionProps) {
       onClick={e => callback(selectedRows)}
       size="small"
     />
-    // </div>
   );
 }

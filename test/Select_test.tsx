@@ -190,7 +190,7 @@ describe("Select", () => {
   });
 
   it("passes through creatablePromptFn to the ReactSelect Creatable component to allow customizing prompt text for new options", () => {
-    const promptFn = label => `Add ${label}`;
+    const promptFn = (label) => `Add ${label}`;
     const select = shallow(
       <Select id="testid" name="testname" creatable creatablePromptFn={promptFn} options={[]} />,
     );

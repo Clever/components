@@ -27,7 +27,7 @@ export default class LeftNavExample extends React.Component {
         <input
           checked={this.state[id]}
           type="checkbox"
-          onChange={e => this.setState({ [id]: e.target.checked })}
+          onChange={(e) => this.setState({ [id]: e.target.checked })}
         />
         &nbsp;
         {id}
@@ -47,7 +47,7 @@ export default class LeftNavExample extends React.Component {
       withTooltips,
     } = this.state;
 
-    const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
+    const icon = (name) => <Icon name={name} size={Icon.sizes.SMALL} />;
     const link = (label, iconNode) => (
       <NavLink
         label={label}

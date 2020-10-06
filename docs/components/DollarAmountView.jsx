@@ -29,8 +29,11 @@ export default class DollarAmountView extends Component {
           Amount:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ number: value })}
-            options={Object.keys(NumberOptions).map(n => ({ content: n, value: NumberOptions[n] }))}
+            onSelect={(value) => this.setState({ number: value })}
+            options={Object.keys(NumberOptions).map((n) => ({
+              content: n,
+              value: NumberOptions[n],
+            }))}
             value={number}
           />
         </div>
@@ -38,7 +41,7 @@ export default class DollarAmountView extends Component {
           Dollar Format:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ alwaysShowCents: value })}
+            onSelect={(value) => this.setState({ alwaysShowCents: value })}
             options={[
               { content: "Regular", value: "no" },
               { content: "Always Show Cents", value: "yes" },
@@ -47,7 +50,7 @@ export default class DollarAmountView extends Component {
           />
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ zeroIsFree: value })}
+            onSelect={(value) => this.setState({ zeroIsFree: value })}
             options={[
               { content: "Regular", value: "no" },
               { content: "Zero is 'Free'", value: "yes" },

@@ -76,7 +76,7 @@ export default class LogoView extends React.PureComponent {
             onChange={({ value }) => this.setState({ color: value })}
             options={Object.keys(Colors)
               .sort()
-              .map(key => ({
+              .map((key) => ({
                 label: key,
                 value: Colors[key],
               }))}
@@ -90,7 +90,7 @@ export default class LogoView extends React.PureComponent {
             label="Font Size"
             name={cssClass.DROPDOWN_FONT_SIZE}
             onChange={({ value }) => this.setState({ fontSize: value })}
-            options={["0.5rem", "0.75rem", "1rem", "1.5rem", "2rem", "3rem", "4rem"].map(h => ({
+            options={["0.5rem", "0.75rem", "1rem", "1.5rem", "2rem", "3rem", "4rem"].map((h) => ({
               label: h,
               value: h,
             }))}
@@ -102,7 +102,7 @@ export default class LogoView extends React.PureComponent {
             type="checkbox"
             checked={beta}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ beta: e.target.checked })}
+            onChange={(e) => this.setState({ beta: e.target.checked })}
           />{" "}
           Beta
         </label>

@@ -75,8 +75,8 @@ export default class CheckboxGroup extends React.PureComponent<Props> {
   render() {
     const { className, disabled, error, label, options, title } = this.props;
 
-    const allChecked = _.every(options, o => o.checked);
-    const someChecked = _.some(options, o => o.checked);
+    const allChecked = _.every(options, (o) => o.checked);
+    const someChecked = _.some(options, (o) => o.checked);
 
     return (
       <div
@@ -120,7 +120,7 @@ export default class CheckboxGroup extends React.PureComponent<Props> {
   _handleGlobalChange = ({ checked }) => {
     const { onChange, options } = this.props;
 
-    onChange(_.map(options, o => ({ ...o, checked })));
+    onChange(_.map(options, (o) => ({ ...o, checked })));
   };
 
   _handleSingleChange = ({ id, checked }) => {

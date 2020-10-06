@@ -13,10 +13,10 @@ class AddressStep extends React.Component {
     const { setWizardState, wizardState, recipient } = this.props;
     return (
       <form
-        ref={f => {
+        ref={(f) => {
           this.form = f;
         }}
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
       >
         <p>Delivery for {recipient}</p>
         <TextInput
@@ -60,10 +60,10 @@ class ContactStep extends React.Component {
     const { wizardState, setWizardState } = this.props;
     return (
       <form
-        ref={f => {
+        ref={(f) => {
           this.form = f;
         }}
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
       >
         <TextInput
           type="text"
@@ -108,10 +108,10 @@ class ReviewStep extends React.Component {
     const { setWizardState, wizardState } = this.props;
     return (
       <form
-        ref={f => {
+        ref={(f) => {
           this.form = f;
         }}
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
       >
         <div>
           <p>Delivery Address Information</p>
@@ -257,7 +257,7 @@ export default class WizardExample extends React.Component {
                 <input
                   type="checkbox"
                   checked={this.state.stepNumberInTitle}
-                  onChange={e => this.setState({ stepNumberInTitle: e.target.checked })}
+                  onChange={(e) => this.setState({ stepNumberInTitle: e.target.checked })}
                 />
                 Show step number in title?
               </label>
@@ -266,7 +266,7 @@ export default class WizardExample extends React.Component {
               <label>
                 <input
                   type="checkbox"
-                  onChange={e => this.setState({ seekable: e.target.checked })}
+                  onChange={(e) => this.setState({ seekable: e.target.checked })}
                 />
                 Seekable?
               </label>
@@ -275,7 +275,7 @@ export default class WizardExample extends React.Component {
               <label>
                 <input
                   type="checkbox"
-                  onChange={e => this.setState({ showHelp: e.target.checked })}
+                  onChange={(e) => this.setState({ showHelp: e.target.checked })}
                 />
                 Show help?
               </label>
@@ -284,7 +284,7 @@ export default class WizardExample extends React.Component {
               <label>
                 <input
                   type="checkbox"
-                  onChange={e => this.setState({ hideProgressBar: e.target.checked })}
+                  onChange={(e) => this.setState({ hideProgressBar: e.target.checked })}
                 />
                 Hide progress bar?
               </label>
@@ -293,7 +293,7 @@ export default class WizardExample extends React.Component {
               <label>
                 <input
                   type="checkbox"
-                  onChange={e => this.setState({ sticky: e.target.checked })}
+                  onChange={(e) => this.setState({ sticky: e.target.checked })}
                 />
                 Sticky sidebar?
               </label>
@@ -301,7 +301,7 @@ export default class WizardExample extends React.Component {
             <li>
               <TextInput
                 value={this.state.recipient}
-                onChange={e => this.setState({ recipient: e.target.value })}
+                onChange={(e) => this.setState({ recipient: e.target.value })}
                 label="Recipient"
                 name="recipient"
               />
@@ -309,7 +309,7 @@ export default class WizardExample extends React.Component {
             <li>
               <TextInput
                 value={this.state.prevButtonValue}
-                onChange={e => this.setState({ prevButtonValue: e.target.value })}
+                onChange={(e) => this.setState({ prevButtonValue: e.target.value })}
                 label="Prev button text"
                 name="prevButtonValue"
               />
@@ -324,7 +324,7 @@ export default class WizardExample extends React.Component {
           stickySidebar={this.state.sticky}
           steps={steps}
           prevButtonValue={this.state.prevButtonValue}
-          onComplete={state =>
+          onComplete={(state) =>
             alert(
               `Wizard.OnComplete: Delivering to ${state.fullName} at ${state.address}. ` +
                 `Please call ${state.phoneNumber} upon delivery`,

@@ -63,7 +63,7 @@ describe("SegmentedControl", () => {
     const control = shallow(<SegmentedControl options={testOptions} />);
 
     const options = control.find(`.${cssClass.OPTION}`);
-    options.forEach(option => {
+    options.forEach((option) => {
       option.simulate("click");
 
       const selected = control.find(`.${cssClass.SELECTED}`);
@@ -133,7 +133,7 @@ describe("SegmentedControl", () => {
     const control = shallow(<SegmentedControl disabled options={testOptions} onSelect={stub} />);
 
     const options = control.find(`.${cssClass.OPTION}`);
-    options.forEach(option => {
+    options.forEach((option) => {
       option.simulate("click");
 
       const selected = control.find(`.${cssClass.SELECTED}`);
