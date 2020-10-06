@@ -148,7 +148,6 @@ export const cssClass = {
   ACTION_ICON: "Table2Beta--actions--icon",
   ACTION_TITLE: "Table2Beta--actions--title",
   ACTION_MENU: "Table2Beta--actions--menu",
-  ACTION_MENU_TRIGGER: "Table2Beta--actions--menu--trigger",
   ACTION_MENU_ITEM: "Table2Beta--actions--menu--item",
   ACTION_MENU_ITEM_TITLE: "Table2Beta--actions--menu--item--title",
   TABLE: "Table2Beta",
@@ -452,9 +451,10 @@ export class Table2Beta extends React.Component<Props, State> {
             size="small"
           />
           <Menu
-            className={cssClass.ACTION_MENU}
             trigger={
-              <img className={cssClass.SINGLE_ACTION_TRIGGER} src={require("./ellipsis.svg")} />
+              <Button size="small" className={cssClass.ACTION_MENU} type="link">
+                <img className={cssClass.SINGLE_ACTION_TRIGGER} src={require("./ellipsis.svg")} />
+              </Button>
             }
             placement={Menu.Placement.RIGHT}
           >
