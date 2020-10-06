@@ -223,7 +223,7 @@ export default class ProgressBarView extends React.PureComponent {
             label="Color"
             name={cssClass.DROPDOWN_COLOR}
             onChange={({ value }) => this.setState({ color: value })}
-            options={Object.keys(Color).map(key => ({
+            options={Object.keys(Color).map((key) => ({
               label: key,
               value: Color[key],
             }))}
@@ -234,7 +234,7 @@ export default class ProgressBarView extends React.PureComponent {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ size: value })}
+            onSelect={(value) => this.setState({ size: value })}
             options={[
               { content: "Thin", value: "thin" },
               { content: "Medium", value: "medium" },
@@ -274,7 +274,7 @@ export default class ProgressBarView extends React.PureComponent {
             label="Label"
             name={cssClass.DROPDOWN_LABEL}
             onChange={({ value }) => this.setState({ showLabel: value })}
-            options={Object.keys(ShowLabel).map(key => ({
+            options={Object.keys(ShowLabel).map((key) => ({
               label: key,
               value: ShowLabel[key],
             }))}
@@ -284,7 +284,7 @@ export default class ProgressBarView extends React.PureComponent {
         <div className={cssClass.CONFIG}>
           <TextInput
             className={cssClass.CONFIG_OPTIONS}
-            onChange={e => this.setState({ labelType: e.target.value })}
+            onChange={(e) => this.setState({ labelType: e.target.value })}
             label="Label Type"
             name="ProgressBarView--label--type"
             placeholder="Label Type"
@@ -305,7 +305,7 @@ export default class ProgressBarView extends React.PureComponent {
             type="checkbox"
             checked={striped}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ striped: e.target.checked })}
+            onChange={(e) => this.setState({ striped: e.target.checked })}
           />{" "}
           Striped
         </label>
@@ -314,7 +314,7 @@ export default class ProgressBarView extends React.PureComponent {
             type="checkbox"
             checked={inactive}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ inactive: e.target.checked })}
+            onChange={(e) => this.setState({ inactive: e.target.checked })}
           />{" "}
           Inactive
         </label>
@@ -324,7 +324,7 @@ export default class ProgressBarView extends React.PureComponent {
             label="markNumbers"
             name="markNumbers"
             value={markNumbers}
-            onChange={e => this.setState({ markNumbers: e.target.value })}
+            onChange={(e) => this.setState({ markNumbers: e.target.value })}
           />
         </div>
       </FlexBox>

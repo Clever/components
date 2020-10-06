@@ -25,8 +25,8 @@ export default class AlertBoxView extends PureComponent {
 
         <Example title="AlertBox options:">
           <SegmentedControl
-            onSelect={value => this.setState({ type: value })}
-            options={Object.keys(AlertBoxOptions).map(n => ({
+            onSelect={(value) => this.setState({ type: value })}
+            options={Object.keys(AlertBoxOptions).map((n) => ({
               content: n,
               value: AlertBoxOptions[n],
             }))}

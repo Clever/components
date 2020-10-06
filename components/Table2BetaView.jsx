@@ -22,7 +22,7 @@ import FontAwesome from "react-fontawesome";
 
 const sampleActionInputs = [
   {
-    callback: selectedRows => {
+    callback: (selectedRows) => {
       console.log(selectedRows);
     },
     title: { singular: "Launch an app" },
@@ -144,7 +144,7 @@ export default class Table2BetaView extends React.PureComponent {
               label="Filter by name"
               name="tableFilter"
               placeholder="Filter by name"
-              onChange={e => {
+              onChange={(e) => {
                 this.setState({ tableFilter: e.target.value });
                 this.refs.table.setCurrentPage(1);
               }}
@@ -156,7 +156,7 @@ export default class Table2BetaView extends React.PureComponent {
               <Table2Beta
                 className={cssClass.TABLE}
                 data={tableData}
-                filter={rowData =>
+                filter={(rowData) =>
                   !this.state.tableFilter ||
                   _.includes(
                     [rowData.name.first, rowData.name.last].join(" "),
@@ -170,8 +170,8 @@ export default class Table2BetaView extends React.PureComponent {
                 }}
                 firstSortDirection={firstSortDirection}
                 ref="table"
-                onPageChange={page => console.log("Table page changed:", page)}
-                onSortChange={sortState => console.log("Table sort changed:", sortState)}
+                onPageChange={(page) => console.log("Table page changed:", page)}
+                onSortChange={(sortState) => console.log("Table sort changed:", sortState)}
                 onRowClick={
                   enableRowClick
                     ? (e, rowID, rowData) => console.log("Table row clicked:", { rowID, rowData })
@@ -183,12 +183,17 @@ export default class Table2BetaView extends React.PureComponent {
                         console.log("Table row moused over:", { rowID, rowData })
                     : undefined
                 }
-                onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
+                onViewChange={(data) =>
+                  console.log(
+                    "Table view changed:",
+                    data.map((d) => d.id),
+                  )
+                }
                 paginated
                 pageSize={9}
                 visiblePageRangeSize={5}
-                rowIDFn={r => r.id}
-                rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
+                rowIDFn={(r) => r.id}
+                rowClassNameFn={(r) => (r.age < 10 ? "additionalClass" : null)}
                 selectable={enableSelectable}
                 singleActions={sampleActionInputs}
                 selectedRowsHeaderContentType={{
@@ -200,7 +205,7 @@ export default class Table2BetaView extends React.PureComponent {
                 <Table2Beta.Column
                   id="details"
                   cell={{
-                    renderer: r => (
+                    renderer: (r) => (
                       <ModalButton
                         type="link"
                         size="small"
@@ -219,42 +224,42 @@ export default class Table2BetaView extends React.PureComponent {
                   header={{ content: "Name" }}
                   cell={{
                     className: "capitalize",
-                    renderer: r => [r.name.first, r.name.last].join(" "),
+                    renderer: (r) => [r.name.first, r.name.last].join(" "),
                   }}
                   sortable
-                  sortValueFn={r => [r.name.first, r.name.last].join(" ")}
+                  sortValueFn={(r) => [r.name.first, r.name.last].join(" ")}
                   width="25%"
                 />
 
                 <Table2Beta.Column
                   id="age"
                   header={{ content: "Age" }}
-                  cell={{ renderer: r => r.age }}
+                  cell={{ renderer: (r) => r.age }}
                   sortable
-                  sortValueFn={r => r.age}
+                  sortValueFn={(r) => r.age}
                 />
 
                 <Table2Beta.Column
                   id="status"
                   header={{ content: "Status" }}
                   cell={{
-                    className: r =>
+                    className: (r) =>
                       classnames(
                         "TableView--status",
                         enableDynamicCellClass &&
                           r.status.includes("e") &&
                           "TableView--status--red",
                       ),
-                    renderer: r => r.status,
+                    renderer: (r) => r.status,
                   }}
                   sortable
-                  sortValueFn={r => r.status}
+                  sortValueFn={(r) => r.status}
                 />
 
                 <Table2Beta.Column
                   id="notes"
                   header={{ content: "Notes" }}
-                  cell={{ renderer: r => r.notes }}
+                  cell={{ renderer: (r) => r.notes }}
                   width="100%"
                 />
               </Table2Beta>
@@ -297,7 +302,7 @@ export default class Table2BetaView extends React.PureComponent {
             <SegmentedControl
               className={cssClass.CONFIG_OPTIONS}
               defaultValue={firstSortDirection}
-              onSelect={value => this.setState({ firstSortDirection: value })}
+              onSelect={(value) => this.setState({ firstSortDirection: value })}
               options={[
                 { content: "ASCENDING", value: Table2Beta.sortDirection.ASCENDING },
                 { content: "DESCENDING", value: Table2Beta.sortDirection.DESCENDING },
@@ -554,33 +559,38 @@ export default class Table2BetaView extends React.PureComponent {
 
         <Example title="Lazy Table">
           <Table2Beta
-            ref={t => {
+            ref={(t) => {
               this._lazyTable = t;
             }}
             lazy
             getData={async ({ startingAfter, pageSize }) => {
               let start = 0;
               if (startingAfter != null) {
-                start = _.findIndex(tableData, r => r.id === startingAfter) + 1;
+                start = _.findIndex(tableData, (r) => r.id === startingAfter) + 1;
               }
-              await new Promise(resolve => setTimeout(resolve, 1000));
+              await new Promise((resolve) => setTimeout(resolve, 1000));
               return tableData.slice(start, start + pageSize);
             }}
             firstSortDirection={Table2Beta.sortDirection.DESCENDING}
             numRows={tableData.length}
-            onPageChange={page => console.log("Table page changed:", page)}
-            onSortChange={sortState => console.log("Table sort changed:", sortState)}
-            onViewChange={data => console.log("Table view changed:", data.map(d => d.id))}
+            onPageChange={(page) => console.log("Table page changed:", page)}
+            onSortChange={(sortState) => console.log("Table sort changed:", sortState)}
+            onViewChange={(data) =>
+              console.log(
+                "Table view changed:",
+                data.map((d) => d.id),
+              )
+            }
             paginated
             pageSize={9}
             visiblePageRangeSize={5}
-            rowIDFn={r => r.id}
-            rowClassNameFn={r => (r.age < 10 ? "additionalClass" : null)}
+            rowIDFn={(r) => r.id}
+            rowClassNameFn={(r) => (r.age < 10 ? "additionalClass" : null)}
           >
             <Table2Beta.Column
               id="details"
               cell={{
-                renderer: r => (
+                renderer: (r) => (
                   <ModalButton
                     type="link"
                     size="small"
@@ -599,7 +609,7 @@ export default class Table2BetaView extends React.PureComponent {
               header={{ content: "Name" }}
               cell={{
                 className: "capitalize",
-                renderer: r => [r.name.first, r.name.last].join(" "),
+                renderer: (r) => [r.name.first, r.name.last].join(" "),
               }}
               width="25%"
             />
@@ -607,19 +617,19 @@ export default class Table2BetaView extends React.PureComponent {
             <Table2Beta.Column
               id="age"
               header={{ content: "Age" }}
-              cell={{ renderer: r => r.age }}
+              cell={{ renderer: (r) => r.age }}
             />
 
             <Table2Beta.Column
               id="status"
               header={{ content: "Status" }}
-              cell={{ renderer: r => r.status }}
+              cell={{ renderer: (r) => r.status }}
             />
 
             <Table2Beta.Column
               id="notes"
               header={{ content: "Notes" }}
-              cell={{ renderer: r => r.notes }}
+              cell={{ renderer: (r) => r.notes }}
               width="100%"
             />
           </Table2Beta>

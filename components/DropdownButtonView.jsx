@@ -58,8 +58,8 @@ export default class DropdownButtonView extends Component {
           Size:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ size: value })}
-            options={_.values(DropdownButton.Size).map(s => ({
+            onSelect={(value) => this.setState({ size: value })}
+            options={_.values(DropdownButton.Size).map((s) => ({
               content: s,
               value: s,
               disabled: type === Type.DESTRUCTIVE && s === Size.S,
@@ -71,8 +71,8 @@ export default class DropdownButtonView extends Component {
           Type:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ type: value })}
-            options={_.values(DropdownButton.Type).map(t => ({
+            onSelect={(value) => this.setState({ type: value })}
+            options={_.values(DropdownButton.Type).map((t) => ({
               content: t,
               value: t,
               disabled: size === Size.S && t === Type.DESTRUCTIVE,
@@ -84,8 +84,11 @@ export default class DropdownButtonView extends Component {
           Disabled:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ disabled: value })}
-            options={[{ content: "false", value: "0" }, { content: "true", value: "1" }]}
+            onSelect={(value) => this.setState({ disabled: value })}
+            options={[
+              { content: "false", value: "0" },
+              { content: "true", value: "1" },
+            ]}
             value={disabled}
           />
         </div>
@@ -93,8 +96,8 @@ export default class DropdownButtonView extends Component {
           ArrowType:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={value => this.setState({ arrowType: value })}
-            options={_.values(DropdownButton.ArrowType).map(t => ({
+            onSelect={(value) => this.setState({ arrowType: value })}
+            options={_.values(DropdownButton.ArrowType).map((t) => ({
               content: t,
               value: t,
             }))}
@@ -153,7 +156,7 @@ export default class DropdownButtonView extends Component {
                 type={type}
                 arrowType={arrowType}
               >
-                {Object.keys(samples).map(countryCode => (
+                {Object.keys(samples).map((countryCode) => (
                   <Option key={countryCode} onClick={() => this.say(samples[countryCode].hello)}>
                     {samples[countryCode].country}
                   </Option>
@@ -221,7 +224,7 @@ export default class DropdownButtonView extends Component {
               type={type}
               arrowType={arrowType}
             >
-              {emptyArray.map(secondaryAction => (
+              {emptyArray.map((secondaryAction) => (
                 <Option key={secondaryAction}>{secondaryAction}</Option>
               ))}
             </DropdownButton>
