@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useMediaQuery } from "react-responsive";
 
 import "./SelectedRowsHeader.less";
 import { FlexBox, Button } from "../";
@@ -16,6 +17,7 @@ interface Props {
 
 const cssClasses = {
   ROW: "Table2Beta--selectedRowsHeader",
+  SELECTED_TEXT: "Table2Beta--selectedRowsHeader--selectedText",
   SINGLE_ACTION_TRIGGER: "Table2Beta--singleActionTrigger",
   ACTIONS_FLEXBOX: "Table2Beta--selectedRowsHeader--actionsFlexbox",
   ACTION: "Table2Beta--selectedRowsHeader--action",
@@ -37,6 +39,10 @@ export default function SelectedRowsHeader({
   const rowsAreSelected = selectedRows.size > 0;
   const singleRowSelected = selectedRows.size === 1;
 
+  const compact = useMediaQuery({
+    query: "(max-width: 52rem)",
+  });
+
   let displayedActions;
   let moreActions;
   if (actions.length > numDisplayedActions) {
@@ -48,8 +54,8 @@ export default function SelectedRowsHeader({
 
   return (
     <>
-      <FlexBox grow className={cssClasses.ROW}>
-        <FlexItem grow>
+      <FlexBox grow className={cssClasses.ROW} column={compact}>
+        <FlexItem className={cssClasses.SELECTED_TEXT} grow>
           {!rowsAreSelected && <div>Select {contentType.plural || "rows"} to access tools</div>}
           {rowsAreSelected && !allSelected && (
             <>
@@ -123,8 +129,9 @@ function Action({ actionInput, selectedRows }: ActionProps) {
   const { callback, title, icon } = actionInput;
   const singleRowSelected = selectedRows.size === 1;
   return (
-    <div className={cssClasses.ACTION}>
+    // <div className={cssClasses.ACTION}>
       <Button
+      className={cssClasses.ACTION}
         type="link"
         value={
           <>
@@ -137,6 +144,6 @@ function Action({ actionInput, selectedRows }: ActionProps) {
         onClick={e => callback(selectedRows)}
         size="small"
       />
-    </div>
+    // </div>
   );
 }
