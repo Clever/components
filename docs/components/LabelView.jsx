@@ -76,8 +76,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={size}
-                onSelect={value => this.setState({ size: value })}
-                options={_.map(_.uniq(Object.values(Label.Size)), s => ({
+                onSelect={(value) => this.setState({ size: value })}
+                options={_.map(_.uniq(Object.values(Label.Size)), (s) => ({
                   content: s,
                   value: s,
                 }))}
@@ -88,8 +88,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={color}
-                onSelect={value => this.setState({ color: value })}
-                options={_.map(_.uniq(Object.values(Label.Color)), c => ({
+                onSelect={(value) => this.setState({ color: value })}
+                options={_.map(_.uniq(Object.values(Label.Color)), (c) => ({
                   content: c,
                   value: c,
                 }))}
@@ -100,8 +100,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={tooltipPlacement}
-                onSelect={value => this.setState({ tooltipPlacement: value })}
-                options={_.map(Tooltip.Placement, p => ({ content: p, value: p }))}
+                onSelect={(value) => this.setState({ tooltipPlacement: value })}
+                options={_.map(Tooltip.Placement, (p) => ({ content: p, value: p }))}
               />
             </div>
             <div className={cssClass.CONFIG}>
@@ -109,8 +109,8 @@ export default class LabelView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 defaultValue={tooltipTextAlign}
-                onSelect={value => this.setState({ tooltipTextAlign: value })}
-                options={_.map(Tooltip.Align, p => ({ content: p, value: p }))}
+                onSelect={(value) => this.setState({ tooltipTextAlign: value })}
+                options={_.map(Tooltip.Align, (p) => ({ content: p, value: p }))}
               />
             </div>
             <div className={cssClass.FOCUS_CONTROL}>

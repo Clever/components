@@ -31,7 +31,7 @@ export default function Col({
   if (typeof span === "number") {
     colSpanClasses = `${cssClass.COL}--${Size.DEFAULT}--${span}`;
   } else {
-    colSpanClasses = _.map(Size, s => span[s] && `${cssClass.COL}--${s}--${span[s]}`);
+    colSpanClasses = _.map(Size, (s) => span[s] && `${cssClass.COL}--${s}--${span[s]}`);
   }
 
   return (
@@ -43,7 +43,7 @@ export default function Col({
 
 // Define the shape of the `span` prop as a map from viewport `Size` to the associated span length.
 const colSpanPropShape = {};
-_.forEach(Size, size => {
+_.forEach(Size, (size) => {
   colSpanPropShape[size] = PropTypes.number;
 });
 

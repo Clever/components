@@ -49,7 +49,7 @@ export default function Tab({
       )}
       disabled={disabled}
       href={href}
-      onClick={e => {
+      onClick={(e) => {
         if (disabled) {
           e.preventDefault();
           return;

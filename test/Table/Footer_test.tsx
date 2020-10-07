@@ -20,18 +20,8 @@ describe("Footer", () => {
     );
 
   it("is empty for numPages < 2", () => {
-    assert(
-      !newFooter({ numPages: 0 })
-        .children()
-        .exists(),
-      "Footer should be empty for 0 pages.",
-    );
-    assert(
-      !newFooter({ numPages: 1 })
-        .children()
-        .exists(),
-      "Footer should be empty for 1 page.",
-    );
+    assert(!newFooter({ numPages: 0 }).children().exists(), "Footer should be empty for 0 pages.");
+    assert(!newFooter({ numPages: 1 }).children().exists(), "Footer should be empty for 1 page.");
   });
 
   it("renders single cell spanning all columns", () => {
@@ -101,7 +91,10 @@ describe("Footer", () => {
         const pageButtons = footer.find(`.${cssClass.BUTTON_PAGE}`);
 
         expectedButtons.push(`${i}`);
-        assert.deepEqual(pageButtons.map(b => b.props().value), expectedButtons);
+        assert.deepEqual(
+          pageButtons.map((b) => b.props().value),
+          expectedButtons,
+        );
       }
     });
 
@@ -112,7 +105,10 @@ describe("Footer", () => {
 
       const pageButtons = footer.find(`.${cssClass.BUTTON_PAGE}`);
       const expectedButtons = ["1", "18", "19", "20", "21", "22", "40"];
-      assert.deepEqual(pageButtons.map(b => b.props().value), expectedButtons);
+      assert.deepEqual(
+        pageButtons.map((b) => b.props().value),
+        expectedButtons,
+      );
 
       const pageNumbers = footer.find(`.${cssClass.PAGE_NUMBERS}`).children();
       assert.equal(

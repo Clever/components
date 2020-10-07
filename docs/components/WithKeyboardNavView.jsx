@@ -73,7 +73,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
                 "wingsuit",
               ]}
               noWrap={noWrap}
-              onChange={id => this.setState({ currentVehicle: id })}
+              onChange={(id) => this.setState({ currentVehicle: id })}
               forwardKeys={useCustomKeys ? [KeyCode.K] : undefined}
               backKeys={useCustomKeys ? [KeyCode.J] : undefined}
             >
@@ -84,7 +84,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
                   { id: "car", label: "Car", focused: currentVehicle === "car", disabled: true },
                   { id: "scooter", label: "Scooter", focused: currentVehicle === "scooter" },
                   { id: "wingsuit", label: "Wing Suit", focused: currentVehicle === "wingsuit" },
-                ].map(o => (
+                ].map((o) => (
                   <div
                     className={classnames(
                       cssClass.OPTION,
@@ -125,7 +125,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
             type="checkbox"
             checked={useCustomKeys}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ useCustomKeys: e.target.checked })}
+            onChange={(e) => this.setState({ useCustomKeys: e.target.checked })}
           />{" "}
           Use custom keys (
           <span>
@@ -138,7 +138,7 @@ export default class WithKeyboardNavView extends React.PureComponent {
             type="checkbox"
             checked={noWrap}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={e => this.setState({ noWrap: e.target.checked })}
+            onChange={(e) => this.setState({ noWrap: e.target.checked })}
           />{" "}
           Disable wrapping
         </label>

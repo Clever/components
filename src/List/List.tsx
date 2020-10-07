@@ -32,7 +32,7 @@ const cssClass = {
   ITEMS: "List--items",
   NO_BORDER: "List--noBorder",
 
-  rowType: type => `List--items--${type}`,
+  rowType: (type) => `List--items--${type}`,
 };
 
 export default class List extends React.PureComponent<Props> {

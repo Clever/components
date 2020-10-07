@@ -55,7 +55,7 @@ export class TopBarButton extends React.PureComponent<Props> {
           )}
           href={href}
           onClick={onClick}
-          ref={ref => {
+          ref={(ref) => {
             this._containerRef = ref;
           }}
         >

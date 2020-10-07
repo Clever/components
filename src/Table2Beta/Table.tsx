@@ -308,7 +308,7 @@ export class Table2Beta extends React.Component<Props, State> {
   _getColumn(columnID) {
     return _.find(
       React.Children.toArray(this.props.children) as React.ReactElement<ColumnProps>[],
-      column => column.props.id === columnID,
+      (column) => column.props.id === columnID,
     );
   }
 
@@ -352,7 +352,7 @@ export class Table2Beta extends React.Component<Props, State> {
       // sortedColumn might not exist if a column is removed from the table
       // dynamically. in this case, just ignore the sort state.
       if (sortedColumn) {
-        displayedData = displayedData.sortBy(row => {
+        displayedData = displayedData.sortBy((row) => {
           let value = sortedColumn.props.sortValueFn(row);
 
           if (typeof value === "string") {
@@ -458,10 +458,10 @@ export class Table2Beta extends React.Component<Props, State> {
             }
             placement={Menu.Placement.RIGHT}
           >
-            {singleActions.slice(1).map(action => (
+            {singleActions.slice(1).map((action) => (
               <Menu.Item
                 className={cssClass.ACTION_MENU_ITEM}
-                onClick={e => action.callback(rowData)}
+                onClick={(e) => action.callback(rowData)}
                 key="action.title.singular"
               >
                 <div className={cssClass.ACTION_MENU_ITEM_TITLE}>
@@ -509,7 +509,7 @@ export class Table2Beta extends React.Component<Props, State> {
 
     const { displayedData, numPages, allRows } = this._getDisplayedData();
     selectedRows = new Set(selectedRows && allRows);
-    this.setState({selectedRows})    
+    this.setState({ selectedRows });
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
@@ -542,7 +542,7 @@ export class Table2Beta extends React.Component<Props, State> {
                   <Checkbox
                     checked={selectedRows.size > 0}
                     partial={selectedRows.size < (displayedData || allRows).length}
-                    onChange={newState => {
+                    onChange={(newState) => {
                       if (selectedRows.size === 0) {
                         selectedRows = new Set(displayedData || allRows);
                         this.setState({ allSelected: true });
@@ -560,7 +560,7 @@ export class Table2Beta extends React.Component<Props, State> {
               )}
               <Header
                 disableSort={disableSort}
-                onSortChange={columnID => this._toggleSort(columnID)}
+                onSortChange={(columnID) => this._toggleSort(columnID)}
                 sortState={sortState}
                 selectable={selectable}
               >
@@ -596,18 +596,20 @@ export class Table2Beta extends React.Component<Props, State> {
                     selectedRows.has(rowData) && cssClass.ROW_SELECTED,
                   )}
                   key={rowIDFn(rowData)}
-                  onClick={e => {
+                  onClick={(e) => {
                     if (onRowClick) {
                       onRowClick(e, rowIDFn(rowData), rowData);
                     }
                   }}
-                  onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
+                  onMouseOver={(e) =>
+                    onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)
+                  }
                 >
                   {selectable && (
                     <Cell>
                       <Checkbox
                         checked={selectedRows.has(rowData)}
-                        onChange={newState => {
+                        onChange={(newState) => {
                           if (newState.checked) {
                             selectedRows.add(rowData);
                             if (selectedRows.size === (allRows || displayedData).length) {
@@ -651,7 +653,7 @@ export class Table2Beta extends React.Component<Props, State> {
           {paginated && (
             <Footer
               currentPage={displayedPage}
-              onPageChange={newPage => this.setCurrentPage(newPage)}
+              onPageChange={(newPage) => this.setCurrentPage(newPage)}
               numColumns={numColumns}
               numPages={numPages}
               showLastPage={!lazy}

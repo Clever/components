@@ -88,7 +88,7 @@ export default class InfoPanel extends React.Component<Props, State> {
 
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>
-        <Accordion onChange={keys => this.toggleArrow(keys)}>
+        <Accordion onChange={(keys) => this.toggleArrow(keys)}>
           <AccordionItem expanded={!isCollapsed}>
             <AccordionItemTitle className={cssClass.COLLAPSIBLE_HEADER}>
               <div>

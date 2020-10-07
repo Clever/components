@@ -10,7 +10,7 @@ export default function ComponentsView() {
   return (
     <View className={cssClass.CONTAINER} title="Component List">
       <FlexBox wrap className={cssClass.CONTAINER_FLEXBOX}>
-        {componentsToDisplay.map(comp => (
+        {componentsToDisplay.map((comp) => (
           <ComponentBox
             key={comp.componentLink}
             componentLink={comp.componentLink}

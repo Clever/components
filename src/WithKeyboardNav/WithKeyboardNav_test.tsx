@@ -176,8 +176,5 @@ describe("WithKeyboardNav", () => {
 });
 
 function simulateKeyDownEvent(wrapper, { key, shiftKey = false }) {
-  wrapper
-    .find("div")
-    .getDOMNode()
-    .dispatchEvent(new KeyboardEvent("keydown", { key, shiftKey }));
+  wrapper.find("div").getDOMNode().dispatchEvent(new KeyboardEvent("keydown", { key, shiftKey }));
 }

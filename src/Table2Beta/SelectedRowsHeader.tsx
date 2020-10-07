@@ -72,7 +72,7 @@ export default function SelectedRowsHeader({
         </FlexItem>
         <FlexItem className={cssClasses.ACTIONS_FLEXBOX}>
           {rowsAreSelected &&
-            displayedActions.map(action => (
+            displayedActions.map((action) => (
               <Action
                 actionInput={{
                   callback: action.callback,
@@ -95,10 +95,10 @@ export default function SelectedRowsHeader({
               }
               placement={Menu.Placement.RIGHT}
             >
-              {moreActions.map(action => (
+              {moreActions.map((action) => (
                 <Menu.Item
                   className={cssClasses.ACTION_MENU_ITEM}
-                  onClick={e => action.callback(selectedRows)}
+                  onClick={(e) => action.callback(selectedRows)}
                   key={action.title.singular}
                 >
                   <div className={cssClasses.ACTION_MENU_ITEM_TITLE}>
@@ -139,7 +139,7 @@ function Action({ actionInput, selectedRows }: ActionProps) {
           </div>
         </>
       }
-      onClick={e => callback(selectedRows)}
+      onClick={(e) => callback(selectedRows)}
       size="small"
     />
   );

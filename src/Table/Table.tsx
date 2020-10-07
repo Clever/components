@@ -267,7 +267,7 @@ export class Table extends React.Component<Props, State> {
   _getColumn(columnID) {
     return _.find(
       React.Children.toArray(this.props.children) as React.ReactElement<ColumnProps>[],
-      column => column.props.id === columnID,
+      (column) => column.props.id === columnID,
     );
   }
 
@@ -311,7 +311,7 @@ export class Table extends React.Component<Props, State> {
       // sortedColumn might not exist if a column is removed from the table
       // dynamically. in this case, just ignore the sort state.
       if (sortedColumn) {
-        displayedData = displayedData.sortBy(row => {
+        displayedData = displayedData.sortBy((row) => {
           let value = sortedColumn.props.sortValueFn(row);
 
           if (typeof value === "string") {
@@ -406,7 +406,7 @@ export class Table extends React.Component<Props, State> {
       <table className={classnames(cssClass.TABLE, fixed && cssClass.FIXED, className)}>
         <Header
           disableSort={disableSort}
-          onSortChange={columnID => this._toggleSort(columnID)}
+          onSortChange={(columnID) => this._toggleSort(columnID)}
           sortState={sortState}
         >
           {columns}
@@ -425,7 +425,7 @@ export class Table extends React.Component<Props, State> {
               )}
             </tr>
           ) : (
-            displayedData.map(rowData => (
+            displayedData.map((rowData) => (
               <tr
                 className={classnames(
                   cssClass.ROW,
@@ -433,8 +433,8 @@ export class Table extends React.Component<Props, State> {
                   rowClassNameFn && rowClassNameFn(rowData),
                 )}
                 key={rowIDFn(rowData)}
-                onClick={e => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
-                onMouseOver={e => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
+                onClick={(e) => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+                onMouseOver={(e) => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
               >
                 {columns.map(({ props: col }: { props: any }) => (
                   <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
@@ -448,7 +448,7 @@ export class Table extends React.Component<Props, State> {
         {paginated && (
           <Footer
             currentPage={displayedPage}
-            onPageChange={newPage => this.setCurrentPage(newPage)}
+            onPageChange={(newPage) => this.setCurrentPage(newPage)}
             numColumns={columns.length}
             numPages={numPages}
             showLastPage={!lazy}
