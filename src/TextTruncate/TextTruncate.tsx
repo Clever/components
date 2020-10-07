@@ -50,7 +50,7 @@ export default class TextTruncate extends React.PureComponent<Props> {
     truncated: true,
   };
 
-  toggleTruncation = (event) => {
+  toggleTruncation = event => {
     event.preventDefault();
 
     this.setState({ truncated: !this.state.truncated });

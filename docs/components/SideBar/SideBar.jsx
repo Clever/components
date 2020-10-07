@@ -50,8 +50,8 @@ export default class SideBar extends React.Component {
     const { className } = this.props;
     const { collapsed } = this.state;
 
-    const icon = (name) => <Icon name={name} size={Icon.sizes.SMALL} />;
-    const faIcon = (name) => <span className={classnames(cssClass.FA_ICON, `fa fa-${name}`)} />;
+    const icon = name => <Icon name={name} size={Icon.sizes.SMALL} />;
+    const faIcon = name => <span className={classnames(cssClass.FA_ICON, `fa fa-${name}`)} />;
 
     return (
       <LeftNav

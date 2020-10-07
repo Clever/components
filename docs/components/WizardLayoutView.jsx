@@ -79,7 +79,7 @@ export default class WizardLayoutView extends React.PureComponent {
 
     const stepper = (
       <Stepper
-        onStepClick={(id) => this.setState({ currentStep: id })}
+        onStepClick={id => this.setState({ currentStep: id })}
         steps={stepperSteps}
         currentStepID={currentStep}
       />
@@ -206,7 +206,7 @@ export default class WizardLayoutView extends React.PureComponent {
             type="checkbox"
             checked={showHeaderImg}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ showHeaderImg: e.target.checked })}
+            onChange={e => this.setState({ showHeaderImg: e.target.checked })}
           />{" "}
           Header image
         </label>
@@ -215,7 +215,7 @@ export default class WizardLayoutView extends React.PureComponent {
             type="checkbox"
             checked={customHelpContent}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ customHelpContent: e.target.checked })}
+            onChange={e => this.setState({ customHelpContent: e.target.checked })}
           />{" "}
           Custom help content
         </label>
@@ -224,7 +224,7 @@ export default class WizardLayoutView extends React.PureComponent {
             type="checkbox"
             checked={hidePreviousStepButton}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ hidePreviousStepButton: e.target.checked })}
+            onChange={e => this.setState({ hidePreviousStepButton: e.target.checked })}
           />{" "}
           Hide previous step button
         </label>
@@ -233,7 +233,7 @@ export default class WizardLayoutView extends React.PureComponent {
             type="checkbox"
             checked={hideSaveAndExit}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ hideSaveAndExit: e.target.checked })}
+            onChange={e => this.setState({ hideSaveAndExit: e.target.checked })}
           />{" "}
           Hide save & exit button
         </label>

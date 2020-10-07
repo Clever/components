@@ -34,7 +34,7 @@ export default class DateInputView extends Component {
               disabled={this.state.disabled}
               error={this.state.hasError ? "Invalid date" : null}
               label="label"
-              onChange={(value) => this.setState({ value })}
+              onChange={value => this.setState({ value })}
               placeholder="Placeholder"
               name="name"
               readOnly={this.state.readOnly}
@@ -95,7 +95,7 @@ export default class DateInputView extends Component {
                 { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={(value) => this.setState({ size: value })}
+              onSelect={value => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -199,7 +199,7 @@ export default class DateInputView extends Component {
                 <p>
                   The size of the input. One of:
                   <br />
-                  {Object.keys(FormElementSize).map((size) => (
+                  {Object.keys(FormElementSize).map(size => (
                     <span key={size}>
                       <code>FormElementSize.{size}</code>
                       <br />

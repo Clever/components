@@ -31,7 +31,7 @@ export default class IconView extends PureComponent {
           `}
         >
           <SegmentedControl
-            onSelect={(s) => this.setState({ size: s })}
+            onSelect={s => this.setState({ size: s })}
             options={[
               { content: "Small", value: Icon.sizes.SMALL },
               { content: "Medium (default)", value: Icon.sizes.MEDIUM },
@@ -40,7 +40,7 @@ export default class IconView extends PureComponent {
             value={this.state.size}
           />
           <ul>
-            {_.map(Icon.names, (name) => (
+            {_.map(Icon.names, name => (
               <li key={name}>
                 <Icon size={this.state.size} name={name} />
                 <label>{name}</label>

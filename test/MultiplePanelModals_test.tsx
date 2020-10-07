@@ -24,10 +24,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[
-          { title: "page1", panel: panel1 },
-          { title: "page2", panel: panel2 },
-        ]}
+        componentArray={[{ title: "page1", panel: panel1 }, { title: "page2", panel: panel2 }]}
       />,
     );
     expect(myComponent.props().children.props.title).toMatch("page1");
@@ -37,10 +34,7 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[
-          { title: "page1", panel: panel1 },
-          { title: "page2", panel: panel1 },
-        ]}
+        componentArray={[{ title: "page1", panel: panel1 }, { title: "page2", panel: panel1 }]}
         startingPanel={1}
       />,
     );
@@ -87,7 +81,10 @@ describe("MultiplePanelModals", () => {
 
     expect(myComponent).toIncludeText("<Modal />");
 
-    myComponent.find(Button).at(1).simulate("click");
+    myComponent
+      .find(Button)
+      .at(1)
+      .simulate("click");
 
     expect(myComponent).not.toIncludeText("<Modal />");
   });
@@ -96,15 +93,15 @@ describe("MultiplePanelModals", () => {
     const myComponent = shallow(
       <MultiplePanelModals
         closeModal={() => {}}
-        componentArray={[
-          { title: "page1", panel: panel1 },
-          { title: "page2", panel: panel2 },
-        ]}
+        componentArray={[{ title: "page1", panel: panel1 }, { title: "page2", panel: panel2 }]}
       />,
     );
     expect(myComponent.props().children.props.title).toMatch("page1");
 
-    myComponent.find(Button).at(1).simulate("click");
+    myComponent
+      .find(Button)
+      .at(1)
+      .simulate("click");
     expect(myComponent.props().children.props.title).toMatch("page2");
   });
 });

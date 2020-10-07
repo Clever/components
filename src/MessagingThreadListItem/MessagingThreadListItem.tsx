@@ -135,7 +135,7 @@ function _formatDateForTimestamp(date: Date): string {
 function _filterChildren(children: any) {
   // If an array, we want to filter out the falsey elements.
   if (children && Array.isArray(children)) {
-    const filteredChildren = children.filter((child) => !!child);
+    const filteredChildren = children.filter(child => !!child);
     // If now an empty array, nothing to render. Otherwise, render children!
     return filteredChildren.length === 0 ? undefined : filteredChildren;
   }

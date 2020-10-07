@@ -149,7 +149,7 @@ export class FileInput extends React.Component<Props, State> {
       error: (errMsg = "Unknown error") => {
         this.setState({ error: errMsg });
       },
-      progress: (progress) => {
+      progress: progress => {
         if (this.state.fileKey !== fileKey) {
           return; // If the user drops multiple files we want to only take progress from the active upload
         }

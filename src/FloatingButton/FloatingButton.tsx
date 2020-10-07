@@ -36,9 +36,9 @@ interface State {
 const cssClass = {
   ACTIVE: "FloatingButton--active",
   ANIMATE: "FloatingButton--animate",
-  inactive: (positionY) => `FloatingButton--inactive--${positionY}`,
+  inactive: positionY => `FloatingButton--inactive--${positionY}`,
 
-  propStyle: (prop) => `FloatingButton--${prop}`,
+  propStyle: prop => `FloatingButton--${prop}`,
 
   BUTTON: "FloatingButton--button",
   CONTAINER: "FloatingButton--container",
@@ -192,10 +192,9 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
       size,
     } = this.props;
     const { active, positionX } = this.state;
-    const additionalProps = _.omit(
-      this.props,
-      Object.keys(propTypes) as (keyof typeof propTypes)[],
-    );
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     return (
       <RootCloseWrapper onRootClose={this.onRootClose}>

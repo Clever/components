@@ -19,7 +19,7 @@ describe("utils", () => {
 
     it("handles empty prefix input gracefully", () => {
       const testCases = [[], [undefined], [""], [null], [undefined, null, ""]];
-      testCases.forEach((testCase) => {
+      testCases.forEach(testCase => {
         assert.equal(classNameFor(testCase), "");
         assert.equal(classNameFor(testCase, "a"), "a");
         assert.equal(classNameFor(testCase, ["a"]), "a");

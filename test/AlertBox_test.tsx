@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 import { AlertBox } from "../src";
 
 describe("AlertBox", () => {
-  _.forEach(["warning", "info", "error", "success"], (type) => {
+  _.forEach(["warning", "info", "error", "success"], type => {
     it(`renders a <AlertBox> element with class AlertBox--${type}`, () => {
       const alertBox = shallow(
         <AlertBox type={type as any} title="title">

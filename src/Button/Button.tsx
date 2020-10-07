@@ -102,10 +102,9 @@ export class Button extends React.PureComponent<Props> {
       value,
       underlined,
     } = this.props;
-    const additionalProps = _.omit(
-      this.props,
-      Object.keys(propTypes) as (keyof typeof propTypes)[],
-    );
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     if ((type === Type.DESTRUCTIVE || type === Type.SECONDARY_DESTRUCTIVE) && size === Size.S) {
       throw new Error("Small destructive buttons are not supported");
@@ -138,7 +137,7 @@ export class Button extends React.PureComponent<Props> {
           className={classes}
           disabled={disabled}
           onClick={onClick}
-          ref={(ref) => {
+          ref={ref => {
             this._buttonRef = ref;
           }}
           style={style}
@@ -155,7 +154,7 @@ export class Button extends React.PureComponent<Props> {
         className={classes}
         href={href}
         onClick={onClick}
-        ref={(ref) => {
+        ref={ref => {
           this._buttonRef = ref;
         }}
         style={style}

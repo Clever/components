@@ -61,8 +61,8 @@ export default class ListView extends React.PureComponent {
           Row Type:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ rowType: value })}
-            options={_.map(List.RowType, (type) => ({ content: type, value: type }))}
+            onSelect={value => this.setState({ rowType: value })}
+            options={_.map(List.RowType, type => ({ content: type, value: type }))}
             value={rowType}
           />
         </div>
@@ -70,7 +70,7 @@ export default class ListView extends React.PureComponent {
           Items:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ itemsKey: value })}
+            onSelect={value => this.setState({ itemsKey: value })}
             options={[
               { content: "Non-Empty", value: "nonEmpty" },
               { content: "Empty", value: "empty" },
@@ -82,7 +82,7 @@ export default class ListView extends React.PureComponent {
           <input
             type="checkbox"
             checked={showBorder}
-            onChange={(e) => this.setState({ showBorder: e.target.checked })}
+            onChange={e => this.setState({ showBorder: e.target.checked })}
           />{" "}
           Show Border
         </label>
@@ -90,7 +90,7 @@ export default class ListView extends React.PureComponent {
           <input
             type="checkbox"
             checked={showTitle}
-            onChange={(e) => this.setState({ showTitle: e.target.checked })}
+            onChange={e => this.setState({ showTitle: e.target.checked })}
           />{" "}
           Show Title
         </label>
@@ -98,7 +98,7 @@ export default class ListView extends React.PureComponent {
           <input
             type="checkbox"
             checked={showCustomEmptyMessage}
-            onChange={(e) => this.setState({ showCustomEmptyMessage: e.target.checked })}
+            onChange={e => this.setState({ showCustomEmptyMessage: e.target.checked })}
           />{" "}
           Custom Empty Message
         </label>
@@ -106,7 +106,7 @@ export default class ListView extends React.PureComponent {
           <input
             type="checkbox"
             checked={showOnClick}
-            onChange={(e) => this.setState({ showOnClick: e.target.checked })}
+            onChange={e => this.setState({ showOnClick: e.target.checked })}
           />{" "}
           On Click Handler
         </label>

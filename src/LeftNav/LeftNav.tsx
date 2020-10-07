@@ -74,9 +74,9 @@ export class LeftNav extends React.PureComponent<Props, State> {
     // should open the drawer to show it. Otherwise, don't start with the drawer open.
     const selectedNavGroup = _.find(
       this._getNonEmptyChildren(props.children),
-      (child) =>
+      child =>
         child.type === NavGroup &&
-        this._getNonEmptyChildren(child.props.children).some((navLink) => navLink.props.selected),
+        this._getNonEmptyChildren(child.props.children).some(navLink => navLink.props.selected),
     );
     this.state = { openNavGroup: selectedNavGroup ? selectedNavGroup.props.id : null };
   }
@@ -99,7 +99,7 @@ export class LeftNav extends React.PureComponent<Props, State> {
     const _collapsed = collapsed || (collapseOnSubNavOpen && !!openNavGroup);
 
     // Clone all of the children so that we can attach our own click handlers
-    const navItems = this._getNonEmptyChildren(children).map((child) => {
+    const navItems = this._getNonEmptyChildren(children).map(child => {
       // Configure top level NavLinks to close any open NavGroup on click
       if (child.type === NavLink) {
         return React.cloneElement(child, {
@@ -130,7 +130,7 @@ export class LeftNav extends React.PureComponent<Props, State> {
     });
 
     // Find the open NavGroup so that we can render its children NavLinks in the drawer
-    const openChild: any = _.find(this._getNonEmptyChildren(navItems), (item) => item.props._open);
+    const openChild: any = _.find(this._getNonEmptyChildren(navItems), item => item.props._open);
 
     return (
       <RootCloseWrapper onRootClose={() => this._onRootClose()}>

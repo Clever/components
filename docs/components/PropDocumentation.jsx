@@ -24,42 +24,42 @@ export default class PropDocumentation extends PureComponent {
         <Table
           className={cssClass.TABLE}
           data={availableProps}
-          rowIDFn={(p) => p.name}
+          rowIDFn={p => p.name}
           initialSortState={{ columnID: "name", direction: Table.sortDirection.ASCENDING }}
         >
           <Column
             id="name"
             header={{ content: "Prop Name" }}
-            cell={{ renderer: (p) => <code>{p.name}</code> }}
+            cell={{ renderer: p => <code>{p.name}</code> }}
             noWrap
             sortable
-            sortValueFn={(p) => p.name.trim().toLowerCase()}
+            sortValueFn={p => p.name.trim().toLowerCase()}
             className={cssClass.CODE}
           />
           <Column
             id="type"
             header={{ content: "Prop Type" }}
-            cell={{ renderer: (p) => p.type }}
+            cell={{ renderer: p => p.type }}
             noWrap
           />
           <Column
             id="description"
             header={{ content: "Description" }}
-            cell={{ renderer: (p) => p.description }}
+            cell={{ renderer: p => p.description }}
           />
           <Column
             id="defaultValue"
             header={{ content: "Default Value" }}
-            cell={{ renderer: (p) => (p.defaultValue ? <code>{p.defaultValue}</code> : "None") }}
+            cell={{ renderer: p => (p.defaultValue ? <code>{p.defaultValue}</code> : "None") }}
             noWrap
           />
           <Column
             id="optional"
             header={{ content: "Required" }}
-            cell={{ renderer: (p) => (p.optional ? "False" : "True") }}
+            cell={{ renderer: p => (p.optional ? "False" : "True") }}
             noWrap
             sortable
-            sortValueFn={(p) => p.optional}
+            sortValueFn={p => p.optional}
           />
         </Table>
       </div>

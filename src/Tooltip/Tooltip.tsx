@@ -60,7 +60,7 @@ const defaultProps = {
 export const cssClass = {
   CONTENT: "Tooltip--content",
 
-  align: (textAlign) => `Tooltip--content--${textAlign}`,
+  align: textAlign => `Tooltip--content--${textAlign}`,
 };
 
 /**

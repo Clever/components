@@ -39,10 +39,10 @@ describe("Table", () => {
       }}
       cell={{
         className: "name_cell",
-        renderer: (r) => r.name,
+        renderer: r => r.name,
       }}
       sortable
-      sortValueFn={(r) => r.name}
+      sortValueFn={r => r.name}
     />
   );
 
@@ -51,15 +51,15 @@ describe("Table", () => {
       id="description"
       header={{ content: "Description" }}
       cell={{
-        className: (r) => r.id,
-        renderer: (r) => r.description,
+        className: r => r.id,
+        renderer: r => r.description,
       }}
     />
   );
 
   const newTable = (props = {}) =>
     shallow(
-      <Table data={DATA} rowIDFn={(r) => r.id} {...props}>
+      <Table data={DATA} rowIDFn={r => r.id} {...props}>
         {nameColumn}
         {descriptionColumn}
       </Table>,
@@ -71,7 +71,13 @@ describe("Table", () => {
   });
 
   describe("header", () => {
-    it("is rendered", () => assert(newTable().find(Header).exists(), "Header not found."));
+    it("is rendered", () =>
+      assert(
+        newTable()
+          .find(Header)
+          .exists(),
+        "Header not found.",
+      ));
 
     it("sets initial sort state by column ID", () => {
       const table = newTable({
@@ -87,16 +93,18 @@ describe("Table", () => {
         "Initial sort state not set",
       );
 
-      const rowIDs = table.find("tr").map((r) => r.key());
+      const rowIDs = table.find("tr").map(r => r.key());
       const expectedOrder = DATA.slice()
         .reverse()
-        .map((item) => item.id);
+        .map(item => item.id);
       assert.deepEqual(rowIDs, expectedOrder);
     });
 
     it("has table columns as children", () => {
       assert(
-        newTable().find(Header).contains(nameColumn, descriptionColumn),
+        newTable()
+          .find(Header)
+          .contains(nameColumn, descriptionColumn),
         "Columns not passed to header.",
       );
     });
@@ -111,9 +119,19 @@ describe("Table", () => {
         const cells = rows.at(i).find(Cell);
 
         assert.equal(cells.length, 2, `Incorrect number of columns rendered at row ${i}`);
-        assert.equal(cells.at(0).childAt(0).text(), item.name, `Unexpected content in row ${i}`);
         assert.equal(
-          cells.at(1).childAt(0).text(),
+          cells
+            .at(0)
+            .childAt(0)
+            .text(),
+          item.name,
+          `Unexpected content in row ${i}`,
+        );
+        assert.equal(
+          cells
+            .at(1)
+            .childAt(0)
+            .text(),
           item.description,
           `Unexpected content in row ${i}`,
         );
@@ -121,7 +139,11 @@ describe("Table", () => {
     });
 
     it("assigns custom cell classnames", () => {
-      const nameCell = newTable().find(`.${cssClass.ROW}`).first().find(Cell).first();
+      const nameCell = newTable()
+        .find(`.${cssClass.ROW}`)
+        .first()
+        .find(Cell)
+        .first();
 
       assert(
         _.includes(nameCell.props().className, nameColumn.props.cell.className),
@@ -130,7 +152,11 @@ describe("Table", () => {
     });
 
     it("assigns custom cell class name if specified as a function", () => {
-      const descriptionCell = newTable().find(`.${cssClass.ROW}`).first().find(Cell).at(1);
+      const descriptionCell = newTable()
+        .find(`.${cssClass.ROW}`)
+        .first()
+        .find(Cell)
+        .at(1);
 
       assert(
         descriptionCell.props().className.includes(descriptionColumn.props.cell.className(DATA[0])),
@@ -169,7 +195,7 @@ describe("Table", () => {
 
     it("filters out rows with provided filter", () => {
       const item = DATA[0];
-      const table = newTable({ filter: (r) => r.name === item.name });
+      const table = newTable({ filter: r => r.name === item.name });
 
       const rows = table.find(`.${cssClass.ROW}`);
       assert.equal(rows.length, 1, "Incorrect number of filtered rows.");
@@ -194,7 +220,7 @@ describe("Table", () => {
         "Sort should NOT be disabled if table contains > 1 row.",
       );
 
-      table.setProps({ filter: (r) => r.name === DATA[0].name });
+      table.setProps({ filter: r => r.name === DATA[0].name });
       assert(
         table.find(Header).props().disableSort,
         "Sort should be disabled if table contains 1 row.",
@@ -299,7 +325,7 @@ describe("Table", () => {
   });
 
   describe("lazy-loading", () => {
-    const newLazyTable = (props) =>
+    const newLazyTable = props =>
       newTable({
         lazy: true,
         numRows: DATA.length,
@@ -329,7 +355,7 @@ describe("Table", () => {
       const table = newLazyTable({ getData });
 
       // wait for the first page to be resolved
-      await new Promise((resolve) => setImmediate(resolve));
+      await new Promise(resolve => setImmediate(resolve));
 
       await table.instance().setCurrentPage(2);
       sinon.assert.calledTwice(getData);
@@ -344,18 +370,32 @@ describe("Table", () => {
         .returns(Promise.resolve(DATA.slice(1, 2)));
       const table = newLazyTable({ getData });
 
-      const assertShows = (item) => {
+      const assertShows = item => {
         table.update();
         const rows = table.find(`.${cssClass.ROW}`);
         assert.equal(rows.length, 1);
         const cells = rows.find(Cell);
         assert.equal(cells.length, 2, "Incorrect number of columns rendered");
-        assert.equal(cells.at(0).childAt(0).text(), item.name, "Unexpected content");
-        assert.equal(cells.at(1).childAt(0).text(), item.description, "Unexpected content");
+        assert.equal(
+          cells
+            .at(0)
+            .childAt(0)
+            .text(),
+          item.name,
+          "Unexpected content",
+        );
+        assert.equal(
+          cells
+            .at(1)
+            .childAt(0)
+            .text(),
+          item.description,
+          "Unexpected content",
+        );
       };
 
       // wait for the first page to be resolved
-      await new Promise((resolve) => setImmediate(resolve));
+      await new Promise(resolve => setImmediate(resolve));
 
       assertShows(DATA[0]);
 
@@ -388,47 +428,61 @@ describe("Table", () => {
       let firstResolver;
       let secondResolver;
       getData.onSecondCall().returns(
-        new Promise((resolve) => {
+        new Promise(resolve => {
           firstResolver = resolve;
         }),
       );
       getData.onThirdCall().returns(
-        new Promise((resolve) => {
+        new Promise(resolve => {
           secondResolver = resolve;
         }),
       );
 
       const table = newLazyTable({ getData });
 
-      const assertShows = (item) => {
+      const assertShows = item => {
         table.update();
         const rows = table.find(`.${cssClass.ROW}`);
         assert.equal(rows.length, 1);
         const cells = rows.find(Cell);
         assert.equal(cells.length, 2, "Incorrect number of columns rendered");
-        assert.equal(cells.at(0).childAt(0).text(), item.name, "Unexpected content");
-        assert.equal(cells.at(1).childAt(0).text(), item.description, "Unexpected content");
+        assert.equal(
+          cells
+            .at(0)
+            .childAt(0)
+            .text(),
+          item.name,
+          "Unexpected content",
+        );
+        assert.equal(
+          cells
+            .at(1)
+            .childAt(0)
+            .text(),
+          item.description,
+          "Unexpected content",
+        );
       };
 
       // wait for the first page to be resolved, and make sure we're seeing the
       // right element
-      await new Promise((resolve) => setImmediate(resolve));
+      await new Promise(resolve => setImmediate(resolve));
       assertShows(DATA[0]);
 
       // call lazyReset and then wait for the async fetch call to be made
       table.instance().lazyReset();
-      await new Promise((resolve) => setImmediate(resolve));
+      await new Promise(resolve => setImmediate(resolve));
 
       // call lazyReset again and then wait for the async fetch call to be made
       table.instance().lazyReset();
-      await new Promise((resolve) => setImmediate(resolve));
+      await new Promise(resolve => setImmediate(resolve));
 
       // resolve the second fetch before the first one, and then wait for those
       // async calls to complete
       secondResolver([DATA[2]]);
-      await new Promise((resolve) => setImmediate(resolve));
+      await new Promise(resolve => setImmediate(resolve));
       firstResolver([DATA[1]]);
-      await new Promise((resolve) => setImmediate(resolve));
+      await new Promise(resolve => setImmediate(resolve));
 
       assertShows(DATA[2]);
     });

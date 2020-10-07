@@ -20,7 +20,7 @@ export default class IconExample extends React.Component {
           <h1>Icon</h1>
         </a>
         <SegmentedControl
-          onSelect={(s) => this.setState({ size: s })}
+          onSelect={s => this.setState({ size: s })}
           options={[
             { content: "Small", value: Icon.sizes.SMALL },
             { content: "Medium (default)", value: Icon.sizes.MEDIUM },
@@ -29,7 +29,7 @@ export default class IconExample extends React.Component {
           value={this.state.size}
         />
         <ul>
-          {lodash.values(Icon.names).map((name) => (
+          {lodash.values(Icon.names).map(name => (
             <li key={name}>
               <Icon size={this.state.size} name={name} />
               <label>{name}</label>

@@ -8,8 +8,8 @@ describe("Icon", () => {
   const names = _.values(Icon.names);
   const sizes = ["small", "medium", "large"];
 
-  names.forEach((name) => {
-    sizes.forEach((size) => {
+  names.forEach(name => {
+    sizes.forEach(size => {
       // We're currently missing three icons
       if (
         size === "large" &&

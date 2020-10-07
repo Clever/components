@@ -20,8 +20,8 @@ describe("ModalButton", () => {
     assert.equal(modalButton.find(Button).props().value, "A modal button");
   });
 
-  sizes.forEach((size) => {
-    types.forEach((type) => {
+  sizes.forEach(size => {
+    types.forEach(type => {
       if (size === "small" && type === "destructive") return;
 
       it(`renders a ${size}, ${type} button with the correct classes`, () => {
@@ -70,7 +70,10 @@ describe("ModalButton", () => {
     assert(!modalButton.state("showingModal"));
     modalButton.find(Button).simulate("click");
     assert(modalButton.state("showingModal"));
-    modalButton.find(Modal).find(".Modal--close").simulate("click");
+    modalButton
+      .find(Modal)
+      .find(".Modal--close")
+      .simulate("click");
     assert(!modalButton.state("showingModal"));
   });
 
@@ -84,7 +87,10 @@ describe("ModalButton", () => {
     assert(!modalButton.state("showingModal"));
     modalButton.find(Button).simulate("click");
     assert(modalButton.state("showingModal"));
-    modalButton.find(Modal).find(".Modal--close").simulate("click");
+    modalButton
+      .find(Modal)
+      .find(".Modal--close")
+      .simulate("click");
     assert(!modalButton.state("showingModal"));
     assert(onCloseSpy.calledOnce);
   });

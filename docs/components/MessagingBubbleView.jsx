@@ -80,7 +80,7 @@ export default class MessagingBubbleView extends React.PureComponent {
           Theme:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ theme: value })}
+            onSelect={value => this.setState({ theme: value })}
             options={[
               { content: "Own Message", value: "ownMessage" },
               { content: "Other Message", value: "otherMessage" },

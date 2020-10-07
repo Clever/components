@@ -46,7 +46,7 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={(value) => this.setState({ format: value })}
+                onSelect={value => this.setState({ format: value })}
                 options={[
                   { content: "Regular", value: "regular" },
                   { content: "Short", value: "short" },
@@ -78,7 +78,7 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={(value) => this.setState({ format: value })}
+                onSelect={value => this.setState({ format: value })}
                 options={[
                   { content: "Regular", value: "regular" },
                   { content: "Short", value: "short" },
@@ -107,7 +107,7 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={(value) => this.setState({ format: value })}
+                onSelect={value => this.setState({ format: value })}
                 options={[
                   { content: "Regular", value: "regular" },
                   { content: "Short", value: "short" },
@@ -135,7 +135,7 @@ export default class NumberView extends Component {
               <SegmentedControl
                 className={cssClass.CONFIG_OPTIONS}
                 value={format}
-                onSelect={(value) => this.setState({ format: value })}
+                onSelect={value => this.setState({ format: value })}
                 options={[
                   { content: "Regular", value: "regular" },
                   { content: "Short", value: "short" },

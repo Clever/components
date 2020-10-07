@@ -87,7 +87,7 @@ export default function ButtonView() {
       >
         <ExampleCode>
           <Button
-            ref={(ref) => {
+            ref={ref => {
               _focusExampleRef = ref;
             }}
             type="destructive"

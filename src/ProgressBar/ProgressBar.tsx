@@ -68,10 +68,10 @@ const cssClass = {
   INACTIVE: "ProgressBar--bar--inactive",
   BAR_MARK: "ProgressBar--bar--mark",
   BAR_THICK_MARK: "ProgressBar--bar--mark--thick",
-  boxContainer: (s) => `ProgressBar--boxContainer--${s}`,
-  borderSize: (s) => `ProgressBar--bar--border--${s}`,
-  containerSize: (s) => `ProgressBar--bar--container--${s}`,
-  label: (p) => `ProgressBar--label--${p}`,
+  boxContainer: s => `ProgressBar--boxContainer--${s}`,
+  borderSize: s => `ProgressBar--bar--border--${s}`,
+  containerSize: s => `ProgressBar--bar--container--${s}`,
+  label: p => `ProgressBar--label--${p}`,
 };
 
 export default class ProgressBar extends React.PureComponent<Props> {
@@ -100,8 +100,8 @@ export default class ProgressBar extends React.PureComponent<Props> {
     const topLabel = this._maybeTopLabel();
     const bottomLabel = this._maybeBottomLabel();
 
-    const markNumbersInRange = (markNumbers || []).filter((mark) => mark < 100 && mark > 0).sort();
-    const firstAfterFill = markNumbersInRange.find((mark) => mark > fill);
+    const markNumbersInRange = (markNumbers || []).filter(mark => mark < 100 && mark > 0).sort();
+    const firstAfterFill = markNumbersInRange.find(mark => mark > fill);
 
     return (
       <div className={classnames(cssClass.CONTAINER, inactive && cssClass.INACTIVE, className)}>
@@ -122,7 +122,7 @@ export default class ProgressBar extends React.PureComponent<Props> {
               }}
             >
               <div className={classnames(cssClass.BAR_BORDER, cssClass.borderSize(size))} />
-              {markNumbersInRange.map((element) => (
+              {markNumbersInRange.map(element => (
                 <div
                   className={classnames(
                     cssClass.BAR_MARK,

@@ -156,7 +156,7 @@ export class Wizard extends React.Component<Props, State> {
     // If an onStepComplete handler is provided for the current step, we will only proceed to the
     // next step if the promise returned by the handler resolves to a truthy value.
     if (steps[currentStep].onStepComplete) {
-      steps[currentStep].onStepComplete(data).then((success) => success && this.goToNextStep());
+      steps[currentStep].onStepComplete(data).then(success => success && this.goToNextStep());
       return;
     }
     this.goToNextStep();
@@ -182,7 +182,7 @@ export class Wizard extends React.Component<Props, State> {
   }
 
   calculatePercentComplete(data = this.state.data) {
-    const validSteps = this.props.steps.filter((step) => step.validate(data));
+    const validSteps = this.props.steps.filter(step => step.validate(data));
     return validSteps.length / this.props.steps.length;
   }
 
@@ -270,9 +270,9 @@ export class Wizard extends React.Component<Props, State> {
       stepNumberInTitle,
     } = this.props;
 
-    const baseClasses = ["Wizard", className].filter((c) => !!c);
+    const baseClasses = ["Wizard", className].filter(c => !!c);
     const curStep = steps[this.state.currentStep];
-    const validSteps = steps.filter((step) => step.validate(this.state.data));
+    const validSteps = steps.filter(step => step.validate(this.state.data));
 
     // If on the last step, cannot click next (i.e. complete) unless the whole form is valid; for
     // all other steps, only the current step needs to be valid.
@@ -304,13 +304,13 @@ export class Wizard extends React.Component<Props, State> {
             Component={steps[this.state.currentStep].component}
             componentProps={steps[this.state.currentStep].props}
             stepNumberInTitle={stepNumberInTitle}
-            setWizardState={(changes) => {
+            setWizardState={changes => {
               const newState = Object.assign(this.state.data, changes);
               this.setState({ data: newState });
               return newState;
             }}
             wizardState={this.state.data}
-            updatePercentComplete={(wizardState) =>
+            updatePercentComplete={wizardState =>
               this.setState({
                 percentComplete: this.calculatePercentComplete(wizardState),
               })

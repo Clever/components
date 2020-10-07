@@ -53,7 +53,7 @@ export default class Menu extends React.PureComponent<Props> {
         className={classnames(cssClass.OPTION, className, backgroundColorClass)}
         disabled={disabled}
         href={href}
-        onClick={(e) => {
+        onClick={e => {
           onHide();
 
           if (onClick) {
@@ -73,7 +73,7 @@ export default class Menu extends React.PureComponent<Props> {
 
     return (
       <FlexBox className={classnames(cssClass.CONTAINER, className)} column>
-        {React.Children.map(children, (option) => this._renderOption(option))}
+        {React.Children.map(children, option => this._renderOption(option))}
       </FlexBox>
     );
   }

@@ -67,7 +67,7 @@ export class NavGroup extends React.PureComponent<Props> {
 
     const childSelected = !!_.find(
       React.Children.toArray(children) as React.ReactElement<NavLinkProps>[],
-      (item) => item.props.selected,
+      item => item.props.selected,
     );
 
     return (

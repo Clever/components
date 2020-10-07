@@ -6,10 +6,10 @@ export function convertNameToInitials(name: string): string {
 
   const nameSegments = name
     .split("-")
-    .map((seg) => seg.trim())
+    .map(seg => seg.trim())
     .join(" ")
     .split(" ")
-    .filter((seg) => seg);
+    .filter(seg => seg);
 
   // Special handling if someone only types in one segment.
   if (nameSegments.length === 1) {
@@ -42,7 +42,7 @@ export function convertNameToInitials(name: string): string {
     const lastSeg = nameSegments[nameSegments.length - 1]
       .toLowerCase()
       .split("")
-      .filter((char) => char !== ".")
+      .filter(char => char !== ".")
       .join("");
     if (suffixExclusions.includes(lastSeg)) {
       nameSegments.splice(nameSegments.length - 1, 1);
@@ -52,7 +52,7 @@ export function convertNameToInitials(name: string): string {
   const firstSeg = nameSegments[0]
     .toLowerCase()
     .split("")
-    .filter((char) => char !== ".")
+    .filter(char => char !== ".")
     .join("");
   if (prefixExclusions.includes(firstSeg)) {
     nameSegments.splice(0, 1);
@@ -64,7 +64,7 @@ export function convertNameToInitials(name: string): string {
   }
 
   return nameSegments
-    .map((_name) => _name.substring(0, 1))
-    .map((initial) => initial.toUpperCase())
+    .map(_name => _name.substring(0, 1))
+    .map(initial => initial.toUpperCase())
     .join("");
 }

@@ -100,7 +100,7 @@ export class TextInput extends React.Component<Props, State> {
   // eslint-disable-next-line react/sort-comp
   private input = React.createRef<HTMLInputElement>();
 
-  onFocus: React.FocusEventHandler<HTMLInputElement> = (e) => {
+  onFocus: React.FocusEventHandler<HTMLInputElement> = e => {
     const { onFocus } = this.props;
 
     this.setState({ inFocus: true });
@@ -109,7 +109,7 @@ export class TextInput extends React.Component<Props, State> {
     }
   };
 
-  onBlur: React.FocusEventHandler<HTMLInputElement> = (e) => {
+  onBlur: React.FocusEventHandler<HTMLInputElement> = e => {
     const { onBlur } = this.props;
 
     this.setState({ inFocus: false, hasBeenFocused: true });
@@ -205,10 +205,9 @@ export class TextInput extends React.Component<Props, State> {
       autoComplete = this.props.autoComplete;
     }
 
-    const additionalProps = _.omit(
-      this.props,
-      Object.keys(propTypes) as (keyof typeof propTypes)[],
-    );
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     // (a11y) The 'for' attribute of the label tag and the 'id' attribute
     // of the input tag should match so screen readers can determine which
@@ -257,7 +256,7 @@ export class TextInput extends React.Component<Props, State> {
             type="button"
             className="TextInput--link"
             onClick={this.toggleHidden}
-            onMouseDown={(event) => {
+            onMouseDown={event => {
               // This prevents focus from jumping to the address bar or
               // the first element on voiceover-enabled iOS devices
               event.preventDefault();

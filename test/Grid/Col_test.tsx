@@ -19,7 +19,7 @@ describe("Col", () => {
     );
 
     ["Grid--Col--dflt--12", "Grid--Col--s--6", "Grid--Col--m--4", "Grid--Col--l--3"].forEach(
-      (className) => {
+      className => {
         assert(col.hasClass(className), `${className} class not found on Col.`);
       },
     );

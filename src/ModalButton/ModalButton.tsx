@@ -68,7 +68,7 @@ export class ModalButton extends React.Component<Props, State> {
       <div className={classnames("ModalButton", this.props.className)}>
         <Button
           {...(buttonProps as ButtonProps)}
-          onClick={(e) => {
+          onClick={e => {
             if (this.props.onClick) this.props.onClick(e);
             this.showModal();
           }}

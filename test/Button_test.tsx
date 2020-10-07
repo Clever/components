@@ -8,8 +8,8 @@ describe("Button", () => {
   const sizes = ["small", "regular", "large"];
   const types = ["primary", "secondary", "destructive", "link", "linkPlain"];
 
-  sizes.forEach((size) => {
-    types.forEach((type) => {
+  sizes.forEach(size => {
+    types.forEach(type => {
       if (size === "small" && type === "destructive") return;
 
       it(`renders a ${size}, ${type} button with the correct classes`, () => {

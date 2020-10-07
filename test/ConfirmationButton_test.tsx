@@ -19,10 +19,25 @@ describe("ConfirmationButton", () => {
     const dialog_buttons = confirmationButton.find(".ConfirmationButton--dialog-buttons");
     assert.equal(dialog_buttons.length, 1);
     assert.equal(dialog_buttons.find("button").length, 2);
-    assert.equal(dialog_buttons.find("button").first().text(), "Cancel");
-    assert.equal(dialog_buttons.find("button").last().text(), "Confirm");
     assert.equal(
-      dialog_buttons.find("Button").last().props().type,
+      dialog_buttons
+        .find("button")
+        .first()
+        .text(),
+      "Cancel",
+    );
+    assert.equal(
+      dialog_buttons
+        .find("button")
+        .last()
+        .text(),
+      "Confirm",
+    );
+    assert.equal(
+      dialog_buttons
+        .find("Button")
+        .last()
+        .props().type,
       ConfirmationButton.defaultProps.confirmButtonType,
     );
   });
@@ -44,9 +59,27 @@ describe("ConfirmationButton", () => {
     const dialog_buttons = confirmationButton.find(".ConfirmationButton--dialog-buttons");
     assert.equal(dialog_buttons.length, 1);
     assert.equal(dialog_buttons.find("button").length, 2);
-    assert.equal(dialog_buttons.find("button").first().text(), "Cancel");
-    assert.equal(dialog_buttons.find("button").last().text(), "Confirm");
-    assert.equal(dialog_buttons.find("Button").last().props().type, confirmButtonType);
+    assert.equal(
+      dialog_buttons
+        .find("button")
+        .first()
+        .text(),
+      "Cancel",
+    );
+    assert.equal(
+      dialog_buttons
+        .find("button")
+        .last()
+        .text(),
+      "Confirm",
+    );
+    assert.equal(
+      dialog_buttons
+        .find("Button")
+        .last()
+        .props().type,
+      confirmButtonType,
+    );
   });
 
   it("calls onClose if present when cancel button clicked", () => {

@@ -61,7 +61,7 @@ const cssClass = {
   TRIGGER: "Menu--trigger",
   WRAP: "Menu--dropdown--wrap",
 
-  placement: (p) => `Menu--dropdown--placement--${p}`,
+  placement: p => `Menu--dropdown--placement--${p}`,
 };
 
 const KeyCode = {
@@ -111,10 +111,9 @@ export default class Menu extends React.PureComponent<Props> {
     const { className, maxHeight, maxWidth, minWidth, placement, trigger, wrapItems } = this.props;
     const { open } = this.state;
 
-    const additionalProps = _.omit(
-      this.props,
-      Object.keys(propTypes) as (keyof typeof propTypes)[],
-    );
+    const additionalProps = _.omit(this.props, Object.keys(
+      propTypes,
+    ) as (keyof typeof propTypes)[]);
 
     return (
       <RootCloseWrapper onRootClose={() => this._setDropdownOpen(false)}>
@@ -151,8 +150,8 @@ export default class Menu extends React.PureComponent<Props> {
                 <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
                   {React.cloneElement(menuItem, {
                     focused: this._isFocused(menuItem, i),
-                    onClick: (e) => this._handleItemClick(menuItem, e),
-                    onMouseEnter: (e) => this._handleItemMouseEnter(menuItem, i, e),
+                    onClick: e => this._handleItemClick(menuItem, e),
+                    onMouseEnter: e => this._handleItemMouseEnter(menuItem, i, e),
                   })}
                 </li>
               ))}
@@ -163,11 +162,11 @@ export default class Menu extends React.PureComponent<Props> {
     );
   }
 
-  _handleTriggerRef = (ref) => {
+  _handleTriggerRef = ref => {
     this._triggerRef = ref;
   };
 
-  _handleTriggerClick = (e) => {
+  _handleTriggerClick = e => {
     const { trigger } = this.props;
 
     this._toggleDropdown();
@@ -193,7 +192,7 @@ export default class Menu extends React.PureComponent<Props> {
     menuItem.props.onMouseEnter(e);
   };
 
-  _handleFocusOut = (e) => {
+  _handleFocusOut = e => {
     const nextElement = e.relatedTarget;
     if (!nextElement) {
       return;
@@ -210,7 +209,7 @@ export default class Menu extends React.PureComponent<Props> {
     this._setDropdownOpen(false);
   };
 
-  _handleKeyDown = (e) => {
+  _handleKeyDown = e => {
     switch (e.keyCode) {
       case KeyCode.ARROW_DOWN:
         this._handleArrowKeyDown(e);
@@ -223,7 +222,7 @@ export default class Menu extends React.PureComponent<Props> {
     }
   };
 
-  _handleArrowKeyDown = (e) => {
+  _handleArrowKeyDown = e => {
     const { focusIndex, open } = this.state;
 
     const menuItems = this._getMenuItems();
@@ -231,7 +230,7 @@ export default class Menu extends React.PureComponent<Props> {
       return;
     }
 
-    const defaultFocusIndex = menuItems.findIndex((i) => !!i.props.selected);
+    const defaultFocusIndex = menuItems.findIndex(i => !!i.props.selected);
     const shouldResetFocus = !open || focusIndex === null;
 
     const lastFocusIndex = shouldResetFocus ? defaultFocusIndex : focusIndex;
@@ -249,7 +248,7 @@ export default class Menu extends React.PureComponent<Props> {
     e.stopPropagation();
   };
 
-  _handleKeyUp = (e) => {
+  _handleKeyUp = e => {
     const { open } = this.state;
 
     const menuItems = this._getMenuItems();
@@ -306,7 +305,7 @@ export default class Menu extends React.PureComponent<Props> {
 
   _setDropdownOpen = (open, cb = _.noop) => {
     const menuItems = this._getMenuItems();
-    let focusIndex = menuItems.findIndex((i) => !!i.props.selected);
+    let focusIndex = menuItems.findIndex(i => !!i.props.selected);
     if (focusIndex === -1) {
       focusIndex = 0;
     }
@@ -318,7 +317,7 @@ export default class Menu extends React.PureComponent<Props> {
   _getMenuItems() {
     return (React.Children.toArray(this.props.children) as React.ReactElement<
       MenuItemProps
-    >[]).filter((i) => !!i);
+    >[]).filter(i => !!i);
   }
 
   _isFocused(menuItem, itemIndex) {

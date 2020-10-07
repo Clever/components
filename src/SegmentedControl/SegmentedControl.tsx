@@ -105,7 +105,7 @@ export class SegmentedControl extends React.Component<Props, State> {
     const selected = value || this.state.selected;
 
     let idx = -1;
-    const selectableItems = _.map(options, (option) => {
+    const selectableItems = _.map(options, option => {
       const isSelected = option.value === selected;
       const classes = [cssClass.OPTION];
       if (isSelected) {

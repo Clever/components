@@ -111,8 +111,18 @@ export function createNewComponentDemo(componentName) {
   routes.add(`        <Route path="${componentRoutePath}(/*)" component={${componentName}View} />`);
 
   const updatedRouterFileContents = routerFileContents
-    .replace(importsRegex, `\n\n${Array.from(imports).sort().join("\n")}`)
-    .replace(routesRegex, `${routeParent}${Array.from(routes).sort().join("\n")}\n      </Route>`);
+    .replace(
+      importsRegex,
+      `\n\n${Array.from(imports)
+        .sort()
+        .join("\n")}`,
+    )
+    .replace(
+      routesRegex,
+      `${routeParent}${Array.from(routes)
+        .sort()
+        .join("\n")}\n      </Route>`,
+    );
   fs.writeFileSync(routerFilePath, updatedRouterFileContents);
 
   // Update sidebar links:
@@ -127,7 +137,9 @@ export function createNewComponentDemo(componentName) {
 
   const updatedSidebarFileContents = sidebarFileContents.replace(
     linksRegex,
-    `$1\n${Array.from(links).sort().join("\n")}\n        </NavGroup>`,
+    `$1\n${Array.from(links)
+      .sort()
+      .join("\n")}\n        </NavGroup>`,
   );
   fs.writeFileSync(sidebarFilePath, updatedSidebarFileContents);
 

@@ -25,7 +25,7 @@ const propTypes = {
 const cssClass = {
   CONTAINER: "ProgressBar--Progress",
   STRIPED: "ProgressBar--Progress--striped",
-  color: (c) => `ProgressBar--Progress--${c}`,
+  color: c => `ProgressBar--Progress--${c}`,
   border: (c, s) => `ProgressBar--Progress--${c}--${s}`,
 };
 

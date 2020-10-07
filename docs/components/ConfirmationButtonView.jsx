@@ -31,7 +31,7 @@ export default class ConfirmationButtonView extends Component {
             type="primary"
             confirmButtonType="destructive"
             modalTitle="Are you sure?"
-            onClick={(e) => console.log("ConfirmationButton: modal opened with events param!", e)}
+            onClick={e => console.log("ConfirmationButton: modal opened with events param!", e)}
             onClose={() => console.log("ConfirmationButton: modal closed!")}
             onConfirm={() => console.log("ConfirmationButton: confirmed!")}
             value="Submit for confirmation"

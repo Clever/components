@@ -65,7 +65,7 @@ export default class WithKeyboardNav extends React.PureComponent<Props> {
     return this.props.children;
   }
 
-  _handleKeyDown = (event) => {
+  _handleKeyDown = event => {
     const { backKeys, forwardKeys, forceTabKey } = this.props;
 
     if (!_.isString(event.key)) {

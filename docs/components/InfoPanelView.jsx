@@ -30,7 +30,7 @@ export default class InfoPanelView extends React.Component {
         <input
           checked={this.state[id]}
           type="checkbox"
-          onChange={(e) => this.setState({ [id]: e.target.checked })}
+          onChange={e => this.setState({ [id]: e.target.checked })}
         />
         &nbsp;
         {id}

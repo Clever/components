@@ -16,8 +16,8 @@ export interface Props {
 export const cssClass = {
   CONTAINER: "Badge",
   SUPER: "Badge--super",
-  color: (c) => `Badge--${c}`,
-  size: (s) => `Badge--${s}`,
+  color: c => `Badge--${c}`,
+  size: s => `Badge--${s}`,
 };
 
 const Size = {

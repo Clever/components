@@ -129,9 +129,8 @@ export class MultiplePanelModals extends React.Component<Props, State> {
           <div style={{ height }}>{panel}</div>
           <footer>
             {showStepNumber && (
-              <span className={Classes.STEP_NUMBER}>{`Step ${
-                currentPanel + 1
-              } of ${totalPanels}`}</span>
+              <span className={Classes.STEP_NUMBER}>{`Step ${currentPanel +
+                1} of ${totalPanels}`}</span>
             )}
             <Button
               value={leftButtonValue}

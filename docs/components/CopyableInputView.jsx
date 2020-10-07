@@ -50,7 +50,7 @@ export default class CopyableInputView extends Component {
                 label="CopyableInput Label"
                 name="CopyableInputName"
                 placeholder="CopyableInput Placeholder"
-                onChange={(e) => this.setState({ inputValue: e.target.value })}
+                onChange={e => this.setState({ inputValue: e.target.value })}
                 value={this.state.inputValue}
                 size={this.state.size}
               />
@@ -107,7 +107,7 @@ export default class CopyableInputView extends Component {
                 { content: "full-width", value: FormElementSize.FULL_WIDTH },
               ]}
               value={this.state.size}
-              onSelect={(value) => this.setState({ size: value })}
+              onSelect={value => this.setState({ size: value })}
             />
           </div>
         </Example>
@@ -222,7 +222,7 @@ export default class CopyableInputView extends Component {
                 <p>
                   The size of the input. One of:
                   <br />
-                  {Object.keys(FormElementSize).map((size) => (
+                  {Object.keys(FormElementSize).map(size => (
                     <span key={size}>
                       <code>FormElementSize.{size}</code>
                       <br />

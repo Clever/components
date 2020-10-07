@@ -125,14 +125,14 @@ export default class StepperView extends PureComponent {
                   className="ExampleStepper"
                   currentStepID={currentStepID}
                   steps={steps}
-                  onStepClick={seekable ? (id) => this.jumpToStep(id) : null}
+                  onStepClick={seekable ? id => this.jumpToStep(id) : null}
                 />
               </Col>
               <Col span={8}>
                 <span className={cssClass.TITLE}>
                   Current Step:{" "}
-                  {steps.find((s) => s.id === currentStepID) &&
-                    steps.find((s) => s.id === currentStepID).title}
+                  {steps.find(s => s.id === currentStepID) &&
+                    steps.find(s => s.id === currentStepID).title}
                 </span>
               </Col>
             </FlexBox>
@@ -154,7 +154,7 @@ export default class StepperView extends PureComponent {
           <div className={cssClass.CONFIG}>
             <TextInput
               className={cssClass.CONFIG_OPTIONS}
-              onChange={(e) => this.setState({ step1Title: e.target.value })}
+              onChange={e => this.setState({ step1Title: e.target.value })}
               label="Step 1 Title"
               name="StepperView--title"
               placeholder="Step 1 Title"
@@ -164,7 +164,7 @@ export default class StepperView extends PureComponent {
           <div className={cssClass.CONFIG}>
             <TextArea
               className={cssClass.CONFIG_OPTIONS}
-              onChange={(e) => this.setState({ step1Description: e.target.value })}
+              onChange={e => this.setState({ step1Description: e.target.value })}
               label="Step 1 Description"
               name="StepperView--description"
               placeholder="Step 1 Description"
@@ -188,7 +188,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={seekable}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ seekable: e.target.checked })}
+            onChange={e => this.setState({ seekable: e.target.checked })}
           />{" "}
           seekable
         </label>
@@ -226,7 +226,7 @@ export default class StepperView extends PureComponent {
             type="checkbox"
             checked={step1Optional}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ step1Optional: e.target.checked })}
+            onChange={e => this.setState({ step1Optional: e.target.checked })}
           />{" "}
           Step 1 - optional
         </label>

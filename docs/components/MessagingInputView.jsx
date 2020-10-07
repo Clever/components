@@ -57,8 +57,8 @@ export default class MessagingInputView extends React.PureComponent {
             <MessagingInput
               value={inputValue}
               newlineOnEnter={newlineOnEnter}
-              onChange={(newValue) => this.setState({ inputValue: newValue })}
-              onSubmit={(message) => {
+              onChange={newValue => this.setState({ inputValue: newValue })}
+              onSubmit={message => {
                 // eslint-disable-next-line no-alert
                 alert(message);
                 this.setState({ inputValue: "" });

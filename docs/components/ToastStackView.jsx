@@ -44,10 +44,10 @@ export default class ToastStackView extends React.PureComponent {
     toastType: ToastType.SUCCESS,
   };
 
-  _clearNotification = (id) => {
+  _clearNotification = id => {
     const { notifications } = this.state;
 
-    this.setState({ notifications: notifications.filter((n) => n.id !== id) });
+    this.setState({ notifications: notifications.filter(n => n.id !== id) });
   };
 
   render() {
@@ -144,7 +144,7 @@ export default class ToastStackView extends React.PureComponent {
               { content: "warning", value: ToastType.WARNING },
             ]}
             value={toastType}
-            onSelect={(value) => this.setState({ toastType: value })}
+            onSelect={value => this.setState({ toastType: value })}
           />
         </div>
         <label className={cssClass.CONFIG}>
@@ -152,7 +152,7 @@ export default class ToastStackView extends React.PureComponent {
             className={cssClass.CONFIG_TOGGLE}
             type="checkbox"
             checked={includeAction}
-            onChange={(e) => this.setState({ includeAction: e.target.checked })}
+            onChange={e => this.setState({ includeAction: e.target.checked })}
           />{" "}
           Include action
         </label>
@@ -161,7 +161,7 @@ export default class ToastStackView extends React.PureComponent {
             className={cssClass.CONFIG_TOGGLE}
             type="checkbox"
             checked={showCloseButton}
-            onChange={(e) => this.setState({ showCloseButton: e.target.checked })}
+            onChange={e => this.setState({ showCloseButton: e.target.checked })}
           />{" "}
           Show close button
         </label>
@@ -177,7 +177,7 @@ export default class ToastStackView extends React.PureComponent {
                 { content: "No override", value: "No override" },
               ]}
               value={durationOverride}
-              onSelect={(value) => this.setState({ durationOverride: value })}
+              onSelect={value => this.setState({ durationOverride: value })}
             />
           </div>
         </div>
@@ -291,7 +291,7 @@ export default class ToastStackView extends React.PureComponent {
               <p>
                 The type of the notification. One of:
                 <br />
-                {Object.keys(ToastType).map((type) => (
+                {Object.keys(ToastType).map(type => (
                   <span key={type}>
                     <code>ToastType.{type}</code>
                     <br />

@@ -21,7 +21,7 @@ interface IconComponent extends React.FunctionComponent<Props> {
 
 export const cssClass = {
   CONTAINER: "Icon",
-  size: (size) => `Icon--${size}`,
+  size: size => `Icon--${size}`,
 };
 
 export const Icon: IconComponent = function Icon(props) {

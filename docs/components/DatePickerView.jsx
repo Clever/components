@@ -23,7 +23,7 @@ export default class DatePickerView extends Component {
         </p>
         <Example>
           <DatePicker
-            onChange={(date) => this.setState({ value: date })}
+            onChange={date => this.setState({ value: date })}
             selected={this.state.value}
           />
         </Example>

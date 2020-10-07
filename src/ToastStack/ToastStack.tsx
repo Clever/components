@@ -77,13 +77,13 @@ export class ToastStack extends React.PureComponent<Props> {
     const currNotifications = this.props.notifications || [];
 
     const newNotificationIDs = _.difference(
-      currNotifications.map((n) => n.id),
-      prevNotifications.map((n) => n.id),
+      currNotifications.map(n => n.id),
+      prevNotifications.map(n => n.id),
     );
 
     // If a notification was just added to the stack and has a finite duration, set up a timer to
     // clear it
-    currNotifications.forEach((n) => {
+    currNotifications.forEach(n => {
       if (newNotificationIDs.includes(n.id) && this._finiteDuration(n)) {
         window.setTimeout(
           () => clearNotification(n.id),
@@ -96,7 +96,7 @@ export class ToastStack extends React.PureComponent<Props> {
   render() {
     const { className, clearNotification, notificationClassName, notifications } = this.props;
 
-    const toasts = notifications.map((n) => (
+    const toasts = notifications.map(n => (
       <div className={cssClass.NOTIFICATION_WRAPPER} key={n.id}>
         <ToastNotification
           action={n.action}
