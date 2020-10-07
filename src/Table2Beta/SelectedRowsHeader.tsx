@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useMediaQuery } from "react-responsive";
 
 import "./SelectedRowsHeader.less";
 import { FlexBox, Button } from "../";
@@ -16,6 +17,7 @@ interface Props {
 
 const cssClasses = {
   ROW: "Table2Beta--selectedRowsHeader",
+  SELECTED_TEXT: "Table2Beta--selectedRowsHeader--selectedText",
   SINGLE_ACTION_TRIGGER: "Table2Beta--singleActionTrigger",
   ACTIONS_FLEXBOX: "Table2Beta--selectedRowsHeader--actionsFlexbox",
   ACTION: "Table2Beta--selectedRowsHeader--action",
@@ -37,6 +39,10 @@ export default function SelectedRowsHeader({
   const rowsAreSelected = selectedRows.size > 0;
   const singleRowSelected = selectedRows.size === 1;
 
+  const compact = useMediaQuery({
+    query: "(max-width: 52rem)",
+  });
+
   let displayedActions;
   let moreActions;
   if (actions.length > numDisplayedActions) {
@@ -48,8 +54,8 @@ export default function SelectedRowsHeader({
 
   return (
     <>
-      <FlexBox grow className={cssClasses.ROW}>
-        <FlexItem grow>
+      <FlexBox grow className={cssClasses.ROW} column={compact}>
+        <FlexItem className={cssClasses.SELECTED_TEXT} grow>
           {!rowsAreSelected && <div>Select {contentType.plural || "rows"} to access tools</div>}
           {rowsAreSelected && !allSelected && (
             <>
@@ -64,50 +70,49 @@ export default function SelectedRowsHeader({
             <div>{`All ${contentType.plural || "rows"} selected (${selectedRows.size})`}</div>
           )}
         </FlexItem>
-        <FlexItem>
-          <FlexBox className={cssClasses.ACTIONS_FLEXBOX}>
-            {rowsAreSelected &&
-              displayedActions.map((action) => (
-                <Action
-                  actionInput={{
-                    callback: action.callback,
-                    title: action.title,
-                    icon: action.icon,
-                  }}
-                  selectedRows={selectedRows}
-                  key={action.title.singular}
-                />
-              ))}
-            {rowsAreSelected && moreActions && (
-              <Menu
-                className={cssClasses.ACTION_MENU}
-                trigger={
+        <FlexItem className={cssClasses.ACTIONS_FLEXBOX}>
+          {rowsAreSelected &&
+            displayedActions.map((action) => (
+              <Action
+                actionInput={{
+                  callback: action.callback,
+                  title: action.title,
+                  icon: action.icon,
+                }}
+                selectedRows={selectedRows}
+                key={action.title.singular}
+              />
+            ))}
+          {rowsAreSelected && moreActions && (
+            <Menu
+              trigger={
+                <Button size="small" className={cssClasses.ACTION_MENU} type="link">
                   <img
                     className={cssClasses.SINGLE_ACTION_TRIGGER}
                     src={require("./ellipsis.svg")}
                   />
-                }
-                placement={Menu.Placement.RIGHT}
-              >
-                {moreActions.map((action) => (
-                  <Menu.Item
-                    className={cssClasses.ACTION_MENU_ITEM}
-                    onClick={(e) => action.callback(selectedRows)}
-                    key={action.title.singular}
-                  >
-                    <div className={cssClasses.ACTION_MENU_ITEM_TITLE}>
-                      {action.icon && <img className={cssClasses.ACTION_ICON} src={action.icon} />}
-                      <div className={cssClasses.ACTION_TITLE}>
-                        {singleRowSelected || !action.title.plural
-                          ? action.title.singular
-                          : action.title.plural}
-                      </div>
+                </Button>
+              }
+              placement={Menu.Placement.RIGHT}
+            >
+              {moreActions.map((action) => (
+                <Menu.Item
+                  className={cssClasses.ACTION_MENU_ITEM}
+                  onClick={(e) => action.callback(selectedRows)}
+                  key={action.title.singular}
+                >
+                  <div className={cssClasses.ACTION_MENU_ITEM_TITLE}>
+                    {action.icon && <img className={cssClasses.ACTION_ICON} src={action.icon} />}
+                    <div className={cssClasses.ACTION_TITLE}>
+                      {singleRowSelected || !action.title.plural
+                        ? action.title.singular
+                        : action.title.plural}
                     </div>
-                  </Menu.Item>
-                ))}
-              </Menu>
-            )}
-          </FlexBox>
+                  </div>
+                </Menu.Item>
+              ))}
+            </Menu>
+          )}
         </FlexItem>
       </FlexBox>
     </>
@@ -123,20 +128,19 @@ function Action({ actionInput, selectedRows }: ActionProps) {
   const { callback, title, icon } = actionInput;
   const singleRowSelected = selectedRows.size === 1;
   return (
-    <div className={cssClasses.ACTION}>
-      <Button
-        type="link"
-        value={
-          <>
-            {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
-            <div className={cssClasses.ACTION_TITLE}>
-              {singleRowSelected || !title.plural ? title.singular : title.plural}
-            </div>
-          </>
-        }
-        onClick={(e) => callback(selectedRows)}
-        size="small"
-      />
-    </div>
+    <Button
+      className={cssClasses.ACTION}
+      type="link"
+      value={
+        <>
+          {icon && <img className={cssClasses.ACTION_ICON} src={icon} />}
+          <div className={cssClasses.ACTION_TITLE}>
+            {singleRowSelected || !title.plural ? title.singular : title.plural}
+          </div>
+        </>
+      }
+      onClick={(e) => callback(selectedRows)}
+      size="small"
+    />
   );
 }

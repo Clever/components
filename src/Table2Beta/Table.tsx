@@ -63,6 +63,7 @@ export interface Props {
   noDataContent?: React.ReactNode;
   selectable?: boolean;
   singleActions?: Array<ActionInput>;
+  showSingleActionsOnHover?: boolean;
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
   selectedRowsHeaderActions?: Array<ActionInput>;
   numDisplayedActions?: number;
@@ -111,6 +112,7 @@ const propTypes = {
   noDataContent: PropTypes.node,
   selectable: PropTypes.bool,
   singleActions: PropTypes.array,
+  showSingleActionsOnHover: PropTypes.bool,
 
   // these must all be set together
   lazy: PropTypes.bool,
@@ -146,7 +148,6 @@ export const cssClass = {
   ACTION_ICON: "Table2Beta--actions--icon",
   ACTION_TITLE: "Table2Beta--actions--title",
   ACTION_MENU: "Table2Beta--actions--menu",
-  ACTION_MENU_TRIGGER: "Table2Beta--actions--menu--trigger",
   ACTION_MENU_ITEM: "Table2Beta--actions--menu--item",
   ACTION_MENU_ITEM_TITLE: "Table2Beta--actions--menu--item--title",
   TABLE: "Table2Beta",
@@ -450,9 +451,10 @@ export class Table2Beta extends React.Component<Props, State> {
             size="small"
           />
           <Menu
-            className={cssClass.ACTION_MENU}
             trigger={
-              <img className={cssClass.SINGLE_ACTION_TRIGGER} src={require("./ellipsis.svg")} />
+              <Button size="small" className={cssClass.ACTION_MENU} type="link">
+                <img className={cssClass.SINGLE_ACTION_TRIGGER} src={require("./ellipsis.svg")} />
+              </Button>
             }
             placement={Menu.Placement.RIGHT}
           >
@@ -489,6 +491,7 @@ export class Table2Beta extends React.Component<Props, State> {
       numDisplayedActions,
       selectable,
       singleActions,
+      showSingleActionsOnHover,
       visiblePageRangeSize,
       selectedRowsHeaderContentType,
       selectedRowsHeaderActions,
@@ -505,6 +508,8 @@ export class Table2Beta extends React.Component<Props, State> {
     }
 
     const { displayedData, numPages, allRows } = this._getDisplayedData();
+    selectedRows = new Set(selectedRows && allRows);
+    this.setState({ selectedRows });
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
@@ -536,10 +541,10 @@ export class Table2Beta extends React.Component<Props, State> {
                 <HeaderCell>
                   <Checkbox
                     checked={selectedRows.size > 0}
-                    partial={selectedRows.size < (allRows || displayedData).length}
+                    partial={selectedRows.size < (displayedData || allRows).length}
                     onChange={(newState) => {
-                      if (newState.checked) {
-                        selectedRows = new Set(allRows || displayedData);
+                      if (selectedRows.size === 0) {
+                        selectedRows = new Set(displayedData || allRows);
                         this.setState({ allSelected: true });
                       } else {
                         selectedRows.clear();
@@ -547,6 +552,7 @@ export class Table2Beta extends React.Component<Props, State> {
                       }
                       this.setState({ selectedRows });
                     }}
+                    disabled={displayedData.length === 0}
                   >
                     {""}
                   </Checkbox>
@@ -560,18 +566,20 @@ export class Table2Beta extends React.Component<Props, State> {
               >
                 {columns}
               </Header>
-              {singleActions.length > 0 && <HeaderCell />}
+              {singleActions.length > 0 && (
+                <HeaderCell>{!showSingleActionsOnHover && "Actions"}</HeaderCell>
+              )}
             </tr>
           </thead>
           <tbody className={cssClass.BODY}>
             {displayedData.length === 0 ? (
               <tr className={cssClass.ROW}>
                 {noDataContent ? (
-                  <Cell className={cssClass.NO_DATA_CONTENT} colSpan={columns.length} noWrap>
+                  <Cell className={cssClass.NO_DATA_CONTENT} colSpan={numColumns} noWrap>
                     {noDataContent}
                   </Cell>
                 ) : (
-                  <Cell className={cssClass.NO_DATA} colSpan={columns.length} noWrap>
+                  <Cell className={cssClass.NO_DATA} colSpan={numColumns} noWrap>
                     {!pageLoading && "NO DATA"}
                   </Cell>
                 )}
@@ -629,7 +637,11 @@ export class Table2Beta extends React.Component<Props, State> {
                   ))}
                   {selectable && (
                     <Cell noWrap>
-                      <div className={cssClass.SINGLE_ACTIONS}>
+                      <div
+                        className={
+                          cssClass.SINGLE_ACTIONS + (showSingleActionsOnHover ? "--hidden" : "")
+                        }
+                      >
                         {this._singleActionsRender(rowData)}
                       </div>
                     </Cell>

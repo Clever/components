@@ -45,9 +45,13 @@
   background-color: @neutral_off_white;
 }
 
-.Table2Beta--singleActions {
-  visibility: hidden;
+.Table2Beta--singleActions,
+.Table2Beta--singleActions--hidden {
   align-items: center;
+}
+
+.Table2Beta--singleActions--hidden {
+  visibility: hidden;
 }
 
 .Table2Beta--selectable_row:hover {
@@ -68,8 +72,7 @@
 .Table2Beta--singleActionTrigger {
   display: inline-block;
   height: 1rem;
-  width: 1rem;
-  margin-right: 0;
+  width: 1.25rem;
   vertical-align: middle;
 }
 
@@ -92,7 +95,6 @@
 .Table2Beta--actions--menu {
   margin: 0.5rem 0 0 0.5rem;
   padding: 0.375rem 0 0.625rem 0;
-  width: 1.25rem;
   text-align: center;
   color: @primary_blue;
   cursor: pointer;
@@ -102,10 +104,6 @@
 .Table2Beta--actions--menu:hover {
   background-color: #f6f7fe;
   color: #2f4ca9;
-}
-
-.Table2Beta--actions--menu--trigger {
-  vertical-align: middle;
 }
 
 .Table2Beta--action--menu--item img {

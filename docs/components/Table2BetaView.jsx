@@ -6,16 +6,7 @@ import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import loremIpsum from "lorem-ipsum";
-import {
-  Button,
-  ModalButton,
-  TextInput,
-  Table2Beta,
-  FlexBox,
-  ItemAlign,
-  SegmentedControl,
-  Label,
-} from "src";
+import { Button, ModalButton, TextInput, Table2Beta, SegmentedControl, Label } from "src";
 
 import "./Table2BetaView.less";
 import FontAwesome from "react-fontawesome";
@@ -77,6 +68,7 @@ export default class Table2BetaView extends React.PureComponent {
       enableRowMouseOver: false,
       tableFilter: "",
       enableSelectable: true,
+      enableActionsOnHover: false,
       firstSortDirection: Table2Beta.sortDirection.ASCENDING,
     };
   }
@@ -113,6 +105,7 @@ export default class Table2BetaView extends React.PureComponent {
       enableRowMouseOver,
       tableData,
       enableSelectable,
+      enableActionsOnHover,
       firstSortDirection,
     } = this.state;
 
@@ -196,6 +189,7 @@ export default class Table2BetaView extends React.PureComponent {
                 rowClassNameFn={(r) => (r.age < 10 ? "additionalClass" : null)}
                 selectable={enableSelectable}
                 singleActions={sampleActionInputs}
+                showSingleActionsOnHover={enableActionsOnHover}
                 selectedRowsHeaderContentType={{
                   singular: this.state.tableFilter || "",
                   plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",
@@ -296,6 +290,14 @@ export default class Table2BetaView extends React.PureComponent {
               onChange={({ target }) => this.setState({ enableSelectable: target.checked })}
             />{" "}
             Selectable rows
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={enableActionsOnHover}
+              onChange={({ target }) => this.setState({ enableActionsOnHover: target.checked })}
+            />{" "}
+            Show actions on hover
           </label>
           <label className={cssClass.CONFIG}>
             First Sort Direction:
@@ -453,6 +455,20 @@ export default class Table2BetaView extends React.PureComponent {
               type: "boolean",
               description:
                 "Adds selectable checkboxes to the table. NOTE: with lazy data loading, 'Select All' checkbox only selects the current page. With data passed in in the 'data' prop, 'Select All' selects all rows.",
+              optional: true,
+            },
+            {
+              name: "singleActions",
+              type: "Array<ActionInput>",
+              description: "An array of ActionInputs, to be present for every row",
+              optional: true,
+              defaultValue: "None",
+            },
+            {
+              name: "showSingleActionsOnHover",
+              type: "boolean",
+              description:
+                "If false, single actions will always be present. If true, they will only appear on row hover",
               optional: true,
             },
             {

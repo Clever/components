@@ -1,13 +1,11 @@
 @import (reference) "../less/utilities.less";
 
 .Table2Beta--selectedRowsHeader {
-  height: 1.5rem;
   line-height: 1.5rem;
   .border--s(@neutral_silver);
   .borderRadius--top--l;
   border-collapse: collapse;
   .padding--x--m;
-  .padding--y--m;
   .text--medium;
   .text--semi-bold;
   background-color: @neutral_off_white;
@@ -15,12 +13,12 @@
   font-family: "Proxima Nova";
 }
 
+.Table2Beta--selectedRowsHeader--selectedText {
+  .margin--y--m;
+}
+
 .Table2Beta--selectedRowsHeader--actionsFlexbox {
-  flex-wrap: wrap;
-  margin-top: -1rem;
-  // in the future, replace wth row-gap and column-gap, currently not supported in Safari
-  // row-gap: 1rem;
-  // column-gap: 1.5rem;
+  margin-top: 0.35rem;
 }
 
 .Table2Beta--selectedRowsHeader--action {
