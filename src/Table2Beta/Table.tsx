@@ -508,6 +508,8 @@ export class Table2Beta extends React.Component<Props, State> {
     }
 
     const { displayedData, numPages, allRows } = this._getDisplayedData();
+    selectedRows = new Set(selectedRows && allRows);
+    this.setState({selectedRows})    
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
@@ -539,10 +541,10 @@ export class Table2Beta extends React.Component<Props, State> {
                 <HeaderCell>
                   <Checkbox
                     checked={selectedRows.size > 0}
-                    partial={selectedRows.size < (allRows || displayedData).length}
+                    partial={selectedRows.size < (displayedData || allRows).length}
                     onChange={newState => {
                       if (selectedRows.size === 0) {
-                        selectedRows = new Set(allRows || displayedData);
+                        selectedRows = new Set(displayedData || allRows);
                         this.setState({ allSelected: true });
                       } else {
                         selectedRows.clear();
