@@ -508,8 +508,19 @@ export class Table2Beta extends React.Component<Props, State> {
     }
 
     const { displayedData, numPages, allRows } = this._getDisplayedData();
-    selectedRows = new Set(selectedRows && allRows);
-    this.setState({ selectedRows });
+
+    // This occurs when a new external filter is applied.
+    // We want selectedRows to change if the filter affects the selection
+    const newSelectedRows = new Set(selectedRows);
+    newSelectedRows.forEach((item) => {
+      if (!allRows.includes(item)) {
+        newSelectedRows.delete(item);
+      }
+    });
+    if (newSelectedRows.size !== selectedRows.size) {
+      this.setState({ selectedRows: newSelectedRows });
+    }
+
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
