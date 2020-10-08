@@ -8,6 +8,7 @@ import Menu from "../Menu";
 import { ActionInput } from "./Table";
 
 interface Props {
+  className?: string;
   selectedRows: Set<any>;
   contentType?: { singular: string; plural?: string };
   actions: Array<ActionInput>;
@@ -30,6 +31,7 @@ const cssClasses = {
 };
 
 export default function SelectedRowsHeader({
+  className,
   selectedRows,
   contentType,
   actions,
@@ -53,7 +55,7 @@ export default function SelectedRowsHeader({
   }
 
   return (
-    <>
+    <div className={className}>
       <FlexBox grow className={cssClasses.ROW} column={compact}>
         <FlexItem className={cssClasses.SELECTED_TEXT} grow>
           {!rowsAreSelected && <div>Select {contentType.plural || "rows"} to access tools</div>}
@@ -115,7 +117,7 @@ export default function SelectedRowsHeader({
           )}
         </FlexItem>
       </FlexBox>
-    </>
+    </div>
   );
 }
 

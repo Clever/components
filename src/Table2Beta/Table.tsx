@@ -544,6 +544,7 @@ export class Table2Beta extends React.Component<Props, State> {
       <>
         {selectable && (
           <SelectedRowsHeader
+            className={className}
             selectedRows={selectedRows}
             contentType={selectedRowsHeaderContentType}
             actions={selectedRowsHeaderActions}
