@@ -28,12 +28,12 @@
   color: @neutral_white;
 }
 
-// For testing compatibility with Analytics Actions
-// Not necessary long term
 .Table2BetaView--table {
-  max-width: 64rem;
+  width: 1032px;
 }
-// Accounting for 2rem padding and 2px border
-.Table2Beta--selectedRowsHeader {
-  max-width: calc(62rem - 2px);
+
+.Table2BetaView--mobileWidth {
+  // This number is from a medium phone width
+  width: 375px;
+  overflow-x: auto;
 }
