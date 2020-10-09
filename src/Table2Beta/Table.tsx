@@ -65,6 +65,7 @@ export interface Props {
   singleActions?: Array<ActionInput>;
   showSingleActionsOnHover?: boolean;
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
+  selectedRowsHeaderContentTypeNoSelection?: string;
   selectedRowsHeaderActions?: Array<ActionInput>;
   numDisplayedActions?: number;
 
@@ -514,6 +515,7 @@ export class Table2Beta extends React.Component<Props, State> {
       showSingleActionsOnHover,
       visiblePageRangeSize,
       selectedRowsHeaderContentType,
+      selectedRowsHeaderContentTypeNoSelection,
       selectedRowsHeaderActions,
     } = this.props;
     const { lazy, numRows } = this.props;
@@ -549,6 +551,7 @@ export class Table2Beta extends React.Component<Props, State> {
             className={className}
             selectedRows={selectedRows}
             contentType={selectedRowsHeaderContentType}
+            contentTypeNoSelection={selectedRowsHeaderContentTypeNoSelection}
             actions={selectedRowsHeaderActions}
             numDisplayedActions={numDisplayedActions}
             allSelected={this.state.allSelected}

@@ -11,6 +11,7 @@ interface Props {
   className?: string;
   selectedRows: Set<any>;
   contentType?: { singular: string; plural?: string };
+  contentTypeNoSelection?: string;
   actions: Array<ActionInput>;
   allSelected: boolean;
   numDisplayedActions: number;
@@ -34,6 +35,7 @@ export default function SelectedRowsHeader({
   className,
   selectedRows,
   contentType,
+  contentTypeNoSelection,
   actions,
   numDisplayedActions,
   allSelected,
@@ -58,7 +60,7 @@ export default function SelectedRowsHeader({
     <div className={className}>
       <FlexBox grow className={cssClasses.ROW} column={compact}>
         <FlexItem className={cssClasses.SELECTED_TEXT} grow>
-          {!rowsAreSelected && <div>Select {contentType.plural || "rows"} to access tools</div>}
+          {!rowsAreSelected && <div>Select {contentTypeNoSelection || "rows"} to access tools</div>}
           {rowsAreSelected && !allSelected && (
             <>
               <div>
