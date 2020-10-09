@@ -70,6 +70,7 @@ export default class Table2BetaView extends React.PureComponent {
       enableSelectable: true,
       enableActionsOnHover: false,
       firstSortDirection: Table2Beta.sortDirection.ASCENDING,
+      mobileWidth: false,
     };
   }
 
@@ -107,6 +108,7 @@ export default class Table2BetaView extends React.PureComponent {
       enableSelectable,
       enableActionsOnHover,
       firstSortDirection,
+      mobileWidth,
     } = this.state;
 
     return (
@@ -146,117 +148,119 @@ export default class Table2BetaView extends React.PureComponent {
           </div>
           <div style={{ marginTop: "20px" }}>
             <ExampleCode>
-              <Table2Beta
-                className={cssClass.TABLE}
-                data={tableData}
-                filter={(rowData) =>
-                  !this.state.tableFilter ||
-                  _.includes(
-                    [rowData.name.first, rowData.name.last].join(" "),
-                    this.state.tableFilter.trim().toLowerCase(),
-                  )
-                }
-                initialPage={24}
-                initialSortState={{
-                  columnID: "name",
-                  direction: Table2Beta.sortDirection.ASCENDING,
-                }}
-                firstSortDirection={firstSortDirection}
-                ref="table"
-                onPageChange={(page) => console.log("Table page changed:", page)}
-                onSortChange={(sortState) => console.log("Table sort changed:", sortState)}
-                onRowClick={
-                  enableRowClick
-                    ? (e, rowID, rowData) => console.log("Table row clicked:", { rowID, rowData })
-                    : undefined
-                }
-                onRowMouseOver={
-                  enableRowMouseOver
-                    ? (e, rowID, rowData) =>
-                        console.log("Table row moused over:", { rowID, rowData })
-                    : undefined
-                }
-                onViewChange={(data) =>
-                  console.log(
-                    "Table view changed:",
-                    data.map((d) => d.id),
-                  )
-                }
-                paginated
-                pageSize={9}
-                visiblePageRangeSize={5}
-                rowIDFn={(r) => r.id}
-                rowClassNameFn={(r) => (r.age < 10 ? "additionalClass" : null)}
-                selectable={enableSelectable}
-                singleActions={sampleActionInputs}
-                showSingleActionsOnHover={enableActionsOnHover}
-                selectedRowsHeaderContentType={{
-                  singular: this.state.tableFilter || "",
-                  plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",
-                }}
-                selectedRowsHeaderActions={sampleActionInputs}
-              >
-                <Table2Beta.Column
-                  id="details"
-                  cell={{
-                    renderer: (r) => (
-                      <ModalButton
-                        type="link"
-                        size="small"
-                        value={"\u2630 Details"}
-                        modalTitle="Details"
-                      >
-                        <p style={{ whiteSpace: "normal" }}>{r.notes}</p>
-                      </ModalButton>
-                    ),
+              <div className={mobileWidth ? cssClass.MOBILE_WIDTH : ""}>
+                <Table2Beta
+                  className={cssClass.TABLE}
+                  data={tableData}
+                  filter={(rowData) =>
+                    !this.state.tableFilter ||
+                    _.includes(
+                      [rowData.name.first, rowData.name.last].join(" "),
+                      this.state.tableFilter.trim().toLowerCase(),
+                    )
+                  }
+                  initialPage={24}
+                  initialSortState={{
+                    columnID: "name",
+                    direction: Table2Beta.sortDirection.ASCENDING,
                   }}
-                  noWrap
-                />
-
-                <Table2Beta.Column
-                  id="name"
-                  header={{ content: "Name" }}
-                  cell={{
-                    className: "capitalize",
-                    renderer: (r) => [r.name.first, r.name.last].join(" "),
+                  firstSortDirection={firstSortDirection}
+                  ref="table"
+                  onPageChange={(page) => console.log("Table page changed:", page)}
+                  onSortChange={(sortState) => console.log("Table sort changed:", sortState)}
+                  onRowClick={
+                    enableRowClick
+                      ? (e, rowID, rowData) => console.log("Table row clicked:", { rowID, rowData })
+                      : undefined
+                  }
+                  onRowMouseOver={
+                    enableRowMouseOver
+                      ? (e, rowID, rowData) =>
+                          console.log("Table row moused over:", { rowID, rowData })
+                      : undefined
+                  }
+                  onViewChange={(data) =>
+                    console.log(
+                      "Table view changed:",
+                      data.map((d) => d.id),
+                    )
+                  }
+                  paginated
+                  pageSize={9}
+                  visiblePageRangeSize={5}
+                  rowIDFn={(r) => r.id}
+                  rowClassNameFn={(r) => (r.age < 10 ? "additionalClass" : null)}
+                  selectable={enableSelectable}
+                  singleActions={sampleActionInputs}
+                  showSingleActionsOnHover={enableActionsOnHover}
+                  selectedRowsHeaderContentType={{
+                    singular: this.state.tableFilter || "",
+                    plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",
                   }}
-                  sortable
-                  sortValueFn={(r) => [r.name.first, r.name.last].join(" ")}
-                  width="25%"
-                />
-
-                <Table2Beta.Column
-                  id="age"
-                  header={{ content: "Age" }}
-                  cell={{ renderer: (r) => r.age }}
-                  sortable
-                  sortValueFn={(r) => r.age}
-                />
-
-                <Table2Beta.Column
-                  id="status"
-                  header={{ content: "Status" }}
-                  cell={{
-                    className: (r) =>
-                      classnames(
-                        "TableView--status",
-                        enableDynamicCellClass &&
-                          r.status.includes("e") &&
-                          "TableView--status--red",
+                  selectedRowsHeaderActions={sampleActionInputs}
+                >
+                  <Table2Beta.Column
+                    id="details"
+                    cell={{
+                      renderer: (r) => (
+                        <ModalButton
+                          type="link"
+                          size="small"
+                          value={"\u2630 Details"}
+                          modalTitle="Details"
+                        >
+                          <p style={{ whiteSpace: "normal" }}>{r.notes}</p>
+                        </ModalButton>
                       ),
-                    renderer: (r) => r.status,
-                  }}
-                  sortable
-                  sortValueFn={(r) => r.status}
-                />
+                    }}
+                    noWrap
+                  />
 
-                <Table2Beta.Column
-                  id="notes"
-                  header={{ content: "Notes" }}
-                  cell={{ renderer: (r) => r.notes }}
-                  width="100%"
-                />
-              </Table2Beta>
+                  <Table2Beta.Column
+                    id="name"
+                    header={{ content: "Name" }}
+                    cell={{
+                      className: "capitalize",
+                      renderer: (r) => [r.name.first, r.name.last].join(" "),
+                    }}
+                    sortable
+                    sortValueFn={(r) => [r.name.first, r.name.last].join(" ")}
+                    width="25%"
+                  />
+
+                  <Table2Beta.Column
+                    id="age"
+                    header={{ content: "Age" }}
+                    cell={{ renderer: (r) => r.age }}
+                    sortable
+                    sortValueFn={(r) => r.age}
+                  />
+
+                  <Table2Beta.Column
+                    id="status"
+                    header={{ content: "Status" }}
+                    cell={{
+                      className: (r) =>
+                        classnames(
+                          "TableView--status",
+                          enableDynamicCellClass &&
+                            r.status.includes("e") &&
+                            "TableView--status--red",
+                        ),
+                      renderer: (r) => r.status,
+                    }}
+                    sortable
+                    sortValueFn={(r) => r.status}
+                  />
+
+                  <Table2Beta.Column
+                    id="notes"
+                    header={{ content: "Notes" }}
+                    cell={{ renderer: (r) => r.notes }}
+                    width="100%"
+                  />
+                </Table2Beta>
+              </div>
             </ExampleCode>
           </div>
           <label className={cssClass.CONFIG}>
@@ -298,6 +302,14 @@ export default class Table2BetaView extends React.PureComponent {
               onChange={({ target }) => this.setState({ enableActionsOnHover: target.checked })}
             />{" "}
             Show actions on hover
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={mobileWidth}
+              onChange={({ target }) => this.setState({ mobileWidth: target.checked })}
+            />{" "}
+            Simulate width for mobile view
           </label>
           <label className={cssClass.CONFIG}>
             First Sort Direction:
@@ -661,4 +673,5 @@ Table2BetaView.cssClass = {
   CONFIG_OPTIONS: "Table2BetaView--configOptions",
   CONTAINER: "Table2BetaView",
   TABLE: "Table2BetaView--table",
+  MOBILE_WIDTH: "Table2BetaView--mobileWidth",
 };
