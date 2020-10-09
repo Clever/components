@@ -492,6 +492,14 @@ export default class Table2BetaView extends React.PureComponent {
               defaultValue: '{ singular: "row", plural: "rows" }',
             },
             {
+              name: "selectedRowsHeaderContentTypeNoSelection",
+              type: "string",
+              description:
+                "Description of the content displayed when no rows are selected. Useful if you have filters that change the row types (ex: filter from all students to inactive students)",
+              optional: true,
+              defaultValue: "rows",
+            },
+            {
               name: "selectedRowsHeaderActions",
               type: "Array<ActionInput>",
               description:
