@@ -208,6 +208,24 @@ export class Table2Beta extends React.Component<Props, State> {
     }
   }
 
+  componentDidUpdate() {
+    const { selectedRows } = this.state;
+    const { allRows } = this._getDisplayedData();
+
+    // This occurs when a new external filter is applied.
+    // We want selectedRows to change if the filter affects the selection
+    const newSelectedRows = new Set(selectedRows);
+    newSelectedRows.forEach((item) => {
+      if (!allRows.includes(item)) {
+        newSelectedRows.delete(item);
+      }
+    });
+    if (newSelectedRows.size !== selectedRows.size) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({ selectedRows: newSelectedRows });
+    }
+  }
+
   componentWillUnmount() {
     this._isMounted = false;
   }
@@ -508,8 +526,7 @@ export class Table2Beta extends React.Component<Props, State> {
     }
 
     const { displayedData, numPages, allRows } = this._getDisplayedData();
-    selectedRows = new Set(selectedRows && allRows);
-    this.setState({ selectedRows });
+
     const displayedPage = Math.min(currentPage, numPages);
     const disableSort = numPages <= 1 && displayedData.length <= 1;
 
@@ -527,6 +544,7 @@ export class Table2Beta extends React.Component<Props, State> {
       <>
         {selectable && (
           <SelectedRowsHeader
+            className={className}
             selectedRows={selectedRows}
             contentType={selectedRowsHeaderContentType}
             actions={selectedRowsHeaderActions}
