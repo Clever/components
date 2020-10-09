@@ -251,6 +251,7 @@ export class TextInput extends React.Component<Props, State> {
           type={type}
           value={this.props.value as any}
           aria-invalid={!valid}
+          aria-label={this.props.label}
         />
         {this.props.enableShow && (
           <button
