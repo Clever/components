@@ -68,7 +68,7 @@ export default function SelectedRowsHeader({
               </div>
             </>
           )}
-          {allSelected && (
+          {rowsAreSelected && allSelected && (
             <div>{`All ${contentType.plural || "rows"} selected (${selectedRows.size})`}</div>
           )}
         </FlexItem>

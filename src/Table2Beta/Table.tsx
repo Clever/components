@@ -223,6 +223,8 @@ export class Table2Beta extends React.Component<Props, State> {
     if (newSelectedRows.size !== selectedRows.size) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ selectedRows: newSelectedRows });
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({ allSelected: false });
     }
   }
 
