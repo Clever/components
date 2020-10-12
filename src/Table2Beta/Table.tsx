@@ -217,7 +217,7 @@ export class Table2Beta extends React.Component<Props, State> {
   }
 
   componentDidUpdate() {
-    const { selectedRows } = this.state;
+    const { selectedRows, allSelected } = this.state;
     const { allRows } = this._getDisplayedData();
 
     // This occurs when a new external filter is applied.
@@ -228,11 +228,12 @@ export class Table2Beta extends React.Component<Props, State> {
         newSelectedRows.delete(item);
       }
     });
-    if (newSelectedRows.size !== selectedRows.size) {
+    const newAllSelected = (allRows && newSelectedRows.size === allRows.length) || false;
+    if (newSelectedRows.size !== selectedRows.size || allSelected !== newAllSelected) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ selectedRows: newSelectedRows });
       // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({ allSelected: false });
+      this.setState({ allSelected: newAllSelected });
     }
   }
 
@@ -583,10 +584,10 @@ export class Table2Beta extends React.Component<Props, State> {
                 <HeaderCell>
                   <Checkbox
                     checked={selectedRows.size > 0}
-                    partial={selectedRows.size < (displayedData || allRows).length}
+                    partial={selectedRows.size < allRows.length}
                     onChange={(newState) => {
                       if (selectedRows.size === 0) {
-                        selectedRows = new Set(displayedData || allRows);
+                        selectedRows = new Set(allRows);
                         this.setState({ allSelected: true });
                       } else {
                         selectedRows.clear();
