@@ -18,6 +18,7 @@ const sampleActionInputs = [
     },
     title: { singular: "Launch an app" },
     icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+    hoverIcon: "https://www.freeiconspng.com/uploads/troll-face-png-1.png",
   },
   {
     callback: () => console.log("sampleAction 2"),
