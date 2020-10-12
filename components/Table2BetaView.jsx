@@ -471,11 +471,23 @@ export default class Table2BetaView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "checkboxClassName",
+              type: "String",
+              description: "Additional classname to apply to the checkbox cells",
+              optional: true,
+            },
+            {
               name: "singleActions",
               type: "Array<ActionInput>",
               description: "An array of ActionInputs, to be present for every row",
               optional: true,
               defaultValue: "None",
+            },
+            {
+              name: "singleActionsClassName",
+              type: "String",
+              description: "Additional classname to apply to the singleActions cells",
+              optional: true,
             },
             {
               name: "showSingleActionsOnHover",
