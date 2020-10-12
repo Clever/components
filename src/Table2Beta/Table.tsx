@@ -39,6 +39,7 @@ export interface ActionInput {
   callback(selectedRows: Set<any>): void;
   title: { singular: React.ReactNode; plural?: React.ReactNode };
   icon?: string;
+  hoverIcon?: string;
 }
 
 export interface Props {
@@ -63,7 +64,9 @@ export interface Props {
   noDataContent?: React.ReactNode;
   selectable?: boolean;
   singleActions?: Array<ActionInput>;
+  checkboxClassName?: string;
   showSingleActionsOnHover?: boolean;
+  singleActionsClassName?: string;
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
   selectedRowsHeaderContentTypeNoSelection?: string;
   selectedRowsHeaderActions?: Array<ActionInput>;
@@ -112,7 +115,9 @@ const propTypes = {
   rowClassNameFn: PropTypes.func,
   noDataContent: PropTypes.node,
   selectable: PropTypes.bool,
+  checkboxClassName: PropTypes.string,
   singleActions: PropTypes.array,
+  singleActionsClassName: PropTypes.string,
   showSingleActionsOnHover: PropTypes.bool,
 
   // these must all be set together
@@ -147,6 +152,8 @@ export const cssClass = {
   SINGLE_ACTIONS: "Table2Beta--singleActions",
   SINGLE_ACTION_TRIGGER: "Table2Beta--singleActionTrigger",
   ACTION_ICON: "Table2Beta--actions--icon",
+  ACTION_ICON_CONTAINER: "Table2Beta--actions--iconContainer",
+  ACTION_HOVER_ICON: "Table2Beta--actions--hoverIcon",
   ACTION_TITLE: "Table2Beta--actions--title",
   ACTION_MENU: "Table2Beta--actions--menu",
   ACTION_MENU_ITEM: "Table2Beta--actions--menu--item",
@@ -210,7 +217,7 @@ export class Table2Beta extends React.Component<Props, State> {
   }
 
   componentDidUpdate() {
-    const { selectedRows } = this.state;
+    const { selectedRows, allSelected } = this.state;
     const { allRows } = this._getDisplayedData();
 
     // This occurs when a new external filter is applied.
@@ -221,11 +228,12 @@ export class Table2Beta extends React.Component<Props, State> {
         newSelectedRows.delete(item);
       }
     });
-    if (newSelectedRows.size !== selectedRows.size) {
+    const newAllSelected = !!(allRows && newSelectedRows.size === allRows.length);
+    if (newSelectedRows.size !== selectedRows.size || allSelected !== newAllSelected) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ selectedRows: newSelectedRows });
       // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({ allSelected: false });
+      this.setState({ allSelected: newAllSelected });
     }
   }
 
@@ -445,9 +453,14 @@ export class Table2Beta extends React.Component<Props, State> {
           type="link"
           value={
             <>
-              {singleActions[0].icon && (
-                <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
-              )}
+              <span className={singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER}>
+                {singleActions[0].icon && (
+                  <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+                )}
+                {singleActions[0].hoverIcon && (
+                  <img className={cssClass.ACTION_HOVER_ICON} src={singleActions[0].hoverIcon} />
+                )}
+              </span>
               <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
             </>
           }
@@ -462,9 +475,14 @@ export class Table2Beta extends React.Component<Props, State> {
             type="link"
             value={
               <>
-                {singleActions[0].icon && (
-                  <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
-                )}
+                <span className={singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER}>
+                  {singleActions[0].icon && (
+                    <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+                  )}
+                  {singleActions[0].hoverIcon && (
+                    <img className={cssClass.ACTION_HOVER_ICON} src={singleActions[0].hoverIcon} />
+                  )}
+                </span>
                 <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
               </>
             }
@@ -511,8 +529,10 @@ export class Table2Beta extends React.Component<Props, State> {
       noDataContent,
       numDisplayedActions,
       selectable,
+      checkboxClassName,
       singleActions,
       showSingleActionsOnHover,
+      singleActionsClassName,
       visiblePageRangeSize,
       selectedRowsHeaderContentType,
       selectedRowsHeaderContentTypeNoSelection,
@@ -564,10 +584,10 @@ export class Table2Beta extends React.Component<Props, State> {
                 <HeaderCell>
                   <Checkbox
                     checked={selectedRows.size > 0}
-                    partial={selectedRows.size < (displayedData || allRows).length}
+                    partial={selectedRows.size < allRows.length}
                     onChange={(newState) => {
                       if (selectedRows.size === 0) {
-                        selectedRows = new Set(displayedData || allRows);
+                        selectedRows = new Set(allRows);
                         this.setState({ allSelected: true });
                       } else {
                         selectedRows.clear();
@@ -629,7 +649,7 @@ export class Table2Beta extends React.Component<Props, State> {
                   }
                 >
                   {selectable && (
-                    <Cell>
+                    <Cell className={checkboxClassName}>
                       <Checkbox
                         checked={selectedRows.has(rowData)}
                         onChange={(newState) => {
@@ -661,9 +681,10 @@ export class Table2Beta extends React.Component<Props, State> {
                   {selectable && (
                     <Cell noWrap>
                       <div
-                        className={
-                          cssClass.SINGLE_ACTIONS + (showSingleActionsOnHover ? "--hidden" : "")
-                        }
+                        className={classnames(
+                          cssClass.SINGLE_ACTIONS + (showSingleActionsOnHover ? "--hidden" : ""),
+                          singleActionsClassName,
+                        )}
                       >
                         {this._singleActionsRender(rowData)}
                       </div>

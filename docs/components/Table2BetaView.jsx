@@ -18,6 +18,7 @@ const sampleActionInputs = [
     },
     title: { singular: "Launch an app" },
     icon: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg",
+    hoverIcon: "https://www.freeiconspng.com/uploads/troll-face-png-1.png",
   },
   {
     callback: () => console.log("sampleAction 2"),
@@ -470,11 +471,23 @@ export default class Table2BetaView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "checkboxClassName",
+              type: "String",
+              description: "Additional classname to apply to the checkbox cells",
+              optional: true,
+            },
+            {
               name: "singleActions",
               type: "Array<ActionInput>",
               description: "An array of ActionInputs, to be present for every row",
               optional: true,
               defaultValue: "None",
+            },
+            {
+              name: "singleActionsClassName",
+              type: "String",
+              description: "Additional classname to apply to the singleActions cells",
+              optional: true,
             },
             {
               name: "showSingleActionsOnHover",
