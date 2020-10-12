@@ -58,18 +58,6 @@ export default class TooltipView extends Component {
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
-                With focusable trigger{" "}
-                <Tooltip
-                  content="Tooltips can be triggered by focus as well."
-                  placement={placement}
-                  textAlign={textAlign}
-                >
-                  <span ref="focusableTrigger" tabIndex={0}>
-                    <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
-                  </span>
-                </Tooltip>
-              </div>
-              <div className={cssClass.EXAMPLE}>
                 With clickable trigger{" "}
                 <Tooltip
                   content="Tooltips triggered by clicks stay open."
@@ -100,12 +88,9 @@ export default class TooltipView extends Component {
               options={_.map(Tooltip.Align, (p) => ({ content: p, value: p }))}
             />
           </div>
-          <div className={cssClass.FOCUS_CONTROL}>
-            <Button
-              onClick={() => this.refs.focusableTrigger.focus()}
-              type="linkPlain"
-              value="Click to focus on tooltip trigger"
-            />
+          <div className={cssClass.ACCESSIBILITY_NOTICE}>
+            For accessibility reasons, all tooltips are also triggered by focus. Press the tab key
+            to move focus throughout the page.
           </div>
         </Example>
         <PropDocumentation
@@ -184,7 +169,7 @@ TooltipView.cssClass = {
   CONTAINER: "TooltipView",
   DEMO_CONTAINER: "TooltipView--demoContainer",
   EXAMPLE: "TooltipView--example",
-  FOCUS_CONTROL: "TooltipView--focusControl",
+  ACCESSIBILITY_NOTICE: "TooltipView--accessibilityNotice",
   PROPS: "TooltipView--props",
   TRIGGER: "TooltipView--tooltipTrigger",
 };
