@@ -228,7 +228,7 @@ export class Table2Beta extends React.Component<Props, State> {
         newSelectedRows.delete(item);
       }
     });
-    const newAllSelected = (allRows && newSelectedRows.size === allRows.length) || false;
+    const newAllSelected = !!(allRows && newSelectedRows.size === allRows.length);
     if (newSelectedRows.size !== selectedRows.size || allSelected !== newAllSelected) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ selectedRows: newSelectedRows });
