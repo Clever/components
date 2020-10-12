@@ -11,7 +11,7 @@ import { Values } from "../utils/types";
 import "./Tooltip.less";
 
 export interface Props {
-  children: React.ReactNode;
+  children: React.ReactElement;
   className?: string;
   clickTrigger?: boolean;
   content: React.ReactNode;
@@ -59,7 +59,7 @@ const defaultProps = {
 
 export const cssClass = {
   CONTENT: "Tooltip--content",
-
+  FOCUSABLE_TRIGGER: "Tooltip--focusable-trigger",
   align: (textAlign) => `Tooltip--content--${textAlign}`,
 };
 
@@ -104,6 +104,8 @@ export default class Tooltip extends React.Component<Props> {
       </BootstrapTooltip>
     );
 
+    const child = React.Children.only(children);
+
     return (
       <OverlayTrigger
         delayShow={delayMs}
@@ -113,7 +115,12 @@ export default class Tooltip extends React.Component<Props> {
         rootClose
         trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
       >
-        {children}
+        {React.cloneElement(child, {
+          tabIndex: 0,
+          "aria-describedby": this.id,
+          className: cssClass.FOCUSABLE_TRIGGER,
+          ...child.props,
+        })}
       </OverlayTrigger>
     );
   }
