@@ -450,17 +450,16 @@ export class Table2Beta extends React.Component<Props, State> {
     if (singleActions.length === 1) {
       return (
         <Button
+          className={singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER}
           type="link"
           value={
             <>
-              <span className={singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER}>
-                {singleActions[0].icon && (
-                  <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
-                )}
-                {singleActions[0].hoverIcon && (
-                  <img className={cssClass.ACTION_HOVER_ICON} src={singleActions[0].hoverIcon} />
-                )}
-              </span>
+              {singleActions[0].icon && (
+                <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+              )}
+              {singleActions[0].hoverIcon && (
+                <img className={cssClass.ACTION_HOVER_ICON} src={singleActions[0].hoverIcon} />
+              )}
               <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
             </>
           }
@@ -472,6 +471,7 @@ export class Table2Beta extends React.Component<Props, State> {
       return (
         <>
           <Button
+            className={singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER}
             type="link"
             value={
               <>
@@ -499,12 +499,18 @@ export class Table2Beta extends React.Component<Props, State> {
           >
             {singleActions.slice(1).map((action) => (
               <Menu.Item
-                className={cssClass.ACTION_MENU_ITEM}
+                className={classnames(
+                  cssClass.ACTION_MENU_ITEM,
+                  singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER,
+                )}
                 onClick={(e) => action.callback(rowData)}
                 key="action.title.singular"
               >
                 <div className={cssClass.ACTION_MENU_ITEM_TITLE}>
                   {action.icon && <img className={cssClass.ACTION_ICON} src={action.icon} />}
+                  {action.hoverIcon && (
+                    <img className={cssClass.ACTION_HOVER_ICON} src={action.hoverIcon} />
+                  )}
                   <div className={cssClass.ACTION_TITLE}>{action.title.singular}</div>
                 </div>
               </Menu.Item>
@@ -679,13 +685,11 @@ export class Table2Beta extends React.Component<Props, State> {
                     </Cell>
                   ))}
                   {selectable && (
-                    <Cell noWrap className={
-                      singleActionsClassName
-                    }>
+                    <Cell noWrap className={singleActionsClassName}>
                       <div
                         className={
                           cssClass.SINGLE_ACTIONS + (showSingleActionsOnHover ? "--hidden" : "")
-                          }
+                        }
                       >
                         {this._singleActionsRender(rowData)}
                       </div>
