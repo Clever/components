@@ -126,6 +126,16 @@ export default class TabBarView extends PureComponent {
               defaultValue: "False",
               optional: true,
             },
+            {
+              name: "tabContentID",
+              type: "String",
+              description:
+                "The id attribute of the tab content associated with the tab. For a11y purposes, be sure to " +
+                "define the attributes role='tabpanel' and aria-labelledby={tabID} on this tab content: " +
+                "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role",
+              defaultValue: "",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
           title="Tab"

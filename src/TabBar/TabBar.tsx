@@ -33,6 +33,7 @@ const TabBar: TabBarComponent = function TabBar({ children, className, justify, 
     <FlexBox
       className={classnames(cssClass.CONTAINER, cssClass.size(size), className)}
       justify={justify}
+      role="tablist"
     >
       {children}
     </FlexBox>
