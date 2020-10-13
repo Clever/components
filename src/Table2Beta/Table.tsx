@@ -679,12 +679,13 @@ export class Table2Beta extends React.Component<Props, State> {
                     </Cell>
                   ))}
                   {selectable && (
-                    <Cell noWrap>
+                    <Cell noWrap className={
+                      singleActionsClassName
+                    }>
                       <div
-                        className={classnames(
-                          cssClass.SINGLE_ACTIONS + (showSingleActionsOnHover ? "--hidden" : ""),
-                          singleActionsClassName,
-                        )}
+                        className={
+                          cssClass.SINGLE_ACTIONS + (showSingleActionsOnHover ? "--hidden" : "")
+                          }
                       >
                         {this._singleActionsRender(rowData)}
                       </div>
