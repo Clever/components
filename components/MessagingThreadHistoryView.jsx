@@ -42,6 +42,7 @@ function newMessage() {
     placement,
     timestamp: new Date(newestTime),
     index: currentMessageIndex,
+    isRead: true,
   };
 }
 
@@ -57,10 +58,11 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
       newMessage(),
       newMessage(),
     ],
+    showReadStatus: true,
   };
 
   render() {
-    const { messages } = this.state;
+    const { messages, showReadStatus } = this.state;
 
     return (
       <View
@@ -88,7 +90,11 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingThreadHistory threadID="abc" messages={messages} />
+            <MessagingThreadHistory
+              threadID="abc"
+              messages={messages}
+              showReadStatus={showReadStatus}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -103,8 +109,18 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
   };
 
   _renderConfig() {
+    const { showReadStatus } = this.state;
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={showReadStatus}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={(e) => this.setState({ showReadStatus: e.target.checked })}
+          />{" "}
+          Show Read Status
+        </label>
         <Button type="primary" value="Add message" onClick={this.addMessage} />
       </FlexBox>
     );
