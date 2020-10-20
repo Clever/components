@@ -1,7 +1,14 @@
 @import (reference) "../less/index";
 
+.MessageMetadata--Message--container {
+  .flexbox();
+  flex-direction: column;
+  .margin--y--m();
+  .margin--x--xs();
+}
+
 .MessageMetadata--Message--center {
-  .margin--y--l();
+  .margin--y--s();
   margin-left: auto;
   margin-right: auto;
   .flexbox();
@@ -11,8 +18,6 @@
 }
 
 .MessageMetadata--Message--right {
-  .margin--y--m();
-  .margin--x--xs();
   .flexbox();
   flex-direction: row-reverse;
   align-items: center;
@@ -21,8 +26,6 @@
 }
 
 .MessageMetadata--Message--left {
-  .margin--y--m();
-  .margin--x--xs();
   .flexbox();
   flex-direction: row;
   align-items: center;
@@ -44,6 +47,12 @@
   .margin--left--xs();
   .text--line-height-1();
   white-space: nowrap;
+}
+
+.MessageMetadata--ReadReceipt {
+  .padding--top--2xs();
+  text-align: right;
+  color: @neutral_medium_gray;
 }
 
 // For mobile/tablet
