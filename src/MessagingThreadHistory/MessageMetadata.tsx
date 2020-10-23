@@ -12,14 +12,14 @@ interface Props {
   className?: string;
   placement: "left" | "right" | "center";
   timestamp?: Date;
-  showReadStatus?: boolean;
+  readStatusText?: string;
   children: React.ReactNode;
 }
 
 export const MessageMetadata: React.FC<
   Props & { ref?: React.Ref<HTMLDivElement> }
 > = React.forwardRef((props: Props, ref: React.Ref<HTMLDivElement>) => {
-  const { className, placement, timestamp, showReadStatus, children } = props;
+  const { className, placement, timestamp, readStatusText, children } = props;
   return (
     <div ref={ref} className={cssClass("Message--container")}>
       <div className={classNames(cssClass(`Message--${placement}`), className)}>
@@ -30,7 +30,7 @@ export const MessageMetadata: React.FC<
           </span>
         )}
       </div>
-      {showReadStatus && <div className={cssClass("ReadReceipt")}>Read</div>}
+      {readStatusText && <div className={cssClass("ReadReceipt")}>{readStatusText}</div>}
     </div>
   );
 });

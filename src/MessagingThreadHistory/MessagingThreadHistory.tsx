@@ -20,14 +20,13 @@ export interface MessageData {
   timestamp?: Date;
   content: React.ReactNode;
   index: number;
-  isRead?: boolean;
+  readStatusText?: string;
 }
 
 interface Props {
   className?: string;
   threadID: string;
   messages: MessageData[];
-  showReadStatus?: boolean;
 }
 
 const SCROLL_BUFFER = 200;
@@ -47,7 +46,7 @@ function isOwnMessage(message: MessageData) {
 
 export const MessagingThreadHistory = React.forwardRef(
   (
-    { className, threadID, messages, showReadStatus }: Props,
+    { className, threadID, messages }: Props,
     containerRef: React.MutableRefObject<HTMLDivElement>,
   ) => {
     // ----------- Scroll position references
@@ -90,11 +89,7 @@ export const MessagingThreadHistory = React.forwardRef(
 
     // ----------- Render
 
-    const messagesWithDividers = _interleaveMessagesWithDividers(
-      messages,
-      lastMessageRef,
-      showReadStatus,
-    );
+    const messagesWithDividers = _interleaveMessagesWithDividers(messages, lastMessageRef);
 
     return (
       <div
@@ -116,7 +111,6 @@ export const MessagingThreadHistory = React.forwardRef(
 function _interleaveMessagesWithDividers(
   messages: MessageData[],
   lastMessageRef: React.MutableRefObject<HTMLDivElement>,
-  showReadStatus: boolean,
 ) {
   // Interleave dividers (e.g. "Today," "Yesterday", "May 20") with messages.
   const messagesWithDividers: React.ReactNode[] = [];
@@ -143,7 +137,7 @@ function _interleaveMessagesWithDividers(
         ref={i === messages.length - 1 ? lastMessageRef : undefined}
         placement={message.placement}
         timestamp={message.timestamp}
-        showReadStatus={showReadStatus && message.isRead && isOwnMessage(message)}
+        readStatusText={isOwnMessage(message) && message.readStatusText}
         // First message needs 'auto' top margin to have messages fill container from bottom -> top
         className={i === 0 ? cssClasses.FIRST_MESSAGE : undefined}
       >
