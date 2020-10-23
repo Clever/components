@@ -42,6 +42,7 @@ function newMessage() {
     placement,
     timestamp: new Date(newestTime),
     index: currentMessageIndex,
+    readStatusText: "Read",
   };
 }
 

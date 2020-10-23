@@ -20,6 +20,7 @@ export interface MessageData {
   timestamp?: Date;
   content: React.ReactNode;
   index: number;
+  readStatusText?: string;
 }
 
 interface Props {
@@ -136,6 +137,7 @@ function _interleaveMessagesWithDividers(
         ref={i === messages.length - 1 ? lastMessageRef : undefined}
         placement={message.placement}
         timestamp={message.timestamp}
+        readStatusText={isOwnMessage(message) && message.readStatusText}
         // First message needs 'auto' top margin to have messages fill container from bottom -> top
         className={i === 0 ? cssClasses.FIRST_MESSAGE : undefined}
       >
