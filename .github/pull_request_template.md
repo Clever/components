@@ -5,13 +5,15 @@
 **Screenshots/GIFs:**
 
 **Testing:**
+
 - [ ] Unit tests
 - Manual tests:
   - [ ] Chrome
   - [ ] Safari
-  - [ ] IE10
+  - [ ] IE11
 
 **Roll Out:**
+
 - Before merging:
   - [ ] Updated docs
   - [ ] Bumped version in `package.json`
