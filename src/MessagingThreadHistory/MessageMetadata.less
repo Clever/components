@@ -5,6 +5,8 @@
   flex-direction: column;
   .margin--y--m();
   .margin--x--xs();
+  // Without this, messages 'bunch up' on Safari.
+  flex-shrink: 0;
 }
 
 .MessageMetadata--Message--center {
