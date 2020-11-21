@@ -21,8 +21,8 @@ export const MessageMetadata: React.FC<
 > = React.forwardRef((props: Props, ref: React.Ref<HTMLDivElement>) => {
   const { className, placement, timestamp, readStatusText, children } = props;
   return (
-    <div ref={ref} className={cssClass("Message--container")}>
-      <div className={classNames(cssClass(`Message--${placement}`), className)}>
+    <div ref={ref} className={classNames(cssClass("Message--container"), className)}>
+      <div className={cssClass(`Message--${placement}`)}>
         {children}
         {timestamp && (
           <span className={cssClass(`Timestamp--${placement}`)}>
