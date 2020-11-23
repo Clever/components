@@ -167,12 +167,7 @@ button {
   }
 
   &.Button--linkPlain {
-    color: @primary_blue;
-
-    &:hover,
-    &:active {
-      color: @primary_blue_shade_2;
-    }
+    color: @primary_blue_shade_2;
 
     &:focus {
       outline: @borderRadiusM solid fade(@primary_blue_tint_2, 50%);
@@ -181,13 +176,8 @@ button {
   }
 
   &.Button--linkUnderlined {
-    .border--bottom--s(@primary_blue);
+    .border--bottom--s(@primary_blue_shade_2);
     .borderRadius--0;
-
-    &:hover,
-    &:active {
-      .border--bottom--s(@primary_blue_shade_2);
-    }
 
     &:focus {
       outline: none;
