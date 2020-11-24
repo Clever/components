@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "2.66.0",
+  "version": "2.66.1",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -24,10 +24,8 @@
   "dependencies": {
     "@types/classnames": "^2.2.3",
     "@types/linkify-it": "^2.1.0",
-    "@types/lodash": "^4.14.74",
+    "@types/lodash": "^4.14.165",
     "@types/prop-types": "^15.5.1",
-    "@types/react-datepicker": "^1.8.0",
-    "@types/react-linkify": "^1.0.0",
     "classnames": "^2.2.5",
     "core-js": "^2.4.1",
     "focus-trap-react": "^6.0.0",
@@ -47,10 +45,10 @@
     "react-fontawesome": "^1.6.1",
     "react-linkify": "^1.0.0-alpha",
     "react-overlays": "^0.8.3",
+    "react-responsive": "^8.0.3",
     "react-select": "~1.2.1",
     "react-sticky": "^6.0.1",
     "react-transition-group": "~1.2.0",
-    "react-responsive": "^8.0.3",
     "short-number": "^1.0.6",
     "tether": "^1.4.0"
   },
@@ -59,6 +57,8 @@
     "@types/jest-matchers": "^20.0.0",
     "@types/node": "^12.12.51",
     "@types/react": "^16.9.49",
+    "@types/react-datepicker": "^1.8.0",
+    "@types/react-linkify": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "autoprefixer": "^6.5.3",
