@@ -45,10 +45,10 @@
     "react-fontawesome": "^1.6.1",
     "react-linkify": "^1.0.0-alpha",
     "react-overlays": "^0.8.3",
+    "react-responsive": "^8.0.3",
     "react-select": "~1.2.1",
     "react-sticky": "^6.0.1",
     "react-transition-group": "~1.2.0",
-    "react-responsive": "^8.0.3",
     "short-number": "^1.0.6",
     "tether": "^1.4.0"
   },
