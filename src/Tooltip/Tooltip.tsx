@@ -119,6 +119,11 @@ export default class Tooltip extends React.Component<Props> {
           tabIndex: 0,
           "aria-describedby": this.id,
           className: cssClass.FOCUSABLE_TRIGGER,
+          ...(clickTrigger && {
+            onMouseDown: (e: React.SyntheticEvent) => {
+              e.preventDefault();
+            },
+          }),
           ...child.props,
         })}
       </OverlayTrigger>
