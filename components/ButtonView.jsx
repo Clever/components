@@ -41,8 +41,9 @@ export default function ButtonView() {
           <Button type="linkPlain" href="http://google.com" value="Plain Link" />
         </ExampleCode>
         <p>
-          Here is a <Button type="linkPlain" href="//google.com" value="plain link" /> with no
-          margin/padding.
+          Here is a{" "}
+          <Button type="linkPlain" href="//google.com" value="underlined plain link" underlined />{" "}
+          with no margin/padding.
           <br />
           Better suited for inline links than the regular{" "}
           <Button type="link" href="http://google.com" value="link button" />, which doesn't
