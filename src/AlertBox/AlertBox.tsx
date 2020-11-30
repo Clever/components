@@ -1,6 +1,5 @@
 import * as classnames from "classnames";
 import * as React from "react";
-import * as PropTypes from "prop-types";
 
 import * as FontAwesome from "react-fontawesome";
 
@@ -18,6 +17,7 @@ export interface Props {
   type?: AlertBoxType;
   isClosable?: boolean;
   onClose?: () => void;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 const cssClass = {
@@ -28,14 +28,6 @@ const cssClass = {
   TITLE: "AlertBox--title",
   CLOSE: "AlertBox--close",
   CHILDREN: "AlertBox--children",
-};
-
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  title: PropTypes.string,
-  type: PropTypes.oneOf<AlertBoxType>(["processing", "warning", "success", "error", "info"]),
-  isClosable: PropTypes.bool,
 };
 
 const iconMap = {
@@ -50,8 +42,6 @@ const iconMap = {
  * AlertBox is a closable, highlighted box
  */
 export default class AlertBox extends React.PureComponent<Props> {
-  static propTypes = propTypes;
-
   state = { isOpen: true };
 
   closeBox() {
@@ -63,7 +53,7 @@ export default class AlertBox extends React.PureComponent<Props> {
   }
 
   render() {
-    const { children, className, type, title, isClosable } = this.props;
+    const { children, className, type, title, isClosable, headingLevel = 3 } = this.props;
     const { isOpen } = this.state;
     if (!isOpen) {
       return null;
@@ -83,7 +73,11 @@ export default class AlertBox extends React.PureComponent<Props> {
           <FlexItem>
             {/* Use an <h3> for accessibility. Visual headings must be marked as such. The US Gov
               design system also uses <h3>s for their alert box titles */}
-            {title && <h3 className={cssClass.TITLE}>{title}</h3>}
+            {title && (
+              <div role="heading" aria-level={headingLevel} className={cssClass.TITLE}>
+                {title}
+              </div>
+            )}
             <div className={cssClass.CHILDREN}>{children}</div>
           </FlexItem>
           <FlexItem grow>
