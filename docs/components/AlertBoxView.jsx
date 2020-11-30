@@ -113,7 +113,7 @@ export default class AlertBoxView extends PureComponent {
               name: "headingLevel",
               type: "1 | 2 | 3 | 4 | 5 | 6",
               description:
-                "Heading level for the title for accessibility, should reflect the heading levels of the elements surrounding the AlertBox. Does not effect styling of the title",
+                "Heading level for the title for accessibility, should reflect the heading levels of the elements surrounding the AlertBox. Does not affect styling of the title",
               defaultValue: "3",
               optional: true,
             },
