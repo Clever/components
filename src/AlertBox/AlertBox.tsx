@@ -1,6 +1,5 @@
 import * as classnames from "classnames";
 import * as React from "react";
-import * as PropTypes from "prop-types";
 
 import * as FontAwesome from "react-fontawesome";
 
@@ -31,14 +30,6 @@ const cssClass = {
   CHILDREN: "AlertBox--children",
 };
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  title: PropTypes.string,
-  type: PropTypes.oneOf<AlertBoxType>(["processing", "warning", "success", "error", "info"]),
-  isClosable: PropTypes.bool,
-};
-
 const iconMap = {
   processing: "spinner",
   warning: "exclamation-triangle",
@@ -51,8 +42,6 @@ const iconMap = {
  * AlertBox is a closable, highlighted box
  */
 export default class AlertBox extends React.PureComponent<Props> {
-  static propTypes = propTypes;
-
   state = { isOpen: true };
 
   closeBox() {
