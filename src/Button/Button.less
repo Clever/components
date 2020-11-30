@@ -167,7 +167,12 @@ button {
   }
 
   &.Button--linkPlain {
-    color: @primary_blue_shade_2;
+    color: @primary_blue;
+
+    &:hover,
+    &:active {
+      color: @primary_blue_shade_2;
+    }
 
     &:focus {
       outline: @borderRadiusM solid @accent_purple_shade_2;
@@ -176,8 +181,13 @@ button {
   }
 
   &.Button--linkUnderlined {
-    .border--bottom--s(@primary_blue_shade_2);
+    .border--bottom--s(@primary_blue);
     .borderRadius--0;
+
+    &:hover,
+    &:active {
+      color: @primary_blue_shade_2;
+    }
   }
 
   &.Button--large {
