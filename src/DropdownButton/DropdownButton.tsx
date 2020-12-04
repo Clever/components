@@ -144,6 +144,7 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
             size={size}
             type={type}
             value={arrowTypeRender}
+            ariaLabel="toggle dropdown"
           />
         </FlexBox>
         <Overlay
