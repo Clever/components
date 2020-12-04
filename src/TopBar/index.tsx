@@ -59,6 +59,7 @@ export class TopBar extends React.PureComponent<Props> {
         )}
       >
         <TopBarButton
+          aria-label="Clever Home"
           href={this.props.logoHref}
           onClick={this.props.onLogoClick}
           className="dewey-TopBar--logoLink"
