@@ -96,6 +96,7 @@ export class ToastNotification extends React.PureComponent<Props> {
             onClick={onClose}
             type="linkPlain"
             value={<FontAwesome name="times" size="lg" />}
+            ariaLabel="close notification"
           />
         )}
       </FlexBox>
