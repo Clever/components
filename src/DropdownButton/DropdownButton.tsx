@@ -19,6 +19,7 @@ import "./Caret.less";
 import "./DropdownButton.less";
 
 export interface Props {
+  ariaLabelSecondaryButton?: string;
   children?: ChildrenOf<typeof Option>;
   className?: string;
   disabled?: boolean;
@@ -36,6 +37,7 @@ interface State {
 }
 
 const propTypes = {
+  ariaLabelSecondaryButton: PropTypes.string,
   children: MorePropTypes.oneOrManyOf(MorePropTypes.instanceOfComponent(Option)),
   className: PropTypes.string,
   disabled: PropTypes.bool,
@@ -102,7 +104,15 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { children, className, disabled, size, type, arrowType } = this.props;
+    const {
+      ariaLabelSecondaryButton,
+      children,
+      className,
+      disabled,
+      size,
+      type,
+      arrowType,
+    } = this.props;
     const passthroughProps = _.omit(
       this.props,
       Object.keys(propTypes) as (keyof typeof propTypes)[],
@@ -144,7 +154,7 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
             size={size}
             type={type}
             value={arrowTypeRender}
-            ariaLabel="toggle dropdown"
+            ariaLabel={ariaLabelSecondaryButton}
           />
         </FlexBox>
         <Overlay
