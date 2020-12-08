@@ -104,7 +104,15 @@ export default class DropdownButton extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { ariaLabelSecondaryButton, children, className, disabled, size, type, arrowType } = this.props;
+    const {
+      ariaLabelSecondaryButton,
+      children,
+      className,
+      disabled,
+      size,
+      type,
+      arrowType,
+    } = this.props;
     const passthroughProps = _.omit(
       this.props,
       Object.keys(propTypes) as (keyof typeof propTypes)[],
