@@ -312,6 +312,11 @@ export default class DropdownButtonView extends Component {
           title="<DropdownButton.Option /> Props"
           availableProps={[
             {
+              name: "ariaLabelSecondaryButton",
+              type: "string",
+              description: "The aria-label for the option button.",
+            },
+            {
               name: "children",
               type: "React Node",
               description: "The label for the option button.",
