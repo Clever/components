@@ -145,6 +145,7 @@ export default class DropdownButtonView extends Component {
           <FlexBox alignItems={ItemAlign.CENTER}>
             <ExampleCode>
               <DropdownButton
+                ariaLabelSecondaryButton="Region options"
                 disabled={disabled}
                 label={
                   <div>
@@ -176,6 +177,7 @@ export default class DropdownButtonView extends Component {
         <Example title="With Fixed Width:">
           <ExampleCode>
             <DropdownButton
+              ariaLabelSecondaryButton="Long label options"
               className={cssClass.DROPDOWN_WIDTH_400PX}
               disabled={disabled}
               label="A really really long label"
@@ -195,6 +197,7 @@ export default class DropdownButtonView extends Component {
         <Example title="With HREFs:">
           <ExampleCode>
             <DropdownButton
+              ariaLabelSecondaryButton="EdTech websites"
               disabled={disabled}
               label="EdTech News"
               href="http://google.com/search?q=edtech+news"
@@ -218,6 +221,7 @@ export default class DropdownButtonView extends Component {
           <p>If no options are available, no toggle is rendered with the primary action.</p>
           <ExampleCode>
             <DropdownButton
+              ariaLabelSecondaryButton="no_button_will_be_there"
               disabled={disabled}
               label="Primary action"
               size={size}
@@ -235,6 +239,12 @@ export default class DropdownButtonView extends Component {
         <PropDocumentation
           title="<DropdownButton /> Props"
           availableProps={[
+            {
+              name: "ariaLabelSecondaryButton",
+              type: "string",
+              description:
+                "The aria-label for the option button (for screen-reader legibility), if no Label used.",
+            },
             {
               name: "children",
               type: "DropdownButton.Option | DropdownButton.Option[]",
