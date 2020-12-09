@@ -139,12 +139,12 @@ button {
   }
 
   &.Button--link {
-    color: @primary_blue;
+    color: @primary_blue_shade_2;
 
     &:hover,
     &:focus,
     &:active {
-      color: @primary_blue_shade_2;
+      color: @primary_blue_shade_3;
       background-color: fade(@primary_blue, 5%);
     }
   }
@@ -168,11 +168,11 @@ button {
   }
 
   &.Button--linkPlain {
-    color: @primary_blue;
+    color: @primary_blue_shade_2;
 
     &:hover,
     &:active {
-      color: @primary_blue_shade_2;
+      color: @primary_blue_shade_3;
     }
 
     &:focus {
@@ -182,12 +182,12 @@ button {
   }
 
   &.Button--linkUnderlined {
-    .border--bottom--s(@primary_blue);
+    .border--bottom--s(@primary_blue_shade_2);
     .borderRadius--0;
 
     &:hover,
     &:active {
-      color: @primary_blue_shade_2;
+      color: @primary_blue_shade_3;
     }
   }
 
