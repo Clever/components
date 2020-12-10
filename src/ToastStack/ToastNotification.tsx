@@ -22,6 +22,7 @@ export interface Props {
   onClose: ButtonProps["onClick"];
   showCloseButton?: boolean;
   type: ToastNotificationType;
+  closeButtonAriaLabel?: string;
 }
 
 export const actionPropType = PropTypes.shape({
@@ -70,7 +71,15 @@ export class ToastNotification extends React.PureComponent<Props> {
   static defaultProps = defaultProps;
 
   render() {
-    const { action, children, className, onClose, showCloseButton, type } = this.props;
+    const {
+      action,
+      children,
+      className,
+      onClose,
+      showCloseButton,
+      type,
+      closeButtonAriaLabel,
+    } = this.props;
 
     return (
       <FlexBox
@@ -96,7 +105,7 @@ export class ToastNotification extends React.PureComponent<Props> {
             onClick={onClose}
             type="linkPlain"
             value={<FontAwesome name="times" size="lg" />}
-            ariaLabel="close notification"
+            ariaLabel={closeButtonAriaLabel || "close notification"}
           />
         )}
       </FlexBox>
