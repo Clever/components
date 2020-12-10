@@ -107,6 +107,7 @@ export default class ToastStackView extends React.PureComponent {
                         : undefined,
                       showCloseButton,
                       durationMS: durationOverride === "No override" ? undefined : durationOverride,
+                      closeButtonAriaLabel: `close notification: ${nextNotificationID}`,
                     },
                   ],
                   nextNotificationID: nextNotificationID + 1,

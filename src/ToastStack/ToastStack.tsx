@@ -17,6 +17,7 @@ export interface ToastNotificationData {
   id: number;
   showCloseButton?: boolean;
   type: ToastNotificationType;
+  closeButtonAriaLabel?: string;
 }
 
 export interface Props {
@@ -104,6 +105,7 @@ export class ToastStack extends React.PureComponent<Props> {
           onClose={() => clearNotification(n.id)}
           showCloseButton={n.showCloseButton}
           type={n.type}
+          closeButtonAriaLabel={n.closeButtonAriaLabel}
         >
           {n.content}
         </ToastNotification>
