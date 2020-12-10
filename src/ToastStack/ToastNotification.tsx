@@ -1,6 +1,5 @@
 import * as classnames from "classnames";
 import * as FontAwesome from "react-fontawesome";
-import * as PropTypes from "prop-types";
 import * as React from "react";
 
 import { Button, Props as ButtonProps } from "../Button/Button";
@@ -24,21 +23,6 @@ export interface Props {
   type: ToastNotificationType;
   closeButtonAriaLabel?: string;
 }
-
-export const actionPropType = PropTypes.shape({
-  href: PropTypes.string,
-  onClick: PropTypes.func,
-  text: PropTypes.string.isRequired,
-});
-
-const propTypes = {
-  action: actionPropType,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  onClose: PropTypes.func.isRequired,
-  showCloseButton: PropTypes.bool,
-  type: PropTypes.oneOf(Object.values(ToastType)).isRequired,
-};
 
 const defaultProps = {
   showCloseButton: true,
@@ -67,7 +51,6 @@ const iconMap = {
  * A building block for the <ToastStack>. Renders an individual toast notification.
  */
 export class ToastNotification extends React.PureComponent<Props> {
-  static propTypes = propTypes;
   static defaultProps = defaultProps;
 
   render() {

@@ -1,12 +1,11 @@
 import * as classnames from "classnames";
-import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as _ from "lodash";
 import { CSSTransitionGroup } from "react-transition-group";
 import { ToastNotification } from "./ToastNotification";
 
-import { actionPropType, ActionProps } from "./ToastNotification";
-import { ToastNotificationType, ToastType } from "./ToastType";
+import { ActionProps } from "./ToastNotification";
+import { ToastNotificationType } from "./ToastType";
 
 import "./ToastStack.less";
 
@@ -28,23 +27,6 @@ export interface Props {
   notifications?: ToastNotificationData[];
 }
 
-const propTypes = {
-  className: PropTypes.string,
-  clearNotification: PropTypes.func.isRequired,
-  defaultNotificationDurationMS: PropTypes.number,
-  notificationClassName: PropTypes.string,
-  notifications: PropTypes.arrayOf(
-    PropTypes.shape({
-      action: actionPropType,
-      content: PropTypes.node.isRequired,
-      durationMS: PropTypes.number,
-      id: PropTypes.number.isRequired,
-      showCloseButton: PropTypes.bool,
-      type: PropTypes.oneOf(Object.values(ToastType)).isRequired,
-    }),
-  ),
-};
-
 const defaultProps = {
   defaultNotificationDurationMS: 5000,
 };
@@ -60,7 +42,6 @@ const cssClass = {
  * <ToastStack> renders toast notifications and handles their enter/leave animations.
  */
 export class ToastStack extends React.PureComponent<Props> {
-  static propTypes = propTypes;
   static defaultProps = defaultProps;
 
   _finiteDuration(notification) {
