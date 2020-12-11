@@ -70,7 +70,7 @@ export const MessagingThreadListItem: React.FC<
   const indicator = (
     <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
       {!isRead ? (
-        <div className={cssClasses.UNREAD_ORB} />
+        <div aria-label={`Unread messages in thread ${title}`} className={cssClasses.UNREAD_ORB} />
       ) : (
         status === "active" && hasDraft && <DraftPencilIcon />
       )}
