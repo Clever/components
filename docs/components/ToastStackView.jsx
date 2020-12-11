@@ -239,6 +239,14 @@ export default class ToastStackView extends React.PureComponent {
               "The notifications to be rendered. See the table below for the fields " +
               "in a `Notification` object.",
           },
+          {
+            name: "closeButtonAriaLabel",
+            type: "string",
+            description:
+              "A custom aria-label for the 'X' close notification button. Note: It's best in terms of accessibility for aria-labels to be unique.",
+            optional: true,
+            defaultValue: "close notification",
+          },
         ]}
         className={cssClass.PROPS}
       />
