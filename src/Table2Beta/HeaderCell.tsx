@@ -41,7 +41,9 @@ export default function HeaderCell({
       width={width}
     >
       <FlexBox alignItems={ItemAlign.CENTER}>
-        <div className={cssClass.LABEL}>{children}</div>
+        <div className={cssClass.LABEL} role={sortable ? "button" : null}>
+          {children}
+        </div>
         {sortable && (
           <div>
             <SortIcons direction={activeSortDirection} className={cssClass.SORT} />
