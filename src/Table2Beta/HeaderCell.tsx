@@ -38,6 +38,13 @@ export default function HeaderCell({
     <Cell
       className={classnames(cssClass.HEADER_CELL, sortable && cssClass.SORTABLE, className)}
       onClick={() => sortable && onSortChange()}
+      // if 'enter' key or 'spacebar' are pressed
+      onKeyDown={
+        sortable
+          ? (event) => sortable && (event.keyCode === 13 || event.keyCode === 32) && onSortChange()
+          : null
+      }
+      tabindex={sortable ? 0 : null}
       width={width}
     >
       <FlexBox alignItems={ItemAlign.CENTER}>
