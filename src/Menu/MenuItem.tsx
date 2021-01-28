@@ -60,8 +60,10 @@ export default class MenuItem extends React.PureComponent<Props> {
     this._updateFocus(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this._updateFocus(nextProps);
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.focused !== prevProps.focused) {
+      this._updateFocus(this.props);
+    }
   }
 
   render() {
@@ -120,7 +122,7 @@ export default class MenuItem extends React.PureComponent<Props> {
     );
   }
 
-  _updateFocus(props) {
+  _updateFocus(props: Props) {
     if (props.focused) {
       if (this._containerEl && this._containerEl.focus) {
         setTimeout(() => this._containerEl.focus());
