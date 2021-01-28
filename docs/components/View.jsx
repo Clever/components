@@ -7,7 +7,7 @@ import { Button, polyfillMediaQueries } from "src";
 import "./View.less";
 
 export default class View extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     document.title = `${View.WINDOW_TITLE_PREFIX}${this.props.title}`;
 
     polyfillMediaQueries();

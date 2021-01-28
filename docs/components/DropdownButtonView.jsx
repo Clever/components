@@ -29,7 +29,7 @@ export default class DropdownButtonView extends Component {
     this.byeTimerID = null;
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.moreSamples();
   }
 
