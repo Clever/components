@@ -75,7 +75,7 @@ export default class Table2BetaView extends React.PureComponent {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._reload(5000);
   }
 

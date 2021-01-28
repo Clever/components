@@ -23,7 +23,7 @@ export default class TableView extends PureComponent {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._reload(5000);
   }
 
