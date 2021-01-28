@@ -1,7 +1,7 @@
 import * as classnames from "classnames";
 import * as React from "react";
 import * as _ from "lodash";
-import { CSSTransitionGroup } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ToastNotification } from "./ToastNotification";
 
 import { ActionProps } from "./ToastNotification";
@@ -79,29 +79,26 @@ export class ToastStack extends React.PureComponent<Props> {
     const { className, clearNotification, notificationClassName, notifications } = this.props;
 
     const toasts = notifications.map((n) => (
-      <div className={cssClass.NOTIFICATION_WRAPPER} key={n.id}>
-        <ToastNotification
-          action={n.action}
-          className={notificationClassName}
-          onClose={() => clearNotification(n.id)}
-          showCloseButton={n.showCloseButton}
-          type={n.type}
-          closeButtonAriaLabel={n.closeButtonAriaLabel}
-        >
-          {n.content}
-        </ToastNotification>
-      </div>
+      <CSSTransition classNames={cssClass.ANIMATION} key={n.id} timeout={{ enter: 200, exit: 400 }}>
+        <div className={cssClass.NOTIFICATION_WRAPPER}>
+          <ToastNotification
+            action={n.action}
+            className={notificationClassName}
+            onClose={() => clearNotification(n.id)}
+            showCloseButton={n.showCloseButton}
+            type={n.type}
+            closeButtonAriaLabel={n.closeButtonAriaLabel}
+          >
+            {n.content}
+          </ToastNotification>
+        </div>
+      </CSSTransition>
     ));
 
     return (
-      <CSSTransitionGroup
-        className={classnames(cssClass.CONTAINER, className)}
-        transitionName={cssClass.ANIMATION}
-        transitionEnterTimeout={200}
-        transitionLeaveTimeout={400}
-      >
+      <TransitionGroup className={classnames(cssClass.CONTAINER, className)}>
         {toasts}
-      </CSSTransitionGroup>
+      </TransitionGroup>
     );
   }
 }

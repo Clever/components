@@ -10,7 +10,7 @@
 .ToastStack--notificationWrapper {
   .margin--bottom--xs;
   .margin--x--xs;
-  // We need to set an explicit initial value for the leave animation to work properly. No
+  // We need to set an explicit initial value for the exit animation to work properly. No
   // notifications should actually hit this limit.
   max-height: 10rem;
 }
@@ -28,7 +28,7 @@
   transition: all @timingPromptly ease-out;
 }
 
-.ToastStack--animation-leave.ToastStack--animation-leave-active {
+.ToastStack--animation-exit.ToastStack--animation-exit-active {
   opacity: 0;
   transform: translateY(-100%);
   margin-bottom: 0;
