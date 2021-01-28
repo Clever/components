@@ -57,4 +57,5 @@ module.exports = {
     // to <laptop-ip>:<port> from the device.
     // disableHostCheck: true
   },
+  devtool: "eval-cheap-source-map",
 };
