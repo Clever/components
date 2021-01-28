@@ -60,7 +60,7 @@ export default class MenuItem extends React.PureComponent<Props> {
     this._updateFocus(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this._updateFocus(nextProps);
   }
 
