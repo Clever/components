@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.TextInput2View--intro {
+  .margin--bottom--xl;
+}
+
+.TextInput2View--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.TextInput2View--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.TextInput2View--config {
+  cursor: pointer;
+}
+
+.TextInput2View--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.TextInput2View--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.TextInput2View--props {
+  .margin--top--l;
+}

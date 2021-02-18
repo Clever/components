@@ -129,3 +129,5 @@ export { MessagingThreadListItem } from "./MessagingThreadListItem";
 export { Table2Beta } from "./Table2Beta";
 
 export { FamilyPortalLogo } from "./FamilyPortalLogo";
+
+export { TextInput2 } from "./TextInput2";
