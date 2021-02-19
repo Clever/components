@@ -1,6 +1,8 @@
 import * as _ from "lodash";
 import * as fs from "fs";
 import * as path from "path";
+import * as recast from "recast";
+import * as astTypes from "ast-types";
 
 const COMPONENT_NAME_PLACEHOLDER = "NewComponent";
 const COMPONENT_NAME_PLACEHOLDER_REGEX = /NewComponent/g;
@@ -119,17 +121,78 @@ export function createNewComponentDemo(componentName) {
   const sidebarFilePath = getAbsoluteFilePath("docs/components/SideBar/SideBar.jsx");
   const sidebarFileContents = readFileContents(sidebarFilePath);
 
-  const linksRegex = /(<NavGroup id="components".+>)\n((\n?\s+{this._renderLink.+})+)\n\s+<\/NavGroup>/;
-  const links = new Set(sidebarFileContents.match(linksRegex)[2].split("\n"));
-  links.add(
-    `          {this._renderLink("/components/${componentRoutePath}", "${componentName}")}`,
-  );
+  // use some AST transformations to insert the sidebar link
+  // tutorials:
+  // https://github.com/benjamn/ast-types
+  // https://github.com/benjamn/recast
+  // informative babel documentation (slightly different library):
+  // https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md
+  // example AST here https://astexplorer.net/#/gist/3fc672d80a6e82fa02103ad43fcddfbe/204ff6161580db41d958fd94bf050e04fba5acc6
+  const ast = recast.parse(sidebarFileContents);
+  astTypes.visit(ast, {
+    visitJSXElement(nodePath) {
+      const node = nodePath.node;
+      const nt = astTypes.namedTypes;
+      if (
+        // only run this code once we have traversed to the specific NavGroup jsx element
+        nt.JSXIdentifier.check(node.openingElement.name) &&
+        node.openingElement.name.name === "NavGroup" &&
+        node.openingElement.attributes.find(
+          (n) =>
+            nt.JSXAttribute.check(n) &&
+            n.name.name === "id" &&
+            nt.Literal.check(n.value) &&
+            n.value.value === "components",
+        )
+      ) {
+        const b = astTypes.builders;
+        // create an AST that represents the code we want to insert
+        const newLinkAST = b.jsxExpressionContainer(
+          b.callExpression(b.memberExpression(b.thisExpression(), b.identifier("_renderLink")), [
+            b.literal(`/components/${componentRoutePath}`),
+            b.literal(componentName),
+          ]),
+        );
+        const newlineAST = b.jsxText("\n");
 
-  const updatedSidebarFileContents = sidebarFileContents.replace(
-    linksRegex,
-    `$1\n${Array.from(links).sort().join("\n")}\n        </NavGroup>`,
-  );
-  fs.writeFileSync(sidebarFilePath, updatedSidebarFileContents);
+        // insert in an alphabetically ordered position
+        let found = false;
+        for (let i = 0; i < node.children.length; i++) {
+          const n = node.children[i];
+          // some nodes represent whitespace and newlines,
+          // so only look at the JSXExpressionContainers, which are the type of code we're tyring to add
+          if (
+            !(
+              nt.JSXExpressionContainer.check(n) &&
+              nt.CallExpression.assert(n.expression) &&
+              nt.Literal.assert(n.expression.arguments[1]) &&
+              typeof n.expression.arguments[1].value === "string"
+            )
+          ) {
+            continue;
+          }
+
+          const currentComponentName = n.expression.arguments[1].value.toLowerCase();
+          // insert the new code once we found an alphabetically later component name
+          if (currentComponentName > componentName.toLowerCase()) {
+            node.children.splice(i, 0, newLinkAST, newlineAST);
+            found = true;
+            break;
+          }
+        }
+
+        if (!found) {
+          node.children.push(newLinkAST, newlineAST);
+        }
+
+        // stop traversing since we're onnly looking for one node
+        return false;
+      }
+
+      return this.traverse(nodePath);
+    },
+  });
+  fs.writeFileSync(sidebarFilePath, recast.print(ast, { wrapColumn: 100 }).code);
 
   process.stdout.write("✅\n");
 }
