@@ -10,7 +10,6 @@
   .flexbox();
   .justify--between();
   .padding--bottom--2xs();
-
   color: @neutral_medium_gray;
   .text--small();
 
@@ -29,6 +28,7 @@
     https://a11y-guidelines.orange.com/en/web/components-examples/accessible-hiding/#
   */
   &--hidden {
+    /* stylelint-disable */
     position: absolute;
     width: 1px;
     height: 1px;
@@ -38,29 +38,12 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap; /* added line */
     border: 0;
+    /* stylelint-enable */
   }
 }
 
 .TextInput2--infoRequirement {
   .text--italic();
-}
-
-.TextInput2--inputContainer {
-  width: 100%;
-  .inlineFlexbox();
-  .items--baseline();
-  .padding--y--2xs();
-  .border--s(@neutral_silver);
-  .borderRadius--l();
-  background-color: @neutral_white;
-
-  &:hover {
-    .border--s(@primary_blue);
-  }
-
-  &--error:hover {
-    .border--s(@alert_red);
-  }
 }
 
 .TextInput2--leadingIcon {
@@ -100,5 +83,23 @@
 
   &--error {
     color: @alert_red;
+  }
+}
+
+.TextInput2--inputContainer {
+  width: 100%;
+  .inlineFlexbox();
+  .items--baseline();
+  .padding--y--2xs();
+  .border--s(@neutral_silver);
+  .borderRadius--l();
+  background-color: @neutral_white;
+
+  &:hover {
+    .border--s(@primary_blue);
+  }
+
+  &--error:hover {
+    .border--s(@alert_red);
   }
 }
