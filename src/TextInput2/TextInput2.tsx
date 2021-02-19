@@ -2,6 +2,7 @@ import * as classnames from "classnames";
 import * as React from "react";
 import { useState } from "react";
 
+import { Button } from "../Button/Button";
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 import { Values } from "../utils/types";
 
@@ -22,6 +23,7 @@ export interface Props {
   helpText?: React.ReactNode;
   icon?: React.ReactNode;
   requirement?: Values<typeof TextInput2Requirement>;
+  obscurable?: boolean;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   size?: Values<typeof FormElementSize>;
@@ -39,6 +41,7 @@ export const cssClass = {
   INPUT: "TextInput2--input",
   INPUT_FOCUSED: "TextInput2--input--focused",
   HELP_TEXT: "TextInput2--helpText",
+  HIDE_SHOW: "TextInput2--hideShowButton",
 };
 
 /*
@@ -53,12 +56,16 @@ const TextInput2: React.FC<Props> = ({
   helpText,
   icon,
   requirement,
+  obscurable,
   value,
   onChange,
   size,
 }) => {
   const id = name;
   const [isFocused, setIsFocused] = useState(false);
+
+  const [isObscured, setIsObscured] = useState(true);
+  const inputType = obscurable && isObscured ? "password" : "text";
 
   return (
     <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
@@ -84,13 +91,21 @@ const TextInput2: React.FC<Props> = ({
           name={id}
           className={cssClass.INPUT}
           role="textbox"
-          type={"text"}
+          type={inputType}
           value={value}
           placeholder={placeholder}
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
+        {obscurable && (
+          <Button
+            className={cssClass.HIDE_SHOW}
+            type="linkPlain"
+            onClick={(e) => setIsObscured(!isObscured)}
+            value={isObscured ? "Show" : "Hide"}
+          />
+        )}
       </div>
       {!!helpText && <div className={cssClass.HELP_TEXT}>{helpText}</div>}
     </div>
