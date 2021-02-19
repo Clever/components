@@ -99,4 +99,3 @@ TextInput2.defaultProps = {
 };
 
 export default TextInput2;
-
