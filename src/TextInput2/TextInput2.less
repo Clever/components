@@ -1,0 +1,105 @@
+@import (reference) "../less/utilities";
+
+.TextInput2--container {
+  font-family: "Proxima Nova";
+
+  .border--s(@neutral_off_white);
+}
+
+.TextInput2--infoRow {
+  .flexbox();
+  .justify--between();
+  .padding--bottom--2xs();
+  color: @neutral_medium_gray;
+  .text--small();
+
+  &--labelHidden {
+    .justify--end();
+  }
+}
+
+.TextInput2--label {
+  &--error {
+    .text--semi-bold();
+  }
+
+  /*
+    for a11y purposes
+    https://a11y-guidelines.orange.com/en/web/components-examples/accessible-hiding/#
+  */
+  &--hidden {
+    /* stylelint-disable */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+    /* stylelint-enable */
+  }
+}
+
+.TextInput2--infoRequirement {
+  .text--italic();
+}
+
+.TextInput2--leadingIcon {
+  color: @neutral_medium_gray;
+  .padding--left--xs();
+}
+
+.TextInput2--input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: "Proxima Nova";
+  .text--medium();
+  line-height: @size_l;
+  .padding--left--xs();
+
+  &::placeholder {
+    //&::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+    color: @neutral_gray;
+  }
+
+  &--focused {
+    .border--s(@primary_blue);
+    box-shadow: 0 0 0 @size_2xs ~"@{primary_blue_tint_2}80";
+  }
+
+  &--error {
+    .border--s(@alert_red);
+    box-shadow: 0 0 0 @size_2xs ~"@{alert_red_tint_2}80";
+  }
+}
+
+.TextInput2--helpText {
+  color: @neutral_medium_gray;
+  .text--small();
+  .padding--top--2xs();
+
+  &--error {
+    color: @alert_red;
+  }
+}
+
+.TextInput2--inputContainer {
+  width: 100%;
+  .inlineFlexbox();
+  .items--baseline();
+  .padding--y--2xs();
+  .border--s(@neutral_silver);
+  .borderRadius--l();
+  background-color: @neutral_white;
+
+  &:hover {
+    .border--s(@primary_blue);
+  }
+
+  &--error:hover {
+    .border--s(@alert_red);
+  }
+}
