@@ -40,7 +40,7 @@ export const cssClass = {
 /*
  * text input
  */
-export const TextInput2: React.FC<Props> = ({
+const TextInput2: React.FC<Props> = ({
   className,
   name,
   label,
@@ -98,4 +98,5 @@ TextInput2.defaultProps = {
   size: FormElementSize.FULL_WIDTH,
 };
 
+export default TextInput2;
 

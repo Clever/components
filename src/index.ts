@@ -130,4 +130,6 @@ export { Table2Beta } from "./Table2Beta";
 
 export { FamilyPortalLogo } from "./FamilyPortalLogo";
 
-export { TextInput2 } from "./TextInput2";
+import TextInput2 from "./TextInput2";
+export { TextInput2 };
+export { TextInput2Requirement } from "./TextInput2";
