@@ -181,6 +181,7 @@ export default class TextInput2View extends React.PureComponent {
             name: "label",
             type: "React Node",
             description: "Label text",
+            optional: true,
           },
           {
             name: "placeholder",

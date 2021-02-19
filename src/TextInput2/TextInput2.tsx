@@ -15,7 +15,7 @@ export const TextInput2Requirement = {
 export interface Props {
   className?: string;
   name: string;
-  label: React.ReactNode;
+  label?: React.ReactNode;
   placeholder?: string;
   helpText?: React.ReactNode;
   icon?: React.ReactNode;
