@@ -15,7 +15,9 @@ export const TextInput2Requirement = {
 export interface Props {
   className?: string;
   name: string;
-  label?: React.ReactNode;
+  label: React.ReactNode;
+  // label is required for a11y purposes, so provide an option to hide it visually
+  hideLabel: boolean;
   placeholder?: string;
   helpText?: React.ReactNode;
   icon?: React.ReactNode;
@@ -28,8 +30,10 @@ export interface Props {
 export const cssClass = {
   CONTAINER: "TextInput2--container",
   INFO_ROW: "TextInput2--infoRow",
+  INFO_ROW_LABEL_HIDDEN: "TextInput2--infoRow--labelHidden",
   INFO_REQUIREMENT: "TextInput2--infoRequirement",
   LABEL: "TextInput2--label",
+  LABEL_HIDDEN: "TextInput2--label--hidden",
   LEADING_ICON: "TextInput2--leadingIcon",
   INPUT_CONTAINER: "TextInput2--inputContainer",
   INPUT: "TextInput2--input",
@@ -44,6 +48,7 @@ const TextInput2: React.FC<Props> = ({
   className,
   name,
   label,
+  hideLabel,
   placeholder,
   helpText,
   icon,
@@ -57,23 +62,21 @@ const TextInput2: React.FC<Props> = ({
 
   return (
     <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
-      {(!!requirement || !!label) && (
-        <div className={cssClass.INFO_ROW}>
-          {!!label ? (
-            <label className={cssClass.LABEL} htmlFor={id}>
-              {label}
-            </label>
-          ) : (
-            // placeholder for flexbox
-            <div></div>
-          )}
+      {
+        <div className={classnames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
+          <label
+            className={classnames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
+            htmlFor={id}
+          >
+            {label}
+          </label>
           {!!requirement && (
             <span className={cssClass.INFO_REQUIREMENT} aria-live="polite">
               {requirement}
             </span>
           )}
         </div>
-      )}
+      }
       <div className={classnames(cssClass.INPUT_CONTAINER, isFocused && cssClass.INPUT_FOCUSED)}>
         {icon && <i className={cssClass.LEADING_ICON}>{icon}</i>}
         <input

@@ -20,6 +20,7 @@ const cssClass = {
   CONFIG_CONTAINER: "TextInput2View--configContainer",
   CONFIG_OPTIONS: "TextInput2View--configOptions",
   CONFIG: "TextInput2View--config",
+  CONFIG_TEXT: "TextInput2View--configText",
   CONFIG_TOGGLE: "TextInput2View--configToggle",
   CONTAINER: "TextInput2View",
   INTRO: "TextInput2View--intro",
@@ -32,6 +33,7 @@ export default class TextInput2View extends React.PureComponent {
   state = {
     value: "",
     label: "example label",
+    hideLabel: false,
     placeholder: "example placeholder",
     helpText: "example help text",
     showIcon: false,
@@ -68,6 +70,7 @@ export default class TextInput2View extends React.PureComponent {
               className="my--custom--class"
               name="TextInput2--input"
               label={this.state.label}
+              hideLabel={this.state.hideLabel}
               icon={this.state.showIcon ? <FontAwesome name="calendar" /> : null}
               helpText={this.state.helpText}
               placeholder={this.state.placeholder}
@@ -86,7 +89,7 @@ export default class TextInput2View extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { label, placeholder, helpText, showIcon, requirement, size } = this.state;
+    const { label, hideLabel, placeholder, helpText, showIcon, requirement, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -100,6 +103,15 @@ export default class TextInput2View extends React.PureComponent {
             value={label}
           />
         </div>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={hideLabel}
+            onChange={(e) => this.setState({ hideLabel: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_TEXT}>Hide Label</span>
+        </label>
         <div className={cssClass.CONFIG}>
           <TextInput2
             className={cssClass.CONFIG_OPTIONS}
@@ -123,14 +135,14 @@ export default class TextInput2View extends React.PureComponent {
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={showIcon}
             className={cssClass.CONFIG_TOGGLE}
+            checked={showIcon}
             onChange={(e) => this.setState({ showIcon: e.target.checked })}
           />{" "}
-          Show Icon
+          <span className={cssClass.CONFIG_TEXT}>Show Icon</span>
         </label>
         <div className={cssClass.CONFIG}>
-          Requirement:
+          <span className={cssClass.CONFIG_TEXT}>Requirement:</span>
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             options={[
@@ -143,7 +155,7 @@ export default class TextInput2View extends React.PureComponent {
           />
         </div>
         <div className={cssClass.CONFIG}>
-          Size:
+          <span className={cssClass.CONFIG_TEXT}>Size:</span>
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             options={[
@@ -167,7 +179,7 @@ export default class TextInput2View extends React.PureComponent {
         availableProps={[
           {
             name: "className",
-            type: "string",
+            type: "String",
             description: "Optional additional CSS class name to apply to the container.",
             optional: true,
           },
@@ -181,7 +193,12 @@ export default class TextInput2View extends React.PureComponent {
             name: "label",
             type: "React Node",
             description: "Label text",
-            optional: true,
+          },
+          {
+            name: "hideLabel",
+            type: "Boolean",
+            description:
+              "Hide label for visual purposes only (will still be available to screen readers)",
           },
           {
             name: "placeholder",
