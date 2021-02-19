@@ -290,6 +290,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A TextInput component",
   },
   {
+    componentLink: "text-input-2",
+    componentImg: "text-input-2.png",
+    componentName: "TextInput2",
+    componentImgAlt: "A TextInput2 component",
+  },
+  {
     componentLink: "text-truncate",
     componentImg: "text-truncate.png",
     componentName: "TextTruncate",

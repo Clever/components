@@ -11,6 +11,7 @@ import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView"
 import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import ResourceTileView from "./components/ResourceTileView";
 import Table2BetaView from "./components/Table2BetaView";
+import TextInput2View from "./components/TextInput2View";
 
 import AlertBoxView from "./components/AlertBoxView";
 import BadgeView from "./components/BadgeView";
@@ -155,6 +156,7 @@ render(
         <Route path="table-2-beta(/*)" component={Table2BetaView} />
         <Route path="text-area(/*)" component={TextAreaView} />
         <Route path="text-input(/*)" component={TextInputView} />
+        <Route path="text-input-2(/*)" component={TextInput2View} />
         <Route path="text-truncate(/*)" component={TextTruncateView} />
         <Route path="toast-stack(/*)" component={ToastStackView} />
         <Route path="tooltip" component={TooltipView} />
