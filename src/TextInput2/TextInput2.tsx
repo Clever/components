@@ -12,6 +12,7 @@ import "./TextInput2.less";
 export const TextInput2Requirement = {
   OPTIONAL: "optional",
   REQUIRED: "required",
+  DISABLED: "disabled",
 } as const;
 
 export interface Props {
@@ -42,6 +43,7 @@ export const cssClass = {
   INPUT_CONTAINER: "TextInput2--inputContainer",
   INPUT_CONTAINER_FOCUSED: "TextInput2--inputContainer--focused",
   INPUT_CONTAINER_ERROR: "TextInput2--inputContainer--error",
+  INPUT_CONTAINER_DISABLED: "TextInput2--inputContainer--disabled",
   INPUT: "TextInput2--input",
   HELP_TEXT: "TextInput2--helpText",
   ERROR_ICON: "TextInput2--errorIcon",
@@ -127,6 +129,7 @@ const TextInput2: React.FC<Props> = ({
           type={inputType}
           value={value}
           placeholder={placeholder}
+          disabled={requirement === TextInput2Requirement.DISABLED}
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
