@@ -27,6 +27,8 @@ export interface Props {
   requirement?: Values<typeof TextInput2Requirement>;
   obscurable?: boolean;
   initialIsInError?: boolean;
+  // returns an error message, null for no error
+  errorValidation?: (value: string) => string | null;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   size?: Values<typeof FormElementSize>;
@@ -45,7 +47,8 @@ export const cssClass = {
   INPUT_CONTAINER_ERROR: "TextInput2--inputContainer--error",
   INPUT_CONTAINER_DISABLED: "TextInput2--inputContainer--disabled",
   INPUT: "TextInput2--input",
-  HELP_TEXT: "TextInput2--helpText",
+  FOOTER_TEXT: "TextInput2--footerText",
+  ERROR_MESSAGE: "TextInput2--footerText--error",
   ERROR_ICON: "TextInput2--errorIcon",
   HIDE_SHOW: "TextInput2--hideShowButton",
 };
@@ -63,6 +66,7 @@ const TextInput2: React.FC<Props> = ({
   icon,
   requirement,
   initialIsInError,
+  errorValidation,
   obscurable,
   value,
   onChange,
@@ -74,26 +78,33 @@ const TextInput2: React.FC<Props> = ({
   const [isObscured, setIsObscured] = useState(true);
   const inputType = obscurable && isObscured ? "password" : "text";
 
-  const [isInError, setIsInError] = useState(initialIsInError);
+  // empty string is an error state with no message (e.g. required)
+  const [errorMessage, setErrorMessage] = useState(initialIsInError ? "" : null);
 
   useEffect(() => {
     if (requirement === TextInput2Requirement.REQUIRED && value === "") {
-      setIsInError(initialIsInError);
+      setErrorMessage(initialIsInError ? "" : null);
     }
   }, [initialIsInError]);
 
   useEffect(() => {
     // don't show error if nothing has happened yet
-    if (!isFocused && !isInError) {
+    if (!isFocused && errorMessage === null) {
       return;
     }
 
     if (requirement === TextInput2Requirement.REQUIRED && value === "") {
-      setIsInError(true);
+      setErrorMessage("");
       return;
     }
 
-    setIsInError(false);
+    const newErrorMessage = errorValidation(value);
+    if (newErrorMessage) {
+      setErrorMessage(newErrorMessage);
+      return;
+    }
+
+    setErrorMessage(null);
   }, [value, isFocused]);
 
   return (
@@ -106,7 +117,7 @@ const TextInput2: React.FC<Props> = ({
           >
             {label}
           </label>
-          {!!requirement && (
+          {requirement && (
             <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" htmlFor={id}>
               {requirement}
             </label>
@@ -117,7 +128,8 @@ const TextInput2: React.FC<Props> = ({
         className={classnames(
           cssClass.INPUT_CONTAINER,
           isFocused && cssClass.INPUT_CONTAINER_FOCUSED,
-          isInError && cssClass.INPUT_CONTAINER_ERROR,
+          errorMessage != null && cssClass.INPUT_CONTAINER_ERROR,
+          requirement === TextInput2Requirement.DISABLED && cssClass.INPUT_CONTAINER_DISABLED,
         )}
       >
         {icon && <i className={cssClass.LEADING_ICON}>{icon}</i>}
@@ -134,7 +146,9 @@ const TextInput2: React.FC<Props> = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
-        {isInError && <FontAwesome className={cssClass.ERROR_ICON} name="exclamation-circle" />}
+        {errorMessage != null && (
+          <FontAwesome className={cssClass.ERROR_ICON} name="exclamation-circle" />
+        )}
         {obscurable && (
           <Button
             className={cssClass.HIDE_SHOW}
@@ -144,13 +158,18 @@ const TextInput2: React.FC<Props> = ({
           />
         )}
       </div>
-      {!!helpText && <div className={cssClass.HELP_TEXT}>{helpText}</div>}
+      {(errorMessage || helpText) && (
+        <div className={classnames(cssClass.FOOTER_TEXT, errorMessage && cssClass.ERROR_MESSAGE)}>
+          {errorMessage || helpText}
+        </div>
+      )}
     </div>
   );
 };
 
 TextInput2.defaultProps = {
   initialIsInError: false,
+  errorValidation: () => null,
   size: FormElementSize.FULL_WIDTH,
 };
 
