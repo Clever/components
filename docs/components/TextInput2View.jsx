@@ -37,7 +37,9 @@ export default class TextInput2View extends React.PureComponent {
     placeholder: "example placeholder",
     helpText: "example help text",
     showIcon: false,
-    requirement: TextInput2Requirement.OPTIONAL,
+    requirement: TextInput2Requirement.REQUIRED,
+    obscurable: false,
+    initialIsInError: false,
     size: FormElementSize.MEDIUM,
   };
 
@@ -75,7 +77,9 @@ export default class TextInput2View extends React.PureComponent {
               helpText={this.state.helpText}
               placeholder={this.state.placeholder}
               requirement={this.state.requirement}
+              obscurable={this.state.obscurable}
               value={this.state.value}
+              initialIsInError={this.state.initialIsInError}
               onChange={(e) => this.setState({ value: e.target.value })}
               size={this.state.size}
             />
@@ -89,7 +93,17 @@ export default class TextInput2View extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { label, hideLabel, placeholder, helpText, showIcon, requirement, size } = this.state;
+    const {
+      label,
+      hideLabel,
+      placeholder,
+      helpText,
+      showIcon,
+      requirement,
+      obscurable,
+      initialIsInError,
+      size,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -140,6 +154,24 @@ export default class TextInput2View extends React.PureComponent {
             onChange={(e) => this.setState({ showIcon: e.target.checked })}
           />{" "}
           <span className={cssClass.CONFIG_TEXT}>Show Icon</span>
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={obscurable}
+            onChange={(e) => this.setState({ obscurable: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_TEXT}>Obscurable</span>
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={initialIsInError}
+            onChange={(e) => this.setState({ initialIsInError: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_TEXT}>Initial error</span>
         </label>
         <div className={cssClass.CONFIG}>
           <span className={cssClass.CONFIG_TEXT}>Requirement:</span>
@@ -199,6 +231,7 @@ export default class TextInput2View extends React.PureComponent {
             type: "Boolean",
             description:
               "Hide label for visual purposes only (will still be available to screen readers)",
+            optional: true,
           },
           {
             name: "placeholder",
@@ -222,6 +255,18 @@ export default class TextInput2View extends React.PureComponent {
             name: "requirement",
             type: '"required" or "optional"',
             description: "Indicator to note if the input is required or optional",
+            optional: true,
+          },
+          {
+            name: "obscurable",
+            type: "boolean",
+            description: "Obscure input with hide/show toggle",
+            optional: true,
+          },
+          {
+            name: "initialIsInError",
+            type: "boolean",
+            description: "Intialize the component in an error state",
             optional: true,
           },
           {

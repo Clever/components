@@ -48,31 +48,59 @@
 
 .TextInput2--leadingIcon {
   color: @neutral_medium_gray;
-  .padding--left--xs();
+  .margin--right--2xs();
+}
+
+.TextInput2--inputContainer {
+  width: 100%;
+  .inlineFlexbox();
+  .items--baseline();
+  .border--s(@neutral_silver);
+  .borderRadius--l();
+  background-color: @neutral_white;
+  .padding--x--xs();
+  box-sizing: border-box;
+
+  &--focused {
+    box-shadow: 0 0 0 @size_2xs ~"@{primary_blue_tint_2}80";
+
+    .border--s(@primary_blue);
+  }
+
+  &--error {
+    .border--s(@alert_red);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  &:hover {
+    .border--s(@primary_blue);
+  }
+  /*
+    error border is always on, so override the hover state
+  */
+  /* stylelint-disable-next-line no-descending-specificity */
+  &--error:hover {
+    .border--s(@alert_red);
+  }
+}
+
+.TextInput2--inputContainer--focused.TextInput2--inputContainer--error {
+  box-shadow: 0 0 0 @size_2xs ~"@{alert_red_tint_2}80";
 }
 
 .TextInput2--input {
   border: none;
   outline: none;
+  .borderRadius--l();
   width: 100%;
+  height: @size_2xl;
   font-family: "Proxima Nova";
   .text--medium();
   line-height: @size_l;
-  .padding--left--xs();
 
   &::placeholder {
     //&::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
     color: @neutral_gray;
-  }
-
-  &--focused {
-    .border--s(@primary_blue);
-    box-shadow: 0 0 0 @size_2xs ~"@{primary_blue_tint_2}80";
-  }
-
-  &--error {
-    .border--s(@alert_red);
-    box-shadow: 0 0 0 @size_2xs ~"@{alert_red_tint_2}80";
   }
 }
 
@@ -86,20 +114,11 @@
   }
 }
 
-.TextInput2--inputContainer {
-  width: 100%;
-  .inlineFlexbox();
-  .items--baseline();
-  .padding--y--2xs();
-  .border--s(@neutral_silver);
-  .borderRadius--l();
-  background-color: @neutral_white;
+.TextInput2--errorIcon {
+  color: @alert_red;
+  .margin--left--xs();
+}
 
-  &:hover {
-    .border--s(@primary_blue);
-  }
-
-  &--error:hover {
-    .border--s(@alert_red);
-  }
+.Button.TextInput2--hideShowButton {
+  .margin--left--xs();
 }

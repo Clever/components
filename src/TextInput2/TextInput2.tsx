@@ -1,7 +1,9 @@
 import * as classnames from "classnames";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+import * as FontAwesome from "react-fontawesome";
+import { Button } from "../Button/Button";
 import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
 import { Values } from "../utils/types";
 
@@ -17,11 +19,13 @@ export interface Props {
   name: string;
   label: React.ReactNode;
   // label is required for a11y purposes, so provide an option to hide it visually
-  hideLabel: boolean;
+  hideLabel?: boolean;
   placeholder?: string;
   helpText?: React.ReactNode;
   icon?: React.ReactNode;
   requirement?: Values<typeof TextInput2Requirement>;
+  obscurable?: boolean;
+  initialIsInError?: boolean;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   size?: Values<typeof FormElementSize>;
@@ -36,9 +40,12 @@ export const cssClass = {
   LABEL_HIDDEN: "TextInput2--label--hidden",
   LEADING_ICON: "TextInput2--leadingIcon",
   INPUT_CONTAINER: "TextInput2--inputContainer",
+  INPUT_CONTAINER_FOCUSED: "TextInput2--inputContainer--focused",
+  INPUT_CONTAINER_ERROR: "TextInput2--inputContainer--error",
   INPUT: "TextInput2--input",
-  INPUT_FOCUSED: "TextInput2--input--focused",
   HELP_TEXT: "TextInput2--helpText",
+  ERROR_ICON: "TextInput2--errorIcon",
+  HIDE_SHOW: "TextInput2--hideShowButton",
 };
 
 /*
@@ -53,12 +60,39 @@ const TextInput2: React.FC<Props> = ({
   helpText,
   icon,
   requirement,
+  initialIsInError,
+  obscurable,
   value,
   onChange,
   size,
 }) => {
   const id = name;
   const [isFocused, setIsFocused] = useState(false);
+
+  const [isObscured, setIsObscured] = useState(true);
+  const inputType = obscurable && isObscured ? "password" : "text";
+
+  const [isInError, setIsInError] = useState(initialIsInError);
+
+  useEffect(() => {
+    if (requirement === TextInput2Requirement.REQUIRED && value === "") {
+      setIsInError(initialIsInError);
+    }
+  }, [initialIsInError]);
+
+  useEffect(() => {
+    // don't show error if nothing has happened yet
+    if (!isFocused && !isInError) {
+      return;
+    }
+
+    if (requirement === TextInput2Requirement.REQUIRED && value === "") {
+      setIsInError(true);
+      return;
+    }
+
+    setIsInError(false);
+  }, [value, isFocused]);
 
   return (
     <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
@@ -71,26 +105,41 @@ const TextInput2: React.FC<Props> = ({
             {label}
           </label>
           {!!requirement && (
-            <span className={cssClass.INFO_REQUIREMENT} aria-live="polite">
+            <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" htmlFor={id}>
               {requirement}
-            </span>
+            </label>
           )}
         </div>
       }
-      <div className={classnames(cssClass.INPUT_CONTAINER, isFocused && cssClass.INPUT_FOCUSED)}>
+      <div
+        className={classnames(
+          cssClass.INPUT_CONTAINER,
+          isFocused && cssClass.INPUT_CONTAINER_FOCUSED,
+          isInError && cssClass.INPUT_CONTAINER_ERROR,
+        )}
+      >
         {icon && <i className={cssClass.LEADING_ICON}>{icon}</i>}
         <input
           id={id}
           name={id}
           className={cssClass.INPUT}
           role="textbox"
-          type={"text"}
+          type={inputType}
           value={value}
           placeholder={placeholder}
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
+        {isInError && <FontAwesome className={cssClass.ERROR_ICON} name="exclamation-circle" />}
+        {obscurable && (
+          <Button
+            className={cssClass.HIDE_SHOW}
+            type="linkPlain"
+            onClick={(e) => setIsObscured(!isObscured)}
+            value={isObscured ? "Show" : "Hide"}
+          />
+        )}
       </div>
       {!!helpText && <div className={cssClass.HELP_TEXT}>{helpText}</div>}
     </div>
@@ -98,6 +147,7 @@ const TextInput2: React.FC<Props> = ({
 };
 
 TextInput2.defaultProps = {
+  initialIsInError: false,
   size: FormElementSize.FULL_WIDTH,
 };
 
