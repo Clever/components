@@ -80,6 +80,7 @@ export default class TextInput2View extends React.PureComponent {
               obscurable={this.state.obscurable}
               value={this.state.value}
               initialIsInError={this.state.initialIsInError}
+              errorValidation={(value) => (value.toLowerCase() !== value ? "only lowercase" : null)}
               onChange={(e) => this.setState({ value: e.target.value })}
               size={this.state.size}
             />
@@ -181,6 +182,7 @@ export default class TextInput2View extends React.PureComponent {
               { content: "none", value: "" },
               { content: "optional", value: TextInput2Requirement.OPTIONAL },
               { content: "required", value: TextInput2Requirement.REQUIRED },
+              { content: "disabled", value: TextInput2Requirement.DISABLED },
             ]}
             value={requirement}
             onSelect={(value) => this.setState({ requirement: value })}
@@ -253,8 +255,8 @@ export default class TextInput2View extends React.PureComponent {
           },
           {
             name: "requirement",
-            type: '"required" or "optional"',
-            description: "Indicator to note if the input is required or optional",
+            type: '"required", "optional", or "disabled"',
+            description: "Indicator to note if the input is required, optional, or disabled",
             optional: true,
           },
           {
@@ -268,6 +270,12 @@ export default class TextInput2View extends React.PureComponent {
             type: "boolean",
             description: "Intialize the component in an error state",
             optional: true,
+          },
+          {
+            name: "errorValidation",
+            type: "Function",
+            description:
+              "Any custom validation that you want on the input. Returns null for no error, otherwise returns a string as an error message to be displayed",
           },
           {
             name: "value",
