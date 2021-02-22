@@ -103,6 +103,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^3.0.0",
+    "recast": "^0.20.4",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.0",
     "stylelint": "^7.12.0",
