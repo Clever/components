@@ -82,6 +82,14 @@
   &--error:hover {
     .border--s(@alert_red);
   }
+
+  &--disabled {
+    .border--s(@neutral_silver);
+  }
+
+  &--disabled:hover {
+    .border--s(@neutral_silver);
+  }
 }
 
 .TextInput2--inputContainer--focused.TextInput2--inputContainer--error {
@@ -98,13 +106,17 @@
   .text--medium();
   line-height: @size_l;
 
+  &:disabled {
+    background-color: @neutral_white;
+  }
+
   &::placeholder {
     //&::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
     color: @neutral_gray;
   }
 }
 
-.TextInput2--helpText {
+.TextInput2--footerText {
   color: @neutral_medium_gray;
   .text--small();
   .padding--top--2xs();
