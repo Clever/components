@@ -1,9 +1,11 @@
 import * as React from "react";
+import FontAwesome from "react-fontawesome";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MultiSelect, FlexBox, ItemAlign, SegmentedControl } from "src";
+import { MultiSelect, FlexBox, ItemAlign, Label, SegmentedControl } from "src";
+import { FormElementSize } from "../../src/utils/Forms";
 
 import "./MultiSelectView.less";
 
@@ -21,14 +23,11 @@ export default class MultiSelectView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    multiOption1: "small",
-    optionToggle1: false,
-    optionToggle2: true,
+    creatable: false,
+    size: FormElementSize.MEDIUM,
   };
 
   render() {
-    const { optionToggle1 } = this.state;
-
     return (
       <View
         className={cssClass.CONTAINER}
@@ -49,9 +48,25 @@ export default class MultiSelectView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MultiSelect className="my--custom--class" onPerformAction={console.log}>
-              {optionToggle1 ? "Something changed 🤔" : "My custom content."}
-            </MultiSelect>
+            <MultiSelect
+              className="my--custom--class"
+              name="MultiSelectView--MultiSelect"
+              label="Example label"
+              placeholder="Select multiple items"
+              items={new Array(20).fill(0).map((_, i) => ({
+                key: `${i + 1}`,
+                stringValue: `Option ${i + 1}`,
+                value: (
+                  <FlexBox>
+                    <FontAwesome name="exclamation-triangle" />
+                    <span>Option {i + 1}</span>
+                  </FlexBox>
+                ),
+              }))}
+              creatable={this.state.creatable}
+              onChange={console.log}
+              size={this.state.size}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -63,41 +78,33 @@ export default class MultiSelectView extends React.PureComponent {
 
   // TODO: Update or remove config options.
   _renderConfig() {
-    const { multiOption1, optionToggle1, optionToggle2 } = this.state;
+    const { creatable, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={creatable}
+            onChange={(e) => this.setState({ creatable: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_TEXT}>creatable</span>
+        </label>
         <div className={cssClass.CONFIG}>
-          Size:
+          <span className={cssClass.CONFIG_TEXT}>Size:</span>
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ multiOption1: value })}
             options={[
-              { content: "Small", value: "small" },
-              { content: "Medium", value: "medium" },
-              { content: "Large", value: "large" },
+              { content: "small", value: FormElementSize.SMALL },
+              { content: "medium", value: FormElementSize.MEDIUM },
+              { content: "large", value: FormElementSize.LARGE },
+              { content: "full-width", value: FormElementSize.FULL_WIDTH },
             ]}
-            value={multiOption1}
+            value={size}
+            onSelect={(value) => this.setState({ size: value })}
           />
         </div>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={optionToggle1}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ optionToggle1: e.target.checked })}
-          />{" "}
-          Option Toggle 1
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={optionToggle2}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ optionToggle2: e.target.checked })}
-          />{" "}
-          Option Toggle 2
-        </label>
       </FlexBox>
     );
   }
