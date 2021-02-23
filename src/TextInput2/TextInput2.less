@@ -60,6 +60,7 @@
   background-color: @neutral_white;
   .padding--x--xs();
   box-sizing: border-box;
+  transition: all @timingQuickly ease-out;
 
   &--focused {
     box-shadow: 0 0 0 @size_2xs ~"@{primary_blue_tint_2}80";
@@ -97,13 +98,13 @@
 }
 
 .TextInput2--input {
-  border: none;
   outline: none;
+  font-family: "Proxima Nova";
+  .text--medium();
+  border: none;
   .borderRadius--l();
   width: 100%;
   height: @size_2xl;
-  font-family: "Proxima Nova";
-  .text--medium();
   line-height: @size_l;
 
   &:disabled {

@@ -32,10 +32,10 @@ export default class TextInput2View extends React.PureComponent {
 
   state = {
     value: "",
-    label: "example label",
+    label: "Username",
     hideLabel: false,
-    placeholder: "example placeholder",
-    helpText: "example help text",
+    placeholder: "kstark",
+    helpText: "first name and last initial",
     showIcon: false,
     requirement: TextInput2Requirement.REQUIRED,
     obscurable: false,
