@@ -124,7 +124,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/rich-text", "RichText")}
           {this._renderLink("/components/segmented-control", "SegmentedControl")}
           {this._renderLink("/components/select", "Select")}
-          {this._renderLink("/components/select-2", "Select2")}
+          {this._renderLink("/components/select-2", "Select2", { beta: true })}
           {this._renderLink("/components/stepper", "Stepper")}
           {this._renderLink("/components/switch", "Switch")}
           {this._renderLink("/components/tab-bar", "TabBar")}

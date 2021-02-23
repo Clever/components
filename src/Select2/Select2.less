@@ -1,15 +1,97 @@
 @import (reference) "../less/utilities";
 
-.Select2 {
-  .border--s(@neutral_silver);
-  .borderRadius--m;
-  .padding--m;
-  background-color: @neutral_off_white;
+.Select2--container {
+  font-family: "Proxima Nova";
+  .text--medium();
 }
 
-.Select2--subElement {
-  .border--s(@neutral_silver);
-  .padding--s;
+.Select2--label {
+  .padding--bottom--2xs();
+  color: @neutral_medium_gray;
+  .text--small();
+
+  /*
+    for a11y purposes
+    https://a11y-guidelines.orange.com/en/web/components-examples/accessible-hiding/#
+  */
+  &--hidden {
+    /* stylelint-disable */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+    /* stylelint-enable */
+  }
+}
+
+.Select2--selectContainer {
+  position: relative;
+}
+
+.Select2--button {
+  outline: none;
+  font-family: "Proxima Nova";
+  .text--medium();
+  .flexbox();
+  .justify--between();
+  .items--center();
+  width: 100%;
+  height: @size_2xl;
   background-color: @neutral_white;
-  text-align: right;
+  .border--m(@neutral_silver);
+  .borderRadius--l();
+  .padding--x--m();
+  box-sizing: border-box;
+  transition: box-shadow @timingQuickly ease-out;
+
+  &--open {
+    .border--m(@primary_blue);
+    box-shadow: 0 0 0 @size_2xs ~"@{primary_blue_tint_2}80";
+  }
+
+  &:hover {
+    .border--m(@primary_blue);
+  }
+}
+
+.Select2--buttonPlaceholder {
+  color: @neutral_gray;
+}
+
+.Select2--items {
+  &--reset {
+    outline: none;
+    cursor: pointer;
+    max-height: @size_5xl * 5;
+    width: 100%;
+    list-style: none;
+    overflow-y: scroll;
+    background-color: @neutral_white;
+    .margin--none();
+    .margin--top--xs();
+    .padding--none();
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 3;
+  }
+
+  &--open {
+    .boxShadow--light();
+    .padding--xs();
+  }
+}
+
+.Select2--item {
+  color: @neutral_dark_gray;
+  .borderRadius--l();
+  .padding--xs();
+
+  &:hover {
+    background-color: ~"@{primary_blue_tint_2}80";
+  }
 }
