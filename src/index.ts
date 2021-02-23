@@ -136,3 +136,5 @@ export { TextInput2Requirement } from "./TextInput2";
 
 import MultiSelect from "./MultiSelect";
 export { MultiSelect };
+
+export { Select2 } from "./Select2";

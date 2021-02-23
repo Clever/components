@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.Select2View--intro {
+  .margin--bottom--xl;
+}
+
+.Select2View--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.Select2View--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.Select2View--config {
+  cursor: pointer;
+}
+
+.Select2View--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.Select2View--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.Select2View--props {
+  .margin--top--l;
+}

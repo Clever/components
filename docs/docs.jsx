@@ -11,6 +11,7 @@ import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView"
 import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import MultiSelectView from "./components/MultiSelectView";
 import ResourceTileView from "./components/ResourceTileView";
+import Select2View from "./components/Select2View";
 import Table2BetaView from "./components/Table2BetaView";
 import TextInput2View from "./components/TextInput2View";
 
@@ -151,6 +152,7 @@ render(
         <Route path="rich-text(/*)" component={RichTextView} />
         <Route path="segmented-control(/*)" component={SegmentedControlView} />
         <Route path="select(/*)" component={SelectView} />
+        <Route path="select-2(/*)" component={Select2View} />
         <Route path="stepper(/*)" component={StepperView} />
         <Route path="switch(/*)" component={SwitchView} />
         <Route path="tab-bar(/*)" component={TabBarView} />
