@@ -3,7 +3,8 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { Select2, FlexBox, ItemAlign, SegmentedControl } from "src";
+import { Select2, FlexBox, ItemAlign, TextInput, SegmentedControl } from "src";
+import { FormElementSize } from "../../src/utils/Forms";
 
 import "./Select2View.less";
 
@@ -24,17 +25,14 @@ export default class Select2View extends React.PureComponent {
     multiOption1: "small",
     optionToggle1: false,
     optionToggle2: true,
+    size: FormElementSize.MEDIUM,
   };
 
   render() {
     const { optionToggle1 } = this.state;
 
     return (
-      <View
-        className={cssClass.CONTAINER}
-        title="Select2"
-        sourcePath="src/Select2/Select2.tsx"
-      >
+      <View className={cssClass.CONTAINER} title="Select2" sourcePath="src/Select2/Select2.tsx">
         <header className={cssClass.INTRO}>
           <p>TODO: Describe your component/state it's purpose</p>
           <p>TODO(optional): Describe scenarios where the component might be useful.</p>
@@ -49,9 +47,16 @@ export default class Select2View extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <Select2 className="my--custom--class" onPerformAction={console.log}>
-              {optionToggle1 ? "Something changed 🤔" : "My custom content."}
-            </Select2>
+            <Select2
+              className="my--custom--class"
+              label="Example label"
+              placeholder="Select an item"
+              items={new Array(100)
+                .fill(0)
+                .map((_, i) => ({ key: `${i + 1}`, label: `Option ${i + 1}` }))}
+              onChange={console.log}
+              size={this.state.size}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -63,10 +68,19 @@ export default class Select2View extends React.PureComponent {
 
   // TODO: Update or remove config options.
   _renderConfig() {
-    const { multiOption1, optionToggle1, optionToggle2 } = this.state;
+    const { multiOption1, optionToggle1, optionToggle2, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+        <div className={cssClass.CONFIG}>
+          <TextInput
+            className={cssClass.CONFIG}
+            label="Error"
+            name="InputError"
+            onChange={(e) => this.setState({ error: e.target.value })}
+            value={this.state.error}
+          />
+        </div>
         <div className={cssClass.CONFIG}>
           Size:
           <SegmentedControl
@@ -98,6 +112,20 @@ export default class Select2View extends React.PureComponent {
           />{" "}
           Option Toggle 2
         </label>
+        <div className={cssClass.CONFIG}>
+          <span className={cssClass.CONFIG_TEXT}>Size:</span>
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            options={[
+              { content: "small", value: FormElementSize.SMALL },
+              { content: "medium", value: FormElementSize.MEDIUM },
+              { content: "large", value: FormElementSize.LARGE },
+              { content: "full-width", value: FormElementSize.FULL_WIDTH },
+            ]}
+            value={size}
+            onSelect={(value) => this.setState({ size: value })}
+          />
+        </div>
       </FlexBox>
     );
   }
