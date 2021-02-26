@@ -92,7 +92,15 @@
   line-height: @size_l;
 
   &::placeholder {
-    //&::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+    color: @neutral_gray;
+  }
+  &::-webkit-input-placeholder {
+    color: @neutral_gray;
+  }
+  &::-moz-placeholder {
+    color: @neutral_gray;
+  }
+  &:-ms-input-placeholder {
     color: @neutral_gray;
   }
 }
@@ -112,11 +120,7 @@
   &--reset {
     outline: none;
     cursor: pointer;
-    max-height: @size_5xl * 5;
-    width: 100%;
     list-style: none;
-    overflow-y: scroll;
-    background-color: @neutral_white;
     .margin--none();
     .margin--top--xs();
     .padding--none();
@@ -126,8 +130,18 @@
   }
 
   &--open {
+    max-height: @size_5xl * 5;
+    width: 100%;
+    overflow-y: scroll;
     .boxShadow--light();
     .padding--xs();
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    background-color: @neutral_white;
   }
 }
 
