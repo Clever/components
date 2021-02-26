@@ -10,6 +10,8 @@ import { Values } from "../utils/types";
 
 import "./MultiSelect.less";
 
+const ADD_NEW_ITEM_KEY = "MultiSelect--addNewItem";
+
 // value represents the searchable text of the option
 type Option = { value: string; content?: React.ReactNode };
 
@@ -47,11 +49,15 @@ export const cssClass = {
 function getSelectableOptions(options: Option[], selectedItems: Option[], inputValue: string) {
   const selectedValues = new Set<string>(selectedItems.map((si) => si.value));
   const inputLowerCase = inputValue.toLocaleLowerCase();
-  return options.filter(
-    (o) =>
-      !selectedValues.has(o.value) &&
-      (inputValue === "" || o.value.toLocaleLowerCase().includes(inputLowerCase)),
-  );
+  return [
+    // add a dummy "add item X" placeholder, we will optionally show it via the render code
+    { value: ADD_NEW_ITEM_KEY },
+    ...options.filter(
+      (o) =>
+        !selectedValues.has(o.value) &&
+        (inputValue === "" || o.value.toLocaleLowerCase().includes(inputLowerCase)),
+    ),
+  ];
 }
 
 /*
@@ -130,9 +136,14 @@ const MultiSelect: React.FC<Props> = ({
           break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
-          setInputValue("");
           if (selectedItem) {
-            addSelectedItem(selectedItem);
+            setInputValue("");
+            let newOption = selectedItem;
+            if (selectedItem.value === ADD_NEW_ITEM_KEY) {
+              newOption = { value: inputValue };
+              setOptions([...options, newOption]);
+            }
+            addSelectedItem(newOption);
           }
           break;
         case useCombobox.stateChangeTypes.InputBlur:
@@ -146,6 +157,8 @@ const MultiSelect: React.FC<Props> = ({
 
   const id = name;
   const inputRef = useRef<HTMLInputElement>();
+  const inputLowerCase = inputValue.toLocaleLowerCase();
+  const hasExactMatch = options.some((o) => o.value.toLocaleLowerCase() === inputLowerCase);
   return (
     <div className={classNames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
       <label
@@ -220,33 +233,30 @@ const MultiSelect: React.FC<Props> = ({
         {...getMenuProps()}
       >
         {isOpen &&
-          (selectableOptions.length > 0 ? (
-            selectableOptions.map((o, i) => (
-              <li
-                className={classNames(
-                  cssClass.MENU_OPTION,
-                  i === highlightedIndex && cssClass.MENU_OPTION_HIGHLIGHTED,
-                )}
-                key={`${o.value}${i}`}
-                {...getItemProps({ item: o, index: i })}
-              >
-                {o.content || o.value}
-              </li>
-            ))
+          // slice out the dummy "add item X" option
+          (selectableOptions.slice(1).length === 0 && (!creatable || hasExactMatch) ? (
+            <li className={classNames(cssClass.NO_OPTIONS_FOUND)}>No options</li>
           ) : (
-            <div
-              className={classNames(!creatable && cssClass.NO_OPTIONS_FOUND)}
-              onClick={() => {
-                if (creatable) {
-                  const newOption: Option = { value: inputValue };
-                  setOptions(options.concat(newOption));
-                  setInputValue("");
-                  addSelectedItem(newOption);
-                }
-              }}
-            >
-              {creatable ? `Create new item ${inputValue}` : "No options"}
-            </div>
+            selectableOptions.map((o, i) => {
+              const isAddNewItemOption = o.value === ADD_NEW_ITEM_KEY;
+              // hide the first dummy "add item X" option if not eligible
+              if (isAddNewItemOption && (inputValue.length === 0 || !creatable || hasExactMatch)) {
+                return null;
+              }
+
+              return (
+                <li
+                  className={classNames(
+                    cssClass.MENU_OPTION,
+                    i === highlightedIndex && cssClass.MENU_OPTION_HIGHLIGHTED,
+                  )}
+                  key={`${o.value}${i}`}
+                  {...getItemProps({ item: o, index: i })}
+                >
+                  {isAddNewItemOption ? `Add "${inputValue}"` : o.content || o.value}
+                </li>
+              );
+            })
           ))}
       </ul>
     </div>
