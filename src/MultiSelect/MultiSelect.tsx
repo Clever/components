@@ -16,11 +16,10 @@ export interface Props {
   className?: string;
   name: string;
   label: string;
+  // label is required for a11y purposes, so provide an option to hide it visually
   hideLabel?: boolean;
   placeholder?: string;
   items: Item[];
-  // list of keys
-  value: string[];
   creatable?: boolean;
   onChange?: (items: Item[]) => void;
   size?: Values<typeof FormElementSize>;

@@ -1,35 +1,36 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 
-import MultiSelect from "./MultiSelect";
-import { Button } from "../Button/Button";
+import MultiSelect, { cssClass } from "./MultiSelect";
 
 describe("MultiSelect", () => {
-  const { cssClass } = MultiSelect;
-
-  const onPerformActionMock = jest.fn();
-
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it("renders", () => {
     const myComponent = shallow(
-      <MultiSelect onPerformAction={onPerformActionMock}>Test Content</MultiSelect>,
+      <MultiSelect
+        name="MultiSelect--name"
+        label="testLabel"
+        items={[{ key: "key1", stringValue: "Option 1" }]}
+      />,
     );
 
-    // TODO: Verify basic structure/contents.
     expect(myComponent.props().className).toMatch(cssClass.CONTAINER);
-    expect(myComponent).toIncludeText("Test Content");
-    expect(myComponent.find(`.${cssClass.SUB_ELEMENT}`)).toExist();
-    expect(myComponent.find(Button)).toExist();
+    expect(myComponent).toIncludeText("testLabel");
+    expect(myComponent.find(`.${cssClass.INPUT}`)).toExist();
+    expect(myComponent.find("input")).toExist();
   });
 
   it("supports additional class names", () => {
     const myComponent = shallow(
-      <MultiSelect className="my--custom--class" onPerformAction={onPerformActionMock}>
-        Test Content
-      </MultiSelect>,
+      <MultiSelect
+        className="my--custom--class"
+        name="MultiSelect--name"
+        label="testLabel"
+        items={[{ key: "key1", stringValue: "Option 1" }]}
+      />,
     );
 
     expect(myComponent.props().className).toMatch(cssClass.CONTAINER);
@@ -37,6 +38,7 @@ describe("MultiSelect", () => {
   });
 
   // TODO: Test any relevant state changes/event handling/prop-driven rendering.
+  /*
   it("propagates event", () => {
     const myComponent = shallow(
       <MultiSelect onPerformAction={onPerformActionMock}>Test Content</MultiSelect>,
@@ -45,4 +47,5 @@ describe("MultiSelect", () => {
     myComponent.find(Button).simulate("click");
     expect(onPerformActionMock).toHaveBeenCalledWith("action performed");
   });
+  */
 });
