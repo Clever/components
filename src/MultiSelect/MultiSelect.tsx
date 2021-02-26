@@ -45,11 +45,12 @@ export const cssClass = {
 };
 
 function getSelectableItems(items: Item[], selectedItems: Item[], inputValue: string) {
+  const selectedKeys = new Set<string>(selectedItems.map((si) => si.key));
+  const inputLowerCase = inputValue.toLocaleLowerCase();
   return items.filter(
     (item) =>
-      !selectedItems.some((si) => si.key === item.key) &&
-      (inputValue === "" ||
-        item.stringValue.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())),
+      !selectedKeys.has(item.key) &&
+      (inputValue === "" || item.stringValue.toLocaleLowerCase().includes(inputLowerCase)),
   );
 }
 
