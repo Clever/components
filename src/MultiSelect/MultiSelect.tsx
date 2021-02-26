@@ -1,6 +1,6 @@
 import * as classNames from "classnames";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useCombobox, useMultipleSelection } from "downshift";
 import * as FontAwesome from "react-fontawesome";
 
@@ -141,6 +141,7 @@ const MultiSelect: React.FC<Props> = ({
   });
 
   const id = name;
+  const inputRef = useRef<HTMLInputElement>();
   return (
     <div className={classNames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
       <label
@@ -155,6 +156,14 @@ const MultiSelect: React.FC<Props> = ({
           isOpen && cssClass.SELECT_CONTAINER_FOCUSED,
         )}
         {...getComboboxProps()}
+        onClick={(e) => {
+          if (!isOpen) {
+            openMenu();
+          }
+          if (inputRef.current) {
+            inputRef.current.focus();
+          }
+        }}
       >
         <div className={cssClass.SELECTED_ITEMS_CONTAINER}>
           {selectedItems.length > 0 &&
@@ -180,7 +189,7 @@ const MultiSelect: React.FC<Props> = ({
             id={id}
             name={id}
             className={cssClass.INPUT}
-            {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
+            {...getInputProps(getDropdownProps({ ref: inputRef, preventKeyAction: isOpen }))}
             placeholder={placeholder}
             onFocus={(e) => {
               if (!isOpen) {
@@ -215,7 +224,6 @@ const MultiSelect: React.FC<Props> = ({
             <div
               className={classNames(!creatable && cssClass.NO_ITEMS_FOUND)}
               onClick={() => {
-                console.log(creatable);
                 if (creatable) {
                   const newItem = { key: inputValue, stringValue: inputValue };
                   setItems(items.concat(newItem));
