@@ -107,21 +107,24 @@
   height: @size_2xl;
   line-height: @size_l;
 
-  &:disabled {
-    background-color: @neutral_white;
-  }
-
   &::placeholder {
     color: @neutral_gray;
   }
+
   &::-webkit-input-placeholder {
     color: @neutral_gray;
   }
+
   &::-moz-placeholder {
     color: @neutral_gray;
   }
+
   &:-ms-input-placeholder {
     color: @neutral_gray;
+  }
+
+  &:disabled {
+    background-color: @neutral_white;
   }
 }
 
