@@ -34,12 +34,11 @@
   position: relative;
   width: 100%;
   .inlineFlexbox();
-  .items--center();
   .border--m(@neutral_silver);
   .borderRadius--l();
   background-color: @neutral_white;
+  .margin--top--3xs();
   .padding--left--xs();
-  .margin--y--3xs();
   box-sizing: border-box;
   transition: box-shadow @timingQuickly ease-out;
 
@@ -58,14 +57,20 @@
 .MultiSelect--selectedItemsContainer {
   .flexbox();
   .flex--wrap();
-  .items--center();
+  /*
+    ideally would be .items--center but since the labels are small,
+    we manually space the labels using margin/padding to stop the labels from jumping
+    when they take up more than 1 row in the multiselect
+  */
+  .items--start();
   width: 100%;
-  .self--stretch();
+  .padding--y--2xs();
+  box-sizing: border-box;
 }
 
 .MultiSelect--selectedItemContainer {
   .flexbox();
-  .margin--y--3xs();
+  .margin--y--2xs();
   .margin--right--2xs();
 }
 
@@ -80,6 +85,7 @@
   .borderRadius--l();
   width: 0%;
   .flexGrow();
+  .self--stretch();
 
   font-family: "Proxima Nova";
   .text--medium();
@@ -97,9 +103,9 @@
   background-color: @neutral_white;
   font-family: "Proxima Nova";
   .text--medium();
-  .margin--x--s();
-  .padding--none();
-  height: @size_2xl;
+  .margin--none();
+  .padding--x--s();
+  min-height: @size_2xl;
 }
 
 .MultiSelect--items {
