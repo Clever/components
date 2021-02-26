@@ -1,0 +1,44 @@
+@import (reference) "~src/less/utilities";
+
+.MultiSelectView--intro {
+  .margin--bottom--xl;
+}
+
+.MultiSelectView--configContainer {
+  .border--top--l(@neutral_silver);
+  .margin--top--xl;
+  .padding--top--l;
+}
+
+.MultiSelectView--config {
+  .flexbox;
+  .items--center;
+  .margin--bottom--m;
+  .text--caps;
+  .text--small;
+
+  &:not(:last-child) {
+    .margin--right--m;
+  }
+}
+
+label.MultiSelectView--config {
+  cursor: pointer;
+}
+
+.MultiSelectView--configOptions {
+  .margin--left--2xs;
+  display: inline-block;
+}
+
+.MultiSelectView--configToggle {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.MultiSelectView--props {
+  .margin--top--l;
+}

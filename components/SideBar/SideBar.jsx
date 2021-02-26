@@ -116,6 +116,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/modal", "Modal")}
           {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/multiple-panel-modals", "MultiplePanelModals")}
+          {this._renderLink("/components/multi-select", "MultiSelect", { beta: true })}
           {this._renderLink("/components/number", "Number")}
           {this._renderLink("/components/progress-bar", "ProgressBar")}
           {this._renderLink("/components/radio-group", "RadioGroup")}

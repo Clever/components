@@ -9,6 +9,7 @@ import MessagingBubbleView from "./components/MessagingBubbleView";
 import MessagingInputView from "./components/MessagingInputView";
 import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
 import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
+import MultiSelectView from "./components/MultiSelectView";
 import ResourceTileView from "./components/ResourceTileView";
 import Table2BetaView from "./components/Table2BetaView";
 import TextInput2View from "./components/TextInput2View";
@@ -141,6 +142,7 @@ render(
         <Route path="messaging-thread-list-item(/*)" component={MessagingThreadListItemView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
+        <Route path="multi-select(/*)" component={MultiSelectView} />
         <Route path="multiple-panel-modals(/*)" component={MultiplePanelModalsView} />
         <Route path="number(/*)" component={NumberView} />
         <Route path="progress-bar(/*)" component={ProgressBarView} />
