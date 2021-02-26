@@ -13,7 +13,7 @@ describe("MultiSelect", () => {
       <MultiSelect
         name="MultiSelect--name"
         label="testLabel"
-        items={[{ key: "key1", stringValue: "Option 1" }]}
+        options={[{ key: "key1", value: "Option 1" }]}
       />,
     );
 
@@ -29,7 +29,7 @@ describe("MultiSelect", () => {
         className="my--custom--class"
         name="MultiSelect--name"
         label="testLabel"
-        items={[{ key: "key1", stringValue: "Option 1" }]}
+        options={[{ key: "key1", value: "Option 1" }]}
       />,
     );
 
