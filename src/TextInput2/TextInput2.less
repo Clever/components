@@ -112,7 +112,15 @@
   }
 
   &::placeholder {
-    //&::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+    color: @neutral_gray;
+  }
+  &::-webkit-input-placeholder {
+    color: @neutral_gray;
+  }
+  &::-moz-placeholder {
+    color: @neutral_gray;
+  }
+  &:-ms-input-placeholder {
     color: @neutral_gray;
   }
 }
