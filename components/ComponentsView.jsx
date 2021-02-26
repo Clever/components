@@ -212,6 +212,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A MultiplePanelModals component",
   },
   {
+    componentLink: "multi-select",
+    componentImg: "multi-select.png",
+    componentName: "MultiSelect",
+    componentImgAlt: "A MultiSelect component",
+  },
+  {
     componentLink: "number",
     componentImg: "number.png",
     componentName: "Number",
