@@ -130,10 +130,13 @@ const MultiSelect: React.FC<Props> = ({
           break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
+          setInputValue("");
           if (selectedItem) {
-            setInputValue("");
             addSelectedItem(selectedItem);
           }
+          break;
+        case useCombobox.stateChangeTypes.InputBlur:
+          setInputValue("");
           break;
         default:
           break;
@@ -180,6 +183,9 @@ const MultiSelect: React.FC<Props> = ({
                 onClick={(e) => {
                   e.stopPropagation();
                   removeSelectedItem(item);
+                  if (inputRef.current) {
+                    inputRef.current.select();
+                  }
                 }}
               >
                 {/* https://www.compart.com/en/unicode/U+2715 */}
@@ -191,13 +197,18 @@ const MultiSelect: React.FC<Props> = ({
             id={id}
             name={id}
             className={cssClass.INPUT}
-            {...getInputProps(getDropdownProps({ ref: inputRef, preventKeyAction: isOpen }))}
             placeholder={placeholder}
-            onFocus={(e) => {
-              if (!isOpen) {
-                openMenu();
-              }
-            }}
+            {...getInputProps(
+              getDropdownProps({
+                ref: inputRef,
+                preventKeyAction: isOpen,
+                onFocus: (e) => {
+                  if (!isOpen) {
+                    openMenu();
+                  }
+                },
+              }),
+            )}
           />
         </div>
         <button className={cssClass.CARET_BUTTON} {...getToggleButtonProps()}>

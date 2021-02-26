@@ -31,9 +31,8 @@
 
 .MultiSelect--selectContainer {
   .text--medium();
-  position: relative;
   width: 100%;
-  .inlineFlexbox();
+  .flexbox();
   .border--m(@neutral_silver);
   .borderRadius--l();
   background-color: @neutral_white;
@@ -125,7 +124,6 @@
 .MultiSelect--options {
   &--reset {
     outline: none;
-    cursor: pointer;
     list-style: none;
     .margin--none();
     .margin--top--xs();
@@ -150,6 +148,7 @@
 }
 
 .MultiSelect--option {
+  cursor: pointer;
   color: @neutral_dark_gray;
   .borderRadius--l();
   .padding--xs();
@@ -162,5 +161,4 @@
 .MultiSelect--notFound {
   color: @neutral_gray;
   text-align: center;
-  cursor: default;
 }
