@@ -1,0 +1,164 @@
+@import (reference) "../less/utilities";
+
+.MultiSelect--container {
+  font-family: "Proxima Nova";
+  position: relative;
+}
+
+.MultiSelect--label {
+  .padding--bottom--2xs();
+  color: @neutral_medium_gray;
+  .text--small();
+
+  /*
+    for a11y purposes
+    https://a11y-guidelines.orange.com/en/web/components-examples/accessible-hiding/#
+  */
+  &--hidden {
+    /* stylelint-disable */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+    /* stylelint-enable */
+  }
+}
+
+.MultiSelect--selectContainer {
+  .text--medium();
+  width: 100%;
+  .flexbox();
+  .border--m(@neutral_silver);
+  .borderRadius--l();
+  background-color: @neutral_white;
+  .margin--top--3xs();
+  .padding--left--xs();
+  box-sizing: border-box;
+  transition: box-shadow @timingQuickly ease-out;
+
+  &--focused {
+    box-shadow: 0 0 0 @size_2xs ~"@{primary_blue_tint_2}80";
+
+    .border--m(@primary_blue);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  &:hover {
+    .border--m(@primary_blue);
+  }
+}
+
+.MultiSelect--selectedItemsContainer {
+  .flexbox();
+  .flex--wrap();
+  /*
+    ideally would be .items--center but since the labels are small,
+    we manually space the labels using margin/padding to stop the labels from jumping
+    when they take up more than 1 row in the multiselect
+  */
+  .items--start();
+  width: 100%;
+  .padding--y--2xs();
+  box-sizing: border-box;
+}
+
+.MultiSelect--selectedItemContainer {
+  .flexbox();
+  .margin--y--2xs();
+  .margin--right--2xs();
+}
+
+.MultiSelect--selectedItemButton {
+  .margin--left--2xs();
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.MultiSelect--input {
+  border: none;
+  outline: none;
+  .borderRadius--l();
+  width: 0%;
+  .flexGrow();
+  .self--stretch();
+  font-family: "Proxima Nova";
+  .text--medium();
+  line-height: @size_l;
+
+  &::placeholder {
+    color: @neutral_gray;
+  }
+
+  &::-webkit-input-placeholder {
+    color: @neutral_gray;
+  }
+
+  &::-moz-placeholder {
+    color: @neutral_gray;
+  }
+
+  &:-ms-input-placeholder {
+    color: @neutral_gray;
+  }
+}
+
+.MultiSelect--caretButton {
+  outline: none;
+  border: none;
+  background-color: @neutral_white;
+  font-family: "Proxima Nova";
+  .text--medium();
+  .margin--none();
+  .padding--x--s();
+  min-height: @size_2xl;
+}
+
+.MultiSelect--options {
+  &--reset {
+    outline: none;
+    list-style: none;
+    .margin--none();
+    .margin--top--xs();
+    .padding--none();
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 3;
+  }
+
+  &--open {
+    max-height: @size_5xl * 5;
+    width: 100%;
+    overflow-y: scroll;
+    .boxShadow--light();
+    .padding--xs();
+    background-color: @neutral_white;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+.MultiSelect--option {
+  cursor: pointer;
+  color: @neutral_dark_gray;
+  .borderRadius--l();
+  .padding--xs();
+
+  &--highlighted {
+    background-color: ~"@{primary_blue_tint_2}80";
+  }
+}
+
+.MultiSelect--notFound {
+  color: @neutral_gray;
+  text-align: center;
+}
