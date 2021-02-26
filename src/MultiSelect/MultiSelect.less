@@ -77,6 +77,10 @@
 .MultiSelect--selectedItemButton {
   .margin--left--2xs();
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .MultiSelect--input {
@@ -155,7 +159,7 @@
   }
 }
 
-.MultiSelect--noOptionsFound {
+.MultiSelect--notFound {
   color: @neutral_gray;
   text-align: center;
   cursor: default;
