@@ -4,7 +4,15 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MultiSelect, FlexBox, ItemAlign, Label, SegmentedControl } from "src";
+import {
+  TextInput2,
+  TextInput2Requirement,
+  MultiSelect,
+  FlexBox,
+  ItemAlign,
+  SegmentedControl,
+  Label,
+} from "src";
 import { FormElementSize } from "../../src/utils/Forms";
 
 import "./MultiSelectView.less";
@@ -23,6 +31,9 @@ export default class MultiSelectView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
+    label: "Choose an option",
+    hideLabel: false,
+    placeholder: "Select or create options",
     creatable: false,
     size: FormElementSize.MEDIUM,
   };
@@ -35,8 +46,12 @@ export default class MultiSelectView extends React.PureComponent {
         sourcePath="src/MultiSelect/MultiSelect.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>TODO: Describe your component/state it's purpose</p>
-          <p>TODO(optional): Describe scenarios where the component might be useful.</p>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> MultiSelect is in Beta. Complete functionality
+            isn't available yet and breaking changes may still be introduced.
+          </p>
+          <p>Updated design for Select component with multi-select option</p>
+          <p>The updated single-item select component is &lt;Select2&gt;</p>
           <CodeSample>
             {`
               import {MultiSelect} from "clever-components";
@@ -51,8 +66,9 @@ export default class MultiSelectView extends React.PureComponent {
             <MultiSelect
               className="my--custom--class"
               name="MultiSelectView--MultiSelect"
-              label="Example label"
-              placeholder="Select multiple items"
+              label={this.state.label}
+              hideLabel={this.state.hideLabel}
+              placeholder={this.state.placeholder}
               items={new Array(20).fill(0).map((_, i) => ({
                 key: `${i + 1}`,
                 stringValue: `Option ${i + 1}`,
@@ -76,12 +92,41 @@ export default class MultiSelectView extends React.PureComponent {
     );
   }
 
-  // TODO: Update or remove config options.
+  // TODO:Update or remove config options.
   _renderConfig() {
-    const { creatable, size } = this.state;
+    const { label, hideLabel, placeholder, creatable, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+        <div className={cssClass.CONFIG}>
+          <TextInput2
+            className={cssClass.CONFIG_OPTIONS}
+            name="TextInput2View--labelTextInput"
+            label="Label text"
+            requirement={TextInput2Requirement.REQUIRED}
+            onChange={(e) => this.setState({ label: e.target.value })}
+            value={label}
+          />
+        </div>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={hideLabel}
+            onChange={(e) => this.setState({ hideLabel: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_TEXT}>Hide Label</span>
+        </label>
+        <div className={cssClass.CONFIG}>
+          <TextInput2
+            className={cssClass.CONFIG_OPTIONS}
+            name="TextInput2View--placeholderTextInput"
+            label="Placeholder text"
+            requirement={TextInput2Requirement.OPTIONAL}
+            onChange={(e) => this.setState({ placeholder: e.target.value })}
+            value={placeholder}
+          />
+        </div>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
@@ -116,20 +161,77 @@ export default class MultiSelectView extends React.PureComponent {
         title="<MultiSelect /> Props"
         availableProps={[
           {
-            name: "children",
-            type: "React.Node",
-            description: "MultiSelect content.",
-          },
-          {
             name: "className",
             type: "string",
             description: "Optional additional CSS class name to apply to the container.",
             optional: true,
           },
           {
-            name: "onPerformAction",
-            type: "Function",
-            description: "Handler function for the performAction event.",
+            name: "name",
+            type: "String",
+            description:
+              "Name for input element which will also be used as the id for the label to reference",
+          },
+          {
+            name: "label",
+            type: "React Node",
+            description: "Label text",
+          },
+          {
+            name: "hideLabel",
+            type: "Boolean",
+            description:
+              "Hide label for visual purposes only (will still be available to screen readers)",
+            optional: true,
+          },
+          {
+            name: "placeholder",
+            type: "String",
+            description: "Placeholder text",
+            optional: true,
+          },
+          {
+            name: "items",
+            type: <code>{"Array<{ key: string, value?: ReactNode, stringValue: string }>"}</code>,
+            description:
+              "List of items to be selected. 'value' is a react node for custom rendering, but you must have a stringValue for searchability",
+            optional: true,
+          },
+          {
+            name: "creatable",
+            type: "boolean",
+            description:
+              "If new items are allowed to be created (if input text does not match any existing items)",
+            optional: true,
+          },
+          {
+            name: "onChange",
+            type: (
+              <code>
+                {
+                  "(selectedItems: { key: string, value: ReactNode, stringValue: string }[]) => void"
+                }
+              </code>
+            ),
+            description: "Called when an item is selected",
+          },
+          {
+            name: "size",
+            type: "string",
+            description: (
+              <p>
+                The size of the input. One of:
+                <br />
+                {Object.keys(FormElementSize).map((size) => (
+                  <span key={size}>
+                    <code>FormElementSize.{size}</code>
+                    <br />
+                  </span>
+                ))}
+              </p>
+            ),
+            optional: true,
+            defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
           },
         ]}
         className={cssClass.PROPS}
