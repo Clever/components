@@ -155,36 +155,37 @@ const MultiSelect: React.FC<Props> = ({
           cssClass.SELECT_CONTAINER,
           isOpen && cssClass.SELECT_CONTAINER_FOCUSED,
         )}
-        {...getComboboxProps()}
-        onClick={(e) => {
-          if (!isOpen) {
-            openMenu();
-          }
-          if (inputRef.current) {
-            inputRef.current.focus();
-          }
-        }}
+        {...getComboboxProps({
+          onClick: (e) => {
+            if (!isOpen) {
+              openMenu();
+            }
+            if (inputRef.current) {
+              inputRef.current.focus();
+            }
+          },
+        })}
       >
         <div className={cssClass.SELECTED_ITEMS_CONTAINER}>
-          {selectedItems.length > 0 &&
-            selectedItems.map((item, i) => (
-              <Label
-                key={`${item.key}${i}`}
-                className={cssClass.SELECTED_ITEM_CONTAINER}
-                {...getSelectedItemProps({ selectedItem: item, index: i })}
+          {selectedItems.map((item, i) => (
+            <Label
+              key={`${item.key}${i}`}
+              className={cssClass.SELECTED_ITEM_CONTAINER}
+              {...getSelectedItemProps({ selectedItem: item, index: i })}
+            >
+              {item.value || item.stringValue}
+              <span
+                className={cssClass.SELECTED_ITEM_BUTTON}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeSelectedItem(item);
+                }}
               >
-                {item.value || item.stringValue}
-                <span
-                  className={cssClass.SELECTED_ITEM_BUTTON}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removeSelectedItem(item);
-                  }}
-                >
-                  &#10005;
-                </span>
-              </Label>
-            ))}
+                {/* https://www.compart.com/en/unicode/U+2715 */}
+                &#10005;
+              </span>
+            </Label>
+          ))}
           <input
             id={id}
             name={id}
