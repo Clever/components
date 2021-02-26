@@ -1,4 +1,5 @@
 import * as React from "react";
+import FontAwesome from "react-fontawesome";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
@@ -22,9 +23,7 @@ export default class Select2View extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    multiOption1: "small",
-    optionToggle1: false,
-    optionToggle2: true,
+    clearable: true,
     size: FormElementSize.MEDIUM,
   };
 
@@ -49,11 +48,18 @@ export default class Select2View extends React.PureComponent {
           <ExampleCode>
             <Select2
               className="my--custom--class"
-              label="Example label"
-              placeholder="Select an item"
-              items={new Array(100)
-                .fill(0)
-                .map((_, i) => ({ key: `${i + 1}`, label: `Option ${i + 1}` }))}
+              name="Select2View--Select2"
+              label="Select an option"
+              clearable={this.state.clearable}
+              options={new Array(20).fill(0).map((_, i) => ({
+                value: `Option ${i + 1}`,
+                content: (
+                  <FlexBox>
+                    <FontAwesome name="exclamation-triangle" />
+                    <span>Option {i + 1}</span>
+                  </FlexBox>
+                ),
+              }))}
               onChange={console.log}
               size={this.state.size}
             />
