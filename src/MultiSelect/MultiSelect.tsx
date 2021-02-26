@@ -10,8 +10,8 @@ import { Values } from "../utils/types";
 
 import "./MultiSelect.less";
 
-// value must be provided for searchability
-type Option = { key: string; value: string; renderedComponent?: React.ReactNode };
+// value represents the searchable text of the option
+type Option = { value: string; content?: React.ReactNode };
 
 export interface Props {
   className?: string;
@@ -45,11 +45,11 @@ export const cssClass = {
 };
 
 function getSelectableOptions(options: Option[], selectedItems: Option[], inputValue: string) {
-  const selectedKeys = new Set<string>(selectedItems.map((si) => si.key));
+  const selectedValues = new Set<string>(selectedItems.map((si) => si.value));
   const inputLowerCase = inputValue.toLocaleLowerCase();
   return options.filter(
     (o) =>
-      !selectedKeys.has(o.key) &&
+      !selectedValues.has(o.value) &&
       (inputValue === "" || o.value.toLocaleLowerCase().includes(inputLowerCase)),
   );
 }
@@ -78,7 +78,7 @@ const MultiSelect: React.FC<Props> = ({
     removeSelectedItem,
     selectedItems,
   } = useMultipleSelection<Option>({
-    itemToString: (o) => o.key,
+    itemToString: (o) => o.value,
     onSelectedItemsChange: (change) => {
       if (onChange) {
         onChange(change.selectedItems);
@@ -99,7 +99,6 @@ const MultiSelect: React.FC<Props> = ({
     openMenu,
   } = useCombobox({
     inputValue,
-    defaultHighlightedIndex: 0,
     // useMultipleSelection will separately take care of all "selected item" interactions
     // without this line, interaction with adding/removing will be buggy
     selectedItem: null,
@@ -113,6 +112,7 @@ const MultiSelect: React.FC<Props> = ({
           return {
             ...changes,
             isOpen: true, // keep the menu open after selection.
+            highlightedIndex: state.highlightedIndex,
           };
         default:
           break;
@@ -170,11 +170,11 @@ const MultiSelect: React.FC<Props> = ({
         <div className={cssClass.SELECTED_ITEMS_CONTAINER}>
           {selectedItems.map((item, i) => (
             <Label
-              key={`${item.key}${i}`}
+              key={`${item.value}${i}`}
               className={cssClass.SELECTED_ITEM_CONTAINER}
               {...getSelectedItemProps({ selectedItem: item, index: i })}
             >
-              {item.renderedComponent || item.value}
+              {item.content || item.value}
               <span
                 className={cssClass.SELECTED_ITEM_BUTTON}
                 onClick={(e) => {
@@ -216,10 +216,10 @@ const MultiSelect: React.FC<Props> = ({
                   cssClass.MENU_OPTION,
                   i === highlightedIndex && cssClass.MENU_OPTION_HIGHLIGHTED,
                 )}
-                key={`${o.key}${i}`}
+                key={`${o.value}${i}`}
                 {...getItemProps({ item: o, index: i })}
               >
-                {o.renderedComponent || o.value}
+                {o.content || o.value}
               </li>
             ))
           ) : (
@@ -227,7 +227,7 @@ const MultiSelect: React.FC<Props> = ({
               className={classNames(!creatable && cssClass.NO_OPTIONS_FOUND)}
               onClick={() => {
                 if (creatable) {
-                  const newOption = { key: inputValue, value: inputValue };
+                  const newOption: Option = { value: inputValue };
                   setOptions(options.concat(newOption));
                   setInputValue("");
                   addSelectedItem(newOption);

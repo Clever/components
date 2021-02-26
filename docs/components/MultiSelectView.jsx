@@ -70,9 +70,8 @@ export default class MultiSelectView extends React.PureComponent {
               hideLabel={this.state.hideLabel}
               placeholder={this.state.placeholder}
               options={new Array(20).fill(0).map((_, i) => ({
-                key: `${i + 1}`,
                 value: `Option ${i + 1}`,
-                renderedComponent: (
+                content: (
                   <FlexBox>
                     <FontAwesome name="exclamation-triangle" />
                     <span>Option {i + 1}</span>
@@ -192,9 +191,7 @@ export default class MultiSelectView extends React.PureComponent {
           },
           {
             name: "options",
-            type: (
-              <code>{"Array<{ key: string, value: string, renderedComponent?: ReactNode }>"}</code>
-            ),
+            type: <code>{"Array<{ value: string, content?: ReactNode }>"}</code>,
             description:
               "List of options to be selected. 'value' is a react node for custom rendering, but you must have a stringValue for searchability",
             optional: true,
@@ -209,11 +206,7 @@ export default class MultiSelectView extends React.PureComponent {
           {
             name: "onChange",
             type: (
-              <code>
-                {
-                  "(selectedItems: { key: string, value: string, renderedComponent?: ReactNode }[]) => void"
-                }
-              </code>
+              <code>{"(selectedItems: { value: string, content?: ReactNode }[]) => void"}</code>
             ),
             description: "Called when an option is selected",
           },

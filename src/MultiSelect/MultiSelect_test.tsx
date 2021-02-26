@@ -10,11 +10,7 @@ describe("MultiSelect", () => {
 
   it("renders", () => {
     const myComponent = shallow(
-      <MultiSelect
-        name="MultiSelect--name"
-        label="testLabel"
-        options={[{ key: "key1", value: "Option 1" }]}
-      />,
+      <MultiSelect name="MultiSelect--name" label="testLabel" options={[{ value: "Option 1" }]} />,
     );
 
     expect(myComponent.props().className).toMatch(cssClass.CONTAINER);
@@ -29,7 +25,7 @@ describe("MultiSelect", () => {
         className="my--custom--class"
         name="MultiSelect--name"
         label="testLabel"
-        options={[{ key: "key1", value: "Option 1" }]}
+        options={[{ value: "Option 1" }]}
       />,
     );
 
