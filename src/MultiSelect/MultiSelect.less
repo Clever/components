@@ -86,7 +86,6 @@
   width: 0%;
   .flexGrow();
   .self--stretch();
-
   font-family: "Proxima Nova";
   .text--medium();
   line-height: @size_l;
@@ -94,12 +93,15 @@
   &::placeholder {
     color: @neutral_gray;
   }
+
   &::-webkit-input-placeholder {
     color: @neutral_gray;
   }
+
   &::-moz-placeholder {
     color: @neutral_gray;
   }
+
   &:-ms-input-placeholder {
     color: @neutral_gray;
   }
@@ -135,13 +137,11 @@
     overflow-y: scroll;
     .boxShadow--light();
     .padding--xs();
-
+    background-color: @neutral_white;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
-    background-color: @neutral_white;
   }
 }
 
