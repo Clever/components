@@ -69,10 +69,10 @@ export default class MultiSelectView extends React.PureComponent {
               label={this.state.label}
               hideLabel={this.state.hideLabel}
               placeholder={this.state.placeholder}
-              items={new Array(20).fill(0).map((_, i) => ({
+              options={new Array(20).fill(0).map((_, i) => ({
                 key: `${i + 1}`,
-                stringValue: `Option ${i + 1}`,
-                value: (
+                value: `Option ${i + 1}`,
+                renderedComponent: (
                   <FlexBox>
                     <FontAwesome name="exclamation-triangle" />
                     <span>Option {i + 1}</span>
@@ -191,17 +191,19 @@ export default class MultiSelectView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "items",
-            type: <code>{"Array<{ key: string, value?: ReactNode, stringValue: string }>"}</code>,
+            name: "options",
+            type: (
+              <code>{"Array<{ key: string, value: string, renderedComponent?: ReactNode }>"}</code>
+            ),
             description:
-              "List of items to be selected. 'value' is a react node for custom rendering, but you must have a stringValue for searchability",
+              "List of options to be selected. 'value' is a react node for custom rendering, but you must have a stringValue for searchability",
             optional: true,
           },
           {
             name: "creatable",
             type: "boolean",
             description:
-              "If new items are allowed to be created (if input text does not match any existing items)",
+              "If new options are allowed to be created (if input text does not match any existing options)",
             optional: true,
           },
           {
@@ -209,11 +211,11 @@ export default class MultiSelectView extends React.PureComponent {
             type: (
               <code>
                 {
-                  "(selectedItems: { key: string, value: ReactNode, stringValue: string }[]) => void"
+                  "(selectedItems: { key: string, value: string, renderedComponent?: ReactNode }[]) => void"
                 }
               </code>
             ),
-            description: "Called when an item is selected",
+            description: "Called when an option is selected",
           },
           {
             name: "size",

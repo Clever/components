@@ -10,7 +10,8 @@ import { Values } from "../utils/types";
 
 import "./MultiSelect.less";
 
-type Item = { key: string; value?: React.ReactNode; stringValue: string };
+// value must be provided for searchability
+type Option = { key: string; value: string; renderedComponent?: React.ReactNode };
 
 export interface Props {
   className?: string;
@@ -19,9 +20,9 @@ export interface Props {
   // label is required for a11y purposes, so provide an option to hide it visually
   hideLabel?: boolean;
   placeholder?: string;
-  items: Item[];
+  options: Option[];
   creatable?: boolean;
-  onChange?: (items: Item[]) => void;
+  onChange?: (options: Option[]) => void;
   size?: Values<typeof FormElementSize>;
 }
 
@@ -36,20 +37,20 @@ export const cssClass = {
   SELECTED_ITEM_BUTTON: "MultiSelect--selectedItemButton",
   INPUT: "MultiSelect--input",
   CARET_BUTTON: "MultiSelect--caretButton",
-  MENU_RESET: "MultiSelect--items--reset",
-  MENU_OPEN: "MultiSelect--items--open",
-  MENU_ITEM: "MultiSelect--item",
-  MENU_ITEM_HIGHLIGHTED: "MultiSelect--item--highlighted",
-  NO_ITEMS_FOUND: "MultiSelect--itemsNoneFound",
+  MENU_RESET: "MultiSelect--options--reset",
+  MENU_OPEN: "MultiSelect--options--open",
+  MENU_OPTION: "MultiSelect--option",
+  MENU_OPTION_HIGHLIGHTED: "MultiSelect--option--highlighted",
+  NO_OPTIONS_FOUND: "MultiSelect--notFound",
 };
 
-function getSelectableItems(items: Item[], selectedItems: Item[], inputValue: string) {
+function getSelectableOptions(options: Option[], selectedItems: Option[], inputValue: string) {
   const selectedKeys = new Set<string>(selectedItems.map((si) => si.key));
   const inputLowerCase = inputValue.toLocaleLowerCase();
-  return items.filter(
-    (item) =>
-      !selectedKeys.has(item.key) &&
-      (inputValue === "" || item.stringValue.toLocaleLowerCase().includes(inputLowerCase)),
+  return options.filter(
+    (o) =>
+      !selectedKeys.has(o.key) &&
+      (inputValue === "" || o.value.toLocaleLowerCase().includes(inputLowerCase)),
   );
 }
 
@@ -62,13 +63,13 @@ const MultiSelect: React.FC<Props> = ({
   label,
   hideLabel,
   placeholder,
-  // we will manage the items in state since items are creatable
-  items: initialItems,
+  // we will manage the options in state since options are creatable
+  options: initialOptions,
   creatable,
   onChange,
   size,
 }) => {
-  const [items, setItems] = useState(initialItems);
+  const [options, setOptions] = useState(initialOptions);
   const [inputValue, setInputValue] = useState("");
   const {
     getSelectedItemProps,
@@ -76,15 +77,15 @@ const MultiSelect: React.FC<Props> = ({
     addSelectedItem,
     removeSelectedItem,
     selectedItems,
-  } = useMultipleSelection<Item>({
-    itemToString: (item) => item.key,
+  } = useMultipleSelection<Option>({
+    itemToString: (o) => o.key,
     onSelectedItemsChange: (change) => {
       if (onChange) {
         onChange(change.selectedItems);
       }
     },
   });
-  const selectableItems = getSelectableItems(items, selectedItems, inputValue);
+  const selectableOptions = getSelectableOptions(options, selectedItems, inputValue);
 
   const {
     isOpen,
@@ -102,7 +103,7 @@ const MultiSelect: React.FC<Props> = ({
     // useMultipleSelection will separately take care of all "selected item" interactions
     // without this line, interaction with adding/removing will be buggy
     selectedItem: null,
-    items: selectableItems,
+    items: selectableOptions,
     // taken from https://www.downshift-js.com/use-multiple-selection
     stateReducer: (state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
@@ -173,7 +174,7 @@ const MultiSelect: React.FC<Props> = ({
               className={cssClass.SELECTED_ITEM_CONTAINER}
               {...getSelectedItemProps({ selectedItem: item, index: i })}
             >
-              {item.value || item.stringValue}
+              {item.renderedComponent || item.value}
               <span
                 className={cssClass.SELECTED_ITEM_BUTTON}
                 onClick={(e) => {
@@ -208,28 +209,28 @@ const MultiSelect: React.FC<Props> = ({
         {...getMenuProps()}
       >
         {isOpen &&
-          (selectableItems.length > 0 ? (
-            selectableItems.map((item, i) => (
+          (selectableOptions.length > 0 ? (
+            selectableOptions.map((o, i) => (
               <li
                 className={classNames(
-                  cssClass.MENU_ITEM,
-                  i === highlightedIndex && cssClass.MENU_ITEM_HIGHLIGHTED,
+                  cssClass.MENU_OPTION,
+                  i === highlightedIndex && cssClass.MENU_OPTION_HIGHLIGHTED,
                 )}
-                key={`${item.key}${i}`}
-                {...getItemProps({ item, index: i })}
+                key={`${o.key}${i}`}
+                {...getItemProps({ item: o, index: i })}
               >
-                {item.value || item.stringValue}
+                {o.renderedComponent || o.value}
               </li>
             ))
           ) : (
             <div
-              className={classNames(!creatable && cssClass.NO_ITEMS_FOUND)}
+              className={classNames(!creatable && cssClass.NO_OPTIONS_FOUND)}
               onClick={() => {
                 if (creatable) {
-                  const newItem = { key: inputValue, stringValue: inputValue };
-                  setItems(items.concat(newItem));
+                  const newOption = { key: inputValue, value: inputValue };
+                  setOptions(options.concat(newOption));
                   setInputValue("");
-                  addSelectedItem(newItem);
+                  addSelectedItem(newOption);
                 }
               }}
             >
