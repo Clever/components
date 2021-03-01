@@ -233,14 +233,14 @@ const MultiSelect: React.FC<Props> = ({
         {...getMenuProps()}
       >
         {isOpen &&
-          // slice out the dummy "add item X" option
-          (selectableOptions.slice(1).length === 0 && (!creatable || hasExactMatch) ? (
+          // only the dummy "add item X" option exists
+          (selectableOptions.length === 1 && (!creatable || hasExactMatch) ? (
             <li className={classNames(cssClass.NO_OPTIONS_FOUND)}>No options</li>
           ) : (
             selectableOptions.map((o, i) => {
               const isAddNewItemOption = o.value === ADD_NEW_ITEM_KEY;
               // hide the first dummy "add item X" option if not eligible
-              if (isAddNewItemOption && (inputValue.length === 0 || !creatable || hasExactMatch)) {
+              if (isAddNewItemOption && (!inputValue || !creatable || hasExactMatch)) {
                 return null;
               }
 
