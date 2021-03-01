@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as classNames from "classnames";
 import * as moment from "moment";
+import * as FontAwesome from "react-fontawesome";
 
 import { FlexBox, FlexItem, ItemAlign, Justify } from "../index";
 import { DraftPencilIcon } from "./DraftPencilIcon";
@@ -38,6 +39,7 @@ type Props = {
   status?: Status;
   timestamp?: Date;
   title: string;
+  hasAlert?: boolean;
 };
 
 export const MessagingThreadListItem: React.FC<
@@ -55,6 +57,7 @@ export const MessagingThreadListItem: React.FC<
     status = "active",
     offStatusText,
     onClick,
+    hasAlert,
   } = props;
 
   let subContent: React.ReactNode;
@@ -67,15 +70,23 @@ export const MessagingThreadListItem: React.FC<
     subContentClass = cssClasses.OFF_TEXT;
   }
 
+  let indicatorIcon: React.ReactNode;
+  if (hasAlert) {
+    indicatorIcon = <FontAwesome name="exclamation-triangle" />;
+  } else if (!isRead) {
+    indicatorIcon = (
+      <div aria-label={`Unread messages in thread ${title}`} className={cssClasses.UNREAD_ORB} />
+    );
+  } else if (status === "active" && hasDraft) {
+    indicatorIcon = <DraftPencilIcon />;
+  }
   const indicator = (
     <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
-      {!isRead ? (
-        <div aria-label={`Unread messages in thread ${title}`} className={cssClasses.UNREAD_ORB} />
-      ) : (
-        status === "active" && hasDraft && <DraftPencilIcon />
-      )}
+      {indicatorIcon}
     </FlexBox>
   );
+
+  const isIndicatorAlignedWithSubContent = subContent && timestamp;
 
   return (
     <div ref={ref}>
@@ -105,14 +116,16 @@ export const MessagingThreadListItem: React.FC<
                 {timestamp && _formatDateForTimestamp(timestamp)}
               </div>
             )}
-            {!subContent && indicator}
           </FlexBox>
           {subContent && (
             <FlexBox alignItems={ItemAlign.CENTER}>
               <div className={subContentClass}>{subContent}</div>
-              {indicator}
+              {isIndicatorAlignedWithSubContent && indicator}
             </FlexBox>
           )}
+        </FlexItem>
+        <FlexItem alignItems={ItemAlign.CENTER}>
+          {!isIndicatorAlignedWithSubContent && indicator}
         </FlexItem>
       </FlexBox>
     </div>
