@@ -86,6 +86,8 @@ export const MessagingThreadListItem: React.FC<
     </FlexBox>
   );
 
+  const isIndicatorAlignedWithSubContent = subContent && timestamp;
+
   return (
     <div ref={ref}>
       <FlexBox
@@ -114,16 +116,17 @@ export const MessagingThreadListItem: React.FC<
                 {timestamp && _formatDateForTimestamp(timestamp)}
               </div>
             )}
-            {!subContent && indicator}
           </FlexBox>
           {subContent && (
             <FlexBox alignItems={ItemAlign.CENTER}>
               <div className={subContentClass}>{subContent}</div>
-              {timestamp && indicator}
+              {isIndicatorAlignedWithSubContent && indicator}
             </FlexBox>
           )}
         </FlexItem>
-        <FlexItem alignItems={ItemAlign.CENTER}>{subContent && !timestamp && indicator}</FlexItem>
+        <FlexItem alignItems={ItemAlign.CENTER}>
+          {!isIndicatorAlignedWithSubContent && indicator}
+        </FlexItem>
       </FlexBox>
     </div>
   );

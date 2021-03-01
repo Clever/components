@@ -27,10 +27,11 @@ export default class MessagingThreadListItemView extends React.PureComponent {
     isRead: true,
     selected: true,
     hasAlert: false,
+    hasTimestamp: true,
   };
 
   render() {
-    const { status, hasDraft, isRead, selected, hasAlert } = this.state;
+    const { status, hasDraft, isRead, selected, hasAlert, hasTimestamp } = this.state;
 
     return (
       <View
@@ -65,7 +66,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
               hasDraft={hasDraft}
               isRead={isRead}
               selected={selected}
-              timestamp={new Date()}
+              timestamp={hasTimestamp && new Date()}
               hasAlert={hasAlert}
             >
               This is some content!
@@ -89,7 +90,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { status, hasDraft, isRead, selected, hasAlert } = this.state;
+    const { status, hasDraft, isRead, selected, hasAlert, hasTimestamp } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -140,6 +141,15 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             onChange={(e) => this.setState({ hasAlert: e.target.checked })}
           />{" "}
           Has Alert
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={hasTimestamp}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={(e) => this.setState({ hasTimestamp: e.target.checked })}
+          />{" "}
+          Has Timestamp
         </label>
       </FlexBox>
     );
