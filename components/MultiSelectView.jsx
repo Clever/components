@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router";
 import FontAwesome from "react-fontawesome";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
@@ -51,7 +52,10 @@ export default class MultiSelectView extends React.PureComponent {
             isn't available yet and breaking changes may still be introduced.
           </p>
           <p>Updated design for Select component with multi-select option</p>
-          <p>The updated single-item select component is &lt;Select2&gt;</p>
+          <p>
+            The updated single-item select component is{" "}
+            <Link to="/components/select-2">&lt;Select2&gt;</Link>{" "}
+          </p>
           <CodeSample>
             {`
               import {MultiSelect} from "clever-components";
@@ -73,7 +77,7 @@ export default class MultiSelectView extends React.PureComponent {
                 value: `Option ${i + 1}`,
                 content: (
                   <FlexBox>
-                    <FontAwesome name="exclamation-triangle" />
+                    <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
                     <span>Option {i + 1}</span>
                   </FlexBox>
                 ),

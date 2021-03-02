@@ -260,6 +260,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A Select component",
   },
   {
+    componentLink: "select-2",
+    componentImg: "select-2.png",
+    componentName: "Select2",
+    componentImgAlt: "A Select2 component",
+  },
+  {
     componentLink: "stepper",
     componentImg: "stepper.png",
     componentName: "Stepper",
