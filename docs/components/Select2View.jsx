@@ -1,10 +1,19 @@
 import * as React from "react";
+import { Link } from "react-router";
 import FontAwesome from "react-fontawesome";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { Select2, FlexBox, ItemAlign, TextInput, SegmentedControl } from "src";
+import {
+  TextInput2,
+  TextInput2Requirement,
+  Select2,
+  FlexBox,
+  ItemAlign,
+  SegmentedControl,
+  Label,
+} from "src";
 import { FormElementSize } from "../../src/utils/Forms";
 
 import "./Select2View.less";
@@ -13,6 +22,7 @@ const cssClass = {
   CONFIG_CONTAINER: "Select2View--configContainer",
   CONFIG_OPTIONS: "Select2View--configOptions",
   CONFIG: "Select2View--config",
+  CONFIG_LABEL_TEXT: "Select2View--configLabelText",
   CONFIG_TOGGLE: "Select2View--configToggle",
   CONTAINER: "Select2View",
   INTRO: "Select2View--intro",
@@ -23,6 +33,8 @@ export default class Select2View extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
+    label: "Select an option",
+    hideLabel: false,
     clearable: true,
     size: FormElementSize.MEDIUM,
   };
@@ -33,8 +45,15 @@ export default class Select2View extends React.PureComponent {
     return (
       <View className={cssClass.CONTAINER} title="Select2" sourcePath="src/Select2/Select2.tsx">
         <header className={cssClass.INTRO}>
-          <p>TODO: Describe your component/state it's purpose</p>
-          <p>TODO(optional): Describe scenarios where the component might be useful.</p>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> Select2 is in Beta. Complete functionality isn't
+            available yet and breaking changes may still be introduced.
+          </p>
+          <p>Updated design for Select component</p>
+          <p>
+            The updated multi-item select component is{" "}
+            <Link to="/components/multi-select">&lt;MultiSelect&gt;</Link>{" "}
+          </p>
           <CodeSample>
             {`
               import {Select2} from "clever-components";
@@ -49,13 +68,14 @@ export default class Select2View extends React.PureComponent {
             <Select2
               className="my--custom--class"
               name="Select2View--Select2"
-              label="Select an option"
+              label={this.state.label}
+              hideLabel={this.state.hideLabel}
               clearable={this.state.clearable}
               options={new Array(20).fill(0).map((_, i) => ({
                 value: `Option ${i + 1}`,
                 content: (
                   <FlexBox>
-                    <FontAwesome name="exclamation-triangle" />
+                    <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
                     <span>Option {i + 1}</span>
                   </FlexBox>
                 ),
@@ -74,52 +94,40 @@ export default class Select2View extends React.PureComponent {
 
   // TODO: Update or remove config options.
   _renderConfig() {
-    const { multiOption1, optionToggle1, optionToggle2, size } = this.state;
+    const { label, hideLabel, clearable, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
         <div className={cssClass.CONFIG}>
-          <TextInput
-            className={cssClass.CONFIG}
-            label="Error"
-            name="InputError"
-            onChange={(e) => this.setState({ error: e.target.value })}
-            value={this.state.error}
-          />
-        </div>
-        <div className={cssClass.CONFIG}>
-          Size:
-          <SegmentedControl
+          <TextInput2
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ multiOption1: value })}
-            options={[
-              { content: "Small", value: "small" },
-              { content: "Medium", value: "medium" },
-              { content: "Large", value: "large" },
-            ]}
-            value={multiOption1}
+            name="TextInput2View--labelTextInput"
+            label="Label text"
+            requirement={TextInput2Requirement.REQUIRED}
+            onChange={(e) => this.setState({ label: e.target.value })}
+            value={label}
           />
         </div>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={optionToggle1}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ optionToggle1: e.target.checked })}
+            checked={hideLabel}
+            onChange={(e) => this.setState({ hideLabel: e.target.checked })}
           />{" "}
-          Option Toggle 1
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Hide Label</span>
         </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
-            checked={optionToggle2}
+            checked={clearable}
             className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ optionToggle2: e.target.checked })}
+            onChange={(e) => this.setState({ clearable: e.target.checked })}
           />{" "}
-          Option Toggle 2
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Clearable</span>
         </label>
         <div className={cssClass.CONFIG}>
-          <span className={cssClass.CONFIG_TEXT}>Size:</span>
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Size:</span>
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             options={[
