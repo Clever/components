@@ -24,6 +24,10 @@ export interface Props {
   placeholder?: string;
   options: Option[];
   creatable?: boolean;
+  // allow the multi-select pick items an unlimited number of times
+  // NOTE: might be a little wonky since the downshift library might not fully support it
+  // it's also a fringe use case of this MultiSelect that we may want to remove in the future
+  allowDuplicates: boolean;
   onChange?: (options: Option[]) => void;
   size?: Values<typeof FormElementSize>;
 }
@@ -72,6 +76,7 @@ const MultiSelect: React.FC<Props> = ({
   // we will manage the options in state since options are creatable
   options: initialOptions,
   creatable,
+  allowDuplicates,
   onChange,
   size,
 }) => {
@@ -82,16 +87,21 @@ const MultiSelect: React.FC<Props> = ({
     getDropdownProps,
     addSelectedItem,
     removeSelectedItem,
+    setSelectedItems,
     selectedItems,
   } = useMultipleSelection<Option>({
-    itemToString: (o) => o.value,
+    itemToString: (o) => (o ? o.value : ""),
     onSelectedItemsChange: (change) => {
       if (onChange) {
         onChange(change.selectedItems);
       }
     },
   });
-  const selectableOptions = getSelectableOptions(options, selectedItems, inputValue);
+  const selectableOptions = getSelectableOptions(
+    options,
+    allowDuplicates ? [] : selectedItems,
+    inputValue,
+  );
 
   const {
     isOpen,
@@ -195,7 +205,11 @@ const MultiSelect: React.FC<Props> = ({
                 className={cssClass.SELECTED_ITEM_BUTTON}
                 onClick={(e) => {
                   e.stopPropagation();
-                  removeSelectedItem(item);
+                  if (allowDuplicates) {
+                    setSelectedItems([...selectedItems.slice(0, i), ...selectedItems.slice(i + 1)]);
+                  } else {
+                    removeSelectedItem(item);
+                  }
                   if (inputRef.current) {
                     inputRef.current.select();
                   }
