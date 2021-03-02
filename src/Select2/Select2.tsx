@@ -137,22 +137,7 @@ const Select2: React.FC<Props> = ({
           },
         })}
       >
-        <input
-          id={id}
-          name={id}
-          className={cssClass.INPUT}
-          {...getInputProps({
-            ref: inputRef,
-            onClick: (e) => {
-              if (!isOpen) {
-                openMenu();
-                if (inputRef.current) {
-                  inputRef.current.select();
-                }
-              }
-            },
-          })}
-        />
+        <input id={id} name={id} className={cssClass.INPUT} {...getInputProps({ ref: inputRef })} />
         <div className={cssClass.BUTTON_CONTAINER}>
           {clearable && selectedItem && (
             <button
@@ -187,13 +172,7 @@ const Select2: React.FC<Props> = ({
                   i === highlightedIndex && cssClass.MENU_OPTION_HIGHLIGHTED,
                 )}
                 key={`${o.value}${i}`}
-                {...getItemProps({
-                  item: o,
-                  index: i,
-                  onClick: () => {
-                    console.log("clicking!");
-                  },
-                })}
+                {...getItemProps({ item: o, index: i })}
               >
                 {o.content || o.value}
               </li>
