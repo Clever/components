@@ -151,20 +151,64 @@ export default class Select2View extends React.PureComponent {
         title="<Select2 /> Props"
         availableProps={[
           {
-            name: "children",
-            type: "React.Node",
-            description: "Select2 content.",
-          },
-          {
             name: "className",
             type: "string",
             description: "Optional additional CSS class name to apply to the container.",
             optional: true,
           },
           {
-            name: "onPerformAction",
-            type: "Function",
-            description: "Handler function for the performAction event.",
+            name: "name",
+            type: "String",
+            description:
+              "Name for input element which will also be used as the id for the label to reference",
+          },
+          {
+            name: "label",
+            type: "React Node",
+            description: "Label text",
+          },
+          {
+            name: "hideLabel",
+            type: "Boolean",
+            description:
+              "Hide label for visual purposes only (will still be available to screen readers)",
+            optional: true,
+          },
+          {
+            name: "options",
+            type: <code>{"Array<{ value: string, content?: ReactNode }>"}</code>,
+            description:
+              "List of options to be selected. 'value' is the string key and used for searchability, 'content' is an optional react node for custom rendering",
+            optional: true,
+          },
+          {
+            name: "clearable",
+            type: "boolean",
+            description: "If the value chosen is allowed to be clearable",
+            optional: true,
+          },
+          {
+            name: "onChange",
+            type: <code>{"(value: string) => void"}</code>,
+            description: "Called when an option is selected",
+          },
+          {
+            name: "size",
+            type: "string",
+            description: (
+              <p>
+                The size of the input. One of:
+                <br />
+                {Object.keys(FormElementSize).map((size) => (
+                  <span key={size}>
+                    <code>FormElementSize.{size}</code>
+                    <br />
+                  </span>
+                ))}
+              </p>
+            ),
+            optional: true,
+            defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
           },
         ]}
         className={cssClass.PROPS}
