@@ -22,6 +22,7 @@ const cssClass = {
   CONFIG_CONTAINER: "MultiSelectView--configContainer",
   CONFIG_OPTIONS: "MultiSelectView--configOptions",
   CONFIG: "MultiSelectView--config",
+  CONFIG_LABEL_TEXT: "MultiSelectView--configLabelText",
   CONFIG_TOGGLE: "MultiSelectView--configToggle",
   CONTAINER: "MultiSelectView",
   INTRO: "MultiSelectView--intro",
@@ -36,6 +37,7 @@ export default class MultiSelectView extends React.PureComponent {
     hideLabel: false,
     placeholder: "Select or create options",
     creatable: false,
+    allowDuplicates: false,
     size: FormElementSize.MEDIUM,
   };
 
@@ -83,6 +85,7 @@ export default class MultiSelectView extends React.PureComponent {
                 ),
               }))}
               creatable={this.state.creatable}
+              allowDuplicates={this.state.allowDuplicates}
               onChange={console.log}
               size={this.state.size}
             />
@@ -97,7 +100,7 @@ export default class MultiSelectView extends React.PureComponent {
 
   // TODO:Update or remove config options.
   _renderConfig() {
-    const { label, hideLabel, placeholder, creatable, size } = this.state;
+    const { label, hideLabel, placeholder, creatable, allowDuplicates, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -118,7 +121,7 @@ export default class MultiSelectView extends React.PureComponent {
             checked={hideLabel}
             onChange={(e) => this.setState({ hideLabel: e.target.checked })}
           />{" "}
-          <span className={cssClass.CONFIG_TEXT}>Hide Label</span>
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Hide Label</span>
         </label>
         <div className={cssClass.CONFIG}>
           <TextInput2
@@ -137,10 +140,19 @@ export default class MultiSelectView extends React.PureComponent {
             checked={creatable}
             onChange={(e) => this.setState({ creatable: e.target.checked })}
           />{" "}
-          <span className={cssClass.CONFIG_TEXT}>creatable</span>
+          <span className={cssClass.CONFIG_LABEL_TEXT}>creatable</span>
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={allowDuplicates}
+            onChange={(e) => this.setState({ allowDuplicates: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_LABEL_TEXT}>allow duplicates</span>
         </label>
         <div className={cssClass.CONFIG}>
-          <span className={cssClass.CONFIG_TEXT}>Size:</span>
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Size:</span>
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             options={[
@@ -157,7 +169,6 @@ export default class MultiSelectView extends React.PureComponent {
     );
   }
 
-  // TODO: Update prop documentation.
   _renderProps() {
     return (
       <PropDocumentation
@@ -197,7 +208,7 @@ export default class MultiSelectView extends React.PureComponent {
             name: "options",
             type: <code>{"Array<{ value: string, content?: ReactNode }>"}</code>,
             description:
-              "List of options to be selected. 'value' is a react node for custom rendering, but you must have a stringValue for searchability",
+              "List of options to be selected. 'value' is the string key and used for searchability, 'content' is an optional react node for custom rendering",
             optional: true,
           },
           {
