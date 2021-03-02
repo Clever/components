@@ -1,42 +1,40 @@
 @import (reference) "~src/less/utilities";
 
-.NewComponentView--intro {
+.Select2View--intro {
   .margin--bottom--xl;
 }
 
-.NewComponentView--configContainer {
+.Select2View--configContainer {
   .border--top--l(@neutral_silver);
   .margin--top--xl;
   .padding--top--l;
 }
 
-.NewComponentView--config {
+.Select2View--config {
   .flexbox;
   .items--center;
   .margin--bottom--m;
-  .text--caps;
-  .text--small;
 
   &:not(:last-child) {
     .margin--right--m;
   }
 }
 
-.NewComponentView--configLabelText {
+.Select2View--configLabelText {
   .text--caps;
   .text--small;
 }
 
-label.NewComponentView--config {
+label.Select2View--config {
   cursor: pointer;
 }
 
-.NewComponentView--configOptions {
+.Select2View--configOptions {
   .margin--left--2xs;
   display: inline-block;
 }
 
-.NewComponentView--configToggle {
+.Select2View--configToggle {
   cursor: pointer;
 
   &[disabled] {
@@ -44,6 +42,6 @@ label.NewComponentView--config {
   }
 }
 
-.NewComponentView--props {
+.Select2View--props {
   .margin--top--l;
 }

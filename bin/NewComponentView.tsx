@@ -11,6 +11,7 @@ const cssClass = {
   CONFIG_CONTAINER: "NewComponentView--configContainer",
   CONFIG_OPTIONS: "NewComponentView--configOptions",
   CONFIG: "NewComponentView--config",
+  CONFIG_LABEL_TEXT: "TextInput2View--configLabelText",
   CONFIG_TOGGLE: "NewComponentView--configToggle",
   CONTAINER: "NewComponentView",
   INTRO: "NewComponentView--intro",
@@ -87,7 +88,7 @@ export default class NewComponentView extends React.PureComponent {
             className={cssClass.CONFIG_TOGGLE}
             onChange={(e) => this.setState({ optionToggle1: e.target.checked })}
           />{" "}
-          Option Toggle 1
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Option Toggle 1</span>
         </label>
         <label className={cssClass.CONFIG}>
           <input
@@ -96,7 +97,7 @@ export default class NewComponentView extends React.PureComponent {
             className={cssClass.CONFIG_TOGGLE}
             onChange={(e) => this.setState({ optionToggle2: e.target.checked })}
           />{" "}
-          Option Toggle 2
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Option Toggle 2</span>
         </label>
       </FlexBox>
     );
