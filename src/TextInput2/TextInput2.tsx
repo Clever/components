@@ -103,21 +103,19 @@ const TextInput2: React.FC<Props> = ({
 
   return (
     <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
-      {
-        <div className={classnames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
-          <label
-            className={classnames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
-            htmlFor={id}
-          >
-            {label}
+      <div className={classnames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
+        <label
+          className={classnames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
+          htmlFor={id}
+        >
+          {label}
+        </label>
+        {requirement && (
+          <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" htmlFor={id}>
+            {requirement}
           </label>
-          {requirement && (
-            <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" htmlFor={id}>
-              {requirement}
-            </label>
-          )}
-        </div>
-      }
+        )}
+      </div>
       <div
         className={classnames(
           cssClass.INPUT_CONTAINER,
