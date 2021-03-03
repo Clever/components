@@ -90,7 +90,6 @@ export default class MultiSelectView extends React.PureComponent {
     );
   }
 
-  // TODO:Update or remove config options.
   _renderConfig() {
     const { label, hideLabel, placeholder, creatable, allowDuplicates, size } = this.state;
 
