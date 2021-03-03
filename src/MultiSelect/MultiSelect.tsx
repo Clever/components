@@ -50,18 +50,30 @@ export const cssClass = {
   NO_OPTIONS_FOUND: "MultiSelect--notFound",
 };
 
-function getSelectableOptions(options: Option[], selectedItems: Option[], inputValue: string) {
+function getSelectableOptions(
+  options: Option[],
+  selectedItems: Option[],
+  inputValue: string,
+  creatable: boolean,
+) {
   const selectedValues = new Set<string>(selectedItems.map((si) => si.value));
   const inputLowerCase = inputValue.toLocaleLowerCase();
-  return [
-    // add a dummy "add item X" placeholder, we will optionally show it via the render code
-    { value: ADD_NEW_ITEM_KEY },
-    ...options.filter(
-      (o) =>
-        !selectedValues.has(o.value) &&
-        (inputValue === "" || o.value.toLocaleLowerCase().includes(inputLowerCase)),
-    ),
-  ];
+
+  const selectableOptions = options.filter(
+    (o) =>
+      !selectedValues.has(o.value) &&
+      (inputValue === "" || o.value.toLocaleLowerCase().includes(inputLowerCase)),
+  );
+
+  const hasExactMatch = options.some((o) => o.value.toLocaleLowerCase() === inputLowerCase);
+  const creatableOption = [];
+  if (creatable && !!inputValue && !hasExactMatch && selectableOptions.length === 0) {
+    // add a dummy "add item X" placeholder
+    // it will be special-case rendered and handled
+    creatableOption.push({ value: ADD_NEW_ITEM_KEY });
+  }
+
+  return [...creatableOption, ...selectableOptions];
 }
 
 /*
@@ -97,10 +109,12 @@ const MultiSelect: React.FC<Props> = ({
       }
     },
   });
+
   const selectableOptions = getSelectableOptions(
     options,
     allowDuplicates ? [] : selectedItems,
     inputValue,
+    creatable,
   );
 
   const {
@@ -167,8 +181,6 @@ const MultiSelect: React.FC<Props> = ({
 
   const id = name;
   const inputRef = useRef<HTMLInputElement>();
-  const inputLowerCase = inputValue.toLocaleLowerCase();
-  const hasExactMatch = options.some((o) => o.value.toLocaleLowerCase() === inputLowerCase);
   return (
     <div className={classNames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
       <label
@@ -247,17 +259,11 @@ const MultiSelect: React.FC<Props> = ({
         {...getMenuProps()}
       >
         {isOpen &&
-          // only the dummy "add item X" option exists
-          (selectableOptions.length === 1 && (!creatable || hasExactMatch) ? (
+          (selectableOptions.length === 0 ? (
             <li className={classNames(cssClass.NO_OPTIONS_FOUND)}>No options</li>
           ) : (
             selectableOptions.map((o, i) => {
               const isAddNewItemOption = o.value === ADD_NEW_ITEM_KEY;
-              // hide the first dummy "add item X" option if not eligible
-              if (isAddNewItemOption && (!inputValue || !creatable || hasExactMatch)) {
-                return null;
-              }
-
               return (
                 <li
                   className={classNames(
