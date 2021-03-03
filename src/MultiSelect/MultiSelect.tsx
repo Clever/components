@@ -28,7 +28,7 @@ export interface Props {
   // allow the multi-select pick items an unlimited number of times
   // NOTE: might be a little wonky since the downshift library might not fully support it
   // it's also a fringe use case of this MultiSelect that we may want to remove in the future
-  allowDuplicates: boolean;
+  allowDuplicates?: boolean;
   onChange?: (options: Option[]) => void;
   size?: Values<typeof FormElementSize>;
 }
