@@ -4,15 +4,8 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {
-  TextInput2,
-  TextInput2Requirement,
-  FlexBox,
-  ItemAlign,
-  SegmentedControl,
-  Label,
-} from "src";
-import { FormElementSize } from "../../src/utils/Forms";
+import { TextInput2, FlexBox, ItemAlign, SegmentedControl, Label } from "src";
+import { FormElementSize, FormElementRequirement } from "../../src/utils/Forms";
 
 import "./TextInput2View.less";
 
@@ -37,7 +30,7 @@ export default class TextInput2View extends React.PureComponent {
     placeholder: "kstark",
     helpText: "first name and last initial",
     showIcon: false,
-    requirement: TextInput2Requirement.REQUIRED,
+    requirement: FormElementRequirement.REQUIRED,
     obscurable: false,
     initialIsInError: false,
     size: FormElementSize.MEDIUM,
@@ -113,7 +106,7 @@ export default class TextInput2View extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             name="TextInput2View--labelTextInput"
             label="Label text"
-            requirement={TextInput2Requirement.REQUIRED}
+            requirement={FormElementRequirement.REQUIRED}
             onChange={(e) => this.setState({ label: e.target.value })}
             value={label}
           />
@@ -132,7 +125,7 @@ export default class TextInput2View extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             name="TextInput2View--placeholderTextInput"
             label="Placeholder text"
-            requirement={TextInput2Requirement.OPTIONAL}
+            requirement={FormElementRequirement.OPTIONAL}
             onChange={(e) => this.setState({ placeholder: e.target.value })}
             value={placeholder}
           />
@@ -142,7 +135,7 @@ export default class TextInput2View extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             name="TextInput2View--helpTextInput"
             label="Help text"
-            requirement={TextInput2Requirement.OPTIONAL}
+            requirement={FormElementRequirement.OPTIONAL}
             onChange={(e) => this.setState({ helpText: e.target.value })}
             value={helpText}
           />
@@ -180,9 +173,9 @@ export default class TextInput2View extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             options={[
               { content: "none", value: "" },
-              { content: "optional", value: TextInput2Requirement.OPTIONAL },
-              { content: "required", value: TextInput2Requirement.REQUIRED },
-              { content: "disabled", value: TextInput2Requirement.DISABLED },
+              { content: "optional", value: FormElementRequirement.OPTIONAL },
+              { content: "required", value: FormElementRequirement.REQUIRED },
+              { content: "disabled", value: FormElementRequirement.DISABLED },
             ]}
             value={requirement}
             onSelect={(value) => this.setState({ requirement: value })}

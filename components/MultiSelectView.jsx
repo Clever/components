@@ -5,16 +5,8 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {
-  TextInput2,
-  TextInput2Requirement,
-  MultiSelect,
-  FlexBox,
-  ItemAlign,
-  SegmentedControl,
-  Label,
-} from "src";
-import { FormElementSize } from "../../src/utils/Forms";
+import { TextInput2, MultiSelect, FlexBox, ItemAlign, SegmentedControl, Label } from "src";
+import { FormElementSize, FormElementRequirement } from "../../src/utils/Forms";
 
 import "./MultiSelectView.less";
 
@@ -109,7 +101,7 @@ export default class MultiSelectView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             name="TextInput2View--labelTextInput"
             label="Label text"
-            requirement={TextInput2Requirement.REQUIRED}
+            requirement={FormElementRequirement.REQUIRED}
             onChange={(e) => this.setState({ label: e.target.value })}
             value={label}
           />
@@ -128,7 +120,7 @@ export default class MultiSelectView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             name="TextInput2View--placeholderTextInput"
             label="Placeholder text"
-            requirement={TextInput2Requirement.OPTIONAL}
+            requirement={FormElementRequirement.OPTIONAL}
             onChange={(e) => this.setState({ placeholder: e.target.value })}
             value={placeholder}
           />

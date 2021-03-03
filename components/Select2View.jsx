@@ -5,16 +5,8 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import {
-  TextInput2,
-  TextInput2Requirement,
-  Select2,
-  FlexBox,
-  ItemAlign,
-  SegmentedControl,
-  Label,
-} from "src";
-import { FormElementSize } from "../../src/utils/Forms";
+import { TextInput2, Select2, FlexBox, ItemAlign, SegmentedControl, Label } from "src";
+import { FormElementSize, FormElementRequirement } from "../../src/utils/Forms";
 
 import "./Select2View.less";
 
@@ -36,6 +28,8 @@ export default class Select2View extends React.PureComponent {
     label: "Select an option",
     hideLabel: false,
     clearable: true,
+    required: true,
+    initialIsInError: false,
     size: FormElementSize.MEDIUM,
   };
 
@@ -70,7 +64,6 @@ export default class Select2View extends React.PureComponent {
               name="Select2View--Select2"
               label={this.state.label}
               hideLabel={this.state.hideLabel}
-              clearable={this.state.clearable}
               options={new Array(20).fill(0).map((_, i) => ({
                 value: `Option ${i + 1}`,
                 content: (
@@ -80,6 +73,9 @@ export default class Select2View extends React.PureComponent {
                   </FlexBox>
                 ),
               }))}
+              clearable={this.state.clearable}
+              requirement={this.state.required ? "required" : ""}
+              initialIsInError={this.state.initialIsInError}
               onChange={console.log}
               size={this.state.size}
             />
@@ -92,9 +88,8 @@ export default class Select2View extends React.PureComponent {
     );
   }
 
-  // TODO: Update or remove config options.
   _renderConfig() {
-    const { label, hideLabel, clearable, size } = this.state;
+    const { label, hideLabel, clearable, required, initialIsInError, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -103,7 +98,7 @@ export default class Select2View extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             name="TextInput2View--labelTextInput"
             label="Label text"
-            requirement={TextInput2Requirement.REQUIRED}
+            requirement={FormElementRequirement.REQUIRED}
             onChange={(e) => this.setState({ label: e.target.value })}
             value={label}
           />
@@ -125,6 +120,24 @@ export default class Select2View extends React.PureComponent {
             onChange={(e) => this.setState({ clearable: e.target.checked })}
           />{" "}
           <span className={cssClass.CONFIG_LABEL_TEXT}>Clearable</span>
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={required}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={(e) => this.setState({ required: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Required</span>
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={initialIsInError}
+            onChange={(e) => this.setState({ initialIsInError: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Initial error</span>
         </label>
         <div className={cssClass.CONFIG}>
           <span className={cssClass.CONFIG_LABEL_TEXT}>Size:</span>
@@ -185,6 +198,18 @@ export default class Select2View extends React.PureComponent {
             name: "clearable",
             type: "boolean",
             description: "If the value chosen is allowed to be clearable",
+            optional: true,
+          },
+          {
+            name: "requirement",
+            type: '"required"',
+            description: "Indicator to note if the input is required",
+            optional: true,
+          },
+          {
+            name: "initialIsInError",
+            type: "boolean",
+            description: "Intialize the component in an error state",
             optional: true,
           },
           {
