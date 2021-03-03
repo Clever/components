@@ -10,7 +10,8 @@ import { Values } from "../utils/types";
 
 import "./MultiSelect.less";
 
-const ADD_NEW_ITEM_KEY = "MultiSelect--addNewItem";
+// export for testing
+export const ADD_NEW_ITEM_KEY = "MultiSelect--addNewItem";
 
 // value represents the searchable text of the option
 type Option = { value: string; content?: React.ReactNode };
@@ -50,7 +51,8 @@ export const cssClass = {
   NO_OPTIONS_FOUND: "MultiSelect--notFound",
 };
 
-function getSelectableOptions(
+// export for testing
+export function getSelectableOptions(
   options: Option[],
   selectedItems: Option[],
   inputValue: string,
@@ -59,13 +61,20 @@ function getSelectableOptions(
   const selectedValues = new Set<string>(selectedItems.map((si) => si.value));
   const inputLowerCase = inputValue.toLocaleLowerCase();
 
-  const selectableOptions = options.filter(
-    (o) =>
-      !selectedValues.has(o.value) &&
-      (inputValue === "" || o.value.toLocaleLowerCase().includes(inputLowerCase)),
-  );
+  let hasExactMatch = false;
+  const selectableOptions = options.filter((o) => {
+    const optionLowerCase = o.value.toLocaleLowerCase();
+    // small performance optimization to process exact match within the same iterator
+    if (optionLowerCase === inputLowerCase) {
+      hasExactMatch = true;
+    }
 
-  const hasExactMatch = options.some((o) => o.value.toLocaleLowerCase() === inputLowerCase);
+    return (
+      !selectedValues.has(o.value) &&
+      (inputValue === "" || optionLowerCase.includes(inputLowerCase))
+    );
+  });
+
   const creatableOption = [];
   if (creatable && !!inputValue && !hasExactMatch && selectableOptions.length === 0) {
     // add a dummy "add item X" placeholder
