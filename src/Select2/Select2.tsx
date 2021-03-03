@@ -187,6 +187,10 @@ const Select2: React.FC<Props> = ({
             onClick={(e) => {
               e.stopPropagation();
               selectItem(null);
+              openMenu();
+              if (inputRef.current) {
+                inputRef.current.select();
+              }
             }}
           >
             {/* https://www.compart.com/en/unicode/U+2715 */}
