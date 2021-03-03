@@ -6,8 +6,19 @@
   position: relative;
 }
 
-.Select2--label {
+.Select2--infoRow {
+  .flexbox();
+  .justify--between();
   .padding--bottom--2xs();
+  color: @neutral_medium_gray;
+  .text--small();
+
+  &--labelHidden {
+    .justify--end();
+  }
+}
+
+.Select2--label {
   color: @neutral_medium_gray;
   .text--small();
 
@@ -28,6 +39,10 @@
     border: 0;
     /* stylelint-enable */
   }
+}
+
+.Select2--infoRequirement {
+  .text--italic();
 }
 
 .Select2--selectContainer {

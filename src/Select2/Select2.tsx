@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { useCombobox } from "downshift";
 import * as FontAwesome from "react-fontawesome";
 
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, FormElementRequirement } from "../utils/Forms";
 import { Values } from "../utils/types";
 
 import "./Select2.less";
@@ -20,12 +20,17 @@ export interface Props {
   hideLabel?: boolean;
   options: Option[];
   clearable?: boolean;
+  // TODO: support all requirement types
+  requirement?: typeof FormElementRequirement.REQUIRED;
   onChange?: (value: string) => void;
   size?: Values<typeof FormElementSize>;
 }
 
 export const cssClass = {
   CONTAINER: "Select2--container",
+  INFO_ROW: "Select2--infoRow",
+  INFO_ROW_LABEL_HIDDEN: "Select2--infoRow--labelHidden",
+  INFO_REQUIREMENT: "Select2--infoRequirement",
   LABEL: "Select2--label",
   LABEL_HIDDEN: "Select2--label--hidden",
   SELECT_CONTAINER: "Select2--selectContainer",
@@ -52,6 +57,7 @@ const Select2: React.FC<Props> = ({
   hideLabel,
   options,
   clearable,
+  requirement,
   onChange,
   size,
 }) => {
@@ -115,12 +121,19 @@ const Select2: React.FC<Props> = ({
   const inputRef = useRef<HTMLInputElement>();
   return (
     <div className={classNames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
-      <label
-        className={classNames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
-        {...getLabelProps()}
-      >
-        {label}
-      </label>
+      <div className={classNames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
+        <label
+          className={classNames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
+          {...getLabelProps()}
+        >
+          {label}
+        </label>
+        {requirement && (
+          <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" {...getLabelProps()}>
+            {requirement}
+          </label>
+        )}
+      </div>
       <div
         className={classNames(
           cssClass.SELECT_CONTAINER,
