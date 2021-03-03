@@ -1,19 +1,21 @@
 {
   "presets": [
-    "es2015",
-    "react",
-    "stage-3"
+    [
+      "@babel/preset-react"
+    ],
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": {
+          "version": "2.4",
+          "proposals": true
+        }
+      }
+    ]
   ],
   "plugins": [
     "./transform-code-string",
-    "transform-class-properties",
-    "transform-es2015-destructuring",
-    "transform-object-assign",
-    "transform-object-rest-spread",
-    ["transform-runtime", {
-      "helpers": false,
-      "polyfill": false,
-      "regenerator": true
-    }]
+    "@babel/plugin-proposal-class-properties"
   ]
 }

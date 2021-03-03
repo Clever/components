@@ -15,7 +15,7 @@ TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" 
 TESTS := $(TESTS_TS)
 FORMATTED_FILES := $(JS_FILES) $(JSX_FILES) $(TS_FILES) $(TSX_FILES) $(LESS_FILES)
 MODIFIED_FILES := $(shell git diff --name-only master $(FORMATTED_FILES))
-WEBPACK := node_modules/webpack/bin/webpack.js
+WEBPACK := npx webpack
 
 .PHONY: dev-server test lint format-check clean compile docs build new $(TESTS) styles gen-sizing-styles
 .PHONY: gen-border-styles gen-border-radius-styles deploy-docs generate gen-colors
