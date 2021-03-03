@@ -15,9 +15,9 @@ TESTS_TS := $(shell find . -regex ".*_test\.tsx*" -not -path "./node_modules/*" 
 TESTS := $(TESTS_TS)
 FORMATTED_FILES := $(JS_FILES) $(JSX_FILES) $(TS_FILES) $(TSX_FILES) $(LESS_FILES)
 MODIFIED_FILES := $(shell git diff --name-only master $(FORMATTED_FILES))
-WEBPACK := node_modules/webpack/bin/webpack.js
+WEBPACK := npx webpack
 
-.PHONY: dev-server test lint format-check clean compile docs build new $(TESTS) styles gen-sizing-styles
+.PHONY: dev-server test lint format-check clean compile docs build new $(TESTS) gen-sizing-styles
 .PHONY: gen-border-styles gen-border-radius-styles deploy-docs generate gen-colors
 
 GREEN_CHECK_MARK := " \033[0;32m✓\033[0m"
@@ -58,11 +58,7 @@ docs:
 	@echo '✓ Rebuild docs'
 	@$(WEBPACK)
 
-build: clean compile styles
-
-styles:
-	@echo "Building stylesheet"
-	@$(WEBPACK) --config webpack_styles.config.js
+build: clean compile
 
 generate: gen-sizing-styles gen-border-styles gen-border-radius-styles gen-colors
 
