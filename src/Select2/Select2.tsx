@@ -1,10 +1,10 @@
 import * as classNames from "classnames";
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCombobox } from "downshift";
 import * as FontAwesome from "react-fontawesome";
 
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, FormElementRequirement } from "../utils/Forms";
 import { Values } from "../utils/types";
 
 import "./Select2.less";
@@ -20,18 +20,26 @@ export interface Props {
   hideLabel?: boolean;
   options: Option[];
   clearable?: boolean;
+  // TODO: support all requirement types
+  requirement?: typeof FormElementRequirement.REQUIRED;
+  initialIsInError?: boolean;
   onChange?: (value: string) => void;
   size?: Values<typeof FormElementSize>;
 }
 
 export const cssClass = {
   CONTAINER: "Select2--container",
+  INFO_ROW: "Select2--infoRow",
+  INFO_ROW_LABEL_HIDDEN: "Select2--infoRow--labelHidden",
+  INFO_REQUIREMENT: "Select2--infoRequirement",
   LABEL: "Select2--label",
   LABEL_HIDDEN: "Select2--label--hidden",
   SELECT_CONTAINER: "Select2--selectContainer",
   SELECT_CONTAINER_FOCUSED: "Select2--selectContainer--focused",
+  SELECT_CONTAINER_ERROR: "Select2--selectContainer--error",
   INPUT: "Select2--input",
-  BUTTON_CONTAINER: "Select2--buttonContainer",
+  TRAILING_ELEMENT: "Select2--trailingElement",
+  ERROR_ICON: "Select2--errorIcon",
   BUTTON_RESET: "Select2--button--reset",
   CLEAR_BUTTON: "Select2--clearButton",
   CARET_BUTTON: "Select2--caretButton",
@@ -52,10 +60,20 @@ const Select2: React.FC<Props> = ({
   hideLabel,
   options,
   clearable,
+  requirement,
+  initialIsInError,
   onChange,
   size,
 }) => {
   const [selectableOptions, setSelectableOptions] = useState(options);
+
+  // handle inital error state via focus state since
+  // hooks can't combine the downshift state well with component hook state
+  const [hasBeenFocused, setHasBeenFocused] = useState(false);
+  useEffect(() => {
+    setHasBeenFocused(false);
+  }, [initialIsInError]);
+
   const {
     isOpen,
     getToggleButtonProps,
@@ -111,20 +129,31 @@ const Select2: React.FC<Props> = ({
     },
   });
 
+  const isInError =
+    requirement === FormElementRequirement.REQUIRED &&
+    (hasBeenFocused ? !selectedItem : initialIsInError);
   const id = name;
   const inputRef = useRef<HTMLInputElement>();
   return (
     <div className={classNames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
-      <label
-        className={classNames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
-        {...getLabelProps()}
-      >
-        {label}
-      </label>
+      <div className={classNames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
+        <label
+          className={classNames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
+          {...getLabelProps()}
+        >
+          {label}
+        </label>
+        {requirement && (
+          <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" {...getLabelProps()}>
+            {requirement}
+          </label>
+        )}
+      </div>
       <div
         className={classNames(
           cssClass.SELECT_CONTAINER,
           isOpen && cssClass.SELECT_CONTAINER_FOCUSED,
+          isInError && cssClass.SELECT_CONTAINER_ERROR,
         )}
         {...getComboboxProps({
           onClick: (e) => {
@@ -137,27 +166,47 @@ const Select2: React.FC<Props> = ({
           },
         })}
       >
-        <input id={id} name={id} className={cssClass.INPUT} {...getInputProps({ ref: inputRef })} />
-        <div className={cssClass.BUTTON_CONTAINER}>
-          {clearable && selectedItem && (
-            <button
-              className={classNames(cssClass.BUTTON_RESET, cssClass.CLEAR_BUTTON)}
-              onClick={(e) => {
-                e.stopPropagation();
-                selectItem(null);
-              }}
-            >
-              {/* https://www.compart.com/en/unicode/U+2715 */}
-              &#10005;
-            </button>
-          )}
+        <input
+          id={id}
+          name={id}
+          className={cssClass.INPUT}
+          {...getInputProps({ ref: inputRef, onFocus: () => setHasBeenFocused(true) })}
+        />
+        {isInError && (
+          <div className={classNames(cssClass.TRAILING_ELEMENT, cssClass.ERROR_ICON)}>
+            <FontAwesome name="exclamation-circle" />
+          </div>
+        )}
+        {clearable && selectedItem && (
           <button
-            className={classNames(cssClass.BUTTON_RESET, cssClass.CARET_BUTTON)}
-            {...getToggleButtonProps()}
+            className={classNames(
+              cssClass.BUTTON_RESET,
+              cssClass.TRAILING_ELEMENT,
+              cssClass.CLEAR_BUTTON,
+            )}
+            onClick={(e) => {
+              e.stopPropagation();
+              selectItem(null);
+              openMenu();
+              if (inputRef.current) {
+                inputRef.current.select();
+              }
+            }}
           >
-            <FontAwesome name={isOpen ? "caret-up" : "caret-down"} />
+            {/* https://www.compart.com/en/unicode/U+2715 */}
+            &#10005;
           </button>
-        </div>
+        )}
+        <button
+          className={classNames(
+            cssClass.BUTTON_RESET,
+            cssClass.TRAILING_ELEMENT,
+            cssClass.CARET_BUTTON,
+          )}
+          {...getToggleButtonProps()}
+        >
+          <FontAwesome name={isOpen ? "caret-up" : "caret-down"} />
+        </button>
       </div>
       <ul
         className={classNames(cssClass.MENU_RESET, isOpen && cssClass.MENU_OPEN)}

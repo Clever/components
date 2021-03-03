@@ -4,16 +4,10 @@ import { useState, useEffect } from "react";
 
 import * as FontAwesome from "react-fontawesome";
 import { Button } from "../Button/Button";
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, FormElementRequirement } from "../utils/Forms";
 import { Values } from "../utils/types";
 
 import "./TextInput2.less";
-
-export const TextInput2Requirement = {
-  OPTIONAL: "optional",
-  REQUIRED: "required",
-  DISABLED: "disabled",
-} as const;
 
 export interface Props {
   className?: string;
@@ -24,7 +18,7 @@ export interface Props {
   placeholder?: string;
   helpText?: React.ReactNode;
   icon?: React.ReactNode;
-  requirement?: Values<typeof TextInput2Requirement>;
+  requirement?: Values<typeof FormElementRequirement>;
   obscurable?: boolean;
   initialIsInError?: boolean;
   // returns an error message, null for no error
@@ -82,7 +76,7 @@ const TextInput2: React.FC<Props> = ({
   const [errorMessage, setErrorMessage] = useState(initialIsInError ? "" : null);
 
   useEffect(() => {
-    if (requirement === TextInput2Requirement.REQUIRED && value === "") {
+    if (requirement === FormElementRequirement.REQUIRED && value === "") {
       setErrorMessage(initialIsInError ? "" : null);
     }
   }, [initialIsInError]);
@@ -93,7 +87,7 @@ const TextInput2: React.FC<Props> = ({
       return;
     }
 
-    if (requirement === TextInput2Requirement.REQUIRED && value === "") {
+    if (requirement === FormElementRequirement.REQUIRED && value === "") {
       setErrorMessage("");
       return;
     }
@@ -109,27 +103,25 @@ const TextInput2: React.FC<Props> = ({
 
   return (
     <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
-      {
-        <div className={classnames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
-          <label
-            className={classnames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
-            htmlFor={id}
-          >
-            {label}
+      <div className={classnames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
+        <label
+          className={classnames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
+          htmlFor={id}
+        >
+          {label}
+        </label>
+        {requirement && (
+          <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" htmlFor={id}>
+            {requirement}
           </label>
-          {requirement && (
-            <label className={cssClass.INFO_REQUIREMENT} aria-live="polite" htmlFor={id}>
-              {requirement}
-            </label>
-          )}
-        </div>
-      }
+        )}
+      </div>
       <div
         className={classnames(
           cssClass.INPUT_CONTAINER,
           isFocused && cssClass.INPUT_CONTAINER_FOCUSED,
           errorMessage != null && cssClass.INPUT_CONTAINER_ERROR,
-          requirement === TextInput2Requirement.DISABLED && cssClass.INPUT_CONTAINER_DISABLED,
+          requirement === FormElementRequirement.DISABLED && cssClass.INPUT_CONTAINER_DISABLED,
         )}
       >
         {icon && <i className={cssClass.LEADING_ICON}>{icon}</i>}
@@ -141,7 +133,7 @@ const TextInput2: React.FC<Props> = ({
           type={inputType}
           value={value}
           placeholder={placeholder}
-          disabled={requirement === TextInput2Requirement.DISABLED}
+          disabled={requirement === FormElementRequirement.DISABLED}
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}

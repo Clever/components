@@ -132,7 +132,6 @@ export { FamilyPortalLogo } from "./FamilyPortalLogo";
 
 import TextInput2 from "./TextInput2";
 export { TextInput2 };
-export { TextInput2Requirement } from "./TextInput2";
 
 import MultiSelect from "./MultiSelect";
 export { MultiSelect };
