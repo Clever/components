@@ -13,3 +13,10 @@ export const FormElementSize = {
 export function formElementSizeClassName(size: Size) {
   return `dewey--formElementSize--${size}`;
 }
+
+export const FormElementRequirement = {
+  // may be removed in the future
+  OPTIONAL: "optional",
+  REQUIRED: "required",
+  DISABLED: "disabled",
+} as const;
