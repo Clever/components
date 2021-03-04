@@ -68,6 +68,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
               selected={selected}
               timestamp={hasTimestamp && new Date()}
               hasAlert={hasAlert}
+              alertTooltip="This is an alert"
             >
               This is some content!
             </MessagingThreadListItem>
@@ -160,6 +161,12 @@ export default class MessagingThreadListItemView extends React.PureComponent {
       <PropDocumentation
         title="<MessagingThreadListItem /> Props"
         availableProps={[
+          {
+            name: "alertTooltip",
+            type: "string",
+            description: "Tooltip message to display for alert indicator",
+            optional: true,
+          },
           {
             name: "children",
             type: "React.Node",

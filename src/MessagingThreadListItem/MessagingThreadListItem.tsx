@@ -5,6 +5,7 @@ import * as FontAwesome from "react-fontawesome";
 
 import { FlexBox, FlexItem, ItemAlign, Justify } from "../index";
 import { DraftPencilIcon } from "./DraftPencilIcon";
+import { Tooltip } from "../Tooltip";
 
 import "./MessagingThreadListItem.less";
 
@@ -40,6 +41,7 @@ type Props = {
   timestamp?: Date;
   title: string;
   hasAlert?: boolean;
+  alertTooltip?: string;
 };
 
 export const MessagingThreadListItem: React.FC<
@@ -58,6 +60,7 @@ export const MessagingThreadListItem: React.FC<
     offStatusText,
     onClick,
     hasAlert,
+    alertTooltip,
   } = props;
 
   let subContent: React.ReactNode;
@@ -72,7 +75,17 @@ export const MessagingThreadListItem: React.FC<
 
   let indicatorIcon: React.ReactNode;
   if (hasAlert) {
-    indicatorIcon = <FontAwesome name="exclamation-triangle" />;
+    indicatorIcon = alertTooltip ? (
+      <Tooltip
+        content={alertTooltip}
+        placement={Tooltip.Placement.BOTTOM}
+        textAlign={Tooltip.Align.CENTER}
+      >
+        <FontAwesome name="exclamation-triangle" />
+      </Tooltip>
+    ) : (
+      <FontAwesome name="exclamation-triangle" />
+    );
   } else if (!isRead) {
     indicatorIcon = (
       <div aria-label={`Unread messages in thread ${title}`} className={cssClasses.UNREAD_ORB} />
