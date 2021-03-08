@@ -28,7 +28,7 @@ function randomElement(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
-function newMessage() {
+function newMessage(displayAlertMessageAfter = false) {
   const message = randomElement(["Hello!", "Hi!", "How are you doing?"]);
   const placement = randomElement(["left", "right"]);
   newestTime.add(6, "hours");
@@ -43,6 +43,9 @@ function newMessage() {
     timestamp: new Date(newestTime),
     index: currentMessageIndex,
     readStatusText: "Read",
+    attributes: displayAlertMessageAfter && {
+      displayAlertMessageAfter: "guardian_created_account",
+    },
   };
 }
 
@@ -103,10 +106,15 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
     this.setState({ messages: [...this.state.messages, newMessage()] });
   };
 
+  addMessageWithAlert = () => {
+    this.setState({ messages: [...this.state.messages, newMessage(true)] });
+  };
+
   _renderConfig() {
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
         <Button type="primary" value="Add message" onClick={this.addMessage} />
+        <Button type="primary" value="Add message with alert" onClick={this.addMessageWithAlert} />
       </FlexBox>
     );
   }
