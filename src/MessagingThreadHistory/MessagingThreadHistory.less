@@ -17,10 +17,32 @@
   margin-top: auto;
 }
 
+.ThreadHistory--AlertMessage--Container {
+  .border--m(@neutral_silver);
+  .borderRadius--l();
+  .margin--x--xs();
+  .margin--y--xs();
+  .padding--m();
+  align-items: center;
+  color: @neutral_dark_gray;
+}
+
+.ThreadHistory--AlertMessage {
+  .margin--left--m();
+}
+
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
   .ThreadHistory--Divider {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
+  }
+  .ThreadHistory--AlertMessage--Container {
+    .padding--x--s();
+    .padding--y--xs();
+  }
+
+  .ThreadHistory--AlertMessage {
+    font-size: 0.875rem;
   }
 }
