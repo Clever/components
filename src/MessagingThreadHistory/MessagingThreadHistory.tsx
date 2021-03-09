@@ -1,9 +1,8 @@
 import * as React from "react";
 import { useLayoutEffect, useRef } from "react";
-import * as FontAwesome from "react-fontawesome";
 import * as classNames from "classnames";
 import * as moment from "moment";
-import { FlexBox, FlexItem } from "../flex";
+import { AlertMessage } from "./AlertMessage";
 import { MessageMetadata } from "./MessageMetadata";
 import { cssClass as FlexBoxCSS } from "../flex/FlexBox";
 import { cssClass as FlexItemCSS } from "../flex/FlexItem";
@@ -14,8 +13,6 @@ const cssClasses = {
   CONTAINER: "ThreadHistory--Container",
   DIVIDER: "ThreadHistory--Divider",
   FIRST_MESSAGE: "ThreadHistory--FirstMessage",
-  ALERT_MESSAGE_CONTAINER: "ThreadHistory--AlertMessage--Container",
-  ALERT_MESSAGE: "ThreadHistory--AlertMessage",
 };
 
 // Each instance is exactly one message exchanged in this thread.
@@ -25,7 +22,7 @@ export interface MessageData {
   content: React.ReactNode;
   index: number;
   readStatusText?: string;
-  attributes: any;
+  displayAlertMessageAfter?: { icon: string; messageText: string };
 }
 
 interface Props {
@@ -149,17 +146,14 @@ function _interleaveMessagesWithDividers(
         {message.content}
       </MessageMetadata>,
     );
-    if (message.attributes?.displayAlertMessageAfter === "guardian_created_account") {
+    if (message.displayAlertMessageAfter) {
+      const { icon, messageText } = message.displayAlertMessageAfter;
       messagesWithDividers.push(
-        <FlexBox
-          className={cssClasses.ALERT_MESSAGE_CONTAINER}
+        <AlertMessage
           key={`alertMessage-${message.index}`}
-        >
-          <FontAwesome name="check" size="lg" />
-          <FlexItem className={cssClasses.ALERT_MESSAGE} grow>
-            Invite accepted! This guardian can now reply to your messages!
-          </FlexItem>
-        </FlexBox>,
+          icon={icon}
+          messageText={messageText}
+        />,
       );
     }
   });
