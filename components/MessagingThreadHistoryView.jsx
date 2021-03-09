@@ -43,8 +43,9 @@ function newMessage(displayAlertMessageAfter = false) {
     timestamp: new Date(newestTime),
     index: currentMessageIndex,
     readStatusText: "Read",
-    attributes: displayAlertMessageAfter && {
-      displayAlertMessageAfter: "guardian_created_account",
+    displayAlertMessageAfter: displayAlertMessageAfter && {
+      icon: "check",
+      messageText: "Invite accepted! This guardian can now reply to your messages!",
     },
   };
 }
