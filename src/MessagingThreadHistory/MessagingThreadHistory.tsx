@@ -2,6 +2,7 @@ import * as React from "react";
 import { useLayoutEffect, useRef } from "react";
 import * as classNames from "classnames";
 import * as moment from "moment";
+import { AlertMessage } from "./AlertMessage";
 import { MessageMetadata } from "./MessageMetadata";
 import { cssClass as FlexBoxCSS } from "../flex/FlexBox";
 import { cssClass as FlexItemCSS } from "../flex/FlexItem";
@@ -21,6 +22,7 @@ export interface MessageData {
   content: React.ReactNode;
   index: number;
   readStatusText?: string;
+  displayAlertMessageAfter?: { icon: string; messageText: string };
 }
 
 interface Props {
@@ -144,6 +146,16 @@ function _interleaveMessagesWithDividers(
         {message.content}
       </MessageMetadata>,
     );
+    if (message.displayAlertMessageAfter) {
+      const { icon, messageText } = message.displayAlertMessageAfter;
+      messagesWithDividers.push(
+        <AlertMessage
+          key={`alertMessage-${message.index}`}
+          icon={icon}
+          messageText={messageText}
+        />,
+      );
+    }
   });
 
   return messagesWithDividers;
