@@ -137,9 +137,7 @@ export const MessagingThreadListItem: React.FC<
             </FlexBox>
           )}
         </FlexItem>
-        <FlexItem alignItems={ItemAlign.CENTER}>
-          {!isIndicatorAlignedWithSubContent && indicator}
-        </FlexItem>
+        <FlexItem>{!isIndicatorAlignedWithSubContent && indicator}</FlexItem>
       </FlexBox>
     </div>
   );
