@@ -31,7 +31,7 @@ export default class AlertBox2View extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    type: "caution",
+    type: AlertBox2Type.CAUTION,
     isCloseable: false,
   };
 
