@@ -63,9 +63,9 @@ const addRoute: Transform = (file, api, options) => {
       }
 
       // get the value of the "component" prop
-      const currentComponentName = node.expression.name;
+      const currentComponentName = node.expression.name.toLocaleLowerCase();
       // insert the new code once we found an alphabetically later component name
-      if (currentComponentName > options.componentName) {
+      if (currentComponentName > options.componentName.toLocaleLowerCase()) {
         insertIndex = i;
       }
     })

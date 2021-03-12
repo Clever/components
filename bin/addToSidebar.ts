@@ -48,7 +48,7 @@ const transform: Transform = (file, api, options) => {
 
       // insert the new code once we found an alphabetically later component name
       const currentComponentName = node.expression.arguments[1].value.toLocaleLowerCase();
-      if (currentComponentName > options.componentName) {
+      if (currentComponentName > options.componentName.toLocaleLowerCase()) {
         insertIndex = i;
       }
     })
