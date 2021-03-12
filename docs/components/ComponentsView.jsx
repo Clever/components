@@ -32,6 +32,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "An AlertBox component",
   },
   {
+    componentLink: "alert-box-2",
+    componentImg: "alert-box-2.png",
+    componentName: "AlertBox2",
+    componentImgAlt: "An AlertBox2 component",
+  },
+  {
     componentLink: "badge",
     componentImg: "badge-2.png",
     componentName: "Badge",
