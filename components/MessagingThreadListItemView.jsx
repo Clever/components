@@ -28,10 +28,19 @@ export default class MessagingThreadListItemView extends React.PureComponent {
     selected: true,
     hasAlert: false,
     hasTimestamp: true,
+    unreadOrbColor: "primary_blue",
   };
 
   render() {
-    const { status, hasDraft, isRead, selected, hasAlert, hasTimestamp } = this.state;
+    const {
+      status,
+      hasDraft,
+      isRead,
+      selected,
+      hasAlert,
+      hasTimestamp,
+      unreadOrbColor,
+    } = this.state;
 
     return (
       <View
@@ -69,6 +78,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
               timestamp={hasTimestamp && new Date()}
               hasAlert={hasAlert}
               alertTooltip="This is an alert"
+              unreadOrbColor={unreadOrbColor}
             >
               This is some content!
             </MessagingThreadListItem>
@@ -78,8 +88,10 @@ export default class MessagingThreadListItemView extends React.PureComponent {
               title="Smiley Dude"
               status={status}
               hasDraft={hasDraft}
+              isRead={isRead}
               selected={selected}
               hasAlert={hasAlert}
+              unreadOrbColor={unreadOrbColor}
             />
           </ExampleCode>
           {this._renderConfig()}
@@ -91,7 +103,15 @@ export default class MessagingThreadListItemView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { status, hasDraft, isRead, selected, hasAlert, hasTimestamp } = this.state;
+    const {
+      status,
+      hasDraft,
+      isRead,
+      selected,
+      hasAlert,
+      hasTimestamp,
+      unreadOrbColor,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -125,6 +145,18 @@ export default class MessagingThreadListItemView extends React.PureComponent {
           />{" "}
           Is Read
         </label>
+        <div className={cssClass.CONFIG}>
+          Unread Orb Color:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={(value) => this.setState({ unreadOrbColor: value })}
+            options={[
+              { content: "Blue", value: "primary_blue" },
+              { content: "Teal", value: "accent_teal" },
+            ]}
+            value={unreadOrbColor}
+          />
+        </div>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
@@ -235,6 +267,14 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             name: "title",
             type: "string",
             description: "The title of this thread",
+          },
+          {
+            name: "unreadOrbColor",
+            type: "'primary_blue' | 'accent_teal'",
+            description:
+              "The color of the unread message orb. Currently primary_blue is used for the teacher messaging UI, and accent_teal is used for students and guardians",
+            defaultValue: "primary_blue",
+            optional: true,
           },
         ]}
         className={cssClass.PROPS}
