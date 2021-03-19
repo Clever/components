@@ -26,6 +26,11 @@ const cssClasses = {
   UNREAD_TEXT: "ThreadListItem--UnreadText",
 };
 
+const unreadOrbColorClasses = {
+  primary_blue: "ThreadListItem--UnreadOrb--PrimaryBlue",
+  accent_teal: "ThreadListItem--UnreadOrb--AccentTeal",
+};
+
 export type Status = "active" | "off";
 
 type Props = {
@@ -42,6 +47,7 @@ type Props = {
   title: string;
   hasAlert?: boolean;
   alertTooltip?: string;
+  unreadOrbColor?: "accent_teal" | "primary_blue";
 };
 
 export const MessagingThreadListItem: React.FC<
@@ -61,6 +67,7 @@ export const MessagingThreadListItem: React.FC<
     onClick,
     hasAlert,
     alertTooltip,
+    unreadOrbColor,
   } = props;
 
   let subContent: React.ReactNode;
@@ -88,7 +95,13 @@ export const MessagingThreadListItem: React.FC<
     );
   } else if (!isRead) {
     indicatorIcon = (
-      <div aria-label={`Unread messages in thread ${title}`} className={cssClasses.UNREAD_ORB} />
+      <div
+        aria-label={`Unread messages in thread ${title}`}
+        className={classNames(
+          cssClasses.UNREAD_ORB,
+          unreadOrbColor && unreadOrbColorClasses[unreadOrbColor],
+        )}
+      />
     );
   } else if (status === "active" && hasDraft) {
     indicatorIcon = <DraftPencilIcon />;
