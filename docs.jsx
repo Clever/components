@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
+import AlertBox2View from "./components/AlertBox2View";
 import ComponentsView from "./components/ComponentsView";
 import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
 import MessagingAvatarView from "./components/MessagingAvatarView";
@@ -109,6 +110,7 @@ render(
         }}
       >
         <Route path="alert-box(/*)" component={AlertBoxView} />
+        <Route path="alert-box-2(/*)" component={AlertBox2View} />
         <Route path="badge(/*)" component={BadgeView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="checkbox(/*)" component={CheckboxView} />
