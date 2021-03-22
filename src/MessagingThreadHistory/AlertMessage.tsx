@@ -14,8 +14,7 @@ interface Props {
   messageText: string;
 }
 
-export const AlertMessage: React.FC<Props> = React.forwardRef((props: Props) => {
-  const { icon, messageText } = props;
+export const AlertMessage: React.FC<Props> = ({ icon, messageText }: Props) => {
   return (
     <FlexBox className={cssClass("Container")}>
       <FontAwesome name={icon} size="lg" />
@@ -24,4 +23,4 @@ export const AlertMessage: React.FC<Props> = React.forwardRef((props: Props) => 
       </FlexItem>
     </FlexBox>
   );
-});
+};
