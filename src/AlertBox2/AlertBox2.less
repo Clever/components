@@ -1,0 +1,74 @@
+@import (reference) "../less/utilities";
+
+.AlertBox2 {
+  .borderRadius--m();
+  .padding--s();
+  .flexbox();
+  .justify--between();
+  .items--center();
+
+  &--critical {
+    background-color: fade(@alert_red, 15%);
+  }
+
+  &--icon--critical {
+    color: @alert_red;
+  }
+
+  &--caution {
+    background-color: fade(@alert_orange, 15%);
+  }
+
+  &--icon--caution {
+    color: @alert_orange;
+  }
+
+  &--success {
+    background-color: fade(@alert_green, 15%);
+  }
+
+  &--icon--success {
+    color: @alert_green;
+  }
+
+  &--info {
+    background-color: fade(@accent_purple, 15%);
+  }
+
+  &--icon--info {
+    color: @accent_purple;
+  }
+}
+
+.AlertBox2--contentContainer {
+  .flexbox();
+  .items--center();
+  .flex--grow();
+}
+
+.AlertBox2--content {
+  .flex--grow();
+  .text--semi-bold();
+  color: @neutral_dark_gray;
+  .margin--left--m();
+}
+
+.AlertBox2--closeButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0.6;
+  .text--medium();
+  .margin--left--m();
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: @borderRadiusM solid @accent_purple_shade_2;
+  }
+}
