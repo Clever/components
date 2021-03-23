@@ -26,9 +26,11 @@ const cssClasses = {
   UNREAD_TEXT: "ThreadListItem--UnreadText",
 };
 
-const unreadOrbColorClasses = {
-  primary_blue: "ThreadListItem--UnreadOrb--PrimaryBlue",
+type UnreadOrbColor = "accent_teal" | "primary_blue";
+
+const unreadOrbColorClasses: Record<UnreadOrbColor, String> = {
   accent_teal: "ThreadListItem--UnreadOrb--AccentTeal",
+  primary_blue: "ThreadListItem--UnreadOrb--PrimaryBlue",
 };
 
 export type Status = "active" | "off";
@@ -47,7 +49,7 @@ type Props = {
   title: string;
   hasAlert?: boolean;
   alertTooltip?: string;
-  unreadOrbColor?: "accent_teal" | "primary_blue";
+  unreadOrbColor?: UnreadOrbColor;
 };
 
 export const MessagingThreadListItem: React.FC<
