@@ -24,6 +24,7 @@ interface Props {
   sendButtonText?: string;
   /** Temporarily added to allow overriding the text with a translation. */
   labelText?: string;
+  disableSendButton?: boolean;
 }
 
 export interface MessagingInputHandle {
@@ -45,6 +46,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     onBlur,
     sendButtonText = "Send",
     labelText = "Send a message",
+    disableSendButton,
   } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
@@ -101,8 +103,8 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               <span className={cssClass("SendText")}>{sendButtonText}</span>
             </>
           }
-          // Disable the Send if nothing but whitespace is in the input field.
-          disabled={!value.trim()}
+          // Disable the Send if nothing but whitespace is in the input field. Also disable if it is manually disabled
+          disabled={!value.trim() || disableSendButton}
           onClick={() => onSubmit(value.trim())}
         />
       </FlexBox>
