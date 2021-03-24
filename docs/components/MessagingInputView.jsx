@@ -24,10 +24,11 @@ export default class MessagingInputView extends React.PureComponent {
   state = {
     inputValue: "",
     newlineOnEnter: false,
+    disableSendButton: false,
   };
 
   render() {
-    const { inputValue, newlineOnEnter } = this.state;
+    const { inputValue, newlineOnEnter, disableSendButton } = this.state;
 
     return (
       <View
@@ -63,6 +64,7 @@ export default class MessagingInputView extends React.PureComponent {
                 alert(message);
                 this.setState({ inputValue: "" });
               }}
+              disableSendButton={disableSendButton}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -72,6 +74,14 @@ export default class MessagingInputView extends React.PureComponent {
               onChange={({ target }) => this.setState({ newlineOnEnter: target.checked })}
             />{" "}
             Newline on enter
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={disableSendButton}
+              onChange={({ target }) => this.setState({ disableSendButton: target.checked })}
+            />{" "}
+            Disable send button
           </label>
         </Example>
 
@@ -123,6 +133,12 @@ export default class MessagingInputView extends React.PureComponent {
             name: "className",
             type: "string",
             description: "Optional additional CSS class name to apply to the container.",
+            optional: true,
+          },
+          {
+            name: "disableSendButton",
+            type: "boolean",
+            description: "If true, manually disables the send button",
             optional: true,
           },
         ]}
