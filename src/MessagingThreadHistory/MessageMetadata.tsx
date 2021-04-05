@@ -10,7 +10,7 @@ function cssClass(element: string) {
 
 interface Props {
   className?: string;
-  placement: "left" | "right" | "center";
+  placement: "left" | "right" | "center" | "fullWidth";
   timestamp?: Date;
   readStatusText?: string;
   children: React.ReactNode;
@@ -20,11 +20,12 @@ export const MessageMetadata: React.FC<
   Props & { ref?: React.Ref<HTMLDivElement> }
 > = React.forwardRef((props: Props, ref: React.Ref<HTMLDivElement>) => {
   const { className, placement, timestamp, readStatusText, children } = props;
+  const showTimestamp = timestamp && placement !== "fullWidth";
   return (
     <div ref={ref} className={classNames(cssClass("Message--container"), className)}>
       <div className={cssClass(`Message--${placement}`)}>
         {children}
-        {timestamp && (
+        {showTimestamp && (
           <span className={cssClass(`Timestamp--${placement}`)}>
             {_formatDateForTimestamp(timestamp)}
           </span>

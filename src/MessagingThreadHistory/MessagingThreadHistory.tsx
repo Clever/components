@@ -17,7 +17,7 @@ const cssClasses = {
 
 // Each instance is exactly one message exchanged in this thread.
 export interface MessageData {
-  placement: "left" | "right" | "center";
+  placement: "left" | "right" | "center" | "fullWidth";
   timestamp?: Date;
   content: React.ReactNode;
   index: number;
