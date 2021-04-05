@@ -22,11 +22,11 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@types/classnames": "^2.2.3",
+    "@types/classnames": "~2.2.3",
     "@types/linkify-it": "^2.1.0",
     "@types/lodash": "^4.14.165",
     "@types/prop-types": "^15.5.1",
-    "classnames": "^2.2.5",
+    "classnames": "~2.2.5",
     "core-js": "^2.4.1",
     "downshift": "^6.1.0",
     "focus-trap-react": "^6.0.0",
