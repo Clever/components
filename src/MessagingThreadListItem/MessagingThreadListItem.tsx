@@ -6,7 +6,7 @@ import * as FontAwesome from "react-fontawesome";
 import { FlexBox, FlexItem, ItemAlign, Justify } from "../index";
 import { DraftPencilIcon } from "./DraftPencilIcon";
 import { Tooltip } from "../Tooltip";
-import { Label } from "src/Label";
+import Label from "../Label/Label";
 
 import "./MessagingThreadListItem.less";
 
