@@ -9,13 +9,39 @@
   width: 100%;
 }
 
+.MessagingInput--InnerContainer--Content {
+  width: 100%;
+  .margin--right--xs();
+}
+
+.MessagingInput--Reply {
+  align-items: center;
+  justify-content: center;
+  .border--m(@neutral_silver);
+  border-bottom: none;
+  .padding--xs();
+}
+
 .MessagingInput--TextFieldLabel {
   color: @neutral_medium_gray;
   .margin--bottom--2xs();
 }
 
+.MessagingInput--TextFieldLabelHidden {
+  /* stylelint-disable */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+  /* stylelint-enable */
+}
+
 .MessagingInput--TextField {
-  .margin--right--xs();
   .padding--y--none();
   min-height: 2.75rem;
   min-width: 8rem;
