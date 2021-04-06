@@ -127,7 +127,9 @@ export const MessagingThreadListItem: React.FC<
     );
   }
 
-  const isIndicatorAlignedWithSubContent = subContent && timestamp;
+  // "New" Label overrides timestamp
+  const showTimestamp = timestamp && !showNewLabel;
+  const isIndicatorAlignedWithSubContent = subContent && showTimestamp;
 
   return (
     <div ref={ref}>
@@ -154,7 +156,7 @@ export const MessagingThreadListItem: React.FC<
                   selected && cssClasses.TIMESTAMP_SELECTED,
                 )}
               >
-                {timestamp && _formatDateForTimestamp(timestamp)}
+                {showTimestamp && _formatDateForTimestamp(timestamp)}
               </div>
             )}
           </FlexBox>
