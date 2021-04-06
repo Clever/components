@@ -71,11 +71,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
       </label>
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cx(cssClass("InnerContainer--Content"))}>
-          {replyTo && (
-            <FlexBox className={cx(cssClass("Reply"), className)}>
-              {replyTo}
-            </FlexBox>
-          )}
+          {replyTo && <FlexBox className={cx(cssClass("Reply"), className)}>{replyTo}</FlexBox>}
           <TextArea
             ref={textAreaRef}
             className={cssClass("TextField")}
