@@ -59,8 +59,11 @@ export default class MessagingBubbleView extends React.PureComponent {
             <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
               Hello World!
             </MessagingBubble>
-            <MessagingBubble theme={theme}>
+            <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
               Links like https://clever.com are clickable
+            </MessagingBubble>
+            <MessagingBubble theme={theme} replyTo={"This is a message!"}>
+              This is a reply to that message!
             </MessagingBubble>
           </ExampleCode>
           {this._renderConfig()}
@@ -112,6 +115,12 @@ export default class MessagingBubbleView extends React.PureComponent {
             name: "className",
             type: "string",
             description: "Optional additional CSS class name to apply to the container.",
+            optional: true,
+          },
+          {
+            name: "replyTo",
+            type: "React.ReactNode",
+            description: "Optional prop to use for message reply content",
             optional: true,
           },
         ]}

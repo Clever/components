@@ -1,29 +1,40 @@
 @import (reference) "../less/index";
 
-.MessagingBubble--Message--Own {
-  background-color: @neutral_dark_gray;
+// shared styling across bubble variations
+.MessagingBubble--Message {
   border-radius: 0.3125rem;
-  color: @neutral_white;
   font-size: 1rem;
   max-width: 25rem;
-  overflow-wrap: break-word;
   .padding--xs();
   .text--line-height-4();
+  overflow-wrap: break-word;
   white-space: pre-wrap;
   word-wrap: break-word; // IE name for overflow-wrap
+}
+
+.MessagingBubble--Message--Own {
+  background-color: @neutral_dark_gray;
+  color: @neutral_white;
 }
 
 .MessagingBubble--Message--Other {
   background-color: #f3f5fd; /* stylelint-disable-line */
   border-radius: 0.3125rem;
   color: @neutral_black;
-  font-size: 1rem;
-  max-width: 25rem;
-  overflow-wrap: break-word;
-  .padding--xs();
-  .text--line-height-4();
-  white-space: pre-wrap;
-  word-wrap: break-word; // IE name for overflow-wrap
+}
+
+.MessagingBubble--Message--Reply--Own {
+  background-color: #636776; /* stylelint-disable-line */
+  border-radius: 0.3125rem;
+  color: @neutral_white;
+  .margin--xs();
+}
+
+.MessagingBubble--Message--Reply--Other {
+  background-color: @neutral_off_white;
+  border-radius: 0.3125rem;
+  color: @neutral_black;
+  .margin--xs();
 }
 
 .MessagingBubble--Link,
