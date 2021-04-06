@@ -16,6 +16,7 @@ const cssClass = {
   CONTAINER: "MessagingInputView",
   INTRO: "MessagingInputView--intro",
   PROPS: "MessagingInputView--props",
+  EXAMPLE_MESSAGE_REPLY: "MessagingInputView--reply",
 };
 
 export default class MessagingInputView extends React.PureComponent {
@@ -30,7 +31,10 @@ export default class MessagingInputView extends React.PureComponent {
   render() {
     const { inputValue, newlineOnEnter, disableSendButton, enableReplyTo } = this.state;
     const exampleReplyMessage = (
-      <MessagingBubble theme="otherMessage"> Example Message </MessagingBubble>
+      <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
+        {" "}
+        Example Message{" "}
+      </MessagingBubble>
     );
     return (
       <View
@@ -68,6 +72,7 @@ export default class MessagingInputView extends React.PureComponent {
               }}
               disableSendButton={disableSendButton}
               replyTo={enableReplyTo ? exampleReplyMessage : null}
+              onReplyCancel={() => alert("REPLY CANCELLED")}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>

@@ -3,6 +3,7 @@ import * as cx from "classnames";
 
 import { TextArea, Button, FlexBox, ItemAlign } from "../index";
 import KeyCode from "../utils/KeyCode";
+import * as FontAwesome from "react-fontawesome";
 
 import "./MessagingInput.less";
 
@@ -22,6 +23,8 @@ interface Props {
   onBlur?: () => void;
   // optional content to display when replying to a message
   replyTo?: React.ReactNode;
+  // optional callback for cancelling reply
+  onReplyCancel?: () => void;
   /** Temporarily added to allow overriding the text with a translation. */
   sendButtonText?: string;
   /** Temporarily added to allow overriding the text with a translation. */
@@ -47,6 +50,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     onSubmit,
     onBlur,
     replyTo,
+    onReplyCancel,
     sendButtonText = "Send",
     labelText = "Send a message",
     disableSendButton,
@@ -71,7 +75,23 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
       </label>
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cx(cssClass("InnerContainer--Content"))}>
-          {replyTo && <FlexBox className={cx(cssClass("Reply"), className)}>{replyTo}</FlexBox>}
+          {replyTo && (
+            <FlexBox className={cssClass("Reply--Container")}>
+              <FlexBox className={cssClass("Reply--Content")}>
+                {replyTo}
+                {/* only show reply cancel button if cancel callback provided */}
+                {onReplyCancel && (
+                  <button
+                    role="button"
+                    className={cssClass("Reply--CloseButton")}
+                    onClick={onReplyCancel}
+                  >
+                    <FontAwesome name="times" className={cssClass("Reply--CloseIcon")} />
+                  </button>
+                )}
+              </FlexBox>
+            </FlexBox>
+          )}
           <TextArea
             ref={textAreaRef}
             className={cssClass("TextField")}
