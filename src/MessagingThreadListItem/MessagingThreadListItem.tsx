@@ -6,6 +6,7 @@ import * as FontAwesome from "react-fontawesome";
 import { FlexBox, FlexItem, ItemAlign, Justify } from "../index";
 import { DraftPencilIcon } from "./DraftPencilIcon";
 import { Tooltip } from "../Tooltip";
+import Label from "../Label/Label";
 
 import "./MessagingThreadListItem.less";
 
@@ -21,6 +22,7 @@ const cssClasses = {
   TIMESTAMP: "ThreadListItem--Timestamp",
   TIMESTAMP_SELECTED: "ThreadListItem--Timestamp--selected",
   INDICATOR_CONTAINER: "ThreadListItem--Indicator--Container",
+  NEW_LABEL_CONTAINER: "ThreadListItem--NewLabel--Container",
   DRAFT_INDICATOR: "ThreadListItem--DraftIndicator",
   UNREAD_ORB: "ThreadListItem--UnreadOrb",
   UNREAD_TEXT: "ThreadListItem--UnreadText",
@@ -50,6 +52,7 @@ type Props = {
   hasAlert?: boolean;
   alertTooltip?: string;
   unreadOrbColor?: UnreadOrbColor;
+  showNewLabel?: boolean;
 };
 
 export const MessagingThreadListItem: React.FC<
@@ -70,6 +73,7 @@ export const MessagingThreadListItem: React.FC<
     hasAlert,
     alertTooltip,
     unreadOrbColor,
+    showNewLabel,
   } = props;
 
   let subContent: React.ReactNode;
@@ -83,38 +87,49 @@ export const MessagingThreadListItem: React.FC<
   }
 
   let indicatorIcon: React.ReactNode;
-  if (hasAlert) {
-    indicatorIcon = alertTooltip ? (
-      <Tooltip
-        content={alertTooltip}
-        placement={Tooltip.Placement.BOTTOM}
-        textAlign={Tooltip.Align.CENTER}
-      >
+  let indicator: React.ReactNode;
+  if (showNewLabel) {
+    indicator = (
+      <FlexBox className={cssClasses.NEW_LABEL_CONTAINER} justify={Justify.END}>
+        {showNewLabel && <Label color={"success"}>New</Label>}
+      </FlexBox>
+    );
+  } else {
+    if (hasAlert) {
+      indicatorIcon = alertTooltip ? (
+        <Tooltip
+          content={alertTooltip}
+          placement={Tooltip.Placement.BOTTOM}
+          textAlign={Tooltip.Align.CENTER}
+        >
+          <FontAwesome name="exclamation-triangle" />
+        </Tooltip>
+      ) : (
         <FontAwesome name="exclamation-triangle" />
-      </Tooltip>
-    ) : (
-      <FontAwesome name="exclamation-triangle" />
+      );
+    } else if (!isRead) {
+      indicatorIcon = (
+        <div
+          aria-label={`Unread messages in thread ${title}`}
+          className={classNames(
+            cssClasses.UNREAD_ORB,
+            unreadOrbColor && unreadOrbColorClasses[unreadOrbColor],
+          )}
+        />
+      );
+    } else if (status === "active" && hasDraft) {
+      indicatorIcon = <DraftPencilIcon />;
+    }
+    indicator = (
+      <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
+        {indicatorIcon}
+      </FlexBox>
     );
-  } else if (!isRead) {
-    indicatorIcon = (
-      <div
-        aria-label={`Unread messages in thread ${title}`}
-        className={classNames(
-          cssClasses.UNREAD_ORB,
-          unreadOrbColor && unreadOrbColorClasses[unreadOrbColor],
-        )}
-      />
-    );
-  } else if (status === "active" && hasDraft) {
-    indicatorIcon = <DraftPencilIcon />;
   }
-  const indicator = (
-    <FlexBox className={cssClasses.INDICATOR_CONTAINER} justify={Justify.END}>
-      {indicatorIcon}
-    </FlexBox>
-  );
 
-  const isIndicatorAlignedWithSubContent = subContent && timestamp;
+  // "New" Label overrides timestamp
+  const showTimestamp = timestamp && !showNewLabel;
+  const isIndicatorAlignedWithSubContent = subContent && showTimestamp;
 
   return (
     <div ref={ref}>
@@ -141,7 +156,7 @@ export const MessagingThreadListItem: React.FC<
                   selected && cssClasses.TIMESTAMP_SELECTED,
                 )}
               >
-                {timestamp && _formatDateForTimestamp(timestamp)}
+                {showTimestamp && _formatDateForTimestamp(timestamp)}
               </div>
             )}
           </FlexBox>
