@@ -27,6 +27,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
     isRead: true,
     selected: true,
     hasAlert: false,
+    showNewLabel: false,
     hasTimestamp: true,
     unreadOrbColor: "primary_blue",
   };
@@ -38,6 +39,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
       isRead,
       selected,
       hasAlert,
+      showNewLabel,
       hasTimestamp,
       unreadOrbColor,
     } = this.state;
@@ -77,6 +79,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
               selected={selected}
               timestamp={hasTimestamp && new Date()}
               hasAlert={hasAlert}
+              showNewLabel={showNewLabel}
               alertTooltip="This is an alert"
               unreadOrbColor={unreadOrbColor}
             >
@@ -91,6 +94,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
               isRead={isRead}
               selected={selected}
               hasAlert={hasAlert}
+              showNewLabel={showNewLabel}
               unreadOrbColor={unreadOrbColor}
             />
           </ExampleCode>
@@ -109,6 +113,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
       isRead,
       selected,
       hasAlert,
+      showNewLabel,
       hasTimestamp,
       unreadOrbColor,
     } = this.state;
@@ -178,6 +183,15 @@ export default class MessagingThreadListItemView extends React.PureComponent {
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
+            checked={showNewLabel}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={(e) => this.setState({ showNewLabel: e.target.checked })}
+          />{" "}
+          Show "New" Label
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
             checked={hasTimestamp}
             className={cssClass.CONFIG_TOGGLE}
             onChange={(e) => this.setState({ hasTimestamp: e.target.checked })}
@@ -216,6 +230,13 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             type: "boolean",
             description:
               "Whether this thread has an alert message. This indicator will take precedence over the unread indicator",
+            optional: true,
+          },
+          {
+            name: "showNewLabel",
+            type: "boolean",
+            description:
+              'Whether this thread has a "New" Label. This indicator will take precedence over the hasAlert indicator',
             optional: true,
           },
           {
