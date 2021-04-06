@@ -3,7 +3,7 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingInput, Label } from "src";
+import { MessagingInput, Label, MessagingBubble } from "src";
 
 import "./MessagingInputView.less";
 
@@ -28,8 +28,10 @@ export default class MessagingInputView extends React.PureComponent {
   };
 
   render() {
-    const { inputValue, newlineOnEnter, disableSendButton } = this.state;
-
+    const { inputValue, newlineOnEnter, disableSendButton, enableReplyTo } = this.state;
+    const exampleReplyMessage = (
+      <MessagingBubble theme="otherMessage"> Example Message </MessagingBubble>
+    );
     return (
       <View
         className={cssClass.CONTAINER}
@@ -65,6 +67,7 @@ export default class MessagingInputView extends React.PureComponent {
                 this.setState({ inputValue: "" });
               }}
               disableSendButton={disableSendButton}
+              replyTo={enableReplyTo ? exampleReplyMessage : null}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -82,6 +85,14 @@ export default class MessagingInputView extends React.PureComponent {
               onChange={({ target }) => this.setState({ disableSendButton: target.checked })}
             />{" "}
             Disable send button
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={enableReplyTo}
+              onChange={({ target }) => this.setState({ enableReplyTo: target.checked })}
+            />{" "}
+            Enable reply mode
           </label>
         </Example>
 
@@ -141,6 +152,12 @@ export default class MessagingInputView extends React.PureComponent {
             description: "If true, manually disables the send button",
             optional: true,
           },
+          {
+            name: "replyTo",
+            type: "React.ReactNode",
+            description: "Optional prop to use for message reply content",
+            optional: true,
+          }
         ]}
         className={cssClass.PROPS}
       />
