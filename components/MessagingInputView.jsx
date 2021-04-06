@@ -157,7 +157,7 @@ export default class MessagingInputView extends React.PureComponent {
             type: "React.ReactNode",
             description: "Optional prop to use for message reply content",
             optional: true,
-          }
+          },
         ]}
         className={cssClass.PROPS}
       />
