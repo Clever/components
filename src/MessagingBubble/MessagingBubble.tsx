@@ -11,6 +11,7 @@ const cssClasses = {
   MESSAGE_OTHER: "MessagingBubble--Message--Other",
   MESSAGE_REPLY_OWN: "MessagingBubble--Message--Reply--Own",
   MESSAGE_REPLY_OTHER: "MessagingBubble--Message--Reply--Other",
+  MESSAGE_REPLY_PARENT: "MessagingBubble--Message--Reply--Parent",
 };
 
 interface Props {
@@ -32,6 +33,7 @@ export const MessagingBubble: React.FC<Props> = ({
         cssClasses.MESSAGE_BASE,
         theme === "ownMessage" ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
         className,
+        replyTo && cssClasses.MESSAGE_REPLY_PARENT,
       )}
     >
       {replyTo && (
