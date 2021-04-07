@@ -74,9 +74,7 @@ export default class TextTruncate extends React.PureComponent<Props> {
 
     // If text is null or undefined, return immediately
     if (!text) {
-      return (
-        <></>
-      )
+      return null;
     }
 
     if (text.length < maxCharsShown) {
