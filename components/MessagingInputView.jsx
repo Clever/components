@@ -32,8 +32,7 @@ export default class MessagingInputView extends React.PureComponent {
     const { inputValue, newlineOnEnter, disableSendButton, enableReplyTo } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
-        {" "}
-        Example Message{" "}
+        This is an example message that you can try replying to.
       </MessagingBubble>
     );
     return (
