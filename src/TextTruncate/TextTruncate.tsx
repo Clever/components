@@ -72,6 +72,13 @@ export default class TextTruncate extends React.PureComponent<Props> {
     } = this.props;
     const { truncated } = this.state;
 
+    // If text is null or undefined, return immediately
+    if (!text) {
+      return (
+        <></>
+      )
+    }
+
     if (text.length < maxCharsShown) {
       return (
         <div className={classnames(cssClass.CONTAINER, className)}>
