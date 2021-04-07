@@ -5,7 +5,6 @@
   border-radius: 0.3125rem;
   font-size: 1rem;
   max-width: 25rem;
-  .padding--xs();
   .text--line-height-4();
   overflow-wrap: break-word;
   white-space: pre-wrap;
@@ -15,19 +14,25 @@
 .MessagingBubble--Message--Own {
   background-color: @neutral_dark_gray;
   color: @neutral_white;
+  .padding--xs();
 }
 
 .MessagingBubble--Message--Other {
   background-color: #f3f5fd; /* stylelint-disable-line */
   border-radius: 0.3125rem;
   color: @neutral_black;
+  .padding--xs();
+}
+
+.MessagingBubble--Message--Reply--Parent {
+  .padding--m();
 }
 
 .MessagingBubble--Message--Reply--Own {
   background-color: #636776; /* stylelint-disable-line */
   border-radius: 0.3125rem;
   color: @neutral_white;
-  .margin--xs();
+  .margin--bottom--s();
 }
 
 .MessagingBubble--Message--Reply--Other {
@@ -35,6 +40,7 @@
   border-radius: 0.3125rem;
   color: @neutral_black;
   .margin--xs();
+  .margin--left--none();
 }
 
 .MessagingBubble--Link,
