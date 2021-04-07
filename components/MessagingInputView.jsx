@@ -163,6 +163,12 @@ export default class MessagingInputView extends React.PureComponent {
             description: "Optional prop to use for message reply content",
             optional: true,
           },
+          {
+            name: "onReplyCancel",
+            type: "() => void",
+            description: "Optional function that fires when the user cancels the reply",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
