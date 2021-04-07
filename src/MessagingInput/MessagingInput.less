@@ -9,13 +9,77 @@
   width: 100%;
 }
 
+.MessagingInput--InnerContainer--Content {
+  width: 100%;
+  .margin--right--xs();
+}
+
+.MessagingInput--Reply--Container {
+  justify-content: center;
+  .border--m(@neutral_silver);
+  border-bottom: none;
+  .padding--m();
+  /* stylelint-disable */
+  max-height: 200px;
+  /* stylelint-enable */
+  overflow-y: scroll;
+  scroll-padding-bottom: 1rem;
+}
+
+.MessagingInput--Reply--Content {
+  position: relative;
+}
+
+.MessagingInput--Reply--CloseButton {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  .padding--3xs();
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: @neutral_silver;
+  color: @neutral_dark_gray;
+  border: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @neutral_gray;
+    color: @neutral_off_white;
+  }
+}
+
+.MessagingInput--Reply--CloseIcon {
+  // covers possible range of FA sizes
+  min-width: 1em;
+  min-height: 1em;
+  max-width: 2em;
+  max-height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .MessagingInput--TextFieldLabel {
   color: @neutral_medium_gray;
   .margin--bottom--2xs();
 }
 
+.MessagingInput--TextFieldLabelHidden {
+  /* stylelint-disable */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+  /* stylelint-enable */
+}
+
 .MessagingInput--TextField {
-  .margin--right--xs();
   .padding--y--none();
   min-height: 2.75rem;
   min-width: 8rem;
@@ -74,6 +138,10 @@ button.MessagingInput--SendButton {
 
   .MessagingInput--SendText {
     display: none;
+  }
+
+  .MessagingInput--InnerContainer--Content {
+    .margin--right--none();
   }
 
   button.MessagingInput--SendButton {

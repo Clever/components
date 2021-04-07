@@ -3,7 +3,7 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingInput, Label } from "src";
+import { MessagingInput, Label, MessagingBubble } from "src";
 
 import "./MessagingInputView.less";
 
@@ -16,6 +16,7 @@ const cssClass = {
   CONTAINER: "MessagingInputView",
   INTRO: "MessagingInputView--intro",
   PROPS: "MessagingInputView--props",
+  EXAMPLE_MESSAGE_REPLY: "MessagingInputView--reply",
 };
 
 export default class MessagingInputView extends React.PureComponent {
@@ -28,8 +29,12 @@ export default class MessagingInputView extends React.PureComponent {
   };
 
   render() {
-    const { inputValue, newlineOnEnter, disableSendButton } = this.state;
-
+    const { inputValue, newlineOnEnter, disableSendButton, enableReplyTo } = this.state;
+    const exampleReplyMessage = (
+      <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
+        This is an example message that you can try replying to.
+      </MessagingBubble>
+    );
     return (
       <View
         className={cssClass.CONTAINER}
@@ -65,6 +70,8 @@ export default class MessagingInputView extends React.PureComponent {
                 this.setState({ inputValue: "" });
               }}
               disableSendButton={disableSendButton}
+              replyTo={enableReplyTo ? exampleReplyMessage : null}
+              onReplyCancel={() => alert("REPLY CANCELLED")}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -82,6 +89,14 @@ export default class MessagingInputView extends React.PureComponent {
               onChange={({ target }) => this.setState({ disableSendButton: target.checked })}
             />{" "}
             Disable send button
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={enableReplyTo}
+              onChange={({ target }) => this.setState({ enableReplyTo: target.checked })}
+            />{" "}
+            Enable reply mode
           </label>
         </Example>
 
@@ -139,6 +154,18 @@ export default class MessagingInputView extends React.PureComponent {
             name: "disableSendButton",
             type: "boolean",
             description: "If true, manually disables the send button",
+            optional: true,
+          },
+          {
+            name: "replyTo",
+            type: "React.ReactNode",
+            description: "Optional prop to use for message reply content",
+            optional: true,
+          },
+          {
+            name: "onReplyCancel",
+            type: "() => void",
+            description: "Optional function that fires when the user cancels the reply",
             optional: true,
           },
         ]}
