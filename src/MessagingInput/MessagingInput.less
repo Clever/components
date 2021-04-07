@@ -15,11 +15,15 @@
 }
 
 .MessagingInput--Reply--Container {
-  align-items: center;
   justify-content: center;
   .border--m(@neutral_silver);
   border-bottom: none;
-  .padding--xs();
+  .padding--m();
+  /* stylelint-disable */
+  max-height: 200px;
+  /* stylelint-enable */
+  overflow-y: scroll;
+  scroll-padding-bottom: 1rem;
 }
 
 .MessagingInput--Reply--Content {
@@ -134,6 +138,10 @@ button.MessagingInput--SendButton {
 
   .MessagingInput--SendText {
     display: none;
+  }
+
+  .MessagingInput--InnerContainer--Content {
+    .margin--right--none();
   }
 
   button.MessagingInput--SendButton {

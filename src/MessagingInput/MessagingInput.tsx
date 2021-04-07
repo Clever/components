@@ -76,8 +76,8 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cx(cssClass("InnerContainer--Content"))}>
           {replyTo && (
-            <FlexBox className={cssClass("Reply--Container")}>
-              <FlexBox className={cssClass("Reply--Content")}>
+            <div className={cssClass("Reply--Container")}>
+              <div className={cssClass("Reply--Content")}>
                 {replyTo}
                 {/* only show reply cancel button if cancel callback provided */}
                 {onReplyCancel && (
@@ -89,8 +89,8 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                     <FontAwesome name="times" className={cssClass("Reply--CloseIcon")} />
                   </button>
                 )}
-              </FlexBox>
-            </FlexBox>
+              </div>
+            </div>
           )}
           <TextArea
             ref={textAreaRef}
