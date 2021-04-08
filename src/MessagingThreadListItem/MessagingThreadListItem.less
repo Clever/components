@@ -31,18 +31,16 @@
 }
 
 .ThreadListItem--Preview {
-  font-size: 0.875rem;
+  line-height: 1rem;
   .margin--right--m();
-  .text--line-height-1();
+  .text--smallMedium();
   .text--truncate();
 }
 
-.ThreadListItem--OffText {
-  // Padding prevents italics from being slightly
-  //  cut off by overflow=hidden
+.ThreadListItem--Preview--italics {
+  // Padding prevents italics from being slightly cut off by text truncation
   .padding--right--2xs();
   .text--italic();
-  .text--truncate();
 }
 
 .ThreadListItem--Timestamp {
@@ -58,7 +56,7 @@
 }
 
 .ThreadListItem--UnreadText {
-  .text--semi-bold();
+  font-weight: 600;
 }
 
 .ThreadListItem--Indicator--Container {

@@ -18,7 +18,7 @@ const cssClasses = {
   DETAILS_CONTAINER: "ThreadListItem--Details--Container",
   NAME: "ThreadListItem--Name",
   PREVIEW: "ThreadListItem--Preview",
-  OFF_TEXT: "ThreadListItem--OffText",
+  PREVIEW_ITALICS: "ThreadListItem--Preview--italics",
   TIMESTAMP: "ThreadListItem--Timestamp",
   TIMESTAMP_SELECTED: "ThreadListItem--Timestamp--selected",
   INDICATOR_CONTAINER: "ThreadListItem--Indicator--Container",
@@ -43,6 +43,7 @@ type Props = {
   hasDraft: boolean;
   icon: React.ReactNode;
   isRead?: boolean;
+  italicizeSubtitle?: boolean;
   offStatusText?: string;
   onClick?: (event: React.MouseEvent) => void;
   selected: boolean;
@@ -63,6 +64,7 @@ export const MessagingThreadListItem: React.FC<
     className,
     icon,
     isRead = true,
+    italicizeSubtitle,
     timestamp,
     title,
     hasDraft,
@@ -80,10 +82,14 @@ export const MessagingThreadListItem: React.FC<
   let subContentClass: string;
   if (status === "active" || !isRead) {
     subContent = _filterChildren(children);
-    subContentClass = classNames(cssClasses.PREVIEW, !isRead && cssClasses.UNREAD_TEXT);
+    subContentClass = classNames(
+      cssClasses.PREVIEW,
+      !isRead && cssClasses.UNREAD_TEXT,
+      italicizeSubtitle && cssClasses.PREVIEW_ITALICS,
+    );
   } else {
     subContent = offStatusText || "Messages are turned off";
-    subContentClass = cssClasses.OFF_TEXT;
+    subContentClass = classNames(cssClasses.PREVIEW, cssClasses.PREVIEW_ITALICS);
   }
 
   let indicatorIcon: React.ReactNode;
