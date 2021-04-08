@@ -25,6 +25,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
     status: "active",
     hasDraft: false,
     isRead: true,
+    italicizeSubtitle: false,
     selected: true,
     hasAlert: false,
     showNewLabel: false,
@@ -37,6 +38,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
       status,
       hasDraft,
       isRead,
+      italicizeSubtitle,
       selected,
       hasAlert,
       showNewLabel,
@@ -76,6 +78,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
               status={status}
               hasDraft={hasDraft}
               isRead={isRead}
+              italicizeSubtitle={italicizeSubtitle}
               selected={selected}
               timestamp={hasTimestamp && new Date()}
               hasAlert={hasAlert}
@@ -111,6 +114,7 @@ export default class MessagingThreadListItemView extends React.PureComponent {
       status,
       hasDraft,
       isRead,
+      italicizeSubtitle,
       selected,
       hasAlert,
       showNewLabel,
@@ -149,6 +153,15 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             onChange={(e) => this.setState({ isRead: e.target.checked })}
           />{" "}
           Is Read
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={italicizeSubtitle}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={(e) => this.setState({ italicizeSubtitle: e.target.checked })}
+          />{" "}
+          Italicize Subtitle
         </label>
         <div className={cssClass.CONFIG}>
           Unread Orb Color:
@@ -253,6 +266,12 @@ export default class MessagingThreadListItemView extends React.PureComponent {
             name: "isRead",
             type: "boolean",
             description: "Whether this thread has been read.",
+            optional: true,
+          },
+          {
+            name: "italicizeSubtitle",
+            type: "boolean",
+            description: "Whether the subtitle/preview (passed via children) should be italicized.",
             optional: true,
           },
           {
