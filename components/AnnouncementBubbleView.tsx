@@ -1,8 +1,17 @@
 import * as React from "react";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
+import PropDocumentation from "./PropDocumentation";
+
 import View from "./View";
-import { AnnouncementBubble, Label, MessagingAvatar } from "src";
+import {
+  AnnouncementBubble,
+  FlexBox,
+  ItemAlign,
+  Label,
+  MessagingAvatar,
+  SegmentedControl,
+} from "src";
 import Colors from "src/utils/Colors";
 
 import "./AnnouncementBubbleView.less";
@@ -22,7 +31,13 @@ const cssClass = {
 export default class AnnouncementBubbleView extends React.PureComponent {
   static cssClass = cssClass;
 
+  state = {
+    colorTheme: "light",
+  };
+
   render() {
+    const { colorTheme } = this.state;
+
     return (
       <View
         className={cssClass.CONTAINER}
@@ -50,6 +65,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
+            Normal announcement bubble
             <AnnouncementBubble
               className={cssClass.BUBBLE}
               senderName={"Ms. Stark"}
@@ -64,10 +80,12 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             >
               Hello class! Links like https://clever.com are clickable
             </AnnouncementBubble>
+            Deleted announcement bubble
             <AnnouncementBubble className={cssClass.BUBBLE} theme={"deleted"} />
+            Quoted announcement bubble
             <AnnouncementBubble
               theme={"quoted"}
-              colorTheme={"white"}
+              colorTheme={colorTheme as "light" | "dark" | "white"}
               announcementGroupName={"Math Rocks!"}
               senderName={"Ms. Stark"}
               senderIcon={
@@ -81,8 +99,49 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               This can go inside of other components! Links like https://clever.com are clickable
             </AnnouncementBubble>
           </ExampleCode>
+          {this._renderConfig()}
         </Example>
+        {this._renderProps()}
       </View>
+    );
+  }
+
+  _renderConfig() {
+    const { colorTheme } = this.state;
+
+    return (
+      <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+        <div className={cssClass.CONFIG}>
+          QuotedAnnouncementBubble colorTheme:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={(value) => this.setState({ colorTheme: value })}
+            options={[
+              { content: "light", value: "light" },
+              { content: "dark", value: "dark" },
+              { content: "white", value: "white" },
+            ]}
+            value={colorTheme}
+          />
+        </div>
+      </FlexBox>
+    );
+  }
+
+  _renderProps() {
+    return (
+      <PropDocumentation
+        title="<AnnouncementBubble /> Props TODO"
+        availableProps={[
+          {
+            name: "theme",
+            // eslint-disable-next-line quotes
+            type: `"light" | "dark" | "white"`,
+            description: "Theme to use for styling the bubble.",
+          },
+        ]}
+        className={cssClass.PROPS}
+      />
     );
   }
 }

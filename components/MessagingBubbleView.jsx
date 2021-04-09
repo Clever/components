@@ -58,21 +58,21 @@ export default class MessagingBubbleView extends React.PureComponent {
         <Example title="Basic Usage:">
           <ExampleCode>
             <MessagingBubble
-              errorMsg={hasError && "Message failed to send"}
+              errorMsg={hasError ? "Message failed to send" : ""}
               className={cssClass.BUBBLE}
               theme={theme}
             >
               Hello World!
             </MessagingBubble>
             <MessagingBubble
-              errorMsg={hasError && "Message failed to send"}
+              errorMsg={hasError ? "Message failed to send" : ""}
               className={cssClass.BUBBLE}
               theme={theme}
             >
               Links like https://clever.com are clickable
             </MessagingBubble>
             <MessagingBubble
-              errorMsg={hasError && "Message failed to send"}
+              errorMsg={hasError ? "Message failed to send" : ""}
               theme={theme}
               replyTo={"This is a message!"}
             >
