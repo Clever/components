@@ -8,6 +8,7 @@ import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
 import MessagingAvatarView from "./components/MessagingAvatarView";
 import MessagingBubbleView from "./components/MessagingBubbleView";
 import MessagingInputView from "./components/MessagingInputView";
+import AnnouncementBubbleView from "./components/AnnouncementBubbleView";
 import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
 import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import MultiSelectView from "./components/MultiSelectView";
@@ -140,6 +141,7 @@ render(
         <Route path="menu(/*)" component={MenuView} />
         <Route path="messaging-avatar(/*)" component={MessagingAvatarView} />
         <Route path="messaging-bubble(/*)" component={MessagingBubbleView} />
+        <Route path="announcement-bubble(/*)" component={AnnouncementBubbleView} />
         <Route path="messaging-input(/*)" component={MessagingInputView} />
         <Route path="messaging-thread-history(/*)" component={MessagingThreadHistoryView} />
         <Route path="messaging-thread-list-item(/*)" component={MessagingThreadListItemView} />
