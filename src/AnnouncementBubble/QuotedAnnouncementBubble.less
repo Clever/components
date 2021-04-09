@@ -1,0 +1,120 @@
+@import (reference) "../less/index";
+
+.QuotedAnnouncementBubble--container {
+  border-radius: 0.3125rem; // 5px
+  line-height: 1rem;
+  .padding--xs();
+  .text--smallMedium();
+}
+
+.QuotedAnnouncementBubble--container--light {
+  background-color: #fafbfe; /* stylelint-disable-line */
+  color: @neutral_dark_gray;
+}
+
+.QuotedAnnouncementBubble--container--white {
+  background-color: #ffffff; /* stylelint-disable-line */
+  color: @neutral_dark_gray;
+}
+.QuotedAnnouncementBubble--container--white,
+.QuotedAnnouncementBubble--container--light {
+  // Default setting is to inherit color; for the lighter bubbles make the links blue
+  .LinkifyUtils--Link,
+  .LinkifyUtils--Link:focus,
+  .LinkifyUtils--Link:hover {
+    color: @primary_blue_shade_2;
+  }
+}
+
+.QuotedAnnouncementBubble--container--dark {
+  background-color: #626776; /* stylelint-disable-line */
+  color: @neutral_white;
+}
+
+.QuotedAnnouncementBubble--senderIcon {
+  .margin--right--xs();
+
+  .Avatar--Circle,
+  .Avatar--Image {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .Avatar--Text {
+    font-size: 0.625rem; // 10px
+  }
+}
+
+.QuotedAnnouncementBubble--senderName {
+  .text--semi-bold();
+}
+
+.QuotedAnnouncementBubble--messageBody {
+  .margin--y--xs();
+  // Handle whitespace characters
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-wrap: break-word; // IE name for overflow-wrap
+}
+
+.QuotedAnnouncementBubble--messageBody--truncated {
+  .text--truncate();
+}
+
+.QuotedAnnouncementBubble--messageDetails--light,
+.QuotedAnnouncementBubble--messageDetails--white {
+  color: @neutral_medium_gray;
+  .margin--bottom--xs();
+}
+
+.QuotedAnnouncementBubble--messageDetails--dark {
+  color: @neutral_silver;
+  .margin--bottom--xs();
+}
+
+button.QuotedAnnouncementBubble--button--outer {
+  transition: none;
+
+  // The following along with the {tab-index=-1} on the inner span allows for the button
+  // to have a border when keyboard focused, but not when clicked
+  &:focus {
+    outline: none;
+  }
+  .QuotedAnnouncementBubble--button--inner {
+    outline: none;
+  }
+  &:focus > .QuotedAnnouncementBubble--button--inner {
+    outline: 0.1875rem solid @accent_purple_shade_2;
+  }
+}
+
+.QuotedAnnouncementBubble--button--light,
+.QuotedAnnouncementBubble--button--white {
+  color: @primary_blue_shade_2;
+  .text--underline();
+
+  &:hover,
+  &:active {
+    color: @primary_blue_shade_3;
+  }
+}
+
+.QuotedAnnouncementBubble--button--dark {
+  color: @neutral_white;
+  .text--underline();
+}
+
+@media only screen and (max-width: @breakpointM) {
+  .QuotedAnnouncementBubble--messageBody {
+    .margin--y--xs();
+    // overflow-wrap: anywhere allows for more aggressize word-breaking which is helpful
+    // for mobile
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    word-wrap: break-word; // IE name for overflow-wrap
+  }
+
+  .QuotedAnnouncementBubble--messageBody--truncated {
+    .text--truncate();
+  }
+}
