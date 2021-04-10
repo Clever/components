@@ -2,6 +2,7 @@ import * as React from "react";
 
 import * as LinkifyIt from "linkify-it";
 import "./MessagingBubble.less";
+import "./linkifyUtils.less";
 
 // Customized to not link URLs/emails without protocol (i.e. google.com or dewey@clever.com)
 // Based on https://github.com/tasti/react-linkify/blob/master/src/decorators/defaultMatchDecorator.js
@@ -15,7 +16,7 @@ export const matchDecorator = (text: string) => {
 export const componentDecorator = (decoratedHref: string, decoratedText: string, key: number) => {
   return (
     <a
-      className="MessagingBubble--Link"
+      className="LinkifyUtils--Link"
       href={decoratedHref}
       key={key}
       rel="noopener noreferrer"

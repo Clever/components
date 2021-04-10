@@ -1,0 +1,167 @@
+@import (reference) "../less/index";
+
+.NormalAnnouncementBubble--container {
+  .boxShadow--medium();
+  border-radius: 1rem;
+  .padding--m();
+  position: relative;
+}
+
+.NormalAnnouncementBubble--containerWithReply {
+  border-radius: 2rem;
+  .padding--bottom--xl();
+}
+
+.NormalAnnouncementBubble--senderIcon {
+  .margin--right--xs();
+
+  .Avatar--Image,
+  .Avatar--Circle {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .Avatar--Text {
+    .text--medium();
+  }
+}
+
+.NormalAnnouncementBubble--senderName {
+  color: @neutral_dark_gray;
+  .text--line-height-4();
+  .text--semi-bold();
+}
+
+.NormalAnnouncementBubble--timestamp {
+  color: @neutral_medium_gray;
+  line-height: 1rem;
+  .text--smallMedium();
+}
+
+.NormalAnnouncementBubble--menu {
+  margin-left: auto;
+}
+
+button.NormalAnnouncementBubble--deleteMenuItem {
+  box-shadow: inset @borderWidthL 0 @alert_red;
+  color: @alert_red_shade_2;
+  height: 2.375rem;
+  padding: 0;
+  .padding--left--m();
+  .text--bold();
+  width: 8.875rem;
+
+  &:focus,
+  &:hover {
+    background-color: fade(@alert_red, 8%);
+    box-shadow: inset @borderWidthL 0 @alert_red;
+    color: @alert_red_shade_2;
+  }
+}
+
+button.NormalAnnouncementBubble--menuIconContainer {
+  border: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0;
+  .margin--2xs();
+}
+
+.NormalAnnouncementBubble--messageBody {
+  color: @neutral_dark_gray;
+  .margin--top--m();
+  .text--line-height-4();
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-wrap: break-word; // IE name for overflow-wrap
+
+  .LinkifyUtils--Link,
+  .LinkifyUtils--Link:focus,
+  .LinkifyUtils--Link:hover {
+    color: @primary_blue_shade_2;
+  }
+}
+
+button.NormalAnnouncementBubble--replyButton {
+  /* stylelint-disable-next-line declaration-property-value-whitelist */
+  background-color: #ffdf7f;
+  border: 0;
+  border-radius: 1.5rem;
+  height: 2rem;
+  padding: 0;
+  width: 6.625rem;
+
+  // Center along bottom of AnnouncementBubble container with the following CSS
+  left: 50%;
+  margin-left: -3.3125rem; // = width / 2
+  margin-top: -1rem; // = height / 2
+  position: absolute;
+  top: 100%;
+
+  &:hover,
+  &:focus,
+  &:active {
+    /* stylelint-disable-next-line declaration-property-value-whitelist */
+    background-color: #fed559;
+  }
+}
+
+.NormalAnnouncementBubble--replyButton--icon {
+  margin-right: 0.3125rem;
+}
+
+.NormalAnnouncementBubble--replyButton--text {
+  color: @neutral_black;
+  line-height: 1rem;
+  .text--smallMedium();
+  .text--semi-bold();
+}
+
+.NormalAnnouncementBubble--tooltip {
+  margin-top: -0.75rem !important;
+  .text--line-height-4();
+  .text--semi-bold();
+  white-space: nowrap;
+
+  .tooltip-inner {
+    max-width: 30rem;
+    padding: @size_2xs @size_s;
+  }
+}
+
+.NormalAnnouncementBubble--replyButton--text--disabled {
+  color: @neutral_dark_gray;
+}
+
+.NormalAnnouncementBubble--errorMsg {
+  color: @alert_red;
+  line-height: 1rem;
+  margin-left: auto;
+  .margin--right--2xs();
+  .margin--top--xs();
+  .text--smallMedium();
+}
+
+.NormalAnnouncementBubble--errorIcon {
+  .margin--right--2xs();
+}
+
+@media only screen and (max-width: @breakpointM) {
+  .NormalAnnouncementBubble--container {
+    .padding--s();
+  }
+
+  .NormalAnnouncementBubble--containerWithReply {
+    border-radius: 2rem;
+    .padding--bottom--xl();
+  }
+
+  .NormalAnnouncementBubble--messageBody {
+    color: @neutral_dark_gray;
+    .margin--top--m();
+    .text--line-height-4();
+    white-space: pre-wrap;
+    word-wrap: break-word; // IE name for overflow-wrap
+    overflow-wrap: anywhere;
+  }
+}

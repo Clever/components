@@ -4,7 +4,7 @@
 .MessagingBubble--Message {
   border-radius: 0.3125rem;
   font-size: 1rem;
-  max-width: 36.5rem;
+  max-width: 32.5rem;
   .text--line-height-4();
   overflow-wrap: break-word;
   position: relative;
@@ -41,16 +41,6 @@
   border-radius: 0.3125rem;
   color: @neutral_black;
   .margin--bottom--s();
-}
-
-.MessagingBubble--Link,
-.MessagingBubble--Link:focus,
-.MessagingBubble--Link:hover {
-  // We inherit color from the parent to have the link color match the bubble text color
-  /* stylelint-disable-next-line declaration-property-value-whitelist */
-  color: inherit;
-  .text--semi-bold();
-  .text--underline();
 }
 
 .MessagingBubble--Error {
