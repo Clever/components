@@ -16,6 +16,7 @@
   background-color: #ffffff; /* stylelint-disable-line */
   color: @neutral_dark_gray;
 }
+
 .QuotedAnnouncementBubble--container--white,
 .QuotedAnnouncementBubble--container--light {
   // Default setting is to inherit color; for the lighter bubbles make the links blue
@@ -80,9 +81,11 @@ button.QuotedAnnouncementBubble--button--outer {
   &:focus {
     outline: none;
   }
+
   .QuotedAnnouncementBubble--button--inner {
     outline: none;
   }
+
   &:focus > .QuotedAnnouncementBubble--button--inner {
     outline: 0.1875rem solid @accent_purple_shade_2;
   }
