@@ -36,8 +36,6 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   senderName,
   sentAtTimestamp,
 }: Props) => {
-  // TODO: Wrap in Linkify once in Clever-components similar to MessageBubble
-
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg);
 
