@@ -43,7 +43,6 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
 
   const buttonText = isExpanded ? "Show less" : "Show more";
 
-  // TODO: Wrap in Linkify component when moved to Dewey similar to MessagingBubble
   return (
     <FlexBox
       alignItems="start"
