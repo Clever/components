@@ -38,7 +38,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
   // don't attempt to read the entire hidden message. This only works for plain-string children
   let content = children;
   if (!isExpanded && typeof content === "string") {
-    content = content.substring(0, 100);
+    content = content.substring(0, 300);
   }
 
   const buttonText = isExpanded ? "Show less" : "Show more";

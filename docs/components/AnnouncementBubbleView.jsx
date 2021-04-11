@@ -24,7 +24,7 @@ const cssClass = {
   CONFIG: "AnnouncementBubbleView--config",
   CONFIG_TOGGLE: "AnnouncementBubbleView--configToggle",
   CONTAINER: "AnnouncementBubbleView",
-  INTRO: "AnnouncementBubbleView--intro",
+  HEADER: "AnnouncementBubbleView--header",
   PROPS: "AnnouncementBubbleView--props",
 };
 
@@ -44,15 +44,19 @@ export default class AnnouncementBubbleView extends React.PureComponent {
         title="AnnouncementBubble"
         sourcePath="src/AnnouncementBubble/AnnouncementBubble.tsx"
       >
-        <header className={cssClass.INTRO}>
+        <header className={cssClass.HEADER}>
           <p className={cssClass.BETA}>
             <Label color="new-feature">Beta</Label> AnnouncementBubble is in Beta and breaking
             changes may still be introduced.
           </p>
           <p>
-            AnnouncementBubble is a single bubble that would appear in a messaging thread. It can
-            contain text or other content. By default AnnouncementBubble will turn any valid URLs
-            into clickable links.
+            AnnouncementBubble is a single bubble that would appear in a messaging thread. There are
+            three themes of AnnouncementBubble, available via the "theme" prop.
+          </p>
+          <p>
+            The themes are the NormalAnnouncementBubble, QuotedAnnouncementBubble, and
+            DeletedAnnouncementBubble. The normal and quoted themes can contain text or other
+            content. By default AnnouncementBubble will turn any valid URLs into clickable links.
           </p>
           <CodeSample>
             {`
@@ -63,9 +67,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
           </CodeSample>
         </header>
 
-        <Example title="Basic Usage:">
+        <Example title="NormalAnnouncementBubble">
           <ExampleCode>
-            Normal announcement bubble
             <AnnouncementBubble
               className={cssClass.BUBBLE}
               senderName={"Ms. Stark"}
@@ -80,12 +83,13 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             >
               Hello class! Links like https://clever.com are clickable
             </AnnouncementBubble>
-            Deleted announcement bubble
-            <AnnouncementBubble className={cssClass.BUBBLE} theme={"deleted"} />
-            Quoted announcement bubble
+          </ExampleCode>
+        </Example>
+        <Example title="QuotedAnnouncementBubble">
+          <ExampleCode>
             <AnnouncementBubble
               theme={"quoted"}
-              colorTheme={colorTheme as "light" | "dark" | "white"}
+              colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
               senderName={"Ms. Stark"}
               senderIcon={
@@ -96,10 +100,17 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               sentAtTimestamp={new Date()}
             >
-              This can go inside of other components! Links like https://clever.com are clickable
+              This can go inside of other components, like the MessagingBubble or MessagingInput!
+              The content expands and hides when the button is clicked. Links like
+              https://clever.com are clickable
             </AnnouncementBubble>
           </ExampleCode>
           {this._renderConfig()}
+        </Example>
+        <Example title="DeletedAnnouncementBubble">
+          <ExampleCode>
+            <AnnouncementBubble className={cssClass.BUBBLE} theme={"deleted"} />
+          </ExampleCode>
         </Example>
         {this._renderProps()}
       </View>
@@ -112,7 +123,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
         <div className={cssClass.CONFIG}>
-          QuotedAnnouncementBubble colorTheme:
+          colorTheme:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             onSelect={(value) => this.setState({ colorTheme: value })}
@@ -136,7 +147,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
           {
             name: "theme",
             // eslint-disable-next-line quotes
-            type: `"light" | "dark" | "white"`,
+            type: `"normal" | "quoted" | "deleted"`,
             description: "Theme to use for styling the bubble.",
           },
         ]}
