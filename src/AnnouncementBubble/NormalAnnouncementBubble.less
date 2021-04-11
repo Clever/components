@@ -71,9 +71,10 @@ button.NormalAnnouncementBubble--menuIconContainer {
   color: @neutral_dark_gray;
   .margin--top--m();
   .text--line-height-4();
-  overflow-wrap: break-word;
   white-space: pre-wrap;
-  word-wrap: break-word; // IE name for overflow-wrap
+  word-wrap: break-word; // IE version
+  word-wrap: break-all; // Safari version
+  overflow-wrap: anywhere;
 
   .LinkifyUtils--Link,
   .LinkifyUtils--Link:focus,
@@ -160,8 +161,5 @@ button.NormalAnnouncementBubble--replyButton {
     color: @neutral_dark_gray;
     .margin--top--m();
     .text--line-height-4();
-    white-space: pre-wrap;
-    word-wrap: break-word; // IE name for overflow-wrap
-    overflow-wrap: anywhere;
   }
 }
