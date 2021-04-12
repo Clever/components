@@ -53,9 +53,10 @@
 .QuotedAnnouncementBubble--messageBody {
   .margin--y--xs();
   // Handle whitespace characters
-  overflow-wrap: break-word;
   white-space: pre-wrap;
-  word-wrap: break-word; // IE name for overflow-wrap
+  word-wrap: break-word; // IE version
+  word-wrap: break-all; // Safari version
+  overflow-wrap: anywhere;
 }
 
 .QuotedAnnouncementBubble--messageBody--truncated {
@@ -110,11 +111,6 @@ button.QuotedAnnouncementBubble--button--outer {
 @media only screen and (max-width: @breakpointM) {
   .QuotedAnnouncementBubble--messageBody {
     .margin--y--xs();
-    // overflow-wrap: anywhere allows for more aggressize word-breaking which is helpful
-    // for mobile
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
-    word-wrap: break-word; // IE name for overflow-wrap
   }
 
   .QuotedAnnouncementBubble--messageBody--truncated {

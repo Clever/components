@@ -38,6 +38,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "An AlertBox2 component",
   },
   {
+    componentLink: "announcement-bubble",
+    componentImg: "announcement-bubble.png",
+    componentName: "AnnouncementBubble",
+    componentImgAlt: "An AnnouncementBubble component",
+  },
+  {
     componentLink: "badge",
     componentImg: "badge-2.png",
     componentName: "Badge",

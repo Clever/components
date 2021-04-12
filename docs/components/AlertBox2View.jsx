@@ -17,6 +17,7 @@ import {
 import "./AlertBox2View.less";
 
 const cssClass = {
+  BETA: "AlertBox2View--beta",
   CONFIG_CONTAINER: "AlertBox2View--configContainer",
   CONFIG_OPTIONS: "AlertBox2View--configOptions",
   CONFIG: "AlertBox2View--config",
