@@ -29,6 +29,7 @@ interface Props {
   className?: string;
   threadID: string;
   messages: MessageData[];
+  onScroll?: () => void;
 }
 
 const SCROLL_BUFFER = 200;
@@ -48,7 +49,7 @@ function isOwnMessage(message: MessageData) {
 
 export const MessagingThreadHistory = React.forwardRef(
   (
-    { className, threadID, messages }: Props,
+    { className, threadID, messages, onScroll }: Props,
     containerRef: React.MutableRefObject<HTMLDivElement>,
   ) => {
     // ----------- Scroll position references
@@ -103,6 +104,7 @@ export const MessagingThreadHistory = React.forwardRef(
           className,
         )}
         ref={containerRef}
+        onScroll={onScroll}
       >
         {messagesWithDividers}
       </div>
