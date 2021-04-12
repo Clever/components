@@ -149,6 +149,13 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
             description: "Optional additional CSS class name to apply to the container.",
             optional: true,
           },
+          {
+            name: "onScroll",
+            type: "() => void",
+            description:
+              "Optional callback that triggers on user scroll. Does not provide event information.",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
