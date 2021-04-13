@@ -7,7 +7,6 @@
   max-width: 32.5rem;
   .text--line-height-4();
   overflow-wrap: break-word;
-  position: relative;
   white-space: pre-wrap;
   word-wrap: break-word; // IE name for overflow-wrap
 }
@@ -41,25 +40,6 @@
   border-radius: 0.3125rem;
   color: @neutral_black;
   .margin--bottom--s();
-}
-
-.MessagingBubble--Error {
-  color: @alert_red;
-  line-height: 1rem;
-  .margin--right--2xs();
-  .margin--top--2xs();
-  .text--smallMedium();
-  position: absolute;
-  top: 100%;
-  right: 0%;
-}
-
-.MessagingBubble--Error--Icon {
-  .margin--right--2xs();
-}
-
-.MessagingBubble--Error--Parent {
-  padding-bottom: 1.25rem; // line height of message + 4px for margin between message and bubble
 }
 
 // For mobile/tablet

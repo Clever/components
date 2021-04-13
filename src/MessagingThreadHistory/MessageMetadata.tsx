@@ -1,6 +1,8 @@
 import * as React from "react";
 import * as classNames from "classnames";
 import * as moment from "moment";
+import * as FontAwesome from "react-fontawesome";
+import { FlexBox } from "../";
 
 import "./MessageMetadata.less";
 
@@ -13,16 +15,24 @@ interface Props {
   placement: "left" | "right" | "center" | "fullWidth";
   timestamp?: Date;
   readStatusText?: string;
+  errorMsg?: string;
   children: React.ReactNode;
 }
 
 export const MessageMetadata: React.FC<
   Props & { ref?: React.Ref<HTMLDivElement> }
 > = React.forwardRef((props: Props, ref: React.Ref<HTMLDivElement>) => {
-  const { className, placement, timestamp, readStatusText, children } = props;
+  const { className, placement, timestamp, readStatusText, children, errorMsg } = props;
   const showTimestamp = timestamp && placement !== "fullWidth";
   return (
-    <div ref={ref} className={classNames(cssClass("Message--container"), className)}>
+    <div
+      ref={ref}
+      className={classNames(
+        cssClass("Message--container"),
+        cssClass(`Message--container--${placement}`),
+        className,
+      )}
+    >
       <div className={cssClass(`Message--${placement}`)}>
         {children}
         {showTimestamp && (
@@ -32,6 +42,7 @@ export const MessageMetadata: React.FC<
         )}
       </div>
       {readStatusText && <div className={cssClass("ReadReceipt")}>{readStatusText}</div>}
+      {errorMsg && formErrorContainer(errorMsg)}
     </div>
   );
 });
@@ -40,4 +51,13 @@ export const MessageMetadata: React.FC<
 //  Always returns "xx:xx <AM/PM>" format.
 function _formatDateForTimestamp(date: Date): string {
   return moment(date).format("h:mm A");
+}
+
+function formErrorContainer(errorMsg: React.ReactNode): JSX.Element {
+  return (
+    <FlexBox className={cssClass("Error")} grow alignItems="center" justify="start">
+      <FontAwesome className={cssClass("Error--Icon")} name="exclamation-circle " />
+      {errorMsg}
+    </FlexBox>
+  );
 }
