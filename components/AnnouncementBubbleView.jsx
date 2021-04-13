@@ -78,6 +78,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                   color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
                 />
               }
+              onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               theme={"normal"}
             >
