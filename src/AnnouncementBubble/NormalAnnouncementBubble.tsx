@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as FontAwesome from "react-fontawesome";
 import * as moment from "moment";
 import * as cx from "classnames";
 import Linkify from "react-linkify";
@@ -16,7 +15,6 @@ export interface Props {
   theme: "normal";
   children: React.ReactNode;
   className?: string;
-  errorMsg?: React.ReactNode;
   onDelete?: () => void;
   onReply?: () => void;
   repliesDisabledMsg?: string;
@@ -28,7 +26,6 @@ export interface Props {
 export const NormalAnnouncementBubble: React.FC<Props> = ({
   children,
   className,
-  errorMsg,
   onDelete,
   onReply,
   repliesDisabledMsg,
@@ -40,26 +37,23 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   const replyButton = formReplyButton(onReply, repliesDisabledMsg);
 
   return (
-    <FlexBox grow column>
-      <FlexBox
-        grow
-        column
-        className={cx(cssClass("container"), onReply && cssClass("containerWithReply"), className)}
-      >
-        <FlexBox>
-          <div className={cssClass("senderIcon")}>{senderIcon}</div>
-          <FlexBox column alignItems="start" justify="center">
-            <div className={cssClass("senderName")}>{senderName}</div>
-            <div className={cssClass("timestamp")}>{formatDateForTimestamp(sentAtTimestamp)}</div>
-          </FlexBox>
-          {deleteMenu}
+    <FlexBox
+      grow
+      column
+      className={cx(cssClass("container"), onReply && cssClass("containerWithReply"), className)}
+    >
+      <FlexBox>
+        <div className={cssClass("senderIcon")}>{senderIcon}</div>
+        <FlexBox column alignItems="start" justify="center">
+          <div className={cssClass("senderName")}>{senderName}</div>
+          <div className={cssClass("timestamp")}>{formatDateForTimestamp(sentAtTimestamp)}</div>
         </FlexBox>
-        <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
-          <div className={cssClass("messageBody")}>{children}</div>
-        </Linkify>
-        {replyButton}
+        {deleteMenu}
       </FlexBox>
-      {errorMsg && formErrorContainer(errorMsg)}
+      <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
+        <div className={cssClass("messageBody")}>{children}</div>
+      </Linkify>
+      {replyButton}
     </FlexBox>
   );
 };
@@ -147,15 +141,6 @@ function DisabledReplyButton({ disabledMsg }: { disabledMsg: string }): JSX.Elem
         </FlexBox>
       </Tooltip>
     </Button>
-  );
-}
-
-function formErrorContainer(errorMsg: React.ReactNode): JSX.Element {
-  return (
-    <FlexBox className={cssClass("errorMsg")} grow alignItems="center" justify="start">
-      <FontAwesome className={cssClass("errorIcon")} name="exclamation-circle " />
-      {errorMsg}
-    </FlexBox>
   );
 }
 

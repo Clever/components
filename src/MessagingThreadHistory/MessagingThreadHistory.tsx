@@ -23,6 +23,7 @@ export interface MessageData {
   index: number;
   readStatusText?: string;
   displayAlertMessageAfter?: { icon: string; messageText: string };
+  errorMsg?: string;
 }
 
 interface Props {
@@ -144,6 +145,7 @@ function _interleaveMessagesWithDividers(
         readStatusText={isOwnMessage(message) && message.readStatusText}
         // First message needs 'auto' top margin to have messages fill container from bottom -> top
         className={i === 0 ? cssClasses.FIRST_MESSAGE : undefined}
+        errorMsg={message.errorMsg}
       >
         {message.content}
       </MessageMetadata>,

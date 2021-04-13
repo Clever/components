@@ -45,7 +45,6 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
         <NormalAnnouncementBubble
           theme="normal"
           className={props.className}
-          errorMsg={props.errorMsg}
           onDelete={props.onDelete}
           onReply={props.onReply}
           repliesDisabledMsg={props.repliesDisabledMsg}

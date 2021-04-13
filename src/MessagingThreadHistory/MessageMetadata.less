@@ -9,6 +9,22 @@
   flex-shrink: 0;
 }
 
+.MessageMetadata--Message--container--right {
+  align-items: flex-end;
+}
+
+.MessageMetadata--Message--container--left {
+  align-items: flex-start;
+}
+
+.MessageMetadata--Message--container--fullWidth {
+  align-items: flex-end;
+}
+
+.MessageMetadata--Message--container--center {
+  align-items: center;
+}
+
 .MessageMetadata--Message--center {
   .margin--y--s();
   margin-left: auto;
@@ -56,6 +72,18 @@
   .padding--top--2xs();
   text-align: right;
   color: @neutral_medium_gray;
+}
+
+.MessageMetadata--Error {
+  color: @alert_red;
+  line-height: 1rem;
+  .margin--right--2xs();
+  .margin--top--2xs();
+  .text--smallMedium();
+}
+
+.MessageMetadata--Error--Icon {
+  .margin--right--2xs();
 }
 
 // For mobile/tablet
