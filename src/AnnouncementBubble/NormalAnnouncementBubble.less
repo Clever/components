@@ -9,6 +9,7 @@
 
 .NormalAnnouncementBubble--containerWithReply {
   border-radius: 2rem;
+  .margin--bottom--m();
   .padding--bottom--xl();
 }
 
@@ -73,7 +74,7 @@ button.NormalAnnouncementBubble--menuIconContainer {
   .text--line-height-4();
   white-space: pre-wrap;
   word-wrap: break-word; // IE version
-  word-wrap: break-all; // Safari version
+  word-break: break-all; // Safari version
   overflow-wrap: anywhere;
 
   .LinkifyUtils--Link,
@@ -88,6 +89,7 @@ button.NormalAnnouncementBubble--replyButton {
   background-color: #ffdf7f;
   border: 0;
   border-radius: 1.5rem;
+  .boxShadow--medium();
   height: 2rem;
   padding: 0;
   width: 6.625rem;
@@ -104,6 +106,7 @@ button.NormalAnnouncementBubble--replyButton {
   &:active {
     /* stylelint-disable-next-line declaration-property-value-whitelist */
     background-color: #fed559;
+    .boxShadow--heavy();
   }
 }
 
