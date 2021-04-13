@@ -24,12 +24,19 @@ export default class MessagingInputView extends React.PureComponent {
 
   state = {
     inputValue: "",
-    newlineOnEnter: false,
     disableSendButton: false,
+    newlineOnEnter: false,
+    showReturnKeyInstructionsOnDesktop: false,
   };
 
   render() {
-    const { inputValue, newlineOnEnter, disableSendButton, enableReplyTo } = this.state;
+    const {
+      inputValue,
+      newlineOnEnter,
+      disableSendButton,
+      enableReplyTo,
+      showReturnKeyInstructionsOnDesktop,
+    } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
         This is an example message that you can try replying to.
@@ -70,6 +77,7 @@ export default class MessagingInputView extends React.PureComponent {
                 this.setState({ inputValue: "" });
               }}
               disableSendButton={disableSendButton}
+              showReturnKeyInstructionsOnDesktop={showReturnKeyInstructionsOnDesktop}
               replyTo={enableReplyTo ? exampleReplyMessage : null}
               onReplyCancel={() => alert("REPLY CANCELLED")}
             />
@@ -97,6 +105,16 @@ export default class MessagingInputView extends React.PureComponent {
               onChange={({ target }) => this.setState({ enableReplyTo: target.checked })}
             />{" "}
             Enable reply mode
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={showReturnKeyInstructionsOnDesktop}
+              onChange={({ target }) =>
+                this.setState({ showReturnKeyInstructionsOnDesktop: target.checked })
+              }
+            />{" "}
+            Show return key instructions on desktop
           </label>
         </Example>
 
@@ -166,6 +184,13 @@ export default class MessagingInputView extends React.PureComponent {
             name: "onReplyCancel",
             type: "() => void",
             description: "Optional function that fires when the user cancels the reply",
+            optional: true,
+          },
+          {
+            name: "showReturnKeyInstructionsOnDesktop",
+            type: "boolean",
+            description:
+              "When true, below the MessagingInput there will be instructions while on Desktop, that return is to send and shift + return is a newline. When false or on Mobile, nothing will show",
             optional: true,
           },
         ]}
