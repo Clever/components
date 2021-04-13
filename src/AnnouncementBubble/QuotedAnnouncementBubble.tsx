@@ -39,16 +39,16 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
     don't attempt to read the entire hidden message. This only works for plain-string children */
   let content = children;
   if (!isExpanded && typeof content === "string") {
-    let previewLength = 100;
-    let firstLineBreak = content.indexOf("\n");
+    const previewLength = 100;
+    const firstLineBreak = content.indexOf("\n");
     /* If we have a line break and the first line of text is shorter than the preview length
      and another line in the body of text, we should preserve the line break in the preview 
      and adjust the preview width accordingly */
     if (firstLineBreak > -1 && firstLineBreak < previewLength - 1) {
       const allLines = content.split("\n");
       const firstLine = allLines[0];
-      const longestLine = allLines.reduce((longestLine, line) =>
-        longestLine.length > line.length ? longestLine : line,
+      const longestLine = allLines.reduce((longest, current) =>
+        longest.length > current.length ? longest : current,
       );
 
       content = _.padEnd(firstLine, longestLine.length, "\xa0");
