@@ -118,6 +118,26 @@ button.MessagingInput--SendButton {
   line-height: normal;
 }
 
+.MessagingInput--InstructionsLabel {
+  color: @neutral_medium_gray;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem;
+  .margin--y--2xs();
+}
+
+.MessagingInput--InstructionsLabel--spacer {
+  height: 1.5rem; // margin + height of text of label
+  flex-shrink: 0;
+}
+
+.MessagingInput--InstructionsLabel--bold {
+  .text--semi-bold();
+}
+
+.MessagingInput--InstructionsLabel--last {
+  .margin--left--m();
+}
+
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
   .MessagingInput--TextField {
@@ -129,6 +149,10 @@ button.MessagingInput--SendButton {
       //  Ensures that text is to the left of the Send button.
       padding-right: 2.5rem;
     }
+  }
+
+  .MessagingInput--Container {
+    background-color: @neutral_white;
   }
 
   .MessagingInput--SendIcon {
@@ -153,5 +177,13 @@ button.MessagingInput--SendButton {
     width: @size_xl;
     padding: 0;
     border: none;
+  }
+
+  .MessagingInput--InstructionsLabel {
+    display: none;
+  }
+
+  .MessagingInput--InstructionsLabel--spacer {
+    display: none;
   }
 }
