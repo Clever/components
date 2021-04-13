@@ -23,12 +23,11 @@ export default class MessagingBubbleView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    hasError: false,
     theme: "ownMessage",
   };
 
   render() {
-    const { hasError, theme } = this.state;
+    const { theme } = this.state;
 
     return (
       <View
@@ -57,25 +56,13 @@ export default class MessagingBubbleView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingBubble
-              errorMsg={hasError ? "Message failed to send" : ""}
-              className={cssClass.BUBBLE}
-              theme={theme}
-            >
+            <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
               Hello World!
             </MessagingBubble>
-            <MessagingBubble
-              errorMsg={hasError ? "Message failed to send" : ""}
-              className={cssClass.BUBBLE}
-              theme={theme}
-            >
+            <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
               Links like https://clever.com are clickable
             </MessagingBubble>
-            <MessagingBubble
-              errorMsg={hasError ? "Message failed to send" : ""}
-              theme={theme}
-              replyTo={"This is a message!"}
-            >
+            <MessagingBubble theme={theme} replyTo={"This is a message!"}>
               This is a reply to that message!
             </MessagingBubble>
           </ExampleCode>
@@ -88,7 +75,7 @@ export default class MessagingBubbleView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { hasError, theme } = this.state;
+    const { theme } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -103,15 +90,6 @@ export default class MessagingBubbleView extends React.PureComponent {
             ]}
             value={theme}
           />
-          <label className={cssClass.CONFIG_OPTIONS}>
-            <input
-              type="checkbox"
-              checked={hasError}
-              onChange={({ target }) => this.setState({ hasError: target.checked })}
-            />
-            {"   "}
-            Show error message
-          </label>
         </div>
       </FlexBox>
     );
@@ -143,12 +121,6 @@ export default class MessagingBubbleView extends React.PureComponent {
             name: "replyTo",
             type: "React.ReactNode",
             description: "Optional prop to use for message reply content.",
-            optional: true,
-          },
-          {
-            name: "errorMsg",
-            type: "React.ReactNode",
-            description: "Optional prop to show an error message under a bubble.",
             optional: true,
           },
         ]}
