@@ -26,7 +26,7 @@ export default class MessagingInputView extends React.PureComponent {
     inputValue: "",
     disableSendButton: false,
     newlineOnEnter: false,
-    showReturnKeyInstructionsOnDesktop: false,
+    showReturnKeyInstructions: false,
   };
 
   render() {
@@ -35,7 +35,7 @@ export default class MessagingInputView extends React.PureComponent {
       newlineOnEnter,
       disableSendButton,
       enableReplyTo,
-      showReturnKeyInstructionsOnDesktop,
+      showReturnKeyInstructions,
     } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
@@ -77,7 +77,7 @@ export default class MessagingInputView extends React.PureComponent {
                 this.setState({ inputValue: "" });
               }}
               disableSendButton={disableSendButton}
-              showReturnKeyInstructionsOnDesktop={showReturnKeyInstructionsOnDesktop}
+              showReturnKeyInstructions={showReturnKeyInstructions}
               replyTo={enableReplyTo ? exampleReplyMessage : null}
               onReplyCancel={() => alert("REPLY CANCELLED")}
             />
@@ -109,12 +109,12 @@ export default class MessagingInputView extends React.PureComponent {
           <label className={cssClass.CONFIG}>
             <input
               type="checkbox"
-              checked={showReturnKeyInstructionsOnDesktop}
+              checked={showReturnKeyInstructions}
               onChange={({ target }) =>
-                this.setState({ showReturnKeyInstructionsOnDesktop: target.checked })
+                this.setState({ showReturnKeyInstructions: target.checked })
               }
             />{" "}
-            Show return key instructions on desktop
+            Show return key instructions
           </label>
         </Example>
 
@@ -187,10 +187,10 @@ export default class MessagingInputView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "showReturnKeyInstructionsOnDesktop",
+            name: "showReturnKeyInstructions",
             type: "boolean",
             description:
-              "When true, below the MessagingInput there will be instructions while on Desktop, that return is to send and shift + return is a newline. When false or on Mobile, nothing will show",
+              "When true and when text is in the input, below the MessagingInput there will be instructions that return is to send and shift + return is a newline. When false, nothing will show. Not currently customizable, but that could be a future improvement if needed. Currently always hidden on mobile.",
             optional: true,
           },
         ]}
