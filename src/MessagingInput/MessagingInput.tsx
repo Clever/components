@@ -30,7 +30,7 @@ interface Props {
   /** Temporarily added to allow overriding the text with a translation. */
   labelText?: string;
   disableSendButton?: boolean;
-  showReturnKeyInstructionsOnDesktop?: boolean;
+  showReturnKeyInstructions?: boolean;
 }
 
 export interface MessagingInputHandle {
@@ -55,7 +55,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     sendButtonText = "Send",
     labelText = "Send a message",
     disableSendButton,
-    showReturnKeyInstructionsOnDesktop,
+    showReturnKeyInstructions,
   } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
@@ -140,17 +140,14 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           onClick={() => onSubmit(value.trim())}
         />
       </FlexBox>
-      {formReturnKeyInstructionsLabel(showReturnKeyInstructionsOnDesktop, value)}
+      {formReturnKeyInstructionsLabel(showReturnKeyInstructions, value)}
     </FlexBox>
   );
 };
 
-function formReturnKeyInstructionsLabel(
-  showReturnKeyInstructionsOnDesktop: boolean,
-  value: string,
-) {
-  // If showReturnKeyInstructionsOnDesktop is not set, return undefined
-  if (!showReturnKeyInstructionsOnDesktop) {
+function formReturnKeyInstructionsLabel(showReturnKeyInstructions: boolean, value: string) {
+  // If showReturnKeyInstructions is not set, return undefined
+  if (!showReturnKeyInstructions) {
     return undefined;
   }
 
