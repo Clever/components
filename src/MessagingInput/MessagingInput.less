@@ -35,12 +35,14 @@
   position: absolute;
   top: -0.5rem;
   right: -0.5rem;
-  .padding--3xs();
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   cursor: pointer;
   background-color: @neutral_silver;
   color: @neutral_dark_gray;
   border: none;
+  padding: 0;
 
   &:hover,
   &:focus,
@@ -51,14 +53,8 @@
 }
 
 .MessagingInput--Reply--CloseIcon {
-  // covers possible range of FA sizes
-  min-width: 1em;
-  min-height: 1em;
-  max-width: 2em;
-  max-height: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .text--smallMedium();
+  margin-left: 0.0625rem; // 1 px because the FA icon is slightly off center
 }
 
 .MessagingInput--TextFieldLabel {
@@ -118,6 +114,26 @@ button.MessagingInput--SendButton {
   line-height: normal;
 }
 
+.MessagingInput--InstructionsLabel {
+  color: @neutral_medium_gray;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem;
+  .margin--y--2xs();
+}
+
+.MessagingInput--InstructionsLabel--spacer {
+  height: 1.5rem; // margin + height of text of label
+  flex-shrink: 0;
+}
+
+.MessagingInput--InstructionsLabel--bold {
+  .text--semi-bold();
+}
+
+.MessagingInput--InstructionsLabel--last {
+  .margin--left--m();
+}
+
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
   .MessagingInput--TextField {
@@ -129,6 +145,10 @@ button.MessagingInput--SendButton {
       //  Ensures that text is to the left of the Send button.
       padding-right: 2.5rem;
     }
+  }
+
+  .MessagingInput--Container {
+    background-color: @neutral_white;
   }
 
   .MessagingInput--SendIcon {
@@ -153,5 +173,13 @@ button.MessagingInput--SendButton {
     width: @size_xl;
     padding: 0;
     border: none;
+  }
+
+  .MessagingInput--InstructionsLabel {
+    display: none;
+  }
+
+  .MessagingInput--InstructionsLabel--spacer {
+    display: none;
   }
 }

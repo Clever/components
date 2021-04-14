@@ -30,6 +30,7 @@ interface Props {
   /** Temporarily added to allow overriding the text with a translation. */
   labelText?: string;
   disableSendButton?: boolean;
+  showReturnKeyInstructions?: boolean;
 }
 
 export interface MessagingInputHandle {
@@ -54,6 +55,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     sendButtonText = "Send",
     labelText = "Send a message",
     disableSendButton,
+    showReturnKeyInstructions,
   } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
@@ -138,8 +140,33 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           onClick={() => onSubmit(value.trim())}
         />
       </FlexBox>
+      {formReturnKeyInstructionsLabel(showReturnKeyInstructions, value)}
     </FlexBox>
   );
 };
+
+function formReturnKeyInstructionsLabel(showReturnKeyInstructions: boolean, value: string) {
+  // If showReturnKeyInstructions is not set, return undefined
+  if (!showReturnKeyInstructions) {
+    return undefined;
+  }
+
+  // If nothing is in the input, take up space with no text
+  if (!value.trim()) {
+    return <div className={cssClass("InstructionsLabel--spacer")} />;
+  }
+
+  return (
+    <label htmlFor={TEXT_FIELD_NAME} className={cssClass("InstructionsLabel")}>
+      <span className={cssClass("InstructionsLabel--bold")}>Return</span> to send
+      <span
+        className={cx(cssClass("InstructionsLabel--bold"), cssClass("InstructionsLabel--last"))}
+      >
+        Shift + Return
+      </span>{" "}
+      to add a new line
+    </label>
+  );
+}
 
 export const MessagingInput = React.forwardRef(MessagingInputRenderFunction);
