@@ -97,7 +97,7 @@ export const MessagingThreadListItem: React.FC<
   if (showNewLabel) {
     indicator = (
       <FlexBox className={cssClasses.NEW_LABEL_CONTAINER} justify={Justify.END}>
-        {showNewLabel && <Label color={"success"}>New</Label>}
+        {showNewLabel && <Label color="new-feature">New</Label>}
       </FlexBox>
     );
   } else {
