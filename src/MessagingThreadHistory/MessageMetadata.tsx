@@ -25,14 +25,7 @@ export const MessageMetadata: React.FC<
   const { className, placement, timestamp, readStatusText, children, errorMsg } = props;
   const showTimestamp = timestamp && placement !== "fullWidth";
   return (
-    <div
-      ref={ref}
-      className={classNames(
-        cssClass("Message--container"),
-        cssClass(`Message--container--${placement}`),
-        className,
-      )}
-    >
+    <div ref={ref} className={classNames(cssClass("Message--container"), className)}>
       <div className={cssClass(`Message--${placement}`)}>
         {children}
         {showTimestamp && (
