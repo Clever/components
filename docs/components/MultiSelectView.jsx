@@ -135,7 +135,7 @@ export default class MultiSelectView extends React.PureComponent {
             onChange={(v) => {
               this.setState({
                 initialValuesSelect: v,
-                values: v.split(", "),
+                values: (v || "").split(", "),
               });
             }}
             size={FormElementSize.MEDIUM}
