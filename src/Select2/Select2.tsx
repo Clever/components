@@ -103,10 +103,6 @@ const Select2: React.FC<Props> = ({
             inputValue: selectedItem ? selectedItem.value : "",
           };
         }
-        case useCombobox.stateChangeTypes.InputChange:
-          break;
-        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
-          break;
         default:
           break;
       }
