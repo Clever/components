@@ -30,12 +30,11 @@ export default class Select2View extends React.PureComponent {
     clearable: true,
     required: true,
     initialIsInError: false,
+    initialValue: "",
     size: FormElementSize.MEDIUM,
   };
 
   render() {
-    const { optionToggle1 } = this.state;
-
     return (
       <View className={cssClass.CONTAINER} title="Select2" sourcePath="src/Select2/Select2.tsx">
         <header className={cssClass.INTRO}>
@@ -76,7 +75,10 @@ export default class Select2View extends React.PureComponent {
               clearable={this.state.clearable}
               requirement={this.state.required ? "required" : ""}
               initialIsInError={this.state.initialIsInError}
-              onChange={console.log}
+              onChange={(v) => {
+                console.log(`selected: ${v}`);
+              }}
+              initialValue={this.state.initialValue}
               size={this.state.size}
             />
           </ExampleCode>
@@ -89,7 +91,15 @@ export default class Select2View extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { label, hideLabel, clearable, required, initialIsInError, size } = this.state;
+    const {
+      label,
+      initialValue,
+      hideLabel,
+      clearable,
+      required,
+      initialIsInError,
+      size,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -101,6 +111,20 @@ export default class Select2View extends React.PureComponent {
             requirement={FormElementRequirement.REQUIRED}
             onChange={(e) => this.setState({ label: e.target.value })}
             value={label}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Initial selected value:</span>
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            options={[
+              { content: "Empty", value: "" },
+              { content: "Option 1", value: "Option 1" },
+              { content: "Option 4", value: "Option 4" },
+              { content: "Option 20", value: "Option 20" },
+            ]}
+            value={initialValue}
+            onSelect={(value) => this.setState({ initialValue: value })}
           />
         </div>
         <label className={cssClass.CONFIG}>
@@ -150,7 +174,7 @@ export default class Select2View extends React.PureComponent {
               { content: "full-width", value: FormElementSize.FULL_WIDTH },
             ]}
             value={size}
-            onSelect={(value) => this.setState({ size: value })}
+            onSelect={(v) => this.setState({ size: v })}
           />
         </div>
       </FlexBox>
@@ -210,6 +234,12 @@ export default class Select2View extends React.PureComponent {
             name: "initialIsInError",
             type: "boolean",
             description: "Intialize the component in an error state",
+            optional: true,
+          },
+          {
+            name: "initialValue",
+            type: "string",
+            description: "Set the selected value (helpful for default states)",
             optional: true,
           },
           {
