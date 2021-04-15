@@ -1,6 +1,6 @@
 import * as classNames from "classnames";
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCombobox, useMultipleSelection } from "downshift";
 import * as FontAwesome from "react-fontawesome";
 
@@ -24,12 +24,13 @@ export interface Props {
   hideLabel?: boolean;
   placeholder?: string;
   options: Option[];
+  initialValues?: string[];
   creatable?: boolean;
   // allow the multi-select pick items an unlimited number of times
   // NOTE: might be a little wonky since the downshift library might not fully support it
   // it's also a fringe use case of this MultiSelect that we may want to remove in the future
   allowDuplicates?: boolean;
-  onChange?: (options: Option[]) => void;
+  onChange?: (options: string[]) => void;
   size?: Values<typeof FormElementSize>;
 }
 
@@ -96,6 +97,7 @@ const MultiSelect: React.FC<Props> = ({
   placeholder,
   // we will manage the options in state since options are creatable
   options: initialOptions,
+  initialValues,
   creatable,
   allowDuplicates,
   onChange,
@@ -110,11 +112,12 @@ const MultiSelect: React.FC<Props> = ({
     removeSelectedItem,
     setSelectedItems,
     selectedItems,
+    reset: resetSelections,
   } = useMultipleSelection<Option>({
     itemToString: (o) => (o ? o.value : ""),
     onSelectedItemsChange: (change) => {
       if (onChange) {
-        onChange(change.selectedItems);
+        onChange(change.selectedItems.map((o) => o.value));
       }
     },
   });
@@ -136,6 +139,7 @@ const MultiSelect: React.FC<Props> = ({
     getItemProps,
     highlightedIndex,
     openMenu,
+    reset: resetCombobox,
   } = useCombobox({
     inputValue,
     // useMultipleSelection will separately take care of all "selected item" interactions
@@ -187,6 +191,15 @@ const MultiSelect: React.FC<Props> = ({
       }
     },
   });
+
+  useEffect(() => {
+    // kind of a hacky way to make the component a controlled component
+    resetSelections();
+    resetCombobox();
+    setSelectedItems(
+      initialValues.map((v) => options.find((o) => o.value === v)).filter((v) => !!v),
+    );
+  }, [initialValues]);
 
   const id = name;
   const inputRef = useRef<HTMLInputElement>();

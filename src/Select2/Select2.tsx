@@ -23,6 +23,7 @@ export interface Props {
   // TODO: support all requirement types
   requirement?: typeof FormElementRequirement.REQUIRED;
   initialIsInError?: boolean;
+  initialValue?: string;
   onChange?: (value: string) => void;
   size?: Values<typeof FormElementSize>;
 }
@@ -62,6 +63,7 @@ const Select2: React.FC<Props> = ({
   clearable,
   requirement,
   initialIsInError,
+  initialValue,
   onChange,
   size,
 }) => {
@@ -86,6 +88,7 @@ const Select2: React.FC<Props> = ({
     openMenu,
     selectedItem,
     selectItem,
+    reset,
   } = useCombobox<Option>({
     items: selectableOptions,
     itemToString: (o) => (o ? o.value : ""),
@@ -94,12 +97,7 @@ const Select2: React.FC<Props> = ({
       switch (type) {
         case useCombobox.stateChangeTypes.InputBlur:
           // reset any text that has been entered
-          if (selectedItem) {
-            selectItem(selectedItem);
-            break;
-          }
-
-          selectItem(null);
+          selectItem(selectedItem || null);
           break;
         default:
           break;
@@ -128,6 +126,12 @@ const Select2: React.FC<Props> = ({
       }
     },
   });
+
+  useEffect(() => {
+    // kind of a hacky way to make the component a controlled component
+    reset();
+    selectItem(initialValue ? { value: initialValue } : null);
+  }, [initialValue]);
 
   const isInError =
     requirement === FormElementRequirement.REQUIRED &&
