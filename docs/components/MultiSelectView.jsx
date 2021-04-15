@@ -5,7 +5,7 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { TextInput2, MultiSelect, FlexBox, ItemAlign, SegmentedControl, Label } from "src";
+import { TextInput2, Select2, MultiSelect, FlexBox, ItemAlign, SegmentedControl, Label } from "src";
 import { FormElementSize, FormElementRequirement } from "../../src/utils/Forms";
 
 import "./MultiSelectView.less";
@@ -30,6 +30,8 @@ export default class MultiSelectView extends React.PureComponent {
     placeholder: "Select or create options",
     creatable: false,
     allowDuplicates: false,
+    values: [],
+    initialValuesSelect: "",
     size: FormElementSize.MEDIUM,
   };
 
@@ -78,7 +80,11 @@ export default class MultiSelectView extends React.PureComponent {
               }))}
               creatable={this.state.creatable}
               allowDuplicates={this.state.allowDuplicates}
-              onChange={console.log}
+              onChange={(v) => {
+                console.log(`selected: ${v.join(", ")}`);
+                this.setState({ values: v });
+              }}
+              values={this.state.values}
               size={this.state.size}
             />
           </ExampleCode>
@@ -91,7 +97,15 @@ export default class MultiSelectView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { label, hideLabel, placeholder, creatable, allowDuplicates, size } = this.state;
+    const {
+      label,
+      initialValuesSelect,
+      hideLabel,
+      placeholder,
+      creatable,
+      allowDuplicates,
+      size,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -103,6 +117,28 @@ export default class MultiSelectView extends React.PureComponent {
             requirement={FormElementRequirement.REQUIRED}
             onChange={(e) => this.setState({ label: e.target.value })}
             value={label}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          <Select2
+            className={cssClass.CONFIG_OPTIONS}
+            name="TextInput2View--labelTextInput"
+            label="Initial selected values"
+            options={[
+              { value: "Option 1, Option 2" },
+              { value: "Option 2, Option 4" },
+              { value: "Option 4, Option 20" },
+              { value: "Option 1, Option 10, Option 11, Option 12" },
+            ]}
+            clearable
+            value={initialValuesSelect}
+            onChange={(v) => {
+              this.setState({
+                initialValuesSelect: v,
+                values: (v || "").split(", "),
+              });
+            }}
+            size={FormElementSize.MEDIUM}
           />
         </div>
         <label className={cssClass.CONFIG}>
@@ -210,11 +246,16 @@ export default class MultiSelectView extends React.PureComponent {
             optional: true,
           },
           {
+            name: "values",
+            type: "string[]",
+            description:
+              "Set the selected values as a controlled component (also helpful for default states)",
+          },
+          {
             name: "onChange",
-            type: (
-              <code>{"(selectedItems: { value: string, content?: ReactNode }[]) => void"}</code>
-            ),
-            description: "Called when an option is selected",
+            type: <code>{"(selectedItems: string[]) => void"}</code>,
+            description:
+              "Called when an option is selected which contains an array of select values",
           },
           {
             name: "size",

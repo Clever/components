@@ -23,7 +23,8 @@ export interface Props {
   // TODO: support all requirement types
   requirement?: typeof FormElementRequirement.REQUIRED;
   initialIsInError?: boolean;
-  onChange?: (value: string) => void;
+  value: string;
+  onChange: (value: string) => void;
   size?: Values<typeof FormElementSize>;
 }
 
@@ -62,6 +63,7 @@ const Select2: React.FC<Props> = ({
   clearable,
   requirement,
   initialIsInError,
+  value,
   onChange,
   size,
 }) => {
@@ -85,25 +87,26 @@ const Select2: React.FC<Props> = ({
     getItemProps,
     openMenu,
     selectedItem,
-    selectItem,
   } = useCombobox<Option>({
     items: selectableOptions,
     itemToString: (o) => (o ? o.value : ""),
-    onStateChange: (changes) => {
-      const { type } = changes;
+    selectedItem: options.find((o) => o.value === value) || null,
+    stateReducer: (state, actionAndChanges) => {
+      const { changes, type } = actionAndChanges;
       switch (type) {
-        case useCombobox.stateChangeTypes.InputBlur:
+        case useCombobox.stateChangeTypes.InputKeyDownEscape:
+        case useCombobox.stateChangeTypes.InputBlur: {
           // reset any text that has been entered
-          if (selectedItem) {
-            selectItem(selectedItem);
-            break;
-          }
-
-          selectItem(null);
-          break;
+          return {
+            ...changes,
+            selectedItem,
+            inputValue: selectedItem ? selectedItem.value : "",
+          };
+        }
         default:
           break;
       }
+      return changes;
     },
     onIsOpenChange: (changes) => {
       const { type } = changes;
@@ -118,8 +121,8 @@ const Select2: React.FC<Props> = ({
       }
       return;
     },
-    onInputValueChange: ({ inputValue }) => {
-      const inputLowerCase = inputValue.toLowerCase();
+    onInputValueChange: ({ inputValue: v }) => {
+      const inputLowerCase = v.toLowerCase();
       setSelectableOptions(options.filter((o) => o.value.toLowerCase().includes(inputLowerCase)));
     },
     onSelectedItemChange: (item) => {
@@ -186,7 +189,7 @@ const Select2: React.FC<Props> = ({
             )}
             onClick={(e) => {
               e.stopPropagation();
-              selectItem(null);
+              onChange(null);
               openMenu();
               if (inputRef.current) {
                 inputRef.current.select();
