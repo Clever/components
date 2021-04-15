@@ -29,7 +29,8 @@ export interface Props {
   // NOTE: might be a little wonky since the downshift library might not fully support it
   // it's also a fringe use case of this MultiSelect that we may want to remove in the future
   allowDuplicates?: boolean;
-  onChange?: (options: Option[]) => void;
+  values: string[];
+  onChange: (options: string[]) => void;
   size?: Values<typeof FormElementSize>;
 }
 
@@ -96,6 +97,7 @@ const MultiSelect: React.FC<Props> = ({
   placeholder,
   // we will manage the options in state since options are creatable
   options: initialOptions,
+  values,
   creatable,
   allowDuplicates,
   onChange,
@@ -103,18 +105,12 @@ const MultiSelect: React.FC<Props> = ({
 }) => {
   const [options, setOptions] = useState(initialOptions);
   const [inputValue, setInputValue] = useState("");
-  const {
-    getSelectedItemProps,
-    getDropdownProps,
-    addSelectedItem,
-    removeSelectedItem,
-    setSelectedItems,
-    selectedItems,
-  } = useMultipleSelection<Option>({
+  const { getSelectedItemProps, getDropdownProps, selectedItems } = useMultipleSelection<Option>({
     itemToString: (o) => (o ? o.value : ""),
+    selectedItems: (values || []).map((v) => options.find((o) => o.value === v)).filter((v) => !!v),
     onSelectedItemsChange: (change) => {
       if (onChange) {
-        onChange(change.selectedItems);
+        onChange(change.selectedItems.map((o) => o.value));
       }
     },
   });
@@ -176,7 +172,7 @@ const MultiSelect: React.FC<Props> = ({
               newOption = { value: inputValue };
               setOptions([...options, newOption]);
             }
-            addSelectedItem(newOption);
+            onChange([...selectedItems, newOption].map((o) => o.value));
           }
           break;
         case useCombobox.stateChangeTypes.InputBlur:
@@ -226,11 +222,11 @@ const MultiSelect: React.FC<Props> = ({
                 className={cssClass.SELECTED_ITEM_BUTTON}
                 onClick={(e) => {
                   e.stopPropagation();
-                  if (allowDuplicates) {
-                    setSelectedItems([...selectedItems.slice(0, i), ...selectedItems.slice(i + 1)]);
-                  } else {
-                    removeSelectedItem(item);
-                  }
+                  onChange(
+                    [...selectedItems.slice(0, i), ...selectedItems.slice(i + 1)].map(
+                      (o) => o.value,
+                    ),
+                  );
                   if (inputRef.current) {
                     inputRef.current.select();
                   }
