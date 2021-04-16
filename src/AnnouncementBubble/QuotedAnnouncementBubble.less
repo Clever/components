@@ -60,7 +60,13 @@
 }
 
 .QuotedAnnouncementBubble--messageBody--truncated {
-  .text--truncate();
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.QuotedAnnouncementBubble--messageBody--ellipsis {
+  text-overflow: ellipsis;
 }
 
 .QuotedAnnouncementBubble--messageDetails--light,
@@ -111,9 +117,5 @@ button.QuotedAnnouncementBubble--button--outer {
 @media only screen and (max-width: @breakpointM) {
   .QuotedAnnouncementBubble--messageBody {
     .margin--y--xs();
-  }
-
-  .QuotedAnnouncementBubble--messageBody--truncated {
-    .text--truncate();
   }
 }

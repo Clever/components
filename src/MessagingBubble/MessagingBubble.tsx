@@ -43,9 +43,7 @@ export const MessagingBubble: React.FC<Props> = ({
             theme === "ownMessage" ? cssClasses.MESSAGE_REPLY_OWN : cssClasses.MESSAGE_REPLY_OTHER,
           )}
         >
-          <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
-            {replyTo}
-          </Linkify>
+          {replyTo}
         </div>
       )}
       <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
