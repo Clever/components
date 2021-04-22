@@ -14,6 +14,7 @@ export interface Props {
   copyText?: string;
   buttonLabel?: string;
   className?: string;
+  onCopyClick?: () => void;
 }
 
 interface State {
@@ -25,6 +26,7 @@ const propTypes = {
   copyText: PropTypes.string,
   buttonLabel: PropTypes.string,
   className: PropTypes.string,
+  onCopyClick: PropTypes.func,
 };
 
 export const cssClass = {
@@ -48,7 +50,9 @@ export default class CopyContainer extends React.PureComponent<Props, State> {
   }
 
   _onCopy() {
+    const { onCopyClick } = this.props;
     this.setState({ copied: true });
+    if (onCopyClick) onCopyClick();
     window.setTimeout(() => this.setState({ copied: false }), 2 * 1000);
   }
 

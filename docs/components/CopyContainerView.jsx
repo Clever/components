@@ -42,7 +42,7 @@ export default class CopyContainerView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <CopyContainer className="my--custom--class">
+            <CopyContainer className="my--custom--class" onCopyClick={() => console.log("copied")}>
               Click the button to copy me.
             </CopyContainer>
           </ExampleCode>
@@ -87,11 +87,19 @@ export default class CopyContainerView extends React.PureComponent {
             name: "copyText",
             type: "string",
             description: "The text that should be copied to the clipboard.",
+            optional: true,
           },
           {
             name: "buttonLabel",
             type: "string",
             description: "The text that appears on the copy button.",
+            optional: true,
+          },
+          {
+            name: "onCopyClick",
+            type: "Function",
+            description: "Callback when the copy button is clicked",
+            optional: true,
           },
         ]}
         className={cssClass.PROPS}
