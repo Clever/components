@@ -16,7 +16,19 @@ then
   exit 1;
 fi
 
-npm install
+npmVersion=$(npm view npm version | awk -F. '{ print $1 }')
+if [[ npmVersion -gt 6 ]]
+then
+  echo -e "\n\033[0;32mRunning 'npm install' with --legacy-peer-deps\033[0m\n";
+  # When on npm 7, the default behavior is to try and install peer dependencies.
+  # This leads to installation conflicts, so fallback on old behavior.
+  # https://github.blog/2021-02-02-npm-7-is-now-generally-available/#peer-dependencies
+  # TODO: remove when we don't have conflicting peer dependencies.
+  npm install --legacy-peer-deps
+else
+  npm install
+fi
+
 ./node_modules/.bin/webpack
 
 git add docs/
