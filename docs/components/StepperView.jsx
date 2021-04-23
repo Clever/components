@@ -149,7 +149,7 @@ export default class StepperView extends PureComponent {
     const { step1Title, step1Description, seekableStates } = this.state;
 
     return (
-      <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+      <FlexBox className={cssClass.CONFIG_CONTAINER} wrap>
         <Col span={6}>
           <div className={cssClass.CONFIG}>
             <TextInput
