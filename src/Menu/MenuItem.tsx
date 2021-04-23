@@ -76,12 +76,14 @@ export default class MenuItem extends React.PureComponent<Props> {
       onMouseEnter,
       selected,
       target,
+      disabled,
     } = this.props;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
 
     let MenuButton = component;
     if (!MenuButton) {
-      MenuButton = href ? "a" : "button";
+      // Render disabled href elements as buttons so that they can be disabled
+      MenuButton = href || !disabled ? "a" : "button";
     }
 
     // Safari fires focusout events on button mousedown events - it basically removes and returns
@@ -111,6 +113,7 @@ export default class MenuItem extends React.PureComponent<Props> {
         onClick={onClick}
         onMouseDown={onMouseDown}
         onMouseEnter={onMouseEnter}
+        disabled={disabled}
         role="menuitem"
         tabIndex={-1}
         target={target}
