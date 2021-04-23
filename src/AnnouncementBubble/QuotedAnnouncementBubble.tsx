@@ -20,7 +20,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   colorTheme: "white" | "light" | "dark";
-  messageTruncated: boolean;
+  messageTruncated?: boolean;
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
