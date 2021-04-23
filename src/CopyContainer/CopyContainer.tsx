@@ -14,6 +14,7 @@ export interface Props {
   copyText?: string;
   buttonLabel?: string;
   className?: string;
+  buttonType?: "linkPlain" | "primary" | "secondary";
   onCopyClick?: () => void;
 }
 
@@ -57,7 +58,7 @@ export default class CopyContainer extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { children, copyText, buttonLabel, className } = this.props;
+    const { children, copyText, buttonLabel, className, buttonType = "linkPlain" } = this.props;
     const { copied } = this.state;
 
     const copyLabel = !copied ? buttonLabel || "Copy" : "Copied!";
@@ -67,7 +68,7 @@ export default class CopyContainer extends React.PureComponent<Props, State> {
         {children}
         <FlexBox alignItems={ItemAlign.START} grow>
           <CopyToClipboard text={copyText || children || ""} onCopy={this._onCopy}>
-            <Button className={cssClass.BUTTON} type="linkPlain" value={copyLabel} />
+            <Button className={cssClass.BUTTON} type={buttonType} value={copyLabel} />
           </CopyToClipboard>
         </FlexBox>
       </FlexBox>
