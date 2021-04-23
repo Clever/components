@@ -3,7 +3,7 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { CopyContainer } from "src";
+import { CopyContainer, FlexBox, ItemAlign, SegmentedControl } from "src";
 
 import "./CopyContainerView.less";
 
@@ -19,8 +19,12 @@ const cssClass = {
 
 export default class CopyContainerView extends React.PureComponent {
   static cssClass = cssClass;
+  state = {
+    buttonType: "linkPlain",
+  };
 
   render() {
+    const { buttonType } = this.state;
     return (
       <View
         className={cssClass.CONTAINER}
@@ -61,6 +65,26 @@ export default class CopyContainerView extends React.PureComponent {
             </CopyContainer>
           </ExampleCode>
         </Example>
+        <Example title="With button type:">
+          <ExampleCode>
+            <CopyContainer className="my--custom--class" buttonType={buttonType}>
+              Click the button to copy me.
+            </CopyContainer>
+          </ExampleCode>
+          <FlexBox className={cssClass.CONFIG_CONTAINER} alignItems={ItemAlign.CENTER}>
+            <h4>Button type:</h4>
+            <SegmentedControl
+              className={cssClass.CONFIG_OPTIONS}
+              onSelect={(s) => this.setState({ buttonType: s })}
+              options={[
+                { content: "linkPlain [default]", value: "linkPlain" },
+                { content: "primary", value: "primary" },
+                { content: "secondary", value: "secondary" },
+              ]}
+              value={buttonType}
+            />
+          </FlexBox>
+        </Example>
 
         {this._renderProps()}
       </View>
@@ -99,6 +123,13 @@ export default class CopyContainerView extends React.PureComponent {
             name: "onCopyClick",
             type: "Function",
             description: "Callback when the copy button is clicked",
+            optional: true,
+          },
+          {
+            name: "buttonType",
+            type: "linkPlain | primary | secondary",
+            description: "Button type for the copy button",
+            defaultValue: "linkPlain",
             optional: true,
           },
         ]}
