@@ -100,10 +100,18 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                 />
               }
               sentAtTimestamp={new Date()}
+              isMessageTruncated
             >
               This can go inside of other components, like the MessagingBubble or MessagingInput!
               The content expands and hides when the button is clicked. Links like
-              https://clever.com are clickable
+              https://clever.com are clickable. Bla bla bla bla bla bla bla bla bla bla bla bla bla
+              bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+              bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+              bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+              bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+              bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+              bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+              bla bla bla bla bla bla bla...
             </AnnouncementBubble>
           </ExampleCode>
           {this._renderConfig()}
