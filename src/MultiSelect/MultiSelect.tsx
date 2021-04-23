@@ -14,7 +14,7 @@ import "./MultiSelect.less";
 export const ADD_NEW_ITEM_KEY = "MultiSelect--addNewItem";
 
 // value represents the searchable text of the option
-type Option = { value: string; content?: React.ReactNode, searchKey?: string };
+type Option = { value: string; content?: React.ReactNode; searchKey?: string };
 
 export interface Props {
   className?: string;

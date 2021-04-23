@@ -240,7 +240,9 @@ export default class MultiSelectView extends React.PureComponent {
           },
           {
             name: "options",
-            type: <code>{"Array<{ value: string, content?: ReactNode, searchKey?: string }>"}</code>,
+            type: (
+              <code>{"Array<{ value: string, content?: ReactNode, searchKey?: string }>"}</code>
+            ),
             description:
               "List of options to be selected. 'value' is the string key and used for searchability by default, 'content' is an optional react node for custom rendering, 'searchKey' is an optional string to be used for searching",
             optional: true,
