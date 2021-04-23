@@ -14,7 +14,7 @@ import "./MultiSelect.less";
 export const ADD_NEW_ITEM_KEY = "MultiSelect--addNewItem";
 
 // value represents the searchable text of the option
-type Option = { value: string; content?: React.ReactNode };
+type Option = { value: string; content?: React.ReactNode, searchKey?: string };
 
 export interface Props {
   className?: string;
@@ -64,7 +64,7 @@ export function getSelectableOptions(
 
   let hasExactMatch = false;
   const selectableOptions = options.filter((o) => {
-    const optionLowerCase = o.value.toLocaleLowerCase();
+    const optionLowerCase = (o.searchKey || o.value).toLocaleLowerCase();
     // small performance optimization to process exact match within the same iterator
     if (optionLowerCase === inputLowerCase) {
       hasExactMatch = true;

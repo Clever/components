@@ -69,15 +69,22 @@ export default class MultiSelectView extends React.PureComponent {
               label={this.state.label}
               hideLabel={this.state.hideLabel}
               placeholder={this.state.placeholder}
-              options={new Array(20).fill(0).map((_, i) => ({
-                value: `Option ${i + 1}`,
-                content: (
-                  <FlexBox>
-                    <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
-                    <span>Option {i + 1}</span>
-                  </FlexBox>
-                ),
-              }))}
+              options={new Array(20)
+                .fill(0)
+                .map((_, i) => ({
+                  value: `Option ${i + 1}`,
+                  content: (
+                    <FlexBox>
+                      <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
+                      <span>Option {i + 1}</span>
+                    </FlexBox>
+                  ),
+                }))
+                .concat({
+                  value: "sis_id",
+                  searchKey: "sis id",
+                  content: "SIS ID",
+                })}
               creatable={this.state.creatable}
               allowDuplicates={this.state.allowDuplicates}
               onChange={(v) => {
@@ -233,9 +240,9 @@ export default class MultiSelectView extends React.PureComponent {
           },
           {
             name: "options",
-            type: <code>{"Array<{ value: string, content?: ReactNode }>"}</code>,
+            type: <code>{"Array<{ value: string, content?: ReactNode, searchKey?: string }>"}</code>,
             description:
-              "List of options to be selected. 'value' is the string key and used for searchability, 'content' is an optional react node for custom rendering",
+              "List of options to be selected. 'value' is the string key and used for searchability by default, 'content' is an optional react node for custom rendering, 'searchKey' is an optional string to be used for searching",
             optional: true,
           },
           {
