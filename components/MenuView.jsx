@@ -205,6 +205,9 @@ export default class MenuView extends React.PureComponent {
               <Menu.Item href="https://google.com/search?q=four" target="_blank">
                 Plain Link Menu Item
               </Menu.Item>
+              <Menu.Item disabled>
+                Disabled Item
+              </Menu.Item>
             </Menu>
           </ExampleCode>
           {this._renderConfig()}
