@@ -100,7 +100,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       {isMessageTruncated && isExpanded && (
         <FlexBox className={cssClass("messageTruncatedNotice")} alignItems="center">
           <span>
-            Complete announcement not shown{" "}
+            Complete announcement not shown
             <Tooltip
               content="This announcement exceeds the preview character limit. See original announcement for complete content."
               placement={Tooltip.Placement.TOP}
