@@ -69,22 +69,16 @@ export default class MultiSelectView extends React.PureComponent {
               label={this.state.label}
               hideLabel={this.state.hideLabel}
               placeholder={this.state.placeholder}
-              options={new Array(20)
-                .fill(0)
-                .map((_, i) => ({
-                  value: `Option ${i + 1}`,
-                  content: (
-                    <FlexBox>
-                      <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
-                      <span>Option {i + 1}</span>
-                    </FlexBox>
-                  ),
-                }))
-                .concat({
-                  value: "sis_id",
-                  searchKey: "sis id",
-                  content: "SIS ID",
-                })}
+              options={new Array(20).fill(0).map((_, i) => ({
+                value: `option_${i + 1}`,
+                content: (
+                  <FlexBox>
+                    <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
+                    <span>Option {i + 1}</span>
+                  </FlexBox>
+                ),
+                searchKey: `option ${i + 1}`,
+              }))}
               creatable={this.state.creatable}
               allowDuplicates={this.state.allowDuplicates}
               onChange={(v) => {
