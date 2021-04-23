@@ -2,8 +2,9 @@ import * as React from "react";
 import { useState } from "react";
 import * as cx from "classnames";
 import Linkify from "react-linkify";
+import * as FontAwesome from "react-fontawesome";
 import * as _ from "lodash";
-import { FlexBox, Button } from "../";
+import { FlexBox, Button, Tooltip } from "../";
 import { formatDateForTimestamp } from "./NormalAnnouncementBubble";
 import { componentDecorator, matchDecorator } from "../MessagingBubble/linkifyUtils";
 
@@ -19,6 +20,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   colorTheme: "white" | "light" | "dark";
+  isMessageTruncated?: boolean;
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
@@ -32,8 +34,9 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
   senderIcon,
   senderName,
   sentAtTimestamp,
+  isMessageTruncated,
 }: Props) => {
-  const [isExpanded, setisExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const messageDetails = formMessageDetails(announcementGroupName, sentAtTimestamp);
 
@@ -94,12 +97,26 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
           {content}
         </Linkify>
       </div>
+      {isMessageTruncated && isExpanded && (
+        <FlexBox className={cssClass("messageTruncatedNotice")} alignItems="center">
+          Complete announcement not shown{" "}
+          <Tooltip
+            content="This announcement exceeds the preview character limit. See original announcement for complete content."
+            placement={Tooltip.Placement.TOP}
+          >
+            <FontAwesome
+              name="question-circle"
+              className={cssClass("messageTruncatedNotice--icon")}
+            />
+          </Tooltip>
+        </FlexBox>
+      )}
       {isExpanded && (
         <span className={cssClass(`messageDetails--${colorTheme}`)}>{messageDetails}</span>
       )}
       <Button
         className={cssClass("button--outer")}
-        onClick={() => setisExpanded(!isExpanded)}
+        onClick={() => setIsExpanded(!isExpanded)}
         type="linkPlain"
       >
         <span
