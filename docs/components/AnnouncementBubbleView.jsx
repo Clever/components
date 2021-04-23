@@ -100,7 +100,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                 />
               }
               sentAtTimestamp={new Date()}
-              messageTruncated
+              isMessageTruncated
             >
               This can go inside of other components, like the MessagingBubble or MessagingInput!
               The content expands and hides when the button is clicked. Links like

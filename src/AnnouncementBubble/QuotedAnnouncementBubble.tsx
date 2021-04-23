@@ -20,7 +20,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   colorTheme: "white" | "light" | "dark";
-  messageTruncated?: boolean;
+  isMessageTruncated?: boolean;
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
@@ -34,9 +34,9 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
   senderIcon,
   senderName,
   sentAtTimestamp,
-  messageTruncated,
+  isMessageTruncated,
 }: Props) => {
-  const [isExpanded, setisExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const messageDetails = formMessageDetails(announcementGroupName, sentAtTimestamp);
 
@@ -97,7 +97,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
           {content}
         </Linkify>
       </div>
-      {messageTruncated && isExpanded && (
+      {isMessageTruncated && isExpanded && (
         <FlexBox className={cssClass("messageTruncatedNotice")} alignItems="center">
           Complete announcement not shown{" "}
           <Tooltip
@@ -116,7 +116,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       )}
       <Button
         className={cssClass("button--outer")}
-        onClick={() => setisExpanded(!isExpanded)}
+        onClick={() => setIsExpanded(!isExpanded)}
         type="linkPlain"
       >
         <span

@@ -35,7 +35,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           senderIcon={props.senderIcon}
           senderName={props.senderName}
           sentAtTimestamp={props.sentAtTimestamp}
-          messageTruncated={props.messageTruncated}
+          isMessageTruncated={props.isMessageTruncated}
         >
           {props.children}
         </QuotedAnnouncementBubble>
