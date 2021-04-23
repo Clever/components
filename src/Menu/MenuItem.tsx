@@ -83,7 +83,7 @@ export default class MenuItem extends React.PureComponent<Props> {
     let MenuButton = component;
     if (!MenuButton) {
       // Render disabled href elements as buttons so that they can be disabled
-      MenuButton = href || !disabled ? "a" : "button" ;
+      MenuButton = href || !disabled ? "a" : "button";
     }
 
     // Safari fires focusout events on button mousedown events - it basically removes and returns
