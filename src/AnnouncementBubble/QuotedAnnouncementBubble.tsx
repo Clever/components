@@ -99,16 +99,18 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       </div>
       {isMessageTruncated && isExpanded && (
         <FlexBox className={cssClass("messageTruncatedNotice")} alignItems="center">
-          Complete announcement not shown{" "}
-          <Tooltip
-            content="This announcement exceeds the preview character limit. See original announcement for complete content."
-            placement={Tooltip.Placement.TOP}
-          >
-            <FontAwesome
-              name="question-circle"
-              className={cssClass("messageTruncatedNotice--icon")}
-            />
-          </Tooltip>
+          <span>
+            Complete announcement not shown{" "}
+            <Tooltip
+              content="This announcement exceeds the preview character limit. See original announcement for complete content."
+              placement={Tooltip.Placement.TOP}
+            >
+              <FontAwesome
+                name="question-circle"
+                className={cssClass("messageTruncatedNotice--icon")}
+              />
+            </Tooltip>
+          </span>
         </FlexBox>
       )}
       {isExpanded && (
