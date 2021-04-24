@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import View from "./View";
 import PropDocumentation from "./PropDocumentation";
-import { Stepper, FlexBox, Grid, ItemAlign, TextInput, TextArea } from "src";
+import { Stepper, FlexBox, Grid, ItemAlign, TextInput, MultiSelect, TextArea } from "src";
 
 import "./StepperView.less";
 
@@ -28,7 +28,7 @@ export default class StepperView extends PureComponent {
     step1Description: "Step description",
     step1State: "INCOMPLETE",
     step1Optional: false,
-    seekable: true,
+    seekableStates: ["INCOMPLETE", "WARNING", "SUCCESS"],
     currentStepID: "step3",
   };
 
@@ -46,7 +46,6 @@ export default class StepperView extends PureComponent {
       step1State,
       step1Warning,
       step1Optional,
-      seekable,
       currentStepID,
     } = this.state;
     const steps = [
@@ -125,7 +124,8 @@ export default class StepperView extends PureComponent {
                   className="ExampleStepper"
                   currentStepID={currentStepID}
                   steps={steps}
-                  onStepClick={seekable ? (id) => this.jumpToStep(id) : null}
+                  seekableStates={this.state.seekableStates}
+                  onStepClick={(id) => this.jumpToStep(id)}
                 />
               </Col>
               <Col span={8}>
@@ -146,14 +146,13 @@ export default class StepperView extends PureComponent {
 
   _renderConfig() {
     const { Col } = Grid;
-    const { step1Title, step1Description } = this.state;
+    const { step1Title, step1Description, seekableStates } = this.state;
 
     return (
-      <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+      <FlexBox className={cssClass.CONFIG_CONTAINER} wrap>
         <Col span={6}>
           <div className={cssClass.CONFIG}>
             <TextInput
-              className={cssClass.CONFIG_OPTIONS}
               onChange={(e) => this.setState({ step1Title: e.target.value })}
               label="Step 1 Title"
               name="StepperView--title"
@@ -163,13 +162,24 @@ export default class StepperView extends PureComponent {
           </div>
           <div className={cssClass.CONFIG}>
             <TextArea
-              className={cssClass.CONFIG_OPTIONS}
               onChange={(e) => this.setState({ step1Description: e.target.value })}
               label="Step 1 Description"
               name="StepperView--description"
               placeholder="Step 1 Description"
               value={step1Description}
               autoResize
+            />
+          </div>
+          <div className={cssClass.CONFIG}>
+            <MultiSelect
+              name="StepperView--seekableStatesSelect"
+              label="Seekable states"
+              options={[{ value: "INCOMPLETE" }, { value: "SUCCESS" }, { value: "WARNING" }]}
+              clearable
+              values={seekableStates}
+              onChange={(v) => {
+                this.setState({ seekableStates: v });
+              }}
             />
           </div>
         </Col>
@@ -179,19 +189,10 @@ export default class StepperView extends PureComponent {
   }
 
   _renderCheckboxes() {
-    const { seekable, step1State, step1Optional } = this.state;
+    const { step1State, step1Optional } = this.state;
 
     return (
       <div className={cssClass.CHECKBOX_GROUP}>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={seekable}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ seekable: e.target.checked })}
-          />{" "}
-          seekable
-        </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
@@ -256,6 +257,11 @@ export default class StepperView extends PureComponent {
               description: "The id of the current step",
               defaultValue: 0,
               optional: true,
+            },
+            {
+              name: "seekableStates",
+              type: 'Array<"INCOMPLETE" | "SUCCESS" | "WARNING">',
+              description: "States which are seekable",
             },
             {
               name: "onStepClick",
