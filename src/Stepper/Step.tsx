@@ -7,7 +7,7 @@ import CheckMark from "./CheckMark";
 import { FlexBox } from "../flex";
 import Exclamation from "./Exclamation";
 
-type StepState = "INCOMPLETE" | "SUCCESS" | "WARNING";
+export type StepState = "INCOMPLETE" | "SUCCESS" | "WARNING";
 
 export interface Props {
   className?: string;
