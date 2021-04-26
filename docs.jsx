@@ -32,6 +32,7 @@ import DatePickerView from "./components/DatePickerView";
 import DollarAmountView from "./components/DollarAmountView";
 import DropdownButtonView from "./components/DropdownButtonView";
 import EditableInfoPanelView from "./components/EditableInfoPanelView";
+import ExpandableContainer from "./components/ExpandableContainerView";
 import FileInputView from "./components/FileInputView";
 import FlexBoxView from "./components/FlexBoxView";
 import FloatingButtonView from "./components/FloatingButtonView";
@@ -125,6 +126,7 @@ render(
         <Route path="dollar-amount(/*)" component={DollarAmountView} />
         <Route path="dropdown-button(/*)" component={DropdownButtonView} />
         <Route path="editable-info-panel(/*)" component={EditableInfoPanelView} />
+        <Route path="expandable-container(/*)" component={ExpandableContainer} />
         <Route path="family-portal-logo(/*)" component={FamilyPortalLogoView} />
         <Route path="file-input(/*)" component={FileInputView} />
         <Route path="flex-box(/*)" component={FlexBoxView} />

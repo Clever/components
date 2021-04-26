@@ -122,6 +122,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "An EditableInfoPanel component",
   },
   {
+    componentLink: "expandable-container",
+    componentImg: "expandable-container.png",
+    componentName: "ExpandableContainer",
+    componentImgAlt: "An ExpandableContainer component",
+  },
+  {
     componentLink: "family-portal-logo",
     componentImg: "family-portal-logo.png",
     componentName: "FamilyPortalLogo",
