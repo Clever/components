@@ -4,12 +4,14 @@ import * as React from "react";
 
 import { Button } from "../Button/Button";
 import RichText from "../RichText/RichText";
+import Tooltip from "../Tooltip";
 
 export interface Props {
   className?: string;
   text: string;
   showMoreLabel?: string;
   showLessLabel?: string;
+  showTooltip?: boolean;
   lines?: number;
   maxCharsShown?: number;
   useRichText?: boolean;
@@ -21,6 +23,7 @@ const propTypes = {
   text: PropTypes.string.isRequired,
   showMoreLabel: PropTypes.string,
   showLessLabel: PropTypes.string,
+  showTooltip: PropTypes.node,
   lines: PropTypes.number,
   maxCharsShown: PropTypes.number,
   useRichText: PropTypes.bool,
@@ -31,6 +34,7 @@ const defaultProps = {
   maxCharsShown: 300,
   showMoreLabel: "Show more",
   showLessLabel: "Show less",
+  showTooltip: false,
   useRichText: false,
 };
 
@@ -66,6 +70,7 @@ export default class TextTruncate extends React.PureComponent<Props> {
       text,
       showMoreLabel,
       showLessLabel,
+      showTooltip,
       maxCharsShown,
       useRichText,
       name,
@@ -77,7 +82,9 @@ export default class TextTruncate extends React.PureComponent<Props> {
       return null;
     }
 
-    if (text.length < maxCharsShown) {
+    const isTextTruncated = text.length > maxCharsShown;
+
+    if (!isTextTruncated) {
       return (
         <div className={classnames(cssClass.CONTAINER, className)}>
           {useRichText ? <RichText text={text} /> : text}
@@ -87,7 +94,7 @@ export default class TextTruncate extends React.PureComponent<Props> {
 
     const displayText = truncated ? `${this.truncate(text)}…` : text;
     const toggleText = truncated ? showMoreLabel : showLessLabel;
-    return (
+    const truncatedText = (
       <div className={classnames(cssClass.CONTAINER, className)}>
         {useRichText ? <RichText text={displayText} /> : displayText}{" "}
         <Button
@@ -98,5 +105,10 @@ export default class TextTruncate extends React.PureComponent<Props> {
         />
       </div>
     );
+
+    if (showTooltip) {
+      return <Tooltip content={text}>{truncatedText}</Tooltip>;
+    }
+    return truncatedText;
   }
 }
