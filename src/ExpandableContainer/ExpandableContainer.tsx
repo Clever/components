@@ -3,7 +3,8 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
-import { FlexBox, FlexItem } from "src/flex";
+import FlexBox from "../flex/FlexBox";
+import FlexItem from "../flex/FlexItem";
 
 import "./ExpandableContainer.less";
 
