@@ -29,6 +29,7 @@ export default class TextTruncateView extends React.PureComponent {
     showMoreLabel: "Show more",
     showLessLabel: "Show less",
     showLongText: true,
+    showTooltip: false,
     useRichText: false,
   };
 
@@ -40,7 +41,14 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   render() {
-    const { maxCharsShown, showMoreLabel, showLessLabel, showLongText, useRichText } = this.state;
+    const {
+      maxCharsShown,
+      showMoreLabel,
+      showLessLabel,
+      showLongText,
+      showTooltip,
+      useRichText,
+    } = this.state;
 
     return (
       <View
@@ -66,6 +74,7 @@ export default class TextTruncateView extends React.PureComponent {
               maxCharsShown={maxCharsShown}
               showMoreLabel={showMoreLabel}
               showLessLabel={showLessLabel}
+              showTooltip={showTooltip}
               useRichText={useRichText}
               text={showLongText ? this.longText : this.shortText}
             />
@@ -79,7 +88,14 @@ export default class TextTruncateView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { showLongText, maxCharsShown, showMoreLabel, showLessLabel, useRichText } = this.state;
+    const {
+      showLongText,
+      maxCharsShown,
+      showMoreLabel,
+      showLessLabel,
+      showTooltip,
+      useRichText,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -118,6 +134,18 @@ export default class TextTruncateView extends React.PureComponent {
               { content: "1000", value: "1000" },
             ]}
             value={`${maxCharsShown}`}
+          />
+        </div>
+        <div className={cssClass.CONFIG}>
+          Tooltip:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={(value) => this.setState({ showTooltip: value === "show" })}
+            options={[
+              { content: "None", value: "none" },
+              { content: "Show", value: "show" },
+            ]}
+            value={showTooltip ? "show" : "none"}
           />
         </div>
         <div className={cssClass.CONFIG}>
@@ -172,6 +200,13 @@ export default class TextTruncateView extends React.PureComponent {
             type: "string",
             description: "Text for 'show less' clickable toggle",
             defaultValue: "Show less",
+            optional: true,
+          },
+          {
+            name: "showTooltip",
+            type: "boolean",
+            description: "Whether to show a tooltip of the entire text when the text is truncated",
+            defaultValue: "false",
             optional: true,
           },
           {
