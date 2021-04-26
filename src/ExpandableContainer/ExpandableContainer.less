@@ -1,0 +1,20 @@
+@import (reference) "../less/utilities";
+
+.ExpandableContainer--container {
+  background-color: @neutral_white;
+  color: @neutral_dark_gray;
+}
+
+.ExpandableContainer--content {
+  .padding--s();
+}
+
+.ExpandableContainer--title {
+  .padding--s();
+  font-weight: 600;
+
+  &:focus,
+  &:hover {
+    background: @neutral_silver;
+  }
+}
