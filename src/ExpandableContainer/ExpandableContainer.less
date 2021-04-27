@@ -5,15 +5,23 @@
   color: @neutral_dark_gray;
 }
 
-.ExpandableContainer--content {
-  .padding--s();
-}
-
 .ExpandableContainer--title {
-  .padding--s();
+  .padding--left--l();
+  .padding--right--2xs();
+  .padding--y--xs();
 
   &:focus,
   &:hover {
     background: @neutral_silver;
   }
+}
+
+.ExpandableContainer--expandIcon {
+  .padding--xs();
+}
+
+.ExpandableContainer--content {
+  .padding--left--l();
+  .padding--right--2xs();
+  .padding--y--xs();
 }

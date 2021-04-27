@@ -20,6 +20,7 @@ const cssClass = {
   CONTAINER: "ExpandableContainer--container",
   TITLE: "ExpandableContainer--title",
   CONTENT: "ExpandableContainer--content",
+  EXPAND_ICON: "ExpandableContainer--expandIcon",
 };
 
 export const ExpandableContainer: React.FC<Props> = ({
@@ -34,7 +35,10 @@ export const ExpandableContainer: React.FC<Props> = ({
       <FlexBox alignItems="center" className={cssClass.TITLE} onClick={onClick}>
         {title}
         <FlexItem grow />
-        <FontAwesome name={isExpanded ? "chevron-down" : "chevron-right"} />
+        <FontAwesome
+          className={cssClass.EXPAND_ICON}
+          name={isExpanded ? "chevron-down" : "chevron-right"}
+        />
       </FlexBox>
       {isExpanded && <div className={cssClass.CONTENT}>{children}</div>}
     </FlexBox>
