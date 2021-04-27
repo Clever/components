@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 import * as FontAwesome from "react-fontawesome";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
@@ -13,7 +12,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   isExpanded?: boolean;
-  onToggleExpansion?: () => void;
+  onClick?: () => void;
   title?: React.ReactNode;
 }
 
@@ -27,30 +26,17 @@ export const ExpandableContainer: React.FC<Props> = ({
   children,
   className,
   isExpanded,
-  onToggleExpansion,
+  onClick,
   title,
 }) => {
-  const [expanded, setExpanded] = useState(isExpanded);
-
-  useEffect(() => {
-    setExpanded(isExpanded);
-  }, [isExpanded]);
-
   return (
     <FlexBox column className={classnames(cssClass.CONTAINER, className)}>
-      <FlexBox
-        alignItems="center"
-        className={cssClass.TITLE}
-        onClick={() => {
-          onToggleExpansion();
-          setExpanded(!expanded);
-        }}
-      >
+      <FlexBox alignItems="center" className={cssClass.TITLE} onClick={onClick}>
         {title}
         <FlexItem grow />
-        <FontAwesome name={expanded ? "chevron-down" : "chevron-right"} />
+        <FontAwesome name={isExpanded ? "chevron-down" : "chevron-right"} />
       </FlexBox>
-      {expanded && <div className={cssClass.CONTENT}>{children}</div>}
+      {isExpanded && <div className={cssClass.CONTENT}>{children}</div>}
     </FlexBox>
   );
 };
@@ -59,6 +45,6 @@ ExpandableContainer.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   isExpanded: PropTypes.bool,
-  onToggleExpansion: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   title: PropTypes.node,
 };
