@@ -1,0 +1,27 @@
+@import (reference) "../less/utilities";
+
+.ExpandableContainer--container {
+  background-color: @neutral_white;
+  color: @neutral_dark_gray;
+}
+
+.ExpandableContainer--title {
+  .padding--left--l();
+  .padding--right--2xs();
+  .padding--y--xs();
+
+  &:focus,
+  &:hover {
+    background: @neutral_silver;
+  }
+}
+
+.ExpandableContainer--expandIcon {
+  .padding--xs();
+}
+
+.ExpandableContainer--content {
+  .padding--left--l();
+  .padding--right--2xs();
+  .padding--y--xs();
+}

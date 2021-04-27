@@ -142,3 +142,5 @@ import Select2 from "./Select2";
 export { Select2 };
 
 export { AlertBox2, AlertBox2Type } from "./AlertBox2";
+
+export { ExpandableContainer } from "./ExpandableContainer";
