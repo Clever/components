@@ -107,7 +107,11 @@ export default class TextTruncate extends React.PureComponent<Props> {
     );
 
     if (showTooltip) {
-      return <Tooltip content={text}>{truncatedText}</Tooltip>;
+      return (
+        <Tooltip content={text} placement={Tooltip.Placement.BOTTOM}>
+          {truncatedText}
+        </Tooltip>
+      );
     }
     return truncatedText;
   }
