@@ -4,7 +4,7 @@ import FontAwesome from "react-fontawesome";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { CopyContainer, ExpandableContainer, FlexBox, FlexItem, ItemAlign } from "src";
+import { CopyContainer, ExpandableContainer } from "src";
 
 import "./ExpandableContainerView.less";
 

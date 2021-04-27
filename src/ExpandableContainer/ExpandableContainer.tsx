@@ -1,7 +1,8 @@
+import * as React from "react";
+import { useEffect, useState } from "react";
+import * as FontAwesome from "react-fontawesome";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
-import * as React from "react";
-import * as FontAwesome from "react-fontawesome";
 
 import FlexBox from "../flex/FlexBox";
 import FlexItem from "../flex/FlexItem";
@@ -11,18 +12,10 @@ import "./ExpandableContainer.less";
 export interface Props {
   children: React.ReactNode;
   className?: string;
-  isExpanded: boolean;
-  onToggleExpansion: React.MouseEventHandler<HTMLDivElement>;
+  isExpanded?: boolean;
+  onToggleExpansion?: () => void;
   title?: React.ReactNode;
 }
-
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  isExpanded: PropTypes.bool,
-  onToggleExpansion: PropTypes.func.isRequired,
-  title: PropTypes.node,
-};
 
 const cssClass = {
   CONTAINER: "ExpandableContainer--container",
@@ -30,20 +23,42 @@ const cssClass = {
   CONTENT: "ExpandableContainer--content",
 };
 
-export default class ExpandableContainer extends React.PureComponent<Props> {
-  static propTypes = propTypes;
+export const ExpandableContainer: React.FC<Props> = ({
+  children,
+  className,
+  isExpanded,
+  onToggleExpansion,
+  title,
+}) => {
+  const [expanded, setExpanded] = useState(isExpanded);
 
-  render() {
-    const { children, className, isExpanded, onToggleExpansion, title } = this.props;
-    return (
-      <FlexBox column className={classnames(cssClass.CONTAINER, className)}>
-        <FlexBox alignItems="center" className={cssClass.TITLE} onClick={onToggleExpansion}>
-          {title}
-          <FlexItem grow />
-          <FontAwesome name={isExpanded ? "chevron-down" : "chevron-right"} />
-        </FlexBox>
-        {isExpanded && <div className={cssClass.CONTENT}>{children}</div>}
+  useEffect(() => {
+    setExpanded(isExpanded);
+  }, [isExpanded]);
+
+  return (
+    <FlexBox column className={classnames(cssClass.CONTAINER, className)}>
+      <FlexBox
+        alignItems="center"
+        className={cssClass.TITLE}
+        onClick={() => {
+          onToggleExpansion();
+          setExpanded(!expanded);
+        }}
+      >
+        {title}
+        <FlexItem grow />
+        <FontAwesome name={expanded ? "chevron-down" : "chevron-right"} />
       </FlexBox>
-    );
-  }
-}
+      {expanded && <div className={cssClass.CONTENT}>{children}</div>}
+    </FlexBox>
+  );
+};
+
+ExpandableContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  isExpanded: PropTypes.bool,
+  onToggleExpansion: PropTypes.func.isRequired,
+  title: PropTypes.node,
+};

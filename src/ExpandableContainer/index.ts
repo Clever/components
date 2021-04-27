@@ -1,2 +1,1 @@
-import ExpandableContainer from "./ExpandableContainer";
-export default ExpandableContainer;
+export { ExpandableContainer } from "./ExpandableContainer";
