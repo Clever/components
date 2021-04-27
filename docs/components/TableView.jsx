@@ -449,13 +449,14 @@ export default class TableView extends PureComponent {
               this._lazyTable = t;
             }}
             lazy
-            getData={async ({ startingAfter, pageSize }) => {
+            getData={({ startingAfter, pageSize }) => {
               let start = 0;
               if (startingAfter != null) {
                 start = _.findIndex(tableData, (r) => r.id === startingAfter) + 1;
               }
-              await new Promise((resolve) => setTimeout(resolve, 1000));
-              return tableData.slice(start, start + pageSize);
+              return new Promise((resolve) => setTimeout(resolve, 1000)).then(() =>
+                tableData.slice(start, start + pageSize),
+              );
             }}
             firstSortDirection={Table.sortDirection.DESCENDING}
             numRows={tableData.length}
