@@ -43,7 +43,7 @@ export default class ExpandableContainerView extends React.PureComponent {
             <ExpandableContainer
               className={"my--custom--class"}
               isExpanded={this.state.isExpanded}
-              onToggleExpansion={() => this.setState({ isExpanded: !this.state.isExpanded })}
+              onClick={() => this.setState({ isExpanded: !this.state.isExpanded })}
               title={
                 <>
                   <FontAwesome name="address-card" />
@@ -86,7 +86,7 @@ export default class ExpandableContainerView extends React.PureComponent {
             description: "Whether or not to expand the container.",
           },
           {
-            name: "onToggleExpansion",
+            name: "onClick",
             type: "Function",
             description: "Called when a user toggles the container",
           },
