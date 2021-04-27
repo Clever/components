@@ -41,7 +41,7 @@ export default class ExpandableContainerView extends React.PureComponent {
         <Example title="Basic Usage:">
           <ExampleCode>
             <ExpandableContainer
-              className={"my--custom--class"}
+              className="my--custom--class"
               isExpanded={this.state.isExpanded}
               onClick={() => this.setState({ isExpanded: !this.state.isExpanded })}
               title={
