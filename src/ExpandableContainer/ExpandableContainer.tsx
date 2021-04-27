@@ -13,7 +13,7 @@ export interface Props {
   className?: string;
   isExpanded?: boolean;
   onClick?: () => void;
-  title?: React.ReactNode;
+  title: React.ReactNode;
 }
 
 const cssClass = {
