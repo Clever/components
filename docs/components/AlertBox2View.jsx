@@ -12,6 +12,7 @@ import {
   ItemAlign,
   SegmentedControl,
   Label,
+  TextInput2,
 } from "src";
 
 import "./AlertBox2View.less";
@@ -34,6 +35,9 @@ export default class AlertBox2View extends React.PureComponent {
   state = {
     type: AlertBox2Type.CAUTION,
     isCloseable: false,
+    showButtons: false,
+    extraText:
+      "text inside child <p> tags will not be bolded. Check with your designer if you want to use this type of non-bolded text description. As a design convention at Clever, Alerts that are more than a single line are discouraged",
   };
 
   render() {
@@ -64,27 +68,32 @@ export default class AlertBox2View extends React.PureComponent {
             <AlertBox2
               className="my--custom--class"
               type={this.state.type}
+              buttons={
+                this.state.showButtons ? (
+                  <>
+                    <Button
+                      style={{ marginRight: "0.5rem" }}
+                      type="secondary"
+                      size="small"
+                      onClick={() => console.log("Clicked No!")}
+                    >
+                      No
+                    </Button>
+                    <Button type="primary" size="small" onClick={() => console.log("Clicked Yes!")}>
+                      Yes
+                    </Button>
+                  </>
+                ) : null
+              }
               isCloseable={this.state.isCloseable}
             >
-              <FlexBox justify={Justify.BETWEEN} alignItems={ItemAlign.CENTER}>
-                <p style={{ margin: "0" }}>
+              <div>
+                <div>
                   This is the box body. It can be any node.{" "}
                   <a href="/#/components/alert-box-2">look a link</a>!
-                </p>
-                <div>
-                  <Button
-                    style={{ marginRight: "0.5rem" }}
-                    type="secondary"
-                    size="small"
-                    onClick={() => console.log("Clicked No!")}
-                  >
-                    No
-                  </Button>
-                  <Button type="primary" size="small" onClick={() => console.log("Clicked Yes!")}>
-                    Yes
-                  </Button>
                 </div>
-              </FlexBox>
+                <p>{this.state.extraText}</p>
+              </div>
             </AlertBox2>
           </ExampleCode>
           {this._renderConfig()}
@@ -96,7 +105,7 @@ export default class AlertBox2View extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { type, isCloseable } = this.state;
+    const { type, isCloseable, showButtons, extraText } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -117,6 +126,24 @@ export default class AlertBox2View extends React.PureComponent {
           />{" "}
           <span className={cssClass.CONFIG_LABEL_TEXT}>isCloseable</span>
         </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={showButtons}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={(e) => this.setState({ showButtons: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_LABEL_TEXT}>extra buttons</span>
+        </label>
+        <div className={cssClass.CONFIG}>
+          <TextInput2
+            className={cssClass.CONFIG_OPTIONS}
+            name="TextInput2View--labelTextInput"
+            label="Extra text"
+            onChange={(e) => this.setState({ extraText: e.target.value })}
+            value={extraText}
+          />
+        </div>
       </FlexBox>
     );
   }
