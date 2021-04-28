@@ -24,12 +24,16 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   type: AlertBox2Type;
+  // provide optional buttons separately because it affects the css spacing
+  buttons?: React.ReactNode;
   isCloseable?: boolean;
 }
 
 export const cssClass = {
   CONTAINER: "AlertBox2",
   CONTENT_CONTAINER: "AlertBox2--contentContainer",
+  CONTENT_CONTAINER_WITH_BUTTONS: "AlertBox2--contentContainer--withButtons",
+  ICON: "AlertBox2--icon",
   CONTENT: "AlertBox2--content",
   CLOSE_BUTTON: "AlertBox2--closeButton",
 };
@@ -37,7 +41,7 @@ export const cssClass = {
 /**
  * TODO: Add short description.
  */
-export const AlertBox2: React.FC<Props> = ({ children, className, type, isCloseable }) => {
+export const AlertBox2: React.FC<Props> = ({ children, className, type, buttons, isCloseable }) => {
   const [isClosed, setIsClosed] = useState(false);
 
   useEffect(() => {
@@ -50,12 +54,22 @@ export const AlertBox2: React.FC<Props> = ({ children, className, type, isClosea
 
   return (
     <div className={classnames(cssClass.CONTAINER, `AlertBox2--${type}`, className)}>
-      <div className={cssClass.CONTENT_CONTAINER}>
-        <FontAwesome fixedWidth name={ICON_MAP[type]} className={`AlertBox2--icon--${type}`} />
+      <div
+        className={classnames(
+          cssClass.CONTENT_CONTAINER,
+          !!buttons && cssClass.CONTENT_CONTAINER_WITH_BUTTONS,
+        )}
+      >
+        <FontAwesome
+          className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
+          fixedWidth
+          name={ICON_MAP[type]}
+        />
         <div className={cssClass.CONTENT}>{children}</div>
       </div>
-      {isCloseable && (
-        <div>
+      <div className="AlertBox2--buttons">
+        {buttons}
+        {isCloseable && (
           <button
             aria-label="Close"
             className={cssClass.CLOSE_BUTTON}
@@ -64,8 +78,8 @@ export const AlertBox2: React.FC<Props> = ({ children, className, type, isClosea
             {/* https://www.compart.com/en/unicode/U+2715 */}
             &#10005;
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
