@@ -5,7 +5,6 @@
   .padding--m();
   .flexbox();
   .justify--between();
-  .items--center();
 
   &--critical {
     background-color: fade(@alert_red, 15%);
@@ -42,15 +41,26 @@
 
 .AlertBox2--contentContainer {
   .flexbox();
-  .items--center();
-  .flex--grow();
+  .items--baseline();
+}
+
+.AlertBox2--contentContainer--withButtons {
+  line-height: @size_xl;
 }
 
 .AlertBox2--content {
-  .flex--grow();
   .text--semi-bold();
   color: @neutral_dark_gray;
   .margin--left--m();
+
+  & p {
+    .text--regular();
+  }
+}
+
+.AlertBox2--buttons {
+  .flexbox();
+  .items--baseline();
 }
 
 .AlertBox2--closeButton {
@@ -63,6 +73,7 @@
   opacity: 0.6;
   .text--medium();
   .margin--left--m();
+  .text--line-height-4();
 
   &:hover {
     opacity: 1;
