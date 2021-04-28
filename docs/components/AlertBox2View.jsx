@@ -139,7 +139,7 @@ export default class AlertBox2View extends React.PureComponent {
           <TextInput2
             className={cssClass.CONFIG_OPTIONS}
             name="TextInput2View--labelTextInput"
-            label="Extra text"
+            label="Extra text (discouraged)"
             onChange={(e) => this.setState({ extraText: e.target.value })}
             value={extraText}
           />
