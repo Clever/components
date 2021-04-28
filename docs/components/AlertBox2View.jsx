@@ -88,7 +88,7 @@ export default class AlertBox2View extends React.PureComponent {
               isCloseable={this.state.isCloseable}
             >
               <div>
-                <div>
+                <div style={{ marginBottom: "0.25rem" }}>
                   This is the box body. It can be any node.{" "}
                   <a href="/#/components/alert-box-2">look a link</a>!
                 </div>
