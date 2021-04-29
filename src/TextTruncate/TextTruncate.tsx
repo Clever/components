@@ -23,7 +23,7 @@ const propTypes = {
   text: PropTypes.string.isRequired,
   showMoreLabel: PropTypes.string,
   showLessLabel: PropTypes.string,
-  showTooltip: PropTypes.node,
+  showTooltip: PropTypes.bool,
   lines: PropTypes.number,
   maxCharsShown: PropTypes.number,
   useRichText: PropTypes.bool,
