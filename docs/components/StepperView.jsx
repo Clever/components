@@ -28,7 +28,7 @@ export default class StepperView extends PureComponent {
     step1Description: "Step description",
     step1State: "INCOMPLETE",
     step1Optional: false,
-    seekableStates: ["INCOMPLETE", "WARNING", "SUCCESS"],
+    seekableStates: ["NEXT", "WARNING", "SUCCESS"],
     currentStepID: "step3",
   };
 
@@ -83,13 +83,20 @@ export default class StepperView extends PureComponent {
         label: "4",
       },
       {
+        title: "Next step",
+        description: "This is the next step that should be completed",
+        state: "NEXT",
+        id: "step5",
+        label: "5",
+      },
+      {
         title: "Complete remaining semester rollover actions",
         description:
           "Complete our checklist to ensure students and teachers have a smooth transition after the holiday season",
         optional: true,
         state: "INCOMPLETE",
-        id: "step5",
-        label: "5",
+        id: "step6",
+        label: "6",
       },
     ];
 
@@ -174,7 +181,12 @@ export default class StepperView extends PureComponent {
             <MultiSelect
               name="StepperView--seekableStatesSelect"
               label="Seekable states"
-              options={[{ value: "INCOMPLETE" }, { value: "SUCCESS" }, { value: "WARNING" }]}
+              options={[
+                { value: "NEXT" },
+                { value: "INCOMPLETE" },
+                { value: "SUCCESS" },
+                { value: "WARNING" },
+              ]}
               clearable
               values={seekableStates}
               onChange={(v) => {
@@ -221,6 +233,15 @@ export default class StepperView extends PureComponent {
             }
           />{" "}
           Step 1 - warning
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={step1State === "NEXT"}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={() => this.setState({ step1State: "NEXT", step1Warning: null })}
+          />{" "}
+          Step 1 - next
         </label>
         <label className={cssClass.CONFIG}>
           <input
