@@ -29,7 +29,7 @@ export default class StepperView extends PureComponent {
     step1State: "INCOMPLETE",
     step1Optional: false,
     seekableStates: ["NEXT", "WARNING", "SUCCESS"],
-    currentStepID: "step3",
+    currentStepID: "step2",
   };
 
   jumpToStep(id) {
