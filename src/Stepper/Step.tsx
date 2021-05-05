@@ -7,7 +7,7 @@ import CheckMark from "./CheckMark";
 import { FlexBox } from "../flex";
 import Exclamation from "./Exclamation";
 
-export type StepState = "INCOMPLETE" | "SUCCESS" | "WARNING";
+export type StepState = "INCOMPLETE" | "SUCCESS" | "WARNING" | "NEXT";
 
 export interface Props {
   className?: string;
@@ -29,7 +29,7 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.node,
   warning: PropTypes.string,
-  state: PropTypes.oneOf<StepState>(["INCOMPLETE", "SUCCESS", "WARNING"]),
+  state: PropTypes.oneOf<StepState>(["INCOMPLETE", "SUCCESS", "WARNING", "NEXT"]),
   current: PropTypes.bool,
   optional: PropTypes.bool,
   onClick: PropTypes.func,
@@ -42,6 +42,7 @@ const cssClass = {
   ICON: "Step--icon",
   MESSAGE_OPTIONAL: "Step--message--optional",
   MESSAGE_WARNING: "Step--message--warning",
+  NEXT: "Step--next",
   SEEKABLE: "Step--seekable",
   SUCCESS: "Step--success",
   TITLE: "Step--title",
@@ -68,6 +69,7 @@ export default class Step extends React.PureComponent<Props> {
       SUCCESS: <CheckMark />,
       WARNING: <Exclamation />,
       INCOMPLETE: label,
+      NEXT: label,
     };
     if (current) {
       return label;
@@ -92,6 +94,7 @@ export default class Step extends React.PureComponent<Props> {
       state === "SUCCESS" && cssClass.SUCCESS,
       current && cssClass.CURRENT,
       state === "WARNING" && cssClass.WARNING,
+      state === "NEXT" && cssClass.NEXT,
       onClick && cssClass.SEEKABLE,
     );
 

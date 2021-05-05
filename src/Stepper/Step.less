@@ -80,6 +80,20 @@ button.Step {
   }
 }
 
+.Step--next {
+  .Step--icon {
+    background-color: @neutral_white;
+    .border--s(@primary_blue);
+    color: @primary_blue;
+  }
+
+  .Step--title,
+  .Step--description,
+  .Step--message--optional {
+    color: @neutral_dark_gray;
+  }
+}
+
 .Step--current {
   .Step--icon {
     background-color: @primary_blue;
@@ -124,6 +138,13 @@ button.Step {
   }
 }
 
+.Step--next:focus {
+  .Step--icon {
+    .border--s(@primary_blue);
+    color: @primary_blue;
+  }
+}
+
 .Step--current.Step--warning {
   .Step--icon {
     background-color: @primary_blue;
@@ -148,6 +169,14 @@ button.Step {
   .Step--icon {
     background-color: @alert_red_shade_2;
     .border--s(@alert_red_shade_2);
+  }
+}
+
+.Step--seekable.Step--next:hover {
+  .Step--icon {
+    background-color: @neutral_white;
+    .border--s(@primary_blue_shade_2);
+    color: @primary_blue_shade_2;
   }
 }
 
