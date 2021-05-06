@@ -64,13 +64,14 @@ export default class Select2View extends React.PureComponent {
               label={this.state.label}
               hideLabel={this.state.hideLabel}
               options={new Array(20).fill(0).map((_, i) => ({
-                value: `Option ${i + 1}`,
+                value: `option_${i + 1}_value`,
                 content: (
                   <FlexBox>
                     <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
                     <span>Option {i + 1}</span>
                   </FlexBox>
                 ),
+                stringContent: `Option ${i + 1}`,
               }))}
               clearable={this.state.clearable}
               requirement={this.state.required ? "required" : ""}
@@ -112,9 +113,9 @@ export default class Select2View extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             options={[
               { content: "Empty", value: "" },
-              { content: "Option 1", value: "Option 1" },
-              { content: "Option 4", value: "Option 4" },
-              { content: "Option 20", value: "Option 20" },
+              { content: "Option 1", value: "option_1_value" },
+              { content: "Option 4", value: "option_4_value" },
+              { content: "Option 20", value: "option_20_value" },
             ]}
             value={value}
             onSelect={(v) => this.setState({ value: v })}
