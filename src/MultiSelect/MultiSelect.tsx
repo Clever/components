@@ -80,7 +80,7 @@ export function getSelectableOptions(
   });
 
   const creatableOption = [];
-  if (creatable && !!inputValue && !hasExactMatch && selectableOptions.length === 0) {
+  if (creatable && !!inputValue && !hasExactMatch) {
     // add a dummy "add item X" placeholder
     // it will be special-case rendered and handled
     creatableOption.push({ value: ADD_NEW_ITEM_KEY });
