@@ -60,11 +60,13 @@ export const AlertBox2: React.FC<Props> = ({ children, className, type, buttons,
           !!buttons && cssClass.CONTENT_CONTAINER_WITH_BUTTONS,
         )}
       >
-        <FontAwesome
-          className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
-          fixedWidth
-          name={ICON_MAP[type]}
-        />
+        <div>
+          <FontAwesome
+            className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
+            fixedWidth
+            name={ICON_MAP[type]}
+          />
+        </div>
         <div className={cssClass.CONTENT}>{children}</div>
       </div>
       <div className="AlertBox2--buttons">
