@@ -21,8 +21,10 @@ const cssClass = {
   CONTAINER: "MessagingAttachmentView",
   INTRO: "MessagingAttachmentView--intro",
   PROPS: "MessagingAttachmentView--props",
+  DEMO_ROW: "MessagingAttachmentView-demoRow",
 };
 
+// TODO: FINISH THIS DOCUMENT
 export default class MessagingAttachmentView extends React.PureComponent {
   static cssClass = cssClass;
 
@@ -55,67 +57,57 @@ export default class MessagingAttachmentView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <FlexBox>
+            <p>Sent Attachments:</p>
+            <FlexBox className={cssClass.DEMO_ROW}>
               <MessagingAttachment
                 attachmentID={"1"}
-                icon={<FileAttachmentIcon />}
+                icon={<FileAttachmentIcon fileType={"doc"} />}
                 onClickAttachment={() => console.log("clicked!")}
-                // onRemoveAttachment={() => console.log("closed!")}
-                title={"Morning message.m4a"}
-                // subtitle={"1.2 MB"}
+                title={"MyCoolDoc.doc"}
                 subtitle={"Click to download"}
-                // isUpload
               />
               <MessagingAttachment
                 attachmentID={"1"}
-                icon={<ImageAttachmentIcon />}
+                icon={<FileAttachmentIcon fileType={"image"} />}
                 onClickAttachment={() => console.log("clicked!")}
-                // onRemoveAttachment={() => console.log("closed!")}
-                title={"Morning message.m4a"}
-                // subtitle={"1.2 MB"}
-                subtitle={"Click to download"}
-                // isUpload
+                title={"Flyer.png"}
+                subtitle={"Click to view"}
               />
               <MessagingAttachment
                 attachmentID={"1"}
-                icon={<AudioAttachmentIcon />}
+                icon={<FileAttachmentIcon fileType={"audio"} />}
                 onClickAttachment={() => console.log("clicked!")}
-                // onRemoveAttachment={() => console.log("closed!")}
                 title={"Morning message.m4a"}
-                // subtitle={"1.2 MB"}
                 subtitle={"Click to download"}
-                // isUpload
               />
             </FlexBox>
-            <FlexBox>
+            <p>Draft Attachments:</p>
+            <FlexBox className={cssClass.DEMO_ROW}>
               <MessagingAttachment
                 attachmentID={"1"}
-                icon={<FileAttachmentIcon isUpload />}
+                icon={<FileAttachmentIcon fileType={"doc"} isUpload />}
                 onClickAttachment={() => console.log("clicked!")}
-                // onRemoveAttachment={() => console.log("closed!")}
-                title={"Morning message.m4a"}
-                // subtitle={"1.2 MB"}
-                subtitle={"Click to download"}
+                onRemoveAttachment={() => console.log("closed!")}
+                title={"MyCoolDoc.doc"}
+                subtitle={"1.2 MB"}
                 isUpload
               />
               <MessagingAttachment
                 attachmentID={"1"}
-                icon={<ImageAttachmentIcon isUpload />}
+                icon={<FileAttachmentIcon fileType={"image"} isUpload />}
                 onClickAttachment={() => console.log("clicked!")}
-                // onRemoveAttachment={() => console.log("closed!")}
-                title={"Morning message.m4a"}
-                // subtitle={"1.2 MB"}
-                subtitle={"Click to download"}
+                onRemoveAttachment={() => console.log("closed!")}
+                title={"Flyer.png"}
+                subtitle={"1.2 MB"}
                 isUpload
               />
               <MessagingAttachment
                 attachmentID={"1"}
-                icon={<AudioAttachmentIcon isUpload />}
+                icon={<FileAttachmentIcon fileType={"audio"} isUpload />}
                 onClickAttachment={() => console.log("clicked!")}
-                // onRemoveAttachment={() => console.log("closed!")}
+                onRemoveAttachment={() => console.log("closed!")}
                 title={"Morning message.m4a"}
-                // subtitle={"1.2 MB"}
-                subtitle={"Click to download"}
+                subtitle={"1.2 MB"}
                 isUpload
               />
             </FlexBox>
@@ -178,11 +170,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
       <PropDocumentation
         title="<MessagingAttachment /> Props"
         availableProps={[
-          {
-            name: "children",
-            type: "React.Node",
-            description: "MessagingAttachment content.",
-          },
           {
             name: "className",
             type: "string",

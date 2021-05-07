@@ -23,6 +23,7 @@ type Props = {
   isUpload?: boolean;
 };
 
+// can this not be functional?
 export const MessagingAttachment: React.FC<Props> = ({
   // todo use this?
   attachmentID,
@@ -37,11 +38,14 @@ export const MessagingAttachment: React.FC<Props> = ({
   return (
     <FlexBox
       className={cx(cssClass("Container"), isUpload && cssClass("Short"))}
-      onClick={onClickAttachment}
+      onClick={() => onClickAttachment(attachmentID)}
     >
       {/* only show reply remove attachment button if onRemoveAttachment callback provided */}
       {onRemoveAttachment && (
-        <button className={cssClass("CloseButton")} onClick={() => onRemoveAttachment}>
+        <button
+          className={cssClass("CloseButton")}
+          onClick={() => onRemoveAttachment(attachmentID)}
+        >
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
         </button>
       )}
@@ -56,46 +60,51 @@ export const MessagingAttachment: React.FC<Props> = ({
 
 // /// Sub-components, exported icon components to be used by consumers /// //
 
+const draftAudio = require("./icons/draft-attachment-audio.svg");
+const draftCatchall = require("./icons/draft-attachment-catchall.svg");
+const draftDoc = require("./icons/draft-attachment-doc.svg");
+const draftImage = require("./icons/draft-attachment-image.svg");
+const draftPdf = require("./icons/draft-attachment-pdf.svg");
+const draftPpt = require("./icons/draft-attachment-ppt.svg");
+const draftVideo = require("./icons/draft-attachment-video.svg");
+const draftXls = require("./icons/draft-attachment-xls.svg");
+const sentAudio = require("./icons/sent-attachment-audio-download.svg");
+const sentCatchall = require("./icons/sent-attachment-catchall-download.svg");
+const sentDoc = require("./icons/sent-attachment-doc-download.svg");
+const sentImage = require("./icons/sent-attachment-image-view.svg");
+const sentPdf = require("./icons/sent-attachment-pdf-view.svg");
+const sentPpt = require("./icons/sent-attachment-ppt-download.svg");
+const sentVideo = require("./icons/sent-attachment-video-download.svg");
+const sentXls = require("./icons/sent-attachment-xls-download.svg");
+
+const fileIcons = {
+  audio: { sent: sentAudio, draft: draftAudio },
+  catchall: { sent: sentCatchall, draft: draftCatchall },
+  doc: { sent: sentDoc, draft: draftDoc },
+  image: { sent: sentImage, draft: draftImage },
+  pdf: { sent: sentPdf, draft: draftPdf },
+  ppt: { sent: sentPpt, draft: draftPpt },
+  video: { sent: sentVideo, draft: draftVideo },
+  xls: { sent: sentXls, draft: draftXls },
+};
+
 type AttachmentIconProps = {
+  fileType: "audio" | "catchall" | "doc" | "image" | "pdf" | "ppt" | "video" | "xls";
   isUpload?: boolean;
 };
 
-export function FileAttachmentIcon({ isUpload }: AttachmentIconProps) {
+// TODO: handle undefined. Note: Components uses jsx, LP uses tsx
+export function FileAttachmentIcon({ fileType = "catchall", isUpload }: AttachmentIconProps) {
   return (
     <img
-      src={require(isUpload
-        ? "./icons/draft-attachment-doc.svg"
-        : "./icons/sent-attachment-doc-download.svg")}
+      src={isUpload ? fileIcons[fileType].draft : fileIcons[fileType].sent}
       className={cssClass("AttachmentTypeIcon")}
-      alt="FileAttachment icon"
+      alt={`MessagingAttachment ${fileType} icon`}
     />
   );
 }
 
-export function ImageAttachmentIcon({ isUpload }: AttachmentIconProps) {
-  return (
-    <img
-      src={require(isUpload
-        ? "./icons/draft-attachment-image.svg"
-        : "./icons/sent-attachment-image-view.svg")}
-      className={cssClass("AttachmentTypeIcon")}
-      alt="ImageAttachment icon"
-    />
-  );
-}
-
-export function AudioAttachmentIcon({ isUpload }: AttachmentIconProps) {
-  return (
-    <img
-      src={require(isUpload
-        ? "./icons/draft-attachment-audio.svg"
-        : "./icons/sent-attachment-audio-download.svg")}
-      className={cssClass("AttachmentTypeIcon")}
-      alt="AudioAttachment icon"
-    />
-  );
-}
-
+// TODO: how do I import this? It exists in LP
 // TODO: is this necessary? Helpful?
 // export function LoadingSpinnerIcon() {
 //   return <LoadingSpinner size={"s"} />;
