@@ -34,7 +34,9 @@ const addRoute: Transform = (file, api, options) => {
 
   // insert in an alphabetically ordered position
   let insertIndex = -1;
-  return j(file.source)
+
+  const root = j(file.source);
+  const nodeToInsertAt = root
     .findJSXElements("Route")
     .filter(j.filters.JSXElement.hasAttributes({ path: "components" }))
     .childElements()
@@ -69,10 +71,17 @@ const addRoute: Transform = (file, api, options) => {
         insertIndex = i;
       }
     })
-    .at(insertIndex)
-    .insertAfter(routeCode)
-    .insertAfter(newlineAST)
-    .toSource();
+    .at(insertIndex);
+
+  if (insertIndex === -1) {
+    nodeToInsertAt.insertAfter(routeCode);
+    nodeToInsertAt.insertAfter(newlineAST);
+  } else {
+    nodeToInsertAt.insertBefore(routeCode);
+    nodeToInsertAt.insertBefore(newlineAST);
+  }
+
+  return root.toSource({ wrapColumn: 100 });
 };
 
 // https://github.com/facebook/jscodeshift/issues/148#issuecomment-341366999

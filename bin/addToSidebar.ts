@@ -22,7 +22,7 @@ const transform: Transform = (file, api, options) => {
 
   // insert in an alphabetically ordered position
   let insertIndex = -1;
-  navGroups
+  const nodeToInsertAt = navGroups
     // if we use .find() directly, we will also select the icon prop that uses a JSXExpressionContainer
     // as well as potentially other nested elements
     .childNodes()
@@ -52,9 +52,15 @@ const transform: Transform = (file, api, options) => {
         insertIndex = i;
       }
     })
-    .at(insertIndex)
-    .insertAfter(newLinkCode)
-    .insertAfter(newlineAST);
+    .at(insertIndex);
+
+  if (insertIndex === -1) {
+    nodeToInsertAt.insertAfter(newLinkCode);
+    nodeToInsertAt.insertAfter(newlineAST);
+  } else {
+    nodeToInsertAt.insertBefore(newLinkCode);
+    nodeToInsertAt.insertBefore(newlineAST);
+  }
 
   return root.toSource({ wrapColumn: 100 });
 };
