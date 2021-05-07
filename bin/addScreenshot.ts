@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import { Transform } from "jscodeshift";
 
-// https://astexplorer.net/#/gist/bc75762e3cd5e7f5286dc8949aff1f7e/3ded78255024c9aca20f95d3e8418cabfe904e7a
+// https://astexplorer.net/#/gist/851a55838151c274b233e5318d23bd68/0aa8af858342710749b755ae9512de491f24e02c
 const transform: Transform = (file, api, options) => {
   const j = api.jscodeshift;
 
@@ -33,7 +33,7 @@ const transform: Transform = (file, api, options) => {
   ]);
   // insert in an alphabetically ordered position
   let insertIndex = -1;
-  componentsToDisplay
+  const nodeToInsertAt = componentsToDisplay
     .find(j.ObjectExpression)
     .forEach((path, i) => {
       if (insertIndex !== -1) {
@@ -62,8 +62,13 @@ const transform: Transform = (file, api, options) => {
         insertIndex = i;
       }
     })
-    .at(insertIndex)
-    .insertAfter(objectCode);
+    .at(insertIndex);
+
+  if (insertIndex === -1) {
+    nodeToInsertAt.insertAfter(objectCode);
+  } else {
+    nodeToInsertAt.insertBefore(objectCode);
+  }
 
   return root.toSource({ wrapColumn: 100 });
 };
