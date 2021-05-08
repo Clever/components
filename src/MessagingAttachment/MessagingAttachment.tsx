@@ -19,13 +19,11 @@ type Props = {
   onRemoveAttachment?: (attachmentID: string) => void;
   title: string;
   subtitle?: string;
-  // TODO: better name? short/small?
   isUpload?: boolean;
 };
 
-// can this not be functional?
+// TODO: can this not be functional?
 export const MessagingAttachment: React.FC<Props> = ({
-  // todo use this?
   attachmentID,
   errorMsg,
   icon,
@@ -40,7 +38,6 @@ export const MessagingAttachment: React.FC<Props> = ({
       className={cx(cssClass("Container"), isUpload && cssClass("Short"))}
       onClick={() => onClickAttachment(attachmentID)}
     >
-      {/* only show reply remove attachment button if onRemoveAttachment callback provided */}
       {onRemoveAttachment && (
         <button
           className={cssClass("CloseButton")}

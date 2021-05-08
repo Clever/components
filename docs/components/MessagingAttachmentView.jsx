@@ -44,8 +44,15 @@ export default class MessagingAttachmentView extends React.PureComponent {
         sourcePath="src/MessagingAttachment/MessagingAttachment.tsx"
       >
         <header className={cssClass.INTRO}>
-          <p>TODO: Describe your component/state it's purpose</p>
-          <p>TODO(optional): Describe scenarios where the component might be useful.</p>
+          <p>
+            MessagingAttachment component, to be used in AnnouncementBubble, MessagingBubble,
+            MessagingInput, etc
+          </p>
+          <p>
+            {
+              "There is a subcomponent <FileAttachmentIcon />  which takes in a fileType prop and renders an icon for for that filetype"
+            }
+          </p>
           <CodeSample>
             {`
               import {MessagingAttachment} from "clever-components";
@@ -63,7 +70,9 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 attachmentID={"1"}
                 icon={<FileAttachmentIcon fileType={"doc"} />}
                 onClickAttachment={() => console.log("clicked!")}
-                title={"MyCoolDoc.doc"}
+                title={
+                  "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc"
+                }
                 subtitle={"Click to download"}
               />
               <MessagingAttachment
@@ -88,7 +97,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 icon={<FileAttachmentIcon fileType={"doc"} isUpload />}
                 onClickAttachment={() => console.log("clicked!")}
                 onRemoveAttachment={() => console.log("closed!")}
-                title={"MyCoolDoc.doc"}
+                title={"MyCoolDoclkasjdlkajsdlkasjdlkasjdlkasjdlsakjd.doc"}
                 subtitle={"1.2 MB"}
                 isUpload
               />
@@ -111,11 +120,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 isUpload
               />
             </FlexBox>
-            {/* <MessagingAttachment className="my--custom--class" onPerformAction={console.log}>
-              {optionToggle1 ? "Something changed 🤔" : "My custom content."}
-            </MessagingAttachment> */}
           </ExampleCode>
-          {this._renderConfig()}
+          {/* {this._renderConfig()} */}
         </Example>
 
         {this._renderProps()}
@@ -167,23 +173,86 @@ export default class MessagingAttachmentView extends React.PureComponent {
   // TODO: Update prop documentation.
   _renderProps() {
     return (
-      <PropDocumentation
-        title="<MessagingAttachment /> Props"
-        availableProps={[
-          {
-            name: "className",
-            type: "string",
-            description: "Optional additional CSS class name to apply to the container.",
-            optional: true,
-          },
-          {
-            name: "onPerformAction",
-            type: "Function",
-            description: "Handler function for the performAction event.",
-          },
-        ]}
-        className={cssClass.PROPS}
-      />
+      <>
+        <PropDocumentation
+          title="<MessagingAttachment /> Props"
+          availableProps={[
+            {
+              name: "attachmentID",
+              type: "string",
+              description: "Unique ID used to identify this attachment",
+              // optional: false,
+            },
+            {
+              name: "errorMsg",
+              type: "string",
+              description: "Optional error message, used when there is an error uploading, etc.",
+              optional: true,
+            },
+            {
+              name: "icon",
+              type: "React.ReactNode",
+              description:
+                "A ReactNode to use as the icon for the Attachment. Generally will be a call to <FileAttachmentIcon /> ",
+              // optional: false,
+            },
+            {
+              name: "onClickAttachment",
+              type: "(attachmentID: string) => void",
+              description: "Callback to be called upon clicking the Attachment",
+              // optional: false,
+            },
+            {
+              name: "onRemoveAttachment",
+              type: "(attachmentID: string) => void",
+              description: "Callback to be called upon clicking the Remove Attachment (X) button",
+              optional: true,
+            },
+            {
+              name: "title",
+              type: "string",
+              description: "Title of the file",
+              // optional: false,
+            },
+            {
+              name: "subtitle",
+              type: "string",
+              description: "Optional subtitle, generally used for upload status, filesize, etc",
+              optional: true,
+            },
+            {
+              name: "isUpload",
+              type: "boolean",
+              description:
+                "Optional boolean for whether this Attachment is a draft/upload or it is a sent Attachment",
+              defaultValue: "false",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+        <PropDocumentation
+          title="<FileAttachmentIcon /> Props"
+          availableProps={[
+            {
+              name: "fileType",
+              type: '"audio" | "catchall" | "doc" | "image" | "pdf" | "ppt" | "video" | "xls"',
+              description: "Filetype for the given file, used to decide which icon to render",
+              defaultValue: "catchall",
+              optional: false,
+            },
+            {
+              name: "isUpload",
+              type: "boolean",
+              description:
+                "Whether or not the MessagingAttachment is an upload/draft or a sent attachment",
+              defaultValue: "false",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      </>
     );
   }
 }

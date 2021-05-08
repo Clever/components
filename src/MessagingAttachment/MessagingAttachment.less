@@ -6,13 +6,11 @@
 @ICON_REGULAR_SIZE: 3.625rem; // 58px
 
 .MessagingAttachment--Container {
-  // TODO: is there a better way to do this, does not work on IE
-  width: fit-content;
-
+  width: 21.875rem; // 350px
   position: relative;
   cursor: pointer;
   .padding--left--s();
-  .padding--right--xl();
+  .padding--right--m();
   padding-top: 0.625rem; // 10px
   padding-bottom: 0.625rem;
   height: @ICON_REGULAR_SIZE;
@@ -25,6 +23,7 @@
   // }
 
   &.MessagingAttachment--Short {
+    width: 12.125rem; // 194px
     cursor: default;
     height: @ICON_SMALL_SIZE;
     .padding--left--xs();
@@ -34,7 +33,6 @@
     .MessagingAttachment--IconContainer {
       width: @ICON_SMALL_SIZE;
       height: @ICON_SMALL_SIZE;
-      // .margin--right--xs();
     }
 
     // handle FontAwesome as well, for loading spinner
@@ -43,6 +41,10 @@
     .MessagingAttachment--IconContainer > * {
       max-height: @ICON_SMALL_SIZE;
       max-width: @ICON_SMALL_SIZE;
+    }
+
+    .MessagingAttachment--TextContainer {
+      max-width: 9.75rem; // 156px
     }
 
     .MessagingAttachment--subtitle {
@@ -82,15 +84,18 @@
   .text--semi-bold();
   font-size: 0.875rem; // 14px
   line-height: @size_m;
+  max-width: 17.75rem; // 284px
 }
 
 // TODO: remove if unused
-// .MessagingAttachment--title {
-// }
+.MessagingAttachment--title {
+  .text--truncate();
+}
 
 .MessagingAttachment--subtitle {
   .margin--top--2xs();
   color: @primary_blue_shade_2;
+  .text--truncate();
 }
 
 .MessagingAttachment--CloseButton {
