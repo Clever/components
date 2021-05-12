@@ -37,9 +37,6 @@ export const MessagingAttachment: React.FC<Props> = ({
   uploadComplete,
   uploadError,
 }: Props) => {
-  const errorCircle = (
-    <FontAwesome name="exclamation-circle" className={cx(cssClass("ErrorCircle"), "fa-lg")} />
-  );
   return (
     <FlexBox
       className={cx(
@@ -58,7 +55,7 @@ export const MessagingAttachment: React.FC<Props> = ({
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
         </button>
       )}
-      <FlexBox className={cssClass("IconContainer")}>{uploadError ? errorCircle : icon}</FlexBox>
+      <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
       <FlexBox className={cssClass("TextContainer")} column>
         <span className={cssClass("Title")}>{errorMsg || title}</span>
         {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
@@ -103,10 +100,21 @@ const fileIcons = {
 type AttachmentIconProps = {
   fileType: "audio" | "catchall" | "doc" | "image" | "pdf" | "ppt" | "video" | "xls";
   isUpload?: boolean;
+  uploadError?: boolean;
 };
 
 // TODO: handle undefined. Note: Components uses jsx, LP uses tsx
-export function FileAttachmentIcon({ fileType = "catchall", isUpload }: AttachmentIconProps) {
+export function FileAttachmentIcon({
+  fileType = "catchall",
+  isUpload,
+  uploadError,
+}: AttachmentIconProps) {
+  if (uploadError) {
+    return (
+      <FontAwesome name="exclamation-circle" className={cx(cssClass("ErrorCircle"), "fa-lg")} />
+    );
+  }
+
   return (
     <img
       src={isUpload ? fileIcons[fileType].draft : fileIcons[fileType].sent}

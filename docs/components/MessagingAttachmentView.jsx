@@ -122,7 +122,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
               />
               <MessagingAttachment
                 attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"audio"} isUpload />}
+                icon={<FileAttachmentIcon fileType={"audio"} isUpload uploadError />}
                 onClickAttachment={() => console.log("clicked!")}
                 onRemoveAttachment={() => console.log("closed!")}
                 title={"File cannot exceed 10 MB"}
@@ -131,52 +131,10 @@ export default class MessagingAttachmentView extends React.PureComponent {
               />
             </FlexBox>
           </ExampleCode>
-          {/* {this._renderConfig()} */}
         </Example>
 
         {this._renderProps()}
       </View>
-    );
-  }
-
-  // TODO: Update or remove config options.
-  _renderConfig() {
-    const { multiOption1, optionToggle1, optionToggle2 } = this.state;
-
-    return (
-      <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
-        <div className={cssClass.CONFIG}>
-          Size:
-          <SegmentedControl
-            className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ multiOption1: value })}
-            options={[
-              { content: "Small", value: "small" },
-              { content: "Medium", value: "medium" },
-              { content: "Large", value: "large" },
-            ]}
-            value={multiOption1}
-          />
-        </div>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={optionToggle1}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ optionToggle1: e.target.checked })}
-          />{" "}
-          <span className={cssClass.CONFIG_LABEL_TEXT}>Option Toggle 1</span>
-        </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={optionToggle2}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ optionToggle2: e.target.checked })}
-          />{" "}
-          <span className={cssClass.CONFIG_LABEL_TEXT}>Option Toggle 2</span>
-        </label>
-      </FlexBox>
     );
   }
 
