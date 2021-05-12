@@ -2,7 +2,7 @@ import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
-import { FlexBox } from "src/flex";
+import { FlexBox } from "../flex";
 // import LoadingSpinner from "../LoadingSpinner";
 
 import "./MessagingAttachment.less";
