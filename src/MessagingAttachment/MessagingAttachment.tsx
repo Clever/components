@@ -65,15 +65,18 @@ const draftPdf = require("./icons/draft-attachment-pdf.svg");
 const draftPpt = require("./icons/draft-attachment-ppt.svg");
 const draftVideo = require("./icons/draft-attachment-video.svg");
 const draftXls = require("./icons/draft-attachment-xls.svg");
-const sentAudio = require("./icons/sent-attachment-audio-download.svg");
-const sentCatchall = require("./icons/sent-attachment-catchall-download.svg");
-const sentDoc = require("./icons/sent-attachment-doc-download.svg");
-const sentImage = require("./icons/sent-attachment-image-view.svg");
-const sentPdf = require("./icons/sent-attachment-pdf-view.svg");
-const sentPpt = require("./icons/sent-attachment-ppt-download.svg");
-const sentVideo = require("./icons/sent-attachment-video-download.svg");
-const sentXls = require("./icons/sent-attachment-xls-download.svg");
+const sentAudio = require("./icons/sent-attachment-audio.svg");
+const sentCatchall = require("./icons/sent-attachment-catchall.svg");
+const sentDoc = require("./icons/sent-attachment-doc.svg");
+const sentImage = require("./icons/sent-attachment-image.svg");
+const sentPdf = require("./icons/sent-attachment-pdf.svg");
+const sentPpt = require("./icons/sent-attachment-ppt.svg");
+const sentVideo = require("./icons/sent-attachment-video.svg");
+const sentXls = require("./icons/sent-attachment-xls.svg");
 
+// TODO: Can this be replaced with a programmatic solution
+// const fileIcon = `./icons/${isUpload ? "draft" : "sent"}-attachment-${fileType}.svg`; ?
+// Will "require" allow this?
 const fileIcons = {
   audio: { sent: sentAudio, draft: draftAudio },
   catchall: { sent: sentCatchall, draft: draftCatchall },
