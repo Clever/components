@@ -17,9 +17,11 @@
   border: @size_4xs solid @neutral_silver;
   border-radius: @size_2xs;
 
-  &:hover {
+  // TODO: does not work for IE
+  &:hover:not(.MessagingAttachment--IsUploading) {
     background-color: #f9faff;
     border-color: #809dff;
+    cursor: pointer;
 
     .MessagingAttachment--title {
       color: @primary_blue_shade_2;

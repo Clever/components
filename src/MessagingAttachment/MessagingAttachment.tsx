@@ -20,6 +20,7 @@ type Props = {
   title: string;
   subtitle?: string;
   isUpload?: boolean;
+  uploadComplete?: boolean;
 };
 
 // TODO: can this not be functional?
@@ -32,10 +33,15 @@ export const MessagingAttachment: React.FC<Props> = ({
   title,
   subtitle,
   isUpload,
+  uploadComplete,
 }: Props) => {
   return (
     <FlexBox
-      className={cx(cssClass("Container"), isUpload && cssClass("Short"))}
+      className={cx(
+        cssClass("Container"),
+        isUpload && cssClass("Short"),
+        isUpload && !uploadComplete && cssClass("IsUploading"),
+      )}
       onClick={() => onClickAttachment(attachmentID)}
     >
       {onRemoveAttachment && (

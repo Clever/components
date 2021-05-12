@@ -98,7 +98,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 onClickAttachment={() => console.log("clicked!")}
                 onRemoveAttachment={() => console.log("closed!")}
                 title={"MyCoolDoclkasjdlkajsdlkasjdlkasjdlkasjdlsakjd.doc"}
-                subtitle={"1.2 MB"}
+                subtitle={"Uploading 5%"}
                 isUpload
               />
               <MessagingAttachment
@@ -107,7 +107,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 onClickAttachment={() => console.log("clicked!")}
                 onRemoveAttachment={() => console.log("closed!")}
                 title={"Flyer.png"}
-                subtitle={"1.2 MB"}
+                subtitle={"Processing..."}
                 isUpload
               />
               <MessagingAttachment
@@ -115,9 +115,10 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 icon={<FileAttachmentIcon fileType={"audio"} isUpload />}
                 onClickAttachment={() => console.log("clicked!")}
                 onRemoveAttachment={() => console.log("closed!")}
-                title={"Morning message.m4a"}
-                subtitle={"1.2 MB"}
+                title={"Hover over me.m4a"}
+                subtitle={"Click to download"}
                 isUpload
+                uploadComplete
               />
             </FlexBox>
           </ExampleCode>
