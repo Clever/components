@@ -50,7 +50,7 @@ export const MessagingAttachment: React.FC<Props> = ({
       {onRemoveAttachment && (
         <button
           className={cssClass("CloseButton")}
-          onClick={() => onRemoveAttachment(attachmentID)}
+          onClick={(e) => handleRemoveClick(e, onRemoveAttachment, attachmentID)}
         >
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
         </button>
@@ -63,6 +63,11 @@ export const MessagingAttachment: React.FC<Props> = ({
     </FlexBox>
   );
 };
+
+function handleRemoveClick(e, onRemoveAttachment, attachmentID) {
+  e.stopPropagation();
+  onRemoveAttachment(attachmentID);
+}
 
 // /// Sub-components, exported icon components to be used by consumers /// //
 
