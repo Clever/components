@@ -5,6 +5,8 @@
 @ICON_SMALL_SIZE: @size_2xl;
 @ICON_REGULAR_SIZE: @size_2xl;
 @HOVER_BACKGROUND_COLOR: #f9faff;
+@ERROR_RED: #df3537;
+@ERROR_RED_TEXT: #b30c10;
 
 .MessagingAttachment--Container {
   width: 21.875rem; // 350px
@@ -113,7 +115,7 @@
   }
 
   .MessagingAttachment--TextContainer {
-    max-width: 9.75rem; // 156px
+    max-width: 9.875rem; // 152px
   }
 
   .MessagingAttachment--Title {
@@ -127,6 +129,24 @@
     color: @neutral_dark_gray;
     .text--regular();
     margin-top: 0;
+  }
+}
+
+.MessagingAttachment--Container.MessagingAttachment--Error {
+  border-color: @ERROR_RED;
+  padding-left: 0.9375rem;
+
+  .MessagingAttachment--IconContainer {
+    width: @size_m;
+  }
+
+  .MessagingAttachment--ErrorCircle {
+    color: @ERROR_RED_TEXT;
+  }
+
+  .MessagingAttachment--Title {
+    color: @ERROR_RED_TEXT;
+    font-weight: 400;
   }
 }
 

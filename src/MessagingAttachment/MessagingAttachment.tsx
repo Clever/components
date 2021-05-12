@@ -21,6 +21,7 @@ type Props = {
   subtitle?: string;
   isUpload?: boolean;
   uploadComplete?: boolean;
+  uploadError?: boolean;
 };
 
 // TODO: can this not be functional?
@@ -34,13 +35,18 @@ export const MessagingAttachment: React.FC<Props> = ({
   subtitle,
   isUpload,
   uploadComplete,
+  uploadError,
 }: Props) => {
+  const errorCircle = (
+    <FontAwesome name="exclamation-circle" className={cx(cssClass("ErrorCircle"), "fa-lg")} />
+  );
   return (
     <FlexBox
       className={cx(
         cssClass("Container"),
         isUpload && cssClass("Short"),
         isUpload && !uploadComplete && cssClass("IsUploading"),
+        uploadError && cssClass("Error"),
       )}
       onClick={() => onClickAttachment(attachmentID)}
     >
@@ -52,7 +58,7 @@ export const MessagingAttachment: React.FC<Props> = ({
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
         </button>
       )}
-      <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
+      <FlexBox className={cssClass("IconContainer")}>{uploadError ? errorCircle : icon}</FlexBox>
       <FlexBox className={cssClass("TextContainer")} column>
         <span className={cssClass("Title")}>{errorMsg || title}</span>
         {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}

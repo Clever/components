@@ -120,6 +120,15 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 isUpload
                 uploadComplete
               />
+              <MessagingAttachment
+                attachmentID={"1"}
+                icon={<FileAttachmentIcon fileType={"audio"} isUpload />}
+                onClickAttachment={() => console.log("clicked!")}
+                onRemoveAttachment={() => console.log("closed!")}
+                title={"File cannot exceed 10 MB"}
+                isUpload
+                uploadError
+              />
             </FlexBox>
           </ExampleCode>
           {/* {this._renderConfig()} */}
