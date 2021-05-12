@@ -3,27 +3,27 @@
 // @import (reference) "~clever-components/dist/less/index";
 
 @ICON_SMALL_SIZE: @size_2xl;
-@ICON_REGULAR_SIZE: 3.625rem; // 58px
+@ICON_REGULAR_SIZE: @size_2xl;
 
 .MessagingAttachment--Container {
   width: 21.875rem; // 350px
   position: relative;
   cursor: pointer;
-  .padding--left--s();
+  padding-left: 0.6875rem; // 11px
   .padding--right--m();
-  padding-top: 0.625rem; // 10px
-  padding-bottom: 0.625rem;
+  padding-top: 0.9375rem; // 15px
+  padding-bottom: 0.9375rem; // 15px
   height: @ICON_REGULAR_SIZE;
   border: @size_4xs solid @neutral_silver;
   border-radius: @size_2xs;
 
-  // TODO: does not work for IE
+  // TODO: :not() does not work for IE
   &:hover:not(.MessagingAttachment--IsUploading) {
     background-color: #f9faff;
     border-color: #809dff;
     cursor: pointer;
 
-    .MessagingAttachment--title {
+    .MessagingAttachment--Title {
       color: @primary_blue_shade_2;
     }
   }
@@ -34,7 +34,7 @@
     height: @ICON_SMALL_SIZE;
     .padding--left--xs();
     padding-top: 0.6875rem; // 11px
-    padding-bottom: 0.6875rem;
+    padding-bottom: 0.6875rem; // 11px
 
     .MessagingAttachment--IconContainer {
       width: @ICON_SMALL_SIZE;
@@ -53,7 +53,14 @@
       max-width: 9.75rem; // 156px
     }
 
-    .MessagingAttachment--subtitle {
+    .MessagingAttachment--Title {
+      line-height: @size_m;
+      font-size: 0.875rem; // 14px
+    }
+
+    .MessagingAttachment--Subtitle {
+      font-size: 0.875rem; // 14px
+      line-height: @size_m;
       color: @neutral_dark_gray;
       .text--regular();
       margin-top: 0;
@@ -64,7 +71,7 @@
 .MessagingAttachment--IconContainer {
   width: @ICON_REGULAR_SIZE;
   height: @ICON_REGULAR_SIZE;
-  .margin--right--xs();
+  .margin--right--s();
   align-items: center;
   justify-content: center;
 }
@@ -86,20 +93,20 @@
 .MessagingAttachment--TextContainer {
   justify-content: center;
   color: @neutral_dark_gray;
-  font-size: 0.875rem; // 14px
-  line-height: @size_m;
   max-width: 17.75rem; // 284px
 }
 
 // TODO: remove if unused
-.MessagingAttachment--title {
+.MessagingAttachment--Title {
+  font-size: @size_m;
+  line-height: @size_l;
   .text--semi-bold();
   .text--truncate();
 }
 
-.MessagingAttachment--subtitle {
-  .margin--top--2xs();
-  // color: @primary_blue_shade_2;
+.MessagingAttachment--Subtitle {
+  font-size: 0.875rem; // 14px
+  line-height: @size_m;
   .text--truncate();
 }
 
@@ -117,7 +124,7 @@
   border: none;
   padding: 0;
 
-  border: 2px solid white;
+  border: @size_3xs solid white;
 
   // TODO: doesn't turn off after click...
   // maybe this doesn't matter cause clicking will close the box?
@@ -130,6 +137,6 @@
 }
 
 .MessagingAttachment--CloseIcon {
-  font-size: 0.75rem;
+  font-size: @size_s;
   margin: auto;
 }

@@ -54,8 +54,8 @@ export const MessagingAttachment: React.FC<Props> = ({
       )}
       <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
       <FlexBox className={cssClass("TextContainer")} column>
-        <span className={cssClass("title")}>{errorMsg || title}</span>
-        {subtitle && <span className={cssClass("subtitle")}>{subtitle}</span>}
+        <span className={cssClass("Title")}>{errorMsg || title}</span>
+        {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
       </FlexBox>
     </FlexBox>
   );
