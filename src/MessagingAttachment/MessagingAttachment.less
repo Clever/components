@@ -17,10 +17,14 @@
   border: @size_4xs solid @neutral_silver;
   border-radius: @size_2xs;
 
-  // TODO: hover color? background too?
-  // &:hover {
-  //   border-color: #6486f8;
-  // }
+  &:hover {
+    background-color: #f9faff;
+    border-color: #809dff;
+
+    .MessagingAttachment--title {
+      color: @primary_blue_shade_2;
+    }
+  }
 
   &.MessagingAttachment--Short {
     width: 12.125rem; // 194px
@@ -80,7 +84,6 @@
 .MessagingAttachment--TextContainer {
   justify-content: center;
   color: @neutral_dark_gray;
-  .text--semi-bold();
   font-size: 0.875rem; // 14px
   line-height: @size_m;
   max-width: 17.75rem; // 284px
@@ -88,12 +91,13 @@
 
 // TODO: remove if unused
 .MessagingAttachment--title {
+  .text--semi-bold();
   .text--truncate();
 }
 
 .MessagingAttachment--subtitle {
   .margin--top--2xs();
-  color: @primary_blue_shade_2;
+  // color: @primary_blue_shade_2;
   .text--truncate();
 }
 
