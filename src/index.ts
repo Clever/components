@@ -5,7 +5,7 @@ import "core-js"; // Provides es5 polyfills not included by the typescript compi
 
 export * from "./flex";
 export * from "./TabBar";
-export { FormElementSize } from "./utils/Forms";
+export { FormElementSize, FormElementRequirement } from "./utils/Forms";
 export { Modal } from "./Modal/Modal";
 export { Button } from "./Button/Button";
 export { ModalButton } from "./ModalButton/ModalButton";
