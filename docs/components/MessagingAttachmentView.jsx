@@ -190,7 +190,9 @@ export default class MessagingAttachmentView extends React.PureComponent {
             {
               name: "title",
               type: "string",
-              description: "Title of the file",
+              description:
+                "Title of the file. Note: this prop is optional, but should always be present unless errorMsg is provided",
+              optional: true,
             },
             {
               name: "subtitle",

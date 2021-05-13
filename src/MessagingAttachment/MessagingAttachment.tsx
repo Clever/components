@@ -16,7 +16,7 @@ type Props = {
   icon: React.ReactNode;
   onClickAttachment: (attachmentID: string) => void;
   onRemoveAttachment?: (attachmentID: string) => void;
-  title: string;
+  title?: string;
   subtitle?: string;
   isUpload?: boolean;
   uploadComplete?: boolean;
@@ -39,7 +39,7 @@ export const MessagingAttachment: React.FC<Props> = ({
         <button
           className={cssClass("CloseButton")}
           onClick={(e) => handleRemoveClick(e, onRemoveAttachment, attachmentID)}
-          aria-label={`close attachment with title: "${title}" and ID: ${attachmentID}`}
+          aria-label={`close attachment with title: "${title}"`}
         >
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
         </button>
