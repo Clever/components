@@ -214,6 +214,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A Menu component",
   },
   {
+    componentLink: "messaging-attachment",
+    componentImg: "messaging-attachment.png",
+    componentName: "MessagingAttachment",
+    componentImgAlt: "A MessagingAttachment component",
+  },
+  {
     componentLink: "modal",
     componentImg: "modal.png",
     componentName: "Modal",
@@ -368,12 +374,6 @@ ComponentsView.componentsToDisplay = [
     componentImg: "wizard-layout.png",
     componentName: "WizardLayout",
     componentImgAlt: "A WizardLayout component",
-  },
-  {
-    componentLink: "messaging-attachment",
-    componentImg: "messaging-attachment.png",
-    componentName: "MessagingAttachment",
-    componentImgAlt: "A MessagingAttachment component",
   },
 ];
 
