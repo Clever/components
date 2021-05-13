@@ -22,7 +22,6 @@
 }
 
 .MessagingAttachment--IconContainer {
-  width: @ICON_REGULAR_SIZE;
   height: @ICON_REGULAR_SIZE;
   .margin--right--s();
   align-items: center;
@@ -38,10 +37,6 @@
   width: auto;
   height: auto;
 }
-
-// TODO: remove if unused
-// .MessagingAttachment--AttachmentTypeIcon {
-// }
 
 .MessagingAttachment--TextContainer {
   justify-content: center;
@@ -66,10 +61,10 @@
 .MessagingAttachment--CloseButton {
   position: absolute;
   .flexbox();
-  top: -0.625rem;
-  right: -0.625rem;
-  width: 1.25rem;
-  height: 1.25rem;
+  top: -0.625rem; // 10px
+  right: -0.625rem; // 10px
+  width: 1.25rem; // 20px
+  height: 1.25rem; // 20px
   border-radius: 50%;
   cursor: pointer;
   background-color: @neutral_silver;
@@ -94,16 +89,27 @@
 }
 
 .MessagingAttachment--Container.MessagingAttachment--Short {
-  width: 12.125rem; // 194px
+  width: 12.75rem; // 204px
   cursor: default;
   height: @ICON_SMALL_SIZE;
-  .padding--left--xs();
+  padding-left: 0.4375rem; // 7px
+  padding-right: 0.4375rem; // 7px
   padding-top: 0.6875rem; // 11px
   padding-bottom: 0.6875rem; // 11px
 
+  &.MessagingAttachment--IsUploading {
+    width: 12.25rem; // 196px
+    padding-left: 0.6875rem; // 11px
+    padding-right: 0.6875rem; // 11px
+
+    .MessagingAttachment--TextContainer {
+      max-width: 10.375rem; // 166px
+    }
+  }
+
   .MessagingAttachment--IconContainer {
-    width: @ICON_SMALL_SIZE;
     height: @ICON_SMALL_SIZE;
+    .margin--right--xs();
   }
 
   // handle FontAwesome as well, for loading spinner
@@ -115,7 +121,7 @@
   }
 
   .MessagingAttachment--TextContainer {
-    max-width: 9.875rem; // 152px
+    max-width: 10.25rem; // 164px
   }
 
   .MessagingAttachment--Title {
@@ -132,16 +138,22 @@
   }
 }
 
-.MessagingAttachment--Container.MessagingAttachment--Error {
+.MessagingAttachment--Container.MessagingAttachment--Short.MessagingAttachment--IsUploading.MessagingAttachment--Error {
   border-color: @ERROR_RED;
-  padding-left: 0.9375rem;
+  width: 11.75rem; // 188px
+  padding-left: 0.9375rem; // 15px
+  padding-right: 0.9375rem; // 15px
 
   .MessagingAttachment--IconContainer {
-    width: @size_m;
+    margin-right: @size_s;
   }
 
   .MessagingAttachment--ErrorCircle {
     color: @ERROR_RED_TEXT;
+  }
+
+  .MessagingAttachment--TextContainer {
+    width: 9.875rem;
   }
 
   .MessagingAttachment--Title {
