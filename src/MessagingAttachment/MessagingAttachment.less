@@ -8,9 +8,13 @@
 @ERROR_RED: #df3537;
 @ERROR_RED_TEXT: #b30c10;
 
-.MessagingAttachment--Container {
-  width: 21.875rem; // 350px
+.MessagingAttachment--ParentContainer {
   position: relative;
+}
+
+.MessagingAttachment--Container {
+  z-index: auto;
+  width: 21.875rem; // 350px
   cursor: pointer;
   padding-left: 0.6875rem; // 11px
   padding-right: 0.6875rem; // 11px
@@ -59,6 +63,7 @@
 }
 
 .MessagingAttachment--CloseButton {
+  z-index: 10;
   position: absolute;
   .flexbox();
   top: -0.625rem; // 10px
@@ -67,8 +72,8 @@
   height: 1.25rem; // 20px
   border-radius: 50%;
   cursor: pointer;
-  background-color: @neutral_silver;
-  color: @neutral_dark_gray;
+  background-color: @neutral_medium_gray;
+  color: white;
   border: none;
   padding: 0;
   border: @size_3xs solid white;
@@ -78,8 +83,8 @@
   &:hover,
   &:focus,
   &:active {
-    background-color: @neutral_gray;
-    color: @neutral_off_white;
+    background-color: @neutral_black;
+    border-color: @neutral_black;
   }
 }
 

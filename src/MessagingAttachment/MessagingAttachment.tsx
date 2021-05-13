@@ -38,15 +38,7 @@ export const MessagingAttachment: React.FC<Props> = ({
   uploadError,
 }: Props) => {
   return (
-    <FlexBox
-      className={cx(
-        cssClass("Container"),
-        isUpload && cssClass("Short"),
-        isUpload && !uploadComplete && cssClass("IsUploading"),
-        uploadError && cssClass("Error"),
-      )}
-      onClick={() => onClickAttachment(attachmentID)}
-    >
+    <FlexBox className={cssClass("ParentContainer")}>
       {onRemoveAttachment && (
         <button
           className={cssClass("CloseButton")}
@@ -55,10 +47,20 @@ export const MessagingAttachment: React.FC<Props> = ({
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
         </button>
       )}
-      <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
-      <FlexBox className={cssClass("TextContainer")} column>
-        <span className={cssClass("Title")}>{errorMsg || title}</span>
-        {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
+      <FlexBox
+        className={cx(
+          cssClass("Container"),
+          isUpload && cssClass("Short"),
+          isUpload && !uploadComplete && cssClass("IsUploading"),
+          uploadError && cssClass("Error"),
+        )}
+        onClick={() => onClickAttachment(attachmentID)}
+      >
+        <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
+        <FlexBox className={cssClass("TextContainer")} column>
+          <span className={cssClass("Title")}>{errorMsg || title}</span>
+          {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
+        </FlexBox>
       </FlexBox>
     </FlexBox>
   );
