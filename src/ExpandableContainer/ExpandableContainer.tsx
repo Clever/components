@@ -3,6 +3,7 @@ import * as FontAwesome from "react-fontawesome";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 
+import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import FlexItem from "../flex/FlexItem";
 
@@ -18,7 +19,7 @@ export interface Props {
 
 const cssClass = {
   CONTAINER: "ExpandableContainer--container",
-  TITLE: "ExpandableContainer--title",
+  HEADER: "ExpandableContainer--header",
   CONTENT: "ExpandableContainer--content",
   EXPAND_ICON: "ExpandableContainer--expandIcon",
 };
@@ -32,14 +33,17 @@ export const ExpandableContainer: React.FC<Props> = ({
 }) => {
   return (
     <FlexBox column className={classnames(cssClass.CONTAINER, className)}>
-      <FlexBox alignItems="center" className={cssClass.TITLE} onClick={onClick}>
-        {title}
-        <FlexItem grow />
-        <FontAwesome
-          className={cssClass.EXPAND_ICON}
-          name={isExpanded ? "chevron-down" : "chevron-right"}
-        />
-      </FlexBox>
+      <Button className={cssClass.HEADER} type="linkPlain" onClick={onClick}>
+        <FlexBox tabIndex={-1} alignItems="center">
+          {title}
+          <FlexItem grow />
+          <FontAwesome
+            className={cssClass.EXPAND_ICON}
+            name={isExpanded ? "chevron-down" : "chevron-right"}
+          />
+        </FlexBox>
+      </Button>
+
       {isExpanded && <div className={cssClass.CONTENT}>{children}</div>}
     </FlexBox>
   );

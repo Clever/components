@@ -6,18 +6,6 @@
   width: 100%;
 }
 
-.ExpandableContainer--title {
-  .padding--left--l();
-  .padding--right--2xs();
-  .padding--y--xs();
-  cursor: pointer;
-
-  &:focus,
-  &:hover {
-    background: @neutral_off_white;
-  }
-}
-
 .ExpandableContainer--expandIcon {
   .padding--xs();
 }
@@ -25,4 +13,18 @@
 .ExpandableContainer--content {
   .padding--left--l();
   .padding--right--2xs();
+}
+
+button.ExpandableContainer--header {
+  color: @neutral_dark_gray;
+  .padding--left--l();
+  .padding--right--2xs();
+  .padding--y--xs();
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    color: @neutral_dark_gray;
+    background: @neutral_off_white;
+  }
 }
