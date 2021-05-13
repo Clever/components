@@ -3,12 +3,8 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingAttachment, FlexBox, ItemAlign, SegmentedControl } from "src";
-import {
-  FileAttachmentIcon,
-  ImageAttachmentIcon,
-  AudioAttachmentIcon,
-} from "src/MessagingAttachment/MessagingAttachment";
+import { MessagingAttachment, FlexBox } from "src";
+import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment";
 
 import "./MessagingAttachmentView.less";
 
@@ -28,14 +24,70 @@ const cssClass = {
 export default class MessagingAttachmentView extends React.PureComponent {
   static cssClass = cssClass;
 
-  state = {
-    multiOption1: "small",
-    optionToggle1: false,
-    optionToggle2: true,
-  };
-
   render() {
-    const { optionToggle1 } = this.state;
+    const sentAttachments = [
+      {
+        attachmentID: "1",
+        icon: <FileAttachmentIcon fileType={"doc"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
+        subtitle: "Click to download",
+      },
+      {
+        attachmentID: "1",
+        icon: <FileAttachmentIcon fileType={"image"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "Flyer.png",
+        subtitle: "Click to view",
+      },
+      {
+        attachmentID: "1",
+        icon: <FileAttachmentIcon fileType={"audio"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "Morning message.m4a",
+        subtitle: "Click to download",
+      },
+    ];
+
+    const draftAttachments = [
+      {
+        attachmentID: "1",
+        icon: <FileAttachmentIcon fileType={"doc"} isUpload />,
+        onClickAttachment: () => console.log("clicked!"),
+        onRemoveAttachment: () => console.log("removed!"),
+        title: "MyCoolDoclkasjdlkajsdlkasjdlkasjdlkasjdlsakjd.doc",
+        subtitle: "Uploading 5%",
+        isUpload: true,
+      },
+      {
+        attachmentID: "2",
+        icon: <FileAttachmentIcon fileType={"image"} isUpload />,
+        onClickAttachment: () => console.log("clicked!"),
+        onRemoveAttachment: () => console.log("removed!"),
+        title: "Flyer.png",
+        subtitle: "Processing...",
+        isUpload: true,
+      },
+      {
+        attachmentID: "3",
+        icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadComplete />,
+        onClickAttachment: () => console.log("clicked!"),
+        onRemoveAttachment: () => console.log("removed!"),
+        title: "Hover over me.m4a",
+        subtitle: "Click to download",
+        isUpload: true,
+        uploadComplete: true,
+      },
+      {
+        attachmentID: "4",
+        icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadError />,
+        onClickAttachment: () => console.log("clicked!"),
+        onRemoveAttachment: () => console.log("removed!"),
+        title: "File cannot exceed 10 MB",
+        isUpload: true,
+        uploadError: true,
+      },
+    ];
 
     return (
       <View
@@ -66,69 +118,31 @@ export default class MessagingAttachmentView extends React.PureComponent {
           <ExampleCode>
             <p>Sent Attachments:</p>
             <FlexBox className={cssClass.DEMO_ROW}>
-              <MessagingAttachment
-                attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"doc"} />}
-                onClickAttachment={() => console.log("clicked!")}
-                title={
-                  "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc"
-                }
-                subtitle={"Click to download"}
-              />
-              <MessagingAttachment
-                attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"image"} />}
-                onClickAttachment={() => console.log("clicked!")}
-                title={"Flyer.png"}
-                subtitle={"Click to view"}
-              />
-              <MessagingAttachment
-                attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"audio"} />}
-                onClickAttachment={() => console.log("clicked!")}
-                title={"Morning message.m4a"}
-                subtitle={"Click to download"}
-              />
+              {sentAttachments.map((attachment) => (
+                <MessagingAttachment
+                  attachmentID={attachment.attachmentID}
+                  icon={attachment.icon}
+                  onClickAttachment={attachment.onClickAttachment}
+                  title={attachment.title}
+                  subtitle={attachment.subtitle}
+                />
+              ))}
             </FlexBox>
             <p>Draft Attachments:</p>
             <FlexBox className={cssClass.DEMO_ROW}>
-              <MessagingAttachment
-                attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"doc"} isUpload />}
-                onClickAttachment={() => console.log("clicked!")}
-                onRemoveAttachment={() => console.log("closed!")}
-                title={"MyCoolDoclkasjdlkajsdlkasjdlkasjdlkasjdlsakjd.doc"}
-                subtitle={"Uploading 5%"}
-                isUpload
-              />
-              <MessagingAttachment
-                attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"image"} isUpload />}
-                onClickAttachment={() => console.log("clicked!")}
-                onRemoveAttachment={() => console.log("closed!")}
-                title={"Flyer.png"}
-                subtitle={"Processing..."}
-                isUpload
-              />
-              <MessagingAttachment
-                attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"audio"} isUpload />}
-                onClickAttachment={() => console.log("clicked!")}
-                onRemoveAttachment={() => console.log("closed!")}
-                title={"Hover over me.m4a"}
-                subtitle={"Click to download"}
-                isUpload
-                uploadComplete
-              />
-              <MessagingAttachment
-                attachmentID={"1"}
-                icon={<FileAttachmentIcon fileType={"audio"} isUpload uploadError />}
-                onClickAttachment={() => console.log("clicked!")}
-                onRemoveAttachment={() => console.log("closed!")}
-                title={"File cannot exceed 10 MB"}
-                isUpload
-                uploadError
-              />
+              {draftAttachments.map((attachment) => (
+                <MessagingAttachment
+                  attachmentID={attachment.attachmentID}
+                  icon={attachment.icon}
+                  onClickAttachment={attachment.onClickAttachment}
+                  onRemoveAttachment={attachment.onRemoveAttachment}
+                  title={attachment.title}
+                  subtitle={attachment.subtitle}
+                  isUpload={attachment.isUpload}
+                  uploadError={attachment.uploadError}
+                  uploadComplete={attachment.uploadComplete}
+                />
+              ))}
             </FlexBox>
           </ExampleCode>
         </Example>
@@ -139,6 +153,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
   }
 
   // TODO: Update prop documentation.
+  // Add new props
   _renderProps() {
     return (
       <>
@@ -196,6 +211,21 @@ export default class MessagingAttachmentView extends React.PureComponent {
               defaultValue: "false",
               optional: true,
             },
+            {
+              name: "uploadComplete",
+              type: "boolean",
+              description: "Optional boolean for whether this Attachment has finished uploading",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "uploadError",
+              type: "boolean",
+              description:
+                "Optional boolean for whether there was an error while uploading the Attachment",
+              defaultValue: "false",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
         />
@@ -214,6 +244,14 @@ export default class MessagingAttachmentView extends React.PureComponent {
               type: "boolean",
               description:
                 "Whether or not the MessagingAttachment is an upload/draft or a sent attachment",
+              defaultValue: "false",
+              optional: true,
+            },
+            {
+              name: "uploadError",
+              type: "boolean",
+              description:
+                "Boolean for if there was an error during the upload. If so, renders the ErrorCircle icon instead of the icon that corresponds to the fileType",
               defaultValue: "false",
               optional: true,
             },
