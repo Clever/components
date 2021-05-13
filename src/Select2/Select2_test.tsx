@@ -10,7 +10,13 @@ describe("Select2", () => {
 
   it("renders", () => {
     const myComponent = shallow(
-      <Select2 name="Select2--name" label="testLabel" options={[{ value: "Option 1" }]} />,
+      <Select2
+        name="Select2--name"
+        label="testLabel"
+        options={[{ label: "Option 1", value: "Option 1" }]}
+        value={null}
+        onChange={() => undefined}
+      />,
     );
 
     expect(myComponent.props().className).toMatch(cssClass.CONTAINER);
@@ -25,7 +31,9 @@ describe("Select2", () => {
         className="my--custom--class"
         name="Select2--name"
         label="testLabel"
-        options={[{ value: "Option 1" }]}
+        options={[{ label: "Option 1", value: "Option 1" }]}
+        value={null}
+        onChange={() => undefined}
       />,
     );
 
