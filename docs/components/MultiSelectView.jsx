@@ -234,11 +234,18 @@ export default class MultiSelectView extends React.PureComponent {
           },
           {
             name: "options",
-            type: (
-              <code>{"Array<{ value: string, content?: ReactNode, searchKey?: string }>"}</code>
+            type: <code>{"Array<{ value: string, label: string, customLabel?: ReactNode }>"}</code>,
+            description: (
+              <div>
+                List of options to be selected.
+                <ul>
+                  <li>'value' is the hidden string key</li>
+                  <li>if customLabel is not present, 'label' is used as the displayed content</li>
+                  <li>if customLabel is present, 'label' is used for searchability</li>
+                  <li>customLabel is an optional react node for custom rendering</li>
+                </ul>
+              </div>
             ),
-            description:
-              "List of options to be selected. 'value' is the string key and used for searchability by default, 'content' is an optional react node for custom rendering, 'searchKey' is an optional string to be used for searching",
             optional: true,
           },
           {
@@ -252,7 +259,8 @@ export default class MultiSelectView extends React.PureComponent {
             name: "values",
             type: "string[]",
             description:
-              "Set the selected values as a controlled component (also helpful for default states)",
+              "Set the selected values as a controlled component (also helpful for default states). These values must match one of the option's values",
+            optional: true,
           },
           {
             name: "onChange",
