@@ -70,14 +70,14 @@ export default class MultiSelectView extends React.PureComponent {
               hideLabel={this.state.hideLabel}
               placeholder={this.state.placeholder}
               options={new Array(20).fill(0).map((_, i) => ({
-                value: `option_${i + 1}`,
-                content: (
+                label: `option ${i + 1}`,
+                customLabel: (
                   <FlexBox>
                     <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
                     <span>Option {i + 1}</span>
                   </FlexBox>
                 ),
-                searchKey: `option ${i + 1}`,
+                value: `option_${i + 1}_value`,
               }))}
               creatable={this.state.creatable}
               allowDuplicates={this.state.allowDuplicates}
@@ -126,17 +126,20 @@ export default class MultiSelectView extends React.PureComponent {
             name="TextInput2View--labelTextInput"
             label="Initial selected values"
             options={[
-              { value: "Option 1, Option 2" },
-              { value: "Option 2, Option 4" },
-              { value: "Option 4, Option 20" },
-              { value: "Option 1, Option 10, Option 11, Option 12" },
+              { label: "Option 1, Option 2", value: "option_1_value,option_2_value" },
+              { label: "Option 2, Option 4", value: "option_2_value,option_4_value" },
+              { label: "Option 4, Option 20", value: "option_4_value,option_20_value" },
+              {
+                label: "Option 1, Option 10, Option 11, Option 12",
+                value: "option_1_value,option_10_value,option_11_value,option_12_value",
+              },
             ]}
             clearable
             value={initialValuesSelect}
             onChange={(v) => {
               this.setState({
                 initialValuesSelect: v,
-                values: (v || "").split(", "),
+                values: (v || "").split(","),
               });
             }}
             size={FormElementSize.MEDIUM}
