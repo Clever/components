@@ -14,7 +14,7 @@ import "./MultiSelect.less";
 export const ADD_NEW_ITEM_KEY = "MultiSelect--addNewItem";
 
 // searchable text of this option is determined in the getSelectableOptions function
-type Option = { value: string; content?: React.ReactNode; searchKey?: string };
+type Option = { value: string; label: string; customLabel?: React.ReactNode };
 
 export interface Props {
   className?: string;
@@ -58,16 +58,13 @@ export function getSelectableOptions(
   selectedItems: Option[],
   inputValue: string,
   creatable: boolean,
-) {
+): Option[] {
   const selectedValues = new Set<string>(selectedItems.map((si) => si.value));
   const inputLowerCase = inputValue.toLocaleLowerCase();
 
   let hasExactMatch = false;
   const selectableOptions = options.filter((o) => {
-    const optionLowerCase = (typeof o.content === "string"
-      ? o.content
-      : o.searchKey || o.value
-    ).toLocaleLowerCase();
+    const optionLowerCase = o.label.toLocaleLowerCase();
     // small performance optimization to process exact match within the same iterator
     if (optionLowerCase === inputLowerCase) {
       hasExactMatch = true;
@@ -172,7 +169,7 @@ const MultiSelect: React.FC<Props> = ({
             setInputValue("");
             let newOption = selectedItem;
             if (selectedItem.value === ADD_NEW_ITEM_KEY) {
-              newOption = { value: inputValue };
+              newOption = { value: inputValue, label: inputValue };
               setOptions([...options, newOption]);
             }
             onChange([...selectedItems, newOption].map((o) => o.value));
@@ -220,7 +217,7 @@ const MultiSelect: React.FC<Props> = ({
               className={cssClass.SELECTED_ITEM_CONTAINER}
               {...getSelectedItemProps({ selectedItem: item, index: i })}
             >
-              {item.content || item.value}
+              {item.customLabel || item.label}
               <span
                 className={cssClass.SELECTED_ITEM_BUTTON}
                 onClick={(e) => {
@@ -281,7 +278,7 @@ const MultiSelect: React.FC<Props> = ({
                   key={`${o.value}${i}`}
                   {...getItemProps({ item: o, index: i })}
                 >
-                  {isAddNewItemOption ? `Add "${inputValue}"` : o.content || o.value}
+                  {isAddNewItemOption ? `Add "${inputValue}"` : o.customLabel || o.label}
                 </li>
               );
             })
