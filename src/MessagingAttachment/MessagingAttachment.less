@@ -7,6 +7,7 @@
 @HOVER_BACKGROUND_COLOR: #f9faff;
 @ERROR_RED: #df3537;
 @ERROR_RED_TEXT: #b30c10;
+@WHITE: #fff;
 
 .MessagingAttachment--ParentContainer {
   position: relative;
@@ -73,7 +74,7 @@
   border-radius: 50%;
   cursor: pointer;
   background-color: @neutral_medium_gray;
-  color: white;
+  color: @WHITE;
   border: none;
   padding: 0;
   border: @size_3xs solid white;
@@ -101,16 +102,6 @@
   padding-right: 0.4375rem; // 7px
   padding-top: 0.6875rem; // 11px
   padding-bottom: 0.6875rem; // 11px
-
-  &.MessagingAttachment--IsUploading {
-    width: 12.25rem; // 196px
-    padding-left: 0.6875rem; // 11px
-    padding-right: 0.6875rem; // 11px
-
-    .MessagingAttachment--TextContainer {
-      max-width: 10.375rem; // 166px
-    }
-  }
 
   .MessagingAttachment--IconContainer {
     height: @ICON_SMALL_SIZE;
@@ -141,6 +132,27 @@
     .text--regular();
     margin-top: 0;
   }
+
+  &.MessagingAttachment--IsUploading {
+    width: 12.25rem; // 196px
+    padding-left: 0.6875rem; // 11px
+    padding-right: 0.6875rem; // 11px
+
+    .MessagingAttachment--TextContainer {
+      max-width: 10.375rem; // 166px
+    }
+  }
+}
+
+// TODO: :not() does not work for IE
+.MessagingAttachment--Container:hover:not(.MessagingAttachment--IsUploading) {
+  background-color: @HOVER_BACKGROUND_COLOR;
+  border-color: @primary_blue_tint_2;
+  cursor: pointer;
+
+  .MessagingAttachment--Title {
+    color: @primary_blue_shade_2;
+  }
 }
 
 .MessagingAttachment--Container.MessagingAttachment--Short.MessagingAttachment--IsUploading.MessagingAttachment--Error {
@@ -164,17 +176,6 @@
   .MessagingAttachment--Title {
     color: @ERROR_RED_TEXT;
     font-weight: 400;
-  }
-}
-
-// TODO: :not() does not work for IE
-.MessagingAttachment--Container:hover:not(.MessagingAttachment--IsUploading) {
-  background-color: @HOVER_BACKGROUND_COLOR;
-  border-color: @primary_blue_tint_2;
-  cursor: pointer;
-
-  .MessagingAttachment--Title {
-    color: @primary_blue_shade_2;
   }
 }
 
