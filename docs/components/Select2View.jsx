@@ -107,6 +107,15 @@ export default class Select2View extends React.PureComponent {
             value={label}
           />
         </div>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={hideLabel}
+            onChange={(e) => this.setState({ hideLabel: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Hide Label</span>
+        </label>
         <div className={cssClass.CONFIG}>
           <span className={cssClass.CONFIG_LABEL_TEXT}>Controlled selected value:</span>
           <SegmentedControl
@@ -121,15 +130,6 @@ export default class Select2View extends React.PureComponent {
             onSelect={(v) => this.setState({ value: v })}
           />
         </div>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            className={cssClass.CONFIG_TOGGLE}
-            checked={hideLabel}
-            onChange={(e) => this.setState({ hideLabel: e.target.checked })}
-          />{" "}
-          <span className={cssClass.CONFIG_LABEL_TEXT}>Hide Label</span>
-        </label>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
