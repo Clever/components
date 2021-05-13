@@ -12,11 +12,7 @@ import "./Select2.less";
 // for accessibility purposes, downshift only allows us to render a string value in the <input> tag
 // so for custom rendered components we still need a string value
 // see https://www.downshift-js.com/use-combobox#materialui
-type Option = { value: string; content?: React.ReactNode; stringContent?: string };
-
-function itemToString(o: Option): string {
-  return typeof o.content === "string" ? o.content : o.stringContent || o.value;
-}
+type Option = { value: string; label: string; customLabel?: React.ReactNode };
 
 export interface Props {
   className?: string;
@@ -95,7 +91,7 @@ const Select2: React.FC<Props> = ({
     selectedItem,
   } = useCombobox<Option>({
     items: selectableOptions,
-    itemToString: (o) => (o ? itemToString(o) : ""),
+    itemToString: (o) => (o ? o.label : ""),
     selectedItem: options.find((o) => o.value === value) || null,
     stateReducer: (state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
@@ -106,7 +102,7 @@ const Select2: React.FC<Props> = ({
           return {
             ...changes,
             selectedItem,
-            inputValue: selectedItem ? itemToString(selectedItem) : "",
+            inputValue: selectedItem ? selectedItem.label : "",
           };
         }
         default:
@@ -129,9 +125,7 @@ const Select2: React.FC<Props> = ({
     },
     onInputValueChange: ({ inputValue: v }) => {
       const inputLowerCase = v.toLowerCase();
-      setSelectableOptions(
-        options.filter((o) => itemToString(o).toLowerCase().includes(inputLowerCase)),
-      );
+      setSelectableOptions(options.filter((o) => o.label.toLowerCase().includes(inputLowerCase)));
     },
     onSelectedItemChange: (item) => {
       if (onChange) {
@@ -234,7 +228,7 @@ const Select2: React.FC<Props> = ({
                 key={`${o.value}${i}`}
                 {...getItemProps({ item: o, index: i })}
               >
-                {o.content || itemToString(o)}
+                {o.customLabel || o.label}
               </li>
             ))
           ) : (
