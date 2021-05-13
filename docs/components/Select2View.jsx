@@ -64,13 +64,14 @@ export default class Select2View extends React.PureComponent {
               label={this.state.label}
               hideLabel={this.state.hideLabel}
               options={new Array(20).fill(0).map((_, i) => ({
-                value: `Option ${i + 1}`,
-                content: (
+                label: `Option ${i + 1}`,
+                customLabel: (
                   <FlexBox>
                     <FontAwesome style={{ marginRight: "8px" }} name="exclamation-triangle" />
                     <span>Option {i + 1}</span>
                   </FlexBox>
                 ),
+                value: `option_${i + 1}_value`,
               }))}
               clearable={this.state.clearable}
               requirement={this.state.required ? "required" : ""}
@@ -112,9 +113,9 @@ export default class Select2View extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             options={[
               { content: "Empty", value: "" },
-              { content: "Option 1", value: "Option 1" },
-              { content: "Option 4", value: "Option 4" },
-              { content: "Option 20", value: "Option 20" },
+              { content: "Option 1", value: "option_1_value" },
+              { content: "Option 4", value: "option_4_value" },
+              { content: "Option 20", value: "option_20_value" },
             ]}
             value={value}
             onSelect={(v) => this.setState({ value: v })}
@@ -206,9 +207,22 @@ export default class Select2View extends React.PureComponent {
           },
           {
             name: "options",
-            type: <code>{"Array<{ value: string, content?: ReactNode }>"}</code>,
-            description:
-              "List of options to be selected. 'value' is the string key and used for searchability, 'content' is an optional react node for custom rendering",
+            type: <code>{"Array<{ value: string, label: string, customLabel?: ReactNode }>"}</code>,
+            description: (
+              <div>
+                List of options to be selected.
+                <ul>
+                  <li>'value' is the hidden string key</li>
+                  <li>
+                    'label' is used for what is displayed and used for searchability if customLabel
+                    is present
+                  </li>
+                  <li>customLabel is an optional react node for custom rendering</li>
+                </ul>
+                Note that for accessibility purposes, a selected item will be represented by its
+                'label' value in the input once it is selected
+              </div>
+            ),
             optional: true,
           },
           {
@@ -233,7 +247,7 @@ export default class Select2View extends React.PureComponent {
             name: "value",
             type: "string",
             description:
-              "Set the selected value as a controlled component (also helpful for default states)",
+              "Set the selected value as a controlled component (also helpful for default states). This must match one of the option's values. Set to null to unselect ",
           },
           {
             name: "onChange",

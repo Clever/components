@@ -182,10 +182,10 @@ export default class StepperView extends PureComponent {
               name="StepperView--seekableStatesSelect"
               label="Seekable states"
               options={[
-                { value: "NEXT" },
-                { value: "INCOMPLETE" },
-                { value: "SUCCESS" },
-                { value: "WARNING" },
+                { label: "NEXT", value: "NEXT" },
+                { label: "INCOMPLETE", value: "INCOMPLETE" },
+                { label: "SUCCESS", value: "SUCCESS" },
+                { label: "WARNING", value: "WARNING" },
               ]}
               clearable
               values={seekableStates}

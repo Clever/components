@@ -9,8 +9,10 @@ import { Values } from "../utils/types";
 
 import "./Select2.less";
 
-// value represents the searchable text of the option
-type Option = { value: string; content?: React.ReactNode };
+// for accessibility purposes, downshift only allows us to render a string value in the <input> tag
+// so for custom rendered components we still need a string value
+// see https://www.downshift-js.com/use-combobox#materialui
+type Option = { value: string; label: string; customLabel?: React.ReactNode };
 
 export interface Props {
   className?: string;
@@ -89,7 +91,7 @@ const Select2: React.FC<Props> = ({
     selectedItem,
   } = useCombobox<Option>({
     items: selectableOptions,
-    itemToString: (o) => (o ? o.value : ""),
+    itemToString: (o) => (o ? o.label : ""),
     selectedItem: options.find((o) => o.value === value) || null,
     stateReducer: (state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
@@ -100,7 +102,7 @@ const Select2: React.FC<Props> = ({
           return {
             ...changes,
             selectedItem,
-            inputValue: selectedItem ? selectedItem.value : "",
+            inputValue: selectedItem ? selectedItem.label : "",
           };
         }
         default:
@@ -123,7 +125,7 @@ const Select2: React.FC<Props> = ({
     },
     onInputValueChange: ({ inputValue: v }) => {
       const inputLowerCase = v.toLowerCase();
-      setSelectableOptions(options.filter((o) => o.value.toLowerCase().includes(inputLowerCase)));
+      setSelectableOptions(options.filter((o) => o.label.toLowerCase().includes(inputLowerCase)));
     },
     onSelectedItemChange: (item) => {
       if (onChange) {
@@ -226,7 +228,7 @@ const Select2: React.FC<Props> = ({
                 key={`${o.value}${i}`}
                 {...getItemProps({ item: o, index: i })}
               >
-                {o.content || o.value}
+                {o.customLabel || o.label}
               </li>
             ))
           ) : (
