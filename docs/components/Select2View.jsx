@@ -28,7 +28,7 @@ export default class Select2View extends React.PureComponent {
     label: "Select an option",
     hideLabel: false,
     clearable: true,
-    required: true,
+    requirement: FormElementRequirement.REQUIRED,
     initialIsInError: false,
     value: null,
     size: FormElementSize.MEDIUM,
@@ -74,7 +74,7 @@ export default class Select2View extends React.PureComponent {
                 value: `option_${i + 1}_value`,
               }))}
               clearable={this.state.clearable}
-              requirement={this.state.required ? "required" : ""}
+              requirement={this.state.requirement}
               initialIsInError={this.state.initialIsInError}
               onChange={(v) => {
                 console.log(`selected: ${v}`);
@@ -93,7 +93,7 @@ export default class Select2View extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { label, value, hideLabel, clearable, required, initialIsInError, size } = this.state;
+    const { label, value, hideLabel, clearable, requirement, initialIsInError, size } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -139,15 +139,20 @@ export default class Select2View extends React.PureComponent {
           />{" "}
           <span className={cssClass.CONFIG_LABEL_TEXT}>Clearable</span>
         </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={required}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ required: e.target.checked })}
-          />{" "}
-          <span className={cssClass.CONFIG_LABEL_TEXT}>Required</span>
-        </label>
+        <div className={cssClass.CONFIG}>
+          <span className={cssClass.CONFIG_TEXT}>Requirement:</span>
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            options={[
+              { content: "none", value: "" },
+              { content: "optional", value: FormElementRequirement.OPTIONAL },
+              { content: "required", value: FormElementRequirement.REQUIRED },
+              { content: "disabled", value: FormElementRequirement.DISABLED },
+            ]}
+            value={requirement}
+            onSelect={(v) => this.setState({ requirement: v })}
+          />
+        </div>
         <label className={cssClass.CONFIG}>
           <input
             type="checkbox"
@@ -233,7 +238,7 @@ export default class Select2View extends React.PureComponent {
           },
           {
             name: "requirement",
-            type: '"required"',
+            type: '"required", "optional", or "disabled"',
             description: "Indicator to note if the input is required",
             optional: true,
           },

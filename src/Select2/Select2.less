@@ -74,6 +74,14 @@
   &--error:hover {
     .border--m(@alert_red);
   }
+
+  &--disabled {
+    .border--m(@neutral_silver);
+  }
+
+  &--disabled:hover {
+    .border--m(@neutral_silver);
+  }
 }
 
 .Select2--selectContainer--focused.Select2--selectContainer--error {
@@ -103,6 +111,10 @@
 
   &:-ms-input-placeholder {
     color: @neutral_gray;
+  }
+
+  &:disabled {
+    background-color: @neutral_white;
   }
 }
 
