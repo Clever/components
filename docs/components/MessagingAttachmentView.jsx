@@ -20,7 +20,6 @@ const cssClass = {
   DEMO_ROW: "MessagingAttachmentView-demoRow",
 };
 
-// TODO: FINISH THIS DOCUMENT
 export default class MessagingAttachmentView extends React.PureComponent {
   static cssClass = cssClass;
 
@@ -83,7 +82,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
         icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadError />,
         onClickAttachment: () => console.log("clicked!"),
         onRemoveAttachment: () => console.log("removed!"),
-        title: "File cannot exceed 10 MB",
+        title: "My cool file.txt",
+        errorMsg: "File cannot exceed 10 MB",
         isUpload: true,
         uploadError: true,
       },
@@ -138,6 +138,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   onRemoveAttachment={attachment.onRemoveAttachment}
                   title={attachment.title}
                   subtitle={attachment.subtitle}
+                  errorMsg={attachment.errorMsg}
                   isUpload={attachment.isUpload}
                   uploadError={attachment.uploadError}
                   uploadComplete={attachment.uploadComplete}
@@ -152,8 +153,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
     );
   }
 
-  // TODO: Update prop documentation.
-  // Add new props
   _renderProps() {
     return (
       <>
@@ -164,7 +163,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
               name: "attachmentID",
               type: "string",
               description: "Unique ID used to identify this attachment",
-              // optional: false,
             },
             {
               name: "errorMsg",
@@ -177,13 +175,11 @@ export default class MessagingAttachmentView extends React.PureComponent {
               type: "React.ReactNode",
               description:
                 "A ReactNode to use as the icon for the Attachment. Generally will be a call to <FileAttachmentIcon /> ",
-              // optional: false,
             },
             {
               name: "onClickAttachment",
               type: "(attachmentID: string) => void",
               description: "Callback to be called upon clicking the Attachment",
-              // optional: false,
             },
             {
               name: "onRemoveAttachment",
@@ -195,7 +191,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
               name: "title",
               type: "string",
               description: "Title of the file",
-              // optional: false,
             },
             {
               name: "subtitle",

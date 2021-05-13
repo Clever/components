@@ -1,13 +1,10 @@
 @import (reference) "../less/utilities";
 
-// @import (reference) "~clever-components/dist/less/index";
-
 @ICON_SMALL_SIZE: @size_2xl;
 @ICON_REGULAR_SIZE: @size_2xl;
 @HOVER_BACKGROUND_COLOR: #f9faff;
 @ERROR_RED: #df3537;
 @ERROR_RED_TEXT: #b30c10;
-@WHITE: #fff;
 
 .MessagingAttachment--ParentContainer {
   position: relative;
@@ -18,7 +15,7 @@
   width: 21.875rem; // 350px
   cursor: pointer;
   padding-left: 0.6875rem; // 11px
-  padding-right: 0.6875rem; // 11px
+  padding-right: 0.9375rem; // 15px
   padding-top: 0.9375rem; // 15px
   padding-bottom: 0.9375rem; // 15px
   height: @ICON_REGULAR_SIZE;
@@ -46,7 +43,7 @@
 .MessagingAttachment--TextContainer {
   justify-content: center;
   color: @neutral_dark_gray;
-  max-width: 18.375rem; // 294px
+  max-width: 18.625rem; // 298px
 }
 
 // TODO: remove if unused
@@ -74,7 +71,7 @@
   border-radius: 50%;
   cursor: pointer;
   background-color: @neutral_medium_gray;
-  color: @WHITE;
+  color: @neutral_white;
   border: none;
   padding: 0;
   border: @size_3xs solid white;

@@ -3,7 +3,6 @@ import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
 import { FlexBox } from "../flex";
-// import LoadingSpinner from "../LoadingSpinner";
 
 import "./MessagingAttachment.less";
 
@@ -24,7 +23,6 @@ type Props = {
   uploadError?: boolean;
 };
 
-// TODO: can this not be functional?
 export const MessagingAttachment: React.FC<Props> = ({
   attachmentID,
   errorMsg,
@@ -43,6 +41,7 @@ export const MessagingAttachment: React.FC<Props> = ({
         <button
           className={cssClass("CloseButton")}
           onClick={(e) => handleRemoveClick(e, onRemoveAttachment, attachmentID)}
+          aria-label={`close attachment with title: "${title}" and ID: ${attachmentID}`}
         >
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
         </button>
@@ -133,9 +132,3 @@ export function FileAttachmentIcon({
     />
   );
 }
-
-// TODO: how do I import this? It exists in LP
-// TODO: is this necessary? Helpful?
-// export function LoadingSpinnerIcon() {
-//   return <LoadingSpinner size={"s"} />;
-// }
