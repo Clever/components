@@ -10,15 +10,17 @@ export default function ComponentsView() {
   return (
     <View className={cssClass.CONTAINER} title="Component List">
       <FlexBox wrap className={cssClass.CONTAINER_FLEXBOX}>
-        {componentsToDisplay.map((comp) => (
-          <ComponentBox
-            key={comp.componentLink}
-            componentLink={comp.componentLink}
-            componentImg={comp.componentImg}
-            componentName={comp.componentName}
-            componentImgAlt={comp.componentImgAlt}
-          />
-        ))}
+        {componentsToDisplay
+          .sort((a, b) => a.componentName.localeCompare(b.componentName))
+          .map((comp) => (
+            <ComponentBox
+              key={comp.componentLink}
+              componentLink={comp.componentLink}
+              componentImg={comp.componentImg}
+              componentName={comp.componentName}
+              componentImgAlt={comp.componentImgAlt}
+            />
+          ))}
       </FlexBox>
     </View>
   );
@@ -366,6 +368,12 @@ ComponentsView.componentsToDisplay = [
     componentImg: "wizard-layout.png",
     componentName: "WizardLayout",
     componentImgAlt: "A WizardLayout component",
+  },
+  {
+    componentLink: "messaging-attachment",
+    componentImg: "messaging-attachment.png",
+    componentName: "MessagingAttachment",
+    componentImgAlt: "A MessagingAttachment component",
   },
 ];
 
