@@ -105,6 +105,7 @@ const fileIcons = {
 type AttachmentIconProps = {
   fileType: "audio" | "catchall" | "doc" | "image" | "pdf" | "ppt" | "video" | "xls";
   isUpload?: boolean;
+  uploadComplete?: boolean;
   uploadError?: boolean;
 };
 
@@ -112,14 +113,16 @@ type AttachmentIconProps = {
 export function FileAttachmentIcon({
   fileType = "catchall",
   isUpload,
+  uploadComplete,
   uploadError,
 }: AttachmentIconProps) {
   if (uploadError) {
     return (
       <FontAwesome name="exclamation-circle" className={cx(cssClass("ErrorCircle"), "fa-lg")} />
     );
+  } else if (isUpload && !uploadComplete) {
+    return <FontAwesome name="spinner" className={cx(cssClass("ErrorCircle"), "fa-lg")} spin />;
   }
-
   return (
     <img
       src={isUpload ? fileIcons[fileType].draft : fileIcons[fileType].sent}
