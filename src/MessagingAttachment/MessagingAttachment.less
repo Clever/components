@@ -141,14 +141,23 @@
   }
 }
 
-// TODO: :not() does not work for IE
-.MessagingAttachment--Container:hover:not(.MessagingAttachment--IsUploading) {
+.MessagingAttachment--Container:hover {
   background-color: @HOVER_BACKGROUND_COLOR;
   border-color: @primary_blue_tint_2;
   cursor: pointer;
 
   .MessagingAttachment--Title {
     color: @primary_blue_shade_2;
+  }
+}
+
+.MessagingAttachment--Container.MessagingAttachment--IsUploading:hover {
+  background-color: @neutral_white;
+  border-color: @neutral_silver;
+  cursor: default;
+
+  .MessagingAttachment--Title {
+    color: @neutral_dark_gray;
   }
 }
 
