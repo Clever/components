@@ -22,8 +22,7 @@ export interface Props {
   hideLabel?: boolean;
   options: Option[];
   clearable?: boolean;
-  // TODO: support all requirement types
-  requirement?: typeof FormElementRequirement.REQUIRED;
+  requirement?: Values<typeof FormElementRequirement>;
   initialIsInError?: boolean;
   value: string;
   onChange: (value: string) => void;
@@ -40,6 +39,7 @@ export const cssClass = {
   SELECT_CONTAINER: "Select2--selectContainer",
   SELECT_CONTAINER_FOCUSED: "Select2--selectContainer--focused",
   SELECT_CONTAINER_ERROR: "Select2--selectContainer--error",
+  SELECT_CONTAINER_DISABLED: "Select2--selectContainer--disabled",
   INPUT: "Select2--input",
   TRAILING_ELEMENT: "Select2--trailingElement",
   ERROR_ICON: "Select2--errorIcon",
@@ -159,9 +159,14 @@ const Select2: React.FC<Props> = ({
           cssClass.SELECT_CONTAINER,
           isOpen && cssClass.SELECT_CONTAINER_FOCUSED,
           isInError && cssClass.SELECT_CONTAINER_ERROR,
+          requirement === FormElementRequirement.DISABLED && cssClass.SELECT_CONTAINER_DISABLED,
         )}
         {...getComboboxProps({
           onClick: (e) => {
+            if (requirement === FormElementRequirement.DISABLED) {
+              e.stopPropagation();
+              return;
+            }
             if (!isOpen) {
               openMenu();
               if (inputRef.current) {
@@ -175,7 +180,11 @@ const Select2: React.FC<Props> = ({
           id={id}
           name={id}
           className={cssClass.INPUT}
-          {...getInputProps({ ref: inputRef, onFocus: () => setHasBeenFocused(true) })}
+          {...getInputProps({
+            ref: inputRef,
+            onFocus: () => setHasBeenFocused(true),
+            disabled: requirement === FormElementRequirement.DISABLED,
+          })}
         />
         {isInError && (
           <div className={classNames(cssClass.TRAILING_ELEMENT, cssClass.ERROR_ICON)}>
@@ -191,6 +200,10 @@ const Select2: React.FC<Props> = ({
             )}
             onClick={(e) => {
               e.stopPropagation();
+              if (requirement === FormElementRequirement.DISABLED) {
+                return;
+              }
+
               onChange(null);
               openMenu();
               if (inputRef.current) {
@@ -208,7 +221,7 @@ const Select2: React.FC<Props> = ({
             cssClass.TRAILING_ELEMENT,
             cssClass.CARET_BUTTON,
           )}
-          {...getToggleButtonProps()}
+          {...getToggleButtonProps({ disabled: requirement === FormElementRequirement.DISABLED })}
         >
           <FontAwesome name={isOpen ? "caret-up" : "caret-down"} />
         </button>
