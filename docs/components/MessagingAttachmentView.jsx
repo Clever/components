@@ -79,13 +79,14 @@ export default class MessagingAttachmentView extends React.PureComponent {
       },
       {
         attachmentID: "4",
-        icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadError />,
+        icon: (
+          <FileAttachmentIcon fileType={"audio"} isUpload errorMsg={"File cannot exceed 10 MB"} />
+        ),
         onClickAttachment: () => console.log("clicked!"),
         onRemoveAttachment: () => console.log("removed!"),
         title: "My cool file.txt",
         errorMsg: "File cannot exceed 10 MB",
         isUpload: true,
-        uploadError: true,
       },
     ];
 
@@ -140,7 +141,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   subtitle={attachment.subtitle}
                   errorMsg={attachment.errorMsg}
                   isUpload={attachment.isUpload}
-                  uploadError={attachment.uploadError}
                   uploadComplete={attachment.uploadComplete}
                 />
               ))}
@@ -213,14 +213,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
               defaultValue: "false",
               optional: true,
             },
-            {
-              name: "uploadError",
-              type: "boolean",
-              description:
-                "Optional boolean for whether there was an error while uploading the Attachment",
-              defaultValue: "false",
-              optional: true,
-            },
           ]}
           className={cssClass.PROPS}
         />
@@ -243,11 +235,9 @@ export default class MessagingAttachmentView extends React.PureComponent {
               optional: true,
             },
             {
-              name: "uploadError",
-              type: "boolean",
-              description:
-                "Boolean for if there was an error during the upload. If so, renders the ErrorCircle icon instead of the icon that corresponds to the fileType",
-              defaultValue: "false",
+              name: "errorMsg",
+              type: "string",
+              description: "Used to determine whether or not to render the error state",
               optional: true,
             },
           ]}

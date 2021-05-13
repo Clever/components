@@ -20,7 +20,6 @@ type Props = {
   subtitle?: string;
   isUpload?: boolean;
   uploadComplete?: boolean;
-  uploadError?: boolean;
 };
 
 export const MessagingAttachment: React.FC<Props> = ({
@@ -33,7 +32,6 @@ export const MessagingAttachment: React.FC<Props> = ({
   subtitle,
   isUpload,
   uploadComplete,
-  uploadError,
 }: Props) => {
   return (
     <FlexBox className={cssClass("ParentContainer")}>
@@ -51,7 +49,7 @@ export const MessagingAttachment: React.FC<Props> = ({
           cssClass("Container"),
           isUpload && cssClass("Short"),
           isUpload && !uploadComplete && cssClass("IsUploading"),
-          uploadError && cssClass("Error"),
+          !!errorMsg && cssClass("Error"),
         )}
         onClick={() => onClickAttachment(attachmentID)}
       >
@@ -107,7 +105,7 @@ type AttachmentIconProps = {
   fileType: "audio" | "catchall" | "doc" | "image" | "pdf" | "ppt" | "video" | "xls";
   isUpload?: boolean;
   uploadComplete?: boolean;
-  uploadError?: boolean;
+  errorMsg?: string;
 };
 
 // TODO: handle undefined. Note: Components uses jsx, LP uses tsx
@@ -115,9 +113,9 @@ export function FileAttachmentIcon({
   fileType = "catchall",
   isUpload,
   uploadComplete,
-  uploadError,
+  errorMsg,
 }: AttachmentIconProps) {
-  if (uploadError) {
+  if (!!errorMsg) {
     return (
       <FontAwesome name="exclamation-circle" className={cx(cssClass("ErrorCircle"), "fa-lg")} />
     );
