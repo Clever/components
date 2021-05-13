@@ -97,6 +97,12 @@ const Select2: React.FC<Props> = ({
       const { changes, type } = actionAndChanges;
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEscape:
+          return {
+            ...changes,
+            selectedItem: null,
+            inputValue: "",
+            isOpen: true,
+          };
         case useCombobox.stateChangeTypes.InputBlur: {
           // reset any text that has been entered
           return {

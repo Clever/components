@@ -41,6 +41,7 @@ export const cssClass = {
   SELECT_CONTAINER: "MultiSelect--selectContainer",
   SELECT_CONTAINER_FOCUSED: "MultiSelect--selectContainer--focused",
   SELECTED_ITEMS_CONTAINER: "MultiSelect--selectedItemsContainer",
+  SELECTED_ITEM_WRAPPER: "MultiSelect--selectedItemWrapper",
   SELECTED_ITEM_CONTAINER: "MultiSelect--selectedItemContainer",
   SELECTED_ITEM_BUTTON: "MultiSelect--selectedItemButton",
   INPUT: "MultiSelect--input",
@@ -212,30 +213,33 @@ const MultiSelect: React.FC<Props> = ({
       >
         <div className={cssClass.SELECTED_ITEMS_CONTAINER}>
           {selectedItems.map((item, i) => (
-            <Label
+            // need this wrapper element to support downshift accessibility
+            <span
               key={`${item.value}${i}`}
-              className={cssClass.SELECTED_ITEM_CONTAINER}
+              className={cssClass.SELECTED_ITEM_WRAPPER}
               {...getSelectedItemProps({ selectedItem: item, index: i })}
             >
-              {item.customLabel || item.label}
-              <span
-                className={cssClass.SELECTED_ITEM_BUTTON}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onChange(
-                    [...selectedItems.slice(0, i), ...selectedItems.slice(i + 1)].map(
-                      (o) => o.value,
-                    ),
-                  );
-                  if (inputRef.current) {
-                    inputRef.current.select();
-                  }
-                }}
-              >
-                {/* https://www.compart.com/en/unicode/U+2715 */}
-                &#10005;
-              </span>
-            </Label>
+              <Label className={cssClass.SELECTED_ITEM_CONTAINER}>
+                {item.customLabel || item.label}
+                <span
+                  className={cssClass.SELECTED_ITEM_BUTTON}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onChange(
+                      [...selectedItems.slice(0, i), ...selectedItems.slice(i + 1)].map(
+                        (o) => o.value,
+                      ),
+                    );
+                    if (inputRef.current) {
+                      inputRef.current.select();
+                    }
+                  }}
+                >
+                  {/* https://www.compart.com/en/unicode/U+2715 */}
+                  &#10005;
+                </span>
+              </Label>
+            </span>
           ))}
           <input
             id={id}
@@ -245,7 +249,8 @@ const MultiSelect: React.FC<Props> = ({
             {...getInputProps(
               getDropdownProps({
                 ref: inputRef,
-                preventKeyAction: isOpen,
+                // prevents the user from navigating to the selected items when text is present
+                preventKeyAction: inputValue !== "",
                 onFocus: (e) => {
                   if (!isOpen) {
                     openMenu();
