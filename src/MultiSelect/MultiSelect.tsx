@@ -55,11 +55,11 @@ export const cssClass = {
 // export for testing
 export function getSelectableOptions(
   options: Option[],
-  selectedItems: Option[],
+  selectedValues: string[],
   inputValue: string,
   creatable: boolean,
 ): Option[] {
-  const selectedValues = new Set<string>(selectedItems.map((si) => si.value));
+  const selectedValuesSet = new Set<string>(selectedValues);
   const inputLowerCase = inputValue.toLocaleLowerCase();
 
   let hasExactMatch = false;
@@ -71,7 +71,7 @@ export function getSelectableOptions(
     }
 
     return (
-      !selectedValues.has(o.value) &&
+      !selectedValuesSet.has(o.value) &&
       (inputValue === "" || optionLowerCase.includes(inputLowerCase))
     );
   });
@@ -117,7 +117,7 @@ const MultiSelect: React.FC<Props> = ({
 
   const selectableOptions = getSelectableOptions(
     options,
-    allowDuplicates ? [] : selectedItems,
+    allowDuplicates ? [] : values,
     inputValue,
     creatable,
   );
