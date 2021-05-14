@@ -84,7 +84,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
         ),
         onClickAttachment: () => console.log("clicked!"),
         onRemoveAttachment: () => console.log("removed!"),
-        title: "My cool file.txt",
         errorMsg: "File cannot exceed 10 MB",
         isUpload: true,
       },
