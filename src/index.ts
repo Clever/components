@@ -144,3 +144,5 @@ export { Select2 };
 export { AlertBox2, AlertBox2Type } from "./AlertBox2";
 
 export { ExpandableContainer } from "./ExpandableContainer";
+
+export { MessagingAttachment } from "./MessagingAttachment";

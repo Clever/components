@@ -3,12 +3,13 @@ import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import AlertBox2View from "./components/AlertBox2View";
+import AnnouncementBubbleView from "./components/AnnouncementBubbleView";
 import ComponentsView from "./components/ComponentsView";
 import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
+import MessagingAttachmentView from "./components/MessagingAttachmentView";
 import MessagingAvatarView from "./components/MessagingAvatarView";
 import MessagingBubbleView from "./components/MessagingBubbleView";
 import MessagingInputView from "./components/MessagingInputView";
-import AnnouncementBubbleView from "./components/AnnouncementBubbleView";
 import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
 import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import MultiSelectView from "./components/MultiSelectView";
@@ -113,6 +114,7 @@ render(
       >
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="alert-box-2(/*)" component={AlertBox2View} />
+        <Route path="announcement-bubble(/*)" component={AnnouncementBubbleView} />
         <Route path="badge(/*)" component={BadgeView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="checkbox(/*)" component={CheckboxView} />
@@ -141,9 +143,9 @@ render(
         <Route path="list(/*)" component={ListView} />
         <Route path="logo(/*)" component={LogoView} />
         <Route path="menu(/*)" component={MenuView} />
+        <Route path="messaging-attachment(/*)" component={MessagingAttachmentView} />
         <Route path="messaging-avatar(/*)" component={MessagingAvatarView} />
         <Route path="messaging-bubble(/*)" component={MessagingBubbleView} />
-        <Route path="announcement-bubble(/*)" component={AnnouncementBubbleView} />
         <Route path="messaging-input(/*)" component={MessagingInputView} />
         <Route path="messaging-thread-history(/*)" component={MessagingThreadHistoryView} />
         <Route path="messaging-thread-list-item(/*)" component={MessagingThreadListItemView} />

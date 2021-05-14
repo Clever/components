@@ -1,0 +1,194 @@
+@import (reference) "../less/utilities";
+
+@ICON_SMALL_SIZE: @size_2xl;
+@ICON_REGULAR_SIZE: @size_2xl;
+@HOVER_BACKGROUND_COLOR: #f9faff;
+@ERROR_RED: #df3537;
+@ERROR_RED_TEXT: #b30c10;
+
+.MessagingAttachment--ParentContainer {
+  position: relative;
+}
+
+.MessagingAttachment--Container {
+  z-index: auto;
+  width: 21.875rem; // 350px
+  cursor: pointer;
+  padding-left: 0.6875rem; // 11px
+  padding-right: 0.9375rem; // 15px
+  padding-top: 0.9375rem; // 15px
+  padding-bottom: 0.9375rem; // 15px
+  height: @ICON_REGULAR_SIZE;
+  border: @size_4xs solid @neutral_silver;
+  border-radius: @size_2xs;
+}
+
+.MessagingAttachment--IconContainer {
+  height: @ICON_REGULAR_SIZE;
+  .margin--right--s();
+  align-items: center;
+  justify-content: center;
+}
+
+// handle FontAwesome as well, for loading spinner
+.MessagingAttachment--IconContainer img,
+.MessagingAttachment--IconContainer .fa,
+.MessagingAttachment--IconContainer > * {
+  max-height: @ICON_REGULAR_SIZE;
+  max-width: @ICON_REGULAR_SIZE;
+  width: auto;
+  height: auto;
+}
+
+.MessagingAttachment--TextContainer {
+  justify-content: center;
+  color: @neutral_dark_gray;
+  max-width: 18.625rem; // 298px
+}
+
+// TODO: remove if unused
+.MessagingAttachment--Title {
+  font-size: @size_m;
+  line-height: @size_l;
+  .text--semi-bold();
+  .text--truncate();
+}
+
+.MessagingAttachment--Subtitle {
+  font-size: 0.875rem; // 14px
+  line-height: @size_m;
+  .text--truncate();
+}
+
+.MessagingAttachment--CloseButton {
+  z-index: 10;
+  position: absolute;
+  .flexbox();
+  top: -0.625rem; // 10px
+  right: -0.625rem; // 10px
+  width: 1.25rem; // 20px
+  height: 1.25rem; // 20px
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: @neutral_medium_gray;
+  color: @neutral_white;
+  border: none;
+  padding: 0;
+  border: @size_3xs solid white;
+
+  // TODO: doesn't turn off after click...
+  // maybe this doesn't matter cause clicking will close the box?
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: @neutral_black;
+    border-color: @neutral_black;
+  }
+}
+
+.MessagingAttachment--CloseIcon {
+  font-size: @size_s;
+  margin: auto;
+}
+
+.MessagingAttachment--Container.MessagingAttachment--Short {
+  width: 12.75rem; // 204px
+  cursor: default;
+  height: @ICON_SMALL_SIZE;
+  padding-left: 0.4375rem; // 7px
+  padding-right: 0.4375rem; // 7px
+  padding-top: 0.6875rem; // 11px
+  padding-bottom: 0.6875rem; // 11px
+
+  .MessagingAttachment--IconContainer {
+    height: @ICON_SMALL_SIZE;
+    .margin--right--xs();
+  }
+
+  // handle FontAwesome as well, for loading spinner
+  .MessagingAttachment--IconContainer img,
+  .MessagingAttachment--IconContainer .fa,
+  .MessagingAttachment--IconContainer > * {
+    max-height: @ICON_SMALL_SIZE;
+    max-width: @ICON_SMALL_SIZE;
+  }
+
+  .MessagingAttachment--TextContainer {
+    max-width: 10.25rem; // 164px
+  }
+
+  .MessagingAttachment--Title {
+    line-height: @size_m;
+    font-size: 0.875rem; // 14px
+  }
+
+  .MessagingAttachment--Subtitle {
+    font-size: 0.875rem; // 14px
+    line-height: @size_m;
+    color: @neutral_dark_gray;
+    .text--regular();
+    margin-top: 0;
+  }
+
+  &.MessagingAttachment--IsUploading {
+    width: 12.25rem; // 196px
+    padding-left: 0.6875rem; // 11px
+    padding-right: 0.6875rem; // 11px
+
+    .MessagingAttachment--TextContainer {
+      max-width: 10.375rem; // 166px
+    }
+  }
+}
+
+.MessagingAttachment--Container:hover {
+  background-color: @HOVER_BACKGROUND_COLOR;
+  border-color: @primary_blue_tint_2;
+  cursor: pointer;
+
+  .MessagingAttachment--Title {
+    color: @primary_blue_shade_2;
+  }
+}
+
+.MessagingAttachment--Container.MessagingAttachment--IsUploading:hover {
+  background-color: @neutral_white;
+  border-color: @neutral_silver;
+  cursor: default;
+
+  .MessagingAttachment--Title {
+    color: @neutral_dark_gray;
+  }
+}
+
+.MessagingAttachment--Container.MessagingAttachment--Short.MessagingAttachment--IsUploading.MessagingAttachment--Error {
+  border-color: @ERROR_RED;
+  width: 11.75rem; // 188px
+  padding-left: 0.9375rem; // 15px
+  padding-right: 0.9375rem; // 15px
+
+  .MessagingAttachment--IconContainer {
+    margin-right: @size_s;
+  }
+
+  .MessagingAttachment--ErrorCircle {
+    color: @ERROR_RED_TEXT;
+  }
+
+  .MessagingAttachment--TextContainer {
+    width: 9.875rem;
+  }
+
+  .MessagingAttachment--Title {
+    color: @ERROR_RED_TEXT;
+    font-weight: 400;
+  }
+}
+
+// For mobile/tablet
+@media only screen and (max-width: @breakpointM) {
+  .MessagingAttachment--Container {
+    // Full width for small screens
+    width: auto;
+  }
+}
