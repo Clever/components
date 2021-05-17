@@ -36,6 +36,21 @@
   .margin--top--s;
 }
 
+.FileInput.FileInput--MessageAttachment {
+  height: 2.75rem;
+  border: none;
+  padding: 0;
+
+  .FileInput--Icon {
+    margin: 0.375rem 0.5rem 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+
+    &:hover {
+      fill: #f5f8fd;
+    }
+  }
+}
+
 // Overwrite the inlined styles on the hidden file input for accessibility
 .FileInput + input[type="file"] {
   display: inline !important;

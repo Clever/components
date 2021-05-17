@@ -8,6 +8,8 @@ import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms"
 
 import "./TextArea.less";
 import "../less/forms.less";
+import { FileInput } from "src/FileInput/FileInput";
+import { FlexBox } from "src/flex";
 
 export interface Props {
   disabled?: boolean;
@@ -33,6 +35,7 @@ export interface Props {
   autoResize?: boolean;
   rows?: number;
   size?: Size;
+  showUploadAttachmentButton?: boolean;
 }
 
 interface State {
@@ -63,6 +66,7 @@ const propTypes = {
   autoResize: PropTypes.bool,
   rows: PropTypes.number,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
+  showUploadAttachmentButton: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -267,7 +271,14 @@ export class TextArea extends React.Component<Props, State> {
           )}
           <span aria-live="polite">{inputNote}</span>
         </div>
-        {textarea}
+        <FlexBox>
+          {textarea}
+          <FileInput
+            store={() => console.log("stored!")}
+            isMessageAttachmentInput={this.props.showUploadAttachmentButton}
+            iconOnly
+          />
+        </FlexBox>
       </div>
     );
   }

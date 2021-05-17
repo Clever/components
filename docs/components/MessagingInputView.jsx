@@ -80,6 +80,7 @@ export default class MessagingInputView extends React.PureComponent {
               showReturnKeyInstructions={showReturnKeyInstructions}
               replyTo={enableReplyTo ? exampleReplyMessage : null}
               onReplyCancel={() => alert("REPLY CANCELLED")}
+              showUploadAttachmentButton
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -191,6 +192,13 @@ export default class MessagingInputView extends React.PureComponent {
             type: "boolean",
             description:
               "When true and when text is in the input, below the MessagingInput there will be instructions that return is to send and shift + return is a newline. When false, nothing will show. Not currently customizable, but that could be a future improvement if needed. Currently always hidden on mobile.",
+            optional: true,
+          },
+          {
+            name: "showUploadAttachmentButton",
+            type: "boolean",
+            description:
+              "Optional boolean to set this as an UploadAttachment button. Pass in a boolean or the relevant feature flag (e.g. teachers-upload-messaging-attachments) here",
             optional: true,
           },
         ]}

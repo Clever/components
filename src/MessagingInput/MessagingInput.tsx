@@ -31,6 +31,7 @@ interface Props {
   labelText?: string;
   disableSendButton?: boolean;
   showReturnKeyInstructions?: boolean;
+  showUploadAttachmentButton?: boolean;
 }
 
 export interface MessagingInputHandle {
@@ -56,6 +57,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     labelText = "Send a message",
     disableSendButton,
     showReturnKeyInstructions,
+    showUploadAttachmentButton,
   } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
@@ -120,6 +122,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             // The field starts with `rows + 1` rows, so
             //  passing in 0 gets us the desired starting height.
             rows={0}
+            showUploadAttachmentButton={showUploadAttachmentButton}
           />
         </FlexBox>
         <Button
