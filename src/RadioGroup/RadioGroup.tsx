@@ -16,6 +16,7 @@ interface Option<IDType extends string = string, ValueType = any> {
 }
 
 export interface Props<OptionIDType extends string, OptionValueType> {
+  ariaLabelledBy?: string;
   className?: string;
   disabled?: boolean;
   error?: React.ReactNode;
@@ -46,8 +47,24 @@ export default class RadioGroup<
   _optionRefsByID = {};
 
   render() {
-    const { className, disabled, error, label, onChange, options, selectedID } = this.props;
+    const {
+      ariaLabelledBy,
+      className,
+      disabled,
+      error,
+      label,
+      onChange,
+      options,
+      selectedID,
+    } = this.props;
 
+    if (ariaLabelledBy && label) {
+      console.warn(
+        "You should not pass both `ariaLabelledBy` and `label` props. The `ariaLabelledBy` prop is ignored.",
+      );
+    }
+
+    const labelID = label || !ariaLabelledBy ? this._labelID : ariaLabelledBy;
     const focusableOptionID = this._getFocusableOptionID(options);
 
     return (
@@ -57,13 +74,15 @@ export default class RadioGroup<
         onChange={this._handleNavChange}
       >
         <div
-          aria-labelledby={this._labelID}
+          aria-labelledby={labelID}
           className={classnames(cssClass.CONTAINER, className)}
           role="radiogroup"
         >
-          <div className={cssClass.LABEL} id={this._labelID}>
-            {label}
-          </div>
+          {!ariaLabelledBy && (
+            <div className={cssClass.LABEL} id={labelID}>
+              {label}
+            </div>
+          )}
           {error && <FormError>{error}</FormError>}
           {_.map(options, (o) => (
             <Radio<OptionIDType, OptionValueType>
