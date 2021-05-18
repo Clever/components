@@ -5,11 +5,11 @@ import * as classnames from "classnames";
 import TextareaAutosize from "react-autosize-textarea";
 
 import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms";
+import { FileInput } from "../FileInput/FileInput";
+import { FlexBox } from "../flex";
 
 import "./TextArea.less";
 import "../less/forms.less";
-import { FileInput } from "src/FileInput/FileInput";
-import { FlexBox } from "src/flex";
 
 export interface Props {
   disabled?: boolean;
