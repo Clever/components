@@ -30,13 +30,21 @@ export default class RadioGroupView extends React.PureComponent {
   state = {
     disableAll: false,
     selectedCity: null,
+    selectedEmoji: null,
     selectedFood: null,
     showError: false,
     requireSelection: false,
   };
 
   render() {
-    const { disableAll, requireSelection, selectedCity, selectedFood, showError } = this.state;
+    const {
+      disableAll,
+      requireSelection,
+      selectedCity,
+      selectedEmoji,
+      selectedFood,
+      showError,
+    } = this.state;
 
     return (
       <View
@@ -113,6 +121,23 @@ export default class RadioGroupView extends React.PureComponent {
               ]}
               selectedID={selectedFood}
             />
+
+            <h4 id="emoji-selector-label">Favourite Emoji: (label outside of RadioGroup)</h4>
+            <RadioGroup
+              ariaLabelledBy="emoji-selector-label"
+              onChange={(id) => this.setState({ selectedEmoji: id })}
+              options={[
+                { id: "bear", label: "🐻", disabled: disableAll },
+                { id: "sloth", label: "🦥", disabled: disableAll },
+                { id: "orangutan", label: "🦧", disabled: disableAll },
+                {
+                  id: "none",
+                  label: "None of the above",
+                  disabled: requireSelection || disableAll,
+                },
+              ]}
+              selectedID={selectedEmoji}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -163,6 +188,13 @@ export default class RadioGroupView extends React.PureComponent {
       <PropDocumentation
         title="<RadioGroup /> Props"
         availableProps={[
+          {
+            name: "ariaLabelledBy",
+            type: "string",
+            description:
+              "Optional element ID to use as the aria-labelledby attribute. Use ONLY if the label prop is not used.",
+            optional: true,
+          },
           {
             name: "className",
             type: "string",
