@@ -118,7 +118,30 @@ export default class MessagingAttachmentView extends React.PureComponent {
           <ExampleCode>
             <p>Sent Attachments:</p>
             <FlexBox className={cssClass.DEMO_ROW}>
-              {sentAttachments.map((attachment) => (
+              {[
+                {
+                  attachmentID: "1",
+                  icon: <FileAttachmentIcon fileType={"doc"} />,
+                  onClickAttachment: () => console.log("clicked!"),
+                  title:
+                    "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
+                  subtitle: "Click to download",
+                },
+                {
+                  attachmentID: "1",
+                  icon: <FileAttachmentIcon fileType={"image"} />,
+                  onClickAttachment: () => console.log("clicked!"),
+                  title: "Flyer.png",
+                  subtitle: "Click to view",
+                },
+                {
+                  attachmentID: "1",
+                  icon: <FileAttachmentIcon fileType={"audio"} />,
+                  onClickAttachment: () => console.log("clicked!"),
+                  title: "Morning message.m4a",
+                  subtitle: "Click to download",
+                },
+              ].map((attachment) => (
                 <MessagingAttachment
                   attachmentID={attachment.attachmentID}
                   icon={attachment.icon}
@@ -130,7 +153,50 @@ export default class MessagingAttachmentView extends React.PureComponent {
             </FlexBox>
             <p>Draft Attachments:</p>
             <FlexBox className={cssClass.DEMO_ROW}>
-              {draftAttachments.map((attachment) => (
+              {[
+                {
+                  attachmentID: "1",
+                  icon: <FileAttachmentIcon fileType={"doc"} isUpload />,
+                  onClickAttachment: () => console.log("clicked!"),
+                  onRemoveAttachment: () => console.log("removed!"),
+                  title: "MyCoolDoclkasjdlkajsdlkasjdlkasjdlkasjdlsakjd.doc",
+                  subtitle: "Uploading 5%",
+                  isUpload: true,
+                },
+                {
+                  attachmentID: "2",
+                  icon: <FileAttachmentIcon fileType={"image"} isUpload />,
+                  onClickAttachment: () => console.log("clicked!"),
+                  onRemoveAttachment: () => console.log("removed!"),
+                  title: "Flyer.png",
+                  subtitle: "Processing...",
+                  isUpload: true,
+                },
+                {
+                  attachmentID: "3",
+                  icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadComplete />,
+                  onClickAttachment: () => console.log("clicked!"),
+                  onRemoveAttachment: () => console.log("removed!"),
+                  title: "Hover over me.m4a",
+                  subtitle: "Click to download",
+                  isUpload: true,
+                  uploadComplete: true,
+                },
+                {
+                  attachmentID: "4",
+                  icon: (
+                    <FileAttachmentIcon
+                      fileType={"audio"}
+                      isUpload
+                      errorMsg={"File cannot exceed 10 MB"}
+                    />
+                  ),
+                  onClickAttachment: () => console.log("clicked!"),
+                  onRemoveAttachment: () => console.log("removed!"),
+                  errorMsg: "File cannot exceed 10 MB",
+                  isUpload: true,
+                },
+              ].map((attachment) => (
                 <MessagingAttachment
                   attachmentID={attachment.attachmentID}
                   icon={attachment.icon}
