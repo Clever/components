@@ -21,7 +21,7 @@ export interface Props {
   isMessageAttachmentInput?: boolean;
 }
 
-interface State {
+export interface State {
   fileKey: number;
   filename: string;
   error: string;
@@ -187,6 +187,8 @@ export class FileInput extends React.Component<Props, State> {
     const { iconOnly, label, isMessageAttachmentInput } = this.props;
     const dropzoneStyle = iconOnly ? { display: "inline-block" } : {};
 
+    // console.log(this.state);
+
     return (
       <Dropzone
         accept={this.props.accept}
@@ -226,6 +228,10 @@ export class FileInput extends React.Component<Props, State> {
                 formElementSizeClassName(this.props.size),
                 this.props.className,
                 isMessageAttachmentInput && "FileInput--MessageAttachment",
+                !!this.state.filename &&
+                  !this.state.success &&
+                  !this.state.error &&
+                  "FileInput--AttachmentIsUploading",
               )}
             >
               {!iconOnly && selected && renderLabel(label)}

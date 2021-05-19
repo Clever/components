@@ -36,6 +36,7 @@ export interface Props {
   rows?: number;
   size?: Size;
   showUploadAttachmentButton?: boolean;
+  storeAttachment: (file, callbacks) => void;
 }
 
 interface State {
@@ -67,6 +68,7 @@ const propTypes = {
   rows: PropTypes.number,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
   showUploadAttachmentButton: PropTypes.bool,
+  storeAttachment: PropTypes.func,
 };
 
 const defaultProps = {
@@ -274,7 +276,7 @@ export class TextArea extends React.Component<Props, State> {
         <FlexBox>
           {textarea}
           <FileInput
-            store={() => console.log("stored!")}
+            store={this.props.storeAttachment}
             isMessageAttachmentInput={this.props.showUploadAttachmentButton}
             iconOnly
           />
