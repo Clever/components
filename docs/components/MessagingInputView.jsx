@@ -27,6 +27,7 @@ export default class MessagingInputView extends React.PureComponent {
     disableSendButton: false,
     newlineOnEnter: false,
     showReturnKeyInstructions: false,
+    showUploadAttachmentButton: false,
   };
 
   render() {
@@ -36,6 +37,7 @@ export default class MessagingInputView extends React.PureComponent {
       disableSendButton,
       enableReplyTo,
       showReturnKeyInstructions,
+      showUploadAttachmentButton,
     } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
@@ -80,7 +82,7 @@ export default class MessagingInputView extends React.PureComponent {
               showReturnKeyInstructions={showReturnKeyInstructions}
               replyTo={enableReplyTo ? exampleReplyMessage : null}
               onReplyCancel={() => alert("REPLY CANCELLED")}
-              showUploadAttachmentButton
+              showUploadAttachmentButton={showUploadAttachmentButton}
               store={(file, callbacks) => {
                 console.log(file.name.toLowerCase());
                 callbacks.success();
@@ -120,6 +122,16 @@ export default class MessagingInputView extends React.PureComponent {
               }
             />{" "}
             Show return key instructions
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={showUploadAttachmentButton}
+              onChange={({ target }) =>
+                this.setState({ showUploadAttachmentButton: target.checked })
+              }
+            />{" "}
+            Show upload attachment button
           </label>
         </Example>
 
