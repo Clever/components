@@ -277,6 +277,20 @@ export default class TextAreaView extends React.Component {
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },
+            {
+              name: "showUploadAttachmentButton",
+              type: "boolean",
+              description:
+                "Optional boolean which dictates if this TextArea should include a FileInput component for uploading message attachments.",
+              optional: true,
+            },
+            {
+              name: "storeAttachment",
+              type: "(file, callbacks) => void",
+              description:
+                "Optional store function to be used with the FileInput for attachment uploads. This is only used if showUploadAttachmentButton == true, and should always be defined in that case.",
+              optional: true,
+            },
           ]}
         />
       </View>

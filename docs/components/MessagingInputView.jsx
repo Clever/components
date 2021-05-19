@@ -205,6 +205,13 @@ export default class MessagingInputView extends React.PureComponent {
               "NOTE: This feature is only partially implemented as of now, for testing purposes. Optional boolean to set this as an UploadAttachment button. Pass in a boolean or the relevant feature flag (e.g. teachers-upload-messaging-attachments) here",
             optional: true,
           },
+          {
+            name: "store",
+            type: "(file, callbacks) => void",
+            description:
+              "Optional store function to be used with the FileInput for attachment uploads. This is only used if showUploadAttachmentButton == true, and should always be defined in that case.",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />

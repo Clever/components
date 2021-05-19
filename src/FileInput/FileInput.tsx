@@ -18,10 +18,10 @@ export interface Props {
   store: Function;
   accept?: string;
   size?: Size;
-  isMessageAttachmentInput?: boolean;
+  isMessagingAttachmentInput?: boolean;
 }
 
-export interface State {
+interface State {
   fileKey: number;
   filename: string;
   error: string;
@@ -130,7 +130,7 @@ const propTypes = {
   store: PropTypes.func.isRequired,
   accept: PropTypes.string,
   size: PropTypes.string,
-  isMessageAttachmentInput: PropTypes.bool,
+  isMessagingAttachmentInput: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -184,7 +184,7 @@ export class FileInput extends React.Component<Props, State> {
   }
 
   render() {
-    const { iconOnly, label, isMessageAttachmentInput } = this.props;
+    const { iconOnly, label, isMessagingAttachmentInput } = this.props;
     const dropzoneStyle = iconOnly ? { display: "inline-block" } : {};
 
     // console.log(this.state);
@@ -200,7 +200,7 @@ export class FileInput extends React.Component<Props, State> {
       >
         {({ isDragActive, isDragReject }) => {
           let message = `Upload ${this.props.label}`;
-          let icon = isMessageAttachmentInput ? <MessagingAttachmentIcon /> : <DefaultIcon />;
+          let icon = isMessagingAttachmentInput ? <MessagingAttachmentIcon /> : <DefaultIcon />;
           let selected = false;
           if (isDragActive) {
             selected = true;
@@ -227,7 +227,7 @@ export class FileInput extends React.Component<Props, State> {
                 "FileInput",
                 formElementSizeClassName(this.props.size),
                 this.props.className,
-                isMessageAttachmentInput && "FileInput--MessageAttachment",
+                isMessagingAttachmentInput && "FileInput--MessageAttachment",
                 !!this.state.filename &&
                   !this.state.success &&
                   !this.state.error &&

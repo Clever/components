@@ -278,7 +278,7 @@ export class TextArea extends React.Component<Props, State> {
           {this.props.showUploadAttachmentButton && (
             <FileInput
               store={this.props.storeAttachment}
-              isMessageAttachmentInput={this.props.showUploadAttachmentButton}
+              isMessagingAttachmentInput={this.props.showUploadAttachmentButton}
               iconOnly
             />
           )}

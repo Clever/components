@@ -6,9 +6,6 @@ import KeyCode from "../utils/KeyCode";
 import * as FontAwesome from "react-fontawesome";
 
 import "./MessagingInput.less";
-// import { MessagingAttachment } from "src/MessagingAttachment";
-// import { FileInputState } from "src/FileInput/FileInput";
-// import { FileAttachmentIcon, FileType } from "src/MessagingAttachment/MessagingAttachment";
 
 function cssClass(element: string) {
   return `MessagingInput--${element}`;
@@ -38,7 +35,6 @@ interface Props {
   showUploadAttachmentButton?: boolean;
   // TODO: should this be files instead of file? or simply function?
   store?: (file, callbacks) => void;
-  attachments?: React.ReactNode[];
 }
 
 export interface MessagingInputHandle {
