@@ -24,71 +24,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
   static cssClass = cssClass;
 
   render() {
-    const sentAttachments = [
-      {
-        attachmentID: "1",
-        icon: <FileAttachmentIcon fileType={"doc"} />,
-        onClickAttachment: () => console.log("clicked!"),
-        title: "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
-        subtitle: "Click to download",
-      },
-      {
-        attachmentID: "1",
-        icon: <FileAttachmentIcon fileType={"image"} />,
-        onClickAttachment: () => console.log("clicked!"),
-        title: "Flyer.png",
-        subtitle: "Click to view",
-      },
-      {
-        attachmentID: "1",
-        icon: <FileAttachmentIcon fileType={"audio"} />,
-        onClickAttachment: () => console.log("clicked!"),
-        title: "Morning message.m4a",
-        subtitle: "Click to download",
-      },
-    ];
-
-    const draftAttachments = [
-      {
-        attachmentID: "1",
-        icon: <FileAttachmentIcon fileType={"doc"} isUpload />,
-        onClickAttachment: () => console.log("clicked!"),
-        onRemoveAttachment: () => console.log("removed!"),
-        title: "MyCoolDoclkasjdlkajsdlkasjdlkasjdlkasjdlsakjd.doc",
-        subtitle: "Uploading 5%",
-        isUpload: true,
-      },
-      {
-        attachmentID: "2",
-        icon: <FileAttachmentIcon fileType={"image"} isUpload />,
-        onClickAttachment: () => console.log("clicked!"),
-        onRemoveAttachment: () => console.log("removed!"),
-        title: "Flyer.png",
-        subtitle: "Processing...",
-        isUpload: true,
-      },
-      {
-        attachmentID: "3",
-        icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadComplete />,
-        onClickAttachment: () => console.log("clicked!"),
-        onRemoveAttachment: () => console.log("removed!"),
-        title: "Hover over me.m4a",
-        subtitle: "Click to download",
-        isUpload: true,
-        uploadComplete: true,
-      },
-      {
-        attachmentID: "4",
-        icon: (
-          <FileAttachmentIcon fileType={"audio"} isUpload errorMsg={"File cannot exceed 10 MB"} />
-        ),
-        onClickAttachment: () => console.log("clicked!"),
-        onRemoveAttachment: () => console.log("removed!"),
-        errorMsg: "File cannot exceed 10 MB",
-        isUpload: true,
-      },
-    ];
-
     return (
       <View
         className={cssClass.CONTAINER}
@@ -120,6 +55,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
             <FlexBox className={cssClass.DEMO_ROW}>
               {[
                 {
+                  key: "1",
                   attachmentID: "1",
                   icon: <FileAttachmentIcon fileType={"doc"} />,
                   onClickAttachment: () => console.log("clicked!"),
@@ -128,14 +64,16 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   subtitle: "Click to download",
                 },
                 {
-                  attachmentID: "1",
+                  key: "2",
+                  attachmentID: "2",
                   icon: <FileAttachmentIcon fileType={"image"} />,
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Flyer.png",
                   subtitle: "Click to view",
                 },
                 {
-                  attachmentID: "1",
+                  key: "3",
+                  attachmentID: "3",
                   icon: <FileAttachmentIcon fileType={"audio"} />,
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Morning message.m4a",
@@ -143,6 +81,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
               ].map((attachment) => (
                 <MessagingAttachment
+                  key={attachment.key}
                   attachmentID={attachment.attachmentID}
                   icon={attachment.icon}
                   onClickAttachment={attachment.onClickAttachment}
@@ -155,7 +94,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
             <FlexBox className={cssClass.DEMO_ROW}>
               {[
                 {
-                  attachmentID: "1",
+                  key: "4",
+                  attachmentID: "4",
                   icon: <FileAttachmentIcon fileType={"doc"} isUpload />,
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -164,7 +104,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   isUpload: true,
                 },
                 {
-                  attachmentID: "2",
+                  key: "5",
+                  attachmentID: "5",
                   icon: <FileAttachmentIcon fileType={"image"} isUpload />,
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -173,7 +114,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   isUpload: true,
                 },
                 {
-                  attachmentID: "3",
+                  key: "6",
+                  attachmentID: "6",
                   icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadComplete />,
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -183,7 +125,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   uploadComplete: true,
                 },
                 {
-                  attachmentID: "4",
+                  key: "7",
+                  attachmentID: "7",
                   icon: (
                     <FileAttachmentIcon
                       fileType={"audio"}
@@ -198,6 +141,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
               ].map((attachment) => (
                 <MessagingAttachment
+                  key={attachment.key}
                   attachmentID={attachment.attachmentID}
                   icon={attachment.icon}
                   onClickAttachment={attachment.onClickAttachment}
