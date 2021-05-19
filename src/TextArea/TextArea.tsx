@@ -35,7 +35,6 @@ export interface Props {
   autoResize?: boolean;
   rows?: number;
   size?: Size;
-  // TODO: is this needed? Can we just use the existance of storeUpload? or better to be explicit
   showUploadAttachmentButton?: boolean;
   storeUpload?: (file, callbacks) => void;
   fileUploadCustomIcon?: JSX.Element;

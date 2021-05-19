@@ -166,8 +166,6 @@ export class FileInput extends React.Component<Props, State> {
     const { iconOnly, label } = this.props;
     const dropzoneStyle = iconOnly ? { display: "inline-block" } : {};
 
-    // console.log(this.state);
-
     return (
       <Dropzone
         accept={this.props.accept}

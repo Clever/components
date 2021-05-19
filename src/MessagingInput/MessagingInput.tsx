@@ -31,9 +31,7 @@ interface Props {
   labelText?: string;
   disableSendButton?: boolean;
   showReturnKeyInstructions?: boolean;
-  // TODO: is this needed or is the existance of MessagingInput.store sufficient to decide this?
   showUploadAttachmentButton?: boolean;
-  // TODO: should this be files instead of file? or simply function?
   store?: (file, callbacks) => void;
 }
 
