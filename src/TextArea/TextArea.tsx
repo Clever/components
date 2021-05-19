@@ -35,8 +35,10 @@ export interface Props {
   autoResize?: boolean;
   rows?: number;
   size?: Size;
+  // TODO: is this needed? Can we just use the existance of storeUpload? or better to be explicit
   showUploadAttachmentButton?: boolean;
-  storeAttachment?: (file, callbacks) => void;
+  storeUpload?: (file, callbacks) => void;
+  fileUploadCustomIcon?: JSX.Element;
 }
 
 interface State {
@@ -68,7 +70,8 @@ const propTypes = {
   rows: PropTypes.number,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
   showUploadAttachmentButton: PropTypes.bool,
-  storeAttachment: PropTypes.func,
+  storeUpload: PropTypes.func,
+  fileUploadCustomIcon: PropTypes.node,
 };
 
 const defaultProps = {
@@ -277,8 +280,8 @@ export class TextArea extends React.Component<Props, State> {
           {textarea}
           {this.props.showUploadAttachmentButton && (
             <FileInput
-              store={this.props.storeAttachment}
-              isMessagingAttachmentInput={this.props.showUploadAttachmentButton}
+              store={this.props.storeUpload}
+              customIcon={this.props.fileUploadCustomIcon}
               iconOnly
             />
           )}

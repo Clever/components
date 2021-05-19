@@ -170,13 +170,6 @@ export default class FileInputView extends React.PureComponent {
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },
-            {
-              name: "isMessagingAttachmentInput",
-              type: "boolean",
-              description:
-                "Optional boolean which dictates if this FileInput is being used for uploading message attachments. If so, the component is rendered specifically for that purpose",
-              optional: true,
-            },
           ]}
           className={cssClass.PROPS}
           title="FileInput"

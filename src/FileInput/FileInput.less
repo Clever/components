@@ -36,26 +36,6 @@
   .margin--top--s;
 }
 
-.FileInput.FileInput--MessageAttachment {
-  height: 2.5rem;
-  border: none;
-  padding: 0;
-
-  // Hide FileInput after file has been selected and uploading has begun
-  &.FileInput--AttachmentIsUploading {
-    display: none;
-  }
-
-  .FileInput--Icon {
-    margin: 0.25rem 0.5rem 0.25rem 0.75rem;
-    border-radius: 0.25rem;
-
-    &:hover {
-      fill: #f5f8fd;
-    }
-  }
-}
-
 // Overwrite the inlined styles on the hidden file input for accessibility
 .FileInput + input[type="file"] {
   display: inline !important;
