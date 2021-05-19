@@ -103,7 +103,7 @@ export default class Checkbox extends React.PureComponent<Props> {
             {partial ? (
               <PartialMark className={cssClass.PARTIAL_MARK} />
             ) : (
-              <CheckMark className={cssClass.CHECK_MARK} />
+              checked && <CheckMark className={cssClass.CHECK_MARK} />
             )}
           </div>
         </div>
