@@ -36,7 +36,7 @@ export interface Props {
   rows?: number;
   size?: Size;
   showUploadAttachmentButton?: boolean;
-  storeAttachment: (file, callbacks) => void;
+  storeAttachment?: (file, callbacks) => void;
 }
 
 interface State {
@@ -275,11 +275,13 @@ export class TextArea extends React.Component<Props, State> {
         </div>
         <FlexBox>
           {textarea}
-          <FileInput
-            store={this.props.storeAttachment}
-            isMessageAttachmentInput={this.props.showUploadAttachmentButton}
-            iconOnly
-          />
+          {this.props.showUploadAttachmentButton && (
+            <FileInput
+              store={this.props.storeAttachment}
+              isMessageAttachmentInput={this.props.showUploadAttachmentButton}
+              iconOnly
+            />
+          )}
         </FlexBox>
       </div>
     );
