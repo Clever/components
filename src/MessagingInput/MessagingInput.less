@@ -7,7 +7,7 @@
 .MessagingInput--Container.MessagingInput--ShowUploadAttachmentButton .FileInput {
   height: @size_2xl;
   .padding--none();
-  .borderRadiusL();
+  border: none;
 
   // Hide FileInput after file has been selected and uploading has begun
   &.FileInput--AttachmentIsUploading {
@@ -16,7 +16,7 @@
 
   .FileInput--Icon {
     margin: 0.25rem 0.5rem 0.25rem 0.75rem;
-    border-radius: 0.25rem;
+    .borderRadius--l();
 
     &:hover {
       fill: #f5f8fd;
