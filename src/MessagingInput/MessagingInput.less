@@ -4,6 +4,26 @@
   position: relative;
 }
 
+.MessagingInput--Container.MessagingInput--ShowUploadAttachmentButton .FileInput {
+  height: @size_2xl;
+  .padding--none();
+  border: none;
+
+  // Hide FileInput after file has been selected and uploading has begun
+  &.FileInput--AttachmentIsUploading {
+    display: none;
+  }
+
+  .FileInput--Icon {
+    margin: 0.25rem 0.5rem 0.25rem 0.75rem;
+    .borderRadius--l();
+
+    &:hover {
+      fill: #f5f8fd;
+    }
+  }
+}
+
 .MessagingInput--InnerContainer {
   align-items: flex-end;
   width: 100%;

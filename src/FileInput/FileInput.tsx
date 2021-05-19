@@ -204,6 +204,10 @@ export class FileInput extends React.Component<Props, State> {
                 "FileInput",
                 formElementSizeClassName(this.props.size),
                 this.props.className,
+                !!this.state.filename &&
+                  !this.state.success &&
+                  !this.state.error &&
+                  "FileInput--AttachmentIsUploading",
               )}
             >
               {!iconOnly && selected && renderLabel(label)}

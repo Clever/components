@@ -5,6 +5,8 @@ import * as classnames from "classnames";
 import TextareaAutosize from "react-autosize-textarea";
 
 import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms";
+import { FileInput } from "../FileInput/FileInput";
+import { FlexBox } from "../flex";
 
 import "./TextArea.less";
 import "../less/forms.less";
@@ -33,6 +35,9 @@ export interface Props {
   autoResize?: boolean;
   rows?: number;
   size?: Size;
+  showUploadAttachmentButton?: boolean;
+  storeUpload?: (file, callbacks) => void;
+  fileUploadCustomIcon?: JSX.Element;
 }
 
 interface State {
@@ -63,6 +68,9 @@ const propTypes = {
   autoResize: PropTypes.bool,
   rows: PropTypes.number,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
+  showUploadAttachmentButton: PropTypes.bool,
+  storeUpload: PropTypes.func,
+  fileUploadCustomIcon: PropTypes.node,
 };
 
 const defaultProps = {
@@ -267,7 +275,16 @@ export class TextArea extends React.Component<Props, State> {
           )}
           <span aria-live="polite">{inputNote}</span>
         </div>
-        {textarea}
+        <FlexBox>
+          {textarea}
+          {this.props.showUploadAttachmentButton && (
+            <FileInput
+              store={this.props.storeUpload}
+              customIcon={this.props.fileUploadCustomIcon}
+              iconOnly
+            />
+          )}
+        </FlexBox>
       </div>
     );
   }
