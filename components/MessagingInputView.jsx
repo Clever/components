@@ -27,6 +27,7 @@ export default class MessagingInputView extends React.PureComponent {
     disableSendButton: false,
     newlineOnEnter: false,
     showReturnKeyInstructions: false,
+    showUploadAttachmentButton: false,
   };
 
   render() {
@@ -36,6 +37,7 @@ export default class MessagingInputView extends React.PureComponent {
       disableSendButton,
       enableReplyTo,
       showReturnKeyInstructions,
+      showUploadAttachmentButton,
     } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
@@ -80,6 +82,11 @@ export default class MessagingInputView extends React.PureComponent {
               showReturnKeyInstructions={showReturnKeyInstructions}
               replyTo={enableReplyTo ? exampleReplyMessage : null}
               onReplyCancel={() => alert("REPLY CANCELLED")}
+              showUploadAttachmentButton={showUploadAttachmentButton}
+              store={(file, callbacks) => {
+                console.log(file.name.toLowerCase());
+                callbacks.success();
+              }}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -115,6 +122,16 @@ export default class MessagingInputView extends React.PureComponent {
               }
             />{" "}
             Show return key instructions
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={showUploadAttachmentButton}
+              onChange={({ target }) =>
+                this.setState({ showUploadAttachmentButton: target.checked })
+              }
+            />{" "}
+            Show upload attachment button
           </label>
         </Example>
 
@@ -191,6 +208,20 @@ export default class MessagingInputView extends React.PureComponent {
             type: "boolean",
             description:
               "When true and when text is in the input, below the MessagingInput there will be instructions that return is to send and shift + return is a newline. When false, nothing will show. Not currently customizable, but that could be a future improvement if needed. Currently always hidden on mobile.",
+            optional: true,
+          },
+          {
+            name: "showUploadAttachmentButton",
+            type: "boolean",
+            description:
+              "NOTE: This feature is only partially implemented as of now, for testing purposes. Optional boolean to set this as an UploadAttachment button. Pass in a boolean or the relevant feature flag (e.g. teachers-upload-messaging-attachments) here",
+            optional: true,
+          },
+          {
+            name: "store",
+            type: "(file, callbacks) => void",
+            description:
+              "Optional store function to be used with the FileInput for attachment uploads. This is only used if showUploadAttachmentButton == true, and should always be defined in that case.",
             optional: true,
           },
         ]}
