@@ -34,12 +34,11 @@ interface Props {
   labelText?: string;
   disableSendButton?: boolean;
   showReturnKeyInstructions?: boolean;
+  // TODO: is this needed or is the existance of MessagingInput.store sufficient to decide this?
   showUploadAttachmentButton?: boolean;
   // TODO: should this be files instead of file? or simply function?
   store?: (file, callbacks) => void;
-  // TODO: should this be state? so it can be set by lower functions?
   attachments?: React.ReactNode[];
-  // attachments?: FileInputState[];
 }
 
 export interface MessagingInputHandle {
@@ -67,7 +66,6 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     showReturnKeyInstructions,
     showUploadAttachmentButton,
     store,
-    attachments,
   } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
@@ -106,32 +104,6 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               </div>
             </div>
           )}
-          {/* {attachments.map((attachment) => {
-            const re = /(?:\.([^.]+))?$/;
-            const fileExt = attachment.name.split(".").pop();
-            const fileType: FileType = [
-              "audio",
-              "catchall",
-              "doc",
-              "image",
-              "pdf",
-              "ppt",
-              "video",
-              "xls",
-            ].includes(fileExt)
-              ? (fileExt as FileType)
-              : "catchall";
-            return (
-              <MessagingAttachment
-                attachmentID={attachment.fileKey.toString()}
-                title={attachment.filename}
-                icon={<FileAttachmentIcon fileType={fileType} />}
-                onClickAttachment={(attachmentID) => {
-                  console.log(`clicked ${attachmentID}`);
-                }}
-              />
-            );
-          })} */}
           <TextArea
             ref={textAreaRef}
             className={cssClass("TextField")}

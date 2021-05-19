@@ -81,6 +81,10 @@ export default class MessagingInputView extends React.PureComponent {
               replyTo={enableReplyTo ? exampleReplyMessage : null}
               onReplyCancel={() => alert("REPLY CANCELLED")}
               showUploadAttachmentButton
+              store={(file, callbacks) => {
+                console.log(file.name.toLowerCase());
+                callbacks.success();
+              }}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -198,7 +202,7 @@ export default class MessagingInputView extends React.PureComponent {
             name: "showUploadAttachmentButton",
             type: "boolean",
             description:
-              "Optional boolean to set this as an UploadAttachment button. Pass in a boolean or the relevant feature flag (e.g. teachers-upload-messaging-attachments) here",
+              "NOTE: This feature is only partially implemented as of now, for testing purposes. Optional boolean to set this as an UploadAttachment button. Pass in a boolean or the relevant feature flag (e.g. teachers-upload-messaging-attachments) here",
             optional: true,
           },
         ]}
