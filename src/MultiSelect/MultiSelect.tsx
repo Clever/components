@@ -223,7 +223,7 @@ const MultiSelect: React.FC<Props> = ({
               {...getSelectedItemProps({ selectedItem: item, index: i })}
             >
               <Label className={cssClass.SELECTED_ITEM_CONTAINER}>
-                {item.customLabel || item.label}
+                {item.customLabel || item.label.replace(/ /g, "\u00a0")}
                 <span
                   className={cssClass.SELECTED_ITEM_BUTTON}
                   onClick={(e) => {
@@ -288,7 +288,7 @@ const MultiSelect: React.FC<Props> = ({
                 >
                   {isAddNewItemOption
                     ? `Add "${inputValue.replace(/ /g, "\u00a0")}"`
-                    : o.customLabel || o.label}
+                    : o.customLabel || o.label.replace(/ /g, "\u00a0")}
                 </li>
               );
             })
