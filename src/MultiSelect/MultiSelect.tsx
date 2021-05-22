@@ -170,7 +170,10 @@ const MultiSelect: React.FC<Props> = ({
             setInputValue("");
             let newOption = selectedItem;
             if (selectedItem.value === ADD_NEW_ITEM_KEY) {
-              newOption = { value: inputValue, label: inputValue };
+              newOption = {
+                value: inputValue,
+                label: inputValue.replace(/ /g, "\u00a0"),
+              };
               setOptions([...options, newOption]);
             }
             onChange([...selectedItems, newOption].map((o) => o.value));
@@ -283,7 +286,9 @@ const MultiSelect: React.FC<Props> = ({
                   key={`${o.value}${i}`}
                   {...getItemProps({ item: o, index: i })}
                 >
-                  {isAddNewItemOption ? `Add "${inputValue}"` : o.customLabel || o.label}
+                  {isAddNewItemOption
+                    ? `Add "${inputValue.replace(/ /g, "\u00a0")}"`
+                    : o.customLabel || o.label}
                 </li>
               );
             })
