@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
 import * as _ from "lodash";
 
@@ -118,10 +117,4 @@ Icon.sizes = sizes;
 
 Icon.defaultProps = {
   size: "medium",
-};
-
-Icon.propTypes = {
-  name: PropTypes.oneOf(_.values(Icon.names)).isRequired,
-  size: PropTypes.oneOf(_.values(Icon.sizes)),
-  className: PropTypes.string,
 };
