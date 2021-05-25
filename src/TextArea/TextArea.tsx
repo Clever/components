@@ -38,6 +38,7 @@ export interface Props {
   showUploadAttachmentButton?: boolean;
   storeUpload?: (file, callbacks) => void;
   fileUploadCustomIcon?: JSX.Element;
+  uploads?: React.ReactNode;
 }
 
 interface State {
@@ -285,6 +286,7 @@ export class TextArea extends React.Component<Props, State> {
             />
           )}
         </FlexBox>
+        {this.props.uploads}
       </div>
     );
   }
