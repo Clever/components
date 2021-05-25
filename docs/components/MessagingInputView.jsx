@@ -4,6 +4,10 @@ import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import { MessagingInput, Label, MessagingBubble } from "src";
+import {
+  MessagingAttachment,
+  FileAttachmentIcon,
+} from "src/MessagingAttachment/MessagingAttachment";
 
 import "./MessagingInputView.less";
 
@@ -28,6 +32,7 @@ export default class MessagingInputView extends React.PureComponent {
     newlineOnEnter: false,
     showReturnKeyInstructions: false,
     showUploadAttachmentButton: false,
+    attachments: [],
   };
 
   render() {
@@ -38,12 +43,43 @@ export default class MessagingInputView extends React.PureComponent {
       enableReplyTo,
       showReturnKeyInstructions,
       showUploadAttachmentButton,
+      attachments,
     } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
         This is an example message that you can try replying to.
       </MessagingBubble>
     );
+    const attachmentList = [
+      <MessagingAttachment
+        key={"1"}
+        title={"GoodMorning.mp3"}
+        attachmentID={"abcd"}
+        icon={<FileAttachmentIcon fileType={"audio"} />}
+        onClickAttachment={(attachmentID) => {
+          console.log("Downloaded attachment:", attachmentID);
+        }}
+        onRemoveAttachment={(attachmentID) => {
+          console.log("Removed attachment:", attachmentID);
+        }}
+        isUpload
+        uploadComplete
+      />,
+      <MessagingAttachment
+        key={"2"}
+        title={"CoolAttachment.pdf"}
+        attachmentID={"defg"}
+        icon={<FileAttachmentIcon fileType={"pdf"} />}
+        onClickAttachment={(attachmentID) => {
+          console.log("Downloaded attachment:", attachmentID);
+        }}
+        onRemoveAttachment={(attachmentID) => {
+          console.log("Remove attachment:", attachmentID);
+        }}
+        isUpload
+        uploadComplete
+      />,
+    ];
     return (
       <View
         className={cssClass.CONTAINER}
@@ -87,6 +123,7 @@ export default class MessagingInputView extends React.PureComponent {
                 console.log(file.name.toLowerCase());
                 callbacks.success();
               }}
+              attachments={attachments}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -132,6 +169,18 @@ export default class MessagingInputView extends React.PureComponent {
               }
             />{" "}
             Show upload attachment button
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={attachments.length}
+              onChange={({ target }) =>
+                this.setState({
+                  attachments: target.checked && attachmentList,
+                })
+              }
+            />{" "}
+            Show uploaded attachments
           </label>
         </Example>
 
@@ -222,6 +271,12 @@ export default class MessagingInputView extends React.PureComponent {
             type: "(file, callbacks) => void",
             description:
               "Optional store function to be used with the FileInput for attachment uploads. This is only used if showUploadAttachmentButton == true, and should always be defined in that case.",
+            optional: true,
+          },
+          {
+            name: "attachments",
+            type: "React.ReactNode[]",
+            description: "Optional list of ReactNodes to render as uploaded attachments",
             optional: true,
           },
         ]}

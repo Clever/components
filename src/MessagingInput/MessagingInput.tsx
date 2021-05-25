@@ -33,6 +33,7 @@ interface Props {
   showReturnKeyInstructions?: boolean;
   showUploadAttachmentButton?: boolean;
   store?: (file, callbacks) => void;
+  attachments?: React.ReactNode[];
 }
 
 export interface MessagingInputHandle {
@@ -60,6 +61,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     showReturnKeyInstructions,
     showUploadAttachmentButton,
     store,
+    attachments,
   } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
@@ -135,6 +137,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             showUploadAttachmentButton={showUploadAttachmentButton}
             storeUpload={store}
             fileUploadCustomIcon={<MessagingAttachmentIcon />}
+            uploads={attachments && formUploadedAttachments(attachments)}
           />
         </FlexBox>
         <Button
@@ -159,6 +162,10 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     </FlexBox>
   );
 };
+
+function formUploadedAttachments(attachments: React.ReactNode[]) {
+  return <FlexBox className={cssClass("UploadedAttachments")}>{attachments}</FlexBox>;
+}
 
 function formReturnKeyInstructionsLabel(showReturnKeyInstructions: boolean, value: string) {
   // If showReturnKeyInstructions is not set, return undefined
