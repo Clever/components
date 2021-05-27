@@ -55,7 +55,7 @@ export default class MessagingInputView extends React.PureComponent {
         key={"1"}
         title={"GoodMorning.mp3"}
         attachmentID={"abcd"}
-        icon={<FileAttachmentIcon fileType={"audio"} />}
+        icon={<FileAttachmentIcon fileType={"mp3"} />}
         onClickAttachment={(attachmentID) => {
           console.log("Downloaded attachment:", attachmentID);
         }}
@@ -70,6 +70,20 @@ export default class MessagingInputView extends React.PureComponent {
         title={"CoolAttachment.pdf"}
         attachmentID={"defg"}
         icon={<FileAttachmentIcon fileType={"pdf"} />}
+        onClickAttachment={(attachmentID) => {
+          console.log("Downloaded attachment:", attachmentID);
+        }}
+        onRemoveAttachment={(attachmentID) => {
+          console.log("Remove attachment:", attachmentID);
+        }}
+        isUpload
+        uploadComplete
+      />,
+      <MessagingAttachment
+        key={"3"}
+        title={"WeirdAttachment.abc"}
+        attachmentID={"hijk"}
+        icon={<FileAttachmentIcon fileType={"abc"} />}
         onClickAttachment={(attachmentID) => {
           console.log("Downloaded attachment:", attachmentID);
         }}

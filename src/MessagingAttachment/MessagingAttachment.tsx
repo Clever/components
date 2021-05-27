@@ -70,6 +70,59 @@ function handleRemoveClick(e, onRemoveAttachment, attachmentID) {
 
 // /// Sub-components, exported icon components to be used by consumers /// //
 
+export type AttachmentFileType =
+  | "pdf"
+  | "doc"
+  | "docx"
+  | "xls"
+  | "xlsx"
+  | "csv"
+  | "ppt"
+  | "pptx"
+  | "jpg"
+  | "jpeg"
+  | "gif"
+  | "png"
+  | "svg"
+  | "mp4"
+  | "mov"
+  | "wmv"
+  | "mp3"
+  | "wav"
+  | "m4a"
+  | "flv"
+  | "txt"
+  | null;
+
+function fileTypeToIcon(fileType: string): AttachmentIconType {
+  const mapFileTypeToIcon = {
+    pdf: "pdf",
+    doc: "doc",
+    docx: "doc",
+    xls: "xls",
+    xlsx: "xls",
+    csv: "catchall",
+    ppt: "ppt",
+    pptx: "ppt",
+    jpg: "image",
+    jpeg: "image",
+    gif: "image",
+    png: "image",
+    svg: "image",
+    mp4: "audio",
+    mov: "video",
+    wmv: "video",
+    mp3: "audio",
+    wav: "audio",
+    m4a: "audio",
+    flv: "video",
+    txt: "doc",
+    null: "catchall",
+  };
+
+  return mapFileTypeToIcon[fileType] || "catchall";
+}
+
 const draftAudio = require("./icons/draft-attachment-audio.svg");
 const draftCatchall = require("./icons/draft-attachment-catchall.svg");
 const draftDoc = require("./icons/draft-attachment-doc.svg");
@@ -101,8 +154,18 @@ const fileIcons = {
   xls: { sent: sentXls, draft: draftXls },
 };
 
+export type AttachmentIconType =
+  | "audio"
+  | "catchall"
+  | "doc"
+  | "image"
+  | "pdf"
+  | "ppt"
+  | "video"
+  | "xls";
+
 type AttachmentIconProps = {
-  fileType: "audio" | "catchall" | "doc" | "image" | "pdf" | "ppt" | "video" | "xls";
+  fileType: string;
   isUpload?: boolean;
   uploadComplete?: boolean;
   errorMsg?: string;
@@ -110,11 +173,13 @@ type AttachmentIconProps = {
 
 // TODO: handle undefined. Note: Components uses jsx, LP uses tsx
 export function FileAttachmentIcon({
-  fileType = "catchall",
+  fileType,
   isUpload,
   uploadComplete,
   errorMsg,
 }: AttachmentIconProps) {
+  const cleanedFileType = fileTypeToIcon(fileType);
+
   if (!!errorMsg) {
     return (
       <FontAwesome name="exclamation-circle" className={cx(cssClass("ErrorCircle"), "fa-lg")} />
@@ -124,9 +189,9 @@ export function FileAttachmentIcon({
   }
   return (
     <img
-      src={isUpload ? fileIcons[fileType].draft : fileIcons[fileType].sent}
+      src={isUpload ? fileIcons[cleanedFileType].draft : fileIcons[cleanedFileType].sent}
       className={cssClass("AttachmentTypeIcon")}
-      alt={`MessagingAttachment ${fileType} icon`}
+      alt={`MessagingAttachment ${cleanedFileType} icon`}
     />
   );
 }
