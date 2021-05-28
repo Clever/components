@@ -137,7 +137,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             showUploadAttachmentButton={showUploadAttachmentButton}
             storeUpload={store}
             fileUploadCustomIcon={<MessagingAttachmentIcon />}
-            uploads={attachments.length > 0 && formUploadedAttachments(attachments)}
+            uploads={attachments?.length > 0 && formUploadedAttachments(attachments)}
           />
         </FlexBox>
         <Button
