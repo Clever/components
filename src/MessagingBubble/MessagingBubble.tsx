@@ -18,6 +18,7 @@ interface Props {
   className?: string;
   children: React.ReactNode;
   replyTo?: React.ReactNode;
+  attachments?: React.ReactNode[];
   theme: "ownMessage" | "otherMessage";
 }
 
@@ -26,29 +27,33 @@ export const MessagingBubble: React.FC<Props> = ({
   children,
   theme,
   replyTo,
+  attachments,
 }: Props) => {
   return (
-    <div
-      className={cx(
-        cssClasses.MESSAGE_BASE,
-        theme === "ownMessage" ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
-        className,
-        replyTo && cssClasses.MESSAGE_REPLY_PARENT,
-      )}
-    >
-      {replyTo && (
-        <div
-          className={cx(
-            cssClasses.MESSAGE_BASE,
-            theme === "ownMessage" ? cssClasses.MESSAGE_REPLY_OWN : cssClasses.MESSAGE_REPLY_OTHER,
-          )}
-        >
-          {replyTo}
-        </div>
-      )}
-      <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
-        {children}
-      </Linkify>
-    </div>
+    <>
+      <div
+        className={cx(
+          cssClasses.MESSAGE_BASE,
+          theme === "ownMessage" ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
+          className,
+          replyTo && cssClasses.MESSAGE_REPLY_PARENT,
+        )}
+      >
+        {replyTo && (
+          <div
+            className={cx(
+              cssClasses.MESSAGE_BASE,
+              theme === "ownMessage" ? cssClasses.MESSAGE_REPLY_OWN : cssClasses.MESSAGE_REPLY_OTHER,
+            )}
+          >
+            {replyTo}
+          </div>
+        )}
+        <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
+          {children}
+        </Linkify>
+      </div>
+      {attachments && attachments}
+    </>
   );
 };
