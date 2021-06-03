@@ -10,10 +10,6 @@
   overflow-wrap: break-word;
   white-space: pre-wrap;
   word-wrap: break-word; // IE name for overflow-wrap
-  .MessagingAttachment--Container {
-    .margin--top--3xs();
-    width: 22.5rem;
-  }
 }
 
 .MessagingBubble--Message--Own {
@@ -76,5 +72,12 @@
 
   .MessagingBubble--Message--Reply--Other {
     .margin--bottom--xs();
+  }
+
+  .MessagingBubble--Message--Attachment--Own {
+    width: auto;
+  }
+  .MessagingBubble--Message--Attachment--Other {
+    width: auto;
   }
 }
