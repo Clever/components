@@ -1,12 +1,12 @@
 import * as React from "react";
 import Linkify from "react-linkify";
 import * as cx from "classnames";
+import FlexBox from "../flex/FlexBox";
 import { matchDecorator, componentDecorator } from "./linkifyUtils";
 
 import "./MessagingBubble.less";
 
 const cssClasses = {
-  FLEXBOX: "flexbox",
   MESSAGE_BASE: "MessagingBubble--Message",
   MESSAGE_OWN: "MessagingBubble--Message--Own",
   MESSAGE_OTHER: "MessagingBubble--Message--Other",
@@ -45,7 +45,6 @@ export const MessagingBubble: React.FC<Props> = ({
 
   const attachmentClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    cssClasses.FLEXBOX,
     theme === "ownMessage"
       ? cssClasses.MESSAGE_ATTACHMENT_OWN
       : cssClasses.MESSAGE_ATTACHMENT_OTHER,
@@ -59,7 +58,7 @@ export const MessagingBubble: React.FC<Props> = ({
           {children}
         </Linkify>
       </div>
-      {attachments && <div className={attachmentClassNames}>{attachments}</div>}
+      {attachments && <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>}
     </div>
   );
 };
