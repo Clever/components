@@ -32,22 +32,21 @@ export const MessagingBubble: React.FC<Props> = ({
   replyTo,
   attachments,
 }: Props) => {
+  const isOwnMessage = theme === "ownMessage";
   const bubbleClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    theme === "ownMessage" ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
+    isOwnMessage ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
     replyTo && cssClasses.MESSAGE_REPLY_PARENT,
   );
 
   const replyClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    theme === "ownMessage" ? cssClasses.MESSAGE_REPLY_OWN : cssClasses.MESSAGE_REPLY_OTHER,
+    isOwnMessage ? cssClasses.MESSAGE_REPLY_OWN : cssClasses.MESSAGE_REPLY_OTHER,
   );
 
   const attachmentClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    theme === "ownMessage"
-      ? cssClasses.MESSAGE_ATTACHMENT_OWN
-      : cssClasses.MESSAGE_ATTACHMENT_OTHER,
+    isOwnMessage ? cssClasses.MESSAGE_ATTACHMENT_OWN : cssClasses.MESSAGE_ATTACHMENT_OTHER,
   );
 
   return (
