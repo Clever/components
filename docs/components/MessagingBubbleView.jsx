@@ -106,10 +106,18 @@ export default class MessagingBubbleView extends React.PureComponent {
             <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
               Links like https://clever.com are clickable
             </MessagingBubble>
-            <MessagingBubble className={cssClass.BUBBLE} theme={theme} replyTo={"This is a message!"}>
+            <MessagingBubble
+              className={cssClass.BUBBLE}
+              theme={theme}
+              replyTo={"This is a message!"}
+            >
               This is a reply to that message!
             </MessagingBubble>
-            <MessagingBubble className={cssClass.BUBBLE} theme={theme} attachments={attachmentsArray}>
+            <MessagingBubble
+              className={cssClass.BUBBLE}
+              theme={theme}
+              attachments={attachmentsArray}
+            >
               Check out these attachments!
             </MessagingBubble>
           </ExampleCode>
