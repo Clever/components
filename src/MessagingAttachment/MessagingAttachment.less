@@ -28,6 +28,10 @@
   width: 22.5rem;
 }
 
+.MessagingBubble--Message .MessagingAttachment--ParentContainer {
+  margin-right: 0;
+}
+
 .MessagingAttachment--IconContainer {
   height: @ICON_REGULAR_SIZE;
   .margin--right--s();
@@ -192,7 +196,8 @@
 
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
-  .MessagingAttachment--Container {
+  .MessagingAttachment--Container,
+  .MessagingBubble--Message .MessagingAttachment--Container {
     // Full width for small screens
     width: auto;
   }
