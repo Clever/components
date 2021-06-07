@@ -53,7 +53,7 @@ export const MessagingBubble: React.FC<Props> = ({
     className,
     isOwnMessage ? cssClasses.MESSAGE_CONTAINER_OWN : cssClasses.MESSAGE_CONTAINER_OTHER,
   );
-  
+
   const bubbleClassNames = cx(
     cssClasses.MESSAGE_BASE,
     isOwnMessage ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
@@ -66,7 +66,9 @@ export const MessagingBubble: React.FC<Props> = ({
   );
 
   const timeAndBubbleContainerClasses = cx(
-    isOwnMessage ? cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_OWN : cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_OTHER,
+    isOwnMessage
+      ? cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_OWN
+      : cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_OTHER,
   );
 
   const timestampClassNames = cx(
@@ -82,9 +84,7 @@ export const MessagingBubble: React.FC<Props> = ({
   return (
     <FlexBox column className={containerClassNames}>
       <FlexBox className={timeAndBubbleContainerClasses}>
-        <span className={timestampClassNames}>
-          {_formatDateForTimestamp(timestamp)}
-        </span>
+        <span className={timestampClassNames}>{_formatDateForTimestamp(timestamp)}</span>
         <div className={bubbleClassNames}>
           {replyTo && <div className={replyClassNames}>{replyTo}</div>}
           <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
