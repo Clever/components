@@ -9,19 +9,14 @@ import "./MessagingBubble.less";
 
 const cssClasses = {
   MESSAGE_BASE: "MessagingBubble--Message",
-  MESSAGE_OWN: "MessagingBubble--Message--Own",
-  MESSAGE_OTHER: "MessagingBubble--Message--Other",
-  MESSAGE_CONTAINER_OWN: "MessagingBubble--Message--Container--Own",
-  MESSAGE_CONTAINER_OTHER: "MessagingBubble--Message--Container--Other",
-  MESSAGE_REPLY_OWN: "MessagingBubble--Message--Reply--Own",
-  MESSAGE_REPLY_OTHER: "MessagingBubble--Message--Reply--Other",
+  MESSAGE_CONTAINER_BASE: "MessagingBubble--Message--Container",
+  MESSAGE_REPLY_BASE: "MessagingBubble--Message--Reply",
   MESSAGE_REPLY_PARENT: "MessagingBubble--Message--Reply--Parent",
-  MESSAGE_TIME_BUBBLE_CONTAINER_OWN: "MessagingBubble--Message--TimestampBubbleContainer--Own",
-  MESSAGE_TIME_BUBBLE_CONTAINER_OTHER: "MessagingBubble--Message--TimestampBubbleContainer--Other",
-  MESSAGE_TIMESTAMP_OWN: "MessagingBubble--Message--Timestamp--Own",
-  MESSAGE_TIMESTAMP_OTHER: "MessagingBubble--Message--Timestamp--Other",
-  MESSAGE_ATTACHMENT_OWN: "MessagingBubble--Message--Attachment--Own",
-  MESSAGE_ATTACHMENT_OTHER: "MessagingBubble--Message--Attachment--Other",
+  MESSAGE_TIME_BUBBLE_CONTAINER_BASE: "MessagingBubble--Message--TimestampBubbleContainer",
+  MESSAGE_TIMESTAMP_BASE: "MessagingBubble--Message--Timestamp",
+  MESSAGE_ATTACHMENT_BASE: "MessagingBubble--Message--Attachment",
+  OWN_SUFFIX: "--Own",
+  OTHER_SUFFIX: "--Other",
 };
 
 interface Props {
@@ -48,37 +43,32 @@ export const MessagingBubble: React.FC<Props> = ({
   attachments,
 }: Props) => {
   const isOwnMessage = theme === "ownMessage";
-
-  const containerClassNames = cx(
-    className,
-    isOwnMessage ? cssClasses.MESSAGE_CONTAINER_OWN : cssClasses.MESSAGE_CONTAINER_OTHER,
-  );
+  const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
+  const containerClassNames = cx(className, `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`);
 
   const bubbleClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    isOwnMessage ? cssClasses.MESSAGE_OWN : cssClasses.MESSAGE_OTHER,
+    `${cssClasses.MESSAGE_BASE}${classSuffix}`,
     replyTo && cssClasses.MESSAGE_REPLY_PARENT,
   );
 
   const replyClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    isOwnMessage ? cssClasses.MESSAGE_REPLY_OWN : cssClasses.MESSAGE_REPLY_OTHER,
+    `${cssClasses.MESSAGE_REPLY_BASE}${classSuffix}`,
   );
 
   const timeAndBubbleContainerClasses = cx(
-    isOwnMessage
-      ? cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_OWN
-      : cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_OTHER,
+    `${cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_BASE}${classSuffix}`,
   );
 
   const timestampClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    isOwnMessage ? cssClasses.MESSAGE_TIMESTAMP_OWN : cssClasses.MESSAGE_TIMESTAMP_OTHER,
+    `${cssClasses.MESSAGE_TIMESTAMP_BASE}${classSuffix}`,
   );
 
   const attachmentClassNames = cx(
     cssClasses.MESSAGE_BASE,
-    isOwnMessage ? cssClasses.MESSAGE_ATTACHMENT_OWN : cssClasses.MESSAGE_ATTACHMENT_OTHER,
+    `${cssClasses.MESSAGE_ATTACHMENT_BASE}${classSuffix}`,
   );
 
   return (
