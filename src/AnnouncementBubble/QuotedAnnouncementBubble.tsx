@@ -24,6 +24,13 @@ export interface Props {
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
+
+  // Temporary props to allow overriding text with translations
+  postedInText?: string;
+  showLessButtonText?: string;
+  showMoreButtonText?: string;
+  truncationNoticeText?: string;
+  truncationTooltipText?: string;
 }
 
 export const QuotedAnnouncementBubble: React.FC<Props> = ({
@@ -31,14 +38,20 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
   children,
   className,
   colorTheme,
+  isMessageTruncated,
+  postedInText,
   senderIcon,
   senderName,
   sentAtTimestamp,
-  isMessageTruncated,
+  showLessButtonText,
+  showMoreButtonText,
+  truncationNoticeText,
+  truncationTooltipText,
 }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const messageDetails = formMessageDetails(announcementGroupName, sentAtTimestamp);
+  let messageDetails = postedInText || `Posted in ${announcementGroupName}`;
+  messageDetails += ` | ${formatDateForTimestamp(sentAtTimestamp)}`;
 
   /* If the content is not expanded, limit the message length so that screen readers
     don't attempt to read the entire hidden message. This only works for plain-string children */
@@ -73,7 +86,9 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
     }
   }
 
-  const buttonText = isExpanded ? "Show less" : "Show more";
+  const buttonText = isExpanded
+    ? showLessButtonText || "Show less"
+    : showMoreButtonText || "Show more";
 
   return (
     <FlexBox
@@ -100,9 +115,12 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       {isMessageTruncated && isExpanded && (
         <FlexBox className={cssClass("messageTruncatedNotice")} alignItems="center">
           <span>
-            Complete announcement not shown
+            {truncationNoticeText || "Complete announcement not shown"}
             <Tooltip
-              content="This announcement exceeds the preview character limit. See original announcement for complete content."
+              content={
+                truncationTooltipText ||
+                "This announcement exceeds the preview character limit. See original announcement for complete content."
+              }
               placement={Tooltip.Placement.TOP}
             >
               <FontAwesome
@@ -131,7 +149,3 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
     </FlexBox>
   );
 };
-
-function formMessageDetails(announcementGroupName: string, timestamp: Date) {
-  return `Posted in ${announcementGroupName} | ${formatDateForTimestamp(timestamp)}`;
-}

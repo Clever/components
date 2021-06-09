@@ -21,6 +21,9 @@ export interface Props {
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
+
+  // Temporary props to allow overriding text with translations
+  replyButtonText?: string;
 }
 
 export const NormalAnnouncementBubble: React.FC<Props> = ({
@@ -29,12 +32,13 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   onDelete,
   onReply,
   repliesDisabledMsg,
+  replyButtonText,
   senderIcon,
   senderName,
   sentAtTimestamp,
 }: Props) => {
   const deleteMenu = formDeleteMenu(onDelete);
-  const replyButton = formReplyButton(onReply, repliesDisabledMsg);
+  const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
 
   return (
     <FlexBox
@@ -83,22 +87,34 @@ function formDeleteMenu(onDelete: () => void): JSX.Element {
   );
 }
 
-function formReplyButton(onReply: () => void, repliesDisabledMsg: string): JSX.Element {
+function formReplyButton(
+  onReply: () => void,
+  repliesDisabledMsg: string,
+  replyButtonText?: string,
+): JSX.Element {
   // If a repliesDisabledMsg prop is provided, show the disabled reply button
   if (repliesDisabledMsg) {
-    return <DisabledReplyButton disabledMsg={repliesDisabledMsg} />;
+    return (
+      <DisabledReplyButton disabledMsg={repliesDisabledMsg} replyButtonText={replyButtonText} />
+    );
   }
 
   // If an onReply callback prop is provided, show the reply button
   if (onReply) {
-    return <ReplyButton onReply={onReply} />;
+    return <ReplyButton onReply={onReply} replyButtonText={replyButtonText} />;
   }
 
   // Default case is to show no reply button
   return undefined;
 }
 
-function ReplyButton({ onReply }: { onReply: () => void }): JSX.Element {
+function ReplyButton({
+  onReply,
+  replyButtonText,
+}: {
+  onReply: () => void;
+  replyButtonText?: string;
+}): JSX.Element {
   return (
     <Button className={cssClass("replyButton")} onClick={onReply} type={"secondary"}>
       <FlexBox alignItems="center" justify="center">
@@ -107,13 +123,19 @@ function ReplyButton({ onReply }: { onReply: () => void }): JSX.Element {
           className={cssClass("replyButton--icon")}
           src={require("./messages-black-icon.svg")}
         />
-        <span className={cssClass("replyButton--text")}>Reply</span>
+        <span className={cssClass("replyButton--text")}>{replyButtonText || "Reply"}</span>
       </FlexBox>
     </Button>
   );
 }
 
-function DisabledReplyButton({ disabledMsg }: { disabledMsg: string }): JSX.Element {
+function DisabledReplyButton({
+  disabledMsg,
+  replyButtonText,
+}: {
+  disabledMsg: string;
+  replyButtonText?: string;
+}): JSX.Element {
   return (
     <Button
       ariaLabel={disabledMsg}
@@ -136,7 +158,7 @@ function DisabledReplyButton({ disabledMsg }: { disabledMsg: string }): JSX.Elem
           <span
             className={cx(cssClass("replyButton--text"), cssClass("replyButton--text--disabled"))}
           >
-            Reply
+            {replyButtonText || "Reply"}
           </span>
         </FlexBox>
       </Tooltip>
