@@ -3,7 +3,15 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingBubble, FlexBox, ItemAlign, SegmentedControl, Label } from "src";
+import {
+  MessagingAttachment,
+  MessagingBubble,
+  FlexBox,
+  ItemAlign,
+  SegmentedControl,
+  Label,
+} from "src";
+import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment";
 
 import "./MessagingBubbleView.less";
 
@@ -28,6 +36,42 @@ export default class MessagingBubbleView extends React.PureComponent {
 
   render() {
     const { theme } = this.state;
+
+    const attachmentsArray = [
+      {
+        key: "1",
+        attachmentID: "1",
+        icon: <FileAttachmentIcon fileType={"doc"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
+        subtitle: "Click to download",
+      },
+      {
+        key: "2",
+        attachmentID: "2",
+        icon: <FileAttachmentIcon fileType={"image"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "Flyer.png",
+        subtitle: "Click to view",
+      },
+      {
+        key: "3",
+        attachmentID: "3",
+        icon: <FileAttachmentIcon fileType={"audio"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "Morning message.m4a",
+        subtitle: "Click to download",
+      },
+    ].map((attachment) => (
+      <MessagingAttachment
+        key={attachment.key}
+        attachmentID={attachment.attachmentID}
+        icon={attachment.icon}
+        onClickAttachment={attachment.onClickAttachment}
+        title={attachment.title}
+        subtitle={attachment.subtitle}
+      />
+    ));
 
     return (
       <View
@@ -62,8 +106,19 @@ export default class MessagingBubbleView extends React.PureComponent {
             <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
               Links like https://clever.com are clickable
             </MessagingBubble>
-            <MessagingBubble theme={theme} replyTo={"This is a message!"}>
+            <MessagingBubble
+              className={cssClass.BUBBLE}
+              theme={theme}
+              replyTo={"This is a message!"}
+            >
               This is a reply to that message!
+            </MessagingBubble>
+            <MessagingBubble
+              className={cssClass.BUBBLE}
+              theme={theme}
+              attachments={attachmentsArray}
+            >
+              Check out these attachments!
             </MessagingBubble>
           </ExampleCode>
           {this._renderConfig()}

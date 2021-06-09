@@ -12,6 +12,14 @@
   word-wrap: break-word; // IE name for overflow-wrap
 }
 
+.MessagingBubble--Message--Container--Own {
+  .items--end();
+}
+
+.MessagingBubble--Message--Container--Other {
+  .items--start();
+}
+
 .MessagingBubble--Message--Own {
   background-color: @neutral_dark_gray;
   color: @neutral_white;
@@ -43,6 +51,44 @@
   .margin--bottom--s();
 }
 
+.MessagingBubble--Message--Attachment--Own {
+  .flex--direction--column();
+  .items--end();
+}
+
+.MessagingBubble--Message--Attachment--Other {
+  .flex--direction--column();
+  .items--start();
+}
+
+.MessagingBubble--Message--TimestampBubbleContainer--Own {
+  flex-direction: row;
+  align-items: center;
+}
+
+.MessagingBubble--Message--TimestampBubbleContainer--Other {
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.MessagingBubble--Message--Timestamp--Own {
+  color: @neutral_gray;
+  font-size: 0.875rem;
+  .margin--right--xs();
+  .text--line-height-1();
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.MessagingBubble--Message--Timestamp--Other {
+  color: @neutral_gray;
+  font-size: 0.875rem;
+  .margin--left--xs();
+  .text--line-height-1();
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
   .MessagingBubble--Message {
@@ -62,5 +108,13 @@
 
   .MessagingBubble--Message--Reply--Other {
     .margin--bottom--xs();
+  }
+
+  .MessagingBubble--Message--Attachment--Own {
+    width: auto;
+  }
+
+  .MessagingBubble--Message--Attachment--Other {
+    width: auto;
   }
 }
