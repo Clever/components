@@ -23,7 +23,13 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
 ) => {
   switch (props.theme) {
     case "deleted": {
-      return <DeletedAnnouncementBubble theme="deleted" className={props.className} />;
+      return (
+        <DeletedAnnouncementBubble
+          theme="deleted"
+          className={props.className}
+          deletionNoticeText={props.deletionNoticeText}
+        />
+      );
     }
     case "quoted": {
       return (
@@ -32,10 +38,15 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           announcementGroupName={props.announcementGroupName}
           className={props.className}
           colorTheme={props.colorTheme}
+          isMessageTruncated={props.isMessageTruncated}
+          postedInText={props.postedInText}
           senderIcon={props.senderIcon}
           senderName={props.senderName}
           sentAtTimestamp={props.sentAtTimestamp}
-          isMessageTruncated={props.isMessageTruncated}
+          showLessButtonText={props.showLessButtonText}
+          showMoreButtonText={props.showMoreButtonText}
+          truncationNoticeText={props.truncationNoticeText}
+          truncationTooltipText={props.truncationTooltipText}
         >
           {props.children}
         </QuotedAnnouncementBubble>
@@ -49,6 +60,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           onDelete={props.onDelete}
           onReply={props.onReply}
           repliesDisabledMsg={props.repliesDisabledMsg}
+          replyButtonText={props.replyButtonText}
           senderIcon={props.senderIcon}
           senderName={props.senderName}
           sentAtTimestamp={props.sentAtTimestamp}
