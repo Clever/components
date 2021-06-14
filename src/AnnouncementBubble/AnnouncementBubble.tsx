@@ -36,6 +36,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
         <QuotedAnnouncementBubble
           theme="quoted"
           announcementGroupName={props.announcementGroupName}
+          attachments={props.attachments}
           className={props.className}
           colorTheme={props.colorTheme}
           isMessageTruncated={props.isMessageTruncated}
@@ -56,6 +57,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
       return (
         <NormalAnnouncementBubble
           theme="normal"
+          attachments={props.attachments}
           className={props.className}
           onDelete={props.onDelete}
           onReply={props.onReply}

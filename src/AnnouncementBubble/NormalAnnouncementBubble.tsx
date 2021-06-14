@@ -13,6 +13,7 @@ function cssClass(element: string) {
 
 export interface Props {
   theme: "normal";
+  attachments?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
   onDelete?: () => void;
@@ -27,6 +28,7 @@ export interface Props {
 }
 
 export const NormalAnnouncementBubble: React.FC<Props> = ({
+  attachments,
   children,
   className,
   onDelete,
@@ -57,6 +59,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
       <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
         <div className={cssClass("messageBody")}>{children}</div>
       </Linkify>
+      {attachments && <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>}
       {replyButton}
     </FlexBox>
   );
