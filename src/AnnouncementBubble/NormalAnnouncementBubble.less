@@ -43,6 +43,21 @@
   margin-left: auto;
 }
 
+.NormalAnnouncementBubble--attachmentContainer {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.NormalAnnouncementBubble--attachmentContainer > .MessagingAttachment--ParentContainer,
+.MessagingAttachment--ParentContainer > .MessagingAttachment--Container
+{
+  width: 100%;
+}
+
+.NormalAnnouncementBubble--attachmentContainer .MessagingAttachment--Container {
+  padding: 1rem;
+}
+
 button.NormalAnnouncementBubble--deleteMenuItem {
   box-shadow: inset @borderWidthL 0 @alert_red;
   color: @alert_red_shade_2;
