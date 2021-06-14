@@ -130,6 +130,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
           <ExampleCode>
             <AnnouncementBubble
               theme={"quoted"}
+              attachments={attachmentsArray}
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
               senderName={"Ms. Stark"}
