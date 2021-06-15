@@ -136,7 +136,14 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       {isExpanded && (
         <>
           {attachments && (
-            <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>
+            <FlexBox
+              className={cx(
+                cssClass("attachmentContainer"),
+                cssClass(`attachmentContainer--${colorTheme}`),
+              )}
+            >
+              {attachments}
+            </FlexBox>
           )}
           <span className={cssClass(`messageDetails--${colorTheme}`)}>{messageDetails}</span>
         </>
