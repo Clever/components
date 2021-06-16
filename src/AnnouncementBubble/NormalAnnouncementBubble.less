@@ -1,14 +1,15 @@
 @import (reference) "../less/index";
 
 .NormalAnnouncementBubble--container {
+  max-width: 31rem; /* is 33 rem total width including 1 rem padding on either side */
   .boxShadow--medium();
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   .padding--m();
   position: relative;
 }
 
 .NormalAnnouncementBubble--containerWithReply {
-  border-radius: 2rem;
+  border-radius: 1rem;
   .margin--bottom--m();
   .padding--bottom--xl();
 }
@@ -49,9 +50,9 @@
 }
 
 .NormalAnnouncementBubble--attachmentContainer > .MessagingAttachment--ParentContainer,
-.MessagingAttachment--ParentContainer > .MessagingAttachment--Container
-{
+.MessagingAttachment--ParentContainer > .MessagingAttachment--Container {
   width: 100%;
+  margin-right: 0;
 }
 
 .NormalAnnouncementBubble--attachmentContainer .MessagingAttachment--Container {
@@ -163,7 +164,6 @@ button.NormalAnnouncementBubble--replyButton {
   }
 
   .NormalAnnouncementBubble--containerWithReply {
-    border-radius: 2rem;
     .padding--bottom--xl();
   }
 
