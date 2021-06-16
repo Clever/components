@@ -115,7 +115,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               senderIcon={
                 <MessagingAvatar
                   text={"Kristen Stark"}
-                  color={{ color: Colors.ACCENT_PINK }}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
                 />
               }
               onReply={() => console.log("Reply!")}
