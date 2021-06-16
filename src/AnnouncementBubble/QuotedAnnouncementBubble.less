@@ -82,6 +82,12 @@
   .margin--bottom--xs();
 }
 
+.MessagingBubble--Message
+  .QuotedAnnouncementBubble--attachmentContainer
+  .MessagingAttachment--Container {
+  width: 14rem;
+}
+
 // the below styles disable the MessagingAttachment's normal hover styles
 // for all of our usecases.
 .QuotedAnnouncementBubble--attachmentContainer--dark .MessagingAttachment--Container:hover {
@@ -148,5 +154,14 @@ button.QuotedAnnouncementBubble--button--outer {
 @media only screen and (max-width: @breakpointM) {
   .QuotedAnnouncementBubble--messageBody {
     .margin--y--xs();
+  }
+
+  .QuotedAnnouncementBubble--attachmentContainer,
+  .QuotedAnnouncementBubble--attachmentContainer > .MessagingAttachment--ParentContainer,
+  .MessagingBubble--Message
+    .QuotedAnnouncementBubble--attachmentContainer
+    .MessagingAttachment--Container {
+    width: 100%;
+    margin-right: 0;
   }
 }
