@@ -17,6 +17,7 @@ function cssClass(element: string) {
 export interface Props {
   theme: "quoted";
   announcementGroupName: string;
+  attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
   colorTheme: "white" | "light" | "dark";
@@ -35,6 +36,7 @@ export interface Props {
 
 export const QuotedAnnouncementBubble: React.FC<Props> = ({
   announcementGroupName,
+  attachments,
   children,
   className,
   colorTheme,
@@ -132,7 +134,19 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
         </FlexBox>
       )}
       {isExpanded && (
-        <span className={cssClass(`messageDetails--${colorTheme}`)}>{messageDetails}</span>
+        <>
+          {attachments && (
+            <FlexBox
+              className={cx(
+                cssClass("attachmentContainer"),
+                cssClass(`attachmentContainer--${colorTheme}`),
+              )}
+            >
+              {attachments}
+            </FlexBox>
+          )}
+          <span className={cssClass(`messageDetails--${colorTheme}`)}>{messageDetails}</span>
+        </>
       )}
       <Button
         className={cssClass("button--outer")}

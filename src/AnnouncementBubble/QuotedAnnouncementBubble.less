@@ -13,7 +13,7 @@
 }
 
 .QuotedAnnouncementBubble--container--white {
-  background-color: #ffffff; /* stylelint-disable-line */
+  background-color: @neutral_white;
   color: @neutral_dark_gray;
 }
 
@@ -78,6 +78,41 @@
   margin-left: 0.3125rem;
 }
 
+.QuotedAnnouncementBubble--attachmentContainer {
+  max-width: 100%;
+  .margin--bottom--xs();
+}
+
+.MessagingBubble--Message
+  .QuotedAnnouncementBubble--attachmentContainer
+  .MessagingAttachment--Container {
+  width: 14rem;
+  padding: @size_s;
+  .text--truncate();
+}
+
+.QuotedAnnouncementBubble--attachmentContainer .MessagingAttachment--Title {
+  .text--smallMedium();
+}
+
+// the below styles disable the MessagingAttachment's normal hover styles
+// for all of our usecases.
+.QuotedAnnouncementBubble--attachmentContainer--dark .MessagingAttachment--Container:hover {
+  background-color: #626776; /* stylelint-disable-line */
+  border-color: @neutral_silver;
+}
+
+.QuotedAnnouncementBubble--attachmentContainer--dark
+  .MessagingAttachment--Container:hover
+  .MessagingAttachment--Title,
+.QuotedAnnouncementBubble--attachmentContainer--dark .MessagingAttachment--TextContainer {
+  color: @neutral_white;
+}
+
+.QuotedAnnouncementBubble--attachmentContainer--dark img {
+  filter: brightness(0) invert(1); /* makes the file icon white without needing a different <img> src attr */
+}
+
 .QuotedAnnouncementBubble--messageDetails--light,
 .QuotedAnnouncementBubble--messageDetails--white {
   color: @neutral_medium_gray;
@@ -126,5 +161,15 @@ button.QuotedAnnouncementBubble--button--outer {
 @media only screen and (max-width: @breakpointM) {
   .QuotedAnnouncementBubble--messageBody {
     .margin--y--xs();
+  }
+
+  .QuotedAnnouncementBubble--attachmentContainer,
+  .QuotedAnnouncementBubble--attachmentContainer > .MessagingAttachment--ParentContainer,
+  .MessagingBubble--Message
+    .QuotedAnnouncementBubble--attachmentContainer
+    .MessagingAttachment--Container {
+    width: 100%;
+    margin-right: 0;
+    .text--truncate();
   }
 }

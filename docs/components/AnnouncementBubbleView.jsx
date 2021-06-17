@@ -9,9 +9,12 @@ import {
   FlexBox,
   ItemAlign,
   Label,
+  MessagingAttachment,
   MessagingAvatar,
   SegmentedControl,
 } from "src";
+import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment";
+
 import Colors from "src/utils/Colors";
 
 import "./AnnouncementBubbleView.less";
@@ -37,6 +40,26 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
   render() {
     const { colorTheme } = this.state;
+
+    const attachmentsArray = [
+      {
+        key: "1",
+        attachmentID: "1",
+        icon: <FileAttachmentIcon fileType={"audio"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "Morning message.m4a",
+        subtitle: "Click to download",
+      },
+    ].map((attachment) => (
+      <MessagingAttachment
+        key={attachment.key}
+        attachmentID={attachment.attachmentID}
+        icon={attachment.icon}
+        onClickAttachment={attachment.onClickAttachment}
+        title={attachment.title}
+        subtitle={attachment.subtitle}
+      />
+    ));
 
     return (
       <View
@@ -84,12 +107,30 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             >
               Hello class! Links like https://clever.com are clickable
             </AnnouncementBubble>
+
+            <AnnouncementBubble
+              className={cssClass.BUBBLE}
+              attachments={attachmentsArray}
+              senderName={"Ms. Stark"}
+              senderIcon={
+                <MessagingAvatar
+                  text={"Kristen Stark"}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                />
+              }
+              onReply={() => console.log("Reply!")}
+              sentAtTimestamp={new Date()}
+              theme={"normal"}
+            >
+              Announcements like this one can include attachments to open or download
+            </AnnouncementBubble>
           </ExampleCode>
         </Example>
         <Example title="QuotedAnnouncementBubble">
           <ExampleCode>
             <AnnouncementBubble
               theme={"quoted"}
+              attachments={attachmentsArray}
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
               senderName={"Ms. Stark"}

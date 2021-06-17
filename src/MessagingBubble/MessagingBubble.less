@@ -13,10 +13,12 @@
 }
 
 .MessagingBubble--Message--Container--Own {
+  max-width: 100%;
   .items--end();
 }
 
 .MessagingBubble--Message--Container--Other {
+  max-width: 100%;
   .items--start();
 }
 
@@ -64,11 +66,13 @@
 .MessagingBubble--Message--TimestampBubbleContainer--Own {
   flex-direction: row;
   align-items: center;
+  max-width: 100%;
 }
 
 .MessagingBubble--Message--TimestampBubbleContainer--Other {
   flex-direction: row-reverse;
   align-items: center;
+  max-width: 100%;
 }
 
 .MessagingBubble--Message--Timestamp--Own {
@@ -78,6 +82,7 @@
   .text--line-height-1();
   white-space: nowrap;
   flex-shrink: 0;
+  min-width: 3.5rem;
 }
 
 .MessagingBubble--Message--Timestamp--Other {
@@ -87,6 +92,7 @@
   .text--line-height-1();
   white-space: nowrap;
   flex-shrink: 0;
+  min-width: 3.5rem;
 }
 
 // For mobile/tablet
@@ -112,9 +118,11 @@
 
   .MessagingBubble--Message--Attachment--Own {
     width: auto;
+    .text--truncate();
   }
 
   .MessagingBubble--Message--Attachment--Other {
     width: auto;
+    .text--truncate();
   }
 }
