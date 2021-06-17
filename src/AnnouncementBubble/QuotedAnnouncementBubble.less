@@ -87,7 +87,12 @@
   .QuotedAnnouncementBubble--attachmentContainer
   .MessagingAttachment--Container {
   width: 14rem;
+  padding: @size_s;
   .text--truncate();
+}
+
+.QuotedAnnouncementBubble--attachmentContainer .MessagingAttachment--Title {
+  .text--smallMedium();
 }
 
 // the below styles disable the MessagingAttachment's normal hover styles
