@@ -53,6 +53,7 @@
 .MessagingAttachment--ParentContainer > .MessagingAttachment--Container {
   width: 100%;
   margin-right: 0;
+  .text--truncate();
 }
 
 button.NormalAnnouncementBubble--deleteMenuItem {
@@ -156,6 +157,7 @@ button.NormalAnnouncementBubble--replyButton {
 
 @media only screen and (max-width: @breakpointM) {
   .NormalAnnouncementBubble--container {
+    width: 96%;
     .padding--s();
   }
 
