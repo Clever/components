@@ -17,7 +17,7 @@ function cssClass(element: string) {
 export interface Props {
   theme: "quoted";
   announcementGroupName: string;
-  attachments?: React.ReactNode;
+  attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
   colorTheme: "white" | "light" | "dark";

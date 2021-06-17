@@ -13,7 +13,7 @@ function cssClass(element: string) {
 
 export interface Props {
   theme: "normal";
-  attachments?: React.ReactNode;
+  attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
   onDelete?: () => void;
