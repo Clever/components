@@ -146,3 +146,5 @@ export { AlertBox2, AlertBox2Type } from "./AlertBox2";
 export { ExpandableContainer } from "./ExpandableContainer";
 
 export { MessagingAttachment } from "./MessagingAttachment";
+
+export { AttachmentPreview } from "./AttachmentPreview";

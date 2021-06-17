@@ -82,6 +82,7 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/announcement-bubble", "AnnouncementBubble", {
             beta: true,
           })}
+          {this._renderLink("/components/attachment-preview", "AttachmentPreview")}
           {this._renderLink("/components/badge", "Badge")}
           {this._renderLink("/components/button", "Button")}
           {this._renderLink("/components/checkbox", "Checkbox")}
