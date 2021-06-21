@@ -13,3 +13,24 @@
   background-color: @neutral_white;
   text-align: right;
 }
+
+.AttachmentPreview--Background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: fade(@neutral_black, 60%);
+  // TODO: is there a protocol/standard for this?
+  z-index: 100;
+}
+
+.AttachmentPreview--PreviewWindow {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  position: fixed;
+  height: 15rem;
+  width: 15rem;
+}

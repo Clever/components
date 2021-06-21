@@ -6,6 +6,7 @@ import View from "./View";
 import { AttachmentPreview, FlexBox, ItemAlign, SegmentedControl } from "src";
 
 import "./AttachmentPreviewView.less";
+import { Button } from "../../src";
 
 const cssClass = {
   CONFIG_CONTAINER: "AttachmentPreviewView--configContainer",
@@ -25,10 +26,11 @@ export default class AttachmentPreviewView extends React.PureComponent {
     multiOption1: "small",
     optionToggle1: false,
     optionToggle2: true,
+    showingPreview: false,
   };
 
   render() {
-    const { optionToggle1 } = this.state;
+    const { optionToggle1, showingPreview } = this.state;
 
     return (
       <View
@@ -50,9 +52,12 @@ export default class AttachmentPreviewView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <AttachmentPreview className="my--custom--class" onPerformAction={console.log}>
-              {optionToggle1 ? "Something changed 🤔" : "My custom content."}
-            </AttachmentPreview>
+            <Button onClick={() => this.setState({ showingPreview: true })}>Show preview</Button>
+            {showingPreview && (
+              <AttachmentPreview closePreview={() => this.setState({ showingPreview: false })}>
+                {optionToggle1 ? "Something changed 🤔" : "My custom content."}
+              </AttachmentPreview>
+            )}
           </ExampleCode>
           {this._renderConfig()}
         </Example>

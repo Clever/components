@@ -1,36 +1,40 @@
 import * as classnames from "classnames";
 import * as React from "react";
 
-import { Button } from "../Button/Button";
-
 import "./AttachmentPreview.less";
 
 export interface Props {
   children: React.ReactNode;
   className?: string;
-  onPerformAction: (arg?: string) => any;
+  closePreview: () => void;
 }
 
 export const cssClass = {
   CONTAINER: "AttachmentPreview",
-  SUB_ELEMENT: "AttachmentPreview--subElement",
+  BACKGROUND: "AttachmentPreview--Background",
+  PREVIEW_WINDOW: "AttachmentPreview--PreviewWindow",
 };
 
 /**
  * TODO: Add short description.
  */
-export const AttachmentPreview: React.FC<Props> = ({ children, className, onPerformAction }) => {
-  return (
-    <div className={classnames(cssClass.CONTAINER, className)}>
-      <h3>TODO</h3>
-      <p>{children}</p>
-      <div className={cssClass.SUB_ELEMENT}>
-        <Button
-          onClick={() => onPerformAction("action performed")}
-          type={Button.Type.PRIMARY}
-          value="Do something"
-        />
-      </div>
+export const AttachmentPreview: React.FC<Props> = ({ children, className, closePreview }) => {
+  // const [showingPreview, setShowingPreview] = React.useState(false);
+
+  // function showPreview() {
+  //   setShowingPreview(true);
+  // }
+
+  // function hidePreview() {
+  //   setShowingPreview(false);
+  // }
+
+  const preview = (
+    <div className={classnames(cssClass.CONTAINER)}>
+      <div className={classnames(cssClass.BACKGROUND)} onClick={closePreview} aria-hidden="true" />
+      <div className={classnames(cssClass.PREVIEW_WINDOW)}></div>
     </div>
   );
+
+  return preview;
 };
