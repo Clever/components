@@ -82,7 +82,7 @@ export const MessagingBubble: React.FC<Props> = ({
           </Linkify>
         </div>
       </FlexBox>
-      {attachments && <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>}
+      {attachments?.length > 0 && <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>}
     </FlexBox>
   );
 };
