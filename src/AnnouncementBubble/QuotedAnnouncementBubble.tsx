@@ -135,7 +135,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       )}
       {isExpanded && (
         <>
-          {attachments && (
+          {attachments?.length > 0 && (
             <FlexBox
               className={cx(
                 cssClass("attachmentContainer"),
