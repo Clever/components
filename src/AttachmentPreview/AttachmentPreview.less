@@ -1,11 +1,11 @@
 @import (reference) "../less/utilities";
 
-.AttachmentPreview {
-  .border--s(@neutral_silver);
-  .borderRadius--m;
-  .padding--m;
-  background-color: @neutral_off_white;
-}
+// TODO: rename this...?
+@zz-top: 100;
+
+// .AttachmentPreview {
+//   // TODO: disable scrolling when visible
+// }
 
 .AttachmentPreview--subElement {
   .border--s(@neutral_silver);
@@ -22,15 +22,55 @@
   left: 0;
   background: fade(@neutral_black, 60%);
   // TODO: is there a protocol/standard for this?
-  z-index: 100;
+  z-index: @zz-top;
+}
+
+.AttachmentPreview--HeaderBar {
+  // TODO: delete, for testing only
+  background-color: white;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @size_5xl; // 4rem
+  z-index: @zz-top + 1;
+}
+
+.AttachmentPreview--Title {
+  .alignItems(center);
+}
+
+.AttachmentPreview--HeaderBar img {
+  // TODO: delete, for testing only
+  max-height: 2.5rem;
+  max-width: 3.375rem;
+  .padding--y--s();
+  .padding--left--l();
 }
 
 .AttachmentPreview--PreviewWindow {
-  position: relative;
+  // TODO: delete, for testing only
+  // background-color: white;
+  margin-top: 4rem;
+  width: 100%;
+  height: 100%;
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   position: fixed;
-  height: 15rem;
-  width: 15rem;
+  z-index: @zz-top + 1;
+}
+
+.AttachmentPreview--PreviewWindow img {
+  display: block;
+
+  // margin: 4.5rem auto 0 auto;
+  margin: auto;
+  max-width: calc(100vw - 1rem);
+  height: auto;
+  max-height: calc(100vh - @size_5xl - 1rem);
+  width: auto;
+  .borderRadius--s();
 }

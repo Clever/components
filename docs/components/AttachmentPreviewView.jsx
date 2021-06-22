@@ -54,7 +54,10 @@ export default class AttachmentPreviewView extends React.PureComponent {
           <ExampleCode>
             <Button onClick={() => this.setState({ showingPreview: true })}>Show preview</Button>
             {showingPreview && (
-              <AttachmentPreview closePreview={() => this.setState({ showingPreview: false })}>
+              <AttachmentPreview
+                closePreview={() => this.setState({ showingPreview: false })}
+                title={"Raccoooooon.jpg"}
+              >
                 {optionToggle1 ? "Something changed 🤔" : "My custom content."}
               </AttachmentPreview>
             )}
