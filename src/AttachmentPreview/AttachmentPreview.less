@@ -1,7 +1,9 @@
 @import (reference) "../less/utilities";
 
 // TODO: rename this...?
-@zz-top: 100;
+@ZZ-TOP: 100;
+@HEADER_BAR_HEIGHT: @size_5xl; // 4rem
+@DESKTOP_BUFFER_SIZE: @size_l; // 1.5rem
 
 // .AttachmentPreview {
 //   // TODO: disable scrolling when visible
@@ -22,7 +24,7 @@
   left: 0;
   background: fade(@neutral_black, 60%);
   // TODO: is there a protocol/standard for this?
-  z-index: @zz-top;
+  z-index: @ZZ-TOP;
 }
 
 .AttachmentPreview--HeaderBar {
@@ -33,8 +35,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: @size_5xl; // 4rem
-  z-index: @zz-top + 1;
+  height: @HEADER_BAR_HEIGHT;
+  z-index: @ZZ-TOP + 1;
 }
 
 .AttachmentPreview--Title {
@@ -52,25 +54,30 @@
 .AttachmentPreview--PreviewWindow {
   // TODO: delete, for testing only
   // background-color: white;
-  margin-top: 4rem;
+  // margin-top: @HEADER_BAR_HEIGHT;
   width: 100%;
-  height: 100%;
+  height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
   position: fixed;
-  top: 50%;
+  top: calc(50% + @HEADER_BAR_HEIGHT);
   left: 50%;
   transform: translate(-50%, -50%);
   position: fixed;
-  z-index: @zz-top + 1;
+  z-index: @ZZ-TOP + 1;
 }
 
 .AttachmentPreview--PreviewWindow img {
-  display: block;
+  // display: block;
+
+  position: absolute;
+  top: 50% - @HEADER_BAR_HEIGHT;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   // margin: 4.5rem auto 0 auto;
   margin: auto;
-  max-width: calc(100vw - 1rem);
+  max-width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
   height: auto;
-  max-height: calc(100vh - @size_5xl - 1rem);
+  max-height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
   width: auto;
   .borderRadius--s();
 }
