@@ -32,6 +32,13 @@ export default class AttachmentPreviewView extends React.PureComponent {
   render() {
     const { optionToggle1, showingPreview } = this.state;
 
+    const file = {
+      title: "Raccooooooon.jpg",
+      fileType: "jpg",
+      url:
+        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1",
+    };
+
     return (
       <View
         className={cssClass.CONTAINER}
@@ -56,14 +63,12 @@ export default class AttachmentPreviewView extends React.PureComponent {
             {showingPreview && (
               <AttachmentPreview
                 closePreview={(e) => {
-                  console.log("closed: ", e);
+                  console.log(e.target);
                   this.setState({ showingPreview: false });
                 }}
-                title={"Raccoooooon.jpg"}
-                fileType={"jpg"}
-                fileURL={
-                  "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1"
-                }
+                title={file.title}
+                fileType={file.fileType}
+                fileURL={file.url}
               >
                 {optionToggle1 ? "Something changed 🤔" : "My custom content."}
               </AttachmentPreview>
