@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as cx from "classnames";
 
-import { TextArea, Button, FlexBox, ItemAlign } from "../index";
+import { TextArea, Button, FlexBox, ItemAlign, Checkbox } from "../index";
 import KeyCode from "../utils/KeyCode";
 import * as FontAwesome from "react-fontawesome";
 
@@ -34,6 +34,12 @@ interface Props {
   showUploadAttachmentButton?: boolean;
   store?: (file, callbacks) => void;
   attachments?: React.ReactNode[];
+  checkbox?: {
+    isChecked: boolean;
+    isVisible: boolean;
+    label: React.ReactNode;
+    onChange: (value: boolean) => void;
+  };
 }
 
 export interface MessagingInputHandle {
@@ -62,6 +68,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     showUploadAttachmentButton,
     store,
     attachments,
+    checkbox,
   } = props;
   const textAreaRef = React.useRef<TextArea>(null);
 
@@ -83,14 +90,25 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
       column
       alignItems={ItemAlign.START}
     >
-      <label
-        htmlFor={TEXT_FIELD_NAME}
-        className={cssClass(replyTo ? "TextFieldLabelHidden" : "TextFieldLabel")}
-      >
-        {labelText}
-      </label>
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cx(cssClass("InnerContainer--Content"))}>
+          <FlexBox grow alignItems="center">
+            <label
+              htmlFor={TEXT_FIELD_NAME}
+              className={cssClass(replyTo ? "TextFieldLabelHidden" : "TextFieldLabel")}
+            >
+              {labelText}
+            </label>
+            {checkbox?.isVisible && (
+              <Checkbox
+                className={cssClass("Checkbox")}
+                checked={checkbox.isChecked}
+                onChange={({ checked }) => checkbox.onChange(checked)}
+              >
+                {checkbox.label}
+              </Checkbox>
+            )}
+          </FlexBox>
           {replyTo && (
             <div className={cssClass("Reply--Container")}>
               <div className={cssClass("Reply--Content")}>
@@ -101,6 +119,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                     role="button"
                     className={cssClass("Reply--CloseButton")}
                     onClick={onReplyCancel}
+                    aria-label="Cancel reply"
                   >
                     <FontAwesome name="times" className={cssClass("Reply--CloseIcon")} />
                   </button>
