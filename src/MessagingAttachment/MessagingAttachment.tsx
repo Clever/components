@@ -171,6 +171,7 @@ type AttachmentIconProps = {
   isUpload?: boolean;
   uploadComplete?: boolean;
   errorMsg?: string;
+  className?: string;
 };
 
 // TODO: handle undefined. Note: Components uses jsx, LP uses tsx
@@ -179,6 +180,7 @@ export function FileAttachmentIcon({
   isUpload,
   uploadComplete,
   errorMsg,
+  className,
 }: AttachmentIconProps) {
   const cleanedFileType = fileTypeToIcon(fileType);
 
@@ -192,7 +194,7 @@ export function FileAttachmentIcon({
   return (
     <img
       src={isUpload ? fileIcons[cleanedFileType].draft : fileIcons[cleanedFileType].sent}
-      className={cssClass("AttachmentTypeIcon")}
+      className={cx(cssClass("AttachmentTypeIcon"), className)}
       alt={`MessagingAttachment ${cleanedFileType} icon`}
     />
   );
