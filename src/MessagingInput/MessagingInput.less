@@ -26,10 +26,7 @@
 
 .MessagingInput--Checkbox {
   margin-left: auto;
-
-  .Checkbox--label {
-    .margin--left--s();
-  }
+  animation: fadein 0.25s;
 }
 
 .MessagingInput--InnerContainer {
@@ -144,6 +141,7 @@ button.MessagingInput--SendButton {
 
 .MessagingInput--InstructionsLabel {
   color: @neutral_medium_gray;
+  animation: fadein 0.25s;
   font-size: 0.75rem; // 12px
   line-height: 1rem;
   .margin--y--2xs();
@@ -169,6 +167,16 @@ button.MessagingInput--SendButton {
 
 .MessagingAttachment--ParentContainer {
   .margin--right--m();
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 // For mobile/tablet
