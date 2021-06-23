@@ -200,9 +200,15 @@
 
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
-  .MessagingAttachment--Container,
+  .MessagingAttachment--Container {
+    padding: @size_s @size_s @size_s @size_xs;
+    width: auto;
+  }
   .MessagingBubble--Message .MessagingAttachment--Container {
     // Full width for small screens
     width: auto;
+  }
+  .MessagingAttachment--Title {
+    font-size: @type_small_medium; //14px
   }
 }
