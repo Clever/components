@@ -1,21 +1,14 @@
 @import (reference) "../less/utilities";
 
-// TODO: rename this...?
+// TODO: rename this...? do I have to....?
 @ZZ-TOP: 100;
 @HEADER_BAR_HEIGHT: @size_5xl; // 4rem
 @DESKTOP_BUFFER_SIZE: @size_l; // 1.5rem
 
-// TODO: add this to sizing.less?
+// TODO: can I add this to sizing.less?
 @size_ml: 1.25rem;
 
 // .AttachmentPreview {
-// position: fixed;
-// height: 100vh;
-// width: 100vw;
-// top: 0;
-// left: 0;
-
-// z-index: @ZZ-TOP;
 // }
 
 .AttachmentPreview--Background {
@@ -25,65 +18,57 @@
   top: 0;
   left: 0;
   background: fade(@neutral_black, 60%);
-  // TODO: is there a protocol/standard for this?
+  // TODO: is there a protocol/standard for z indexes?
   z-index: @ZZ-TOP;
 }
 
 .AttachmentPreview--HeaderBar {
-  // TODO: delete, for testing only
   background-color: @neutral_black;
-
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: @HEADER_BAR_HEIGHT;
   z-index: @ZZ-TOP + 1;
+  .alignItems(center);
 }
 
 .AttachmentPreview--Title {
-  .alignItems(center);
   color: @neutral_white;
   line-height: @size_l;
 }
 
 .AttachmentPreview--FileIcon {
-  // TODO: delete, for testing only
   max-height: @size_l;
   max-width: @size_l;
   padding: @size_ml @size_s @size_ml @size_l;
   .padding--left--l();
-  .alignItems(center);
   filter: brightness(0) invert(1); /* makes the file icon white without needing a different <img> src attr */
 }
 
 .AttachmentPreview--PreviewWindow {
-  // TODO: delete, for testing only
-  // background-color: white;
-  // margin-top: @HEADER_BAR_HEIGHT;
-  width: 100%;
-  height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
   position: fixed;
   top: calc(@HEADER_BAR_HEIGHT + @DESKTOP_BUFFER_SIZE);
   left: 50%;
   transform: translateX(-50%);
-  position: fixed;
+  // width: 100%;
+  height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
   z-index: @ZZ-TOP + 1;
 }
 
-.AttachmentPreview--PreviewWindow img {
-  // display: block;
-
-  // position: absolute;
-  // top: 50% - @HEADER_BAR_HEIGHT;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-
-  // margin: 4.5rem auto 0 auto;
+.AttachmentPreview--ImageContainer {
   margin: 0 auto;
-  max-width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
+  width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
   height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
-  // height: auto;
-  width: auto;
+  z-index: @ZZ-TOP + 2;
+}
+
+// TODO: change to .AttachmentPreview--ImageContainer
+.AttachmentPreview--PreviewWindow img {
+  // render image as larger as natural size, or scale down to fit screen
+  object-fit: scale-down;
+
+  // TODO: why isn't this working?
   .borderRadius--s();
+  z-index: @ZZ-TOP + 3;
 }
