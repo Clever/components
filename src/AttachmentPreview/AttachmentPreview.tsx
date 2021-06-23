@@ -1,11 +1,8 @@
 // import * as classnames from "classnames";
 import * as React from "react";
 
-import { FlexBox } from "src";
-import {
-  AttachmentFileType,
-  FileAttachmentIcon,
-} from "src/MessagingAttachment/MessagingAttachment";
+import { FlexBox } from "../flex";
+import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/MessagingAttachment";
 
 import "./AttachmentPreview.less";
 
