@@ -119,6 +119,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                     role="button"
                     className={cssClass("Reply--CloseButton")}
                     onClick={onReplyCancel}
+                    aria-label="Cancel reply"
                   >
                     <FontAwesome name="times" className={cssClass("Reply--CloseIcon")} />
                   </button>
