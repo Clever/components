@@ -6,15 +6,14 @@
 @DESKTOP_BUFFER_SIZE: @size_l; // 1.5rem
 
 // .AttachmentPreview {
-//   // TODO: disable scrolling when visible
-// }
+// position: fixed;
+// height: 100vh;
+// width: 100vw;
+// top: 0;
+// left: 0;
 
-.AttachmentPreview--subElement {
-  .border--s(@neutral_silver);
-  .padding--s;
-  background-color: @neutral_white;
-  text-align: right;
-}
+// z-index: @ZZ-TOP;
+// }
 
 .AttachmentPreview--Background {
   position: fixed;
@@ -58,9 +57,9 @@
   width: 100%;
   height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
   position: fixed;
-  top: calc(50% + @HEADER_BAR_HEIGHT);
+  top: calc(@HEADER_BAR_HEIGHT + @DESKTOP_BUFFER_SIZE);
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   position: fixed;
   z-index: @ZZ-TOP + 1;
 }
@@ -68,16 +67,16 @@
 .AttachmentPreview--PreviewWindow img {
   // display: block;
 
-  position: absolute;
-  top: 50% - @HEADER_BAR_HEIGHT;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // position: absolute;
+  // top: 50% - @HEADER_BAR_HEIGHT;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
 
   // margin: 4.5rem auto 0 auto;
-  margin: auto;
+  margin: 0 auto;
   max-width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
-  height: auto;
-  max-height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
+  height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
+  // height: auto;
   width: auto;
   .borderRadius--s();
 }

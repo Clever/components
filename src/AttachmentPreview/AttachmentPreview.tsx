@@ -60,9 +60,9 @@ export const AttachmentPreview: React.FC<Props> = ({
         <img src={imageSourceURL} alt={"attachment preview icon"} />
         <FlexBox className={classnames(cssClass.TITLE)}>{title}</FlexBox>
       </FlexBox>
-      <div className={classnames(cssClass.PREVIEW_WINDOW)}>
+      <FlexBox className={classnames(cssClass.PREVIEW_WINDOW)}>
         <img src={imageSourceURL} alt={"attachment preview icon"} />
-      </div>
+      </FlexBox>
     </div>
   );
 
