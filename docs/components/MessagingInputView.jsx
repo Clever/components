@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import * as React from "react";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
@@ -33,6 +34,8 @@ export default class MessagingInputView extends React.PureComponent {
     showReturnKeyInstructions: false,
     showUploadAttachmentButton: false,
     attachments: [],
+    checkboxValue: false,
+    showCheckbox: false,
   };
 
   render() {
@@ -44,6 +47,8 @@ export default class MessagingInputView extends React.PureComponent {
       showReturnKeyInstructions,
       showUploadAttachmentButton,
       attachments,
+      checkboxValue,
+      showCheckbox,
     } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
@@ -124,7 +129,6 @@ export default class MessagingInputView extends React.PureComponent {
               newlineOnEnter={newlineOnEnter}
               onChange={(newValue) => this.setState({ inputValue: newValue })}
               onSubmit={(message) => {
-                // eslint-disable-next-line no-alert
                 alert(message);
                 this.setState({ inputValue: "" });
               }}
@@ -138,6 +142,14 @@ export default class MessagingInputView extends React.PureComponent {
                 callbacks.success();
               }}
               attachments={attachments}
+              checkbox={
+                showCheckbox && {
+                  isChecked: checkboxValue,
+                  isVisible: true,
+                  label: "This is a checkbox!",
+                  onChange: (newValue) => this.setState({ checkboxValue: newValue }),
+                }
+              }
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -196,8 +208,15 @@ export default class MessagingInputView extends React.PureComponent {
             />{" "}
             Show uploaded attachments
           </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={showCheckbox}
+              onChange={({ target }) => this.setState({ showCheckbox: target.checked })}
+            />{" "}
+            Show checkbox
+          </label>
         </Example>
-
         {this._renderProps()}
       </View>
     );
@@ -291,6 +310,13 @@ export default class MessagingInputView extends React.PureComponent {
             name: "attachments",
             type: "React.ReactNode[]",
             description: "Optional list of ReactNodes to render as uploaded attachments",
+            optional: true,
+          },
+          {
+            name: "checkbox",
+            type: "object",
+            description:
+              "Object type: { isChecked: boolean,\n isVisible: boolean,\n label: React.ReactNode,\n onChange: (value: boolean) => void }. An optional checkbox to display above the input with a customizable label.",
             optional: true,
           },
         ]}
