@@ -12,8 +12,7 @@ export interface Props {
   closePreview: () => void;
   title: string;
   // TODO: are we doing key/bucket or just attachmentURL?
-  key: string;
-  bucket: string;
+  fileURL: string;
   fileType: AttachmentFileType;
 }
 
@@ -22,6 +21,7 @@ export const cssClass = {
   BACKGROUND: "AttachmentPreview--Background",
   HEADER_BAR: "AttachmentPreview--HeaderBar",
   PREVIEW_WINDOW: "AttachmentPreview--PreviewWindow",
+  IMAGE_CONTAINER: "AttachmentPreview--ImageContainer",
   TITLE: "AttachmentPreview--Title",
   FILE_ICON: "AttachmentPreview--FileIcon",
   // DOWNLOAD_BUTTON: "AttachmentPreview--DownloadButton",
@@ -40,8 +40,7 @@ export const AttachmentPreview: React.FC<Props> = ({
   className,
   closePreview,
   title,
-  key,
-  bucket,
+  fileURL,
   fileType,
 }) => {
   // const [showingPreview, setShowingPreview] = React.useState(false);
@@ -54,11 +53,6 @@ export const AttachmentPreview: React.FC<Props> = ({
   //   setShowingPreview(false);
   // }
 
-  // const imageSourceURL = `${BASE_S3_URL}/${bucket}/${key}`;
-  const imageSourceURL =
-    "http://www.itcsales.co.uk/blog/wp-content/uploads/2018/05/Free-Desktop-Wallpaper-HD-1920-x-1080.jpg";
-  // "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1";
-
   const preview = (
     <div className={cssClass.CONTAINER}>
       <div className={cssClass.BACKGROUND} onClick={closePreview} aria-hidden="true" />
@@ -69,7 +63,13 @@ export const AttachmentPreview: React.FC<Props> = ({
         <FlexBox className={cssClass.CLOSE_BUTTON} /> */}
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
-        <img src={imageSourceURL} alt={"attachment preview icon"} />
+        <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={closePreview}>
+          <img
+            src={fileURL}
+            alt={"attachment preview"}
+            // onClick={(e) => e.stopPropagation()}
+          />
+        </FlexBox>
       </FlexBox>
     </div>
   );
