@@ -5,6 +5,9 @@
 @HEADER_BAR_HEIGHT: @size_5xl; // 4rem
 @DESKTOP_BUFFER_SIZE: @size_l; // 1.5rem
 
+// TODO: add this to sizing.less?
+@size_ml: 1.25rem;
+
 // .AttachmentPreview {
 // position: fixed;
 // height: 100vh;
@@ -28,7 +31,7 @@
 
 .AttachmentPreview--HeaderBar {
   // TODO: delete, for testing only
-  background-color: white;
+  background-color: @neutral_black;
 
   position: fixed;
   top: 0;
@@ -40,14 +43,18 @@
 
 .AttachmentPreview--Title {
   .alignItems(center);
+  color: @neutral_white;
+  line-height: @size_l;
 }
 
-.AttachmentPreview--HeaderBar img {
+.AttachmentPreview--FileIcon {
   // TODO: delete, for testing only
-  max-height: 2.5rem;
-  max-width: 3.375rem;
-  .padding--y--s();
+  max-height: @size_l;
+  max-width: @size_l;
+  padding: @size_ml @size_s @size_ml @size_l;
   .padding--left--l();
+  .alignItems(center);
+  filter: brightness(0) invert(1); /* makes the file icon white without needing a different <img> src attr */
 }
 
 .AttachmentPreview--PreviewWindow {

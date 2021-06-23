@@ -57,6 +57,7 @@ export default class AttachmentPreviewView extends React.PureComponent {
               <AttachmentPreview
                 closePreview={() => this.setState({ showingPreview: false })}
                 title={"Raccoooooon.jpg"}
+                fileType={"jpg"}
               >
                 {optionToggle1 ? "Something changed 🤔" : "My custom content."}
               </AttachmentPreview>
