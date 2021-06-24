@@ -62,6 +62,8 @@
   width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
   height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
   z-index: @ZZ_TOP + 2;
+  .alignItems(center);
+  .justifyContent(center);
 }
 
 // TODO: change to .AttachmentPreview--ImageContainer
@@ -69,13 +71,12 @@
   // render image as larger as natural size, or scale down to fit screen
   object-fit: scale-down;
 
+  width: fit-content;
+  height: fit-content;
+
   // TODO: why isn't this working?
   .borderRadius--s();
   z-index: @ZZ_TOP + 3;
-}
-
-.AttachmentPreview--PreviewWindow .mydiv {
-  height: auto;
 }
 
 .AttachmentPreview--DownloadContainer {
