@@ -63,19 +63,32 @@ export const AttachmentPreview: React.FC<Props> = ({
         <FlexBox grow className={cssClass.TITLE}>
           {title}
         </FlexBox>
-        <FlexBox className={cssClass.DOWNLOAD_CONTAINER}>
+        <FlexBox className={cssClass.DOWNLOAD_CONTAINER} tabIndex={0}>
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" /> <span>Download</span>
         </FlexBox>
-        <FlexBox className={cssClass.CLOSE_BUTTON}>
+        <FlexBox className={cssClass.CLOSE_BUTTON} tabIndex={0}>
           <FontAwesome name="times" />
         </FlexBox>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
         <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={closePreview}>
           <img
+            // TODO: is this use of tabIndex kosher?
+            tabIndex={0}
             src={fileURL}
             alt={"attachment preview"}
-            // onClick={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            // note: this is only here because Axe Linter "Axe Linter
+            // (click-events-have-key-events): Ensure a clickable non-interactive element has at
+            // least one keyboard event"
+
+            // TODO: is there a way to just tell Axe linter to ignore the above line?
+            onKeyDown={(e) => {
+              // TODO: is there a standardized way to do this in dewey?
+              if (e.key === "Escape") {
+                closePreview();
+              }
+            }}
           />
         </FlexBox>
       </FlexBox>
