@@ -1,4 +1,5 @@
 // import * as classnames from "classnames";
+import classNames = require("classnames");
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
@@ -8,12 +9,12 @@ import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/M
 import "./AttachmentPreview.less";
 
 export interface Props {
-  children: React.ReactNode;
+  // children: React.ReactNode;
   className?: string;
-  closePreview: () => void;
-  title: string;
-  // TODO: are we doing key/bucket or just attachmentURL?
-  fileURL: string;
+  onClose: () => void;
+  attachmentName: string;
+  attachmentURL: string;
+  downloadText?: string;
   fileType: AttachmentFileType;
 }
 
@@ -22,7 +23,7 @@ export const cssClass = {
   BACKGROUND: "AttachmentPreview--Background",
   HEADER_BAR: "AttachmentPreview--HeaderBar",
   FILE_ICON: "AttachmentPreview--FileIcon",
-  TITLE: "AttachmentPreview--Title",
+  ATTACHMENT_NAME: "AttachmentPreview--AttachmentName",
   DOWNLOAD_CONTAINER: "AttachmentPreview--DownloadContainer",
   DOWNLOAD_BUTTON: "AttachmentPreview--DownloadButton",
   CLOSE_BUTTON: "AttachmentPreview--CloseButton",
@@ -38,12 +39,13 @@ export const cssClass = {
  * TODO: Add short description.
  */
 export const AttachmentPreview: React.FC<Props> = ({
-  children,
+  attachmentName,
+  attachmentURL,
+  // children,
   className,
-  closePreview,
-  title,
-  fileURL,
+  downloadText,
   fileType,
+  onClose,
 }) => {
   // const [showingPreview, setShowingPreview] = React.useState(false);
 
@@ -56,26 +58,36 @@ export const AttachmentPreview: React.FC<Props> = ({
   // }
 
   const preview = (
-    <div className={cssClass.CONTAINER}>
-      <div className={cssClass.BACKGROUND} onClick={closePreview} aria-hidden="true" />
+    <div className={classNames(cssClass.CONTAINER, className)}>
+      <div className={cssClass.BACKGROUND} onClick={onClose} aria-hidden="true" />
       <FlexBox className={cssClass.HEADER_BAR}>
         <FileAttachmentIcon className={cssClass.FILE_ICON} fileType={fileType} />
-        <FlexBox grow className={cssClass.TITLE}>
-          {title}
+        <FlexBox grow className={cssClass.ATTACHMENT_NAME}>
+          {attachmentName}
         </FlexBox>
         <FlexBox className={cssClass.DOWNLOAD_CONTAINER} tabIndex={0}>
-          <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" /> <span>Download</span>
+          <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
+          <span>{downloadText || "Download"}</span>
         </FlexBox>
-        <FlexBox className={cssClass.CLOSE_BUTTON} tabIndex={0}>
+        <FlexBox
+          className={cssClass.CLOSE_BUTTON}
+          tabIndex={0}
+          onClick={onClose}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onClose();
+            }
+          }}
+        >
           <FontAwesome name="times" />
         </FlexBox>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
-        <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={closePreview}>
+        <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={onClose}>
           <img
             // TODO: is this use of tabIndex kosher?
             tabIndex={0}
-            src={fileURL}
+            src={attachmentURL}
             alt={"attachment preview"}
             onClick={(e) => e.stopPropagation()}
             // note: this is only here because Axe Linter "Axe Linter
@@ -85,8 +97,9 @@ export const AttachmentPreview: React.FC<Props> = ({
             // TODO: is there a way to just tell Axe linter to ignore the above line?
             onKeyDown={(e) => {
               // TODO: is there a standardized way to do this in dewey?
+              // TODO: Should this just be on the image, or elsewhere too?
               if (e.key === "Escape") {
-                closePreview();
+                onClose();
               }
             }}
           />
