@@ -63,7 +63,6 @@ export default class AttachmentPreviewView extends React.PureComponent {
             {showingPreview && (
               <AttachmentPreview
                 closePreview={(e) => {
-                  console.log(e.target);
                   this.setState({ showingPreview: false });
                 }}
                 title={file.title}
