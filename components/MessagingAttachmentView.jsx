@@ -3,12 +3,13 @@ import * as React from "react";
 import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { MessagingAttachment, FlexBox } from "src";
+import { Label, MessagingAttachment, FlexBox } from "src";
 import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment";
 
 import "./MessagingAttachmentView.less";
 
 const cssClass = {
+  BETA: "MessagingAttachmentView--beta",
   CONFIG_CONTAINER: "MessagingAttachmentView--configContainer",
   CONFIG_OPTIONS: "MessagingAttachmentView--configOptions",
   CONFIG: "MessagingAttachmentView--config",
@@ -31,6 +32,10 @@ export default class MessagingAttachmentView extends React.PureComponent {
         sourcePath="src/MessagingAttachment/MessagingAttachment.tsx"
       >
         <header className={cssClass.INTRO}>
+          <p className={cssClass.BETA}>
+            <Label color="new-feature">Beta</Label> MessagingAttachment is in Beta and breaking
+            changes may still be introduced.
+          </p>
           <p>
             MessagingAttachment component, to be used in AnnouncementBubble, MessagingBubble,
             MessagingInput, etc
