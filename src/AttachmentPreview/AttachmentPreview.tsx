@@ -1,5 +1,4 @@
-// import * as classnames from "classnames";
-import classNames = require("classnames");
+import * as classnames from "classnames";
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
@@ -9,6 +8,7 @@ import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/M
 import "./AttachmentPreview.less";
 
 export interface Props {
+  attachmentID: string;
   attachmentName: string;
   attachmentURL: string;
   className?: string;
@@ -32,14 +32,11 @@ export const cssClass = {
   IMAGE_CONTAINER: "AttachmentPreview--ImageContainer",
 };
 
-// TODO: set this
-// TODO: make this work for both dev/prod environments
-// const BASE_S3_URL = "";
-
 /**
  * TODO: Add short description.
  */
 export const AttachmentPreview: React.FC<Props> = ({
+  attachmentID,
   attachmentName,
   attachmentURL,
   className,
@@ -60,14 +57,23 @@ export const AttachmentPreview: React.FC<Props> = ({
   // }
 
   const preview = (
-    <div className={classNames(cssClass.CONTAINER, className)}>
+    <div className={classnames(cssClass.CONTAINER, className)}>
       <div className={cssClass.BACKGROUND} onClick={onClose} aria-hidden="true" />
       <FlexBox className={cssClass.HEADER_BAR}>
         <FileAttachmentIcon className={cssClass.FILE_ICON} fileType={fileType} />
         <FlexBox grow className={cssClass.ATTACHMENT_NAME}>
           {attachmentName}
         </FlexBox>
-        <FlexBox className={cssClass.DOWNLOAD_CONTAINER} tabIndex={0} onClick={onClickDownload}>
+        <FlexBox
+          className={cssClass.DOWNLOAD_CONTAINER}
+          tabIndex={0}
+          onClick={() => onClickDownload(attachmentID)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onClickDownload(attachmentID);
+            }
+          }}
+        >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonText || "Download"}</span>
         </FlexBox>
