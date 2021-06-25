@@ -14,7 +14,7 @@ export interface Props {
   onClose: () => void;
   attachmentName: string;
   attachmentURL: string;
-  downloadText?: string;
+  downloadButtonText?: string;
   fileType: AttachmentFileType;
 }
 
@@ -43,7 +43,7 @@ export const AttachmentPreview: React.FC<Props> = ({
   attachmentURL,
   // children,
   className,
-  downloadText,
+  downloadButtonText,
   fileType,
   onClose,
 }) => {
@@ -67,7 +67,7 @@ export const AttachmentPreview: React.FC<Props> = ({
         </FlexBox>
         <FlexBox className={cssClass.DOWNLOAD_CONTAINER} tabIndex={0}>
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
-          <span>{downloadText || "Download"}</span>
+          <span>{downloadButtonText || "Download"}</span>
         </FlexBox>
         <FlexBox
           className={cssClass.CLOSE_BUTTON}
