@@ -15,6 +15,7 @@ export interface Props {
   attachmentName: string;
   attachmentURL: string;
   downloadButtonText?: string;
+  closeButtonAriaLabel?: string;
   fileType: AttachmentFileType;
 }
 
@@ -44,6 +45,7 @@ export const AttachmentPreview: React.FC<Props> = ({
   // children,
   className,
   downloadButtonText,
+  closeButtonAriaLabel,
   fileType,
   onClose,
 }) => {
@@ -70,6 +72,7 @@ export const AttachmentPreview: React.FC<Props> = ({
           <span>{downloadButtonText || "Download"}</span>
         </FlexBox>
         <FlexBox
+          aria-label={closeButtonAriaLabel || "close attachment preview"}
           className={cssClass.CLOSE_BUTTON}
           tabIndex={0}
           onClick={onClose}
