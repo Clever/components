@@ -65,6 +65,7 @@ export default class AttachmentPreviewView extends React.PureComponent {
                 attachmentName={file.title}
                 attachmentURL={file.url}
                 fileType={file.fileType}
+                onClickDownload={() => console.log("Downloaded attachment!")}
                 onClose={(e) => {
                   this.setState({ showingPreview: false });
                 }}

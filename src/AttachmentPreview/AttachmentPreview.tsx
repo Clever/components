@@ -15,6 +15,7 @@ export interface Props {
   closeButtonAriaLabel?: string;
   downloadButtonText?: string;
   fileType: AttachmentFileType;
+  onClickDownload: (attachmentID: string) => void;
   onClose: () => void;
 }
 
@@ -45,6 +46,7 @@ export const AttachmentPreview: React.FC<Props> = ({
   closeButtonAriaLabel,
   downloadButtonText,
   fileType,
+  onClickDownload,
   onClose,
 }) => {
   // const [showingPreview, setShowingPreview] = React.useState(false);
@@ -65,7 +67,7 @@ export const AttachmentPreview: React.FC<Props> = ({
         <FlexBox grow className={cssClass.ATTACHMENT_NAME}>
           {attachmentName}
         </FlexBox>
-        <FlexBox className={cssClass.DOWNLOAD_CONTAINER} tabIndex={0}>
+        <FlexBox className={cssClass.DOWNLOAD_CONTAINER} tabIndex={0} onClick={onClickDownload}>
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonText || "Download"}</span>
         </FlexBox>
