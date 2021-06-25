@@ -34,7 +34,9 @@ export const MessagingAttachment: React.FC<Props> = ({
   uploadComplete,
 }: Props) => {
   return (
-    <FlexBox className={cssClass("ParentContainer")}>
+    <FlexBox
+      className={cx(cssClass("ParentContainer"), isUpload && cssClass("ParentContainer--IsUpload"))}
+    >
       {onRemoveAttachment && (
         <button
           className={cssClass("CloseButton")}

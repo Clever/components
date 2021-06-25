@@ -198,11 +198,26 @@
   }
 }
 
+.MessagingAttachment--ParentContainer.MessagingAttachment--ParentContainer--IsUpload {
+  overflow: visible; // ensures you can see the x icon in top right corner
+}
+
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
-  .MessagingAttachment--Container,
-  .MessagingBubble--Message .MessagingAttachment--Container {
-    // Full width for small screens
+  .MessagingAttachment--Container {
+    padding: @size_s @size_s @size_s @size_xs;
     width: auto;
+  }
+
+  .MessagingAttachment--Title {
+    font-size: @type_small_medium; //14px
+  }
+
+  .MessagingBubble--Message--Container--Own .MessagingAttachment--Container {
+    margin-left: @size_5xl;
+  }
+
+  .MessagingBubble--Message--Container--Other .MessagingAttachment--Container {
+    margin-right: @size_5xl;
   }
 }
