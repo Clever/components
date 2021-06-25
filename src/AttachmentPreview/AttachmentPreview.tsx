@@ -9,14 +9,13 @@ import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/M
 import "./AttachmentPreview.less";
 
 export interface Props {
-  // children: React.ReactNode;
-  className?: string;
-  onClose: () => void;
   attachmentName: string;
   attachmentURL: string;
-  downloadButtonText?: string;
+  className?: string;
   closeButtonAriaLabel?: string;
+  downloadButtonText?: string;
   fileType: AttachmentFileType;
+  onClose: () => void;
 }
 
 export const cssClass = {
@@ -42,10 +41,9 @@ export const cssClass = {
 export const AttachmentPreview: React.FC<Props> = ({
   attachmentName,
   attachmentURL,
-  // children,
   className,
-  downloadButtonText,
   closeButtonAriaLabel,
+  downloadButtonText,
   fileType,
   onClose,
 }) => {
