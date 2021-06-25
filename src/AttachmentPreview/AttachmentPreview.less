@@ -71,7 +71,11 @@
   // render image as larger as natural size, or scale down to fit screen
   object-fit: scale-down;
 
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
   width: fit-content;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
   height: fit-content;
 
   // TODO: why isn't this working?
@@ -79,18 +83,35 @@
   z-index: @ZZ_TOP + 3;
 }
 
+// @supports (-ms-ime-align: auto) and (-webkit-text-stroke: initial) {
+//   .AttachmentPreview--PreviewWindow img {
+//     width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
+//     height: auto;
+//   }
+// }
+
 .AttachmentPreview--DownloadContainer {
   .margin--right--xl();
   cursor: pointer;
+  line-height: @size_l;
 }
 
 .AttachmentPreview--DownloadButton {
-  line-height: @size_ml;
   .margin--right--xs();
+  line-height: @size_l;
+  display: inline-block;
 }
 
 .AttachmentPreview--CloseButton {
-  margin-right: @size_ml;
-  padding: 4px 6px;
+  display: inline-block;
   cursor: pointer;
+  height: @size_l;
+  width: @size_l;
+  line-height: @size_l;
+  margin-right: @size_ml;
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: @breakpointS) {
 }
