@@ -4,34 +4,6 @@
   position: relative;
 }
 
-.MessagingInput--ShowUploadAttachmentButton .FileInput {
-  height: @size_2xl;
-  .padding--none();
-  border: none;
-
-  // Hide FileInput after file has been selected and uploading has begun
-  &.FileInput--AttachmentIsUploading {
-    display: none;
-  }
-
-  .FileInput--Icon {
-    position: absolute;
-    right: 0.5rem;
-    margin: 0.25rem 0.5rem 0.25rem 0.75rem;
-    .borderRadius--l();
-
-    &:hover {
-      fill: #f5f8fd;
-    }
-  }
-}
-
-.MessagingInput--Checkbox {
-  margin-left: auto;
-  animation: fadein 0.25s;
-  .text--truncate();
-}
-
 .MessagingInput--InnerContainer {
   align-items: flex-end;
   width: 100%;
@@ -42,6 +14,39 @@
   .margin--right--xs();
   overflow-y: auto;
 }
+
+// ----- Info that shows above reply/text area
+
+.MessagingInput--TopInfo--Container {
+  .margin--bottom--2xs();
+}
+
+.MessagingInput--TopInfo--Checkbox {
+  margin-left: auto;
+  animation: fadein 0.25s;
+  .text--truncate();
+}
+
+.MessagingInput--TopInfo--Label {
+  color: @neutral_medium_gray;
+  .margin--right--m();
+}
+
+.MessagingInput--TopInfo--Label--hidden {
+  /* stylelint-disable */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+  /* stylelint-enable */
+}
+
+// ----- Reply
 
 .MessagingInput--Reply--Container {
   justify-content: center;
@@ -85,25 +90,7 @@
   margin-left: 0.0625rem; // 1 px because the FA icon is slightly off center
 }
 
-.MessagingInput--TextFieldLabel {
-  color: @neutral_medium_gray;
-  .margin--bottom--2xs();
-  .margin--right--m();
-}
-
-.MessagingInput--TextFieldLabelHidden {
-  /* stylelint-disable */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* added line */
-  border: 0;
-  /* stylelint-enable */
-}
+// ----- Text input and send button
 
 .MessagingInput--TextField {
   .padding--y--none();
@@ -145,6 +132,8 @@ button.MessagingInput--SendButton {
   line-height: normal;
 }
 
+// ----- Return key instructions underneath MessagingInput
+
 .MessagingInput--InstructionsLabel {
   color: @neutral_medium_gray;
   animation: fadein 0.25s;
@@ -166,6 +155,8 @@ button.MessagingInput--SendButton {
   .margin--left--m();
 }
 
+// ----- Attachments
+
 .MessagingInput--UploadedAttachments {
   .padding--top--m();
   .padding--bottom--xs();
@@ -173,6 +164,28 @@ button.MessagingInput--SendButton {
 
 .MessagingAttachment--ParentContainer {
   .margin--right--m();
+}
+
+.MessagingInput--ShowUploadAttachmentButton .FileInput {
+  height: @size_2xl;
+  .padding--none();
+  border: none;
+
+  // Hide FileInput after file has been selected and uploading has begun
+  &.FileInput--AttachmentIsUploading {
+    display: none;
+  }
+
+  .FileInput--Icon {
+    position: absolute;
+    right: 0.5rem;
+    margin: 0.25rem 0.5rem 0.25rem 0.75rem;
+    .borderRadius--l();
+
+    &:hover {
+      fill: #f5f8fd;
+    }
+  }
 }
 
 @keyframes fadein {

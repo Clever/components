@@ -6,6 +6,7 @@ import KeyCode from "../utils/KeyCode";
 import * as FontAwesome from "react-fontawesome";
 
 import "./MessagingInput.less";
+import { useRef, useImperativeHandle } from "react";
 
 function cssClass(element: string) {
   return `MessagingInput--${element}`;
@@ -70,9 +71,9 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     attachments,
     checkbox,
   } = props;
-  const textAreaRef = React.useRef<TextArea>(null);
+  const textAreaRef = useRef<TextArea>(null);
 
-  React.useImperativeHandle(ref, () => ({
+  useImperativeHandle(ref, () => ({
     focus: () => {
       if (textAreaRef.current) {
         textAreaRef.current.focus();
@@ -91,17 +92,17 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
       alignItems={ItemAlign.START}
     >
       <FlexBox className={cssClass("InnerContainer")}>
-        <FlexBox column className={cx(cssClass("InnerContainer--Content"))}>
-          <FlexBox grow alignItems="center">
+        <FlexBox column className={cssClass("InnerContainer--Content")}>
+          <FlexBox alignItems="center" className={cssClass("TopInfo--Container")} grow>
             <label
               htmlFor={TEXT_FIELD_NAME}
-              className={cssClass(replyTo ? "TextFieldLabelHidden" : "TextFieldLabel")}
+              className={cssClass(replyTo ? "TopInfo--Label--hidden" : "TopInfo--Label")}
             >
               {labelText}
             </label>
             {checkbox?.isVisible && (
               <Checkbox
-                className={cssClass("Checkbox")}
+                className={cssClass("TopInfo--Checkbox")}
                 checked={checkbox.isChecked}
                 onChange={({ checked }) => checkbox.onChange(checked)}
               >
