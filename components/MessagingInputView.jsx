@@ -243,6 +243,12 @@ export default class MessagingInputView extends React.PureComponent {
             description: "Function that's called when the text is submitted.",
           },
           {
+            name: "onFocus",
+            type: "() => void",
+            description: "Function that's called when the input is focused.",
+            optional: true,
+          },
+          {
             name: "onBlur",
             type: "() => void",
             description: "Function that's called when the input is unfocused.",
