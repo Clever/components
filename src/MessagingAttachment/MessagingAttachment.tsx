@@ -2,6 +2,7 @@ import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
+import { AttachmentPreview } from "../AttachmentPreview";
 import { FlexBox } from "../flex";
 
 import "./MessagingAttachment.less";
@@ -12,7 +13,11 @@ function cssClass(element: string) {
 
 type Props = {
   attachmentID: string;
+  // TODO: should this be optional?
+  attachmentURL: string;
   errorMsg?: string;
+  // TODO: is this needed, or only mimeType?
+  fileType: AttachmentFileType;
   icon: React.ReactNode;
   onClickAttachment: (attachmentID: string) => void;
   onRemoveAttachment?: (attachmentID: string) => void;
@@ -20,11 +25,15 @@ type Props = {
   subtitle?: string;
   isUpload?: boolean;
   uploadComplete?: boolean;
+  mimeType?: string;
 };
 
+// TODO: should I use a discriminated union here? to keep the props neat?
 export const MessagingAttachment: React.FC<Props> = ({
   attachmentID,
+  attachmentURL,
   errorMsg,
+  fileType,
   icon,
   onClickAttachment,
   onRemoveAttachment,
@@ -32,7 +41,13 @@ export const MessagingAttachment: React.FC<Props> = ({
   subtitle,
   isUpload,
   uploadComplete,
+  mimeType,
 }: Props) => {
+  const [attachmentPreviewIsShowing, setAttachmentPreviewIsShowing] = React.useState(false);
+
+  const imageMimeTypes = ["image/jpeg", "image/gif", "image/png", "image/svg+xml"];
+  const isImageAttachment = imageMimeTypes.includes(mimeType);
+
   return (
     <FlexBox
       className={cx(cssClass("ParentContainer"), isUpload && cssClass("ParentContainer--IsUpload"))}
@@ -53,7 +68,13 @@ export const MessagingAttachment: React.FC<Props> = ({
           isUpload && !uploadComplete && cssClass("IsUploading"),
           !!errorMsg && cssClass("Error"),
         )}
-        onClick={() => onClickAttachment(attachmentID)}
+        onClick={() => {
+          if (isImageAttachment) {
+            setAttachmentPreviewIsShowing(true);
+          } else {
+            onClickAttachment(attachmentID);
+          }
+        }}
       >
         <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
         <FlexBox className={cssClass("TextContainer")} column>
@@ -61,6 +82,20 @@ export const MessagingAttachment: React.FC<Props> = ({
           {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
         </FlexBox>
       </FlexBox>
+      {attachmentPreviewIsShowing && isImageAttachment && (
+        <AttachmentPreview
+          attachmentID={attachmentID}
+          attachmentName={title}
+          attachmentURL={attachmentURL}
+          fileType={fileType}
+          onClickDownload={() => {
+            // TODO: remove this console.log
+            console.log("download!");
+            onClickAttachment(attachmentID);
+          }}
+          onClose={() => setAttachmentPreviewIsShowing(false)}
+        />
+      )}
     </FlexBox>
   );
 };
