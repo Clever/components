@@ -1,10 +1,10 @@
-**Jira:**
+# Jira: [TKT-000](https://clever.atlassian.net/browse/TKT-000)
 
-**Overview:**
+# Overview:
 
-**Screenshots/GIFs:**
+# Screenshots/GIFs:
 
-**Testing:**
+# Testing:
 
 - [ ] Unit tests
 - Manual tests:
@@ -12,7 +12,7 @@
   - [ ] Safari
   - [ ] IE11
 
-**Roll Out:**
+# Roll Out:
 
 - Before merging:
   - [ ] Updated docs
