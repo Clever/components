@@ -90,16 +90,18 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     >
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cssClass("InnerContainer--Content")}>
-          <FlexBox alignItems="center" className={cssClass("TopInfo--Container")} grow>
+          <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
             <label
               htmlFor={TEXT_FIELD_NAME}
-              className={cssClass(replyTo ? "TopInfo--Label--hidden" : "TopInfo--Label")}
+              className={cssClass(
+                replyTo ? "LabelAndCheckbox--Label--hidden" : "LabelAndCheckbox--Label",
+              )}
             >
               {labelText}
             </label>
             {checkbox?.isVisible && (
               <Checkbox
-                className={cssClass("TopInfo--Checkbox")}
+                className={cssClass("LabelAndCheckbox--Checkbox")}
                 checked={checkbox.isChecked}
                 onChange={({ checked }) => checkbox.onChange(checked)}
               >
