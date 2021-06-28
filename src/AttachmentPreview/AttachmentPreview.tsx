@@ -2,7 +2,7 @@ import * as classnames from "classnames";
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
-import { FlexBox } from "../flex";
+import { FlexBox, FlexItem } from "../flex";
 import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/MessagingAttachment";
 
 import "./AttachmentPreview.less";
@@ -30,6 +30,7 @@ export const cssClass = {
   CLOSE_BUTTON: "AttachmentPreview--CloseButton",
   PREVIEW_WINDOW: "AttachmentPreview--PreviewWindow",
   IMAGE_CONTAINER: "AttachmentPreview--ImageContainer",
+  FOOTER_BAR: "AttachmentPreview--FooterBar",
 };
 
 /**
@@ -113,6 +114,22 @@ export const AttachmentPreview: React.FC<Props> = ({
             }}
           />
         </FlexBox>
+      </FlexBox>
+      <FlexBox className={cssClass.FOOTER_BAR}>
+        <FlexItem
+          grow
+          className={cssClass.DOWNLOAD_CONTAINER}
+          tabIndex={0}
+          onClick={() => onClickDownload(attachmentID)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onClickDownload(attachmentID);
+            }
+          }}
+        >
+          <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
+          <span>{downloadButtonText || "Save"}</span>
+        </FlexItem>
       </FlexBox>
     </div>
   );

@@ -2,8 +2,9 @@
 
 // TODO: rename this...? do I have to....?
 @ZZ_TOP: 100;
-@HEADER_BAR_HEIGHT: @size_5xl; // 4rem
-@DESKTOP_BUFFER_SIZE: @size_l; // 1.5rem
+@HEADER_BAR_HEIGHT: @size_5xl;
+@DESKTOP_BUFFER_SIZE: @size_l;
+@MOBILE_BUFFER_SIZE: @size_xs;
 
 // TODO: can I add this to sizing.less?
 @size_ml: 1.25rem;
@@ -99,7 +100,7 @@
 .AttachmentPreview--DownloadButton {
   .margin--right--xs();
   line-height: @size_l;
-  display: inline-block;
+  // display: inline-block;
 }
 
 .AttachmentPreview--CloseButton {
@@ -113,5 +114,41 @@
   vertical-align: middle;
 }
 
-@media only screen and (max-width: @breakpointS) {
+.AttachmentPreview--FooterBar {
+  display: none;
+}
+
+// TODO: should I do it this way or do the destop stuff with with the .breakpointM
+@media only screen and (max-width: @breakpointM) {
+  .AttachmentPreview--PreviewWindow {
+    top: calc(@HEADER_BAR_HEIGHT + @MOBILE_BUFFER_SIZE);
+    height: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
+  }
+
+  .AttachmentPreview--ImageContainer {
+    width: calc(100vw - (2 * @MOBILE_BUFFER_SIZE));
+    height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @MOBILE_BUFFER_SIZE));
+  }
+
+  .AttachmentPreview--FooterBar {
+    display: flex;
+    background-color: @neutral_black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: @HEADER_BAR_HEIGHT;
+    z-index: @ZZ_TOP + 1;
+    .alignItems(center);
+    color: @neutral_white;
+  }
+
+  .AttachmentPreview--HeaderBar .AttachmentPreview--DownloadContainer {
+    display: none;
+  }
+
+  .AttachmentPreview--FooterBar .AttachmentPreview--DownloadContainer {
+    text-align: right;
+    .margin--right--m();
+  }
 }
