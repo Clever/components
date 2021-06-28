@@ -67,31 +67,40 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   title:
                     "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
                   subtitle: "Click to download",
+                  mimeType: "application/msword",
                 },
                 {
                   key: "2",
                   attachmentID: "2",
-                  icon: <FileAttachmentIcon fileType={"image"} />,
+                  attachmentURL:
+                    "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1",
+                  fileType: "png",
+                  icon: <FileAttachmentIcon fileType={"png"} />,
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Flyer.png",
                   subtitle: "Click to view",
+                  mimeType: "image/png",
                 },
                 {
                   key: "3",
                   attachmentID: "3",
-                  icon: <FileAttachmentIcon fileType={"audio"} />,
+                  icon: <FileAttachmentIcon fileType={"m4a"} />,
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Morning message.m4a",
                   subtitle: "Click to download",
+                  mimeType: "audio/mpeg",
                 },
               ].map((attachment) => (
                 <MessagingAttachment
                   key={attachment.key}
                   attachmentID={attachment.attachmentID}
+                  attachmentURL={attachment.attachmentURL}
+                  fileType={attachment.fileType}
                   icon={attachment.icon}
                   onClickAttachment={attachment.onClickAttachment}
                   title={attachment.title}
                   subtitle={attachment.subtitle}
+                  mimeType={attachment.mimeType}
                 />
               ))}
             </FlexBox>
@@ -111,7 +120,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "5",
                   attachmentID: "5",
-                  icon: <FileAttachmentIcon fileType={"image"} isUpload />,
+                  icon: <FileAttachmentIcon fileType={"png"} isUpload />,
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
                   title: "Flyer.png",
@@ -121,7 +130,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "6",
                   attachmentID: "6",
-                  icon: <FileAttachmentIcon fileType={"audio"} isUpload uploadComplete />,
+                  icon: <FileAttachmentIcon fileType={"m4a"} isUpload uploadComplete />,
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
                   title: "Hover over me.m4a",
@@ -134,7 +143,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   attachmentID: "7",
                   icon: (
                     <FileAttachmentIcon
-                      fileType={"audio"}
+                      fileType={"m4a"}
                       isUpload
                       errorMsg={"File cannot exceed 10 MB"}
                     />
