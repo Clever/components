@@ -22,26 +22,21 @@ interface Props {
     onChange: (value: boolean) => void;
   };
   disableSendButton?: boolean;
-  /** Temporarily added to allow overriding the text with a translation. */
-  labelText?: string;
+  newlineOnEnter?: boolean;
   onBlur?: () => void;
   onChange: (newValue: string) => void;
   onFocus?: () => void;
-  // optional callback for cancelling reply
   onReplyCancel?: () => void;
-  // onSubmit accepts a value rather than submitting the current message value
-  //  so that we may trim it precisely before the send happens. Otherwise,
-  //  the consumer would have to handle the trim themselves.
   onSubmit: (message: string) => void;
-  newlineOnEnter?: boolean;
-  /** Temporarily added to allow overriding the text with a translation. */
-  // optional content to display when replying to a message
   replyTo?: React.ReactNode;
-  sendButtonText?: string;
   showReturnKeyInstructions?: boolean;
   showUploadAttachmentButton?: boolean;
   store?: (file, callbacks) => void;
   value: string;
+
+  // Allows overriding the text with a translation
+  labelText?: string;
+  sendButtonText?: string;
 }
 
 export interface MessagingInputHandle {
