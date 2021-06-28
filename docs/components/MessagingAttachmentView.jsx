@@ -62,7 +62,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "1",
                   attachmentID: "1",
-                  icon: <FileAttachmentIcon fileType={"doc"} />,
+                  fileType: "doc",
                   onClickAttachment: () => console.log("clicked!"),
                   title:
                     "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
@@ -75,7 +75,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   attachmentURL:
                     "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1",
                   fileType: "png",
-                  icon: <FileAttachmentIcon fileType={"png"} />,
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Flyer.png",
                   subtitle: "Click to view",
@@ -84,7 +83,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "3",
                   attachmentID: "3",
-                  icon: <FileAttachmentIcon fileType={"m4a"} />,
+                  fileType: "m4a",
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Morning message.m4a",
                   subtitle: "Click to download",
@@ -110,7 +109,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "4",
                   attachmentID: "4",
-                  icon: <FileAttachmentIcon fileType={"doc"} isUpload />,
+                  fileType: "doc",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
                   title: "MyCoolDoclkasjdlkajsdlkasjdlkasjdlkasjdlsakjd.doc",
@@ -120,7 +119,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "5",
                   attachmentID: "5",
-                  icon: <FileAttachmentIcon fileType={"png"} isUpload />,
+                  fileType: "png",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
                   title: "Flyer.png",
@@ -130,7 +129,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "6",
                   attachmentID: "6",
-                  icon: <FileAttachmentIcon fileType={"m4a"} isUpload uploadComplete />,
+                  fileType: "m4a",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
                   title: "Hover over me.m4a",
@@ -141,13 +140,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "7",
                   attachmentID: "7",
-                  icon: (
-                    <FileAttachmentIcon
-                      fileType={"m4a"}
-                      isUpload
-                      errorMsg={"File cannot exceed 10 MB"}
-                    />
-                  ),
+                  fileType: "doc",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
                   errorMsg: "File cannot exceed 10 MB",
@@ -179,6 +172,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
   _renderProps() {
     return (
       <>
+        {/* TODO: add new props */}
         <PropDocumentation
           title="<MessagingAttachment /> Props"
           availableProps={[

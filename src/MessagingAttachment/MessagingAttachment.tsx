@@ -18,7 +18,7 @@ type Props = {
   errorMsg?: string;
   // TODO: is this needed, or only mimeType?
   fileType: AttachmentFileType;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   onClickAttachment: (attachmentID: string) => void;
   onRemoveAttachment?: (attachmentID: string) => void;
   title?: string;
@@ -76,7 +76,15 @@ export const MessagingAttachment: React.FC<Props> = ({
           }
         }}
       >
-        <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
+        <FlexBox className={cssClass("IconContainer")}>
+          {icon || (
+            <FileAttachmentIcon
+              fileType={fileType}
+              isUpload={isUpload}
+              uploadComplete={uploadComplete}
+            />
+          )}
+        </FlexBox>
         <FlexBox className={cssClass("TextContainer")} column>
           <span className={cssClass("Title")}>{errorMsg || title}</span>
           {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
