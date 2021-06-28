@@ -1,12 +1,12 @@
 import * as React from "react";
+import { useRef, useImperativeHandle } from "react";
+import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
 import { TextArea, Button, FlexBox, ItemAlign, Checkbox } from "../index";
 import KeyCode from "../utils/KeyCode";
-import * as FontAwesome from "react-fontawesome";
 
 import "./MessagingInput.less";
-import { useRef, useImperativeHandle } from "react";
 
 function cssClass(element: string) {
   return `MessagingInput--${element}`;
