@@ -13,34 +13,35 @@ function cssClass(element: string) {
 }
 
 interface Props {
-  className?: string;
-  newlineOnEnter?: boolean;
-  value: string;
-  onChange: (newValue: string) => void;
-  // onSubmit accepts a value rather than submitting the current message value
-  //  so that we may trim it precisely before the send happens. Otherwise,
-  //  the consumer would have to handle the trim themselves.
-  onSubmit: (message: string) => void;
-  onBlur?: () => void;
-  // optional content to display when replying to a message
-  replyTo?: React.ReactNode;
-  // optional callback for cancelling reply
-  onReplyCancel?: () => void;
-  /** Temporarily added to allow overriding the text with a translation. */
-  sendButtonText?: string;
-  /** Temporarily added to allow overriding the text with a translation. */
-  labelText?: string;
-  disableSendButton?: boolean;
-  showReturnKeyInstructions?: boolean;
-  showUploadAttachmentButton?: boolean;
-  store?: (file, callbacks) => void;
   attachments?: React.ReactNode[];
+  className?: string;
   checkbox?: {
     isChecked: boolean;
     isVisible: boolean;
     label: React.ReactNode;
     onChange: (value: boolean) => void;
   };
+  disableSendButton?: boolean;
+  /** Temporarily added to allow overriding the text with a translation. */
+  labelText?: string;
+  onBlur?: () => void;
+  onChange: (newValue: string) => void;
+  onFocus?: () => void;
+  // optional callback for cancelling reply
+  onReplyCancel?: () => void;
+  // onSubmit accepts a value rather than submitting the current message value
+  //  so that we may trim it precisely before the send happens. Otherwise,
+  //  the consumer would have to handle the trim themselves.
+  onSubmit: (message: string) => void;
+  newlineOnEnter?: boolean;
+  /** Temporarily added to allow overriding the text with a translation. */
+  // optional content to display when replying to a message
+  replyTo?: React.ReactNode;
+  sendButtonText?: string;
+  showReturnKeyInstructions?: boolean;
+  showUploadAttachmentButton?: boolean;
+  store?: (file, callbacks) => void;
+  value: string;
 }
 
 export interface MessagingInputHandle {
@@ -54,22 +55,23 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   ref,
 ) => {
   const {
+    attachments,
+    checkbox,
     className,
-    newlineOnEnter,
-    value,
-    onChange,
-    onSubmit,
-    onBlur,
-    replyTo,
-    onReplyCancel,
-    sendButtonText = "Send",
-    labelText = "Send a message",
     disableSendButton,
+    labelText = "Send a message",
+    newlineOnEnter,
+    onBlur,
+    onChange,
+    onFocus,
+    onReplyCancel,
+    onSubmit,
+    replyTo,
+    sendButtonText = "Send",
     showReturnKeyInstructions,
     showUploadAttachmentButton,
     store,
-    attachments,
-    checkbox,
+    value,
   } = props;
   const textAreaRef = useRef<TextArea>(null);
 
@@ -150,6 +152,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             }}
             placeholder={replyTo ? labelText : ""}
             onBlur={onBlur}
+            onFocus={onFocus}
             autoResize
             // The field starts with `rows + 1` rows, so
             //  passing in 0 gets us the desired starting height.
