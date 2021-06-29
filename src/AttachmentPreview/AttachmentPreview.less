@@ -1,7 +1,7 @@
 @import (reference) "../less/utilities";
 
 // TODO: rename this...? do I have to....?
-@ZZ_TOP: 100;
+@ZZ_TOP: 250;
 @HEADER_BAR_HEIGHT: @size_5xl;
 @DESKTOP_BUFFER_SIZE: @size_l;
 @MOBILE_BUFFER_SIZE: @size_xs;
@@ -72,12 +72,15 @@
   // render image as larger as natural size, or scale down to fit screen
   object-fit: scale-down;
 
+  // This makes the img div only as large as the image for clicking the background.
+  // Unfortunately, its breaking scale-down.
+  // Also, this doesn't work on Edge/IE.
+  width: fit-content;
   width: -moz-fit-content;
   width: -webkit-fit-content;
-  width: fit-content;
+  height: fit-content;
   height: -moz-fit-content;
   height: -webkit-fit-content;
-  height: fit-content;
 
   // TODO: why isn't this working?
   .borderRadius--s();
@@ -122,12 +125,12 @@
 @media only screen and (max-width: @breakpointM) {
   .AttachmentPreview--PreviewWindow {
     top: calc(@HEADER_BAR_HEIGHT + @MOBILE_BUFFER_SIZE);
-    height: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
+    height: calc(100vh - (2 * @HEADER_BAR_HEIGHT) - (2 * @MOBILE_BUFFER_SIZE));
   }
 
   .AttachmentPreview--ImageContainer {
     width: calc(100vw - (2 * @MOBILE_BUFFER_SIZE));
-    height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @MOBILE_BUFFER_SIZE));
+    height: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
   }
 
   .AttachmentPreview--FooterBar {
