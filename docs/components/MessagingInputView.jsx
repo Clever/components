@@ -240,7 +240,14 @@ export default class MessagingInputView extends React.PureComponent {
           {
             name: "onSubmit",
             type: "(message: string) => void",
-            description: "Function that's called when the text is submitted.",
+            description:
+              "Function that's called when the text is submitted. onSubmit accepts a value rather than submitting the current message value so that we may trim it before the send happens. Otherwise, the consumer would have to handle the trim themselves.",
+          },
+          {
+            name: "onFocus",
+            type: "() => void",
+            description: "Function that's called when the input is focused.",
+            optional: true,
           },
           {
             name: "onBlur",

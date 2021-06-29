@@ -1,9 +1,10 @@
 import * as React from "react";
+import { useRef, useImperativeHandle } from "react";
+import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
 import { TextArea, Button, FlexBox, ItemAlign, Checkbox } from "../index";
 import KeyCode from "../utils/KeyCode";
-import * as FontAwesome from "react-fontawesome";
 
 import "./MessagingInput.less";
 
@@ -12,34 +13,30 @@ function cssClass(element: string) {
 }
 
 interface Props {
-  className?: string;
-  newlineOnEnter?: boolean;
-  value: string;
-  onChange: (newValue: string) => void;
-  // onSubmit accepts a value rather than submitting the current message value
-  //  so that we may trim it precisely before the send happens. Otherwise,
-  //  the consumer would have to handle the trim themselves.
-  onSubmit: (message: string) => void;
-  onBlur?: () => void;
-  // optional content to display when replying to a message
-  replyTo?: React.ReactNode;
-  // optional callback for cancelling reply
-  onReplyCancel?: () => void;
-  /** Temporarily added to allow overriding the text with a translation. */
-  sendButtonText?: string;
-  /** Temporarily added to allow overriding the text with a translation. */
-  labelText?: string;
-  disableSendButton?: boolean;
-  showReturnKeyInstructions?: boolean;
-  showUploadAttachmentButton?: boolean;
-  store?: (file, callbacks) => void;
   attachments?: React.ReactNode[];
+  className?: string;
   checkbox?: {
     isChecked: boolean;
     isVisible: boolean;
     label: React.ReactNode;
     onChange: (value: boolean) => void;
   };
+  disableSendButton?: boolean;
+  newlineOnEnter?: boolean;
+  onBlur?: () => void;
+  onChange: (newValue: string) => void;
+  onFocus?: () => void;
+  onReplyCancel?: () => void;
+  onSubmit: (message: string) => void;
+  replyTo?: React.ReactNode;
+  showReturnKeyInstructions?: boolean;
+  showUploadAttachmentButton?: boolean;
+  store?: (file, callbacks) => void;
+  value: string;
+
+  // Allows overriding the text with a translation
+  labelText?: string;
+  sendButtonText?: string;
 }
 
 export interface MessagingInputHandle {
@@ -53,26 +50,27 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   ref,
 ) => {
   const {
+    attachments,
+    checkbox,
     className,
-    newlineOnEnter,
-    value,
-    onChange,
-    onSubmit,
-    onBlur,
-    replyTo,
-    onReplyCancel,
-    sendButtonText = "Send",
-    labelText = "Send a message",
     disableSendButton,
+    labelText = "Send a message",
+    newlineOnEnter,
+    onBlur,
+    onChange,
+    onFocus,
+    onReplyCancel,
+    onSubmit,
+    replyTo,
+    sendButtonText = "Send",
     showReturnKeyInstructions,
     showUploadAttachmentButton,
     store,
-    attachments,
-    checkbox,
+    value,
   } = props;
-  const textAreaRef = React.useRef<TextArea>(null);
+  const textAreaRef = useRef<TextArea>(null);
 
-  React.useImperativeHandle(ref, () => ({
+  useImperativeHandle(ref, () => ({
     focus: () => {
       if (textAreaRef.current) {
         textAreaRef.current.focus();
@@ -91,17 +89,19 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
       alignItems={ItemAlign.START}
     >
       <FlexBox className={cssClass("InnerContainer")}>
-        <FlexBox column className={cx(cssClass("InnerContainer--Content"))}>
-          <FlexBox grow alignItems="center">
+        <FlexBox column className={cssClass("InnerContainer--Content")}>
+          <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
             <label
               htmlFor={TEXT_FIELD_NAME}
-              className={cssClass(replyTo ? "TextFieldLabelHidden" : "TextFieldLabel")}
+              className={cssClass(
+                replyTo ? "LabelAndCheckbox--Label--hidden" : "LabelAndCheckbox--Label",
+              )}
             >
               {labelText}
             </label>
             {checkbox?.isVisible && (
               <Checkbox
-                className={cssClass("Checkbox")}
+                className={cssClass("LabelAndCheckbox--Checkbox")}
                 checked={checkbox.isChecked}
                 onChange={({ checked }) => checkbox.onChange(checked)}
               >
@@ -149,6 +149,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             }}
             placeholder={replyTo ? labelText : ""}
             onBlur={onBlur}
+            onFocus={onFocus}
             autoResize
             // The field starts with `rows + 1` rows, so
             //  passing in 0 gets us the desired starting height.
