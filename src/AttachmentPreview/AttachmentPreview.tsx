@@ -47,19 +47,25 @@ export const AttachmentPreview: React.FC<Props> = ({
   onClickDownload,
   onClose,
 }) => {
-  // const [showingPreview, setShowingPreview] = React.useState(false);
+  function onKeyDownCloseHandler(e, keyMatch?: string) {
+    // TODO: is there a standardized way to do this in dewey?
 
-  // function showPreview() {
-  //   setShowingPreview(true);
-  // }
+    const matchKey = keyMatch || "Escape";
 
-  // function hidePreview() {
-  //   setShowingPreview(false);
-  // }
+    if (e.key === matchKey) {
+      onClose();
+    }
+  }
+
+  function onKeyDownDownloadHandler(e) {
+    if (e.key === "Enter") {
+      onClickDownload(attachmentID);
+    }
+  }
 
   const preview = (
     <div className={classnames(cssClass.CONTAINER, className)}>
-      <div className={cssClass.BACKGROUND} onClick={onClose} aria-hidden="true" />
+      <div className={cssClass.BACKGROUND} aria-hidden="true" />
       <FlexBox className={cssClass.HEADER_BAR}>
         <FileAttachmentIcon className={cssClass.FILE_ICON} fileType={fileType} />
         <FlexBox grow className={cssClass.ATTACHMENT_NAME}>
@@ -69,11 +75,7 @@ export const AttachmentPreview: React.FC<Props> = ({
           className={cssClass.DOWNLOAD_CONTAINER}
           tabIndex={0}
           onClick={() => onClickDownload(attachmentID)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              onClickDownload(attachmentID);
-            }
-          }}
+          onKeyDown={(e) => onKeyDownDownloadHandler(e)}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonText || "Download"}</span>
@@ -83,17 +85,13 @@ export const AttachmentPreview: React.FC<Props> = ({
           className={cssClass.CLOSE_BUTTON}
           tabIndex={0}
           onClick={onClose}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              onClose();
-            }
-          }}
+          onKeyDown={(e) => onKeyDownCloseHandler(e, "Enter")}
         >
           <FontAwesome name="times" />
         </FlexBox>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
-        <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={onClose}>
+        <FlexBox className={cssClass.IMAGE_CONTAINER}>
           <img
             // TODO: is this use of tabIndex kosher?
             tabIndex={0}
@@ -105,13 +103,9 @@ export const AttachmentPreview: React.FC<Props> = ({
             // least one keyboard event"
 
             // TODO: is there a way to just tell Axe linter to ignore the above line?
-            onKeyDown={(e) => {
-              // TODO: is there a standardized way to do this in dewey?
-              // TODO: Should this just be on the image, or elsewhere too?
-              if (e.key === "Escape") {
-                onClose();
-              }
-            }}
+
+            // TODO: Should this just be on the image, or elsewhere too?
+            onKeyDown={(e) => onKeyDownCloseHandler(e)}
           />
         </FlexBox>
       </FlexBox>
@@ -121,11 +115,7 @@ export const AttachmentPreview: React.FC<Props> = ({
           className={cssClass.DOWNLOAD_CONTAINER}
           tabIndex={0}
           onClick={() => onClickDownload(attachmentID)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              onClickDownload(attachmentID);
-            }
-          }}
+          onKeyDown={(e) => onKeyDownDownloadHandler(e)}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonText || "Save"}</span>
