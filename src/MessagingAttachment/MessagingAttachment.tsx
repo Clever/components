@@ -97,8 +97,6 @@ export const MessagingAttachment: React.FC<Props> = ({
           attachmentURL={attachmentURL}
           fileType={fileType}
           onClickDownload={() => {
-            // TODO: remove this console.log
-            console.log("download!");
             onClickAttachment(attachmentID);
           }}
           onClose={() => setAttachmentPreviewIsShowing(false)}

@@ -53,15 +53,15 @@
   top: calc(@HEADER_BAR_HEIGHT + @DESKTOP_BUFFER_SIZE);
   left: 50%;
   transform: translateX(-50%);
-  // width: 100%;
-  height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
+  height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
+  width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
   z-index: @ZZ_TOP + 1;
 }
 
 .AttachmentPreview--ImageContainer {
   margin: 0 auto;
-  width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
-  height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
+  height: 100%;
+  width: 100%;
   z-index: @ZZ_TOP + 2;
   .alignItems(center);
   .justifyContent(center);
@@ -72,27 +72,25 @@
   // render image as larger as natural size, or scale down to fit screen
   object-fit: scale-down;
 
-  // This makes the img div only as large as the image for clicking the background.
+  height: 100%;
+  width: 100%;
+
+  // TODO: fix this
+  // This makes the img div only as large as the image, so none of the background is eclipsed and
+  // the full bg area is clickable.
   // Unfortunately, its breaking scale-down.
   // Also, this doesn't work on Edge/IE.
-  width: fit-content;
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  height: fit-content;
-  height: -moz-fit-content;
-  height: -webkit-fit-content;
+  // width: fit-content;
+  // width: -moz-fit-content;
+  // width: -webkit-fit-content;
+  // height: fit-content;
+  // height: -moz-fit-content;
+  // height: -webkit-fit-content;
 
   // TODO: why isn't this working?
   .borderRadius--s();
   z-index: @ZZ_TOP + 3;
 }
-
-// @supports (-ms-ime-align: auto) and (-webkit-text-stroke: initial) {
-//   .AttachmentPreview--PreviewWindow img {
-//     width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
-//     height: auto;
-//   }
-// }
 
 .AttachmentPreview--DownloadContainer {
   .margin--right--xl();
@@ -126,11 +124,7 @@
   .AttachmentPreview--PreviewWindow {
     top: calc(@HEADER_BAR_HEIGHT + @MOBILE_BUFFER_SIZE);
     height: calc(100vh - (2 * @HEADER_BAR_HEIGHT) - (2 * @MOBILE_BUFFER_SIZE));
-  }
-
-  .AttachmentPreview--ImageContainer {
     width: calc(100vw - (2 * @MOBILE_BUFFER_SIZE));
-    height: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
   }
 
   .AttachmentPreview--FooterBar {
