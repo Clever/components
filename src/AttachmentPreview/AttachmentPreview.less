@@ -9,9 +9,6 @@
 // TODO: can I add this to sizing.less?
 @size_ml: 1.25rem;
 
-// .AttachmentPreview {
-// }
-
 .AttachmentPreview--Background {
   position: fixed;
   height: 100%;
@@ -36,7 +33,6 @@
 }
 
 .AttachmentPreview--AttachmentName {
-  // color: @neutral_white;
   line-height: @size_l;
 }
 
@@ -67,13 +63,13 @@
   .justifyContent(center);
 }
 
-// TODO: change to .AttachmentPreview--ImageContainer
 .AttachmentPreview--PreviewWindow img {
   // render image as larger as natural size, or scale down to fit screen
   object-fit: scale-down;
 
   height: 100%;
   width: 100%;
+  z-index: @ZZ_TOP + 3;
 
   // TODO: fix this
   // This makes the img div only as large as the image, so none of the background is eclipsed and
@@ -87,9 +83,10 @@
   // height: -moz-fit-content;
   // height: -webkit-fit-content;
 
-  // TODO: why isn't this working?
+  // TODO: This isn't working because the img element is larger than the rendered image, so the
+  // border radius is being cropped at the corners of the element, not the rendered image. This will
+  // be fixed when above fit-content issues are solved
   .borderRadius--s();
-  z-index: @ZZ_TOP + 3;
 }
 
 .AttachmentPreview--DownloadContainer {
@@ -101,7 +98,6 @@
 .AttachmentPreview--DownloadButton {
   .margin--right--xs();
   line-height: @size_l;
-  // display: inline-block;
 }
 
 .AttachmentPreview--CloseButton {
@@ -119,7 +115,6 @@
   display: none;
 }
 
-// TODO: should I do it this way or do the destop stuff with with the .breakpointM
 @media only screen and (max-width: @breakpointM) {
   .AttachmentPreview--PreviewWindow {
     top: calc(@HEADER_BAR_HEIGHT + @MOBILE_BUFFER_SIZE);
