@@ -1,7 +1,5 @@
 @import (reference) "../less/utilities";
 
-// TODO: rename this...? do I have to....?
-@ZZ_TOP: 250;
 @HEADER_BAR_HEIGHT: @size_5xl;
 @DESKTOP_BUFFER_SIZE: @size_l;
 @MOBILE_BUFFER_SIZE: @size_xs;
@@ -10,6 +8,7 @@
 @size_ml: 1.25rem;
 
 .AttachmentPreview--Background {
+  .zIndex--5;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -17,17 +16,16 @@
   left: 0;
   background: fade(@neutral_black, 60%);
   // TODO: is there a protocol/standard for z indexes?
-  z-index: @ZZ_TOP;
 }
 
 .AttachmentPreview--HeaderBar {
+  .zIndex--6;
   background-color: @neutral_black;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: @HEADER_BAR_HEIGHT;
-  z-index: @ZZ_TOP + 1;
   .alignItems(center);
   color: @neutral_white;
 }
@@ -45,31 +43,31 @@
 }
 
 .AttachmentPreview--PreviewWindow {
+  .zIndex--6;
   position: fixed;
   top: calc(@HEADER_BAR_HEIGHT + @DESKTOP_BUFFER_SIZE);
   left: 50%;
   transform: translateX(-50%);
   height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
   width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
-  z-index: @ZZ_TOP + 1;
 }
 
 .AttachmentPreview--ImageContainer {
+  .zIndex--7;
   margin: 0 auto;
   height: 100%;
   width: 100%;
-  z-index: @ZZ_TOP + 2;
   .alignItems(center);
   .justifyContent(center);
 }
 
 .AttachmentPreview--PreviewWindow img {
+  .zIndex--8;
   // render image as larger as natural size, or scale down to fit screen
   object-fit: scale-down;
 
   height: 100%;
   width: 100%;
-  z-index: @ZZ_TOP + 3;
 
   // TODO: fix this
   // This makes the img div only as large as the image, so none of the background is eclipsed and
@@ -123,6 +121,7 @@
   }
 
   .AttachmentPreview--FooterBar {
+    .zIndex--6;
     display: flex;
     background-color: @neutral_black;
     position: fixed;
@@ -130,7 +129,6 @@
     left: 0;
     width: 100%;
     height: @HEADER_BAR_HEIGHT;
-    z-index: @ZZ_TOP + 1;
     .alignItems(center);
     color: @neutral_white;
   }
