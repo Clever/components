@@ -182,16 +182,33 @@ export default class MessagingAttachmentView extends React.PureComponent {
               description: "Unique ID used to identify this attachment",
             },
             {
+              name: "attachmentURL",
+              type: "string",
+              description: "URL for the attachment",
+            },
+            {
               name: "errorMsg",
               type: "string",
               description: "Optional error message, used when there is an error uploading, etc.",
               optional: true,
             },
             {
+              name: "fileType",
+              type: "string",
+              description: "FileType for the attachment",
+            },
+            {
               name: "icon",
               type: "React.ReactNode",
               description:
-                "A ReactNode to use as the icon for the Attachment. Generally will be a call to <FileAttachmentIcon /> ",
+                "An optional ReactNode to use as the icon for the Attachment. Generally will be a call to <FileAttachmentIcon />. By default the icon is set using the fileType",
+              optional: true,
+            },
+            {
+              name: "mimeType",
+              type: "string",
+              description: "MimeType for the attachment",
+              optional: true,
             },
             {
               name: "onClickAttachment",

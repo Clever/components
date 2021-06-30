@@ -19,13 +19,13 @@ type Props = {
   // TODO: is this needed, or only mimeType?
   fileType: AttachmentFileType;
   icon?: React.ReactNode;
+  isUpload?: boolean;
+  mimeType?: string;
   onClickAttachment: (attachmentID: string) => void;
   onRemoveAttachment?: (attachmentID: string) => void;
-  title?: string;
   subtitle?: string;
-  isUpload?: boolean;
+  title?: string;
   uploadComplete?: boolean;
-  mimeType?: string;
 };
 
 // TODO: should I use a discriminated union here? to keep the props neat?
