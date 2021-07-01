@@ -8,13 +8,13 @@ import { matchDecorator, componentDecorator } from "./linkifyUtils";
 import "./MessagingBubble.less";
 
 const cssClasses = {
+  MESSAGE_ATTACHMENT_BASE: "MessagingBubble--Message--Attachment",
   MESSAGE_BASE: "MessagingBubble--Message",
   MESSAGE_CONTAINER_BASE: "MessagingBubble--Message--Container",
   MESSAGE_REPLY_BASE: "MessagingBubble--Message--Reply",
   MESSAGE_REPLY_PARENT: "MessagingBubble--Message--Reply--Parent",
-  MESSAGE_TIME_BUBBLE_CONTAINER_BASE: "MessagingBubble--Message--TimestampBubbleContainer",
   MESSAGE_TIMESTAMP_BASE: "MessagingBubble--Message--Timestamp",
-  MESSAGE_ATTACHMENT_BASE: "MessagingBubble--Message--Attachment",
+  MESSAGE_TIME_BUBBLE_CONTAINER_BASE: "MessagingBubble--Message--TimestampBubbleContainer",
   OWN_SUFFIX: "--Own",
   OTHER_SUFFIX: "--Other",
 };
@@ -42,6 +42,7 @@ export const MessagingBubble: React.FC<Props> = ({
   replyTo,
   attachments,
 }: Props) => {
+  const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
   const isOwnMessage = theme === "ownMessage";
   const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
   const containerClassNames = cx(className, `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`);
@@ -55,6 +56,7 @@ export const MessagingBubble: React.FC<Props> = ({
   const replyClassNames = cx(
     cssClasses.MESSAGE_BASE,
     `${cssClasses.MESSAGE_REPLY_BASE}${classSuffix}`,
+    children && `${cssClasses.MESSAGE_REPLY_BASE}--MarginBottom`,
   );
 
   const timeAndBubbleContainerClasses = cx(
@@ -74,15 +76,24 @@ export const MessagingBubble: React.FC<Props> = ({
   return (
     <FlexBox column className={containerClassNames}>
       <FlexBox className={timeAndBubbleContainerClasses}>
-        <span className={timestampClassNames}>{_formatDateForTimestamp(timestamp)}</span>
-        <div className={bubbleClassNames}>
+        {!hideBubble && (
+          <span className={timestampClassNames}>{_formatDateForTimestamp(timestamp)}</span>
+        )}
+        <div className={hideBubble ? null : bubbleClassNames}>
           {replyTo && <div className={replyClassNames}>{replyTo}</div>}
           <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
             {children}
           </Linkify>
         </div>
       </FlexBox>
-      {attachments?.length > 0 && <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>}
+      <FlexBox className={timeAndBubbleContainerClasses}>
+        {hideBubble && (
+          <span className={timestampClassNames}>{_formatDateForTimestamp(timestamp)}</span>
+        )}
+        {attachments?.length > 0 && (
+          <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>
+        )}
+      </FlexBox>
     </FlexBox>
   );
 };
