@@ -16,11 +16,9 @@ type Props = {
   // TODO: should this be optional?
   attachmentURL: string;
   errorMsg?: string;
-  // TODO: is this needed, or only mimeType?
   fileType: AttachmentFileType;
   icon?: React.ReactNode;
   isUpload?: boolean;
-  mimeType?: string;
   onClickAttachment: (attachmentID: string) => void;
   onRemoveAttachment?: (attachmentID: string) => void;
   subtitle?: string;
@@ -28,7 +26,7 @@ type Props = {
   uploadComplete?: boolean;
 };
 
-// TODO: should I use a discriminated union here? to keep the props neat?
+// TODO: replace with a discriminated union to keep the props neat
 export const MessagingAttachment: React.FC<Props> = ({
   attachmentID,
   attachmentURL,
@@ -41,12 +39,9 @@ export const MessagingAttachment: React.FC<Props> = ({
   subtitle,
   isUpload,
   uploadComplete,
-  mimeType,
 }: Props) => {
   const [attachmentPreviewIsShowing, setAttachmentPreviewIsShowing] = React.useState(false);
-
-  const imageMimeTypes = ["image/jpeg", "image/gif", "image/png", "image/svg+xml"];
-  const isImageAttachment = imageMimeTypes.includes(mimeType);
+  const isImageAttachment = fileTypeToIcon(fileType) === "image";
 
   return (
     <FlexBox

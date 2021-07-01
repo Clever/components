@@ -126,7 +126,7 @@ export default class AttachmentPreviewView extends React.PureComponent {
           {
             name: "onClose",
             type: "() => void",
-            description: "function to run on clicking the close button",
+            description: "Function to run on clicking the close button",
           },
         ]}
         className={cssClass.PROPS}

@@ -14,7 +14,8 @@ export interface Props {
   attachmentURL: string;
   className?: string;
   closeButtonAriaLabel?: string;
-  downloadButtonText?: string;
+  downloadButtonTextDesktop?: string;
+  downloadButtonTextMobile?: string;
   fileType: AttachmentFileType;
   onClickDownload: (attachmentID: string) => void;
   onClose: () => void;
@@ -44,7 +45,8 @@ export const AttachmentPreview: React.FC<Props> = ({
   attachmentURL,
   className,
   closeButtonAriaLabel,
-  downloadButtonText,
+  downloadButtonTextDesktop,
+  downloadButtonTextMobile,
   fileType,
   onClickDownload,
   onClose,
@@ -52,12 +54,12 @@ export const AttachmentPreview: React.FC<Props> = ({
   const ESC = 27;
 
   function handleKeyUp(e) {
-    console.log("\ne:", e);
     if (e.keyCode === ESC) {
       onClose();
     }
   }
 
+  // This is the react hooks version of componentDidMount() and componentWillUnmount()
   React.useEffect(() => {
     window.addEventListener("keyup", handleKeyUp);
     return () => {
@@ -79,7 +81,7 @@ export const AttachmentPreview: React.FC<Props> = ({
           onClick={() => onClickDownload(attachmentID)}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
-          <span>{downloadButtonText || "Download"}</span>
+          <span>{downloadButtonTextDesktop}</span>
         </Button>
         <Button
           type="linkPlain"
@@ -103,9 +105,14 @@ export const AttachmentPreview: React.FC<Props> = ({
           onClick={() => onClickDownload(attachmentID)}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
-          <span>{downloadButtonText || "Save"}</span>
+          <span>{downloadButtonTextMobile}</span>
         </Button>
       </FlexBox>
     </div>
   );
+};
+
+AttachmentPreview.defaultProps = {
+  downloadButtonTextDesktop: "Download",
+  downloadButtonTextMobile: "Save",
 };
