@@ -103,17 +103,19 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
         <div className={cssClass("senderIcon")}>{senderIcon}</div>
         <div className={cssClass("senderName")}>{senderName}</div>
       </FlexBox>
-      <div
-        className={cx(
-          cssClass("messageBody"),
-          !isExpanded && cssClass("messageBody--truncated"),
-          showEllipsis && cssClass("messageBody--ellipsis"),
-        )}
-      >
-        <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
-          {content}
-        </Linkify>
-      </div>
+      {content && (
+        <div
+          className={cx(
+            cssClass("messageBody"),
+            !isExpanded && cssClass("messageBody--truncated"),
+            showEllipsis && cssClass("messageBody--ellipsis"),
+          )}
+        >
+          <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
+            {content}
+          </Linkify>
+        </div>
+      )}
       {isMessageTruncated && isExpanded && (
         <FlexBox className={cssClass("messageTruncatedNotice")} alignItems="center">
           <span>
@@ -133,19 +135,22 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
           </span>
         </FlexBox>
       )}
-      {isExpanded && (
+      {(isExpanded || !content) && (
         <>
           {attachments?.length > 0 && (
             <FlexBox
               className={cx(
                 cssClass("attachmentContainer"),
                 cssClass(`attachmentContainer--${colorTheme}`),
+                !content && cssClass("attachmentContainer--marginTop"),
               )}
             >
               {attachments}
             </FlexBox>
           )}
-          <span className={cssClass(`messageDetails--${colorTheme}`)}>{messageDetails}</span>
+          {isExpanded && (
+            <span className={cssClass(`messageDetails--${colorTheme}`)}>{messageDetails}</span>
+          )}
         </>
       )}
       <Button
