@@ -46,6 +46,12 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "An AnnouncementBubble component",
   },
   {
+    componentLink: "attachment-preview",
+    componentImg: "attachment-preview.png",
+    componentName: "AttachmentPreview",
+    componentAlt: "A AttachmentPreview component",
+  },
+  {
     componentLink: "badge",
     componentImg: "badge-2.png",
     componentName: "Badge",

@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { IndexRedirect, Route, Router, hashHistory } from "react-router";
 
 import AlertBox2View from "./components/AlertBox2View";
+import AttachmentPreview from "./components/AttachmentPreviewView";
 import AnnouncementBubbleView from "./components/AnnouncementBubbleView";
 import ComponentsView from "./components/ComponentsView";
 import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
@@ -115,6 +116,7 @@ render(
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="alert-box-2(/*)" component={AlertBox2View} />
         <Route path="announcement-bubble(/*)" component={AnnouncementBubbleView} />
+        <Route path="attachment-preview(/*)" component={AttachmentPreview} />
         <Route path="badge(/*)" component={BadgeView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="checkbox(/*)" component={CheckboxView} />
