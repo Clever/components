@@ -67,7 +67,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   title:
                     "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
                   subtitle: "Click to download",
-                  mimeType: "application/msword",
                 },
                 {
                   key: "2",
@@ -78,7 +77,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Flyer.png",
                   subtitle: "Click to view",
-                  mimeType: "image/png",
                 },
                 {
                   key: "3",
@@ -87,7 +85,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   onClickAttachment: () => console.log("clicked!"),
                   title: "Morning message.m4a",
                   subtitle: "Click to download",
-                  mimeType: "audio/mpeg",
                 },
               ].map((attachment) => (
                 <MessagingAttachment
@@ -99,7 +96,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   onClickAttachment={attachment.onClickAttachment}
                   title={attachment.title}
                   subtitle={attachment.subtitle}
-                  mimeType={attachment.mimeType}
                 />
               ))}
             </FlexBox>
@@ -202,12 +198,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
               type: "React.ReactNode",
               description:
                 "An optional ReactNode to use as the icon for the Attachment. Generally will be a call to <FileAttachmentIcon />. By default the icon is set using the fileType",
-              optional: true,
-            },
-            {
-              name: "mimeType",
-              type: "string",
-              description: "MimeType for the attachment",
               optional: true,
             },
             {

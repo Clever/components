@@ -27,8 +27,7 @@ export default class AttachmentPreviewView extends React.PureComponent {
       id: "12345",
       title: "Raccooooooon.jpg",
       fileType: "jpg",
-      url:
-        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1",
+      url: "https://s3.amazonaws.com/assets.clever.com/Raccooooooon.jpg",
     };
 
     return (
