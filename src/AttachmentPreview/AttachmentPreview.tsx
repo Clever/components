@@ -1,9 +1,10 @@
 import * as classnames from "classnames";
 import * as React from "react";
+import { useEffect } from "react";
 import * as FontAwesome from "react-fontawesome";
 
 import { Button } from "../Button/Button";
-import { FlexBox } from "../flex";
+import { FlexBox, FlexItem } from "../flex";
 import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/MessagingAttachment";
 
 import "./AttachmentPreview.less";
@@ -35,6 +36,8 @@ export const cssClass = {
   FOOTER_BAR: "AttachmentPreview--FooterBar",
 };
 
+const ESC = 27;
+
 /**
  * A full page preview for messaging attachments.
  * Currently only used for images, but eventually will be used for PDFs and other attachment types.
@@ -45,14 +48,12 @@ export const AttachmentPreview: React.FC<Props> = ({
   attachmentURL,
   className,
   closeButtonAriaLabel,
-  downloadButtonTextDesktop,
-  downloadButtonTextMobile,
+  downloadButtonTextDesktop = "Download",
+  downloadButtonTextMobile = "Save",
   fileType,
   onClickDownload,
   onClose,
 }) => {
-  const ESC = 27;
-
   function handleKeyUp(e) {
     if (e.keyCode === ESC) {
       onClose();
@@ -60,7 +61,7 @@ export const AttachmentPreview: React.FC<Props> = ({
   }
 
   // This is the react hooks version of componentDidMount() and componentWillUnmount()
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("keyup", handleKeyUp);
     return () => {
       window.removeEventListener("keyup", handleKeyUp);
@@ -72,9 +73,9 @@ export const AttachmentPreview: React.FC<Props> = ({
       <div className={cssClass.BACKGROUND} aria-hidden="true" />
       <FlexBox className={cssClass.HEADER_BAR}>
         <FileAttachmentIcon className={cssClass.FILE_ICON} fileType={fileType} />
-        <FlexBox grow className={cssClass.ATTACHMENT_NAME}>
+        <FlexItem grow className={cssClass.ATTACHMENT_NAME}>
           {attachmentName}
-        </FlexBox>
+        </FlexItem>
         <Button
           type="linkPlain"
           className={cssClass.DOWNLOAD_CONTAINER}
@@ -100,7 +101,6 @@ export const AttachmentPreview: React.FC<Props> = ({
       <FlexBox className={cssClass.FOOTER_BAR}>
         <Button
           type="linkPlain"
-          grow
           className={cssClass.DOWNLOAD_CONTAINER}
           onClick={() => onClickDownload(attachmentID)}
         >
@@ -110,9 +110,4 @@ export const AttachmentPreview: React.FC<Props> = ({
       </FlexBox>
     </div>
   );
-};
-
-AttachmentPreview.defaultProps = {
-  downloadButtonTextDesktop: "Download",
-  downloadButtonTextMobile: "Save",
 };
