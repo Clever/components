@@ -67,7 +67,6 @@
   .zIndex--8;
   // render image as larger as natural size, or scale down to fit screen
   object-fit: scale-down;
-
   height: 100%;
   width: 100%;
 
@@ -89,18 +88,42 @@
   .borderRadius--s();
 }
 
-.AttachmentPreview--DownloadContainer {
+// need to override Button styling, hence all the `color: @neutral_white !important;`
+.Button.AttachmentPreview--DownloadContainer {
+  .flexbox();
+  color: @neutral_white !important;
   .margin--right--xl();
   cursor: pointer;
   line-height: @size_l;
+
+  transition: none;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+
+    .AttachmentPreview--DownloadButton {
+      color: @neutral_white !important;
+    }
+  }
 }
 
 .AttachmentPreview--DownloadButton {
   .margin--right--xs();
   line-height: @size_l;
+  transition: none;
+
+  color: @neutral_white !important;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+  }
 }
 
-.AttachmentPreview--CloseButton {
+.Button.AttachmentPreview--CloseButton {
+  .flexbox();
+  color: @neutral_white !important;
   display: inline-block;
   cursor: pointer;
   height: @size_l;
@@ -110,6 +133,13 @@
   margin-left: @size_m;
   text-align: center;
   vertical-align: middle;
+
+  transition: none;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+  }
 }
 
 .AttachmentPreview--FooterBar {

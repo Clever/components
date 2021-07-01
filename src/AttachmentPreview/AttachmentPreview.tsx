@@ -2,6 +2,7 @@ import * as classnames from "classnames";
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 
+import { Button } from "src/Button/Button";
 import { FlexBox, FlexItem } from "../flex";
 import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/MessagingAttachment";
 
@@ -47,21 +48,27 @@ export const AttachmentPreview: React.FC<Props> = ({
   onClickDownload,
   onClose,
 }) => {
-  function onKeyDownCloseHandler(e, keyMatch?: string) {
-    // TODO: is there a standardized way to do this in dewey?
+  const ESC = 27;
 
-    const matchKey = keyMatch || "Escape";
+  // function onKeyDownDownloadHandler(e) {
+  //   if (e.key === "Enter") {
+  //     onClickDownload(attachmentID);
+  //   }
+  // }
 
-    if (e.key === matchKey) {
+  function handleKeyUp(e) {
+    console.log("\ne:", e);
+    if (e.keyCode === ESC) {
       onClose();
     }
   }
-
-  function onKeyDownDownloadHandler(e) {
-    if (e.key === "Enter") {
-      onClickDownload(attachmentID);
-    }
-  }
+  React.useEffect(() => {
+    console.log("\nusing effect!");
+    window.addEventListener("keyup", handleKeyUp);
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
 
   const preview = (
     <div className={classnames(cssClass.CONTAINER, className)}>
@@ -71,24 +78,26 @@ export const AttachmentPreview: React.FC<Props> = ({
         <FlexBox grow className={cssClass.ATTACHMENT_NAME}>
           {attachmentName}
         </FlexBox>
-        <FlexBox
+        {/* TODO: add styling for Butoon */}
+        <Button
+          type="linkPlain"
           className={cssClass.DOWNLOAD_CONTAINER}
           tabIndex={0}
           onClick={() => onClickDownload(attachmentID)}
-          onKeyDown={(e) => onKeyDownDownloadHandler(e)}
+          // onKeyDown={(e) => onKeyDownDownloadHandler(e)}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonText || "Download"}</span>
-        </FlexBox>
-        <FlexBox
+        </Button>
+        {/* TODO: add styling for Butoon */}
+        <Button
+          type="linkPlain"
           aria-label={closeButtonAriaLabel || "close attachment preview"}
           className={cssClass.CLOSE_BUTTON}
-          tabIndex={0}
           onClick={onClose}
-          onKeyDown={(e) => onKeyDownCloseHandler(e, "Enter")}
         >
           <FontAwesome name="times" />
-        </FlexBox>
+        </Button>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
         <FlexBox className={cssClass.IMAGE_CONTAINER}>
@@ -97,15 +106,6 @@ export const AttachmentPreview: React.FC<Props> = ({
             tabIndex={0}
             src={attachmentURL}
             alt={"attachment preview"}
-            onClick={(e) => e.stopPropagation()}
-            // note: this is only here because Axe Linter "Axe Linter
-            // (click-events-have-key-events): Ensure a clickable non-interactive element has at
-            // least one keyboard event"
-
-            // TODO: is there a way to just tell Axe linter to ignore the above line?
-
-            // TODO: Should this just be on the image, or elsewhere too?
-            onKeyDown={(e) => onKeyDownCloseHandler(e)}
           />
         </FlexBox>
       </FlexBox>
@@ -115,7 +115,7 @@ export const AttachmentPreview: React.FC<Props> = ({
           className={cssClass.DOWNLOAD_CONTAINER}
           tabIndex={0}
           onClick={() => onClickDownload(attachmentID)}
-          onKeyDown={(e) => onKeyDownDownloadHandler(e)}
+          // onKeyDown={(e) => onKeyDownDownloadHandler(e)}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonText || "Save"}</span>
