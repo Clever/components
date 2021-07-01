@@ -168,7 +168,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
   _renderProps() {
     return (
       <>
-        {/* TODO: add new props */}
         <PropDocumentation
           title="<MessagingAttachment /> Props"
           availableProps={[

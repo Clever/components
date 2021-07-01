@@ -13,7 +13,6 @@ function cssClass(element: string) {
 
 type Props = {
   attachmentID: string;
-  // TODO: should this be optional?
   attachmentURL: string;
   errorMsg?: string;
   fileType: AttachmentFileType;
@@ -41,7 +40,7 @@ export const MessagingAttachment: React.FC<Props> = ({
   uploadComplete,
 }: Props) => {
   const [attachmentPreviewIsShowing, setAttachmentPreviewIsShowing] = React.useState(false);
-  const isImageAttachment = fileTypeToIcon(fileType) === "image";
+  const isImageAttachment = fileTypeToIconType(fileType) === "image";
 
   return (
     <FlexBox
@@ -132,8 +131,8 @@ export type AttachmentFileType =
   | "txt"
   | null;
 
-function fileTypeToIcon(fileType: string): AttachmentIconType {
-  const mapFileTypeToIcon = {
+function fileTypeToIconType(fileType: string): AttachmentIconType {
+  const mapFileTypeToIconType = {
     pdf: "pdf",
     doc: "doc",
     docx: "doc",
@@ -158,7 +157,7 @@ function fileTypeToIcon(fileType: string): AttachmentIconType {
     null: "catchall",
   };
 
-  return mapFileTypeToIcon[fileType] || "catchall";
+  return mapFileTypeToIconType[fileType] || "catchall";
 }
 
 const draftAudio = require("./icons/draft-attachment-audio.svg");
@@ -218,7 +217,7 @@ export function FileAttachmentIcon({
   errorMsg,
   className,
 }: AttachmentIconProps) {
-  const cleanedFileType = fileTypeToIcon(fileType);
+  const iconType = fileTypeToIconType(fileType);
 
   if (!!errorMsg) {
     return (
@@ -229,9 +228,9 @@ export function FileAttachmentIcon({
   }
   return (
     <img
-      src={isUpload ? fileIcons[cleanedFileType].draft : fileIcons[cleanedFileType].sent}
+      src={isUpload ? fileIcons[iconType].draft : fileIcons[iconType].sent}
       className={cx(cssClass("AttachmentTypeIcon"), className)}
-      alt={`MessagingAttachment ${cleanedFileType} icon`}
+      alt={`MessagingAttachment ${iconType} icon`}
     />
   );
 }

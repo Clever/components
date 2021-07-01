@@ -47,7 +47,7 @@ export const AttachmentPreview: React.FC<Props> = ({
   attachmentName,
   attachmentURL,
   className,
-  closeButtonAriaLabel,
+  closeButtonAriaLabel = "close attachment preview",
   downloadButtonTextDesktop = "Download",
   downloadButtonTextMobile = "Save",
   fileType,
@@ -82,11 +82,11 @@ export const AttachmentPreview: React.FC<Props> = ({
           onClick={() => onClickDownload(attachmentID)}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
-          <span>{downloadButtonTextDesktop}</span>
+          {downloadButtonTextDesktop}
         </Button>
         <Button
           type="linkPlain"
-          aria-label={closeButtonAriaLabel || "close attachment preview"}
+          aria-label={closeButtonAriaLabel}
           className={cssClass.CLOSE_BUTTON}
           onClick={onClose}
         >
