@@ -88,6 +88,20 @@
 }
 
 // need to override Button styling, hence all the `color: @neutral_white !important;`
+.AttachmentPreview--DownloadButton {
+  .margin--right--xs();
+  line-height: @size_l;
+
+  // override Button styling
+  transition: none;
+  color: @neutral_white !important;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+  }
+}
+
 .Button.AttachmentPreview--DownloadContainer {
   .flexbox();
   color: @neutral_white !important;
@@ -95,6 +109,7 @@
   cursor: pointer;
   line-height: @size_l;
 
+  // override Button styling
   transition: none;
 
   :hover,
@@ -104,19 +119,6 @@
     .AttachmentPreview--DownloadButton {
       color: @neutral_white !important;
     }
-  }
-}
-
-.AttachmentPreview--DownloadButton {
-  .margin--right--xs();
-  line-height: @size_l;
-  transition: none;
-
-  color: @neutral_white !important;
-
-  :hover,
-  :active {
-    color: @neutral_white !important;
   }
 }
 
@@ -133,6 +135,7 @@
   text-align: center;
   vertical-align: middle;
 
+  // override Button styling
   transition: none;
 
   :hover,
