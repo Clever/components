@@ -15,7 +15,6 @@
   top: 0;
   left: 0;
   background: fade(@neutral_black, 60%);
-  // TODO: is there a protocol/standard for z indexes?
 }
 
 .AttachmentPreview--HeaderBar {
@@ -130,7 +129,7 @@
   width: @size_l;
   line-height: @size_l;
   margin-right: @size_ml;
-  margin-left: @size_m;
+  .margin--left--m();
   text-align: center;
   vertical-align: middle;
 
@@ -153,9 +152,14 @@
     width: calc(100vw - (2 * @MOBILE_BUFFER_SIZE));
   }
 
+  .Button.AttachmentPreview--CloseButton {
+    .margin--right--m();
+  }
+
   .AttachmentPreview--FooterBar {
     .zIndex--6;
     display: flex;
+    .justify--end();
     background-color: @neutral_black;
     position: fixed;
     bottom: 0;
@@ -171,7 +175,18 @@
   }
 
   .AttachmentPreview--FooterBar .AttachmentPreview--DownloadContainer {
+    .flexbox();
     text-align: right;
     .margin--right--m();
+    .margin--left--m();
+
+    // override button styling
+    transition: none;
+    color: @neutral_white !important;
+
+    :hover,
+    :active {
+      color: @neutral_white !important;
+    }
   }
 }
