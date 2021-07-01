@@ -1,0 +1,191 @@
+@import (reference) "../less/utilities";
+
+@HEADER_BAR_HEIGHT: @size_5xl;
+@DESKTOP_BUFFER_SIZE: @size_l;
+@MOBILE_BUFFER_SIZE: @size_xs;
+@size_ml: 1.25rem;
+
+.AttachmentPreview--Background {
+  .zIndex--5;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: fade(@neutral_black, 60%);
+}
+
+.AttachmentPreview--HeaderBar {
+  .zIndex--6;
+  background-color: @neutral_black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @HEADER_BAR_HEIGHT;
+  .alignItems(center);
+  color: @neutral_white;
+}
+
+.AttachmentPreview--AttachmentName {
+  line-height: @size_l;
+  .text--truncate();
+}
+
+.AttachmentPreview--FileIcon {
+  max-height: @size_l;
+  max-width: @size_l;
+  padding: @size_ml @size_s @size_ml @size_l;
+  .padding--left--l();
+  filter: brightness(0) invert(1); /* makes the file icon white without needing a different <img> src attr */
+}
+
+.AttachmentPreview--PreviewWindow {
+  .zIndex--6;
+  position: fixed;
+  top: calc(@HEADER_BAR_HEIGHT + @DESKTOP_BUFFER_SIZE);
+  left: 50%;
+  transform: translateX(-50%);
+  height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
+  width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
+}
+
+.AttachmentPreview--ImageContainer {
+  .zIndex--7;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  .alignItems(center);
+  .justifyContent(center);
+}
+
+.AttachmentPreview--PreviewWindow img {
+  .zIndex--8;
+  // render image as larger as natural size, or scale down to fit screen
+  object-fit: scale-down;
+  height: 100%;
+  width: 100%;
+
+  // TODO: fix this in ticket M5G-504
+  // This makes the img div only as large as the image, so none of the background is eclipsed and
+  // the full bg area is clickable.
+  // Unfortunately, its breaking scale-down.
+  // Also, this doesn't work on Edge/IE.
+  // width: fit-content;
+  // width: -moz-fit-content;
+  // width: -webkit-fit-content;
+  // height: fit-content;
+  // height: -moz-fit-content;
+  // height: -webkit-fit-content;
+
+  // TODO: This isn't working because the img element is larger than the rendered image, so the
+  // border radius is being cropped at the corners of the element, not the rendered image. This will
+  // be fixed when above fit-content issues are solved
+  .borderRadius--s();
+}
+
+// need to override Button styling, hence all the `color: @neutral_white !important;`
+.AttachmentPreview--DownloadButton {
+  .margin--right--xs();
+  line-height: @size_l;
+
+  // override Button styling
+  transition: none;
+  color: @neutral_white !important;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+  }
+}
+
+.Button.AttachmentPreview--DownloadContainer {
+  .flexbox();
+  color: @neutral_white !important;
+  .margin--right--xl();
+  cursor: pointer;
+  line-height: @size_l;
+
+  // override Button styling
+  transition: none;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+
+    .AttachmentPreview--DownloadButton {
+      color: @neutral_white !important;
+    }
+  }
+}
+
+.Button.AttachmentPreview--CloseButton {
+  .flexbox();
+  color: @neutral_white !important;
+  display: inline-block;
+  cursor: pointer;
+  height: @size_l;
+  width: @size_l;
+  line-height: @size_l;
+  margin-right: @size_ml;
+  text-align: center;
+  vertical-align: middle;
+
+  // override Button styling
+  transition: none;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+  }
+}
+
+.AttachmentPreview--FooterBar {
+  display: none;
+}
+
+@media only screen and (max-width: @breakpointM) {
+  .AttachmentPreview--PreviewWindow {
+    top: calc(@HEADER_BAR_HEIGHT + @MOBILE_BUFFER_SIZE);
+    height: calc(100vh - (2 * @HEADER_BAR_HEIGHT) - (2 * @MOBILE_BUFFER_SIZE));
+    width: calc(100vw - (2 * @MOBILE_BUFFER_SIZE));
+  }
+
+  .Button.AttachmentPreview--CloseButton {
+    .margin--right--m();
+  }
+
+  .AttachmentPreview--FooterBar {
+    .zIndex--6;
+    display: flex;
+    .justify--end();
+    background-color: @neutral_black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: @HEADER_BAR_HEIGHT;
+    .alignItems(center);
+    color: @neutral_white;
+  }
+
+  .AttachmentPreview--HeaderBar .AttachmentPreview--DownloadContainer {
+    display: none;
+  }
+
+  .AttachmentPreview--FooterBar .AttachmentPreview--DownloadContainer {
+    .flexbox();
+    text-align: right;
+    .margin--right--m();
+    .margin--left--m();
+
+    // override button styling
+    transition: none;
+    color: @neutral_white !important;
+
+    :hover,
+    :active {
+      color: @neutral_white !important;
+    }
+  }
+}

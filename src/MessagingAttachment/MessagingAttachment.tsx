@@ -2,6 +2,7 @@ import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
+import { AttachmentPreview } from "../AttachmentPreview";
 import { FlexBox } from "../flex";
 
 import "./MessagingAttachment.less";
@@ -12,19 +13,24 @@ function cssClass(element: string) {
 
 type Props = {
   attachmentID: string;
+  attachmentURL: string;
   errorMsg?: string;
-  icon: React.ReactNode;
+  fileType: AttachmentFileType;
+  icon?: React.ReactNode;
+  isUpload?: boolean;
   onClickAttachment: (attachmentID: string) => void;
   onRemoveAttachment?: (attachmentID: string) => void;
-  title?: string;
   subtitle?: string;
-  isUpload?: boolean;
+  title?: string;
   uploadComplete?: boolean;
 };
 
+// TODO: replace with a discriminated union to keep the props neat
 export const MessagingAttachment: React.FC<Props> = ({
   attachmentID,
+  attachmentURL,
   errorMsg,
+  fileType,
   icon,
   onClickAttachment,
   onRemoveAttachment,
@@ -33,6 +39,9 @@ export const MessagingAttachment: React.FC<Props> = ({
   isUpload,
   uploadComplete,
 }: Props) => {
+  const [attachmentPreviewIsShowing, setAttachmentPreviewIsShowing] = React.useState(false);
+  const isImageAttachment = fileTypeToIconType(fileType) === "image";
+
   return (
     <FlexBox
       className={cx(cssClass("ParentContainer"), isUpload && cssClass("ParentContainer--IsUpload"))}
@@ -53,14 +62,40 @@ export const MessagingAttachment: React.FC<Props> = ({
           isUpload && !uploadComplete && cssClass("IsUploading"),
           !!errorMsg && cssClass("Error"),
         )}
-        onClick={() => onClickAttachment(attachmentID)}
+        onClick={() => {
+          if (isImageAttachment) {
+            setAttachmentPreviewIsShowing(true);
+          } else {
+            onClickAttachment(attachmentID);
+          }
+        }}
       >
-        <FlexBox className={cssClass("IconContainer")}>{icon}</FlexBox>
+        <FlexBox className={cssClass("IconContainer")}>
+          {icon || (
+            <FileAttachmentIcon
+              fileType={fileType}
+              isUpload={isUpload}
+              uploadComplete={uploadComplete}
+            />
+          )}
+        </FlexBox>
         <FlexBox className={cssClass("TextContainer")} column>
           <span className={cssClass("Title")}>{errorMsg || title}</span>
           {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
         </FlexBox>
       </FlexBox>
+      {attachmentPreviewIsShowing && isImageAttachment && (
+        <AttachmentPreview
+          attachmentID={attachmentID}
+          attachmentName={title}
+          attachmentURL={attachmentURL}
+          fileType={fileType}
+          onClickDownload={() => {
+            onClickAttachment(attachmentID);
+          }}
+          onClose={() => setAttachmentPreviewIsShowing(false)}
+        />
+      )}
     </FlexBox>
   );
 };
@@ -96,8 +131,8 @@ export type AttachmentFileType =
   | "txt"
   | null;
 
-function fileTypeToIcon(fileType: string): AttachmentIconType {
-  const mapFileTypeToIcon = {
+function fileTypeToIconType(fileType: string): AttachmentIconType {
+  const mapFileTypeToIconType = {
     pdf: "pdf",
     doc: "doc",
     docx: "doc",
@@ -122,7 +157,7 @@ function fileTypeToIcon(fileType: string): AttachmentIconType {
     null: "catchall",
   };
 
-  return mapFileTypeToIcon[fileType] || "catchall";
+  return mapFileTypeToIconType[fileType] || "catchall";
 }
 
 const draftAudio = require("./icons/draft-attachment-audio.svg");
@@ -171,6 +206,7 @@ type AttachmentIconProps = {
   isUpload?: boolean;
   uploadComplete?: boolean;
   errorMsg?: string;
+  className?: string;
 };
 
 // TODO: handle undefined. Note: Components uses jsx, LP uses tsx
@@ -179,8 +215,9 @@ export function FileAttachmentIcon({
   isUpload,
   uploadComplete,
   errorMsg,
+  className,
 }: AttachmentIconProps) {
-  const cleanedFileType = fileTypeToIcon(fileType);
+  const iconType = fileTypeToIconType(fileType);
 
   if (!!errorMsg) {
     return (
@@ -191,9 +228,9 @@ export function FileAttachmentIcon({
   }
   return (
     <img
-      src={isUpload ? fileIcons[cleanedFileType].draft : fileIcons[cleanedFileType].sent}
-      className={cssClass("AttachmentTypeIcon")}
-      alt={`MessagingAttachment ${cleanedFileType} icon`}
+      src={isUpload ? fileIcons[iconType].draft : fileIcons[iconType].sent}
+      className={cx(cssClass("AttachmentTypeIcon"), className)}
+      alt={`MessagingAttachment ${iconType} icon`}
     />
   );
 }
