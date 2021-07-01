@@ -106,10 +106,17 @@ export default class AttachmentPreviewView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "downloadButtonText",
+            name: "downloadButtonTextDesktop",
             type: "string",
-            description: "Optional text for the download button",
+            description: "Optional text for the download button on desktop",
             defaultValue: "Download",
+            optional: true,
+          },
+          {
+            name: "downloadButtonTextDesktop",
+            type: "string",
+            description: "Optional text for the download button on mobile",
+            defaultValue: "Save",
             optional: true,
           },
           {
