@@ -32,6 +32,8 @@
 
 .AttachmentPreview--AttachmentName {
   line-height: @size_l;
+  // TODO: why isn't this adding the ellipsis?
+  .text--truncate();
 }
 
 .AttachmentPreview--FileIcon {
@@ -105,6 +107,7 @@
   width: @size_l;
   line-height: @size_l;
   margin-right: @size_ml;
+  margin-left: @size_m;
   text-align: center;
   vertical-align: middle;
 }
