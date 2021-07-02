@@ -33,10 +33,7 @@ export const MessageMetadata: React.FC<
   );
 });
 
-function formErrorContainer(
-  errorMsg: React.ReactNode,
-  placement: PlacementOptions,
-): JSX.Element {
+function formErrorContainer(errorMsg: React.ReactNode, placement: PlacementOptions): JSX.Element {
   return (
     <FlexBox
       className={classNames(cssClass("Error"), cssClass(`Error--${placement}`))}
