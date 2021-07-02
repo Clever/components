@@ -63,7 +63,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   key: "1",
                   attachmentID: "1",
                   fileType: "doc",
-                  onClickAttachment: () => console.log("clicked!"),
+                  onClickDownload: () => console.log("downloaded!"),
+                  onPreviewAttachment: () => console.log("previewed!"),
                   title:
                     "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
                   subtitle: "Click to download",
@@ -74,7 +75,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   attachmentURL:
                     "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1",
                   fileType: "png",
-                  onClickAttachment: () => console.log("clicked!"),
+                  onClickDownload: () => console.log("downloaded!"),
+                  onPreviewAttachment: () => console.log("previewed!"),
                   title: "Flyer.png",
                   subtitle: "Click to view",
                 },
@@ -82,7 +84,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   key: "3",
                   attachmentID: "3",
                   fileType: "m4a",
-                  onClickAttachment: () => console.log("clicked!"),
+                  onClickDownload: () => console.log("downloaded!"),
+                  onPreviewAttachment: () => console.log("previewed!"),
                   title: "Morning message.m4a",
                   subtitle: "Click to download",
                 },
@@ -93,7 +96,8 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   attachmentURL={attachment.attachmentURL}
                   fileType={attachment.fileType}
                   icon={attachment.icon}
-                  onClickAttachment={attachment.onClickAttachment}
+                  onClickDownload={attachment.onClickDownload}
+                  onPreviewAttachment={attachment.onPreviewAttachment}
                   title={attachment.title}
                   subtitle={attachment.subtitle}
                 />
@@ -200,9 +204,15 @@ export default class MessagingAttachmentView extends React.PureComponent {
               optional: true,
             },
             {
-              name: "onClickAttachment",
+              name: "onClickDownload",
               type: "(attachmentID: string) => void",
-              description: "Callback to be called upon clicking the Attachment",
+              description:
+                "Callback to be called upon clicking download on a MessagingAttachment. Passed down to AttachmentPreview",
+            },
+            {
+              name: "onPreviewAttachment",
+              type: "() => void",
+              description: "Callback to be called upon previewing an attachment",
             },
             {
               name: "onRemoveAttachment",
