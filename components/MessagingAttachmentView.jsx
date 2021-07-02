@@ -176,11 +176,6 @@ export default class MessagingAttachmentView extends React.PureComponent {
           title="<MessagingAttachment /> Props"
           availableProps={[
             {
-              name: "attachmentID",
-              type: "string",
-              description: "Unique ID used to identify this attachment",
-            },
-            {
               name: "attachmentURL",
               type: "string",
               description: "URL for the attachment",
