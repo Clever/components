@@ -49,7 +49,7 @@ export default class MessagingBubbleView extends React.PureComponent {
       {
         key: "2",
         attachmentID: "2",
-        icon: <FileAttachmentIcon fileType={"image"} />,
+        icon: <FileAttachmentIcon fileType={"png"} />,
         onClickAttachment: () => console.log("clicked!"),
         title: "Flyer.png",
         subtitle: "Click to view",
@@ -57,7 +57,7 @@ export default class MessagingBubbleView extends React.PureComponent {
       {
         key: "3",
         attachmentID: "3",
-        icon: <FileAttachmentIcon fileType={"audio"} />,
+        icon: <FileAttachmentIcon fileType={"m4a"} />,
         onClickAttachment: () => console.log("clicked!"),
         title: "Morning message.m4a",
         subtitle: "Click to download",
@@ -65,7 +65,7 @@ export default class MessagingBubbleView extends React.PureComponent {
       {
         key: "4",
         attachmentID: "4",
-        icon: <FileAttachmentIcon fileType={"image"} />,
+        icon: <FileAttachmentIcon fileType={"jpg"} />,
         onClickAttachment: () => console.log("clicked attachment-only message!"),
         title: "Ain't no text with this message.jpg",
         subtitle: "Click to view",

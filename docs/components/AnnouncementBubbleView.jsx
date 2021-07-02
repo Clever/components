@@ -45,7 +45,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
       {
         key: "1",
         attachmentID: "1",
-        icon: <FileAttachmentIcon fileType={"audio"} />,
+        icon: <FileAttachmentIcon fileType={"m4a"} />,
         onClickAttachment: () => console.log("clicked!"),
         title: "Morning message.m4a",
         subtitle: "Click to download",
