@@ -18,7 +18,8 @@ type Props = {
   fileType: AttachmentFileType;
   icon?: React.ReactNode;
   isUpload?: boolean;
-  onClickAttachment: (attachmentID: string) => void;
+  onPreviewAttachment: () => void;
+  onClickDownload: (attachmentID: string) => void;
   onRemoveAttachment?: (attachmentID: string) => void;
   subtitle?: string;
   title?: string;
@@ -32,7 +33,8 @@ export const MessagingAttachment: React.FC<Props> = ({
   errorMsg,
   fileType,
   icon,
-  onClickAttachment,
+  onPreviewAttachment,
+  onClickDownload,
   onRemoveAttachment,
   title,
   subtitle,
@@ -65,8 +67,9 @@ export const MessagingAttachment: React.FC<Props> = ({
         onClick={() => {
           if (isImageAttachment) {
             setAttachmentPreviewIsShowing(true);
+            onPreviewAttachment();
           } else {
-            onClickAttachment(attachmentID);
+            onClickDownload(attachmentID);
           }
         }}
       >
@@ -91,7 +94,7 @@ export const MessagingAttachment: React.FC<Props> = ({
           attachmentURL={attachmentURL}
           fileType={fileType}
           onClickDownload={() => {
-            onClickAttachment(attachmentID);
+            onClickDownload(attachmentID);
           }}
           onClose={() => setAttachmentPreviewIsShowing(false)}
         />
