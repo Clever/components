@@ -205,19 +205,21 @@ export default class MessagingAttachmentView extends React.PureComponent {
             },
             {
               name: "onClickDownload",
-              type: "(attachmentID: string) => void",
+              type: "() => void",
               description:
                 "Callback to be called upon clicking download on a MessagingAttachment. Passed down to AttachmentPreview",
             },
             {
               name: "onPreviewAttachment",
               type: "() => void",
-              description: "Callback to be called upon previewing an attachment",
+              description: "Optional callback to be called upon previewing an attachment",
+              optional: true,
             },
             {
               name: "onRemoveAttachment",
-              type: "(attachmentID: string) => void",
-              description: "Callback to be called upon clicking the Remove Attachment (X) button",
+              type: "() => void",
+              description:
+                "Optional callback to be called upon clicking the Remove Attachment (X) button",
               optional: true,
             },
             {

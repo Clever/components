@@ -18,7 +18,7 @@ export interface Props {
   downloadButtonTextDesktop?: string;
   downloadButtonTextMobile?: string;
   fileType: AttachmentFileType;
-  onClickDownload: (attachmentID: string) => void;
+  onClickDownload: () => void;
   onClose: () => void;
 }
 
@@ -84,7 +84,7 @@ export const AttachmentPreview: React.FC<Props> = ({
           type="linkPlain"
           disabled={imageLoadError}
           className={cssClass.DOWNLOAD_CONTAINER}
-          onClick={() => onClickDownload(attachmentID)}
+          onClick={onClickDownload}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           {downloadButtonTextDesktop}
@@ -119,7 +119,7 @@ export const AttachmentPreview: React.FC<Props> = ({
           type="linkPlain"
           disabled={imageLoadError}
           className={cssClass.DOWNLOAD_CONTAINER}
-          onClick={() => onClickDownload(attachmentID)}
+          onClick={onClickDownload}
         >
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonTextMobile}</span>
