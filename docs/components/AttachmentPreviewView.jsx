@@ -11,6 +11,7 @@ const cssClass = {
   CONTAINER: "AttachmentPreviewView",
   INTRO: "AttachmentPreviewView--intro",
   PROPS: "AttachmentPreviewView--props",
+  ERROR_BUTTON: "AttachmentPreviewView--errorButton",
 };
 
 export default class AttachmentPreviewView extends React.PureComponent {
@@ -18,16 +19,25 @@ export default class AttachmentPreviewView extends React.PureComponent {
 
   state = {
     showingPreview: false,
+    fileToRender: null,
   };
 
   render() {
-    const { showingPreview } = this.state;
+    const { showingPreview, fileToRender } = this.state;
 
     const file = {
       id: "12345",
       title: "Raccooooooon.jpg",
       fileType: "jpg",
       url: "https://s3.amazonaws.com/assets.clever.com/Raccooooooon.jpg",
+    };
+
+    const errorFile = {
+      id: "12345",
+      title: "Raccooooooon.jpg",
+      fileType: "jpg",
+      url:
+        "https://s3.amazonaws.com/assets.clever.com/Raccooooooonlaskjdalskjdaslkdjaslkdjsaldkj.jpg",
     };
 
     return (
@@ -53,13 +63,21 @@ export default class AttachmentPreviewView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <Button onClick={() => this.setState({ showingPreview: true })}>Show preview</Button>
+            <Button onClick={() => this.setState({ showingPreview: true, fileToRender: file })}>
+              Show preview
+            </Button>
+            <Button
+              className={cssClass.ERROR_BUTTON}
+              onClick={() => this.setState({ showingPreview: true, fileToRender: errorFile })}
+            >
+              Show error preview
+            </Button>
             {showingPreview && (
               <AttachmentPreview
-                attachmentID={file.id}
-                attachmentName={file.title}
-                attachmentURL={file.url}
-                fileType={file.fileType}
+                attachmentID={fileToRender.id}
+                attachmentName={fileToRender.title}
+                attachmentURL={fileToRender.url}
+                fileType={fileToRender.fileType}
                 onClickDownload={() => console.log("Downloaded attachment!")}
                 onClose={() => this.setState({ showingPreview: false })}
               />

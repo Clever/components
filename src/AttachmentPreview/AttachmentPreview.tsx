@@ -1,6 +1,6 @@
 import * as classnames from "classnames";
 import * as React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as FontAwesome from "react-fontawesome";
 
 import { Button } from "../Button/Button";
@@ -33,6 +33,8 @@ export const cssClass = {
   CLOSE_BUTTON: "AttachmentPreview--CloseButton",
   PREVIEW_WINDOW: "AttachmentPreview--PreviewWindow",
   IMAGE_CONTAINER: "AttachmentPreview--ImageContainer",
+  ERROR_CONTAINER: "AttachmentPreview--ErrorContainer",
+  ERROR_ICON: "AttachmentPreview--ErrorIcon",
   FOOTER_BAR: "AttachmentPreview--FooterBar",
 };
 
@@ -54,6 +56,8 @@ export const AttachmentPreview: React.FC<Props> = ({
   onClickDownload,
   onClose,
 }) => {
+  const [imageLoadError, setImageLoadError] = useState(false);
+
   function handleKeyUp(e) {
     if (e.keyCode === ESC) {
       onClose();
@@ -78,6 +82,7 @@ export const AttachmentPreview: React.FC<Props> = ({
         </FlexItem>
         <Button
           type="linkPlain"
+          disabled={imageLoadError}
           className={cssClass.DOWNLOAD_CONTAINER}
           onClick={() => onClickDownload(attachmentID)}
         >
@@ -95,7 +100,18 @@ export const AttachmentPreview: React.FC<Props> = ({
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
         <FlexBox className={cssClass.IMAGE_CONTAINER}>
-          <img src={attachmentURL} alt={"attachment preview"} />
+          {!imageLoadError && (
+            <img
+              src={attachmentURL}
+              alt={"attachment preview"}
+              onError={() => setImageLoadError(true)}
+            />
+          )}
+          {imageLoadError && (
+            <FlexBox className={cssClass.ERROR_CONTAINER}>
+              <FontAwesome name={"frown-o"} className={cssClass.ERROR_ICON} /> Image load error
+            </FlexBox>
+          )}
         </FlexBox>
       </FlexBox>
       <FlexBox className={cssClass.FOOTER_BAR}>
