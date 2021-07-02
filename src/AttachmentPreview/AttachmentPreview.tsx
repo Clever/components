@@ -117,6 +117,7 @@ export const AttachmentPreview: React.FC<Props> = ({
       <FlexBox className={cssClass.FOOTER_BAR}>
         <Button
           type="linkPlain"
+          disabled={imageLoadError}
           className={cssClass.DOWNLOAD_CONTAINER}
           onClick={() => onClickDownload(attachmentID)}
         >
