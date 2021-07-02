@@ -144,7 +144,7 @@ export default class AttachmentPreviewView extends React.PureComponent {
           },
           {
             name: "onClickDownload",
-            type: "(attachmentID: string) => void",
+            type: "() => void",
             description: "Function to run on clicking the download button",
           },
           {
