@@ -226,6 +226,36 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A MessagingAttachment component",
   },
   {
+    componentLink: "messaging-avatar",
+    componentImg: "messaging-avatar.png",
+    componentName: "MessagingAvatar",
+    componentImgAlt: "A MessagingAvatar component",
+  },
+  {
+    componentLink: "messaging-bubble",
+    componentImg: "messaging-bubble.png",
+    componentName: "MessagingBubble",
+    componentImgAlt: "A MessagingBubble component",
+  },
+  {
+    componentLink: "messaging-input",
+    componentImg: "messaging-input.png",
+    componentName: "MessagingInput",
+    componentImgAlt: "A MessagingInput component",
+  },
+  {
+    componentLink: "messaging-thread-history",
+    componentImg: "messaging-thread-history.png",
+    componentName: "MessagingThreadHistory",
+    componentImgAlt: "A MessagingThreadHistory component",
+  },
+  {
+    componentLink: "messaging-thread-list-item",
+    componentImg: "messaging-thread-list-item.png",
+    componentName: "MessagingThreadListItem",
+    componentImgAlt: "A MessagingThreadListItem component",
+  },
+  {
     componentLink: "modal",
     componentImg: "modal.png",
     componentName: "Modal",
