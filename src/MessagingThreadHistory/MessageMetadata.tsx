@@ -9,9 +9,11 @@ function cssClass(element: string) {
   return `MessageMetadata--${element}`;
 }
 
+type PlacementOptions = "left" | "right" | "center" | "fullWidth";
+
 interface Props {
   className?: string;
-  placement: "left" | "right" | "center" | "fullWidth";
+  placement: PlacementOptions;
   timestamp?: Date;
   readStatusText?: string;
   errorMsg?: string;
@@ -33,7 +35,7 @@ export const MessageMetadata: React.FC<
 
 function formErrorContainer(
   errorMsg: React.ReactNode,
-  placement: "left" | "right" | "center" | "fullWidth",
+  placement: PlacementOptions,
 ): JSX.Element {
   return (
     <FlexBox
