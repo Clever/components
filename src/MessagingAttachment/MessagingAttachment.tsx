@@ -40,7 +40,7 @@ export const MessagingAttachment: React.FC<Props> = ({
   uploadComplete,
 }: Props) => {
   const [attachmentPreviewIsShowing, setAttachmentPreviewIsShowing] = React.useState(false);
-  const isPreviewableAttachment = previewableFileTypes.has(fileType);
+  const isPreviewableAttachment = PreviewableFileTypes.has(fileType);
 
   return (
     <FlexBox
@@ -132,7 +132,7 @@ export type AttachmentFileType =
   | null;
 
 // the set of fileTypes we are previewing in AttachmentPreviews
-export const previewableFileTypes = new Set(["jpg", "jpeg", "gif", "png", "svg"]);
+export const PreviewableFileTypes = new Set(["jpg", "jpeg", "gif", "png", "svg"]);
 
 function fileTypeToIconType(fileType: string): AttachmentIconType {
   const mapFileTypeToIconType = {
