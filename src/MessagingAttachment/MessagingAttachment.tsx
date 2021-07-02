@@ -12,7 +12,6 @@ function cssClass(element: string) {
 }
 
 type Props = {
-  attachmentID: string;
   attachmentURL: string;
   errorMsg?: string;
   fileType: AttachmentFileType;
@@ -28,7 +27,6 @@ type Props = {
 
 // TODO: replace with a discriminated union to keep the props neat
 export const MessagingAttachment: React.FC<Props> = ({
-  attachmentID,
   attachmentURL,
   errorMsg,
   fileType,
@@ -51,7 +49,7 @@ export const MessagingAttachment: React.FC<Props> = ({
       {onRemoveAttachment && (
         <button
           className={cssClass("CloseButton")}
-          onClick={(e) => handleRemoveClick(e, onRemoveAttachment, attachmentID)}
+          onClick={(e) => handleRemoveClick(e, onRemoveAttachment)}
           aria-label={`close attachment with title: "${title}"`}
         >
           <FontAwesome name="times" className={cssClass("CloseIcon")} />
@@ -91,7 +89,6 @@ export const MessagingAttachment: React.FC<Props> = ({
       </FlexBox>
       {attachmentPreviewIsShowing && isImageAttachment && (
         <AttachmentPreview
-          attachmentID={attachmentID}
           attachmentName={title}
           attachmentURL={attachmentURL}
           fileType={fileType}
@@ -103,9 +100,9 @@ export const MessagingAttachment: React.FC<Props> = ({
   );
 };
 
-function handleRemoveClick(e, onRemoveAttachment, attachmentID) {
+function handleRemoveClick(e, onRemoveAttachment) {
   e.stopPropagation();
-  onRemoveAttachment(attachmentID);
+  onRemoveAttachment();
 }
 
 // /// Sub-components, exported icon components to be used by consumers /// //
