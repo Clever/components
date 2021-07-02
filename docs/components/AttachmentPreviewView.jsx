@@ -96,11 +96,6 @@ export default class AttachmentPreviewView extends React.PureComponent {
         title="<AttachmentPreview /> Props"
         availableProps={[
           {
-            name: "attachmentID",
-            type: "string",
-            description: "Unique ID for a given attachment",
-          },
-          {
             name: "attachmentName",
             type: "string",
             description: "The name of the attachment file",

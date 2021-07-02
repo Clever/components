@@ -10,7 +10,6 @@ import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/M
 import "./AttachmentPreview.less";
 
 export interface Props {
-  attachmentID: string;
   attachmentName: string;
   attachmentURL: string;
   className?: string;
@@ -45,7 +44,6 @@ const ESC = 27;
  * Currently only used for images, but eventually will be used for PDFs and other attachment types.
  */
 export const AttachmentPreview: React.FC<Props> = ({
-  attachmentID,
   attachmentName,
   attachmentURL,
   className,
