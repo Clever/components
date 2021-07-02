@@ -42,14 +42,28 @@
   text-align: right;
   color: @neutral_medium_gray;
 }
+.MessageMetadata--ErrorContents {
+  width: 32.9375rem;
+  text-align: right;
+}
 
 .MessageMetadata--Error {
   color: @alert_red;
   line-height: 1rem;
-  margin-left: auto;
-  .margin--right--2xs();
   .margin--top--2xs();
   .text--smallMedium();
+}
+
+.MessageMetadata--Error--right {
+  justify-content: flex-end;
+}
+
+.MessageMetadata--Error--left {
+  justify-content: flex-start;
+}
+
+.MessageMetadata--Error--fullWidth, .MessageMetadata--Error--center {
+  justify-content: center;
 }
 
 .MessageMetadata--Error--Icon {
