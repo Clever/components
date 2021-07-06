@@ -33,6 +33,18 @@
   background-color: @alert_orange;
 }
 
+button.ToastNotification--closeButton {
+  .margin--left--s;
+  color: @neutral_white;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: @neutral_white;
+    opacity: 0.75;
+  }
+}
+
 .Button.ToastNotification--action {
   .margin--left--s;
   .padding--xs;
@@ -96,16 +108,4 @@
 .ToastNotification--warning .Button.ToastNotification--action:focus,
 .ToastNotification--warning .Button.ToastNotification--action:hover {
   background-color: @alert_orange_shade_2;
-}
-
-button.ToastNotification--closeButton {
-  .margin--left--s;
-  color: @neutral_white;
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: @neutral_white;
-    opacity: 0.75;
-  }
 }
