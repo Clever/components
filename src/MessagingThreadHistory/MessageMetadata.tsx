@@ -9,9 +9,11 @@ function cssClass(element: string) {
   return `MessageMetadata--${element}`;
 }
 
+type PlacementOptions = "left" | "right" | "center" | "fullWidth";
+
 interface Props {
   className?: string;
-  placement: "left" | "right" | "center" | "fullWidth";
+  placement: PlacementOptions;
   timestamp?: Date;
   readStatusText?: string;
   errorMsg?: string;
@@ -26,16 +28,22 @@ export const MessageMetadata: React.FC<
     <div ref={ref} className={classNames(cssClass("Message--container"), className)}>
       <div className={cssClass(`Message--${placement}`)}>{children}</div>
       {readStatusText && <div className={cssClass("ReadReceipt")}>{readStatusText}</div>}
-      {errorMsg && formErrorContainer(errorMsg)}
+      {errorMsg && formErrorContainer(errorMsg, placement)}
     </div>
   );
 });
 
-function formErrorContainer(errorMsg: React.ReactNode): JSX.Element {
+function formErrorContainer(errorMsg: React.ReactNode, placement: PlacementOptions): JSX.Element {
   return (
-    <FlexBox className={cssClass("Error")} grow alignItems="center" justify="start">
-      <FontAwesome className={cssClass("Error--Icon")} name="exclamation-circle " />
-      {errorMsg}
+    <FlexBox
+      className={classNames(cssClass("Error"), cssClass(`Error--${placement}`))}
+      grow
+      alignItems="center"
+    >
+      <div className={cssClass("ErrorContents")}>
+        <FontAwesome className={cssClass("Error--Icon")} name="exclamation-circle " />
+        {errorMsg}
+      </div>
     </FlexBox>
   );
 }
