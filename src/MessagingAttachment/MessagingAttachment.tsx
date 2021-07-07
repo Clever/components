@@ -71,8 +71,10 @@ export const MessagingAttachment: React.FC<Props> = ({
           isUpload && !uploadComplete && cssClass("IsUploading"),
           !!errorMsg && cssClass("Error"),
         )}
-        onClick={() => {
-          if (isPreviewableAttachment) {
+        onClick={(e) => {
+          if (isUpload && !uploadComplete) {
+            e.stopPropagation();
+          } else if (isPreviewableAttachment) {
             setAttachmentPreviewIsShowing(true);
             if (onPreviewAttachment) {
               onPreviewAttachment();
