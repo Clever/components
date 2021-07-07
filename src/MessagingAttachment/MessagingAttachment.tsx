@@ -78,6 +78,7 @@ export const MessagingAttachment: React.FC<Props> = ({
             <FileAttachmentIcon
               fileType={fileType}
               isUpload={isUpload}
+              uploadError={!!errorMsg}
               uploadComplete={uploadComplete}
             />
           )}
@@ -208,7 +209,7 @@ type AttachmentIconProps = {
   fileType: string;
   isUpload?: boolean;
   uploadComplete?: boolean;
-  errorMsg?: string;
+  uploadError?: boolean;
   className?: string;
 };
 
@@ -217,12 +218,12 @@ export function FileAttachmentIcon({
   fileType,
   isUpload,
   uploadComplete,
-  errorMsg,
+  uploadError,
   className,
 }: AttachmentIconProps) {
   const iconType = fileTypeToIconType(fileType);
 
-  if (!!errorMsg) {
+  if (uploadError) {
     return (
       <FontAwesome name="exclamation-circle" className={cx(cssClass("ErrorCircle"), "fa-lg")} />
     );
