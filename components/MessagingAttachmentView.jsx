@@ -177,9 +177,9 @@ export default class MessagingAttachmentView extends React.PureComponent {
           title="<MessagingAttachment /> Props"
           availableProps={[
             {
-              name: "attachmentURL",
-              type: "string",
-              description: "URL for the attachment",
+              name: "attachmentPreviewProps",
+              type: "AttachmentPreviewProps (defined below)",
+              description: "Passthrough props for the AttachmentPreview",
             },
             {
               name: "errorMsg",
@@ -271,6 +271,38 @@ export default class MessagingAttachmentView extends React.PureComponent {
               name: "errorMsg",
               type: "string",
               description: "Used to determine whether or not to render the error state",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+        <PropDocumentation
+          title="AttachmentPreviewProps type"
+          availableProps={[
+            {
+              name: "attachmentURL",
+              type: "string",
+              description: "URL for the attachment",
+            },
+            {
+              name: "closeButtonAriaLabel",
+              type: "string",
+              description: "Optional ARIA label for close button",
+              defaultValue: "close attachment preview",
+              optional: true,
+            },
+            {
+              name: "downloadButtonTextDeskop",
+              type: "string",
+              description: "Optional text for download button on desktop",
+              defaultValue: "Download",
+              optional: true,
+            },
+            {
+              name: "downloadButtonTextMobile",
+              type: "string",
+              description: "Optional text for download button on mobile",
+              defaultValue: "Save",
               optional: true,
             },
           ]}
