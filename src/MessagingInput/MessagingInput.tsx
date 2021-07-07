@@ -143,7 +143,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                 e.preventDefault();
                 // If something other than whitespace is in the input area,
                 // or if there is at least one attachment, send the message.
-                if (value.trim() !== "" || attachments?.length) {
+                if (value.trim() !== "" || attachments?.length > 0) {
                   onSubmit(value.trim());
                 }
               }
@@ -174,8 +174,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               <span className={cssClass("SendText")}>{sendButtonText}</span>
             </>
           }
-          // Disable Send if body is only whitespace and there are no attachments, or if manually disabled
-          disabled={(value.trim() === "" && !attachments?.length) || disableSendButton}
+          disabled={isSendButtonDisabled(disableSendButton, value, attachments)}
           onClick={() => onSubmit(value.trim())}
         />
       </FlexBox>
@@ -183,6 +182,20 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     </FlexBox>
   );
 };
+
+function isSendButtonDisabled(
+  disableSendButton: boolean,
+  value: string,
+  attachments: React.ReactNode[],
+) {
+  if (disableSendButton) {
+    return true;
+  } else if (value.trim() === "" && (!attachments || attachments.length === 0)) {
+    // attachments-only message
+    return true;
+  }
+  return false;
+}
 
 function formUploadedAttachments(attachments: React.ReactNode[]) {
   return <FlexBox className={cssClass("UploadedAttachments")}>{attachments}</FlexBox>;
