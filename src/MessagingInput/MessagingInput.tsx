@@ -191,7 +191,6 @@ function isSendButtonDisabled(
   if (disableSendButton) {
     return true;
   } else if (value.trim() === "" && (!attachments || attachments.length === 0)) {
-    // attachments-only message
     return true;
   }
   return false;
