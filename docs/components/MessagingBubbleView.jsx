@@ -49,7 +49,7 @@ export default class MessagingBubbleView extends React.PureComponent {
       {
         key: "2",
         attachmentID: "2",
-        icon: <FileAttachmentIcon fileType={"image"} />,
+        icon: <FileAttachmentIcon fileType={"png"} />,
         onClickAttachment: () => console.log("clicked!"),
         title: "Flyer.png",
         subtitle: "Click to view",
@@ -57,9 +57,25 @@ export default class MessagingBubbleView extends React.PureComponent {
       {
         key: "3",
         attachmentID: "3",
-        icon: <FileAttachmentIcon fileType={"audio"} />,
+        icon: <FileAttachmentIcon fileType={"m4a"} />,
         onClickAttachment: () => console.log("clicked!"),
         title: "Morning message.m4a",
+        subtitle: "Click to download",
+      },
+      {
+        key: "4",
+        attachmentID: "4",
+        icon: <FileAttachmentIcon fileType={"jpg"} />,
+        onClickAttachment: () => console.log("clicked attachment-only message!"),
+        title: "Ain't no text with this message.jpg",
+        subtitle: "Click to view",
+      },
+      {
+        key: "5",
+        attachmentID: "5",
+        icon: <FileAttachmentIcon fileType={"doc"} />,
+        onClickAttachment: () => console.log("clicked attachment-only message!"),
+        title: "Attachment_friendz_only_here.doc",
         subtitle: "Click to download",
       },
     ].map((attachment) => (
@@ -116,10 +132,21 @@ export default class MessagingBubbleView extends React.PureComponent {
             <MessagingBubble
               className={cssClass.BUBBLE}
               theme={theme}
-              attachments={attachmentsArray}
+              attachments={attachmentsArray.slice(0, 3)}
             >
               Check out these attachments!
             </MessagingBubble>
+            <MessagingBubble
+              className={cssClass.BUBBLE}
+              theme={theme}
+              attachments={attachmentsArray.slice(3)}
+            />
+            <MessagingBubble
+              className={cssClass.BUBBLE}
+              theme={theme}
+              attachments={attachmentsArray.slice(3)}
+              replyTo={"This is an announcement with an attachments-only reply!"}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>

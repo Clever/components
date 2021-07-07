@@ -45,9 +45,17 @@ export default class AnnouncementBubbleView extends React.PureComponent {
       {
         key: "1",
         attachmentID: "1",
-        icon: <FileAttachmentIcon fileType={"audio"} />,
+        icon: <FileAttachmentIcon fileType={"m4a"} />,
         onClickAttachment: () => console.log("clicked!"),
         title: "Morning message.m4a",
+        subtitle: "Click to download",
+      },
+      {
+        key: "2",
+        attachmentID: "2",
+        icon: <FileAttachmentIcon fileType={"doc"} />,
+        onClickAttachment: () => console.log("clicked!"),
+        title: "Nectarines are yummy.doc",
         subtitle: "Click to download",
       },
     ].map((attachment) => (
@@ -124,6 +132,38 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             >
               Announcements like this one can include attachments to open or download
             </AnnouncementBubble>
+
+            {/* attachment-only announcement; one attachment*/}
+            <AnnouncementBubble
+              className={cssClass.BUBBLE}
+              attachments={attachmentsArray.slice(0, 1)}
+              senderName={"Ms. Stark"}
+              senderIcon={
+                <MessagingAvatar
+                  text={"Kristen Stark"}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                />
+              }
+              onReply={() => console.log("Attachments-only announcements work too!")}
+              sentAtTimestamp={new Date()}
+              theme={"normal"}
+            />
+
+            {/* attachment-only announcement; multiple attachments*/}
+            <AnnouncementBubble
+              className={cssClass.BUBBLE}
+              attachments={attachmentsArray}
+              senderName={"Ms. Stark"}
+              senderIcon={
+                <MessagingAvatar
+                  text={"Kristen Stark"}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                />
+              }
+              onReply={() => console.log("Attachments-only announcements work too!")}
+              sentAtTimestamp={new Date()}
+              theme={"normal"}
+            />
           </ExampleCode>
         </Example>
         <Example title="QuotedAnnouncementBubble">
@@ -154,6 +194,23 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
               bla bla bla bla bla bla bla...
             </AnnouncementBubble>
+
+            <br />
+
+            <AnnouncementBubble
+              theme={"quoted"}
+              attachments={attachmentsArray}
+              colorTheme={colorTheme}
+              announcementGroupName={"Math Rocks!"}
+              senderName={"Ms. Stark"}
+              senderIcon={
+                <MessagingAvatar
+                  text={"Kristen Stark"}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                />
+              }
+              sentAtTimestamp={new Date()}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>

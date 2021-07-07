@@ -56,9 +56,11 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
         </FlexBox>
         {deleteMenu}
       </FlexBox>
-      <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
-        <div className={cssClass("messageBody")}>{children}</div>
-      </Linkify>
+      {children && (
+        <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
+          <div className={cssClass("messageBody")}>{children}</div>
+        </Linkify>
+      )}
       {attachments?.length > 0 && (
         <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>
       )}

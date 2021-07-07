@@ -221,6 +221,21 @@
     margin-right: @size_5xl;
   }
 
+  // ⬇️ In attachment-only messages, we don't want the margins defined above either ⬇️
+  .MessagingBubble--Message--Timestamp--Own
+    + .MessagingBubble--Message--Attachment--Own
+    .MessagingAttachment--Container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .MessagingBubble--Message--Timestamp--Other
+    + .MessagingBubble--Message--Attachment--Other
+    .MessagingAttachment--Container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   // ⬇️ In quoted announcements, we don't want the margins defined above ⬇️
   .MessagingBubble--Message--Container--Own
     .MessagingBubble--Message--Own.MessagingBubble--Message--Reply--Parent
