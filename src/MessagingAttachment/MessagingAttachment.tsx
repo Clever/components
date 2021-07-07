@@ -11,8 +11,17 @@ function cssClass(element: string) {
   return `MessagingAttachment--${element}`;
 }
 
-type Props = {
+type AttachmentPreviewProps = {
+  // TODO: should any of these be optional vs required (different then they currently are)?
   attachmentURL: string;
+  closeButtonAriaLabel?: string;
+  downloadButtonTextDeskop?: string;
+  downloadButtonTextMobile?: string;
+};
+
+type Props = {
+  // TODO: if any of the above props are required, this should be required. Else it could be optional?
+  attachmentPreviewProps: AttachmentPreviewProps;
   errorMsg?: string;
   fileType: AttachmentFileType;
   icon?: React.ReactNode;
@@ -27,7 +36,7 @@ type Props = {
 
 // TODO: replace with a discriminated union to keep the props neat
 export const MessagingAttachment: React.FC<Props> = ({
-  attachmentURL,
+  attachmentPreviewProps,
   errorMsg,
   fileType,
   icon,
@@ -91,7 +100,10 @@ export const MessagingAttachment: React.FC<Props> = ({
       {attachmentPreviewIsShowing && isPreviewableAttachment && (
         <AttachmentPreview
           attachmentName={title}
-          attachmentURL={attachmentURL}
+          attachmentURL={attachmentPreviewProps.attachmentURL}
+          closeButtonAriaLabel={attachmentPreviewProps.closeButtonAriaLabel}
+          downloadButtonTextDesktop={attachmentPreviewProps.downloadButtonTextDeskop}
+          downloadButtonTextMobile={attachmentPreviewProps.downloadButtonTextMobile}
           fileType={fileType}
           onClickDownload={onClickDownload}
           onClose={() => setAttachmentPreviewIsShowing(false)}

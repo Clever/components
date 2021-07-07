@@ -61,7 +61,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
               {[
                 {
                   key: "1",
-                  attachmentID: "1",
+                  attachmentPreviewProps: { attachmentURL: "google.com" },
                   fileType: "doc",
                   onClickDownload: () => console.log("downloaded!"),
                   onPreviewAttachment: () => console.log("previewed!"),
@@ -71,9 +71,9 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
                 {
                   key: "2",
-                  attachmentID: "2",
-                  attachmentURL:
-                    "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fppcorn.com%2Fus%2Fwp-content%2Fuploads%2Fsites%2F14%2F2016%2F01%2Fcute-raccoon-ppcorn.jpg&f=1&nofb=1",
+                  attachmentPreviewProps: {
+                    attachmentURL: "https://s3.amazonaws.com/assets.clever.com/Raccooooooon.jpg",
+                  },
                   fileType: "png",
                   onClickDownload: () => console.log("downloaded!"),
                   onPreviewAttachment: () => console.log("previewed!"),
@@ -82,7 +82,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
                 {
                   key: "3",
-                  attachmentID: "3",
+                  attachmentPreviewProps: { attachmentURL: "google.com" },
                   fileType: "m4a",
                   onClickDownload: () => console.log("downloaded!"),
                   onPreviewAttachment: () => console.log("previewed!"),
@@ -92,8 +92,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
               ].map((attachment) => (
                 <MessagingAttachment
                   key={attachment.key}
-                  attachmentID={attachment.attachmentID}
-                  attachmentURL={attachment.attachmentURL}
+                  attachmentPreviewProps={attachment.attachmentPreviewProps}
                   fileType={attachment.fileType}
                   icon={attachment.icon}
                   onClickDownload={attachment.onClickDownload}
@@ -108,7 +107,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
               {[
                 {
                   key: "4",
-                  attachmentID: "4",
+                  attachmentPreviewProps: { attachmentURL: "abc.com" },
                   fileType: "doc",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -118,7 +117,9 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
                 {
                   key: "5",
-                  attachmentID: "5",
+                  attachmentPreviewProps: {
+                    attachmentURL: "https://s3.amazonaws.com/assets.clever.com/Raccooooooon.jpg",
+                  },
                   fileType: "png",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -128,7 +129,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
                 {
                   key: "6",
-                  attachmentID: "6",
+                  attachmentPreviewProps: { attachmentURL: "cnn.com" },
                   fileType: "m4a",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -139,7 +140,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
                 {
                   key: "7",
-                  attachmentID: "7",
+                  attachmentPreviewProps: { attachmentURL: "bbc.com" },
                   fileType: "doc",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -149,9 +150,9 @@ export default class MessagingAttachmentView extends React.PureComponent {
               ].map((attachment) => (
                 <MessagingAttachment
                   key={attachment.key}
-                  attachmentID={attachment.attachmentID}
+                  attachmentPreviewProps={attachment.attachmentPreviewProps}
                   fileType={attachment.fileType}
-                  onClickAttachment={attachment.onClickAttachment}
+                  onClickDownload={attachment.onClickAttachment}
                   onRemoveAttachment={attachment.onRemoveAttachment}
                   title={attachment.title}
                   subtitle={attachment.subtitle}
