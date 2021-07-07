@@ -150,7 +150,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 <MessagingAttachment
                   key={attachment.key}
                   attachmentID={attachment.attachmentID}
-                  icon={attachment.icon}
+                  fileType={attachment.fileType}
                   onClickAttachment={attachment.onClickAttachment}
                   onRemoveAttachment={attachment.onRemoveAttachment}
                   title={attachment.title}
