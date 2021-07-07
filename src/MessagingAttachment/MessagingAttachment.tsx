@@ -12,7 +12,6 @@ function cssClass(element: string) {
 }
 
 type AttachmentPreviewProps = {
-  // TODO: should any of these be optional vs required (different then they currently are)?
   attachmentURL: string;
   closeButtonAriaLabel?: string;
   downloadButtonTextDeskop?: string;
@@ -20,7 +19,6 @@ type AttachmentPreviewProps = {
 };
 
 type Props = {
-  // TODO: if any of the above props are required, this should be required. Else it could be optional?
   attachmentPreviewProps: AttachmentPreviewProps;
   errorMsg?: string;
   fileType: AttachmentFileType;
