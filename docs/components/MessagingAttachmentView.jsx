@@ -292,7 +292,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
               optional: true,
             },
             {
-              name: "downloadButtonTextDeskop",
+              name: "downloadButtonTextDesktop",
               type: "string",
               description: "Optional text for download button on desktop",
               defaultValue: "Download",
