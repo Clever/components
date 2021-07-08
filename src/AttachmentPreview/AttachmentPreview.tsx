@@ -89,7 +89,7 @@ export const AttachmentPreview: React.FC<Props> = ({
         </Button>
         <Button
           type="linkPlain"
-          aria-label={closeButtonAriaLabel}
+          ariaLabel={closeButtonAriaLabel}
           className={cssClass.CLOSE_BUTTON}
           onClick={onClose}
         >
