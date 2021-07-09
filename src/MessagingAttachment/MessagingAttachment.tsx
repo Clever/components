@@ -13,6 +13,7 @@ function cssClass(element: string) {
 
 type AttachmentPreviewProps = {
   attachmentURL: string;
+  className?: string;
   closeButtonAriaLabel?: string;
   closeButtonText?: string;
   downloadButtonTextDesktop?: string;
@@ -21,6 +22,7 @@ type AttachmentPreviewProps = {
 
 type Props = {
   attachmentPreviewProps: AttachmentPreviewProps;
+  className?: string;
   errorMsg?: string;
   fileType: AttachmentFileType;
   icon?: React.ReactNode;
@@ -36,6 +38,7 @@ type Props = {
 // TODO: replace with a discriminated union to keep the props neat
 export const MessagingAttachment: React.FC<Props> = ({
   attachmentPreviewProps,
+  className,
   errorMsg,
   fileType,
   icon,
@@ -52,7 +55,11 @@ export const MessagingAttachment: React.FC<Props> = ({
 
   return (
     <FlexBox
-      className={cx(cssClass("ParentContainer"), isUpload && cssClass("ParentContainer--IsUpload"))}
+      className={cx(
+        cssClass("ParentContainer"),
+        isUpload && cssClass("ParentContainer--IsUpload"),
+        className,
+      )}
     >
       {onRemoveAttachment && (
         <button
@@ -102,6 +109,7 @@ export const MessagingAttachment: React.FC<Props> = ({
         <AttachmentPreview
           attachmentName={title}
           attachmentURL={attachmentPreviewProps.attachmentURL}
+          className={attachmentPreviewProps.className}
           closeButtonAriaLabel={attachmentPreviewProps.closeButtonAriaLabel}
           closeButtonText={attachmentPreviewProps.closeButtonText}
           downloadButtonTextDesktop={attachmentPreviewProps.downloadButtonTextDesktop}

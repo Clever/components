@@ -73,6 +73,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   key: "2",
                   attachmentPreviewProps: {
                     attachmentURL: "https://s3.amazonaws.com/assets.clever.com/Raccooooooon.jpg",
+                    className: "anotherGoodClassName",
                   },
                   fileType: "png",
                   onClickDownload: () => console.log("downloaded!"),
@@ -152,7 +153,10 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 },
                 {
                   key: "7",
-                  attachmentPreviewProps: { attachmentURL: "bbc.com" },
+                  attachmentPreviewProps: {
+                    attachmentURL: "bbc.com",
+                  },
+                  className: "aNiceClassName",
                   fileType: "doc",
                   onClickAttachment: () => console.log("clicked!"),
                   onRemoveAttachment: () => console.log("removed!"),
@@ -163,6 +167,7 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 <MessagingAttachment
                   key={attachment.key}
                   attachmentPreviewProps={attachment.attachmentPreviewProps}
+                  className={attachment.className}
                   fileType={attachment.fileType}
                   onClickDownload={attachment.onClickAttachment}
                   onRemoveAttachment={attachment.onRemoveAttachment}
@@ -295,6 +300,12 @@ export default class MessagingAttachmentView extends React.PureComponent {
               name: "attachmentURL",
               type: "string",
               description: "URL for the attachment",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional ClassName for the AttachmentPreview",
+              optional: true,
             },
             {
               name: "closeButtonAriaLabel",
