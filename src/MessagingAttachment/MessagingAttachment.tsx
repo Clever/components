@@ -4,6 +4,7 @@ import * as cx from "classnames";
 
 import { AttachmentPreview } from "../AttachmentPreview";
 import { FlexBox } from "../flex";
+import KeyCode from "../utils/KeyCode";
 
 import "./MessagingAttachment.less";
 
@@ -77,16 +78,29 @@ export const MessagingAttachment: React.FC<Props> = ({
           isUpload && !uploadComplete && cssClass("IsUploading"),
           !!errorMsg && cssClass("Error"),
         )}
-        onClick={(e) => {
-          if (isUpload && !uploadComplete) {
-            e.stopPropagation();
-          } else if (isPreviewableAttachment) {
-            setAttachmentPreviewIsShowing(true);
-            if (onPreviewAttachment) {
-              onPreviewAttachment();
-            }
-          } else {
-            onClickDownload();
+        tabIndex={0}
+        onClick={(e) =>
+          handleClickAttachment(
+            e,
+            isUpload,
+            uploadComplete,
+            isPreviewableAttachment,
+            setAttachmentPreviewIsShowing,
+            onPreviewAttachment,
+            onClickDownload,
+          )
+        }
+        onKeyDown={(e) => {
+          if (e.key === KeyCode.ENTER) {
+            handleClickAttachment(
+              e,
+              isUpload,
+              uploadComplete,
+              isPreviewableAttachment,
+              setAttachmentPreviewIsShowing,
+              onPreviewAttachment,
+              onClickDownload,
+            );
           }
         }}
       >
@@ -122,6 +136,27 @@ export const MessagingAttachment: React.FC<Props> = ({
     </FlexBox>
   );
 };
+
+function handleClickAttachment(
+  e,
+  isUpload,
+  uploadComplete,
+  isPreviewableAttachment,
+  setAttachmentPreviewIsShowing,
+  onPreviewAttachment,
+  onClickDownload,
+) {
+  if (isUpload && !uploadComplete) {
+    e.stopPropagation();
+  } else if (isPreviewableAttachment) {
+    setAttachmentPreviewIsShowing(true);
+    if (onPreviewAttachment) {
+      onPreviewAttachment();
+    }
+  } else {
+    onClickDownload();
+  }
+}
 
 function handleRemoveClick(e, onRemoveAttachment) {
   e.stopPropagation();
