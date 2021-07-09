@@ -133,13 +133,26 @@
   }
 }
 
-.Button.AttachmentPreview--CloseButton {
+.fa.AttachmentPreview--CloseButton {
+  .margin--right--xs();
+  line-height: @size_l;
+
+  // override Button styling
+  transition: none;
+  color: @neutral_white !important;
+
+  :hover,
+  :active {
+    color: @neutral_white !important;
+  }
+}
+
+.Button.AttachmentPreview--CloseContainer {
   .flexbox();
   color: @neutral_white !important;
   display: inline-block;
   cursor: pointer;
   height: @size_l;
-  width: @size_l;
   line-height: @size_l;
   margin-right: @size_ml;
   text-align: center;
@@ -165,7 +178,7 @@
     width: calc(100vw - (2 * @MOBILE_BUFFER_SIZE));
   }
 
-  .Button.AttachmentPreview--CloseButton {
+  .Button.AttachmentPreview--CloseContainer {
     .margin--right--m();
   }
 

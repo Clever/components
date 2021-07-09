@@ -14,6 +14,7 @@ function cssClass(element: string) {
 type AttachmentPreviewProps = {
   attachmentURL: string;
   closeButtonAriaLabel?: string;
+  closeButtonText?: string;
   downloadButtonTextDesktop?: string;
   downloadButtonTextMobile?: string;
 };
@@ -102,6 +103,7 @@ export const MessagingAttachment: React.FC<Props> = ({
           attachmentName={title}
           attachmentURL={attachmentPreviewProps.attachmentURL}
           closeButtonAriaLabel={attachmentPreviewProps.closeButtonAriaLabel}
+          closeButtonText={attachmentPreviewProps.closeButtonText}
           downloadButtonTextDesktop={attachmentPreviewProps.downloadButtonTextDesktop}
           downloadButtonTextMobile={attachmentPreviewProps.downloadButtonTextMobile}
           fileType={fileType}
