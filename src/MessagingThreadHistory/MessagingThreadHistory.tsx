@@ -71,7 +71,7 @@ export const MessagingThreadHistory = React.forwardRef(
 
     // Scroll to the bottom if the user switches to a new non-null thread
     useLayoutEffect(() => {
-      if (lastMessageRef.current) {
+      if (lastMessageRef.current && threadID) {
         lastMessageRef.current.scrollIntoView();
       }
     }, [threadID]);
