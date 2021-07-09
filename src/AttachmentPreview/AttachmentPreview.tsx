@@ -14,6 +14,7 @@ export interface Props {
   attachmentURL: string;
   className?: string;
   closeButtonAriaLabel?: string;
+  closeButtonText?: string;
   downloadButtonTextDesktop?: string;
   downloadButtonTextMobile?: string;
   fileType: AttachmentFileType;
@@ -29,6 +30,7 @@ export const cssClass = {
   ATTACHMENT_NAME: "AttachmentPreview--AttachmentName",
   DOWNLOAD_CONTAINER: "AttachmentPreview--DownloadContainer",
   DOWNLOAD_BUTTON: "AttachmentPreview--DownloadButton",
+  CLOSE_CONTAINER: "AttachmentPreview--CloseContainer",
   CLOSE_BUTTON: "AttachmentPreview--CloseButton",
   PREVIEW_WINDOW: "AttachmentPreview--PreviewWindow",
   IMAGE_CONTAINER: "AttachmentPreview--ImageContainer",
@@ -48,6 +50,7 @@ export const AttachmentPreview: React.FC<Props> = ({
   attachmentURL,
   className,
   closeButtonAriaLabel = "close attachment preview",
+  closeButtonText = "Close",
   downloadButtonTextDesktop = "Download",
   downloadButtonTextMobile = "Save",
   fileType,
@@ -89,11 +92,12 @@ export const AttachmentPreview: React.FC<Props> = ({
         </Button>
         <Button
           type="linkPlain"
+          className={cssClass.CLOSE_CONTAINER}
           ariaLabel={closeButtonAriaLabel}
-          className={cssClass.CLOSE_BUTTON}
           onClick={onClose}
         >
-          <FontAwesome name="times" />
+          <FontAwesome name="times" className={cssClass.CLOSE_BUTTON} />
+          {closeButtonText}
         </Button>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>

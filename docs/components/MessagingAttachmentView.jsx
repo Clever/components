@@ -89,6 +89,18 @@ export default class MessagingAttachmentView extends React.PureComponent {
                   title: "Morning message.m4a",
                   subtitle: "Click to download",
                 },
+                {
+                  key: "4",
+                  attachmentPreviewProps: {
+                    attachmentURL:
+                      "https://s3.amazonaws.com/assets.clever.com/Raccooooooonadsdasdd.jpg",
+                  },
+                  fileType: "png",
+                  onClickDownload: () => console.log("downloaded!"),
+                  onPreviewAttachment: () => console.log("previewed!"),
+                  title: "ErrorImage.png",
+                  subtitle: "Click to view",
+                },
               ].map((attachment) => (
                 <MessagingAttachment
                   key={attachment.key}
@@ -289,6 +301,13 @@ export default class MessagingAttachmentView extends React.PureComponent {
               type: "string",
               description: "Optional ARIA label for close button",
               defaultValue: "close attachment preview",
+              optional: true,
+            },
+            {
+              name: "closeButtonText",
+              type: "string",
+              description: "Optional text for close button",
+              defaultValue: "Close",
               optional: true,
             },
             {
