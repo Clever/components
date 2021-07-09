@@ -81,12 +81,7 @@ export const AttachmentPreview: React.FC<Props> = ({
         <FlexItem grow className={cssClass.ATTACHMENT_NAME}>
           {attachmentName}
         </FlexItem>
-        <Button
-          type="linkPlain"
-          disabled={imageLoadError}
-          className={cssClass.DOWNLOAD_CONTAINER}
-          onClick={onClickDownload}
-        >
+        <Button type="linkPlain" className={cssClass.DOWNLOAD_CONTAINER} onClick={onClickDownload}>
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           {downloadButtonTextDesktop}
         </Button>
@@ -117,12 +112,7 @@ export const AttachmentPreview: React.FC<Props> = ({
         </FlexBox>
       </FlexBox>
       <FlexBox className={cssClass.FOOTER_BAR}>
-        <Button
-          type="linkPlain"
-          disabled={imageLoadError}
-          className={cssClass.DOWNLOAD_CONTAINER}
-          onClick={onClickDownload}
-        >
+        <Button type="linkPlain" className={cssClass.DOWNLOAD_CONTAINER} onClick={onClickDownload}>
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonTextMobile}</span>
         </Button>
