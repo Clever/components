@@ -215,10 +215,14 @@
 
   .MessagingBubble--Message--Container--Own .MessagingAttachment--Container {
     margin-left: @size_5xl;
+    width: calc(100% - 4rem);
+    overflow: hidden;
   }
 
   .MessagingBubble--Message--Container--Other .MessagingAttachment--Container {
     margin-right: @size_5xl;
+    width: calc(100% - 4rem);
+    overflow: hidden;
   }
 
   // ⬇️ In attachment-only messages, we don't want the margins defined above either ⬇️
@@ -227,6 +231,7 @@
     .MessagingAttachment--Container {
     margin-left: 0;
     margin-right: 0;
+    width: 100%;
   }
 
   .MessagingBubble--Message--Timestamp--Other
@@ -234,6 +239,7 @@
     .MessagingAttachment--Container {
     margin-left: 0;
     margin-right: 0;
+    width: 100%;
   }
 
   // ⬇️ In quoted announcements, we don't want the margins defined above ⬇️
