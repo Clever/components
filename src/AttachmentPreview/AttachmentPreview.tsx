@@ -73,6 +73,13 @@ export const AttachmentPreview: React.FC<Props> = ({
     };
   }, []);
 
+  const onBackgroundClick = (event) => {
+    const backgroundWasClicked = event.target === event.currentTarget
+    if(backgroundWasClicked){
+      onClose();
+    }
+  };
+
   return (
     <div className={classnames(cssClass.CONTAINER, className)}>
       <div className={cssClass.BACKGROUND} aria-hidden="true" />
@@ -96,7 +103,7 @@ export const AttachmentPreview: React.FC<Props> = ({
         </Button>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
-        <FlexBox className={cssClass.IMAGE_CONTAINER}>
+        <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={onBackgroundClick}>
           {!imageLoadError && (
             <img
               src={attachmentURL}
