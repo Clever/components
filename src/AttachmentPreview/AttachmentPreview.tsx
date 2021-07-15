@@ -72,8 +72,8 @@ export const AttachmentPreview: React.FC<Props> = ({
   }, []);
 
   const onBackgroundClick = (event) => {
-    const backgroundWasClicked = event.target === event.currentTarget
-    if(backgroundWasClicked){
+    const backgroundWasClicked = event.target === event.currentTarget;
+    if (backgroundWasClicked) {
       onClose();
     }
   };
