@@ -43,11 +43,11 @@
 .AttachmentPreview--PreviewWindow {
   .zIndex--6;
   position: fixed;
-  top: calc(@HEADER_BAR_HEIGHT + @DESKTOP_BUFFER_SIZE);
+  top: @HEADER_BAR_HEIGHT;
   left: 50%;
   transform: translateX(-50%);
-  height: calc(100vh - @HEADER_BAR_HEIGHT - (2 * @DESKTOP_BUFFER_SIZE));
-  width: calc(100vw - (2 * @DESKTOP_BUFFER_SIZE));
+  height: calc(100vh - @HEADER_BAR_HEIGHT);
+  width: 100vw;
 }
 
 .AttachmentPreview--ImageContainer {
@@ -61,27 +61,15 @@
 
 .AttachmentPreview--PreviewWindow img {
   .zIndex--8;
-  // render image as larger as natural size, or scale down to fit screen
+  // render image as large as natural size, or scale down to fit screen
   object-fit: scale-down;
-  height: 100%;
-  width: 100%;
-
-  // TODO: fix this in ticket M5G-504
-  // This makes the img div only as large as the image, so none of the background is eclipsed and
-  // the full bg area is clickable.
-  // Unfortunately, its breaking scale-down.
-  // Also, this doesn't work on Edge/IE.
-  // width: fit-content;
-  // width: -moz-fit-content;
-  // width: -webkit-fit-content;
-  // height: fit-content;
-  // height: -moz-fit-content;
-  // height: -webkit-fit-content;
-
-  // TODO: This isn't working because the img element is larger than the rendered image, so the
-  // border radius is being cropped at the corners of the element, not the rendered image. This will
-  // be fixed when above fit-content issues are solved
-  .borderRadius--s();
+  width: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
+  height: fit-content;
+  max-height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
+  // We apply an absurdly large margin on the left&right so that the image element
+  // doesn't occupay any extra horizontal space. Clicks on the margin register on
+  // the background component so that the preview will close properly.
+  margin: 0 1000rem;
 }
 
 .AttachmentPreview--ErrorContainer {
@@ -173,9 +161,14 @@
 
 @media only screen and (max-width: @breakpointM) {
   .AttachmentPreview--PreviewWindow {
-    top: calc(@HEADER_BAR_HEIGHT + @MOBILE_BUFFER_SIZE);
-    height: calc(100vh - (2 * @HEADER_BAR_HEIGHT) - (2 * @MOBILE_BUFFER_SIZE));
-    width: calc(100vw - (2 * @MOBILE_BUFFER_SIZE));
+    top: @HEADER_BAR_HEIGHT;
+    height: calc(100vh - (2 * @HEADER_BAR_HEIGHT));
+    width: 100vw;
+  }
+
+  .AttachmentPreview--PreviewWindow img {
+    width: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
+    max-height: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
   }
 
   .Button.AttachmentPreview--CloseContainer {
