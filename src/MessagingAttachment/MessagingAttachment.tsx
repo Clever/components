@@ -125,7 +125,6 @@ export const MessagingAttachment: React.FC<Props> = ({
           attachmentURL={attachmentPreviewProps.attachmentURL}
           className={attachmentPreviewProps.className}
           closeButtonAriaLabel={attachmentPreviewProps.closeButtonAriaLabel}
-          closeButtonText={attachmentPreviewProps.closeButtonText}
           downloadButtonTextDesktop={attachmentPreviewProps.downloadButtonTextDesktop}
           downloadButtonTextMobile={attachmentPreviewProps.downloadButtonTextMobile}
           fileType={fileType}
