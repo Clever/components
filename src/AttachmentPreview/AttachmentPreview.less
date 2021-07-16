@@ -63,13 +63,13 @@
   .zIndex--8;
   // render image as large as natural size, or scale down to fit screen
   object-fit: scale-down;
-  width: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
-  height: fit-content;
-  max-height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
   // We apply an absurdly large margin on the left&right so that the image element
   // doesn't occupay any extra horizontal space. Clicks on the margin register on
   // the background component so that the preview will close properly.
   margin: 0 1000rem;
+  height: fit-content;
+  max-width: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
+  max-height: calc(100% - (2 * @DESKTOP_BUFFER_SIZE));
 }
 
 .AttachmentPreview--ErrorContainer {
@@ -167,7 +167,7 @@
   }
 
   .AttachmentPreview--PreviewWindow img {
-    width: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
+    max-width: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
     max-height: calc(100% - (2 * @MOBILE_BUFFER_SIZE));
   }
 
