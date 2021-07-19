@@ -14,7 +14,6 @@ export interface Props {
   attachmentURL: string;
   className?: string;
   closeButtonAriaLabel?: string;
-  closeButtonText?: string;
   downloadButtonTextDesktop?: string;
   downloadButtonTextMobile?: string;
   fileType: AttachmentFileType;
@@ -50,7 +49,6 @@ export const AttachmentPreview: React.FC<Props> = ({
   attachmentURL,
   className,
   closeButtonAriaLabel = "close attachment preview",
-  closeButtonText = "Close",
   downloadButtonTextDesktop = "Download",
   downloadButtonTextMobile = "Save",
   fileType,
@@ -73,6 +71,13 @@ export const AttachmentPreview: React.FC<Props> = ({
     };
   }, []);
 
+  const onBackgroundClick = (event) => {
+    const backgroundWasClicked = event.target === event.currentTarget;
+    if (backgroundWasClicked) {
+      onClose();
+    }
+  };
+
   return (
     <div className={classnames(cssClass.CONTAINER, className)}>
       <div className={cssClass.BACKGROUND} aria-hidden="true" />
@@ -92,11 +97,10 @@ export const AttachmentPreview: React.FC<Props> = ({
           onClick={onClose}
         >
           <FontAwesome name="times" className={cssClass.CLOSE_BUTTON} />
-          {closeButtonText}
         </Button>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
-        <FlexBox className={cssClass.IMAGE_CONTAINER}>
+        <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={onBackgroundClick}>
           {!imageLoadError && (
             <img
               src={attachmentURL}
