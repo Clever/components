@@ -50,6 +50,12 @@
   /* stylelint-enable */
   overflow-y: auto;
   scroll-padding-bottom: 1rem;
+  .borderRadius--top--l();
+}
+
+.MessagingInput--Reply--Container--Active {
+  .border--m(@primary_blue_tint_2);
+  border-bottom: none;
 }
 
 .MessagingInput--Reply--Content {
@@ -115,6 +121,11 @@
     .border--m(@primary_blue_tint_2);
     box-shadow: none;
   }
+}
+
+.MessagingInput--TextField.MessagingInput--TextField--WithReplyTo {
+  .borderRadius--top--0();
+  border-top: none;
 }
 
 .MessagingInput--SendText {
