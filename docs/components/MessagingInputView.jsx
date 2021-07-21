@@ -36,6 +36,7 @@ export default class MessagingInputView extends React.PureComponent {
     attachments: [],
     checkboxValue: false,
     showCheckbox: false,
+    showLabel: false,
   };
 
   render() {
@@ -49,6 +50,7 @@ export default class MessagingInputView extends React.PureComponent {
       attachments,
       checkboxValue,
       showCheckbox,
+      showLabel,
     } = this.state;
     const exampleReplyMessage = (
       <MessagingBubble className={cssClass.EXAMPLE_MESSAGE_REPLY} theme="otherMessage">
@@ -150,6 +152,7 @@ export default class MessagingInputView extends React.PureComponent {
                   onChange: (newValue) => this.setState({ checkboxValue: newValue }),
                 }
               }
+              label={showLabel && "Label for special circumstances"}
             />
           </ExampleCode>
           <label className={cssClass.CONFIG}>
@@ -215,6 +218,14 @@ export default class MessagingInputView extends React.PureComponent {
               onChange={({ target }) => this.setState({ showCheckbox: target.checked })}
             />{" "}
             Show checkbox
+          </label>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={showLabel}
+              onChange={({ target }) => this.setState({ showLabel: target.checked })}
+            />{" "}
+            Show label
           </label>
         </Example>
         {this._renderProps()}
