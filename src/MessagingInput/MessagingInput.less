@@ -94,6 +94,9 @@
   .TextArea--input {
     .margin--y--none();
     .padding--y--xs();
+    // Consciously selected after trial and error to prevent the attachment icon from bumping into
+    // scrollbars
+    padding-right: 2.6rem;
     color: @neutral_dark_gray;
     // Fits 3 rows of text. Overflow is scrollable.
     max-height: @size_5xl;
@@ -108,20 +111,21 @@
       white-space: nowrap;
     }
   }
-}
 
-.MessagingInput--SendIcon {
-  display: none;
+  &.TextArea--inFocus {
+    .border--m(@primary_blue_tint_2);
+    box-shadow: none;
+  }
 }
 
 .MessagingInput--SendText {
-  display: block;
+  .margin--left--xs();
 }
 
 .Button.MessagingInput--SendButton {
   // Sizing for this button is pretty particular
   border: 0;
-  padding: 0.8125rem 1.5rem;
+  padding: 0.8125rem 0.75rem;
   line-height: normal;
 }
 

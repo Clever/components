@@ -166,14 +166,10 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           className={cssClass("SendButton")}
           type="primary"
           value={
-            <>
-              <img
-                className={cssClass("SendIcon")}
-                alt="Send message"
-                src={require("./arrow_send.svg")}
-              />
+            <FlexBox alignItems="center">
+              <FontAwesome name="paper-plane" />
               <span className={cssClass("SendText")}>{sendButtonText}</span>
-            </>
+            </FlexBox>
           }
           disabled={isSendButtonDisabled(disableSendButton, value, attachments)}
           onClick={() => onSubmit(value.trim())}
