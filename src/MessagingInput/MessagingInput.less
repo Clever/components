@@ -210,6 +210,11 @@
 
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
+  .MessagingInput--Reply--Container--Active {
+    .border--m(@neutral_silver);
+    border-bottom: none;
+  }
+
   .MessagingInput--TextField {
     border-radius: 2rem;
 
@@ -222,11 +227,6 @@
     .borderRadius--l();
     .borderRadius--top--0();
     border-top: none;
-  }
-
-  .MessagingInput--Reply--Container--Active {
-    .border--m(@neutral_silver);
-    border-bottom: none;
   }
 
   .MessagingInput--Container {
