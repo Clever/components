@@ -22,12 +22,14 @@ interface Props {
     onChange: (value: boolean) => void;
   };
   disableSendButton?: boolean;
+  label?: string;
   newlineOnEnter?: boolean;
   onBlur?: () => void;
   onChange: (newValue: string) => void;
   onFocus?: () => void;
   onReplyCancel?: () => void;
   onSubmit: (message: string) => void;
+  placeholder?: string;
   replyTo?: React.ReactNode;
   showReturnKeyInstructions?: boolean;
   showUploadAttachmentButton?: boolean;
@@ -35,7 +37,6 @@ interface Props {
   value: string;
 
   // Allows overriding the text with a translation
-  labelText?: string;
   sendButtonText?: string;
 }
 
@@ -54,13 +55,14 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     checkbox,
     className,
     disableSendButton,
-    labelText = "Send a message",
+    label,
     newlineOnEnter,
     onBlur,
     onChange,
     onFocus,
     onReplyCancel,
     onSubmit,
+    placeholder = "Send a message",
     replyTo,
     sendButtonText = "Send",
     showReturnKeyInstructions,
@@ -90,25 +92,24 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     >
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cssClass("InnerContainer--Content")}>
-          <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
-            <label
-              htmlFor={TEXT_FIELD_NAME}
-              className={cssClass(
-                replyTo ? "LabelAndCheckbox--Label--hidden" : "LabelAndCheckbox--Label",
+          {(label || checkbox) && (
+            <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
+              {label && (
+                <label className={cssClass("LabelAndCheckbox--Label")} htmlFor={TEXT_FIELD_NAME}>
+                  {label}
+                </label>
               )}
-            >
-              {labelText}
-            </label>
-            {checkbox?.isVisible && (
-              <Checkbox
-                className={cssClass("LabelAndCheckbox--Checkbox")}
-                checked={checkbox.isChecked}
-                onChange={({ checked }) => checkbox.onChange(checked)}
-              >
-                {checkbox.label}
-              </Checkbox>
-            )}
-          </FlexBox>
+              {checkbox?.isVisible && (
+                <Checkbox
+                  className={cssClass("LabelAndCheckbox--Checkbox")}
+                  checked={checkbox.isChecked}
+                  onChange={({ checked }) => checkbox.onChange(checked)}
+                >
+                  {checkbox.label}
+                </Checkbox>
+              )}
+            </FlexBox>
+          )}
           {replyTo && (
             <div className={cssClass("Reply--Container")}>
               <div className={cssClass("Reply--Content")}>
@@ -148,7 +149,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                 }
               }
             }}
-            placeholder={replyTo ? labelText : ""}
+            placeholder={placeholder}
             onBlur={onBlur}
             onFocus={onFocus}
             autoResize
