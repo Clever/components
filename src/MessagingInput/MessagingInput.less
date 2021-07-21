@@ -94,8 +94,7 @@
   .TextArea--input {
     .margin--y--none();
     .padding--y--xs();
-    // Consciously selected after trial and error to prevent the attachment icon from bumping into
-    // scrollbars
+    // Prevents text from overlapping with the attachment icon and scrollbar when both are present
     padding-right: 2.6rem;
     color: @neutral_dark_gray;
     // Fits 3 rows of text. Overflow is scrollable.
@@ -175,8 +174,11 @@
 
   .FileInput--Icon {
     position: absolute;
-    right: 0;
-    margin: 0.25rem;
+    // Leave enough space on the right such that the attachment icon doesn't overlap with the
+    // scrollbar when present
+    right: 1rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
     .borderRadius--l();
 
     &:hover {
