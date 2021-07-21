@@ -240,6 +240,21 @@
 
   .MessagingInput--TextField {
     border-radius: 2rem;
+
+    &.TextArea--inFocus {
+      .border--m(@neutral_silver);
+    }
+  }
+
+  .MessagingInput--TextField.MessagingInput--TextField--WithReplyTo {
+    .borderRadius--l();
+    .borderRadius--top--0();
+    border-top: none;
+  }
+
+  .MessagingInput--Reply--Container--Active {
+    .border--m(@neutral_silver);
+    border-bottom: none;
   }
 
   .MessagingInput--Container {
