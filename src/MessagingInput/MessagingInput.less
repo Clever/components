@@ -24,6 +24,8 @@
 .MessagingInput--LabelAndCheckbox--Checkbox {
   animation: fadein 0.25s;
   .text--truncate();
+
+  // Leaves enough space for the checkbox border when the checkbox is focused
   .padding--bottom--2xs();
   .padding--left--2xs();
   .padding--top--2xs();
@@ -34,20 +36,6 @@
   .margin--right--m();
   .padding--bottom--2xs();
   .padding--top--2xs();
-}
-
-.MessagingInput--LabelAndCheckbox--Label--hidden {
-  /* stylelint-disable */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* added line */
-  border: 0;
-  /* stylelint-enable */
 }
 
 // ----- Reply

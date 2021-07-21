@@ -92,27 +92,24 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     >
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cssClass("InnerContainer--Content")}>
-          <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
-            {label && (
-              <label
-                htmlFor={TEXT_FIELD_NAME}
-                className={cssClass(
-                  replyTo ? "LabelAndCheckbox--Label--hidden" : "LabelAndCheckbox--Label",
-                )}
-              >
-                {label}
-              </label>
-            )}
-            {checkbox?.isVisible && (
-              <Checkbox
-                className={cssClass("LabelAndCheckbox--Checkbox")}
-                checked={checkbox.isChecked}
-                onChange={({ checked }) => checkbox.onChange(checked)}
-              >
-                {checkbox.label}
-              </Checkbox>
-            )}
-          </FlexBox>
+          {(label || checkbox) && (
+            <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
+              {label && (
+                <label htmlFor={TEXT_FIELD_NAME} className={cssClass("LabelAndCheckbox--Label")}>
+                  {label}
+                </label>
+              )}
+              {checkbox?.isVisible && (
+                <Checkbox
+                  className={cssClass("LabelAndCheckbox--Checkbox")}
+                  checked={checkbox.isChecked}
+                  onChange={({ checked }) => checkbox.onChange(checked)}
+                >
+                  {checkbox.label}
+                </Checkbox>
+              )}
+            </FlexBox>
+          )}
           {replyTo && (
             <div className={cssClass("Reply--Container")}>
               <div className={cssClass("Reply--Content")}>
