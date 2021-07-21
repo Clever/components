@@ -22,6 +22,8 @@ interface Props {
     onChange: (value: boolean) => void;
   };
   disableSendButton?: boolean;
+  label?: string;
+  placeholder?: string;
   newlineOnEnter?: boolean;
   onBlur?: () => void;
   onChange: (newValue: string) => void;
@@ -35,7 +37,6 @@ interface Props {
   value: string;
 
   // Allows overriding the text with a translation
-  labelText?: string;
   sendButtonText?: string;
 }
 
@@ -54,8 +55,9 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     checkbox,
     className,
     disableSendButton,
-    labelText = "Send a message",
+    label,
     newlineOnEnter,
+    placeholder = "Send a message",
     onBlur,
     onChange,
     onFocus,
@@ -91,14 +93,16 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cssClass("InnerContainer--Content")}>
           <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
-            <label
-              htmlFor={TEXT_FIELD_NAME}
-              className={cssClass(
-                replyTo ? "LabelAndCheckbox--Label--hidden" : "LabelAndCheckbox--Label",
-              )}
-            >
-              {labelText}
-            </label>
+            {label && (
+              <label
+                htmlFor={TEXT_FIELD_NAME}
+                className={cssClass(
+                  replyTo ? "LabelAndCheckbox--Label--hidden" : "LabelAndCheckbox--Label",
+                )}
+              >
+                {label}
+              </label>
+            )}
             {checkbox?.isVisible && (
               <Checkbox
                 className={cssClass("LabelAndCheckbox--Checkbox")}
@@ -148,7 +152,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                 }
               }
             }}
-            placeholder={replyTo ? labelText : ""}
+            placeholder={placeholder}
             onBlur={onBlur}
             onFocus={onFocus}
             autoResize

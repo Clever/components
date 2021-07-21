@@ -22,7 +22,6 @@
 }
 
 .MessagingInput--LabelAndCheckbox--Checkbox {
-  margin-left: auto;
   animation: fadein 0.25s;
   .text--truncate();
   .padding--bottom--2xs();
@@ -102,11 +101,11 @@
   min-height: 2.75rem;
   min-width: 8rem;
   .border--m(@neutral_silver);
+  .borderRadius--l();
 
   .TextArea--input {
     .margin--y--none();
     .padding--y--xs();
-    padding-right: 2.6rem;
     color: @neutral_dark_gray;
     // Fits 3 rows of text. Overflow is scrollable.
     max-height: @size_5xl;
@@ -133,7 +132,8 @@
 
 .Button.MessagingInput--SendButton {
   // Sizing for this button is pretty particular
-  padding: 0.6875rem 1.5rem 0.6875rem;
+  border: 0;
+  padding: 0.8125rem 1.5rem;
   line-height: normal;
 }
 
@@ -183,8 +183,8 @@
 
   .FileInput--Icon {
     position: absolute;
-    right: 0.5rem;
-    margin: 0.25rem 0.5rem 0.25rem 0.75rem;
+    right: 0;
+    margin: 0.25rem;
     .borderRadius--l();
 
     &:hover {
