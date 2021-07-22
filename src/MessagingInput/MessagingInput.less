@@ -100,6 +100,8 @@
   .TextArea--input {
     .margin--y--none();
     .padding--y--xs();
+    // Prevents text from overlapping with the attachment icon and scrollbar when both are present.
+    // 2.6rem was selected after a process of trial and error
     padding-right: 2.6rem;
     color: @neutral_dark_gray;
     // Fits 3 rows of text. Overflow is scrollable.
