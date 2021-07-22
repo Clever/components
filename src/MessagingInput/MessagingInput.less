@@ -226,6 +226,11 @@
     min-height: 2rem;
     border-radius: 2rem;
 
+    .TextArea--input {
+      // Ensures that multi-line text doesn't spill outside the boundaries of the rounded text input
+      border-radius: 1rem;
+    }
+
     &.TextArea--inFocus {
       .border--m(@neutral_silver);
     }
