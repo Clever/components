@@ -50,6 +50,7 @@
   /* stylelint-enable */
   overflow-y: auto;
   scroll-padding-bottom: 1rem;
+  .borderRadius--top--l();
 }
 
 .MessagingInput--Reply--Content {
@@ -89,6 +90,7 @@
   min-height: 2.75rem;
   min-width: 8rem;
   .border--m(@neutral_silver);
+  .borderRadius--l();
 
   .TextArea--input {
     .margin--y--none();
@@ -108,6 +110,11 @@
       white-space: nowrap;
     }
   }
+}
+
+.MessagingInput--TextField.MessagingInput--TextField--WithReply {
+  .borderRadius--top--0();
+  border-top: none;
 }
 
 .MessagingInput--SendIcon {
@@ -193,9 +200,18 @@
 
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
+  .MessagingInput--Reply--Container {
+    .borderRadius--top--xl();
+  }
+
   .MessagingInput--TextField {
     .margin--right--none();
     min-height: 2rem;
+    border-radius: 2rem;
+  }
+
+  .MessagingInput--TextField.MessagingInput--TextField--WithReply {
+    .borderRadius--bottom--xl();
   }
 
   .MessagingInput--Container {

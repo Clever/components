@@ -130,7 +130,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           )}
           <TextArea
             ref={textAreaRef}
-            className={cssClass("TextField")}
+            className={cx(cssClass("TextField"), replyTo && cssClass("TextField--WithReply"))}
             name={TEXT_FIELD_NAME}
             value={value}
             onChange={(e) => {
