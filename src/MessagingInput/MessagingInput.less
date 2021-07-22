@@ -53,6 +53,11 @@
   .borderRadius--top--l();
 }
 
+.MessagingInput--Reply--Container.MessagingInput--Reply--Container--WithActiveInput {
+  .border--m(@primary_blue_tint_2);
+  border-bottom: none;
+}
+
 .MessagingInput--Reply--Content {
   position: relative;
 }
@@ -109,6 +114,11 @@
       .text--medium();
       white-space: nowrap;
     }
+  }
+
+  &.TextArea--inFocus {
+    .border--m(@primary_blue_tint_2);
+    box-shadow: none;
   }
 }
 
@@ -204,14 +214,24 @@
     .borderRadius--top--xl();
   }
 
+  .MessagingInput--Reply--Container.MessagingInput--Reply--Container--WithActiveInput {
+    .border--m(@neutral_silver);
+    border-bottom: none;
+  }
+
   .MessagingInput--TextField {
     .margin--right--none();
     min-height: 2rem;
     border-radius: 2rem;
+
+    &.TextArea--inFocus {
+      .border--m(@neutral_silver);
+    }
   }
 
   .MessagingInput--TextField.MessagingInput--TextField--WithReply {
     .borderRadius--bottom--xl();
+    border-top: none;
   }
 
   .MessagingInput--Container {

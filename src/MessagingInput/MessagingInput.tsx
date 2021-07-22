@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef, useImperativeHandle } from "react";
+import { useRef, useImperativeHandle, useState } from "react";
 import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
@@ -80,6 +80,8 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     },
   }));
 
+  const [isInputActive, setIsInputActive] = useState(false);
+
   return (
     <FlexBox
       className={cx(
@@ -111,7 +113,12 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             </FlexBox>
           )}
           {replyTo && (
-            <div className={cssClass("Reply--Container")}>
+            <div
+              className={cx(
+                cssClass("Reply--Container"),
+                isInputActive && cssClass("Reply--Container--WithActiveInput"),
+              )}
+            >
               <div className={cssClass("Reply--Content")}>
                 {replyTo}
                 {/* only show reply cancel button if cancel callback provided */}
@@ -150,8 +157,14 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               }
             }}
             placeholder={placeholder}
-            onBlur={onBlur}
-            onFocus={onFocus}
+            onBlur={() => {
+              setIsInputActive(false);
+              onBlur();
+            }}
+            onFocus={() => {
+              setIsInputActive(true);
+              onFocus();
+            }}
             autoResize
             // The field starts with `rows + 1` rows, so
             //  passing in 0 gets us the desired starting height.
