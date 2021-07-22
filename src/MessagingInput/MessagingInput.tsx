@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef, useImperativeHandle } from "react";
+import { useRef, useImperativeHandle, useState } from "react";
 import * as FontAwesome from "react-fontawesome";
 import * as cx from "classnames";
 
@@ -22,12 +22,14 @@ interface Props {
     onChange: (value: boolean) => void;
   };
   disableSendButton?: boolean;
+  label?: string;
   newlineOnEnter?: boolean;
   onBlur?: () => void;
   onChange: (newValue: string) => void;
   onFocus?: () => void;
   onReplyCancel?: () => void;
   onSubmit: (message: string) => void;
+  placeholder?: string;
   replyTo?: React.ReactNode;
   showReturnKeyInstructions?: boolean;
   showUploadAttachmentButton?: boolean;
@@ -35,7 +37,6 @@ interface Props {
   value: string;
 
   // Allows overriding the text with a translation
-  labelText?: string;
   sendButtonText?: string;
 }
 
@@ -54,13 +55,14 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     checkbox,
     className,
     disableSendButton,
-    labelText = "Send a message",
+    label,
     newlineOnEnter,
     onBlur,
     onChange,
     onFocus,
     onReplyCancel,
     onSubmit,
+    placeholder = "Send a message",
     replyTo,
     sendButtonText = "Send",
     showReturnKeyInstructions,
@@ -78,6 +80,8 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     },
   }));
 
+  const [isInputActive, setIsInputActive] = useState(false);
+
   return (
     <FlexBox
       className={cx(
@@ -90,27 +94,31 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     >
       <FlexBox className={cssClass("InnerContainer")}>
         <FlexBox column className={cssClass("InnerContainer--Content")}>
-          <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
-            <label
-              htmlFor={TEXT_FIELD_NAME}
-              className={cssClass(
-                replyTo ? "LabelAndCheckbox--Label--hidden" : "LabelAndCheckbox--Label",
+          {(label || checkbox) && (
+            <FlexBox alignItems="center" className={cssClass("LabelAndCheckbox--Container")} grow>
+              {label && (
+                <label className={cssClass("LabelAndCheckbox--Label")} htmlFor={TEXT_FIELD_NAME}>
+                  {label}
+                </label>
+              )}
+              {checkbox?.isVisible && (
+                <Checkbox
+                  className={cssClass("LabelAndCheckbox--Checkbox")}
+                  checked={checkbox.isChecked}
+                  onChange={({ checked }) => checkbox.onChange(checked)}
+                >
+                  {checkbox.label}
+                </Checkbox>
+              )}
+            </FlexBox>
+          )}
+          {replyTo && (
+            <div
+              className={cx(
+                cssClass("Reply--Container"),
+                isInputActive && cssClass("Reply--Container--WithActiveInput"),
               )}
             >
-              {labelText}
-            </label>
-            {checkbox?.isVisible && (
-              <Checkbox
-                className={cssClass("LabelAndCheckbox--Checkbox")}
-                checked={checkbox.isChecked}
-                onChange={({ checked }) => checkbox.onChange(checked)}
-              >
-                {checkbox.label}
-              </Checkbox>
-            )}
-          </FlexBox>
-          {replyTo && (
-            <div className={cssClass("Reply--Container")}>
               <div className={cssClass("Reply--Content")}>
                 {replyTo}
                 {/* only show reply cancel button if cancel callback provided */}
@@ -129,7 +137,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           )}
           <TextArea
             ref={textAreaRef}
-            className={cssClass("TextField")}
+            className={cx(cssClass("TextField"), replyTo && cssClass("TextField--WithReply"))}
             name={TEXT_FIELD_NAME}
             value={value}
             onChange={(e) => {
@@ -148,9 +156,15 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                 }
               }
             }}
-            placeholder={replyTo ? labelText : ""}
-            onBlur={onBlur}
-            onFocus={onFocus}
+            placeholder={placeholder}
+            onBlur={() => {
+              setIsInputActive(false);
+              onBlur();
+            }}
+            onFocus={() => {
+              setIsInputActive(true);
+              onFocus();
+            }}
             autoResize
             // The field starts with `rows + 1` rows, so
             //  passing in 0 gets us the desired starting height.
@@ -165,17 +179,14 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           className={cssClass("SendButton")}
           type="primary"
           value={
-            <>
-              <img
-                className={cssClass("SendIcon")}
-                alt="Send message"
-                src={require("./arrow_send.svg")}
-              />
+            <FlexBox alignItems="center">
+              <FontAwesome name="paper-plane" />
               <span className={cssClass("SendText")}>{sendButtonText}</span>
-            </>
+            </FlexBox>
           }
           disabled={isSendButtonDisabled(disableSendButton, value, attachments)}
           onClick={() => onSubmit(value.trim())}
+          ariaLabel={sendButtonText}
         />
       </FlexBox>
       {formReturnKeyInstructionsLabel(showReturnKeyInstructions, value)}
