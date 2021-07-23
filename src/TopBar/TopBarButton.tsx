@@ -58,6 +58,7 @@ export class TopBarButton extends React.PureComponent<Props> {
           ref={(ref) => {
             this._containerRef = ref;
           }}
+          aria-current={active && "page"}
         >
           {children}
         </Wrapper>
