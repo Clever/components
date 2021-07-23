@@ -80,6 +80,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
     },
   }));
 
+  const attachmentsArePresent = attachments?.length > 0;
   const [isInputActive, setIsInputActive] = useState(false);
 
   return (
@@ -137,7 +138,11 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           )}
           <TextArea
             ref={textAreaRef}
-            className={cx(cssClass("TextField"), replyTo && cssClass("TextField--WithReply"))}
+            className={cx(
+              cssClass("TextField"),
+              replyTo && cssClass("TextField--WithReply"),
+              attachmentsArePresent && cssClass("TextField--WithAttachments"),
+            )}
             name={TEXT_FIELD_NAME}
             value={value}
             onChange={(e) => {
@@ -151,7 +156,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                 e.preventDefault();
                 // If something other than whitespace is in the input area,
                 // or if there is at least one attachment, send the message.
-                if (value.trim() !== "" || attachments?.length > 0) {
+                if (value.trim() !== "" || attachmentsArePresent) {
                   onSubmit(value.trim());
                 }
               }
