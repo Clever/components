@@ -225,7 +225,7 @@ export class TextArea extends React.Component<Props, State> {
 
     const textAreaProps = {
       ["aria-invalid"]: !valid,
-      ["aria-label"]: this.props.label,
+      ["aria-label"]: this.props.label || this.props.placeholder,
       className: "TextArea--input",
       disabled: this.props.disabled,
       id,
