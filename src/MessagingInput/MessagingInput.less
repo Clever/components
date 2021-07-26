@@ -227,11 +227,6 @@
     min-height: 2rem;
     border-radius: 2rem;
 
-    .TextArea--input {
-      // Ensures that multi-line text doesn't spill outside the boundaries of the rounded text input
-      border-radius: 0.8rem;
-    }
-
     &.TextArea--inFocus {
       .border--m(@neutral_silver);
     }
@@ -240,18 +235,14 @@
   .MessagingInput--TextField.MessagingInput--TextField--WithReply {
     .borderRadius--bottom--xl();
     border-top: none;
-
-    .TextArea--input {
-      .borderRadius--0();
-    }
   }
 
   .MessagingInput--TextField.MessagingInput--TextField--WithAttachments {
     .borderRadius--xl();
+  }
 
-    .TextArea--input {
-      .borderRadius--0();
-    }
+  .MessagingInput--TextField.MessagingInput--TextField--MultiLine {
+    .borderRadius--xl();
   }
 
   .MessagingInput--Container {

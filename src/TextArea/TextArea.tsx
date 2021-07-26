@@ -155,6 +155,11 @@ export class TextArea extends React.Component<Props, State> {
     this.textAreaEl.current.focus();
   }
 
+  // Give consumers that set up a React ref access to the <textarea> height
+  textAreaHeight(): number | undefined {
+    return this.textAreaEl.current?.offsetHeight || undefined;
+  }
+
   currentErrorMessage(): string {
     const { error, value, required } = this.props;
     const { hasBeenFocused } = this.state;
