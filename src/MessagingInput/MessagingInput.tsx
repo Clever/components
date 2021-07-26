@@ -83,6 +83,9 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   const attachmentsArePresent = attachments?.length > 0;
   const [isInputActive, setIsInputActive] = useState(false);
 
+  // Update this if relevant styling changes and this heuristic no longer holds
+  const hasMultiLineText = textAreaRef.current?.textAreaHeight() > 40;
+
   return (
     <FlexBox
       className={cx(
@@ -142,6 +145,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               cssClass("TextField"),
               replyTo && cssClass("TextField--WithReply"),
               attachmentsArePresent && cssClass("TextField--WithAttachments"),
+              hasMultiLineText && cssClass("TextField--MultiLine"),
             )}
             name={TEXT_FIELD_NAME}
             value={value}
