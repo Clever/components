@@ -7,6 +7,7 @@ import ChatHeart from "./ChatHeart";
 import Chat from "./Chat";
 import Checkmark from "./Checkmark";
 import CircleC from "./CircleC";
+import CleverAcademy from "./CleverAcademy";
 import Clock from "./Clock";
 import CloseFloatingButton from "./CloseFloatingButton";
 import Diploma from "./Diploma";
@@ -77,6 +78,7 @@ export default {
   chat: Chat,
   checkmark: Checkmark,
   "circle-c": CircleC,
+  "clever-academy": CleverAcademy,
   clock: Clock,
   "close-floating-button": CloseFloatingButton,
   diploma: Diploma,
