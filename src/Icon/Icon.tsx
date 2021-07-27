@@ -42,6 +42,7 @@ const names = {
   CHAT_HEART: "chat-heart",
   CHECKMARK: "checkmark",
   CIRCLE_C: "circle-c",
+  CLEVER_ACADEMY: "clever-academy",
   CLOCK: "clock",
   CLOSE_FLOATING_BUTTON: "close-floating-button",
   DIPLOMA: "diploma",
