@@ -48,6 +48,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           showMoreButtonText={props.showMoreButtonText}
           truncationNoticeText={props.truncationNoticeText}
           truncationTooltipText={props.truncationTooltipText}
+          onToggleShow={props.onToggleShow}
         >
           {props.children}
         </QuotedAnnouncementBubble>
