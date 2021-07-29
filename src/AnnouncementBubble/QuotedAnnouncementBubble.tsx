@@ -25,6 +25,7 @@ export interface Props {
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
+  onToggleShow?: () => void;
 
   // Temporary props to allow overriding text with translations
   postedInText?: string;
@@ -49,6 +50,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
   showMoreButtonText,
   truncationNoticeText,
   truncationTooltipText,
+  onToggleShow,
 }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -155,7 +157,12 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       )}
       <Button
         className={cssClass("button--outer")}
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={() => {
+          if (onToggleShow) {
+            onToggleShow();
+          }
+          setIsExpanded(!isExpanded);
+        }}
         type="linkPlain"
       >
         <span
