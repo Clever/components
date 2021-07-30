@@ -168,7 +168,9 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             placeholder={placeholder}
             onBlur={() => {
               setIsInputActive(false);
-              onBlur();
+              if (onBlur) {
+                onBlur();
+              }
             }}
             onFocus={() => {
               setIsInputActive(true);
