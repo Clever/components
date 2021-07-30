@@ -23,15 +23,14 @@ button.Menu--MenuItem--default {
 
   &:focus {
     background-color: fade(@primary_blue_tint_2, 10%);
-    box-shadow: inset @borderWidthL 0 fade(@primary_blue_tint_2, 50%);
-    // box-shadow: inset @borderWidthL 0 @primary_blue_tint_2;
-    color: @primary_blue_shade_1;
+    box-shadow: inset @borderWidthL 0 @primary_blue_shade_2;
+    color: @primary_blue_shade_2;
   }
 
   &:active {
     background-color: fade(@primary_blue_tint_2, 20%);
-    box-shadow: inset @borderWidthL 0 @primary_blue_shade_1;
-    color: @primary_blue_shade_2;
+    box-shadow: inset @borderWidthL 0 @primary_blue_shade_3;
+    color: @primary_blue_shade_3;
   }
 
   &:disabled {
@@ -44,10 +43,10 @@ button.Menu--MenuItem--default {
 .Menu--MenuItem--default.Menu--MenuItem--selected {
   .text--semi-bold();
   box-shadow: inset @borderWidthL 0 @primary_blue;
-  color: @primary_blue_shade_2;
+  color: @primary_blue;
 
   &:focus {
-    box-shadow: inset @borderWidthL 0 @primary_blue;
-    color: @primary_blue_shade_2;
+    box-shadow: inset @borderWidthL 0 @primary_blue_shade_3;
+    color: @primary_blue_shade_3;
   }
 }
