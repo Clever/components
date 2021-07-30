@@ -168,11 +168,15 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
             placeholder={placeholder}
             onBlur={() => {
               setIsInputActive(false);
-              onBlur();
+              if (onBlur) {
+                onBlur();
+              }
             }}
             onFocus={() => {
               setIsInputActive(true);
-              onFocus();
+              if (onFocus) {
+                onFocus();
+              }
             }}
             autoResize
             // The field starts with `rows + 1` rows, so
