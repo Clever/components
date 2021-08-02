@@ -1,6 +1,8 @@
 @import "../less/fonts.less";
 @import (reference) "../less/index";
 
+@alert_red_hover: #880b0e;
+
 .buttonColor(@backgroundColor: @primary_blue, @disabled: false) {
   background-color: @backgroundColor;
   border-color: @backgroundColor;
@@ -81,42 +83,42 @@ button {
 
   &.Button--secondary {
     background-color: @neutral_white;
-    border-color: @primary_blue_tint_2;
+    border-color: @primary_blue;
     color: @primary_blue;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: @primary_blue_tint_2;
-      border-color: @primary_blue_tint_2;
+      background-color: @primary_blue;
+      border-color: @primary_blue;
       color: @neutral_white;
     }
   }
 
   &.Button--destructive {
-    background-color: @alert_red;
-    border-color: @alert_red;
+    background-color: @alert_red_shade;
+    border-color: @alert_red_shade;
     color: @neutral_white;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: @alert_red_shade_1;
-      border-color: @alert_red_shade_1;
+      background-color: @alert_red_hover;
+      border-color: @alert_red_hover;
       color: @neutral_white;
     }
   }
 
   &.Button--secondaryDestructive {
     background-color: @neutral_white;
-    border-color: @alert_red;
-    color: @alert_red;
+    border-color: @alert_red_shade;
+    color: @alert_red_shade;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: @alert_red_shade_2;
-      border-color: @alert_red;
+      background-color: @alert_red_shade;
+      border-color: @alert_red_shade;
       color: @neutral_white;
     }
   }
