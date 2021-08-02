@@ -27,7 +27,6 @@ button {
     .margin--none;
     .padding--none;
     .text--medium;
-    border-bottom-width: @borderWidthL;
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
@@ -69,7 +68,6 @@ button {
   &.Button--primary {
     background-color: @primary_blue;
     border-color: @primary_blue;
-    border-bottom-color: @primary_blue_shade_1;
     color: @neutral_white;
 
     &:hover,
@@ -77,7 +75,6 @@ button {
     &:active {
       background-color: @primary_blue_shade_2;
       border-color: @primary_blue_shade_2;
-      border-bottom-color: @primary_blue_shade_2;
       color: @neutral_white;
     }
   }
@@ -85,7 +82,6 @@ button {
   &.Button--secondary {
     background-color: @neutral_white;
     border-color: @primary_blue_tint_2;
-    border-bottom-color: @primary_blue;
     color: @primary_blue;
 
     &:hover,
@@ -93,7 +89,6 @@ button {
     &:active {
       background-color: @primary_blue_tint_2;
       border-color: @primary_blue_tint_2;
-      border-bottom-color: @primary_blue_tint_1;
       color: @neutral_white;
     }
   }
@@ -101,7 +96,6 @@ button {
   &.Button--destructive {
     background-color: @alert_red;
     border-color: @alert_red;
-    border-bottom-color: @alert_red_shade_1;
     color: @neutral_white;
 
     &:hover,
@@ -109,7 +103,6 @@ button {
     &:active {
       background-color: @alert_red_shade_1;
       border-color: @alert_red_shade_1;
-      border-bottom-color: @alert_red_shade_2;
       color: @neutral_white;
     }
   }
@@ -117,7 +110,6 @@ button {
   &.Button--secondaryDestructive {
     background-color: @neutral_white;
     border-color: @alert_red;
-    border-bottom-color: @alert_red;
     color: @alert_red;
 
     &:hover,
@@ -125,7 +117,6 @@ button {
     &:active {
       background-color: @alert_red_shade_2;
       border-color: @alert_red;
-      border-bottom-color: @alert_red;
       color: @neutral_white;
     }
   }
