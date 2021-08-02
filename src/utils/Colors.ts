@@ -39,6 +39,7 @@ const Colors = {
   ALERT_RED_SHADE_2: "#AE121F",
   ALERT_RED_TINT_1: "#ED4B59",
   ALERT_RED_TINT_2: "#F56A75",
+  ALERT_RED_SHADE: "#B30C10",
 
   // Accent colors:
   ACCENT_TEAL: "#29C6C1",

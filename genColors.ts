@@ -51,6 +51,7 @@ const Colors = {
     ALERT_RED_SHADE_2: "#AE121F",
     ALERT_RED_TINT_1: "#ED4B59",
     ALERT_RED_TINT_2: "#F56A75",
+    ALERT_RED_SHADE: "#B30C10",
   },
 
   // Secondary colors:
@@ -82,11 +83,11 @@ const DeprecatedColors = {
 const jsColors = [];
 const lessColors = [];
 
-Object.keys(Colors).forEach(category => {
+Object.keys(Colors).forEach((category) => {
   jsColors.push(`  // ${category} colors:`);
   lessColors.push(`// ${category} colors:`);
 
-  Object.keys(Colors[category]).forEach(colorName => {
+  Object.keys(Colors[category]).forEach((colorName) => {
     const colorValue = Colors[category][colorName];
     jsColors.push(`  ${colorName}: "${colorValue}",`);
     lessColors.push(`@${colorName.toLowerCase()}: ${colorValue};`);
@@ -99,7 +100,7 @@ Object.keys(Colors).forEach(category => {
 jsColors.push("  // DEPRECATED COLORS:");
 lessColors.push("// DEPRECATED COLORS:");
 
-Object.keys(DeprecatedColors).forEach(colorName => {
+Object.keys(DeprecatedColors).forEach((colorName) => {
   const colorValue = DeprecatedColors[colorName];
   jsColors.push(`  ${colorName}: "${colorValue}",`);
   lessColors.push(`@${colorName.toLowerCase()}: ${colorValue};`);
