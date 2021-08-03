@@ -141,8 +141,13 @@
     outline: none;
   }
 
-  &:focus > .QuotedAnnouncementBubble--button--inner {
-    outline: 0.1875rem solid @accent_purple_shade_2;
+  &:focus > .QuotedAnnouncementBubble--button--inner.QuotedAnnouncementBubble--button--light,
+  &:focus > .QuotedAnnouncementBubble--button--inner.QuotedAnnouncementBubble--button--white {
+    outline: 0.1875rem solid @primary_blue_shade_2;
+  }
+
+  &:focus > .QuotedAnnouncementBubble--button--inner.QuotedAnnouncementBubble--button--dark {
+    outline: 0.1875rem solid @neutral_white;
   }
 }
 
