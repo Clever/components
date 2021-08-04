@@ -106,6 +106,7 @@ export const MessagingThreadHistory = React.forwardRef(
         )}
         ref={containerRef}
         onScroll={onScroll}
+        tabIndex={0}
       >
         {messagesWithDividers}
       </div>
