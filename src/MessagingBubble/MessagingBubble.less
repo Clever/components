@@ -23,7 +23,21 @@
 }
 
 // Are these changes only for mobile?
-// .MessagingBubble--Message--Container--Own.MessagingBubble--FamilyPortal {
+.MessagingBubble--Message--Container--Own.MessagingBubble--FamilyPortal {
+  .MessagingBubble--Message--Own {
+    // TODO: make this a const?
+    background-color: #fdea8e;
+    border-radius: 1rem;
+    color: @family_portal_mobile_slate;
+    // TODO: is this needed? is there a mixin for this?
+    font-weight: 400;
+    .padding--x--m();
+    .padding--y--xs();
+  }
+
+  .MessagingBubble--Message--Timestamp--Own {
+    margin-right: @size_m;
+  }
 
 // }
 
