@@ -27,6 +27,8 @@ export interface Props {
   // provide optional buttons separately because it affects the css spacing
   buttons?: React.ReactNode;
   isCloseable?: boolean;
+  onClose?: () => void;
+  iconOverride?: React.ReactNode;
 }
 
 export const cssClass = {
@@ -41,7 +43,15 @@ export const cssClass = {
 /**
  * TODO: Add short description.
  */
-export const AlertBox2: React.FC<Props> = ({ children, className, type, buttons, isCloseable }) => {
+export const AlertBox2: React.FC<Props> = ({
+  children,
+  className,
+  type,
+  buttons,
+  isCloseable,
+  iconOverride,
+  onClose,
+}) => {
   const [isClosed, setIsClosed] = useState(false);
 
   useEffect(() => {
@@ -61,11 +71,13 @@ export const AlertBox2: React.FC<Props> = ({ children, className, type, buttons,
         )}
       >
         <div>
-          <FontAwesome
-            className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
-            fixedWidth
-            name={ICON_MAP[type]}
-          />
+          {iconOverride || (
+            <FontAwesome
+              className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
+              fixedWidth
+              name={ICON_MAP[type]}
+            />
+          )}
         </div>
         <div className={cssClass.CONTENT}>{children}</div>
       </div>
@@ -75,7 +87,13 @@ export const AlertBox2: React.FC<Props> = ({ children, className, type, buttons,
           <button
             aria-label="Close"
             className={cssClass.CLOSE_BUTTON}
-            onClick={() => setIsClosed(true)}
+            onClick={() => {
+              if (onClose) {
+                onClose();
+              }
+
+              setIsClosed(true);
+            }}
           >
             {/* https://www.compart.com/en/unicode/U+2715 */}
             &#10005;
