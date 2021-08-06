@@ -17,6 +17,7 @@ const cssClasses = {
   MESSAGE_TIME_BUBBLE_CONTAINER_BASE: "MessagingBubble--Message--TimestampBubbleContainer",
   OWN_SUFFIX: "--Own",
   OTHER_SUFFIX: "--Other",
+  FAMILY_PORTAL: "MessagingBubble--FamilyPortal",
 };
 
 interface Props {
@@ -25,7 +26,7 @@ interface Props {
   timestamp: Date;
   replyTo?: React.ReactNode;
   attachments?: React.ReactNode[];
-  theme: "ownMessage" | "otherMessage";
+  theme: "ownMessage" | "otherMessage" | "ownMessage-familyPortal" | "otherMessage-familyPortal";
 }
 
 // Helper function: Format a Date for our pretty timestamps.
@@ -43,9 +44,15 @@ export const MessagingBubble: React.FC<Props> = ({
   attachments,
 }: Props) => {
   const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
-  const isOwnMessage = theme === "ownMessage";
+  const isOwnMessage = ["ownMessage", "ownMessage-familyPortal"].includes(theme);
+  const isfamilyPortal = ["ownMessage-familyPortal", "otherMessage-familyPortal"].includes(theme);
   const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
-  const containerClassNames = cx(className, `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`);
+  const containerClassNames = cx(
+    className,
+    `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
+    // is this the right place to put this?
+    isfamilyPortal && cssClasses.FAMILY_PORTAL,
+  );
 
   const bubbleClassNames = cx(
     cssClasses.MESSAGE_BASE,
