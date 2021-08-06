@@ -176,6 +176,18 @@ export default class AlertBox2View extends React.PureComponent {
             description: "Whether the AlertBox2 can be dismissed",
             optional: true,
           },
+          {
+            name: "onClose",
+            type: "() => void",
+            description: "Fires callback when AlertBox2 is dismissed",
+            optional: true,
+          },
+          {
+            name: "iconOverride",
+            type: "React.ReactNode",
+            description: "If passed, replaces the icon used on the left",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
