@@ -166,11 +166,18 @@ button.NormalAnnouncementBubble--deleteMenuItem {
   .margin--right--2xs();
   width: 0.865rem;
   height: 0.663rem;
+  .margin--top--2xs();
 }
 
-.NormalAnnouncementBubble--readReceipts--text {
+.NormalAnnouncementBubble--readReceipts--text--desktop {
   color: @neutral_medium_gray;
   .text--medium;
+}
+
+.NormalAnnouncementBubble--readReceipts--text--mobile {
+  color: @neutral_medium_gray;
+  .text--medium;
+  display: none;
 }
 
 .NormalAnnouncementBubble--readReceiptContainer {
@@ -183,7 +190,12 @@ button.NormalAnnouncementBubble--deleteMenuItem {
     outline: 0;
   }
 
-  &:hover .NormalAnnouncementBubble--readReceipts--text {
+  &:hover .NormalAnnouncementBubble--readReceipts--text--desktop {
+    color: @primary_blue_shade_2;
+    outline: 0;
+  }
+
+  &:hover .NormalAnnouncementBubble--readReceipts--text--mobile {
     color: @primary_blue_shade_2;
     outline: 0;
   }
@@ -193,6 +205,7 @@ button.NormalAnnouncementBubble--deleteMenuItem {
   color: @neutral_dark_gray;
 }
 
+// For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
   .NormalAnnouncementBubble--container {
     width: 96%;
@@ -207,5 +220,13 @@ button.NormalAnnouncementBubble--deleteMenuItem {
     color: @neutral_dark_gray;
     .margin--top--m();
     .text--line-height-4();
+  }
+
+  .NormalAnnouncementBubble--readReceipts--text--desktop {
+    display: none;
+  }
+
+  .NormalAnnouncementBubble--readReceipts--text--mobile {
+    display: block;
   }
 }

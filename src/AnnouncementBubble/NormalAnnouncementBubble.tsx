@@ -132,11 +132,14 @@ function formReadReceiptsTooltip(
   const recipientString = readBy.length === 1 ? recipientType : `${recipientType}s`;
   return (
     <FlexBox className={cssClass("readReceiptContainer")} alignItems="center" justify="end">
-      <Checkmark className={cssClass("readReceipts--icon")} />
       <Tooltip content={readReceiptString} placement={"top"} textAlign={"center"}>
-        <span className={cssClass("readReceipts--text")}>
-          Read by {readReceiptCount} {recipientString}
-        </span>
+        <FlexBox className={cssClass("readReceiptContainer--inner")}>
+          <Checkmark className={cssClass("readReceipts--icon")} />
+          <span className={cssClass("readReceipts--text--desktop")}>
+            Read by {readReceiptCount} {recipientString}
+          </span>
+          <span className={cssClass("readReceipts--text--mobile")}>{readReceiptCount}</span>
+        </FlexBox>
       </Tooltip>
     </FlexBox>
   );
