@@ -58,6 +58,9 @@ const Colors = {
   ACCENT_PURPLE_TINT_1: "#9244FA",
   ACCENT_PURPLE_TINT_2: "#A460FF",
 
+  // FamilyPortalMobile colors:
+  FAMILY_PORTAL_MOBILE_SLATE: "#32315B",
+
   // DEPRECATED COLORS:
   ACCENT_AQUA: "#29C6C1",
 } as const;
