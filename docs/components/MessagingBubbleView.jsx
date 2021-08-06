@@ -169,6 +169,8 @@ export default class MessagingBubbleView extends React.PureComponent {
             options={[
               { content: "Own Message", value: "ownMessage" },
               { content: "Other Message", value: "otherMessage" },
+              { content: "Own Message - Family Portal", value: "ownMessage-familyPortal" },
+              { content: "Other Message - Family Portal", value: "otherMessage-familyPortal" },
             ]}
             value={theme}
           />

@@ -45,13 +45,13 @@ export const MessagingBubble: React.FC<Props> = ({
 }: Props) => {
   const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
   const isOwnMessage = ["ownMessage", "ownMessage-familyPortal"].includes(theme);
-  const isfamilyPortal = ["ownMessage-familyPortal", "otherMessage-familyPortal"].includes(theme);
+  const isFamilyPortal = ["ownMessage-familyPortal", "otherMessage-familyPortal"].includes(theme);
   const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
   const containerClassNames = cx(
     className,
     `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
     // is this the right place to put this?
-    isfamilyPortal && cssClasses.FAMILY_PORTAL,
+    isFamilyPortal && cssClasses.FAMILY_PORTAL,
   );
 
   const bubbleClassNames = cx(
