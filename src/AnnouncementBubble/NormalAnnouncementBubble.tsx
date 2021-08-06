@@ -4,6 +4,7 @@ import * as cx from "classnames";
 import Linkify from "react-linkify";
 import { FlexBox, Button, Menu, Tooltip } from "../";
 import { componentDecorator, matchDecorator } from "../MessagingBubble/linkifyUtils";
+import Checkmark from "../Checkbox/CheckMark";
 
 import "./NormalAnnouncementBubble.less";
 
@@ -18,10 +19,12 @@ export interface Props {
   className?: string;
   onDelete?: () => void;
   onReply?: () => void;
+  readBy?: string[];
   repliesDisabledMsg?: string;
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
+  userType: "teacher" | "student" | "guardian";
 
   // Temporary props to allow overriding text with translations
   replyButtonText?: string;
@@ -33,14 +36,18 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   className,
   onDelete,
   onReply,
+  readBy,
   repliesDisabledMsg,
   replyButtonText,
   senderIcon,
   senderName,
   sentAtTimestamp,
+  userType,
 }: Props) => {
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
+  const readReceiptsTooltip =
+    userType === "teacher" && readBy && readBy.length > 0 ? formReadReceiptsTooltip(readBy) : null;
 
   return (
     <FlexBox
@@ -64,6 +71,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
       {attachments?.length > 0 && (
         <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>
       )}
+      {readReceiptsTooltip}
       {replyButton}
     </FlexBox>
   );
@@ -115,6 +123,29 @@ function formReplyButton(
   return undefined;
 }
 
+function formReadReceiptsTooltip(readBy: string[]): JSX.Element {
+  const readReceiptCount = readBy.length;
+  const readReceiptString = convertReadReceiptArrayToString(readBy);
+  return (
+    <FlexBox className={cssClass("readReceiptContainer")} alignItems="center" justify="end">
+      <Checkmark className={cssClass("readReceipts--icon")} />
+      <Tooltip content={readReceiptString} placement={"top"} textAlign={"center"}>
+        <span className={cssClass("readReceipts--text")}>Read by {readReceiptCount} people</span>
+      </Tooltip>
+    </FlexBox>
+  );
+}
+
+function convertReadReceiptArrayToString(readBy: string[]): string {
+  readBy.sort((a, b) => {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+  });
+  const readReceiptCount = readBy.length;
+  readBy[readReceiptCount - 1] = `and ${readBy[readReceiptCount - 1]}`;
+
+  return readBy.join(", ");
+}
+
 function ReplyButton({
   onReply,
   replyButtonText,
@@ -152,8 +183,8 @@ function DisabledReplyButton({
     >
       <Tooltip
         content={disabledMsg}
-        placement={"top"}
-        textAlign={"center"}
+        placement={Tooltip.Placement.TOP}
+        textAlign={Tooltip.Align.CENTER}
         tooltipClassName={cssClass("tooltip")}
       >
         <FlexBox alignItems="center" justify="center">

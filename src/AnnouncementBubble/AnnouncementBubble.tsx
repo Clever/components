@@ -62,11 +62,13 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           className={props.className}
           onDelete={props.onDelete}
           onReply={props.onReply}
+          readBy={props.readBy}
           repliesDisabledMsg={props.repliesDisabledMsg}
           replyButtonText={props.replyButtonText}
           senderIcon={props.senderIcon}
           senderName={props.senderName}
           sentAtTimestamp={props.sentAtTimestamp}
+          userType={props.userType}
         >
           {props.children}
         </NormalAnnouncementBubble>

@@ -1,5 +1,12 @@
 @import (reference) "../less/index";
 
+.pathColor(@color) {
+  path {
+    stroke: transparent;
+    fill: @color;
+  }
+}
+
 .NormalAnnouncementBubble--container {
   max-width: 31rem; /* is 33 rem total width including 1 rem padding on either side */
   .boxShadow--medium();
@@ -131,6 +138,22 @@ button.NormalAnnouncementBubble--deleteMenuItem {
   }
 }
 
+.NormalAnnouncementBubble--readReceiptContainer {
+  margin-top: 1rem;
+  width: 100%;
+  .flex--direction--row();
+
+  &:hover .NormalAnnouncementBubble--readReceipts--icon {
+    .pathColor(@primary_blue_shade_2);
+    outline: 0;
+  }
+
+  &:hover .NormalAnnouncementBubble--readReceipts--text {
+    color: @primary_blue_shade_2;
+    outline: 0;
+  }
+}
+
 .NormalAnnouncementBubble--replyButton--icon {
   margin-right: 0.3125rem;
 }
@@ -149,9 +172,21 @@ button.NormalAnnouncementBubble--deleteMenuItem {
   white-space: nowrap;
 
   .tooltip-inner {
-    max-width: 30rem;
+    width: 18.75rem;
     padding: @size_2xs @size_s;
   }
+}
+
+.NormalAnnouncementBubble--readReceipts--icon {
+  .pathColor(@neutral_medium_gray);
+  .margin--right--2xs();
+  width: 0.865rem;
+  height: 0.663rem;
+}
+
+.NormalAnnouncementBubble--readReceipts--text {
+  color: @neutral_medium_gray;
+  .text--medium;
 }
 
 .NormalAnnouncementBubble--replyButton--text--disabled {
