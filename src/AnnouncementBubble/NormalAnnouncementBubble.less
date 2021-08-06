@@ -138,22 +138,6 @@ button.NormalAnnouncementBubble--deleteMenuItem {
   }
 }
 
-.NormalAnnouncementBubble--readReceiptContainer {
-  margin-top: 1rem;
-  width: 100%;
-  .flex--direction--row();
-
-  &:hover .NormalAnnouncementBubble--readReceipts--icon {
-    .pathColor(@primary_blue_shade_2);
-    outline: 0;
-  }
-
-  &:hover .NormalAnnouncementBubble--readReceipts--text {
-    color: @primary_blue_shade_2;
-    outline: 0;
-  }
-}
-
 .NormalAnnouncementBubble--replyButton--icon {
   margin-right: 0.3125rem;
 }
@@ -187,6 +171,22 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 .NormalAnnouncementBubble--readReceipts--text {
   color: @neutral_medium_gray;
   .text--medium;
+}
+
+.NormalAnnouncementBubble--readReceiptContainer {
+  margin-top: 1rem;
+  width: 100%;
+  .flex--direction--row();
+
+  &:hover .NormalAnnouncementBubble--readReceipts--icon {
+    .pathColor(@primary_blue_shade_2);
+    outline: 0;
+  }
+
+  &:hover .NormalAnnouncementBubble--readReceipts--text {
+    color: @primary_blue_shade_2;
+    outline: 0;
+  }
 }
 
 .NormalAnnouncementBubble--replyButton--text--disabled {
