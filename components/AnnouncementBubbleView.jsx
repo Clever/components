@@ -120,6 +120,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               readBy={["Jim Carrey", "Drake", "Ash Ketchum", "Tony Stark", "Roger Federer"]}
               userType={"teacher"}
+              recipientType={"student"}
               senderName={"Ms. Stark"}
               senderIcon={
                 <MessagingAvatar
