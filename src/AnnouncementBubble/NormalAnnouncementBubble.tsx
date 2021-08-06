@@ -20,6 +20,7 @@ export interface Props {
   onDelete?: () => void;
   onReply?: () => void;
   readBy?: string[];
+  recipientType: "student" | "guardian";
   repliesDisabledMsg?: string;
   senderIcon: React.ReactNode;
   senderName: string;
@@ -37,6 +38,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   onDelete,
   onReply,
   readBy,
+  recipientType,
   repliesDisabledMsg,
   replyButtonText,
   senderIcon,
@@ -47,7 +49,9 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
   const readReceiptsTooltip =
-    userType === "teacher" && readBy && readBy.length > 0 ? formReadReceiptsTooltip(readBy) : null;
+    userType === "teacher" && readBy && readBy.length > 0
+      ? formReadReceiptsTooltip(readBy, recipientType)
+      : null;
 
   return (
     <FlexBox
@@ -123,14 +127,20 @@ function formReplyButton(
   return undefined;
 }
 
-function formReadReceiptsTooltip(readBy: string[]): JSX.Element {
+function formReadReceiptsTooltip(
+  readBy: string[],
+  recipientType: "student" | "guardian",
+): JSX.Element {
   const readReceiptCount = readBy.length;
   const readReceiptString = convertReadReceiptArrayToString(readBy);
+  const recipientString = readBy.length === 1 ? `${recipientType}` : `${recipientType}s`;
   return (
     <FlexBox className={cssClass("readReceiptContainer")} alignItems="center" justify="end">
       <Checkmark className={cssClass("readReceipts--icon")} />
       <Tooltip content={readReceiptString} placement={"top"} textAlign={"center"}>
-        <span className={cssClass("readReceipts--text")}>Read by {readReceiptCount} people</span>
+        <span className={cssClass("readReceipts--text")}>
+          Read by {readReceiptCount} {recipientString}
+        </span>
       </Tooltip>
     </FlexBox>
   );
