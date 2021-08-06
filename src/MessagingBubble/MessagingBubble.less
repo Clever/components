@@ -28,9 +28,15 @@
 // }
 
 .MessagingBubble--Message--Container--Other.MessagingBubble--FamilyPortal {
-  background-color: #626776; /* stylelint-disable-line */
-  border-radius: 1rem;
-  color: @neutral_white;
+  .MessagingBubble--Message--Other {
+    background-color: @family_portal_mobile_slate;
+    border-radius: 1rem;
+    color: @neutral_white;
+    // TODO: is this needed? is there a mixin for this?
+    font-weight: 400;
+    .padding--x--m();
+    .padding--y--xs();
+  }
 }
 
 .MessagingBubble--Message--Own {
