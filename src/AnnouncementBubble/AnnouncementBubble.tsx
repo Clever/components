@@ -69,7 +69,6 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           senderIcon={props.senderIcon}
           senderName={props.senderName}
           sentAtTimestamp={props.sentAtTimestamp}
-          userType={props.userType}
         >
           {props.children}
         </NormalAnnouncementBubble>

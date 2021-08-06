@@ -118,8 +118,18 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
             <AnnouncementBubble
               className={cssClass.BUBBLE}
-              readBy={["Jim Carrey", "Drake", "Ash Ketchum", "Tony Stark", "Roger Federer"]}
-              userType={"teacher"}
+              readBy={[
+                "Arsalan",
+                "Nikhil",
+                "Spencer",
+                "Ashley",
+                "Jonathan",
+                "Brian",
+                "Chloe",
+                "Cory",
+                "Jonah",
+                "Nick",
+              ]}
               recipientType={"student"}
               senderName={"Ms. Stark"}
               senderIcon={

@@ -25,7 +25,6 @@ export interface Props {
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
-  userType: "teacher" | "student" | "guardian";
 
   // Temporary props to allow overriding text with translations
   replyButtonText?: string;
@@ -44,14 +43,11 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   senderIcon,
   senderName,
   sentAtTimestamp,
-  userType,
 }: Props) => {
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
   const readReceiptsTooltip =
-    userType === "teacher" && readBy && readBy.length > 0
-      ? formReadReceiptsTooltip(readBy, recipientType)
-      : null;
+    readBy?.length > 0 ? formReadReceiptsTooltip(readBy, recipientType) : null;
 
   return (
     <FlexBox
@@ -133,7 +129,7 @@ function formReadReceiptsTooltip(
 ): JSX.Element {
   const readReceiptCount = readBy.length;
   const readReceiptString = convertReadReceiptArrayToString(readBy);
-  const recipientString = readBy.length === 1 ? `${recipientType}` : `${recipientType}s`;
+  const recipientString = readBy.length === 1 ? recipientType : `${recipientType}s`;
   return (
     <FlexBox className={cssClass("readReceiptContainer")} alignItems="center" justify="end">
       <Checkmark className={cssClass("readReceipts--icon")} />
@@ -193,8 +189,8 @@ function DisabledReplyButton({
     >
       <Tooltip
         content={disabledMsg}
-        placement={Tooltip.Placement.TOP}
-        textAlign={Tooltip.Align.CENTER}
+        placement={"top"}
+        textAlign={"center"}
         tooltipClassName={cssClass("tooltip")}
       >
         <FlexBox alignItems="center" justify="center">
