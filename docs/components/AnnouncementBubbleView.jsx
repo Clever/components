@@ -118,6 +118,35 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
             <AnnouncementBubble
               className={cssClass.BUBBLE}
+              readBy={[
+                "Arsalan",
+                "Nikhil",
+                "Spencer",
+                "Ashley",
+                "Jonathan",
+                "Brian",
+                "Chloe",
+                "Cory",
+                "Jonah",
+                "Nick",
+              ]}
+              recipientType={"student"}
+              senderName={"Ms. Stark"}
+              senderIcon={
+                <MessagingAvatar
+                  text={"Kristen Stark"}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                />
+              }
+              sentAtTimestamp={new Date()}
+              theme={"normal"}
+            >
+              Read Receipts also show up for teachers as well! A tooltip of these names sorted
+              alphabetically by first name will render upon hover.
+            </AnnouncementBubble>
+
+            <AnnouncementBubble
+              className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               senderName={"Ms. Stark"}
               senderIcon={
