@@ -131,9 +131,9 @@ function formReadReceiptsTooltip(
   const readReceiptString = convertReadReceiptArrayToString(readBy);
   const recipientString = readBy.length === 1 ? recipientType : `${recipientType}s`;
   return (
-    <FlexBox className={cssClass("readReceiptContainer")} alignItems="center" justify="end">
+    <FlexBox className={cssClass("readReceipts--container")} alignItems="center" justify="end">
       <Tooltip content={readReceiptString} placement={"top"} textAlign={"center"}>
-        <FlexBox className={cssClass("readReceiptContainer--inner")}>
+        <FlexBox>
           <Checkmark className={cssClass("readReceipts--icon")} />
           <span className={cssClass("readReceipts--text--desktop")}>
             Read by {readReceiptCount} {recipientString}
@@ -146,12 +146,18 @@ function formReadReceiptsTooltip(
 }
 
 function convertReadReceiptArrayToString(readBy: string[]): string {
+  const readReceiptCount = readBy.length;
+  if (readReceiptCount === 1) {
+    return readBy[0];
+  }
   readBy.sort((a, b) => {
     return a.toLowerCase().localeCompare(b.toLowerCase());
   });
-  const readReceiptCount = readBy.length;
   readBy[readReceiptCount - 1] = `and ${readBy[readReceiptCount - 1]}`;
 
+  if (readReceiptCount === 2) {
+    return readBy.join(" ");
+  }
   return readBy.join(", ");
 }
 
