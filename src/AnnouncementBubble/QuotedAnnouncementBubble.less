@@ -95,9 +95,12 @@
 
 .QuotedAnnouncementBubble--inlineErrorContents {
   .padding--top--2xs();
-  width: 32.9375rem;
   justify-content: flex-start;
   text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word; // IE version
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 .QuotedAnnouncementBubble--inlineError--icon {
