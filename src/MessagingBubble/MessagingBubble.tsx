@@ -26,7 +26,8 @@ interface Props {
   timestamp: Date;
   replyTo?: React.ReactNode;
   attachments?: React.ReactNode[];
-  theme: "ownMessage" | "otherMessage" | "ownMessage-familyPortal" | "otherMessage-familyPortal";
+  bubbleType: "ownMessage" | "otherMessage";
+  theme?: "familyPortal" | "launchpad";
 }
 
 // Helper function: Format a Date for our pretty timestamps.
@@ -40,18 +41,19 @@ export const MessagingBubble: React.FC<Props> = ({
   children,
   timestamp,
   theme,
+  bubbleType,
   replyTo,
   attachments,
 }: Props) => {
   const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
-  const isOwnMessage = ["ownMessage", "ownMessage-familyPortal"].includes(theme);
-  const isFamilyPortal = ["ownMessage-familyPortal", "otherMessage-familyPortal"].includes(theme);
+  const isOwnMessage = bubbleType === "ownMessage";
+  // TODO: add inFamilyPortal variable?
   const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
   const containerClassNames = cx(
     className,
     `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
     // is this the right place to put this?
-    isFamilyPortal && cssClasses.FAMILY_PORTAL,
+    theme === "familyPortal" && cssClasses.FAMILY_PORTAL,
   );
 
   const bubbleClassNames = cx(
