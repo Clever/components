@@ -36,10 +36,11 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
   state = {
     colorTheme: "light",
+    theme: "launchpad",
   };
 
   render() {
-    const { colorTheme } = this.state;
+    const { colorTheme, theme } = this.state;
 
     const readBy = [
       "Arsalan",
@@ -95,11 +96,11 @@ export default class AnnouncementBubbleView extends React.PureComponent {
           </p>
           <p>
             AnnouncementBubble is a single bubble that would appear in a messaging thread. There are
-            three themes of AnnouncementBubble, available via the "theme" prop.
+            three bubble types of AnnouncementBubble, available via the "bubbleType" prop.
           </p>
           <p>
-            The themes are the NormalAnnouncementBubble, QuotedAnnouncementBubble, and
-            DeletedAnnouncementBubble. The normal and quoted themes can contain text or other
+            The bubble types are the NormalAnnouncementBubble, QuotedAnnouncementBubble, and
+            DeletedAnnouncementBubble. The normal and quoted bubble types can contain text or other
             content. By default AnnouncementBubble will turn any valid URLs into clickable links.
           </p>
           <CodeSample>
@@ -125,7 +126,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               numTranslatedLanguages={1}
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
-              theme={"normal"}
+              bubbleType={"normal"}
+              theme={theme}
             >
               Hello class! Links like https://clever.com are clickable
             </AnnouncementBubble>
@@ -163,7 +165,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
-              theme={"normal"}
+              bubbleType={"normal"}
+              theme={theme}
             >
               Announcements like this one can include attachments to open or download
             </AnnouncementBubble>
@@ -181,7 +184,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               onReply={() => console.log("Attachments-only announcements work too!")}
               sentAtTimestamp={new Date()}
-              theme={"normal"}
+              bubbleType={"normal"}
+              theme={theme}
             />
 
             {/* attachment-only announcement; multiple attachments*/}
@@ -197,7 +201,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               onReply={() => console.log("Attachments-only announcements work too!")}
               sentAtTimestamp={new Date()}
-              theme={"normal"}
+              bubbleType={"normal"}
+              theme={theme}
             />
 
             {/* in-line error*/}
@@ -223,7 +228,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
         <Example title="QuotedAnnouncementBubble">
           <ExampleCode>
             <AnnouncementBubble
-              theme={"quoted"}
+              bubbleType={"quoted"}
               attachments={attachmentsArray}
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
@@ -236,6 +241,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               sentAtTimestamp={new Date()}
               isMessageTruncated
+              theme={theme}
             >
               This can go inside of other components, like the MessagingBubble or MessagingInput!
               The content expands and hides when the button is clicked. Links like
@@ -252,7 +258,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             <br />
 
             <AnnouncementBubble
-              theme={"quoted"}
+              bubbleType={"quoted"}
               attachments={attachmentsArray}
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
@@ -264,6 +270,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                 />
               }
               sentAtTimestamp={new Date()}
+              theme={theme}
             />
 
             <br />
@@ -299,7 +306,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { colorTheme } = this.state;
+    const { colorTheme, theme } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -316,6 +323,18 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             value={colorTheme}
           />
         </div>
+        {/* <div className={cssClass.CONFIG}>
+          theme:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={(value) => this.setState({ theme: value })}
+            options={[
+              { content: "Launchpad", value: "launchpad" },
+              { content: "Family Portal", value: "familyPortal" },
+            ]}
+            value={theme}
+          />
+        </div> */}
       </FlexBox>
     );
   }
@@ -326,10 +345,20 @@ export default class AnnouncementBubbleView extends React.PureComponent {
         title="<AnnouncementBubble /> Props TODO"
         availableProps={[
           {
-            name: "theme",
+            name: "bubbleType",
             // eslint-disable-next-line quotes
             type: `"normal" | "quoted" | "deleted"`,
-            description: "Theme to use for styling the bubble.",
+            description: "Bubble type to use for styling the bubble.",
+          },
+          {
+            name: "theme",
+            // eslint-disable-next-line quotes
+            type: `"launchpad" | "familyPortal"`,
+            // TODO: make this clearer?
+            description:
+              "Theme to use for styling the bubble, based on the user type interface being used",
+            optional: true,
+            default: "launchpad",
           },
         ]}
         className={cssClass.PROPS}
