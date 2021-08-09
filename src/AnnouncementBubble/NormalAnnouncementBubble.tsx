@@ -129,7 +129,8 @@ function formReadReceiptsTooltip(
 ): JSX.Element {
   const readReceiptCount = readBy.length;
   const readReceiptString = convertReadReceiptArrayToString(readBy);
-  const recipientString = readBy.length === 1 ? recipientType : `${recipientType}s`;
+  const displayRecipientType = recipientType === "guardian" ? "parent" : recipientType;
+  const recipientString = readBy.length === 1 ? displayRecipientType : `${displayRecipientType}s`;
   return (
     <FlexBox className={cssClass("readReceipts--container")} alignItems="center" justify="end">
       <Tooltip content={readReceiptString} placement={"top"} textAlign={"center"}>
