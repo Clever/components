@@ -60,6 +60,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           theme="normal"
           attachments={props.attachments}
           className={props.className}
+          inlineErrorMsg={props.inlineErrorMsg}
           onDelete={props.onDelete}
           onReply={props.onReply}
           readBy={props.readBy}
