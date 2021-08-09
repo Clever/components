@@ -14,7 +14,7 @@ function cssClass(element: string) {
 }
 
 export interface Props {
-  theme: "normal";
+  bubbleType: "normal";
   attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
@@ -30,6 +30,7 @@ export interface Props {
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
+  theme?: "launchpad" | "familyPortal";
 
   // Temporary props to allow overriding text with translations
   replyButtonText?: string;

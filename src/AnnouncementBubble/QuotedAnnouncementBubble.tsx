@@ -15,7 +15,7 @@ function cssClass(element: string) {
 }
 
 export interface Props {
-  theme: "quoted";
+  bubbleType: "quoted";
   announcementGroupName: string;
   attachments?: React.ReactNode[];
   children: React.ReactNode;
@@ -27,6 +27,7 @@ export interface Props {
   senderName: string;
   sentAtTimestamp: Date;
   onToggleShow?: () => void;
+  theme?: "launchpad" | "familyPortal";
 
   // Temporary props to allow overriding text with translations
   postedInText?: string;

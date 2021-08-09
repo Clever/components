@@ -10,7 +10,8 @@ function cssClass(element: string) {
 }
 
 export interface Props {
-  theme: "deleted";
+  bubbleType: "deleted";
+  theme?: "launchpad" | "familyPortal";
   className?: string;
 
   // Temporary props to allow overriding text with translations

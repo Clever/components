@@ -21,11 +21,12 @@ type AnnouncementBubbleProps =
 export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
   props: AnnouncementBubbleProps,
 ) => {
-  switch (props.theme) {
+  switch (props.bubbleType) {
     case "deleted": {
       return (
         <DeletedAnnouncementBubble
-          theme="deleted"
+          bubbleType="deleted"
+          theme={props.theme}
           className={props.className}
           deletionNoticeText={props.deletionNoticeText}
         />
@@ -34,7 +35,8 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
     case "quoted": {
       return (
         <QuotedAnnouncementBubble
-          theme="quoted"
+          bubbleType="quoted"
+          theme={props.theme}
           announcementGroupName={props.announcementGroupName}
           attachments={props.attachments}
           className={props.className}
@@ -58,7 +60,8 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
     default: {
       return (
         <NormalAnnouncementBubble
-          theme="normal"
+          bubbleType="normal"
+          theme={props.theme}
           attachments={props.attachments}
           className={props.className}
           inlineErrorMsg={props.inlineErrorMsg}
