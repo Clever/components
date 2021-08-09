@@ -31,11 +31,12 @@ export default class MessagingBubbleView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    theme: "ownMessage",
+    bubbleType: "ownMessage",
+    theme: "launchpad",
   };
 
   render() {
-    const { theme } = this.state;
+    const { bubbleType, theme } = this.state;
 
     const attachmentsArray = [
       {
@@ -116,13 +117,14 @@ export default class MessagingBubbleView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
+            <MessagingBubble bubbleType={bubbleType} className={cssClass.BUBBLE} theme={theme}>
               Hello World!
             </MessagingBubble>
-            <MessagingBubble className={cssClass.BUBBLE} theme={theme}>
+            <MessagingBubble bubbleType={bubbleType} className={cssClass.BUBBLE} theme={theme}>
               Links like https://clever.com are clickable
             </MessagingBubble>
             <MessagingBubble
+              bubbleType={bubbleType}
               className={cssClass.BUBBLE}
               theme={theme}
               replyTo={"This is a message!"}
@@ -130,6 +132,7 @@ export default class MessagingBubbleView extends React.PureComponent {
               This is a reply to that message!
             </MessagingBubble>
             <MessagingBubble
+              bubbleType={bubbleType}
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(0, 3)}
@@ -137,11 +140,13 @@ export default class MessagingBubbleView extends React.PureComponent {
               Check out these attachments!
             </MessagingBubble>
             <MessagingBubble
+              bubbleType={bubbleType}
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(3)}
             />
             <MessagingBubble
+              bubbleType={bubbleType}
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(3)}
@@ -157,20 +162,32 @@ export default class MessagingBubbleView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { theme } = this.state;
+    const { theme, bubbleType } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
+        <div className={cssClass.CONFIG}>
+          Bubble Type:
+          <SegmentedControl
+            className={cssClass.CONFIG_OPTIONS}
+            onSelect={(value) => this.setState({ bubbleType: value })}
+            options={[
+              { content: "Own Message", value: "ownMessage" },
+              { content: "Other Message", value: "otherMessage" },
+            ]}
+            value={bubbleType}
+          />
+        </div>
+
+        {/* TODO: why isn't the default value being set? */}
         <div className={cssClass.CONFIG}>
           Theme:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
             onSelect={(value) => this.setState({ theme: value })}
             options={[
-              { content: "Own Message", value: "ownMessage" },
-              { content: "Other Message", value: "otherMessage" },
-              { content: "Own Message - Family Portal", value: "ownMessage-familyPortal" },
-              { content: "Other Message - Family Portal", value: "otherMessage-familyPortal" },
+              { content: "Launchpad", value: "launchpad" },
+              { content: "Family Portal", value: "familyPortal" },
             ]}
             value={theme}
           />
@@ -185,10 +202,18 @@ export default class MessagingBubbleView extends React.PureComponent {
         title="<MessagingBubble /> Props"
         availableProps={[
           {
-            name: "theme",
+            name: "bubbleType",
             // eslint-disable-next-line quotes
             type: `"ownMessage" | "otherMessage"`,
-            description: "Theme to use for styling the bubble.",
+            description: "Bubble type to use for styling the bubble.",
+          },
+          {
+            name: "theme",
+            // eslint-disable-next-line quotes
+            type: `"familyPortal" | "launchpad"`,
+            description: "Theme to use for styling the bubble",
+            optional: true,
+            default: "launchpad",
           },
           {
             name: "content",
