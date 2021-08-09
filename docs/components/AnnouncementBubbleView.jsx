@@ -130,7 +130,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                 "Jonah",
                 "Nick",
               ]}
-              recipientType={"student"}
+              recipientType={"guardian"}
               senderName={"Ms. Stark"}
               senderIcon={
                 <MessagingAvatar
@@ -148,6 +148,19 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             <AnnouncementBubble
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
+              readBy={[
+                "Arsalan",
+                "Nikhil",
+                "Spencer",
+                "Ashley",
+                "Jonathan",
+                "Brian",
+                "Chloe",
+                "Cory",
+                "Jonah",
+                "Nick",
+              ]}
+              recipientType={"student"}
               senderName={"Ms. Stark"}
               senderIcon={
                 <MessagingAvatar
