@@ -133,7 +133,13 @@ function formReadReceiptsTooltip(
   const recipientString = readBy.length === 1 ? displayRecipientType : `${displayRecipientType}s`;
   return (
     <FlexBox className={cssClass("readReceipts--container")} alignItems="center" justify="end">
-      <Tooltip content={readReceiptString} placement={"top"} textAlign={"center"}>
+      <Tooltip
+        className={cssClass("readReceipts--tooltip")}
+        clickTrigger
+        content={readReceiptString}
+        placement={"top"}
+        textAlign={"left"}
+      >
         <FlexBox>
           <Checkmark className={cssClass("readReceipts--icon")} />
           <span className={cssClass("readReceipts--text--desktop")}>
