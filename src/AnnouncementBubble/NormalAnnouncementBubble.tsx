@@ -135,7 +135,6 @@ function formReadReceiptsTooltip(
     <FlexBox className={cssClass("readReceipts--container")} alignItems="center" justify="end">
       <Tooltip
         className={cssClass("readReceipts--tooltip")}
-        clickTrigger
         content={readReceiptString}
         placement={"top"}
         textAlign={"left"}
