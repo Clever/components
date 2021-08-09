@@ -78,6 +78,32 @@
   margin-left: 0.3125rem;
 }
 
+.QuotedAnnouncementBubble--inlineError--light,
+.QuotedAnnouncementBubble--inlineError--white {
+  color: @alert_red;
+  line-height: 1rem;
+  .text--smallMedium();
+  .margin--bottom--xs();
+}
+
+.QuotedAnnouncementBubble--inlineError--dark {
+  color: @neutral_white;
+  line-height: 1rem;
+  .text--smallMedium();
+  .margin--bottom--xs();
+}
+
+.QuotedAnnouncementBubble--inlineErrorContents {
+  .padding--top--2xs();
+  width: 32.9375rem;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.QuotedAnnouncementBubble--inlineError--icon {
+  .margin--right--2xs();
+}
+
 .QuotedAnnouncementBubble--attachmentContainer {
   max-width: 100%;
   .margin--bottom--xs();

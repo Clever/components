@@ -39,6 +39,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           attachments={props.attachments}
           className={props.className}
           colorTheme={props.colorTheme}
+          inlineErrorMsg={props.inlineErrorMsg}
           isMessageTruncated={props.isMessageTruncated}
           postedInText={props.postedInText}
           senderIcon={props.senderIcon}
