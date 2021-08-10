@@ -7,7 +7,10 @@
   .text--smallMedium();
 }
 
-.QuotedAnnouncementBubble--container.QuotedAnnouncementBubble--familyPortal {
+// These styles only apply to Announcement replies sent by the current user, in the Family Portal,
+// i.e. guardians replying to teacher announcements
+.MessagingBubble--Message--Reply--Own
+  .QuotedAnnouncementBubble--container.QuotedAnnouncementBubble--familyPortal {
   background-color: #fef7d2; /* stylelint-disable-line */
   border-radius: @size_s;
   color: @family_portal_mobile_slate;
