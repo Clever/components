@@ -109,6 +109,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                   color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
                 />
               }
+              numTranslatedLanguages={3}
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               theme={"normal"}
@@ -148,6 +149,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             <AnnouncementBubble
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
+              numTranslatedLanguages={10}
               readBy={[
                 "Arsalan",
                 "Nikhil",
