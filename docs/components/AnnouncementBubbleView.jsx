@@ -41,6 +41,19 @@ export default class AnnouncementBubbleView extends React.PureComponent {
   render() {
     const { colorTheme } = this.state;
 
+    const readBy = [
+      "Arsalan",
+      "Nikhil",
+      "Spencer",
+      "Ashley",
+      "Jonathan",
+      "Brian",
+      "Chloe",
+      "Cory",
+      "Jonah",
+      "Nick",
+    ];
+
     const attachmentsArray = [
       {
         key: "1",
@@ -119,18 +132,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
             <AnnouncementBubble
               className={cssClass.BUBBLE}
-              readBy={[
-                "Arsalan",
-                "Nikhil",
-                "Spencer",
-                "Ashley",
-                "Jonathan",
-                "Brian",
-                "Chloe",
-                "Cory",
-                "Jonah",
-                "Nick",
-              ]}
+              readBy={readBy}
               recipientType={"guardian"}
               senderName={"Ms. Stark"}
               senderIcon={
@@ -150,18 +152,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               numTranslatedLanguages={10}
-              readBy={[
-                "Arsalan",
-                "Nikhil",
-                "Spencer",
-                "Ashley",
-                "Jonathan",
-                "Brian",
-                "Chloe",
-                "Cory",
-                "Jonah",
-                "Nick",
-              ]}
+              readBy={readBy}
               recipientType={"student"}
               senderName={"Ms. Stark"}
               senderIcon={
