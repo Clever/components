@@ -206,6 +206,25 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               sentAtTimestamp={new Date()}
               theme={"normal"}
             />
+
+            {/* in-line error*/}
+            <AnnouncementBubble
+              className={cssClass.BUBBLE}
+              attachments={attachmentsArray}
+              senderName={"Ms. Stark"}
+              senderIcon={
+                <MessagingAvatar
+                  text={"Kristen Stark"}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                />
+              }
+              onReply={() => console.log("Reply!")}
+              sentAtTimestamp={new Date()}
+              theme={"normal"}
+              inlineErrorMsg={"Something went wrong. We were unable to translate this message."}
+            >
+              Announcements like this one can include attachments and in-line errors
+            </AnnouncementBubble>
           </ExampleCode>
         </Example>
         <Example title="QuotedAnnouncementBubble">
@@ -253,6 +272,26 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               sentAtTimestamp={new Date()}
             />
+
+            <br />
+
+            <AnnouncementBubble
+              theme={"quoted"}
+              attachments={attachmentsArray}
+              colorTheme={colorTheme}
+              announcementGroupName={"Math Rocks!"}
+              senderName={"Ms. Stark"}
+              senderIcon={
+                <MessagingAvatar
+                  text={"Kristen Stark"}
+                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                />
+              }
+              sentAtTimestamp={new Date()}
+              inlineErrorMsg={"Something went wrong. We were unable to translate this message."}
+            >
+              This can also have inline errors.
+            </AnnouncementBubble>
           </ExampleCode>
           {this._renderConfig()}
         </Example>

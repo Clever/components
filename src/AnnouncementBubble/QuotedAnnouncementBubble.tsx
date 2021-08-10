@@ -21,6 +21,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   colorTheme: "white" | "light" | "dark";
+  inlineErrorMsg?: string;
   isMessageTruncated?: boolean;
   senderIcon: React.ReactNode;
   senderName: string;
@@ -41,6 +42,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
   children,
   className,
   colorTheme,
+  inlineErrorMsg,
   isMessageTruncated,
   postedInText,
   senderIcon,
@@ -139,6 +141,14 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       )}
       {(isExpanded || !content) && (
         <>
+          {isExpanded && inlineErrorMsg && (
+            <FlexBox className={cssClass(`inlineError--${colorTheme}`)} grow alignItems="center">
+              <div className={cssClass("inlineError--contents")}>
+                <FontAwesome className={cssClass("inlineError--icon")} name="exclamation-circle " />
+                {inlineErrorMsg}
+              </div>
+            </FlexBox>
+          )}
           {attachments?.length > 0 && (
             <FlexBox
               className={cx(

@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as moment from "moment";
 import * as cx from "classnames";
+import * as FontAwesome from "react-fontawesome";
 import Linkify from "react-linkify";
 import { FlexBox, Button, Menu, Tooltip } from "../";
 import { componentDecorator, matchDecorator } from "../MessagingBubble/linkifyUtils";
@@ -17,6 +18,7 @@ export interface Props {
   attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
+  inlineErrorMsg?: string;
   onDelete?: () => void;
   onReply?: () => void;
   readBy?: string[];
@@ -34,6 +36,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   attachments,
   children,
   className,
+  inlineErrorMsg,
   onDelete,
   onReply,
   readBy,
@@ -67,6 +70,14 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
         <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
           <div className={cssClass("messageBody")}>{children}</div>
         </Linkify>
+      )}
+      {inlineErrorMsg && (
+        <FlexBox className={cssClass("inlineError")} grow alignItems="center">
+          <div className={cssClass("inlineError--contents")}>
+            <FontAwesome className={cssClass("inlineError--icon")} name="exclamation-circle " />
+            {inlineErrorMsg}
+          </div>
+        </FlexBox>
       )}
       {attachments?.length > 0 && (
         <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>

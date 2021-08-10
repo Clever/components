@@ -31,7 +31,7 @@ function randomElement(items) {
 function newMessage(displayAlertMessageAfter = false) {
   const message = randomElement(["Hello!", "Hi!", "How are you doing?"]);
   const placement = randomElement(["left", "right"]);
-  const errorMsg = message === "Hi!" && placement === "right" ? "Message failed to send" : "";
+  const errorMsg = randomElement(["Message failed to send", ""]);
   newestTime.add(6, "hours");
   currentMessageIndex++;
   return {
