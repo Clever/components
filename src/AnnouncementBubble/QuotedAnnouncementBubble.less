@@ -7,6 +7,29 @@
   .text--smallMedium();
 }
 
+.QuotedAnnouncementBubble--container.QuotedAnnouncementBubble--familyPortal {
+  background-color: #fef7d2; /* stylelint-disable-line */
+  border-radius: @size_s;
+  color: @family_portal_mobile_slate;
+
+  .QuotedAnnouncementBubble--messageBody {
+    font-size: @size_m;
+  }
+
+  .QuotedAnnouncementBubble--messageDetails--light,
+  .QuotedAnnouncementBubble--messageDetails--dark,
+  .QuotedAnnouncementBubble--messageDetails--white,
+  .QuotedAnnouncementBubble--messageDetails--undefined {
+    color: @neutral_medium_gray;
+    margin-bottom: @size_xs;
+  }
+
+  .QuotedAnnouncementBubble--button--outer {
+    color: @family_portal_mobile_slate;
+    font-size: @size_m;
+  }
+}
+
 .QuotedAnnouncementBubble--container--light {
   background-color: #fafbfe; /* stylelint-disable-line */
   color: @neutral_dark_gray;

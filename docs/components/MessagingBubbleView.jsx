@@ -4,14 +4,18 @@ import Example, { CodeSample, ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {
+  AnnouncementBubble,
   MessagingAttachment,
   MessagingBubble,
+  MessagingAvatar,
   FlexBox,
   ItemAlign,
   SegmentedControl,
   Label,
 } from "src";
 import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment";
+
+import Colors from "src/utils/Colors";
 
 import "./MessagingBubbleView.less";
 
@@ -150,8 +154,47 @@ export default class MessagingBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(3)}
-              replyTo={"This is an announcement with an attachments-only reply!"}
+              replyTo={
+                <AnnouncementBubble
+                  senderName={"Joni Roni"}
+                  senderIcon={
+                    <MessagingAvatar
+                      text={"Joni Roni"}
+                      color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                    />
+                  }
+                  sentAtTimestamp={new Date()}
+                  bubbleType={"quoted"}
+                  theme={theme}
+                >
+                  "This is an announcement with an attachments-only reply!"
+                </AnnouncementBubble>
+              }
             />
+            <MessagingBubble
+              bubbleType={bubbleType}
+              className={cssClass.BUBBLE}
+              theme={theme}
+              // attachments={attachmentsArray.slice(3)}
+              replyTo={
+                <AnnouncementBubble
+                  senderName={"Joni Roni"}
+                  senderIcon={
+                    <MessagingAvatar
+                      text={"Joni Roni"}
+                      color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                    />
+                  }
+                  sentAtTimestamp={new Date()}
+                  bubbleType={"quoted"}
+                  theme={theme}
+                >
+                  "This is an announcement with a message reply!"
+                </AnnouncementBubble>
+              }
+            >
+              Here is the reply!
+            </MessagingBubble>
           </ExampleCode>
           {this._renderConfig()}
         </Example>

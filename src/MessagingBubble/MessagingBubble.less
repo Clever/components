@@ -38,6 +38,18 @@
   .MessagingBubble--Message--Timestamp--Own {
     margin-right: @size_m;
   }
+
+  .MessagingBubble--Message--Reply--Parent {
+    .padding--x--xs();
+  }
+
+  .MessagingBubble--Message--Reply--Own {
+    // TODO: is this the best way to override a background-color?
+    background-color: unset;
+    &.MessagingBubble--Message--Reply--MarginBottom {
+      margin-bottom: @size_xs;
+    }
+  }
 }
 
 .MessagingBubble--Message--Container--Other.MessagingBubble--FamilyPortal {
