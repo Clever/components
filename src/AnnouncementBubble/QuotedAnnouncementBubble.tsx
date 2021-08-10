@@ -143,7 +143,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
         <>
           {isExpanded && inlineErrorMsg && (
             <FlexBox className={cssClass(`inlineError--${colorTheme}`)} grow alignItems="center">
-              <div className={cssClass("inlineErrorContents")}>
+              <div className={cssClass("inlineError--contents")}>
                 <FontAwesome className={cssClass("inlineError--icon")} name="exclamation-circle " />
                 {inlineErrorMsg}
               </div>
