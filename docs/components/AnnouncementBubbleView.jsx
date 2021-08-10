@@ -132,7 +132,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
             <AnnouncementBubble
               className={cssClass.BUBBLE}
-              readBy={readBy}
+              readBy={readBy.slice(0)} // copies readBy so it doesn't change in the next bubble
               recipientType={"guardian"}
               senderName={"Ms. Stark"}
               senderIcon={
@@ -152,7 +152,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               numTranslatedLanguages={10}
-              readBy={readBy}
+              readBy={readBy.slice(5)} // for variety
               recipientType={"student"}
               senderName={"Ms. Stark"}
               senderIcon={
