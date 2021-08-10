@@ -63,6 +63,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           className={props.className}
           inlineErrorMsg={props.inlineErrorMsg}
           onDelete={props.onDelete}
+          onReadReceiptsHover={props.onReadReceiptsHover}
           onReply={props.onReply}
           readBy={props.readBy}
           recipientType={props.recipientType}
