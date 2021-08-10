@@ -51,6 +51,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
   sentAtTimestamp,
   showLessButtonText,
   showMoreButtonText,
+  theme,
   truncationNoticeText,
   truncationTooltipText,
   onToggleShow,
@@ -101,7 +102,12 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
     <FlexBox
       alignItems="start"
       column
-      className={cx(cssClass("container"), cssClass(`container--${colorTheme}`), className)}
+      className={cx(
+        cssClass("container"),
+        cssClass(`container--${colorTheme}`),
+        theme === "familyPortal" && cssClass("familyPortal"),
+        className,
+      )}
       grow
     >
       <FlexBox alignItems="center">
