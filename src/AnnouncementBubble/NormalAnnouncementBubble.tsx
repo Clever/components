@@ -163,7 +163,9 @@ function formNumTranslatedLanguagesTooltip(numTranslatedLanguages: number): JSX.
             src={require("./translate.svg")}
           />
           <span className={cssClass("translatedLanguages--text--desktop")}>
-            Translated into {numTranslatedLanguages} languages
+            {numTranslatedLanguages === 1
+              ? "Translated into 1 language"
+              : `Translated into ${numTranslatedLanguages} languages`}
           </span>
           <span className={cssClass("translatedLanguages--text--mobile")}>
             {numTranslatedLanguages}
