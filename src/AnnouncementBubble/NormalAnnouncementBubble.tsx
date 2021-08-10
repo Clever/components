@@ -19,6 +19,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   inlineErrorMsg?: string;
+  numTranslatedLanguages?: number;
   onDelete?: () => void;
   onReadReceiptsHover?: () => void;
   onReply?: () => void;
@@ -38,6 +39,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   children,
   className,
   inlineErrorMsg,
+  numTranslatedLanguages,
   onDelete,
   onReadReceiptsHover,
   onReply,
@@ -51,6 +53,8 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
 }: Props) => {
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
+  const numTranslatedLanguagesTooltip =
+    numTranslatedLanguages > 0 ? formNumTranslatedLanguagesTooltip(numTranslatedLanguages) : null;
   const readReceiptsTooltip =
     readBy?.length > 0 ? formReadReceiptsTooltip(onReadReceiptsHover, readBy, recipientType) : null;
 
@@ -84,7 +88,10 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
       {attachments?.length > 0 && (
         <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>
       )}
-      {readReceiptsTooltip}
+      <FlexBox>
+        {numTranslatedLanguagesTooltip}
+        {readReceiptsTooltip}
+      </FlexBox>
       {replyButton}
     </FlexBox>
   );
@@ -134,6 +141,37 @@ function formReplyButton(
 
   // Default case is to show no reply button
   return undefined;
+}
+
+function formNumTranslatedLanguagesTooltip(numTranslatedLanguages: number): JSX.Element {
+  return (
+    <FlexBox
+      className={cssClass("translatedLanguages--container")}
+      alignItems="center"
+      justify="start"
+    >
+      <Tooltip
+        className={cssClass("translatedLanguages--tooltip")}
+        content={"Each parent will see this announcement in their home language."}
+        placement={"top"}
+        textAlign={"left"}
+      >
+        <FlexBox>
+          <img
+            alt=""
+            className={cssClass("translatedLanguages--icon")}
+            src={require("./translate.svg")}
+          />
+          <span className={cssClass("translatedLanguages--text--desktop")}>
+            Translated into {numTranslatedLanguages} languages
+          </span>
+          <span className={cssClass("translatedLanguages--text--mobile")}>
+            {numTranslatedLanguages}
+          </span>
+        </FlexBox>
+      </Tooltip>
+    </FlexBox>
+  );
 }
 
 function formReadReceiptsTooltip(
