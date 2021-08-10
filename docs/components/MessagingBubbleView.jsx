@@ -127,14 +127,32 @@ export default class MessagingBubbleView extends React.PureComponent {
             <MessagingBubble bubbleType={bubbleType} className={cssClass.BUBBLE} theme={theme}>
               Links like https://clever.com are clickable
             </MessagingBubble>
-            <MessagingBubble
-              bubbleType={bubbleType}
-              className={cssClass.BUBBLE}
-              theme={theme}
-              replyTo={"This is a message!"}
-            >
-              This is a reply to that message!
-            </MessagingBubble>
+            {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
+            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+              <MessagingBubble
+                bubbleType={bubbleType}
+                className={cssClass.BUBBLE}
+                theme={theme}
+                replyTo={
+                  <AnnouncementBubble
+                    senderName={"Joni Roni"}
+                    senderIcon={
+                      <MessagingAvatar
+                        text={"Joni Roni"}
+                        color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                      />
+                    }
+                    sentAtTimestamp={new Date()}
+                    bubbleType={"quoted"}
+                    theme={theme}
+                  >
+                    "This is an announcement with a message reply!"
+                  </AnnouncementBubble>
+                }
+              >
+                Here is the reply!
+              </MessagingBubble>
+            )}
             <MessagingBubble
               bubbleType={bubbleType}
               className={cssClass.BUBBLE}
@@ -149,52 +167,31 @@ export default class MessagingBubbleView extends React.PureComponent {
               theme={theme}
               attachments={attachmentsArray.slice(3)}
             />
-            <MessagingBubble
-              bubbleType={bubbleType}
-              className={cssClass.BUBBLE}
-              theme={theme}
-              attachments={attachmentsArray.slice(3)}
-              replyTo={
-                <AnnouncementBubble
-                  senderName={"Joni Roni"}
-                  senderIcon={
-                    <MessagingAvatar
-                      text={"Joni Roni"}
-                      color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                    />
-                  }
-                  sentAtTimestamp={new Date()}
-                  bubbleType={"quoted"}
-                  theme={theme}
-                >
-                  "This is an announcement with an attachments-only reply!"
-                </AnnouncementBubble>
-              }
-            />
-            <MessagingBubble
-              bubbleType={bubbleType}
-              className={cssClass.BUBBLE}
-              theme={theme}
-              // attachments={attachmentsArray.slice(3)}
-              replyTo={
-                <AnnouncementBubble
-                  senderName={"Joni Roni"}
-                  senderIcon={
-                    <MessagingAvatar
-                      text={"Joni Roni"}
-                      color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                    />
-                  }
-                  sentAtTimestamp={new Date()}
-                  bubbleType={"quoted"}
-                  theme={theme}
-                >
-                  "This is an announcement with a message reply!"
-                </AnnouncementBubble>
-              }
-            >
-              Here is the reply!
-            </MessagingBubble>
+            {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
+            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+              <MessagingBubble
+                bubbleType={bubbleType}
+                className={cssClass.BUBBLE}
+                theme={theme}
+                attachments={attachmentsArray.slice(3)}
+                replyTo={
+                  <AnnouncementBubble
+                    senderName={"Joni Roni"}
+                    senderIcon={
+                      <MessagingAvatar
+                        text={"Joni Roni"}
+                        color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                      />
+                    }
+                    sentAtTimestamp={new Date()}
+                    bubbleType={"quoted"}
+                    theme={theme}
+                  >
+                    "This is an announcement with an attachments-only reply!"
+                  </AnnouncementBubble>
+                }
+              />
+            )}
           </ExampleCode>
           {this._renderConfig()}
         </Example>
