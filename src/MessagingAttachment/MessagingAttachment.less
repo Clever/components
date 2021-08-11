@@ -11,6 +11,36 @@
   .text--truncate();
 }
 
+// Family portal specific styling
+.MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal {
+  border-radius: @size_m;
+  background-color: @neutral_white;
+  box-shadow: 0px 2px 6px rgba(71, 76, 94, 0.3);
+  margin-top: 0.25rem;
+
+  .MessagingAttachment--Container {
+    border: unset;
+    border-radius: unset;
+
+    .padding--y--s();
+    .padding--x--xs();
+  }
+
+  .MessagingAttachment--IconContainer {
+    margin-right: 0.5rem;
+  }
+
+  .MessagingAttachment--Title {
+    font-size: 0.875rem;
+  }
+}
+
+// Attachment-only messages
+.MessagingBubble--HideBubble
+  .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal:first-of-type {
+  margin-top: 0;
+}
+
 .MessagingAttachment--Container {
   z-index: auto;
   width: 21.875rem; // 350px
