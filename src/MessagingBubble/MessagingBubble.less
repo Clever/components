@@ -39,13 +39,11 @@
     margin-right: @size_m;
   }
 
-  .MessagingBubble--Message--Reply--Parent {
-    .padding--x--xs();
-  }
-
   .MessagingBubble--Message--Reply--Own {
     // TODO: is this the best way to override a background-color?
     background-color: unset;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
     &.MessagingBubble--Message--Reply--MarginBottom {
       margin-bottom: @size_xs;
     }
