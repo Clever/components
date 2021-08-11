@@ -50,6 +50,7 @@ export default class MessagingBubbleView extends React.PureComponent {
         onClickAttachment: () => console.log("clicked!"),
         title: "MyCoolDoclajsdjasldjaslkdjasldkjasldjaslkdjasldjasldjalskjdalskjdaslkjasljd.doc",
         subtitle: "Click to download",
+        theme,
       },
       {
         key: "2",
@@ -58,6 +59,7 @@ export default class MessagingBubbleView extends React.PureComponent {
         onClickAttachment: () => console.log("clicked!"),
         title: "Flyer.png",
         subtitle: "Click to view",
+        theme,
       },
       {
         key: "3",
@@ -66,6 +68,7 @@ export default class MessagingBubbleView extends React.PureComponent {
         onClickAttachment: () => console.log("clicked!"),
         title: "Morning message.m4a",
         subtitle: "Click to download",
+        theme,
       },
       {
         key: "4",
@@ -74,6 +77,7 @@ export default class MessagingBubbleView extends React.PureComponent {
         onClickAttachment: () => console.log("clicked attachment-only message!"),
         title: "Ain't no text with this message.jpg",
         subtitle: "Click to view",
+        theme,
       },
       {
         key: "5",
@@ -82,6 +86,7 @@ export default class MessagingBubbleView extends React.PureComponent {
         onClickAttachment: () => console.log("clicked attachment-only message!"),
         title: "Attachment_friendz_only_here.doc",
         subtitle: "Click to download",
+        theme,
       },
     ].map((attachment) => (
       <MessagingAttachment
@@ -91,6 +96,7 @@ export default class MessagingBubbleView extends React.PureComponent {
         onClickAttachment={attachment.onClickAttachment}
         title={attachment.title}
         subtitle={attachment.subtitle}
+        theme={attachment.theme}
       />
     ));
 
@@ -166,6 +172,12 @@ export default class MessagingBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(3)}
+            />
+            <MessagingBubble
+              bubbleType={bubbleType}
+              className={cssClass.BUBBLE}
+              theme={theme}
+              attachments={attachmentsArray.slice(4)}
             />
             {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
             {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
