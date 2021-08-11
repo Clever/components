@@ -53,8 +53,6 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
 }: Props) => {
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
-  const numTranslatedLanguagesTooltip =
-    numTranslatedLanguages > 0 ? formNumTranslatedLanguagesTooltip(numTranslatedLanguages) : null;
   const readReceiptsTooltip =
     readBy?.length > 0 ? formReadReceiptsTooltip(onReadReceiptsHover, readBy, recipientType) : null;
 
@@ -89,7 +87,9 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
         <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>
       )}
       <FlexBox justify="between">
-        {numTranslatedLanguagesTooltip}
+        {numTranslatedLanguages > 0 && (
+          <NumTranslatedLanguagesTooltip numTranslatedLanguages={numTranslatedLanguages} />
+        )}
         {readReceiptsTooltip}
       </FlexBox>
       {replyButton}
@@ -141,35 +141,6 @@ function formReplyButton(
 
   // Default case is to show no reply button
   return undefined;
-}
-
-function formNumTranslatedLanguagesTooltip(numTranslatedLanguages: number): JSX.Element {
-  return (
-    <FlexBox
-      className={cssClass("translatedLanguages--container")}
-      alignItems="center"
-      justify="start"
-    >
-      <Tooltip
-        className={cssClass("translatedLanguages--tooltip")}
-        content={"Each parent will see this announcement in their home language."}
-        placement={"top"}
-        textAlign={"left"}
-      >
-        <FlexBox>
-          <TranslateIcon />
-          <span className={cssClass("translatedLanguages--text--desktop")}>
-            {numTranslatedLanguages === 1
-              ? "Translated into 1 language"
-              : `Translated into ${numTranslatedLanguages} languages`}
-          </span>
-          <span className={cssClass("translatedLanguages--text--mobile")}>
-            {numTranslatedLanguages}
-          </span>
-        </FlexBox>
-      </Tooltip>
-    </FlexBox>
-  );
 }
 
 function formReadReceiptsTooltip(
@@ -274,6 +245,39 @@ function DisabledReplyButton({
         </FlexBox>
       </Tooltip>
     </Button>
+  );
+}
+
+function NumTranslatedLanguagesTooltip({
+  numTranslatedLanguages,
+}: {
+  numTranslatedLanguages: number;
+}): JSX.Element {
+  return (
+    <FlexBox
+      className={cssClass("translatedLanguages--container")}
+      alignItems="center"
+      justify="start"
+    >
+      <Tooltip
+        className={cssClass("translatedLanguages--tooltip")}
+        content={"Each parent will see this announcement in their home language."}
+        placement={"top"}
+        textAlign={"left"}
+      >
+        <FlexBox>
+          <TranslateIcon />
+          <span className={cssClass("translatedLanguages--text--desktop")}>
+            {numTranslatedLanguages === 1
+              ? "Translated into 1 language"
+              : `Translated into ${numTranslatedLanguages} languages`}
+          </span>
+          <span className={cssClass("translatedLanguages--text--mobile")}>
+            {numTranslatedLanguages}
+          </span>
+        </FlexBox>
+      </Tooltip>
+    </FlexBox>
   );
 }
 
