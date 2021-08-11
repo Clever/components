@@ -168,8 +168,8 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 }
 
 .NormalAnnouncementBubble--translatedLanguages--icon {
+  .pathColor(@neutral_medium_gray);
   .margin--right--2xs();
-  .margin--top--4xs();
   width: 1rem;
 }
 
@@ -188,6 +188,10 @@ button.NormalAnnouncementBubble--deleteMenuItem {
   margin-top: 1rem;
   .flex--direction--row();
   .flex--grow;
+
+  &:hover .NormalAnnouncementBubble--translatedLanguages--icon {
+    .pathColor(@primary_blue_shade_2);
+  }
 
   &:hover .NormalAnnouncementBubble--translatedLanguages--text--desktop {
     color: @primary_blue_shade_2;

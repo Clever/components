@@ -157,11 +157,7 @@ function formNumTranslatedLanguagesTooltip(numTranslatedLanguages: number): JSX.
         textAlign={"left"}
       >
         <FlexBox>
-          <img
-            alt=""
-            className={cssClass("translatedLanguages--icon")}
-            src={require("./translate.svg")}
-          />
+          <TranslateIcon />
           <span className={cssClass("translatedLanguages--text--desktop")}>
             {numTranslatedLanguages === 1
               ? "Translated into 1 language"
@@ -278,6 +274,18 @@ function DisabledReplyButton({
         </FlexBox>
       </Tooltip>
     </Button>
+  );
+}
+
+function TranslateIcon(): JSX.Element {
+  return (
+    <svg
+      className={cssClass("translatedLanguages--icon")}
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M8.55364 10.3173L6.93727 8.72L6.95636 8.70091C8.06364 7.46636 8.85273 6.04727 9.31727 4.54545H11.1818V3.27273H6.72727V2H5.45455V3.27273H1V4.53909H8.10818C7.68182 5.76727 7.00727 6.93182 6.09091 7.95C5.49909 7.29455 5.00909 6.57545 4.62091 5.81818H3.34818C3.81273 6.85545 4.44909 7.83545 5.24455 8.72L2.00545 11.9145L2.90909 12.8182L6.09091 9.63636L8.07 11.6155L8.55364 10.3173ZM12.1364 7.09091H10.8636L8 14.7273H9.27273L9.98545 12.8182H13.0082L13.7273 14.7273H15L12.1364 7.09091ZM10.4691 11.5455L11.5 8.79L12.5309 11.5455H10.4691Z" />
+    </svg>
   );
 }
 
