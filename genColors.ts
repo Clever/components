@@ -77,8 +77,9 @@ const Colors = {
 
   // TODO: Is it kosher to add this here?
   // copied from family-portal-mobile/FamilyPortalMobile/src/ui-styles/colors.ts
-  FamilyPortalMobile: {
-    FAMILY_PORTAL_MOBILE_SLATE: "#32315B",
+  FamilyPortal: {
+    FAMILY_PORTAL_SLATE: "#32315B",
+    FAMILY_PORTAL_QUOTED_ANNOUNCEMENT: "#FEF7D2",
   },
 };
 
