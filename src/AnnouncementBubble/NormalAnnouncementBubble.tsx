@@ -88,7 +88,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
       {attachments?.length > 0 && (
         <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>
       )}
-      <FlexBox>
+      <FlexBox justify="between">
         {numTranslatedLanguagesTooltip}
         {readReceiptsTooltip}
       </FlexBox>
@@ -182,7 +182,7 @@ function formReadReceiptsTooltip(
   const displayRecipientType = recipientType === "guardian" ? "parent" : recipientType;
   const recipientString = readBy.length === 1 ? displayRecipientType : `${displayRecipientType}s`;
   return (
-    <FlexBox alignItems="center" justify="end">
+    <FlexBox alignItems="center" justify="end" className={cssClass("readReceipts--container")}>
       <Tooltip
         className={cssClass("readReceipts--tooltip")}
         content={readReceiptString}
@@ -190,7 +190,7 @@ function formReadReceiptsTooltip(
         textAlign={"left"}
       >
         <div onMouseEnter={onReadReceiptsHover}>
-          <FlexBox className={cssClass("readReceipts--container")}>
+          <FlexBox>
             <Checkmark className={cssClass("readReceipts--icon")} />
             <span className={cssClass("readReceipts--text--desktop")}>
               Read by {readReceiptCount} {recipientString}

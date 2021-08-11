@@ -187,7 +187,6 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 .NormalAnnouncementBubble--translatedLanguages--container {
   margin-top: 1rem;
   .flex--direction--row();
-  .flex--grow;
 
   &:hover .NormalAnnouncementBubble--translatedLanguages--icon {
     .pathColor(@primary_blue_shade_2);
@@ -228,9 +227,9 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 }
 
 .NormalAnnouncementBubble--readReceipts--container {
+  margin-left: auto; // keeps read receipts on the right even if no translated languages tooltip
   margin-top: 1rem;
   .flex--direction--row();
-  .flex--grow;
 
   &:hover .NormalAnnouncementBubble--readReceipts--icon {
     .pathColor(@primary_blue_shade_2);
