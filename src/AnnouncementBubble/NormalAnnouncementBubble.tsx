@@ -20,6 +20,7 @@ export interface Props {
   className?: string;
   inlineErrorMsg?: string;
   onDelete?: () => void;
+  onReadReceiptsHover?: () => void;
   onReply?: () => void;
   readBy?: string[];
   recipientType: "student" | "guardian";
@@ -38,6 +39,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   className,
   inlineErrorMsg,
   onDelete,
+  onReadReceiptsHover,
   onReply,
   readBy,
   recipientType,
@@ -50,7 +52,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
   const readReceiptsTooltip =
-    readBy?.length > 0 ? formReadReceiptsTooltip(readBy, recipientType) : null;
+    readBy?.length > 0 ? formReadReceiptsTooltip(onReadReceiptsHover, readBy, recipientType) : null;
 
   return (
     <FlexBox
@@ -135,6 +137,7 @@ function formReplyButton(
 }
 
 function formReadReceiptsTooltip(
+  onReadReceiptsHover: () => void,
   readBy: string[],
   recipientType: "student" | "guardian",
 ): JSX.Element {
@@ -143,20 +146,22 @@ function formReadReceiptsTooltip(
   const displayRecipientType = recipientType === "guardian" ? "parent" : recipientType;
   const recipientString = readBy.length === 1 ? displayRecipientType : `${displayRecipientType}s`;
   return (
-    <FlexBox className={cssClass("readReceipts--container")} alignItems="center" justify="end">
+    <FlexBox alignItems="center" justify="end">
       <Tooltip
         className={cssClass("readReceipts--tooltip")}
         content={readReceiptString}
         placement={"top"}
         textAlign={"left"}
       >
-        <FlexBox>
-          <Checkmark className={cssClass("readReceipts--icon")} />
-          <span className={cssClass("readReceipts--text--desktop")}>
-            Read by {readReceiptCount} {recipientString}
-          </span>
-          <span className={cssClass("readReceipts--text--mobile")}>{readReceiptCount}</span>
-        </FlexBox>
+        <div onMouseEnter={onReadReceiptsHover}>
+          <FlexBox className={cssClass("readReceipts--container")}>
+            <Checkmark className={cssClass("readReceipts--icon")} />
+            <span className={cssClass("readReceipts--text--desktop")}>
+              Read by {readReceiptCount} {recipientString}
+            </span>
+            <span className={cssClass("readReceipts--text--mobile")}>{readReceiptCount}</span>
+          </FlexBox>
+        </div>
       </Tooltip>
     </FlexBox>
   );
