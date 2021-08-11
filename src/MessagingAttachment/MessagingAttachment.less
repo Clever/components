@@ -41,6 +41,33 @@
   margin-top: 0;
 }
 
+// Replying to an announcement that countains an attachment
+.QuotedAnnouncementBubble--container {
+  .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal:first-of-type {
+    margin-top: 0;
+  }
+
+  .MessagingAttachment--Container {
+    height: 2rem;
+    margin-top: 0;
+  }
+
+  .MessagingAttachment--IconContainer {
+    height: 2rem;
+  }
+
+  .MessagingAttachment--IconContainer img {
+    max-height: 2rem;
+    max-width: 2rem;
+  }
+
+  .MessagingAttachment--Title,
+  .MessagingAttachment--Subtitle {
+    font-size: 0.875rem;
+    line-height: 1rem;
+  }
+}
+
 .MessagingAttachment--Container {
   z-index: auto;
   width: 21.875rem; // 350px

@@ -215,6 +215,32 @@ export default class MessagingBubbleView extends React.PureComponent {
                 product
               </MessagingBubble>
             )}
+            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+              <MessagingBubble
+                bubbleType={bubbleType}
+                className={cssClass.BUBBLE}
+                theme={theme}
+                replyTo={
+                  <AnnouncementBubble
+                    senderName={"Joni Roni"}
+                    senderIcon={
+                      <MessagingAvatar
+                        text={"Joni Roni"}
+                        color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
+                      />
+                    }
+                    attachments={attachmentsArray.slice(4)}
+                    sentAtTimestamp={new Date()}
+                    bubbleType={"quoted"}
+                    theme={theme}
+                  >
+                    "This is a quoted announcement with an attachment!"
+                  </AnnouncementBubble>
+                }
+              >
+                "This is a reply to the announcement with an attachment"
+              </MessagingBubble>
+            )}
           </ExampleCode>
           {this._renderConfig()}
         </Example>
