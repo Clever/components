@@ -18,6 +18,7 @@ const cssClasses = {
   OWN_SUFFIX: "--Own",
   OTHER_SUFFIX: "--Other",
   FAMILY_PORTAL: "MessagingBubble--FamilyPortal",
+  HIDE_BUBBLE: "MessagingBubble--HideBubble",
 };
 
 interface Props {
@@ -54,6 +55,7 @@ export const MessagingBubble: React.FC<Props> = ({
     `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
     // is this the right place to put this?
     theme === "familyPortal" && cssClasses.FAMILY_PORTAL,
+    hideBubble && cssClasses.HIDE_BUBBLE,
   );
 
   const bubbleClassNames = cx(

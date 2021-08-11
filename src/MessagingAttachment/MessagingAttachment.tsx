@@ -34,6 +34,7 @@ type Props = {
   subtitle?: string;
   title?: string;
   uploadComplete?: boolean;
+  theme?: "launchpad" | "familyPortal";
 };
 
 // TODO: replace with a discriminated union to keep the props neat
@@ -50,6 +51,7 @@ export const MessagingAttachment: React.FC<Props> = ({
   subtitle,
   isUpload,
   uploadComplete,
+  theme,
 }: Props) => {
   const [attachmentPreviewIsShowing, setAttachmentPreviewIsShowing] = React.useState(false);
   const isPreviewableAttachment = PreviewableFileTypes.has(fileType);
@@ -60,6 +62,7 @@ export const MessagingAttachment: React.FC<Props> = ({
         cssClass("ParentContainer"),
         isUpload && cssClass("ParentContainer--IsUpload"),
         className,
+        theme === "familyPortal" && cssClass("FamilyPortal"),
       )}
     >
       {onRemoveAttachment && (
