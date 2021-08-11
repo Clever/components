@@ -192,6 +192,17 @@ export default class MessagingBubbleView extends React.PureComponent {
                 }
               />
             )}
+            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+              <MessagingBubble
+                bubbleType={bubbleType}
+                className={cssClass.BUBBLE}
+                theme={theme}
+                replyTo={<AnnouncementBubble bubbleType={"deleted"} theme={theme} />}
+              >
+                This is a reply to a deleted announcement. This state doesn't currently exist in the
+                product
+              </MessagingBubble>
+            )}
           </ExampleCode>
           {this._renderConfig()}
         </Example>
