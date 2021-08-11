@@ -41,6 +41,19 @@ export default class AnnouncementBubbleView extends React.PureComponent {
   render() {
     const { colorTheme } = this.state;
 
+    const readBy = [
+      "Arsalan",
+      "Nikhil",
+      "Spencer",
+      "Ashley",
+      "Jonathan",
+      "Brian",
+      "Chloe",
+      "Cory",
+      "Jonah",
+      "Nick",
+    ];
+
     const attachmentsArray = [
       {
         key: "1",
@@ -109,6 +122,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                   color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
                 />
               }
+              numTranslatedLanguages={1}
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               theme={"normal"}
@@ -118,18 +132,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
             <AnnouncementBubble
               className={cssClass.BUBBLE}
-              readBy={[
-                "Arsalan",
-                "Nikhil",
-                "Spencer",
-                "Ashley",
-                "Jonathan",
-                "Brian",
-                "Chloe",
-                "Cory",
-                "Jonah",
-                "Nick",
-              ]}
+              readBy={readBy.slice(0)} // copies readBy so it doesn't change in the next bubble
               recipientType={"guardian"}
               senderName={"Ms. Stark"}
               senderIcon={
@@ -148,18 +151,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             <AnnouncementBubble
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
-              readBy={[
-                "Arsalan",
-                "Nikhil",
-                "Spencer",
-                "Ashley",
-                "Jonathan",
-                "Brian",
-                "Chloe",
-                "Cory",
-                "Jonah",
-                "Nick",
-              ]}
+              numTranslatedLanguages={10}
+              readBy={readBy.slice(5)} // for variety
               recipientType={"student"}
               senderName={"Ms. Stark"}
               senderIcon={

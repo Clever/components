@@ -161,6 +161,46 @@ button.NormalAnnouncementBubble--deleteMenuItem {
   }
 }
 
+.NormalAnnouncementBubble--translatedLanguages--tooltip {
+  .text--semi-bold();
+  padding-left: @size_xs;
+  padding-right: @size_xs;
+}
+
+.NormalAnnouncementBubble--translatedLanguages--icon {
+  .pathColor(@neutral_medium_gray);
+  .margin--right--2xs();
+  width: 1rem;
+}
+
+.NormalAnnouncementBubble--translatedLanguages--text--desktop {
+  color: @neutral_medium_gray;
+  .text--medium;
+}
+
+.NormalAnnouncementBubble--translatedLanguages--text--mobile {
+  color: @neutral_medium_gray;
+  .text--medium;
+  display: none;
+}
+
+.NormalAnnouncementBubble--translatedLanguages--container {
+  .margin--top--m();
+  .flex--direction--row();
+
+  &:hover .NormalAnnouncementBubble--translatedLanguages--icon {
+    .pathColor(@primary_blue_shade_2);
+  }
+
+  &:hover .NormalAnnouncementBubble--translatedLanguages--text--desktop {
+    color: @primary_blue_shade_2;
+  }
+
+  &:hover .NormalAnnouncementBubble--translatedLanguages--text--mobile {
+    color: @primary_blue_shade_2;
+  }
+}
+
 .NormalAnnouncementBubble--readReceipts--tooltip {
   .text--semi-bold();
   padding-right: @size_2xs;
@@ -187,8 +227,8 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 }
 
 .NormalAnnouncementBubble--readReceipts--container {
+  margin-left: auto; // keeps read receipts on the right even if no translated languages tooltip
   margin-top: 1rem;
-  width: 100%;
   .flex--direction--row();
 
   &:hover .NormalAnnouncementBubble--readReceipts--icon {
@@ -244,6 +284,14 @@ button.NormalAnnouncementBubble--deleteMenuItem {
     color: @neutral_dark_gray;
     .margin--top--m();
     .text--line-height-4();
+  }
+
+  .NormalAnnouncementBubble--translatedLanguages--text--desktop {
+    display: none;
+  }
+
+  .NormalAnnouncementBubble--translatedLanguages--text--mobile {
+    display: block;
   }
 
   .NormalAnnouncementBubble--readReceipts--text--desktop {
