@@ -15,8 +15,9 @@
 .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal {
   border-radius: @size_m;
   background-color: @neutral_white;
-  box-shadow: 0px 2px 6px rgba(71, 76, 94, 0.3);
-  margin-top: 0.25rem;
+  box-shadow: 0px @size_3xs 6px rgba(71, 76, 94, 0.3);
+  .boxShadow--medium();
+  margin-top: @size_2xs;
 
   .MessagingAttachment--Container {
     border: unset;
@@ -31,7 +32,7 @@
   }
 
   .MessagingAttachment--Title {
-    font-size: 0.875rem;
+    .text--smallMedium();
   }
 }
 
@@ -48,23 +49,23 @@
   }
 
   .MessagingAttachment--Container {
-    height: 2rem;
+    height: @size_xl;
     margin-top: 0;
   }
 
   .MessagingAttachment--IconContainer {
-    height: 2rem;
+    height: @size_xl;
   }
 
   .MessagingAttachment--IconContainer img {
-    max-height: 2rem;
-    max-width: 2rem;
+    max-height: @size_xl;
+    max-width: @size_xl;
   }
 
   .MessagingAttachment--Title,
   .MessagingAttachment--Subtitle {
-    font-size: 0.875rem;
-    line-height: 1rem;
+    .text--smallMedium();
+    line-height: @size_m;
   }
 }
 
@@ -116,7 +117,6 @@
   .text--truncate();
 }
 
-// TODO: remove if unused
 .MessagingAttachment--Title {
   font-size: @size_m;
   line-height: @size_l;

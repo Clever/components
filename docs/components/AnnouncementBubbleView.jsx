@@ -323,18 +323,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             value={colorTheme}
           />
         </div>
-        {/* <div className={cssClass.CONFIG}>
-          theme:
-          <SegmentedControl
-            className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ theme: value })}
-            options={[
-              { content: "Launchpad", value: "launchpad" },
-              { content: "Family Portal", value: "familyPortal" },
-            ]}
-            value={theme}
-          />
-        </div> */}
       </FlexBox>
     );
   }
