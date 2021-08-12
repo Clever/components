@@ -7,6 +7,18 @@
   color: @neutral_medium_gray;
 }
 
+.DeletedAnnouncementBubble--icon {
+  margin: 1.125rem 1rem 1.375rem;
+  .text--large();
+}
+
+.DeletedAnnouncementBubble--text {
+  margin: 1rem 1rem 1rem 0;
+  .text--line-height-4();
+  .text--medium();
+}
+
+// Family Portal styling
 .MessagingBubble--FamilyPortal {
   .DeletedAnnouncementBubble--container {
     background-color: @family_portal_quoted_announcement;
@@ -17,23 +29,12 @@
   .DeletedAnnouncementBubble--text {
     .text--smallMedium();
     line-height: @size_m;
-    margin: @size_s 21px @size_s 0;
+    margin: @size_s 1.3125rem @size_s 0;
   }
 
   .DeletedAnnouncementBubble--icon {
     margin: @size_xs;
   }
-}
-
-.DeletedAnnouncementBubble--icon {
-  margin: 1.125rem 1rem 1.375rem;
-  .text--large();
-}
-
-.DeletedAnnouncementBubble--text {
-  margin: 1rem 1rem 1rem 0;
-  .text--line-height-4();
-  .text--medium();
 }
 
 @media only screen and (max-width: @breakpointM) {

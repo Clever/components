@@ -2,6 +2,7 @@ import * as React from "react";
 import * as cx from "classnames";
 import * as FontAwesome from "react-fontawesome";
 import { FlexBox } from "../";
+import { MessagingTheme } from "src/utils/messaging";
 
 import "./DeletedAnnouncementBubble.less";
 
@@ -11,7 +12,7 @@ function cssClass(element: string) {
 
 export interface Props {
   bubbleType: "deleted";
-  theme?: "launchpad" | "familyPortal";
+  theme?: MessagingTheme;
   className?: string;
 
   // Temporary props to allow overriding text with translations

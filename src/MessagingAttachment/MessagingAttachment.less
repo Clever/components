@@ -11,64 +11,6 @@
   .text--truncate();
 }
 
-// Family portal specific styling
-.MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal {
-  border-radius: @size_m;
-  background-color: @neutral_white;
-  box-shadow: 0px @size_3xs 6px rgba(71, 76, 94, 0.3);
-  .boxShadow--medium();
-  margin-top: @size_2xs;
-
-  .MessagingAttachment--Container {
-    border: unset;
-    border-radius: unset;
-
-    .padding--y--s();
-    .padding--x--xs();
-  }
-
-  .MessagingAttachment--IconContainer {
-    margin-right: 0.5rem;
-  }
-
-  .MessagingAttachment--Title {
-    .text--smallMedium();
-  }
-}
-
-// Attachment-only messages
-.MessagingBubble--HideBubble
-  .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal:first-of-type {
-  margin-top: 0;
-}
-
-// Replying to an announcement that countains an attachment
-.QuotedAnnouncementBubble--container {
-  .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal:first-of-type {
-    margin-top: 0;
-  }
-
-  .MessagingAttachment--Container {
-    height: @size_xl;
-    margin-top: 0;
-  }
-
-  .MessagingAttachment--IconContainer {
-    height: @size_xl;
-  }
-
-  .MessagingAttachment--IconContainer img {
-    max-height: @size_xl;
-    max-width: @size_xl;
-  }
-
-  .MessagingAttachment--Title,
-  .MessagingAttachment--Subtitle {
-    .text--smallMedium();
-    line-height: @size_m;
-  }
-}
-
 .MessagingAttachment--Container {
   z-index: auto;
   width: 21.875rem; // 350px
@@ -195,7 +137,7 @@
     line-height: @size_m;
     color: @neutral_dark_gray;
     .text--regular();
-    margin-top: 0;
+    .margin--top--none();
   }
 
   &.MessagingAttachment--IsUploading {
@@ -217,6 +159,72 @@
   .MessagingAttachment--Title {
     color: @primary_blue_shade_2;
   }
+}
+
+.MessagingAttachment--ParentContainer.MessagingAttachment--ParentContainer--IsUpload {
+  overflow: visible; // ensures you can see the x icon in top right corner
+}
+
+// Family portal specific styling
+.MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal {
+  border-radius: @size_m;
+  background-color: @neutral_white;
+  box-shadow: @size_none @size_3xs 0.375rem rgba(71, 76, 94, 0.3);
+  .boxShadow--medium();
+  margin-top: @size_2xs;
+  color: @neutral_dark_gray;
+
+  .MessagingAttachment--Container {
+    border: unset;
+    border-radius: unset;
+
+    .padding--y--s();
+    .padding--x--xs();
+  }
+
+  .MessagingAttachment--IconContainer {
+    .margin--right--xs();
+    filter: none;
+    -webkit-filter: none;
+  }
+
+  .MessagingAttachment--Title {
+    .text--smallMedium();
+  }
+}
+
+// Replying to an announcement that countains an attachment
+.QuotedAnnouncementBubble--container
+  .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal {
+  &:first-of-type {
+    .margin--top--none();
+  }
+
+  .MessagingAttachment--Container {
+    height: @size_xl;
+    .margin--top--none();
+  }
+
+  .MessagingAttachment--IconContainer {
+    height: @size_xl;
+  }
+
+  .MessagingAttachment--IconContainer img {
+    max-height: @size_xl;
+    max-width: @size_xl;
+  }
+
+  .MessagingAttachment--Title,
+  .MessagingAttachment--Subtitle {
+    .text--smallMedium();
+    line-height: @size_m;
+  }
+}
+
+// Attachment-only messages
+.MessagingBubble--HideBubble
+  .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal:first-of-type {
+  .margin--top--none();
 }
 
 .MessagingAttachment--Container.MessagingAttachment--IsUploading:hover {
@@ -251,10 +259,6 @@
     color: @ERROR_RED_TEXT;
     font-weight: 400;
   }
-}
-
-.MessagingAttachment--ParentContainer.MessagingAttachment--ParentContainer--IsUpload {
-  overflow: visible; // ensures you can see the x icon in top right corner
 }
 
 // For mobile/tablet
@@ -314,5 +318,9 @@
     .MessagingAttachment--Container {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal {
+    margin: 0.375rem 0.25rem;
   }
 }

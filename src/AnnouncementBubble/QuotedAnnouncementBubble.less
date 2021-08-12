@@ -7,33 +7,6 @@
   .text--smallMedium();
 }
 
-// These styles only apply to Announcement replies sent by the current user, in the Family Portal,
-// i.e. guardians replying to teacher announcements
-.MessagingBubble--Message--Reply--Own
-  .QuotedAnnouncementBubble--container.QuotedAnnouncementBubble--familyPortal {
-  background-color: @family_portal_quoted_announcement;
-  border-radius: @size_s;
-  color: @family_portal_slate;
-
-  .QuotedAnnouncementBubble--messageBody {
-    font-size: @size_m;
-  }
-
-  .QuotedAnnouncementBubble--messageDetails--light,
-  .QuotedAnnouncementBubble--messageDetails--dark,
-  .QuotedAnnouncementBubble--messageDetails--white,
-  .QuotedAnnouncementBubble--messageDetails--undefined {
-    color: @neutral_medium_gray;
-    margin-bottom: @size_xs;
-  }
-
-  .QuotedAnnouncementBubble--button--outer,
-  .QuotedAnnouncementBubble--button--inner {
-    color: @family_portal_slate;
-    font-size: @size_m;
-  }
-}
-
 .QuotedAnnouncementBubble--container--light {
   background-color: #fafbfe; /* stylelint-disable-line */
   color: @neutral_dark_gray;
@@ -221,6 +194,33 @@
 .QuotedAnnouncementBubble--button--dark {
   color: @neutral_white;
   .text--underline();
+}
+
+// These styles only apply to Announcement replies sent by the current user, in the Family Portal,
+// i.e. guardians replying to teacher announcements
+.MessagingBubble--Message--Reply--Own
+  .QuotedAnnouncementBubble--container.QuotedAnnouncementBubble--familyPortal {
+  background-color: @family_portal_quoted_announcement;
+  border-radius: @size_s;
+  color: @family_portal_slate;
+
+  .QuotedAnnouncementBubble--messageBody {
+    font-size: @size_m;
+  }
+
+  .QuotedAnnouncementBubble--messageDetails--light,
+  .QuotedAnnouncementBubble--messageDetails--dark,
+  .QuotedAnnouncementBubble--messageDetails--white,
+  .QuotedAnnouncementBubble--messageDetails--undefined {
+    color: @neutral_medium_gray;
+    .margin--bottom--xs();
+  }
+
+  .QuotedAnnouncementBubble--button--outer,
+  .QuotedAnnouncementBubble--button--inner {
+    color: @family_portal_slate;
+    font-size: @size_m;
+  }
 }
 
 @media only screen and (max-width: @breakpointM) {

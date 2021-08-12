@@ -36,7 +36,7 @@ export default class MessagingBubbleView extends React.PureComponent {
 
   state = {
     bubbleType: "ownMessage",
-    theme: "launchpad",
+    theme: "default",
   };
 
   render() {
@@ -274,7 +274,7 @@ export default class MessagingBubbleView extends React.PureComponent {
             className={cssClass.CONFIG_OPTIONS}
             onSelect={(value) => this.setState({ theme: value })}
             options={[
-              { content: "Launchpad", value: "launchpad" },
+              { content: "Default", value: "default" },
               { content: "Family Portal", value: "familyPortal" },
             ]}
             value={theme}
@@ -298,10 +298,10 @@ export default class MessagingBubbleView extends React.PureComponent {
           {
             name: "theme",
             // eslint-disable-next-line quotes
-            type: `"familyPortal" | "launchpad"`,
+            type: `MessagingTheme = "default" | "familyPortal"`,
             description: "Theme to use for styling the bubble",
             optional: true,
-            default: "launchpad",
+            default: "default",
           },
           {
             name: "content",

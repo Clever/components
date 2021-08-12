@@ -3,6 +3,7 @@ import * as moment from "moment";
 import Linkify from "react-linkify";
 import * as cx from "classnames";
 import FlexBox from "../flex/FlexBox";
+import { MessagingTheme } from "src/utils/messaging";
 import { matchDecorator, componentDecorator } from "./linkifyUtils";
 
 import "./MessagingBubble.less";
@@ -28,7 +29,7 @@ interface Props {
   replyTo?: React.ReactNode;
   attachments?: React.ReactNode[];
   bubbleType: "ownMessage" | "otherMessage";
-  theme?: "familyPortal" | "launchpad";
+  theme?: MessagingTheme;
 }
 
 // Helper function: Format a Date for our pretty timestamps.

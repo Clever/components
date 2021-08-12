@@ -6,6 +6,7 @@ import Linkify from "react-linkify";
 import { FlexBox, Button, Menu, Tooltip } from "../";
 import { componentDecorator, matchDecorator } from "../MessagingBubble/linkifyUtils";
 import Checkmark from "../Checkbox/CheckMark";
+import { MessagingTheme } from "src/utils/messaging";
 
 import "./NormalAnnouncementBubble.less";
 
@@ -30,7 +31,7 @@ export interface Props {
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
-  theme?: "launchpad" | "familyPortal";
+  theme?: MessagingTheme;
 
   // Temporary props to allow overriding text with translations
   replyButtonText?: string;
