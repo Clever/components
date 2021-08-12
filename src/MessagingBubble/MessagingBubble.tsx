@@ -48,12 +48,10 @@ export const MessagingBubble: React.FC<Props> = ({
 }: Props) => {
   const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
   const isOwnMessage = bubbleType === "ownMessage";
-  // TODO: add inFamilyPortal variable?
   const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
   const containerClassNames = cx(
     className,
     `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
-    // is this the right place to put this?
     theme === "familyPortal" && cssClasses.FAMILY_PORTAL,
     hideBubble && cssClasses.HIDE_BUBBLE,
   );
