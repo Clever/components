@@ -7,6 +7,7 @@ import * as _ from "lodash";
 import { FlexBox, Button, Tooltip } from "../";
 import { formatDateForTimestamp } from "./NormalAnnouncementBubble";
 import { componentDecorator, matchDecorator } from "../MessagingBubble/linkifyUtils";
+import { MessagingTheme } from "src/utils/messaging";
 
 import "./QuotedAnnouncementBubble.less";
 
@@ -27,7 +28,7 @@ export interface Props {
   senderName: string;
   sentAtTimestamp: Date;
   onToggleShow?: () => void;
-  theme?: "launchpad" | "familyPortal";
+  theme?: MessagingTheme;
 
   // Temporary props to allow overriding text with translations
   postedInText?: string;

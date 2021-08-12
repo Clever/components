@@ -5,6 +5,7 @@ import * as cx from "classnames";
 import { AttachmentPreview } from "../AttachmentPreview";
 import { FlexBox } from "../flex";
 import KeyCode from "../utils/KeyCode";
+import { MessagingTheme } from "src/utils/messaging";
 
 import "./MessagingAttachment.less";
 
@@ -34,7 +35,7 @@ type Props = {
   subtitle?: string;
   title?: string;
   uploadComplete?: boolean;
-  theme?: "launchpad" | "familyPortal";
+  theme?: MessagingTheme;
 };
 
 // TODO: replace with a discriminated union to keep the props neat

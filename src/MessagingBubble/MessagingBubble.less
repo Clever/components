@@ -22,29 +22,11 @@
   .items--start();
 }
 
-.MessagingBubble--Message--Container--Own.MessagingBubble--FamilyPortal {
-  .MessagingBubble--Message--Own {
-    background-color: @family_portal_own_message;
-    border-radius: 1rem;
-    color: @family_portal_slate;
-    font-weight: 400;
-    .padding--x--m();
-    .padding--y--xs();
-  }
-
-  .MessagingBubble--Message--Timestamp--Own {
-    margin-right: @size_m;
-  }
-
-  .MessagingBubble--Message--Reply--Own {
-    // TODO: is this the best way to override a background-color?
-    background-color: unset;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-    &.MessagingBubble--Message--Reply--MarginBottom {
-      margin-bottom: @size_xs;
-    }
-  }
+.MessagingBubble--Message--Other {
+  background-color: #f3f5fd; /* stylelint-disable-line */
+  border-radius: 0.3125rem;
+  color: @neutral_black;
+  .padding--xs();
 }
 
 .MessagingBubble--Message--Container--Other.MessagingBubble--FamilyPortal {
@@ -61,13 +43,6 @@
 .MessagingBubble--Message--Own {
   background-color: @neutral_dark_gray;
   color: @neutral_white;
-  .padding--xs();
-}
-
-.MessagingBubble--Message--Other {
-  background-color: #f3f5fd; /* stylelint-disable-line */
-  border-radius: 0.3125rem;
-  color: @neutral_black;
   .padding--xs();
 }
 
@@ -131,6 +106,37 @@
   white-space: nowrap;
   flex-shrink: 0;
   min-width: 3.5rem;
+}
+
+// Family Portal styling
+.MessagingBubble--Message--Container--Own.MessagingBubble--FamilyPortal {
+  .MessagingBubble--Message--Own {
+    background-color: @family_portal_own_message;
+    border-radius: 1rem;
+    color: @family_portal_slate;
+    font-weight: 400;
+    .padding--x--m();
+    .padding--y--xs();
+  }
+
+  .MessagingBubble--Message--Timestamp--Own {
+    margin-right: @size_m;
+  }
+
+  .MessagingBubble--Message--Reply--Own {
+    background-color: transparent;
+    max-width: 33.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+
+    &.MessagingBubble--Message--Reply--MarginBottom {
+      .margin--bottom--xs();
+    }
+
+    .DeletedAnnouncementBubble--container {
+      max-width: 33.5rem;
+    }
+  }
 }
 
 // For mobile/tablet
