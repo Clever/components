@@ -80,6 +80,7 @@ const Colors = {
   FamilyPortal: {
     FAMILY_PORTAL_SLATE: "#32315B",
     FAMILY_PORTAL_QUOTED_ANNOUNCEMENT: "#FEF7D2",
+    FAMILY_PORTAL_OWN_MESSAGE: "#FDEA8E",
   },
 };
 
