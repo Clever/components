@@ -268,7 +268,6 @@ export default class MessagingBubbleView extends React.PureComponent {
           />
         </div>
 
-        {/* TODO: why isn't the default value being set? */}
         <div className={cssClass.CONFIG}>
           Theme:
           <SegmentedControl
