@@ -21,6 +21,7 @@ export interface Props {
   inlineErrorMsg?: string;
   numTranslatedLanguages?: number;
   onDelete?: () => void;
+  onReadReceiptsClick?: () => void;
   onReadReceiptsHover?: () => void;
   onReply?: () => void;
   readBy?: string[];
@@ -41,6 +42,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   inlineErrorMsg,
   numTranslatedLanguages,
   onDelete,
+  onReadReceiptsClick,
   onReadReceiptsHover,
   onReply,
   readBy,
@@ -54,7 +56,9 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
   const readReceiptsTooltip =
-    readBy?.length > 0 ? formReadReceiptsTooltip(onReadReceiptsHover, readBy, recipientType) : null;
+    readBy?.length > 0
+      ? formReadReceiptsTooltip(onReadReceiptsClick, onReadReceiptsHover, readBy, recipientType)
+      : null;
 
   return (
     <FlexBox
@@ -144,6 +148,7 @@ function formReplyButton(
 }
 
 function formReadReceiptsTooltip(
+  onReadReceiptsClick: () => void,
   onReadReceiptsHover: () => void,
   readBy: string[],
   recipientType: "student" | "guardian",
@@ -161,7 +166,7 @@ function formReadReceiptsTooltip(
         textAlign={"left"}
       >
         <div onMouseEnter={onReadReceiptsHover}>
-          <FlexBox>
+          <FlexBox role="button" tabIndex={0} onClick={onReadReceiptsClick}>
             <Checkmark className={cssClass("readReceipts--icon")} />
             <span className={cssClass("readReceipts--text--desktop")}>
               Read by {readReceiptCount} {recipientString}
