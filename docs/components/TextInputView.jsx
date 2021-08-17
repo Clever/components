@@ -208,9 +208,21 @@ export default class TextInputView extends Component {
               optional: true,
             },
             {
+              name: "onKeyDown",
+              type: "Function",
+              description: "Function called upon keydown in the element",
+              optional: true,
+            },
+            {
               name: "onKeyPress",
               type: "Function",
               description: "Called when a key is pressed",
+              optional: true,
+            },
+            {
+              name: "onKeyUp",
+              type: "Function",
+              description: "Function called upon keyup in the element",
               optional: true,
             },
             {
