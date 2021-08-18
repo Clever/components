@@ -75,7 +75,6 @@ const Colors = {
     ACCENT_PURPLE_TINT_2: "#A460FF",
   },
 
-  // TODO: Is it kosher to add this here?
   // copied from family-portal-mobile/FamilyPortalMobile/src/ui-styles/colors.ts
   FamilyPortal: {
     FAMILY_PORTAL_SLATE: "#32315B",
