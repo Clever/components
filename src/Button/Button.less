@@ -169,8 +169,12 @@ button {
     }
 
     &:focus {
-      outline: @borderRadiusM solid @accent_purple_shade_2;
+      outline: @borderRadiusM solid @primary_blue_shade_2;
       transition: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: 0;
     }
   }
 
