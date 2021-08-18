@@ -22,7 +22,9 @@ export interface Props {
   label?: string;
   name: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
+  onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   optional?: boolean;
@@ -55,7 +57,9 @@ const propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  onKeyDown: PropTypes.func,
   onKeyPress: PropTypes.func,
+  onKeyUp: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   optional: PropTypes.bool,
@@ -242,7 +246,9 @@ export class TextInput extends React.Component<Props, State> {
           name={this.props.name}
           onBlur={this.onBlur}
           onChange={this.props.onChange}
+          onKeyDown={this.props.onKeyDown}
           onKeyPress={this.props.onKeyPress}
+          onKeyUp={this.props.onKeyUp}
           onFocus={this.onFocus}
           placeholder={this.props.placeholder}
           readOnly={this.props.readOnly}
