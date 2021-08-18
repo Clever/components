@@ -106,7 +106,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       className={cx(
         cssClass("container"),
         cssClass(`container--${colorTheme}`),
-        theme === "familyPortal" && cssClass("familyPortal"),
+        theme === "familyPortal" && cssClass("FamilyPortal"),
         className,
       )}
       grow
