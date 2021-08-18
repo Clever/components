@@ -189,12 +189,15 @@ function convertReadReceiptArrayToString(readBy: string[]): string {
   readBy.sort((a, b) => {
     return a.toLowerCase().localeCompare(b.toLowerCase());
   });
-  readBy[readReceiptCount - 1] = `and ${readBy[readReceiptCount - 1]}`;
-
   if (readReceiptCount === 2) {
+    readBy[readReceiptCount - 1] = `and ${readBy[readReceiptCount - 1]}`;
     return readBy.join(" ");
+  } else if (readReceiptCount === 3) {
+    readBy[readReceiptCount - 1] = `and ${readBy[readReceiptCount - 1]}`;
+    return readBy.join(", ");
   }
-  return readBy.join(", ");
+  const readByLong = [readBy[0], readBy[1], readBy[2], `and ${readReceiptCount - 3} more...`];
+  return readByLong.join(", ");
 }
 
 function ReplyButton({
