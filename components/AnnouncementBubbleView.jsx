@@ -36,7 +36,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
   state = {
     colorTheme: "light",
-    theme: "launchpad",
+    theme: "default",
   };
 
   render() {
@@ -341,12 +341,11 @@ export default class AnnouncementBubbleView extends React.PureComponent {
           {
             name: "theme",
             // eslint-disable-next-line quotes
-            type: `"launchpad" | "familyPortal"`,
-            // TODO: make this clearer?
+            type: `"default" | "familyPortal"`,
             description:
-              "Theme to use for styling the bubble, based on the user type interface being used",
+              "Theme to use for styling the bubble, based on the product context, e.g. Student, Teacher, or Family Portal",
             optional: true,
-            default: "launchpad",
+            default: "default",
           },
         ]}
         className={cssClass.PROPS}
