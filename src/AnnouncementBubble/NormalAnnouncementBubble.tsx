@@ -163,15 +163,19 @@ function formReadReceiptsTooltip(
         placement={"top"}
         textAlign={"left"}
       >
-        <div onMouseEnter={onReadReceiptsHover}>
-          <FlexBox role="button" tabIndex={0} onClick={onReadReceiptsClick}>
+        <Button
+          className={cssClass("readReceipts--button")}
+          onClick={onReadReceiptsClick}
+          type="plain"
+        >
+          <div onMouseEnter={onReadReceiptsHover}>
             <Checkmark className={cssClass("readReceipts--icon")} />
             <span className={cssClass("readReceipts--text--desktop")}>
               Read by {readReceiptCount} {recipientString}
             </span>
             <span className={cssClass("readReceipts--text--mobile")}>{readReceiptCount}</span>
-          </FlexBox>
-        </div>
+          </div>
+        </Button>
       </Tooltip>
     </FlexBox>
   );
