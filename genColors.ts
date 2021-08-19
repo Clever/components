@@ -75,11 +75,14 @@ const Colors = {
     ACCENT_PURPLE_TINT_2: "#A460FF",
   },
 
-  // copied from family-portal-mobile/FamilyPortalMobile/src/ui-styles/colors.ts
+  // TODO: Consider an alternate naming scheme for these colors since some are used outside of
+  // Family Portal (recently rebranded to Clever Parents)
   FamilyPortal: {
     FAMILY_PORTAL_SLATE: "#32315B",
     FAMILY_PORTAL_QUOTED_ANNOUNCEMENT: "#FEF7D2",
     FAMILY_PORTAL_OWN_MESSAGE: "#FDEA8E",
+    FAMILY_PORTAL_YELLOW: "#FFDC5D",
+    FAMILY_PORTAL_YELLOW_SHADE_1: "#F7C844",
   },
 };
 
