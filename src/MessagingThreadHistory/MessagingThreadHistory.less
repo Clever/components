@@ -5,7 +5,11 @@
   .padding--right--s();
 
   &:focus {
-    outline: 0.1875rem solid @primary_blue_tint_1;
+    outline: 0.1875rem solid @primary_blue_shade_2;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
   }
 }
 
