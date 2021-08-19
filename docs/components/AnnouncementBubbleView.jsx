@@ -115,6 +115,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
         <Example title="NormalAnnouncementBubble">
           <ExampleCode>
             <AnnouncementBubble
+              bubbleType={"normal"}
               className={cssClass.BUBBLE}
               senderName={"Ms. Stark"}
               senderIcon={
@@ -133,6 +134,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             </AnnouncementBubble>
 
             <AnnouncementBubble
+              bubbleType={"normal"}
               className={cssClass.BUBBLE}
               readBy={readBy.slice(0)} // copies readBy so it doesn't change in the next bubble
               recipientType={"guardian"}
@@ -151,6 +153,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             </AnnouncementBubble>
 
             <AnnouncementBubble
+              bubbleType={"normal"}
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               numTranslatedLanguages={10}
@@ -165,7 +168,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
-              bubbleType={"normal"}
               theme={theme}
             >
               Announcements like this one can include attachments to open or download
@@ -173,6 +175,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
 
             {/* attachment-only announcement; one attachment*/}
             <AnnouncementBubble
+              bubbleType={"normal"}
               className={cssClass.BUBBLE}
               attachments={attachmentsArray.slice(0, 1)}
               senderName={"Ms. Stark"}
@@ -184,12 +187,12 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               onReply={() => console.log("Attachments-only announcements work too!")}
               sentAtTimestamp={new Date()}
-              bubbleType={"normal"}
               theme={theme}
             />
 
             {/* attachment-only announcement; multiple attachments*/}
             <AnnouncementBubble
+              bubbleType={"normal"}
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               senderName={"Ms. Stark"}
@@ -201,12 +204,12 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               onReply={() => console.log("Attachments-only announcements work too!")}
               sentAtTimestamp={new Date()}
-              bubbleType={"normal"}
               theme={theme}
             />
 
             {/* in-line error*/}
             <AnnouncementBubble
+              bubbleType={"normal"}
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               senderName={"Ms. Stark"}
@@ -218,7 +221,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
-              theme={"normal"}
+              theme={theme}
               inlineErrorMsg={"Something went wrong. We were unable to translate this message."}
             >
               Announcements like this one can include attachments and in-line errors
@@ -276,7 +279,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             <br />
 
             <AnnouncementBubble
-              theme={"quoted"}
+              bubbleType={"quoted"}
               attachments={attachmentsArray}
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
@@ -289,6 +292,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               }
               sentAtTimestamp={new Date()}
               inlineErrorMsg={"Something went wrong. We were unable to translate this message."}
+              theme={theme}
             >
               This can also have inline errors.
             </AnnouncementBubble>
@@ -297,7 +301,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
         </Example>
         <Example title="DeletedAnnouncementBubble">
           <ExampleCode>
-            <AnnouncementBubble className={cssClass.BUBBLE} theme={"deleted"} />
+            <AnnouncementBubble className={cssClass.BUBBLE} bubbleType="deleted" theme={theme} />
           </ExampleCode>
         </Example>
         {this._renderProps()}
@@ -306,7 +310,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { colorTheme, theme } = this.state;
+    const { colorTheme } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
