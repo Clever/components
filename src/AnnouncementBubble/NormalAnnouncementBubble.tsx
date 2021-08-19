@@ -63,11 +63,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
       : null;
 
   return (
-    <FlexBox
-      grow
-      column
-      className={cx(cssClass("container"), onReply && cssClass("containerWithReply"), className)}
-    >
+    <FlexBox grow column className={cx(cssClass("container"), className)}>
       <FlexBox>
         <div className={cssClass("senderIcon")}>{senderIcon}</div>
         <FlexBox column alignItems="start" justify="center">
@@ -210,7 +206,7 @@ function ReplyButton({
         <img
           alt=""
           className={cssClass("replyButton--icon")}
-          src={require("./messages-black-icon.svg")}
+          src={require("./messages-dark-gray-icon.svg")}
         />
         <span className={cssClass("replyButton--text")}>{replyButtonText || "Reply"}</span>
       </FlexBox>
