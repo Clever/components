@@ -43,16 +43,16 @@ export default class AnnouncementBubbleView extends React.PureComponent {
     const { colorTheme, theme } = this.state;
 
     const readBy = [
-      "Arsalan",
-      "Nikhil",
-      "Spencer",
-      "Ashley",
-      "Jonathan",
-      "Brian",
-      "Chloe",
-      "Cory",
-      "Jonah",
-      "Nick",
+      "Arsalan Sufi",
+      "Nikhil Bhatia",
+      "Spencer Caton",
+      "Ashley Wang",
+      "Jonathan Ray",
+      "Brian Rhee",
+      "Chloe Caelynn",
+      "Cory Fauver",
+      "Jonah Schwartz",
+      "Nick Friebel",
     ];
 
     const attachmentsArray = [
