@@ -301,7 +301,12 @@ export default class AnnouncementBubbleView extends React.PureComponent {
         </Example>
         <Example title="DeletedAnnouncementBubble">
           <ExampleCode>
-            <AnnouncementBubble className={cssClass.BUBBLE} bubbleType="deleted" theme={theme} />
+            <AnnouncementBubble
+              className={cssClass.BUBBLE}
+              bubbleType="deleted"
+              theme={theme}
+              deletionNoticeText="Ms. Yang deleted this announcement."
+            />
           </ExampleCode>
         </Example>
         {this._renderProps()}
@@ -334,13 +339,19 @@ export default class AnnouncementBubbleView extends React.PureComponent {
   _renderProps() {
     return (
       <PropDocumentation
-        title="<AnnouncementBubble /> Props TODO"
+        title="<AnnouncementBubble />"
         availableProps={[
           {
             name: "bubbleType",
             // eslint-disable-next-line quotes
             type: `"normal" | "quoted" | "deleted"`,
             description: "Bubble type to use for styling the bubble.",
+          },
+          {
+            name: "deletionNoticeText",
+            // eslint-disable-next-line quotes
+            type: "string",
+            description: "Text content of the bubble.",
           },
           {
             name: "theme",
