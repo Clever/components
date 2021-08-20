@@ -183,10 +183,22 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 }
 
 .NormalAnnouncementBubble--readReceipts--tooltip {
+  cursor: pointer;
   .text--semi-bold();
   padding-right: @size_2xs;
   padding-left: @size_2xs;
   white-space: pre-wrap;
+}
+
+.Button.NormalAnnouncementBubble--readReceipts--button {
+  &:focus {
+    outline: 0.1875rem solid @primary_blue_shade_2;
+    transition: none;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
 }
 
 .NormalAnnouncementBubble--readReceipts--icon {
