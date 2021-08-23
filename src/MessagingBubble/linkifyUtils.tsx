@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import * as LinkifyIt from "linkify-it";
-import "./MessagingBubble.less";
+import "./NormalMessagingBubble.less";
 import "./linkifyUtils.less";
 
 // Customized to not link URLs/emails without protocol (i.e. google.com or dewey@clever.com)
