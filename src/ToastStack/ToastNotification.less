@@ -1,5 +1,9 @@
 @import (reference) "../less/utilities";
 
+@success_green: #1d835f;
+@success_button_green: #0a6447;
+@success_button_hover_green: #06563c;
+
 .ToastNotification {
   .borderRadius--m;
   .boxShadow--light;
@@ -26,7 +30,7 @@
 }
 
 .ToastNotification--success {
-  background-color: @alert_green;
+  background-color: @success_green;
 }
 
 .ToastNotification--warning {
@@ -72,7 +76,7 @@
 }
 
 .ToastNotification--success .Button.ToastNotification--action {
-  background-color: @alert_green_shade_1;
+  background-color: @success_button_green;
 }
 
 .ToastNotification--warning .Button.ToastNotification--action {
@@ -101,7 +105,7 @@
 .ToastNotification--success .Button.ToastNotification--action:active,
 .ToastNotification--success .Button.ToastNotification--action:focus,
 .ToastNotification--success .Button.ToastNotification--action:hover {
-  background-color: @alert_green_shade_2;
+  background-color: @success_button_hover_green;
 }
 
 .ToastNotification--warning .Button.ToastNotification--action:active,
