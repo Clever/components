@@ -25,12 +25,12 @@
   box-sizing: content-box;
 }
 
-.MessagingBubble--Message .MessagingAttachment--Container {
+.NormalMessagingBubble--Message .MessagingAttachment--Container {
   .margin--top--3xs();
   width: 22.5rem;
 }
 
-.MessagingBubble--Message .MessagingAttachment--ParentContainer {
+.NormalMessagingBubble--Message .MessagingAttachment--ParentContainer {
   max-width: 100%;
   margin-right: 0;
 }
@@ -221,7 +221,7 @@
 }
 
 // Attachment-only messages
-.MessagingBubble--HideBubble
+.NormalMessagingBubble--HideBubble
   .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal:first-of-type {
   .margin--top--none();
 }
@@ -271,7 +271,7 @@
     font-size: @type_small_medium; //14px
   }
 
-  .MessagingBubble--Message--Container--Own .MessagingAttachment--Container {
+  .NormalMessagingBubble--Message--Container--Own .MessagingAttachment--Container {
     margin-left: @size_5xl;
     width: calc(100% - 4rem);
     min-width: 13rem;
@@ -279,7 +279,7 @@
     overflow: hidden;
   }
 
-  .MessagingBubble--Message--Container--Other .MessagingAttachment--Container {
+  .NormalMessagingBubble--Message--Container--Other .MessagingAttachment--Container {
     margin-right: @size_5xl;
     width: calc(100% - 4rem);
     min-width: 13rem;
@@ -288,16 +288,16 @@
   }
 
   // ⬇️ In attachment-only messages, we don't want the margins defined above either ⬇️
-  .MessagingBubble--Message--Timestamp--Own
-    + .MessagingBubble--Message--Attachment--Own
+  .NormalMessagingBubble--Message--Timestamp--Own
+    + .NormalMessagingBubble--Message--Attachment--Own
     .MessagingAttachment--Container {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
   }
 
-  .MessagingBubble--Message--Timestamp--Other
-    + .MessagingBubble--Message--Attachment--Other
+  .NormalMessagingBubble--Message--Timestamp--Other
+    + .NormalMessagingBubble--Message--Attachment--Other
     .MessagingAttachment--Container {
     margin-left: 0;
     margin-right: 0;
@@ -305,15 +305,15 @@
   }
 
   // ⬇️ In quoted announcements, we don't want the margins defined above ⬇️
-  .MessagingBubble--Message--Container--Own
-    .MessagingBubble--Message--Own.MessagingBubble--Message--Reply--Parent
+  .NormalMessagingBubble--Message--Container--Own
+    .NormalMessagingBubble--Message--Own.NormalMessagingBubble--Message--Reply--Parent
     .MessagingAttachment--Container {
     margin-left: 0;
     margin-right: 0;
   }
 
-  .MessagingBubble--Message--Container--Other
-    .MessagingBubble--Message--Other.MessagingBubble--Message--Reply--Parent
+  .NormalMessagingBubble--Message--Container--Other
+    .NormalMessagingBubble--Message--Other.NormalMessagingBubble--Message--Reply--Parent
     .MessagingAttachment--Container {
     margin-left: 0;
     margin-right: 0;

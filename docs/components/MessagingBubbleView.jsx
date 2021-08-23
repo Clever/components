@@ -35,12 +35,12 @@ export default class MessagingBubbleView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    bubbleType: "ownMessage",
+    messageOwnership: "ownMessage",
     theme: "default",
   };
 
   render() {
-    const { bubbleType, theme } = this.state;
+    const { messageOwnership, theme } = this.state;
 
     const attachmentsArray = [
       {
@@ -127,16 +127,27 @@ export default class MessagingBubbleView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingBubble bubbleType={bubbleType} className={cssClass.BUBBLE} theme={theme}>
+            <MessagingBubble
+              bubbleType="normal"
+              messageOwnership={messageOwnership}
+              className={cssClass.BUBBLE}
+              theme={theme}
+            >
               Hello World!
             </MessagingBubble>
-            <MessagingBubble bubbleType={bubbleType} className={cssClass.BUBBLE} theme={theme}>
+            <MessagingBubble
+              bubbleType="normal"
+              messageOwnership={messageOwnership}
+              className={cssClass.BUBBLE}
+              theme={theme}
+            >
               Links like https://clever.com are clickable
             </MessagingBubble>
             {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
-            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+            {(theme !== "familyPortal" || messageOwnership !== "otherMessage") && (
               <MessagingBubble
-                bubbleType={bubbleType}
+                bubbleType="normal"
+                messageOwnership={messageOwnership}
                 className={cssClass.BUBBLE}
                 theme={theme}
                 replyTo={
@@ -160,7 +171,8 @@ export default class MessagingBubbleView extends React.PureComponent {
               </MessagingBubble>
             )}
             <MessagingBubble
-              bubbleType={bubbleType}
+              bubbleType="normal"
+              messageOwnership={messageOwnership}
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(0, 3)}
@@ -168,21 +180,24 @@ export default class MessagingBubbleView extends React.PureComponent {
               Check out these attachments!
             </MessagingBubble>
             <MessagingBubble
-              bubbleType={bubbleType}
+              bubbleType="normal"
+              messageOwnership={messageOwnership}
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(3)}
             />
             <MessagingBubble
-              bubbleType={bubbleType}
+              bubbleType="normal"
+              messageOwnership={messageOwnership}
               className={cssClass.BUBBLE}
               theme={theme}
               attachments={attachmentsArray.slice(4)}
             />
             {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
-            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+            {(theme !== "familyPortal" || messageOwnership !== "otherMessage") && (
               <MessagingBubble
-                bubbleType={bubbleType}
+                bubbleType="normal"
+                messageOwnership={messageOwnership}
                 className={cssClass.BUBBLE}
                 theme={theme}
                 attachments={attachmentsArray.slice(3)}
@@ -204,20 +219,30 @@ export default class MessagingBubbleView extends React.PureComponent {
                 }
               />
             )}
-            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+            {(theme !== "familyPortal" || messageOwnership !== "otherMessage") && (
               <MessagingBubble
-                bubbleType={bubbleType}
+                bubbleType="normal"
+                messageOwnership={messageOwnership}
                 className={cssClass.BUBBLE}
                 theme={theme}
-                replyTo={<AnnouncementBubble bubbleType={"deleted"} theme={theme} />}
+                replyTo={
+                  <AnnouncementBubble
+                    bubbleType={"deleted"}
+                    theme={theme}
+                    deletionNoticeText={`${
+                      messageOwnership === "ownMessage" ? "You" : "Ms. Yang"
+                    } deleted this announcement`}
+                  />
+                }
               >
                 This is a reply to a deleted announcement. This state doesn't currently exist in the
                 product
               </MessagingBubble>
             )}
-            {(theme !== "familyPortal" || bubbleType !== "otherMessage") && (
+            {(theme !== "familyPortal" || messageOwnership !== "otherMessage") && (
               <MessagingBubble
-                bubbleType={bubbleType}
+                bubbleType="normal"
+                messageOwnership={messageOwnership}
                 className={cssClass.BUBBLE}
                 theme={theme}
                 replyTo={
@@ -251,7 +276,7 @@ export default class MessagingBubbleView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { theme, bubbleType } = this.state;
+    const { theme, messageOwnership } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -259,12 +284,12 @@ export default class MessagingBubbleView extends React.PureComponent {
           Bubble Type:
           <SegmentedControl
             className={cssClass.CONFIG_OPTIONS}
-            onSelect={(value) => this.setState({ bubbleType: value })}
+            onSelect={(value) => this.setState({ messageOwnership: value })}
             options={[
               { content: "Own Message", value: "ownMessage" },
               { content: "Other Message", value: "otherMessage" },
             ]}
-            value={bubbleType}
+            value={messageOwnership}
           />
         </div>
 
@@ -292,8 +317,14 @@ export default class MessagingBubbleView extends React.PureComponent {
           {
             name: "bubbleType",
             // eslint-disable-next-line quotes
-            type: `"ownMessage" | "otherMessage"`,
+            type: `"normal" | "deleted"`,
             description: "Bubble type to use for styling the bubble.",
+          },
+          {
+            name: "messageOwnership",
+            // eslint-disable-next-line quotes
+            type: `"ownMessage" | "otherMessage"`,
+            description: "Message ownership designation to use for styling the bubble.",
           },
           {
             name: "theme",

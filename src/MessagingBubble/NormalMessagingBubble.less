@@ -1,7 +1,7 @@
 @import (reference) "../less/index";
 
 // shared styling across bubble variations
-.MessagingBubble--Message {
+.NormalMessagingBubble--Message {
   border-radius: 0.3125rem;
   font-size: 1rem;
   max-width: 32.5rem;
@@ -12,25 +12,25 @@
   word-wrap: break-word; // IE name for overflow-wrap
 }
 
-.MessagingBubble--Message--Container--Own {
+.NormalMessagingBubble--Message--Container--Own {
   max-width: 100%;
   .items--end();
 }
 
-.MessagingBubble--Message--Container--Other {
+.NormalMessagingBubble--Message--Container--Other {
   max-width: 100%;
   .items--start();
 }
 
-.MessagingBubble--Message--Other {
+.NormalMessagingBubble--Message--Other {
   background-color: #f3f5fd; /* stylelint-disable-line */
   border-radius: 0.3125rem;
   color: @neutral_black;
   .padding--xs();
 }
 
-.MessagingBubble--Message--Container--Other.MessagingBubble--FamilyPortal {
-  .MessagingBubble--Message--Other {
+.NormalMessagingBubble--Message--Container--Other.NormalMessagingBubble--FamilyPortal {
+  .NormalMessagingBubble--Message--Other {
     background-color: @family_portal_slate;
     border-radius: 1rem;
     color: @neutral_white;
@@ -40,55 +40,55 @@
   }
 }
 
-.MessagingBubble--Message--Own {
+.NormalMessagingBubble--Message--Own {
   background-color: @neutral_dark_gray;
   color: @neutral_white;
   .padding--xs();
 }
 
-.MessagingBubble--Message--Reply--Parent {
+.NormalMessagingBubble--Message--Reply--Parent {
   .padding--m();
 }
 
-.MessagingBubble--Message--Reply--Own {
+.NormalMessagingBubble--Message--Reply--Own {
   background-color: #626776; /* stylelint-disable-line */
   border-radius: 0.3125rem;
   color: @neutral_white;
 }
 
-.MessagingBubble--Message--Reply--Other {
+.NormalMessagingBubble--Message--Reply--Other {
   background-color: #fafbfe; /* stylelint-disable-line */
   border-radius: 0.3125rem;
   color: @neutral_black;
 }
 
-.MessagingBubble--Message--Reply--MarginBottom {
+.NormalMessagingBubble--Message--Reply--MarginBottom {
   .margin--bottom--s();
 }
 
-.MessagingBubble--Message--Attachment--Own {
+.NormalMessagingBubble--Message--Attachment--Own {
   .flex--direction--column();
   .items--end();
 }
 
-.MessagingBubble--Message--Attachment--Other {
+.NormalMessagingBubble--Message--Attachment--Other {
   .flex--direction--column();
   .items--start();
 }
 
-.MessagingBubble--Message--TimestampBubbleContainer--Own {
+.NormalMessagingBubble--Message--TimestampBubbleContainer--Own {
   flex-direction: row;
   align-items: center;
   max-width: 100%;
 }
 
-.MessagingBubble--Message--TimestampBubbleContainer--Other {
+.NormalMessagingBubble--Message--TimestampBubbleContainer--Other {
   flex-direction: row-reverse;
   align-items: center;
   max-width: 100%;
 }
 
-.MessagingBubble--Message--Timestamp--Own {
+.NormalMessagingBubble--Message--Timestamp--Own {
   color: @neutral_medium_gray;
   font-size: 0.875rem;
   .margin--right--xs();
@@ -98,7 +98,7 @@
   min-width: 3.5rem;
 }
 
-.MessagingBubble--Message--Timestamp--Other {
+.NormalMessagingBubble--Message--Timestamp--Other {
   color: @neutral_medium_gray;
   font-size: 0.875rem;
   .margin--left--xs();
@@ -109,8 +109,8 @@
 }
 
 // Family Portal styling
-.MessagingBubble--Message--Container--Own.MessagingBubble--FamilyPortal {
-  .MessagingBubble--Message--Own {
+.NormalMessagingBubble--Message--Container--Own.NormalMessagingBubble--FamilyPortal {
+  .NormalMessagingBubble--Message--Own {
     background-color: @family_portal_own_message;
     border-radius: 1rem;
     color: @family_portal_slate;
@@ -119,17 +119,17 @@
     .padding--y--xs();
   }
 
-  .MessagingBubble--Message--Timestamp--Own {
+  .NormalMessagingBubble--Message--Timestamp--Own {
     margin-right: @size_m;
   }
 
-  .MessagingBubble--Message--Reply--Own {
+  .NormalMessagingBubble--Message--Reply--Own {
     background-color: transparent;
     max-width: 33.5rem;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
 
-    &.MessagingBubble--Message--Reply--MarginBottom {
+    &.NormalMessagingBubble--Message--Reply--MarginBottom {
       .margin--bottom--xs();
     }
 
@@ -141,27 +141,27 @@
 
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
-  .MessagingBubble--Message {
+  .NormalMessagingBubble--Message {
     font-size: 0.875rem;
     line-height: 1rem;
     // This improves how long words/links are broken on Chrome mobile and doesn't affect Safari
     overflow-wrap: anywhere;
   }
 
-  .MessagingBubble--Message--Reply--Parent {
+  .NormalMessagingBubble--Message--Reply--Parent {
     .padding--xs();
   }
 
-  .MessagingBubble--Message--Reply--MarginBottom {
+  .NormalMessagingBubble--Message--Reply--MarginBottom {
     .margin--bottom--xs();
   }
 
-  .MessagingBubble--Message--Attachment--Own {
+  .NormalMessagingBubble--Message--Attachment--Own {
     width: auto;
     .text--truncate();
   }
 
-  .MessagingBubble--Message--Attachment--Other {
+  .NormalMessagingBubble--Message--Attachment--Other {
     width: auto;
     .text--truncate();
   }
