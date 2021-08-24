@@ -125,7 +125,7 @@ export default class MessagingBubbleView extends React.PureComponent {
           </CodeSample>
         </header>
 
-        <Example title="Basic Usage:">
+        <Example title="NormalMessagingBubble">
           <ExampleCode>
             <MessagingBubble
               bubbleType="normal"
@@ -231,7 +231,7 @@ export default class MessagingBubbleView extends React.PureComponent {
                     theme={theme}
                     deletionNoticeText={`${
                       messageOwnership === "ownMessage" ? "You" : "Ms. Yang"
-                    } deleted this announcement`}
+                    } deleted this announcement.`}
                   />
                 }
               >
@@ -266,6 +266,20 @@ export default class MessagingBubbleView extends React.PureComponent {
                 "This is a reply to the announcement with an attachment"
               </MessagingBubble>
             )}
+          </ExampleCode>
+          {this._renderConfig()}
+        </Example>
+        <Example title="DeletedMessagingBubble">
+          <ExampleCode>
+            <MessagingBubble
+              className={cssClass.BUBBLE}
+              bubbleType="deleted"
+              theme={theme}
+              deletionNoticeText={`${
+                messageOwnership === "ownMessage" ? "You" : "Ms. Yang"
+              } deleted this message.`}
+              messageOwnership={messageOwnership}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
