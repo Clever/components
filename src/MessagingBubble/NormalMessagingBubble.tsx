@@ -23,7 +23,7 @@ const cssClasses = {
 };
 
 export interface Props {
-  bubbleType: "normal" | "deleted";
+  bubbleType: "normal";
   className?: string;
   children: React.ReactNode;
   timestamp: Date;
