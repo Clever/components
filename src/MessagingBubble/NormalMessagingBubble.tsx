@@ -24,13 +24,14 @@ const cssClasses = {
 
 export interface Props {
   bubbleType: "normal";
-  className?: string;
-  children: React.ReactNode;
-  timestamp: Date;
-  replyTo?: React.ReactNode;
+
   attachments?: React.ReactNode[];
+  children: React.ReactNode;
+  className?: string;
   messageOwnership: "ownMessage" | "otherMessage";
+  replyTo?: React.ReactNode;
   theme?: MessagingTheme;
+  timestamp: Date;
 }
 
 // Helper function: Format a Date for our pretty timestamps.

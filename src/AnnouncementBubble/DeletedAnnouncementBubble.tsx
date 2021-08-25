@@ -12,8 +12,9 @@ function cssClass(element: string) {
 
 export interface Props {
   bubbleType: "deleted";
-  theme?: MessagingTheme;
+
   className?: string;
+  theme?: MessagingTheme;
 
   // Temporary props to allow overriding text with translations
   deletionNoticeText: string;

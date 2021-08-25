@@ -16,6 +16,7 @@ function cssClass(element: string) {
 
 export interface Props {
   bubbleType: "normal";
+
   attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
