@@ -24,10 +24,10 @@ export interface Props {
   colorTheme: "white" | "light" | "dark";
   inlineErrorMsg?: string;
   isMessageTruncated?: boolean;
+  onToggleShow?: () => void;
   senderIcon: React.ReactNode;
   senderName: string;
   sentAtTimestamp: Date;
-  onToggleShow?: () => void;
   theme?: MessagingTheme;
 
   // Temporary props to allow overriding text with translations
@@ -71,7 +71,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
     const firstLineBreak = content.indexOf("\n");
 
     /* If we have a line break and the first line of text is shorter than the preview length,
-    pad the first line up until the longest line in the expanded view so the width of the bubble 
+    pad the first line up until the longest line in the expanded view so the width of the bubble
     is the same when expanded and when not. */
     if (firstLineBreak > -1 && firstLineBreak < previewLength - 1) {
       let allLines = content.split("\n");
