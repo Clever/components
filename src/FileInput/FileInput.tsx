@@ -169,7 +169,7 @@ export class FileInput extends React.Component<Props, State> {
     return (
       <Dropzone
         accept={this.props.accept}
-        className={this.props.dropzoneClass}
+        className={classnames("DropzoneContainer", this.props.dropzoneClass)}
         style={dropzoneStyle}
         multiple={false}
         onDropAccepted={this.onDropAccepted}
