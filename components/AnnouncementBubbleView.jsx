@@ -228,6 +228,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             </AnnouncementBubble>
           </ExampleCode>
         </Example>
+        {this._renderProps("normal")}
+
         <Example title="QuotedAnnouncementBubble">
           <ExampleCode>
             <AnnouncementBubble
@@ -299,6 +301,8 @@ export default class AnnouncementBubbleView extends React.PureComponent {
           </ExampleCode>
           {this._renderConfig()}
         </Example>
+        {this._renderProps("quoted")}
+
         <Example title="DeletedAnnouncementBubble">
           <ExampleCode>
             <AnnouncementBubble
@@ -309,7 +313,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             />
           </ExampleCode>
         </Example>
-        {this._renderProps()}
+        {this._renderProps("deleted")}
       </View>
     );
   }
@@ -336,35 +340,272 @@ export default class AnnouncementBubbleView extends React.PureComponent {
     );
   }
 
-  _renderProps() {
-    return (
-      <PropDocumentation
-        title="<AnnouncementBubble />"
-        availableProps={[
-          {
-            name: "bubbleType",
-            // eslint-disable-next-line quotes
-            type: `"normal" | "quoted" | "deleted"`,
-            description: "Bubble type to use for styling the bubble.",
-          },
-          {
-            name: "deletionNoticeText",
-            // eslint-disable-next-line quotes
-            type: "string",
-            description: "Text content of the bubble.",
-          },
-          {
-            name: "theme",
-            // eslint-disable-next-line quotes
-            type: `"default" | "familyPortal"`,
-            description:
-              "Theme to use for styling the bubble, based on the product context, e.g. Student, Teacher, or Family Portal",
-            optional: true,
-            default: "default",
-          },
-        ]}
-        className={cssClass.PROPS}
-      />
-    );
+  _renderProps(bubbleType) {
+    if (bubbleType === "normal") {
+      return (
+        <PropDocumentation
+          title="<AnnouncementBubble />"
+          availableProps={[
+            {
+              name: "bubbleType",
+              type: "normal",
+              description:
+                "Bubble type to determine which version of the component we render, incl. required props.",
+            },
+            {
+              name: "attachments",
+              type: "React.ReactNode[]",
+              description: "Optional list of ReactNodes to render as sent attachments.",
+              optional: true,
+            },
+            {
+              name: "children",
+              type: "React.ReactNode",
+              description: "ReactNode to render as the content of the NormalAnnouncementBubble.",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional additional CSS class name to apply to the container.",
+              optional: true,
+            },
+            {
+              name: "inlineErrorMsg",
+              type: "string",
+              description: "Optional error message to be show inline.",
+              optional: true,
+            },
+            {
+              name: "numTranslatedLanguages",
+              type: "number",
+              description:
+                "Optional number of languages that the message has been translated into.",
+              optional: true,
+            },
+            {
+              name: "onDelete",
+              type: "() => void",
+              description: "Optional handler upon trigger of announcement deletion.",
+              optional: true,
+            },
+            {
+              name: "onReadReceiptsClick",
+              type: "() => void",
+              description: "Optional handler upon trigger of read receipts view.",
+              optional: true,
+            },
+            {
+              name: "onReadReceiptsHover",
+              type: "() => void",
+              description: "Optional handler upon hover of read receipts affordance.",
+              optional: true,
+            },
+            {
+              name: "onReply",
+              type: "() => void",
+              description: "Optional handler upon trigger of announcement reply via Reply button.",
+              optional: true,
+            },
+            {
+              name: "readBy",
+              type: "string[]",
+              description: "Optional list of users who have read the given announcement.",
+              optional: true,
+            },
+            {
+              name: "recipientType",
+              // eslint-disable-next-line quotes
+              type: `"student" | "guardian"`,
+              description: "Recipient type for this announcement.",
+            },
+            {
+              name: "repliesDisabledMsg",
+              type: "string",
+              description: "Optional message to show when replies are disabled.",
+              optional: true,
+            },
+            {
+              name: "senderIcon",
+              type: "React.ReactNode",
+              description: "Icon denoting who the announcement sender is.",
+            },
+            {
+              name: "senderName",
+              type: "string",
+              description: "String denoting who the announcement sender is.",
+            },
+            {
+              name: "sentAtTimestamp",
+              type: "string",
+              description: "Timestamp, passed in to denote the announcement send time.",
+            },
+            {
+              name: "theme",
+              // eslint-disable-next-line quotes
+              type: `MessagingTheme = "default" | "familyPortal"`,
+              description: "Theme to use for styling the bubble.",
+              optional: true,
+              defaultValue: "default",
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      );
+    }
+
+    if (bubbleType === "quoted") {
+      return (
+        <PropDocumentation
+          title="<AnnouncementBubble />"
+          availableProps={[
+            {
+              name: "bubbleType",
+              type: "quoted",
+              description:
+                "Bubble type to determine which version of the component we render, incl. required props.",
+            },
+            {
+              name: "announcementGroupName",
+              type: "string",
+              description:
+                "String denoting the name of the group which the announcement was sent to.",
+            },
+            {
+              name: "attachments",
+              type: "React.ReactNode[]",
+              description: "Optional list of ReactNodes to render as sent attachments.",
+              optional: true,
+            },
+            {
+              name: "children",
+              type: "React.ReactNode",
+              description: "ReactNode to render as the content of the NormalAnnouncementBubble.",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional additional CSS class name to apply to the container.",
+              optional: true,
+            },
+            {
+              name: "colorTheme",
+              // eslint-disable-next-line quotes
+              type: `"white" | "light" | "dark"`,
+              description: "Color theme to use for styling the bubble's color.",
+            },
+            {
+              name: "inlineErrorMsg",
+              type: "string",
+              description: "Optional error message to be show inline.",
+              optional: true,
+            },
+            {
+              name: "isMessageTruncated",
+              type: "boolean",
+              description: "Optional bool for whether the message has been truncated or not.",
+              optional: true,
+            },
+            {
+              name: "onToggleShow",
+              type: "() => void",
+              description: "Optional handler upon trigger of toggling Show More/Less.",
+              optional: true,
+            },
+            {
+              name: "senderIcon",
+              type: "React.ReactNode",
+              description: "Icon denoting who the announcement sender is.",
+            },
+            {
+              name: "senderName",
+              type: "string",
+              description: "String denoting who the announcement sender is.",
+            },
+            {
+              name: "sentAtTimestamp",
+              type: "string",
+              description: "Timestamp, passed in to denote the announcement send time.",
+            },
+            {
+              name: "theme",
+              // eslint-disable-next-line quotes
+              type: `MessagingTheme = "default" | "familyPortal"`,
+              description: "Theme to use for styling the bubble.",
+              optional: true,
+              defaultValue: "default",
+            },
+            {
+              name: "postedInText",
+              type: "string",
+              description: "Optional text for which group the announcement was posted in.",
+              optional: true,
+            },
+            {
+              name: "showLessButtonText",
+              type: "string",
+              description: "Optional text for the Show Less button.",
+              optional: true,
+            },
+            {
+              name: "showMoreButtonText",
+              type: "string",
+              description: "Optional text for the Show More button.",
+              optional: true,
+            },
+            {
+              name: "truncationNoticeText",
+              type: "string",
+              description: "Optional text for the truncation notice.",
+              optional: true,
+            },
+            {
+              name: "truncationTooltipText",
+              type: "string",
+              description: "Optional text for the truncation tooltip.",
+              optional: true,
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      );
+    }
+
+    if (bubbleType === "deleted") {
+      return (
+        <PropDocumentation
+          title="<AnnouncementBubble />"
+          availableProps={[
+            {
+              name: "bubbleType",
+              type: "deleted",
+              description:
+                "Bubble type to determine which version of the component we render, incl. required props.",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional additional CSS class name to apply to the container.",
+              optional: true,
+            },
+            {
+              name: "theme",
+              // eslint-disable-next-line quotes
+              type: `MessagingTheme = "default" | "familyPortal"`,
+              description: "Theme to use for styling the bubble.",
+              optional: true,
+              defaultValue: "default",
+            },
+            {
+              name: "deletionNoticeText",
+              type: "string",
+              description: "The text displayed in the DeletedMessagingBubble.",
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      );
+    }
+
+    return null;
   }
 }

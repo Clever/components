@@ -269,6 +269,8 @@ export default class MessagingBubbleView extends React.PureComponent {
           </ExampleCode>
           {this._renderConfig()}
         </Example>
+        {this._renderProps("normal")}
+
         <Example title="DeletedMessagingBubble">
           <ExampleCode>
             <MessagingBubble
@@ -283,8 +285,7 @@ export default class MessagingBubbleView extends React.PureComponent {
           </ExampleCode>
           {this._renderConfig()}
         </Example>
-
-        {this._renderProps()}
+        {this._renderProps("deleted")}
       </View>
     );
   }
@@ -323,51 +324,109 @@ export default class MessagingBubbleView extends React.PureComponent {
     );
   }
 
-  _renderProps() {
-    return (
-      <PropDocumentation
-        title="<MessagingBubble /> Props"
-        availableProps={[
-          {
-            name: "bubbleType",
-            // eslint-disable-next-line quotes
-            type: `"normal" | "deleted"`,
-            description: "Bubble type to use for styling the bubble.",
-          },
-          {
-            name: "messageOwnership",
-            // eslint-disable-next-line quotes
-            type: `"ownMessage" | "otherMessage"`,
-            description: "Message ownership designation to use for styling the bubble.",
-          },
-          {
-            name: "theme",
-            // eslint-disable-next-line quotes
-            type: `MessagingTheme = "default" | "familyPortal"`,
-            description: "Theme to use for styling the bubble",
-            optional: true,
-            default: "default",
-          },
-          {
-            name: "content",
-            type: "React.ReactNode",
-            description: "MessagingBubble content.",
-          },
-          {
-            name: "className",
-            type: "string",
-            description: "Optional additional CSS class name to apply to the container.",
-            optional: true,
-          },
-          {
-            name: "replyTo",
-            type: "React.ReactNode",
-            description: "Optional prop to use for message reply content.",
-            optional: true,
-          },
-        ]}
-        className={cssClass.PROPS}
-      />
-    );
+  _renderProps(bubbleType) {
+    if (bubbleType === "normal") {
+      return (
+        <PropDocumentation
+          title="<NormalMessagingBubble/> Props"
+          availableProps={[
+            {
+              name: "bubbleType",
+              type: "normal",
+              description:
+                "Bubble type to determine which version of the component we render, incl. required props",
+            },
+            {
+              name: "attachments",
+              type: "React.ReactNode[]",
+              description: "Optional list of ReactNodes to render as sent attachments.",
+              optional: true,
+            },
+            {
+              name: "children",
+              type: "React.ReactNode",
+              description: "ReactNode to render as the content of the NormalMessagingBubble.",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional additional CSS class name to apply to the container.",
+              optional: true,
+            },
+            {
+              name: "messageOwnership",
+              // eslint-disable-next-line quotes
+              type: `"ownMessage" | "otherMessage"`,
+              description: "Message ownership designation to use for styling the bubble.",
+            },
+            {
+              name: "replyTo",
+              type: "React.ReactNode",
+              description: "Optional reply-to announcement, if this DM was an announcement reply.",
+              option: true,
+            },
+            {
+              name: "theme",
+              // eslint-disable-next-line quotes
+              type: `MessagingTheme = "default" | "familyPortal"`,
+              description: "Theme to use for styling the bubble",
+              optional: true,
+              defaultValue: "default",
+            },
+            {
+              name: "timestamp",
+              type: "string",
+              description: "Timestamp, passed in to denote the message send time.",
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      );
+    }
+
+    if (bubbleType === "deleted") {
+      return (
+        <PropDocumentation
+          title="<DeletedMessagingBubble/> Props"
+          availableProps={[
+            {
+              name: "bubbleType",
+              type: "deleted",
+              description:
+                "Bubble type to determine which version of the component we render, incl. required props.",
+            },
+            {
+              name: "className",
+              type: "string",
+              description:
+                "Optional additional CSS class name to apply to the message inside the container.",
+              optional: true,
+            },
+            {
+              name: "messageOwnership",
+              // eslint-disable-next-line quotes
+              type: `"ownMessage" | "otherMessage"`,
+              description: "Message ownership designation to use for styling the bubble.",
+            },
+            {
+              name: "theme",
+              // eslint-disable-next-line quotes
+              type: `MessagingTheme = "default" | "familyPortal"`,
+              description: "Theme to use for styling the bubble.",
+              optional: true,
+              defaultValue: "default",
+            },
+            {
+              name: "deletionNoticeText",
+              type: "string",
+              description: "The text displayed in the DeletedMessagingBubble.",
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      );
+    }
+
+    return null;
   }
 }
