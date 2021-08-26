@@ -205,6 +205,13 @@ export default class TopBarView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "logoAriaLabel",
+              type: <code>string</code>,
+              description: "The aria-label for the TopBarButton containing the logo.",
+              optional: true,
+              defaultValue: '"Clever Home"',
+            },
+            {
               name: "logoHref",
               type: <code>string</code>,
               description: "URL to use for the Clever logo link.",
