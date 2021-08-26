@@ -1,5 +1,7 @@
 @import (reference) "../less/index";
 
+@ERROR_RED: #df3537;
+
 // shared styling across bubble variations
 .NormalMessagingBubble--Message {
   border-radius: 0.3125rem;
@@ -76,6 +78,47 @@
   .items--start();
 }
 
+.NormalMessagingBubble--Message--Metadata--Own {
+  .margin--right--xs();
+}
+
+.NormalMessagingBubble--Message--Metadata--Other {
+  .margin--left--xs();
+}
+
+Button.NormalMessagingBubble--Message--ActionButton--Own {
+  &:hover,
+  &:focus,
+  &:active {
+    .NormalMessagingBubble--Message--Timestamp {
+      display: none;
+    }
+    .NormalMessagingBubble--Message--Delete {
+      display: unset;
+    }
+  }
+}
+
+Button.NormalMessagingBubble--Message--ActionButton--Other {
+  &:hover,
+  &:focus,
+  &:active {
+    .NormalMessagingBubble--Message--Timestamp {
+      display: none;
+    }
+    .NormalMessagingBubble--Message--Delete {
+      display: unset;
+    }
+  }
+}
+
+.NormalMessagingBubble--Message--Delete {
+  display: none;
+  color: @ERROR_RED;
+  .text--semi-bold();
+  line-height: @size_l;
+}
+
 .NormalMessagingBubble--Message--TimestampBubbleContainer--Own {
   flex-direction: row;
   align-items: center;
@@ -88,20 +131,10 @@
   max-width: 100%;
 }
 
-.NormalMessagingBubble--Message--Timestamp--Own {
+.NormalMessagingBubble--Message--Timestamp {
   color: @neutral_medium_gray;
   font-size: 0.875rem;
-  .margin--right--xs();
-  .text--line-height-1();
-  white-space: nowrap;
-  flex-shrink: 0;
-  min-width: 3.5rem;
-}
-
-.NormalMessagingBubble--Message--Timestamp--Other {
-  color: @neutral_medium_gray;
-  font-size: 0.875rem;
-  .margin--left--xs();
+  font-weight: normal;
   .text--line-height-1();
   white-space: nowrap;
   flex-shrink: 0;
