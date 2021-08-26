@@ -8,16 +8,9 @@
   flex-direction: row;
 }
 
-.DeletedMessagingBubble--Message--ownMessage {
+.DeletedMessagingBubble--Message {
   .border--m(@neutral_silver);
-  max-width: 16.125rem;
-  border-radius: 0.3125rem; // 5px
-  color: @neutral_medium_gray;
-}
-
-.DeletedMessagingBubble--Message--otherMessage {
-  .border--m(@neutral_silver);
-  max-width: 18.4375rem;
+  max-width: 33rem;
   border-radius: 0.3125rem; // 5px
   color: @neutral_medium_gray;
 }
@@ -33,7 +26,7 @@
   .text--medium();
 }
 
-@media only screen and (min-width: @breakpointM) {
+@media only screen and (max-width: @breakpointM) {
   .DeletedMessagingBubble--icon {
     margin: 0.75rem 0.5rem 0.75rem 0.75rem;
     .text--large();
