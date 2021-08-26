@@ -28,12 +28,7 @@ export const DeletedMessagingBubble: React.FC<Props> = ({
 }: Props) => {
   return (
     <FlexBox className={cssClass(`Container--${messageOwnership}`)}>
-      <FlexBox
-        grow
-        alignItems="center"
-        justify="start"
-        className={cx(cssClass(`Message--${messageOwnership}`), className)}
-      >
+      <FlexBox alignItems="center" justify="start" className={cx(cssClass("Message"), className)}>
         <FontAwesome name="trash-o" className={cssClass("icon")} aria-hidden="true" />
         <div className={cssClass("text")}>{deletionNoticeText}</div>
       </FlexBox>
