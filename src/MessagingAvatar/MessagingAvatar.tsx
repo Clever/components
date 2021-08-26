@@ -28,7 +28,8 @@ export const MessagingAvatar: React.FC<Props> = ({ className, text, color, image
   if (imageSrc) {
     return (
       <img
-        alt={`${text}'s user avatar`}
+        alt={""}
+        aria-hidden={"true"}
         className={classNames(cssClasses.IMAGE, className)}
         src={imageSrc}
       />
