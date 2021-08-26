@@ -35,12 +35,13 @@ export default class MessagingBubbleView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
+    isDeletableMessageDeleted: false,
     messageOwnership: "ownMessage",
     theme: "default",
   };
 
   render() {
-    const { messageOwnership, theme } = this.state;
+    const { isDeletableMessageDeleted, messageOwnership, theme } = this.state;
 
     const attachmentsArray = [
       {
@@ -143,6 +144,17 @@ export default class MessagingBubbleView extends React.PureComponent {
             >
               Links like https://clever.com are clickable
             </MessagingBubble>
+            {!isDeletableMessageDeleted && (
+              <MessagingBubble
+                bubbleType="normal"
+                messageOwnership={messageOwnership}
+                className={cssClass.BUBBLE}
+                onClickDeleteButton={(value) => this.setState({ isDeletableMessageDeleted: true })}
+                theme={theme}
+              >
+                This message can be deleted! Try hovering/focusing on the timestamp.
+              </MessagingBubble>
+            )}
             {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
             {(theme !== "familyPortal" || messageOwnership !== "otherMessage") && (
               <MessagingBubble

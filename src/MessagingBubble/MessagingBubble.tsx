@@ -34,6 +34,7 @@ export const MessagingBubble: React.FC<MessagingBubbleProps> = (props: Messaging
           replyTo={props.replyTo}
           attachments={props.attachments}
           messageOwnership={props.messageOwnership}
+          onClickDeleteButton={props.onClickDeleteButton}
           theme={props.theme}
         />
       );

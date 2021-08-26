@@ -142,7 +142,6 @@ function _interleaveMessagesWithDividers(
         // Last message in the history gets a ref, to allow scrolling down to bottom message.
         ref={i === messages.length - 1 ? lastMessageRef : undefined}
         placement={message.placement}
-        timestamp={message.timestamp}
         readStatusText={isOwnMessage(message) && message.readStatusText}
         // First message needs 'auto' top margin to have messages fill container from bottom -> top
         className={i === 0 ? cssClasses.FIRST_MESSAGE : undefined}
