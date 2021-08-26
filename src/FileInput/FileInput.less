@@ -17,7 +17,8 @@
   // note: focus-within selector does not work in IE. so in IE, there is no visual marker for when
   // the dropzone is selected with the keyboard
   &:focus-within {
-    .FileInput {
+    .FileInput:not(.FileInput--IconOnly),
+    .FileInput--IconOnly .FileInput--Icon {
       outline: 0.1875rem solid @primary_blue_shade_2;
     }
   }
