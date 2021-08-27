@@ -16,6 +16,7 @@ type TopBarTheme = typeof TopBarThemes[number];
 export interface Props {
   children?: React.ReactNode;
   className?: string;
+  logoAriaLabel?: string;
   logoHref: string;
   title?: React.ReactNode;
   customLogo?: React.ReactNode;
@@ -27,8 +28,9 @@ export interface Props {
  * Global page-level header component.
  */
 export class TopBar extends React.PureComponent<Props> {
-  static defaultProps: Pick<Props, "theme"> = {
+  static defaultProps: Pick<Props, "theme" | "logoAriaLabel"> = {
     theme: "default",
+    logoAriaLabel: "Clever Home",
   };
 
   static Button = TopBarButton;
@@ -59,7 +61,7 @@ export class TopBar extends React.PureComponent<Props> {
         )}
       >
         <TopBarButton
-          aria-label="Clever Home"
+          aria-label={this.props.logoAriaLabel}
           href={this.props.logoHref}
           onClick={this.props.onLogoClick}
           className="dewey-TopBar--logoLink"
