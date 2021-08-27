@@ -17,6 +17,7 @@ const cssClasses = {
   MESSAGE_METADATA_BASE: "NormalMessagingBubble--Message--Metadata",
   MESSAGE_ACTION_BUTTON_BASE: "NormalMessagingBubble--Message--ActionButton",
   MESSAGE_DELETE: "NormalMessagingBubble--Message--Delete",
+  MESSAGE_TIMESTAMP_NONINTERACTIVE: "NormalMessagingBubble--Message--Timestamp--NonInteractive",
   MESSAGE_TIMESTAMP: "NormalMessagingBubble--Message--Timestamp",
   MESSAGE_TIME_BUBBLE_CONTAINER_BASE: "NormalMessagingBubble--Message--TimestampBubbleContainer",
   OWN_SUFFIX: "--Own",
@@ -129,7 +130,7 @@ function _formatDateForTimestamp(date: Date): string {
 }
 
 // Helper function: renders metadata, consisting of either the action button
-//  or a non-interactable timestamp
+//  or a non-interactive timestamp
 function _renderMetadata({
   renderHere,
   timestamp,
@@ -148,7 +149,7 @@ function _renderMetadata({
   }
 
   if (!onClickDeleteButton) {
-    return _renderNonInteractableTimestamp({
+    return _renderNonInteractiveTimestamp({
       timestamp,
       metadataClassNames,
     });
@@ -161,8 +162,8 @@ function _renderMetadata({
   });
 }
 
-// Helper function: renders a non-interactable timestamp
-function _renderNonInteractableTimestamp({
+// Helper function: renders a non-interactive timestamp
+function _renderNonInteractiveTimestamp({
   timestamp,
   metadataClassNames,
 }: {
@@ -171,7 +172,9 @@ function _renderNonInteractableTimestamp({
 }): React.ReactNode {
   return (
     <div className={metadataClassNames}>
-      <span className={cssClasses.MESSAGE_TIMESTAMP}>{_formatDateForTimestamp(timestamp)}</span>
+      <span className={cssClasses.MESSAGE_TIMESTAMP_NONINTERACTIVE}>
+        {_formatDateForTimestamp(timestamp)}
+      </span>
     </div>
   );
 }

@@ -87,7 +87,9 @@
 }
 
 Button.NormalMessagingBubble--Message--ActionButton--Own {
-  &:hover,
+  width: 100%;
+  text-align: right;
+
   &:focus,
   &:active {
     .NormalMessagingBubble--Message--Timestamp {
@@ -97,10 +99,21 @@ Button.NormalMessagingBubble--Message--ActionButton--Own {
       display: unset;
     }
   }
+
+  // The "Delete" el should change colors upon button hover.
+  &:focus,
+  &:active,
+  &:hover {
+    .NormalMessagingBubble--Message--Delete {
+      color: @alert_red_shade;
+    }
+  }
 }
 
 Button.NormalMessagingBubble--Message--ActionButton--Other {
-  &:hover,
+  width: 100%;
+  text-align: left;
+
   &:focus,
   &:active {
     .NormalMessagingBubble--Message--Timestamp {
@@ -108,6 +121,15 @@ Button.NormalMessagingBubble--Message--ActionButton--Other {
     }
     .NormalMessagingBubble--Message--Delete {
       display: unset;
+    }
+  }
+
+  // The "Delete" el should change colors upon button hover.
+  &:focus,
+  &:active,
+  &:hover {
+    .NormalMessagingBubble--Message--Delete {
+      color: @alert_red_shade;
     }
   }
 }
@@ -120,15 +142,47 @@ Button.NormalMessagingBubble--Message--ActionButton--Other {
 }
 
 .NormalMessagingBubble--Message--TimestampBubbleContainer--Own {
+  .padding--left--s();
   flex-direction: row;
   align-items: center;
   max-width: 100%;
+
+  &:hover {
+    .NormalMessagingBubble--Message--Timestamp {
+      display: none;
+    }
+    .NormalMessagingBubble--Message--Delete {
+      display: unset;
+    }
+  }
 }
 
 .NormalMessagingBubble--Message--TimestampBubbleContainer--Other {
+  .padding--right--s();
   flex-direction: row-reverse;
   align-items: center;
   max-width: 100%;
+
+  &:hover {
+    .NormalMessagingBubble--Message--Timestamp {
+      display: none;
+    }
+    .NormalMessagingBubble--Message--Delete {
+      display: unset;
+    }
+  }
+}
+
+// This class may be identical in content to the --Timestamp class,
+// but this one is not rendered invisible by bubble-hover behavior.
+.NormalMessagingBubble--Message--Timestamp--NonInteractive {
+  color: @neutral_medium_gray;
+  font-size: 0.875rem;
+  font-weight: normal;
+  .text--line-height-1();
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 3.5rem;
 }
 
 .NormalMessagingBubble--Message--Timestamp {
@@ -150,10 +204,6 @@ Button.NormalMessagingBubble--Message--ActionButton--Other {
     font-weight: 400;
     .padding--x--m();
     .padding--y--xs();
-  }
-
-  .NormalMessagingBubble--Message--Timestamp--Own {
-    margin-right: @size_m;
   }
 
   .NormalMessagingBubble--Message--Reply--Own {
