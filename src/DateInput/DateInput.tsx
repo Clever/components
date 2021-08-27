@@ -28,6 +28,7 @@ export interface Props {
   useTime?: boolean;
   popperPlacement?: Values<typeof popperPlacementPositions>;
   size?: Size;
+  dateFormat?: string[];
 }
 
 interface State {
@@ -72,6 +73,7 @@ const propTypes = {
   useTime: PropTypes.bool,
   popperPlacement: PropTypes.oneOf(Object.values(popperPlacementPositions)),
   size: PropTypes.oneOf(Object.values(FormElementSize)),
+  dateFormat: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default class DateInput extends React.Component<Props, State> {
@@ -188,6 +190,7 @@ export default class DateInput extends React.Component<Props, State> {
             popperClassName="DatePicker--Popper"
             popperPlacement={this.props.popperPlacement}
             onChange={this.props.onChange}
+            dateFormat={this.props.dateFormat}
           />
         )}
       </div>
