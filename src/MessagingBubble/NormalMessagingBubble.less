@@ -86,6 +86,69 @@
   .margin--left--xs();
 }
 
+.NormalMessagingBubble--Message--Delete {
+  display: none;
+  color: @ERROR_RED;
+  .text--semi-bold();
+  line-height: @size_l;
+}
+
+// This class may be identical in content to the --Timestamp class,
+// but this one is not rendered invisible by bubble-hover behavior.
+.NormalMessagingBubble--Message--Timestamp--NonInteractive {
+  color: @neutral_medium_gray;
+  font-size: 0.875rem;
+  font-weight: normal;
+  .text--line-height-1();
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 3.5rem;
+}
+
+.NormalMessagingBubble--Message--Timestamp {
+  color: @neutral_medium_gray;
+  font-size: 0.875rem;
+  font-weight: normal;
+  .text--line-height-1();
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 3.5rem;
+}
+
+.NormalMessagingBubble--Message--TimestampBubbleContainer--Own {
+  .padding--left--s();
+  flex-direction: row;
+  align-items: center;
+  max-width: 100%;
+
+  &:hover {
+    .NormalMessagingBubble--Message--Timestamp {
+      display: none;
+    }
+
+    .NormalMessagingBubble--Message--Delete {
+      display: unset;
+    }
+  }
+}
+
+.NormalMessagingBubble--Message--TimestampBubbleContainer--Other {
+  .padding--right--s();
+  flex-direction: row-reverse;
+  align-items: center;
+  max-width: 100%;
+
+  &:hover {
+    .NormalMessagingBubble--Message--Timestamp {
+      display: none;
+    }
+
+    .NormalMessagingBubble--Message--Delete {
+      display: unset;
+    }
+  }
+}
+
 Button.NormalMessagingBubble--Message--ActionButton--Own {
   width: 100%;
   text-align: right;
@@ -95,6 +158,7 @@ Button.NormalMessagingBubble--Message--ActionButton--Own {
     .NormalMessagingBubble--Message--Timestamp {
       display: none;
     }
+
     .NormalMessagingBubble--Message--Delete {
       display: unset;
     }
@@ -119,6 +183,7 @@ Button.NormalMessagingBubble--Message--ActionButton--Other {
     .NormalMessagingBubble--Message--Timestamp {
       display: none;
     }
+
     .NormalMessagingBubble--Message--Delete {
       display: unset;
     }
@@ -132,67 +197,6 @@ Button.NormalMessagingBubble--Message--ActionButton--Other {
       color: @alert_red_shade;
     }
   }
-}
-
-.NormalMessagingBubble--Message--Delete {
-  display: none;
-  color: @ERROR_RED;
-  .text--semi-bold();
-  line-height: @size_l;
-}
-
-.NormalMessagingBubble--Message--TimestampBubbleContainer--Own {
-  .padding--left--s();
-  flex-direction: row;
-  align-items: center;
-  max-width: 100%;
-
-  &:hover {
-    .NormalMessagingBubble--Message--Timestamp {
-      display: none;
-    }
-    .NormalMessagingBubble--Message--Delete {
-      display: unset;
-    }
-  }
-}
-
-.NormalMessagingBubble--Message--TimestampBubbleContainer--Other {
-  .padding--right--s();
-  flex-direction: row-reverse;
-  align-items: center;
-  max-width: 100%;
-
-  &:hover {
-    .NormalMessagingBubble--Message--Timestamp {
-      display: none;
-    }
-    .NormalMessagingBubble--Message--Delete {
-      display: unset;
-    }
-  }
-}
-
-// This class may be identical in content to the --Timestamp class,
-// but this one is not rendered invisible by bubble-hover behavior.
-.NormalMessagingBubble--Message--Timestamp--NonInteractive {
-  color: @neutral_medium_gray;
-  font-size: 0.875rem;
-  font-weight: normal;
-  .text--line-height-1();
-  white-space: nowrap;
-  flex-shrink: 0;
-  min-width: 3.5rem;
-}
-
-.NormalMessagingBubble--Message--Timestamp {
-  color: @neutral_medium_gray;
-  font-size: 0.875rem;
-  font-weight: normal;
-  .text--line-height-1();
-  white-space: nowrap;
-  flex-shrink: 0;
-  min-width: 3.5rem;
 }
 
 // Family Portal styling
