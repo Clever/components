@@ -251,6 +251,13 @@ export default class TextInputView extends Component {
               optional: true,
             },
             {
+              name: "requiredText",
+              type: "String",
+              description:
+                "(Temporary) allows overriding the 'required' label text with translations",
+              optional: true,
+            },
+            {
               name: "showButtonText",
               type: "String",
               description: "(Temporary) allows overriding the Show button text with translations",
