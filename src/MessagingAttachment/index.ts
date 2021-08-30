@@ -1,1 +1,5 @@
-export { MessagingAttachment } from "./MessagingAttachment";
+export {
+  MessagingAttachment,
+  AttachmentFileType,
+  PreviewableFileTypes,
+} from "./MessagingAttachment";
