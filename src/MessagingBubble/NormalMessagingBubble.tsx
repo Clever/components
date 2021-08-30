@@ -93,13 +93,13 @@ export const NormalMessagingBubble: React.FC<Props> = ({
   return (
     <FlexBox column className={containerClassNames}>
       <FlexBox className={timeAndBubbleContainerClasses}>
-        {_renderMetadata({
-          renderHere: !hideBubble,
-          timestamp,
-          onClickDeleteButton,
-          metadataClassNames,
-          actionButtonClassNames,
-        })}
+        {!hideBubble &&
+          _renderMetadata({
+            timestamp,
+            onClickDeleteButton,
+            metadataClassNames,
+            actionButtonClassNames,
+          })}
         <div className={hideBubble ? null : bubbleClassNames}>
           {replyTo && <div className={replyClassNames}>{replyTo}</div>}
           <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
@@ -108,13 +108,13 @@ export const NormalMessagingBubble: React.FC<Props> = ({
         </div>
       </FlexBox>
       <FlexBox className={timeAndBubbleContainerClasses}>
-        {_renderMetadata({
-          renderHere: hideBubble,
-          timestamp,
-          onClickDeleteButton,
-          metadataClassNames,
-          actionButtonClassNames,
-        })}
+        {hideBubble &&
+          _renderMetadata({
+            timestamp,
+            onClickDeleteButton,
+            metadataClassNames,
+            actionButtonClassNames,
+          })}
         {attachments?.length > 0 && (
           <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>
         )}
@@ -132,22 +132,16 @@ function _formatDateForTimestamp(date: Date): string {
 // Helper function: renders metadata, consisting of either the action button
 //  or a non-interactive timestamp
 function _renderMetadata({
-  renderHere,
   timestamp,
   onClickDeleteButton,
   metadataClassNames,
   actionButtonClassNames,
 }: {
-  renderHere: boolean;
   timestamp: Date;
   onClickDeleteButton: () => void;
   metadataClassNames: string;
   actionButtonClassNames: string;
 }): React.ReactNode {
-  if (!renderHere) {
-    return null;
-  }
-
   if (!onClickDeleteButton) {
     return _renderNonInteractiveTimestamp({
       timestamp,
