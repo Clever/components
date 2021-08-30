@@ -33,6 +33,8 @@ export interface Props {
   readOnly?: boolean;
   required?: boolean;
   /** Temporary prop to allow overriding the text with a translation. */
+  requiredText?: string;
+  /** Temporary prop to allow overriding the text with a translation. */
   showButtonText?: string;
   size?: Values<typeof FormElementSize>;
   type?: string;
@@ -67,6 +69,7 @@ const propTypes = {
   placeholderCaps: PropTypes.bool,
   readOnly: PropTypes.bool,
   required: PropTypes.bool,
+  requiredText: PropTypes.string,
   showButtonText: PropTypes.string,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
   type: PropTypes.string,
@@ -131,13 +134,13 @@ export class TextInput extends React.Component<Props, State> {
   };
 
   currentErrorMessage(): string {
-    const { error, value, required } = this.props;
+    const { error, value, required, requiredText } = this.props;
     const { hasBeenFocused } = this.state;
 
     let errorMessage = "";
 
     if (required && hasBeenFocused && !value) {
-      errorMessage = "required";
+      errorMessage = requiredText || "required";
     }
 
     if (error) {
@@ -148,11 +151,11 @@ export class TextInput extends React.Component<Props, State> {
   }
 
   renderNote(errorMessage) {
-    const { required, optional } = this.props;
+    const { required, requiredText, optional } = this.props;
     let inputNote;
 
     if (required) {
-      inputNote = <span className="TextInput--required">required</span>;
+      inputNote = <span className="TextInput--required">{requiredText || "required"}</span>;
     }
     if (optional) {
       inputNote = <span className="TextInput--optional">optional</span>;
