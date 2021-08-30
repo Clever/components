@@ -93,21 +93,12 @@
   line-height: @size_l;
 }
 
-// This class may be identical in content to the --Timestamp class,
-// but this one is not rendered invisible by bubble-hover behavior.
-.NormalMessagingBubble--Message--Timestamp--NonInteractive {
-  color: @neutral_medium_gray;
-  font-size: 0.875rem;
-  font-weight: normal;
-  .text--line-height-1();
-  white-space: nowrap;
-  flex-shrink: 0;
-  min-width: 3.5rem;
-}
-
+// --Timestamp--NonInteractive may be identical in content to --Timestamp,
+// but in contrast it's not rendered invisible by bubble-hover behavior.
+.NormalMessagingBubble--Message--Timestamp--NonInteractive,
 .NormalMessagingBubble--Message--Timestamp {
   color: @neutral_medium_gray;
-  font-size: 0.875rem;
+  .text--smallMedium();
   font-weight: normal;
   .text--line-height-1();
   white-space: nowrap;
@@ -229,7 +220,7 @@ Button.NormalMessagingBubble--Message--ActionButton--Other {
 // For mobile/tablet
 @media only screen and (max-width: @breakpointM) {
   .NormalMessagingBubble--Message {
-    font-size: 0.875rem;
+    .text--smallMedium();
     line-height: 1rem;
     // This improves how long words/links are broken on Chrome mobile and doesn't affect Safari
     overflow-wrap: anywhere;

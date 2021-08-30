@@ -16,24 +16,24 @@
 }
 
 .DeletedMessagingBubble--icon {
-  margin: 1.25rem 0.75rem 1.25rem 1.25rem;
+  margin: 1.25rem @size_s 1.25rem 1.25rem;
   .text--large();
 }
 
 .DeletedMessagingBubble--text {
-  margin: 1rem 1rem 1rem 0;
+  margin: @size_m @size_m @size_m @size_none;
   .text--line-height-4();
   .text--medium();
 }
 
 @media only screen and (max-width: @breakpointM) {
   .DeletedMessagingBubble--icon {
-    margin: 0.75rem 0.5rem 0.75rem 0.75rem;
+    margin: @size_s @size_xs @size_s @size_s;
     .text--large();
   }
 
   .DeletedMessagingBubble--text {
-    margin: 0.75rem 0.75rem 0.75rem 0;
+    margin: @size_s @size_s @size_s @size_none;
     .text--line-height-4();
     .text--medium();
   }
