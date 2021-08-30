@@ -14,7 +14,6 @@ type PlacementOptions = "left" | "right" | "center" | "fullWidth";
 interface Props {
   className?: string;
   placement: PlacementOptions;
-  timestamp?: Date;
   readStatusText?: string;
   errorMsg?: string;
   children: React.ReactNode;

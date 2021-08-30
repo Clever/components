@@ -116,7 +116,7 @@
   .margin--top--xs();
 }
 
-.MessagingBubble--Message
+.NormalMessagingBubble--Message
   .QuotedAnnouncementBubble--attachmentContainer
   .MessagingAttachment--Container {
   width: 14rem;
@@ -198,7 +198,7 @@
 
 // These styles only apply to Announcement replies sent by the current user, in the Family Portal,
 // i.e. guardians replying to teacher announcements
-.MessagingBubble--Message--Reply--Own
+.NormalMessagingBubble--Message--Reply--Own
   .QuotedAnnouncementBubble--container.QuotedAnnouncementBubble--FamilyPortal {
   background-color: @family_portal_quoted_announcement;
   border-radius: @size_s;
@@ -230,7 +230,7 @@
 
   .QuotedAnnouncementBubble--attachmentContainer,
   .QuotedAnnouncementBubble--attachmentContainer > .MessagingAttachment--ParentContainer,
-  .MessagingBubble--Message
+  .NormalMessagingBubble--Message
     .QuotedAnnouncementBubble--attachmentContainer
     .MessagingAttachment--Container {
     width: 100%;

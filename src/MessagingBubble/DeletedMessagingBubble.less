@@ -1,0 +1,40 @@
+@import (reference) "../less/index";
+
+.DeletedMessagingBubble--Container--ownMessage {
+  flex-direction: row-reverse;
+}
+
+.DeletedMessagingBubble--Container--otherMessage {
+  flex-direction: row;
+}
+
+.DeletedMessagingBubble--Message {
+  .border--m(@neutral_silver);
+  max-width: 33rem;
+  border-radius: 0.3125rem; // 5px
+  color: @neutral_medium_gray;
+}
+
+.DeletedMessagingBubble--icon {
+  margin: 1.25rem @size_s 1.25rem 1.25rem;
+  .text--large();
+}
+
+.DeletedMessagingBubble--text {
+  margin: @size_m @size_m @size_m @size_none;
+  .text--line-height-4();
+  .text--medium();
+}
+
+@media only screen and (max-width: @breakpointM) {
+  .DeletedMessagingBubble--icon {
+    margin: @size_s @size_xs @size_s @size_s;
+    .text--large();
+  }
+
+  .DeletedMessagingBubble--text {
+    margin: @size_s @size_s @size_s @size_none;
+    .text--line-height-4();
+    .text--medium();
+  }
+}

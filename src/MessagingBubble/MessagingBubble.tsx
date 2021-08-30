@@ -1,109 +1,43 @@
 import * as React from "react";
-import * as moment from "moment";
-import Linkify from "react-linkify";
-import * as cx from "classnames";
-import FlexBox from "../flex/FlexBox";
-import { MessagingTheme } from "src/utils/messaging";
-import { matchDecorator, componentDecorator } from "./linkifyUtils";
 
-import "./MessagingBubble.less";
+import {
+  DeletedMessagingBubble,
+  Props as DeletedMessagingBubbleProps,
+} from "./DeletedMessagingBubble";
+import {
+  NormalMessagingBubble,
+  Props as NormalMessagingBubbleProps,
+} from "./NormalMessagingBubble";
 
-const cssClasses = {
-  MESSAGE_ATTACHMENT_BASE: "MessagingBubble--Message--Attachment",
-  MESSAGE_BASE: "MessagingBubble--Message",
-  MESSAGE_CONTAINER_BASE: "MessagingBubble--Message--Container",
-  MESSAGE_REPLY_BASE: "MessagingBubble--Message--Reply",
-  MESSAGE_REPLY_PARENT: "MessagingBubble--Message--Reply--Parent",
-  MESSAGE_TIMESTAMP_BASE: "MessagingBubble--Message--Timestamp",
-  MESSAGE_TIME_BUBBLE_CONTAINER_BASE: "MessagingBubble--Message--TimestampBubbleContainer",
-  OWN_SUFFIX: "--Own",
-  OTHER_SUFFIX: "--Other",
-  FAMILY_PORTAL: "MessagingBubble--FamilyPortal",
-  HIDE_BUBBLE: "MessagingBubble--HideBubble",
-};
+type MessagingBubbleProps = DeletedMessagingBubbleProps | NormalMessagingBubbleProps;
 
-interface Props {
-  className?: string;
-  children: React.ReactNode;
-  timestamp: Date;
-  replyTo?: React.ReactNode;
-  attachments?: React.ReactNode[];
-  bubbleType: "ownMessage" | "otherMessage";
-  theme?: MessagingTheme;
-}
-
-// Helper function: Format a Date for our pretty timestamps.
-//  Always returns "xx:xx <AM/PM>" format.
-function _formatDateForTimestamp(date: Date): string {
-  return moment(date).format("h:mm A");
-}
-
-export const MessagingBubble: React.FC<Props> = ({
-  className,
-  children,
-  timestamp,
-  theme,
-  bubbleType,
-  replyTo,
-  attachments,
-}: Props) => {
-  const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
-  const isOwnMessage = bubbleType === "ownMessage";
-  const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
-  const containerClassNames = cx(
-    className,
-    `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
-    theme === "familyPortal" && cssClasses.FAMILY_PORTAL,
-    hideBubble && cssClasses.HIDE_BUBBLE,
-  );
-
-  const bubbleClassNames = cx(
-    cssClasses.MESSAGE_BASE,
-    `${cssClasses.MESSAGE_BASE}${classSuffix}`,
-    replyTo && cssClasses.MESSAGE_REPLY_PARENT,
-  );
-
-  const replyClassNames = cx(
-    cssClasses.MESSAGE_BASE,
-    `${cssClasses.MESSAGE_REPLY_BASE}${classSuffix}`,
-    children && `${cssClasses.MESSAGE_REPLY_BASE}--MarginBottom`,
-  );
-
-  const timeAndBubbleContainerClasses = cx(
-    `${cssClasses.MESSAGE_TIME_BUBBLE_CONTAINER_BASE}${classSuffix}`,
-  );
-
-  const timestampClassNames = cx(
-    cssClasses.MESSAGE_BASE,
-    `${cssClasses.MESSAGE_TIMESTAMP_BASE}${classSuffix}`,
-  );
-
-  const attachmentClassNames = cx(
-    cssClasses.MESSAGE_BASE,
-    `${cssClasses.MESSAGE_ATTACHMENT_BASE}${classSuffix}`,
-  );
-
-  return (
-    <FlexBox column className={containerClassNames}>
-      <FlexBox className={timeAndBubbleContainerClasses}>
-        {!hideBubble && (
-          <span className={timestampClassNames}>{_formatDateForTimestamp(timestamp)}</span>
-        )}
-        <div className={hideBubble ? null : bubbleClassNames}>
-          {replyTo && <div className={replyClassNames}>{replyTo}</div>}
-          <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
-            {children}
-          </Linkify>
-        </div>
-      </FlexBox>
-      <FlexBox className={timeAndBubbleContainerClasses}>
-        {hideBubble && (
-          <span className={timestampClassNames}>{_formatDateForTimestamp(timestamp)}</span>
-        )}
-        {attachments?.length > 0 && (
-          <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>
-        )}
-      </FlexBox>
-    </FlexBox>
-  );
+export const MessagingBubble: React.FC<MessagingBubbleProps> = (props: MessagingBubbleProps) => {
+  switch (props.bubbleType) {
+    case "deleted": {
+      return (
+        <DeletedMessagingBubble
+          bubbleType="deleted"
+          className={props.className}
+          theme={props.theme}
+          deletionNoticeText={props.deletionNoticeText}
+          messageOwnership={props.messageOwnership}
+        />
+      );
+    }
+    default: {
+      return (
+        <NormalMessagingBubble
+          bubbleType="normal"
+          className={props.className}
+          children={props.children}
+          timestamp={props.timestamp}
+          replyTo={props.replyTo}
+          attachments={props.attachments}
+          messageOwnership={props.messageOwnership}
+          onClickDeleteButton={props.onClickDeleteButton}
+          theme={props.theme}
+        />
+      );
+    }
+  }
 };

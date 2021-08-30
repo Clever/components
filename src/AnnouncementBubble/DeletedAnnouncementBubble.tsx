@@ -12,11 +12,12 @@ function cssClass(element: string) {
 
 export interface Props {
   bubbleType: "deleted";
-  theme?: MessagingTheme;
+
   className?: string;
+  theme?: MessagingTheme;
 
   // Temporary props to allow overriding text with translations
-  deletionNoticeText?: string;
+  deletionNoticeText: string;
 }
 
 export const DeletedAnnouncementBubble: React.FC<Props> = ({
@@ -31,9 +32,7 @@ export const DeletedAnnouncementBubble: React.FC<Props> = ({
       className={cx(cssClass("container"), className)}
     >
       <FontAwesome name="trash-o" className={cssClass("icon")} aria-hidden="true" />
-      <div className={cssClass("text")}>
-        {deletionNoticeText || "This announcement was deleted."}
-      </div>
+      <div className={cssClass("text")}>{deletionNoticeText}</div>
     </FlexBox>
   );
 };
