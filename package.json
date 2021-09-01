@@ -1,6 +1,10 @@
 {
   "name": "clever-components",
+<<<<<<< HEAD
   "version": "2.161.0",
+=======
+  "version": "2.160.2",
+>>>>>>> 9e07f1f443edbb294b4c7b6bafcfe70789ee218b
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
