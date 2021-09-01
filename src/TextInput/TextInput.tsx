@@ -4,14 +4,14 @@ import * as PropTypes from "prop-types";
 import * as classnames from "classnames";
 import * as _ from "lodash";
 
-import { FormElementSize, formElementSizeClassName } from "../utils/Forms";
+import { FormElementSize, formElementSizeClassName, AutoComplete } from "../utils/Forms";
 import { Values } from "../utils/types";
 
 import "./TextInput.less";
 import "../less/forms.less";
 
 export interface Props {
-  autoComplete?: string;
+  autoComplete?: AutoComplete;
   disabled?: boolean;
   className?: string;
   disableAutocomplete?: boolean;
