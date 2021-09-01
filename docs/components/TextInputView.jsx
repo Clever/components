@@ -155,10 +155,20 @@ export default class TextInputView extends Component {
             {
               name: "autoComplete",
               type: "String",
-              description:
+              description: (
                 <p>
-                  <p>Hint for user agents (browsers and assistive technologies) when providing automated assistance in filling out form field values. The disableAutocomplete field will take precedence over this field. The possible values are based on the standards set <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">here</a>, as well as 'on' and 'off'.</p>
-                </p>,
+                  <p>
+                    Hint for user agents (browsers and assistive technologies) when providing
+                    automated assistance in filling out form field values. The disableAutocomplete
+                    field will take precedence over this field. The possible values are based on the
+                    standards set{" "}
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">
+                      here
+                    </a>
+                    , as well as 'on' and 'off'.
+                  </p>
+                </p>
+              ),
               optional: true,
             },
             {
