@@ -13,6 +13,7 @@ export interface Props<IDType extends string = string, ValueType = any> {
   onSelect?: (id: IDType, value: ValueType) => void;
   tabIndex?: number;
   value?: ValueType;
+  lang?: string;
 }
 
 const cssClass = {
@@ -50,7 +51,7 @@ export default class Radio<
   }
 
   render() {
-    const { checked, children, className, disabled, tabIndex } = this.props;
+    const { checked, children, className, disabled, tabIndex, lang } = this.props;
 
     return (
       <button
@@ -67,6 +68,7 @@ export default class Radio<
         onFocus={this._onClick}
         role="radio"
         tabIndex={tabIndex}
+        lang={lang}
       >
         <div className={cssClass.OUTER}>
           <div className={cssClass.INNER} />
