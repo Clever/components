@@ -12,6 +12,8 @@ interface Option<IDType extends string = string, ValueType = any> {
   id: IDType;
   disabled?: boolean;
   label: React.ReactNode;
+  /** A BCP47 language tag. */
+  lang?: string;
   value?: ValueType;
 }
 
@@ -95,6 +97,7 @@ export default class RadioGroup<
               ref={(ref) => this._handleRadioRef(ref)}
               tabIndex={o.id === focusableOptionID ? 0 : -1}
               value={o.value}
+              lang={o.lang}
             >
               {o.label}
             </Radio>

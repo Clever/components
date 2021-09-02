@@ -21,6 +21,7 @@ const OPTION_TYPE = `{
   id: string,
   disabled?: boolean,
   label: string,
+  lang?: string,
   value?: any,
 }`;
 
