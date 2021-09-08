@@ -18,6 +18,7 @@ import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment"
 import Colors from "src/utils/Colors";
 
 import "./MessagingBubbleView.less";
+import { DeleteMessageModal } from "./DeleteMessageModal/DeleteMessageModal";
 
 const cssClass = {
   BETA: "MessagingBubbleView--beta",
@@ -36,12 +37,13 @@ export default class MessagingBubbleView extends React.PureComponent {
 
   state = {
     isDeletableMessageDeleted: false,
+    isDeletionModalOpen: false,
     messageOwnership: "ownMessage",
     theme: "default",
   };
 
   render() {
-    const { isDeletableMessageDeleted, messageOwnership, theme } = this.state;
+    const { isDeletableMessageDeleted, isDeletionModalOpen, messageOwnership, theme } = this.state;
 
     const attachmentsArray = [
       {
@@ -107,6 +109,16 @@ export default class MessagingBubbleView extends React.PureComponent {
         title="MessagingBubble"
         sourcePath="src/MessagingBubble/MessagingBubble.tsx"
       >
+        {isDeletionModalOpen && (
+          <DeleteMessageModal
+            messageType="dm"
+            onClose={() => this.setState({ isDeletionModalOpen: false })}
+            onConfirm={() =>
+              this.setState({ isDeletableMessageDeleted: true, isDeletionModalOpen: false })
+            }
+            recipientUserType={theme === "familyPortal" ? "guardian" : "student"}
+          />
+        )}
         <header className={cssClass.INTRO}>
           <p className={cssClass.BETA}>
             <Label color="new-feature">Beta</Label> MessagingBubble is in Beta and breaking changes
@@ -149,10 +161,16 @@ export default class MessagingBubbleView extends React.PureComponent {
                 bubbleType="normal"
                 messageOwnership={messageOwnership}
                 className={cssClass.BUBBLE}
-                onClickDeleteButton={(value) => this.setState({ isDeletableMessageDeleted: true })}
+                onClickDeleteButton={
+                  messageOwnership === "ownMessage" || theme === "default"
+                    ? () => this.setState({ isDeletionModalOpen: true })
+                    : null
+                }
                 theme={theme}
               >
-                This message can be deleted! Try hovering/focusing on the timestamp.
+                {messageOwnership === "ownMessage" || theme === "default"
+                  ? "This message can be deleted! Try hovering/focusing on the timestamp."
+                  : "Messages sent by guardians cannot be deleted."}
               </MessagingBubble>
             )}
             {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
