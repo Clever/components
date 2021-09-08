@@ -79,13 +79,13 @@
 }
 
 .NormalMessagingBubble--Message--Metadata--Own {
-  min-width: 3.5rem;
+  min-width: 3.25rem;
   .margin--right--xs();
   text-align: right;
 }
 
 .NormalMessagingBubble--Message--Metadata--Other {
-  min-width: 3.5rem;
+  min-width: 3.25rem;
   .margin--left--xs();
   text-align: left;
 }
@@ -114,7 +114,6 @@
   .padding--left--s();
   flex-direction: row;
   align-items: center;
-  max-width: 100%;
 
   &:hover {
     .NormalMessagingBubble--Message--Timestamp {
@@ -122,7 +121,7 @@
     }
 
     .NormalMessagingBubble--Message--Delete {
-      display: unset;
+      display: block;
     }
   }
 }
@@ -131,7 +130,6 @@
   .padding--right--s();
   flex-direction: row-reverse;
   align-items: center;
-  max-width: 100%;
 
   &:hover {
     .NormalMessagingBubble--Message--Timestamp {
@@ -139,29 +137,27 @@
     }
 
     .NormalMessagingBubble--Message--Delete {
-      display: unset;
+      display: block;
     }
   }
 }
 
 .Button.NormalMessagingBubble--Message--ActionButton--Own {
-  width: 100%;
+  white-space: nowrap;
   text-align: right;
 
-  &:focus,
-  &:active {
+  // Show "Delete" el upon focus, for accessibility
+  &:focus {
     .NormalMessagingBubble--Message--Timestamp {
       display: none;
     }
 
     .NormalMessagingBubble--Message--Delete {
-      display: unset;
+      display: block;
     }
   }
 
   // The "Delete" el should change colors upon button hover.
-  &:focus,
-  &:active,
   &:hover {
     .NormalMessagingBubble--Message--Delete {
       color: @alert_red_shade;
@@ -170,23 +166,21 @@
 }
 
 .Button.NormalMessagingBubble--Message--ActionButton--Other {
-  width: 100%;
+  white-space: nowrap;
   text-align: left;
 
-  &:focus,
-  &:active {
+  // Show "Delete" el upon focus, for accessibility
+  &:focus {
     .NormalMessagingBubble--Message--Timestamp {
       display: none;
     }
 
     .NormalMessagingBubble--Message--Delete {
-      display: unset;
+      display: block;
     }
   }
 
   // The "Delete" el should change colors upon button hover.
-  &:focus,
-  &:active,
   &:hover {
     .NormalMessagingBubble--Message--Delete {
       color: @alert_red_shade;
