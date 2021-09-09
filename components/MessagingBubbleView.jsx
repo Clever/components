@@ -45,6 +45,11 @@ export default class MessagingBubbleView extends React.PureComponent {
   render() {
     const { isDeletableMessageDeleted, isDeletionModalOpen, messageOwnership, theme } = this.state;
 
+    const deleteableMessageBody =
+      messageOwnership === "ownMessage" || theme === "default"
+        ? "This message can be deleted! Try hovering/focusing on the timestamp."
+        : "Messages sent by guardians cannot be deleted.";
+
     const attachmentsArray = [
       {
         key: "1",
@@ -159,6 +164,7 @@ export default class MessagingBubbleView extends React.PureComponent {
             {!isDeletableMessageDeleted && (
               <MessagingBubble
                 bubbleType="normal"
+                messageBody={deleteableMessageBody}
                 messageOwnership={messageOwnership}
                 className={cssClass.BUBBLE}
                 onClickDeleteButton={
@@ -168,9 +174,7 @@ export default class MessagingBubbleView extends React.PureComponent {
                 }
                 theme={theme}
               >
-                {messageOwnership === "ownMessage" || theme === "default"
-                  ? "This message can be deleted! Try hovering/focusing on the timestamp."
-                  : "Messages sent by guardians cannot be deleted."}
+                {deleteableMessageBody}
               </MessagingBubble>
             )}
             {/* hide quoted annoucement replies from the teacher, as this does not exist in familyPortal */}
@@ -384,6 +388,12 @@ export default class MessagingBubbleView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "messageBody",
+              type: "string",
+              description: "Message body, to be used in the Delete button's aria-label.",
+              optional: true,
+            },
+            {
               name: "messageOwnership",
               // eslint-disable-next-line quotes
               type: `"ownMessage" | "otherMessage"`,
@@ -393,7 +403,7 @@ export default class MessagingBubbleView extends React.PureComponent {
               name: "replyTo",
               type: "React.ReactNode",
               description: "Optional reply-to announcement, if this DM was an announcement reply.",
-              option: true,
+              optional: true,
             },
             {
               name: "theme",
