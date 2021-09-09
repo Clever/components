@@ -23,6 +23,7 @@ const OPTION_TYPE = `{
   label: string,
   lang?: string,
   value?: any,
+  additionalText?: string,
 }`;
 
 export default class RadioGroupView extends React.PureComponent {
@@ -30,6 +31,7 @@ export default class RadioGroupView extends React.PureComponent {
 
   state = {
     disableAll: false,
+    selectedAdditionalText: null,
     selectedCity: null,
     selectedEmoji: null,
     selectedFood: null,
@@ -41,6 +43,7 @@ export default class RadioGroupView extends React.PureComponent {
     const {
       disableAll,
       requireSelection,
+      selectedAdditionalText,
       selectedCity,
       selectedEmoji,
       selectedFood,
@@ -95,8 +98,13 @@ export default class RadioGroupView extends React.PureComponent {
               onChange={(id) => this.setState({ selectedCity: id })}
               options={[
                 { id: "london", label: "London", disabled: disableAll },
-                { id: "paris", label: "Paris", disabled: disableAll },
-                { id: "sanFrancisco", label: "San Francisco", disabled: disableAll },
+                { id: "paris", label: "Paris", disabled: disableAll, additionalText: "Baguette" },
+                {
+                  id: "sanFrancisco",
+                  label: "San Francisco",
+                  disabled: disableAll,
+                  additionalText: "Clever HQ is here!",
+                },
                 {
                   id: "none",
                   label: "None of the above",
@@ -104,6 +112,16 @@ export default class RadioGroupView extends React.PureComponent {
                 },
               ]}
               selectedID={selectedCity}
+            />
+
+            <RadioGroup
+              label="Do you want to try the additionalText option?"
+              onChange={(id) => this.setState({ selectedAdditionalText: id })}
+              options={[
+                { id: "yes", label: "Yes", disabled: disableAll, additionalText: "Huzzah!" },
+                { id: "no", label: "No", disabled: disableAll },
+              ]}
+              selectedID={selectedAdditionalText}
             />
 
             <RadioGroup
@@ -244,6 +262,9 @@ export default class RadioGroupView extends React.PureComponent {
                 The <code>value</code> field provides the convenience of receiving a custom value in
                 the RadioGroup onChange event in addition to the selected ID to avoid having to do a
                 value lookup.
+                <br />
+                The <code>additionalText</code> field's value will be displayed under its associated
+                radio button option if provided and if that option is currently selected.
               </p>
             ),
           },
