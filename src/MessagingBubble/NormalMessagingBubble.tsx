@@ -32,6 +32,7 @@ export interface Props {
   attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
+  messageBody?: string;
   messageOwnership: "ownMessage" | "otherMessage";
   onClickDeleteButton?: () => void;
   replyTo?: React.ReactNode;
@@ -44,6 +45,7 @@ export const NormalMessagingBubble: React.FC<Props> = ({
   children,
   timestamp,
   theme,
+  messageBody,
   messageOwnership,
   onClickDeleteButton,
   replyTo,
@@ -97,6 +99,7 @@ export const NormalMessagingBubble: React.FC<Props> = ({
           _renderMetadata({
             timestamp,
             onClickDeleteButton,
+            messageBody,
             metadataClassNames,
             actionButtonClassNames,
           })}
@@ -112,6 +115,7 @@ export const NormalMessagingBubble: React.FC<Props> = ({
           _renderMetadata({
             timestamp,
             onClickDeleteButton,
+            messageBody,
             metadataClassNames,
             actionButtonClassNames,
           })}
@@ -134,11 +138,13 @@ function _formatDateForTimestamp(date: Date): string {
 function _renderMetadata({
   timestamp,
   onClickDeleteButton,
+  messageBody,
   metadataClassNames,
   actionButtonClassNames,
 }: {
   timestamp: Date;
   onClickDeleteButton: () => void;
+  messageBody: string;
   metadataClassNames: string;
   actionButtonClassNames: string;
 }): React.ReactNode {
@@ -151,6 +157,7 @@ function _renderMetadata({
   return _renderActionButton({
     timestamp,
     onClickDeleteButton,
+    messageBody,
     metadataClassNames,
     actionButtonClassNames,
   });
@@ -178,20 +185,29 @@ function _renderNonInteractiveTimestamp({
 function _renderActionButton({
   timestamp,
   onClickDeleteButton,
+  messageBody,
   metadataClassNames,
   actionButtonClassNames,
 }: {
   timestamp: Date;
   onClickDeleteButton: () => void;
+  messageBody: string;
   metadataClassNames: string;
   actionButtonClassNames: string;
 }): React.ReactNode {
+  const formattedTimestamp = _formatDateForTimestamp(timestamp);
+
   return (
     <div className={metadataClassNames}>
-      <Button className={actionButtonClassNames} type="linkPlain" onClick={onClickDeleteButton}>
+      <Button
+        ariaLabel={`Delete ${formattedTimestamp} ${messageBody || ""}`}
+        className={actionButtonClassNames}
+        type="linkPlain"
+        onClick={onClickDeleteButton}
+      >
         <>
           <span className={cssClasses.MESSAGE_DELETE}>Delete</span>
-          <span className={cssClasses.MESSAGE_TIMESTAMP}>{_formatDateForTimestamp(timestamp)}</span>
+          <span className={cssClasses.MESSAGE_TIMESTAMP}>{formattedTimestamp}</span>
         </>
       </Button>
     </div>
