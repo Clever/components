@@ -15,6 +15,7 @@ interface Option<IDType extends string = string, ValueType = any> {
   /** A BCP47 language tag. */
   lang?: string;
   value?: ValueType;
+  additionalText?: string;
 }
 
 export interface Props<OptionIDType extends string, OptionValueType> {
@@ -32,6 +33,7 @@ const cssClass = {
   CONTAINER: "RadioGroup",
   LABEL: "RadioGroup--label",
   RADIO: "RadioGroup--radio",
+  ADDITIONAL_TEXT: "RadioGroup--additionalText",
 };
 
 const LABEL_ID_PREFIX = "RadioGroup--label";
@@ -87,20 +89,25 @@ export default class RadioGroup<
           )}
           {error && <FormError>{error}</FormError>}
           {_.map(options, (o) => (
-            <Radio<OptionIDType, OptionValueType>
-              checked={o.id === selectedID}
-              className={cssClass.RADIO}
-              disabled={!!disabled || !!o.disabled}
-              id={o.id}
-              key={o.id}
-              onSelect={onChange}
-              ref={(ref) => this._handleRadioRef(ref)}
-              tabIndex={o.id === focusableOptionID ? 0 : -1}
-              value={o.value}
-              lang={o.lang}
-            >
-              {o.label}
-            </Radio>
+            <>
+              <Radio<OptionIDType, OptionValueType>
+                checked={o.id === selectedID}
+                className={cssClass.RADIO}
+                disabled={!!disabled || !!o.disabled}
+                id={o.id}
+                key={o.id}
+                onSelect={onChange}
+                ref={(ref) => this._handleRadioRef(ref)}
+                tabIndex={o.id === focusableOptionID ? 0 : -1}
+                value={o.value}
+                lang={o.lang}
+              >
+                {o.label}
+              </Radio>
+              {o.id === selectedID && o.additionalText && (
+                <div className={cssClass.ADDITIONAL_TEXT}>{o.additionalText}</div>
+              )}
+            </>
           ))}
         </div>
       </WithKeyboardNav>
