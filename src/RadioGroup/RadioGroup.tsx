@@ -33,6 +33,7 @@ const cssClass = {
   CONTAINER: "RadioGroup",
   LABEL: "RadioGroup--label",
   RADIO: "RadioGroup--radio",
+  RADIO_SELECTED_WITH_ADDITIONAL_TEXT: "RadioGroup--radio--selectedWithAdditionalText",
   ADDITIONAL_TEXT: "RadioGroup--additionalText",
 };
 
@@ -88,27 +89,33 @@ export default class RadioGroup<
             </div>
           )}
           {error && <FormError>{error}</FormError>}
-          {_.map(options, (o) => (
-            <>
-              <Radio<OptionIDType, OptionValueType>
-                checked={o.id === selectedID}
-                className={cssClass.RADIO}
-                disabled={!!disabled || !!o.disabled}
-                id={o.id}
-                key={o.id}
-                onSelect={onChange}
-                ref={(ref) => this._handleRadioRef(ref)}
-                tabIndex={o.id === focusableOptionID ? 0 : -1}
-                value={o.value}
-                lang={o.lang}
-              >
-                {o.label}
-              </Radio>
-              {o.id === selectedID && o.additionalText && (
-                <div className={cssClass.ADDITIONAL_TEXT}>{o.additionalText}</div>
-              )}
-            </>
-          ))}
+          {_.map(options, (o) => {
+            const isSelectedAndHasAdditionalText = o.id === selectedID && o.additionalText;
+            return (
+              <>
+                <Radio<OptionIDType, OptionValueType>
+                  checked={o.id === selectedID}
+                  className={classnames(
+                    cssClass.RADIO,
+                    isSelectedAndHasAdditionalText && cssClass.RADIO_SELECTED_WITH_ADDITIONAL_TEXT,
+                  )}
+                  disabled={!!disabled || !!o.disabled}
+                  id={o.id}
+                  key={o.id}
+                  onSelect={onChange}
+                  ref={(ref) => this._handleRadioRef(ref)}
+                  tabIndex={o.id === focusableOptionID ? 0 : -1}
+                  value={o.value}
+                  lang={o.lang}
+                >
+                  {o.label}
+                </Radio>
+                {isSelectedAndHasAdditionalText && (
+                  <div className={cssClass.ADDITIONAL_TEXT}>{o.additionalText}</div>
+                )}
+              </>
+            );
+          })}
         </div>
       </WithKeyboardNav>
     );

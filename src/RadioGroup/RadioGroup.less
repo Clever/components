@@ -5,7 +5,9 @@
     .margin--top--l;
   }
 
-  .RadioGroup--radio {
+  // The latter class (selectedWithAdditionalText) exists purely to be overriden by the consumer.
+  .RadioGroup--radio,
+  .RadioGroup--radio--selectedWithAdditionalText {
     &:not(:first-child) {
       .margin--top--s;
     }
