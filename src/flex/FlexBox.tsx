@@ -57,6 +57,7 @@ export default function FlexBox({
         wrap && cssClass.WRAP,
         className,
       )}
+      tabIndex={0}
       {...additionalProps}
     >
       {children}
