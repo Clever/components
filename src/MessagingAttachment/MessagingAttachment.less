@@ -23,6 +23,12 @@
   border: @size_4xs solid @neutral_silver;
   border-radius: @size_2xs;
   box-sizing: content-box;
+
+  &:focus,
+  &:active {
+    outline: none; // remove default red outline
+    border: @size_4xs solid @primary_blue_tint_2;
+  }
 }
 
 .NormalMessagingBubble--Message .MessagingAttachment--Container {
@@ -174,11 +180,17 @@
   color: @neutral_dark_gray;
 
   .MessagingAttachment--Container {
-    border: 0;
-    border-radius: 0;
+    border-radius: inherit;
+    .margin--top--none();
 
     .padding--y--s();
     .padding--x--xs();
+  }
+
+  .MessagingAttachment--Container:focus,
+  .MessagingAttachment--Container:active {
+    outline: none; // remove default red outline
+    border: @size_4xs solid @primary_blue_tint_2;
   }
 
   .MessagingAttachment--IconContainer {
