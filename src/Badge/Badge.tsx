@@ -6,7 +6,7 @@ import { Values } from "../utils/types";
 import "./Badge.less";
 
 export interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   superscript?: boolean;
   color?: Values<typeof Color>;
@@ -15,6 +15,7 @@ export interface Props {
 
 export const cssClass = {
   CONTAINER: "Badge",
+  EMPTY: "Badge--empty",
   SUPER: "Badge--super",
   color: (c) => `Badge--${c}`,
   size: (s) => `Badge--${s}`,
@@ -47,6 +48,7 @@ export class Badge extends React.PureComponent<Props> {
     const { color, children, className, size, superscript } = this.props;
     const classes = classnames(
       cssClass.CONTAINER,
+      children === undefined && cssClass.EMPTY,
       color && cssClass.color(color),
       size && cssClass.size(size),
       superscript && cssClass.SUPER,
