@@ -46,6 +46,10 @@ export default class BadgeView extends React.PureComponent {
               I am badge superscript
               <Badge superscript>10</Badge>
             </p>
+            <h3>Empty dot</h3>
+            <Badge size="s" />
+            <Badge />
+            <Badge size="l" />
           </ExampleCode>
         </Example>
 
