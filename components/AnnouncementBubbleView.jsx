@@ -125,6 +125,9 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                 />
               }
               numTranslatedLanguages={1}
+              onTranslatedLanguagesClick={() =>
+                console.log("You clicked the language tooltip! Pitbull says dale!")
+              }
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               bubbleType={"normal"}
@@ -157,6 +160,9 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               numTranslatedLanguages={10}
+              onTranslatedLanguagesClick={() =>
+                console.log("You clicked the language tooltip! Pitbull says dale again!")
+              }
               readBy={readBy.slice(5)} // for variety
               recipientType={"student"}
               senderName={"Ms. Stark"}
