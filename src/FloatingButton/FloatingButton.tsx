@@ -234,6 +234,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                     )
                   : label
               }
+              aria-expanded={additionalButtons ? active : null}
               size={size || Button.Size.M}
             />
           </div>
