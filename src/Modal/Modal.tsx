@@ -9,7 +9,7 @@ import "./Modal.less";
 export interface Props {
   className?: string;
   width?: number;
-  title: React.ReactNode; // PropTypes says this can only be a string
+  title: React.ReactNode;
   closeModal: () => void;
   children: React.ReactNode;
   focusLocked?: boolean;
@@ -31,7 +31,7 @@ const closeIcon = (
 const propTypes = {
   className: PropTypes.string,
   width: PropTypes.number,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
   closeModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   focusLocked: PropTypes.bool,
