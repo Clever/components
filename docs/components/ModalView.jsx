@@ -30,7 +30,14 @@ export default class ModalView extends Component {
             value="Open Modal"
           />
           {this.state.isModalOpen && (
-            <Modal title="Hello Modal" closeModal={() => this.setState({ isModalOpen: false })}>
+            <Modal
+              title={
+                <span id="id-for-arialabeledby-on-another-component-for-accessibility">
+                  Hello Modal
+                </span>
+              }
+              closeModal={() => this.setState({ isModalOpen: false })}
+            >
               <p>{loremIpsum({ count: 1, units: "paragraphs" })}</p>
               <p>{loremIpsum({ count: 1, units: "paragraphs" })}</p>
               <footer>
@@ -69,7 +76,7 @@ export default class ModalView extends Component {
             },
             {
               name: "title",
-              type: "String",
+              type: "Node",
               description: "The title of the modal",
             },
             {
