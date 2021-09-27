@@ -70,6 +70,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           onReadReceiptsClick={props.onReadReceiptsClick}
           onReadReceiptsHover={props.onReadReceiptsHover}
           onReply={props.onReply}
+          onTranslatedLanguagesClick={props.onTranslatedLanguagesClick}
           readBy={props.readBy}
           recipientType={props.recipientType}
           repliesDisabledMsg={props.repliesDisabledMsg}

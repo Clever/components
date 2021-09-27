@@ -17,6 +17,7 @@ function cssClass(element: string) {
 
 export interface Props {
   bubbleType: "quoted";
+
   announcementGroupName: string;
   attachments?: React.ReactNode[];
   children: React.ReactNode;

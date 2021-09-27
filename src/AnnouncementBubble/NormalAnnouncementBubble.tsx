@@ -26,6 +26,7 @@ export interface Props {
   onReadReceiptsClick?: () => void;
   onReadReceiptsHover?: () => void;
   onReply?: () => void;
+  onTranslatedLanguagesClick?: () => void;
   readBy?: string[];
   recipientType: "student" | "guardian";
   repliesDisabledMsg?: string;
@@ -48,6 +49,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   onReadReceiptsClick,
   onReadReceiptsHover,
   onReply,
+  onTranslatedLanguagesClick,
   readBy,
   recipientType,
   repliesDisabledMsg,
@@ -91,7 +93,10 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
       )}
       <FlexBox justify="between">
         {numTranslatedLanguages > 0 && (
-          <NumTranslatedLanguagesTooltip numTranslatedLanguages={numTranslatedLanguages} />
+          <NumTranslatedLanguagesTooltip
+            numTranslatedLanguages={numTranslatedLanguages}
+            onTranslatedLanguagesClick={onTranslatedLanguagesClick}
+          />
         )}
         {readReceiptsTooltip}
       </FlexBox>
@@ -257,8 +262,10 @@ function DisabledReplyButton({
 
 function NumTranslatedLanguagesTooltip({
   numTranslatedLanguages,
+  onTranslatedLanguagesClick,
 }: {
   numTranslatedLanguages: number;
+  onTranslatedLanguagesClick: () => void;
 }): JSX.Element {
   return (
     <FlexBox
@@ -272,7 +279,7 @@ function NumTranslatedLanguagesTooltip({
         placement={"top"}
         textAlign={"left"}
       >
-        <FlexBox>
+        <FlexBox role="button" tabIndex={0} onClick={onTranslatedLanguagesClick}>
           <TranslateIcon />
           <span className={cssClass("translatedLanguages--text--desktop")}>
             {numTranslatedLanguages === 1
