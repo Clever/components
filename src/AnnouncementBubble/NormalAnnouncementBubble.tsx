@@ -279,7 +279,7 @@ function NumTranslatedLanguagesTooltip({
         placement={"top"}
         textAlign={"left"}
       >
-        <FlexBox role="button" tabIndex={0} onClick={onTranslatedLanguagesClick}>
+        <Button onClick={onTranslatedLanguagesClick} type="plain">
           <TranslateIcon />
           <span className={cssClass("translatedLanguages--text--desktop")}>
             {numTranslatedLanguages === 1
@@ -289,7 +289,7 @@ function NumTranslatedLanguagesTooltip({
           <span className={cssClass("translatedLanguages--text--mobile")}>
             {numTranslatedLanguages}
           </span>
-        </FlexBox>
+        </Button>
       </Tooltip>
     </FlexBox>
   );
