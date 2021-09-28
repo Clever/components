@@ -174,13 +174,13 @@ function formReadReceiptsTooltip(
           onClick={onReadReceiptsClick}
           type="plain"
         >
-          <div onMouseEnter={onReadReceiptsHover}>
+          <FlexBox onMouseEnter={onReadReceiptsHover}>
             <Checkmark className={cssClass("readReceipts--icon")} />
             <span className={cssClass("readReceipts--text--desktop")}>
               Read by {readReceiptCount} {recipientString}
             </span>
             <span className={cssClass("readReceipts--text--mobile")}>{readReceiptCount}</span>
-          </div>
+          </FlexBox>
         </Button>
       </Tooltip>
     </FlexBox>
