@@ -124,7 +124,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                   color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
                 />
               }
-              numTranslatedLanguages={1}
+              translatedLanguages={["Arabic"]}
               onTranslatedLanguagesClick={() =>
                 console.log("You clicked the language tooltip! Pitbull says dale!")
               }
@@ -159,7 +159,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               bubbleType={"normal"}
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
-              numTranslatedLanguages={10}
+              translatedLanguages={["Spanish", "Arabic", "Chinese (traditional)", "Armenian"]}
               onTranslatedLanguagesClick={() =>
                 console.log("You clicked the language tooltip! Pitbull says dale again!")
               }
