@@ -286,15 +286,17 @@ function NumTranslatedLanguagesTooltip({
           onClick={onTranslatedLanguagesClick}
           type="plain"
         >
-          <TranslateIcon />
-          <span className={cssClass("translatedLanguages--text--desktop")}>
-            {numTranslatedLanguages === 1
-              ? "Translated into 1 language"
-              : `Translated into ${numTranslatedLanguages} languages`}
-          </span>
-          <span className={cssClass("translatedLanguages--text--mobile")}>
-            {numTranslatedLanguages}
-          </span>
+          <FlexBox>
+            <TranslateIcon />
+            <span className={cssClass("translatedLanguages--text--desktop")}>
+              {numTranslatedLanguages === 1
+                ? "Translated into 1 language"
+                : `Translated into ${numTranslatedLanguages} languages`}
+            </span>
+            <span className={cssClass("translatedLanguages--text--mobile")}>
+              {numTranslatedLanguages}
+            </span>
+          </FlexBox>
         </Button>
       </Tooltip>
     </FlexBox>
