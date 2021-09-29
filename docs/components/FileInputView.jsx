@@ -135,7 +135,8 @@ export default class FileInputView extends React.PureComponent {
             {
               name: "label",
               type: "String",
-              description: "Sets the label of the file input",
+              description:
+                "Sets the label of the file input. This prop is also used as part of the aria-label for accessibility",
               optional: true,
             },
             {

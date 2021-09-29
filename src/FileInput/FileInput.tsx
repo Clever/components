@@ -174,7 +174,7 @@ export class FileInput extends React.Component<Props, State> {
         multiple={false}
         onDropAccepted={this.onDropAccepted}
         onDropRejected={this.onDropRejected}
-        inputProps={{ "aria-label": `Upload ${this.props.label}` }}
+        inputProps={{ "aria-label": label ? `Upload ${label}` : "Upload" }}
       >
         {({ isDragActive, isDragReject }) => {
           let message = `Upload ${this.props.label}`;
