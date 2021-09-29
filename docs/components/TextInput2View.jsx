@@ -281,6 +281,18 @@ export default class TextInput2View extends React.PureComponent {
             description: "Called when value of input changes",
           },
           {
+            name: "onFocus",
+            type: "Function",
+            description: "Called when focus is placed on the input",
+            optional: true,
+          },
+          {
+            name: "onBlur",
+            type: "Function",
+            description: "Called when focus is removed from the input",
+            optional: true,
+          },
+          {
             name: "size",
             type: "string",
             description: (
