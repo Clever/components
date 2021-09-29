@@ -1,16 +1,16 @@
-import * as _ from "lodash";
-import * as classnames from "classnames";
+import "./FloatingButton.less";
+
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
+import * as _ from "lodash";
+import * as classnames from "classnames";
 
 import { Button } from "../Button/Button";
 import FlexBox from "../flex/FlexBox";
 import { Icon } from "../Icon/Icon";
-import { breakpointS } from "../utils/Constants";
 import { Values } from "../utils/types";
-
-import "./FloatingButton.less";
+import { breakpointS } from "../utils/Constants";
 
 export interface Props {
   additionalButtons?: any[];
@@ -257,6 +257,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                   onClick={() => this.additionalButtonHandler(button)}
                   value={button.label}
                   size={size || Button.Size.M}
+                  aria-hidden={!active}
                 />
               </div>
             ))}
