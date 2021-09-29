@@ -4,6 +4,16 @@ import { shallow } from "enzyme";
 import TextInput2, { cssClass } from "./TextInput2";
 
 describe("TextInput2", () => {
+  let defaultProps;
+  beforeEach(() => {
+    defaultProps = {
+      name: "",
+      label: "",
+      value: "",
+      onChange: jest.fn(),
+    };
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -44,15 +54,19 @@ describe("TextInput2", () => {
     expect(myComponent.props().className).toMatch("my--custom--class");
   });
 
-  // TODO: Test any relevant state changes/event handling/prop-driven rendering.
-  /*
-  it("propagates event", () => {
-    const myComponent = shallow(
-      <TextInput2 onPerformAction={onPerformActionMock}>Test Content</TextInput2>,
-    );
+  describe("event handling", () => {
+    it("executes onFocus prop if provided", () => {
+      defaultProps.onFocus = jest.fn();
+      const wrapper = shallow(<TextInput2 {...defaultProps} />);
+      wrapper.find("input").simulate("focus");
+      expect(defaultProps.onFocus).toHaveBeenCalled();
+    });
 
-    myComponent.find(Button).simulate("click");
-    expect(onPerformActionMock).toHaveBeenCalledWith("action performed");
+    it("executes onBlur prop if provided", () => {
+      defaultProps.onBlur = jest.fn();
+      const wrapper = shallow(<TextInput2 {...defaultProps} />);
+      wrapper.find("input").simulate("blur");
+      expect(defaultProps.onBlur).toHaveBeenCalled();
+    });
   });
-  */
 });

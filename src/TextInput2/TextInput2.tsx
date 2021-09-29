@@ -25,6 +25,8 @@ export interface Props {
   errorValidation?: (value: string) => string | null;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
   size?: Values<typeof FormElementSize>;
 }
 
@@ -64,6 +66,8 @@ const TextInput2: React.FC<Props> = ({
   obscurable,
   value,
   onChange,
+  onFocus,
+  onBlur,
   size,
 }) => {
   const id = name;
@@ -135,8 +139,14 @@ const TextInput2: React.FC<Props> = ({
           placeholder={placeholder}
           disabled={requirement === FormElementRequirement.DISABLED}
           onChange={onChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={(e) => {
+            setIsFocused(true);
+            if (onFocus) onFocus(e);
+          }}
+          onBlur={(e) => {
+            setIsFocused(false);
+            if (onBlur) onBlur(e);
+          }}
         />
         {errorMessage != null && (
           <FontAwesome className={cssClass.ERROR_ICON} name="exclamation-circle" />
