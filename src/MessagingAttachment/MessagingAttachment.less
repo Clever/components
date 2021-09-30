@@ -299,6 +299,27 @@
     overflow: hidden;
   }
 
+  // ⬇️ For family portal attachments we don't want the margins defined above ⬇️
+  .QuotedAnnouncementBubble--attachmentContainer
+    .MessagingAttachment--FamilyPortal
+    .MessagingAttachment--Container {
+    width: 100%;
+  }
+
+  .NormalMessagingBubble--Message--Container--Own
+    .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal
+    .MessagingAttachment--Container {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .NormalMessagingBubble--Message--Container--Other
+    .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal
+    .MessagingAttachment--Container {
+    margin-right: 0;
+    width: 100%;
+  }
+
   // ⬇️ In attachment-only messages, we don't want the margins defined above either ⬇️
   .NormalMessagingBubble--Message--Timestamp--Own
     + .NormalMessagingBubble--Message--Attachment--Own
