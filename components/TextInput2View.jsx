@@ -32,7 +32,7 @@ export default class TextInput2View extends React.PureComponent {
     showIcon: false,
     requirement: FormElementRequirement.REQUIRED,
     obscurable: false,
-    initialIsInError: false,
+    errorOnEmpty: false,
     size: FormElementSize.MEDIUM,
   };
 
@@ -72,7 +72,7 @@ export default class TextInput2View extends React.PureComponent {
               requirement={this.state.requirement}
               obscurable={this.state.obscurable}
               value={this.state.value}
-              initialIsInError={this.state.initialIsInError}
+              errorOnEmpty={this.state.errorOnEmpty}
               errorValidation={(value) => (value.toLowerCase() !== value ? "only lowercase" : null)}
               onChange={(e) => this.setState({ value: e.target.value })}
               size={this.state.size}
@@ -95,7 +95,7 @@ export default class TextInput2View extends React.PureComponent {
       showIcon,
       requirement,
       obscurable,
-      initialIsInError,
+      errorOnEmpty,
       size,
     } = this.state;
 
@@ -162,10 +162,10 @@ export default class TextInput2View extends React.PureComponent {
           <input
             type="checkbox"
             className={cssClass.CONFIG_TOGGLE}
-            checked={initialIsInError}
-            onChange={(e) => this.setState({ initialIsInError: e.target.checked })}
+            checked={errorOnEmpty}
+            onChange={(e) => this.setState({ errorOnEmpty: e.target.checked })}
           />{" "}
-          <span className={cssClass.CONFIG_TEXT}>Initial error</span>
+          <span className={cssClass.CONFIG_TEXT}>Error on empty</span>
         </label>
         <div className={cssClass.CONFIG}>
           <span className={cssClass.CONFIG_TEXT}>Requirement:</span>
@@ -259,9 +259,10 @@ export default class TextInput2View extends React.PureComponent {
             optional: true,
           },
           {
-            name: "initialIsInError",
+            name: "errorOnEmpty",
             type: "boolean",
-            description: "Intialize the component in an error state",
+            description:
+              "Display an error state when the input value is empty and the input is out of focus",
             optional: true,
           },
           {
