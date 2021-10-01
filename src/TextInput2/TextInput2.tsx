@@ -20,7 +20,7 @@ export interface Props {
   icon?: React.ReactNode;
   requirement?: Values<typeof FormElementRequirement>;
   obscurable?: boolean;
-  initialIsInError?: boolean;
+  errorOnEmpty?: boolean;
   // returns an error message, null for no error
   errorValidation?: (value: string) => string | null;
   value: string;
@@ -61,7 +61,7 @@ const TextInput2: React.FC<Props> = ({
   helpText,
   icon,
   requirement,
-  initialIsInError,
+  errorOnEmpty,
   errorValidation,
   obscurable,
   value,
@@ -72,38 +72,29 @@ const TextInput2: React.FC<Props> = ({
 }) => {
   const id = name;
   const [isFocused, setIsFocused] = useState(false);
-
   const [isObscured, setIsObscured] = useState(true);
   const inputType = obscurable && isObscured ? "password" : "text";
-
-  // empty string is an error state with no message (e.g. required)
-  const [errorMessage, setErrorMessage] = useState(initialIsInError ? "" : null);
-
-  useEffect(() => {
-    if (requirement === FormElementRequirement.REQUIRED && value === "") {
-      setErrorMessage(initialIsInError ? "" : null);
-    }
-  }, [initialIsInError]);
+  // NOTE: setting errorMessage to an empty string displays an error state with no message (e.g. required)
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    // don't show error if nothing has happened yet
-    if (!isFocused && errorMessage === null) {
-      return;
-    }
-
-    if (requirement === FormElementRequirement.REQUIRED && value === "") {
-      setErrorMessage("");
+    // if value is empty, either:
+    // 1) display empty error if errorOnEmpty is true and input isn't in focus
+    // 2) remove error
+    if (!value) {
+      setErrorMessage(errorOnEmpty && !isFocused ? "" : null);
       return;
     }
 
     const newErrorMessage = errorValidation(value);
-    if (newErrorMessage) {
+    // only show error when input isn't in focus
+    if (newErrorMessage && !isFocused) {
       setErrorMessage(newErrorMessage);
       return;
     }
-
-    setErrorMessage(null);
-  }, [value, isFocused]);
+    // remove error if it has been corrected
+    if (!newErrorMessage) setErrorMessage(null);
+  }, [value, isFocused, errorOnEmpty]);
 
   return (
     <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
@@ -170,7 +161,7 @@ const TextInput2: React.FC<Props> = ({
 };
 
 TextInput2.defaultProps = {
-  initialIsInError: false,
+  errorOnEmpty: false,
   errorValidation: () => null,
   size: FormElementSize.FULL_WIDTH,
 };
