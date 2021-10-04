@@ -128,6 +128,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               onTranslatedLanguagesClick={() =>
                 console.log("You clicked the language tooltip! Pitbull says dale!")
               }
+              onTranslatedLanguagesHover={() => console.log("Hover, սավառնել, нисэх")}
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               bubbleType={"normal"}
@@ -163,6 +164,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               onTranslatedLanguagesClick={() =>
                 console.log("You clicked the language tooltip! Pitbull says dale again!")
               }
+              onTranslatedLanguagesHover={() => console.log("Hover, હોવર, హోవర్")}
               readBy={readBy.slice(5)} // for variety
               recipientType={"student"}
               senderName={"Ms. Stark"}
@@ -409,6 +411,12 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               name: "onTranslatedLanguagesClick",
               type: "() => void",
               description: "Optional handler upon click of translated languages icon/text.",
+              optional: true,
+            },
+            {
+              name: "onTranslatedLanguagesHover",
+              type: "() => void",
+              description: "Optional handler upon hover of translated languages icon/text.",
               optional: true,
             },
             {

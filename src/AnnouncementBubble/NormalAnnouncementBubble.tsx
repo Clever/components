@@ -26,6 +26,7 @@ export interface Props {
   onReadReceiptsHover?: () => void;
   onReply?: () => void;
   onTranslatedLanguagesClick?: () => void;
+  onTranslatedLanguagesHover?: () => void;
   readBy?: string[];
   recipientType: "student" | "guardian";
   repliesDisabledMsg?: string;
@@ -49,6 +50,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   onReadReceiptsHover,
   onReply,
   onTranslatedLanguagesClick,
+  onTranslatedLanguagesHover,
   readBy,
   recipientType,
   repliesDisabledMsg,
@@ -96,6 +98,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
           <NumTranslatedLanguagesTooltip
             translatedLanguages={translatedLanguages}
             onTranslatedLanguagesClick={onTranslatedLanguagesClick}
+            onTranslatedLanguagesHover={onTranslatedLanguagesHover}
           />
         )}
         {readReceiptsTooltip}
@@ -263,9 +266,11 @@ function DisabledReplyButton({
 function NumTranslatedLanguagesTooltip({
   translatedLanguages,
   onTranslatedLanguagesClick,
+  onTranslatedLanguagesHover,
 }: {
   translatedLanguages: string[];
   onTranslatedLanguagesClick: () => void;
+  onTranslatedLanguagesHover: () => void;
 }): JSX.Element {
   const numTranslatedLanguages = translatedLanguages.length;
   const translatedLanguagesString = formTooltipText(translatedLanguages);
@@ -286,7 +291,7 @@ function NumTranslatedLanguagesTooltip({
           onClick={onTranslatedLanguagesClick}
           type="plain"
         >
-          <FlexBox>
+          <FlexBox onMouseEnter={onTranslatedLanguagesHover}>
             <TranslateIcon />
             <span className={cssClass("translatedLanguages--text--desktop")}>
               {numTranslatedLanguages === 1
