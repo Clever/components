@@ -65,11 +65,12 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           attachments={props.attachments}
           className={props.className}
           inlineErrorMsg={props.inlineErrorMsg}
-          numTranslatedLanguages={props.numTranslatedLanguages}
           onDelete={props.onDelete}
           onReadReceiptsClick={props.onReadReceiptsClick}
           onReadReceiptsHover={props.onReadReceiptsHover}
           onReply={props.onReply}
+          onTranslatedLanguagesClick={props.onTranslatedLanguagesClick}
+          onTranslatedLanguagesHover={props.onTranslatedLanguagesHover}
           readBy={props.readBy}
           recipientType={props.recipientType}
           repliesDisabledMsg={props.repliesDisabledMsg}
@@ -77,6 +78,7 @@ export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
           senderIcon={props.senderIcon}
           senderName={props.senderName}
           sentAtTimestamp={props.sentAtTimestamp}
+          translatedLanguages={props.translatedLanguages}
         >
           {props.children}
         </NormalAnnouncementBubble>

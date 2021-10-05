@@ -21,11 +21,12 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   inlineErrorMsg?: string;
-  numTranslatedLanguages?: number;
   onDelete?: () => void;
   onReadReceiptsClick?: () => void;
   onReadReceiptsHover?: () => void;
   onReply?: () => void;
+  onTranslatedLanguagesClick?: () => void;
+  onTranslatedLanguagesHover?: () => void;
   readBy?: string[];
   recipientType: "student" | "guardian";
   repliesDisabledMsg?: string;
@@ -33,6 +34,7 @@ export interface Props {
   senderName: string;
   sentAtTimestamp: Date;
   theme?: MessagingTheme;
+  translatedLanguages?: string[];
 
   // Temporary props to allow overriding text with translations
   replyButtonText?: string;
@@ -43,11 +45,12 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   children,
   className,
   inlineErrorMsg,
-  numTranslatedLanguages,
   onDelete,
   onReadReceiptsClick,
   onReadReceiptsHover,
   onReply,
+  onTranslatedLanguagesClick,
+  onTranslatedLanguagesHover,
   readBy,
   recipientType,
   repliesDisabledMsg,
@@ -55,6 +58,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
   senderIcon,
   senderName,
   sentAtTimestamp,
+  translatedLanguages,
 }: Props) => {
   const deleteMenu = formDeleteMenu(onDelete);
   const replyButton = formReplyButton(onReply, repliesDisabledMsg, replyButtonText);
@@ -90,8 +94,12 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
         <FlexBox className={cssClass("attachmentContainer")}>{attachments}</FlexBox>
       )}
       <FlexBox justify="between">
-        {numTranslatedLanguages > 0 && (
-          <NumTranslatedLanguagesTooltip numTranslatedLanguages={numTranslatedLanguages} />
+        {translatedLanguages?.length > 0 && (
+          <NumTranslatedLanguagesTooltip
+            translatedLanguages={translatedLanguages}
+            onTranslatedLanguagesClick={onTranslatedLanguagesClick}
+            onTranslatedLanguagesHover={onTranslatedLanguagesHover}
+          />
         )}
         {readReceiptsTooltip}
       </FlexBox>
@@ -153,7 +161,7 @@ function formReadReceiptsTooltip(
   recipientType: "student" | "guardian",
 ): JSX.Element {
   const readReceiptCount = readBy.length;
-  const readReceiptString = convertReadReceiptArrayToString(readBy);
+  const readReceiptString = formTooltipText(readBy);
   const displayRecipientType = recipientType === "guardian" ? "parent" : recipientType;
   const recipientString = readBy.length === 1 ? displayRecipientType : `${displayRecipientType}s`;
   return (
@@ -169,32 +177,32 @@ function formReadReceiptsTooltip(
           onClick={onReadReceiptsClick}
           type="plain"
         >
-          <div onMouseEnter={onReadReceiptsHover}>
+          <FlexBox onMouseEnter={onReadReceiptsHover}>
             <Checkmark className={cssClass("readReceipts--icon")} />
             <span className={cssClass("readReceipts--text--desktop")}>
               Read by {readReceiptCount} {recipientString}
             </span>
             <span className={cssClass("readReceipts--text--mobile")}>{readReceiptCount}</span>
-          </div>
+          </FlexBox>
         </Button>
       </Tooltip>
     </FlexBox>
   );
 }
 
-function convertReadReceiptArrayToString(readBy: string[]): string {
-  const readReceiptCount = readBy.length;
-  if (readReceiptCount === 1) {
-    return readBy[0];
+function formTooltipText(values: string[]): string {
+  const valuesCount = values.length;
+  if (valuesCount === 1) {
+    return values[0];
   }
-  readBy.sort((a, b) => {
+  values.sort((a, b) => {
     return a.toLowerCase().localeCompare(b.toLowerCase());
   });
-  if (readReceiptCount <= 4) {
-    return readBy.join("\n");
+  if (valuesCount <= 3) {
+    return values.join("\n");
   }
-  const readByLong = [readBy[0], readBy[1], readBy[2], `and ${readReceiptCount - 3} more...`];
-  return readByLong.join("\n");
+  const tooltipLong = [values[0], values[1], values[2], `and ${valuesCount - 3} more...`];
+  return tooltipLong.join("\n");
 }
 
 function ReplyButton({
@@ -256,10 +264,16 @@ function DisabledReplyButton({
 }
 
 function NumTranslatedLanguagesTooltip({
-  numTranslatedLanguages,
+  translatedLanguages,
+  onTranslatedLanguagesClick,
+  onTranslatedLanguagesHover,
 }: {
-  numTranslatedLanguages: number;
+  translatedLanguages: string[];
+  onTranslatedLanguagesClick: () => void;
+  onTranslatedLanguagesHover: () => void;
 }): JSX.Element {
+  const numTranslatedLanguages = translatedLanguages.length;
+  const translatedLanguagesString = formTooltipText(translatedLanguages);
   return (
     <FlexBox
       className={cssClass("translatedLanguages--container")}
@@ -268,21 +282,27 @@ function NumTranslatedLanguagesTooltip({
     >
       <Tooltip
         className={cssClass("translatedLanguages--tooltip")}
-        content={"Each parent will see this announcement in their home language."}
+        content={translatedLanguagesString}
         placement={"top"}
         textAlign={"left"}
       >
-        <FlexBox>
-          <TranslateIcon />
-          <span className={cssClass("translatedLanguages--text--desktop")}>
-            {numTranslatedLanguages === 1
-              ? "Translated into 1 language"
-              : `Translated into ${numTranslatedLanguages} languages`}
-          </span>
-          <span className={cssClass("translatedLanguages--text--mobile")}>
-            {numTranslatedLanguages}
-          </span>
-        </FlexBox>
+        <Button
+          className={cssClass("translatedLanguages--button")}
+          onClick={onTranslatedLanguagesClick}
+          type="plain"
+        >
+          <FlexBox onMouseEnter={onTranslatedLanguagesHover}>
+            <TranslateIcon />
+            <span className={cssClass("translatedLanguages--text--desktop")}>
+              {numTranslatedLanguages === 1
+                ? "Translated into 1 language"
+                : `Translated into ${numTranslatedLanguages} languages`}
+            </span>
+            <span className={cssClass("translatedLanguages--text--mobile")}>
+              {numTranslatedLanguages}
+            </span>
+          </FlexBox>
+        </Button>
       </Tooltip>
     </FlexBox>
   );

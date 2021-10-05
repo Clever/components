@@ -124,7 +124,11 @@ export default class AnnouncementBubbleView extends React.PureComponent {
                   color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
                 />
               }
-              numTranslatedLanguages={1}
+              translatedLanguages={["Arabic"]}
+              onTranslatedLanguagesClick={() =>
+                console.log("You clicked the language tooltip! Pitbull says dale!")
+              }
+              onTranslatedLanguagesHover={() => console.log("Hover, սավառնել, нисэх")}
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               bubbleType={"normal"}
@@ -156,7 +160,11 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               bubbleType={"normal"}
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
-              numTranslatedLanguages={10}
+              translatedLanguages={["Spanish", "Arabic", "Chinese (traditional)", "Armenian"]}
+              onTranslatedLanguagesClick={() =>
+                console.log("You clicked the language tooltip! Pitbull says dale again!")
+              }
+              onTranslatedLanguagesHover={() => console.log("Hover, હોવર, హోవర్")}
               readBy={readBy.slice(5)} // for variety
               recipientType={"student"}
               senderName={"Ms. Stark"}
@@ -376,13 +384,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               optional: true,
             },
             {
-              name: "numTranslatedLanguages",
-              type: "number",
-              description:
-                "Optional number of languages that the message has been translated into.",
-              optional: true,
-            },
-            {
               name: "onDelete",
               type: "() => void",
               description: "Optional handler upon trigger of announcement deletion.",
@@ -404,6 +405,18 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               name: "onReply",
               type: "() => void",
               description: "Optional handler upon trigger of announcement reply via Reply button.",
+              optional: true,
+            },
+            {
+              name: "onTranslatedLanguagesClick",
+              type: "() => void",
+              description: "Optional handler upon click of translated languages icon/text.",
+              optional: true,
+            },
+            {
+              name: "onTranslatedLanguagesHover",
+              type: "() => void",
+              description: "Optional handler upon hover of translated languages icon/text.",
               optional: true,
             },
             {
@@ -446,6 +459,13 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               description: "Theme to use for styling the bubble.",
               optional: true,
               defaultValue: "default",
+            },
+            {
+              name: "translatedLanguages",
+              type: "string[]",
+              description:
+                "Optional list of languages that the announcement has been translated into. No reformatting of the strings happens so pass them through as you want them to be displayed.",
+              optional: true,
             },
           ]}
           className={cssClass.PROPS}

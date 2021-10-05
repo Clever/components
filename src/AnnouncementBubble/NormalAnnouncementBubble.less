@@ -155,13 +155,26 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 
 .NormalAnnouncementBubble--translatedLanguages--tooltip {
   .text--semi-bold();
-  padding-left: @size_xs;
-  padding-right: @size_xs;
+  padding-left: @size_2xs;
+  padding-right: @size_2xs;
+  white-space: pre-wrap;
+}
+
+.Button.NormalAnnouncementBubble--translatedLanguages--button {
+  &:focus {
+    outline: 0.1875rem solid @primary_blue_shade_2;
+    transition: none;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
 }
 
 .NormalAnnouncementBubble--translatedLanguages--icon {
   .pathColor(@neutral_medium_gray);
   .margin--right--2xs();
+  margin-top: 0.05rem;
   height: 100%;
   width: 1rem;
 }
@@ -180,6 +193,18 @@ button.NormalAnnouncementBubble--deleteMenuItem {
 .NormalAnnouncementBubble--translatedLanguages--container {
   .margin--top--m();
   .flex--direction--row();
+
+  &:hover .NormalAnnouncementBubble--translatedLanguages--icon {
+    .pathColor(@primary_blue_shade_2);
+  }
+
+  &:hover .NormalAnnouncementBubble--translatedLanguages--text--desktop {
+    color: @primary_blue_shade_2;
+  }
+
+  &:hover .NormalAnnouncementBubble--translatedLanguages--text--mobile {
+    color: @primary_blue_shade_2;
+  }
 }
 
 .NormalAnnouncementBubble--readReceipts--tooltip {
