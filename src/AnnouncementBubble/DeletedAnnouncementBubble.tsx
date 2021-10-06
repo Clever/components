@@ -2,7 +2,7 @@ import * as React from "react";
 import * as cx from "classnames";
 import * as FontAwesome from "react-fontawesome";
 import { FlexBox } from "../";
-import { MessagingTheme } from "src/utils/messaging";
+import { MessagingTheme } from "../utils/messaging";
 
 import "./DeletedAnnouncementBubble.less";
 

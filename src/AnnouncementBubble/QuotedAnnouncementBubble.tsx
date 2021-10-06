@@ -7,7 +7,7 @@ import * as _ from "lodash";
 import { FlexBox, Button, Tooltip } from "../";
 import { formatDateForTimestamp } from "./NormalAnnouncementBubble";
 import { componentDecorator, matchDecorator } from "../MessagingBubble/linkifyUtils";
-import { MessagingTheme } from "src/utils/messaging";
+import { MessagingTheme } from "..//utils/messaging";
 
 import "./QuotedAnnouncementBubble.less";
 
