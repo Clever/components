@@ -3,7 +3,7 @@ import * as moment from "moment";
 import Linkify from "react-linkify";
 import * as cx from "classnames";
 import { Button, FlexBox } from "..";
-import { MessagingTheme } from "src/utils/messaging";
+import { MessagingTheme } from "../utils/messaging";
 import { matchDecorator, componentDecorator } from "./linkifyUtils";
 
 import "./NormalMessagingBubble.less";

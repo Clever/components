@@ -24,7 +24,7 @@ export interface Props {
   // returns an error message, null for no error
   errorValidation?: (value: string) => string | null;
   value: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   size?: Values<typeof FormElementSize>;
