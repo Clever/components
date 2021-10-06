@@ -5,7 +5,7 @@ import * as cx from "classnames";
 import { AttachmentPreview } from "../AttachmentPreview";
 import { FlexBox } from "../flex";
 import KeyCode from "../utils/KeyCode";
-import { MessagingTheme } from "..//utils/messaging";
+import { MessagingTheme } from "../utils/messaging";
 
 import "./MessagingAttachment.less";
 

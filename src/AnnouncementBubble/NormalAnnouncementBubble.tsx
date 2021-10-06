@@ -6,7 +6,7 @@ import Linkify from "react-linkify";
 import { FlexBox, Button, Menu, Tooltip } from "../";
 import { componentDecorator, matchDecorator } from "../MessagingBubble/linkifyUtils";
 import Checkmark from "../Checkbox/CheckMark";
-import { MessagingTheme } from "..//utils/messaging";
+import { MessagingTheme } from "../utils/messaging";
 
 import "./NormalAnnouncementBubble.less";
 
