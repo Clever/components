@@ -219,10 +219,7 @@ export class Select extends React.Component<Props, State> {
     // The label container must be returned after the ReactSelect otherwise it does not get displayed
     // in the browser.
     return (
-      <div
-        className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), wrapperClass)}
-        role="listbox"
-      >
+      <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), wrapperClass)}>
         <div id={id}>
           <SelectComponent
             className={reactSelectClasses}
@@ -244,6 +241,7 @@ export class Select extends React.Component<Props, State> {
             noResultsText={noResultsText}
             closeOnSelect={closeMenuOnSelect}
             value={value}
+            role="listbox"
             {...overrideProps}
           />
         </div>
