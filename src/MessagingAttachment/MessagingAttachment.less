@@ -23,6 +23,7 @@
   border: @size_4xs solid @neutral_silver;
   border-radius: @size_2xs;
   box-sizing: content-box;
+  overflow: hidden;
 
   &:focus,
   &:active {
@@ -284,19 +285,15 @@
   }
 
   .NormalMessagingBubble--Message--Container--Own .MessagingAttachment--Container {
-    margin-left: @size_5xl;
-    width: calc(100% - 4rem);
+    width: 100%;
     min-width: 13rem;
     max-width: 21.125rem;
-    overflow: hidden;
   }
 
   .NormalMessagingBubble--Message--Container--Other .MessagingAttachment--Container {
-    margin-right: @size_5xl;
-    width: calc(100% - 4rem);
+    width: 100%;
     min-width: 13rem;
     max-width: 21.125rem;
-    overflow: hidden;
   }
 
   // ⬇️ For family portal attachments we don't want the margins defined above ⬇️
