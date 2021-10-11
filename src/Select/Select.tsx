@@ -241,6 +241,7 @@ export class Select extends React.Component<Props, State> {
             noResultsText={noResultsText}
             closeOnSelect={closeMenuOnSelect}
             value={value}
+            role="listbox"
             {...overrideProps}
           />
         </div>
