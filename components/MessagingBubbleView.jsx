@@ -45,6 +45,13 @@ export default class MessagingBubbleView extends React.PureComponent {
   render() {
     const { isDeletableMessageDeleted, isDeletionModalOpen, messageOwnership, theme } = this.state;
 
+    // Set quoted announcement bubble color theme
+    // Fampo ones will always be in own messages, so will always be "light" theme
+    let colorTheme = "light";
+    if (theme === "default") {
+      colorTheme = messageOwnership === "ownMessage" ? "dark" : "light";
+    }
+
     const deleteableMessageBody =
       messageOwnership === "ownMessage" || theme === "default"
         ? "This message can be deleted! Try hovering/focusing on the timestamp."
@@ -195,6 +202,7 @@ export default class MessagingBubbleView extends React.PureComponent {
                     }
                     sentAtTimestamp={new Date()}
                     bubbleType={"quoted"}
+                    colorTheme={colorTheme}
                     theme={theme}
                   >
                     "This is an announcement with a message reply!"
@@ -246,6 +254,7 @@ export default class MessagingBubbleView extends React.PureComponent {
                     }
                     sentAtTimestamp={new Date()}
                     bubbleType={"quoted"}
+                    colorTheme={colorTheme}
                     theme={theme}
                   >
                     "This is an announcement with an attachments-only reply!"
@@ -291,6 +300,7 @@ export default class MessagingBubbleView extends React.PureComponent {
                     attachments={attachmentsArray.slice(4)}
                     sentAtTimestamp={new Date()}
                     bubbleType={"quoted"}
+                    colorTheme={colorTheme}
                     theme={theme}
                   >
                     "This is a quoted announcement with an attachment!"
