@@ -23,6 +23,7 @@
   border: @size_4xs solid @neutral_silver;
   border-radius: @size_2xs;
   box-sizing: content-box;
+  overflow: hidden;
 
   &:focus,
   &:active {
@@ -284,72 +285,15 @@
   }
 
   .NormalMessagingBubble--Message--Container--Own .MessagingAttachment--Container {
-    margin-left: @size_5xl;
-    width: calc(100% - 4rem);
+    width: 100%;
     min-width: 13rem;
     max-width: 21.125rem;
-    overflow: hidden;
   }
 
   .NormalMessagingBubble--Message--Container--Other .MessagingAttachment--Container {
-    margin-right: @size_5xl;
-    width: calc(100% - 4rem);
+    width: 100%;
     min-width: 13rem;
     max-width: 21.125rem;
-    overflow: hidden;
-  }
-
-  // ⬇️ For family portal attachments we don't want the margins defined above ⬇️
-  .QuotedAnnouncementBubble--attachmentContainer
-    .MessagingAttachment--FamilyPortal
-    .MessagingAttachment--Container {
-    width: 100%;
-  }
-
-  .NormalMessagingBubble--Message--Container--Own
-    .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal
-    .MessagingAttachment--Container {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  .NormalMessagingBubble--Message--Container--Other
-    .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal
-    .MessagingAttachment--Container {
-    margin-right: 0;
-    width: 100%;
-  }
-
-  // ⬇️ In attachment-only messages, we don't want the margins defined above either ⬇️
-  .NormalMessagingBubble--Message--Timestamp--Own
-    + .NormalMessagingBubble--Message--Attachment--Own
-    .MessagingAttachment--Container {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
-
-  .NormalMessagingBubble--Message--Timestamp--Other
-    + .NormalMessagingBubble--Message--Attachment--Other
-    .MessagingAttachment--Container {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
-
-  // ⬇️ In quoted announcements, we don't want the margins defined above ⬇️
-  .NormalMessagingBubble--Message--Container--Own
-    .NormalMessagingBubble--Message--Own.NormalMessagingBubble--Message--Reply--Parent
-    .MessagingAttachment--Container {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .NormalMessagingBubble--Message--Container--Other
-    .NormalMessagingBubble--Message--Other.NormalMessagingBubble--Message--Reply--Parent
-    .MessagingAttachment--Container {
-    margin-left: 0;
-    margin-right: 0;
   }
 
   .MessagingAttachment--ParentContainer.MessagingAttachment--FamilyPortal {
