@@ -71,7 +71,7 @@ const Select2: React.FC<Props> = ({
 }) => {
   const [selectableOptions, setSelectableOptions] = useState(options);
 
-  // handle inital error state via focus state since
+  // handle initial error state via focus state since
   // hooks can't combine the downshift state well with component hook state
   const [hasBeenFocused, setHasBeenFocused] = useState(false);
   useEffect(() => {
