@@ -22,6 +22,7 @@ export interface Props {
   hideLabel?: boolean;
   options: Option[];
   clearable?: boolean;
+  creatable?: boolean;
   requirement?: Values<typeof FormElementRequirement>;
   initialIsInError?: boolean;
   value: string;
@@ -61,15 +62,18 @@ const Select2: React.FC<Props> = ({
   name,
   label,
   hideLabel,
-  options,
+  options: initialOptions,
   clearable,
+  creatable,
   requirement,
   initialIsInError,
   value,
   onChange,
   size,
 }) => {
-  const [selectableOptions, setSelectableOptions] = useState(options);
+  const [options, setOptions] = React.useState(initialOptions);
+  const [selectableOptions, setSelectableOptions] = useState(initialOptions);
+  const [isCreating, setIsCreating] = React.useState(false);
 
   // handle initial error state via focus state since
   // hooks can't combine the downshift state well with component hook state
@@ -77,6 +81,8 @@ const Select2: React.FC<Props> = ({
   useEffect(() => {
     setHasBeenFocused(false);
   }, [initialIsInError]);
+
+  const optionValues = new Set(options.map((o) => o.value));
 
   const {
     isOpen,
@@ -129,16 +135,39 @@ const Select2: React.FC<Props> = ({
       }
       return;
     },
-    onInputValueChange: ({ inputValue: v }) => {
-      const inputLowerCase = v.toLowerCase();
-      setSelectableOptions(options.filter((o) => o.label.toLowerCase().includes(inputLowerCase)));
+    onInputValueChange: (change) => {
+      const inputLowerCase = change.inputValue.toLowerCase();
+      const filteredOptions = options.filter((o) => o.label.toLowerCase().includes(inputLowerCase));
+      if (isCreating && filteredOptions.length > 0) {
+        setIsCreating(false);
+      }
+      setSelectableOptions(filteredOptions);
     },
     onSelectedItemChange: (item) => {
+      if (creatable) {
+        if (optionValues.has(item.selectedItem.value)) {
+          setOptions(initialOptions);
+          setSelectableOptions(initialOptions);
+        } else {
+          setOptions([...initialOptions, item.selectedItem]);
+          setSelectableOptions([...initialOptions, item.selectedItem]);
+          setIsCreating(false);
+        }
+      }
+
       if (onChange) {
         onChange(item.selectedItem ? item.selectedItem.value : "");
       }
     },
   });
+
+  const inputVal = getInputProps().value;
+  React.useEffect(() => {
+    if (creatable && selectableOptions.length === 0 && inputVal.length > 0) {
+      setIsCreating(true);
+      setSelectableOptions([{ label: `${inputVal}`, value: inputVal }]);
+    }
+  }, [creatable, selectableOptions, setIsCreating, setSelectableOptions, inputVal]);
 
   const isInError =
     requirement === FormElementRequirement.REQUIRED &&
@@ -247,7 +276,7 @@ const Select2: React.FC<Props> = ({
                 key={`${o.value}${i}`}
                 {...getItemProps({ item: o, index: i })}
               >
-                {o.customLabel || o.label}
+                {isCreating ? `Add "${o.label}"` : o.customLabel || o.label}
               </li>
             ))
           ) : (

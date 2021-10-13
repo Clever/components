@@ -28,6 +28,7 @@ export default class Select2View extends React.PureComponent {
     label: "Select an option",
     hideLabel: false,
     clearable: true,
+    creatable: false,
     requirement: FormElementRequirement.REQUIRED,
     initialIsInError: false,
     value: null,
@@ -74,6 +75,7 @@ export default class Select2View extends React.PureComponent {
                 value: `option_${i + 1}_value`,
               }))}
               clearable={this.state.clearable}
+              creatable={this.state.creatable}
               requirement={this.state.requirement}
               initialIsInError={this.state.initialIsInError}
               onChange={(v) => {
@@ -93,7 +95,16 @@ export default class Select2View extends React.PureComponent {
   }
 
   _renderConfig() {
-    const { label, value, hideLabel, clearable, requirement, initialIsInError, size } = this.state;
+    const {
+      label,
+      value,
+      hideLabel,
+      clearable,
+      creatable,
+      requirement,
+      initialIsInError,
+      size,
+    } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -138,6 +149,15 @@ export default class Select2View extends React.PureComponent {
             onChange={(e) => this.setState({ clearable: e.target.checked })}
           />{" "}
           <span className={cssClass.CONFIG_LABEL_TEXT}>Clearable</span>
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            checked={creatable}
+            className={cssClass.CONFIG_TOGGLE}
+            onChange={(e) => this.setState({ creatable: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Creatable</span>
         </label>
         <div className={cssClass.CONFIG}>
           <span className={cssClass.CONFIG_TEXT}>Requirement:</span>
@@ -237,6 +257,13 @@ export default class Select2View extends React.PureComponent {
             optional: true,
           },
           {
+            name: "creatable",
+            type: "boolean",
+            description:
+              "If new options are allowed to be created (if input text does not match any existing options)",
+            optional: true,
+          },
+          {
             name: "requirement",
             type: '"required", "optional", or "disabled"',
             description: "Indicator to note if the input is required",
@@ -245,7 +272,7 @@ export default class Select2View extends React.PureComponent {
           {
             name: "initialIsInError",
             type: "boolean",
-            description: "Intialize the component in an error state",
+            description: "Initialize the component in an error state",
             optional: true,
           },
           {
