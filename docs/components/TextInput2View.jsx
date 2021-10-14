@@ -311,6 +311,12 @@ export default class TextInput2View extends React.PureComponent {
             optional: true,
             defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
           },
+          {
+            name: "autoFocus",
+            type: "boolean",
+            description: "The input should be focused on page load",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
