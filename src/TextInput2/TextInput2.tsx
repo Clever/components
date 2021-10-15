@@ -28,6 +28,7 @@ export interface Props {
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   size?: Values<typeof FormElementSize>;
+  autoFocus?: boolean;
 }
 
 export const cssClass = {
@@ -69,6 +70,7 @@ const TextInput2: React.FC<Props> = ({
   onFocus,
   onBlur,
   size,
+  autoFocus,
 }) => {
   const id = name;
   const [isFocused, setIsFocused] = useState(false);
@@ -138,6 +140,7 @@ const TextInput2: React.FC<Props> = ({
             setIsFocused(false);
             if (onBlur) onBlur(e);
           }}
+          autoFocus={autoFocus}
         />
         {errorMessage != null && (
           <FontAwesome className={cssClass.ERROR_ICON} name="exclamation-circle" />
