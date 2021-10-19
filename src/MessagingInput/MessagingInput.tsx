@@ -158,9 +158,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               //  explicitly set to have enter be a newline.
               if (e.key === KeyCode.ENTER && !e.shiftKey && !newlineOnEnter) {
                 e.preventDefault();
-                // If something other than whitespace is in the input area,
-                // or if there is at least one attachment, send the message.
-                if (value.trim() !== "" || attachmentsArePresent) {
+                if (!isMessageSendDisabled(disableSendButton, value, attachments)) {
                   onSubmit(value.trim());
                 }
               }
@@ -197,7 +195,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               <span className={cssClass("SendText")}>{sendButtonText}</span>
             </FlexBox>
           }
-          disabled={isSendButtonDisabled(disableSendButton, value, attachments)}
+          disabled={isMessageSendDisabled(disableSendButton, value, attachments)}
           onClick={() => onSubmit(value.trim())}
           ariaLabel={sendButtonText}
         />
@@ -207,11 +205,12 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
   );
 };
 
-function isSendButtonDisabled(
+function isMessageSendDisabled(
   disableSendButton: boolean,
   value: string,
   attachments: React.ReactNode[],
 ) {
+  // disableSendButton boolean handles the case of unsendable invalid attachments
   if (disableSendButton) {
     return true;
   } else if (value.trim() === "" && (!attachments || attachments.length === 0)) {
