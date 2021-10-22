@@ -72,6 +72,12 @@ const Select2: React.FC<Props> = ({
   size,
 }) => {
   const [options, setOptions] = React.useState(initialOptions);
+  useEffect(() => {
+    // We need this effect in order to get the state to update on prop change
+    // in re-renders, otherwise options may be outdated
+    setOptions(initialOptions);
+  }, [initialOptions]);
+
   const [selectableOptions, setSelectableOptions] = useState(initialOptions);
   const [isCreating, setIsCreating] = React.useState(false);
 
