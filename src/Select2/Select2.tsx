@@ -71,9 +71,15 @@ const Select2: React.FC<Props> = ({
   onChange,
   size,
 }) => {
-  const [options, setOptions] = React.useState(initialOptions);
+  const [options, setOptions] = useState(initialOptions);
+  useEffect(() => {
+    // We need this effect in order to get the state to update on prop change
+    // in re-renders, otherwise options may be outdated
+    setOptions(initialOptions);
+  }, [initialOptions]);
+
   const [selectableOptions, setSelectableOptions] = useState(initialOptions);
-  const [isCreating, setIsCreating] = React.useState(false);
+  const [isCreating, setIsCreating] = useState(false);
 
   // handle initial error state via focus state since
   // hooks can't combine the downshift state well with component hook state
@@ -162,7 +168,7 @@ const Select2: React.FC<Props> = ({
   });
 
   const inputVal = getInputProps().value;
-  React.useEffect(() => {
+  useEffect(() => {
     if (creatable && selectableOptions.length === 0 && inputVal.length > 0) {
       setIsCreating(true);
       setSelectableOptions([{ label: `${inputVal}`, value: inputVal }]);
