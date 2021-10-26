@@ -71,14 +71,17 @@ const Select2: React.FC<Props> = ({
   onChange,
   size,
 }) => {
-  const [options, setOptions] = useState(initialOptions);
+  const [createdOption, setCreatedOption] = useState<Option | null>(null);
+  const options = createdOption ? [...initialOptions, createdOption] : initialOptions;
+  const optionValues = new Set(options.map((o) => o.value));
+  const [selectableOptions, setSelectableOptions] = useState(initialOptions);
+
   useEffect(() => {
     // We need this effect in order to get the state to update on prop change
     // in re-renders, otherwise options may be outdated
-    setOptions(initialOptions);
+    setSelectableOptions(initialOptions);
   }, [initialOptions]);
 
-  const [selectableOptions, setSelectableOptions] = useState(initialOptions);
   const [isCreating, setIsCreating] = useState(false);
 
   // handle initial error state via focus state since
@@ -87,8 +90,6 @@ const Select2: React.FC<Props> = ({
   useEffect(() => {
     setHasBeenFocused(false);
   }, [initialIsInError]);
-
-  const optionValues = new Set(options.map((o) => o.value));
 
   const {
     isOpen,
@@ -152,11 +153,11 @@ const Select2: React.FC<Props> = ({
     onSelectedItemChange: (item) => {
       if (creatable) {
         if (optionValues.has(item.selectedItem.value)) {
-          setOptions(initialOptions);
           setSelectableOptions(initialOptions);
+          setCreatedOption(null);
         } else {
-          setOptions([...initialOptions, item.selectedItem]);
           setSelectableOptions([...initialOptions, item.selectedItem]);
+          setCreatedOption(item.selectedItem);
           setIsCreating(false);
         }
       }
