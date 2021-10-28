@@ -103,12 +103,31 @@ export const NormalMessagingBubble: React.FC<Props> = ({
             metadataClassNames,
             actionButtonClassNames,
           })}
-        <div className={hideBubble ? null : bubbleClassNames}>
-          {replyTo && <div className={replyClassNames}>{replyTo}</div>}
-          <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
-            {children}
-          </Linkify>
-        </div>
+        <FlexBox column>
+          <div className={hideBubble ? null : bubbleClassNames}>
+            {replyTo && <div className={replyClassNames}>{replyTo}</div>}
+            <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
+              {children}
+            </Linkify>
+          </div>
+          <FlexBox
+            className={"NormalMessagingBubble--Message--ResponseContainer--Other"}
+            justify="center"
+          >
+            <Button
+              className={"NormalMessagingBubble--Message--ResponseButton--Other"}
+              type="primary"
+              size="small"
+              value="Yes 👍"
+            />
+            <Button
+              className={"NormalMessagingBubble--Message--ResponseButton--Other"}
+              type="primary"
+              size="small"
+              value="No 👎"
+            />
+          </FlexBox>
+        </FlexBox>
       </FlexBox>
       <FlexBox className={timeAndBubbleContainerClasses}>
         {hideBubble &&
