@@ -192,8 +192,21 @@ export type AttachmentFileType =
   | "txt"
   | null;
 
+export const PreviewableImageFileTypes = new Set(["jpg", "jpeg", "gif", "png", "svg"]);
+export const PreviewableAudioFileTypes = new Set(["mp3", "wav", "m4a", "flv"]);
+
 // the set of fileTypes we are previewing in AttachmentPreviews
-export const PreviewableFileTypes = new Set(["jpg", "jpeg", "gif", "png", "svg"]);
+export const PreviewableFileTypes = new Set([
+  "jpg",
+  "jpeg",
+  "gif",
+  "png",
+  "svg",
+  "mp3",
+  "wav",
+  "m4a",
+  "flv",
+]);
 
 function fileTypeToIconType(fileType: string): AttachmentIconType {
   const mapFileTypeToIconType = {

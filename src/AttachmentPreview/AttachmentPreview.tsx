@@ -5,7 +5,11 @@ import * as FontAwesome from "react-fontawesome";
 
 import { Button } from "../Button/Button";
 import { FlexBox, FlexItem } from "../flex";
-import { AttachmentFileType, FileAttachmentIcon } from "../MessagingAttachment/MessagingAttachment";
+import {
+  AttachmentFileType,
+  FileAttachmentIcon,
+  PreviewableAudioFileTypes,
+} from "../MessagingAttachment/MessagingAttachment";
 
 import "./AttachmentPreview.less";
 
@@ -55,7 +59,12 @@ export const AttachmentPreview: React.FC<Props> = ({
   onClickDownload,
   onClose,
 }) => {
-  const [imageLoadError, setImageLoadError] = useState(false);
+  const [attachmentLoadError, setAttachmentLoadError] = useState(false);
+
+  let previewType: "image" | "audio" = "image";
+  if (PreviewableAudioFileTypes.has(fileType)) {
+    previewType = "audio";
+  }
 
   function handleKeyUp(e) {
     if (e.keyCode === ESC) {
@@ -100,20 +109,41 @@ export const AttachmentPreview: React.FC<Props> = ({
         </Button>
       </FlexBox>
       <FlexBox className={cssClass.PREVIEW_WINDOW}>
-        <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={onBackgroundClick}>
-          {!imageLoadError && (
-            <img
-              src={attachmentURL}
-              alt={"attachment preview"}
-              onError={() => setImageLoadError(true)}
-            />
-          )}
-          {imageLoadError && (
-            <FlexBox className={cssClass.ERROR_CONTAINER}>
-              <FontAwesome name={"frown-o"} className={cssClass.ERROR_ICON} /> Image load error
-            </FlexBox>
-          )}
-        </FlexBox>
+        {previewType === "image" && (
+          <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={onBackgroundClick}>
+            {!attachmentLoadError && (
+              <img
+                src={attachmentURL}
+                alt={"attachment preview"}
+                onError={() => setAttachmentLoadError(true)}
+              />
+            )}
+            {attachmentLoadError && (
+              <FlexBox className={cssClass.ERROR_CONTAINER}>
+                <FontAwesome name={"frown-o"} className={cssClass.ERROR_ICON} /> Image load error
+              </FlexBox>
+            )}
+          </FlexBox>
+        )}
+        {previewType === "audio" && (
+          <FlexBox className={cssClass.IMAGE_CONTAINER} onClick={onBackgroundClick}>
+            {!attachmentLoadError && (
+              <audio
+                controls
+                autoPlay
+                src={attachmentURL}
+                onError={() => setAttachmentLoadError(true)}
+              >
+                Audio load error
+              </audio>
+            )}
+            {/* {attachmentLoadError && (
+              <FlexBox className={cssClass.ERROR_CONTAINER}>
+                <FontAwesome name={"frown-o"} className={cssClass.ERROR_ICON} /> Image load error
+              </FlexBox>
+            )} */}
+          </FlexBox>
+        )}
       </FlexBox>
       <FlexBox className={cssClass.FOOTER_BAR}>
         <Button type="linkPlain" className={cssClass.DOWNLOAD_CONTAINER} onClick={onClickDownload}>
