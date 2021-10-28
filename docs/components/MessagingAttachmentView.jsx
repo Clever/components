@@ -84,12 +84,12 @@ export default class MessagingAttachmentView extends React.PureComponent {
                 {
                   key: "3",
                   attachmentPreviewProps: {
-                    attachmentURL: "https://s3.amazonaws.com/assets.clever.com/nigel.mp3",
+                    attachmentURL: "https://s3.amazonaws.com/assets.clever.com/nigel.ogg",
                   },
-                  fileType: "mp3",
+                  fileType: "ogg",
                   onClickDownload: () => console.log("downloaded!"),
                   onPreviewAttachment: () => console.log("previewed!"),
-                  title: "nigel.mp3",
+                  title: "nigel.ogg",
                   subtitle: "Click to view",
                 },
                 {

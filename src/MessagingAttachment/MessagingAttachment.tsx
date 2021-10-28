@@ -189,11 +189,12 @@ export type AttachmentFileType =
   | "wav"
   | "m4a"
   | "flv"
+  | "ogg"
   | "txt"
   | null;
 
 export const PreviewableImageFileTypes = new Set(["jpg", "jpeg", "gif", "png", "svg"]);
-export const PreviewableAudioFileTypes = new Set(["mp3", "wav", "m4a", "flv"]);
+export const PreviewableAudioFileTypes = new Set(["mp3", "wav", "m4a", "flv", "ogg"]);
 
 // the set of fileTypes we are previewing in AttachmentPreviews
 export const PreviewableFileTypes = new Set([
@@ -206,6 +207,7 @@ export const PreviewableFileTypes = new Set([
   "wav",
   "m4a",
   "flv",
+  "ogg",
 ]);
 
 function fileTypeToIconType(fileType: string): AttachmentIconType {
