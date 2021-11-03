@@ -240,6 +240,7 @@ const Select2: React.FC<Props> = ({
               cssClass.TRAILING_ELEMENT,
               cssClass.CLEAR_BUTTON,
             )}
+            aria-label="clear"
             onClick={(e) => {
               e.stopPropagation();
               if (requirement === FormElementRequirement.DISABLED) {
