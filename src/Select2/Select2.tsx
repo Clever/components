@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useCombobox } from "downshift";
 import * as FontAwesome from "react-fontawesome";
 
+import { FlexBox } from "../flex";
 import { FormElementSize, formElementSizeClassName, FormElementRequirement } from "../utils/Forms";
 import { Values } from "../utils/types";
 
@@ -234,29 +235,31 @@ const Select2: React.FC<Props> = ({
           </div>
         )}
         {clearable && selectedItem && (
-          <button
-            className={classNames(
-              cssClass.BUTTON_RESET,
-              cssClass.TRAILING_ELEMENT,
-              cssClass.CLEAR_BUTTON,
-            )}
-            aria-label="clear"
-            onClick={(e) => {
-              e.stopPropagation();
-              if (requirement === FormElementRequirement.DISABLED) {
-                return;
-              }
+          <FlexBox justify="center" alignItems="center">
+            <button
+              className={classNames(
+                cssClass.BUTTON_RESET,
+                cssClass.TRAILING_ELEMENT,
+                cssClass.CLEAR_BUTTON,
+              )}
+              aria-label="clear"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (requirement === FormElementRequirement.DISABLED) {
+                  return;
+                }
 
-              onChange(null);
-              openMenu();
-              if (inputRef.current) {
-                inputRef.current.select();
-              }
-            }}
-          >
-            {/* https://www.compart.com/en/unicode/U+2715 */}
-            &#10005;
-          </button>
+                onChange(null);
+                openMenu();
+                if (inputRef.current) {
+                  inputRef.current.select();
+                }
+              }}
+            >
+              {/* https://www.compart.com/en/unicode/U+2715 */}
+              &#10005;
+            </button>
+          </FlexBox>
         )}
         <button
           className={classNames(
