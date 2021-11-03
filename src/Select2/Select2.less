@@ -139,6 +139,14 @@
 
 .Select2--clearButton {
   background-color: @neutral_white;
+  min-height: unset;
+  width: 1.25rem;
+  height: 1.25rem;
+  .borderRadius--l();
+
+  &:focus {
+    outline: 0.1875rem solid @primary_blue_shade_2;
+  }
 }
 
 .Select2--caretButton {
