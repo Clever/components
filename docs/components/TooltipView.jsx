@@ -7,7 +7,7 @@ import FontAwesome from "react-fontawesome";
 import Example, { ExampleCode } from "./Example";
 import PropDocumentation from "./PropDocumentation";
 import View from "./View";
-import { Button, SegmentedControl, Tooltip } from "src";
+import { SegmentedControl, Tooltip } from "src";
 
 import "./TooltipView.less";
 
@@ -18,12 +18,13 @@ export default class TooltipView extends Component {
     this.state = {
       placement: Tooltip.Placement.RIGHT,
       textAlign: Tooltip.Align.LEFT,
+      disabled: false,
     };
   }
 
   render() {
     const { cssClass } = TooltipView;
-    const { placement, textAlign } = this.state;
+    const { placement, textAlign, disabled } = this.state;
 
     return (
       <View className={cssClass.CONTAINER} title="Tooltip" sourcePath="src/Tooltip/Tooltip.tsx">
@@ -36,6 +37,7 @@ export default class TooltipView extends Component {
                   content="Here is a simple tooltip."
                   placement={placement}
                   textAlign={textAlign}
+                  hide={disabled}
                 >
                   <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
                 </Tooltip>
@@ -53,6 +55,7 @@ export default class TooltipView extends Component {
                   }
                   placement={placement}
                   textAlign={textAlign}
+                  hide={disabled}
                 >
                   <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
                 </Tooltip>
@@ -63,6 +66,7 @@ export default class TooltipView extends Component {
                   content="Tooltips triggered by clicks stay open."
                   placement={placement}
                   textAlign={textAlign}
+                  hide={disabled}
                   clickTrigger
                 >
                   <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
@@ -88,6 +92,15 @@ export default class TooltipView extends Component {
               options={_.map(Tooltip.Align, (p) => ({ content: p, value: p }))}
             />
           </div>
+          <label className={cssClass.CONFIG}>
+            <input
+              type="checkbox"
+              checked={disabled}
+              className={cssClass.CONFIG_TOGGLE}
+              onChange={(e) => this.setState({ disabled: e.target.checked })}
+            />{" "}
+            Disabled
+          </label>
           <div className={cssClass.ACCESSIBILITY_NOTICE}>
             For accessibility reasons, all tooltips are also triggered by focus. Press the tab key
             to move focus throughout the page.
