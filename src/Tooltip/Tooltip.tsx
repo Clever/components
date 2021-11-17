@@ -115,7 +115,17 @@ export default class Tooltip extends React.Component<Props, State> {
     };
     const handleMouseEnter = clickTrigger ? undefined : handleShowTooltip;
     const handleMouseLeave = clickTrigger ? undefined : handleHideTooltip;
-    const handleOnClick = this.state.showTooltip ? handleHideTooltip : handleShowTooltip;
+    const handleOnClick = () => {
+      if (!clickTrigger || hide) {
+        // Nothing should happen on click if clickTrigger is not set or if the tooltip is disabled
+        return;
+      }
+      if (this.state.showTooltip) {
+        handleHideTooltip();
+      } else {
+        handleShowTooltip();
+      }
+    };
 
     const tooltip = (
       <BootstrapTooltip
@@ -143,7 +153,7 @@ export default class Tooltip extends React.Component<Props, State> {
             onBlur: handleHideTooltip,
             onMouseEnter: handleMouseEnter,
             onMouseLeave: handleMouseLeave,
-            onMouseDown: !clickTrigger || hide ? undefined : handleOnClick,
+            onMouseDown: handleOnClick,
             ...child.props,
           })}
           <Overlay
