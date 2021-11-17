@@ -64,7 +64,6 @@ const defaultProps = {
 
 export const cssClass = {
   CONTENT: "Tooltip--content",
-  FOCUSABLE_TRIGGER: "Tooltip--focusable-trigger",
   align: (textAlign) => `Tooltip--content--${textAlign}`,
 };
 
@@ -140,7 +139,6 @@ export default class Tooltip extends React.Component<Props, State> {
             ref: this.tooltipTarget,
             tabIndex: 0,
             "aria-describedby": this.id,
-            className: cssClass.FOCUSABLE_TRIGGER,
             onFocus: handleShowTooltip,
             onBlur: handleHideTooltip,
             onMouseEnter: handleMouseEnter,
