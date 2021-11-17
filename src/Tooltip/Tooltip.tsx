@@ -1,9 +1,10 @@
 import * as _ from "lodash";
 
-import * as classnames from "classnames";
+import * as React from "react";
 import * as BootstrapTooltip from "react-bootstrap/lib/Tooltip";
 import * as Overlay from "react-bootstrap/lib/Overlay";
-import * as React from "react";
+import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
+import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 
 import { Values } from "../utils/types";
@@ -133,27 +134,29 @@ export default class Tooltip extends React.Component<Props, State> {
     const child = React.Children.only(children);
 
     return (
-      <>
-        {React.cloneElement(child, {
-          ref: this.tooltipTarget,
-          tabIndex: 0,
-          "aria-describedby": this.id,
-          className: cssClass.FOCUSABLE_TRIGGER,
-          onFocus: handleShowTooltip,
-          onBlur: handleHideTooltip,
-          onMouseEnter: handleMouseEnter,
-          onMouseLeave: handleMouseLeave,
-          onMouseDown: !clickTrigger || hide ? undefined : handleOnClick,
-          ...child.props,
-        })}
-        <Overlay
-          target={this.tooltipTarget.current}
-          show={this.state.showTooltip}
-          placement={placement}
-        >
-          {tooltip}
-        </Overlay>
-      </>
+      <RootCloseWrapper onRootClose={handleHideTooltip}>
+        <>
+          {React.cloneElement(child, {
+            ref: this.tooltipTarget,
+            tabIndex: 0,
+            "aria-describedby": this.id,
+            className: cssClass.FOCUSABLE_TRIGGER,
+            onFocus: handleShowTooltip,
+            onBlur: handleHideTooltip,
+            onMouseEnter: handleMouseEnter,
+            onMouseLeave: handleMouseLeave,
+            onMouseDown: !clickTrigger || hide ? undefined : handleOnClick,
+            ...child.props,
+          })}
+          <Overlay
+            target={this.tooltipTarget.current}
+            show={this.state.showTooltip}
+            placement={placement}
+          >
+            {tooltip}
+          </Overlay>
+        </>
+      </RootCloseWrapper>
     );
   }
 }
