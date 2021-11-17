@@ -43,6 +43,19 @@ export default class TooltipView extends Component {
                 </Tooltip>
               </div>
               <div className={cssClass.EXAMPLE}>
+                500ms delay in and out{" "}
+                <Tooltip
+                  content="Here is a simple tooltip with transitions in and out delayed by 500ms."
+                  placement={placement}
+                  textAlign={textAlign}
+                  hide={disabled}
+                  delayMs={500}
+                  delayHideMs={500}
+                >
+                  <FontAwesome className={cssClass.TRIGGER} name="question-circle" />
+                </Tooltip>
+              </div>
+              <div className={cssClass.EXAMPLE}>
                 HTML + long text{" "}
                 <Tooltip
                   content={
