@@ -113,14 +113,16 @@ export default class Tooltip extends React.Component<Props, State> {
       if (hide) return;
       setTimeout(() => this.setState({ showTooltip: false }), delayHideMs);
     };
+    const handleMouseEnter = clickTrigger ? undefined : handleShowTooltip;
+    const handleMouseLeave = clickTrigger ? undefined : handleHideTooltip;
     const handleOnClick = this.state.showTooltip ? handleHideTooltip : handleShowTooltip;
 
     const tooltip = (
       <BootstrapTooltip
         id={this.id}
         className={tooltipClassName}
-        onMouseEnter={handleShowTooltip}
-        onMouseLeave={handleHideTooltip}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div className={classnames(cssClass.CONTENT, cssClass.align(textAlign), className)}>
           {content}
@@ -139,17 +141,15 @@ export default class Tooltip extends React.Component<Props, State> {
           className: cssClass.FOCUSABLE_TRIGGER,
           onFocus: handleShowTooltip,
           onBlur: handleHideTooltip,
-          onMouseEnter: clickTrigger ? undefined : handleShowTooltip,
-          onMouseLeave: clickTrigger ? undefined : handleHideTooltip,
+          onMouseEnter: handleMouseEnter,
+          onMouseLeave: handleMouseLeave,
           onMouseDown: !clickTrigger || hide ? undefined : handleOnClick,
           ...child.props,
         })}
         <Overlay
           target={this.tooltipTarget.current}
-          onHide={handleHideTooltip}
           show={this.state.showTooltip}
           placement={placement}
-          rootClose
         >
           {tooltip}
         </Overlay>
