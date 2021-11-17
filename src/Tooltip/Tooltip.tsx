@@ -1,9 +1,10 @@
 import * as _ from "lodash";
 
-import * as classnames from "classnames";
-import * as BootstrapTooltip from "react-bootstrap/lib/Tooltip";
-import * as OverlayTrigger from "react-bootstrap/lib/OverlayTrigger";
 import * as React from "react";
+import * as BootstrapTooltip from "react-bootstrap/lib/Tooltip";
+import * as Overlay from "react-bootstrap/lib/Overlay";
+import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
+import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 
 import { Values } from "../utils/types";
@@ -21,6 +22,10 @@ export interface Props {
   placement?: Values<typeof Placement>;
   textAlign?: Values<typeof Align>;
   tooltipClassName?: string;
+}
+
+interface State {
+  showTooltip: boolean;
 }
 
 const nextID = 0;
@@ -59,14 +64,13 @@ const defaultProps = {
 
 export const cssClass = {
   CONTENT: "Tooltip--content",
-  FOCUSABLE_TRIGGER: "Tooltip--focusable-trigger",
   align: (textAlign) => `Tooltip--content--${textAlign}`,
 };
 
 /**
  * Standardized tooltip component with fade-in/out transition and customizable positioning.
  */
-export default class Tooltip extends React.Component<Props> {
+export default class Tooltip extends React.Component<Props, State> {
   static nextID = nextID;
   static Align = Align;
   static Placement = Placement;
@@ -76,11 +80,16 @@ export default class Tooltip extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
+    this.state = {
+      showTooltip: false,
+    };
+
     // react-bootstrap Tooltips require an id. We simply autogenerate them with sequential numbers.
     this.id = `Tooltip-${Tooltip.nextID++}`;
   }
 
   id: string;
+  private tooltipTarget = React.createRef();
 
   render() {
     const {
@@ -96,8 +105,35 @@ export default class Tooltip extends React.Component<Props> {
       delayHideMs,
     } = this.props;
 
+    const handleShowTooltip = () => {
+      if (hide) return;
+      setTimeout(() => this.setState({ showTooltip: true }), delayMs);
+    };
+    const handleHideTooltip = () => {
+      if (hide) return;
+      setTimeout(() => this.setState({ showTooltip: false }), delayHideMs);
+    };
+    const handleMouseEnter = clickTrigger ? undefined : handleShowTooltip;
+    const handleMouseLeave = clickTrigger ? undefined : handleHideTooltip;
+    const handleOnClick = () => {
+      if (!clickTrigger || hide) {
+        // Nothing should happen on click if clickTrigger is not set or if the tooltip is disabled
+        return;
+      }
+      if (this.state.showTooltip) {
+        handleHideTooltip();
+      } else {
+        handleShowTooltip();
+      }
+    };
+
     const tooltip = (
-      <BootstrapTooltip id={this.id} className={tooltipClassName}>
+      <BootstrapTooltip
+        id={this.id}
+        className={tooltipClassName}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className={classnames(cssClass.CONTENT, cssClass.align(textAlign), className)}>
           {content}
         </div>
@@ -107,26 +143,28 @@ export default class Tooltip extends React.Component<Props> {
     const child = React.Children.only(children);
 
     return (
-      <OverlayTrigger
-        delayShow={delayMs}
-        delayHide={delayHideMs}
-        overlay={tooltip}
-        placement={placement}
-        rootClose
-        trigger={hide ? [] : ["focus", clickTrigger ? "click" : "hover"]}
-      >
-        {React.cloneElement(child, {
-          tabIndex: 0,
-          "aria-describedby": this.id,
-          className: cssClass.FOCUSABLE_TRIGGER,
-          ...(clickTrigger && {
-            onMouseDown: (e: React.SyntheticEvent) => {
-              e.preventDefault();
-            },
-          }),
-          ...child.props,
-        })}
-      </OverlayTrigger>
+      <RootCloseWrapper onRootClose={handleHideTooltip}>
+        <>
+          {React.cloneElement(child, {
+            ref: this.tooltipTarget,
+            tabIndex: 0,
+            "aria-describedby": this.id,
+            onFocus: handleShowTooltip,
+            onBlur: handleHideTooltip,
+            onMouseEnter: handleMouseEnter,
+            onMouseLeave: handleMouseLeave,
+            onMouseDown: handleOnClick,
+            ...child.props,
+          })}
+          <Overlay
+            target={this.tooltipTarget.current}
+            show={this.state.showTooltip}
+            placement={placement}
+          >
+            {tooltip}
+          </Overlay>
+        </>
+      </RootCloseWrapper>
     );
   }
 }
