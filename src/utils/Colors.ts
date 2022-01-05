@@ -5,7 +5,7 @@
  * Standard color variables.
  */
 
-const Colors = {
+export const Colors = {
   // Primary colors:
   PRIMARY_BLUE: "#436CF2",
   PRIMARY_BLUE_SHADE_1: "#3158D7",

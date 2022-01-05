@@ -5,6 +5,7 @@ import "core-js"; // Provides es5 polyfills not included by the typescript compi
 
 export * from "./flex";
 export * from "./TabBar";
+export * from "./utils/Colors";
 export { FormElementSize, FormElementRequirement } from "./utils/Forms";
 export { Modal } from "./Modal/Modal";
 export { Button } from "./Button/Button";
@@ -81,7 +82,8 @@ import WithKeyboardNav from "./WithKeyboardNav";
 export { WithKeyboardNav };
 
 import RadioGroup from "./RadioGroup";
-export { RadioGroup };
+import Radio from "./RadioGroup/Radio";
+export { RadioGroup, Radio };
 
 import FormError from "./FormError";
 export { FormError };
@@ -102,7 +104,8 @@ import { ToastStack, ToastType, ToastNotificationData } from "./ToastStack";
 export { ToastStack, ToastType, ToastNotificationData };
 
 import Stepper from "./Stepper";
-export { Stepper };
+import Step from "./Stepper/Step";
+export { Stepper, Step };
 
 import WizardLayout from "./WizardLayout";
 export { WizardLayout };
