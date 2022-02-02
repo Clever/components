@@ -153,10 +153,10 @@ export class LeftNav extends React.PureComponent<Props, State> {
           >
             {openChild && (
               <div className={cssClass.SUBNAV_CONTENT}>
-                {openChild.props.children.map((child) => {
+                {React.Children.map(openChild.props.children, (child) => {
+                  // ^ cannot use normal array map, because open.props.children may be an array or a single react element
                   return (
                     <CSSTransition
-                      classNames={cssClass.SUBNAV_CONTENT_ANIM}
                       className={cssClass.SUBNAV_CONTENT_ANIM}
                       timeout={{
                         enter: WIDTH_TRANSITION_DURATION_MS,
