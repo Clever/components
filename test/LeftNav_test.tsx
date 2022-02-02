@@ -84,8 +84,8 @@ describe("LeftNav", function LeftNavTest() {
       const subnav = nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(subnav.exists());
       assert.equal(subnav.children().length, 2);
-      assert.equal(subnav.childAt(0).prop("label"), "subLink11");
-      assert.equal(subnav.childAt(1).prop("label"), "subLink12");
+      assert.equal(subnav.childAt(0).childAt(0).prop("label"), "subLink11");
+      assert.equal(subnav.childAt(1).childAt(0).prop("label"), "subLink12");
     });
   });
 
@@ -131,8 +131,8 @@ describe("LeftNav", function LeftNavTest() {
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(subnav.exists());
       assert.equal(subnav.children().length, 2);
-      assert.equal(subnav.childAt(0).prop("label"), "subLink21");
-      assert.equal(subnav.childAt(1).prop("label"), "subLink22");
+      assert.equal(subnav.childAt(0).childAt(0).prop("label"), "subLink21");
+      assert.equal(subnav.childAt(1).childAt(0).prop("label"), "subLink22");
     });
   });
 
@@ -168,7 +168,7 @@ describe("LeftNav", function LeftNavTest() {
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(subnav.exists());
       assert.equal(subnav.children().length, 1);
-      assert.equal(subnav.childAt(0).prop("label"), "subLink11");
+      assert.equal(subnav.childAt(0).childAt(0).prop("label"), "subLink11");
     });
 
     it("renders the NavLink with the 'selected' class", () => {
@@ -184,7 +184,7 @@ describe("LeftNav", function LeftNavTest() {
       const subnav = this.nav.find(`.${navCss.SUBNAV_CONTENT}`);
       assert(subnav.exists());
       assert.equal(subnav.children().length, 1);
-      assert.equal(subnav.childAt(0).prop("label"), "subLink21");
+      assert.equal(subnav.childAt(0).childAt(0).prop("label"), "subLink21");
     });
   });
 

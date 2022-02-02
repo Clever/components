@@ -2,7 +2,7 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as _ from "lodash";
 import * as classnames from "classnames";
-import { CSSTransitionGroup } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import MorePropTypes from "../utils/MorePropTypes";
@@ -146,15 +146,30 @@ export class LeftNav extends React.PureComponent<Props, State> {
           <div className={classnames(cssClass.TOPNAV, _collapsed && cssClass.TOPNAV_COLLAPSED)}>
             {navItems}
           </div>
-          <CSSTransitionGroup
+          <TransitionGroup
             className={classnames(cssClass.SUBNAV, openChild && cssClass.SUBNAV_OPEN)}
-            transitionEnterTimeout={WIDTH_TRANSITION_DURATION_MS}
-            transitionLeaveTimeout={WIDTH_TRANSITION_DURATION_MS}
             component="div"
             transitionName={cssClass.SUBNAV_CONTENT_ANIM}
           >
-            {openChild && <div className={cssClass.SUBNAV_CONTENT}>{openChild.props.children}</div>}
-          </CSSTransitionGroup>
+            {openChild && (
+              <div className={cssClass.SUBNAV_CONTENT}>
+                {React.Children.map(openChild.props.children, (child) => {
+                  // ^ cannot use normal array map, because open.props.children may be an array or a single react element
+                  return (
+                    <CSSTransition
+                      className={cssClass.SUBNAV_CONTENT_ANIM}
+                      timeout={{
+                        enter: WIDTH_TRANSITION_DURATION_MS,
+                        exit: WIDTH_TRANSITION_DURATION_MS,
+                      }}
+                    >
+                      {child}
+                    </CSSTransition>
+                  );
+                })}
+              </div>
+            )}
+          </TransitionGroup>
         </nav>
       </RootCloseWrapper>
     );

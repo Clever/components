@@ -1,7 +1,7 @@
 import * as classnames from "classnames";
 import * as React from "react";
 import * as _ from "lodash";
-import { CSSTransitionGroup } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ToastNotification } from "./ToastNotification";
 
 import { ActionProps } from "./ToastNotification";
@@ -79,7 +79,15 @@ export class ToastStack extends React.PureComponent<Props> {
     const { className, clearNotification, notificationClassName, notifications } = this.props;
 
     const toasts = notifications.map((n) => (
-      <div className={cssClass.NOTIFICATION_WRAPPER} key={n.id}>
+      <CSSTransition
+        timeout={{
+          enter: 200,
+          exit: 400,
+        }}
+        classNames={cssClass.ANIMATION}
+        className={cssClass.NOTIFICATION_WRAPPER}
+        key={n.id}
+      >
         <ToastNotification
           action={n.action}
           className={notificationClassName}
@@ -90,18 +98,13 @@ export class ToastStack extends React.PureComponent<Props> {
         >
           {n.content}
         </ToastNotification>
-      </div>
+      </CSSTransition>
     ));
 
     return (
-      <CSSTransitionGroup
-        className={classnames(cssClass.CONTAINER, className)}
-        transitionName={cssClass.ANIMATION}
-        transitionEnterTimeout={200}
-        transitionLeaveTimeout={400}
-      >
+      <TransitionGroup className={classnames(cssClass.CONTAINER, className)}>
         {toasts}
-      </CSSTransitionGroup>
+      </TransitionGroup>
     );
   }
 }

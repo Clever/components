@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "2.174.0",
+  "version": "2.175.0",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "react-responsive": "^8.0.3",
     "react-select": "~1.2.1",
     "react-sticky": "^6.0.1",
-    "react-transition-group": "~1.2.0",
+    "react-transition-group": "^4.4.2",
     "short-number": "^1.0.6",
     "tether": "^1.4.0"
   },
