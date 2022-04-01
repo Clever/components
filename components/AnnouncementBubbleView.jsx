@@ -131,7 +131,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               onTranslatedLanguagesHover={() => console.log("Hover, սավառնել, нисэх")}
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
-              bubbleType={"normal"}
               theme={theme}
             >
               Hello class! Links like https://clever.com are clickable
@@ -311,6 +310,20 @@ export default class AnnouncementBubbleView extends React.PureComponent {
         </Example>
         {this._renderProps("quoted")}
 
+        <Example title="UnavailableAnnouncementBubble">
+          <ExampleCode>
+            <AnnouncementBubble
+              className={cssClass.BUBBLE}
+              bubbleType="unavailable"
+              colorTheme={colorTheme}
+              unavailableNoticeHeader="Announcement unavailable."
+              unavailableNoticeText="You no longer have access to this announcement."
+            />
+          </ExampleCode>
+          {this._renderConfig()}
+        </Example>
+        {this._renderProps("unavailable")}
+
         <Example title="DeletedAnnouncementBubble">
           <ExampleCode>
             <AnnouncementBubble
@@ -352,7 +365,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
     if (bubbleType === "normal") {
       return (
         <PropDocumentation
-          title="<AnnouncementBubble />"
+          title="<NormalAnnouncementBubble />"
           availableProps={[
             {
               name: "bubbleType",
@@ -476,7 +489,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
     if (bubbleType === "quoted") {
       return (
         <PropDocumentation
-          title="<AnnouncementBubble />"
+          title="<QuotedAnnouncementBubble />"
           availableProps={[
             {
               name: "bubbleType",
@@ -590,10 +603,49 @@ export default class AnnouncementBubbleView extends React.PureComponent {
       );
     }
 
+    if (bubbleType === "unavailable") {
+      return (
+        <PropDocumentation
+          title="<UnavailableAnnouncementBubble />"
+          availableProps={[
+            {
+              name: "bubbleType",
+              type: "unavailable",
+              description:
+                "Bubble type to determine which version of the component we render, incl. required props.",
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional additional CSS class name to apply to the container.",
+              optional: true,
+            },
+            {
+              name: "colorTheme",
+              // eslint-disable-next-line quotes
+              type: `"white" | "light" | "dark"`,
+              description: "Color theme to use for styling the bubble's color.",
+            },
+            {
+              name: "unavailableNoticeHeader",
+              type: "string",
+              description: "The header displayed in the UnavailableAnnouncementBubble.",
+            },
+            {
+              name: "unavailableNoticeText",
+              type: "string",
+              description: "The text displayed in the UnavailableAnnouncementBubble.",
+            },
+          ]}
+          className={cssClass.PROPS}
+        />
+      );
+    }
+
     if (bubbleType === "deleted") {
       return (
         <PropDocumentation
-          title="<AnnouncementBubble />"
+          title="<DeletedAnnouncementBubble />"
           availableProps={[
             {
               name: "bubbleType",
@@ -618,7 +670,7 @@ export default class AnnouncementBubbleView extends React.PureComponent {
             {
               name: "deletionNoticeText",
               type: "string",
-              description: "The text displayed in the DeletedMessagingBubble.",
+              description: "The text displayed in the DeletedAnnouncementBubble.",
             },
           ]}
           className={cssClass.PROPS}
