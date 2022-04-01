@@ -1,6 +1,10 @@
 import * as React from "react";
 
 import {
+  UnavailableAnnouncementBubble,
+  Props as UnavailableAnnouncementBubbleProps,
+} from "./UnavailableAnnouncementBubble";
+import {
   DeletedAnnouncementBubble,
   Props as DeletedAnnouncementBubbleProps,
 } from "./DeletedAnnouncementBubble";
@@ -16,12 +20,24 @@ import {
 type AnnouncementBubbleProps =
   | NormalAnnouncementBubbleProps
   | QuotedAnnouncementBubbleProps
-  | DeletedAnnouncementBubbleProps;
+  | DeletedAnnouncementBubbleProps
+  | UnavailableAnnouncementBubbleProps;
 
 export const AnnouncementBubble: React.FC<AnnouncementBubbleProps> = (
   props: AnnouncementBubbleProps,
 ) => {
   switch (props.bubbleType) {
+    case "unavailable": {
+      return (
+        <UnavailableAnnouncementBubble
+          bubbleType="unavailable"
+          className={props.className}
+          colorTheme={props.colorTheme}
+          unavailableNoticeHeader={props.unavailableNoticeHeader}
+          unavailableNoticeText={props.unavailableNoticeText}
+        />
+      );
+    }
     case "deleted": {
       return (
         <DeletedAnnouncementBubble
