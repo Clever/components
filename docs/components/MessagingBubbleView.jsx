@@ -310,6 +310,24 @@ export default class MessagingBubbleView extends React.PureComponent {
                 "This is a reply to the announcement with an attachment"
               </MessagingBubble>
             )}
+            {(theme !== "familyPortal" || messageOwnership === "ownMessage") && (
+              <MessagingBubble
+                bubbleType="normal"
+                messageOwnership={messageOwnership}
+                className={cssClass.BUBBLE}
+                theme={theme}
+                replyTo={
+                  <AnnouncementBubble
+                    bubbleType="unavailable"
+                    colorTheme={theme === "familyPortal" ? "white" : colorTheme}
+                    unavailableNoticeHeader={"Announcement unavailable."}
+                    unavailableNoticeText={"You no longer have access to this announcement."}
+                  />
+                }
+              >
+                "This is a reply to an unavailable announcement."
+              </MessagingBubble>
+            )}
           </ExampleCode>
           {this._renderConfig()}
         </Example>
