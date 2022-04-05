@@ -11,9 +11,10 @@ export enum AlertBox2Type {
   CAUTION = "caution",
   SUCCESS = "success",
   INFO = "info",
+  SUPPORT = "support",
 }
 
-const ICON_MAP = {
+const FA_ICON_MAP = {
   critical: "exclamation-circle",
   caution: "exclamation-triangle",
   success: "thumbs-up",
@@ -62,6 +63,22 @@ export const AlertBox2: React.FC<Props> = ({
     return null;
   }
 
+  const icon =
+    iconOverride ||
+    (type === AlertBox2Type.SUPPORT ? (
+      <img
+        alt=""
+        src={require("./life-ring.svg")}
+        className={classnames(cssClass.ICON, "AlertBox2--icon--support")}
+      />
+    ) : (
+      <FontAwesome
+        className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
+        fixedWidth
+        name={FA_ICON_MAP[type]}
+      />
+    ));
+
   return (
     <div className={classnames(cssClass.CONTAINER, `AlertBox2--${type}`, className)}>
       <div
@@ -70,15 +87,7 @@ export const AlertBox2: React.FC<Props> = ({
           !!buttons && cssClass.CONTENT_CONTAINER_WITH_BUTTONS,
         )}
       >
-        <div>
-          {iconOverride || (
-            <FontAwesome
-              className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
-              fixedWidth
-              name={ICON_MAP[type]}
-            />
-          )}
-        </div>
+        <div>{icon}</div>
         <div className={cssClass.CONTENT}>{children}</div>
       </div>
       <div className="AlertBox2--buttons">

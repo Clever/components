@@ -167,7 +167,7 @@ export default class AlertBox2View extends React.PureComponent {
           {
             name: "type",
             type: "string",
-            description: "One of: critical, caution, success, info",
+            description: "One of: critical, caution, success, info, support",
             optional: false,
           },
           {
