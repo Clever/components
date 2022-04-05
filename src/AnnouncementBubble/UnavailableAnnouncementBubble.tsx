@@ -34,6 +34,7 @@ export const UnavailableAnnouncementBubble: React.FC<Props> = ({
   unavailableNoticeHeader,
   unavailableNoticeText,
 }: Props) => {
+  // The light colorTheme icon is reused for the white colorTheme as well.
   const iconName =
     colorTheme === "dark"
       ? "megaphone-slash-darkColorTheme.svg"
