@@ -199,6 +199,7 @@ export default class Table2BetaView extends React.PureComponent {
                     plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",
                   }}
                   selectedRowsHeaderActions={sampleActionInputs}
+                  selectedRowsColumnName="Select all"
                 >
                   <Table2Beta.Column
                     id="details"
@@ -519,6 +520,20 @@ export default class Table2BetaView extends React.PureComponent {
                 "An array of ActionInputs. These are the actions shown in SelectedRowsHeader. Each ActionInput contains a callback which takes props `(selectedRows: Set<any>)`, a title object `{ singular: React.ReactNode; plural?: React.ReactNode }`, and an optional icon url. Title.singular and plural can be a string, or a React element if you want to include FontAwesome, etc",
               optional: true,
               defaultValue: "None",
+            },
+            {
+              name: "disableSelectedRowsHeader",
+              type: "boolean",
+              description: "Allows for disabling the selected row action header",
+              optional: true,
+              defaultValue: "false",
+            },
+            {
+              name: "selectedRowsColumnName",
+              type: "string",
+              description: "Allows for a custom column name for the selection column",
+              optional: true,
+              defaultValue: "",
             },
             {
               name: "numDisplayedActions",
