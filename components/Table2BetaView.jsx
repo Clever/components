@@ -524,16 +524,14 @@ export default class Table2BetaView extends React.PureComponent {
             {
               name: "disableSelectedRowsHeader",
               type: "boolean",
-              description:
-                "Allows for disabling the selected row action header",
+              description: "Allows for disabling the selected row action header",
               optional: true,
               defaultValue: "false",
             },
             {
               name: "selectedRowsColumnName",
               type: "string",
-              description:
-                "Allows for a custom column name for the selection column",
+              description: "Allows for a custom column name for the selection column",
               optional: true,
               defaultValue: "",
             },
