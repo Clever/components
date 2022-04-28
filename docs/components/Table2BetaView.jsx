@@ -199,6 +199,7 @@ export default class Table2BetaView extends React.PureComponent {
                     plural: !!this.state.tableFilter ? `${this.state.tableFilter}s` : "",
                   }}
                   selectedRowsHeaderActions={sampleActionInputs}
+                  selectedRowsColumnName="Select all"
                 >
                   <Table2Beta.Column
                     id="details"

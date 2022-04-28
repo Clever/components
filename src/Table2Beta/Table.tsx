@@ -70,6 +70,8 @@ export interface Props {
   selectedRowsHeaderContentType?: { singular: string; plural?: string };
   selectedRowsHeaderContentTypeNoSelection?: string;
   selectedRowsHeaderActions?: Array<ActionInput>;
+  disableSelectedRowsHeader?: boolean;
+  selectedRowsColumnName?: string;
   numDisplayedActions?: number;
 
   // These must be all set together. TODO: enforce that
@@ -159,6 +161,7 @@ export const cssClass = {
   ACTION_MENU_ITEM: "Table2Beta--actions--menu--item",
   ACTION_MENU_ITEM_TITLE: "Table2Beta--actions--menu--item--title",
   TABLE: "Table2Beta",
+  CHECKBOX_HEADER: "Table2Beta--Checkbox--Header",
 };
 
 export class Table2Beta extends React.Component<Props, State> {
@@ -543,6 +546,8 @@ export class Table2Beta extends React.Component<Props, State> {
       selectedRowsHeaderContentType,
       selectedRowsHeaderContentTypeNoSelection,
       selectedRowsHeaderActions,
+      disableSelectedRowsHeader,
+      selectedRowsColumnName,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -572,7 +577,7 @@ export class Table2Beta extends React.Component<Props, State> {
 
     return (
       <>
-        {selectable && (
+        {selectable && !disableSelectedRowsHeader && (
           <SelectedRowsHeader
             className={className}
             selectedRows={selectedRows}
@@ -602,8 +607,9 @@ export class Table2Beta extends React.Component<Props, State> {
                       this.setState({ selectedRows });
                     }}
                     disabled={displayedData.length === 0}
+                    className={cssClass.CHECKBOX_HEADER}
                   >
-                    {""}
+                    {selectedRowsColumnName}
                   </Checkbox>
                 </HeaderCell>
               )}
