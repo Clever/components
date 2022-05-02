@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as cx from "classnames";
 import { FlexBox } from "../";
-
+const darkColorThemeIcon = require("./megaphone-slash-darkColorTheme.svg");
+const lightColorThemeIcon = require("./megaphone-slash-lightColorTheme.svg");
 import "./UnavailableAnnouncementBubble.less";
 
 type ColorTheme = "white" | "light" | "dark";
@@ -35,10 +36,7 @@ export const UnavailableAnnouncementBubble: React.FC<Props> = ({
   unavailableNoticeText,
 }: Props) => {
   // The light colorTheme icon is reused for the white colorTheme as well.
-  const iconName =
-    colorTheme === "dark"
-      ? "megaphone-slash-darkColorTheme.svg"
-      : "megaphone-slash-lightColorTheme.svg";
+  const icon = colorTheme === "dark" ? darkColorThemeIcon : lightColorThemeIcon;
 
   return (
     <FlexBox
@@ -47,7 +45,7 @@ export const UnavailableAnnouncementBubble: React.FC<Props> = ({
       justify="start"
       className={cx(cssClassWithColorTheme("container", colorTheme), className)}
     >
-      <img alt="" className={cssClass("icon")} src={require(`./${iconName}`)} />
+      <img alt="" className={cssClass("icon")} src={icon} />
       <div className={cssClass("textContainer")}>
         <div className={cx(cssClassWithColorTheme("header", colorTheme))}>
           {unavailableNoticeHeader}
