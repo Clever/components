@@ -72,6 +72,7 @@ export interface Props {
   selectedRowsHeaderActions?: Array<ActionInput>;
   disableSelectedRowsHeader?: boolean;
   selectedRowsColumnName?: string;
+  preselectedRowFn?: Function;
   numDisplayedActions?: number;
 
   // These must be all set together. TODO: enforce that
@@ -175,7 +176,7 @@ export class Table2Beta extends React.Component<Props, State> {
     super(props);
 
     if (props.lazy) {
-      for (const p of ["data", "filter", "initialPage"]) {
+      for (const p of ["data", "filter", "initialPage", "preselectedRowFn"]) {
         if (props[p]) {
           console.error(`Table: prop "${p}" may not be set if "lazy"`);
         }
@@ -194,11 +195,23 @@ export class Table2Beta extends React.Component<Props, State> {
       }
     }
 
+    const selectedRows = new Set();
+    let allSelected = false;
+    if (props.selectable && props.preselectedRowFn && props.data?.length > 0) {
+      props.data.forEach((d) => {
+        if (props.preselectedRowFn(d)) {
+          selectedRows.add(d);
+        }
+      });
+
+      allSelected = selectedRows.size === props.data.length;
+    }
+
     this.state = {
       currentPage: props.initialPage || 1,
       sortState: props.initialSortState,
-      selectedRows: new Set(),
-      allSelected: false,
+      selectedRows,
+      allSelected,
       allData: new Set(),
 
       // lazy table state
