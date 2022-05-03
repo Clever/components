@@ -74,6 +74,7 @@ export interface Props {
   selectedRowsColumnName?: string;
   preselectedRowFn?: Function;
   numDisplayedActions?: number;
+  onSelect?: Function;
 
   // These must be all set together. TODO: enforce that
   lazy?: boolean;
@@ -561,6 +562,7 @@ export class Table2Beta extends React.Component<Props, State> {
       selectedRowsHeaderActions,
       disableSelectedRowsHeader,
       selectedRowsColumnName,
+      onSelect,
     } = this.props;
     const { lazy, numRows } = this.props;
     const { currentPage, sortState, pageLoading, allLoaded } = this.state;
@@ -617,6 +619,10 @@ export class Table2Beta extends React.Component<Props, State> {
                         selectedRows.clear();
                         this.setState({ allSelected: false });
                       }
+                      if (onSelect) {
+                        onSelect(selectedRows);
+                      }
+
                       this.setState({ selectedRows });
                     }}
                     disabled={displayedData.length === 0}
