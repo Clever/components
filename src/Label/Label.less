@@ -26,6 +26,11 @@
   cursor: help;
   // Relative positioning needed to provide tooltip anchor.
   position: relative;
+
+  &:focus, 
+  &:active {
+    .border--s(@neutral_dark_gray);
+  }
 }
 
 .Label--s {
