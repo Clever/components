@@ -29,14 +29,14 @@ const Color = {
   ERROR: "error",
 
   // Accents:
-  CATEGORY_1: "category-1",
+  CATEGORY_1: "new-feature",
   CATEGORY_2: "category-2",
   TAG: "tag",
 
   // For backwards compatibility:
   BLUE: "new-feature",
-  AQUA: "category-1",
-  PURPLE: "category-1",
+  AQUA: "new-feature",
+  PURPLE: "new-feature",
   PINK: "category-2",
   GRAY: "default",
 } as const;
