@@ -693,6 +693,11 @@ export class Table2Beta extends React.Component<Props, State> {
                             selectedRows.delete(rowData);
                             this.setState({ allSelected: false });
                           }
+
+                          if (onSelect) {
+                            onSelect(selectedRows);
+                          }
+
                           this.setState({ selectedRows });
                         }}
                       >
