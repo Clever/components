@@ -697,7 +697,7 @@ export class Table2Beta extends React.Component<Props, State> {
                           if (onSelect) {
                             onSelect(selectedRows);
                           }
-                          
+
                           this.setState({ selectedRows });
                         }}
                       >
