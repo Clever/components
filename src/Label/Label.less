@@ -26,6 +26,11 @@
   cursor: help;
   // Relative positioning needed to provide tooltip anchor.
   position: relative;
+
+  &:focus,
+  &:active {
+    .border--s(@neutral_dark_gray);
+  }
 }
 
 .Label--s {
@@ -39,92 +44,30 @@
 }
 
 .Label--default {
-  .colorize(@neutral_silver);
+  background-color: @neutral_silver;
 }
 
 .Label--new-feature {
-  .colorize(@accent_teal_tint_2);
+  background-color: @label_purple;
 }
 
 .Label--success {
-  .colorize(@alert_green_tint_2);
+  background-color: @label_green;
 }
 
 .Label--warning {
-  .colorize(@alert_orange_tint_2);
+  background-color: @label_yellow;
 }
 
 .Label--error {
-  .colorize(@alert_red_tint_2);
-}
-
-.Label--category-1 {
-  .colorize(@accent_purple_tint_2);
+  background-color: @label_red;
 }
 
 .Label--category-2 {
-  .colorize(@accent_pink_tint_2);
+  background-color: @label_pink;
 }
 
 .Label--tag {
-  .colorize(@neutral_white);
+  background-color: @neutral_white;
   .border--s(@neutral_gray);
-}
-
-.colorize(@color) {
-  &:not(.Label--withTooltip) {
-    .highlight(@color);
-  }
-
-  &.Label--withTooltip {
-    .highlight(@color, true);
-  }
-}
-
-/**
- * Fade all colors 50%.
- * Remove fade on focus/hover for labels with tooltips.
- * @param {Color} @color
- * @param {boolean} @darkenOnHover
- */
-.highlight(@color, @darkenOnHover: false) {
-  background-color: fade(@color, 50%);
-}
-
-.highlight(@color, @darkenOnHover) when (@darkenOnHover = true) {
-  &:focus,
-  &:hover {
-    background-color: @color;
-  }
-}
-
-/**
- * For 'default', gray/silver
- * doesn't need a fade on base color.
- * Shade on focus/hover for labels with tooltips
- * to provide contrast.
-*/
-
-.highlight(@color, @darkenOnHover: false) when (@color = @neutral_silver) {
-  background-color: @color;
-}
-
-.highlight(@color, @darkenOnHover) when (@darkenOnHover = true) and (@color = @neutral_silver) {
-  &:focus,
-  &:hover {
-    background-color: shade(@color, 25%);
-  }
-}
-
-/**
- * For 'tag', tooltip focus/hover 
- * has white background so fade() will not do anything.
- * Instead, fill with the stroke color.
- */
-
-.highlight(@color, @darkenOnHover) when (@darkenOnHover = true) and (@color = @neutral_white) {
-  &:focus,
-  &:hover {
-    background-color: @neutral_gray;
-  }
 }
