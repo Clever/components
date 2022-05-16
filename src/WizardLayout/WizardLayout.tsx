@@ -10,18 +10,15 @@ import "./WizardLayout.less";
 
 export interface Props {
   className?: string;
-  exitButtonText?: React.ReactNode;
   sections: any[];
   fullscreen?: boolean;
   headerImg?: any;
   helpContent?: React.ReactNode;
   hidePreviousStepButton?: boolean;
-  hideSaveAndExit?: boolean;
   nextStepButtonDisabled?: boolean;
   nextStepButtonText?: React.ReactNode;
   onNextStep: () => void;
   onPrevStep: () => void;
-  onSaveAndExit?: () => void;
   prevStepButtonDisabled?: boolean;
   prevStepButtonText?: React.ReactNode;
   stepper: React.ReactNode;
@@ -37,7 +34,6 @@ const SECTION_PROP_TYPE = PropTypes.shape({
 
 const propTypes = {
   className: PropTypes.string,
-  exitButtonText: PropTypes.node,
   fullscreen: PropTypes.bool,
   headerImg: PropTypes.element,
   helpContent: PropTypes.node,
@@ -46,10 +42,8 @@ const propTypes = {
   nextStepButtonText: PropTypes.node,
   prevStepButtonDisabled: PropTypes.bool,
   prevStepButtonText: PropTypes.node,
-  hideSaveAndExit: PropTypes.bool,
   onNextStep: PropTypes.func.isRequired,
   onPrevStep: PropTypes.func.isRequired,
-  onSaveAndExit: PropTypes.func,
   sections: PropTypes.arrayOf(SECTION_PROP_TYPE).isRequired,
   stepper: PropTypes.node.isRequired,
   subtitle: PropTypes.string,
@@ -70,6 +64,7 @@ const cssClass = {
   HEADER_SUBTITLE: "WizardLayout--headerSubtitle",
   HELP_CONTAINER: "WizardLayout--helpContainer",
   HELP_IMG: "WizardLayout--helpImg",
+  LOGO: "WizardLayout--logo",
   PREVIOUS_BUTTON: "WizardLayout--previousButton",
   STEPPER_CONTAINER: "WizardLayout--stepperContainer",
   SECTION_DIVIDER: "WizardLayout--sectionDivider",
@@ -89,15 +84,12 @@ export default class WizardLayout extends React.PureComponent<Props> {
   render() {
     const {
       className,
-      exitButtonText,
       sections,
       headerImg,
       helpContent,
       nextStepButtonDisabled,
       nextStepButtonText,
       hidePreviousStepButton,
-      hideSaveAndExit,
-      onSaveAndExit,
       prevStepButtonDisabled,
       prevStepButtonText,
       stepper,
@@ -146,13 +138,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
           </FlexBox>
         </FlexBox>
         <FlexBox className={classnames(cssClass.FOOTER, fullscreen && cssClass.FOOTER_FULLSCREEN)}>
-          {!hideSaveAndExit && onSaveAndExit && (
-            <Button
-              type="link"
-              value={exitButtonText || "Save & exit"}
-              onClick={() => onSaveAndExit()}
-            />
-          )}
+          <img src={require("./logo.svg")} alt="" className={cssClass.LOGO} />
           {/* spacer for the buttons */}
           <FlexBox grow />
           {!hidePreviousStepButton && (
