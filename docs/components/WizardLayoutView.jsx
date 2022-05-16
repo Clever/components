@@ -42,18 +42,11 @@ export default class WizardLayoutView extends React.PureComponent {
       goals: false,
     },
     hidePreviousStepButton: false,
-    hideSaveAndExit: false,
   };
 
   render() {
     const { fullscreen } = this.props;
-    const {
-      currentStep,
-      showHeaderImg,
-      customHelpContent,
-      hidePreviousStepButton,
-      hideSaveAndExit,
-    } = this.state;
+    const { currentStep, showHeaderImg, customHelpContent, hidePreviousStepButton } = this.state;
 
     const stepperSteps = [
       {
@@ -85,16 +78,6 @@ export default class WizardLayoutView extends React.PureComponent {
       />
     );
 
-    const _onSaveAndExit = () => {
-      const completionStatus = {
-        setAccess: false,
-        singleSignOn: false,
-        goals: false,
-      };
-
-      this.setState({ currentStep: WizardLayoutContent.firstStep, completionStatus });
-    };
-
     const _onNextStep = () => {
       if (WizardLayoutContent[currentStep].nextStep) {
         const completionStatus = this.state;
@@ -104,7 +87,12 @@ export default class WizardLayoutView extends React.PureComponent {
           completionStatus,
         });
       } else {
-        _onSaveAndExit();
+        const completionStatus = {
+          setAccess: false,
+          singleSignOn: false,
+          goals: false,
+        };
+        this.setState({ currentStep: WizardLayoutContent.firstStep, completionStatus });
       }
     };
 
@@ -126,17 +114,14 @@ export default class WizardLayoutView extends React.PureComponent {
     const WizardLayoutToRender = (
       <WizardLayout
         className="Dewey--WizardLayout"
-        exitButtonText={WizardLayoutContent[currentStep].exitButtonText || null}
         fullscreen={fullscreen}
         sections={WizardLayoutContent[currentStep].sections}
         headerImg={showHeaderImg ? headerImg : null}
         helpContent={customHelpContent ? WizardLayoutContent[currentStep].helpContent : null}
         hidePreviousStepButton={hidePreviousStepButton}
-        hideSaveAndExit={hideSaveAndExit}
         nextStepButtonText={WizardLayoutContent[currentStep].nextStepButtonText || null}
         onNextStep={_onNextStep}
         onPrevStep={_onPrevStep}
-        onSaveAndExit={_onSaveAndExit}
         prevStepButtonDisabled={!WizardLayoutContent[currentStep].prevStep}
         prevStepButtonText={WizardLayoutContent[currentStep].prevStepButtonText || null}
         stepper={stepper}
@@ -192,12 +177,7 @@ export default class WizardLayoutView extends React.PureComponent {
   }
 
   _renderConfig() {
-    const {
-      showHeaderImg,
-      customHelpContent,
-      hidePreviousStepButton,
-      hideSaveAndExit,
-    } = this.state;
+    const { showHeaderImg, customHelpContent, hidePreviousStepButton } = this.state;
 
     return (
       <FlexBox alignItems={ItemAlign.CENTER} className={cssClass.CONFIG_CONTAINER} wrap>
@@ -228,15 +208,6 @@ export default class WizardLayoutView extends React.PureComponent {
           />{" "}
           Hide previous step button
         </label>
-        <label className={cssClass.CONFIG}>
-          <input
-            type="checkbox"
-            checked={hideSaveAndExit}
-            className={cssClass.CONFIG_TOGGLE}
-            onChange={(e) => this.setState({ hideSaveAndExit: e.target.checked })}
-          />{" "}
-          Hide save & exit button
-        </label>
       </FlexBox>
     );
   }
@@ -250,13 +221,6 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "className",
             type: "String",
             description: "Custom CSS class to be added to the component.",
-            optional: true,
-          },
-          {
-            name: "exitButtonText",
-            type: "React.Node",
-            description: "Optional exit button text",
-            defaultValue: "Save & exit",
             optional: true,
           },
           {
@@ -306,19 +270,6 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "hidePreviousStepButton",
             type: "Boolean",
             description: "Optional boolean determining if the previous step button is hidden",
-            optional: true,
-          },
-          {
-            name: "hideSaveAndExit",
-            type: "Boolean",
-            description: "Optional boolean determining if the save & exit button is hidden",
-            optional: true,
-            defaultValue: "false",
-          },
-          {
-            name: "onSaveAndExit",
-            type: "Function",
-            description: "Called when user clicks on 'Save & exit' button.",
             optional: true,
           },
           {
