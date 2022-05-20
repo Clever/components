@@ -92,7 +92,7 @@ export default class RadioGroup<
           {_.map(options, (o) => {
             const isSelectedAndHasAdditionalText = o.id === selectedID && o.additionalText;
             return (
-              <>
+              <React.Fragment key={o.id}>
                 <Radio<OptionIDType, OptionValueType>
                   checked={o.id === selectedID}
                   className={classnames(
@@ -101,7 +101,6 @@ export default class RadioGroup<
                   )}
                   disabled={!!disabled || !!o.disabled}
                   id={o.id}
-                  key={o.id}
                   onSelect={onChange}
                   ref={(ref) => this._handleRadioRef(ref)}
                   tabIndex={o.id === focusableOptionID ? 0 : -1}
@@ -113,7 +112,7 @@ export default class RadioGroup<
                 {isSelectedAndHasAdditionalText && (
                   <div className={cssClass.ADDITIONAL_TEXT}>{o.additionalText}</div>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
         </div>
