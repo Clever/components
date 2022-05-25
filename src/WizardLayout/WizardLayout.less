@@ -58,6 +58,11 @@
   .flexShrink(0);
 }
 
+.WizardLayout--logo {
+  height: @size_m;
+  width: fit-content;
+}
+
 .WizardLayout--stepperContainer {
   max-width: 22rem;
   overflow-y: scroll;
@@ -107,6 +112,7 @@
   .padding--l();
   box-shadow: @size_3xs @size_3xs @size_m @size_none rgba(168, 174, 186, 0.3);
   .flexShrink(0);
+  .alignItems(center);
   .zIndex--1();
 }
 
