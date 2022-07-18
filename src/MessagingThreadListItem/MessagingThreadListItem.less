@@ -1,14 +1,15 @@
 @import (reference) "../less/index";
 
 .ThreadListItem {
-  .padding--left--xs();
+  .padding--left--m();
   .padding--right--m();
   .padding--y--s();
   color: @neutral_dark_gray;
 }
 
 .ThreadListItem--selected {
-  background-color: #f3f5fd; /* stylelint-disable-line */
+    background-color: #f3f5fd; /* stylelint-disable-line */
+    box-shadow: inset @size_xs 0 @primary_blue;
 }
 
 .ThreadListItem--off {
