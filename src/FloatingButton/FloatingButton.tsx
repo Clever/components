@@ -257,7 +257,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                   onClick={() => this.additionalButtonHandler(button)}
                   value={button.label}
                   size={size || Button.Size.M}
-                  aria-hidden={!active}
+                  display={!active ? "none" : "block"}
                 />
               </div>
             ))}
