@@ -10,7 +10,7 @@ import Menu from "../Menu";
 
 // Defined as an array first as a convenience to make automatic enumeration of all themes easier in
 // the demo code.
-export const TopBarThemes = ["default", "plain"] as const;
+export const TopBarThemes = ["default", "plain", "a11y"] as const;
 type TopBarTheme = typeof TopBarThemes[number];
 
 export interface Props {
