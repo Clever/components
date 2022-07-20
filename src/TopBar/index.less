@@ -79,30 +79,11 @@
 // a11y theme: meets all accessibility color contrast requirements
 // https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast
 .dewey--TopBar.dewey--TopBar--theme--a11y {
-
   .TopBarButton {
-    height: @topBarHeight;
     &:hover,
     &:focus,
     &:active {
       background-color:fade(@primary_blue_hover, 100%);
     }
-  }
-  .TopBarButton--rounded {
-    height: @topBarHeight - @topBarHeightMargin;
-  }
-  .TopBarButton--activeIndicator {
-    background-color: transparent;
-    opacity: 1.0;
-    border-bottom: @activeIndicatorSize solid @neutral_white;
-    border-left: @activeIndicatorSize solid transparent;
-    border-right: @activeIndicatorSize solid transparent;
-    bottom: 0;
-    display: block;
-    height: 0;
-    left: 50%;
-    margin-left: -@activeIndicatorSize;
-    position: absolute;
-    width: 0;
   }
 }
