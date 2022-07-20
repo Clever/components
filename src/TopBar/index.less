@@ -75,3 +75,15 @@
     }
   }
 }
+
+// a11y theme: meets all accessibility color contrast requirements
+.dewey--TopBar.dewey--TopBar--theme--a11y {
+  /* stylelint-disable-next-line no-descending-specificity */
+  .TopBarButton {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: fade(@primary_blue_hover, 100%);
+    }
+  }
+}
