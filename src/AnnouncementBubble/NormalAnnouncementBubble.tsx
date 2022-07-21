@@ -213,7 +213,12 @@ function ReplyButton({
   replyButtonText?: string;
 }): JSX.Element {
   return (
-    <Button className={cssClass("replyButton")} onClick={onReply} type={"secondary"}>
+    <Button
+      ariaLabel={"Reply"}
+      className={cssClass("replyButton")}
+      onClick={onReply}
+      type={"secondary"}
+    >
       <FlexBox alignItems="center" justify="center">
         <img
           alt=""
