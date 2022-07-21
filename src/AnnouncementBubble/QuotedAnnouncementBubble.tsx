@@ -176,6 +176,7 @@ export const QuotedAnnouncementBubble: React.FC<Props> = ({
       )}
       <Button
         className={cssClass("button--outer")}
+        ariaLabel={buttonText}
         onClick={() => {
           if (onToggleShow) {
             onToggleShow();
