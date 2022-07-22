@@ -259,11 +259,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                     cssClass.BUTTON,
                     colorGroup && cssClass.propStyle(colorGroup),
                   )}
-<<<<<<< HEAD
                   ariaLabel={button.ariaLabel}
-=======
-                  aria-label={button.ariaLabel}
->>>>>>> 5da73124 (Add aria label to Floating button and additional buttons)
                   onClick={() => this.additionalButtonHandler(button)}
                   value={button.label}
                   size={size || Button.Size.M}
