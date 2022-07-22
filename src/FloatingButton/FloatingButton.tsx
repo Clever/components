@@ -15,6 +15,7 @@ import { breakpointS } from "../utils/Constants";
 export interface Props {
   additionalButtons?: any[];
   animate?: boolean;
+  ariaLabel?: string;
   className?: string;
   closeLabel?: React.ReactNode;
   colorGroup?: Values<typeof ColorGroup>;
@@ -66,6 +67,8 @@ const propTypes = {
   animate: PropTypes.bool,
 
   additionalButtons: PropTypes.array,
+
+  ariaLabel: PropTypes.string,
 
   colorGroup: PropTypes.oneOf(Object.values(ColorGroup)),
   className: PropTypes.string,
@@ -184,6 +187,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
     const {
       additionalButtons,
       animate,
+      ariaLabel,
       colorGroup,
       className,
       closeLabel,
@@ -219,6 +223,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                 colorGroup && cssClass.propStyle(colorGroup),
                 active && cssClass.propStyle("gray"),
               )}
+              ariaLabel={ariaLabel}
               onClick={this.mainButtonHandler}
               value={
                 active
@@ -254,6 +259,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                     cssClass.BUTTON,
                     colorGroup && cssClass.propStyle(colorGroup),
                   )}
+                  ariaLabel={button.ariaLabel}
                   onClick={() => this.additionalButtonHandler(button)}
                   value={button.label}
                   size={size || Button.Size.M}
