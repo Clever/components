@@ -1,10 +1,14 @@
 {
   "name": "clever-components",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "version": "2.187.0",
 =======
   "version": "2.177.1",
 >>>>>>> 5975064c (bump version)
+=======
+  "version": "2.177.1",
+>>>>>>> 5975064c0d6c17b3ad02241f460192e735a4c79a
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
