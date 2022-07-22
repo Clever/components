@@ -63,6 +63,7 @@ export default class FloatingButtonView extends React.PureComponent {
           <ExampleCode>
             <FloatingButton
               className="my--custom--class"
+              ariaLabel="ariaLabel"
               label="label"
               colorGroup={showColorGroup ? FloatingButton.ColorGroup.GREEN : null}
               animate={animate}
@@ -77,16 +78,19 @@ export default class FloatingButtonView extends React.PureComponent {
                         className: "my--custom--class",
                         label: "button 1",
                         onClick: () => console.log("button 1 clicked"),
+                        ariaLabel: "button 1 ariaLabel",
                       },
                       {
                         className: "my--custom--class",
                         label: "button 2",
                         onClick: () => console.log("button 2 clicked"),
+                        ariaLabel: "button 2 ariaLabel",
                       },
                       {
                         className: "my--custom--class",
                         label: "longer button",
                         onClick: () => console.log("longer button clicked"),
+                        ariaLabel: "longer ariaLabel",
                       },
                     ]
                   : null
@@ -204,6 +208,12 @@ export default class FloatingButtonView extends React.PureComponent {
               optional: true,
             },
             {
+              name: "ariaLabel",
+              type: "string",
+              description: "A string value that labels an interactive element.",
+              optional: true,
+            },
+            {
               name: "className",
               type: "string",
               description: "Optional additional CSS class name to apply to the container.",
@@ -290,6 +300,12 @@ export default class FloatingButtonView extends React.PureComponent {
         <PropDocumentation
           title="Object in the additionalButtons"
           availableProps={[
+            {
+              name: "ariaLabel",
+              type: "string",
+              description: "A string value that labels an interactive element.",
+              optional: true,
+            },
             {
               name: "className",
               type: "string",
