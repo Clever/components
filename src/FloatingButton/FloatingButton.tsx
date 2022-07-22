@@ -223,7 +223,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                 colorGroup && cssClass.propStyle(colorGroup),
                 active && cssClass.propStyle("gray"),
               )}
-              aria-label={ariaLabel}
+              ariaLabel={ariaLabel}
               onClick={this.mainButtonHandler}
               value={
                 active
@@ -259,7 +259,7 @@ export default class FloatingButton extends React.PureComponent<Props, State> {
                     cssClass.BUTTON,
                     colorGroup && cssClass.propStyle(colorGroup),
                   )}
-                  aria-label={button.ariaLabel}
+                  ariaLabel={button.ariaLabel}
                   onClick={() => this.additionalButtonHandler(button)}
                   value={button.label}
                   size={size || Button.Size.M}
