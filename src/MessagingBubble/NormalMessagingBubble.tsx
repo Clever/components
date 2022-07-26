@@ -28,7 +28,6 @@ const cssClasses = {
 
 export interface Props {
   bubbleType: "normal";
-
   attachments?: React.ReactNode[];
   children: React.ReactNode;
   className?: string;
@@ -54,6 +53,7 @@ export const NormalMessagingBubble: React.FC<Props> = ({
   const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
   const isOwnMessage = messageOwnership === "ownMessage";
   const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
+  const aria = isOwnMessage ? "Your message" : "Other's message";
   const containerClassNames = cx(
     className,
     `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
@@ -103,8 +103,12 @@ export const NormalMessagingBubble: React.FC<Props> = ({
             metadataClassNames,
             actionButtonClassNames,
           })}
-        <div className={hideBubble ? null : bubbleClassNames}>
-          {replyTo && <div className={replyClassNames}>{replyTo}</div>}
+        <div className={hideBubble ? null : bubbleClassNames} aria-label={aria}>
+          {replyTo && (
+            <div className={replyClassNames} aria-label="Quoted message">
+              {replyTo}
+            </div>
+          )}
           <Linkify componentDecorator={componentDecorator} matchDecorator={matchDecorator}>
             {children}
           </Linkify>
@@ -120,7 +124,9 @@ export const NormalMessagingBubble: React.FC<Props> = ({
             actionButtonClassNames,
           })}
         {attachments?.length > 0 && (
-          <FlexBox className={attachmentClassNames}>{attachments}</FlexBox>
+          <FlexBox className={attachmentClassNames} aria-label={aria}>
+            {attachments}
+          </FlexBox>
         )}
       </FlexBox>
     </FlexBox>
