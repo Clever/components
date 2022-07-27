@@ -82,6 +82,7 @@ export const MessagingAttachment: React.FC<Props> = ({
           isUpload && !uploadComplete && cssClass("IsUploading"),
           !!errorMsg && cssClass("Error"),
         )}
+        aria-label={"Attachment"}
         tabIndex={0}
         onClick={(e) =>
           handleClickAttachment(
