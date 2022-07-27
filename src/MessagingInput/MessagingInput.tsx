@@ -133,7 +133,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
                     onClick={onReplyCancel}
                     aria-label="Cancel reply"
                   >
-                    <FontAwesome name="times" className={cssClass("Reply--CloseIcon")} />
+                    <FontAwesome aria-hidden="true" name="times" className={cssClass("Reply--CloseIcon")} />
                   </button>
                 )}
               </div>
@@ -191,7 +191,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           type="primary"
           value={
             <FlexBox alignItems="center">
-              <FontAwesome name="paper-plane" />
+              <FontAwesome aria-hidden="true" name="paper-plane" />
               <span className={cssClass("SendText")}>{sendButtonText}</span>
             </FlexBox>
           }
