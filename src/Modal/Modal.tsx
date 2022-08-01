@@ -89,7 +89,7 @@ export class Modal extends React.Component<Props, State> {
     const modalContent = (
       <div className={classnames("Modal", this.props.className)}>
         <div className="Modal--background" onClick={this.props.closeModal} aria-hidden="true" />
-        <div className="Modal--window" style={windowStyle}>
+        <div className="Modal--window" style={windowStyle} role="dialog" aria-modal="true">
           <header className="Modal--header">
             <button
               className="Modal--close"
