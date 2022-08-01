@@ -31,6 +31,7 @@ interface Props {
   threadID: string;
   messages: MessageData[];
   onScroll?: () => void;
+  ariaLabel?: string;
 }
 
 const SCROLL_BUFFER = 200;
@@ -50,7 +51,7 @@ function isOwnMessage(message: MessageData) {
 
 export const MessagingThreadHistory = React.forwardRef(
   (
-    { className, threadID, messages, onScroll }: Props,
+    { className, threadID, messages, onScroll, ariaLabel }: Props,
     containerRef: React.MutableRefObject<HTMLDivElement>,
   ) => {
     // ----------- Scroll position references
@@ -107,6 +108,8 @@ export const MessagingThreadHistory = React.forwardRef(
         ref={containerRef}
         onScroll={onScroll}
         tabIndex={0}
+        role="grid"
+        aria-label={ariaLabel}
       >
         {messagesWithDividers}
       </div>
@@ -128,8 +131,11 @@ function _interleaveMessagesWithDividers(
       const messageDay = _formatDateForDivider(message.timestamp);
       if (currentDay !== messageDay) {
         messagesWithDividers.push(
-          <div key={`divider-${messageDay}`} className={cssClasses.DIVIDER}>
-            {messageDay}
+          <div role="row">
+            <div role="gridcell" key={`divider-${messageDay}`} className={cssClasses.DIVIDER}>
+              {messageDay}
+            </div>
+            ,
           </div>,
         );
         currentDay = messageDay;

@@ -16,9 +16,9 @@ interface Props {
 
 export const AlertMessage: React.FC<Props> = ({ icon, messageText }: Props) => {
   return (
-    <FlexBox className={cssClass("Container")}>
-      <FontAwesome name={icon} size="lg" />
-      <FlexItem className={cssClass("Message")} grow>
+    <FlexBox className={cssClass("Container")} role={"row"}>
+      <FontAwesome aria-hidden="true" name={icon} size="lg" />
+      <FlexItem role={"gridcell"} className={cssClass("Message")} grow>
         {messageText}
       </FlexItem>
     </FlexBox>
