@@ -24,8 +24,10 @@ export const MessageMetadata: React.FC<
 > = React.forwardRef((props: Props, ref: React.Ref<HTMLDivElement>) => {
   const { className, placement, readStatusText, children, errorMsg } = props;
   return (
-    <div ref={ref} className={classNames(cssClass("Message--container"), className)}>
-      <div className={cssClass(`Message--${placement}`)}>{children}</div>
+    <div ref={ref} className={classNames(cssClass("Message--container"), className)} role="row">
+      <div role="gridcell" className={cssClass(`Message--${placement}`)}>
+        {children}
+      </div>
       {readStatusText && <div className={cssClass("ReadReceipt")}>{readStatusText}</div>}
       {errorMsg && formErrorContainer(errorMsg, placement)}
     </div>

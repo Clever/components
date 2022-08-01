@@ -95,7 +95,11 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
 
         <Example title="Basic Usage:">
           <ExampleCode>
-            <MessagingThreadHistory threadID="abc" messages={messages} />
+            <MessagingThreadHistory
+              threadID="abc"
+              messages={messages}
+              ariaLabel={"Thread history"}
+            />
           </ExampleCode>
           {this._renderConfig()}
         </Example>
@@ -156,6 +160,12 @@ export default class MessagingThreadHistoryView extends React.PureComponent {
             type: "() => void",
             description:
               "Optional callback that triggers on user scroll. Does not provide event information.",
+            optional: true,
+          },
+          {
+            name: "ariaLabel",
+            type: "string",
+            description: "aria-label attribute",
             optional: true,
           },
         ]}

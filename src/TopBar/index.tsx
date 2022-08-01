@@ -53,6 +53,7 @@ export class TopBar extends React.PureComponent<Props> {
     return (
       <FlexBox
         alignItems="center"
+        role="banner"
         className={classnames(
           "dewey--TopBar",
           className,
