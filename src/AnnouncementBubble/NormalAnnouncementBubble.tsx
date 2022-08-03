@@ -72,7 +72,7 @@ export const NormalAnnouncementBubble: React.FC<Props> = ({
       <FlexBox>
         <div className={cssClass("senderIcon")}>{senderIcon}</div>
         <FlexBox column alignItems="start" justify="center">
-          <div className={cssClass("senderName")}>{senderName}</div>
+          <h4 className={cssClass("senderName")}>{senderName}</h4>
           <div className={cssClass("timestamp")}>{formatDateForTimestamp(sentAtTimestamp)}</div>
         </FlexBox>
         {deleteMenu}
