@@ -103,3 +103,16 @@
     .margin--right--none;
   }
 }
+
+// For low-vision users that zoom screens to 400%, show entire title text.
+//
+// 320 CSS pixels is equivalent to a starting viewport width of 1280 CSS pixels wide at 400% zoom.
+// https://www.w3.org/WAI/WCAG21/Understanding/reflow
+@media only screen and (max-width: 20em) {
+  .Modal--header {
+    height: auto;
+    h1 {
+      white-space: normal;
+    }
+  }
+}
