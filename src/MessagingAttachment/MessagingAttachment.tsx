@@ -120,7 +120,9 @@ export const MessagingAttachment: React.FC<Props> = ({
           )}
         </FlexBox>
         <FlexBox className={cssClass("TextContainer")} column>
-          <span className={cssClass("Title")}>{errorMsg || title}</span>
+          <span role="status" className={cssClass("Title")}>
+            {errorMsg || title}
+          </span>
           {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
         </FlexBox>
       </FlexBox>
