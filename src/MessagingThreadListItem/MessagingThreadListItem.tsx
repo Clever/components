@@ -148,7 +148,6 @@ export const MessagingThreadListItem: React.FC<
         )}
         onClick={onClick}
         alignItems={ItemAlign.CENTER}
-        aria-selected={selected}
       >
         <div className={cssClasses.ICON}>{icon}</div>
         <FlexItem grow className={cssClasses.DETAILS_CONTAINER}>
