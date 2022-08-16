@@ -18,7 +18,6 @@ export const FamilyPortalLogo: React.FC<Props> = ({ className, svgClassName }: P
         fill="none"
         viewBox="0 0 179 24"
         role="img"
-        aria-label="Clever Parents Logo"
       >
         <title id="dewey--FamilyPortalLogo--title">Clever Parents</title>
         <path
