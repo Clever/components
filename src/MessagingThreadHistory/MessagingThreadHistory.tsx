@@ -157,7 +157,7 @@ function _interleaveMessagesWithDividers(
           key={`alertMessage-${message.index}`}
           icon={icon}
           messageText={messageText}
-        />,
+        />
       );
     }
   });
