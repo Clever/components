@@ -123,7 +123,11 @@ export const MessagingAttachment: React.FC<Props> = ({
           <span role="status" className={cssClass("Title")}>
             {errorMsg || title}
           </span>
-          {subtitle && <span className={cssClass("Subtitle")}>{subtitle}</span>}
+          {subtitle && (
+            <span role="button" className={cssClass("Subtitle")}>
+              {subtitle}
+            </span>
+          )}
         </FlexBox>
       </FlexBox>
       {attachmentPreviewIsShowing && isPreviewableAttachment && (
