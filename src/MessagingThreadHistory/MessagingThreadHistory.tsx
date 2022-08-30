@@ -108,7 +108,7 @@ export const MessagingThreadHistory = React.forwardRef(
         ref={containerRef}
         onScroll={onScroll}
         tabIndex={0}
-        role="grid"
+        role="log"
         aria-label={ariaLabel}
       >
         {messagesWithDividers}
@@ -126,16 +126,13 @@ function _interleaveMessagesWithDividers(
   let currentDay = "";
   messages.forEach((message: MessageData, i) => {
     // If the message has a timestamp (i.e. is not Clever-generated) and was sent on a different
-    //  day than the previous message, we want a divider (with the date) in between.
+    // day than the previous message, we want a divider (with the date) in between.
     if (message.timestamp) {
       const messageDay = _formatDateForDivider(message.timestamp);
       if (currentDay !== messageDay) {
         messagesWithDividers.push(
-          <div role="row">
-            <div role="gridcell" key={`divider-${messageDay}`} className={cssClasses.DIVIDER}>
-              {messageDay}
-            </div>
-            ,
+          <div key={`divider-${messageDay}`} className={cssClasses.DIVIDER}>
+            {messageDay}
           </div>,
         );
         currentDay = messageDay;

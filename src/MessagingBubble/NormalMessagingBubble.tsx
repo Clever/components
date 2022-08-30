@@ -39,6 +39,16 @@ export interface Props {
   timestamp: Date;
 }
 
+// Collect all hardcoded strings in one place for easy replacement when
+// we eventually support i18n.
+// TODO localize these strings for various languages, once we support multi-regions.
+const i18nString = {
+  DELETE: "Delete",
+  YOUR_MESSAGE: "Your message",
+  OTHERS_MESSAGE: "Other's message",
+  QUOTED_MESSAGE: "Quoted message",
+};
+
 export const NormalMessagingBubble: React.FC<Props> = ({
   className,
   children,
@@ -53,7 +63,7 @@ export const NormalMessagingBubble: React.FC<Props> = ({
   const hideBubble = !children && !replyTo; // if message is only attachments, no body and not a reply
   const isOwnMessage = messageOwnership === "ownMessage";
   const classSuffix = isOwnMessage ? cssClasses.OWN_SUFFIX : cssClasses.OTHER_SUFFIX;
-  const aria = isOwnMessage ? "Your message" : "Other's message";
+  const whoseMessage = isOwnMessage ? i18nString.YOUR_MESSAGE : i18nString.OTHERS_MESSAGE;
   const containerClassNames = cx(
     className,
     `${cssClasses.MESSAGE_CONTAINER_BASE}${classSuffix}`,
@@ -103,9 +113,9 @@ export const NormalMessagingBubble: React.FC<Props> = ({
             metadataClassNames,
             actionButtonClassNames,
           })}
-        <div className={hideBubble ? null : bubbleClassNames} aria-label={aria}>
+        <div className={hideBubble ? null : bubbleClassNames} aria-label={whoseMessage}>
           {replyTo && (
-            <div className={replyClassNames} aria-label="Quoted message">
+            <div className={replyClassNames} aria-label={i18nString.QUOTED_MESSAGE}>
               {replyTo}
             </div>
           )}
@@ -124,7 +134,7 @@ export const NormalMessagingBubble: React.FC<Props> = ({
             actionButtonClassNames,
           })}
         {attachments?.length > 0 && (
-          <FlexBox className={attachmentClassNames} aria-label={aria}>
+          <FlexBox className={attachmentClassNames} aria-label={whoseMessage}>
             {attachments}
           </FlexBox>
         )}
@@ -135,6 +145,7 @@ export const NormalMessagingBubble: React.FC<Props> = ({
 
 // Helper function: Format a Date for our pretty timestamps.
 //  Always returns "xx:xx <AM/PM>" format.
+// TODO localize time format to be region-specific
 function _formatDateForTimestamp(date: Date): string {
   return moment(date).format("h:mm A");
 }
@@ -202,11 +213,10 @@ function _renderActionButton({
   actionButtonClassNames: string;
 }): React.ReactNode {
   const formattedTimestamp = _formatDateForTimestamp(timestamp);
-
   return (
     <div className={metadataClassNames}>
       <Button
-        ariaLabel={`Delete ${formattedTimestamp} ${messageBody || ""}`}
+        ariaLabel={`${i18nString.DELETE} ${formattedTimestamp} ${messageBody || ""}`}
         className={actionButtonClassNames}
         type="linkPlain"
         onClick={onClickDeleteButton}
