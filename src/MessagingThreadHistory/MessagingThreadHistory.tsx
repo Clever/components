@@ -135,7 +135,6 @@ function _interleaveMessagesWithDividers(
             <div role="gridcell" key={`divider-${messageDay}`} className={cssClasses.DIVIDER}>
               {messageDay}
             </div>
-            ,
           </div>,
         );
         currentDay = messageDay;
