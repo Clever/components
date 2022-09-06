@@ -260,7 +260,11 @@ const MultiSelect: React.FC<Props> = ({
             )}
           />
         </div>
-        <button className={cssClass.CARET_BUTTON} {...getToggleButtonProps()}>
+        <button
+          aria-label="toggle dropdown options"
+          className={cssClass.CARET_BUTTON}
+          {...getToggleButtonProps()}
+        >
           <FontAwesome name={isOpen ? "caret-up" : "caret-down"} />
         </button>
       </div>
