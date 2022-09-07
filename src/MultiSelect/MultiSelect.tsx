@@ -87,6 +87,12 @@ export function getSelectableOptions(
   return [...creatableOption, ...selectableOptions];
 }
 
+// pulling out English string literals to eventually be i18n friendly
+// when i18n is prioritized for these components
+const i18nStrings = {
+  TOGGLE_BUTTON_LABEL: "toggle dropdown options",
+};
+
 /*
   Multi-item select drop down component
 */
@@ -261,7 +267,7 @@ const MultiSelect: React.FC<Props> = ({
           />
         </div>
         <button
-          aria-label="toggle dropdown options"
+          aria-label={i18nStrings.TOGGLE_BUTTON_LABEL}
           className={cssClass.CARET_BUTTON}
           {...getToggleButtonProps()}
         >
