@@ -80,9 +80,12 @@ export default class List extends React.PureComponent<Props> {
             {title}
           </header>
         )}
-        <ul className={classnames(cssClass.ITEMS, cssClass.rowType(rowType), itemsClassName)}>
+        <div
+          role="tablist"
+          className={classnames(cssClass.ITEMS, cssClass.rowType(rowType), itemsClassName)}
+        >
           {items}
-        </ul>
+        </div>
       </div>
     );
   }

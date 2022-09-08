@@ -8,6 +8,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
+  selected?: boolean;
 }
 
 const cssClass = {
@@ -23,10 +24,11 @@ export default class Item extends React.PureComponent<Props> {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     onClick: PropTypes.func,
+    selected: PropTypes.bool,
   };
 
   render() {
-    const { children, className, onClick } = this.props;
+    const { children, className, onClick, selected } = this.props;
 
     let Wrapper: Extract<keyof JSX.IntrinsicElements, "div" | "button"> = "div";
     if (onClick) {
@@ -34,14 +36,16 @@ export default class Item extends React.PureComponent<Props> {
     }
 
     return (
-      <li className={classnames(cssClass.CONTAINER, className)}>
+      <div className={classnames(cssClass.CONTAINER, className)}>
         <Wrapper
+          role="tab"
+          aria-selected={selected}
           className={classnames(cssClass.CONTENT_WRAPPER, !!onClick && cssClass.CONTENT_ONCLICK)}
           onClick={onClick}
         >
           {children}
         </Wrapper>
-      </li>
+      </div>
     );
   }
 }
