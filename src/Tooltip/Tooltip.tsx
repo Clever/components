@@ -126,6 +126,12 @@ export default class Tooltip extends React.Component<Props, State> {
         handleShowTooltip();
       }
     };
+    const handleEscape = (event) => {
+      if (event.keyCode === 27 && this.state.showTooltip) {
+        handleHideTooltip();
+        event.stopPropagation();
+      }
+    };
 
     const tooltip = (
       <BootstrapTooltip
@@ -154,6 +160,7 @@ export default class Tooltip extends React.Component<Props, State> {
             onMouseEnter: handleMouseEnter,
             onMouseLeave: handleMouseLeave,
             onMouseDown: handleOnClick,
+            onKeyUp: (event) => handleEscape(event),
             ...child.props,
           })}
           <Overlay
