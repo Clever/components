@@ -528,7 +528,7 @@ export class Table2Beta extends React.Component<Props, State> {
                 <img
                   className={cssClass.SINGLE_ACTION_TRIGGER}
                   src={require("./ellipsis.svg")}
-                  // TODO: is this a good alt text for the ellipsis icon?
+                  // TODO: alt-texts need to be translated
                   alt="more actions"
                 />
               </Button>
