@@ -462,6 +462,27 @@ export class Table2Beta extends React.Component<Props, State> {
     return this._getLazyData();
   }
 
+  actionIconAndHoverIcon = (action: ActionInput) => {
+    return (
+      <>
+        {action.icon && (
+          <img
+            className={cssClass.ACTION_ICON}
+            src={action.icon}
+            alt={action.title.singular.toString()}
+          />
+        )}
+        {action.hoverIcon && (
+          <img
+            className={cssClass.ACTION_HOVER_ICON}
+            src={action.hoverIcon}
+            alt={action.title.singular.toString()}
+          />
+        )}
+      </>
+    );
+  };
+
   _singleActionsRender(rowData) {
     const { singleActions } = this.props;
     if (singleActions.length === 1) {
@@ -471,20 +492,7 @@ export class Table2Beta extends React.Component<Props, State> {
           type="link"
           value={
             <>
-              {singleActions[0].icon && (
-                <img
-                  className={cssClass.ACTION_ICON}
-                  src={singleActions[0].icon}
-                  alt={singleActions[0].title.singular.toString()}
-                />
-              )}
-              {singleActions[0].hoverIcon && (
-                <img
-                  className={cssClass.ACTION_HOVER_ICON}
-                  src={singleActions[0].hoverIcon}
-                  alt={singleActions[0].title.singular.toString()}
-                />
-              )}
+              {this.actionIconAndHoverIcon(singleActions[0])}
               <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
             </>
           }
@@ -501,20 +509,7 @@ export class Table2Beta extends React.Component<Props, State> {
             value={
               <>
                 <span className={singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER}>
-                  {singleActions[0].icon && (
-                    <img
-                      className={cssClass.ACTION_ICON}
-                      src={singleActions[0].icon}
-                      alt={singleActions[0].title.singular.toString()}
-                    />
-                  )}
-                  {singleActions[0].hoverIcon && (
-                    <img
-                      className={cssClass.ACTION_HOVER_ICON}
-                      src={singleActions[0].hoverIcon}
-                      alt={singleActions[0].title.singular.toString()}
-                    />
-                  )}
+                  {this.actionIconAndHoverIcon(singleActions[0])}
                 </span>
                 <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
               </>
@@ -545,20 +540,7 @@ export class Table2Beta extends React.Component<Props, State> {
                 key="action.title.singular"
               >
                 <div className={cssClass.ACTION_MENU_ITEM_TITLE}>
-                  {action.icon && (
-                    <img
-                      className={cssClass.ACTION_ICON}
-                      src={action.icon}
-                      alt={action.title.singular.toString()}
-                    />
-                  )}
-                  {action.hoverIcon && (
-                    <img
-                      className={cssClass.ACTION_HOVER_ICON}
-                      src={action.hoverIcon}
-                      alt={action.title.singular.toString()}
-                    />
-                  )}
+                  {this.actionIconAndHoverIcon(action)}
                   <div className={cssClass.ACTION_TITLE}>{action.title.singular}</div>
                 </div>
               </Menu.Item>
