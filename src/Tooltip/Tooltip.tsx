@@ -29,6 +29,7 @@ interface State {
 }
 
 const nextID = 0;
+const ESC = 27;
 
 const Align = {
   CENTER: "center",
@@ -127,7 +128,7 @@ export default class Tooltip extends React.Component<Props, State> {
       }
     };
     const handleEscape = (event) => {
-      if (event.keyCode === 27 && this.state.showTooltip) {
+      if (event.keyCode === ESC && this.state.showTooltip) {
         handleHideTooltip();
         event.stopPropagation();
       }
