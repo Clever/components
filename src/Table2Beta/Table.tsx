@@ -472,10 +472,18 @@ export class Table2Beta extends React.Component<Props, State> {
           value={
             <>
               {singleActions[0].icon && (
-                <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+                <img
+                  className={cssClass.ACTION_ICON}
+                  src={singleActions[0].icon}
+                  alt={singleActions[0].title.singular.toString()}
+                />
               )}
               {singleActions[0].hoverIcon && (
-                <img className={cssClass.ACTION_HOVER_ICON} src={singleActions[0].hoverIcon} />
+                <img
+                  className={cssClass.ACTION_HOVER_ICON}
+                  src={singleActions[0].hoverIcon}
+                  alt={singleActions[0].title.singular.toString()}
+                />
               )}
               <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
             </>
@@ -494,10 +502,18 @@ export class Table2Beta extends React.Component<Props, State> {
               <>
                 <span className={singleActions[0].hoverIcon && cssClass.ACTION_ICON_CONTAINER}>
                   {singleActions[0].icon && (
-                    <img className={cssClass.ACTION_ICON} src={singleActions[0].icon} />
+                    <img
+                      className={cssClass.ACTION_ICON}
+                      src={singleActions[0].icon}
+                      alt={singleActions[0].title.singular.toString()}
+                    />
                   )}
                   {singleActions[0].hoverIcon && (
-                    <img className={cssClass.ACTION_HOVER_ICON} src={singleActions[0].hoverIcon} />
+                    <img
+                      className={cssClass.ACTION_HOVER_ICON}
+                      src={singleActions[0].hoverIcon}
+                      alt={singleActions[0].title.singular.toString()}
+                    />
                   )}
                 </span>
                 <div className={cssClass.ACTION_TITLE}>{singleActions[0].title.singular}</div>
@@ -509,7 +525,12 @@ export class Table2Beta extends React.Component<Props, State> {
           <Menu
             trigger={
               <Button size="small" className={cssClass.ACTION_MENU} type="link">
-                <img className={cssClass.SINGLE_ACTION_TRIGGER} src={require("./ellipsis.svg")} />
+                <img
+                  className={cssClass.SINGLE_ACTION_TRIGGER}
+                  src={require("./ellipsis.svg")}
+                  // TODO: is this a good alt text for the ellipsis icon?
+                  alt="more actions"
+                />
               </Button>
             }
             placement={Menu.Placement.RIGHT}
@@ -524,9 +545,19 @@ export class Table2Beta extends React.Component<Props, State> {
                 key="action.title.singular"
               >
                 <div className={cssClass.ACTION_MENU_ITEM_TITLE}>
-                  {action.icon && <img className={cssClass.ACTION_ICON} src={action.icon} />}
+                  {action.icon && (
+                    <img
+                      className={cssClass.ACTION_ICON}
+                      src={action.icon}
+                      alt={action.title.singular.toString()}
+                    />
+                  )}
                   {action.hoverIcon && (
-                    <img className={cssClass.ACTION_HOVER_ICON} src={action.hoverIcon} />
+                    <img
+                      className={cssClass.ACTION_HOVER_ICON}
+                      src={action.hoverIcon}
+                      alt={action.title.singular.toString()}
+                    />
                   )}
                   <div className={cssClass.ACTION_TITLE}>{action.title.singular}</div>
                 </div>
