@@ -86,7 +86,7 @@ export default class Checkbox extends React.PureComponent<Props> {
     return (
       <button
         aria-checked={ariaCheckedState}
-        aria-labelledby={hasLabel && this._labelID}
+        aria-labelledby={hasLabel ? this._labelID : undefined}
         // TODO: aria-label needs to be translated
         aria-label={!hasLabel ? "select/unselect" : undefined}
         className={classnames(
