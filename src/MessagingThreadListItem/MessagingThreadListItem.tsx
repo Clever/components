@@ -116,6 +116,7 @@ export const MessagingThreadListItem: React.FC<
     } else if (!isRead) {
       indicatorIcon = (
         <div
+          role="status"
           aria-label={`Unread messages in thread ${title}`}
           className={classNames(
             cssClasses.UNREAD_ORB,
