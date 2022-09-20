@@ -34,18 +34,28 @@ export default function HeaderCell({
   activeSortDirection,
   width,
 }: Props) {
+  const Enter = "Enter";
+  const Space = " ";
+
   return (
     <Cell
+      isHeader
+      aria-sort={sortable && activeSortDirection ? `${activeSortDirection}ending` : null}
       className={classnames(cssClass.HEADER_CELL, sortable && cssClass.SORTABLE, className)}
       onClick={() => sortable && onSortChange()}
+      onKeyUp={(e) => (e.key === Enter || e.key === Space) && sortable && onSortChange()}
       width={width}
     >
       <FlexBox alignItems={ItemAlign.CENTER}>
-        <div className={cssClass.LABEL} role={sortable ? "button" : null}>
+        <div
+          className={cssClass.LABEL}
+          tabIndex={sortable ? 0 : null}
+          role={sortable ? "button" : null}
+        >
           {children}
         </div>
         {sortable && (
-          <div>
+          <div aria-hidden="true">
             <SortIcons direction={activeSortDirection} className={cssClass.SORT} />
           </div>
         )}
