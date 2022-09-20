@@ -9,6 +9,7 @@ export interface Props {
   className?: string;
   noWrap?: boolean;
   width?: string;
+  isHeader?: boolean;
   [additionalProp: string]: any;
 }
 
@@ -17,15 +18,34 @@ export const cssClass = {
   NO_WRAP: "Table--cell--no_wrap",
 };
 
-export default function Cell({ children, className, noWrap, width, ...additionalProps }: Props) {
+export default function Cell({
+  children,
+  className,
+  noWrap,
+  width,
+  isHeader,
+  ...additionalProps
+}: Props) {
   return (
-    <td
-      className={classnames(cssClass.CELL, noWrap && cssClass.NO_WRAP, className)}
-      style={{ width }}
-      {...additionalProps}
-    >
-      {children}
-    </td>
+    <>
+      {isHeader ? (
+        <th
+          className={classnames(cssClass.CELL, noWrap && cssClass.NO_WRAP, className)}
+          style={{ width }}
+          {...additionalProps}
+        >
+          {children}
+        </th>
+      ) : (
+        <td
+          className={classnames(cssClass.CELL, noWrap && cssClass.NO_WRAP, className)}
+          style={{ width }}
+          {...additionalProps}
+        >
+          {children}
+        </td>
+      )}
+    </>
   );
 }
 
@@ -34,4 +54,5 @@ Cell.propTypes = {
   children: PropTypes.node,
   noWrap: PropTypes.bool,
   width: PropTypes.string,
+  isHeader: PropTypes.bool,
 };
