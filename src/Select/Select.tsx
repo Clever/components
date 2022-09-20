@@ -41,6 +41,7 @@ export interface Props {
   error?: string;
   size?: Size;
   closeMenuOnSelect?: boolean;
+  ariaLabel?: string;
 }
 
 interface State {
@@ -84,6 +85,7 @@ const propTypes = {
   error: PropTypes.string,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
   closeMenuOnSelect: PropTypes.bool,
+  ariaLabel: PropTypes.string,
 };
 
 const defaultProps = {
@@ -158,6 +160,7 @@ export class Select extends React.Component<Props, State> {
       error,
       size,
       closeMenuOnSelect,
+      ariaLabel,
     } = this.props;
     if (!lazy) {
       if (!options) {
@@ -242,6 +245,7 @@ export class Select extends React.Component<Props, State> {
             closeOnSelect={closeMenuOnSelect}
             value={value}
             role="listbox"
+            aria-label={ariaLabel}
             {...overrideProps}
           />
         </div>
