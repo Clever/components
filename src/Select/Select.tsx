@@ -15,7 +15,6 @@ export interface SelectValueType {
 }
 
 export interface Props {
-  labelText?: string;
   id: string;
   name: string;
   clearable?: boolean;
@@ -42,6 +41,7 @@ export interface Props {
   error?: string;
   size?: Size;
   closeMenuOnSelect?: boolean;
+  ariaLabel?: string;
 }
 
 interface State {
@@ -54,7 +54,6 @@ const selectValuePropType = PropTypes.shape({
 });
 
 const propTypes = {
-  labelText: PropTypes.string,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   clearable: PropTypes.bool,
@@ -86,6 +85,7 @@ const propTypes = {
   error: PropTypes.string,
   size: PropTypes.oneOf(Object.values(FormElementSize)),
   closeMenuOnSelect: PropTypes.bool,
+  ariaLabel: PropTypes.string,
 };
 
 const defaultProps = {
@@ -134,7 +134,6 @@ export class Select extends React.Component<Props, State> {
 
   render() {
     const {
-      labelText,
       id,
       name,
       clearable,
@@ -161,6 +160,7 @@ export class Select extends React.Component<Props, State> {
       error,
       size,
       closeMenuOnSelect,
+      ariaLabel,
     } = this.props;
     if (!lazy) {
       if (!options) {
@@ -225,7 +225,6 @@ export class Select extends React.Component<Props, State> {
       <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), wrapperClass)}>
         <div id={id}>
           <SelectComponent
-            aria-label={labelText}
             className={reactSelectClasses}
             clearable={clearable}
             promptTextCreator={creatablePromptFn}
@@ -246,6 +245,7 @@ export class Select extends React.Component<Props, State> {
             closeOnSelect={closeMenuOnSelect}
             value={value}
             role="listbox"
+            aria-label={ariaLabel}
             {...overrideProps}
           />
         </div>
