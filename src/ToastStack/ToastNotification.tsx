@@ -70,7 +70,7 @@ export class ToastNotification extends React.PureComponent<Props> {
         alignItems={ItemAlign.CENTER}
       >
         <FontAwesome name={iconMap[type]} size="lg" spin={type === ToastType.PROCESSING} />
-        <FlexBox className={cssClass.CONTENT} grow aria-live="polite">
+        <FlexBox className={cssClass.CONTENT} grow role="alert">
           {children}
         </FlexBox>
         {action && (
