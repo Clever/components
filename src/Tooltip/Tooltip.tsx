@@ -155,7 +155,6 @@ export default class Tooltip extends React.Component<Props, State> {
           {React.cloneElement(child, {
             ref: this.tooltipTarget,
             tabIndex: 0,
-            "aria-describedby": this.id,
             onFocus: handleShowTooltip,
             onBlur: handleHideTooltip,
             onMouseEnter: handleMouseEnter,
