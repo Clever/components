@@ -19,6 +19,7 @@ const FA_ICON_MAP = {
   caution: "exclamation-triangle",
   success: "thumbs-up",
   info: "exclamation-circle",
+  support: "life-ring",
 };
 
 export interface Props {
@@ -63,21 +64,13 @@ export const AlertBox2: React.FC<Props> = ({
     return null;
   }
 
-  const icon =
-    iconOverride ||
-    (type === AlertBox2Type.SUPPORT ? (
-      <img
-        alt=""
-        src={require("./life-ring.svg")}
-        className={classnames(cssClass.ICON, "AlertBox2--icon--support")}
-      />
-    ) : (
-      <FontAwesome
-        className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
-        fixedWidth
-        name={FA_ICON_MAP[type]}
-      />
-    ));
+  const icon = iconOverride || (
+    <FontAwesome
+      className={classnames(cssClass.ICON, `AlertBox2--icon--${type}`)}
+      fixedWidth
+      name={FA_ICON_MAP[type]}
+    />
+  );
 
   return (
     <div className={classnames(cssClass.CONTAINER, `AlertBox2--${type}`, className)}>
