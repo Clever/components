@@ -29,6 +29,7 @@ export interface Props {
   value: string;
   onChange: (value: string) => void;
   size?: Values<typeof FormElementSize>;
+  placeholder?: string;
 }
 
 export const cssClass = {
@@ -71,6 +72,7 @@ const Select2: React.FC<Props> = ({
   value,
   onChange,
   size,
+  placeholder,
 }) => {
   const [createdOption, setCreatedOption] = useState<Option | null>(null);
   const options = createdOption ? [...initialOptions, createdOption] : initialOptions;
@@ -222,6 +224,7 @@ const Select2: React.FC<Props> = ({
         <input
           id={id}
           name={id}
+          placeholder={placeholder}
           className={cssClass.INPUT}
           {...getInputProps({
             ref: inputRef,
