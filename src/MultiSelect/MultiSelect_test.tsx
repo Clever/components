@@ -62,7 +62,7 @@ describe("MultiSelect", () => {
           { label: "Test Option 3", value: "testOption3" },
           { label: "Test Option 4", value: "testOption4" },
         ];
-        const results = getSelectableOptions(options, [], "", false);
+        const results = getSelectableOptions(options, [], "", false, false);
         expect(results).toEqual(options);
       });
 
@@ -78,6 +78,7 @@ describe("MultiSelect", () => {
           options.map((o) => o.value),
           "",
           false,
+          false
         );
         expect(results).toEqual([]);
       });
@@ -89,7 +90,7 @@ describe("MultiSelect", () => {
           { label: "Filtered Option 1", value: "filtered1" },
           { label: "Filtered Option 2", value: "filtered2" },
         ];
-        const results = getSelectableOptions(options, [], "test o", false);
+        const results = getSelectableOptions(options, [], "test o", false, false);
         expect(results).toEqual(options.slice(0, 2));
       });
 
@@ -100,7 +101,7 @@ describe("MultiSelect", () => {
           { label: "Filtered Option 1", value: "filtered1" },
           { label: "Filtered Option 2", value: "filtered2" },
         ];
-        const results = getSelectableOptions(options, ["testOption2"], "test o", false);
+        const results = getSelectableOptions(options, ["testOption2"], "test o", false, false);
         expect(results).toEqual([{ label: "Test Option 1", value: "testOption1" }]);
       });
     });
@@ -113,7 +114,7 @@ describe("MultiSelect", () => {
           { label: "Test Option 3", value: "testOption3" },
           { label: "Test Option 4", value: "testOption4" },
         ];
-        const results = getSelectableOptions(options, [], "uniqueText", true);
+        const results = getSelectableOptions(options, [], "uniqueText", true, false);
         expect(results).toEqual([{ value: ADD_NEW_ITEM_KEY }]);
       });
 
@@ -124,7 +125,7 @@ describe("MultiSelect", () => {
           { label: "Test Option 3", value: "testOption3" },
           { label: "Test Option 4", value: "testOption4" },
         ];
-        const results = getSelectableOptions(options, [], "Test Option 1", true);
+        const results = getSelectableOptions(options, [], "Test Option 1", true, false);
         expect(results).toEqual([{ label: "Test Option 1", value: "testOption1" }]);
       });
 
@@ -135,7 +136,7 @@ describe("MultiSelect", () => {
           { label: "Test Option 3", value: "testOption3" },
           { label: "Test Option 4", value: "testOption4" },
         ];
-        const results = getSelectableOptions(options, ["testOption1"], "Test Option 1", true);
+        const results = getSelectableOptions(options, ["testOption1"], "Test Option 1", true, false);
         expect(results).toEqual([]);
       });
 
@@ -151,6 +152,7 @@ describe("MultiSelect", () => {
           options.map((o) => o.value),
           "",
           true,
+          false
         );
         expect(results).toEqual([]);
       });

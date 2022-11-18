@@ -33,6 +33,7 @@ export default class MultiSelectView extends React.PureComponent {
     values: [],
     initialValuesSelect: "",
     size: FormElementSize.MEDIUM,
+    caseSensitive: false
   };
 
   render() {
@@ -81,6 +82,7 @@ export default class MultiSelectView extends React.PureComponent {
               }))}
               creatable={this.state.creatable}
               allowDuplicates={this.state.allowDuplicates}
+              caseSensitive={this.state.caseSensitive}
               onChange={(v) => {
                 console.log(`selected: ${v.join(", ")}`);
                 this.setState({ values: v });
@@ -105,6 +107,7 @@ export default class MultiSelectView extends React.PureComponent {
       placeholder,
       creatable,
       allowDuplicates,
+      caseSensitive,
       size,
     } = this.state;
 
@@ -182,6 +185,15 @@ export default class MultiSelectView extends React.PureComponent {
           />{" "}
           <span className={cssClass.CONFIG_LABEL_TEXT}>allow duplicates</span>
         </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={caseSensitive}
+            onChange={(e) => this.setState({ caseSensitive: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_LABEL_TEXT}>Case Sensitive</span>
+        </label>
         <div className={cssClass.CONFIG}>
           <span className={cssClass.CONFIG_LABEL_TEXT}>Size:</span>
           <SegmentedControl
@@ -256,6 +268,13 @@ export default class MultiSelectView extends React.PureComponent {
             type: "boolean",
             description:
               "If new options are allowed to be created (if input text does not match any existing options)",
+            optional: true,
+          },
+          {
+            name: "caseSensitive",
+            type: "boolean",
+            description:
+              "If words are treated as the same regardless of case",
             optional: true,
           },
           {
