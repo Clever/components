@@ -38,6 +38,12 @@ export class TopBarButton extends React.PureComponent<Props> {
     }
   }
 
+  blur() {
+    if (this._containerRef && this._containerRef.blur) {
+      this._containerRef.blur();
+    }
+  }
+
   render() {
     const { active, children, className, href, onClick } = this.props;
     const additionalProps = _.omit(this.props, Object.keys(propTypes));
@@ -54,7 +60,13 @@ export class TopBarButton extends React.PureComponent<Props> {
             this.props.round ? "TopBarButton--rounded" : null,
           )}
           href={href}
-          onClick={onClick}
+          onClick={() => {
+            // Button should not stay in active/focused state after it has been invoked.
+            // Otherwise, button looks like it's still active, even after clicking it.
+            // See PRTL-3215 for example of this bug
+            this.blur();
+            onClick();
+          }}
           ref={(ref) => {
             this._containerRef = ref;
           }}
