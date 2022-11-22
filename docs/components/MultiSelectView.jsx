@@ -33,7 +33,7 @@ export default class MultiSelectView extends React.PureComponent {
     values: [],
     initialValuesSelect: "",
     size: FormElementSize.MEDIUM,
-    caseSensitive: false
+    caseSensitive: false,
   };
 
   render() {
@@ -273,8 +273,7 @@ export default class MultiSelectView extends React.PureComponent {
           {
             name: "caseSensitive",
             type: "boolean",
-            description:
-              "If words are treated as the same regardless of case",
+            description: "If words are treated as the same regardless of case",
             optional: true,
           },
           {
