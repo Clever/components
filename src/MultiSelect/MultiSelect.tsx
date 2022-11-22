@@ -65,7 +65,7 @@ export function getSelectableOptions(
   const selectedValuesSet = new Set<string>(selectedValues);
   let inputCase = inputValue.toLocaleLowerCase();
 
-  //if case sensitive, don't lowercase input for match evaluation
+  // if case sensitive, don't lowercase input for match evaluation
   if (caseSensitive) {
     inputCase = inputValue;
   }
