@@ -60,16 +60,15 @@ export function getSelectableOptions(
   selectedValues: string[],
   inputValue: string,
   creatable: boolean,
-  caseSensitive: boolean
+  caseSensitive: boolean,
 ): Option[] {
-  
   const selectedValuesSet = new Set<string>(selectedValues);
   let inputCase = inputValue.toLocaleLowerCase();
 
-  //if case sensitive, don't lowercase input for match evaluation
-  if (caseSensitive){ 
-    inputCase=inputValue
-  } 
+  // if case sensitive, don't lowercase input for match evaluation
+  if (caseSensitive) {
+    inputCase = inputValue;
+  }
 
   let hasExactMatch = false;
   const selectableOptions = options.filter((o) => {
@@ -80,8 +79,7 @@ export function getSelectableOptions(
     }
 
     return (
-      !selectedValuesSet.has(o.value) &&
-      (inputValue === "" || optionLowerCase.includes(inputCase))
+      !selectedValuesSet.has(o.value) && (inputValue === "" || optionLowerCase.includes(inputCase))
     );
   });
 
@@ -136,7 +134,7 @@ const MultiSelect: React.FC<Props> = ({
     allowDuplicates ? [] : values,
     inputValue,
     creatable,
-    caseSensitive
+    caseSensitive,
   );
 
   const {

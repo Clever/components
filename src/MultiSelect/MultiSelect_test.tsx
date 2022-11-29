@@ -78,7 +78,7 @@ describe("MultiSelect", () => {
           options.map((o) => o.value),
           "",
           false,
-          false
+          false,
         );
         expect(results).toEqual([]);
       });
@@ -136,7 +136,13 @@ describe("MultiSelect", () => {
           { label: "Test Option 3", value: "testOption3" },
           { label: "Test Option 4", value: "testOption4" },
         ];
-        const results = getSelectableOptions(options, ["testOption1"], "Test Option 1", true, false);
+        const results = getSelectableOptions(
+          options,
+          ["testOption1"],
+          "Test Option 1",
+          true,
+          false,
+        );
         expect(results).toEqual([]);
       });
 
@@ -152,7 +158,7 @@ describe("MultiSelect", () => {
           options.map((o) => o.value),
           "",
           true,
-          false
+          false,
         );
         expect(results).toEqual([]);
       });
