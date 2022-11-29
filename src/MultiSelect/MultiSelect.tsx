@@ -68,7 +68,7 @@ export function getSelectableOptions(
   // if case sensitive, don't lowercase input for match evaluation
   if (caseSensitive) {
     inputCase = inputValue;
-  } 
+  }
 
   let hasExactMatch = false;
   const selectableOptions = options.filter((o) => {
@@ -76,8 +76,8 @@ export function getSelectableOptions(
 
     // if case sensitive, don't lowercase label for match evaluation
     if (caseSensitive) {
-    optionLowerCase=o.label
-    } 
+      optionLowerCase = o.label;
+    }
 
     // small performance optimization to process exact match within the same iterator
     if (optionLowerCase === inputCase) {
