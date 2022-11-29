@@ -118,6 +118,17 @@ describe("MultiSelect", () => {
         expect(results).toEqual([{ value: ADD_NEW_ITEM_KEY }]);
       });
 
+      it("adds ADD_ITEM option when something unique is typed, acknowledging case sensitivity", () => {
+        const options = [
+          { label: "Test Option 1", value: "testOption1" },
+          { label: "Test Option 2", value: "testOption2" },
+          { label: "Test Option 3", value: "testOption3" },
+          { label: "Test Option 4", value: "testOption4" },
+        ];
+        const results = getSelectableOptions(options, [], "test option 1", true, true);
+        expect(results).toEqual([{ value: ADD_NEW_ITEM_KEY }]);
+      });
+
       it("does not add ADD_ITEM option when exact match is typed and item is selectable", () => {
         const options = [
           { label: "Test Option 1", value: "testOption1" },
