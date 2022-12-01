@@ -32,6 +32,7 @@ export interface Props {
   values: string[];
   onChange: (options: string[]) => void;
   size?: Values<typeof FormElementSize>;
+  caseSensitive?: boolean;
 }
 
 export const cssClass = {
@@ -59,21 +60,32 @@ export function getSelectableOptions(
   selectedValues: string[],
   inputValue: string,
   creatable: boolean,
+  caseSensitive: boolean,
 ): Option[] {
   const selectedValuesSet = new Set<string>(selectedValues);
-  const inputLowerCase = inputValue.toLocaleLowerCase();
+  let inputCase = inputValue.toLocaleLowerCase();
+
+  // if case sensitive, don't lowercase input for match evaluation
+  if (caseSensitive) {
+    inputCase = inputValue;
+  }
 
   let hasExactMatch = false;
   const selectableOptions = options.filter((o) => {
-    const optionLowerCase = o.label.toLocaleLowerCase();
+    let optionLowerCase = o.label.toLocaleLowerCase();
+
+    // if case sensitive, don't lowercase label for match evaluation
+    if (caseSensitive) {
+      optionLowerCase = o.label;
+    }
+
     // small performance optimization to process exact match within the same iterator
-    if (optionLowerCase === inputLowerCase) {
+    if (optionLowerCase === inputCase) {
       hasExactMatch = true;
     }
 
     return (
-      !selectedValuesSet.has(o.value) &&
-      (inputValue === "" || optionLowerCase.includes(inputLowerCase))
+      !selectedValuesSet.has(o.value) && (inputValue === "" || optionLowerCase.includes(inputCase))
     );
   });
 
@@ -107,6 +119,7 @@ const MultiSelect: React.FC<Props> = ({
   values,
   creatable,
   allowDuplicates,
+  caseSensitive,
   onChange,
   size,
 }) => {
@@ -127,6 +140,7 @@ const MultiSelect: React.FC<Props> = ({
     allowDuplicates ? [] : values,
     inputValue,
     creatable,
+    caseSensitive,
   );
 
   const {
