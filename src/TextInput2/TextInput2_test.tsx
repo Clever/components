@@ -84,7 +84,7 @@ describe("TextInput2", () => {
       changeInputValue(input, invalidValue);
       let errorContainer = getErrorContainer(wrapper);
       // error should not be displayed while element is still in focus
-      expect(errorContainer).not.toExist();
+      expect(errorContainer).toExist();
 
       input.simulate("blur");
       errorContainer = getErrorContainer(wrapper);
