@@ -84,7 +84,7 @@ describe("TextInput2", () => {
       input.simulate("focus");
       changeInputValue(input, invalidValue);
       const errorContainer = getErrorContainer(wrapper);
-      // error should be dsiplayed while element is still in focus
+      // error should be displayed while element is still in focus
       expect(errorContainer).toExist();
     });
 
