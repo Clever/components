@@ -33,6 +33,7 @@ export default class TextInput2View extends React.PureComponent {
     requirement: FormElementRequirement.REQUIRED,
     obscurable: false,
     errorOnEmpty: false,
+    errorOnFocus: false,
     size: FormElementSize.MEDIUM,
   };
 
@@ -73,6 +74,7 @@ export default class TextInput2View extends React.PureComponent {
               obscurable={this.state.obscurable}
               value={this.state.value}
               errorOnEmpty={this.state.errorOnEmpty}
+              errorOnFocus={this.state.errorOnFocus}
               errorValidation={(value) => (value.toLowerCase() !== value ? "only lowercase" : null)}
               onChange={(e) => this.setState({ value: e.target.value })}
               size={this.state.size}
@@ -96,6 +98,7 @@ export default class TextInput2View extends React.PureComponent {
       requirement,
       obscurable,
       errorOnEmpty,
+      errorOnFocus,
       size,
     } = this.state;
 
@@ -166,6 +169,15 @@ export default class TextInput2View extends React.PureComponent {
             onChange={(e) => this.setState({ errorOnEmpty: e.target.checked })}
           />{" "}
           <span className={cssClass.CONFIG_TEXT}>Error on empty</span>
+        </label>
+        <label className={cssClass.CONFIG}>
+          <input
+            type="checkbox"
+            className={cssClass.CONFIG_TOGGLE}
+            checked={errorOnFocus}
+            onChange={(e) => this.setState({ errorOnFocus: e.target.checked })}
+          />{" "}
+          <span className={cssClass.CONFIG_TEXT}>Error on focus</span>
         </label>
         <div className={cssClass.CONFIG}>
           <span className={cssClass.CONFIG_TEXT}>Requirement:</span>
@@ -263,6 +275,13 @@ export default class TextInput2View extends React.PureComponent {
             type: "boolean",
             description:
               "Display an error state when the input value is empty and the input is out of focus",
+            optional: true,
+          },
+          {
+            name: "errorOnFocus",
+            type: "boolean",
+            description:
+              "Display an error state when the input value does not meet validation criteria and the input is in focus",
             optional: true,
           },
           {
