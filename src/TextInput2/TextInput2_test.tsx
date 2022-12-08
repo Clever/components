@@ -76,6 +76,18 @@ describe("TextInput2", () => {
       };
     });
 
+    it("displays error while focused and errorOnFocus is true", () => {
+      defaultProps.errorOnFocus = true;
+      wrapper = mount(<TextInput2 {...defaultProps} />);
+      const input = getInput(wrapper);
+
+      input.simulate("focus");
+      changeInputValue(input, invalidValue);
+      const errorContainer = getErrorContainer(wrapper);
+      // error should be dsiplayed while element is still in focus
+      expect(errorContainer).toExist();
+    });
+
     it("displays error on blur if provided errorValidation function returns a string", () => {
       wrapper = mount(<TextInput2 {...defaultProps} />);
       const input = getInput(wrapper);
@@ -84,7 +96,7 @@ describe("TextInput2", () => {
       changeInputValue(input, invalidValue);
       let errorContainer = getErrorContainer(wrapper);
       // error should not be displayed while element is still in focus
-      expect(errorContainer).toExist();
+      expect(errorContainer).not.toExist();
 
       input.simulate("blur");
       errorContainer = getErrorContainer(wrapper);
