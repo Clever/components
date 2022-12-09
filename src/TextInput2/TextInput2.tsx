@@ -93,11 +93,11 @@ const TextInput2: React.FC<Props> = ({
 
     const newErrorMessage = errorValidation(value);
     // show error if input is out of focus
-    if (newErrorMessage && !isFocused && !errorOnFocus) {
+    if (newErrorMessage && !isFocused) {
       setErrorMessage(newErrorMessage);
     }
     // show error if input is in focus
-    else if (newErrorMessage && errorOnFocus) {
+    else if (newErrorMessage && isFocused && errorOnFocus) {
       setErrorMessage(newErrorMessage);
       return;
     }
