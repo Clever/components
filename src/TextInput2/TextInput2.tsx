@@ -21,6 +21,8 @@ export interface Props {
   requirement?: Values<typeof FormElementRequirement>;
   obscurable?: boolean;
   errorOnEmpty?: boolean;
+  // option to return an error message while input is in focus
+  errorOnFocus?: boolean;
   // returns an error message, null for no error
   errorValidation?: (value: string) => string | null;
   value: string;
@@ -63,6 +65,7 @@ const TextInput2: React.FC<Props> = ({
   icon,
   requirement,
   errorOnEmpty,
+  errorOnFocus,
   errorValidation,
   obscurable,
   value,
@@ -89,8 +92,12 @@ const TextInput2: React.FC<Props> = ({
     }
 
     const newErrorMessage = errorValidation(value);
-    // only show error when input isn't in focus
+    // show error if input is out of focus
     if (newErrorMessage && !isFocused) {
+      setErrorMessage(newErrorMessage);
+    }
+    // show error if input is in focus
+    else if (newErrorMessage && isFocused && errorOnFocus) {
       setErrorMessage(newErrorMessage);
       return;
     }
