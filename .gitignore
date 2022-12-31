@@ -5,3 +5,4 @@ npm-debug.log
 /log
 # Jetbrains IDE
 .idea/*
+.git/

@@ -60,3 +60,4 @@ make dev-server
 For Clever engs, refer to [this doc on how to test your changes in the context of other apps](https://clever.atlassian.net/wiki/spaces/ENG/pages/2471526424/Testing+Dewey+Components+Locally+in+Launchpad).
 
 In short, if you want to test changes you've made to this repo in the context of another repo that uses `clever-components`, run the `components` repo's `make build` command and use the freshly generated `dist` directory in replacement of the `clever-components/dist` directory on your other project's repository.
+test
