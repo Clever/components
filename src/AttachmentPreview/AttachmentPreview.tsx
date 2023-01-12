@@ -115,12 +115,12 @@ export const AttachmentPreview: React.FC<Props> = ({
           )}
         </FlexBox>
       </FlexBox>
-      <FlexBox className={cssClass.FOOTER_BAR}>
+      <div className={cssClass.FOOTER_BAR}>
         <Button type="linkPlain" className={cssClass.DOWNLOAD_CONTAINER} onClick={onClickDownload}>
           <FontAwesome className={cssClass.DOWNLOAD_BUTTON} name="download" />{" "}
           <span>{downloadButtonTextMobile}</span>
         </Button>
-      </FlexBox>
+      </div>
     </div>
   );
 };
