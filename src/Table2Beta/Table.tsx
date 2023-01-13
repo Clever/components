@@ -663,7 +663,7 @@ export class Table2Beta extends React.Component<Props, State> {
               <tr className={cssClass.ROW}>
                 {noDataContent ? (
                   <Cell className={cssClass.NO_DATA_CONTENT} colSpan={numColumns} noWrap>
-                    {noDataContent}
+                    {!pageLoading && noDataContent}
                   </Cell>
                 ) : (
                   <Cell className={cssClass.NO_DATA} colSpan={numColumns} noWrap>
