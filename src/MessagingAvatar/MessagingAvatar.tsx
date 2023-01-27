@@ -23,6 +23,9 @@ type Props = {
   imageSrc?: string;
 };
 
+/**
+ * @deprecated Do not use. Instead, use [@clever/msg-avatar](https://github.com/Clever/clever-ui/tree/master/packages/msg-avatar)
+ */
 export const MessagingAvatar: React.FC<Props> = ({ className, text, color, imageSrc }: Props) => {
   // If an imageSrc is provided, it takes precedent over displaying text
   if (imageSrc) {
