@@ -56,6 +56,9 @@ type Props = {
   showNewLabel?: boolean;
 };
 
+/**
+ * @deprecated Do not use. Instead, use [@clever/msg-thread-list-item](https://github.com/Clever/clever-ui/tree/master/packages/msg-thread-list-item)
+ */
 export const MessagingThreadListItem: React.FC<
   Props & { ref?: React.Ref<HTMLDivElement> }
 > = React.forwardRef((props: Props, ref: React.Ref<HTMLDivElement>) => {

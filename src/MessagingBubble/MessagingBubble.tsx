@@ -11,6 +11,9 @@ import {
 
 type MessagingBubbleProps = DeletedMessagingBubbleProps | NormalMessagingBubbleProps;
 
+/**
+ * @deprecated Do not use. Instead, use [@clever/msg-bubble Bubble](https://github.com/Clever/clever-ui/blob/master/packages/msg-bubble/src/lib/bubble/Bubble.tsx)
+ */
 export const MessagingBubble: React.FC<MessagingBubbleProps> = (props: MessagingBubbleProps) => {
   switch (props.bubbleType) {
     case "deleted": {
