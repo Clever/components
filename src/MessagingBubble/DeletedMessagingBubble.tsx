@@ -21,6 +21,9 @@ export interface Props {
   deletionNoticeText: string;
 }
 
+/**
+ * @deprecated Do not use. Instead, use [@clever/msg-bubble DeletedBubble](https://github.com/Clever/clever-ui/blob/master/packages/msg-bubble/src/lib/deleted/DeletedBubble.tsx)
+ */
 export const DeletedMessagingBubble: React.FC<Props> = ({
   className,
   messageOwnership,
