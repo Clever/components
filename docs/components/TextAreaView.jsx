@@ -277,6 +277,12 @@ export default class TextAreaView extends React.Component {
               optional: true,
               defaultValue: <code>FormElementSize.FULL_WIDTH</code>,
             },
+            {
+              name: "dataTestID",
+              type: "string",
+              description: "Optional string to provide a data-testid for frontend tests to use",
+              optional: true,
+            },
           ]}
         />
       </View>
