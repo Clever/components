@@ -36,6 +36,7 @@ type Props = {
   title?: string;
   uploadComplete?: boolean;
   theme?: MessagingTheme;
+  dataTestID?: string;
 };
 
 // TODO: replace with a discriminated union to keep the props neat
@@ -53,6 +54,7 @@ export const MessagingAttachment: React.FC<Props> = ({
   isUpload,
   uploadComplete,
   theme,
+  dataTestID,
 }: Props) => {
   const [attachmentPreviewIsShowing, setAttachmentPreviewIsShowing] = React.useState(false);
   const isPreviewableAttachment = PreviewableFileTypes.has(fileType);
@@ -124,7 +126,7 @@ export const MessagingAttachment: React.FC<Props> = ({
             {errorMsg || title}
           </span>
           {subtitle && (
-            <span role="button" className={cssClass("Subtitle")}>
+            <span data-testid={dataTestID} role="button" className={cssClass("Subtitle")}>
               {subtitle}
             </span>
           )}

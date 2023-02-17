@@ -66,6 +66,7 @@ export class TopBar extends React.PureComponent<Props> {
           href={this.props.logoHref}
           onClick={this.props.onLogoClick}
           className="dewey-TopBar--logoLink"
+          data-testid="topBarLogoLink"
         >
           {customLogo || (
             <Logo className="dewey--TopBar--logo" svgClassName="dewey--TopBar--logo--mobile" />

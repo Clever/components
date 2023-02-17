@@ -152,6 +152,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
               hasMultiLineText && cssClass("TextField--MultiLine"),
             )}
             name={TEXT_FIELD_NAME}
+            dataTestID={"newMessageInput"}
             value={value}
             onChange={(e) => {
               onChange(e.target.value);
@@ -202,6 +203,7 @@ const MessagingInputRenderFunction: React.ForwardRefRenderFunction<MessagingInpu
           disabled={isMessageSendDisabled(disableSendButton, value, attachments)}
           onClick={() => onSubmit(value.trim())}
           ariaLabel={sendButtonText}
+          dataTestID={"sendNewMessageButton"}
         />
       </FlexBox>
       {formReturnKeyInstructionsLabel(showReturnKeyInstructions, value)}

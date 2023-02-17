@@ -199,6 +199,12 @@ export default function ButtonView() {
             optional: true,
             defaultValue: "false",
           },
+          {
+            name: "dataTestID",
+            type: "string",
+            description: "Optional string to provide a data-testid for frontend tests to use",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />

@@ -215,6 +215,7 @@ function ReplyButton({
   return (
     <Button
       ariaLabel={"Reply"}
+      dataTestID={"replyToAnnouncementButton"}
       className={cssClass("replyButton")}
       onClick={onReply}
       type={"secondary"}

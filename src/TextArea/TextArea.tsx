@@ -19,6 +19,7 @@ export interface Props {
   minLength?: number;
   name: string;
   id?: string;
+  dataTestID?: string;
   onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
   onFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
@@ -234,6 +235,7 @@ export class TextArea extends React.Component<Props, State> {
       className: "TextArea--input",
       disabled: this.props.disabled,
       id,
+      ["data-testid"]: this.props.dataTestID,
       maxLength: this.props.maxLength,
       minLength: this.props.minLength,
       name: this.props.name,

@@ -211,6 +211,7 @@ export class FileInput extends React.Component<Props, State> {
                   "FileInput--AttachmentIsUploading",
                 iconOnly && "FileInput--IconOnly",
               )}
+              data-testid="fileInput"
             >
               {!iconOnly && selected && renderLabel(label)}
               {!iconOnly && renderMessage(message, selected)}

@@ -263,6 +263,12 @@ export default class MessagingAttachmentView extends React.PureComponent {
               defaultValue: "false",
               optional: true,
             },
+            {
+              name: "dataTestID",
+              type: "string",
+              description: "Optional string to provide a data-testid for frontend tests to use",
+              optional: true,
+            },
           ]}
           className={cssClass.PROPS}
         />

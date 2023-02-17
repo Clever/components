@@ -21,6 +21,7 @@ export interface Props {
   style?: React.CSSProperties;
   underlined?: boolean;
   ariaLabel?: string;
+  dataTestID?: string;
   [additionalProp: string]: any;
 }
 
@@ -57,6 +58,7 @@ const propTypes = {
   style: PropTypes.object,
   underlined: PropTypes.bool,
   ariaLabel: PropTypes.string,
+  dataTestID: PropTypes.string,
 };
 
 const defaultProps = {
@@ -89,6 +91,7 @@ export class Button extends React.PureComponent<Props> {
   render() {
     const {
       ariaLabel,
+      dataTestID,
       children,
       className,
       disabled,
@@ -135,6 +138,7 @@ export class Button extends React.PureComponent<Props> {
         <button
           {...additionalProps}
           aria-label={aria}
+          data-testid={dataTestID}
           className={classes}
           disabled={disabled}
           onClick={onClick}
