@@ -13,7 +13,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   isExpanded?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   title: React.ReactNode;
 }
 
