@@ -109,7 +109,7 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^3.11.2"
   },
-  "peer-dependencies": {
+  "peerDependencies": {
     "@types/react": ">=16.0.0 <17.0.0",
     "react": ">=16.0.0 <17.0.0",
     "react-dom": ">=16.0.0 <17.0.0"
