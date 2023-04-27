@@ -434,6 +434,7 @@ export class Table extends React.Component<Props, State> {
                 )}
                 key={rowIDFn(rowData)}
                 onClick={(e) => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
+                tabIndex={onRowClick ? 0 : undefined}
                 onMouseOver={(e) => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
               >
                 {columns.map(({ props: col }: { props: any }) => (
