@@ -65,7 +65,7 @@ export class TopBarButton extends React.PureComponent<Props> {
             // Otherwise, button looks like it's still active, even after clicking it.
             // See PRTL-3215 for example of this bug
             this.blur();
-            onClick();
+            if (onClick) onClick();
           }}
           ref={(ref) => {
             this._containerRef = ref;
