@@ -112,7 +112,12 @@ export default class WizardLayout extends React.PureComponent<Props> {
           {headerImg && <div className={cssClass.HEADER_IMG}>{headerImg}</div>}
           <div>
             <p className={cssClass.HEADER_TITLE}>{title}</p>
-            {subtitle && <div className={cssClass.HEADER_SUBTITLE}>{subtitle}</div>}
+            {subtitle &&
+              (typeof subtitle === "string" ? (
+                <p className={cssClass.HEADER_SUBTITLE}>{subtitle}</p>
+              ) : (
+                <div className={cssClass.HEADER_SUBTITLE}>{subtitle}</div>
+              ))}
           </div>
         </FlexBox>
         <FlexBox className={classnames(cssClass.BODY, fullscreen && cssClass.BODY_FULLSCREEN)}>
