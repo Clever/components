@@ -293,8 +293,8 @@ export default class WizardLayoutView extends React.PureComponent {
           },
           {
             name: "subtitle",
-            type: "String",
-            description: "Subtitle string to be displayed in the header.",
+            type: "React.Node",
+            description: "Subtitle component to be displayed in the header.",
             optional: true,
           },
           {
