@@ -21,6 +21,7 @@ export interface Props {
 const Color = {
   // General:
   DEFAULT: "default",
+  INFO: "info",
   NEW_FEATURE: "new-feature",
 
   // Alerts:
