@@ -227,7 +227,7 @@ export default class WizardLayoutView extends React.PureComponent {
             name: "sections",
             type: "Object",
             description:
-              "Array of objects with a title, subtitle, and content (React.Node to be displayed).",
+              "Array of objects with a title (React.node), subtitle (string), and content (React.Node to be displayed).",
           },
           {
             name: "headerImg",
