@@ -27,7 +27,7 @@ export interface Props {
 }
 
 const SECTION_PROP_TYPE = PropTypes.shape({
-  title: PropTypes.string,
+  title: PropTypes.node,
   subtitle: PropTypes.string,
   content: PropTypes.node.isRequired,
 });
@@ -134,7 +134,12 @@ export default class WizardLayout extends React.PureComponent<Props> {
           <FlexBox column grow className={cssClass.SECTION_CONTAINER}>
             {sections.map((elem, i) => (
               <div className={cssClass.SECTION} key={i}>
-                {elem.title && <p className={cssClass.SECTION_TITLE}>{elem.title}</p>}
+                {elem.title && typeof elem.title === "string" && (
+                  <p className={cssClass.SECTION_TITLE}>{elem.title}</p>
+                )}
+                {elem.title && typeof elem.title !== "string" && (
+                  <div className={cssClass.SECTION_TITLE}>{elem.title}</div>
+                )}
                 {elem.subtitle && <p className={cssClass.SECTION_SUBTITLE}>{elem.subtitle}</p>}
                 {(elem.subtitle || elem.title) && <div className={cssClass.SECTION_DIVIDER} />}
                 {elem.content}
