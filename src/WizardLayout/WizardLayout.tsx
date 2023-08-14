@@ -7,6 +7,7 @@ import { FlexBox, ItemAlign } from "../flex";
 
 import LifeFloat from "./LifeFloat";
 import "./WizardLayout.less";
+import Tooltip from "../Tooltip";
 
 export interface Props {
   className?: string;
@@ -17,6 +18,8 @@ export interface Props {
   hidePreviousStepButton?: boolean;
   nextStepButtonDisabled?: boolean;
   nextStepButtonText?: React.ReactNode;
+  nextStepButtonTooltipEnabled?: boolean;
+  nextStepButtonTooltipText?: string;
   onNextStep: () => void;
   onPrevStep: () => void;
   prevStepButtonDisabled?: boolean;
@@ -40,6 +43,8 @@ const propTypes = {
   hidePreviousStepButton: PropTypes.bool,
   nextStepButtonDisabled: PropTypes.bool,
   nextStepButtonText: PropTypes.node,
+  nextStepButtonTooltipEnabled: PropTypes.bool,
+  nextStepButtonTooltipText: PropTypes.string,
   prevStepButtonDisabled: PropTypes.bool,
   prevStepButtonText: PropTypes.node,
   onNextStep: PropTypes.func.isRequired,
@@ -89,6 +94,8 @@ export default class WizardLayout extends React.PureComponent<Props> {
       helpContent,
       nextStepButtonDisabled,
       nextStepButtonText,
+      nextStepButtonTooltipEnabled,
+      nextStepButtonTooltipText,
       hidePreviousStepButton,
       prevStepButtonDisabled,
       prevStepButtonText,
@@ -160,13 +167,20 @@ export default class WizardLayout extends React.PureComponent<Props> {
               disabled={prevStepButtonDisabled}
             />
           )}
-          <Button
-            type="primary"
-            value={nextStepButtonText || "Next step"}
-            className={cssClass.NEXT_BUTTON}
-            onClick={this._onNextStep}
-            disabled={nextStepButtonDisabled}
-          />
+          <Tooltip
+            content={nextStepButtonTooltipText || "default text"}
+            hide={!nextStepButtonTooltipEnabled}
+          >
+            <span>
+              <Button
+                type="primary"
+                value={nextStepButtonText || "Next step"}
+                className={cssClass.NEXT_BUTTON}
+                onClick={this._onNextStep}
+                disabled={nextStepButtonDisabled}
+              />
+            </span>
+          </Tooltip>
         </FlexBox>
       </FlexBox>
     );
