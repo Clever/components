@@ -7,6 +7,7 @@ import { FlexBox, ItemAlign } from "../flex";
 
 import LifeFloat from "./LifeFloat";
 import "./WizardLayout.less";
+import Tooltip from "../Tooltip";
 
 export interface Props {
   className?: string;
@@ -17,6 +18,7 @@ export interface Props {
   hidePreviousStepButton?: boolean;
   nextStepButtonDisabled?: boolean;
   nextStepButtonText?: React.ReactNode;
+  nextStepButtonTooltipText?: string;
   onNextStep: () => void;
   onPrevStep: () => void;
   prevStepButtonDisabled?: boolean;
@@ -40,6 +42,7 @@ const propTypes = {
   hidePreviousStepButton: PropTypes.bool,
   nextStepButtonDisabled: PropTypes.bool,
   nextStepButtonText: PropTypes.node,
+  nextStepButtonTooltipText: PropTypes.string,
   prevStepButtonDisabled: PropTypes.bool,
   prevStepButtonText: PropTypes.node,
   onNextStep: PropTypes.func.isRequired,
@@ -89,6 +92,7 @@ export default class WizardLayout extends React.PureComponent<Props> {
       helpContent,
       nextStepButtonDisabled,
       nextStepButtonText,
+      nextStepButtonTooltipText,
       hidePreviousStepButton,
       prevStepButtonDisabled,
       prevStepButtonText,
@@ -97,6 +101,16 @@ export default class WizardLayout extends React.PureComponent<Props> {
       title,
       fullscreen,
     } = this.props;
+
+    const nextButton = (
+      <Button
+        type="primary"
+        value={nextStepButtonText || "Next step"}
+        className={cssClass.NEXT_BUTTON}
+        onClick={this._onNextStep}
+        disabled={nextStepButtonDisabled}
+      />
+    );
 
     return (
       <FlexBox
@@ -160,13 +174,15 @@ export default class WizardLayout extends React.PureComponent<Props> {
               disabled={prevStepButtonDisabled}
             />
           )}
-          <Button
-            type="primary"
-            value={nextStepButtonText || "Next step"}
-            className={cssClass.NEXT_BUTTON}
-            onClick={this._onNextStep}
-            disabled={nextStepButtonDisabled}
-          />
+          {!!nextStepButtonTooltipText && (
+            <Tooltip
+              content={nextStepButtonTooltipText || "default text"}
+              hide={!nextStepButtonTooltipText}
+            >
+              <span>{nextButton}</span>
+            </Tooltip>
+          )}
+          {!nextStepButtonTooltipText && nextButton}
         </FlexBox>
       </FlexBox>
     );
