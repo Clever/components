@@ -18,7 +18,6 @@ export interface Props {
   hidePreviousStepButton?: boolean;
   nextStepButtonDisabled?: boolean;
   nextStepButtonText?: React.ReactNode;
-  nextStepButtonTooltipEnabled?: boolean;
   nextStepButtonTooltipText?: string;
   onNextStep: () => void;
   onPrevStep: () => void;
@@ -43,7 +42,6 @@ const propTypes = {
   hidePreviousStepButton: PropTypes.bool,
   nextStepButtonDisabled: PropTypes.bool,
   nextStepButtonText: PropTypes.node,
-  nextStepButtonTooltipEnabled: PropTypes.bool,
   nextStepButtonTooltipText: PropTypes.string,
   prevStepButtonDisabled: PropTypes.bool,
   prevStepButtonText: PropTypes.node,
@@ -94,7 +92,6 @@ export default class WizardLayout extends React.PureComponent<Props> {
       helpContent,
       nextStepButtonDisabled,
       nextStepButtonText,
-      nextStepButtonTooltipEnabled,
       nextStepButtonTooltipText,
       hidePreviousStepButton,
       prevStepButtonDisabled,
@@ -104,6 +101,16 @@ export default class WizardLayout extends React.PureComponent<Props> {
       title,
       fullscreen,
     } = this.props;
+
+    const nextButton = (
+      <Button
+        type="primary"
+        value={nextStepButtonText || "Next step"}
+        className={cssClass.NEXT_BUTTON}
+        onClick={this._onNextStep}
+        disabled={nextStepButtonDisabled}
+      />
+    );
 
     return (
       <FlexBox
@@ -167,20 +174,15 @@ export default class WizardLayout extends React.PureComponent<Props> {
               disabled={prevStepButtonDisabled}
             />
           )}
-          <Tooltip
-            content={nextStepButtonTooltipText || "default text"}
-            hide={!nextStepButtonTooltipEnabled}
-          >
-            <span>
-              <Button
-                type="primary"
-                value={nextStepButtonText || "Next step"}
-                className={cssClass.NEXT_BUTTON}
-                onClick={this._onNextStep}
-                disabled={nextStepButtonDisabled}
-              />
-            </span>
-          </Tooltip>
+          {!!nextStepButtonTooltipText && (
+            <Tooltip
+              content={nextStepButtonTooltipText || "default text"}
+              hide={!nextStepButtonTooltipText}
+            >
+              <span>{nextButton}</span>
+            </Tooltip>
+          )}
+          {!nextStepButtonTooltipText && nextButton}
         </FlexBox>
       </FlexBox>
     );
