@@ -257,17 +257,10 @@ export default class WizardLayoutView extends React.PureComponent {
             optional: true,
           },
           {
-            name: "nextStepButtonTooltipEnabled",
-            type: "Boolean",
-            description: "Optional tooltip for the next step button",
-            defaultValue: false,
-            optional: true,
-          },
-          {
             name: "nextStepButtonTooltipText",
             type: "String",
             description: "Optional next button tooltip text",
-            defaultValue: "default text",
+            defaultValue: "",
             optional: true,
           },
           {
