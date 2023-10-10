@@ -13,12 +13,31 @@
   }
 }
 
-.ThreadHistory--Divider {
+.ThreadHistory--Divider--Date {
   .margin--y--m();
   font-size: 0.875rem;
+  .text--semi-bold();
   .text--line-height-1();
   color: @neutral_medium_gray;
   .text--center();
+}
+
+.ThreadHistory--Divider--Name--right {
+  .margin--right--xs();
+  .text--medium();
+  .text--semi-bold();
+  .text--line-height-1();
+  color: @neutral_medium_gray;
+  .text--right();
+}
+
+.ThreadHistory--Divider--Name--left {
+  .margin--left--xs();
+  .text--medium();
+  .text--semi-bold();
+  .text--line-height-1();
+  color: @neutral_medium_gray;
+  .text--left();
 }
 
 .ThreadHistory--FirstMessage {
