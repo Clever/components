@@ -31,16 +31,18 @@ function randomElement(items) {
 function newMessage(displayAlertMessageAfter = false) {
   const message = randomElement(["Hello!", "Hi!", "How are you doing?"]);
   const placement = randomElement(["left", "right"]);
+  const senderName = placement === "right" ? "My Name" : "Other User";
   const errorMsg = randomElement(["Message failed to send", ""]);
   newestTime.add(6, "hours");
   currentMessageIndex++;
   return {
     content: (
-      <MessagingBubble theme={placement === "left" ? "otherMessage" : "ownMessage"}>
+      <MessagingBubble messageOwnership={placement === "left" ? "otherMessage" : "ownMessage"}>
         {message}
       </MessagingBubble>
     ),
     placement,
+    senderName,
     timestamp: new Date(newestTime),
     index: currentMessageIndex,
     readStatusText: errorMsg ? "" : "Read",
