@@ -11,7 +11,9 @@ import "./MessagingThreadHistory.less";
 
 const cssClasses = {
   CONTAINER: "ThreadHistory--Container",
-  DIVIDER: "ThreadHistory--Divider",
+  DIVIDER_DATE: "ThreadHistory--Divider--Date",
+  DIVIDER_NAME_RIGHT: "ThreadHistory--Divider--Name--right",
+  DIVIDER_NAME_LEFT: "ThreadHistory--Divider--Name--left",
   FIRST_MESSAGE: "ThreadHistory--FirstMessage",
 };
 
@@ -24,6 +26,7 @@ export interface MessageData {
   readStatusText?: string;
   displayAlertMessageAfter?: { icon: string; messageText: string };
   errorMsg?: string;
+  senderName?: string;
 }
 
 interface Props {
@@ -121,9 +124,10 @@ function _interleaveMessagesWithDividers(
   messages: MessageData[],
   lastMessageRef: React.MutableRefObject<HTMLDivElement>,
 ) {
-  // Interleave dividers (e.g. "Today," "Yesterday", "May 20") with messages.
+  // Interleave dividers (e.g. dates, user names) with messages.
   const messagesWithDividers: React.ReactNode[] = [];
   let currentDay = "";
+  let currentSenderName = "";
   messages.forEach((message: MessageData, i) => {
     // If the message has a timestamp (i.e. is not Clever-generated) and was sent on a different
     // day than the previous message, we want a divider (with the date) in between.
@@ -131,12 +135,26 @@ function _interleaveMessagesWithDividers(
       const messageDay = _formatDateForDivider(message.timestamp);
       if (currentDay !== messageDay) {
         messagesWithDividers.push(
-          <div key={`divider-${messageDay}`} className={cssClasses.DIVIDER}>
+          <div key={`divider-${messageDay}`} className={cssClasses.DIVIDER_DATE}>
             {messageDay}
           </div>,
         );
         currentDay = messageDay;
       }
+    }
+    if (message.senderName && ["right", "left"].includes(message.placement)) {
+      if (currentSenderName !== message.senderName) {
+        const dividerClass =
+          message.placement === "left"
+            ? cssClasses.DIVIDER_NAME_LEFT
+            : cssClasses.DIVIDER_NAME_RIGHT;
+        messagesWithDividers.push(
+          <div key={`divider-${message.senderName}-message${i}`} className={dividerClass}>
+            {message.senderName}
+          </div>,
+        );
+      }
+      currentSenderName = message.senderName;
     }
     // All content is wrapped in MessageMetadata, which handles placement and timestamps.
     messagesWithDividers.push(
