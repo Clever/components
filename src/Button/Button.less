@@ -2,7 +2,9 @@
 @import (reference) "../less/index";
 
 @alert_red_hover: #880b0e;
-@button_hover_contrast: #002b6a .buttonColor(@backgroundColor: @primary_blue, @disabled: false){
+@button_hover_contrast: #002b6a;
+
+.buttonColor(@backgroundColor: @primary_blue, @disabled: false) {
   background-color: @backgroundColor;
   border-color: @backgroundColor;
   .shade(border-bottom-color, @backgroundColor, 2);
@@ -16,7 +18,7 @@
       .shade(border-bottom-color, @backgroundColor, 4);
     }
   }
-};
+}
 
 a,
 button {
