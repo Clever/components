@@ -21,6 +21,7 @@ export interface Props {
   placement?: Values<typeof Placement>;
   stayOpenOnSelect?: boolean;
   trigger: React.ReactElement;
+  triggerRefOverride?: React.RefObject<HTMLElement>;
   wrapItems?: boolean;
   [additionalProp: string]: any;
 }
@@ -108,7 +109,16 @@ export default class Menu extends React.PureComponent<Props> {
   };
 
   render() {
-    const { className, maxHeight, maxWidth, minWidth, placement, trigger, wrapItems } = this.props;
+    const {
+      className,
+      maxHeight,
+      maxWidth,
+      minWidth,
+      placement,
+      trigger,
+      triggerRefOverride,
+      wrapItems,
+    } = this.props;
     const { open } = this.state;
 
     const additionalProps = _.omit(
@@ -132,7 +142,7 @@ export default class Menu extends React.PureComponent<Props> {
             className: classnames(cssClass.TRIGGER, trigger.props.className),
             id: this.IDs.TRIGGER,
             onClick: this._handleTriggerClick,
-            ref: this._handleTriggerRef,
+            ref: triggerRefOverride || this._handleTriggerRef,
             role: "button",
           })}
           {open && (
