@@ -2,6 +2,7 @@
 @import (reference) "../less/index";
 
 @alert_red_hover: #880b0e;
+@button_hover_contrast: #002b6a;
 
 .buttonColor(@backgroundColor: @primary_blue, @disabled: false) {
   background-color: @backgroundColor;
@@ -75,8 +76,8 @@ button {
     &:hover,
     &:focus,
     &:active {
-      background-color: @primary_blue_shade_2;
-      border-color: @primary_blue_shade_2;
+      background-color: @button_hover_contrast;
+      border-color: @button_hover_contrast;
       color: @neutral_white;
     }
   }
