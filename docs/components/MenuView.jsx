@@ -343,6 +343,13 @@ export default class MenuView extends React.PureComponent {
             ),
             default: false,
           },
+          {
+            name: "triggerRefOverride",
+            type: "React.RefObject<HTMLElement>",
+            description:
+              "Optional ref override for the triggering element, for accessibility purposes (e.g. returning focus after modal close).",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
