@@ -2,13 +2,27 @@ import React from "react";
 
 import View from "./View";
 import ComponentBox from "./ComponentBox";
-import { FlexBox } from "src";
+import { AlertBox2, FlexBox } from "src";
 
 export default function ComponentsView() {
   const { cssClass, componentsToDisplay } = ComponentsView;
 
   return (
     <View className={cssClass.CONTAINER} title="Component List">
+      <AlertBox2 type="caution" isCloseable={false}>
+        <div>
+          PSA: This is the <b>DEPRECATED</b> Dewey components page. To see the new Dewey 3.0, please
+          navigate to{" "}
+          <a
+            href="https://master--62fbbb0daff0aa52aea739ac.chromatic.com/?path=/story/clever-ui-introduction--page"
+            target="_blank"
+            rel="noreferrer"
+          >
+            go/dew3y
+          </a>
+          , and check out <b>#eng-dew3y</b> in slack for more information.
+        </div>
+      </AlertBox2>
       <FlexBox wrap className={cssClass.CONTAINER_FLEXBOX}>
         {componentsToDisplay
           .sort((a, b) => a.componentName.localeCompare(b.componentName))
