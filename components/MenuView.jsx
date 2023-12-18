@@ -350,6 +350,13 @@ export default class MenuView extends React.PureComponent {
               "Optional ref override for the triggering element, for accessibility purposes (e.g. returning focus after modal close).",
             optional: true,
           },
+          {
+            name: "useSafariCompatibilityMode",
+            type: "boolean",
+            description:
+              "Optional prop for improved Safari compatibility at the cost of accessibility. Use in conjunction with frontend useragent detection.",
+            optional: true,
+          },
         ]}
         className={cssClass.PROPS}
       />
