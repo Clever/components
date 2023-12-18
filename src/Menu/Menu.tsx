@@ -23,6 +23,7 @@ export interface Props {
   trigger: React.ReactElement;
   triggerRefOverride?: React.RefObject<HTMLElement>;
   wrapItems?: boolean;
+  useSafariCompatibilityMode?: boolean;
   [additionalProp: string]: any;
 }
 
@@ -43,6 +44,7 @@ const propTypes = {
   stayOpenOnSelect: PropTypes.bool,
   trigger: PropTypes.node.isRequired,
   wrapItems: PropTypes.bool,
+  useSafariCompatibilityMode: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -118,6 +120,7 @@ export default class Menu extends React.PureComponent<Props> {
       trigger,
       triggerRefOverride,
       wrapItems,
+      useSafariCompatibilityMode,
     } = this.props;
     const { open } = this.state;
 
@@ -163,6 +166,7 @@ export default class Menu extends React.PureComponent<Props> {
                     focused: this._isFocused(menuItem, i),
                     onClick: (e) => this._handleItemClick(menuItem, e),
                     onMouseEnter: (e) => this._handleItemMouseEnter(menuItem, i, e),
+                    useSafariCompatibilityMode,
                   })}
                 </li>
               ))}
