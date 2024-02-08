@@ -252,18 +252,20 @@ function DisabledReplyButton({
         textAlign={"center"}
         tooltipClassName={cssClass("tooltip")}
       >
-        <FlexBox alignItems="center" justify="center">
-          <img
-            alt=""
-            className={cssClass("replyButton--icon")}
-            src={require("./messages-dark-gray-icon.svg")}
-          />
-          <span
-            className={cx(cssClass("replyButton--text"), cssClass("replyButton--text--disabled"))}
-          >
-            {replyButtonText || "Reply"}
-          </span>
-        </FlexBox>
+        <div>
+          <FlexBox alignItems="center" justify="center">
+            <img
+              alt=""
+              className={cssClass("replyButton--icon")}
+              src={require("./messages-dark-gray-icon.svg")}
+            />
+            <span
+              className={cx(cssClass("replyButton--text"), cssClass("replyButton--text--disabled"))}
+            >
+              {replyButtonText || "Reply"}
+            </span>
+          </FlexBox>
+        </div>
       </Tooltip>
     </Button>
   );
