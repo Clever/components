@@ -84,7 +84,6 @@ export class LeftNav extends React.PureComponent<Props, State> {
   _getNonEmptyChildren(children: LeftNavChildren) {
     return _.compact(React.Children.toArray(children)) as React.ReactElement[];
   }
-
   render() {
     const {
       children,
@@ -93,13 +92,19 @@ export class LeftNav extends React.PureComponent<Props, State> {
       collapsed,
       narrow,
       withActiveNavGroups,
-      withTooltips,
     } = this.props;
+    let { withTooltips } = this.props;
     const { openNavGroup } = this.state;
     const _collapsed = collapsed || (collapseOnSubNavOpen && !!openNavGroup);
 
     // Clone all of the children so that we can attach our own click handlers
     const navItems = this._getNonEmptyChildren(children).map((child) => {
+      // Disable ToolTips when LeftNav is not collapsed
+      if (_collapsed) {
+        withTooltips = true;
+      } else {
+        withTooltips = false;
+      }
       // Configure top level NavLinks to close any open NavGroup on click
       if (child.type === NavLink) {
         return React.cloneElement(child, {
