@@ -22,7 +22,8 @@ export default class EditableInfoPanelView extends React.PureComponent {
   static cssClass = cssClass;
 
   state = {
-    modalOpen: false,
+    exampleOneModalOpen: false,
+    exampleTwoModalOpen: false,
     column1Content: "column 1 content",
     column2Content: "column 2 content",
     normalContent: "normal content",
@@ -61,14 +62,17 @@ export default class EditableInfoPanelView extends React.PureComponent {
                   </FlexItem>
                 </FlexBox>
               }
-              onClick={() => this.setState({ modalOpen: true })}
+              onClick={() => this.setState({ exampleOneModalOpen: true })}
             >
               <div className="EditableInfoPanel--column">{this.state.column1Content}</div>
               <div className="EditableInfoPanel--column">{this.state.column2Content}</div>
               <div>{this.state.normalContent}</div>
             </EditableInfoPanel>
-            {this.state.modalOpen && (
-              <Modal title="Edit Content" closeModal={() => this.setState({ modalOpen: false })}>
+            {this.state.exampleOneModalOpen && (
+              <Modal
+                title="Edit Content"
+                closeModal={() => this.setState({ exampleOneModalOpen: false })}
+              >
                 <TextInput
                   label="Column 1 Content"
                   placeholder={this.state.column1Content}
@@ -86,6 +90,44 @@ export default class EditableInfoPanelView extends React.PureComponent {
                   placeholder={this.state.normalContent}
                   onChange={(e) => this.setState({ normalContent: e.target.value })}
                   value={this.state.normalContent}
+                />
+              </Modal>
+            )}
+          </ExampleCode>
+        </Example>
+
+        <Example title="With buttonProps and tooltipProps:">
+          <ExampleCode>
+            <EditableInfoPanel
+              className="my--custom--class"
+              title={
+                <FlexBox alignItems={ItemAlign.CENTER}>
+                  <Icon size={Icon.sizes.MEDIUM} name={Icon.names.CHAT} />
+                  <FlexItem className={cssClass.TITLE_TEXT}>
+                    <p>Editable Info Panel Title</p>
+                  </FlexItem>
+                </FlexBox>
+              }
+              onClick={() => this.setState({ exampleTwoModalOpen: true })}
+              tooltipProps={{
+                content: "You don't have permission to edit this content.",
+                placement: "right",
+              }}
+              buttonProps={{ disabled: true, value: "Modify" }}
+            >
+              <div className="EditableInfoPanel--column">{this.state.column1Content}</div>
+              <div>{this.state.normalContent}</div>
+            </EditableInfoPanel>
+            {this.state.exampleTwoModalOpen && (
+              <Modal
+                title="Edit Content"
+                closeModal={() => this.setState({ exampleTwoModalOpen: false })}
+              >
+                <TextInput
+                  label="Column 1 Content"
+                  placeholder={this.state.column1Content}
+                  onChange={(e) => this.setState({ column1Content: e.target.value })}
+                  value={this.state.column1Content}
                 />
               </Modal>
             )}
@@ -111,6 +153,18 @@ export default class EditableInfoPanelView extends React.PureComponent {
             name: "className",
             type: "string",
             description: "Optional additional CSS class name to apply to the container.",
+            optional: true,
+          },
+          {
+            name: "buttonProps",
+            type: "Button.Props",
+            description: "Optional overrides for the button on the right.",
+            optional: true,
+          },
+          {
+            name: "tooltipProps",
+            type: "Tooltip.Props",
+            description: "Optional tooltip that wraps around the button on the right.",
             optional: true,
           },
           {
