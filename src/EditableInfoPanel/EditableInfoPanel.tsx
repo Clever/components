@@ -35,7 +35,6 @@ const cssClass = {
   CONTAINER: "EditableInfoPanel",
   HEADER: "EditableInfoPanel--header",
   CONTENT: "EditableInfoPanel--content",
-  BUTTON: "EditableInfoPanel--button",
 };
 
 export default class EditableInfoPanel extends React.PureComponent<Props> {
