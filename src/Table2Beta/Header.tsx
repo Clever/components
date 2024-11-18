@@ -41,6 +41,7 @@ export default function Header({
           key={column.id}
           onSortChange={() => onSortChange(column.id)}
           sortable={column.sortable && !disableSort}
+          tooltip={column.tooltip ? column.tooltip : null}
           width={column.width}
         >
           {column.header && column.header.content}

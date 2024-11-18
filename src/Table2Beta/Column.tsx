@@ -12,6 +12,7 @@ export interface Props {
   };
   noWrap?: boolean;
   sortable?: boolean;
+  tooltip?: React.ReactNode;
   sortValueFn?: Function;
   width?: string; // Not included in propTypes but appears to work and is commonly used.
 }
@@ -32,6 +33,7 @@ Column.propTypes = {
   }),
   noWrap: PropTypes.bool,
   sortable: PropTypes.bool,
+  tooltip: PropTypes.node,
   sortValueFn: PropTypes.func,
 };
 
