@@ -14,6 +14,7 @@ export interface Props {
   children?: React.ReactNode;
   onSortChange?: Function;
   sortable?: boolean;
+  tooltip?: React.ReactNode;
   activeSortDirection?: "asc" | "desc";
   width?: string;
 }
@@ -24,6 +25,7 @@ export const cssClass = {
   LABEL: "Table--header--cell--label",
   SORTABLE: "Table--header--cell--sortable",
   SORT: "Table--header--cell--sort_icons",
+  TOOLTIP: "Table--header--cell--tooltip",
 };
 
 export default function HeaderCell({
@@ -31,6 +33,7 @@ export default function HeaderCell({
   className,
   onSortChange,
   sortable,
+  tooltip,
   activeSortDirection,
   width,
 }: Props) {
@@ -59,6 +62,7 @@ export default function HeaderCell({
             <SortIcons direction={activeSortDirection} className={cssClass.SORT} />
           </div>
         )}
+        {tooltip && <div className={cssClass.TOOLTIP}>{tooltip}</div>}
       </FlexBox>
     </Cell>
   );
