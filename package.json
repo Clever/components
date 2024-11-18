@@ -22,12 +22,11 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@types/classnames": "~2.2.3",
+    "@types/classnames": "^2.2.11",
     "@types/jest": "^20.0.8",
     "@types/jest-matchers": "^20.0.0",
     "@types/jscodeshift": "^0.11.0",
     "@types/linkify-it": "^2.1.0",
-    "@types/lodash": "^4.14.165",
     "@types/node": "^12.12.51",
     "@types/prop-types": "^15.5.1",
     "@types/react": "^16.9.49",
@@ -65,6 +64,7 @@
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
+    "@types/lodash": "^4.14.168",
     "@types/webpack": "^4.41.26",
     "@types/webpack-dev-server": "^3.11.1",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
