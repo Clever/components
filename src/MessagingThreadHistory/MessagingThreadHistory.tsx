@@ -35,6 +35,7 @@ interface Props {
   messages: MessageData[];
   onScroll?: () => void;
   ariaLabel?: string;
+  dividerAriaLevel?: number;
 }
 
 const SCROLL_BUFFER = 200;
@@ -54,7 +55,7 @@ function isOwnMessage(message: MessageData) {
 
 export const MessagingThreadHistory = React.forwardRef(
   (
-    { className, threadID, messages, onScroll, ariaLabel }: Props,
+    { className, threadID, messages, onScroll, ariaLabel, dividerAriaLevel }: Props,
     containerRef: React.MutableRefObject<HTMLDivElement>,
   ) => {
     // ----------- Scroll position references
@@ -97,7 +98,11 @@ export const MessagingThreadHistory = React.forwardRef(
 
     // ----------- Render
 
-    const messagesWithDividers = _interleaveMessagesWithDividers(messages, lastMessageRef);
+    const messagesWithDividers = _interleaveMessagesWithDividers(
+      messages,
+      lastMessageRef,
+      dividerAriaLevel,
+    );
 
     return (
       <div
@@ -123,6 +128,7 @@ export const MessagingThreadHistory = React.forwardRef(
 function _interleaveMessagesWithDividers(
   messages: MessageData[],
   lastMessageRef: React.MutableRefObject<HTMLDivElement>,
+  dividerAriaLevel: number,
 ) {
   // Interleave dividers (e.g. dates, user names) with messages.
   const messagesWithDividers: React.ReactNode[] = [];
@@ -135,7 +141,11 @@ function _interleaveMessagesWithDividers(
       const messageDay = _formatDateForDivider(message.timestamp);
       if (currentDay !== messageDay) {
         messagesWithDividers.push(
-          <div key={`divider-${messageDay}`} className={cssClasses.DIVIDER_DATE}>
+          <div
+            key={`divider-${messageDay}`}
+            aria-level={dividerAriaLevel}
+            className={cssClasses.DIVIDER_DATE}
+          >
             {messageDay}
           </div>,
         );
