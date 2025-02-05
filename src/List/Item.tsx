@@ -36,9 +36,8 @@ export default class Item extends React.PureComponent<Props> {
     }
 
     return (
-      <div className={classnames(cssClass.CONTAINER, className)}>
+      <div className={classnames(cssClass.CONTAINER, className)} role="tab">
         <Wrapper
-          role="tab"
           aria-selected={selected}
           className={classnames(cssClass.CONTENT_WRAPPER, !!onClick && cssClass.CONTENT_ONCLICK)}
           onClick={onClick}
