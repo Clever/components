@@ -17,6 +17,7 @@ export interface Props {
   noBorder?: boolean;
   rowType?: "plain" | "bordered" | "zebra";
   title?: React.ReactNode;
+  ariaOwns?: string;
 }
 
 const RowType = {
@@ -44,6 +45,7 @@ export default class List extends React.PureComponent<Props> {
     noBorder: PropTypes.bool,
     rowType: PropTypes.oneOf(_.values(RowType)),
     title: PropTypes.node,
+    ariaOwns: PropTypes.string,
   };
 
   static defaultProps = {
@@ -64,6 +66,7 @@ export default class List extends React.PureComponent<Props> {
       noBorder,
       rowType,
       title,
+      ariaOwns,
     } = this.props;
 
     const items =
@@ -82,6 +85,7 @@ export default class List extends React.PureComponent<Props> {
         )}
         <div
           role="tablist"
+          aria-owns={ariaOwns}
           className={classnames(cssClass.ITEMS, cssClass.rowType(rowType), itemsClassName)}
         >
           {items}
