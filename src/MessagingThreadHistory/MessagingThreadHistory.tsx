@@ -142,6 +142,7 @@ function _interleaveMessagesWithDividers(
       if (currentDay !== messageDay) {
         messagesWithDividers.push(
           <div
+            role={"heading"}
             key={`divider-${messageDay}`}
             aria-level={dividerAriaLevel}
             className={cssClasses.DIVIDER_DATE}
