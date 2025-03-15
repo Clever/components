@@ -240,12 +240,6 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A MessagingAttachment component",
   },
   {
-    componentLink: "messaging-avatar",
-    componentImg: "messaging-avatar.png",
-    componentName: "MessagingAvatar",
-    componentImgAlt: "A MessagingAvatar component",
-  },
-  {
     componentLink: "messaging-bubble",
     componentImg: "messaging-bubble.png",
     componentName: "MessagingBubble",
