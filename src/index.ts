@@ -119,8 +119,6 @@ export { ResourceTile } from "./ResourceTile";
 
 export { polyfillMediaQueries } from "./utils";
 
-export { MessagingAvatar, convertNameToInitials } from "./MessagingAvatar";
-
 export { MessagingBubble } from "./MessagingBubble";
 
 export { MessagingInput, MessagingInputHandle } from "./MessagingInput";

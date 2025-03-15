@@ -8,7 +8,6 @@ import AnnouncementBubbleView from "./components/AnnouncementBubbleView";
 import ComponentsView from "./components/ComponentsView";
 import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
 import MessagingAttachmentView from "./components/MessagingAttachmentView";
-import MessagingAvatarView from "./components/MessagingAvatarView";
 import MessagingBubbleView from "./components/MessagingBubbleView";
 import MessagingInputView from "./components/MessagingInputView";
 import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
@@ -146,7 +145,6 @@ render(
         <Route path="logo(/*)" component={LogoView} />
         <Route path="menu(/*)" component={MenuView} />
         <Route path="messaging-attachment(/*)" component={MessagingAttachmentView} />
-        <Route path="messaging-avatar(/*)" component={MessagingAvatarView} />
         <Route path="messaging-bubble(/*)" component={MessagingBubbleView} />
         <Route path="messaging-input(/*)" component={MessagingInputView} />
         <Route path="messaging-thread-history(/*)" component={MessagingThreadHistoryView} />
