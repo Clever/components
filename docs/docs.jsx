@@ -11,7 +11,6 @@ import MessagingAttachmentView from "./components/MessagingAttachmentView";
 import MessagingBubbleView from "./components/MessagingBubbleView";
 import MessagingInputView from "./components/MessagingInputView";
 import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
-import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import MultiSelectView from "./components/MultiSelectView";
 import ResourceTileView from "./components/ResourceTileView";
 import Select2View from "./components/Select2View";
@@ -148,7 +147,6 @@ render(
         <Route path="messaging-bubble(/*)" component={MessagingBubbleView} />
         <Route path="messaging-input(/*)" component={MessagingInputView} />
         <Route path="messaging-thread-history(/*)" component={MessagingThreadHistoryView} />
-        <Route path="messaging-thread-list-item(/*)" component={MessagingThreadListItemView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="multi-select(/*)" component={MultiSelectView} />

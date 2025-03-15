@@ -125,8 +125,6 @@ export { MessagingInput, MessagingInputHandle } from "./MessagingInput";
 
 export { MessagingThreadHistory, MessageData } from "./MessagingThreadHistory";
 
-export { MessagingThreadListItem } from "./MessagingThreadListItem";
-
 export { AnnouncementBubble } from "./AnnouncementBubble";
 
 export { Table2Beta } from "./Table2Beta";
