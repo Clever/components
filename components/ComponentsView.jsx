@@ -258,12 +258,6 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "A MessagingThreadHistory component",
   },
   {
-    componentLink: "messaging-thread-list-item",
-    componentImg: "messaging-thread-list-item.png",
-    componentName: "MessagingThreadListItem",
-    componentImgAlt: "A MessagingThreadListItem component",
-  },
-  {
     componentLink: "modal",
     componentImg: "modal.png",
     componentName: "Modal",
