@@ -5,17 +5,14 @@ import PropDocumentation from "./PropDocumentation";
 import View from "./View";
 import {
   AnnouncementBubble,
-  MessagingAttachment,
-  MessagingBubble,
-  MessagingAvatar,
   FlexBox,
   ItemAlign,
-  SegmentedControl,
   Label,
+  MessagingAttachment,
+  MessagingBubble,
+  SegmentedControl,
 } from "src";
 import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment";
-
-import Colors from "src/utils/Colors";
 
 import "./MessagingBubbleView.less";
 import { DeleteMessageModal } from "./DeleteMessageModal/DeleteMessageModal";
@@ -194,12 +191,6 @@ export default class MessagingBubbleView extends React.PureComponent {
                 replyTo={
                   <AnnouncementBubble
                     senderName={"Joni Roni"}
-                    senderIcon={
-                      <MessagingAvatar
-                        text={"Joni Roni"}
-                        color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                      />
-                    }
                     sentAtTimestamp={new Date()}
                     bubbleType={"quoted"}
                     colorTheme={colorTheme}
@@ -246,12 +237,6 @@ export default class MessagingBubbleView extends React.PureComponent {
                 replyTo={
                   <AnnouncementBubble
                     senderName={"Joni Roni"}
-                    senderIcon={
-                      <MessagingAvatar
-                        text={"Joni Roni"}
-                        color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                      />
-                    }
                     sentAtTimestamp={new Date()}
                     bubbleType={"quoted"}
                     colorTheme={colorTheme}
@@ -291,12 +276,6 @@ export default class MessagingBubbleView extends React.PureComponent {
                 replyTo={
                   <AnnouncementBubble
                     senderName={"Joni Roni"}
-                    senderIcon={
-                      <MessagingAvatar
-                        text={"Joni Roni"}
-                        color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                      />
-                    }
                     attachments={attachmentsArray.slice(4)}
                     sentAtTimestamp={new Date()}
                     bubbleType={"quoted"}

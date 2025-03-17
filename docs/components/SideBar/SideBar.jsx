@@ -3,7 +3,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import { Link as ReactRouterLink, routerShape } from "react-router";
 
-import { Icon, LeftNav, Label } from "../../../src";
+import { Icon, Label, LeftNav } from "../../../src";
 
 import "./SideBar.less";
 
@@ -113,13 +113,9 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/messaging-attachment", "MessagingAttachment", {
             beta: true,
           })}
-          {this._renderLink("/components/messaging-avatar", "MessagingAvatar", { beta: true })}
           {this._renderLink("/components/messaging-bubble", "MessagingBubble", { beta: true })}
           {this._renderLink("/components/messaging-input", "MessagingInput", { beta: true })}
           {this._renderLink("/components/messaging-thread-history", "MessagingThreadHistory", {
-            beta: true,
-          })}
-          {this._renderLink("/components/messaging-thread-list-item", "MessagingThreadListItem", {
             beta: true,
           })}
           {this._renderLink("/components/modal", "Modal")}

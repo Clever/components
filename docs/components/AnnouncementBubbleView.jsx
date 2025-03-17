@@ -10,12 +10,9 @@ import {
   ItemAlign,
   Label,
   MessagingAttachment,
-  MessagingAvatar,
   SegmentedControl,
 } from "src";
 import { FileAttachmentIcon } from "src/MessagingAttachment/MessagingAttachment";
-
-import Colors from "src/utils/Colors";
 
 import "./AnnouncementBubbleView.less";
 
@@ -118,12 +115,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               bubbleType={"normal"}
               className={cssClass.BUBBLE}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               translatedLanguages={["Arabic"]}
               onTranslatedLanguagesClick={() =>
                 console.log("You clicked the language tooltip! Pitbull says dale!")
@@ -142,12 +133,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               readBy={readBy.slice(0)} // copies readBy so it doesn't change in the next bubble
               recipientType={"guardian"}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               sentAtTimestamp={new Date()}
               theme={"normal"}
             >
@@ -167,12 +152,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               readBy={readBy.slice(5)} // for variety
               recipientType={"student"}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               theme={theme}
@@ -186,12 +165,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               attachments={attachmentsArray.slice(0, 1)}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               onReply={() => console.log("Attachments-only announcements work too!")}
               sentAtTimestamp={new Date()}
               theme={theme}
@@ -203,12 +176,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               onReply={() => console.log("Attachments-only announcements work too!")}
               sentAtTimestamp={new Date()}
               theme={theme}
@@ -220,12 +187,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               className={cssClass.BUBBLE}
               attachments={attachmentsArray}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               onReply={() => console.log("Reply!")}
               sentAtTimestamp={new Date()}
               theme={theme}
@@ -245,12 +206,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               sentAtTimestamp={new Date()}
               isMessageTruncated
               theme={theme}
@@ -275,12 +230,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               sentAtTimestamp={new Date()}
               theme={theme}
             />
@@ -293,12 +242,6 @@ export default class AnnouncementBubbleView extends React.PureComponent {
               colorTheme={colorTheme}
               announcementGroupName={"Math Rocks!"}
               senderName={"Ms. Stark"}
-              senderIcon={
-                <MessagingAvatar
-                  text={"Kristen Stark"}
-                  color={{ color: Colors.PRIMARY_BLUE_TINT_2 }}
-                />
-              }
               sentAtTimestamp={new Date()}
               inlineErrorMsg={"Something went wrong. We were unable to translate this message."}
               theme={theme}

@@ -8,11 +8,9 @@ import AnnouncementBubbleView from "./components/AnnouncementBubbleView";
 import ComponentsView from "./components/ComponentsView";
 import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
 import MessagingAttachmentView from "./components/MessagingAttachmentView";
-import MessagingAvatarView from "./components/MessagingAvatarView";
 import MessagingBubbleView from "./components/MessagingBubbleView";
 import MessagingInputView from "./components/MessagingInputView";
 import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
-import MessagingThreadListItemView from "./components/MessagingThreadListItemView";
 import MultiSelectView from "./components/MultiSelectView";
 import ResourceTileView from "./components/ResourceTileView";
 import Select2View from "./components/Select2View";
@@ -146,11 +144,9 @@ render(
         <Route path="logo(/*)" component={LogoView} />
         <Route path="menu(/*)" component={MenuView} />
         <Route path="messaging-attachment(/*)" component={MessagingAttachmentView} />
-        <Route path="messaging-avatar(/*)" component={MessagingAvatarView} />
         <Route path="messaging-bubble(/*)" component={MessagingBubbleView} />
         <Route path="messaging-input(/*)" component={MessagingInputView} />
         <Route path="messaging-thread-history(/*)" component={MessagingThreadHistoryView} />
-        <Route path="messaging-thread-list-item(/*)" component={MessagingThreadListItemView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="multi-select(/*)" component={MultiSelectView} />
