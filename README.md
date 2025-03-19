@@ -60,3 +60,25 @@ make dev-server
 For Clever engs, refer to [this doc on how to test your changes in the context of other apps](https://clever.atlassian.net/wiki/spaces/ENG/pages/2471526424/Testing+Dewey+Components+Locally+in+Launchpad).
 
 In short, if you want to test changes you've made to this repo in the context of another repo that uses `clever-components`, run the `components` repo's `make build` command and use the freshly generated `dist` directory in replacement of the `clever-components/dist` directory on your other project's repository.
+
+### You must update the deployed docs
+Don't forget to run `make deploy-docs` (see the PR template).
+You might find that you see an error like this, if the docs (which live in the `gh-pages` branch) get out of date.
+```
+git push using:  origin gh-pages
+To ssh://github.com/Clever/components.git
+ ! [rejected]          ff2553d255bebc6ad9535487e3152145292c10bf -> gh-pages (non-fast-forward)
+error: failed to push some refs to 'ssh://github.com/Clever/components.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+```
+
+To get past this error, force push the update by running the commands manually from the `master` branch (this is from the `deploy.sh` script):
+```
+> nvm i; npm i --legacy-peer-deps
+> ./node_modules/.bin/webpack
+> git add docs
+> git commit # enter a comment
+
+# and the magic command that force-pushes the update to `gh-pages` branch
+> git push origin `git subtree split --prefix docs master`:gh-pages --force
+```
