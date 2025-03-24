@@ -52,7 +52,11 @@ _.forEach(borderRadii, (radius, name) => {
 
     `.borderRadius--top--${name} { .borderRadius--topLeft--${name}; .borderRadius--topRight--${name}; }\n`,
 
-    `.borderRadius--bottom--${name} { .borderRadius--bottomLeft--${name}; .borderRadius--bottomRight--${name}; }`,
+    `.borderRadius--bottom--${name} { .borderRadius--bottomLeft--${name}; .borderRadius--bottomRight--${name}; }\n`,
+
+    `.borderRadius--left--${name} { .borderRadius--topLeft--${name}; .borderRadius--bottomLeft--${name}; }\n`,
+
+    `.borderRadius--right--${name} { .borderRadius--topRight--${name}; .borderRadius--bottomRight--${name}; }`,
   ]);
 });
 
