@@ -54,18 +54,6 @@ ComponentsView.componentsToDisplay = [
     componentImgAlt: "An AlertBox2 component",
   },
   {
-    componentLink: "announcement-bubble",
-    componentImg: "announcement-bubble.png",
-    componentName: "AnnouncementBubble",
-    componentImgAlt: "An AnnouncementBubble component",
-  },
-  {
-    componentLink: "attachment-preview",
-    componentImg: "attachment-preview.png",
-    componentName: "AttachmentPreview",
-    componentAlt: "A AttachmentPreview component",
-  },
-  {
     componentLink: "badge",
     componentImg: "badge-2.png",
     componentName: "Badge",
@@ -232,30 +220,6 @@ ComponentsView.componentsToDisplay = [
     componentImg: "menu.png",
     componentName: "Menu",
     componentImgAlt: "A Menu component",
-  },
-  {
-    componentLink: "messaging-attachment",
-    componentImg: "messaging-attachment.png",
-    componentName: "MessagingAttachment",
-    componentImgAlt: "A MessagingAttachment component",
-  },
-  {
-    componentLink: "messaging-bubble",
-    componentImg: "messaging-bubble.png",
-    componentName: "MessagingBubble",
-    componentImgAlt: "A MessagingBubble component",
-  },
-  {
-    componentLink: "messaging-input",
-    componentImg: "messaging-input.png",
-    componentName: "MessagingInput",
-    componentImgAlt: "A MessagingInput component",
-  },
-  {
-    componentLink: "messaging-thread-history",
-    componentImg: "messaging-thread-history.png",
-    componentName: "MessagingThreadHistory",
-    componentImgAlt: "A MessagingThreadHistory component",
   },
   {
     componentLink: "modal",

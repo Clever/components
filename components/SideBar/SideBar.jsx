@@ -79,10 +79,6 @@ export default class SideBar extends React.Component {
         <NavGroup id="components" label="Components" icon={icon(Icon.names.WEBSITE_HTML)}>
           {this._renderLink("/components/alert-box", "AlertBox")}
           {this._renderLink("/components/alert-box-2", "AlertBox2", { beta: true })}
-          {this._renderLink("/components/announcement-bubble", "AnnouncementBubble", {
-            beta: true,
-          })}
-          {this._renderLink("/components/attachment-preview", "AttachmentPreview")}
           {this._renderLink("/components/badge", "Badge")}
           {this._renderLink("/components/button", "Button")}
           {this._renderLink("/components/checkbox", "Checkbox")}
@@ -110,14 +106,6 @@ export default class SideBar extends React.Component {
           {this._renderLink("/components/list", "List")}
           {this._renderLink("/components/logo", "Logo")}
           {this._renderLink("/components/menu", "Menu")}
-          {this._renderLink("/components/messaging-attachment", "MessagingAttachment", {
-            beta: true,
-          })}
-          {this._renderLink("/components/messaging-bubble", "MessagingBubble", { beta: true })}
-          {this._renderLink("/components/messaging-input", "MessagingInput", { beta: true })}
-          {this._renderLink("/components/messaging-thread-history", "MessagingThreadHistory", {
-            beta: true,
-          })}
           {this._renderLink("/components/modal", "Modal")}
           {this._renderLink("/components/modal-button", "ModalButton")}
           {this._renderLink("/components/multiple-panel-modals", "MultiplePanelModals")}
