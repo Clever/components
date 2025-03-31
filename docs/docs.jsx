@@ -1,16 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
-import { IndexRedirect, Route, Router, hashHistory } from "react-router";
+import { hashHistory, IndexRedirect, Route, Router } from "react-router";
 
 import AlertBox2View from "./components/AlertBox2View";
-import AttachmentPreview from "./components/AttachmentPreviewView";
-import AnnouncementBubbleView from "./components/AnnouncementBubbleView";
 import ComponentsView from "./components/ComponentsView";
 import FamilyPortalLogoView from "./components/FamilyPortalLogoView";
-import MessagingAttachmentView from "./components/MessagingAttachmentView";
-import MessagingBubbleView from "./components/MessagingBubbleView";
-import MessagingInputView from "./components/MessagingInputView";
-import MessagingThreadHistoryView from "./components/MessagingThreadHistoryView";
 import MultiSelectView from "./components/MultiSelectView";
 import ResourceTileView from "./components/ResourceTileView";
 import Select2View from "./components/Select2View";
@@ -113,8 +107,6 @@ render(
       >
         <Route path="alert-box(/*)" component={AlertBoxView} />
         <Route path="alert-box-2(/*)" component={AlertBox2View} />
-        <Route path="announcement-bubble(/*)" component={AnnouncementBubbleView} />
-        <Route path="attachment-preview(/*)" component={AttachmentPreview} />
         <Route path="badge(/*)" component={BadgeView} />
         <Route path="button(/*)" component={ButtonView} />
         <Route path="checkbox(/*)" component={CheckboxView} />
@@ -143,10 +135,6 @@ render(
         <Route path="list(/*)" component={ListView} />
         <Route path="logo(/*)" component={LogoView} />
         <Route path="menu(/*)" component={MenuView} />
-        <Route path="messaging-attachment(/*)" component={MessagingAttachmentView} />
-        <Route path="messaging-bubble(/*)" component={MessagingBubbleView} />
-        <Route path="messaging-input(/*)" component={MessagingInputView} />
-        <Route path="messaging-thread-history(/*)" component={MessagingThreadHistoryView} />
         <Route path="modal(/*)" component={ModalView} />
         <Route path="modal-button(/*)" component={ModalButtonView} />
         <Route path="multi-select(/*)" component={MultiSelectView} />

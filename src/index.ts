@@ -119,14 +119,6 @@ export { ResourceTile } from "./ResourceTile";
 
 export { polyfillMediaQueries } from "./utils";
 
-export { MessagingBubble } from "./MessagingBubble";
-
-export { MessagingInput, MessagingInputHandle } from "./MessagingInput";
-
-export { MessagingThreadHistory, MessageData } from "./MessagingThreadHistory";
-
-export { AnnouncementBubble } from "./AnnouncementBubble";
-
 export { Table2Beta } from "./Table2Beta";
 
 export { FamilyPortalLogo } from "./FamilyPortalLogo";
@@ -143,11 +135,3 @@ export { Select2 };
 export { AlertBox2, AlertBox2Type } from "./AlertBox2";
 
 export { ExpandableContainer } from "./ExpandableContainer";
-
-export {
-  MessagingAttachment,
-  AttachmentFileType,
-  PreviewableFileTypes,
-} from "./MessagingAttachment";
-
-export { AttachmentPreview } from "./AttachmentPreview";
