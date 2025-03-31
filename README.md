@@ -60,3 +60,15 @@ make dev-server
 For Clever engs, refer to [this doc on how to test your changes in the context of other apps](https://clever.atlassian.net/wiki/spaces/ENG/pages/2471526424/Testing+Dewey+Components+Locally+in+Launchpad).
 
 In short, if you want to test changes you've made to this repo in the context of another repo that uses `clever-components`, run the `components` repo's `make build` command and use the freshly generated `dist` directory in replacement of the `clever-components/dist` directory on your other project's repository.
+
+### Updating the production documentation
+As part of any PR that changes the documentation, you should run, after your code has merged:
+`> make deploy-docs`
+
+If many people forget this step, it's possible that the above `deploy-docs` target has issues. One of these is that the `deploy.sh`'s script's `git subtree push` command fails. If that's the case, try forcing the `git subtree push` in this manner:
+
+```
+git push origin `git subtree split --prefix docs master`:gh-pages --force
+```
+
+And then re-run the `make deploy-docs` command.
