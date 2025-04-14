@@ -436,6 +436,8 @@ export class Table extends React.Component<Props, State> {
                 onClick={(e) => onRowClick && onRowClick(e, rowIDFn(rowData), rowData)}
                 tabIndex={onRowClick ? 0 : undefined}
                 onMouseOver={(e) => onRowMouseOver && onRowMouseOver(e, rowIDFn(rowData), rowData)}
+                role={onRowClick ? "button" : undefined}
+                aria-label={onRowClick && rowData.ariaLabel ? rowData.ariaLabel : undefined}
               >
                 {columns.map(({ props: col }: { props: any }) => (
                   <Cell className={getCellClassName(col, rowData)} key={col.id} noWrap={col.noWrap}>
