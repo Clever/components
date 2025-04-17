@@ -268,7 +268,9 @@ export class TextInput extends React.Component<Props, State> {
             className="TextInput--link"
             onClick={this.toggleHidden}
             aria-label={
-              this.state.hidden ? `${showButtonText} <label>` : `${hideButtonText} <label>`
+              this.state.hidden
+                ? `${showButtonText} ${this.props.label}`
+                : `${hideButtonText} ${this.props.label}`
             }
             onMouseDown={(event) => {
               // This prevents focus from jumping to the address bar or
