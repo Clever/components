@@ -33,7 +33,12 @@ export const ExpandableContainer: React.FC<Props> = ({
 }) => {
   return (
     <FlexBox column className={classnames(cssClass.CONTAINER, className)}>
-      <Button className={cssClass.HEADER} type="linkPlain" onClick={onClick} aria-expanded={isExpanded}>
+      <Button
+        className={cssClass.HEADER}
+        type="linkPlain"
+        onClick={onClick}
+        aria-expanded={isExpanded}
+      >
         <FlexBox tabIndex={-1} alignItems="center">
           {title}
           <FlexItem grow />
