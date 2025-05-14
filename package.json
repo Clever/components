@@ -1,6 +1,6 @@
 {
   "name": "clever-components",
-  "version": "2.231.0",
+  "version": "2.232.0",
   "description": "A library of helpful React components and less styles",
   "repository": {
     "type": "git",
@@ -110,9 +110,9 @@
     "webpack-dev-server": "^3.11.2"
   },
   "peerDependencies": {
-    "@types/react": ">=16.0.0 <17.0.0",
-    "react": ">=16.0.0 <17.0.0",
-    "react-dom": ">=16.0.0 <17.0.0"
+    "@types/react": ">=16.0.0 <18.0.0",
+    "react": ">=16.0.0 <18.0.0",
+    "react-dom": ">=16.0.0 <18.0.0"
   },
   "scripts": {
     "dev-server": "NODE_OPTIONS=--max_old_space_size=4096 npx webpack serve --mode=development"
