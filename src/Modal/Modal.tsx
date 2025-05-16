@@ -92,6 +92,7 @@ export class Modal extends React.Component<Props, State> {
         <div className="Modal--window" style={windowStyle} role="dialog" aria-modal="true">
           <header className="Modal--header">
             <button
+              tabIndex={-1}
               className="Modal--close"
               onClick={this.props.closeModal}
               type="button"
@@ -110,7 +111,11 @@ export class Modal extends React.Component<Props, State> {
     );
     let modal;
     if (this.props.focusLocked) {
-      modal = <FocusTrap>{modalContent}</FocusTrap>;
+      modal = (
+        <FocusTrap focusTrapOptions={{ initialFocus: '[aria-label="close modal window"]' }}>
+          {modalContent}
+        </FocusTrap>
+      );
     } else {
       modal = modalContent;
     }
