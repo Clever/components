@@ -42,9 +42,9 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.tsx?$/,
-        loader: "awesome-typescript-loader",
+        loader: "ts-loader",
         options: {
-          configFileName: "./tsconfig.docs.json",
+          configFile: path.resolve(__dirname, "./tsconfig.docs.json"),
           ignoreDiagnostics: [2307],
         },
       },
