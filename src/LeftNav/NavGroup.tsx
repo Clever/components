@@ -81,6 +81,8 @@ export class NavGroup extends React.PureComponent<Props> {
         _collapsed={_collapsed}
         _withArrow
         _withTooltips={_withTooltips}
+        role="group"
+        aria-expanded={_open}
       />
     );
   }
