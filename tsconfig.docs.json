@@ -5,11 +5,6 @@
     "declaration": false,
   },
   "exclude": [
-    "./assets",
-    "./bin",
-    "./dist",
-    "./src",
-    "./node_modules",
     "**/*.js",
     "**/*.jsx",
     "**/*_test.ts",
