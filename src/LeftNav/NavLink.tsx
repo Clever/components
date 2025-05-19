@@ -83,6 +83,7 @@ export class NavLink extends React.PureComponent<Props> {
 
     const element = (
       <Component
+        role="menuitem"
         {...additionalProps}
         className={classnames(
           cssClass.CONTAINER,
@@ -93,6 +94,7 @@ export class NavLink extends React.PureComponent<Props> {
         )}
         href={href}
         onClick={onClick}
+        aria-current={selected ? "page" : undefined}
       >
         <div className={cssClass.CONTENTS}>
           {icon && (
@@ -102,8 +104,12 @@ export class NavLink extends React.PureComponent<Props> {
               })}
             </div>
           )}
-          <div className={cssClass.LABEL_CONTAINER}>
-            <div className={cssClass.LABEL} title={(title || label) as any}>
+          <div className={cssClass.LABEL_CONTAINER} aria-hidden={_collapsed}>
+            <div
+              className={cssClass.LABEL}
+              title={(title || label) as any}
+              aria-hidden={_collapsed}
+            >
               {label}
             </div>
           </div>

@@ -150,16 +150,20 @@ export class LeftNav extends React.PureComponent<Props, State> {
               className,
             )}
           >
-            <div className={classnames(cssClass.TOPNAV, _collapsed && cssClass.TOPNAV_COLLAPSED)}>
+            <div
+              className={classnames(cssClass.TOPNAV, _collapsed && cssClass.TOPNAV_COLLAPSED)}
+              role="menu"
+            >
               {navItems}
             </div>
             <TransitionGroup
               className={classnames(cssClass.SUBNAV, openChild && cssClass.SUBNAV_OPEN)}
               component="div"
               transitionName={cssClass.SUBNAV_CONTENT_ANIM}
+              aria-hidden={!openNavGroup}
             >
               {openChild && (
-                <div className={cssClass.SUBNAV_CONTENT}>
+                <div className={cssClass.SUBNAV_CONTENT} role="menu">
                   {React.Children.map(openChild.props.children, (child) => {
                     // ^ cannot use normal array map, because open.props.children may be an array or a single react element
                     return (
