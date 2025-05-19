@@ -3,7 +3,6 @@ import * as _ from "lodash";
 import * as React from "react";
 import * as BootstrapTooltip from "react-bootstrap/lib/Tooltip";
 import * as Overlay from "react-bootstrap/lib/Overlay";
-import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 
@@ -150,28 +149,26 @@ export default class Tooltip extends React.Component<Props, State> {
     const child = React.Children.only(children);
 
     return (
-      <RootCloseWrapper onRootClose={handleHideTooltip}>
-        <>
-          {React.cloneElement(child, {
-            ref: this.tooltipTarget,
-            tabIndex: 0,
-            onFocus: handleShowTooltip,
-            onBlur: handleHideTooltip,
-            onMouseEnter: handleMouseEnter,
-            onMouseLeave: handleMouseLeave,
-            onMouseDown: handleOnClick,
-            onKeyUp: (event) => handleEscape(event),
-            ...child.props,
-          })}
-          <Overlay
-            target={this.tooltipTarget.current}
-            show={this.state.showTooltip}
-            placement={placement}
-          >
-            {tooltip}
-          </Overlay>
-        </>
-      </RootCloseWrapper>
+      <>
+        {React.cloneElement(child, {
+          ref: this.tooltipTarget,
+          tabIndex: 0,
+          onFocus: handleShowTooltip,
+          onBlur: handleHideTooltip,
+          onMouseEnter: handleMouseEnter,
+          onMouseLeave: handleMouseLeave,
+          onMouseDown: handleOnClick,
+          onKeyUp: (event) => handleEscape(event),
+          ...child.props,
+        })}
+        <Overlay
+          target={this.tooltipTarget.current}
+          show={this.state.showTooltip}
+          placement={placement}
+        >
+          {tooltip}
+        </Overlay>
+      </>
     );
   }
 }
