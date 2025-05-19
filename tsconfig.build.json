@@ -7,11 +7,6 @@
     "moduleResolution": "node"
   },
   "exclude": [
-    "./assets",
-    "./bin",
-    "./dist",
-    "./docs",
-    "./node_modules",
     "**/*.js",
     "**/*.jsx",
     "**/*_test.ts",
