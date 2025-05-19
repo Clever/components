@@ -2,11 +2,11 @@ import * as _ from "lodash";
 import * as classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import MenuItem, { cssClass as menuItemCss, Props as MenuItemProps } from "./MenuItem";
 import MorePropTypes from "../utils/MorePropTypes";
 import { ChildrenOf, Values } from "../utils/types";
+import { RootCloseWrapper } from "../RootCloseWrapper";
 
 import "./Menu.less";
 
@@ -131,48 +131,51 @@ export default class Menu extends React.PureComponent<Props> {
 
     return (
       <RootCloseWrapper onRootClose={() => this._setDropdownOpen(false)}>
-        <div
-          {...additionalProps}
-          className={classnames(cssClass.CONTAINER, className)}
-          onKeyDown={this._handleKeyDown}
-          onKeyUp={this._handleKeyUp}
-          onBlur={this._handleFocusOut}
-        >
-          {React.cloneElement(trigger, {
-            "aria-controls": this.IDs.DROPDOWN,
-            "aria-expanded": open,
-            "aria-haspopup": true,
-            className: classnames(cssClass.TRIGGER, trigger.props.className),
-            id: this.IDs.TRIGGER,
-            onClick: this._handleTriggerClick,
-            ref: triggerRefOverride || this._handleTriggerRef,
-            role: "button",
-          })}
-          {open && (
-            <ul
-              aria-labelledby={this.IDs.TRIGGER}
-              className={classnames(
-                cssClass.DROPDOWN,
-                cssClass.placement(placement),
-                wrapItems && cssClass.WRAP,
-              )}
-              id={this.IDs.DROPDOWN}
-              role="menu"
-              style={{ maxHeight, maxWidth, minWidth }}
-            >
-              {this._getMenuItems().map((menuItem, i) => (
-                <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
-                  {React.cloneElement(menuItem, {
-                    focused: this._isFocused(menuItem, i),
-                    onClick: (e) => this._handleItemClick(menuItem, e),
-                    onMouseEnter: (e) => this._handleItemMouseEnter(menuItem, i, e),
-                    useSafariCompatibilityMode,
-                  })}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {(ref) => (
+          <div
+            {...additionalProps}
+            className={classnames(cssClass.CONTAINER, className)}
+            onKeyDown={this._handleKeyDown}
+            onKeyUp={this._handleKeyUp}
+            onBlur={this._handleFocusOut}
+            ref={ref}
+          >
+            {React.cloneElement(trigger, {
+              "aria-controls": this.IDs.DROPDOWN,
+              "aria-expanded": open,
+              "aria-haspopup": true,
+              className: classnames(cssClass.TRIGGER, trigger.props.className),
+              id: this.IDs.TRIGGER,
+              onClick: this._handleTriggerClick,
+              ref: triggerRefOverride || this._handleTriggerRef,
+              role: "button",
+            })}
+            {open && (
+              <ul
+                aria-labelledby={this.IDs.TRIGGER}
+                className={classnames(
+                  cssClass.DROPDOWN,
+                  cssClass.placement(placement),
+                  wrapItems && cssClass.WRAP,
+                )}
+                id={this.IDs.DROPDOWN}
+                role="menu"
+                style={{ maxHeight, maxWidth, minWidth }}
+              >
+                {this._getMenuItems().map((menuItem, i) => (
+                  <li className={cssClass.ITEM_WRAPPER} key={i} role="none">
+                    {React.cloneElement(menuItem, {
+                      focused: this._isFocused(menuItem, i),
+                      onClick: (e) => this._handleItemClick(menuItem, e),
+                      onMouseEnter: (e) => this._handleItemMouseEnter(menuItem, i, e),
+                      useSafariCompatibilityMode,
+                    })}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </RootCloseWrapper>
     );
   }

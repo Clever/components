@@ -3,12 +3,12 @@ import * as React from "react";
 import * as _ from "lodash";
 import * as classnames from "classnames";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import * as RootCloseWrapper from "react-overlays/lib/RootCloseWrapper";
 
 import MorePropTypes from "../utils/MorePropTypes";
 import { NavLink } from "./NavLink";
 import { NavGroup } from "./NavGroup";
 import { ChildrenOf } from "../utils/types";
+import { RootCloseWrapper } from "../RootCloseWrapper";
 
 import "./LeftNav.less";
 
@@ -139,43 +139,46 @@ export class LeftNav extends React.PureComponent<Props, State> {
 
     return (
       <RootCloseWrapper onRootClose={() => this._onRootClose()}>
-        <nav
-          className={classnames(
-            cssClass.CONTAINER,
-            _collapsed && cssClass.COLLAPSED,
-            narrow && cssClass.NARROW,
-            openChild && cssClass.WITH_SUBNAV_OPEN,
-            className,
-          )}
-        >
-          <div className={classnames(cssClass.TOPNAV, _collapsed && cssClass.TOPNAV_COLLAPSED)}>
-            {navItems}
-          </div>
-          <TransitionGroup
-            className={classnames(cssClass.SUBNAV, openChild && cssClass.SUBNAV_OPEN)}
-            component="div"
-            transitionName={cssClass.SUBNAV_CONTENT_ANIM}
-          >
-            {openChild && (
-              <div className={cssClass.SUBNAV_CONTENT}>
-                {React.Children.map(openChild.props.children, (child) => {
-                  // ^ cannot use normal array map, because open.props.children may be an array or a single react element
-                  return (
-                    <CSSTransition
-                      className={cssClass.SUBNAV_CONTENT_ANIM}
-                      timeout={{
-                        enter: WIDTH_TRANSITION_DURATION_MS,
-                        exit: WIDTH_TRANSITION_DURATION_MS,
-                      }}
-                    >
-                      {child}
-                    </CSSTransition>
-                  );
-                })}
-              </div>
+        {(ref) => (
+          <nav
+            ref={ref}
+            className={classnames(
+              cssClass.CONTAINER,
+              _collapsed && cssClass.COLLAPSED,
+              narrow && cssClass.NARROW,
+              openChild && cssClass.WITH_SUBNAV_OPEN,
+              className,
             )}
-          </TransitionGroup>
-        </nav>
+          >
+            <div className={classnames(cssClass.TOPNAV, _collapsed && cssClass.TOPNAV_COLLAPSED)}>
+              {navItems}
+            </div>
+            <TransitionGroup
+              className={classnames(cssClass.SUBNAV, openChild && cssClass.SUBNAV_OPEN)}
+              component="div"
+              transitionName={cssClass.SUBNAV_CONTENT_ANIM}
+            >
+              {openChild && (
+                <div className={cssClass.SUBNAV_CONTENT}>
+                  {React.Children.map(openChild.props.children, (child) => {
+                    // ^ cannot use normal array map, because open.props.children may be an array or a single react element
+                    return (
+                      <CSSTransition
+                        className={cssClass.SUBNAV_CONTENT_ANIM}
+                        timeout={{
+                          enter: WIDTH_TRANSITION_DURATION_MS,
+                          exit: WIDTH_TRANSITION_DURATION_MS,
+                        }}
+                      >
+                        {child}
+                      </CSSTransition>
+                    );
+                  })}
+                </div>
+              )}
+            </TransitionGroup>
+          </nav>
+        )}
       </RootCloseWrapper>
     );
   }
