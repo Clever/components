@@ -1,5 +1,5 @@
 import * as React from "react";
-import classNames from "classnames";
+import classnames from "classnames";
 import loremIpsum from "lorem-ipsum";
 
 import Example, { CodeSample, ExampleCode } from "./Example";
