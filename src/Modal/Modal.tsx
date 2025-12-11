@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as FocusTrap from "focus-trap-react";
 import * as reactDom from "react-dom";
 

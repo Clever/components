@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as React from "react";
 
 import FormError from "../FormError";

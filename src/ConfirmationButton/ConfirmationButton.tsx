@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as classnames from "classnames";
+import classnames from "classnames";
 
 import { Button, Props as ButtonProps } from "../Button/Button";
 import { ModalButton, Props as ModalButtonProps } from "../ModalButton/ModalButton";

@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as classnames from "classnames";
+import classnames from "classnames";
 
 import MorePropTypes from "../utils/MorePropTypes";
 import { NavLink, Props as NavLinkProps } from "./NavLink";

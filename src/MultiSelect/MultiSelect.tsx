@@ -1,4 +1,4 @@
-import * as classNames from "classnames";
+import classnames from "classnames";
 import * as React from "react";
 import { useState, useRef } from "react";
 import { useCombobox, useMultipleSelection } from "downshift";

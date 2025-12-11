@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as FontAwesome from "react-fontawesome";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as PropTypes from "prop-types";
 
 import { Button } from "../Button/Button";

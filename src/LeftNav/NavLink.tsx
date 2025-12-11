@@ -1,6 +1,6 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as classnames from "classnames";
+import classnames from "classnames";
 
 import Tooltip from "../Tooltip";
 import Arrow from "./Arrow";

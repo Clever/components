@@ -1,4 +1,4 @@
-import * as classnames from "classnames";
+import classnames from "classnames";
 import { Button, FlexBox, ItemAlign, Justify, Tooltip } from "../index";
 import { DragHandleIcon } from "./DragHandleIcon";
 import * as _ from "lodash";

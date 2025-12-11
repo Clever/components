@@ -1,4 +1,4 @@
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as FontAwesome from "react-fontawesome";
 import * as React from "react";
 
