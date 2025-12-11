@@ -150,7 +150,7 @@ export default class TextTruncateView extends React.PureComponent {
         </div>
         <div className={cssClass.CONFIG}>
           <TextInput
-            className={classNames(cssClass.CONFIG_OPTIONS, cssClass.CONFIG_INPUT_MORE)}
+            className={classnames(cssClass.CONFIG_OPTIONS, cssClass.CONFIG_INPUT_MORE)}
             id={cssClass.CONFIG_INPUT_MORE}
             label="'Show more' label"
             name={cssClass.CONFIG_INPUT_MORE}
@@ -160,7 +160,7 @@ export default class TextTruncateView extends React.PureComponent {
         </div>
         <div className={cssClass.CONFIG}>
           <TextInput
-            className={classNames(cssClass.CONFIG_OPTIONS, cssClass.CONFIG_INPUT_LESS)}
+            className={classnames(cssClass.CONFIG_OPTIONS, cssClass.CONFIG_INPUT_LESS)}
             id={cssClass.CONFIG_INPUT_LESS}
             label="'Show less' label"
             name={cssClass.CONFIG_INPUT_LESS}

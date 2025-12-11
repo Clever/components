@@ -185,10 +185,10 @@ const Select2: React.FC<Props> = ({
   const id = name;
   const inputRef = useRef<HTMLInputElement>();
   return (
-    <div className={classNames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
-      <div className={classNames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
+    <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
+      <div className={classnames(cssClass.INFO_ROW, hideLabel && cssClass.INFO_ROW_LABEL_HIDDEN)}>
         <label
-          className={classNames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
+          className={classnames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
           {...getLabelProps()}
         >
           {label}
@@ -200,7 +200,7 @@ const Select2: React.FC<Props> = ({
         )}
       </div>
       <div
-        className={classNames(
+        className={classnames(
           cssClass.SELECT_CONTAINER,
           isOpen && cssClass.SELECT_CONTAINER_FOCUSED,
           isInError && cssClass.SELECT_CONTAINER_ERROR,
@@ -233,14 +233,14 @@ const Select2: React.FC<Props> = ({
           })}
         />
         {isInError && (
-          <div className={classNames(cssClass.TRAILING_ELEMENT, cssClass.ERROR_ICON)}>
+          <div className={classnames(cssClass.TRAILING_ELEMENT, cssClass.ERROR_ICON)}>
             <FontAwesome name="exclamation-circle" />
           </div>
         )}
         {clearable && selectedItem && (
           <FlexBox justify="center" alignItems="center">
             <button
-              className={classNames(
+              className={classnames(
                 cssClass.BUTTON_RESET,
                 cssClass.TRAILING_ELEMENT,
                 cssClass.CLEAR_BUTTON,
@@ -265,7 +265,7 @@ const Select2: React.FC<Props> = ({
           </FlexBox>
         )}
         <button
-          className={classNames(
+          className={classnames(
             cssClass.BUTTON_RESET,
             cssClass.TRAILING_ELEMENT,
             cssClass.CARET_BUTTON,
@@ -276,14 +276,14 @@ const Select2: React.FC<Props> = ({
         </button>
       </div>
       <ul
-        className={classNames(cssClass.MENU_RESET, isOpen && cssClass.MENU_OPEN)}
+        className={classnames(cssClass.MENU_RESET, isOpen && cssClass.MENU_OPEN)}
         {...getMenuProps()}
       >
         {isOpen &&
           (selectableOptions.length > 0 ? (
             selectableOptions.map((o, i) => (
               <li
-                className={classNames(
+                className={classnames(
                   cssClass.MENU_OPTION,
                   i === highlightedIndex && cssClass.MENU_OPTION_HIGHLIGHTED,
                 )}
@@ -294,7 +294,7 @@ const Select2: React.FC<Props> = ({
               </li>
             ))
           ) : (
-            <li className={classNames(cssClass.NO_OPTIONS_FOUND)}>No options</li>
+            <li className={classnames(cssClass.NO_OPTIONS_FOUND)}>No options</li>
           ))}
       </ul>
     </div>

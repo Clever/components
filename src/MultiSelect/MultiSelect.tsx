@@ -208,15 +208,15 @@ const MultiSelect: React.FC<Props> = ({
   const id = name;
   const inputRef = useRef<HTMLInputElement>();
   return (
-    <div className={classNames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
+    <div className={classnames(cssClass.CONTAINER, formElementSizeClassName(size), className)}>
       <label
-        className={classNames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
+        className={classnames(cssClass.LABEL, hideLabel && cssClass.LABEL_HIDDEN)}
         {...getLabelProps()}
       >
         {label}
       </label>
       <div
-        className={classNames(
+        className={classnames(
           cssClass.SELECT_CONTAINER,
           isOpen && cssClass.SELECT_CONTAINER_FOCUSED,
         )}
@@ -289,18 +289,18 @@ const MultiSelect: React.FC<Props> = ({
         </button>
       </div>
       <ul
-        className={classNames(cssClass.MENU_RESET, isOpen && cssClass.MENU_OPEN)}
+        className={classnames(cssClass.MENU_RESET, isOpen && cssClass.MENU_OPEN)}
         {...getMenuProps()}
       >
         {isOpen &&
           (selectableOptions.length === 0 ? (
-            <li className={classNames(cssClass.NO_OPTIONS_FOUND)}>No options</li>
+            <li className={classnames(cssClass.NO_OPTIONS_FOUND)}>No options</li>
           ) : (
             selectableOptions.map((o, i) => {
               const isAddNewItemOption = o.value === ADD_NEW_ITEM_KEY;
               return (
                 <li
-                  className={classNames(
+                  className={classnames(
                     cssClass.MENU_OPTION,
                     i === highlightedIndex && cssClass.MENU_OPTION_HIGHLIGHTED,
                   )}
