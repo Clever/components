@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import * as _ from "lodash";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import { classNameFor } from "../utils";
 
 export interface Props {

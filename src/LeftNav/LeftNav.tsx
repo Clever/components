@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as _ from "lodash";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import MorePropTypes from "../utils/MorePropTypes";

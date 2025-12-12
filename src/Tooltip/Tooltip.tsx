@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import * as React from "react";
 import * as BootstrapTooltip from "react-bootstrap/lib/Tooltip";
 import * as Overlay from "react-bootstrap/lib/Overlay";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as PropTypes from "prop-types";
 
 import { Values } from "../utils/types";

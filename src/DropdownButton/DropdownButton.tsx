@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import MorePropTypes from "../utils/MorePropTypes";
 import * as Overlay from "react-bootstrap/lib/Overlay";
 import * as React from "react";

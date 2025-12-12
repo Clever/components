@@ -1,7 +1,7 @@
 import * as FontAwesome from "react-fontawesome";
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import TextareaAutosize from "react-autosize-textarea";
 
 import { FormElementSize, formElementSizeClassName, Size } from "../utils/Forms";

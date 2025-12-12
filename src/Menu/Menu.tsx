@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 

@@ -1,7 +1,7 @@
 import * as FontAwesome from "react-fontawesome";
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import * as _ from "lodash";
 
 import { FormElementSize, formElementSizeClassName, AutoComplete } from "../utils/Forms";
