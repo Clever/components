@@ -5,8 +5,9 @@ import * as FontAwesome from "react-fontawesome";
 import {
   Accordion,
   AccordionItem,
-  AccordionItemTitle,
-  AccordionItemBody,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
 } from "react-accessible-accordion";
 import "./InfoPanel.less";
 
@@ -45,6 +46,8 @@ export const cssClass = {
   COLLAPSIBLE_HEADER: "InfoPanel--collapsibleHeader",
 };
 
+const ACCORDION_ITEM_KEY = "info-panel-accordion-item";
+
 /**
  * Base presentational component for the displaying information in paneled format.
  */
@@ -59,12 +62,15 @@ export default class InfoPanel extends React.Component<Props, State> {
   }
 
   toggleArrow(keys) {
-    this.setState({ isCollapsed: !(typeof keys !== "undefined") });
+    console.log("toggleArrow", keys);
+    console.log("isCollapsed", this.state.isCollapsed);
+    this.setState({ isCollapsed: !this.state.isCollapsed });
   }
 
   render() {
-    const { children, className, hideTitle, title, footer, collapsible } = this.props;
+    const { children, className, hideTitle, title, footer, collapsible, defaultOpen } = this.props;
     const { isCollapsed } = this.state;
+    const preExpanded = collapsible && defaultOpen ? [ACCORDION_ITEM_KEY] : [];
     if (!collapsible) {
       return (
         <div className={classnames(cssClass.CONTAINER, className)}>
@@ -88,20 +94,24 @@ export default class InfoPanel extends React.Component<Props, State> {
 
     return (
       <div className={classnames(cssClass.CONTAINER, className)}>
-        <Accordion onChange={(keys) => this.toggleArrow(keys)}>
-          <AccordionItem expanded={!isCollapsed}>
-            <AccordionItemTitle className={cssClass.COLLAPSIBLE_HEADER}>
-              <div>
+        <Accordion
+          allowZeroExpanded
+          preExpanded={preExpanded}
+          onChange={(keys) => this.toggleArrow(keys)}
+        >
+          <AccordionItem uuid={ACCORDION_ITEM_KEY}>
+            <AccordionItemHeading className={cssClass.COLLAPSIBLE_HEADER}>
+              <AccordionItemButton>
                 <div className={cssClass.COLLAPSE_ARROW}>
                   <FontAwesome name={collapseArrow} />
                 </div>
                 <div className={cssClass.COLLAPSIBLE_TITLE}>{title}</div>
-              </div>
-            </AccordionItemTitle>
-            <AccordionItemBody>
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
               <div className={cssClass.CONTENT}>{children}</div>
               {footer && <div className={cssClass.FOOTER}>{footer}</div>}
-            </AccordionItemBody>
+            </AccordionItemPanel>
           </AccordionItem>
         </Accordion>
       </div>
