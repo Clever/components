@@ -27,7 +27,7 @@ describe("InfoPanel", () => {
         {content}
       </InfoPanel>,
     );
-    assert(panel.find(".accordion__body").hasClass("accordion__body--hidden"));
+    assert(panel.find(".accordion__panel[hidden]").length > 0);
   });
 
   it("shows collapsible content when defaultOpen is true", () => {
@@ -37,6 +37,6 @@ describe("InfoPanel", () => {
         {content}
       </InfoPanel>,
     );
-    assert(!panel.find(".accordion__body").hasClass("accordion__body--hidden"));
+    assert(panel.find(".accordion__panel[hidden]").length === 0);
   });
 });
