@@ -66,13 +66,21 @@
 
 // classes picked up by react-accessible-accordion to show
 // and hide content
-.accordion__body {
+.accordion__panel {
   display: block;
-  animation: fadein 0.35s ease-in;
+  animation: accordion_panel_fadein 0.35s ease-in;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
-.accordion__body--hidden {
-  display: none;
-  opacity: 0;
-  animation: fadein 0.35s ease-in;
+@keyframes accordion_panel_fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1; /* Fade in */
+  }
 }
