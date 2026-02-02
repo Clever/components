@@ -112,7 +112,20 @@ export class Modal extends React.Component<Props, State> {
     let modal;
     if (this.props.focusLocked) {
       modal = (
-        <FocusTrap focusTrapOptions={{ initialFocus: '[aria-label="close modal window"]' }}>
+        <FocusTrap
+          focusTrapOptions={{
+            checkCanFocusTrap: async (containers) => {
+              const hasFocusTarget = containers.some((container) =>
+                container.matches('[aria-label="close modal window"]'),
+              );
+              if (!hasFocusTarget) {
+                await new Promise((resolve) => setTimeout(resolve, 100));
+              }
+            },
+            initialFocus: '[aria-label="close modal window"]',
+            delayInitialFocus: true,
+          }}
+        >
           {modalContent}
         </FocusTrap>
       );
