@@ -15,11 +15,11 @@
   }
 
   .Grid {
-    .shaded;
+    .shaded();
     padding: 1rem;
 
     &:not(:last-child) {
-      .margin--bottom--l;
+      .margin--bottom--l();
     }
 
     &.resizable {
@@ -30,12 +30,12 @@
 
   code.gridContent {
     .alignItems(center);
-    .flex--grow;
-    .flexbox;
+    .flex--grow();
+    .flexbox();
     .justifyContent(center);
-    .outlined;
+    .outlined();
     .tint(color, @accent_purple, 2);
-    .text--medium;
+    .text--medium();
     background-color: @neutral_silver;
     font-size: 0.875rem;
     font-family: Menlo, Monaco, Consolas, Courier New, monospace;

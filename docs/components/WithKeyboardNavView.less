@@ -1,24 +1,24 @@
 @import (reference) "~src/less/utilities";
 
 .WithKeyboardNavView--intro {
-  .margin--bottom--xl;
+  .margin--bottom--xl();
 }
 
 .WithKeyboardNavView--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .WithKeyboardNavView--config {
-  .flexbox;
-  .items--center;
-  .margin--bottom--m;
-  .text--caps;
-  .text--small;
+  .flexbox();
+  .items--center();
+  .margin--bottom--m();
+  .text--caps();
+  .text--small();
 
   &:not(:last-child) {
-    .margin--right--m;
+    .margin--right--m();
   }
 }
 
@@ -27,7 +27,7 @@ label.WithKeyboardNavView--config {
 }
 
 .WithKeyboardNavView--configOptions {
-  .margin--left--2xs;
+  .margin--left--2xs();
   display: inline-block;
 }
 
@@ -40,18 +40,18 @@ label.WithKeyboardNavView--config {
 }
 
 .WithKeyboardNavView--props {
-  .margin--top--l;
+  .margin--top--l();
 }
 
 .WithKeyboardNavView--option {
   .border--s(@neutral_white);
-  .padding--m;
-  .text--large;
+  .padding--m();
+  .text--large();
   color: @neutral_dark_gray;
   transition: all @timingQuickly ease-out;
 
   &:not(:first-child) {
-    .margin--top--m;
+    .margin--top--m();
   }
 
   &.WithKeyboardNavView--focused {

@@ -1,24 +1,24 @@
 @import (reference) "~src/less/utilities";
 
 .LogoView--intro {
-  .margin--bottom--xl;
+  .margin--bottom--xl();
 }
 
 .LogoView--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .LogoView--config {
-  .flexbox;
-  .items--center;
-  .margin--bottom--m;
-  .text--caps;
-  .text--small;
+  .flexbox();
+  .items--center();
+  .margin--bottom--m();
+  .text--caps();
+  .text--small();
 
   &:not(:last-child) {
-    .margin--right--m;
+    .margin--right--m();
   }
 }
 
@@ -27,7 +27,7 @@ label.LogoView--config {
 }
 
 .LogoView--configOptions {
-  .margin--left--2xs;
+  .margin--left--2xs();
   display: inline-block;
 }
 
@@ -40,11 +40,11 @@ label.LogoView--config {
 }
 
 .LogoView--props {
-  .margin--top--l;
+  .margin--top--l();
 }
 
 .LogoView--demo {
-  .padding--l;
+  .padding--l();
   background-color: @neutral_off_white;
 }
 

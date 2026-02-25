@@ -1,28 +1,28 @@
 @import (reference) "~src/less/utilities";
 
 .MultiSelectView--intro {
-  .margin--bottom--xl;
+  .margin--bottom--xl();
 }
 
 .MultiSelectView--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .MultiSelectView--config {
-  .flexbox;
-  .items--center;
-  .margin--bottom--m;
+  .flexbox();
+  .items--center();
+  .margin--bottom--m();
 
   &:not(:last-child) {
-    .margin--right--m;
+    .margin--right--m();
   }
 }
 
 .MultiSelectView--configLabelText {
-  .text--caps;
-  .text--small;
+  .text--caps();
+  .text--small();
 }
 
 label.MultiSelectView--config {
@@ -30,7 +30,7 @@ label.MultiSelectView--config {
 }
 
 .MultiSelectView--configOptions {
-  .margin--left--2xs;
+  .margin--left--2xs();
   display: inline-block;
 }
 
@@ -43,5 +43,5 @@ label.MultiSelectView--config {
 }
 
 .MultiSelectView--props {
-  .margin--top--l;
+  .margin--top--l();
 }
