@@ -1,7 +1,7 @@
 @import (reference) "../less/index";
 
 .InfoPanel {
-  .borderRadius--m;
+  .borderRadius--m();
   .border--s(@neutral_silver);
   background-color: @neutral_white;
   .flexbox();
@@ -28,14 +28,14 @@
 }
 
 .InfoPanel--title {
-  .margin--none;
-  .padding--none;
+  .margin--none();
+  .padding--none();
   font-size: inherit;
 }
 
 .InfoPanel--content {
   padding: @size_m;
-  .flex--auto;
+  .flex--auto();
 }
 
 .InfoPanel--footer {
@@ -47,10 +47,10 @@
   background-color: @neutral_off_white;
   .border--bottom--s(@neutral_silver);
   padding: @size_s @size_m;
-  .text--regular;
+  .text--regular();
   color: @neutral_dark_gray;
   font-family: "Proxima Nova";
-  .margin--none;
+  .margin--none();
   padding: @size_s @size_m;
   display: block;
 }

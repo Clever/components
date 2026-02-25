@@ -6,9 +6,9 @@
 @import (reference) "../less/spacing";
 
 .TextInput {
-  .padding--x--s;
-  .padding--top--3xs;
-  .text--regular;
+  .padding--x--s();
+  .padding--top--3xs();
+  .text--regular();
   .border--s(@neutral_silver);
   position: relative;
   color: @neutral_black;
@@ -18,8 +18,8 @@
   width: 100%;
 
   .TextInput--infoRow {
-    .text--tiny;
-    .text--caps;
+    .text--tiny();
+    .text--caps();
     position: absolute;
     top: @size_xs;
     width: 100%;
@@ -48,7 +48,7 @@
   }
 
   .TextInput--input {
-    .text--medium;
+    .text--medium();
     display: block;
     border: 0px solid;
     width: 100%;
@@ -65,9 +65,9 @@
     }
 
     .TextInput--input {
-      .text--small;
-      .text--caps;
-      .padding--top--xs;
+      .text--small();
+      .text--caps();
+      .padding--top--xs();
       line-height: @size_2xl;
       min-height: @size_2xl;
       color: @neutral_dark_gray;
@@ -80,8 +80,8 @@
     }
 
     .TextInput--input {
-      .text--small;
-      .padding--top--xs;
+      .text--small();
+      .padding--top--xs();
       line-height: @size_2xl;
       min-height: @size_2xl;
       color: @neutral_dark_gray;
@@ -119,7 +119,7 @@
   }
 
   .TextInput--link {
-    .text--small;
+    .text--small();
     .border--s(@neutral_silver);
     position: absolute;
     top: 50%;

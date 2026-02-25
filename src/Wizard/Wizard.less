@@ -8,26 +8,26 @@
 .Wizard--sidebar {
   .flex(0, 0, 15rem);
   width: 15rem;
-  .padding--x--m;
-  .padding--y--l;
+  .padding--x--m();
+  .padding--y--l();
   background-color: @neutral_off_white;
   .border--right--m(@neutral_silver);
 
   h2 {
-    .text--regular;
-    .padding--none;
-    .margin--bottom--m;
+    .text--regular();
+    .padding--none();
+    .margin--bottom--m();
   }
 }
 
 @content_width: 37.5rem;
 @help_min_width: 18.75rem;
 .Wizard--contentGroup {
-  .margin--right--4xl;
+  .margin--right--4xl();
   min-width: @content_width;
   max-width: @content_width;
-  .margin--bottom--s;
-  .margin--left--none;
+  .margin--bottom--s();
+  .margin--left--none();
 }
 
 .Wizard--navButtons {
@@ -36,7 +36,7 @@
 
 .Wizard--step {
   .flex(1);
-  .padding--l;
+  .padding--l();
 }
 
 .Wizard--WizardStep--title {
@@ -54,28 +54,28 @@
 
 .Wizard--stepsDisplay {
   list-style-type: none;
-  .padding--none;
-  .margin--top--m;
+  .padding--none();
+  .margin--top--m();
 
   li {
     &:not(:last-child)::after {
       display: block;
       content: "";
       .border--left--s(@neutral_gray);
-      .margin--left--s;
+      .margin--left--s();
       height: @size_l;
     }
   }
 }
 
 .Wizard--controls {
-  .margin--top--3xl;
+  .margin--top--3xl();
 }
 
 .Wizard--stepsDisplay--stepButton.Button {
-  .padding--none;
+  .padding--none();
   text-align: left;
-  .text--line-height-3;
+  .text--line-height-3();
 }
 
 .Wizard--stepsDisplay--step {
@@ -83,7 +83,7 @@
   .flexbox();
   .alignItems(center);
   width: 100%;
-  .padding--y--2xs;
+  .padding--y--2xs();
 
   &:not(.Wizard--stepsDisplay--visited):not(.Wizard--stepsDisplay--stepLink) {
     .shade(color, @neutral_gray, 1);
@@ -122,20 +122,20 @@
   background-image: url("./assets/images/progress_notStarted.svg");
   background-repeat: no-repeat;
   background-size: contain;
-  .margin--right--s;
+  .margin--right--s();
 }
 
 .Wizard--WizardStep--component {
   .flex(1, 0, 37.5rem);
-  .margin--bottom--2xl;
+  .margin--bottom--2xl();
 }
 
 .Wizard--WizardStep--topInfo {
   .flexbox();
   .flexWrap(wrap);
   .alignItems(flex-start);
-  .margin--top--l;
-  .margin--bottom--m;
+  .margin--top--l();
+  .margin--bottom--m();
 }
 
 .Wizard--WizardStep--help {

@@ -9,10 +9,10 @@
 @checkboxTransition: all @timingQuickly ease-out;
 
 .Checkbox {
-  .button--reset;
-  .flexbox;
-  .font--ProximaNova;
-  .items--center;
+  .button--reset();
+  .flexbox();
+  .font--ProximaNova();
+  .items--center();
   cursor: pointer;
   transition: @checkboxTransition;
 }
@@ -29,9 +29,9 @@
 }
 
 .Checkbox--inner {
-  .flexbox;
-  .items--center;
-  .justify--center;
+  .flexbox();
+  .items--center();
+  .justify--center();
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -41,13 +41,13 @@
 .Checkbox--checkMark,
 .Checkbox--partialMark {
   width: 100%;
-  .padding--x--3xs;
+  .padding--x--3xs();
 }
 
 .Checkbox--label {
-  .margin--left--xs;
-  .text--medium;
-  .text--regular;
+  .margin--left--xs();
+  .text--medium();
+  .text--regular();
   color: @neutral_black;
 }
 

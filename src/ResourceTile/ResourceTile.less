@@ -53,7 +53,7 @@ a.dewey--ResourceTile--link {
 }
 
 .dewey--ResourceTile--icon {
-  .borderRadius--10percent;
+  .borderRadius--10percent();
   max-height: 100%;
   max-width: 100%;
 }
@@ -108,11 +108,11 @@ a.dewey--ResourceTile--link {
 }
 
 .dewey--ResourceTile--notes {
-  .margin--left--2xs;
+  .margin--left--2xs();
 }
 
 .dewey--ResourceTile--additionalInfo {
-  .margin--top--xs;
+  .margin--top--xs();
 }
 
 .dewey--ResourceTile--action {
@@ -132,8 +132,8 @@ a.dewey--ResourceTile--link {
 // We intentionally keep these styles outside the .mq-hover block because teachers should be able
 // to edit resources on devices even if they don't support true hover (mobile for example)
 .dewey--ResourceTile--action:last-child {
-  .margin--top--2xs;
-  .margin--bottom--2xs;
+  .margin--top--2xs();
+  .margin--bottom--2xs();
   visibility: hidden;
   .fadeOut(@timingPromptly);
 }
@@ -150,7 +150,7 @@ a.dewey--ResourceTile--link {
 }
 
 .dewey--ResourceTile--notification {
-  .zIndex--2;
+  .zIndex--2();
   border-radius: 50%;
   background-color: @alert_red_shade_1;
   width: @size_l;

@@ -4,8 +4,8 @@
 @import "../less/fonts";
 
 .LeftNav {
-  .animateWidth;
-  .flexbox;
+  .animateWidth();
+  .flexbox();
   color: @primary_blue_shade_2;
   background: @neutral_off_white;
   font-family: "Proxima Nova";
@@ -15,7 +15,7 @@
 }
 
 .LeftNav--narrow .NavLink {
-  .padding--y--xs;
+  .padding--y--xs();
 }
 
 .LeftNav--withSubnavOpen {
@@ -33,7 +33,7 @@
 .LeftNav--topnav,
 .LeftNav--subnav,
 .LeftNav--subnav--content {
-  .list-reset;
+  .list-reset();
   box-sizing: border-box;
   display: inline-block;
   height: auto;
@@ -41,7 +41,7 @@
 }
 
 .LeftNav--topnav {
-  .animateWidth;
+  .animateWidth();
   .flexShrink(0);
   // Only show scrollbar if necessary (looks pretty ugly in the cramped space otherwise)
   // This prevents using iOS momentum scrolling but that's a worthwhile compromise
@@ -55,9 +55,9 @@
 }
 
 .LeftNav--subnav {
-  .animateWidth;
-  .flexbox;
-  .flex--direction--column;
+  .animateWidth();
+  .flexbox();
+  .flex--direction--column();
   .flexShrink(0);
   background-color: fade(@neutral_gray, 5%);
   width: 0;
@@ -68,7 +68,7 @@
 }
 
 .LeftNav--subnav--content {
-  .flex--grow;
+  .flex--grow();
   height: auto;
   width: 100%;
   overflow: scroll;
@@ -81,7 +81,7 @@
 }
 
 .LeftNav--subnav--content--anim-enter {
-  .animateOpacity;
+  .animateOpacity();
   opacity: 0;
 
   &.LeftNav--subnav--content--anim-enter-active {
@@ -90,7 +90,7 @@
 }
 
 .LeftNav--subnav--content--anim-leave {
-  .animateOpacity;
+  .animateOpacity();
   opacity: 1;
 
   &.LeftNav--subnav--content--anim-leave-active {

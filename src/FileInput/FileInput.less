@@ -1,9 +1,9 @@
 @import (reference) "../less/index";
 
 .FileInput {
-  .text--medium;
-  .text--caps;
-  .padding--x--s;
+  .text--medium();
+  .text--caps();
+  .padding--x--s();
   .border--s(@neutral_silver);
   background: @neutral_white;
   box-sizing: border-box;
@@ -14,8 +14,8 @@
 }
 
 .FileInput--Label {
-  .text--caps;
-  .text--tiny;
+  .text--caps();
+  .text--tiny();
   color: @neutral_dark_gray;
   position: absolute;
   top: @size_xs;
@@ -45,7 +45,7 @@
 
 .FileInput--Text--selected {
   color: @neutral_black;
-  .margin--top--s;
+  .margin--top--s();
 }
 
 // Overwrite the inlined styles on the hidden file input for accessibility

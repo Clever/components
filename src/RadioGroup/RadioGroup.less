@@ -2,28 +2,28 @@
 
 .RadioGroup {
   &:not(:first-child) {
-    .margin--top--l;
+    .margin--top--l();
   }
 
   // The latter class (selectedWithAdditionalText) exists purely to be overriden by the consumer.
   .RadioGroup--radio,
   .RadioGroup--radio--selectedWithAdditionalText {
     &:not(:first-child) {
-      .margin--top--s;
+      .margin--top--s();
     }
   }
 }
 
 .RadioGroup--label {
-  .margin--bottom--s;
-  .text--medium;
-  .text--semi-bold;
+  .margin--bottom--s();
+  .text--medium();
+  .text--semi-bold();
 }
 
 .RadioGroup--additionalText {
-  .margin--top--xs;
-  .margin--left--l;
-  .text--smallMedium;
+  .margin--top--xs();
+  .margin--left--l();
+  .text--smallMedium();
   line-height: @size_m;
   color: @neutral_dark_gray;
 }

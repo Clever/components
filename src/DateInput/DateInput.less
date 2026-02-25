@@ -8,9 +8,9 @@
 @import "~react-datetime/css/react-datetime.css";
 
 .DateInput {
-  .padding--x--s;
-  .padding--top--3xs;
-  .text--regular;
+  .padding--x--s();
+  .padding--top--3xs();
+  .text--regular();
   .border--s(@neutral_silver);
   position: relative;
   color: @neutral_black;
@@ -20,8 +20,8 @@
   width: 100%;
 
   .DateInput--infoRow {
-    .text--tiny;
-    .text--caps;
+    .text--tiny();
+    .text--caps();
     position: absolute;
     top: @size_xs;
     width: 100%;
@@ -53,7 +53,7 @@
   }
 
   .DateInput--input {
-    .text--medium;
+    .text--medium();
     display: block;
     border: none;
     width: 100%;
@@ -70,8 +70,8 @@
     }
 
     .DateInput--input {
-      .text--small;
-      .padding--top--xs;
+      .text--small();
+      .padding--top--xs();
       line-height: @size_2xl;
       min-height: @size_2xl;
       color: @neutral_dark_gray;
@@ -106,5 +106,5 @@
 }
 
 .DatePicker--Popper.react-datepicker-popper {
-  .zIndex--3;
+  .zIndex--3();
 }

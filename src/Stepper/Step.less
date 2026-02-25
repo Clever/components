@@ -9,12 +9,12 @@
 .Step {
   .flexbox();
   .alignItems(flex-start);
-  .padding--y--2xs;
-  .text--medium;
-  .text--regular;
-  .padding--none;
+  .padding--y--2xs();
+  .text--medium();
+  .text--regular();
+  .padding--none();
   text-align: left;
-  .text--line-height-3;
+  .text--line-height-3();
 }
 
 button.Step {
@@ -25,8 +25,8 @@ button.Step {
 .Step--title {
   color: @neutral_gray;
   font-size: @titleFontSize;
-  .text--semi-bold;
-  .margin--top--3xs;
+  .text--semi-bold();
+  .margin--top--3xs();
   .flexShrink(0);
   transition: all @timingQuickly ease-out;
 }
@@ -38,15 +38,15 @@ button.Step {
 
 .Step--message--optional {
   color: @neutral_gray;
-  .text--italic;
-  .margin--bottom--xs;
+  .text--italic();
+  .margin--bottom--xs();
   transition: all @timingQuickly ease-out;
 }
 
 .Step--message--warning {
   color: @alert_red;
-  .text--semi-bold;
-  .margin--bottom--xs;
+  .text--semi-bold();
+  .margin--bottom--xs();
 }
 
 .Step--icon {
@@ -58,7 +58,7 @@ button.Step {
   .circle(@stepIconWidth);
   background-color: @neutral_white;
   .border--s(@neutral_gray);
-  .margin--right--s;
+  .margin--right--s();
   color: @neutral_gray;
   box-shadow: 0 0 0 @iconFocusShadowThickness transparent;
   transition: all @timingQuickly ease-out;
