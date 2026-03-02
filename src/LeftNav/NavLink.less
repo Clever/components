@@ -3,9 +3,9 @@
 @import (reference) "./sizing";
 
 .NavLink {
-  .animateWidth;
-  .button--reset;
-  .padding--y--m;
+  .animateWidth();
+  .button--reset();
+  .padding--y--m();
   color: @primary_blue_shade_2;
   box-sizing: border-box;
   display: block;
@@ -36,8 +36,8 @@
 }
 
 .NavLink--icon--container {
-  .animateWidth;
-  .margin--right--s;
+  .animateWidth();
+  .margin--right--s();
   display: inline-block;
   height: @size_l;
   transition-property: margin;
@@ -51,7 +51,7 @@
 }
 
 .NavLink--label--container {
-  .animateWidth;
+  .animateWidth();
   display: inline-block;
   vertical-align: middle;
   width: @linkLabelWidthNoArrow;
@@ -64,7 +64,7 @@
 }
 
 .NavLink--label {
-  .animateOpacity;
+  .animateOpacity();
   opacity: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -73,7 +73,7 @@
 }
 
 .NavLink--arrow--container {
-  .animateWidth;
+  .animateWidth();
   display: inline-block;
   height: @size_l;
   margin-left: @linkArrowMarginLeft;
@@ -92,7 +92,7 @@
 .NavLink--selected:active,
 .NavLink--selected:focus,
 .NavLink--selected:hover {
-  .text--semi-bold;
+  .text--semi-bold();
   box-shadow: inset @borderWidthL 0 @primary_blue;
 }
 

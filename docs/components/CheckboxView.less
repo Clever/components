@@ -1,24 +1,24 @@
 @import (reference) "~src/less/utilities";
 
 .CheckboxView--intro {
-  .margin--bottom--xl;
+  .margin--bottom--xl();
 }
 
 .CheckboxView--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .CheckboxView--config {
-  .flexbox;
-  .items--center;
-  .margin--bottom--m;
-  .text--caps;
-  .text--small;
+  .flexbox();
+  .items--center();
+  .margin--bottom--m();
+  .text--caps();
+  .text--small();
 
   &:not(:last-child) {
-    .margin--right--m;
+    .margin--right--m();
   }
 }
 
@@ -27,7 +27,7 @@ label.CheckboxView--config {
 }
 
 .CheckboxView--configOptions {
-  .margin--left--2xs;
+  .margin--left--2xs();
   display: inline-block;
 }
 
@@ -40,11 +40,11 @@ label.CheckboxView--config {
 }
 
 .CheckboxView--props {
-  .margin--top--l;
+  .margin--top--l();
 }
 
 .CheckboxView--checkbox {
   &:not(:first-child) {
-    .margin--top--m;
+    .margin--top--m();
   }
 }

@@ -5,7 +5,7 @@
   height: @topBarHeight;
   min-width: 0;
   transition: all @timingPromptly ease-out;
-  .padding--x--2xs;
+  .padding--x--2xs();
   // TODO: Consider creating a color variable if this should be a color used elsewhere.
   /* stylelint-disable-next-line declaration-property-value-whitelist */
   background-color: #436cf2;
@@ -15,7 +15,7 @@
   /* stylelint-enable unit-whitelist */
 
   &.dewey--TopBar--rightPadding {
-    .padding--right--s;
+    .padding--right--s();
   }
 }
 
@@ -31,16 +31,16 @@
 }
 
 .dewey--TopBar--logoLink {
-  .padding--x--m;
+  .padding--x--m();
 }
 
 .dewey--TopBar--title {
-  .padding--none;
-  .margin--y--none;
-  .margin--x--xs;
-  .text--medium;
-  .text--regular;
-  .text--truncate;
+  .padding--none();
+  .margin--y--none();
+  .margin--x--xs();
+  .text--medium();
+  .text--regular();
+  .text--truncate();
   color: @neutral_white;
 }
 

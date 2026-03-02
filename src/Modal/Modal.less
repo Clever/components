@@ -1,7 +1,7 @@
 @import (reference) "../less/index.less";
 
 .Modal {
-  .zIndex--5;
+  .zIndex--5();
   position: fixed;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .Modal--window {
-  .borderRadius--l;
+  .borderRadius--l();
   .border--s(@neutral_silver);
   position: relative;
   top: 50%;
@@ -28,19 +28,19 @@
 }
 
 .Modal--header {
-  .padding--y--m;
-  .padding--x--l;
+  .padding--y--m();
+  .padding--x--l();
   background: @neutral_off_white;
   height: @size_5xl;
   box-sizing: border-box;
   position: relative;
 
   h1 {
-    .margin--none;
-    .margin--right--xl;
-    .padding--none;
-    .text--large;
-    .text--line-height-4;
+    .margin--none();
+    .margin--right--xl();
+    .padding--none();
+    .text--large();
+    .text--line-height-4();
     color: @neutral_black;
     font-family: "Proxima Nova", Arial, sans-serif;
     overflow: hidden;
@@ -74,15 +74,15 @@
 
 .Modal--window--content {
   position: relative;
-  .padding--top--l;
-  .padding--x--l;
+  .padding--top--l();
+  .padding--x--l();
   background-color: @neutral_white;
   box-sizing: border-box;
   overflow-y: auto;
 
   p {
-    .margin--bottom--m;
-    .margin--top--none;
+    .margin--bottom--m();
+    .margin--top--none();
   }
 
   .Modal--padding--div {
@@ -92,15 +92,15 @@
 }
 
 .Modal footer {
-  .margin--top--xl;
+  .margin--top--xl();
   text-align: right;
 
   .Button {
-    .margin--right--l;
+    .margin--right--l();
   }
 
   .Button:last-child {
-    .margin--right--none;
+    .margin--right--none();
   }
 }
 

@@ -7,12 +7,12 @@
 }
 
 .LeftNavExample--rightPane {
-  .padding--x--l;
+  .padding--x--l();
 }
 
 .Button.LeftNavExample--collapse {
-  .padding--x--none;
-  .text--large;
+  .padding--x--none();
+  .text--large();
   border-right: 0;
   box-sizing: content-box;
   width: @paneWidthCollapsed;
@@ -20,16 +20,16 @@
 
 .LeftNavExample--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .LeftNavExample--config {
-  .margin--right--xl;
+  .margin--right--xl();
   cursor: pointer;
   display: inline-block;
 
   &:not(:last-child) {
-    .margin--bottom--s;
+    .margin--bottom--s();
   }
 }

@@ -3,9 +3,9 @@
 @import "~less/type-size";
 
 body {
-  .flexbox;
-  .text--medium;
-  .text--line-height-3;
+  .flexbox();
+  .text--medium();
+  .text--line-height-3();
   color: @neutral_black;
   font-family: "Proxima Nova";
   height: auto;
@@ -17,8 +17,8 @@ body {
 }
 
 .Dewey--docs {
-  .flexbox;
-  .flex--grow;
+  .flexbox();
+  .flex--grow();
   min-height: 100vh;
   width: 100%;
 }
@@ -49,14 +49,14 @@ h1 {
 }
 
 h2 {
-  .display--block;
-  .margin--y--s;
-  .text--semi-bold;
+  .display--block();
+  .margin--y--s();
+  .text--semi-bold();
   &:extend(.text--huge);
 }
 
 h3 {
-  .text--light;
+  .text--light();
   color: @neutral_dark_gray;
   &:extend(.text--large);
 }
@@ -74,7 +74,7 @@ h6 {
 }
 
 p {
-  .text--line-height-4;
+  .text--line-height-4();
   margin-top: 0;
   max-width: 35em;
 
@@ -84,7 +84,7 @@ p {
 }
 
 a {
-  .text--regular;
+  .text--regular();
   color: @primary_blue;
   text-decoration: none;
   transition: color 0.25s ease-out;
@@ -92,7 +92,7 @@ a {
   &:hover,
   &:focus,
   &:active {
-    .text--decoration-none;
+    .text--decoration-none();
     outline: 0;
   }
 
@@ -103,7 +103,7 @@ a {
 }
 
 code {
-  .text--monospace;
+  .text--monospace();
   background-color: @neutral_off_white;
 }
 

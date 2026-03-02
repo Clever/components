@@ -1,7 +1,7 @@
 @import (reference) "~src/less/utilities";
 
 .AlertBox2View--intro {
-  .margin--bottom--xl;
+  .margin--bottom--xl();
 }
 
 .AlertBox2View--beta {
@@ -15,24 +15,24 @@
 
 .AlertBox2View--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .AlertBox2View--config {
-  .flexbox;
-  .items--center;
-  .text--caps;
-  .text--small;
+  .flexbox();
+  .items--center();
+  .text--caps();
+  .text--small();
 
   &:not(:last-child) {
-    .margin--right--m;
+    .margin--right--m();
   }
 }
 
 .AlertBox2View--configLabelText {
-  .text--caps;
-  .text--small;
+  .text--caps();
+  .text--small();
 }
 
 label.AlertBox2View--config {
@@ -40,7 +40,7 @@ label.AlertBox2View--config {
 }
 
 .AlertBox2View--configOptions {
-  .margin--left--2xs;
+  .margin--left--2xs();
   display: inline-block;
 }
 
@@ -53,5 +53,5 @@ label.AlertBox2View--config {
 }
 
 .AlertBox2View--props {
-  .margin--top--l;
+  .margin--top--l();
 }

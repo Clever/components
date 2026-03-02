@@ -50,9 +50,9 @@ _.forEach(borderRadii, (radius, name) => {
 
     `.borderRadius--bottomRight--${name} { border-bottom-right-radius: ${radiusVar}; }\n`,
 
-    `.borderRadius--top--${name} { .borderRadius--topLeft--${name}; .borderRadius--topRight--${name}; }\n`,
+    `.borderRadius--top--${name} { .borderRadius--topLeft--${name}(); .borderRadius--topRight--${name}(); }\n`,
 
-    `.borderRadius--bottom--${name} { .borderRadius--bottomLeft--${name}; .borderRadius--bottomRight--${name}; }`,
+    `.borderRadius--bottom--${name} { .borderRadius--bottomLeft--${name}(); .borderRadius--bottomRight--${name}(); }`,
   ]);
 });
 

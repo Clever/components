@@ -23,13 +23,13 @@
 a,
 button {
   &.Button {
-    .button--reset;
+    .button--reset();
     .border--s(transparent);
-    .borderRadius--l;
+    .borderRadius--l();
     // Safari weirdly adds margins to adjacent buttons. Reset that:
-    .margin--none;
-    .padding--none;
-    .text--medium;
+    .margin--none();
+    .padding--none();
+    .text--medium();
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
@@ -127,7 +127,7 @@ button {
   &.Button--linkPlain,
   &.Button--link,
   &.Button--plain {
-    .text--semi-bold;
+    .text--semi-bold();
     background: none;
     border-color: transparent;
   }
@@ -154,7 +154,7 @@ button {
 
   &.Button--small {
     font-size: 0.875rem;
-    .text--semi-bold;
+    .text--semi-bold();
     padding: 0.40625rem @size_s;
   }
 
@@ -190,7 +190,7 @@ button {
 
   &.Button--linkUnderlined {
     .border--bottom--s(@primary_blue_shade_2);
-    .borderRadius--0;
+    .borderRadius--0();
 
     &:hover,
     &:active {
@@ -199,8 +199,8 @@ button {
   }
 
   &.Button--large {
-    .borderRadius--xl;
-    .text--large;
+    .borderRadius--xl();
+    .text--large();
     padding: @size_m @size_l;
   }
 

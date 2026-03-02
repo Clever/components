@@ -1,14 +1,14 @@
 @import (reference) "../less/utilities";
 
 .animateWidth {
-  .timingSlowly;
+  .timingSlowly();
   .transition-timing-function(@motionSmooth);
   transition-property: width;
 }
 
 .animateOpacity {
-  .delayMoment;
-  .timingPromptly;
+  .delayMoment();
+  .timingPromptly();
   .transition-timing-function(@motionSnappy);
   transition-property: opacity;
 }

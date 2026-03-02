@@ -1,24 +1,24 @@
 @import (reference) "~src/less/utilities";
 
 .TopBarView--intro {
-  .margin--bottom--xl;
+  .margin--bottom--xl();
 }
 
 .TopBarView--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .TopBarView--config {
-  .flexbox;
-  .items--center;
-  .margin--bottom--m;
-  .text--caps;
-  .text--small;
+  .flexbox();
+  .items--center();
+  .margin--bottom--m();
+  .text--caps();
+  .text--small();
 
   &:not(:last-child) {
-    .margin--right--m;
+    .margin--right--m();
   }
 }
 
@@ -27,7 +27,7 @@ label.TopBarView--config {
 }
 
 .TopBarView--configOptions {
-  .margin--left--2xs;
+  .margin--left--2xs();
   display: inline-block;
 }
 
@@ -45,7 +45,7 @@ label.TopBarView--config {
 }
 
 .TopBarView--props {
-  .margin--top--l;
+  .margin--top--l();
 }
 
 .TopBarView--topBar {
@@ -68,7 +68,7 @@ label.TopBarView--config {
   min-width: 6rem;
   overflow: hidden;
   color: @neutral_white;
-  .margin--x--s;
+  .margin--x--s();
 }
 
 .TopBarView--searchIcon {

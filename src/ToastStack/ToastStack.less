@@ -1,15 +1,15 @@
 @import (reference) "../less/utilities";
 
 .ToastStack {
-  .zIndex--9;
+  .zIndex--9();
   max-width: 40rem;
   position: fixed;
   width: 100%;
 }
 
 .ToastStack--notificationWrapper {
-  .margin--bottom--xs;
-  .margin--x--xs;
+  .margin--bottom--xs();
+  .margin--x--xs();
   // We need to set an explicit initial value for the leave animation to work properly. No
   // notifications should actually hit this limit.
   max-height: 10rem;

@@ -1,31 +1,31 @@
 @import (reference) "~src/less/utilities";
 
 .TextTruncateView--intro {
-  .margin--bottom--xl;
+  .margin--bottom--xl();
 }
 
 .TextTruncateView--usage {
   .border--s(@neutral_silver);
-  .borderRadius--m;
-  .padding--m;
+  .borderRadius--m();
+  .padding--m();
   background-color: @neutral_off_white;
 }
 
 .TextTruncateView--configContainer {
   .border--top--l(@neutral_silver);
-  .margin--top--xl;
-  .padding--top--l;
+  .margin--top--xl();
+  .padding--top--l();
 }
 
 .TextTruncateView--config {
-  .flexbox;
-  .items--center;
-  .margin--bottom--m;
-  .text--caps;
-  .text--small;
+  .flexbox();
+  .items--center();
+  .margin--bottom--m();
+  .text--caps();
+  .text--small();
 
   &:not(:last-child) {
-    .margin--right--m;
+    .margin--right--m();
   }
 }
 
@@ -34,7 +34,7 @@ label.TextTruncateView--config {
 }
 
 .TextTruncateView--configOptions {
-  .margin--left--2xs;
+  .margin--left--2xs();
   display: inline-block;
 }
 
@@ -47,5 +47,5 @@ label.TextTruncateView--config {
 }
 
 .TextTruncateView--props {
-  .margin--top--l;
+  .margin--top--l();
 }
