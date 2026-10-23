@@ -3,9 +3,9 @@ kind: Component
 metadata:
   name: components
   description: Frontend components
-  owner: unknown
+  owner: eng-admin-analytics
 spec:
   type: unknown
   lifecycle: production
-  owner: unknown
+  owner: eng-admin-analytics
   system: Clever
